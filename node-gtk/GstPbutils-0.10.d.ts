@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -66,19 +68,36 @@ function gstPbUtilsInit(): void
  * The prototype of the callback function that will be called once the
  * external plugin installer program has returned. You only need to provide
  * a callback function if you are using the asynchronous interface.
+ * @callback 
+ * @param result whether the installation of the requested plugins succeeded or not
  */
 interface GstInstallPluginsResultFunc {
     (result: GstInstallPluginsReturn): void
 }
-class GstInstallPluginsContext {
-    /* Methods of GstPbutils-0.10.GstPbutils.GstInstallPluginsContext */
+interface GstInstallPluginsContext {
+
+    // Owm methods of GstPbutils-0.10.GstPbutils.GstInstallPluginsContext
+
     free(): void
     setXid(xid: number): void
+}
+
+/**
+ * Opaque context structure for the plugin installation. Use the provided
+ * API to set details on it.
+ * @record 
+ */
+class GstInstallPluginsContext {
+
+    // Own properties of GstPbutils-0.10.GstPbutils.GstInstallPluginsContext
+
     static name: string
-    static new(): GstInstallPluginsContext
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstPbutils-0.10.GstPbutils.GstInstallPluginsContext
+
+    constructor() 
     static new(): GstInstallPluginsContext
 }
+
 }
 export default GstPbutils;

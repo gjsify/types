@@ -1088,7 +1088,13 @@ import type Xlib20 from "./xlib-2.0";
 import type Xrandr13 from "./xrandr-1.3";
         
         
+import type ArrowCUDA10 from "./ArrowCUDA-1.0";
+        
+        
 import type Gst010 from "./Gst-0.10";
+        
+        
+import type GstAudio010 from "./GstAudio-0.10";
         
         
 import type GstBase010 from "./GstBase-0.10";
@@ -1470,7 +1476,9 @@ import type SocialWebClient025 from "./SocialWebClient-0.25";
     export function require(ns: 'xft', ver: '2.0'): typeof Xft20;
     export function require(ns: 'xlib', ver: '2.0'): typeof Xlib20;
     export function require(ns: 'xrandr', ver: '1.3'): typeof Xrandr13;
+    export function require(ns: 'ArrowCUDA', ver: '1.0'): typeof ArrowCUDA10;
     export function require(ns: 'Gst', ver: '0.10'): typeof Gst010;
+    export function require(ns: 'GstAudio', ver: '0.10'): typeof GstAudio010;
     export function require(ns: 'GstBase', ver: '0.10'): typeof GstBase010;
     export function require(ns: 'GstInterfaces', ver: '0.10'): typeof GstInterfaces010;
     export function require(ns: 'GstPbutils', ver: '0.10'): typeof GstPbutils010;

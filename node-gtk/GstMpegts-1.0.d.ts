@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -1230,6 +1232,7 @@ enum TerrestrialTransmissionMode {
  * otherwise (by use of the "OTHER" prefix), they are all registered by the
  * [SMPTE Registration Authority](https://smpte-ra.org/) or specified in
  * "official" documentation for the given format.
+ * @bitfield 
  */
 enum RegistrationId {
     /**
@@ -1307,386 +1310,760 @@ enum RegistrationId {
      */
     OTHER_HEVC,
 }
+/**
+ * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
+ * @param tag descriptor tag
+ * @param data descriptor data (after tag and length field)
+ */
 function descriptorFromCustom(tag: number, data: Uint8Array): Descriptor
+/**
+ * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
+ * @param tag descriptor tag
+ * @param tagExtension descriptor tag extension
+ * @param data descriptor data (after tag and length field)
+ */
 function descriptorFromCustomWithExtension(tag: number, tagExtension: number, data: Uint8Array): Descriptor
+/**
+ * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
+ * with the network name `name`. The data field of the #GstMpegtsDescriptor
+ * will be allocated, and transferred to the caller.
+ * @param name the network name to set
+ */
 function descriptorFromDvbNetworkName(name: string): Descriptor
-function descriptorFromDvbService(serviceType: DVBServiceType, serviceName?: string | null, serviceProvider?: string | null): Descriptor
+/**
+ * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
+ * The data field of the #GstMpegtsDescriptor will be allocated,
+ * and transferred to the caller.
+ * @param serviceType Service type defined as a #GstMpegtsDVBServiceType
+ * @param serviceName Name of the service
+ * @param serviceProvider Name of the service provider
+ */
+function descriptorFromDvbService(serviceType: DVBServiceType, serviceName: string | null, serviceProvider: string | null): Descriptor
 function descriptorFromDvbSubtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
+/**
+ * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
+ * a single language
+ * @param language ISO-639-2 language 3-char code
+ */
 function descriptorFromIso639Language(language: string): Descriptor
+/**
+ * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
+ * @param formatIdentifier a 4 character format identifier string
+ * @param additionalInfo pointer to optional additional info
+ */
 function descriptorFromRegistration(formatIdentifier: string, additionalInfo: Uint8Array | null): Descriptor
 function descriptorParseAudioPreselectionDump(source: AudioPreselectionDescriptor): void
 function descriptorParseAudioPreselectionFree(source: AudioPreselectionDescriptor): void
 function dvbComponentDescriptorFree(source: ComponentDescriptor): void
+/**
+ * Creates a new #GstEvent for a #GstMpegtsSection.
+ * @param section The #GstMpegtsSection to put in a message
+ */
 function eventNewMpegtsSection(section: Section): Gst.Event
+/**
+ * Extracts the #GstMpegtsSection contained in the `event` #GstEvent
+ * @param event #GstEvent containing a #GstMpegtsSection
+ */
 function eventParseMpegtsSection(event: Gst.Event): Section
+/**
+ * Finds the first descriptor of type `tag` in the array.
+ * 
+ * Note: To look for descriptors that can be present more than once in an
+ * array of descriptors, iterate the #GArray manually.
+ * @param descriptors an array of #GstMpegtsDescriptor
+ * @param tag the tag to look for
+ */
 function findDescriptor(descriptors: Descriptor[], tag: number): Descriptor
+/**
+ * Finds the first descriptor of type `tag` with `tag_extension` in the array.
+ * 
+ * Note: To look for descriptors that can be present more than once in an
+ * array of descriptors, iterate the #GArray manually.
+ * @param descriptors an array of #GstMpegtsDescriptor
+ * @param tag the tag to look for
+ * @param tagExtension 
+ */
 function findDescriptorWithExtension(descriptors: Descriptor[], tag: number, tagExtension: number): Descriptor
+/**
+ * Initializes the MPEG-TS helper library. Must be called before any
+ * usage.
+ */
 function initialize(): void
+/**
+ * Creates a new #GstMessage for a `GstMpegtsSection`.
+ * @param parent The creator of the message
+ * @param section The #GstMpegtsSection to put in a message
+ */
 function messageNewMpegtsSection(parent: Gst.Object, section: Section): Gst.Message
+/**
+ * Returns the #GstMpegtsSection contained in a message.
+ * @param message a #GstMessage
+ */
 function messageParseMpegtsSection(message: Gst.Message): Section
+/**
+ * Parses the descriptors present in `buffer` and returns them as an
+ * array.
+ * 
+ * Note: The data provided in `buffer` will not be copied.
+ * @param buffer descriptors to parse
+ * @param bufLen Size of `buffer`
+ */
 function parseDescriptors(buffer: number, bufLen: number): Descriptor[]
+/**
+ * Allocates a new #GPtrArray for #GstMpegtsPatProgram. The array can be filled
+ * and then converted to a PAT section with gst_mpegts_section_from_pat().
+ */
 function patNew(): PatProgram[]
+/**
+ * Allocates and initializes a new INSERT command #GstMpegtsSCTESIT
+ * setup to cancel the specified `event_id`.
+ * @param eventId The event ID to cancel.
+ */
 function scteCancelNew(eventId: number): SCTESIT
+/**
+ * Allocates and initializes a NULL command #GstMpegtsSCTESIT.
+ */
 function scteNullNew(): SCTESIT
+/**
+ * Allocates and initializes a new "Splice In" INSERT command
+ * #GstMpegtsSCTESIT for the given `event_id` and `splice_time`.
+ * 
+ * If the `splice_time` is #G_MAXUINT64 then the event will be
+ * immediate as opposed to for the target `splice_time`.
+ * @param eventId The event ID.
+ * @param spliceTime The running time for the splice event
+ */
 function scteSpliceInNew(eventId: number, spliceTime: Gst.ClockTime): SCTESIT
+/**
+ * Allocates and initializes a new "Splice Out" INSERT command
+ * #GstMpegtsSCTESIT for the given `event_id,` `splice_time` and
+ * `duration`.
+ * 
+ * If the `splice_time` is #G_MAXUINT64 then the event will be
+ * immediate as opposed to for the target `splice_time`.
+ * 
+ * If the `duration` is 0 it won't be specified in the event.
+ * @param eventId The event ID.
+ * @param spliceTime The running time for the splice event
+ * @param duration The optional duration.
+ */
 function scteSpliceOutNew(eventId: number, spliceTime: Gst.ClockTime, duration: Gst.ClockTime): SCTESIT
 function sectionFromAtscMgt(mgt: AtscMGT): Section
 function sectionFromAtscRrt(rrt: AtscRRT): Section
 function sectionFromAtscStt(stt: AtscSTT): Section
+/**
+ * Ownership of `nit` is taken. The data in `nit` is managed by the #GstMpegtsSection
+ * @param nit a #GstMpegtsNIT to create the #GstMpegtsSection from
+ */
 function sectionFromNit(nit: NIT): Section
+/**
+ * Creates a PAT #GstMpegtsSection from the `programs` array of #GstMpegtsPatPrograms
+ * @param programs an array of #GstMpegtsPatProgram
+ * @param tsId Transport stream ID of the PAT
+ */
 function sectionFromPat(programs: PatProgram[], tsId: number): Section
+/**
+ * Creates a #GstMpegtsSection from `pmt` that is bound to `pid`
+ * @param pmt a #GstMpegtsPMT to create a #GstMpegtsSection from
+ * @param pid The PID that the #GstMpegtsPMT belongs to
+ */
 function sectionFromPmt(pmt: PMT, pid: number): Section
+/**
+ * Ownership of `sit` is taken. The data in `sit` is managed by the #GstMpegtsSection
+ * @param sit a #GstMpegtsSCTESIT to create the #GstMpegtsSection from
+ * @param pid 
+ */
 function sectionFromScteSit(sit: SCTESIT, pid: number): Section
+/**
+ * Ownership of `sdt` is taken. The data in `sdt` is managed by the #GstMpegtsSection
+ * @param sdt a #GstMpegtsSDT to create the #GstMpegtsSection from
+ */
 function sectionFromSdt(sdt: SDT): Section
 interface PacketizeFunc {
     (section: Section): boolean
 }
-class AtscEIT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscEIT */
+interface AtscEIT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscEIT
+
     /**
      * The source id
+     * @field 
      */
     sourceId: number
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * Events
+     * @field 
      */
     events: AtscEITEvent[]
+}
+
+/**
+ * Event Information Table (ATSC)
+ * @record 
+ */
+class AtscEIT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscEIT
+
     static name: string
 }
-class AtscEITEvent {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscEITEvent */
+
+interface AtscEITEvent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscEITEvent
+
     /**
      * The event id
+     * @field 
      */
     eventId: number
     /**
      * The start time
+     * @field 
      */
     startTime: number
     /**
      * The etm location
+     * @field 
      */
     etmLocation: number
     /**
      * The length in seconds
+     * @field 
      */
     lengthInSeconds: number
     /**
      * the titles
+     * @field 
      */
     titles: AtscMultString[]
     /**
      * descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * An ATSC EIT Event
+ * @record 
+ */
+class AtscEITEvent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscEITEvent
+
     static name: string
 }
-class AtscETT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscETT */
+
+interface AtscETT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscETT
+
     ettTableIdExtension: number
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * The etm id
+     * @field 
      */
     etmId: number
     /**
      * List of texts
+     * @field 
      */
     messages: AtscMultString[]
+}
+
+/**
+ * Extended Text Table (ATSC)
+ * @record 
+ */
+class AtscETT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscETT
+
     static name: string
 }
-class AtscMGT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscMGT */
+
+interface AtscMGT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscMGT
+
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * The numbers of subtables
+     * @field 
      */
     tablesDefined: number
     /**
      * the tables
+     * @field 
      */
     tables: AtscMGTTable[]
     /**
      * descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Master Guide Table (A65)
+ * @record 
+ */
+class AtscMGT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscMGT
+
     static name: string
-    static new(): AtscMGT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.AtscMGT
+
+    constructor() 
     static new(): AtscMGT
 }
-class AtscMGTTable {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscMGTTable */
+
+interface AtscMGTTable {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscMGTTable
+
     /**
      * #GstMpegtsAtscMGTTableType
+     * @field 
      */
     tableType: number
     /**
      * The packet ID
+     * @field 
      */
     pid: number
     /**
      * The version number
+     * @field 
      */
     versionNumber: number
     numberBytes: number
     /**
      * descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Source from a `GstMpegtsAtscMGT`
+ * @record 
+ */
+class AtscMGTTable {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscMGTTable
+
     static name: string
 }
-class AtscMultString {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscMultString */
+
+interface AtscMultString {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscMultString
+
     /**
      * The ISO639 language code
+     * @field 
      */
     iso639Langcode: number[]
     segments: AtscStringSegment[]
+}
+
+class AtscMultString {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscMultString
+
     static name: string
 }
-class AtscRRT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscRRT */
+
+interface AtscRRT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscRRT
+
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * the names
+     * @field 
      */
     names: AtscMultString[]
     /**
      * the number of dimensions defined for this rating table
+     * @field 
      */
     dimensionsDefined: number
     /**
      * A set of dimensions
+     * @field 
      */
     dimensions: AtscRRTDimension[]
     /**
      * descriptors
+     * @field 
      */
     descriptors: object[]
+}
+
+/**
+ * Region Rating Table (A65)
+ * @record 
+ */
+class AtscRRT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscRRT
+
     static name: string
-    static new(): AtscRRT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.AtscRRT
+
+    constructor() 
     static new(): AtscRRT
 }
-class AtscRRTDimension {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscRRTDimension */
+
+interface AtscRRTDimension {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscRRTDimension
+
     /**
      * the names
+     * @field 
      */
     names: AtscMultString[]
     /**
      * whether the ratings represent a graduated scale
+     * @field 
      */
     graduatedScale: boolean
     /**
      * the number of values defined for this dimension
+     * @field 
      */
     valuesDefined: number
     /**
      * set of values
+     * @field 
      */
     values: AtscRRTDimensionValue[]
+}
+
+class AtscRRTDimension {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscRRTDimension
+
     static name: string
-    static new(): AtscRRTDimension
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.AtscRRTDimension
+
+    constructor() 
     static new(): AtscRRTDimension
 }
-class AtscRRTDimensionValue {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscRRTDimensionValue */
+
+interface AtscRRTDimensionValue {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscRRTDimensionValue
+
     /**
      * the abbreviated ratings
+     * @field 
      */
     abbrevRatings: AtscMultString[]
     /**
      * the ratings
+     * @field 
      */
     ratings: AtscMultString[]
+}
+
+class AtscRRTDimensionValue {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscRRTDimensionValue
+
     static name: string
-    static new(): AtscRRTDimensionValue
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.AtscRRTDimensionValue
+
+    constructor() 
     static new(): AtscRRTDimensionValue
 }
-class AtscSTT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscSTT */
+
+interface AtscSTT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscSTT
+
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * The system time
+     * @field 
      */
     systemTime: number
     /**
      * The GPS to UTC offset
+     * @field 
      */
     gpsUtcOffset: number
     dsStatus: boolean
     /**
      * The day of month
+     * @field 
      */
     dsDayofmonth: number
     /**
      * The hour
+     * @field 
      */
     dsHour: number
     /**
      * descriptors
+     * @field 
      */
     descriptors: Descriptor[]
     /**
      * The UTC date and time
+     * @field 
      */
     utcDatetime: Gst.DateTime
-    /* Methods of GstMpegts-1.0.GstMpegts.AtscSTT */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.AtscSTT
+
     getDatetimeUtc(): Gst.DateTime
+}
+
+/**
+ * System Time Table (A65)
+ * @record 
+ */
+class AtscSTT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscSTT
+
     static name: string
-    static new(): AtscSTT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.AtscSTT
+
+    constructor() 
     static new(): AtscSTT
 }
-class AtscStringSegment {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscStringSegment */
+
+interface AtscStringSegment {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscStringSegment
+
     /**
      * The compression type
+     * @field 
      */
     compressionType: number
     /**
      * The mode
+     * @field 
      */
     mode: number
     /**
      * The size of compressed data
+     * @field 
      */
     compressedDataSize: number
     /**
      * The compressed data
+     * @field 
      */
     compressedData: number
     cachedString: string
-    /* Methods of GstMpegts-1.0.GstMpegts.AtscStringSegment */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.AtscStringSegment
+
     getString(): string
     setString(string: string, compressionType: number, mode: number): boolean
+}
+
+/**
+ * A string segment
+ * @record 
+ */
+class AtscStringSegment {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscStringSegment
+
     static name: string
 }
-class AtscVCT {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscVCT */
+
+interface AtscVCT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscVCT
+
     /**
      * The transport stream
+     * @field 
      */
     transportStreamId: number
     /**
      * The protocol version
+     * @field 
      */
     protocolVersion: number
     /**
      * sources
+     * @field 
      */
     sources: AtscVCTSource[]
     /**
      * descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Represents both:
+ *   Terrestrial Virtual Channel Table (A65)
+ *   Cable Virtual Channel Table (A65)
+ * @record 
+ */
+class AtscVCT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscVCT
+
     static name: string
 }
-class AtscVCTSource {
-    /* Fields of GstMpegts-1.0.GstMpegts.AtscVCTSource */
+
+interface AtscVCTSource {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AtscVCTSource
+
     /**
      * The short name of a source
+     * @field 
      */
     shortName: string
     /**
      * The major channel number
+     * @field 
      */
     majorChannelNumber: number
     /**
      * The minor channel number
+     * @field 
      */
     minorChannelNumber: number
     /**
      * The modulation mode
+     * @field 
      */
     modulationMode: number
     /**
      * The carrier frequency
+     * @field 
      */
     carrierFrequency: number
     /**
      * The transport stream ID
+     * @field 
      */
     channelTSID: number
     /**
      * The program number (see #GstMpegtsPatProgram)
+     * @field 
      */
     programNumber: number
     /**
      * The ETM location
+     * @field 
      */
     eTMLocation: number
     /**
      * is access controlled
+     * @field 
      */
     accessControlled: boolean
     /**
      * is hidden
+     * @field 
      */
     hidden: boolean
     /**
      * is path select, CVCT only
+     * @field 
      */
     pathSelect: boolean
     /**
      * is out of band, CVCT only
+     * @field 
      */
     outOfBand: boolean
     /**
      * is hide guide
+     * @field 
      */
     hideGuide: boolean
     /**
      * The service type
+     * @field 
      */
     serviceType: number
     /**
      * The source id
+     * @field 
      */
     sourceId: number
     /**
      * an array of #GstMpegtsDescriptor
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Source from a %GstMpegtsAtscVCT, can be used both for TVCT and CVCT tables
+ * @record 
+ */
+class AtscVCTSource {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AtscVCTSource
+
     static name: string
 }
-class AudioPreselectionDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.AudioPreselectionDescriptor */
+
+interface AudioPreselectionDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.AudioPreselectionDescriptor
+
     /**
      * 5-bit
+     * @field 
      */
     preselectionId: number
     /**
      * 3-bit field
+     * @field 
      */
     audioRenderingIndication: number
     /**
      * visually impaired
+     * @field 
      */
     audioDescription: boolean
     spokenSubtitles: boolean
@@ -1696,113 +2073,214 @@ class AudioPreselectionDescriptor {
     textLabelPresent: boolean
     /**
      * indicates if this PID conveys a complete audio programme
+     * @field 
      */
     multiStreamInfoPresent: boolean
     futureExtension: boolean
     /**
      * NULL terminated ISO 639 language code.
+     * @field 
      */
     languageCode: string
     messageId: number
+}
+
+/**
+ * Table 110: Audio Preselection Descriptor (ETSI EN 300 468 v1.16.1)
+ * @record 
+ */
+class AudioPreselectionDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.AudioPreselectionDescriptor
+
     static name: string
 }
-class BAT {
-    /* Fields of GstMpegts-1.0.GstMpegts.BAT */
+
+interface BAT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.BAT
+
     descriptors: Descriptor[]
     streams: BATStream[]
+}
+
+/**
+ * DVB Bouquet Association Table (EN 300 468)
+ * @record 
+ */
+class BAT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.BAT
+
     static name: string
 }
-class BATStream {
-    /* Fields of GstMpegts-1.0.GstMpegts.BATStream */
+
+interface BATStream {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.BATStream
+
     transportStreamId: number
     originalNetworkId: number
     descriptors: object[]
+}
+
+class BATStream {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.BATStream
+
     static name: string
 }
-class CableDeliverySystemDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor */
+
+interface CableDeliverySystemDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor
+
     /**
      * the frequency in Hz (Hertz)
+     * @field 
      */
     frequency: number
     /**
      * the outer FEC scheme used
+     * @field 
      */
     outerFec: CableOuterFECScheme
     /**
      * Modulation scheme used
+     * @field 
      */
     modulation: ModulationType
     /**
      * Symbol rate (in symbols per second)
+     * @field 
      */
     symbolRate: number
     /**
      * inner FEC scheme used
+     * @field 
      */
     fecInner: DVBCodeRate
-    /* Methods of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor
+
     free(): void
+}
+
+/**
+ * Cable Delivery System Descriptor (EN 300 468 v.1.13.1)
+ * @record 
+ */
+class CableDeliverySystemDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.CableDeliverySystemDescriptor
+
     static name: string
 }
-class ComponentDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.ComponentDescriptor */
+
+interface ComponentDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.ComponentDescriptor
+
     streamContent: number
     componentType: number
     componentTag: number
     languageCode: string
     text: string
+}
+
+class ComponentDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.ComponentDescriptor
+
     static name: string
 }
-class Content {
-    /* Fields of GstMpegts-1.0.GstMpegts.Content */
+
+interface Content {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.Content
+
     contentNibble1: ContentNibbleHi
     contentNibble2: number
     userByte: number
+}
+
+class Content {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.Content
+
     static name: string
 }
-class DVBLinkageDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor */
+
+interface DVBLinkageDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor
+
     /**
      * the transport id
+     * @field 
      */
     transportStreamId: number
     /**
      * the original network id
+     * @field 
      */
     originalNetworkId: number
     /**
      * the service id
+     * @field 
      */
     serviceId: number
     /**
      * the type which `linkage_data` has
+     * @field 
      */
     linkageType: DVBLinkageType
     /**
      * the length for `private_data_bytes`
+     * @field 
      */
     privateDataLength: number
     /**
      * additional data bytes
+     * @field 
      */
     privateDataBytes: number
-    /* Methods of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor
+
     free(): void
     getEvent(): DVBLinkageEvent
     getExtendedEvent(): DVBLinkageExtendedEvent[]
     getMobileHandOver(): DVBLinkageMobileHandOver
+}
+
+class DVBLinkageDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBLinkageDescriptor
+
     static name: string
 }
-class DVBLinkageEvent {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageEvent */
+
+interface DVBLinkageEvent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBLinkageEvent
+
     targetEventId: number
     targetListed: boolean
     eventSimulcast: boolean
+}
+
+class DVBLinkageEvent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBLinkageEvent
+
     static name: string
 }
-class DVBLinkageExtendedEvent {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageExtendedEvent */
+
+interface DVBLinkageExtendedEvent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBLinkageExtendedEvent
+
     targetEventId: number
     targetListed: boolean
     eventSimulcast: boolean
@@ -1814,81 +2292,141 @@ class DVBLinkageExtendedEvent {
     targetTransportStreamId: number
     targetOriginalNetworkId: number
     targetServiceId: number
+}
+
+class DVBLinkageExtendedEvent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBLinkageExtendedEvent
+
     static name: string
 }
-class DVBLinkageMobileHandOver {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBLinkageMobileHandOver */
+
+interface DVBLinkageMobileHandOver {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBLinkageMobileHandOver
+
     handOverType: DVBLinkageHandOverType
     originType: boolean
     networkId: number
     initialServiceId: number
+}
+
+class DVBLinkageMobileHandOver {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBLinkageMobileHandOver
+
     static name: string
 }
-class DVBParentalRatingItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBParentalRatingItem */
+
+interface DVBParentalRatingItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBParentalRatingItem
+
     countryCode: string
     rating: number
+}
+
+class DVBParentalRatingItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBParentalRatingItem
+
     static name: string
 }
-class DVBServiceListItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DVBServiceListItem */
+
+interface DVBServiceListItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DVBServiceListItem
+
     /**
      * the id of a service
+     * @field 
      */
     serviceId: number
     /**
      * the type of a service
+     * @field 
      */
     type: DVBServiceType
+}
+
+class DVBServiceListItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DVBServiceListItem
+
     static name: string
 }
-class DataBroadcastDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor */
+
+interface DataBroadcastDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor
+
     /**
      * the data broadcast id
+     * @field 
      */
     dataBroadcastId: number
     /**
      * the component tag
+     * @field 
      */
     componentTag: number
     length: number
     /**
      * the selector byte field
+     * @field 
      */
     selectorBytes: number
     /**
      * language of `text`
+     * @field 
      */
     languageCode: string
     /**
      * description of data broadcast
+     * @field 
      */
     text: string
-    /* Methods of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor
+
     free(): void
+}
+
+class DataBroadcastDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DataBroadcastDescriptor
+
     static name: string
 }
-class Descriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.Descriptor */
+
+interface Descriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.Descriptor
+
     /**
      * the type of descriptor
+     * @field 
      */
     tag: number
     /**
      * the extended type (if `descriptor_tag` is 0x7f)
+     * @field 
      */
     tagExtension: number
     /**
      * the length of the descriptor content (excluding tag/length field)
+     * @field 
      */
     length: number
     /**
      * the full descriptor data (including tag, extension, length). The first
      * two bytes are the `tag` and `length`.
+     * @field 
      */
     data: number
-    /* Methods of GstMpegts-1.0.GstMpegts.Descriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.Descriptor
+
     /**
      * Frees `desc`
      */
@@ -1900,7 +2438,7 @@ class Descriptor {
     /**
      * Extracts the Conditional Access information from `descriptor`.
      */
-    parseCa(): [ /* returnType */ boolean, /* caSystemId */ number, /* caPid */ number, /* privateData */ Uint8Array | null ]
+    parseCa(): [ /* returnType */ boolean, /* caSystemId */ number, /* caPid */ number, /* privateData */ Uint8Array ]
     /**
      * Extracts the cable delivery system information from `descriptor`.
      */
@@ -1908,7 +2446,7 @@ class Descriptor {
     /**
      * Extracts the bouquet name from `descriptor`.
      */
-    parseDvbBouquetName(): [ /* returnType */ boolean, /* bouquetName */ string | null ]
+    parseDvbBouquetName(): [ /* returnType */ boolean, /* bouquetName */ string ]
     /**
      * Extracts ca id's from `descriptor`.
      */
@@ -1968,7 +2506,7 @@ class Descriptor {
     /**
      * Parses out the private data specifier from the `descriptor`.
      */
-    parseDvbPrivateDataSpecifier(): [ /* returnType */ boolean, /* privateDataSpecifier */ number, /* privateData */ Uint8Array | null ]
+    parseDvbPrivateDataSpecifier(): [ /* returnType */ boolean, /* privateDataSpecifier */ number, /* privateData */ Uint8Array ]
     /**
      * Parses out the scrambling mode from the `descriptor`.
      */
@@ -1976,7 +2514,7 @@ class Descriptor {
     /**
      * Extracts the dvb service information from `descriptor`.
      */
-    parseDvbService(): [ /* returnType */ boolean, /* serviceType */ DVBServiceType | null, /* serviceName */ string | null, /* providerName */ string | null ]
+    parseDvbService(): [ /* returnType */ boolean, /* serviceType */ DVBServiceType, /* serviceName */ string, /* providerName */ string ]
     /**
      * Parses out a list of services from the `descriptor:`
      */
@@ -1984,7 +2522,7 @@ class Descriptor {
     /**
      * Extracts the DVB short event information from `descriptor`.
      */
-    parseDvbShortEvent(): [ /* returnType */ boolean, /* languageCode */ string | null, /* eventName */ string | null, /* text */ string | null ]
+    parseDvbShortEvent(): [ /* returnType */ boolean, /* languageCode */ string, /* eventName */ string, /* text */ string ]
     /**
      * Extracts the component tag from `descriptor`.
      */
@@ -2000,7 +2538,7 @@ class Descriptor {
      * ISO 639-1 language code from the returned ISO 639-2 one.
      * @param idx Table id of the entry to parse
      */
-    parseDvbSubtitlingIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* type */ number | null, /* compositionPageId */ number | null, /* ancillaryPageId */ number | null ]
+    parseDvbSubtitlingIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* type */ number, /* compositionPageId */ number, /* ancillaryPageId */ number ]
     parseDvbSubtitlingNb(): number
     /**
      * Parses out the DVB-T2 delivery system from the `descriptor`.
@@ -2010,7 +2548,7 @@ class Descriptor {
      * Parses teletext number `idx` in the `descriptor`. The language is in ISO639 format.
      * @param idx The id of the teletext to get
      */
-    parseDvbTeletextIdx(idx: number): [ /* returnType */ boolean, /* languageCode */ string | null, /* teletextType */ DVBTeletextType | null, /* magazineNumber */ number | null, /* pageNumber */ number | null ]
+    parseDvbTeletextIdx(idx: number): [ /* returnType */ boolean, /* languageCode */ string, /* teletextType */ DVBTeletextType, /* magazineNumber */ number, /* pageNumber */ number ]
     /**
      * Find the number of teletext entries in `descriptor`
      */
@@ -2029,7 +2567,7 @@ class Descriptor {
      * ISO 639-1 language code from the returned ISO 639-2 one.
      * @param idx Table id of the language to parse
      */
-    parseIso639LanguageIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* audioType */ Iso639AudioType | null ]
+    parseIso639LanguageIdx(idx: number): [ /* returnType */ boolean, /* lang */ string, /* audioType */ Iso639AudioType ]
     parseIso639LanguageNb(): number
     /**
      * Extracts the logical channels from `descriptor`.
@@ -2038,7 +2576,7 @@ class Descriptor {
     /**
      * Extracts the Registration information from `descriptor`.
      */
-    parseRegistration(): [ /* returnType */ boolean, /* registrationId */ number, /* additionalInfo */ Uint8Array | null ]
+    parseRegistration(): [ /* returnType */ boolean, /* registrationId */ number, /* additionalInfo */ Uint8Array ]
     /**
      * Extracts the satellite delivery system information from `descriptor`.
      */
@@ -2047,8 +2585,23 @@ class Descriptor {
      * Parses out the terrestrial delivery system from the `descriptor`.
      */
     parseTerrestrialDeliverySystem(): [ /* returnType */ boolean, /* res */ TerrestrialDeliverySystemDescriptor ]
+}
+
+/**
+ * These are the base descriptor types and methods.
+ * 
+ * For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
+ * and other specifications mentioned in the documentation.
+ * @record 
+ */
+class Descriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.Descriptor
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.Descriptor
+
     /**
      * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
      * @param tag descriptor tag
@@ -2077,7 +2630,7 @@ class Descriptor {
      * @param serviceName Name of the service
      * @param serviceProvider Name of the service provider
      */
-    static fromDvbService(serviceType: DVBServiceType, serviceName?: string | null, serviceProvider?: string | null): Descriptor
+    static fromDvbService(serviceType: DVBServiceType, serviceName: string | null, serviceProvider: string | null): Descriptor
     static fromDvbSubtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
     /**
      * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
@@ -2094,60 +2647,120 @@ class Descriptor {
     static parseAudioPreselectionDump(source: AudioPreselectionDescriptor): void
     static parseAudioPreselectionFree(source: AudioPreselectionDescriptor): void
 }
-class DvbMultilingualBouquetNameItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DvbMultilingualBouquetNameItem */
+
+interface DvbMultilingualBouquetNameItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DvbMultilingualBouquetNameItem
+
     /**
      * the ISO 639 language code
+     * @field 
      */
     languageCode: string
     /**
      * the bouquet name
+     * @field 
      */
     bouquetName: string
+}
+
+/**
+ * a multilingual bouquet name entry
+ * @record 
+ */
+class DvbMultilingualBouquetNameItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DvbMultilingualBouquetNameItem
+
     static name: string
 }
-class DvbMultilingualComponentItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DvbMultilingualComponentItem */
+
+interface DvbMultilingualComponentItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DvbMultilingualComponentItem
+
     /**
      * the ISO 639 language code
+     * @field 
      */
     languageCode: string
     /**
      * the component description
+     * @field 
      */
     description: string
+}
+
+class DvbMultilingualComponentItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DvbMultilingualComponentItem
+
     static name: string
 }
-class DvbMultilingualNetworkNameItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DvbMultilingualNetworkNameItem */
+
+interface DvbMultilingualNetworkNameItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DvbMultilingualNetworkNameItem
+
     /**
      * the ISO 639 language code
+     * @field 
      */
     languageCode: string
     /**
      * the network name
+     * @field 
      */
     networkName: string
+}
+
+/**
+ * a multilingual network name entry
+ * @record 
+ */
+class DvbMultilingualNetworkNameItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DvbMultilingualNetworkNameItem
+
     static name: string
 }
-class DvbMultilingualServiceNameItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.DvbMultilingualServiceNameItem */
+
+interface DvbMultilingualServiceNameItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.DvbMultilingualServiceNameItem
+
     /**
      * the ISO 639 language code
+     * @field 
      */
     languageCode: string
     /**
      * the provider name
+     * @field 
      */
     providerName: string
     /**
      * the service name
+     * @field 
      */
     serviceName: string
+}
+
+/**
+ * a multilingual service name entry
+ * @record 
+ */
+class DvbMultilingualServiceNameItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.DvbMultilingualServiceNameItem
+
     static name: string
 }
-class EIT {
-    /* Fields of GstMpegts-1.0.GstMpegts.EIT */
+
+interface EIT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.EIT
+
     transportStreamId: number
     originalNetworkId: number
     segmentLastSectionNumber: number
@@ -2156,12 +2769,26 @@ class EIT {
     presentFollowing: boolean
     /**
      * List of events
+     * @field 
      */
     events: EITEvent[]
+}
+
+/**
+ * Event Information Table (EN 300 468)
+ * @record 
+ */
+class EIT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.EIT
+
     static name: string
 }
-class EITEvent {
-    /* Fields of GstMpegts-1.0.GstMpegts.EITEvent */
+
+interface EITEvent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.EITEvent
+
     eventId: number
     startTime: Gst.DateTime
     duration: number
@@ -2169,153 +2796,349 @@ class EITEvent {
     freeCAMode: boolean
     /**
      * List of descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Event from a `GstMpegtsEIT`
+ * @record 
+ */
+class EITEvent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.EITEvent
+
     static name: string
 }
-class ExtendedEventDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor */
+
+interface ExtendedEventDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor
+
     descriptorNumber: number
     lastDescriptorNumber: number
     /**
      * NULL terminated language code.
+     * @field 
      */
     languageCode: string
     /**
      * the #GstMpegtsExtendedEventItem
+     * @field 
      */
     items: ExtendedEventItem[]
     text: string
-    /* Methods of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor
+
     free(): void
+}
+
+/**
+ * Extended Event Descriptor (EN 300 468 v.1.13.1)
+ * @record 
+ */
+class ExtendedEventDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.ExtendedEventDescriptor
+
     static name: string
 }
-class ExtendedEventItem {
-    /* Fields of GstMpegts-1.0.GstMpegts.ExtendedEventItem */
+
+interface ExtendedEventItem {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.ExtendedEventItem
+
     itemDescription: string
     item: string
+}
+
+class ExtendedEventItem {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.ExtendedEventItem
+
     static name: string
 }
-class ISO639LanguageDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor */
+
+interface ISO639LanguageDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor
+
     nbLanguage: number
     language: string[]
     audioType: Iso639AudioType[]
-    /* Methods of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor
+
     descriptorFree(): void
+}
+
+class ISO639LanguageDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.ISO639LanguageDescriptor
+
     static name: string
 }
-class LogicalChannel {
-    /* Fields of GstMpegts-1.0.GstMpegts.LogicalChannel */
+
+interface LogicalChannel {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.LogicalChannel
+
     serviceId: number
     visibleService: boolean
     logicalChannelNumber: number
+}
+
+class LogicalChannel {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.LogicalChannel
+
     static name: string
 }
-class LogicalChannelDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.LogicalChannelDescriptor */
+
+interface LogicalChannelDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.LogicalChannelDescriptor
+
     nbChannels: number
     channels: LogicalChannel[]
+}
+
+class LogicalChannelDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.LogicalChannelDescriptor
+
     static name: string
 }
-class NIT {
-    /* Fields of GstMpegts-1.0.GstMpegts.NIT */
+
+interface NIT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.NIT
+
     /**
      * Whether this NIT corresponds to the actual stream
+     * @field 
      */
     actualNetwork: boolean
     /**
      * ID of the network that this NIT describes
+     * @field 
      */
     networkId: number
     /**
      * the global descriptors
+     * @field 
      */
     descriptors: Descriptor[]
     /**
      * the streams
+     * @field 
      */
     streams: NITStream[]
+}
+
+/**
+ * Network Information Table (ISO/IEC 13818-1 / EN 300 468)
+ * @record 
+ */
+class NIT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.NIT
+
     static name: string
-    static new(): NIT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.NIT
+
+    /**
+     * Allocates and initializes a #GstMpegtsNIT.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsNIT.
+     * @constructor 
+     */
     static new(): NIT
 }
-class NITStream {
-    /* Fields of GstMpegts-1.0.GstMpegts.NITStream */
+
+interface NITStream {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.NITStream
+
     transportStreamId: number
     originalNetworkId: number
     descriptors: Descriptor[]
+}
+
+class NITStream {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.NITStream
+
     static name: string
-    static new(): NITStream
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.NITStream
+
+    /**
+     * Allocates and initializes a #GstMpegtsNITStream
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsNITStream
+     * @constructor 
+     */
     static new(): NITStream
 }
-class PMT {
-    /* Fields of GstMpegts-1.0.GstMpegts.PMT */
+
+interface PMT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.PMT
+
     /**
      * PID of the stream containing the PCR for this program.
+     * @field 
      */
     pcrPid: number
     /**
      * The program to which this PMT is applicable.
+     * @field 
      */
     programNumber: number
     /**
      * Array of #GstMpegtsDescriptor
+     * @field 
      */
     descriptors: Descriptor[]
     /**
      * Array of #GstMpegtsPMTStream
+     * @field 
      */
     streams: PMTStream[]
+}
+
+/**
+ * Program Map Table (ISO/IEC 13818-1). Provides the mappings between program
+ * numbers and the program elements that comprise them.
+ * 
+ * The program_number is contained in the subtable_extension field of the
+ * container #GstMpegtsSection.
+ * @record 
+ */
+class PMT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.PMT
+
     static name: string
-    static new(): PMT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.PMT
+
+    /**
+     * Allocates and initializes a new #GstMpegtsPMT. #GstMpegtsPMTStream can be
+     * added to the streams array, and global PMT #GstMpegtsDescriptor to the
+     * descriptors array.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a new #GstMpegtsPMT. #GstMpegtsPMTStream can be
+     * added to the streams array, and global PMT #GstMpegtsDescriptor to the
+     * descriptors array.
+     * @constructor 
+     */
     static new(): PMT
 }
-class PMTStream {
-    /* Fields of GstMpegts-1.0.GstMpegts.PMTStream */
+
+interface PMTStream {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.PMTStream
+
     /**
      * the type of stream. See #GstMpegtsStreamType
+     * @field 
      */
     streamType: number
     /**
      * the PID of the stream
+     * @field 
      */
     pid: number
     /**
      * the descriptors of the
      * stream
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * An individual stream definition of a #GstMpegtsPMT.
+ * @record 
+ */
+class PMTStream {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.PMTStream
+
     static name: string
-    static new(): PMTStream
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.PMTStream
+
+    /**
+     * Allocates and initializes a new #GstMpegtsPMTStream.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a new #GstMpegtsPMTStream.
+     * @constructor 
+     */
     static new(): PMTStream
 }
-class PatProgram {
-    /* Fields of GstMpegts-1.0.GstMpegts.PatProgram */
+
+interface PatProgram {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.PatProgram
+
     /**
      * the program number
+     * @field 
      */
     programNumber: number
     /**
      * the network of program map PID
+     * @field 
      */
     networkOrProgramMapPID: number
+}
+
+/**
+ * A program entry from a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
+ * @record 
+ */
+class PatProgram {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.PatProgram
+
     static name: string
-    static new(): PatProgram
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.PatProgram
+
+    /**
+     * Allocates a new #GstMpegtsPatProgram.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates a new #GstMpegtsPatProgram.
+     * @constructor 
+     */
     static new(): PatProgram
 }
-class SCTESIT {
-    /* Fields of GstMpegts-1.0.GstMpegts.SCTESIT */
+
+interface SCTESIT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SCTESIT
+
     encryptedPacket: boolean
     encryptionAlgorithm: number
     ptsAdjustment: number
@@ -2330,45 +3153,93 @@ class SCTESIT {
     /**
      * When encrypted, or when encountering an unknown command type,
      * we may still want to pass the sit through.
+     * @field 
      */
     fullyParsed: boolean
     /**
      * When the SIT was constructed by the application, splice times
      * are in running_time and must be translated before packetizing.
+     * @field 
      */
     isRunningTime: boolean
+}
+
+class SCTESIT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SCTESIT
+
     static name: string
-    static new(): SCTESIT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.SCTESIT
+
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESIT.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESIT.
+     * @constructor 
+     */
     static new(): SCTESIT
 }
-class SCTESpliceComponent {
-    /* Fields of GstMpegts-1.0.GstMpegts.SCTESpliceComponent */
+
+interface SCTESpliceComponent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SCTESpliceComponent
+
     /**
      * the elementary PID stream containing the Splice Point
+     * @field 
      */
     tag: number
     /**
      * Whether `splice_time` was specified
+     * @field 
      */
     spliceTimeSpecified: boolean
     /**
      * the presentation time of the signaled splice event
+     * @field 
      */
     spliceTime: number
     /**
      * The UTC time of the signaled splice event
+     * @field 
      */
     utcSpliceTime: number
+}
+
+/**
+ * Per-PID splice information.
+ * @record 
+ */
+class SCTESpliceComponent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SCTESpliceComponent
+
     static name: string
-    static new(tag: number): SCTESpliceComponent
-    constructor(tag: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.SCTESpliceComponent
+
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESpliceComponent.
+     * @constructor 
+     * @param tag the elementary PID stream identifier
+     */
+    constructor(tag: number) 
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESpliceComponent.
+     * @constructor 
+     * @param tag the elementary PID stream identifier
+     */
     static new(tag: number): SCTESpliceComponent
 }
-class SCTESpliceEvent {
-    /* Fields of GstMpegts-1.0.GstMpegts.SCTESpliceEvent */
+
+interface SCTESpliceEvent {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SCTESpliceEvent
+
     insertEvent: boolean
     spliceEventId: number
     spliceEventCancelIndicator: boolean
@@ -2380,10 +3251,12 @@ class SCTESpliceEvent {
     programSpliceTime: number
     /**
      * The UTC time of the signaled splice event
+     * @field 
      */
     utcSpliceTime: number
     /**
      * Per-PID splice time information
+     * @field 
      */
     components: object[]
     breakDurationAutoReturn: boolean
@@ -2391,178 +3264,310 @@ class SCTESpliceEvent {
     uniqueProgramId: number
     availNum: number
     availsExpected: number
+}
+
+class SCTESpliceEvent {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SCTESpliceEvent
+
     static name: string
-    static new(): SCTESpliceEvent
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.SCTESpliceEvent
+
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESpliceEvent.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsSCTESpliceEvent.
+     * @constructor 
+     */
     static new(): SCTESpliceEvent
 }
-class SDT {
-    /* Fields of GstMpegts-1.0.GstMpegts.SDT */
+
+interface SDT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SDT
+
     /**
      * Network ID of the originating delivery system
+     * @field 
      */
     originalNetworkId: number
     /**
      * True if the table describes this transport stream
+     * @field 
      */
     actualTs: boolean
     /**
      * ID of this transport stream
+     * @field 
      */
     transportStreamId: number
     /**
      * List of services
+     * @field 
      */
     services: SDTService[]
+}
+
+/**
+ * Service Description Table (EN 300 468)
+ * @record 
+ */
+class SDT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SDT
+
     static name: string
-    static new(): SDT
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.SDT
+
+    /**
+     * Allocates and initializes a #GstMpegtsSDT.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsSDT.
+     * @constructor 
+     */
     static new(): SDT
 }
-class SDTService {
-    /* Fields of GstMpegts-1.0.GstMpegts.SDTService */
+
+interface SDTService {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SDTService
+
     /**
      * The program number this table belongs to
+     * @field 
      */
     serviceId: number
     /**
      * EIT schedule information is present in this transport stream
+     * @field 
      */
     eITScheduleFlag: boolean
     /**
      * EIT present/following information is present in this transport stream
+     * @field 
      */
     eITPresentFollowingFlag: boolean
     /**
      * Status of this service
+     * @field 
      */
     runningStatus: RunningStatus
     /**
      * True if one or more streams is controlled by a CA system
+     * @field 
      */
     freeCAMode: boolean
     /**
      * List of descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+class SDTService {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SDTService
+
     static name: string
-    static new(): SDTService
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.SDTService
+
+    /**
+     * Allocates and initializes a #GstMpegtsSDTService.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocates and initializes a #GstMpegtsSDTService.
+     * @constructor 
+     */
     static new(): SDTService
 }
-class SIT {
-    /* Fields of GstMpegts-1.0.GstMpegts.SIT */
+
+interface SIT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SIT
+
     /**
      * List of descriptors
+     * @field 
      */
     descriptors: Descriptor[]
     /**
      * List of services
+     * @field 
      */
     services: SITService[]
+}
+
+/**
+ * Selection Information Table (EN 300 468)
+ * @record 
+ */
+class SIT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SIT
+
     static name: string
 }
-class SITService {
-    /* Fields of GstMpegts-1.0.GstMpegts.SITService */
+
+interface SITService {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SITService
+
     /**
      * The Program number this table belongs to
+     * @field 
      */
     serviceId: number
     /**
      * Status of this service
+     * @field 
      */
     runningStatus: RunningStatus
     /**
      * List of descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * SIT Service entry
+ * @record 
+ */
+class SITService {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SITService
+
     static name: string
 }
-class SatelliteDeliverySystemDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.SatelliteDeliverySystemDescriptor */
+
+interface SatelliteDeliverySystemDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.SatelliteDeliverySystemDescriptor
+
     /**
      * the frequency in kHz (kiloHertz)
+     * @field 
      */
     frequency: number
     /**
      * the orbital position in degrees
+     * @field 
      */
     orbitalPosition: number
     /**
      * If %TRUE, the satellite is in the eastern part of the orbit,
      * else in the western part.
+     * @field 
      */
     westEast: boolean
     /**
      * The polarization of the transmitted signal
+     * @field 
      */
     polarization: SatellitePolarizationType
     /**
      * Roll-off factor used in DVB-S2
+     * @field 
      */
     rollOff: SatelliteRolloff
     /**
      * modulation system, %TRUE if DVB-S2, else DVB-S
+     * @field 
      */
     modulationSystem: boolean
     /**
      * Modulation scheme used
+     * @field 
      */
     modulationType: ModulationType
     /**
      * Symbol rate (in symbols per second)
+     * @field 
      */
     symbolRate: number
     /**
      * inner FEC scheme used
+     * @field 
      */
     fecInner: DVBCodeRate
+}
+
+/**
+ * Satellite Delivery System Descriptor (EN 300 468 v.1.13.1)
+ * @record 
+ */
+class SatelliteDeliverySystemDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.SatelliteDeliverySystemDescriptor
+
     static name: string
 }
-class Section {
-    /* Fields of GstMpegts-1.0.GstMpegts.Section */
+
+interface Section {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.Section
+
     /**
      * The type of section.
+     * @field 
      */
     sectionType: SectionType
     /**
      * The PID on which this section was found or belongs to.
+     * @field 
      */
     pid: number
     /**
      * The table id of this section. See %GstMpegtsSectionTableID and
      *      derivates for more information.
+     * @field 
      */
     tableId: number
     /**
      * This meaning differs per section. See the documentation
      *      of the parsed section type for the meaning of this field
+     * @field 
      */
     subtableExtension: number
     /**
      * Version of the section.
+     * @field 
      */
     versionNumber: number
     /**
      * Applies to current/next stream or not
+     * @field 
      */
     currentNextIndicator: boolean
     /**
      * Number of the section (if multiple)
+     * @field 
      */
     sectionNumber: number
     /**
      * Number of the last expected section (if multiple)
+     * @field 
      */
     lastSectionNumber: number
     /**
      * Checksum (if applicable)
+     * @field 
      */
     crc: number
-    /* Methods of GstMpegts-1.0.GstMpegts.Section */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.Section
+
     /**
      * Returns the #GstMpegtsAtscVCT contained in the `section`
      */
@@ -2665,10 +3670,90 @@ class Section {
      * @param element The #GstElement to send to section event to
      */
     sendEvent(element: Gst.Element): boolean
+}
+
+/**
+ * ## Generic usage of sections with %GstMpegtsSection
+ * 
+ * The %GstMpegtsSection object is the representation of MPEG-TS Section (SI or
+ * PSI).
+ * 
+ * Various elements can post those on the bus via %GstMessage of type
+ * %GST_MESSAGE_ELEMENT. The gst_message_parse_mpegts_section() function
+ * provides access to the section.
+ * 
+ * Applications (or other elements) can create them either by using one of the
+ * `gst_mpegts_section_from_*` functions, or by providing the raw SI data via
+ * gst_mpegts_section_new().
+ * 
+ * Elements outputting MPEG-TS streams can also create sections using the
+ * various convenience functions and then get the packetized data (to be
+ * inserted in MPEG-TS packets) using gst_mpegts_section_packetize().
+ * 
+ * For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
+ * and other specifications mentioned in the documentation.
+ * 
+ * # Supported base MPEG-TS sections
+ * These are the sections for which parsing and packetizing code exists.
+ * 
+ * ## Program Association Table (PAT)
+ * See:
+ * * gst_mpegts_section_get_pat()
+ * * gst_mpegts_pat_program_new()
+ * * %GstMpegtsPatProgram
+ * 
+ * ## Conditional Access Table (CAT)
+ * See:
+ * * gst_mpegts_section_get_cat()
+ * 
+ * ## Program Map Table (PMT)
+ * See:
+ * * %GstMpegtsPMT
+ * * gst_mpegts_section_get_pmt()
+ * * gst_mpegts_pmt_new()
+ * * %GstMpegtsPMTStream
+ * 
+ * ## Transport Stream Description Table (TSDT)
+ * See:
+ * * gst_mpegts_section_get_tsdt()
+ * # API
+ * @record 
+ */
+class Section {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.Section
+
     static name: string
-    static new(pid: number, data: Uint8Array): Section
-    constructor(pid: number, data: Uint8Array)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstMpegts-1.0.GstMpegts.Section
+
+    /**
+     * Creates a new #GstMpegtsSection from the provided `data`.
+     * 
+     * Note: Ensuring `data` is big enough to contain the full section is the
+     * responsibility of the caller. If it is not big enough, %NULL will be
+     * returned.
+     * 
+     * Note: it is the responsibility of the caller to ensure `data` does point
+     * to the beginning of the section.
+     * @constructor 
+     * @param pid the PID to which this section belongs
+     * @param data a pointer to the beginning of the section (i.e. the first byte should contain the `table_id` field).
+     */
+    constructor(pid: number, data: Uint8Array) 
+    /**
+     * Creates a new #GstMpegtsSection from the provided `data`.
+     * 
+     * Note: Ensuring `data` is big enough to contain the full section is the
+     * responsibility of the caller. If it is not big enough, %NULL will be
+     * returned.
+     * 
+     * Note: it is the responsibility of the caller to ensure `data` does point
+     * to the beginning of the section.
+     * @constructor 
+     * @param pid the PID to which this section belongs
+     * @param data a pointer to the beginning of the section (i.e. the first byte should contain the `table_id` field).
+     */
     static new(pid: number, data: Uint8Array): Section
     static fromAtscMgt(mgt: AtscMGT): Section
     static fromAtscRrt(rrt: AtscRRT): Section
@@ -2702,33 +3787,58 @@ class Section {
      */
     static fromSdt(sdt: SDT): Section
 }
-class T2DeliverySystemCell {
-    /* Fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemCell */
+
+interface T2DeliverySystemCell {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemCell
+
     /**
      * id of the cell
+     * @field 
      */
     cellId: number
     /**
      * centre frequencies in Hz
+     * @field 
      */
     centreFrequencies: number[]
     subCells: T2DeliverySystemCellExtension[]
+}
+
+class T2DeliverySystemCell {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.T2DeliverySystemCell
+
     static name: string
 }
-class T2DeliverySystemCellExtension {
-    /* Fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemCellExtension */
+
+interface T2DeliverySystemCellExtension {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemCellExtension
+
     /**
      * id of the sub cell
+     * @field 
      */
     cellIdExtension: number
     /**
      * centre frequency of the sub cell in Hz
+     * @field 
      */
     transposerFrequency: number
+}
+
+class T2DeliverySystemCellExtension {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.T2DeliverySystemCellExtension
+
     static name: string
 }
-class T2DeliverySystemDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor */
+
+interface T2DeliverySystemDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor
+
     plpId: number
     t2SystemId: number
     sisoMiso: number
@@ -2738,47 +3848,83 @@ class T2DeliverySystemDescriptor {
     otherFrequency: boolean
     tfs: boolean
     cells: T2DeliverySystemCell[]
-    /* Methods of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor */
+
+    // Owm methods of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor
+
     free(): void
+}
+
+/**
+ * describe DVB-T2 transmissions according to EN 302 755
+ * @record 
+ */
+class T2DeliverySystemDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.T2DeliverySystemDescriptor
+
     static name: string
 }
-class TOT {
-    /* Fields of GstMpegts-1.0.GstMpegts.TOT */
+
+interface TOT {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.TOT
+
     utcTime: Gst.DateTime
     /**
      * List of descriptors
+     * @field 
      */
     descriptors: Descriptor[]
+}
+
+/**
+ * Time Offset Table (EN 300 468)
+ * @record 
+ */
+class TOT {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.TOT
+
     static name: string
 }
-class TerrestrialDeliverySystemDescriptor {
-    /* Fields of GstMpegts-1.0.GstMpegts.TerrestrialDeliverySystemDescriptor */
+
+interface TerrestrialDeliverySystemDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.TerrestrialDeliverySystemDescriptor
+
     /**
      * the frequency in Hz (Hertz)
+     * @field 
      */
     frequency: number
     /**
      * the bandwidth in Hz (Hertz)
+     * @field 
      */
     bandwidth: number
     /**
      * %TRUE High Priority %FALSE Low Priority
+     * @field 
      */
     priority: boolean
     /**
      * %TRUE no time slicing %FALSE time slicing
+     * @field 
      */
     timeSlicing: boolean
     /**
      * %TRUE no mpe-fec is used %FALSE mpe-fec is use
+     * @field 
      */
     mpeFec: boolean
     /**
      * the constellation
+     * @field 
      */
     constellation: ModulationType
     /**
      * the hierarchy
+     * @field 
      */
     hierarchy: TerrestrialHierarchy
     codeRateHp: DVBCodeRate
@@ -2787,9 +3933,21 @@ class TerrestrialDeliverySystemDescriptor {
     transmissionMode: TerrestrialTransmissionMode
     /**
      * %TRUE more frequency are use, else not
+     * @field 
      */
     otherFrequency: boolean
+}
+
+/**
+ * Terrestrial Delivery System Descriptor (EN 300 468 v.1.13.1)
+ * @record 
+ */
+class TerrestrialDeliverySystemDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.TerrestrialDeliverySystemDescriptor
+
     static name: string
 }
+
 }
 export default GstMpegts;

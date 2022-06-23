@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -404,6 +406,7 @@ enum VersionFormat {
 }
 /**
  * The options to use for downloading.
+ * @bitfield 
  */
 enum ClientDownloadFlags {
     /**
@@ -417,6 +420,7 @@ enum ClientDownloadFlags {
 }
 /**
  * The options to use for uploading.
+ * @bitfield 
  */
 enum ClientUploadFlags {
     /**
@@ -430,6 +434,7 @@ enum ClientUploadFlags {
 }
 /**
  * The flags to the feature capabilities of the front-end client.
+ * @bitfield 
  */
 enum FeatureFlags {
     /**
@@ -455,6 +460,7 @@ enum FeatureFlags {
 }
 /**
  * The flags to show how the data should be converted.
+ * @bitfield 
  */
 enum GuidFlags {
     /**
@@ -472,6 +478,7 @@ enum GuidFlags {
 }
 /**
  * Flags to set when performing the firmware update or install.
+ * @bitfield 
  */
 enum InstallFlags {
     /**
@@ -521,6 +528,7 @@ enum InstallFlags {
 }
 /**
  * The flags available for HSI attributes.
+ * @bitfield 
  */
 enum SecurityAttrFlags {
     /**
@@ -550,6 +558,7 @@ enum SecurityAttrFlags {
 }
 /**
  * Flags to set when performing the firmware update or install.
+ * @bitfield 
  */
 enum SelfSignFlags {
     /**
@@ -567,6 +576,7 @@ enum SelfSignFlags {
 }
 /**
  * The flags to show the level of trust.
+ * @bitfield 
  */
 enum TrustFlags {
     /**
@@ -732,47 +742,231 @@ const SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0: string
 const SECURITY_ATTR_ID_TPM_VERSION_20: string
 const SECURITY_ATTR_ID_UEFI_PK: string
 const SECURITY_ATTR_ID_UEFI_SECUREBOOT: string
+/**
+ * Builds a JSON report for the list of devices. No filtering is done on the
+ * `devices` array, and it is expected that the caller will filter to something
+ * sane, e.g. %FWUPD_DEVICE_FLAG_REPORTED at the bare minimum.
+ * @param devices devices
+ */
 function buildHistoryReportJson(devices: Device[]): string
+/**
+ * Gets a salted hash of the /etc/machine-id contents. This can be used to
+ * identify a specific machine. It is not possible to recover the original
+ * machine-id from the machine-hash.
+ * @param salt The salt, or %NULL for none
+ */
 function buildMachineId(salt: string): string
+/**
+ * Builds a user-agent to use for the download.
+ * 
+ * Supplying harmless details to the server means it knows more about each
+ * client. This allows the web service to respond in a different way, for
+ * instance sending a different metadata file for old versions of fwupd, or
+ * returning an error for Solaris machines.
+ * 
+ * Before freaking out about theoretical privacy implications, much more data
+ * than this is sent to each and every website you visit.
+ * 
+ * Rather that using this function you should use fwupd_client_set_user_agent_for_package()
+ * which uses the *runtime* version of the daemon rather than the *build-time*
+ * version.
+ * @param packageName client program name, e.g. "gnome-software"
+ * @param packageVersion client program version, e.g. "3.28.1"
+ */
 function buildUserAgent(packageName: string, packageVersion: string): string
+/**
+ * Formats a checksum for display.
+ * @param checksum A checksum
+ */
 function checksumFormatForDisplay(checksum: string): string
+/**
+ * Gets a the best possible checksum kind.
+ * @param checksums checksums
+ */
 function checksumGetBest(checksums: string[]): string
+/**
+ * Gets a specific checksum kind.
+ * @param checksums checksums
+ * @param kind a #GChecksumType, e.g. %G_CHECKSUM_SHA512
+ */
 function checksumGetByKind(checksums: string[], kind: GLib.ChecksumType): string
+/**
+ * Guesses the checksum kind based on the length of the hash.
+ * @param checksum A checksum
+ */
 function checksumGuessKind(checksum: string): GLib.ChecksumType
+/**
+ * Converts a string to a #FwupdError.
+ * @param error A string, e.g. `org.freedesktop.fwupd.VersionNewer`
+ */
 function errorFromString(error: string): Error
 function errorQuark(): GLib.Quark
+/**
+ * Converts a #FwupdError to a string.
+ * @param error A #FwupdError, e.g. %FWUPD_ERROR_VERSION_NEWER
+ */
 function errorToString(error: Error): string
+/**
+ * Converts a string to a #FwupdFeatureFlags.
+ * @param featureFlag A string, e.g. `detach-action`
+ */
 function featureFlagFromString(featureFlag: string): FeatureFlags
+/**
+ * Converts a #FwupdFeatureFlags to a string.
+ * @param featureFlag A #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_DETACH_ACTION
+ */
 function featureFlagToString(featureFlag: FeatureFlags): string
+/**
+ * Loads information from the system os-release file.
+ */
 function getOsRelease(): GLib.HashTable
+/**
+ * Converts a string GUID into its binary encoding. All string GUIDs are
+ * formatted as big endian but on-disk can be encoded in different ways.
+ * @param guidstr a GUID, e.g. `00112233-4455-6677-8899-aabbccddeeff`
+ * @param guid a #fwupd_guid_t, or NULL to just check the GUID
+ * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
+ */
 function guidFromString(guidstr: string | null, guid: number, flags: GuidFlags): boolean
+/**
+ * Returns a GUID for some data. This uses a hash and so even small
+ * differences in the `data` will produce radically different return values.
+ * 
+ * The implementation is taken from RFC4122, Section 4.1.3; specifically
+ * using a type-5 SHA-1 hash.
+ * @param data data to hash
+ * @param datasz length of `data`
+ * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_NAMESPACE_MICROSOFT
+ */
 function guidHashData(data: number, datasz: number, flags: GuidFlags): string
+/**
+ * Returns a GUID for a given string. This uses a hash and so even small
+ * differences in the `str` will produce radically different return values.
+ * 
+ * The default implementation is taken from RFC4122, Section 4.1.3; specifically
+ * using a type-5 SHA-1 hash with a DNS namespace.
+ * The same result can be obtained with this simple python program:
+ * 
+ *    #!/usr/bin/python
+ *    import uuid
+ *    print uuid.uuid5(uuid.NAMESPACE_DNS, 'python.org')
+ * @param str A source string to use as a key
+ */
 function guidHashString(str: string): string
+/**
+ * Checks the string is a valid GUID.
+ * @param guid string to check, e.g. `00112233-4455-6677-8899-aabbccddeeff`
+ */
 function guidIsValid(guid: string): boolean
+/**
+ * Returns a text GUID of mixed or BE endian for a packed buffer.
+ * @param guid a #fwupd_guid_t to read
+ * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
+ */
 function guidToString(guid: number, flags: GuidFlags): string
+/**
+ * Converts an printable string to an enumerated type.
+ * @param keyringKind a string, e.g. `gpg`
+ */
 function keyringKindFromString(keyringKind: string): KeyringKind
+/**
+ * Converts an enumerated type to a printable string.
+ * @param keyringKind a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
+ */
 function keyringKindToString(keyringKind: KeyringKind): string
+/**
+ * Converts a string to a #FwupdStatus.
+ * @param status A string, e.g. `decompressing`
+ */
 function statusFromString(status: string): Status
+/**
+ * Converts a #FwupdStatus to a string.
+ * @param status A #FwupdStatus, e.g. %FWUPD_STATUS_DECOMPRESSING
+ */
 function statusToString(status: Status): string
+/**
+ * Converts a string to a #FwupdTrustFlags.
+ * @param trustFlag A string, e.g. `payload`
+ */
 function trustFlagFromString(trustFlag: string): TrustFlags
+/**
+ * Converts a #FwupdTrustFlags to a string.
+ * @param trustFlag A #FwupdTrustFlags, e.g. %FWUPD_TRUST_FLAG_PAYLOAD
+ */
 function trustFlagToString(trustFlag: TrustFlags): string
+/**
+ * Converts a string to a #FwupdUpdateState.
+ * @param updateState A string, e.g. `pending`
+ */
 function updateStateFromString(updateState: string): UpdateState
+/**
+ * Converts a #FwupdUpdateState to a string.
+ * @param updateState A #FwupdUpdateState, e.g. %FWUPD_UPDATE_STATE_PENDING
+ */
 function updateStateToString(updateState: UpdateState): string
+/**
+ * Converts text to a display version type.
+ * @param str A string, e.g. `quad`
+ */
 function versionFormatFromString(str: string): VersionFormat
+/**
+ * Converts a display version type to text.
+ * @param kind A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
+ */
 function versionFormatToString(kind: VersionFormat): string
 interface Client_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Fwupd-2.0.Fwupd.Client */
+
+    // Own constructor properties of Fwupd-2.0.Fwupd.Client
+
     /**
      * The last-reported percentage of the daemon.
      */
-    percentage?: number
+    percentage?: number | null
     /**
      * The last-reported status of the daemon.
      */
-    status?: number
+    status?: number | null
 }
-class Client {
-    /* Properties of Fwupd-2.0.Fwupd.Client */
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface Client_ChangedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `device-added`
+ */
+interface Client_DeviceAddedSignalCallback {
+    (result: Device): void
+}
+
+/**
+ * Signal callback interface for `device-changed`
+ */
+interface Client_DeviceChangedSignalCallback {
+    (result: Device): void
+}
+
+/**
+ * Signal callback interface for `device-removed`
+ */
+interface Client_DeviceRemovedSignalCallback {
+    (result: Device): void
+}
+
+/**
+ * Signal callback interface for `status-changed`
+ */
+interface Client_StatusChangedSignalCallback {
+    (object: number): void
+}
+
+interface Client {
+
+    // Own properties of Fwupd-2.0.Fwupd.Client
+
     /**
      * The daemon version number.
      */
@@ -809,9 +1003,13 @@ class Client {
      * If the daemon is tainted by 3rd party code.
      */
     readonly tainted: boolean
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.Client */
+
+    // Own fields of Fwupd-2.0.Fwupd.Client
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.Client
+
     /**
      * Activates up a device, which normally means the device switches to a new
      * firmware version. This should only be called when data loss cannot occur.
@@ -826,7 +1024,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    activateAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    activateAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_activate_async().
      * @param res the #GAsyncResult
@@ -837,14 +1035,14 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    clearResults(deviceId: string, cancellable?: Gio.Cancellable | null): boolean
+    clearResults(deviceId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Clears the results for a specific device.
      * @param deviceId a device
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    clearResultsAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    clearResultsAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_clear_results_async().
      * @param res the #GAsyncResult
@@ -856,7 +1054,7 @@ class Client {
      * the client.
      * @param cancellable the #GCancellable, or %NULL
      */
-    connect(cancellable?: Gio.Cancellable | null): boolean
+    // TODO fix conflict: connect(cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets up the client ready for use. This is probably the first method you call
      * when wanting to use libfwupd in an asynchronous manner.
@@ -866,7 +1064,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    connectAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    connectAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_connect_async().
      * @param res the #GAsyncResult
@@ -879,7 +1077,7 @@ class Client {
      * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
      * @param cancellable the #GCancellable, or %NULL
      */
-    downloadBytes(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): any
+    downloadBytes(url: string, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): any
     /**
      * Downloads data from a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
@@ -895,7 +1093,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    downloadBytesAsync(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    downloadBytesAsync(url: string, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_download_bytes_async().
      * @param res the #GAsyncResult
@@ -909,7 +1107,7 @@ class Client {
      * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
      * @param cancellable the #GCancellable, or %NULL
      */
-    downloadFile(url: string, file: Gio.File, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): boolean
+    downloadFile(url: string, file: Gio.File, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets up the client networking support ready for use. Most other download and
      * upload methods call this automatically, and do you only need to call this if
@@ -920,7 +1118,7 @@ class Client {
      * Gets the list of approved firmware.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getApprovedFirmware(cancellable?: Gio.Cancellable | null): string[]
+    getApprovedFirmware(cancellable: Gio.Cancellable | null): string[]
     /**
      * Gets the list of approved firmware.
      * 
@@ -929,7 +1127,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getApprovedFirmwareAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getApprovedFirmwareAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_approved_firmware_async().
      * @param res the #GAsyncResult
@@ -939,7 +1137,7 @@ class Client {
      * Gets the list of blocked firmware.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getBlockedFirmware(cancellable?: Gio.Cancellable | null): string[]
+    getBlockedFirmware(cancellable: Gio.Cancellable | null): string[]
     /**
      * Gets the list of blocked firmware.
      * 
@@ -948,7 +1146,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getBlockedFirmwareAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getBlockedFirmwareAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_blocked_firmware_async().
      * @param res the #GAsyncResult
@@ -967,20 +1165,20 @@ class Client {
      * @param filename the firmware filename, e.g. `firmware.cab`
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDetails(filename: string, cancellable?: Gio.Cancellable | null): Device[]
+    getDetails(filename: string, cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets details about a specific firmware file.
      * @param bytes the firmware blob, e.g. the contents of `firmware.cab`
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDetailsBytes(bytes: any, cancellable?: Gio.Cancellable | null): Device[]
+    getDetailsBytes(bytes: any, cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets details about a specific firmware file.
      * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getDetailsBytesAsync(bytes: any, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getDetailsBytesAsync(bytes: any, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_details_bytes_async().
      * @param res the #GAsyncResult
@@ -991,7 +1189,7 @@ class Client {
      * @param deviceId the device ID, e.g. `usb:00:01:03:03`
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDeviceById(deviceId: string, cancellable?: Gio.Cancellable | null): Device
+    getDeviceById(deviceId: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Gets a device by it's device ID.
      * 
@@ -1001,7 +1199,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getDeviceByIdAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getDeviceByIdAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_device_by_id_async().
      * @param res the #GAsyncResult
@@ -1011,7 +1209,7 @@ class Client {
      * Gets all the devices registered with the daemon.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDevices(cancellable?: Gio.Cancellable | null): Device[]
+    getDevices(cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets all the devices registered with the daemon.
      * 
@@ -1020,14 +1218,14 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getDevicesAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getDevicesAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets any devices that provide a specific GUID. An error is returned if no
      * devices contains this GUID.
      * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDevicesByGuid(guid: string, cancellable?: Gio.Cancellable | null): Device[]
+    getDevicesByGuid(guid: string, cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets any devices that provide a specific GUID. An error is returned if no
      * devices contains this GUID.
@@ -1038,7 +1236,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getDevicesByGuidAsync(guid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getDevicesByGuidAsync(guid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_devices_by_guid_async().
      * @param res the #GAsyncResult
@@ -1054,7 +1252,7 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    getDowngrades(deviceId: string, cancellable?: Gio.Cancellable | null): Release[]
+    getDowngrades(deviceId: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the downgrades for a specific device.
      * 
@@ -1064,7 +1262,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getDowngradesAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getDowngradesAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_downgrades_async().
      * @param res the #GAsyncResult
@@ -1074,7 +1272,7 @@ class Client {
      * Gets all the history.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getHistory(cancellable?: Gio.Cancellable | null): Device[]
+    getHistory(cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets all the history.
      * 
@@ -1083,7 +1281,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getHistoryAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getHistoryAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_history_async().
      * @param res the #GAsyncResult
@@ -1101,7 +1299,7 @@ class Client {
      * Gets all the host security attributes from the daemon.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getHostSecurityAttrs(cancellable?: Gio.Cancellable | null): SecurityAttr[]
+    getHostSecurityAttrs(cancellable: Gio.Cancellable | null): SecurityAttr[]
     /**
      * Gets all the host security attributes from the daemon.
      * 
@@ -1110,7 +1308,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getHostSecurityAttrsAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getHostSecurityAttrsAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_host_security_attrs_async().
      * @param res the #GAsyncResult
@@ -1133,7 +1331,7 @@ class Client {
      * Gets all the plugins being used the daemon.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getPlugins(cancellable?: Gio.Cancellable | null): Plugin[]
+    getPlugins(cancellable: Gio.Cancellable | null): Plugin[]
     /**
      * Gets all the plugins being used by the daemon.
      * 
@@ -1142,7 +1340,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getPluginsAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getPluginsAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_plugins_async().
      * @param res the #GAsyncResult
@@ -1153,7 +1351,7 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    getReleases(deviceId: string, cancellable?: Gio.Cancellable | null): Release[]
+    getReleases(deviceId: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the releases for a specific device
      * 
@@ -1163,7 +1361,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getReleasesAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getReleasesAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_releases_async().
      * @param res the #GAsyncResult
@@ -1174,14 +1372,14 @@ class Client {
      * @param remoteId the remote ID, e.g. `lvfs-testing`
      * @param cancellable the #GCancellable, or %NULL
      */
-    getRemoteById(remoteId: string, cancellable?: Gio.Cancellable | null): Remote
+    getRemoteById(remoteId: string, cancellable: Gio.Cancellable | null): Remote
     /**
      * Gets a specific remote that has been configured for the system.
      * @param remoteId the remote ID, e.g. `lvfs-testing`
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getRemoteByIdAsync(remoteId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getRemoteByIdAsync(remoteId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_remote_by_id_async().
      * @param res the #GAsyncResult
@@ -1191,7 +1389,7 @@ class Client {
      * Gets the list of remotes that have been configured for the system.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getRemotes(cancellable?: Gio.Cancellable | null): Remote[]
+    getRemotes(cancellable: Gio.Cancellable | null): Remote[]
     /**
      * Gets the list of remotes that have been configured for the system.
      * 
@@ -1200,7 +1398,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getRemotesAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getRemotesAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_remotes_async().
      * @param res the #GAsyncResult
@@ -1210,7 +1408,7 @@ class Client {
      * Gets all the report metadata from the daemon.
      * @param cancellable the #GCancellable, or %NULL
      */
-    getReportMetadata(cancellable?: Gio.Cancellable | null): GLib.HashTable
+    getReportMetadata(cancellable: Gio.Cancellable | null): GLib.HashTable
     /**
      * Gets all the report metadata from the daemon.
      * 
@@ -1219,7 +1417,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getReportMetadataAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getReportMetadataAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_report_metadata_async().
      * @param res the #GAsyncResult
@@ -1230,7 +1428,7 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    getResults(deviceId: string, cancellable?: Gio.Cancellable | null): Device
+    getResults(deviceId: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Gets the results of a previous firmware update for a specific device.
      * 
@@ -1240,7 +1438,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getResultsAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getResultsAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_results_async().
      * @param res the #GAsyncResult
@@ -1259,7 +1457,7 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    getUpgrades(deviceId: string, cancellable?: Gio.Cancellable | null): Release[]
+    getUpgrades(deviceId: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the upgrades for a specific device.
      * 
@@ -1269,7 +1467,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getUpgradesAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getUpgradesAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_upgrades_async().
      * @param res the #GAsyncResult
@@ -1288,7 +1486,7 @@ class Client {
      * @param installFlags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
      * @param cancellable the #GCancellable, or %NULL
      */
-    install(deviceId: string, filename: string, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
+    install(deviceId: string, filename: string, installFlags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Install firmware onto a specific device.
      * 
@@ -1301,7 +1499,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    installAsync(deviceId: string, filename: string, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    installAsync(deviceId: string, filename: string, installFlags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Install firmware onto a specific device.
      * @param deviceId the device ID
@@ -1309,7 +1507,7 @@ class Client {
      * @param installFlags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
      * @param cancellable the #GCancellable, or %NULL
      */
-    installBytes(deviceId: string, bytes: any, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
+    installBytes(deviceId: string, bytes: any, installFlags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Install firmware onto a specific device.
      * 
@@ -1322,7 +1520,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    installBytesAsync(deviceId: string, bytes: any, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    installBytesAsync(deviceId: string, bytes: any, installFlags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_install_bytes_async().
      * @param res the #GAsyncResult
@@ -1340,7 +1538,7 @@ class Client {
      * @param installFlags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
      * @param cancellable the #GCancellable, or %NULL
      */
-    installRelease(device: Device, release: Release, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
+    installRelease(device: Device, release: Release, installFlags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Installs a new release on a device, downloading the firmware if required.
      * @param device A #FwupdDevice
@@ -1349,7 +1547,7 @@ class Client {
      * @param downloadFlags the #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
      * @param cancellable the #GCancellable, or %NULL
      */
-    installRelease2(device: Device, release: Release, installFlags: InstallFlags, downloadFlags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): boolean
+    installRelease2(device: Device, release: Release, installFlags: InstallFlags, downloadFlags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Installs a new release on a device, downloading the firmware if required.
      * 
@@ -1363,7 +1561,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    installRelease2Async(device: Device, release: Release, installFlags: InstallFlags, downloadFlags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    installRelease2Async(device: Device, release: Release, installFlags: InstallFlags, downloadFlags: ClientDownloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Installs a new release on a device, downloading the firmware if required.
      * 
@@ -1376,7 +1574,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    installReleaseAsync(device: Device, release: Release, installFlags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    installReleaseAsync(device: Device, release: Release, installFlags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_install_release_async().
      * @param res the #GAsyncResult
@@ -1389,7 +1587,7 @@ class Client {
      * @param value value, e.g. `*`
      * @param cancellable the #GCancellable, or %NULL
      */
-    modifyConfig(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
+    modifyConfig(key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a daemon config option.
      * The daemon will only respond to this request with proper permissions
@@ -1398,7 +1596,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modifyConfigAsync(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modifyConfigAsync(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_config_async().
      * @param res the #GAsyncResult
@@ -1414,7 +1612,7 @@ class Client {
      * @param value the key, e.g. `reported`
      * @param cancellable the #GCancellable, or %NULL
      */
-    modifyDevice(deviceId: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
+    modifyDevice(deviceId: string, key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a device in a specific way. Not all properties on the #FwupdDevice
      * are settable by the client, and some may have other restrictions on `value`.
@@ -1424,7 +1622,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modifyDeviceAsync(deviceId: string, key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modifyDeviceAsync(deviceId: string, key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_device_async().
      * @param res the #GAsyncResult
@@ -1439,7 +1637,7 @@ class Client {
      * @param value the key, e.g. `true`
      * @param cancellable the #GCancellable, or %NULL
      */
-    modifyRemote(remoteId: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
+    modifyRemote(remoteId: string, key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a system remote in a specific way.
      * @param remoteId the remote ID, e.g. `lvfs-testing`
@@ -1448,7 +1646,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modifyRemoteAsync(remoteId: string, key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modifyRemoteAsync(remoteId: string, key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_remote_async().
      * @param res the #GAsyncResult
@@ -1459,7 +1657,7 @@ class Client {
      * @param remote A #FwupdRemote
      * @param cancellable A #GCancellable, or %NULL
      */
-    refreshRemote(remote: Remote, cancellable?: Gio.Cancellable | null): boolean
+    refreshRemote(remote: Remote, cancellable: Gio.Cancellable | null): boolean
     /**
      * Refreshes a remote by downloading new metadata.
      * 
@@ -1470,7 +1668,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    refreshRemoteAsync(remote: Remote, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    refreshRemoteAsync(remote: Remote, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_refresh_remote_async().
      * @param res the #GAsyncResult
@@ -1482,7 +1680,7 @@ class Client {
      * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
      * @param cancellable the #GCancellable, or %NULL
      */
-    selfSign(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null): string
+    selfSign(value: string, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): string
     /**
      * Signs the data using the client self-signed certificate.
      * 
@@ -1493,7 +1691,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    selfSignAsync(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    selfSignAsync(value: string, flags: SelfSignFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_self_sign_async().
      * @param res the #GAsyncResult
@@ -1504,14 +1702,14 @@ class Client {
      * @param checksums Array of checksums
      * @param cancellable the #GCancellable, or %NULL
      */
-    setApprovedFirmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean
+    setApprovedFirmware(checksums: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the list of approved firmware.
      * @param checksums firmware checksums
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    setApprovedFirmwareAsync(checksums: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    setApprovedFirmwareAsync(checksums: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_approved_firmware_async().
      * @param res the #GAsyncResult
@@ -1522,14 +1720,14 @@ class Client {
      * @param checksums Array of checksums
      * @param cancellable the #GCancellable, or %NULL
      */
-    setBlockedFirmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean
+    setBlockedFirmware(checksums: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the list of blocked firmware.
      * @param checksums firmware checksums
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    setBlockedFirmwareAsync(checksums: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    setBlockedFirmwareAsync(checksums: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_blocked_firmware_async().
      * @param res the #GAsyncResult
@@ -1544,7 +1742,7 @@ class Client {
      * @param featureFlags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
      * @param cancellable the #GCancellable, or %NULL
      */
-    setFeatureFlags(featureFlags: FeatureFlags, cancellable?: Gio.Cancellable | null): boolean
+    setFeatureFlags(featureFlags: FeatureFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the features the client supports. This allows firmware to depend on
      * specific front-end features, for instance showing the user an image on
@@ -1553,7 +1751,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    setFeatureFlagsAsync(featureFlags: FeatureFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    setFeatureFlagsAsync(featureFlags: FeatureFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_feature_flags_async().
      * @param res the #GAsyncResult
@@ -1563,7 +1761,7 @@ class Client {
      * Sets the internal #GMainContext to use for returning progress signals.
      * @param mainCtx #GMainContext or %NULL to use the global default main context
      */
-    setMainContext(mainCtx?: GLib.MainContext | null): void
+    setMainContext(mainCtx: GLib.MainContext | null): void
     /**
      * Manually sets the user agent that is used for downloading. The user agent
      * should contain the runtime version of fwupd somewhere in the provided string.
@@ -1589,14 +1787,14 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    unlock(deviceId: string, cancellable?: Gio.Cancellable | null): boolean
+    unlock(deviceId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Unlocks a specific device so firmware can be read or wrote.
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    unlockAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    unlockAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_unlock_async().
      * @param res the #GAsyncResult
@@ -1614,7 +1812,7 @@ class Client {
      * @param signatureFn the GPG signature file
      * @param cancellable the #GCancellable, or %NULL
      */
-    updateMetadata(remoteId: string, metadataFn: string, signatureFn: string, cancellable?: Gio.Cancellable | null): boolean
+    updateMetadata(remoteId: string, metadataFn: string, signatureFn: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates the metadata. This allows a session process to download the metadata
      * and metadata signing file to be passed into the daemon to be checked and
@@ -1627,7 +1825,7 @@ class Client {
      * @param signature signature data
      * @param cancellable #GCancellable, or %NULL
      */
-    updateMetadataBytes(remoteId: string, metadata: any, signature: any, cancellable?: Gio.Cancellable | null): boolean
+    updateMetadataBytes(remoteId: string, metadata: any, signature: any, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates the metadata. This allows a session process to download the metadata
      * and metadata signing file to be passed into the daemon to be checked and
@@ -1645,7 +1843,7 @@ class Client {
      * @param cancellable #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    updateMetadataBytesAsync(remoteId: string, metadata: any, signature: any, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    updateMetadataBytesAsync(remoteId: string, metadata: any, signature: any, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_update_metadata_bytes_async().
      * @param res the #GAsyncResult
@@ -1660,7 +1858,7 @@ class Client {
      * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
      * @param cancellable the #GCancellable, or %NULL
      */
-    uploadBytes(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable?: Gio.Cancellable | null): any
+    uploadBytes(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): any
     /**
      * Uploads data to a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
@@ -1678,7 +1876,7 @@ class Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    uploadBytesAsync(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    uploadBytesAsync(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_upload_bytes_async().
      * @param res the #GAsyncResult
@@ -1689,14 +1887,14 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    verify(deviceId: string, cancellable?: Gio.Cancellable | null): boolean
+    verify(deviceId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Verify a specific device.
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    verifyAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    verifyAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_verify_async().
      * @param res the #GAsyncResult
@@ -1707,493 +1905,154 @@ class Client {
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      */
-    verifyUpdate(deviceId: string, cancellable?: Gio.Cancellable | null): boolean
+    verifyUpdate(deviceId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Update the verification record for a specific device.
      * @param deviceId the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    verifyUpdateAsync(deviceId: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    verifyUpdateAsync(deviceId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_verify_update_async().
      * @param res the #GAsyncResult
      */
     verifyUpdateFinish(res: Gio.AsyncResult): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Fwupd-2.0.Fwupd.Client */
-    /**
-     * The ::changed signal is emitted when the daemon internal has
-     * changed, for instance when a device has been added or removed.
-     */
-    connect(sigName: "changed", callback: (() => void)): number
-    on(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "changed"): void
-    /**
-     * The ::device-added signal is emitted when a device has been
-     * added.
-     * @param result the #FwupdDevice
-     */
-    connect(sigName: "device-added", callback: ((result: Device) => void)): number
-    on(sigName: "device-added", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-added", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-added", callback: (result: Device) => void): NodeJS.EventEmitter
-    emit(sigName: "device-added", result: Device): void
-    /**
-     * The ::device-changed signal is emitted when a device has been
-     * changed in some way, e.g. the version number is updated.
-     * @param result the #FwupdDevice
-     */
-    connect(sigName: "device-changed", callback: ((result: Device) => void)): number
-    on(sigName: "device-changed", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-changed", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-changed", callback: (result: Device) => void): NodeJS.EventEmitter
-    emit(sigName: "device-changed", result: Device): void
-    /**
-     * The ::device-removed signal is emitted when a device has been
-     * removed.
-     * @param result the #FwupdDevice
-     */
-    connect(sigName: "device-removed", callback: ((result: Device) => void)): number
-    on(sigName: "device-removed", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-removed", callback: (result: Device) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-removed", callback: (result: Device) => void): NodeJS.EventEmitter
-    emit(sigName: "device-removed", result: Device): void
-    connect(sigName: "status-changed", callback: ((object: number) => void)): number
-    on(sigName: "status-changed", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "status-changed", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "status-changed", callback: (object: number) => void): NodeJS.EventEmitter
-    emit(sigName: "status-changed", object: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::daemon-version", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::daemon-version", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::daemon-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::daemon-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own signals of Fwupd-2.0.Fwupd.Client
+
+    connect(sigName: "changed", callback: Client_ChangedSignalCallback): number
+    on(sigName: "changed", callback: Client_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "changed", callback: Client_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "changed", callback: Client_ChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "changed", ...args: any[]): void
+    connect(sigName: "device-added", callback: Client_DeviceAddedSignalCallback): number
+    on(sigName: "device-added", callback: Client_DeviceAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-added", callback: Client_DeviceAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-added", callback: Client_DeviceAddedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-added", ...args: any[]): void
+    connect(sigName: "device-changed", callback: Client_DeviceChangedSignalCallback): number
+    on(sigName: "device-changed", callback: Client_DeviceChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-changed", callback: Client_DeviceChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-changed", callback: Client_DeviceChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-changed", ...args: any[]): void
+    connect(sigName: "device-removed", callback: Client_DeviceRemovedSignalCallback): number
+    on(sigName: "device-removed", callback: Client_DeviceRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-removed", callback: Client_DeviceRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-removed", callback: Client_DeviceRemovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-removed", ...args: any[]): void
+    connect(sigName: "status-changed", callback: Client_StatusChangedSignalCallback): number
+    on(sigName: "status-changed", callback: Client_StatusChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "status-changed", callback: Client_StatusChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "status-changed", callback: Client_StatusChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "status-changed", ...args: any[]): void
+
+    // Class property signals of Fwupd-2.0.Fwupd.Client
+
+    connect(sigName: "notify::daemon-version", callback: (...args: any[]) => void): number
+    on(sigName: "notify::daemon-version", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::daemon-version", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::daemon-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::host-machine-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::host-machine-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::host-machine-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::host-machine-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::daemon-version", ...args: any[]): void
+    connect(sigName: "notify::host-machine-id", callback: (...args: any[]) => void): number
+    on(sigName: "notify::host-machine-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::host-machine-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::host-machine-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::host-product", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::host-product", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::host-product", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::host-product", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::host-machine-id", ...args: any[]): void
+    connect(sigName: "notify::host-product", callback: (...args: any[]) => void): number
+    on(sigName: "notify::host-product", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::host-product", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::host-product", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::host-security-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::host-security-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::host-security-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::host-security-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::host-product", ...args: any[]): void
+    connect(sigName: "notify::host-security-id", callback: (...args: any[]) => void): number
+    on(sigName: "notify::host-security-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::host-security-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::host-security-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::interactive", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::interactive", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::interactive", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::interactive", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::host-security-id", ...args: any[]): void
+    connect(sigName: "notify::interactive", callback: (...args: any[]) => void): number
+    on(sigName: "notify::interactive", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::interactive", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::interactive", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::percentage", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::percentage", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::percentage", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::percentage", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::interactive", ...args: any[]): void
+    connect(sigName: "notify::percentage", callback: (...args: any[]) => void): number
+    on(sigName: "notify::percentage", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::percentage", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::percentage", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::soup-session", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::soup-session", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::soup-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::soup-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::percentage", ...args: any[]): void
+    connect(sigName: "notify::soup-session", callback: (...args: any[]) => void): number
+    on(sigName: "notify::soup-session", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::soup-session", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::soup-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::status", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::status", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::soup-session", ...args: any[]): void
+    connect(sigName: "notify::status", callback: (...args: any[]) => void): number
+    on(sigName: "notify::status", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::status", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::tainted", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::tainted", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::tainted", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::tainted", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::status", ...args: any[]): void
+    connect(sigName: "notify::tainted", callback: (...args: any[]) => void): number
+    on(sigName: "notify::tainted", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::tainted", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::tainted", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::tainted", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Client extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.Client
+
     static name: string
-    constructor (config?: Client_ConstructProps)
-    _init (config?: Client_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Client>
+
+    // Constructors of Fwupd-2.0.Fwupd.Client
+
+    constructor(config?: Client_ConstructProps) 
+    /**
+     * Creates a new client.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new client.
+     * @constructor 
+     */
     static new(): Client
-    static $gtype: GObject.Type
+    _init(config?: Client_ConstructProps): void
 }
+
 interface Device_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Fwupd-2.0.Fwupd.Device */
-    flags?: number
-    parent?: Device
-    protocol?: string
-    status?: number
-    updateState?: number
-    versionFormat?: number
+
+    // Own constructor properties of Fwupd-2.0.Fwupd.Device
+
+    flags?: number | null
+    parent?: Device | null
+    protocol?: string | null
+    status?: number | null
+    updateState?: number | null
+    versionFormat?: number | null
 }
-class Device {
-    /* Properties of Fwupd-2.0.Fwupd.Device */
+
+interface Device {
+
+    // Own properties of Fwupd-2.0.Fwupd.Device
+
     flags: number
     parent: Device
     protocol: string
     status: number
     updateState: number
     versionFormat: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.Device */
+
+    // Own fields of Fwupd-2.0.Fwupd.Device
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.Device
+
     /**
      * Sets the device checksum.
      * @param checksum the device checksum
@@ -2587,398 +2446,67 @@ class Device {
      * @param flags #FwupdDeviceFlags for the call
      */
     toVariantFull(flags: DeviceFlags): GLib.Variant
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of Fwupd-2.0.Fwupd.Device
+
+    connect(sigName: "notify::flags", callback: (...args: any[]) => void): number
+    on(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parent", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::flags", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parent", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parent", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::protocol", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::protocol", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::protocol", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::protocol", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::protocol", callback: (...args: any[]) => void): number
+    on(sigName: "notify::protocol", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::protocol", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::protocol", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::status", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::status", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::protocol", ...args: any[]): void
+    connect(sigName: "notify::status", callback: (...args: any[]) => void): number
+    on(sigName: "notify::status", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::status", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::status", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::update-state", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::update-state", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::update-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::update-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::status", ...args: any[]): void
+    connect(sigName: "notify::update-state", callback: (...args: any[]) => void): number
+    on(sigName: "notify::update-state", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::update-state", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::update-state", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::version-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::version-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::version-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::version-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::update-state", ...args: any[]): void
+    connect(sigName: "notify::version-format", callback: (...args: any[]) => void): number
+    on(sigName: "notify::version-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::version-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::version-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::version-format", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Device extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.Device
+
     static name: string
-    constructor (config?: Device_ConstructProps)
-    _init (config?: Device_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Device>
+
+    // Constructors of Fwupd-2.0.Fwupd.Device
+
+    constructor(config?: Device_ConstructProps) 
+    /**
+     * Creates a new device.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new device.
+     * @constructor 
+     */
     static new(): Device
+    _init(config?: Device_ConstructProps): void
     /**
      * Sets the parent object on all devices in the array using the parent-id.
      * @param devices devices
@@ -3011,20 +2539,29 @@ class Device {
      * @param deviceId string to check, e.g. `d3fae86d95e5d56626129d00e332c4b8dac95442`
      */
     static idIsValid(deviceId: string): boolean
-    static $gtype: GObject.Type
 }
+
 interface Plugin_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Fwupd-2.0.Fwupd.Plugin */
-    flags?: number
-    name?: string
+
+    // Own constructor properties of Fwupd-2.0.Fwupd.Plugin
+
+    flags?: number | null
+    name?: string | null
 }
-class Plugin {
-    /* Properties of Fwupd-2.0.Fwupd.Plugin */
+
+interface Plugin {
+
+    // Own properties of Fwupd-2.0.Fwupd.Plugin
+
     flags: number
     name: string
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.Plugin */
+
+    // Own fields of Fwupd-2.0.Fwupd.Plugin
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.Plugin
+
     /**
      * Adds a specific plugin flag to the plugin.
      * @param flag the #FwupdPluginFlags
@@ -3066,378 +2603,47 @@ class Plugin {
      * Creates a GVariant from the plugin data omitting sensitive fields
      */
     toVariant(): GLib.Variant
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of Fwupd-2.0.Fwupd.Plugin
+
+    connect(sigName: "notify::flags", callback: (...args: any[]) => void): number
+    on(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::flags", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Plugin extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.Plugin
+
     static name: string
-    constructor (config?: Plugin_ConstructProps)
-    _init (config?: Plugin_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Plugin>
+
+    // Constructors of Fwupd-2.0.Fwupd.Plugin
+
+    constructor(config?: Plugin_ConstructProps) 
+    /**
+     * Creates a new plugin.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new plugin.
+     * @constructor 
+     */
     static new(): Plugin
+    _init(config?: Plugin_ConstructProps): void
     /**
      * Creates an array of new plugins using packed data.
      * @param value a #GVariant
@@ -3458,14 +2664,19 @@ class Plugin {
      * @param value a #GVariant
      */
     static fromVariant(value: GLib.Variant): Plugin
-    static $gtype: GObject.Type
 }
+
 interface Release_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Release {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.Release */
+
+interface Release {
+
+    // Own fields of Fwupd-2.0.Fwupd.Release
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.Release
+
     /**
      * Adds the update category.
      * @param category the update category, e.g. `X-EmbeddedController`
@@ -3792,368 +3003,37 @@ class Release {
      * Creates a GVariant from the release data.
      */
     toVariant(): GLib.Variant
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Fwupd-2.0.Fwupd.Release
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Release extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.Release
+
     static name: string
-    constructor (config?: Release_ConstructProps)
-    _init (config?: Release_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Release>
+
+    // Constructors of Fwupd-2.0.Fwupd.Release
+
+    constructor(config?: Release_ConstructProps) 
+    /**
+     * Creates a new release.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new release.
+     * @constructor 
+     */
     static new(): Release
+    _init(config?: Release_ConstructProps): void
     /**
      * Creates an array of new releases using packed data.
      * @param value a #GVariant
@@ -4184,34 +3064,39 @@ class Release {
      * @param releaseUrgency A #FwupdReleaseUrgency, e.g. %FWUPD_RELEASE_URGENCY_HIGH
      */
     static urgencyToString(releaseUrgency: ReleaseUrgency): string
-    static $gtype: GObject.Type
 }
+
 interface Remote_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Fwupd-2.0.Fwupd.Remote */
+
+    // Own constructor properties of Fwupd-2.0.Fwupd.Remote
+
     /**
      * If firmware from the remote should be checked against the system
      * list of approved firmware.
      */
-    approvalRequired?: boolean
+    approvalRequired?: boolean | null
     /**
      * The behavior for auto-uploading reports.
      */
-    automaticReports?: boolean
+    automaticReports?: boolean | null
     /**
      * The behavior for auto-uploading security reports.
      */
-    automaticSecurityReports?: boolean
+    automaticSecurityReports?: boolean | null
     /**
      * If the remote is enabled and should be used.
      */
-    enabled?: boolean
+    enabled?: boolean | null
     /**
      * The remote ID.
      */
-    id?: string
+    id?: string | null
 }
-class Remote {
-    /* Properties of Fwupd-2.0.Fwupd.Remote */
+
+interface Remote {
+
+    // Own properties of Fwupd-2.0.Fwupd.Remote
+
     /**
      * If firmware from the remote should be checked against the system
      * list of approved firmware.
@@ -4233,9 +3118,13 @@ class Remote {
      * The remote ID.
      */
     id: string
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.Remote */
+
+    // Own fields of Fwupd-2.0.Fwupd.Remote
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.Remote
+
     /**
      * Builds a URI for the URL using the username and password set for the remote,
      * including any basename URI substitution.
@@ -4350,7 +3239,7 @@ class Remote {
      * @param filename A filename
      * @param cancellable the #GCancellable, or %NULL
      */
-    loadFromFilename(filename: string, cancellable?: Gio.Cancellable | null): boolean
+    loadFromFilename(filename: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Parses the signature, updating the metadata URI as appropriate.
      * @param filename A filename
@@ -4393,393 +3282,62 @@ class Remote {
      * Creates a GVariant from the remote data.
      */
     toVariant(): GLib.Variant
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::approval-required", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::approval-required", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::approval-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::approval-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of Fwupd-2.0.Fwupd.Remote
+
+    connect(sigName: "notify::approval-required", callback: (...args: any[]) => void): number
+    on(sigName: "notify::approval-required", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::approval-required", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::approval-required", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::automatic-reports", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::automatic-reports", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::automatic-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::automatic-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::approval-required", ...args: any[]): void
+    connect(sigName: "notify::automatic-reports", callback: (...args: any[]) => void): number
+    on(sigName: "notify::automatic-reports", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::automatic-reports", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::automatic-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::automatic-security-reports", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::automatic-security-reports", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::automatic-reports", ...args: any[]): void
+    connect(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void): number
+    on(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::automatic-security-reports", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::enabled", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::automatic-security-reports", ...args: any[]): void
+    connect(sigName: "notify::enabled", callback: (...args: any[]) => void): number
+    on(sigName: "notify::enabled", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::enabled", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::enabled", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::enabled", ...args: any[]): void
+    connect(sigName: "notify::id", callback: (...args: any[]) => void): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::id", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Remote extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.Remote
+
     static name: string
-    constructor (config?: Remote_ConstructProps)
-    _init (config?: Remote_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Remote>
+
+    // Constructors of Fwupd-2.0.Fwupd.Remote
+
+    constructor(config?: Remote_ConstructProps) 
+    /**
+     * Creates a new fwupd remote.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new fwupd remote.
+     * @constructor 
+     */
     static new(): Remote
+    _init(config?: Remote_ConstructProps): void
     /**
      * Creates an array of new devices using packed data.
      * @param value a #GVariant
@@ -4800,14 +3358,19 @@ class Remote {
      * @param kind a #FwupdRemoteKind, e.g. %FWUPD_REMOTE_KIND_DOWNLOAD
      */
     static kindToString(kind: RemoteKind): string
-    static $gtype: GObject.Type
 }
+
 interface SecurityAttr_ConstructProps extends GObject.Object_ConstructProps {
 }
-class SecurityAttr {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Fwupd-2.0.Fwupd.SecurityAttr */
+
+interface SecurityAttr {
+
+    // Own fields of Fwupd-2.0.Fwupd.SecurityAttr
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Fwupd-2.0.Fwupd.SecurityAttr
+
     /**
      * Adds a specific self flag to the self.
      * @param flag the #FwupdSecurityAttrFlags
@@ -4818,7 +3381,7 @@ class SecurityAttr {
      * @param key metadata key
      * @param value metadata value
      */
-    addMetadata(key: string, value?: string | null): void
+    addMetadata(key: string, value: string | null): void
     /**
      * Adds an attribute appstream_id to obsolete. The obsoleted attribute will not
      * contribute to the calculated HSI value or be visible in command line tools.
@@ -4918,368 +3481,39 @@ class SecurityAttr {
      * Creates a GVariant from the self data.
      */
     toVariant(): GLib.Variant
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Fwupd-2.0.Fwupd.SecurityAttr
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class SecurityAttr extends GObject.Object {
+
+    // Own properties of Fwupd-2.0.Fwupd.SecurityAttr
+
     static name: string
-    constructor (config?: SecurityAttr_ConstructProps)
-    _init (config?: SecurityAttr_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(appstreamId?: string | null): SecurityAttr
+    static $gtype: GObject.GType<SecurityAttr>
+
+    // Constructors of Fwupd-2.0.Fwupd.SecurityAttr
+
+    constructor(config?: SecurityAttr_ConstructProps) 
+    /**
+     * Creates a new self.
+     * @constructor 
+     * @param appstreamId the AppStream component ID, e.g. `com.intel.BiosGuard`
+     */
+    constructor(appstreamId: string | null) 
+    /**
+     * Creates a new self.
+     * @constructor 
+     * @param appstreamId the AppStream component ID, e.g. `com.intel.BiosGuard`
+     */
+    static new(appstreamId: string | null): SecurityAttr
+    _init(config?: SecurityAttr_ConstructProps): void
     /**
      * Creates an array of new security_attrs using packed data.
      * @param value a #GVariant
@@ -5305,43 +3539,97 @@ class SecurityAttr {
      * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_RESULT_ENABLED
      */
     static resultToString(result: SecurityAttrResult): string
-    static $gtype: GObject.Type
 }
-abstract class ClientClass {
-    /* Fields of Fwupd-2.0.Fwupd.ClientClass */
+
+interface ClientClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.ClientClass
+
     parentClass: GObject.ObjectClass
     changed: (client: Client) => void
     statusChanged: (client: Client, status: Status) => void
     deviceAdded: (client: Client, result: Device) => void
     deviceRemoved: (client: Client, result: Device) => void
     deviceChanged: (client: Client, result: Device) => void
+}
+
+abstract class ClientClass {
+
+    // Own properties of Fwupd-2.0.Fwupd.ClientClass
+
     static name: string
 }
+
+interface DeviceClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.DeviceClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class DeviceClass {
-    /* Fields of Fwupd-2.0.Fwupd.DeviceClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of Fwupd-2.0.Fwupd.DeviceClass
+
     static name: string
 }
+
+interface PluginClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.PluginClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class PluginClass {
-    /* Fields of Fwupd-2.0.Fwupd.PluginClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of Fwupd-2.0.Fwupd.PluginClass
+
     static name: string
 }
+
+interface ReleaseClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.ReleaseClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class ReleaseClass {
-    /* Fields of Fwupd-2.0.Fwupd.ReleaseClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of Fwupd-2.0.Fwupd.ReleaseClass
+
     static name: string
 }
+
+interface RemoteClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.RemoteClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class RemoteClass {
-    /* Fields of Fwupd-2.0.Fwupd.RemoteClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of Fwupd-2.0.Fwupd.RemoteClass
+
     static name: string
 }
+
+interface SecurityAttrClass {
+
+    // Own fields of Fwupd-2.0.Fwupd.SecurityAttrClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class SecurityAttrClass {
-    /* Fields of Fwupd-2.0.Fwupd.SecurityAttrClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of Fwupd-2.0.Fwupd.SecurityAttrClass
+
     static name: string
 }
+
     type DeviceFlags = number
     type PluginFlags = number
     type ReleaseFlags = number

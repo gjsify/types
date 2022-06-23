@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -24,6 +26,10 @@ import type Atk from './Atk-1.0';
 
 export namespace XdpGtk3 {
 
+/**
+ * Creates a new [struct`Parent]` from `window`.
+ * @param window a [class`Gtk`.Window]
+ */
 function parentNewGtk(window: Gtk.Window): Xdp.Parent
 }
 export default XdpGtk3;

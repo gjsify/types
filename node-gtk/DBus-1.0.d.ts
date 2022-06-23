@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -17,20 +19,55 @@ enum BusType {
     SYSTEM,
     STARTER,
 }
+interface Connection {
+}
+
 class Connection {
+
+    // Own properties of DBus-1.0.DBus.Connection
+
     static name: string
 }
+
+interface Error {
+}
+
 class Error {
+
+    // Own properties of DBus-1.0.DBus.Error
+
     static name: string
 }
+
+interface Message {
+}
+
 class Message {
+
+    // Own properties of DBus-1.0.DBus.Message
+
     static name: string
 }
+
+interface MessageIter {
+}
+
 class MessageIter {
+
+    // Own properties of DBus-1.0.DBus.MessageIter
+
     static name: string
 }
+
+interface PendingCall {
+}
+
 class PendingCall {
+
+    // Own properties of DBus-1.0.DBus.PendingCall
+
     static name: string
 }
+
 }
 export default DBus;

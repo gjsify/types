@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -143,13 +145,43 @@ const MICRO_VERSION: number
 const MINOR_VERSION: number
 const PADDING: number
 const PADDING_LARGE: number
+/**
+ * Check whether the library is at least as new as the
+ * version (`major,` `minor,` `micro)`
+ * @param major the desired major version
+ * @param minor the desired minor version
+ * @param micro the desired micro version
+ */
 function utilCheckVersion(major: number, minor: number, micro: number): boolean
+/**
+ * Determine whether the VNC code will emit verbose
+ * debug messages
+ */
 function utilGetDebug(): boolean
+/**
+ * Get the encoded version number of the library release.
+ * The major, minor and micro components are encoded in
+ * 8-bits each.
+ */
 function utilGetVersion(): number
+/**
+ * Get the library version number in a printable
+ * string format
+ */
 function utilGetVersionString(): string
+/**
+ * Control whether the VNC code emits verbose debug
+ * messages on stderr
+ * @param enabled TRUE to turn on verbose debugging
+ */
 function utilSetDebug(enabled: boolean): void
-class Audio {
-    /* Methods of GVnc-1.0.GVnc.Audio */
+interface Audio_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Audio {
+
+    // Owm methods of GVnc-1.0.GVnc.Audio
+
     /**
      * Request playback of a single audio sample in `sample`
      * @param sample the audio sample
@@ -166,10 +198,36 @@ class Audio {
      * audio playback
      */
     playbackStop(): void
-    static name: string
+
+    // Class property signals of GVnc-1.0.GVnc.Audio
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class Framebuffer {
-    /* Methods of GVnc-1.0.GVnc.Framebuffer */
+
+class Audio extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.Audio
+
+    static name: string
+    static $gtype: GObject.GType<Audio>
+
+    // Constructors of GVnc-1.0.GVnc.Audio
+
+    constructor(config?: Audio_ConstructProps) 
+    _init(config?: Audio_ConstructProps): void
+}
+
+interface Framebuffer_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Framebuffer {
+
+    // Owm methods of GVnc-1.0.GVnc.Framebuffer
+
     blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void
     /**
      * Copies data from the range (`srcx,` `srcy)` to
@@ -247,422 +305,131 @@ class Framebuffer {
      * @param y the vertical pixel to set
      */
     setPixelAt(src: Uint8Array, x: number, y: number): void
-    static name: string
-}
-interface BaseAudio_ConstructProps extends GObject.Object_ConstructProps {
-}
-class BaseAudio {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of GVnc-1.0.GVnc.Audio */
-    /**
-     * Request playback of a single audio sample in `sample`
-     * @param sample the audio sample
-     */
-    playbackData(sample: AudioSample): void
-    /**
-     * Indicate that the remote desktop is about to start
-     * audio playback in format `format`.
-     * @param format the new audio format
-     */
-    playbackStart(format: AudioFormat): void
-    /**
-     * Indicate that the remote desktop has completed
-     * audio playback
-     */
-    playbackStop(): void
-    /* Signals of GVnc-1.0.GVnc.BaseAudio */
-    connect(sigName: "vnc-audio-playback-data", callback: ((object: AudioSample) => void)): number
-    on(sigName: "vnc-audio-playback-data", callback: (object: AudioSample) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-audio-playback-data", callback: (object: AudioSample) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-audio-playback-data", callback: (object: AudioSample) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-audio-playback-data", object: AudioSample): void
-    connect(sigName: "vnc-audio-playback-start", callback: ((object: AudioFormat) => void)): number
-    on(sigName: "vnc-audio-playback-start", callback: (object: AudioFormat) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-audio-playback-start", callback: (object: AudioFormat) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-audio-playback-start", callback: (object: AudioFormat) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-audio-playback-start", object: AudioFormat): void
-    connect(sigName: "vnc-audio-playback-stop", callback: (() => void)): number
-    on(sigName: "vnc-audio-playback-stop", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-audio-playback-stop", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-audio-playback-stop", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-audio-playback-stop"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of GVnc-1.0.GVnc.Framebuffer
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Framebuffer extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.Framebuffer
+
     static name: string
-    constructor (config?: BaseAudio_ConstructProps)
-    _init (config?: BaseAudio_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Framebuffer>
+
+    // Constructors of GVnc-1.0.GVnc.Framebuffer
+
+    constructor(config?: Framebuffer_ConstructProps) 
+    _init(config?: Framebuffer_ConstructProps): void
+}
+
+interface BaseAudio_ConstructProps extends Audio_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `vnc-audio-playback-data`
+ */
+interface BaseAudio_VncAudioPlaybackDataSignalCallback {
+    (object: AudioSample): void
+}
+
+/**
+ * Signal callback interface for `vnc-audio-playback-start`
+ */
+interface BaseAudio_VncAudioPlaybackStartSignalCallback {
+    (object: AudioFormat): void
+}
+
+/**
+ * Signal callback interface for `vnc-audio-playback-stop`
+ */
+interface BaseAudio_VncAudioPlaybackStopSignalCallback {
+    (): void
+}
+
+interface BaseAudio extends Audio {
+
+    // Own fields of GVnc-1.0.GVnc.BaseAudio
+
+    parent: GObject.Object
+    priv: BaseAudioPrivate
+
+    // Own signals of GVnc-1.0.GVnc.BaseAudio
+
+    connect(sigName: "vnc-audio-playback-data", callback: BaseAudio_VncAudioPlaybackDataSignalCallback): number
+    on(sigName: "vnc-audio-playback-data", callback: BaseAudio_VncAudioPlaybackDataSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-audio-playback-data", callback: BaseAudio_VncAudioPlaybackDataSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-audio-playback-data", callback: BaseAudio_VncAudioPlaybackDataSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-audio-playback-data", ...args: any[]): void
+    connect(sigName: "vnc-audio-playback-start", callback: BaseAudio_VncAudioPlaybackStartSignalCallback): number
+    on(sigName: "vnc-audio-playback-start", callback: BaseAudio_VncAudioPlaybackStartSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-audio-playback-start", callback: BaseAudio_VncAudioPlaybackStartSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-audio-playback-start", callback: BaseAudio_VncAudioPlaybackStartSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-audio-playback-start", ...args: any[]): void
+    connect(sigName: "vnc-audio-playback-stop", callback: BaseAudio_VncAudioPlaybackStopSignalCallback): number
+    on(sigName: "vnc-audio-playback-stop", callback: BaseAudio_VncAudioPlaybackStopSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-audio-playback-stop", callback: BaseAudio_VncAudioPlaybackStopSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-audio-playback-stop", callback: BaseAudio_VncAudioPlaybackStopSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-audio-playback-stop", ...args: any[]): void
+
+    // Class property signals of GVnc-1.0.GVnc.BaseAudio
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class BaseAudio extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.BaseAudio
+
+    static name: string
+    static $gtype: GObject.GType<BaseAudio>
+
+    // Constructors of GVnc-1.0.GVnc.BaseAudio
+
+    constructor(config?: BaseAudio_ConstructProps) 
+    /**
+     * Create a new generic VNC audio object, which will emit
+     * signals when key audio events occur. Callers can connect
+     * to these signals to provide playback facilities.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Create a new generic VNC audio object, which will emit
+     * signals when key audio events occur. Callers can connect
+     * to these signals to provide playback facilities.
+     * @constructor 
+     */
     static new(): BaseAudio
-    static $gtype: GObject.Type
+    _init(config?: BaseAudio_ConstructProps): void
 }
-interface BaseFramebuffer_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of GVnc-1.0.GVnc.BaseFramebuffer */
-    buffer?: object
-    colorMap?: ColorMap
-    height?: number
-    localFormat?: PixelFormat
-    remoteFormat?: PixelFormat
-    rowstride?: number
-    width?: number
+
+interface BaseFramebuffer_ConstructProps extends Framebuffer_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of GVnc-1.0.GVnc.BaseFramebuffer
+
+    buffer?: object | null
+    colorMap?: ColorMap | null
+    height?: number | null
+    localFormat?: PixelFormat | null
+    remoteFormat?: PixelFormat | null
+    rowstride?: number | null
+    width?: number | null
 }
-class BaseFramebuffer {
-    /* Properties of GVnc-1.0.GVnc.BaseFramebuffer */
+
+interface BaseFramebuffer extends Framebuffer {
+
+    // Own properties of GVnc-1.0.GVnc.BaseFramebuffer
+
     readonly buffer: object
     colorMap: ColorMap
     readonly height: number
@@ -670,495 +437,259 @@ class BaseFramebuffer {
     readonly remoteFormat: PixelFormat
     readonly rowstride: number
     readonly width: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of GVnc-1.0.GVnc.Framebuffer */
-    blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void
-    /**
-     * Copies data from the range (`srcx,` `srcy)` to
-     * (`srcx+``width,` `srcy+``height)` over to the
-     * range starting at (`dstx,` `dsty)`.
-     * @param srcx the horizontal starting pixel
-     * @param srcy the vertical starting pixel
-     * @param dstx the horizontal target pixel
-     * @param dsty the vertical target pixel
-     * @param width the width of the region
-     * @param height the height of the region
-     */
-    copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void
-    /**
-     * Fill all the pixels in the range (`x,` `y)` to
-     * (`x` + `width,` `y` + `height)` to the value in
-     * `src`. The number of bytes in `src` is
-     * determined by the remote pixel format
-     * @param src the new pixel data
-     * @param x the horizontal pixel to start filling
-     * @param y the vertical pixel to start filling
-     * @param width the number of pixels to fill horizontally
-     * @param height the number of pixels to fill vertically
-     */
-    fill(src: Uint8Array, x: number, y: number, width: number, height: number): void
-    /**
-     * Get a pointer to the framebuffer contents
-     */
-    getBuffer(): Uint8Array
-    /**
-     * Query the height of the remote framebuffer
-     */
-    getHeight(): number
-    /**
-     * Get the pixel format used to store the framebuffer locally
-     */
-    getLocalFormat(): PixelFormat
-    getRemoteFormat(): PixelFormat
-    /**
-     * Get the number of bytes per line of the framebuffer
-     */
-    getRowstride(): number
-    /**
-     * Query the width of the remote framebuffer
-     */
-    getWidth(): number
-    /**
-     * Determine if the local and remote pixel formats match
-     */
-    perfectFormatMatch(): boolean
-    /**
-     * Fill all the pixels in the range (`x,` `y)` to
-     * (`x` + `width,` `y` + `height)` to the value in
-     * `src`. The number of bytes in `src` is always
-     * 3 as it must be in plain RGB24 format.
-     * @param src the new pixel data
-     * @param rowstride the number of bytes per row
-     * @param x the horizontal pixel to start filling
-     * @param y the vertical pixel to start filling
-     * @param width the number of pixels to fill horizontally
-     * @param height the number of pixels to fill vertically
-     */
-    rgb24Blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void
-    /**
-     * Set the color map to use for the framebuffer
-     * @param map the new color map
-     */
-    setColorMap(map: ColorMap): void
-    /**
-     * Sets a pixel in the framebuffer at (`x,` `y)` to the
-     * value in `src`. The number of bytes in `src` is
-     * determined by the remote pixel format
-     * @param src the new pixel data
-     * @param x the horizontal pixel to set
-     * @param y the vertical pixel to set
-     */
-    setPixelAt(src: Uint8Array, x: number, y: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own fields of GVnc-1.0.GVnc.BaseFramebuffer
+
+    parent: GObject.Object
+    priv: BaseFramebufferPrivate
+
+    // Class property signals of GVnc-1.0.GVnc.BaseFramebuffer
+
+    connect(sigName: "notify::buffer", callback: (...args: any[]) => void): number
+    on(sigName: "notify::buffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::buffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::color-map", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::color-map", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::buffer", ...args: any[]): void
+    connect(sigName: "notify::color-map", callback: (...args: any[]) => void): number
+    on(sigName: "notify::color-map", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::color-map", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::color-map", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::color-map", ...args: any[]): void
+    connect(sigName: "notify::height", callback: (...args: any[]) => void): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::local-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::local-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::height", ...args: any[]): void
+    connect(sigName: "notify::local-format", callback: (...args: any[]) => void): number
+    on(sigName: "notify::local-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::local-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::local-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::remote-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::remote-format", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::local-format", ...args: any[]): void
+    connect(sigName: "notify::remote-format", callback: (...args: any[]) => void): number
+    on(sigName: "notify::remote-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::remote-format", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::remote-format", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::rowstride", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::remote-format", ...args: any[]): void
+    connect(sigName: "notify::rowstride", callback: (...args: any[]) => void): number
+    on(sigName: "notify::rowstride", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::rowstride", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::rowstride", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::rowstride", ...args: any[]): void
+    connect(sigName: "notify::width", callback: (...args: any[]) => void): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::width", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class BaseFramebuffer extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.BaseFramebuffer
+
     static name: string
-    constructor (config?: BaseFramebuffer_ConstructProps)
-    _init (config?: BaseFramebuffer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<BaseFramebuffer>
+
+    // Constructors of GVnc-1.0.GVnc.BaseFramebuffer
+
+    constructor(config?: BaseFramebuffer_ConstructProps) 
+    /**
+     * Allocate a new general purpose framebuffer object storing
+     * screen updates in `buffer`. `buffer` must be `height` *
+     * `rowstride` bytes in size. The returned object will
+     * store a pointer to `buffer,` so it should not be free'd
+     * for as long as the framebuffer object exists
+     * @constructor 
+     * @param buffer the buffer representing the screen
+     * @param width the width of the screen
+     * @param height the height of the screen
+     * @param rowstride the number of bytes per line in `buffer`
+     * @param localFormat the format for data stored in `buffer`
+     * @param remoteFormat the format for data before storage in `buffer`
+     */
+    constructor(buffer: Uint8Array, width: number, height: number, rowstride: number, localFormat: PixelFormat, remoteFormat: PixelFormat) 
+    /**
+     * Allocate a new general purpose framebuffer object storing
+     * screen updates in `buffer`. `buffer` must be `height` *
+     * `rowstride` bytes in size. The returned object will
+     * store a pointer to `buffer,` so it should not be free'd
+     * for as long as the framebuffer object exists
+     * @constructor 
+     * @param buffer the buffer representing the screen
+     * @param width the width of the screen
+     * @param height the height of the screen
+     * @param rowstride the number of bytes per line in `buffer`
+     * @param localFormat the format for data stored in `buffer`
+     * @param remoteFormat the format for data before storage in `buffer`
+     */
     static new(buffer: Uint8Array, width: number, height: number, rowstride: number, localFormat: PixelFormat, remoteFormat: PixelFormat): BaseFramebuffer
-    static $gtype: GObject.Type
+    _init(config?: BaseFramebuffer_ConstructProps): void
 }
+
 interface Connection_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of GVnc-1.0.GVnc.Connection */
-    framebuffer?: Framebuffer
+
+    // Own constructor properties of GVnc-1.0.GVnc.Connection
+
+    framebuffer?: Framebuffer | null
 }
-class Connection {
-    /* Properties of GVnc-1.0.GVnc.Connection */
+
+/**
+ * Signal callback interface for `vnc-auth-choose-subtype`
+ */
+interface Connection_VncAuthChooseSubtypeSignalCallback {
+    (object: number, p0: GObject.ValueArray): void
+}
+
+/**
+ * Signal callback interface for `vnc-auth-choose-type`
+ */
+interface Connection_VncAuthChooseTypeSignalCallback {
+    (object: GObject.ValueArray): void
+}
+
+/**
+ * Signal callback interface for `vnc-auth-credential`
+ */
+interface Connection_VncAuthCredentialSignalCallback {
+    (object: GObject.ValueArray): void
+}
+
+/**
+ * Signal callback interface for `vnc-auth-failure`
+ */
+interface Connection_VncAuthFailureSignalCallback {
+    (object: string): void
+}
+
+/**
+ * Signal callback interface for `vnc-auth-unsupported`
+ */
+interface Connection_VncAuthUnsupportedSignalCallback {
+    (object: number): void
+}
+
+/**
+ * Signal callback interface for `vnc-bell`
+ */
+interface Connection_VncBellSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-connected`
+ */
+interface Connection_VncConnectedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-cursor-changed`
+ */
+interface Connection_VncCursorChangedSignalCallback {
+    (cursor: Cursor | null): void
+}
+
+/**
+ * Signal callback interface for `vnc-desktop-rename`
+ */
+interface Connection_VncDesktopRenameSignalCallback {
+    (object: string): void
+}
+
+/**
+ * Signal callback interface for `vnc-desktop-resize`
+ */
+interface Connection_VncDesktopResizeSignalCallback {
+    (object: number, p0: number): void
+}
+
+/**
+ * Signal callback interface for `vnc-disconnected`
+ */
+interface Connection_VncDisconnectedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-error`
+ */
+interface Connection_VncErrorSignalCallback {
+    (object: string): void
+}
+
+/**
+ * Signal callback interface for `vnc-framebuffer-update`
+ */
+interface Connection_VncFramebufferUpdateSignalCallback {
+    (object: number, p0: number, p1: number, p2: number): void
+}
+
+/**
+ * Signal callback interface for `vnc-initialized`
+ */
+interface Connection_VncInitializedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-led-state`
+ */
+interface Connection_VncLedStateSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-pixel-format-changed`
+ */
+interface Connection_VncPixelFormatChangedSignalCallback {
+    (object: PixelFormat): void
+}
+
+/**
+ * Signal callback interface for `vnc-pointer-mode-changed`
+ */
+interface Connection_VncPointerModeChangedSignalCallback {
+    (object: boolean): void
+}
+
+/**
+ * Signal callback interface for `vnc-power-control-failed`
+ */
+interface Connection_VncPowerControlFailedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-power-control-initialized`
+ */
+interface Connection_VncPowerControlInitializedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `vnc-server-cut-text`
+ */
+interface Connection_VncServerCutTextSignalCallback {
+    (object: string): void
+}
+
+interface Connection {
+
+    // Own properties of GVnc-1.0.GVnc.Connection
+
     framebuffer: Framebuffer
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GVnc-1.0.GVnc.Connection */
+
+    // Own fields of GVnc-1.0.GVnc.Connection
+
+    parent: GObject.Object
+    priv: ConnectionPrivate
+
+    // Owm methods of GVnc-1.0.GVnc.Connection
+
     /**
      * Tell the server that it is no longer permitted to send
      * audio. The client may continue to receive audio for a
@@ -1282,7 +813,7 @@ class Connection {
      * @param addr the socket address
      * @param hostname the hostname
      */
-    openAddr(addr: Gio.SocketAddress, hostname?: string | null): boolean
+    openAddr(addr: Gio.SocketAddress, hostname: string | null): boolean
     /**
      * Open a connection using `fd` as the transport. If `fd`
      * refers to a TCP connection, it is recommended to use
@@ -1302,7 +833,7 @@ class Connection {
      * @param fd file descriptor to use for the connection
      * @param hostname the host associated with the connection
      */
-    openFdWithHostname(fd: number, hostname?: string | null): boolean
+    openFdWithHostname(fd: number, hostname: string | null): boolean
     /**
      * Open a TCP connection to the remote desktop at `host`
      * listening on `port`.
@@ -1403,502 +934,191 @@ class Connection {
      * by closing its socket
      */
     shutdown(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GVnc-1.0.GVnc.Connection */
-    connect(sigName: "vnc-auth-choose-subtype", callback: ((object: number, p0: GObject.ValueArray) => void)): number
-    on(sigName: "vnc-auth-choose-subtype", callback: (object: number, p0: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-auth-choose-subtype", callback: (object: number, p0: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-auth-choose-subtype", callback: (object: number, p0: GObject.ValueArray) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-auth-choose-subtype", object: number, p0: GObject.ValueArray): void
-    connect(sigName: "vnc-auth-choose-type", callback: ((object: GObject.ValueArray) => void)): number
-    on(sigName: "vnc-auth-choose-type", callback: (object: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-auth-choose-type", callback: (object: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-auth-choose-type", callback: (object: GObject.ValueArray) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-auth-choose-type", object: GObject.ValueArray): void
-    connect(sigName: "vnc-auth-credential", callback: ((object: GObject.ValueArray) => void)): number
-    on(sigName: "vnc-auth-credential", callback: (object: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-auth-credential", callback: (object: GObject.ValueArray) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-auth-credential", callback: (object: GObject.ValueArray) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-auth-credential", object: GObject.ValueArray): void
-    connect(sigName: "vnc-auth-failure", callback: ((object: string) => void)): number
-    on(sigName: "vnc-auth-failure", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-auth-failure", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-auth-failure", callback: (object: string) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-auth-failure", object: string): void
-    connect(sigName: "vnc-auth-unsupported", callback: ((object: number) => void)): number
-    on(sigName: "vnc-auth-unsupported", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-auth-unsupported", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-auth-unsupported", callback: (object: number) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-auth-unsupported", object: number): void
-    connect(sigName: "vnc-bell", callback: (() => void)): number
-    on(sigName: "vnc-bell", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-bell", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-bell", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-bell"): void
-    connect(sigName: "vnc-connected", callback: (() => void)): number
-    on(sigName: "vnc-connected", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-connected", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-connected", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-connected"): void
-    /**
-     * Emitted when the cursor is changed.
-     * @param cursor the new cursor
-     */
-    connect(sigName: "vnc-cursor-changed", callback: ((cursor?: Cursor | null) => void)): number
-    on(sigName: "vnc-cursor-changed", callback: (cursor?: Cursor | null) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-cursor-changed", callback: (cursor?: Cursor | null) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-cursor-changed", callback: (cursor?: Cursor | null) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-cursor-changed", cursor?: Cursor | null): void
-    connect(sigName: "vnc-desktop-rename", callback: ((object: string) => void)): number
-    on(sigName: "vnc-desktop-rename", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-desktop-rename", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-desktop-rename", callback: (object: string) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-desktop-rename", object: string): void
-    connect(sigName: "vnc-desktop-resize", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "vnc-desktop-resize", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-desktop-resize", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-desktop-resize", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-desktop-resize", object: number, p0: number): void
-    connect(sigName: "vnc-disconnected", callback: (() => void)): number
-    on(sigName: "vnc-disconnected", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-disconnected", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-disconnected", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-disconnected"): void
-    connect(sigName: "vnc-error", callback: ((object: string) => void)): number
-    on(sigName: "vnc-error", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-error", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-error", callback: (object: string) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-error", object: string): void
-    connect(sigName: "vnc-framebuffer-update", callback: ((object: number, p0: number, p1: number, p2: number) => void)): number
-    on(sigName: "vnc-framebuffer-update", callback: (object: number, p0: number, p1: number, p2: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-framebuffer-update", callback: (object: number, p0: number, p1: number, p2: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-framebuffer-update", callback: (object: number, p0: number, p1: number, p2: number) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-framebuffer-update", object: number, p0: number, p1: number, p2: number): void
-    connect(sigName: "vnc-initialized", callback: (() => void)): number
-    on(sigName: "vnc-initialized", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-initialized", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-initialized", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-initialized"): void
-    connect(sigName: "vnc-led-state", callback: (() => void)): number
-    on(sigName: "vnc-led-state", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-led-state", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-led-state", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-led-state"): void
-    connect(sigName: "vnc-pixel-format-changed", callback: ((object: PixelFormat) => void)): number
-    on(sigName: "vnc-pixel-format-changed", callback: (object: PixelFormat) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-pixel-format-changed", callback: (object: PixelFormat) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-pixel-format-changed", callback: (object: PixelFormat) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-pixel-format-changed", object: PixelFormat): void
-    connect(sigName: "vnc-pointer-mode-changed", callback: ((object: boolean) => void)): number
-    on(sigName: "vnc-pointer-mode-changed", callback: (object: boolean) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-pointer-mode-changed", callback: (object: boolean) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-pointer-mode-changed", callback: (object: boolean) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-pointer-mode-changed", object: boolean): void
-    connect(sigName: "vnc-power-control-failed", callback: (() => void)): number
-    on(sigName: "vnc-power-control-failed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-power-control-failed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-power-control-failed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-power-control-failed"): void
-    connect(sigName: "vnc-power-control-initialized", callback: (() => void)): number
-    on(sigName: "vnc-power-control-initialized", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-power-control-initialized", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-power-control-initialized", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-power-control-initialized"): void
-    connect(sigName: "vnc-server-cut-text", callback: ((object: string) => void)): number
-    on(sigName: "vnc-server-cut-text", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "vnc-server-cut-text", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "vnc-server-cut-text", callback: (object: string) => void): NodeJS.EventEmitter
-    emit(sigName: "vnc-server-cut-text", object: string): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::framebuffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::framebuffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::framebuffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::framebuffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own signals of GVnc-1.0.GVnc.Connection
+
+    connect(sigName: "vnc-auth-choose-subtype", callback: Connection_VncAuthChooseSubtypeSignalCallback): number
+    on(sigName: "vnc-auth-choose-subtype", callback: Connection_VncAuthChooseSubtypeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-auth-choose-subtype", callback: Connection_VncAuthChooseSubtypeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-auth-choose-subtype", callback: Connection_VncAuthChooseSubtypeSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-auth-choose-subtype", p0: GObject.ValueArray, ...args: any[]): void
+    connect(sigName: "vnc-auth-choose-type", callback: Connection_VncAuthChooseTypeSignalCallback): number
+    on(sigName: "vnc-auth-choose-type", callback: Connection_VncAuthChooseTypeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-auth-choose-type", callback: Connection_VncAuthChooseTypeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-auth-choose-type", callback: Connection_VncAuthChooseTypeSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-auth-choose-type", ...args: any[]): void
+    connect(sigName: "vnc-auth-credential", callback: Connection_VncAuthCredentialSignalCallback): number
+    on(sigName: "vnc-auth-credential", callback: Connection_VncAuthCredentialSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-auth-credential", callback: Connection_VncAuthCredentialSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-auth-credential", callback: Connection_VncAuthCredentialSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-auth-credential", ...args: any[]): void
+    connect(sigName: "vnc-auth-failure", callback: Connection_VncAuthFailureSignalCallback): number
+    on(sigName: "vnc-auth-failure", callback: Connection_VncAuthFailureSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-auth-failure", callback: Connection_VncAuthFailureSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-auth-failure", callback: Connection_VncAuthFailureSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-auth-failure", ...args: any[]): void
+    connect(sigName: "vnc-auth-unsupported", callback: Connection_VncAuthUnsupportedSignalCallback): number
+    on(sigName: "vnc-auth-unsupported", callback: Connection_VncAuthUnsupportedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-auth-unsupported", callback: Connection_VncAuthUnsupportedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-auth-unsupported", callback: Connection_VncAuthUnsupportedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-auth-unsupported", ...args: any[]): void
+    connect(sigName: "vnc-bell", callback: Connection_VncBellSignalCallback): number
+    on(sigName: "vnc-bell", callback: Connection_VncBellSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-bell", callback: Connection_VncBellSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-bell", callback: Connection_VncBellSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-bell", ...args: any[]): void
+    connect(sigName: "vnc-connected", callback: Connection_VncConnectedSignalCallback): number
+    on(sigName: "vnc-connected", callback: Connection_VncConnectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-connected", callback: Connection_VncConnectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-connected", callback: Connection_VncConnectedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-connected", ...args: any[]): void
+    connect(sigName: "vnc-cursor-changed", callback: Connection_VncCursorChangedSignalCallback): number
+    on(sigName: "vnc-cursor-changed", callback: Connection_VncCursorChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-cursor-changed", callback: Connection_VncCursorChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-cursor-changed", callback: Connection_VncCursorChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-cursor-changed", ...args: any[]): void
+    connect(sigName: "vnc-desktop-rename", callback: Connection_VncDesktopRenameSignalCallback): number
+    on(sigName: "vnc-desktop-rename", callback: Connection_VncDesktopRenameSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-desktop-rename", callback: Connection_VncDesktopRenameSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-desktop-rename", callback: Connection_VncDesktopRenameSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-desktop-rename", ...args: any[]): void
+    connect(sigName: "vnc-desktop-resize", callback: Connection_VncDesktopResizeSignalCallback): number
+    on(sigName: "vnc-desktop-resize", callback: Connection_VncDesktopResizeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-desktop-resize", callback: Connection_VncDesktopResizeSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-desktop-resize", callback: Connection_VncDesktopResizeSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-desktop-resize", p0: number, ...args: any[]): void
+    connect(sigName: "vnc-disconnected", callback: Connection_VncDisconnectedSignalCallback): number
+    on(sigName: "vnc-disconnected", callback: Connection_VncDisconnectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-disconnected", callback: Connection_VncDisconnectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-disconnected", callback: Connection_VncDisconnectedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-disconnected", ...args: any[]): void
+    connect(sigName: "vnc-error", callback: Connection_VncErrorSignalCallback): number
+    on(sigName: "vnc-error", callback: Connection_VncErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-error", callback: Connection_VncErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-error", callback: Connection_VncErrorSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-error", ...args: any[]): void
+    connect(sigName: "vnc-framebuffer-update", callback: Connection_VncFramebufferUpdateSignalCallback): number
+    on(sigName: "vnc-framebuffer-update", callback: Connection_VncFramebufferUpdateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-framebuffer-update", callback: Connection_VncFramebufferUpdateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-framebuffer-update", callback: Connection_VncFramebufferUpdateSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-framebuffer-update", p0: number, p1: number, p2: number, ...args: any[]): void
+    connect(sigName: "vnc-initialized", callback: Connection_VncInitializedSignalCallback): number
+    on(sigName: "vnc-initialized", callback: Connection_VncInitializedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-initialized", callback: Connection_VncInitializedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-initialized", callback: Connection_VncInitializedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-initialized", ...args: any[]): void
+    connect(sigName: "vnc-led-state", callback: Connection_VncLedStateSignalCallback): number
+    on(sigName: "vnc-led-state", callback: Connection_VncLedStateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-led-state", callback: Connection_VncLedStateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-led-state", callback: Connection_VncLedStateSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-led-state", ...args: any[]): void
+    connect(sigName: "vnc-pixel-format-changed", callback: Connection_VncPixelFormatChangedSignalCallback): number
+    on(sigName: "vnc-pixel-format-changed", callback: Connection_VncPixelFormatChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-pixel-format-changed", callback: Connection_VncPixelFormatChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-pixel-format-changed", callback: Connection_VncPixelFormatChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-pixel-format-changed", ...args: any[]): void
+    connect(sigName: "vnc-pointer-mode-changed", callback: Connection_VncPointerModeChangedSignalCallback): number
+    on(sigName: "vnc-pointer-mode-changed", callback: Connection_VncPointerModeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-pointer-mode-changed", callback: Connection_VncPointerModeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-pointer-mode-changed", callback: Connection_VncPointerModeChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-pointer-mode-changed", ...args: any[]): void
+    connect(sigName: "vnc-power-control-failed", callback: Connection_VncPowerControlFailedSignalCallback): number
+    on(sigName: "vnc-power-control-failed", callback: Connection_VncPowerControlFailedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-power-control-failed", callback: Connection_VncPowerControlFailedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-power-control-failed", callback: Connection_VncPowerControlFailedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-power-control-failed", ...args: any[]): void
+    connect(sigName: "vnc-power-control-initialized", callback: Connection_VncPowerControlInitializedSignalCallback): number
+    on(sigName: "vnc-power-control-initialized", callback: Connection_VncPowerControlInitializedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-power-control-initialized", callback: Connection_VncPowerControlInitializedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-power-control-initialized", callback: Connection_VncPowerControlInitializedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-power-control-initialized", ...args: any[]): void
+    connect(sigName: "vnc-server-cut-text", callback: Connection_VncServerCutTextSignalCallback): number
+    on(sigName: "vnc-server-cut-text", callback: Connection_VncServerCutTextSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "vnc-server-cut-text", callback: Connection_VncServerCutTextSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "vnc-server-cut-text", callback: Connection_VncServerCutTextSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "vnc-server-cut-text", ...args: any[]): void
+
+    // Class property signals of GVnc-1.0.GVnc.Connection
+
+    connect(sigName: "notify::framebuffer", callback: (...args: any[]) => void): number
+    on(sigName: "notify::framebuffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::framebuffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::framebuffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::framebuffer", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Connection extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.Connection
+
     static name: string
-    constructor (config?: Connection_ConstructProps)
-    _init (config?: Connection_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Connection>
+
+    // Constructors of GVnc-1.0.GVnc.Connection
+
+    constructor(config?: Connection_ConstructProps) 
+    /**
+     * Create a new connection object, which is initially
+     * in the disconnected state.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Create a new connection object, which is initially
+     * in the disconnected state.
+     * @constructor 
+     */
     static new(): Connection
-    static $gtype: GObject.Type
+    _init(config?: Connection_ConstructProps): void
 }
+
 interface Cursor_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of GVnc-1.0.GVnc.Cursor */
-    data?: object
-    height?: number
-    hotx?: number
-    hoty?: number
-    width?: number
+
+    // Own constructor properties of GVnc-1.0.GVnc.Cursor
+
+    data?: object | null
+    height?: number | null
+    hotx?: number | null
+    hoty?: number | null
+    width?: number | null
 }
-class Cursor {
-    /* Properties of GVnc-1.0.GVnc.Cursor */
+
+interface Cursor {
+
+    // Own properties of GVnc-1.0.GVnc.Cursor
+
     data: object
     height: number
     hotx: number
     hoty: number
     width: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GVnc-1.0.GVnc.Cursor */
+
+    // Own fields of GVnc-1.0.GVnc.Cursor
+
+    parent: GObject.Object
+    priv: CursorPrivate
+
+    // Owm methods of GVnc-1.0.GVnc.Cursor
+
     /**
      * Get the bitmap data representing the cursor
      */
     getData(): Uint8Array
+
+    // Overloads of getData
+
+    /**
+     * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
+     */
+    getData(key?: string): object | null
+    getData(...args: any[]): any
+    getData(args_or_key?: any[] | string): Uint8Array | object | null | any
     /**
      * Get the height of the cursor bitmap
      */
@@ -1915,401 +1135,90 @@ class Cursor {
      * Get the width of the cursor bitmap
      */
     getWidth(): number
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::data", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::data", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::data", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of GVnc-1.0.GVnc.Cursor
+
+    connect(sigName: "notify::data", callback: (...args: any[]) => void): number
+    on(sigName: "notify::data", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::data", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::data", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::data", ...args: any[]): void
+    connect(sigName: "notify::height", callback: (...args: any[]) => void): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::hotx", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::hotx", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::hotx", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::hotx", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::height", ...args: any[]): void
+    connect(sigName: "notify::hotx", callback: (...args: any[]) => void): number
+    on(sigName: "notify::hotx", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::hotx", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::hotx", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::hoty", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::hoty", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::hoty", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::hoty", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::hotx", ...args: any[]): void
+    connect(sigName: "notify::hoty", callback: (...args: any[]) => void): number
+    on(sigName: "notify::hoty", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::hoty", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::hoty", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::hoty", ...args: any[]): void
+    connect(sigName: "notify::width", callback: (...args: any[]) => void): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::width", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Cursor_ConstructProps)
-    _init (config?: Cursor_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(data: Uint8Array, hotx: number, hoty: number, width: number, height: number): Cursor
-    static $gtype: GObject.Type
 }
-class AudioFormat {
-    /* Fields of GVnc-1.0.GVnc.AudioFormat */
+
+class Cursor extends GObject.Object {
+
+    // Own properties of GVnc-1.0.GVnc.Cursor
+
+    static name: string
+    static $gtype: GObject.GType<Cursor>
+
+    // Constructors of GVnc-1.0.GVnc.Cursor
+
+    constructor(config?: Cursor_ConstructProps) 
+    /**
+     * Creates a new cursor using the bitmap data in `data`
+     * which should be `width` * `height` * 4 in size. The
+     * `data` parameter should be in the RGBA format, so
+     * each pixel is 32-bits in size.
+     * @constructor 
+     * @param data the bitmap data for the cursor
+     * @param hotx the horizontal position of the hot point
+     * @param hoty the vertical position of the hot point
+     * @param width the width of the cursor
+     * @param height the height of the cursor
+     */
+    constructor(data: Uint8Array, hotx: number, hoty: number, width: number, height: number) 
+    /**
+     * Creates a new cursor using the bitmap data in `data`
+     * which should be `width` * `height` * 4 in size. The
+     * `data` parameter should be in the RGBA format, so
+     * each pixel is 32-bits in size.
+     * @constructor 
+     * @param data the bitmap data for the cursor
+     * @param hotx the horizontal position of the hot point
+     * @param hoty the vertical position of the hot point
+     * @param width the width of the cursor
+     * @param height the height of the cursor
+     */
+    static new(data: Uint8Array, hotx: number, hoty: number, width: number, height: number): Cursor
+    _init(config?: Cursor_ConstructProps): void
+}
+
+interface AudioFormat {
+
+    // Own fields of GVnc-1.0.GVnc.AudioFormat
+
     format: number
     nchannels: number
     frequency: number
-    /* Methods of GVnc-1.0.GVnc.AudioFormat */
+
+    // Owm methods of GVnc-1.0.GVnc.AudioFormat
+
     /**
      * Allocate a new VNC audio format struct whose
      * contents is initialized with the data found
@@ -2321,26 +1230,61 @@ class AudioFormat {
      * Release the memory associated with `format`
      */
     free(): void
+}
+
+class AudioFormat {
+
+    // Own properties of GVnc-1.0.GVnc.AudioFormat
+
     static name: string
-    static new(): AudioFormat
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GVnc-1.0.GVnc.AudioFormat
+
+    /**
+     * Allocate a new VNC audio format struct whose
+     * contents is initialized to all zeros. The
+     * struct must be released using vnc_audio_format_free
+     * when no longer required
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocate a new VNC audio format struct whose
+     * contents is initialized to all zeros. The
+     * struct must be released using vnc_audio_format_free
+     * when no longer required
+     * @constructor 
+     */
     static new(): AudioFormat
 }
-abstract class AudioInterface {
-    /* Fields of GVnc-1.0.GVnc.AudioInterface */
+
+interface AudioInterface {
+
+    // Own fields of GVnc-1.0.GVnc.AudioInterface
+
     parent: GObject.TypeInterface
     playbackStart: (audio: Audio, format: AudioFormat) => boolean
     playbackStop: (audio: Audio) => boolean
     playbackData: (audio: Audio, sample: AudioSample) => boolean
+}
+
+abstract class AudioInterface {
+
+    // Own properties of GVnc-1.0.GVnc.AudioInterface
+
     static name: string
 }
-class AudioSample {
-    /* Fields of GVnc-1.0.GVnc.AudioSample */
+
+interface AudioSample {
+
+    // Own fields of GVnc-1.0.GVnc.AudioSample
+
     data: number
     length: number
     capacity: number
-    /* Methods of GVnc-1.0.GVnc.AudioSample */
+
+    // Owm methods of GVnc-1.0.GVnc.AudioSample
+
     /**
      * Allocate a new audio sample, initializing it with a copy
      * of the data in `sample`.
@@ -2354,38 +1298,100 @@ class AudioSample {
      * `sample`
      */
     free(): void
+}
+
+class AudioSample {
+
+    // Own properties of GVnc-1.0.GVnc.AudioSample
+
     static name: string
-    static new(capacity: number): AudioSample
-    constructor(capacity: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GVnc-1.0.GVnc.AudioSample
+
+    /**
+     * Allocate a new audio sample able to store `capacity`
+     * bytes of audio data.
+     * 
+     * The returned sample must be freed with
+     * vnc_audio_sample_free when no longer required.
+     * @constructor 
+     * @param capacity the sample size in bytes
+     */
+    constructor(capacity: number) 
+    /**
+     * Allocate a new audio sample able to store `capacity`
+     * bytes of audio data.
+     * 
+     * The returned sample must be freed with
+     * vnc_audio_sample_free when no longer required.
+     * @constructor 
+     * @param capacity the sample size in bytes
+     */
     static new(capacity: number): AudioSample
 }
-abstract class BaseAudioClass {
-    /* Fields of GVnc-1.0.GVnc.BaseAudioClass */
+
+interface BaseAudioClass {
+
+    // Own fields of GVnc-1.0.GVnc.BaseAudioClass
+
     parentClass: GObject.ObjectClass
     playbackStart: (audio: BaseAudio, format: AudioFormat) => boolean
     playbackStop: (audio: BaseAudio) => boolean
     playbackData: (audio: BaseAudio, sample: AudioSample) => boolean
+}
+
+abstract class BaseAudioClass {
+
+    // Own properties of GVnc-1.0.GVnc.BaseAudioClass
+
     static name: string
 }
+
+interface BaseAudioPrivate {
+}
+
 class BaseAudioPrivate {
+
+    // Own properties of GVnc-1.0.GVnc.BaseAudioPrivate
+
     static name: string
 }
-abstract class BaseFramebufferClass {
-    /* Fields of GVnc-1.0.GVnc.BaseFramebufferClass */
+
+interface BaseFramebufferClass {
+
+    // Own fields of GVnc-1.0.GVnc.BaseFramebufferClass
+
     parentClass: GObject.ObjectClass
     vncReserved: object[]
+}
+
+abstract class BaseFramebufferClass {
+
+    // Own properties of GVnc-1.0.GVnc.BaseFramebufferClass
+
     static name: string
 }
+
+interface BaseFramebufferPrivate {
+}
+
 class BaseFramebufferPrivate {
+
+    // Own properties of GVnc-1.0.GVnc.BaseFramebufferPrivate
+
     static name: string
 }
-class ColorMap {
-    /* Fields of GVnc-1.0.GVnc.ColorMap */
+
+interface ColorMap {
+
+    // Own fields of GVnc-1.0.GVnc.ColorMap
+
     offset: number
     size: number
     colors: ColorMapEntry
-    /* Methods of GVnc-1.0.GVnc.ColorMap */
+
+    // Owm methods of GVnc-1.0.GVnc.ColorMap
+
     /**
      * Allocate a new color map initializing it with a
      * copy of the data stored in `map`.
@@ -2411,21 +1417,62 @@ class ColorMap {
      * @param blue the new blue value
      */
     set(idx: number, red: number, green: number, blue: number): boolean
+}
+
+class ColorMap {
+
+    // Own properties of GVnc-1.0.GVnc.ColorMap
+
     static name: string
-    static new(offset: number, size: number): ColorMap
-    constructor(offset: number, size: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GVnc-1.0.GVnc.ColorMap
+
+    /**
+     * Allocate a new colour map object able to store colour
+     * map entries with indexes in the range `offset` to
+     * `offset` + `size`.
+     * 
+     * The color map must be freed with vnc_color_map_free
+     * when no longer required.
+     * @constructor 
+     * @param offset the offset at which the color map starts
+     * @param size the number of entries
+     */
+    constructor(offset: number, size: number) 
+    /**
+     * Allocate a new colour map object able to store colour
+     * map entries with indexes in the range `offset` to
+     * `offset` + `size`.
+     * 
+     * The color map must be freed with vnc_color_map_free
+     * when no longer required.
+     * @constructor 
+     * @param offset the offset at which the color map starts
+     * @param size the number of entries
+     */
     static new(offset: number, size: number): ColorMap
 }
-class ColorMapEntry {
-    /* Fields of GVnc-1.0.GVnc.ColorMapEntry */
+
+interface ColorMapEntry {
+
+    // Own fields of GVnc-1.0.GVnc.ColorMapEntry
+
     red: number
     green: number
     blue: number
+}
+
+class ColorMapEntry {
+
+    // Own properties of GVnc-1.0.GVnc.ColorMapEntry
+
     static name: string
 }
-abstract class ConnectionClass {
-    /* Fields of GVnc-1.0.GVnc.ConnectionClass */
+
+interface ConnectionClass {
+
+    // Own fields of GVnc-1.0.GVnc.ConnectionClass
+
     parentClass: GObject.ObjectClass
     vncCursorChanged: (conn: Connection, cursor: Cursor) => void
     vncPointerModeChanged: (conn: Connection, absPointer: boolean) => void
@@ -2448,22 +1495,54 @@ abstract class ConnectionClass {
     vncPowerControlFailed: (conn: Connection) => void
     vncDesktopRename: (conn: Connection, name: string) => void
     vncReserved: object[]
+}
+
+abstract class ConnectionClass {
+
+    // Own properties of GVnc-1.0.GVnc.ConnectionClass
+
     static name: string
 }
+
+interface ConnectionPrivate {
+}
+
 class ConnectionPrivate {
+
+    // Own properties of GVnc-1.0.GVnc.ConnectionPrivate
+
     static name: string
 }
-abstract class CursorClass {
-    /* Fields of GVnc-1.0.GVnc.CursorClass */
+
+interface CursorClass {
+
+    // Own fields of GVnc-1.0.GVnc.CursorClass
+
     parentClass: GObject.ObjectClass
     vncReserved: object[]
+}
+
+abstract class CursorClass {
+
+    // Own properties of GVnc-1.0.GVnc.CursorClass
+
     static name: string
 }
+
+interface CursorPrivate {
+}
+
 class CursorPrivate {
+
+    // Own properties of GVnc-1.0.GVnc.CursorPrivate
+
     static name: string
 }
-abstract class FramebufferInterface {
-    /* Fields of GVnc-1.0.GVnc.FramebufferInterface */
+
+interface FramebufferInterface {
+
+    // Own fields of GVnc-1.0.GVnc.FramebufferInterface
+
     parent: GObject.TypeInterface
     getWidth: (fb: Framebuffer) => number
     getHeight: (fb: Framebuffer) => number
@@ -2478,10 +1557,19 @@ abstract class FramebufferInterface {
     blt: (fb: Framebuffer, src: number, rowstride: number, x: number, y: number, width: number, height: number) => void
     rgb24Blt: (fb: Framebuffer, src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number) => void
     setColorMap: (fb: Framebuffer, map: ColorMap) => void
+}
+
+abstract class FramebufferInterface {
+
+    // Own properties of GVnc-1.0.GVnc.FramebufferInterface
+
     static name: string
 }
-class PixelFormat {
-    /* Fields of GVnc-1.0.GVnc.PixelFormat */
+
+interface PixelFormat {
+
+    // Own fields of GVnc-1.0.GVnc.PixelFormat
+
     bitsPerPixel: number
     depth: number
     byteOrder: number
@@ -2492,7 +1580,9 @@ class PixelFormat {
     redShift: number
     greenShift: number
     blueShift: number
-    /* Methods of GVnc-1.0.GVnc.PixelFormat */
+
+    // Owm methods of GVnc-1.0.GVnc.PixelFormat
+
     /**
      * Allocate a new VNC pixel format struct whose
      * contents is initialized with the data found
@@ -2505,11 +1595,33 @@ class PixelFormat {
      */
     free(): void
     match(other: PixelFormat): boolean
+}
+
+class PixelFormat {
+
+    // Own properties of GVnc-1.0.GVnc.PixelFormat
+
     static name: string
-    static new(): PixelFormat
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GVnc-1.0.GVnc.PixelFormat
+
+    /**
+     * Allocate a new VNC pixel format struct whose
+     * contents is initialized to all zeros. The
+     * struct must be released using vnc_pixel_format_free
+     * when no longer required
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Allocate a new VNC pixel format struct whose
+     * contents is initialized to all zeros. The
+     * struct must be released using vnc_pixel_format_free
+     * when no longer required
+     * @constructor 
+     */
     static new(): PixelFormat
 }
+
 }
 export default GVnc;

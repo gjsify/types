@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -25,6 +27,10 @@ import type GModule from './GModule-2.0';
 
 export namespace XdpGtk4 {
 
+/**
+ * Creates a new [struct`Parent]` from `window`.
+ * @param window a [class`Gtk`.Window]
+ */
 function parentNewGtk(window: Gtk.Window): Xdp.Parent
 }
 export default XdpGtk4;

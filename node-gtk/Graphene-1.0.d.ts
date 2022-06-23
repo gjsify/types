@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -230,34 +232,144 @@ const VEC3_LEN: number
  * 
  */
 const VEC4_LEN: number
+/**
+ * A degenerate #graphene_box_t that can only be expanded.
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxEmpty(): Box
+/**
+ * A degenerate #graphene_box_t that cannot be expanded.
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxInfinite(): Box
+/**
+ * A #graphene_box_t with the minimum vertex set at (-1, -1, -1) and the
+ * maximum vertex set at (0, 0, 0).
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxMinusOne(): Box
+/**
+ * A #graphene_box_t with the minimum vertex set at (0, 0, 0) and the
+ * maximum vertex set at (1, 1, 1).
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxOne(): Box
+/**
+ * A #graphene_box_t with the minimum vertex set at (-1, -1, -1) and the
+ * maximum vertex set at (1, 1, 1).
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxOneMinusOne(): Box
+/**
+ * A #graphene_box_t with both the minimum and maximum vertices set at (0, 0, 0).
+ * 
+ * The returned value is owned by Graphene and should not be modified or freed.
+ */
 function boxZero(): Box
+/**
+ * Retrieves a constant point with all three coordinates set to 0.
+ */
 function point3dZero(): Point3D
+/**
+ * Returns a point fixed at (0, 0).
+ */
 function pointZero(): Point
+/**
+ * Allocates a new #graphene_rect_t.
+ * 
+ * The contents of the returned rectangle are undefined.
+ */
 function rectAlloc(): Rect
+/**
+ * Returns a degenerate rectangle with origin fixed at (0, 0) and
+ * a size of 0, 0.
+ */
 function rectZero(): Rect
+/**
+ * A constant pointer to a zero #graphene_size_t, useful for
+ * equality checks and interpolations.
+ */
 function sizeZero(): Size
+/**
+ * Retrieves a constant vector with (1, 1) components.
+ */
 function vec2One(): Vec2
+/**
+ * Retrieves a constant vector with (1, 0) components.
+ */
 function vec2XAxis(): Vec2
+/**
+ * Retrieves a constant vector with (0, 1) components.
+ */
 function vec2YAxis(): Vec2
+/**
+ * Retrieves a constant vector with (0, 0) components.
+ */
 function vec2Zero(): Vec2
+/**
+ * Provides a constant pointer to a vector with three components,
+ * all sets to 1.
+ */
 function vec3One(): Vec3
+/**
+ * Provides a constant pointer to a vector with three components
+ * with values set to (1, 0, 0).
+ */
 function vec3XAxis(): Vec3
+/**
+ * Provides a constant pointer to a vector with three components
+ * with values set to (0, 1, 0).
+ */
 function vec3YAxis(): Vec3
+/**
+ * Provides a constant pointer to a vector with three components
+ * with values set to (0, 0, 1).
+ */
 function vec3ZAxis(): Vec3
+/**
+ * Provides a constant pointer to a vector with three components,
+ * all sets to 0.
+ */
 function vec3Zero(): Vec3
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with all its
+ * components set to 1.
+ */
 function vec4One(): Vec4
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with its
+ * components set to (0, 0, 0, 1).
+ */
 function vec4WAxis(): Vec4
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with its
+ * components set to (1, 0, 0, 0).
+ */
 function vec4XAxis(): Vec4
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with its
+ * components set to (0, 1, 0, 0).
+ */
 function vec4YAxis(): Vec4
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with its
+ * components set to (0, 0, 1, 0).
+ */
 function vec4ZAxis(): Vec4
+/**
+ * Retrieves a pointer to a #graphene_vec4_t with all its
+ * components set to 0.
+ */
 function vec4Zero(): Vec4
-class Box {
-    /* Methods of Graphene-1.0.Graphene.Box */
+interface Box {
+
+    // Owm methods of Graphene-1.0.Graphene.Box
+
     /**
      * Checks whether the #graphene_box_t `a` contains the given
      * #graphene_box_t `b`.
@@ -342,7 +454,7 @@ class Box {
      * @param min the coordinates of the minimum vertex
      * @param max the coordinates of the maximum vertex
      */
-    init(min?: Point3D | null, max?: Point3D | null): Box
+    init(min: Point3D | null, max: Point3D | null): Box
     /**
      * Initializes the given #graphene_box_t with the vertices of
      * another #graphene_box_t.
@@ -364,7 +476,7 @@ class Box {
      * @param min the coordinates of the minimum vertex
      * @param max the coordinates of the maximum vertex
      */
-    initFromVec3(min?: Vec3 | null, max?: Vec3 | null): Box
+    initFromVec3(min: Vec3 | null, max: Vec3 | null): Box
     /**
      * Initializes the given #graphene_box_t with the given array
      * of vertices.
@@ -381,14 +493,33 @@ class Box {
      * initialized with graphene_box_empty().
      * @param b a #graphene_box_t
      */
-    intersection(b: Box): [ /* returnType */ boolean, /* res */ Box | null ]
+    intersection(b: Box): [ /* returnType */ boolean, /* res */ Box ]
     /**
      * Unions the two given #graphene_box_t.
      * @param b the box to union to `a`
      */
     union(b: Box): /* res */ Box
+}
+
+/**
+ * A 3D box, described as the volume between a minimum and
+ * a maximum vertices.
+ * @record 
+ */
+class Box {
+
+    // Own properties of Graphene-1.0.Graphene.Box
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Box
+
+    /**
+     * Allocates a new #graphene_box_t.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Box
     /**
      * A degenerate #graphene_box_t that can only be expanded.
@@ -430,8 +561,11 @@ class Box {
      */
     static zero(): Box
 }
-class Euler {
-    /* Methods of Graphene-1.0.Graphene.Euler */
+
+interface Euler {
+
+    // Owm methods of Graphene-1.0.Graphene.Euler
+
     /**
      * Checks if two #graphene_euler_t are equal.
      * @param b a #graphene_euler_t
@@ -501,7 +635,7 @@ class Euler {
      * to calling graphene_euler_init() with all angles set to 0.
      * @param src a #graphene_euler_t
      */
-    initFromEuler(src?: Euler | null): Euler
+    initFromEuler(src: Euler | null): Euler
     /**
      * Initializes a #graphene_euler_t using the given rotation matrix.
      * 
@@ -584,12 +718,36 @@ class Euler {
      * #graphene_vec3_t with them.
      */
     toVec3(): /* res */ Vec3
+}
+
+/**
+ * Describe a rotation using Euler angles.
+ * 
+ * The contents of the #graphene_euler_t structure are private
+ * and should never be accessed directly.
+ * @record 
+ */
+class Euler {
+
+    // Own properties of Graphene-1.0.Graphene.Euler
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Euler
+
+    /**
+     * Allocates a new #graphene_euler_t.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Euler
 }
-class Frustum {
-    /* Methods of Graphene-1.0.Graphene.Frustum */
+
+interface Frustum {
+
+    // Owm methods of Graphene-1.0.Graphene.Frustum
+
     /**
      * Checks whether a point is inside the volume defined by the given
      * #graphene_frustum_t.
@@ -643,12 +801,36 @@ class Frustum {
      * @param sphere a #graphene_sphere_t
      */
     intersectsSphere(sphere: Sphere): boolean
+}
+
+/**
+ * A 3D volume delimited by 2D clip planes.
+ * 
+ * The contents of the `graphene_frustum_t` are private, and should not be
+ * modified directly.
+ * @record 
+ */
+class Frustum {
+
+    // Own properties of Graphene-1.0.Graphene.Frustum
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Frustum
+
+    /**
+     * Allocates a new #graphene_frustum_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Frustum
 }
-class Matrix {
-    /* Methods of Graphene-1.0.Graphene.Matrix */
+
+interface Matrix {
+
+    // Owm methods of Graphene-1.0.Graphene.Matrix
+
     /**
      * Decomposes a transformation matrix into its component transformations.
      * 
@@ -1156,12 +1338,34 @@ class Matrix {
      * @param bounds the bounds of the transformation
      */
     untransformPoint(p: Point, bounds: Rect): [ /* returnType */ boolean, /* res */ Point ]
+}
+
+/**
+ * A structure capable of holding a 4x4 matrix.
+ * 
+ * The contents of the #graphene_matrix_t structure are private and
+ * should never be accessed directly.
+ * @record 
+ */
+class Matrix {
+
+    // Own properties of Graphene-1.0.Graphene.Matrix
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Matrix
+
+    /**
+     * Allocates a new #graphene_matrix_t.
+     * @constructor 
+     */
     static alloc(): Matrix
 }
-class Plane {
-    /* Methods of Graphene-1.0.Graphene.Plane */
+
+interface Plane {
+
+    // Owm methods of Graphene-1.0.Graphene.Plane
+
     /**
      * Computes the distance of `point` from a #graphene_plane_t.
      * @param point a #graphene_point3d_t
@@ -1245,27 +1449,55 @@ class Plane {
      * @param matrix a #graphene_matrix_t
      * @param normalMatrix a #graphene_matrix_t
      */
-    transform(matrix: Matrix, normalMatrix?: Matrix | null): /* res */ Plane
+    transform(matrix: Matrix, normalMatrix: Matrix | null): /* res */ Plane
+}
+
+/**
+ * A 2D plane that extends infinitely in a 3D volume.
+ * 
+ * The contents of the `graphene_plane_t` are private, and should not be
+ * modified directly.
+ * @record 
+ */
+class Plane {
+
+    // Own properties of Graphene-1.0.Graphene.Plane
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Plane
+
+    /**
+     * Allocates a new #graphene_plane_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Plane
 }
-class Point {
-    /* Fields of Graphene-1.0.Graphene.Point */
+
+interface Point {
+
+    // Own fields of Graphene-1.0.Graphene.Point
+
     /**
      * the X coordinate of the point
+     * @field 
      */
     x: number
     /**
      * the Y coordinate of the point
+     * @field 
      */
     y: number
-    /* Methods of Graphene-1.0.Graphene.Point */
+
+    // Owm methods of Graphene-1.0.Graphene.Point
+
     /**
      * Computes the distance between `a` and `b`.
      * @param b a #graphene_point_t
      */
-    distance(b: Point): [ /* returnType */ number, /* dX */ number | null, /* dY */ number | null ]
+    distance(b: Point): [ /* returnType */ number, /* dX */ number, /* dY */ number ]
     /**
      * Checks if the two points `a` and `b` point to the same
      * coordinates.
@@ -1317,29 +1549,74 @@ class Point {
      * #graphene_vec2_t.
      */
     toVec2(): /* v */ Vec2
+}
+
+/**
+ * A point with two coordinates.
+ * @record 
+ */
+class Point {
+
+    // Own properties of Graphene-1.0.Graphene.Point
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Point
+
+    /**
+     * Allocates a new #graphene_point_t structure.
+     * 
+     * The coordinates of the returned point are (0, 0).
+     * 
+     * It's possible to chain this function with graphene_point_init()
+     * or graphene_point_init_from_point(), e.g.:
+     * 
+     * 
+     * ```c
+     *   graphene_point_t *
+     *   point_new (float x, float y)
+     *   {
+     *     return graphene_point_init (graphene_point_alloc (), x, y);
+     *   }
+     * 
+     *   graphene_point_t *
+     *   point_copy (const graphene_point_t *p)
+     *   {
+     *     return graphene_point_init_from_point (graphene_point_alloc (), p);
+     *   }
+     * ```
+     * 
+     * @constructor 
+     */
     static alloc(): Point
     /**
      * Returns a point fixed at (0, 0).
      */
     static zero(): Point
 }
-class Point3D {
-    /* Fields of Graphene-1.0.Graphene.Point3D */
+
+interface Point3D {
+
+    // Own fields of Graphene-1.0.Graphene.Point3D
+
     /**
      * the X coordinate
+     * @field 
      */
     x: number
     /**
      * the Y coordinate
+     * @field 
      */
     y: number
     /**
      * the Z coordinate
+     * @field 
      */
     z: number
-    /* Methods of Graphene-1.0.Graphene.Point3D */
+
+    // Owm methods of Graphene-1.0.Graphene.Point3D
+
     /**
      * Computes the cross product of the two given #graphene_point3d_t.
      * @param b a #graphene_point3d_t
@@ -1349,7 +1626,7 @@ class Point3D {
      * Computes the distance between the two given #graphene_point3d_t.
      * @param b a #graphene_point3d_t
      */
-    distance(b: Point3D): [ /* returnType */ number, /* delta */ Vec3 | null ]
+    distance(b: Point3D): [ /* returnType */ number, /* delta */ Vec3 ]
     /**
      * Computes the dot product of the two given #graphene_point3d_t.
      * @param b a #graphene_point3d_t
@@ -1429,16 +1706,35 @@ class Point3D {
      * #graphene_vec3_t.
      */
     toVec3(): /* v */ Vec3
+}
+
+/**
+ * A point with three components: X, Y, and Z.
+ * @record 
+ */
+class Point3D {
+
+    // Own properties of Graphene-1.0.Graphene.Point3D
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Point3D
+
+    /**
+     * Allocates a #graphene_point3d_t structure.
+     * @constructor 
+     */
     static alloc(): Point3D
     /**
      * Retrieves a constant point with all three coordinates set to 0.
      */
     static zero(): Point3D
 }
-class Quad {
-    /* Methods of Graphene-1.0.Graphene.Quad */
+
+interface Quad {
+
+    // Owm methods of Graphene-1.0.Graphene.Quad
+
     /**
      * Computes the bounding rectangle of `q` and places it into `r`.
      */
@@ -1476,12 +1772,36 @@ class Quad {
      * @param r a #graphene_rect_t
      */
     initFromRect(r: Rect): Quad
+}
+
+/**
+ * A 4 vertex quadrilateral, as represented by four #graphene_point_t.
+ * 
+ * The contents of a #graphene_quad_t are private and should never be
+ * accessed directly.
+ * @record 
+ */
+class Quad {
+
+    // Own properties of Graphene-1.0.Graphene.Quad
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Quad
+
+    /**
+     * Allocates a new #graphene_quad_t instance.
+     * 
+     * The contents of the returned instance are undefined.
+     * @constructor 
+     */
     static alloc(): Quad
 }
-class Quaternion {
-    /* Methods of Graphene-1.0.Graphene.Quaternion */
+
+interface Quaternion {
+
+    // Owm methods of Graphene-1.0.Graphene.Quaternion
+
     /**
      * Adds two #graphene_quaternion_t `a` and `b`.
      * @param b a #graphene_quaternion_t
@@ -1601,7 +1921,7 @@ class Quaternion {
      * on the [Euler angles](http://en.wikipedia.org/wiki/Euler_angles)
      * on each axis.
      */
-    toAngles(): [ /* degX */ number | null, /* degY */ number | null, /* degZ */ number | null ]
+    toAngles(): [ /* degX */ number, /* degY */ number, /* degZ */ number ]
     /**
      * Converts a quaternion into a transformation matrix expressing
      * the rotation defined by the #graphene_quaternion_t.
@@ -1612,18 +1932,42 @@ class Quaternion {
      * on the [Euler angles](http://en.wikipedia.org/wiki/Euler_angles)
      * on each axis.
      */
-    toRadians(): [ /* radX */ number | null, /* radY */ number | null, /* radZ */ number | null ]
+    toRadians(): [ /* radX */ number, /* radY */ number, /* radZ */ number ]
     /**
      * Copies the components of a #graphene_quaternion_t into a
      * #graphene_vec4_t.
      */
     toVec4(): /* res */ Vec4
+}
+
+/**
+ * A quaternion.
+ * 
+ * The contents of the #graphene_quaternion_t structure are private
+ * and should never be accessed directly.
+ * @record 
+ */
+class Quaternion {
+
+    // Own properties of Graphene-1.0.Graphene.Quaternion
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Quaternion
+
+    /**
+     * Allocates a new #graphene_quaternion_t.
+     * 
+     * The contents of the returned value are undefined.
+     * @constructor 
+     */
     static alloc(): Quaternion
 }
-class Ray {
-    /* Methods of Graphene-1.0.Graphene.Ray */
+
+interface Ray {
+
+    // Owm methods of Graphene-1.0.Graphene.Ray
+
     /**
      * Checks whether the two given #graphene_ray_t are equal.
      * @param b a #graphene_ray_t
@@ -1677,7 +2021,7 @@ class Ray {
      * @param origin the origin of the ray
      * @param direction the direction vector
      */
-    init(origin?: Point3D | null, direction?: Vec3 | null): Ray
+    init(origin: Point3D | null, direction: Vec3 | null): Ray
     /**
      * Initializes the given #graphene_ray_t using the origin and direction
      * values of another #graphene_ray_t.
@@ -1689,7 +2033,7 @@ class Ray {
      * @param origin a #graphene_vec3_t
      * @param direction a #graphene_vec3_t
      */
-    initFromVec3(origin?: Vec3 | null, direction?: Vec3 | null): Ray
+    initFromVec3(origin: Vec3 | null, direction: Vec3 | null): Ray
     /**
      * Intersects the given #graphene_ray_t `r` with the given
      * #graphene_box_t `b`.
@@ -1732,21 +2076,49 @@ class Ray {
      * @param t a #graphene_triangle_t
      */
     intersectsTriangle(t: Triangle): boolean
+}
+
+/**
+ * A ray emitted from an origin in a given direction.
+ * 
+ * The contents of the `graphene_ray_t` structure are private, and should not
+ * be modified directly.
+ * @record 
+ */
+class Ray {
+
+    // Own properties of Graphene-1.0.Graphene.Ray
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Ray
+
+    /**
+     * Allocates a new #graphene_ray_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Ray
 }
-class Rect {
-    /* Fields of Graphene-1.0.Graphene.Rect */
+
+interface Rect {
+
+    // Own fields of Graphene-1.0.Graphene.Rect
+
     /**
      * the coordinates of the origin of the rectangle
+     * @field 
      */
     origin: Point
     /**
      * the size of the rectangle
+     * @field 
      */
     size: Size
-    /* Methods of Graphene-1.0.Graphene.Rect */
+
+    // Owm methods of Graphene-1.0.Graphene.Rect
+
     /**
      * Checks whether a #graphene_rect_t contains the given coordinates.
      * @param p a #graphene_point_t
@@ -1893,7 +2265,7 @@ class Rect {
      * a degenerate rectangle with origin in (0, 0) and a size of 0.
      * @param b a #graphene_rect_t
      */
-    intersection(b: Rect): [ /* returnType */ boolean, /* res */ Rect | null ]
+    intersection(b: Rect): [ /* returnType */ boolean, /* res */ Rect ]
     /**
      * Normalizes the passed rectangle.
      * 
@@ -1984,8 +2356,31 @@ class Rect {
      * @param b a #graphene_rect_t
      */
     union(b: Rect): /* res */ Rect
+}
+
+/**
+ * The location and size of a rectangle region.
+ * 
+ * The width and height of a #graphene_rect_t can be negative; for instance,
+ * a #graphene_rect_t with an origin of [ 0, 0 ] and a size of [ 10, 10 ] is
+ * equivalent to a #graphene_rect_t with an origin of [ 10, 10 ] and a size
+ * of [ -10, -10 ].
+ * 
+ * Application code can normalize rectangles using graphene_rect_normalize();
+ * this function will ensure that the width and height of a rectangle are
+ * positive values. All functions taking a #graphene_rect_t as an argument
+ * will internally operate on a normalized copy; all functions returning a
+ * #graphene_rect_t will always return a normalized rectangle.
+ * @record 
+ */
+class Rect {
+
+    // Own properties of Graphene-1.0.Graphene.Rect
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Rect
+
     /**
      * Allocates a new #graphene_rect_t.
      * 
@@ -1998,23 +2393,44 @@ class Rect {
      */
     static zero(): Rect
 }
+
+interface Simd4F {
+}
+
 class Simd4F {
+
+    // Own properties of Graphene-1.0.Graphene.Simd4F
+
     static name: string
 }
+
+interface Simd4X4F {
+}
+
 class Simd4X4F {
+
+    // Own properties of Graphene-1.0.Graphene.Simd4X4F
+
     static name: string
 }
-class Size {
-    /* Fields of Graphene-1.0.Graphene.Size */
+
+interface Size {
+
+    // Own fields of Graphene-1.0.Graphene.Size
+
     /**
      * the width
+     * @field 
      */
     width: number
     /**
      * the height
+     * @field 
      */
     height: number
-    /* Methods of Graphene-1.0.Graphene.Size */
+
+    // Owm methods of Graphene-1.0.Graphene.Size
+
     /**
      * Checks whether the two give #graphene_size_t are equal.
      * @param b a #graphene_size_t
@@ -2048,8 +2464,26 @@ class Size {
      * @param factor the scaling factor
      */
     scale(factor: number): /* res */ Size
+}
+
+/**
+ * A size.
+ * @record 
+ */
+class Size {
+
+    // Own properties of Graphene-1.0.Graphene.Size
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Size
+
+    /**
+     * Allocates a new #graphene_size_t.
+     * 
+     * The contents of the returned value are undefined.
+     * @constructor 
+     */
     static alloc(): Size
     /**
      * A constant pointer to a zero #graphene_size_t, useful for
@@ -2057,8 +2491,11 @@ class Size {
      */
     static zero(): Size
 }
-class Sphere {
-    /* Methods of Graphene-1.0.Graphene.Sphere */
+
+interface Sphere {
+
+    // Owm methods of Graphene-1.0.Graphene.Sphere
+
     /**
      * Checks whether the given `point` is contained in the volume
      * of a #graphene_sphere_t.
@@ -2108,7 +2545,7 @@ class Sphere {
      * @param points an array of #graphene_point3d_t
      * @param center the center of the sphere
      */
-    initFromPoints(points: Point3D[], center?: Point3D | null): Sphere
+    initFromPoints(points: Point3D[], center: Point3D | null): Sphere
     /**
      * Initializes the given #graphene_sphere_t using the given array
      * of 3D coordinates so that the sphere includes them.
@@ -2118,7 +2555,7 @@ class Sphere {
      * @param vectors an array of #graphene_vec3_t
      * @param center the center of the sphere
      */
-    initFromVectors(vectors: Vec3[], center?: Point3D | null): Sphere
+    initFromVectors(vectors: Vec3[], center: Point3D | null): Sphere
     /**
      * Checks whether the sphere has a zero radius.
      */
@@ -2129,12 +2566,33 @@ class Sphere {
      * @param point the coordinates of the translation
      */
     translate(point: Point3D): /* res */ Sphere
+}
+
+/**
+ * A sphere, represented by its center and radius.
+ * @record 
+ */
+class Sphere {
+
+    // Own properties of Graphene-1.0.Graphene.Sphere
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Sphere
+
+    /**
+     * Allocates a new #graphene_sphere_t.
+     * 
+     * The contents of the newly allocated structure are undefined.
+     * @constructor 
+     */
     static alloc(): Sphere
 }
-class Triangle {
-    /* Methods of Graphene-1.0.Graphene.Triangle */
+
+interface Triangle {
+
+    // Owm methods of Graphene-1.0.Graphene.Triangle
+
     /**
      * Checks whether the given triangle `t` contains the point `p`.
      * @param p a #graphene_point3d_t
@@ -2172,7 +2630,7 @@ class Triangle {
      *  - `res.y = v`
      * @param p a #graphene_point3d_t
      */
-    getBarycoords(p?: Point3D | null): [ /* returnType */ boolean, /* res */ Vec2 ]
+    getBarycoords(p: Point3D | null): [ /* returnType */ boolean, /* res */ Vec2 ]
     /**
      * Computes the bounding box of the given #graphene_triangle_t.
      */
@@ -2196,7 +2654,7 @@ class Triangle {
      * Retrieves the three vertices of the given #graphene_triangle_t and returns
      * their coordinates as #graphene_point3d_t.
      */
-    getPoints(): [ /* a */ Point3D | null, /* b */ Point3D | null, /* c */ Point3D | null ]
+    getPoints(): [ /* a */ Point3D, /* b */ Point3D, /* c */ Point3D ]
     /**
      * Computes the UV coordinates of the given point `p`.
      * 
@@ -2219,7 +2677,7 @@ class Triangle {
     /**
      * Retrieves the three vertices of the given #graphene_triangle_t.
      */
-    getVertices(): [ /* a */ Vec3 | null, /* b */ Vec3 | null, /* c */ Vec3 | null ]
+    getVertices(): [ /* a */ Vec3, /* b */ Vec3, /* c */ Vec3 ]
     /**
      * Initializes a #graphene_triangle_t using the three given arrays
      * of floating point values, each representing the coordinates of
@@ -2235,20 +2693,41 @@ class Triangle {
      * @param b a #graphene_point3d_t
      * @param c a #graphene_point3d_t
      */
-    initFromPoint3d(a?: Point3D | null, b?: Point3D | null, c?: Point3D | null): Triangle
+    initFromPoint3d(a: Point3D | null, b: Point3D | null, c: Point3D | null): Triangle
     /**
      * Initializes a #graphene_triangle_t using the three given vectors.
      * @param a a #graphene_vec3_t
      * @param b a #graphene_vec3_t
      * @param c a #graphene_vec3_t
      */
-    initFromVec3(a?: Vec3 | null, b?: Vec3 | null, c?: Vec3 | null): Triangle
+    initFromVec3(a: Vec3 | null, b: Vec3 | null, c: Vec3 | null): Triangle
+}
+
+/**
+ * A triangle.
+ * @record 
+ */
+class Triangle {
+
+    // Own properties of Graphene-1.0.Graphene.Triangle
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Triangle
+
+    /**
+     * Allocates a new #graphene_triangle_t.
+     * 
+     * The contents of the returned structure are undefined.
+     * @constructor 
+     */
     static alloc(): Triangle
 }
-class Vec2 {
-    /* Methods of Graphene-1.0.Graphene.Vec2 */
+
+interface Vec2 {
+
+    // Owm methods of Graphene-1.0.Graphene.Vec2
+
     /**
      * Adds each component of the two passed vectors and places
      * each result into the components of `res`.
@@ -2361,8 +2840,31 @@ class Vec2 {
      * Stores the components of `v` into an array.
      */
     toFloat(): /* dest */ number[]
+}
+
+/**
+ * A structure capable of holding a vector with two dimensions, x and y.
+ * 
+ * The contents of the #graphene_vec2_t structure are private and should
+ * never be accessed directly.
+ * @record 
+ */
+class Vec2 {
+
+    // Own properties of Graphene-1.0.Graphene.Vec2
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Vec2
+
+    /**
+     * Allocates a new #graphene_vec2_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * 
+     * Use graphene_vec2_init() to initialize the vector.
+     * @constructor 
+     */
     static alloc(): Vec2
     /**
      * Retrieves a constant vector with (1, 1) components.
@@ -2381,8 +2883,11 @@ class Vec2 {
      */
     static zero(): Vec2
 }
-class Vec3 {
-    /* Methods of Graphene-1.0.Graphene.Vec3 */
+
+interface Vec3 {
+
+    // Owm methods of Graphene-1.0.Graphene.Vec3
+
     /**
      * Adds each component of the two given vectors.
      * @param b a #graphene_vec3_t
@@ -2530,8 +3035,31 @@ class Vec3 {
      * Copies the components of a #graphene_vec3_t into the given array.
      */
     toFloat(): /* dest */ number[]
+}
+
+/**
+ * A structure capable of holding a vector with three dimensions: x, y, and z.
+ * 
+ * The contents of the #graphene_vec3_t structure are private and should
+ * never be accessed directly.
+ * @record 
+ */
+class Vec3 {
+
+    // Own properties of Graphene-1.0.Graphene.Vec3
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Vec3
+
+    /**
+     * Allocates a new #graphene_vec3_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * 
+     * Use graphene_vec3_init() to initialize the vector.
+     * @constructor 
+     */
     static alloc(): Vec3
     /**
      * Provides a constant pointer to a vector with three components,
@@ -2559,8 +3087,11 @@ class Vec3 {
      */
     static zero(): Vec3
 }
-class Vec4 {
-    /* Methods of Graphene-1.0.Graphene.Vec4 */
+
+interface Vec4 {
+
+    // Owm methods of Graphene-1.0.Graphene.Vec4
+
     /**
      * Adds each component of the two given vectors.
      * @param b a #graphene_vec4_t
@@ -2708,8 +3239,31 @@ class Vec4 {
      * of floating point values.
      */
     toFloat(): /* dest */ number[]
+}
+
+/**
+ * A structure capable of holding a vector with four dimensions: x, y, z, and w.
+ * 
+ * The contents of the #graphene_vec4_t structure are private and should
+ * never be accessed directly.
+ * @record 
+ */
+class Vec4 {
+
+    // Own properties of Graphene-1.0.Graphene.Vec4
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Graphene-1.0.Graphene.Vec4
+
+    /**
+     * Allocates a new #graphene_vec4_t structure.
+     * 
+     * The contents of the returned structure are undefined.
+     * 
+     * Use graphene_vec4_init() to initialize the vector.
+     * @constructor 
+     */
     static alloc(): Vec4
     /**
      * Retrieves a pointer to a #graphene_vec4_t with all its
@@ -2742,5 +3296,6 @@ class Vec4 {
      */
     static zero(): Vec4
 }
+
 }
 export default Graphene;

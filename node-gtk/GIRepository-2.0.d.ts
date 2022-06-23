@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -345,6 +347,7 @@ enum nvokeError {
 }
 /**
  * Flags for a #GIFieldInfo.
+ * @bitfield 
  */
 enum FieldInfoFlags {
     /**
@@ -358,6 +361,7 @@ enum FieldInfoFlags {
 }
 /**
  * Flags for a #GIFunctionInfo struct.
+ * @bitfield 
  */
 enum FunctionInfoFlags {
     /**
@@ -387,6 +391,7 @@ enum FunctionInfoFlags {
 }
 /**
  * Flags that control how a typelib is loaded.
+ * @bitfield 
  */
 enum RepositoryLoadFlags {
     /**
@@ -396,6 +401,7 @@ enum RepositoryLoadFlags {
 }
 /**
  * Flags of a #GIVFuncInfo struct.
+ * @bitfield 
  */
 enum VFuncInfoFlags {
     /**
@@ -431,158 +437,981 @@ const MINOR_VERSION: number
  * TODO
  */
 const TYPE_TAG_N_TYPES: number
+/**
+ * Obtain the index of the user data argument. This is only valid
+ * for arguments which are callbacks.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetClosure(info: ArgInfo): number
+/**
+ * Obtains the index of the #GDestroyNotify argument. This is only valid
+ * for arguments which are callbacks.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetDestroy(info: ArgInfo): number
+/**
+ * Obtain the direction of the argument. Check #GIDirection for possible
+ * direction values.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetDirection(info: ArgInfo): Direction
+/**
+ * Obtain the ownership transfer for this argument.
+ * #GITransfer contains a list of possible values.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetOwnershipTransfer(info: ArgInfo): Transfer
+/**
+ * Obtain the scope type for this argument. The scope type explains
+ * how a callback is going to be invoked, most importantly when
+ * the resources required to invoke it can be freed.
+ * #GIScopeType contains a list of possible values.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetScope(info: ArgInfo): ScopeType
+/**
+ * Obtain the type information for `info`.
+ * @param info a #GIArgInfo
+ */
 function argInfoGetType(info: ArgInfo): TypeInfo
+/**
+ * Obtain if the argument is a pointer to a struct or object that will
+ * receive an output of a function.  The default assumption for
+ * %GI_DIRECTION_OUT arguments which have allocation is that the
+ * callee allocates; if this is %TRUE, then the caller must allocate.
+ * @param info a #GIArgInfo
+ */
 function argInfoIsCallerAllocates(info: ArgInfo): boolean
+/**
+ * Obtain if the argument is optional.  For 'out' arguments this means
+ * that you can pass %NULL in order to ignore the result.
+ * @param info a #GIArgInfo
+ */
 function argInfoIsOptional(info: ArgInfo): boolean
+/**
+ * Obtain if the argument is a return value. It can either be a
+ * parameter or a return value.
+ * @param info a #GIArgInfo
+ */
 function argInfoIsReturnValue(info: ArgInfo): boolean
+/**
+ * Obtain if an argument is only useful in C.
+ * @param info a #GIArgInfo
+ */
 function argInfoIsSkip(info: ArgInfo): boolean
+/**
+ * Obtain information about a the type of given argument `info;` this
+ * function is a variant of g_arg_info_get_type() designed for stack
+ * allocation.
+ * 
+ * The initialized `type` must not be referenced after `info` is deallocated.
+ * @param info a #GIArgInfo
+ */
 function argInfoLoadType(info: ArgInfo): /* type */ TypeInfo
+/**
+ * Obtain if the type of the argument includes the possibility of %NULL.
+ * For 'in' values this means that %NULL is a valid value.  For 'out'
+ * values, this means that %NULL may be returned.
+ * 
+ * See also g_arg_info_is_optional().
+ * @param info a #GIArgInfo
+ */
 function argInfoMayBeNull(info: ArgInfo): boolean
+/**
+ * TODO
+ * @param info a #GICallableInfo
+ */
 function callableInfoCanThrowGerror(info: CallableInfo): boolean
+/**
+ * Obtain information about a particular argument of this callable.
+ * @param info a #GICallableInfo
+ * @param n the argument index to fetch
+ */
 function callableInfoGetArg(info: CallableInfo, n: number): ArgInfo
+/**
+ * See whether the caller owns the return value of this callable.
+ * #GITransfer contains a list of possible transfer values.
+ * @param info a #GICallableInfo
+ */
 function callableInfoGetCallerOwns(info: CallableInfo): Transfer
+/**
+ * Obtains the ownership transfer for the instance argument.
+ * #GITransfer contains a list of possible transfer values.
+ * @param info a #GICallableInfo
+ */
 function callableInfoGetInstanceOwnershipTransfer(info: CallableInfo): Transfer
+/**
+ * Obtain the number of arguments (both IN and OUT) for this callable.
+ * @param info a #GICallableInfo
+ */
 function callableInfoGetNArgs(info: CallableInfo): number
+/**
+ * Retrieve an arbitrary attribute associated with the return value.
+ * @param info a #GICallableInfo
+ * @param name a freeform string naming an attribute
+ */
 function callableInfoGetReturnAttribute(info: CallableInfo, name: string): string
+/**
+ * Obtain the return type of a callable item as a #GITypeInfo.
+ * @param info a #GICallableInfo
+ */
 function callableInfoGetReturnType(info: CallableInfo): TypeInfo
+/**
+ * TODO
+ * @param info TODO
+ * @param function_ TODO
+ * @param inArgs TODO
+ * @param outArgs TODO
+ * @param returnValue TODO
+ * @param isMethod TODO
+ * @param throws TODO
+ */
 function callableInfoInvoke(info: CallableInfo, function_: object | null, inArgs: Argument[], outArgs: Argument[], returnValue: Argument, isMethod: boolean, throws: boolean): boolean
+/**
+ * Determines if the callable info is a method. For #GIVFuncInfo<!-- -->s,
+ * #GICallbackInfo<!-- -->s, and #GISignalInfo<!-- -->s,
+ * this is always true. Otherwise, this looks at the %GI_FUNCTION_IS_METHOD
+ * flag on the #GIFunctionInfo.
+ * 
+ * Concretely, this function returns whether g_callable_info_get_n_args()
+ * matches the number of arguments in the raw C method. For methods, there
+ * is one more C argument than is exposed by introspection: the "self"
+ * or "this" object.
+ * @param info a #GICallableInfo
+ */
 function callableInfoIsMethod(info: CallableInfo): boolean
+/**
+ * Iterate over all attributes associated with the return value.  The
+ * iterator structure is typically stack allocated, and must have its
+ * first member initialized to %NULL.
+ * 
+ * Both the `name` and `value` should be treated as constants
+ * and must not be freed.
+ * 
+ * See g_base_info_iterate_attributes() for an example of how to use a
+ * similar API.
+ * @param info a #GICallableInfo
+ * @param iterator a #GIAttributeIter structure, must be initialized; see below
+ */
 function callableInfoIterateReturnAttributes(info: CallableInfo, iterator: AttributeIter): [ /* returnType */ boolean, /* iterator */ AttributeIter, /* name */ string, /* value */ string ]
+/**
+ * Obtain information about a particular argument of this callable; this
+ * function is a variant of g_callable_info_get_arg() designed for stack
+ * allocation.
+ * 
+ * The initialized `arg` must not be referenced after `info` is deallocated.
+ * @param info a #GICallableInfo
+ * @param n the argument index to fetch
+ */
 function callableInfoLoadArg(info: CallableInfo, n: number): /* arg */ ArgInfo
+/**
+ * Obtain information about a return value of callable; this
+ * function is a variant of g_callable_info_get_return_type() designed for stack
+ * allocation.
+ * 
+ * The initialized `type` must not be referenced after `info` is deallocated.
+ * @param info a #GICallableInfo
+ */
 function callableInfoLoadReturnType(info: CallableInfo): /* type */ TypeInfo
+/**
+ * See if a callable could return %NULL.
+ * @param info a #GICallableInfo
+ */
 function callableInfoMayReturnNull(info: CallableInfo): boolean
+/**
+ * See if a callable's return value is only useful in C.
+ * @param info a #GICallableInfo
+ */
 function callableInfoSkipReturn(info: CallableInfo): boolean
-function cclosureMarshalGeneric(closure: Function, returnGvalue: any, nParamValues: number, paramValues: any, invocationHint?: object | null, marshalData?: object | null): void
+function cclosureMarshalGeneric(closure: GObject.TClosure, returnGvalue: any, nParamValues: number, paramValues: any, invocationHint: object | null, marshalData: object | null): void
+/**
+ * Obtain the type of the constant as a #GITypeInfo.
+ * @param info a #GIConstantInfo
+ */
 function constantInfoGetType(info: ConstantInfo): TypeInfo
+/**
+ * Obtain the string form of the quark for the error domain associated with
+ * this enum, if any.
+ * @param info a #GIEnumInfo
+ */
 function enumInfoGetErrorDomain(info: EnumInfo): string
+/**
+ * Obtain an enum type method at index `n`.
+ * @param info a #GIEnumInfo
+ * @param n index of method to get
+ */
 function enumInfoGetMethod(info: EnumInfo, n: number): FunctionInfo
+/**
+ * Obtain the number of methods that this enum type has.
+ * @param info a #GIEnumInfo
+ */
 function enumInfoGetNMethods(info: EnumInfo): number
+/**
+ * Obtain the number of values this enumeration contains.
+ * @param info a #GIEnumInfo
+ */
 function enumInfoGetNValues(info: EnumInfo): number
+/**
+ * Obtain the tag of the type used for the enum in the C ABI. This will
+ * will be a signed or unsigned integral type.
+ * 
+ * Note that in the current implementation the width of the type is
+ * computed correctly, but the signed or unsigned nature of the type
+ * may not match the sign of the type used by the C compiler.
+ * @param info a #GIEnumInfo
+ */
 function enumInfoGetStorageType(info: EnumInfo): TypeTag
+/**
+ * Obtain a value for this enumeration.
+ * @param info a #GIEnumInfo
+ * @param n index of value to fetch
+ */
 function enumInfoGetValue(info: EnumInfo, n: number): ValueInfo
+/**
+ * Obtain the flags for this #GIFieldInfo. See #GIFieldInfoFlags for possible
+ * flag values.
+ * @param info a #GIFieldInfo
+ */
 function fieldInfoGetFlags(info: FieldInfo): FieldInfoFlags
+/**
+ * Obtain the offset in bytes of the field member, this is relative
+ * to the beginning of the struct or union.
+ * @param info a #GIFieldInfo
+ */
 function fieldInfoGetOffset(info: FieldInfo): number
+/**
+ * Obtain the size in bits of the field member, this is how
+ * much space you need to allocate to store the field.
+ * @param info a #GIFieldInfo
+ */
 function fieldInfoGetSize(info: FieldInfo): number
+/**
+ * Obtain the type of a field as a #GITypeInfo.
+ * @param info a #GIFieldInfo
+ */
 function fieldInfoGetType(info: FieldInfo): TypeInfo
+/**
+ * Obtain the #GIFunctionInfoFlags for the `info`.
+ * @param info a #GIFunctionInfo
+ */
 function functionInfoGetFlags(info: FunctionInfo): FunctionInfoFlags
+/**
+ * Obtain the property associated with this #GIFunctionInfo.
+ * Only #GIFunctionInfo with the flag %GI_FUNCTION_IS_GETTER or
+ * %GI_FUNCTION_IS_SETTER have a property set. For other cases,
+ * %NULL will be returned.
+ * @param info a #GIFunctionInfo
+ */
 function functionInfoGetProperty(info: FunctionInfo): PropertyInfo
+/**
+ * Obtain the symbol of the function. The symbol is the name of the
+ * exported function, suitable to be used as an argument to
+ * g_module_symbol().
+ * @param info a #GIFunctionInfo
+ */
 function functionInfoGetSymbol(info: FunctionInfo): string
+/**
+ * Obtain the virtual function associated with this #GIFunctionInfo.
+ * Only #GIFunctionInfo with the flag %GI_FUNCTION_WRAPS_VFUNC has
+ * a virtual function set. For other cases, %NULL will be returned.
+ * @param info a #GIFunctionInfo
+ */
 function functionInfoGetVfunc(info: FunctionInfo): VFuncInfo
+/**
+ * Returns the major version number of the girepository library.
+ * (e.g. in version 1.58.2 this is 1.)
+ */
 function getMajorVersion(): number
+/**
+ * Returns the micro version number of the girepository library.
+ * (e.g. in version 1.58.2 this is 2.)
+ */
 function getMicroVersion(): number
+/**
+ * Returns the minor version number of the girepository library.
+ * (e.g. in version 1.58.2 this is 58.)
+ */
 function getMinorVersion(): number
+/**
+ * TODO
+ * @param type TODO
+ * @param container TODO
+ * @param typelib TODO
+ * @param offset TODO
+ */
 function infoNew(type: InfoType, container: BaseInfo, typelib: Typelib, offset: number): BaseInfo
+/**
+ * Obtain a string representation of `type`
+ * @param type the info type
+ */
 function infoTypeToString(type: InfoType): string
+/**
+ * Obtain a method of the interface type given a `name`. %NULL will be
+ * returned if there's no method available with that name.
+ * @param info a #GIInterfaceInfo
+ * @param name name of method to obtain
+ */
 function interfaceInfoFindMethod(info: InterfaceInfo, name: string): FunctionInfo
+/**
+ * TODO
+ * @param info a #GIInterfaceInfo
+ * @param name Name of signal
+ */
 function interfaceInfoFindSignal(info: InterfaceInfo, name: string): SignalInfo
+/**
+ * Locate a virtual function slot with name `name`. See the documentation
+ * for g_object_info_find_vfunc() for more information on virtuals.
+ * @param info a #GIInterfaceInfo
+ * @param name The name of a virtual function to find.
+ */
 function interfaceInfoFindVfunc(info: InterfaceInfo, name: string): VFuncInfo
+/**
+ * Obtain an interface type constant at index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of constant to get
+ */
 function interfaceInfoGetConstant(info: InterfaceInfo, n: number): ConstantInfo
+/**
+ * Returns the layout C structure associated with this #GInterface.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetIfaceStruct(info: InterfaceInfo): StructInfo
+/**
+ * Obtain an interface type method at index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of method to get
+ */
 function interfaceInfoGetMethod(info: InterfaceInfo, n: number): FunctionInfo
+/**
+ * Obtain the number of constants that this interface type has.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNConstants(info: InterfaceInfo): number
+/**
+ * Obtain the number of methods that this interface type has.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNMethods(info: InterfaceInfo): number
+/**
+ * Obtain the number of prerequisites for this interface type.
+ * A prerequisites is another interface that needs to be implemented for
+ * interface, similar to an base class for GObjects.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNPrerequisites(info: InterfaceInfo): number
+/**
+ * Obtain the number of properties that this interface type has.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNProperties(info: InterfaceInfo): number
+/**
+ * Obtain the number of signals that this interface type has.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNSignals(info: InterfaceInfo): number
+/**
+ * Obtain the number of virtual functions that this interface type has.
+ * @param info a #GIInterfaceInfo
+ */
 function interfaceInfoGetNVfuncs(info: InterfaceInfo): number
+/**
+ * Obtain an interface type prerequisites index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of prerequisites to get
+ */
 function interfaceInfoGetPrerequisite(info: InterfaceInfo, n: number): BaseInfo
+/**
+ * Obtain an interface type property at index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of property to get
+ */
 function interfaceInfoGetProperty(info: InterfaceInfo, n: number): PropertyInfo
+/**
+ * Obtain an interface type signal at index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of signal to get
+ */
 function interfaceInfoGetSignal(info: InterfaceInfo, n: number): SignalInfo
+/**
+ * Obtain an interface type virtual function at index `n`.
+ * @param info a #GIInterfaceInfo
+ * @param n index of virtual function to get
+ */
 function interfaceInfoGetVfunc(info: InterfaceInfo, n: number): VFuncInfo
+/**
+ * TODO
+ */
 function invokeErrorQuark(): GLib.Quark
+/**
+ * Obtain a method of the object type given a `name`. %NULL will be
+ * returned if there's no method available with that name.
+ * @param info a #GIObjectInfo
+ * @param name name of method to obtain
+ */
 function objectInfoFindMethod(info: ObjectInfo, name: string): FunctionInfo | null
+/**
+ * Obtain a method of the object given a `name,` searching both the
+ * object `info` and any interfaces it implements.  %NULL will be
+ * returned if there's no method available with that name.
+ * 
+ * Note that this function does *not* search parent classes; you will have
+ * to chain up if that's desired.
+ * @param info a #GIObjectInfo
+ * @param name name of method to obtain
+ */
 function objectInfoFindMethodUsingInterfaces(info: ObjectInfo, name: string): [ /* returnType */ FunctionInfo | null, /* implementor */ ObjectInfo ]
+/**
+ * TODO
+ * @param info a #GIObjectInfo
+ * @param name Name of signal
+ */
 function objectInfoFindSignal(info: ObjectInfo, name: string): SignalInfo | null
+/**
+ * Locate a virtual function slot with name `name`. Note that the namespace
+ * for virtuals is distinct from that of methods; there may or may not be
+ * a concrete method associated for a virtual. If there is one, it may
+ * be retrieved using g_vfunc_info_get_invoker(), otherwise %NULL will be
+ * returned.
+ * See the documentation for g_vfunc_info_get_invoker() for more
+ * information on invoking virtuals.
+ * @param info a #GIObjectInfo
+ * @param name The name of a virtual function to find.
+ */
 function objectInfoFindVfunc(info: ObjectInfo, name: string): VFuncInfo | null
+/**
+ * Locate a virtual function slot with name `name,` searching both the object
+ * `info` and any interfaces it implements.  Note that the namespace for
+ * virtuals is distinct from that of methods; there may or may not be a
+ * concrete method associated for a virtual. If there is one, it may be
+ * retrieved using g_vfunc_info_get_invoker(), otherwise %NULL will be
+ * returned.
+ * 
+ * Note that this function does *not* search parent classes; you will have
+ * to chain up if that's desired.
+ * @param info a #GIObjectInfo
+ * @param name name of vfunc to obtain
+ */
 function objectInfoFindVfuncUsingInterfaces(info: ObjectInfo, name: string): [ /* returnType */ VFuncInfo | null, /* implementor */ ObjectInfo ]
+/**
+ * Obtain if the object type is an abstract type, eg if it cannot be
+ * instantiated
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetAbstract(info: ObjectInfo): boolean
+/**
+ * Every #GObject has two structures; an instance structure and a class
+ * structure.  This function returns the metadata for the class structure.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetClassStruct(info: ObjectInfo): StructInfo | null
+/**
+ * Obtain an object type constant at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of constant to get
+ */
 function objectInfoGetConstant(info: ObjectInfo, n: number): ConstantInfo
+/**
+ * Obtain an object type field at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of field to get
+ */
 function objectInfoGetField(info: ObjectInfo, n: number): FieldInfo
+/**
+ * Checks whether the object type is a final type, i.e. if it cannot
+ * be derived
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetFinal(info: ObjectInfo): boolean
+/**
+ * Obtain if the object type is of a fundamental type which is not
+ * G_TYPE_OBJECT. This is mostly for supporting GstMiniObject.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetFundamental(info: ObjectInfo): boolean
+/**
+ * Obtain the symbol name of the function that should be called to convert
+ * an object instance pointer of this object type to a GValue.
+ * I's mainly used fundamental types. The type signature for the symbol
+ * is %GIObjectInfoGetValueFunction, to fetch the function pointer
+ * see g_object_info_get_get_value_function().
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetGetValueFunction(info: ObjectInfo): string | null
+/**
+ * Obtain an object type interface at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of interface to get
+ */
 function objectInfoGetInterface(info: ObjectInfo, n: number): InterfaceInfo
+/**
+ * Obtain an object type method at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of method to get
+ */
 function objectInfoGetMethod(info: ObjectInfo, n: number): FunctionInfo
+/**
+ * Obtain the number of constants that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNConstants(info: ObjectInfo): number
+/**
+ * Obtain the number of fields that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNFields(info: ObjectInfo): number
+/**
+ * Obtain the number of interfaces that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNInterfaces(info: ObjectInfo): number
+/**
+ * Obtain the number of methods that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNMethods(info: ObjectInfo): number
+/**
+ * Obtain the number of properties that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNProperties(info: ObjectInfo): number
+/**
+ * Obtain the number of signals that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNSignals(info: ObjectInfo): number
+/**
+ * Obtain the number of virtual functions that this object type has.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetNVfuncs(info: ObjectInfo): number
+/**
+ * Obtain the parent of the object type.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetParent(info: ObjectInfo): ObjectInfo | null
+/**
+ * Obtain an object type property at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of property to get
+ */
 function objectInfoGetProperty(info: ObjectInfo, n: number): PropertyInfo
+/**
+ * Obtain the symbol name of the function that should be called to ref this
+ * object type. It's mainly used fundamental types. The type signature for
+ * the symbol is %GIObjectInfoRefFunction, to fetch the function pointer
+ * see g_object_info_get_ref_function().
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetRefFunction(info: ObjectInfo): string | null
+/**
+ * Obtain the symbol name of the function that should be called to convert
+ * set a GValue giving an object instance pointer of this object type.
+ * I's mainly used fundamental types. The type signature for the symbol
+ * is %GIObjectInfoSetValueFunction, to fetch the function pointer
+ * see g_object_info_get_set_value_function().
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetSetValueFunction(info: ObjectInfo): string | null
+/**
+ * Obtain an object type signal at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of signal to get
+ */
 function objectInfoGetSignal(info: ObjectInfo, n: number): SignalInfo
+/**
+ * Obtain the function which when called will return the GType
+ * function for which this object type is registered.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetTypeInit(info: ObjectInfo): string
+/**
+ * Obtain the name of the objects class/type.
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetTypeName(info: ObjectInfo): string
+/**
+ * Obtain the symbol name of the function that should be called to unref this
+ * object type. It's mainly used fundamental types. The type signature for
+ * the symbol is %GIObjectInfoUnrefFunction, to fetch the function pointer
+ * see g_object_info_get_unref_function().
+ * @param info a #GIObjectInfo
+ */
 function objectInfoGetUnrefFunction(info: ObjectInfo): string | null
+/**
+ * Obtain an object type virtual function at index `n`.
+ * @param info a #GIObjectInfo
+ * @param n index of virtual function to get
+ */
 function objectInfoGetVfunc(info: ObjectInfo, n: number): VFuncInfo
+/**
+ * Obtain the flags for this property info. See #GParamFlags for
+ * more information about possible flag values.
+ * @param info a #GIPropertyInfo
+ */
 function propertyInfoGetFlags(info: PropertyInfo): GObject.ParamFlags
+/**
+ * Obtains the getter function associated with this #GIPropertyInfo.
+ * 
+ * The setter is only available for %G_PARAM_READABLE properties.
+ * @param info a #GIPropertyInfo
+ */
 function propertyInfoGetGetter(info: PropertyInfo): FunctionInfo | null
+/**
+ * Obtain the ownership transfer for this property. See #GITransfer for more
+ * information about transfer values.
+ * @param info a #GIPropertyInfo
+ */
 function propertyInfoGetOwnershipTransfer(info: PropertyInfo): Transfer
+/**
+ * Obtains the setter function associated with this #GIPropertyInfo.
+ * 
+ * The setter is only available for %G_PARAM_WRITABLE properties that
+ * are also not %G_PARAM_CONSTRUCT_ONLY.
+ * @param info a #GIPropertyInfo
+ */
 function propertyInfoGetSetter(info: PropertyInfo): FunctionInfo | null
+/**
+ * Obtain the type information for the property `info`.
+ * @param info a #GIPropertyInfo
+ */
 function propertyInfoGetType(info: PropertyInfo): TypeInfo
-function registeredTypeInfoGetGType(info: RegisteredTypeInfo): GObject.Type
+/**
+ * Obtain the #GType for this registered type or G_TYPE_NONE which a special meaning.
+ * It means that either there is no type information associated with this `info` or
+ * that the shared library which provides the type_init function for this
+ * `info` cannot be called.
+ * @param info a #GIRegisteredTypeInfo
+ */
+function registeredTypeInfoGetGType(info: RegisteredTypeInfo): GObject.GType
+/**
+ * Obtain the type init function for `info`. The type init function is the
+ * function which will register the GType within the GObject type system.
+ * Usually this is not called by langauge bindings or applications, use
+ * g_registered_type_info_get_g_type() directly instead.
+ * @param info a #GIRegisteredTypeInfo
+ */
 function registeredTypeInfoGetTypeInit(info: RegisteredTypeInfo): string
+/**
+ * Obtain the type name of the struct within the GObject type system.
+ * This type can be passed to g_type_name() to get a #GType.
+ * @param info a #GIRegisteredTypeInfo
+ */
 function registeredTypeInfoGetTypeName(info: RegisteredTypeInfo): string
+/**
+ * Obtain the class closure for this signal if one is set. The class
+ * closure is a virtual function on the type that the signal belongs to.
+ * If the signal lacks a closure %NULL will be returned.
+ * @param info a #GISignalInfo
+ */
 function signalInfoGetClassClosure(info: SignalInfo): VFuncInfo
+/**
+ * Obtain the flags for this signal info. See #GSignalFlags for
+ * more information about possible flag values.
+ * @param info a #GISignalInfo
+ */
 function signalInfoGetFlags(info: SignalInfo): GObject.SignalFlags
+/**
+ * Obtain if the returning true in the signal handler will
+ * stop the emission of the signal.
+ * @param info a #GISignalInfo
+ */
 function signalInfoTrueStopsEmit(info: SignalInfo): boolean
+/**
+ * Obtain the type information for field named `name`.
+ * @param info a #GIStructInfo
+ * @param name a field name
+ */
 function structInfoFindField(info: StructInfo, name: string): FieldInfo
+/**
+ * Obtain the type information for method named `name`.
+ * @param info a #GIStructInfo
+ * @param name a method name
+ */
 function structInfoFindMethod(info: StructInfo, name: string): FunctionInfo
+/**
+ * Obtain the required alignment of the structure.
+ * @param info a #GIStructInfo
+ */
 function structInfoGetAlignment(info: StructInfo): number
+/**
+ * Obtain the type information for field with specified index.
+ * @param info a #GIStructInfo
+ * @param n a field index
+ */
 function structInfoGetField(info: StructInfo, n: number): FieldInfo
+/**
+ * Obtain the type information for method with specified index.
+ * @param info a #GIStructInfo
+ * @param n a method index
+ */
 function structInfoGetMethod(info: StructInfo, n: number): FunctionInfo
+/**
+ * Obtain the number of fields this structure has.
+ * @param info a #GIStructInfo
+ */
 function structInfoGetNFields(info: StructInfo): number
+/**
+ * Obtain the number of methods this structure has.
+ * @param info a #GIStructInfo
+ */
 function structInfoGetNMethods(info: StructInfo): number
+/**
+ * Obtain the total size of the structure.
+ * @param info a #GIStructInfo
+ */
 function structInfoGetSize(info: StructInfo): number
+/**
+ * TODO
+ * @param info TODO
+ */
 function structInfoIsForeign(info: StructInfo): boolean
+/**
+ * Return true if this structure represents the "class structure" for some
+ * #GObject or #GInterface.  This function is mainly useful to hide this kind of structure
+ * from generated public APIs.
+ * @param info a #GIStructInfo
+ */
 function structInfoIsGtypeStruct(info: StructInfo): boolean
+/**
+ * GLib data structures, such as #GList, #GSList, and #GHashTable, all store
+ * data pointers.
+ * In the case where the list or hash table is storing single types rather than
+ * structs, these data pointers may have values stuffed into them via macros
+ * such as %GPOINTER_TO_INT.
+ * 
+ * Use this function to ensure that all values are correctly extracted from
+ * stuffed pointers, regardless of the machine's architecture or endianness.
+ * 
+ * This function fills in the appropriate field of `arg` with the value extracted
+ * from `hash_pointer,` depending on the storage type of `info`.
+ * @param info a #GITypeInfo
+ * @param hashPointer A pointer, such as a #GHashTable data pointer
+ * @param arg A #GIArgument to fill in
+ */
 function typeInfoArgumentFromHashPointer(info: TypeInfo, hashPointer: object | null, arg: Argument): void
+/**
+ * Obtain the fixed array size of the type. The type tag must be a
+ * #GI_TYPE_TAG_ARRAY or -1 will be returned.
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetArrayFixedSize(info: TypeInfo): number
+/**
+ * Obtain the position of the argument which gives the array length of the type.
+ * The type tag must be a #GI_TYPE_TAG_ARRAY or -1 will be returned.
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetArrayLength(info: TypeInfo): number
+/**
+ * Obtain the array type for this type. See #GIArrayType for a list of
+ * possible values. If the type tag of this type is not array, -1 will be
+ * returned.
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetArrayType(info: TypeInfo): ArrayType
+/**
+ * For types which have #GI_TYPE_TAG_INTERFACE such as GObjects and boxed values,
+ * this function returns full information about the referenced type.  You can then
+ * inspect the type of the returned #GIBaseInfo to further query whether it is
+ * a concrete GObject, a GInterface, a structure, etc. using g_base_info_get_type().
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetInterface(info: TypeInfo): BaseInfo
+/**
+ * Obtain the parameter type `n`.
+ * @param info a #GITypeInfo
+ * @param n index of the parameter
+ */
 function typeInfoGetParamType(info: TypeInfo, n: number): TypeInfo
+/**
+ * Obtain the type tag corresponding to the underlying storage type in C for
+ * the type.
+ * See #GITypeTag for a list of type tags.
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetStorageType(info: TypeInfo): TypeTag
+/**
+ * Obtain the type tag for the type. See #GITypeTag for a list
+ * of type tags.
+ * @param info a #GITypeInfo
+ */
 function typeInfoGetTag(info: TypeInfo): TypeTag
+/**
+ * GLib data structures, such as #GList, #GSList, and #GHashTable, all store
+ * data pointers.
+ * In the case where the list or hash table is storing single types rather than
+ * structs, these data pointers may have values stuffed into them via macros
+ * such as %GPOINTER_TO_INT.
+ * 
+ * Use this function to ensure that all values are correctly stuffed into
+ * pointers, regardless of the machine's architecture or endianness.
+ * 
+ * This function returns a pointer stuffed with the appropriate field of `arg,`
+ * depending on the storage type of `info`.
+ * @param info a #GITypeInfo
+ * @param arg A #GIArgument with the value to stuff into a pointer
+ */
 function typeInfoHashPointerFromArgument(info: TypeInfo, arg: Argument): object | null
+/**
+ * Obtain if the type is passed as a reference.
+ * 
+ * Note that the types of %GI_DIRECTION_OUT and %GI_DIRECTION_INOUT parameters
+ * will only be pointers if the underlying type being transferred is a pointer
+ * (i.e. only if the type of the C function’s formal parameter is a pointer to a
+ * pointer).
+ * @param info a #GITypeInfo
+ */
 function typeInfoIsPointer(info: TypeInfo): boolean
+/**
+ * Obtain if the last element of the array is %NULL. The type tag must be a
+ * #GI_TYPE_TAG_ARRAY or %FALSE will be returned.
+ * @param info a #GITypeInfo
+ */
 function typeInfoIsZeroTerminated(info: TypeInfo): boolean
+/**
+ * GLib data structures, such as #GList, #GSList, and #GHashTable, all store
+ * data pointers.
+ * In the case where the list or hash table is storing single types rather than
+ * structs, these data pointers may have values stuffed into them via macros
+ * such as %GPOINTER_TO_INT.
+ * 
+ * Use this function to ensure that all values are correctly extracted from
+ * stuffed pointers, regardless of the machine's architecture or endianness.
+ * 
+ * This function fills in the appropriate field of `arg` with the value extracted
+ * from `hash_pointer,` depending on `storage_type`.
+ * @param storageType a #GITypeTag obtained from g_type_info_get_storage_type()
+ * @param hashPointer A pointer, such as a #GHashTable data pointer
+ * @param arg A #GIArgument to fill in
+ */
 function typeTagArgumentFromHashPointer(storageType: TypeTag, hashPointer: object | null, arg: Argument): void
+/**
+ * GLib data structures, such as #GList, #GSList, and #GHashTable, all store
+ * data pointers.
+ * In the case where the list or hash table is storing single types rather than
+ * structs, these data pointers may have values stuffed into them via macros
+ * such as %GPOINTER_TO_INT.
+ * 
+ * Use this function to ensure that all values are correctly stuffed into
+ * pointers, regardless of the machine's architecture or endianness.
+ * 
+ * This function returns a pointer stuffed with the appropriate field of `arg,`
+ * depending on `storage_type`.
+ * @param storageType a #GITypeTag obtained from g_type_info_get_storage_type()
+ * @param arg A #GIArgument with the value to stuff into a pointer
+ */
 function typeTagHashPointerFromArgument(storageType: TypeTag, arg: Argument): object | null
+/**
+ * Obtain a string representation of `type`
+ * @param type the type_tag
+ */
 function typeTagToString(type: TypeTag): string
+/**
+ * Obtain the type information for method named `name`.
+ * @param info a #GIUnionInfo
+ * @param name a method name
+ */
 function unionInfoFindMethod(info: UnionInfo, name: string): FunctionInfo
+/**
+ * Obtain the required alignment of the union.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetAlignment(info: UnionInfo): number
+/**
+ * Obtain discriminator value assigned for n-th union field, i.e. n-th
+ * union field is the active one if discriminator contains this
+ * constant.
+ * @param info a #GIUnionInfo
+ * @param n a union field index
+ */
 function unionInfoGetDiscriminator(info: UnionInfo, n: number): ConstantInfo
+/**
+ * Returns offset of the discriminator field in the structure.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetDiscriminatorOffset(info: UnionInfo): number
+/**
+ * Obtain the type information of the union discriminator.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetDiscriminatorType(info: UnionInfo): TypeInfo
+/**
+ * Obtain the type information for field with specified index.
+ * @param info a #GIUnionInfo
+ * @param n a field index
+ */
 function unionInfoGetField(info: UnionInfo, n: number): FieldInfo
+/**
+ * Obtain the type information for method with specified index.
+ * @param info a #GIUnionInfo
+ * @param n a method index
+ */
 function unionInfoGetMethod(info: UnionInfo, n: number): FunctionInfo
+/**
+ * Obtain the number of fields this union has.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetNFields(info: UnionInfo): number
+/**
+ * Obtain the number of methods this union has.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetNMethods(info: UnionInfo): number
+/**
+ * Obtain the total size of the union.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoGetSize(info: UnionInfo): number
+/**
+ * Return true if this union contains discriminator field.
+ * @param info a #GIUnionInfo
+ */
 function unionInfoIsDiscriminated(info: UnionInfo): boolean
+/**
+ * Obtain the enumeration value of the #GIValueInfo.
+ * @param info a #GIValueInfo
+ */
 function valueInfoGetValue(info: ValueInfo): number
-function vfuncInfoGetAddress(info: VFuncInfo, implementorGtype: GObject.Type): object | null
+/**
+ * This method will look up where inside the type struct of `implementor_gtype`
+ * is the implementation for `info`.
+ * @param info a #GIVFuncInfo
+ * @param implementorGtype #GType implementing this virtual function
+ */
+function vfuncInfoGetAddress(info: VFuncInfo, implementorGtype: GObject.GType): object | null
+/**
+ * Obtain the flags for this virtual function info. See #GIVFuncInfoFlags for
+ * more information about possible flag values.
+ * @param info a #GIVFuncInfo
+ */
 function vfuncInfoGetFlags(info: VFuncInfo): VFuncInfoFlags
+/**
+ * If this virtual function has an associated invoker method, this
+ * method will return it.  An invoker method is a C entry point.
+ * 
+ * Not all virtuals will have invokers.
+ * @param info a #GIVFuncInfo
+ */
 function vfuncInfoGetInvoker(info: VFuncInfo): FunctionInfo
+/**
+ * Obtain the offset of the function pointer in the class struct. The value
+ * 0xFFFF indicates that the struct offset is unknown.
+ * @param info a #GIVFuncInfo
+ */
 function vfuncInfoGetOffset(info: VFuncInfo): number
+/**
+ * Obtain the signal for the virtual function if one is set.
+ * The signal comes from the object or interface to which
+ * this virtual function belongs.
+ * @param info a #GIVFuncInfo
+ */
 function vfuncInfoGetSignal(info: VFuncInfo): SignalInfo
 interface Repository_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Repository {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GIRepository-2.0.GIRepository.Repository */
+
+interface Repository {
+
+    // Owm methods of GIRepository-2.0.GIRepository.Repository
+
     /**
      * Obtain an unordered list of versions (either currently loaded or
      * available) for `namespace_` in this `repository`.
@@ -606,7 +1435,7 @@ class Repository {
      * when you know the GType to originate from be from a loaded namespace.
      * @param gtype GType to search for
      */
-    findByGtype(gtype: GObject.Type): BaseInfo
+    findByGtype(gtype: GObject.GType): BaseInfo
     /**
      * Searches for a particular entry in a namespace.  Before calling
      * this function for a particular namespace, you must call
@@ -687,7 +1516,7 @@ class Repository {
      * see at runtime, but not statically.
      * @param gtype a #GType whose fundamental type is G_TYPE_OBJECT
      */
-    getObjectGtypeInterfaces(gtype: GObject.Type): /* interfacesOut */ InterfaceInfo[]
+    getObjectGtypeInterfaces(gtype: GObject.GType): /* interfacesOut */ InterfaceInfo[]
     /**
      * This function returns a comma-separated list of paths to the
      * shared C libraries associated with the given namespace `namespace_`.
@@ -726,7 +1555,7 @@ class Repository {
      * @param namespace Namespace of interest
      * @param version Required version, may be %NULL for latest
      */
-    isRegistered(namespace: string, version?: string | null): boolean
+    isRegistered(namespace: string, version: string | null): boolean
     /**
      * TODO
      * @param typelib TODO
@@ -756,367 +1585,43 @@ class Repository {
      * @param flags Set of %GIRepositoryLoadFlags, may be 0
      */
     requirePrivate(typelibDir: string, namespace: string, version: string | null, flags: RepositoryLoadFlags): Typelib
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of GIRepository-2.0.GIRepository.Repository
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+/**
+ * #GIRepository is used to manage repositories of namespaces. Namespaces
+ * are represented on disk by type libraries (.typelib files).
+ * 
+ * ### Discovery of type libraries
+ * 
+ * #GIRepository will typically look for a `girepository-1.0` directory
+ * under the library directory used when compiling gobject-introspection.
+ * 
+ * It is possible to control the search paths programmatically, using
+ * g_irepository_prepend_search_path(). It is also possible to modify
+ * the search paths by using the `GI_TYPELIB_PATH` environment variable.
+ * The environment variable takes precedence over the default search path
+ * and the g_irepository_prepend_search_path() calls.
+ * @class 
+ */
+class Repository extends GObject.Object {
+
+    // Own properties of GIRepository-2.0.GIRepository.Repository
+
     static name: string
-    constructor (config?: Repository_ConstructProps)
-    _init (config?: Repository_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Repository>
+
+    // Constructors of GIRepository-2.0.GIRepository.Repository
+
+    constructor(config?: Repository_ConstructProps) 
+    _init(config?: Repository_ConstructProps): void
     static dump(arg: string): boolean
     static errorQuark(): GLib.Quark
     /**
@@ -1152,13 +1657,27 @@ class Repository {
      * @param directory directory name to prepend to the typelib   search path
      */
     static prependSearchPath(directory: string): void
-    static $gtype: GObject.Type
 }
+
+interface AttributeIter {
+}
+
+/**
+ * An opaque structure used to iterate over attributes
+ * in a #GIBaseInfo struct.
+ * @record 
+ */
 class AttributeIter {
+
+    // Own properties of GIRepository-2.0.GIRepository.AttributeIter
+
     static name: string
 }
-class BaseInfo {
-    /* Methods of GIRepository-2.0.GIRepository.BaseInfo */
+
+interface BaseInfo {
+
+    // Owm methods of GIRepository-2.0.GIRepository.BaseInfo
+
     /**
      * Compare two #GIBaseInfo.
      * 
@@ -1231,27 +1750,238 @@ class BaseInfo {
      * @param iterator a #GIAttributeIter structure, must be initialized; see below
      */
     iterateAttributes(iterator: AttributeIter): [ /* returnType */ boolean, /* iterator */ AttributeIter, /* name */ string, /* value */ string ]
+}
+
+/**
+ * GIBaseInfo is the common base struct of all other Info structs
+ * accessible through the #GIRepository API.
+ * 
+ * All info structures can be cast to a #GIBaseInfo, for instance:
+ * 
+ * 
+ * ```c
+ *    GIFunctionInfo *function_info = ...;
+ *    GIBaseInfo *info = (GIBaseInfo *) function_info;
+ * ```
+ * 
+ * 
+ * Most #GIRepository APIs returning a #GIBaseInfo is actually
+ * creating a new struct; in other words, g_base_info_unref() has to
+ * be called when done accessing the data.
+ * 
+ * #GIBaseInfo structuress are normally accessed by calling either
+ * g_irepository_find_by_name(), g_irepository_find_by_gtype() or
+ * g_irepository_get_info().
+ * 
+ * 
+ * ```c
+ * GIBaseInfo *button_info =
+ *   g_irepository_find_by_name (NULL, "Gtk", "Button");
+ * 
+ * // ... use button_info ...
+ * 
+ * g_base_info_unref (button_info);
+ * ```
+ * 
+ * 
+ * ## Hierarchy
+ * 
+ * |[<!-- language="plain" -->
+ *   GIBaseInfo
+ *    +---- GIArgInfo
+ *    +---- GICallableInfo
+ *    +---- GIConstantInfo
+ *    +---- GIFieldInfo
+ *    +---- GIPropertyInfo
+ *    +---- GIRegisteredTypeInfo
+ *    +---- GITypeInfo
+ * ```
+ * 
+ * @record 
+ */
+class BaseInfo {
+
+    // Own properties of GIRepository-2.0.GIRepository.BaseInfo
+
     static name: string
 }
+
+interface RepositoryClass {
+}
+
 abstract class RepositoryClass {
+
+    // Own properties of GIRepository-2.0.GIRepository.RepositoryClass
+
     static name: string
 }
+
+interface RepositoryPrivate {
+}
+
 class RepositoryPrivate {
+
+    // Own properties of GIRepository-2.0.GIRepository.RepositoryPrivate
+
     static name: string
 }
-class Typelib {
-    /* Methods of GIRepository-2.0.GIRepository.Typelib */
+
+interface Typelib {
+
+    // Owm methods of GIRepository-2.0.GIRepository.Typelib
+
     free(): void
     getNamespace(): string
-    symbol(symbolName: string, symbol?: object | null): boolean
+    symbol(symbolName: string, symbol: object | null): boolean
+}
+
+/**
+ * TODO
+ * @record 
+ */
+class Typelib {
+
+    // Own properties of GIRepository-2.0.GIRepository.Typelib
+
     static name: string
 }
+
+interface UnresolvedInfo {
+}
+
+/**
+ * Represents a unresolved type in a typelib.
+ * @record 
+ */
 class UnresolvedInfo {
+
+    // Own properties of GIRepository-2.0.GIRepository.UnresolvedInfo
+
     static name: string
 }
+
+interface Argument {
+
+    // Own fields of GIRepository-2.0.GIRepository.Argument
+
+    /**
+     * TODO
+     * @field 
+     */
+    vBoolean: boolean
+    /**
+     * TODO
+     * @field 
+     */
+    vInt8: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUint8: number
+    /**
+     * TODO
+     * @field 
+     */
+    vInt16: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUint16: number
+    /**
+     * TODO
+     * @field 
+     */
+    vInt32: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUint32: number
+    /**
+     * TODO
+     * @field 
+     */
+    vInt64: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUint64: number
+    /**
+     * TODO
+     * @field 
+     */
+    vFloat: number
+    /**
+     * TODO
+     * @field 
+     */
+    vDouble: number
+    /**
+     * TODO
+     * @field 
+     */
+    vShort: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUshort: number
+    /**
+     * TODO
+     * @field 
+     */
+    vInt: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUint: number
+    /**
+     * TODO
+     * @field 
+     */
+    vLong: number
+    /**
+     * TODO
+     * @field 
+     */
+    vUlong: number
+    /**
+     * TODO
+     * @field 
+     */
+    vSsize: number
+    /**
+     * TODO
+     * @field 
+     */
+    vSize: number
+    /**
+     * TODO
+     * @field 
+     */
+    vString: string
+    /**
+     * TODO
+     * @field 
+     */
+    vPointer: object
+}
+
+/**
+ * Stores an argument of varying type
+ * @union 
+ */
 class Argument {
+
+    // Own properties of GIRepository-2.0.GIRepository.Argument
+
     static name: string
 }
+
     type ArgInfo = BaseInfo
     type CallableInfo = BaseInfo
     type CallbackInfo = BaseInfo

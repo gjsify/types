@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -963,6 +965,9 @@ interface BuilderCallback {
 }
 /**
  * This callback function is used to return a #IAnjutaBreakpointItem.
+ * @callback 
+ * @param data a #IAnjutaBreakpointItem object
+ * @param err error
  */
 interface DebuggerBreakpointCallback {
     (data: DebuggerBreakpointItem, err: GLib.Error): void
@@ -970,6 +975,9 @@ interface DebuggerBreakpointCallback {
 /**
  * This callback function is used only by #ianjuta_debugger_callback with a
  * NULL data.
+ * @callback 
+ * @param data data
+ * @param err error
  */
 interface DebuggerCallback {
     (data: object | null, err: GLib.Error): void
@@ -977,18 +985,27 @@ interface DebuggerCallback {
 /**
  * This callback function is used by several debugger functions. The data is
  * a string
+ * @callback 
+ * @param value string
+ * @param err error
  */
 interface DebuggerGCharCallback {
     (value: string, err: GLib.Error): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerInstructionDisassembly.
+ * @callback 
+ * @param data a #IAnjutaDebuggerInstructionDisassembly object
+ * @param err error
  */
 interface DebuggerInstructionCallback {
     (data: DebuggerInstructionDisassembly, err: GLib.Error): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerMemoryBlock.
+ * @callback 
+ * @param data a #IAnjutaDebuggerMemoryBlock object
+ * @param err error
  */
 interface DebuggerMemoryCallback {
     (data: DebuggerMemoryBlock, err: GLib.Error): void
@@ -996,18 +1013,27 @@ interface DebuggerMemoryCallback {
 /**
  * This callback function is used only by #ianjuta_debugger_callback with a
  * NULL data.
+ * @callback 
+ * @param type kind of output
+ * @param output string
  */
 interface DebuggerOutputCallback {
     (type: DebuggerOutputType, output: string): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerVariableObject.
+ * @callback 
+ * @param data a #IAnjutaDebuggerVariableObject object
+ * @param err error
  */
 interface DebuggerVariableCallback {
     (data: DebuggerVariableObject, err: GLib.Error): void
 }
 /**
  * Called when diff data comes from ianjuta_vcs_diff.
+ * @callback 
+ * @param file File being diffed
+ * @param diff Diff data
  */
 interface VcsDiffCallback {
     (file: Gio.File, diff: string): void
@@ -1015,12 +1041,20 @@ interface VcsDiffCallback {
 /**
  * Callback called for each status record returned by
  * ianjuta_vcs_query_status.
+ * @callback 
+ * @param file File representing the file for which status is given
+ * @param status #AnjutaVcsStatus for the file represented by `file`.
  */
 interface VcsStatusCallback {
     (file: Gio.File, status: Anjuta.VcsStatus): void
 }
-class Buildable {
-    /* Methods of IAnjuta-3.0.IAnjuta.Buildable */
+interface Buildable_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Buildable {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Buildable
+
     /**
      * fixme
      * @param uri fixme
@@ -1066,12 +1100,37 @@ class Buildable {
      * @param command Build command to override.
      */
     setCommand(commandId: BuildableCommand, command: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Buildable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Buildable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Buildable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Buildable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Buildable
+
+    constructor(config?: Buildable_ConstructProps) 
+    _init(config?: Buildable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Builder {
-    /* Methods of IAnjuta-3.0.IAnjuta.Builder */
+
+interface Builder_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Builder {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Builder
+
     /**
      * Cancel specified command. The callback function will not
      * be called.
@@ -1090,10 +1149,134 @@ class Builder {
      * The default configuration has no name and is not returned.
      */
     listConfiguration(): string[]
-    static name: string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Builder
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class DebugManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.DebugManager */
+
+class Builder extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Builder
+
+    static name: string
+    static $gtype: GObject.GType<Builder>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Builder
+
+    constructor(config?: Builder_ConstructProps) 
+    _init(config?: Builder_ConstructProps): void
+}
+
+interface DebugManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `breakpoint-changed`
+ */
+interface DebugManager_BreakpointChangedSignalCallback {
+    (object: object | null): void
+}
+
+/**
+ * Signal callback interface for `debugger-started`
+ */
+interface DebugManager_DebuggerStartedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `debugger-stopped`
+ */
+interface DebugManager_DebuggerStoppedSignalCallback {
+    (object: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `frame-changed`
+ */
+interface DebugManager_FrameChangedSignalCallback {
+    (object: number, p0: number): void
+}
+
+/**
+ * Signal callback interface for `location-changed`
+ */
+interface DebugManager_LocationChangedSignalCallback {
+    (object: number, p0: string, p1: number): void
+}
+
+/**
+ * Signal callback interface for `program-exited`
+ */
+interface DebugManager_ProgramExitedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-loaded`
+ */
+interface DebugManager_ProgramLoadedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-moved`
+ */
+interface DebugManager_ProgramMovedSignalCallback {
+    (object: number, p0: number, p1: number, p2: string, p3: number): void
+}
+
+/**
+ * Signal callback interface for `program-running`
+ */
+interface DebugManager_ProgramRunningSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-started`
+ */
+interface DebugManager_ProgramStartedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-stopped`
+ */
+interface DebugManager_ProgramStoppedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-unloaded`
+ */
+interface DebugManager_ProgramUnloadedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `sharedlib-event`
+ */
+interface DebugManager_SharedlibEventSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `signal-received`
+ */
+interface DebugManager_SignalReceivedSignalCallback {
+    (object: string, p0: string): void
+}
+
+interface DebugManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DebugManager
+
     /**
      * Quit the debugger, can wait until the debugger is ready.
      */
@@ -1109,83 +1292,187 @@ class DebugManager {
      * @param uri uri of the local target
      */
     startRemote(server: string, uri: string): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.DebugManager */
-    connect(sigName: "breakpoint-changed", callback: ((object?: object | null) => void)): number
-    on(sigName: "breakpoint-changed", callback: (object?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "breakpoint-changed", callback: (object?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "breakpoint-changed", callback: (object?: object | null) => void): NodeJS.EventEmitter
-    emit(sigName: "breakpoint-changed", object?: object | null): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "location-changed", callback: ((object: number, p0: string, p1: number) => void)): number
-    on(sigName: "location-changed", callback: (object: number, p0: string, p1: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "location-changed", callback: (object: number, p0: string, p1: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "location-changed", callback: (object: number, p0: string, p1: number) => void): NodeJS.EventEmitter
-    emit(sigName: "location-changed", object: number, p0: string, p1: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-started", callback: (() => void)): number
-    on(sigName: "program-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-started"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "program-unloaded", callback: (() => void)): number
-    on(sigName: "program-unloaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-unloaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-unloaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-unloaded"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.DebugManager
+
+    connect(sigName: "breakpoint-changed", callback: DebugManager_BreakpointChangedSignalCallback): number
+    on(sigName: "breakpoint-changed", callback: DebugManager_BreakpointChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "breakpoint-changed", callback: DebugManager_BreakpointChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "breakpoint-changed", callback: DebugManager_BreakpointChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "breakpoint-changed", ...args: any[]): void
+    connect(sigName: "debugger-started", callback: DebugManager_DebuggerStartedSignalCallback): number
+    on(sigName: "debugger-started", callback: DebugManager_DebuggerStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "debugger-started", callback: DebugManager_DebuggerStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "debugger-started", callback: DebugManager_DebuggerStartedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "debugger-started", ...args: any[]): void
+    connect(sigName: "debugger-stopped", callback: DebugManager_DebuggerStoppedSignalCallback): number
+    on(sigName: "debugger-stopped", callback: DebugManager_DebuggerStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "debugger-stopped", callback: DebugManager_DebuggerStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "debugger-stopped", callback: DebugManager_DebuggerStoppedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "debugger-stopped", ...args: any[]): void
+    connect(sigName: "frame-changed", callback: DebugManager_FrameChangedSignalCallback): number
+    on(sigName: "frame-changed", callback: DebugManager_FrameChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "frame-changed", callback: DebugManager_FrameChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "frame-changed", callback: DebugManager_FrameChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "frame-changed", p0: number, ...args: any[]): void
+    connect(sigName: "location-changed", callback: DebugManager_LocationChangedSignalCallback): number
+    on(sigName: "location-changed", callback: DebugManager_LocationChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "location-changed", callback: DebugManager_LocationChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "location-changed", callback: DebugManager_LocationChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "location-changed", p0: string, p1: number, ...args: any[]): void
+    connect(sigName: "program-exited", callback: DebugManager_ProgramExitedSignalCallback): number
+    on(sigName: "program-exited", callback: DebugManager_ProgramExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-exited", callback: DebugManager_ProgramExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-exited", callback: DebugManager_ProgramExitedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-exited", ...args: any[]): void
+    connect(sigName: "program-loaded", callback: DebugManager_ProgramLoadedSignalCallback): number
+    on(sigName: "program-loaded", callback: DebugManager_ProgramLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-loaded", callback: DebugManager_ProgramLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-loaded", callback: DebugManager_ProgramLoadedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-loaded", ...args: any[]): void
+    connect(sigName: "program-moved", callback: DebugManager_ProgramMovedSignalCallback): number
+    on(sigName: "program-moved", callback: DebugManager_ProgramMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-moved", callback: DebugManager_ProgramMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-moved", callback: DebugManager_ProgramMovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-moved", p0: number, p1: number, p2: string, p3: number, ...args: any[]): void
+    connect(sigName: "program-running", callback: DebugManager_ProgramRunningSignalCallback): number
+    on(sigName: "program-running", callback: DebugManager_ProgramRunningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-running", callback: DebugManager_ProgramRunningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-running", callback: DebugManager_ProgramRunningSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-running", ...args: any[]): void
+    connect(sigName: "program-started", callback: DebugManager_ProgramStartedSignalCallback): number
+    on(sigName: "program-started", callback: DebugManager_ProgramStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-started", callback: DebugManager_ProgramStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-started", callback: DebugManager_ProgramStartedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-started", ...args: any[]): void
+    connect(sigName: "program-stopped", callback: DebugManager_ProgramStoppedSignalCallback): number
+    on(sigName: "program-stopped", callback: DebugManager_ProgramStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-stopped", callback: DebugManager_ProgramStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-stopped", callback: DebugManager_ProgramStoppedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-stopped", ...args: any[]): void
+    connect(sigName: "program-unloaded", callback: DebugManager_ProgramUnloadedSignalCallback): number
+    on(sigName: "program-unloaded", callback: DebugManager_ProgramUnloadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-unloaded", callback: DebugManager_ProgramUnloadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-unloaded", callback: DebugManager_ProgramUnloadedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-unloaded", ...args: any[]): void
+    connect(sigName: "sharedlib-event", callback: DebugManager_SharedlibEventSignalCallback): number
+    on(sigName: "sharedlib-event", callback: DebugManager_SharedlibEventSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "sharedlib-event", callback: DebugManager_SharedlibEventSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "sharedlib-event", callback: DebugManager_SharedlibEventSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "sharedlib-event", ...args: any[]): void
+    connect(sigName: "signal-received", callback: DebugManager_SignalReceivedSignalCallback): number
+    on(sigName: "signal-received", callback: DebugManager_SignalReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "signal-received", callback: DebugManager_SignalReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "signal-received", callback: DebugManager_SignalReceivedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "signal-received", p0: string, ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebugManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebugManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebugManager
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebugManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebugManager
+
+    constructor(config?: DebugManager_ConstructProps) 
+    _init(config?: DebugManager_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Debugger {
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
+
+interface Debugger_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `debugger-ready`
+ */
+interface Debugger_DebuggerReadySignalCallback {
+    (object: DebuggerState): void
+}
+
+/**
+ * Signal callback interface for `debugger-started`
+ */
+interface Debugger_DebuggerStartedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `debugger-stopped`
+ */
+interface Debugger_DebuggerStoppedSignalCallback {
+    (object: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `frame-changed`
+ */
+interface Debugger_FrameChangedSignalCallback {
+    (object: number, p0: number): void
+}
+
+/**
+ * Signal callback interface for `program-exited`
+ */
+interface Debugger_ProgramExitedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-loaded`
+ */
+interface Debugger_ProgramLoadedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-moved`
+ */
+interface Debugger_ProgramMovedSignalCallback {
+    (object: number, p0: number, p1: number, p2: string, p3: number): void
+}
+
+/**
+ * Signal callback interface for `program-running`
+ */
+interface Debugger_ProgramRunningSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `program-stopped`
+ */
+interface Debugger_ProgramStoppedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `sharedlib-event`
+ */
+interface Debugger_SharedlibEventSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `signal-received`
+ */
+interface Debugger_SignalReceivedSignalCallback {
+    (object: string, p0: string): void
+}
+
+interface Debugger {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Debugger
+
     /**
      * Quit the debugger as fast as possible.
      */
@@ -1203,7 +1490,7 @@ class Debugger {
      * @param terminal TRUE if the program need a terminal
      * @param stop TRUE if program is stopped at the beginning
      */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
+    // TODO fix conflict: connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
      * Disable debugger log.
      */
@@ -1314,261 +1601,129 @@ class Debugger {
      * Unload a program.
      */
     unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
-    static name: string
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Debugger
+
+    connect(sigName: "debugger-ready", callback: Debugger_DebuggerReadySignalCallback): number
+    on(sigName: "debugger-ready", callback: Debugger_DebuggerReadySignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "debugger-ready", callback: Debugger_DebuggerReadySignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "debugger-ready", callback: Debugger_DebuggerReadySignalCallback): NodeJS.EventEmitter
+    emit(sigName: "debugger-ready", ...args: any[]): void
+    connect(sigName: "debugger-started", callback: Debugger_DebuggerStartedSignalCallback): number
+    on(sigName: "debugger-started", callback: Debugger_DebuggerStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "debugger-started", callback: Debugger_DebuggerStartedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "debugger-started", callback: Debugger_DebuggerStartedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "debugger-started", ...args: any[]): void
+    connect(sigName: "debugger-stopped", callback: Debugger_DebuggerStoppedSignalCallback): number
+    on(sigName: "debugger-stopped", callback: Debugger_DebuggerStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "debugger-stopped", callback: Debugger_DebuggerStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "debugger-stopped", callback: Debugger_DebuggerStoppedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "debugger-stopped", ...args: any[]): void
+    connect(sigName: "frame-changed", callback: Debugger_FrameChangedSignalCallback): number
+    on(sigName: "frame-changed", callback: Debugger_FrameChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "frame-changed", callback: Debugger_FrameChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "frame-changed", callback: Debugger_FrameChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "frame-changed", p0: number, ...args: any[]): void
+    connect(sigName: "program-exited", callback: Debugger_ProgramExitedSignalCallback): number
+    on(sigName: "program-exited", callback: Debugger_ProgramExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-exited", callback: Debugger_ProgramExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-exited", callback: Debugger_ProgramExitedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-exited", ...args: any[]): void
+    connect(sigName: "program-loaded", callback: Debugger_ProgramLoadedSignalCallback): number
+    on(sigName: "program-loaded", callback: Debugger_ProgramLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-loaded", callback: Debugger_ProgramLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-loaded", callback: Debugger_ProgramLoadedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-loaded", ...args: any[]): void
+    connect(sigName: "program-moved", callback: Debugger_ProgramMovedSignalCallback): number
+    on(sigName: "program-moved", callback: Debugger_ProgramMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-moved", callback: Debugger_ProgramMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-moved", callback: Debugger_ProgramMovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-moved", p0: number, p1: number, p2: string, p3: number, ...args: any[]): void
+    connect(sigName: "program-running", callback: Debugger_ProgramRunningSignalCallback): number
+    on(sigName: "program-running", callback: Debugger_ProgramRunningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-running", callback: Debugger_ProgramRunningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-running", callback: Debugger_ProgramRunningSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-running", ...args: any[]): void
+    connect(sigName: "program-stopped", callback: Debugger_ProgramStoppedSignalCallback): number
+    on(sigName: "program-stopped", callback: Debugger_ProgramStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "program-stopped", callback: Debugger_ProgramStoppedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "program-stopped", callback: Debugger_ProgramStoppedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "program-stopped", ...args: any[]): void
+    connect(sigName: "sharedlib-event", callback: Debugger_SharedlibEventSignalCallback): number
+    on(sigName: "sharedlib-event", callback: Debugger_SharedlibEventSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "sharedlib-event", callback: Debugger_SharedlibEventSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "sharedlib-event", callback: Debugger_SharedlibEventSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "sharedlib-event", ...args: any[]): void
+    connect(sigName: "signal-received", callback: Debugger_SignalReceivedSignalCallback): number
+    on(sigName: "signal-received", callback: Debugger_SignalReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "signal-received", callback: Debugger_SignalReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "signal-received", callback: Debugger_SignalReceivedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "signal-received", p0: string, ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Debugger
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class DebuggerBreakpoint {
-    /* Methods of IAnjuta-3.0.IAnjuta.DebuggerBreakpoint */
+
+class Debugger extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Debugger
+
+    static name: string
+    static $gtype: GObject.GType<Debugger>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Debugger
+
+    constructor(config?: Debugger_ConstructProps) 
+    _init(config?: Debugger_ConstructProps): void
+}
+
+interface DebuggerBreakpoint_ConstructProps extends Debugger_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface DebuggerBreakpoint extends Debugger {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DebuggerBreakpoint
+
     /**
      * Return all implemented methods.
      */
     implementBreakpoint(): number
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
-    /**
-     * Quit the debugger as fast as possible.
-     */
-    abort(): boolean
-    /**
-     * Attach to an already running process.
-     * @param pid pid of the process to debug
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    attach(pid: number, sourceSearchDirectories: string[]): boolean
-    /**
-     * Connect to a remote debugger and run program
-     * @param server remote server
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Disable debugger log.
-     */
-    disableLog(): void
-    /**
-     * Log all debuggers commands, mainly useful for debugging.
-     * @param log MessageView used by log
-     */
-    enableLog(log: MessageView): void
-    /**
-     * Exit from the currently loaded program.
-     */
-    exit(): boolean
-    /**
-     * Get the current state of the debugger
-     */
-    getState(): DebuggerState
-    /**
-     * It defines how to handle signal received by the program.
-     * @param name signal name
-     * @param stop TRUE if we need to stop signal
-     * @param print TRUE if we display a message when the signal is emitted
-     * @param ignore TRUE if we ignore the signal
-     */
-    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
-    /**
-     * Interrupt the program currently running.
-     */
-    interrupt(): boolean
-    /**
-     * Load a program in the debugger.
-     * @param file filename
-     * @param mimeType mime type of the file
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
-    /**
-     * Quit the debugger, can wait until the debugger is ready.
-     */
-    quit(): boolean
-    /**
-     * Run the program currently loaded.
-     */
-    run(): boolean
-    /**
-     * Execute the program from a new position.
-     * This function is optional.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runFrom(file: string, line: number): boolean
-    /**
-     * Execute the currently loaded program until it reachs the target
-     * line.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runTo(file: string, line: number): boolean
-    /**
-     * Send a command directly to the debugger. Warning, changing the
-     * debugger states, by sending a run command by example, will
-     * probably gives some troubles in the debug manager.
-     * @param command command
-     */
-    sendCommand(command: string): boolean
-    /**
-     * Set environment variable
-     * @param env List environment variable
-     */
-    setEnvironment(env: string): boolean
-    /**
-     * Set the current frame.
-     * @param frame frame number
-     */
-    setFrame(frame: number): boolean
-    /**
-     * Set the current thread.
-     * @param thread thread number
-     */
-    setThread(thread: number): boolean
-    /**
-     * Set program working directory.
-     * @param dir working program directory
-     */
-    setWorkingDirectory(dir: string): boolean
-    /**
-     * Start a loaded program under debugger control.
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    start(args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Execute a single C instruction of the program currently loaded.
-     */
-    stepIn(): boolean
-    /**
-     * Execute the currently loaded program until it goes out of the
-     * current procedure.
-     */
-    stepOut(): boolean
-    /**
-     * Execute one C instruction, without entering in procedure, of
-     * the program currently loaded.
-     */
-    stepOver(): boolean
-    /**
-     * Unload a program.
-     */
-    unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerBreakpoint
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebuggerBreakpoint extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerBreakpoint
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebuggerBreakpoint>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebuggerBreakpoint
+
+    constructor(config?: DebuggerBreakpoint_ConstructProps) 
+    _init(config?: DebuggerBreakpoint_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class DebuggerInstruction {
-    /* Methods of IAnjuta-3.0.IAnjuta.DebuggerInstruction */
+
+interface DebuggerInstruction_ConstructProps extends Debugger_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface DebuggerInstruction extends Debugger {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DebuggerInstruction
+
     /**
      * Restart the program starting from address address
      * @param address Run from this addresss
@@ -1588,583 +1743,101 @@ class DebuggerInstruction {
      * is a function call, continues until the function returns.
      */
     stepOverInstruction(): boolean
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
-    /**
-     * Quit the debugger as fast as possible.
-     */
-    abort(): boolean
-    /**
-     * Attach to an already running process.
-     * @param pid pid of the process to debug
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    attach(pid: number, sourceSearchDirectories: string[]): boolean
-    /**
-     * Connect to a remote debugger and run program
-     * @param server remote server
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Disable debugger log.
-     */
-    disableLog(): void
-    /**
-     * Log all debuggers commands, mainly useful for debugging.
-     * @param log MessageView used by log
-     */
-    enableLog(log: MessageView): void
-    /**
-     * Exit from the currently loaded program.
-     */
-    exit(): boolean
-    /**
-     * Get the current state of the debugger
-     */
-    getState(): DebuggerState
-    /**
-     * It defines how to handle signal received by the program.
-     * @param name signal name
-     * @param stop TRUE if we need to stop signal
-     * @param print TRUE if we display a message when the signal is emitted
-     * @param ignore TRUE if we ignore the signal
-     */
-    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
-    /**
-     * Interrupt the program currently running.
-     */
-    interrupt(): boolean
-    /**
-     * Load a program in the debugger.
-     * @param file filename
-     * @param mimeType mime type of the file
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
-    /**
-     * Quit the debugger, can wait until the debugger is ready.
-     */
-    quit(): boolean
-    /**
-     * Run the program currently loaded.
-     */
-    run(): boolean
-    /**
-     * Execute the program from a new position.
-     * This function is optional.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runFrom(file: string, line: number): boolean
-    /**
-     * Execute the currently loaded program until it reachs the target
-     * line.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runTo(file: string, line: number): boolean
-    /**
-     * Send a command directly to the debugger. Warning, changing the
-     * debugger states, by sending a run command by example, will
-     * probably gives some troubles in the debug manager.
-     * @param command command
-     */
-    sendCommand(command: string): boolean
-    /**
-     * Set environment variable
-     * @param env List environment variable
-     */
-    setEnvironment(env: string): boolean
-    /**
-     * Set the current frame.
-     * @param frame frame number
-     */
-    setFrame(frame: number): boolean
-    /**
-     * Set the current thread.
-     * @param thread thread number
-     */
-    setThread(thread: number): boolean
-    /**
-     * Set program working directory.
-     * @param dir working program directory
-     */
-    setWorkingDirectory(dir: string): boolean
-    /**
-     * Start a loaded program under debugger control.
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    start(args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Execute a single C instruction of the program currently loaded.
-     */
-    stepIn(): boolean
-    /**
-     * Execute the currently loaded program until it goes out of the
-     * current procedure.
-     */
-    stepOut(): boolean
-    /**
-     * Execute one C instruction, without entering in procedure, of
-     * the program currently loaded.
-     */
-    stepOver(): boolean
-    /**
-     * Unload a program.
-     */
-    unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerInstruction
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebuggerInstruction extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerInstruction
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebuggerInstruction>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebuggerInstruction
+
+    constructor(config?: DebuggerInstruction_ConstructProps) 
+    _init(config?: DebuggerInstruction_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class DebuggerMemory {
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
-    /**
-     * Quit the debugger as fast as possible.
-     */
-    abort(): boolean
-    /**
-     * Attach to an already running process.
-     * @param pid pid of the process to debug
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    attach(pid: number, sourceSearchDirectories: string[]): boolean
-    /**
-     * Connect to a remote debugger and run program
-     * @param server remote server
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Disable debugger log.
-     */
-    disableLog(): void
-    /**
-     * Log all debuggers commands, mainly useful for debugging.
-     * @param log MessageView used by log
-     */
-    enableLog(log: MessageView): void
-    /**
-     * Exit from the currently loaded program.
-     */
-    exit(): boolean
-    /**
-     * Get the current state of the debugger
-     */
-    getState(): DebuggerState
-    /**
-     * It defines how to handle signal received by the program.
-     * @param name signal name
-     * @param stop TRUE if we need to stop signal
-     * @param print TRUE if we display a message when the signal is emitted
-     * @param ignore TRUE if we ignore the signal
-     */
-    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
-    /**
-     * Interrupt the program currently running.
-     */
-    interrupt(): boolean
-    /**
-     * Load a program in the debugger.
-     * @param file filename
-     * @param mimeType mime type of the file
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
-    /**
-     * Quit the debugger, can wait until the debugger is ready.
-     */
-    quit(): boolean
-    /**
-     * Run the program currently loaded.
-     */
-    run(): boolean
-    /**
-     * Execute the program from a new position.
-     * This function is optional.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runFrom(file: string, line: number): boolean
-    /**
-     * Execute the currently loaded program until it reachs the target
-     * line.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runTo(file: string, line: number): boolean
-    /**
-     * Send a command directly to the debugger. Warning, changing the
-     * debugger states, by sending a run command by example, will
-     * probably gives some troubles in the debug manager.
-     * @param command command
-     */
-    sendCommand(command: string): boolean
-    /**
-     * Set environment variable
-     * @param env List environment variable
-     */
-    setEnvironment(env: string): boolean
-    /**
-     * Set the current frame.
-     * @param frame frame number
-     */
-    setFrame(frame: number): boolean
-    /**
-     * Set the current thread.
-     * @param thread thread number
-     */
-    setThread(thread: number): boolean
-    /**
-     * Set program working directory.
-     * @param dir working program directory
-     */
-    setWorkingDirectory(dir: string): boolean
-    /**
-     * Start a loaded program under debugger control.
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    start(args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Execute a single C instruction of the program currently loaded.
-     */
-    stepIn(): boolean
-    /**
-     * Execute the currently loaded program until it goes out of the
-     * current procedure.
-     */
-    stepOut(): boolean
-    /**
-     * Execute one C instruction, without entering in procedure, of
-     * the program currently loaded.
-     */
-    stepOver(): boolean
-    /**
-     * Unload a program.
-     */
-    unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+interface DebuggerMemory_ConstructProps extends Debugger_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface DebuggerMemory extends Debugger {
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerMemory
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebuggerMemory extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerMemory
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebuggerMemory>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebuggerMemory
+
+    constructor(config?: DebuggerMemory_ConstructProps) 
+    _init(config?: DebuggerMemory_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class DebuggerRegister {
-    /* Methods of IAnjuta-3.0.IAnjuta.DebuggerRegister */
+
+interface DebuggerRegister_ConstructProps extends Debugger_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface DebuggerRegister extends Debugger {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DebuggerRegister
+
     /**
      * Change the value of one register. Only the num and value field are used.
      * @param value Modified register with a new value
      */
     writeRegister(value: DebuggerRegisterData): boolean
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
-    /**
-     * Quit the debugger as fast as possible.
-     */
-    abort(): boolean
-    /**
-     * Attach to an already running process.
-     * @param pid pid of the process to debug
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    attach(pid: number, sourceSearchDirectories: string[]): boolean
-    /**
-     * Connect to a remote debugger and run program
-     * @param server remote server
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Disable debugger log.
-     */
-    disableLog(): void
-    /**
-     * Log all debuggers commands, mainly useful for debugging.
-     * @param log MessageView used by log
-     */
-    enableLog(log: MessageView): void
-    /**
-     * Exit from the currently loaded program.
-     */
-    exit(): boolean
-    /**
-     * Get the current state of the debugger
-     */
-    getState(): DebuggerState
-    /**
-     * It defines how to handle signal received by the program.
-     * @param name signal name
-     * @param stop TRUE if we need to stop signal
-     * @param print TRUE if we display a message when the signal is emitted
-     * @param ignore TRUE if we ignore the signal
-     */
-    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
-    /**
-     * Interrupt the program currently running.
-     */
-    interrupt(): boolean
-    /**
-     * Load a program in the debugger.
-     * @param file filename
-     * @param mimeType mime type of the file
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
-    /**
-     * Quit the debugger, can wait until the debugger is ready.
-     */
-    quit(): boolean
-    /**
-     * Run the program currently loaded.
-     */
-    run(): boolean
-    /**
-     * Execute the program from a new position.
-     * This function is optional.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runFrom(file: string, line: number): boolean
-    /**
-     * Execute the currently loaded program until it reachs the target
-     * line.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runTo(file: string, line: number): boolean
-    /**
-     * Send a command directly to the debugger. Warning, changing the
-     * debugger states, by sending a run command by example, will
-     * probably gives some troubles in the debug manager.
-     * @param command command
-     */
-    sendCommand(command: string): boolean
-    /**
-     * Set environment variable
-     * @param env List environment variable
-     */
-    setEnvironment(env: string): boolean
-    /**
-     * Set the current frame.
-     * @param frame frame number
-     */
-    setFrame(frame: number): boolean
-    /**
-     * Set the current thread.
-     * @param thread thread number
-     */
-    setThread(thread: number): boolean
-    /**
-     * Set program working directory.
-     * @param dir working program directory
-     */
-    setWorkingDirectory(dir: string): boolean
-    /**
-     * Start a loaded program under debugger control.
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    start(args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Execute a single C instruction of the program currently loaded.
-     */
-    stepIn(): boolean
-    /**
-     * Execute the currently loaded program until it goes out of the
-     * current procedure.
-     */
-    stepOut(): boolean
-    /**
-     * Execute one C instruction, without entering in procedure, of
-     * the program currently loaded.
-     */
-    stepOver(): boolean
-    /**
-     * Unload a program.
-     */
-    unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerRegister
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebuggerRegister extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerRegister
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebuggerRegister>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebuggerRegister
+
+    constructor(config?: DebuggerRegister_ConstructProps) 
+    _init(config?: DebuggerRegister_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class DebuggerVariable {
-    /* Methods of IAnjuta-3.0.IAnjuta.DebuggerVariable */
+
+interface DebuggerVariable_ConstructProps extends Debugger_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface DebuggerVariable extends Debugger {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DebuggerVariable
+
     /**
      * Set the value of one variable or child object.
      * @param name Variable name
@@ -2177,197 +1850,44 @@ class DebuggerVariable {
      * @param name Variable name
      */
     destroy(name: string): boolean
-    /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
-    /**
-     * Quit the debugger as fast as possible.
-     */
-    abort(): boolean
-    /**
-     * Attach to an already running process.
-     * @param pid pid of the process to debug
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    attach(pid: number, sourceSearchDirectories: string[]): boolean
-    /**
-     * Connect to a remote debugger and run program
-     * @param server remote server
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Disable debugger log.
-     */
-    disableLog(): void
-    /**
-     * Log all debuggers commands, mainly useful for debugging.
-     * @param log MessageView used by log
-     */
-    enableLog(log: MessageView): void
-    /**
-     * Exit from the currently loaded program.
-     */
-    exit(): boolean
-    /**
-     * Get the current state of the debugger
-     */
-    getState(): DebuggerState
-    /**
-     * It defines how to handle signal received by the program.
-     * @param name signal name
-     * @param stop TRUE if we need to stop signal
-     * @param print TRUE if we display a message when the signal is emitted
-     * @param ignore TRUE if we ignore the signal
-     */
-    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
-    /**
-     * Interrupt the program currently running.
-     */
-    interrupt(): boolean
-    /**
-     * Load a program in the debugger.
-     * @param file filename
-     * @param mimeType mime type of the file
-     * @param sourceSearchDirectories List of directories to search for 		      source files.
-     */
-    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
-    /**
-     * Quit the debugger, can wait until the debugger is ready.
-     */
-    quit(): boolean
-    /**
-     * Run the program currently loaded.
-     */
-    run(): boolean
-    /**
-     * Execute the program from a new position.
-     * This function is optional.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runFrom(file: string, line: number): boolean
-    /**
-     * Execute the currently loaded program until it reachs the target
-     * line.
-     * @param file target file name
-     * @param line target line in file
-     */
-    runTo(file: string, line: number): boolean
-    /**
-     * Send a command directly to the debugger. Warning, changing the
-     * debugger states, by sending a run command by example, will
-     * probably gives some troubles in the debug manager.
-     * @param command command
-     */
-    sendCommand(command: string): boolean
-    /**
-     * Set environment variable
-     * @param env List environment variable
-     */
-    setEnvironment(env: string): boolean
-    /**
-     * Set the current frame.
-     * @param frame frame number
-     */
-    setFrame(frame: number): boolean
-    /**
-     * Set the current thread.
-     * @param thread thread number
-     */
-    setThread(thread: number): boolean
-    /**
-     * Set program working directory.
-     * @param dir working program directory
-     */
-    setWorkingDirectory(dir: string): boolean
-    /**
-     * Start a loaded program under debugger control.
-     * @param args command line argument of the program
-     * @param terminal TRUE if the program need a terminal
-     * @param stop TRUE if program is stopped at the beginning
-     */
-    start(args: string, terminal: boolean, stop: boolean): boolean
-    /**
-     * Execute a single C instruction of the program currently loaded.
-     */
-    stepIn(): boolean
-    /**
-     * Execute the currently loaded program until it goes out of the
-     * current procedure.
-     */
-    stepOut(): boolean
-    /**
-     * Execute one C instruction, without entering in procedure, of
-     * the program currently loaded.
-     */
-    stepOver(): boolean
-    /**
-     * Unload a program.
-     */
-    unload(): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.Debugger */
-    connect(sigName: "debugger-ready", callback: ((object: DebuggerState) => void)): number
-    on(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-ready", callback: (object: DebuggerState) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-ready", callback: (object: DebuggerState) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-ready", object: DebuggerState): void
-    connect(sigName: "debugger-started", callback: (() => void)): number
-    on(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-started", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-started", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-started"): void
-    connect(sigName: "debugger-stopped", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "debugger-stopped", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "debugger-stopped", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "debugger-stopped", object: GLib.Error): void
-    connect(sigName: "frame-changed", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "frame-changed", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "frame-changed", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "frame-changed", object: number, p0: number): void
-    connect(sigName: "program-exited", callback: (() => void)): number
-    on(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-exited", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-exited", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-exited"): void
-    connect(sigName: "program-loaded", callback: (() => void)): number
-    on(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-loaded", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-loaded", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-loaded"): void
-    connect(sigName: "program-moved", callback: ((object: number, p0: number, p1: number, p2: string, p3: number) => void)): number
-    on(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-moved", callback: (object: number, p0: number, p1: number, p2: string, p3: number) => void): NodeJS.EventEmitter
-    emit(sigName: "program-moved", object: number, p0: number, p1: number, p2: string, p3: number): void
-    connect(sigName: "program-running", callback: (() => void)): number
-    on(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-running", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-running", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-running"): void
-    connect(sigName: "program-stopped", callback: (() => void)): number
-    on(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "program-stopped", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "program-stopped", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "program-stopped"): void
-    connect(sigName: "sharedlib-event", callback: (() => void)): number
-    on(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sharedlib-event", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sharedlib-event", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "sharedlib-event"): void
-    connect(sigName: "signal-received", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "signal-received", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "signal-received", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "signal-received", object: string, p0: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerVariable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class DebuggerVariable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerVariable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DebuggerVariable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DebuggerVariable
+
+    constructor(config?: DebuggerVariable_ConstructProps) 
+    _init(config?: DebuggerVariable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Document {
-    /* Methods of IAnjuta-3.0.IAnjuta.Document */
+
+interface Document_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `update-ui`
+ */
+interface Document_UpdateUiSignalCallback {
+    (): void
+}
+
+interface Document {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Document
+
     /**
      * Begins the mark of undoable action. Calls to this are stacked and
      * each must be ended with ianjuta_document_end_action().
@@ -2417,23 +1937,59 @@ class Document {
      * Undo last operation
      */
     undo(): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Document */
-    /**
-     * This signal is emitted when the document assumes the UI must be updated
-     * because some internal state of the document has changed. For example, if
-     * current line position is changed, it needs to be reflected to the UI.
-     */
-    connect(sigName: "update-ui", callback: (() => void)): number
-    on(sigName: "update-ui", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "update-ui", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "update-ui", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "update-ui"): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Document
+
+    connect(sigName: "update-ui", callback: Document_UpdateUiSignalCallback): number
+    on(sigName: "update-ui", callback: Document_UpdateUiSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "update-ui", callback: Document_UpdateUiSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "update-ui", callback: Document_UpdateUiSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "update-ui", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Document
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Document extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Document
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Document>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Document
+
+    constructor(config?: Document_ConstructProps) 
+    _init(config?: Document_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class DocumentManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.DocumentManager */
+
+interface DocumentManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `document-added`
+ */
+interface DocumentManager_DocumentAddedSignalCallback {
+    (doc: Document): void
+}
+
+/**
+ * Signal callback interface for `document-removed`
+ */
+interface DocumentManager_DocumentRemovedSignalCallback {
+    (doc: Document): void
+}
+
+interface DocumentManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.DocumentManager
+
     addBookmark(file: Gio.File, line: number): void
     /**
      * Creates a new editor buffer of the given name and sets the given
@@ -2498,29 +2054,105 @@ class DocumentManager {
      * @param document the document to set as current.
      */
     setCurrentDocument(document: Document): void
-    /* Signals of IAnjuta-3.0.IAnjuta.DocumentManager */
-    /**
-     * Emitted when a document was added to the document manager.
-     * @param doc The #IAnjutaDocument that was added.
-     */
-    connect(sigName: "document-added", callback: ((doc: Document) => void)): number
-    on(sigName: "document-added", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "document-added", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "document-added", callback: (doc: Document) => void): NodeJS.EventEmitter
-    emit(sigName: "document-added", doc: Document): void
-    /**
-     * Emitted when a document was removed from the document manager.
-     * @param doc The #IAnjutaDocument that was removed.
-     */
-    connect(sigName: "document-removed", callback: ((doc: Document) => void)): number
-    on(sigName: "document-removed", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "document-removed", callback: (doc: Document) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "document-removed", callback: (doc: Document) => void): NodeJS.EventEmitter
-    emit(sigName: "document-removed", doc: Document): void
-    static name: string
+
+    // Own signals of IAnjuta-3.0.IAnjuta.DocumentManager
+
+    connect(sigName: "document-added", callback: DocumentManager_DocumentAddedSignalCallback): number
+    on(sigName: "document-added", callback: DocumentManager_DocumentAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "document-added", callback: DocumentManager_DocumentAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "document-added", callback: DocumentManager_DocumentAddedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "document-added", ...args: any[]): void
+    connect(sigName: "document-removed", callback: DocumentManager_DocumentRemovedSignalCallback): number
+    on(sigName: "document-removed", callback: DocumentManager_DocumentRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "document-removed", callback: DocumentManager_DocumentRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "document-removed", callback: DocumentManager_DocumentRemovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "document-removed", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.DocumentManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class Editor {
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
+
+class DocumentManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DocumentManager
+
+    static name: string
+    static $gtype: GObject.GType<DocumentManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.DocumentManager
+
+    constructor(config?: DocumentManager_ConstructProps) 
+    _init(config?: DocumentManager_ConstructProps): void
+}
+
+interface Editor_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `backspace`
+ */
+interface Editor_BackspaceSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface Editor_ChangedSignalCallback {
+    (added: Iterable, length: boolean, lines: number, text: number, obj: string): void
+}
+
+/**
+ * Signal callback interface for `char-added`
+ */
+interface Editor_CharAddedSignalCallback {
+    (ch: Iterable, obj: number): void
+}
+
+/**
+ * Signal callback interface for `code-changed`
+ */
+interface Editor_CodeChangedSignalCallback {
+    (code: Iterable, obj: string): void
+}
+
+/**
+ * Signal callback interface for `cursor-moved`
+ */
+interface Editor_CursorMovedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `glade-callback-add`
+ */
+interface Editor_GladeCallbackAddSignalCallback {
+    (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
+}
+
+/**
+ * Signal callback interface for `glade-member-add`
+ */
+interface Editor_GladeMemberAddSignalCallback {
+    (widgetName: string, filename: string, obj: string): void
+}
+
+/**
+ * Signal callback interface for `line-marks-gutter-clicked`
+ */
+interface Editor_LineMarksGutterClickedSignalCallback {
+    (doubleClick: number): void
+}
+
+interface Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Editor
+
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
@@ -2663,100 +2295,86 @@ class Editor {
      */
     setTabsize(tabsize: number): void
     setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
-    static name: string
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Editor
+
+    connect(sigName: "backspace", callback: Editor_BackspaceSignalCallback): number
+    on(sigName: "backspace", callback: Editor_BackspaceSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "backspace", callback: Editor_BackspaceSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "backspace", callback: Editor_BackspaceSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "backspace", ...args: any[]): void
+    connect(sigName: "changed", callback: Editor_ChangedSignalCallback): number
+    on(sigName: "changed", callback: Editor_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "changed", callback: Editor_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "changed", callback: Editor_ChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "changed", length: boolean, lines: number, text: number, obj: string, ...args: any[]): void
+    connect(sigName: "char-added", callback: Editor_CharAddedSignalCallback): number
+    on(sigName: "char-added", callback: Editor_CharAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "char-added", callback: Editor_CharAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "char-added", callback: Editor_CharAddedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "char-added", obj: number, ...args: any[]): void
+    connect(sigName: "code-changed", callback: Editor_CodeChangedSignalCallback): number
+    on(sigName: "code-changed", callback: Editor_CodeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "code-changed", callback: Editor_CodeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "code-changed", callback: Editor_CodeChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "code-changed", obj: string, ...args: any[]): void
+    connect(sigName: "cursor-moved", callback: Editor_CursorMovedSignalCallback): number
+    on(sigName: "cursor-moved", callback: Editor_CursorMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "cursor-moved", callback: Editor_CursorMovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "cursor-moved", callback: Editor_CursorMovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "cursor-moved", ...args: any[]): void
+    connect(sigName: "glade-callback-add", callback: Editor_GladeCallbackAddSignalCallback): number
+    on(sigName: "glade-callback-add", callback: Editor_GladeCallbackAddSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "glade-callback-add", callback: Editor_GladeCallbackAddSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "glade-callback-add", callback: Editor_GladeCallbackAddSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "glade-callback-add", handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string, ...args: any[]): void
+    connect(sigName: "glade-member-add", callback: Editor_GladeMemberAddSignalCallback): number
+    on(sigName: "glade-member-add", callback: Editor_GladeMemberAddSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "glade-member-add", callback: Editor_GladeMemberAddSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "glade-member-add", callback: Editor_GladeMemberAddSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "glade-member-add", filename: string, obj: string, ...args: any[]): void
+    connect(sigName: "line-marks-gutter-clicked", callback: Editor_LineMarksGutterClickedSignalCallback): number
+    on(sigName: "line-marks-gutter-clicked", callback: Editor_LineMarksGutterClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "line-marks-gutter-clicked", callback: Editor_LineMarksGutterClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "line-marks-gutter-clicked", callback: Editor_LineMarksGutterClickedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "line-marks-gutter-clicked", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Editor
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class EditorAssist {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorAssist */
+
+class Editor extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Editor
+
+    static name: string
+    static $gtype: GObject.GType<Editor>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Editor
+
+    constructor(config?: Editor_ConstructProps) 
+    _init(config?: Editor_ConstructProps): void
+}
+
+interface EditorAssist_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `cancelled`
+ */
+interface EditorAssist_CancelledSignalCallback {
+    (): void
+}
+
+interface EditorAssist extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorAssist
+
     add(provider: Provider): void
     invoke(provider: Provider): void
     /**
@@ -2771,256 +2389,45 @@ class EditorAssist {
      */
     proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean): void
     remove(provider: Provider): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.EditorAssist */
-    /**
-     * This signal is emitted when the autocompletion is cancelled due to various
-     * reasons. The provider should avoid to call ianjuta_editor_assist_proposals() after
-     * this signal.
-     */
-    connect(sigName: "cancelled", callback: (() => void)): number
-    on(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cancelled", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cancelled"): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.EditorAssist
+
+    connect(sigName: "cancelled", callback: EditorAssist_CancelledSignalCallback): number
+    on(sigName: "cancelled", callback: EditorAssist_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "cancelled", callback: EditorAssist_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "cancelled", callback: EditorAssist_CancelledSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "cancelled", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorAssist
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorAssist extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorAssist
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorAssist>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorAssist
+
+    constructor(config?: EditorAssist_ConstructProps) 
+    _init(config?: EditorAssist_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorCell {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorCell */
+
+interface EditorCell_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface EditorCell {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorCell
+
     getAttribute(): EditorAttribute
     /**
      * Returns the byte of the unicode character in this cell at given
@@ -3045,46 +2452,71 @@ class EditorCell {
      * unicode character.
      */
     getLength(): number
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorCell
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorCell extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorCell
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorCell>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorCell
+
+    constructor(config?: EditorCell_ConstructProps) 
+    _init(config?: EditorCell_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorCellStyle {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorCellStyle */
+
+interface EditorCellStyle_ConstructProps extends EditorCell_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorCellStyle extends EditorCell {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorCellStyle
+
     getBackgroundColor(): string
     getColor(): string
     getFontDescription(): string
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorCell */
-    getAttribute(): EditorAttribute
-    /**
-     * Returns the byte of the unicode character in this cell at given
-     * index `char_index`. `char_index` can vary from 0 to length of the
-     * unicode string minus 1. Out of range index is not allowed
-     * (asserted) and return is undefined.
-     * 
-     * Since there is dynamic allocation of unicode character string
-     * involved in ianjuta_editor_cell_get_character(), this function
-     * is mainly useful for fast iteration (such as copying data).
-     * @param charIndex 
-     */
-    getChar(charIndex: number): number
-    /**
-     * Returns the unicode character in this cell. A NULL terminated
-     * string is returned that is the multibyte unicode character.
-     * NULL is returned if the cell does not have any character.
-     */
-    getCharacter(): string
-    /**
-     * Gets the length of the cell in bytes. That is, length of the
-     * unicode character.
-     */
-    getLength(): number
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorCellStyle
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorCellStyle extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorCellStyle
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorCellStyle>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorCellStyle
+
+    constructor(config?: EditorCellStyle_ConstructProps) 
+    _init(config?: EditorCellStyle_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorComment {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorComment */
+
+interface EditorComment_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorComment extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorComment
+
     /**
      * Comment/Uncomment out selected block
      */
@@ -3097,245 +2529,37 @@ class EditorComment {
      * Comment/Uncomment out selected block
      */
     stream(): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorComment
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorComment extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorComment
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorComment>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorComment
+
+    constructor(config?: EditorComment_ConstructProps) 
+    _init(config?: EditorComment_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorConvert {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorConvert */
+
+interface EditorConvert_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorConvert extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorConvert
+
     /**
      * change characters from start position to end position to lowercase
      * @param startPosition Start position.
@@ -3348,750 +2572,154 @@ class EditorConvert {
      * @param endPosition End position.
      */
     toUpper(startPosition: Iterable, endPosition: Iterable): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorConvert
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorConvert extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorConvert
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorConvert>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorConvert
+
+    constructor(config?: EditorConvert_ConstructProps) 
+    _init(config?: EditorConvert_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorFactory {
+
+interface EditorFactory_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface EditorFactory {
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorFactory
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorFactory extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorFactory
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorFactory>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorFactory
+
+    constructor(config?: EditorFactory_ConstructProps) 
+    _init(config?: EditorFactory_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorFolds {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorFolds */
+
+interface EditorFolds_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorFolds extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorFolds
+
     closeAll(): void
     openAll(): void
     toggleCurrent(): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorFolds
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorFolds extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorFolds
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorFolds>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorFolds
+
+    constructor(config?: EditorFolds_ConstructProps) 
+    _init(config?: EditorFolds_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorGladeSignal {
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal */
-    /**
-     * Emitted when a signal was received per drag & drop
-     * @param iter a IAnjutaIterable of the position where drop happens
-     * @param signalData Signal data in form "widget:signal:handler", e.g. "GtkToggleButton:toggled:on_toggle_button_toggled"
-     */
-    connect(sigName: "drop", callback: ((iter: Iterable, signalData: string) => void)): number
-    on(sigName: "drop", callback: (iter: Iterable, signalData: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "drop", callback: (iter: Iterable, signalData: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "drop", callback: (iter: Iterable, signalData: string) => void): NodeJS.EventEmitter
-    emit(sigName: "drop", iter: Iterable, signalData: string): void
-    /**
-     * Emitted when a signal is dragged over the editor
-     * @param iter a IAnjutaIterable of the position where drop would happen
-     */
-    connect(sigName: "drop-possible", callback: ((iter: Iterable) => boolean)): number
-    on(sigName: "drop-possible", callback: (iter: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "drop-possible", callback: (iter: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "drop-possible", callback: (iter: Iterable) => void): NodeJS.EventEmitter
-    emit(sigName: "drop-possible", iter: Iterable): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+interface EditorGladeSignal_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `drop`
+ */
+interface EditorGladeSignal_DropSignalCallback {
+    (iter: Iterable, signalData: string): void
+}
+
+/**
+ * Signal callback interface for `drop-possible`
+ */
+interface EditorGladeSignal_DropPossibleSignalCallback {
+    (iter: Iterable): boolean
+}
+
+interface EditorGladeSignal extends Editor {
+
+    // Own signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal
+
+    connect(sigName: "drop", callback: EditorGladeSignal_DropSignalCallback): number
+    on(sigName: "drop", callback: EditorGladeSignal_DropSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "drop", callback: EditorGladeSignal_DropSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "drop", callback: EditorGladeSignal_DropSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "drop", signalData: string, ...args: any[]): void
+    connect(sigName: "drop-possible", callback: EditorGladeSignal_DropPossibleSignalCallback): number
+    on(sigName: "drop-possible", callback: EditorGladeSignal_DropPossibleSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "drop-possible", callback: EditorGladeSignal_DropPossibleSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "drop-possible", callback: EditorGladeSignal_DropPossibleSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "drop-possible", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorGladeSignal extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorGladeSignal
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorGladeSignal>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorGladeSignal
+
+    constructor(config?: EditorGladeSignal_ConstructProps) 
+    _init(config?: EditorGladeSignal_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorGoto {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorGoto */
+
+interface EditorGoto_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorGoto extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorGoto
+
     /**
      * Moves cursor to the end of the current block
      */
@@ -4104,511 +2732,108 @@ class EditorGoto {
      * Moves cursor to the start of the current block
      */
     startBlock(): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorGoto
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorGoto extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorGoto
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorGoto>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorGoto
+
+    constructor(config?: EditorGoto_ConstructProps) 
+    _init(config?: EditorGoto_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorHover {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorHover */
+
+interface EditorHover_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `hover-leave`
+ */
+interface EditorHover_HoverLeaveSignalCallback {
+    (position: Iterable): void
+}
+
+/**
+ * Signal callback interface for `hover-over`
+ */
+interface EditorHover_HoverOverSignalCallback {
+    (position: Iterable): void
+}
+
+interface EditorHover extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorHover
+
     /**
      * Show `info` as tooltip
      * @param position 
      * @param info String to display
      */
     display(position: Iterable, info: string): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.EditorHover */
-    /**
-     * User moved the mouse away - can be used to clean up things done in
-     * #IAnjutaEditorHover::hover-over
-     * @param position IAnjutaEditorCell specifying the position the mouse was over
-     */
-    connect(sigName: "hover-leave", callback: ((position: Iterable) => void)): number
-    on(sigName: "hover-leave", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "hover-leave", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "hover-leave", callback: (position: Iterable) => void): NodeJS.EventEmitter
-    emit(sigName: "hover-leave", position: Iterable): void
-    /**
-     * The mouse is held for a moment over `position`. This can be used to show
-     * all tooltip.
-     * @param position IAnjutaEditorCell specifying the position the mouse is over
-     */
-    connect(sigName: "hover-over", callback: ((position: Iterable) => void)): number
-    on(sigName: "hover-over", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "hover-over", callback: (position: Iterable) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "hover-over", callback: (position: Iterable) => void): NodeJS.EventEmitter
-    emit(sigName: "hover-over", position: Iterable): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.EditorHover
+
+    connect(sigName: "hover-leave", callback: EditorHover_HoverLeaveSignalCallback): number
+    on(sigName: "hover-leave", callback: EditorHover_HoverLeaveSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "hover-leave", callback: EditorHover_HoverLeaveSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "hover-leave", callback: EditorHover_HoverLeaveSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "hover-leave", ...args: any[]): void
+    connect(sigName: "hover-over", callback: EditorHover_HoverOverSignalCallback): number
+    on(sigName: "hover-over", callback: EditorHover_HoverOverSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "hover-over", callback: EditorHover_HoverOverSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "hover-over", callback: EditorHover_HoverOverSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "hover-over", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorHover
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorHover extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorHover
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorHover>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorHover
+
+    constructor(config?: EditorHover_ConstructProps) 
+    _init(config?: EditorHover_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorLanguage {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorLanguage */
+
+interface EditorLanguage_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `language-changed`
+ */
+interface EditorLanguage_LanguageChangedSignalCallback {
+    (language: string): void
+}
+
+interface EditorLanguage extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorLanguage
+
     /**
      * Return the name of the currently used language
      */
@@ -4625,255 +2850,45 @@ class EditorLanguage {
      * @param language Language
      */
     setLanguage(language: string): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.EditorLanguage */
-    /**
-     * the language of the editor changed to `language`
-     * @param language new language
-     */
-    connect(sigName: "language-changed", callback: ((language: string) => void)): number
-    on(sigName: "language-changed", callback: (language: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "language-changed", callback: (language: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "language-changed", callback: (language: string) => void): NodeJS.EventEmitter
-    emit(sigName: "language-changed", language: string): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.EditorLanguage
+
+    connect(sigName: "language-changed", callback: EditorLanguage_LanguageChangedSignalCallback): number
+    on(sigName: "language-changed", callback: EditorLanguage_LanguageChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "language-changed", callback: EditorLanguage_LanguageChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "language-changed", callback: EditorLanguage_LanguageChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "language-changed", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorLanguage
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorLanguage extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorLanguage
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorLanguage>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorLanguage
+
+    constructor(config?: EditorLanguage_ConstructProps) 
+    _init(config?: EditorLanguage_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorLineMode {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorLineMode */
+
+interface EditorLineMode_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorLineMode extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorLineMode
+
     /**
      * Set the line ending mode to the given `mode` and convert all line end
      * characters in the buffer to `mode` line end characters.
@@ -4897,245 +2912,37 @@ class EditorLineMode {
      * @param mode Line mode to set.
      */
     set(mode: EditorLineModeType): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorLineMode
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorLineMode extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorLineMode
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorLineMode>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorLineMode
+
+    constructor(config?: EditorLineMode_ConstructProps) 
+    _init(config?: EditorLineMode_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorSearch {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorSearch */
+
+interface EditorSearch_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorSearch extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorSearch
+
     /**
      * Search backward from end to start
      * @param search String to search for
@@ -5152,245 +2959,37 @@ class EditorSearch {
      * @param end Where to stop searching
      */
     forward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorSearch
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorSearch extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorSearch
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorSearch>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorSearch
+
+    constructor(config?: EditorSearch_ConstructProps) 
+    _init(config?: EditorSearch_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorSelection {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorSelection */
+
+interface EditorSelection_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorSelection extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorSelection
+
     /**
      * Gets curerntly selected text in editor.
      */
@@ -5431,245 +3030,37 @@ class EditorSelection {
      * @param scroll Scroll selection onscreen
      */
     set(start: Iterable, end: Iterable, scroll: boolean): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorSelection
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorSelection extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorSelection
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorSelection>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorSelection
+
+    constructor(config?: EditorSelection_ConstructProps) 
+    _init(config?: EditorSelection_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorTip {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorTip */
+
+interface EditorTip_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorTip extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorTip
+
     /**
      * Cancels the last shown tooltip
      */
@@ -5686,245 +3077,37 @@ class EditorTip {
      */
     show(tips: string[], position: Iterable): void
     visible(): boolean
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorTip
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorTip extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorTip
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorTip>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorTip
+
+    constructor(config?: EditorTip_ConstructProps) 
+    _init(config?: EditorTip_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorView {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorView */
+
+interface EditorView_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorView extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorView
+
     /**
      * Creates a new view for the editor. The newly created view gets
      * the user focus and scrolls to the same location as last view.
@@ -5941,245 +3124,37 @@ class EditorView {
      * one view of the editor, this function does nothing.
      */
     removeCurrent(): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorView
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorView extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorView
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorView>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorView
+
+    constructor(config?: EditorView_ConstructProps) 
+    _init(config?: EditorView_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class EditorZoom {
-    /* Methods of IAnjuta-3.0.IAnjuta.EditorZoom */
+
+interface EditorZoom_ConstructProps extends Editor_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface EditorZoom extends Editor {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.EditorZoom
+
     /**
      * Zoom in
      */
@@ -6188,245 +3163,37 @@ class EditorZoom {
      * Zoom out
      */
     out(): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * Appends `length` characters from `text` buffer at the end of editor
-     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    append(text: string, length: number): void
-    erase(positionStart: Iterable, positionEnd: Iterable): void
-    /**
-     * Empties the whole editor buffer. There will be zero characters.
-     * After the erase operation, none of the active iters are guranteed
-     * to be valid.
-     */
-    eraseAll(): void
-    getColumn(): number
-    /**
-     * Obtains the word on which carat is currently on.
-     */
-    getCurrentWord(): string
-    /**
-     * Gets the iter positioned at the end of the editor buffer. The
-     * returned iter is the end-iter which does not point to any valid
-     * character in the buffer (it is pointed one step beyond the last
-     * valid character).
-     */
-    getEndPosition(): Iterable
-    /**
-     * Returns the indentation size in spaces currently used by the
-     * editor.
-     */
-    getIndentsize(): number
-    /**
-     * Get length of complete text in editor. This will be the total
-     * number of bytes in the file or buffer.
-     */
-    getLength(): number
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineBeginPosition(line: number): Iterable
-    /**
-     * fixme
-     * @param line fixme
-     */
-    getLineEndPosition(line: number): Iterable
-    getLineFromPosition(position: Iterable): number
-    /**
-     * Obtains current line number on which carat is.
-     */
-    getLineno(): number
-    getOffset(): number
-    /**
-     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-     */
-    getOverwrite(): boolean
-    /**
-     * Get current caret position.
-     */
-    getPosition(): Iterable
-    /**
-     * Gets the iter positioned at the start of the editor buffer.
-     */
-    getStartPosition(): Iterable
-    /**
-     * Returns the tabsize (in spaces) currently used by the editor.
-     */
-    getTabsize(): number
-    /**
-     * Gets text characters beginning from `begin` (including char
-     * pointed by `begin)` and ending with `end` (excluding character
-     * pointed by `end)`. The characters returned are utf-8 encoded.
-     * The iterators `begin` and `end` could be in either order. The returned
-     * text, however, is in right order. If both `begin` and `end` points
-     * to the same position, NULL is returned.
-     * @param begin Begining iterator
-     * @param end End iterator
-     */
-    getText(begin: Iterable, end: Iterable): string
-    /**
-     * Gets all text characters in the editor.
-     * The characters returned are utf-8 encoded.
-     */
-    getTextAll(): string
-    /**
-     * Returns if the editor uses spaces for filling up tab characters.
-     */
-    getUseSpaces(): boolean
-    /**
-     * Carat is moved to the end of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoEnd(): void
-    /**
-     * Carat is moved to the given `lineno` line and text view is scrolled to
-     * bring it in viewable area of the editor.
-     * @param lineno line number where carat will be moved.
-     */
-    gotoLine(lineno: number): void
-    /**
-     * Carat is moved to the given `position` and text view is scrolled to
-     * bring `position` in viewable area of the editor.
-     * @param position Character position where carat will be moved.
-     */
-    gotoPosition(position: Iterable): void
-    /**
-     * Carat is moved to the begining of editor and text view is scrolled to
-     * bring it in viewable area of the editor.
-     */
-    gotoStart(): void
-    /**
-     * Inserts `length` characters from `text` buffer at given `position` of
-     * editor buffer. If `length` is -1, the whole `text` is used.
-     * @param position Character position in editor where insert will take place.
-     * @param text Text to append.
-     * @param length Length of `text` to use.
-     */
-    insert(position: Iterable, text: string, length: number): void
-    /**
-     * Sets whether the editor should auto-indent itself. A plugin that does
-     * custom auto-indent can set this to false and override the preferences
-     * setting
-     * @param autoIndent TRUE to enable auto-indent, FALSE to disable
-     */
-    setAutoIndent(autoIndent: boolean): void
-    /**
-     * Sets the indentation size of the editor.
-     * @param indentsize Indentation size in spaces
-     */
-    setIndentsize(indentsize: number): void
-    /**
-     * Set Editor popup menu. This is the menu shown in the editor when one
-     * right-clicks on it.
-     * @param menu Popupmenu
-     */
-    setPopupMenu(menu: Gtk.Widget): void
-    /**
-     * Sets the tabsize of the editor.
-     * @param tabsize Tabsize in spaces
-     */
-    setTabsize(tabsize: number): void
-    setUseSpaces(useSpaces: boolean): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Editor */
-    /**
-     * The signal is emitted when the user presses backspace
-     */
-    connect(sigName: "backspace", callback: (() => void)): number
-    on(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backspace", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backspace", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backspace"): void
-    /**
-     * This signal is emitted when any text change happens in editor.
-     * The changes begin at `position`. `text` is not garanteed to be NULL
-     * terminated. Use `length` to read the text. `lines` represent the
-     * number of line breaks in the added or removed text.
-     * @param added TRUE if added, FALSE if deleted.
-     * @param length Length of the text changed.
-     * @param lines Number of lines added or removed.
-     * @param text The text added or removed.
-     * @param obj Self
-     */
-    connect(sigName: "changed", callback: ((added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
-    on(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "changed", added: Iterable, length: boolean, lines: number, text: number, obj: string): void
-    /**
-     * This signal is emitted when any character is added inside the editor.
-     * The newly added character is `ch` which has been inserted at `position`.
-     * @param ch The character that has been added.
-     * @param obj Self
-     */
-    connect(sigName: "char-added", callback: ((ch: Iterable, obj: number) => void)): number
-    on(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "char-added", callback: (ch: Iterable, obj: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "char-added", callback: (ch: Iterable, obj: number) => void): NodeJS.EventEmitter
-    emit(sigName: "char-added", ch: Iterable, obj: number): void
-    /**
-     * This signal is emitted when code is changed inside the editor.
-     * When such information is availabe, `position` stores the position where `code` was added.
-     * @param code The code that has been added or NULL.
-     * @param obj Self
-     */
-    connect(sigName: "code-changed", callback: ((code: Iterable, obj: string) => void)): number
-    on(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "code-changed", callback: (code: Iterable, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "code-changed", callback: (code: Iterable, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "code-changed", code: Iterable, obj: string): void
-    /**
-     * The signal is a hint that the cursor was moved.
-     */
-    connect(sigName: "cursor-moved", callback: (() => void)): number
-    on(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cursor-moved", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cursor-moved", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cursor-moved"): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param signalName Name of the signal.
-     * @param handlerName Name of the signal handler.
-     * @param object Name of the object to be passed.
-     * @param swap The "swap" signal property.
-     * @param after The "after" signal property.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-callback-add", callback: ((signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
-    on(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-callback-add", callback: (signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-callback-add", signalName: string, handlerName: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
-    /**
-     * This signal is emitted when code for a widget must be generated.
-     * @param widgetName Name of the widget that will become a member of the class.
-     * @param filename Path for the .ui file that generated the signal.
-     * @param obj Self
-     */
-    connect(sigName: "glade-member-add", callback: ((widgetName: string, filename: string, obj: string) => void)): number
-    on(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "glade-member-add", callback: (widgetName: string, filename: string, obj: string) => void): NodeJS.EventEmitter
-    emit(sigName: "glade-member-add", widgetName: string, filename: string, obj: string): void
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the line marks gutter was double clicked
-     */
-    connect(sigName: "line-marks-gutter-clicked", callback: ((doubleClick: number) => void)): number
-    on(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "line-marks-gutter-clicked", callback: (doubleClick: number) => void): NodeJS.EventEmitter
-    emit(sigName: "line-marks-gutter-clicked", doubleClick: number): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.EditorZoom
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class EditorZoom extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorZoom
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EditorZoom>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.EditorZoom
+
+    constructor(config?: EditorZoom_ConstructProps) 
+    _init(config?: EditorZoom_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Environment {
-    /* Methods of IAnjuta-3.0.IAnjuta.Environment */
+
+interface Environment_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Environment {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Environment
+
     /**
      * Convert a directory in the environment to a directory outside.
      * It is useful when the environment use chroot. Take care that
@@ -6442,10 +3209,43 @@ class Environment {
      * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
      */
     override(dirp: string, argvp: string, envp: string): boolean
-    static name: string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Environment
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class File {
-    /* Methods of IAnjuta-3.0.IAnjuta.File */
+
+class Environment extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Environment
+
+    static name: string
+    static $gtype: GObject.GType<Environment>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Environment
+
+    constructor(config?: Environment_ConstructProps) 
+    _init(config?: Environment_ConstructProps): void
+}
+
+interface File_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `opened`
+ */
+interface File_OpenedSignalCallback {
+    (): void
+}
+
+interface File {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.File
+
     /**
      * Returns the file that was opened with ianjuta_file_open().
      */
@@ -6455,28 +3255,84 @@ class File {
      * @param file file to open.
      */
     open(file: Gio.File): void
-    /* Signals of IAnjuta-3.0.IAnjuta.File */
-    /**
-     * This signal is emitted when the content is loaded completely.
-     */
-    connect(sigName: "opened", callback: (() => void)): number
-    on(sigName: "opened", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "opened", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "opened", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "opened"): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.File
+
+    connect(sigName: "opened", callback: File_OpenedSignalCallback): number
+    on(sigName: "opened", callback: File_OpenedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "opened", callback: File_OpenedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "opened", callback: File_OpenedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "opened", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.File
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class File extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.File
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<File>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.File
+
+    constructor(config?: File_ConstructProps) 
+    _init(config?: File_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class FileLoader {
-    /* Methods of IAnjuta-3.0.IAnjuta.FileLoader */
+
+interface FileLoader_ConstructProps extends Loader_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface FileLoader extends Loader {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.FileLoader
+
     peekInterface(file: Gio.File): string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.FileLoader
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class FileLoader extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileLoader
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<FileLoader>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.FileLoader
+
+    constructor(config?: FileLoader_ConstructProps) 
+    _init(config?: FileLoader_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class FileManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.FileManager */
+
+interface FileManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `section-changed`
+ */
+interface FileManager_SectionChangedSignalCallback {
+    (err: Gio.File): void
+}
+
+interface FileManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.FileManager
+
     /**
      * fixme
      * @param rootUri fixme
@@ -6487,22 +3343,59 @@ class FileManager {
      * @param file File to select
      */
     setSelected(file: Gio.File): void
-    /* Signals of IAnjuta-3.0.IAnjuta.FileManager */
-    /**
-     * fixme
-     * @param err Error propagation and reporting.
-     */
-    connect(sigName: "section-changed", callback: ((err: Gio.File) => void)): number
-    on(sigName: "section-changed", callback: (err: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "section-changed", callback: (err: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "section-changed", callback: (err: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "section-changed", err: Gio.File): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.FileManager
+
+    connect(sigName: "section-changed", callback: FileManager_SectionChangedSignalCallback): number
+    on(sigName: "section-changed", callback: FileManager_SectionChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "section-changed", callback: FileManager_SectionChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "section-changed", callback: FileManager_SectionChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "section-changed", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.FileManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class FileManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileManager
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<FileManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.FileManager
+
+    constructor(config?: FileManager_ConstructProps) 
+    _init(config?: FileManager_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class FileSavable {
-    /* Methods of IAnjuta-3.0.IAnjuta.FileSavable */
+
+interface FileSavable_ConstructProps extends File_ConstructProps, GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `saved`
+ */
+interface FileSavable_SavedSignalCallback {
+    (file: Gio.File): void
+}
+
+/**
+ * Signal callback interface for `update-save-ui`
+ */
+interface FileSavable_UpdateSaveUiSignalCallback {
+    (): void
+}
+
+interface FileSavable extends File {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.FileSavable
+
     /**
      * Return is the file is in conflict. It means the file
      * has been modified externally and the user needs to
@@ -6535,64 +3428,118 @@ class FileSavable {
      * @param dirty Whether the file was edited or not
      */
     setDirty(dirty: boolean): void
-    /* Methods of IAnjuta-3.0.IAnjuta.File */
-    /**
-     * Returns the file that was opened with ianjuta_file_open().
-     */
-    getFile(): Gio.File
-    /**
-     * The implementor opens the given file.
-     * @param file file to open.
-     */
-    open(file: Gio.File): void
-    /* Signals of IAnjuta-3.0.IAnjuta.FileSavable */
-    /**
-     * This signal is emitted when the content is saved.
-     * @param file file where the content is saved or NULL if save failed
-     */
-    connect(sigName: "saved", callback: ((file: Gio.File) => void)): number
-    on(sigName: "saved", callback: (file: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "saved", callback: (file: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "saved", callback: (file: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "saved", file: Gio.File): void
-    connect(sigName: "update-save-ui", callback: (() => void)): number
-    on(sigName: "update-save-ui", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "update-save-ui", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "update-save-ui", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "update-save-ui"): void
-    /* Signals of IAnjuta-3.0.IAnjuta.File */
-    /**
-     * This signal is emitted when the content is loaded completely.
-     */
-    connect(sigName: "opened", callback: (() => void)): number
-    on(sigName: "opened", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "opened", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "opened", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "opened"): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.FileSavable
+
+    connect(sigName: "saved", callback: FileSavable_SavedSignalCallback): number
+    on(sigName: "saved", callback: FileSavable_SavedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "saved", callback: FileSavable_SavedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "saved", callback: FileSavable_SavedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "saved", ...args: any[]): void
+    connect(sigName: "update-save-ui", callback: FileSavable_UpdateSaveUiSignalCallback): number
+    on(sigName: "update-save-ui", callback: FileSavable_UpdateSaveUiSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "update-save-ui", callback: FileSavable_UpdateSaveUiSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "update-save-ui", callback: FileSavable_UpdateSaveUiSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "update-save-ui", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.FileSavable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class FileSavable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileSavable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<FileSavable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.FileSavable
+
+    constructor(config?: FileSavable_ConstructProps) 
+    _init(config?: FileSavable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Glade {
-    /* Methods of IAnjuta-3.0.IAnjuta.Glade */
+
+interface Glade_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Glade {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Glade
+
     addAssociation(master: string, slave: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Glade
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Glade extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Glade
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Glade>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Glade
+
+    constructor(config?: Glade_ConstructProps) 
+    _init(config?: Glade_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Help {
-    /* Methods of IAnjuta-3.0.IAnjuta.Help */
+
+interface Help_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Help {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Help
+
     /**
      * Search for string `query` in the help and display the result
      * @param query string to search in the help
      */
     search(query: string): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Help
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Help extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Help
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Help>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Help
+
+    constructor(config?: Help_ConstructProps) 
+    _init(config?: Help_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Indenter {
-    /* Methods of IAnjuta-3.0.IAnjuta.Indenter */
+
+interface Indenter_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Indenter {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Indenter
+
     /**
      * Indent the area between `start` and `end` according to the indentation rules
      * of the programming language. Usually implemented by language support plugins.
@@ -6603,12 +3550,37 @@ class Indenter {
      * @param end End of the area to indent
      */
     indent(start: Iterable, end: Iterable): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Indenter
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Indenter extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Indenter
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Indenter>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Indenter
+
+    constructor(config?: Indenter_ConstructProps) 
+    _init(config?: Indenter_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Indicable {
-    /* Methods of IAnjuta-3.0.IAnjuta.Indicable */
+
+interface Indicable_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Indicable {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Indicable
+
     /**
      * Clear all indicators
      */
@@ -6620,12 +3592,37 @@ class Indicable {
      * @param indicator the indicator to use
      */
     set(beginLocation: Iterable, endLocation: Iterable, indicator: IndicableIndicator): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Indicable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Indicable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Indicable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Indicable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Indicable
+
+    constructor(config?: Indicable_ConstructProps) 
+    _init(config?: Indicable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Iterable {
-    /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
+
+interface Iterable_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Iterable {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Iterable
+
     /**
      * Assigns the iter position from `src_iter`.
      * @param srcIter Source iter from which to copy the assignment.
@@ -6697,12 +3694,37 @@ class Iterable {
      * @param position New position for the iter.
      */
     setPosition(position: number): boolean
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Iterable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Iterable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Iterable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Iterable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Iterable
+
+    constructor(config?: Iterable_ConstructProps) 
+    _init(config?: Iterable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class IterableTree {
-    /* Methods of IAnjuta-3.0.IAnjuta.IterableTree */
+
+interface IterableTree_ConstructProps extends Iterable_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface IterableTree extends Iterable {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.IterableTree
+
     /**
      * Iter position set to first child of current iter. If there is no
      * children, return NULL (iter position is not changed).
@@ -6717,84 +3739,37 @@ class IterableTree {
      * returns FALSE (current iter position is not changed)
      */
     parent(): boolean
-    /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
-    /**
-     * Assigns the iter position from `src_iter`.
-     * @param srcIter Source iter from which to copy the assignment.
-     */
-    assign(srcIter: Iterable): void
-    /**
-     * Clones the iterable. The returned iterable object must be unreffed
-     * when done.
-     */
-    clone(): Iterable
-    /**
-     * Compares the position of `iter2` with this `obj`. Returns -1
-     * value if this `obj` is smaller than `iter2`. Returns +1 value
-     * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
-     * If you want difference of the iter positions, use
-     * #ianjuta_iterable_diff(). This method is meant for fast comparision.
-     * @param iter2 Second iter to compare.
-     */
-    compare(iter2: Iterable): number
-    /**
-     * Compares the position of `iter2` with this `obj` and returns difference
-     * in position of the two (`obj` - `iter2`).
-     * @param iter2 Second iter to differenciate.
-     */
-    diff(iter2: Iterable): number
-    /**
-     * Set iter to first element position. Returns FALSE if
-     * there is no element in the iterable (hence does not have first).
-     * The iter points to the first valid item.
-     */
-    first(): boolean
-    /**
-     * Length of the iterable (number of elements indexable by it).
-     */
-    getLength(): number
-    /**
-     * Index of the current iter in the iterable. It will be
-     * from 0 to length - 1 (ianjuta_iter_get_length()) if iter is pointed
-     * at valid element. It will return -1 if iter is pointed at end-iter.
-     */
-    getPosition(): number
-    /**
-     * Set iter position to end-iter (one past last element) position.
-     * Returns FALSE if there is no element in the iterable (already
-     * at end-iter).
-     */
-    last(): boolean
-    /**
-     * Set the iter position to next element position. Iter can go until one
-     * item past the last item and lands in end-iter. end-iter does not point
-     * to any valid item and signifies end of the list. Returns FALSE if iter
-     * was already at end-iter (iter can not go past it) and remains pointed
-     * to the end-iter.
-     */
-    next(): boolean
-    /**
-     * Set the iter position to previous element position. Returns FALSE if
-     * there is no previous element and the iter remains pointed to the first
-     * element.
-     */
-    previous(): boolean
-    /**
-     * Sets the current position of the iter to `position`. The given `position`
-     * must be from 0 to length - 1 (#ianjuta_iter_get_length()) to point to
-     * a valid element. Passing `position` < 0 will set it to end-iter. It
-     * returns TRUE for the above cases. FLASE will be returned, if
-     * out-of-range `position` is passed (`position` > length - 1) and iter is
-     * set to end-iter.
-     * @param position New position for the iter.
-     */
-    setPosition(position: number): boolean
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.IterableTree
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class IterableTree extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.IterableTree
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<IterableTree>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.IterableTree
+
+    constructor(config?: IterableTree_ConstructProps) 
+    _init(config?: IterableTree_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Language {
-    /* Methods of IAnjuta-3.0.IAnjuta.Language */
+
+interface Language_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Language {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Language
+
     /**
      * Conviniece method to get the id directly from the editor
      * @param editor An object implementing IAnjutaEditorLanguage
@@ -6810,12 +3785,37 @@ class Language {
      * @param editor An object implementing IAnjutaEditorLanguage
      */
     getNameFromEditor(editor: EditorLanguage): string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Language
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Language extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Language
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Language>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Language
+
+    constructor(config?: Language_ConstructProps) 
+    _init(config?: Language_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class LanguageProvider {
-    /* Methods of IAnjuta-3.0.IAnjuta.LanguageProvider */
+
+interface LanguageProvider_ConstructProps extends Provider_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface LanguageProvider extends Provider {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.LanguageProvider
+
     /**
      * Searches for a calltip in the cache
      * @param callContext name of the method to show a calltip
@@ -6841,41 +3841,72 @@ class LanguageProvider {
      * @param iter the text iter where the provider should be populated
      */
     populateCompletions(iter: Iterable): Iterable | null
-    /* Methods of IAnjuta-3.0.IAnjuta.Provider */
-    /**
-     * Show completion for the context at position `iter`
-     * @param iter position where the completion occurs
-     * @param data data assigned to the proposal
-     */
-    activate(iter: Iterable, data?: object | null): void
-    /**
-     * Return a (translatable) name for the provider
-     */
-    getName(): string
-    /**
-     * Get the iter where the current completion started
-     */
-    getStartIter(): Iterable
-    /**
-     * Show completion for the context at position `iter`. The provider should
-     * call ianjuta_editor_assist_proposals here to add proposals to the list.
-     * 
-     * Note that this is called after every character typed and the list of proposals
-     * has to be completely renewed.
-     * @param iter the text iter where the provider should be populated
-     */
-    populate(iter: Iterable): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.LanguageProvider
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class LanguageProvider extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.LanguageProvider
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<LanguageProvider>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.LanguageProvider
+
+    constructor(config?: LanguageProvider_ConstructProps) 
+    _init(config?: LanguageProvider_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Loader {
+
+interface Loader_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Loader {
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Loader
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Loader extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Loader
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Loader>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Loader
+
+    constructor(config?: Loader_ConstructProps) 
+    _init(config?: Loader_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Markable {
-    /* Methods of IAnjuta-3.0.IAnjuta.Markable */
+
+interface Markable_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `marker-clicked`
+ */
+interface Markable_MarkerClickedSignalCallback {
+    (doubleClick: boolean, location: number): void
+}
+
+interface Markable {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Markable
+
     /**
      * Delete the `marker` from all locations.
      * @param marker Marker to delete.
@@ -6903,28 +3934,51 @@ class Markable {
      * @param marker Type of marker to be used
      * @param tooltip optional tooltip displayed with the marker
      */
-    mark(location: number, marker: MarkableMarker, tooltip?: string | null): number
+    mark(location: number, marker: MarkableMarker, tooltip: string | null): number
     /**
      * Clears the `marker` at given `location`.
      * @param location Location where the marker is set.
      * @param marker The marker to unset.
      */
     unmark(location: number, marker: MarkableMarker): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Markable */
-    /**
-     * The signal is emitted when the user clicks on a marker
-     * @param doubleClick whether the marker was double clicked
-     * @param location location of the clicked marker
-     */
-    connect(sigName: "marker-clicked", callback: ((doubleClick: boolean, location: number) => void)): number
-    on(sigName: "marker-clicked", callback: (doubleClick: boolean, location: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "marker-clicked", callback: (doubleClick: boolean, location: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "marker-clicked", callback: (doubleClick: boolean, location: number) => void): NodeJS.EventEmitter
-    emit(sigName: "marker-clicked", doubleClick: boolean, location: number): void
-    static name: string
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Markable
+
+    connect(sigName: "marker-clicked", callback: Markable_MarkerClickedSignalCallback): number
+    on(sigName: "marker-clicked", callback: Markable_MarkerClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "marker-clicked", callback: Markable_MarkerClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "marker-clicked", callback: Markable_MarkerClickedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "marker-clicked", location: number, ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Markable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class MessageManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.MessageManager */
+
+class Markable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Markable
+
+    static name: string
+    static $gtype: GObject.GType<Markable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Markable
+
+    constructor(config?: Markable_ConstructProps) 
+    _init(config?: Markable_ConstructProps): void
+}
+
+interface MessageManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface MessageManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.MessageManager
+
     /**
      * Remove view from the message-manager. The view
      * will become invalid.
@@ -6954,10 +4008,50 @@ class MessageManager {
      * @param title Sets the title of view.
      */
     setViewTitle(view: MessageView, title: string): void
-    static name: string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.MessageManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class MessageView {
-    /* Methods of IAnjuta-3.0.IAnjuta.MessageView */
+
+class MessageManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.MessageManager
+
+    static name: string
+    static $gtype: GObject.GType<MessageManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.MessageManager
+
+    constructor(config?: MessageManager_ConstructProps) 
+    _init(config?: MessageManager_ConstructProps): void
+}
+
+interface MessageView_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `buffer-flushed`
+ */
+interface MessageView_BufferFlushedSignalCallback {
+    (line: string): void
+}
+
+/**
+ * Signal callback interface for `message-clicked`
+ */
+interface MessageView_MessageClickedSignalCallback {
+    (message: string): void
+}
+
+interface MessageView {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.MessageView
+
     /**
      * Append the message with summary displayed and details displayed as tooltip
      * @param type type of the message
@@ -6987,34 +4081,77 @@ class MessageView {
      * Select previous message
      */
     selectPrevious(): void
-    /* Signals of IAnjuta-3.0.IAnjuta.MessageView */
-    /**
-     * Emitted when #ianjuta_message_view_buffer_append found a newline
-     * @param line the current line
-     */
-    connect(sigName: "buffer-flushed", callback: ((line: string) => void)): number
-    on(sigName: "buffer-flushed", callback: (line: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "buffer-flushed", callback: (line: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "buffer-flushed", callback: (line: string) => void): NodeJS.EventEmitter
-    emit(sigName: "buffer-flushed", line: string): void
-    /**
-     * Emitted when the user clicks on a message
-     * @param message text of the clicked message
-     */
-    connect(sigName: "message-clicked", callback: ((message: string) => void)): number
-    on(sigName: "message-clicked", callback: (message: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "message-clicked", callback: (message: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "message-clicked", callback: (message: string) => void): NodeJS.EventEmitter
-    emit(sigName: "message-clicked", message: string): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.MessageView
+
+    connect(sigName: "buffer-flushed", callback: MessageView_BufferFlushedSignalCallback): number
+    on(sigName: "buffer-flushed", callback: MessageView_BufferFlushedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "buffer-flushed", callback: MessageView_BufferFlushedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "buffer-flushed", callback: MessageView_BufferFlushedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "buffer-flushed", ...args: any[]): void
+    connect(sigName: "message-clicked", callback: MessageView_MessageClickedSignalCallback): number
+    on(sigName: "message-clicked", callback: MessageView_MessageClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "message-clicked", callback: MessageView_MessageClickedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "message-clicked", callback: MessageView_MessageClickedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "message-clicked", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.MessageView
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class MessageView extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.MessageView
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<MessageView>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.MessageView
+
+    constructor(config?: MessageView_ConstructProps) 
+    _init(config?: MessageView_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class PluginFactory {
-    static name: string
+
+interface PluginFactory_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Preferences {
-    /* Methods of IAnjuta-3.0.IAnjuta.Preferences */
+
+interface PluginFactory {
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.PluginFactory
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class PluginFactory extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.PluginFactory
+
+    static name: string
+    static $gtype: GObject.GType<PluginFactory>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.PluginFactory
+
+    constructor(config?: PluginFactory_ConstructProps) 
+    _init(config?: PluginFactory_ConstructProps): void
+}
+
+interface Preferences_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Preferences {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Preferences
+
     /**
      * When called, the plugin should install it's preferences
      * @param prefs AnjutaPreferences to install to
@@ -7025,12 +4162,37 @@ class Preferences {
      * @param prefs AnjutaPreferences to install to
      */
     unmerge(prefs: Anjuta.Preferences): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Preferences
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Preferences extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Preferences
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Preferences>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Preferences
+
+    constructor(config?: Preferences_ConstructProps) 
+    _init(config?: Preferences_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Print {
-    /* Methods of IAnjuta-3.0.IAnjuta.Print */
+
+interface Print_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Print {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Print
+
     /**
      * Print the plugin (the file in case of the editor). In most cases this will show
      * a print dialog
@@ -7040,12 +4202,65 @@ class Print {
      * Show print preview dialog
      */
     printPreview(): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Print
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Print extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Print
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Print>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Print
+
+    constructor(config?: Print_ConstructProps) 
+    _init(config?: Print_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Project {
-    /* Methods of IAnjuta-3.0.IAnjuta.Project */
+
+interface Project_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `file-changed`
+ */
+interface Project_FileChangedSignalCallback {
+    (node: object | null): void
+}
+
+/**
+ * Signal callback interface for `node-changed`
+ */
+interface Project_NodeChangedSignalCallback {
+    (node: object | null, error: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `node-loaded`
+ */
+interface Project_NodeLoadedSignalCallback {
+    (node: object | null, error: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `node-saved`
+ */
+interface Project_NodeSavedSignalCallback {
+    (node: object | null, error: GLib.Error): void
+}
+
+interface Project {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Project
+
     /**
      * Create a new node and insert it after sibling
      * @param parent Parent
@@ -7054,7 +4269,7 @@ class Project {
      * @param file Optional file object for the node
      * @param name Optional name for the node
      */
-    addNodeAfter(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
+    addNodeAfter(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode
     /**
      * Create a new node and insert it before sibling
      * @param parent Parent
@@ -7063,7 +4278,7 @@ class Project {
      * @param file Optional file object for the node
      * @param name Optional name for the node
      */
-    addNodeBefore(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
+    addNodeBefore(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode
     /**
      * Return a list of possible node;
      */
@@ -7092,7 +4307,7 @@ class Project {
      * @param id Property
      * @param name Name for map property
      */
-    removeProperty(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean
+    removeProperty(node: Anjuta.ProjectNode, id: string, name: string | null): boolean
     /**
      * Save a project node
      * @param node Project node to save
@@ -7105,56 +4320,71 @@ class Project {
      * @param name Name for map property
      * @param value Value
      */
-    setProperty(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
-    /* Signals of IAnjuta-3.0.IAnjuta.Project */
+    setProperty(node: Anjuta.ProjectNode, id?: string, name?: string | null, value?: string): Anjuta.ProjectProperty | null
+
+    // Overloads of setProperty
+
     /**
-     * This signal is emitted when the project is changed on the disk. The
-     * corresponding node has to be reloaded.
-     * @param node Node to be reloaded.
+     * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
-    connect(sigName: "file-changed", callback: ((node?: object | null) => void)): number
-    on(sigName: "file-changed", callback: (node?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "file-changed", callback: (node?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "file-changed", callback: (node?: object | null) => void): NodeJS.EventEmitter
-    emit(sigName: "file-changed", node?: object | null): void
-    /**
-     * This signal is emitted when a node is changed by a function of this
-     * interface. The error argument is not NULL if the change was not
-     * possible. The corresponding node need to be saved.
-     * @param node Changed node.
-     * @param error Error while changing node
-     */
-    connect(sigName: "node-changed", callback: ((node: object | null, error: GLib.Error) => void)): number
-    on(sigName: "node-changed", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "node-changed", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "node-changed", callback: (node: object | null, error: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "node-changed", node: object | null, error: GLib.Error): void
-    /**
-     * This signal is emitted when a node is loaded. It returns an error if the
-     * load operation fail.
-     * @param node Loaded node.
-     * @param error Error while loading node
-     */
-    connect(sigName: "node-loaded", callback: ((node: object | null, error: GLib.Error) => void)): number
-    on(sigName: "node-loaded", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "node-loaded", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "node-loaded", callback: (node: object | null, error: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "node-loaded", node: object | null, error: GLib.Error): void
-    /**
-     * This signal is emitted when a node is saved. It returns an error if the
-     * save operation fail.
-     * @param node Saved node.
-     * @param error Error while saving node
-     */
-    connect(sigName: "node-saved", callback: ((node: object | null, error: GLib.Error) => void)): number
-    on(sigName: "node-saved", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "node-saved", callback: (node: object | null, error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "node-saved", callback: (node: object | null, error: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "node-saved", node: object | null, error: GLib.Error): void
-    static name: string
+    setProperty(propertyName: string, value?: any): void
+    setProperty(...args: any[]): any
+    setProperty(args_or_propertyName: any[] | string, value?: any): Anjuta.ProjectProperty | null | void | any
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Project
+
+    connect(sigName: "file-changed", callback: Project_FileChangedSignalCallback): number
+    on(sigName: "file-changed", callback: Project_FileChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "file-changed", callback: Project_FileChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "file-changed", callback: Project_FileChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "file-changed", ...args: any[]): void
+    connect(sigName: "node-changed", callback: Project_NodeChangedSignalCallback): number
+    on(sigName: "node-changed", callback: Project_NodeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "node-changed", callback: Project_NodeChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "node-changed", callback: Project_NodeChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "node-changed", error: GLib.Error, ...args: any[]): void
+    connect(sigName: "node-loaded", callback: Project_NodeLoadedSignalCallback): number
+    on(sigName: "node-loaded", callback: Project_NodeLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "node-loaded", callback: Project_NodeLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "node-loaded", callback: Project_NodeLoadedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "node-loaded", error: GLib.Error, ...args: any[]): void
+    connect(sigName: "node-saved", callback: Project_NodeSavedSignalCallback): number
+    on(sigName: "node-saved", callback: Project_NodeSavedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "node-saved", callback: Project_NodeSavedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "node-saved", callback: Project_NodeSavedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "node-saved", error: GLib.Error, ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Project
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class ProjectBackend {
-    /* Methods of IAnjuta-3.0.IAnjuta.ProjectBackend */
+
+class Project extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Project
+
+    static name: string
+    static $gtype: GObject.GType<Project>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Project
+
+    constructor(config?: Project_ConstructProps) 
+    _init(config?: Project_ConstructProps): void
+}
+
+interface ProjectBackend_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface ProjectBackend {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.ProjectBackend
+
     /**
      * Create a new Anjuta project.
      * @param file Project file or directory
@@ -7166,12 +4396,44 @@ class ProjectBackend {
      * @param directory Project file or directory
      */
     probe(directory: Gio.File): number
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.ProjectBackend
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class ProjectBackend extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectBackend
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<ProjectBackend>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.ProjectBackend
+
+    constructor(config?: ProjectBackend_ConstructProps) 
+    _init(config?: ProjectBackend_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class ProjectChooser {
-    /* Methods of IAnjuta-3.0.IAnjuta.ProjectChooser */
+
+interface ProjectChooser_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface ProjectChooser_ChangedSignalCallback {
+    (): void
+}
+
+interface ProjectChooser {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.ProjectChooser
+
     /**
      * Gets the currently selected element in the project chooser.
      */
@@ -7196,28 +4458,80 @@ class ProjectChooser {
      * @param childType Select one element type: source, group or target
      */
     setProjectModel(manager: ProjectManager, childType: Anjuta.ProjectNodeType): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.ProjectChooser */
-    /**
-     * Emitted when the selected node is changed.
-     */
-    connect(sigName: "changed", callback: (() => void)): number
-    on(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "changed"): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.ProjectChooser
+
+    connect(sigName: "changed", callback: ProjectChooser_ChangedSignalCallback): number
+    on(sigName: "changed", callback: ProjectChooser_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "changed", callback: ProjectChooser_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "changed", callback: ProjectChooser_ChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "changed", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.ProjectChooser
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class ProjectChooser extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectChooser
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<ProjectChooser>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.ProjectChooser
+
+    constructor(config?: ProjectChooser_ConstructProps) 
+    _init(config?: ProjectChooser_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class ProjectManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.ProjectManager */
+
+interface ProjectManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `element-added`
+ */
+interface ProjectManager_ElementAddedSignalCallback {
+    (object: Gio.File): void
+}
+
+/**
+ * Signal callback interface for `element-removed`
+ */
+interface ProjectManager_ElementRemovedSignalCallback {
+    (object: Gio.File): void
+}
+
+/**
+ * Signal callback interface for `element-selected`
+ */
+interface ProjectManager_ElementSelectedSignalCallback {
+    (object: Gio.File): void
+}
+
+/**
+ * Signal callback interface for `project-loaded`
+ */
+interface ProjectManager_ProjectLoadedSignalCallback {
+    (object: GLib.Error): void
+}
+
+interface ProjectManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.ProjectManager
+
     /**
      * Prompts the user to add a new group to the project. The user can select
      * a parent group different from the one set as default.
      * @param name Group name or URI.
      * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
-    addGroup(name: string, defaultGroup?: Gio.File | null): Gio.File
+    addGroup(name: string, defaultGroup: Gio.File | null): Gio.File
     /**
      * Prompts the user to add a file to the project. If the user selects
      * multiple files only the first source file is returned.
@@ -7229,7 +4543,7 @@ class ProjectManager {
      * @param name Source name or URI.
      * @param defaultTarget A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      */
-    addSource(name: string, defaultTarget?: Gio.File | null): Gio.File
+    addSource(name: string, defaultTarget: Gio.File | null): Gio.File
     /**
      * Adds a file to the project without prompting the user.
      * 
@@ -7253,14 +4567,14 @@ class ProjectManager {
      * @param names Sources name or URI to add.
      * @param defaultTarget A #GFile corresponding to the default target or group or 				%NULL if don't care.
      */
-    addSources(names: string[], defaultTarget?: Gio.File | null): Gio.File[]
+    addSources(names: string[], defaultTarget: Gio.File | null): Gio.File[]
     /**
      * Prompts the user to add a new target to the project. The user can select
      * a parent group different from the one set as default.
      * @param name Target name or URI.
      * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
-    addTarget(name: string, defaultGroup?: Gio.File | null): Gio.File
+    addTarget(name: string, defaultGroup: Gio.File | null): Gio.File
     /**
      * Gets the capabilites of project whether it can add group, target
      * sources etc.
@@ -7308,39 +4622,66 @@ class ProjectManager {
      * @param file A #GFile that will be removed from the project
      */
     removeFile(file: Gio.File): boolean
-    /* Signals of IAnjuta-3.0.IAnjuta.ProjectManager */
-    connect(sigName: "element-added", callback: ((object: Gio.File) => void)): number
-    on(sigName: "element-added", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "element-added", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "element-added", callback: (object: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "element-added", object: Gio.File): void
-    connect(sigName: "element-removed", callback: ((object: Gio.File) => void)): number
-    on(sigName: "element-removed", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "element-removed", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "element-removed", callback: (object: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "element-removed", object: Gio.File): void
-    connect(sigName: "element-selected", callback: ((object: Gio.File) => void)): number
-    on(sigName: "element-selected", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "element-selected", callback: (object: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "element-selected", callback: (object: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "element-selected", object: Gio.File): void
-    connect(sigName: "project-loaded", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "project-loaded", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "project-loaded", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "project-loaded", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "project-loaded", object: GLib.Error): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.ProjectManager
+
+    connect(sigName: "element-added", callback: ProjectManager_ElementAddedSignalCallback): number
+    on(sigName: "element-added", callback: ProjectManager_ElementAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "element-added", callback: ProjectManager_ElementAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "element-added", callback: ProjectManager_ElementAddedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "element-added", ...args: any[]): void
+    connect(sigName: "element-removed", callback: ProjectManager_ElementRemovedSignalCallback): number
+    on(sigName: "element-removed", callback: ProjectManager_ElementRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "element-removed", callback: ProjectManager_ElementRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "element-removed", callback: ProjectManager_ElementRemovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "element-removed", ...args: any[]): void
+    connect(sigName: "element-selected", callback: ProjectManager_ElementSelectedSignalCallback): number
+    on(sigName: "element-selected", callback: ProjectManager_ElementSelectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "element-selected", callback: ProjectManager_ElementSelectedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "element-selected", callback: ProjectManager_ElementSelectedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "element-selected", ...args: any[]): void
+    connect(sigName: "project-loaded", callback: ProjectManager_ProjectLoadedSignalCallback): number
+    on(sigName: "project-loaded", callback: ProjectManager_ProjectLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "project-loaded", callback: ProjectManager_ProjectLoadedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "project-loaded", callback: ProjectManager_ProjectLoadedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "project-loaded", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.ProjectManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class ProjectManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectManager
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<ProjectManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.ProjectManager
+
+    constructor(config?: ProjectManager_ConstructProps) 
+    _init(config?: ProjectManager_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Provider {
-    /* Methods of IAnjuta-3.0.IAnjuta.Provider */
+
+interface Provider_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Provider {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Provider
+
     /**
      * Show completion for the context at position `iter`
      * @param iter position where the completion occurs
      * @param data data assigned to the proposal
      */
-    activate(iter: Iterable, data?: object | null): void
+    activate(iter: Iterable, data: object | null): void
     /**
      * Return a (translatable) name for the provider
      */
@@ -7358,60 +4699,179 @@ class Provider {
      * @param iter the text iter where the provider should be populated
      */
     populate(iter: Iterable): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Provider
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Provider extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Provider
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Provider>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Provider
+
+    constructor(config?: Provider_ConstructProps) 
+    _init(config?: Provider_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class SnippetsManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.SnippetsManager */
+
+interface SnippetsManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface SnippetsManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.SnippetsManager
+
     /**
      * Insert snippet in the current editor.
      * @param key Trigger-key of the snippet
      * @param editingSession If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
     insert(key: string, editingSession: boolean): boolean
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.SnippetsManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class SnippetsManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SnippetsManager
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<SnippetsManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.SnippetsManager
+
+    constructor(config?: SnippetsManager_ConstructProps) 
+    _init(config?: SnippetsManager_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Stream {
-    /* Methods of IAnjuta-3.0.IAnjuta.Stream */
+
+interface Stream_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Stream {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Stream
+
     /**
      * The implementor opens the given stream.
      * @param stream Stream to open from.
      */
-    open(stream?: object | null): void
+    open(stream: object | null): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Stream
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Stream extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Stream
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Stream>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Stream
+
+    constructor(config?: Stream_ConstructProps) 
+    _init(config?: Stream_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class StreamLoader {
-    /* Methods of IAnjuta-3.0.IAnjuta.StreamLoader */
+
+interface StreamLoader_ConstructProps extends Loader_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface StreamLoader extends Loader {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.StreamLoader
+
     /**
      * Peeks the stream and determines the interface which can load
      * this stream.
      * @param stream Stream to load
      */
-    peekInterface(stream?: object | null): string
+    peekInterface(stream: object | null): string
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.StreamLoader
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class StreamLoader extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.StreamLoader
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<StreamLoader>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.StreamLoader
+
+    constructor(config?: StreamLoader_ConstructProps) 
+    _init(config?: StreamLoader_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class StreamSavable {
-    /* Methods of IAnjuta-3.0.IAnjuta.StreamSavable */
-    save(stream?: object | null): void
-    /* Methods of IAnjuta-3.0.IAnjuta.Stream */
-    /**
-     * The implementor opens the given stream.
-     * @param stream Stream to open from.
-     */
-    open(stream?: object | null): void
+
+interface StreamSavable_ConstructProps extends Stream_ConstructProps, GObject.Object_ConstructProps {
+}
+
+interface StreamSavable extends Stream {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.StreamSavable
+
+    save(stream: object | null): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.StreamSavable
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class StreamSavable extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.StreamSavable
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<StreamSavable>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.StreamSavable
+
+    constructor(config?: StreamSavable_ConstructProps) 
+    _init(config?: StreamSavable_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Symbol {
-    /* Methods of IAnjuta-3.0.IAnjuta.Symbol */
+
+interface Symbol_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Symbol {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Symbol
+
     /**
      * Retreives the boolean value of a boolean `field`.
      * @param field The field to retrieve.
@@ -7438,12 +4898,51 @@ class Symbol {
      * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
      */
     getSymType(): SymbolType
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Symbol
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Symbol extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Symbol
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Symbol>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Symbol
+
+    constructor(config?: Symbol_ConstructProps) 
+    _init(config?: Symbol_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class SymbolManager {
-    /* Methods of IAnjuta-3.0.IAnjuta.SymbolManager */
+
+interface SymbolManager_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `prj-scan-end`
+ */
+interface SymbolManager_PrjScanEndSignalCallback {
+    (object: number): void
+}
+
+/**
+ * Signal callback interface for `sys-scan-end`
+ */
+interface SymbolManager_SysScanEndSignalCallback {
+    (object: number): void
+}
+
+interface SymbolManager {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.SymbolManager
+
     /**
      * Activates the package for searches in the global symbol database.
      * @param pkgName Name of the package to activate. The colon char must be avoided.
@@ -7461,23 +4960,57 @@ class SymbolManager {
      * @param pkgVersion Version of the package. The colon char must be avoided.
      */
     deactivatePackage(pkgName: string, pkgVersion: string): void
-    /* Signals of IAnjuta-3.0.IAnjuta.SymbolManager */
-    connect(sigName: "prj-scan-end", callback: ((object: number) => void)): number
-    on(sigName: "prj-scan-end", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "prj-scan-end", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "prj-scan-end", callback: (object: number) => void): NodeJS.EventEmitter
-    emit(sigName: "prj-scan-end", object: number): void
-    connect(sigName: "sys-scan-end", callback: ((object: number) => void)): number
-    on(sigName: "sys-scan-end", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "sys-scan-end", callback: (object: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "sys-scan-end", callback: (object: number) => void): NodeJS.EventEmitter
-    emit(sigName: "sys-scan-end", object: number): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.SymbolManager
+
+    connect(sigName: "prj-scan-end", callback: SymbolManager_PrjScanEndSignalCallback): number
+    on(sigName: "prj-scan-end", callback: SymbolManager_PrjScanEndSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "prj-scan-end", callback: SymbolManager_PrjScanEndSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "prj-scan-end", callback: SymbolManager_PrjScanEndSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "prj-scan-end", ...args: any[]): void
+    connect(sigName: "sys-scan-end", callback: SymbolManager_SysScanEndSignalCallback): number
+    on(sigName: "sys-scan-end", callback: SymbolManager_SysScanEndSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "sys-scan-end", callback: SymbolManager_SysScanEndSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "sys-scan-end", callback: SymbolManager_SysScanEndSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "sys-scan-end", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.SymbolManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class SymbolManager extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SymbolManager
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<SymbolManager>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.SymbolManager
+
+    constructor(config?: SymbolManager_ConstructProps) 
+    _init(config?: SymbolManager_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class SymbolQuery {
-    /* Methods of IAnjuta-3.0.IAnjuta.SymbolQuery */
+
+interface SymbolQuery_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `async-result`
+ */
+interface SymbolQuery_AsyncResultSignalCallback {
+    (object: GObject.Object): void
+}
+
+interface SymbolQuery {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.SymbolQuery
+
     cancel(): void
     /**
      * Sets the fields of Query.
@@ -7525,18 +5058,52 @@ class SymbolQuery {
      * @param field The field to order the result.
      */
     setOrderBy(field: SymbolField): void
-    /* Signals of IAnjuta-3.0.IAnjuta.SymbolQuery */
-    connect(sigName: "async-result", callback: ((object: GObject.Object) => void)): number
-    on(sigName: "async-result", callback: (object: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "async-result", callback: (object: GObject.Object) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "async-result", callback: (object: GObject.Object) => void): NodeJS.EventEmitter
-    emit(sigName: "async-result", object: GObject.Object): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.SymbolQuery
+
+    connect(sigName: "async-result", callback: SymbolQuery_AsyncResultSignalCallback): number
+    on(sigName: "async-result", callback: SymbolQuery_AsyncResultSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "async-result", callback: SymbolQuery_AsyncResultSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "async-result", callback: SymbolQuery_AsyncResultSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "async-result", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.SymbolQuery
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class SymbolQuery extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SymbolQuery
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<SymbolQuery>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.SymbolQuery
+
+    constructor(config?: SymbolQuery_ConstructProps) 
+    _init(config?: SymbolQuery_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Terminal {
-    /* Methods of IAnjuta-3.0.IAnjuta.Terminal */
+
+interface Terminal_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `child-exited`
+ */
+interface Terminal_ChildExitedSignalCallback {
+    (object: number, p0: number): void
+}
+
+interface Terminal {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Terminal
+
     /**
      * Run the command in a terminal, setting the working directory
      * and environment variables.
@@ -7545,25 +5112,84 @@ class Terminal {
      * @param environment List of additional environment variables
      */
     executeCommand(directory: string, command: string, environment: string[]): number
-    /* Signals of IAnjuta-3.0.IAnjuta.Terminal */
-    connect(sigName: "child-exited", callback: ((object: number, p0: number) => void)): number
-    on(sigName: "child-exited", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "child-exited", callback: (object: number, p0: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "child-exited", callback: (object: number, p0: number) => void): NodeJS.EventEmitter
-    emit(sigName: "child-exited", object: number, p0: number): void
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Terminal
+
+    connect(sigName: "child-exited", callback: Terminal_ChildExitedSignalCallback): number
+    on(sigName: "child-exited", callback: Terminal_ChildExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "child-exited", callback: Terminal_ChildExitedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "child-exited", callback: Terminal_ChildExitedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "child-exited", p0: number, ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Terminal
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Terminal extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Terminal
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Terminal>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Terminal
+
+    constructor(config?: Terminal_ConstructProps) 
+    _init(config?: Terminal_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Todo {
-    /* Methods of IAnjuta-3.0.IAnjuta.Todo */
+
+interface Todo_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Todo {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Todo
+
     load(file: Gio.File): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Todo
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Todo extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Todo
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Todo>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Todo
+
+    constructor(config?: Todo_ConstructProps) 
+    _init(config?: Todo_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-class Vcs {
-    /* Methods of IAnjuta-3.0.IAnjuta.Vcs */
+
+interface Vcs_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+/**
+ * Signal callback interface for `status-changed`
+ */
+interface Vcs_StatusChangedSignalCallback {
+    (): void
+}
+
+interface Vcs {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Vcs
+
     /**
      * Add files to the VCS repository.
      * @param files List of List of files, represented as #Gfile objects, to add
@@ -7584,26 +5210,76 @@ class Vcs {
      * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
-    /* Signals of IAnjuta-3.0.IAnjuta.Vcs */
-    connect(sigName: "status-changed", callback: (() => void)): number
-    on(sigName: "status-changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "status-changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "status-changed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "status-changed"): void
-    static name: string
+
+    // Own signals of IAnjuta-3.0.IAnjuta.Vcs
+
+    connect(sigName: "status-changed", callback: Vcs_StatusChangedSignalCallback): number
+    on(sigName: "status-changed", callback: Vcs_StatusChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "status-changed", callback: Vcs_StatusChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "status-changed", callback: Vcs_StatusChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "status-changed", ...args: any[]): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Vcs
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
 }
-class Wizard {
-    /* Methods of IAnjuta-3.0.IAnjuta.Wizard */
+
+class Vcs extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Vcs
+
+    static name: string
+    static $gtype: GObject.GType<Vcs>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Vcs
+
+    constructor(config?: Vcs_ConstructProps) 
+    _init(config?: Vcs_ConstructProps): void
+}
+
+interface Wizard_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Wizard {
+
+    // Owm methods of IAnjuta-3.0.IAnjuta.Wizard
+
     /**
      * Called when the wizard should start after some user action
      */
     activate(): void
+
+    // Class property signals of IAnjuta-3.0.IAnjuta.Wizard
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+class Wizard extends GObject.Object {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.Wizard
+
     static name: string
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Wizard>
+
+    // Constructors of IAnjuta-3.0.IAnjuta.Wizard
+
+    constructor(config?: Wizard_ConstructProps) 
+    _init(config?: Wizard_ConstructProps): void
     static errorQuark(): GLib.Quark
 }
-abstract class BuildableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.BuildableIface */
+
+interface BuildableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.BuildableIface
+
     gIface: GObject.TypeInterface
     build: (obj: Buildable, uri: string) => void
     clean: (obj: Buildable, uri: string) => void
@@ -7614,18 +5290,36 @@ abstract class BuildableIface {
     install: (obj: Buildable, uri: string) => void
     resetCommands: (obj: Buildable) => void
     setCommand: (obj: Buildable, commandId: BuildableCommand, command: string) => void
+}
+
+abstract class BuildableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.BuildableIface
+
     static name: string
 }
-abstract class BuilderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.BuilderIface */
+
+interface BuilderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.BuilderIface
+
     gIface: GObject.TypeInterface
     cancel: (obj: Builder, handle: BuilderHandle) => void
     getUriConfiguration: (obj: Builder, uri: string) => string
     listConfiguration: (obj: Builder) => string[]
+}
+
+abstract class BuilderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.BuilderIface
+
     static name: string
 }
-abstract class DebugManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebugManagerIface */
+
+interface DebugManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebugManagerIface
+
     gIface: GObject.TypeInterface
     breakpointChanged: (obj: DebugManager, breakpoint: DebuggerBreakpointItem) => void
     debuggerStarted: (obj: DebugManager) => void
@@ -7644,104 +5338,168 @@ abstract class DebugManagerIface {
     quit: (obj: DebugManager) => boolean
     start: (obj: DebugManager, uri: string) => boolean
     startRemote: (obj: DebugManager, server: string, uri: string) => boolean
+}
+
+abstract class DebugManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebugManagerIface
+
     static name: string
 }
-abstract class DebuggerBreakpointIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointIface */
+
+interface DebuggerBreakpointIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointIface
+
     gIface: DebuggerIface
     implementBreakpoint: (obj: DebuggerBreakpoint) => number
+}
+
+abstract class DebuggerBreakpointIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerBreakpointIface
+
     static name: string
 }
-class DebuggerBreakpointItem {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointItem */
+
+interface DebuggerBreakpointItem {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointItem
+
     /**
      * type see #IAnjutaBreakpointType enumeration
+     * @field 
      */
     type: number
     /**
      * unique identifier
+     * @field 
      */
     id: number
     /**
      * source file where is the breakpoint
+     * @field 
      */
     file: string
     /**
      * corresponding source file line number
+     * @field 
      */
     line: number
     /**
      * corresponding function name
+     * @field 
      */
     function_: string
     /**
      * corresponding address
+     * @field 
      */
     address: number
     /**
      * TRUE if the breakpoint is enabled
+     * @field 
      */
     enable: boolean
     /**
      * TRUE if the breakpoint is ignored
+     * @field 
      */
     ignore: number
     /**
      * Count how many time the breakpoint is triggered
+     * @field 
      */
     times: number
     /**
      * Additional condition for triggering the breakpoint
+     * @field 
      */
     condition: string
     /**
      * TRUE if the breakpoint is temporary
+     * @field 
      */
     temporary: boolean
     /**
      * TRUE if the breakpoint is pending
+     * @field 
      */
     pending: boolean
+}
+
+/**
+ * This structure keeps all information about a breakpoint.
+ * @record 
+ */
+class DebuggerBreakpointItem {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerBreakpointItem
+
     static name: string
 }
-class DebuggerFrame {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerFrame */
+
+interface DebuggerFrame {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerFrame
+
     /**
      * Thread identifier.
+     * @field 
      */
     thread: number
     /**
      * Level of the frame, 0 is the topmost one.
+     * @field 
      */
     level: number
     /**
      * List of argument of the caller.
+     * @field 
      */
     args: string
     /**
      * Source file name where is the program counter.
+     * @field 
      */
     file: string
     /**
      * Line number in the file above.
+     * @field 
      */
     line: number
     /**
      * Function name where is the program counter.
+     * @field 
      */
     function_: string
     /**
      * Library name where is the program counter.
+     * @field 
      */
     library: string
     /**
      * Address of the program counter.
+     * @field 
      */
     address: number
+}
+
+/**
+ * This structure keeps all information about a stack frame.
+ * @record 
+ */
+class DebuggerFrame {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerFrame
+
     static name: string
 }
-abstract class DebuggerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerIface */
+
+interface DebuggerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerIface
+
     gIface: GObject.TypeInterface
     debuggerReady: (obj: Debugger, state: DebuggerState) => void
     debuggerStarted: (obj: Debugger) => void
@@ -7756,7 +5514,7 @@ abstract class DebuggerIface {
     signalReceived: (obj: Debugger, name: string, description: string) => void
     abort: (obj: Debugger) => boolean
     attach: (obj: Debugger, pid: number, sourceSearchDirectories: string[]) => boolean
-    connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
+    // TODO fix conflict: connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
     disableLog: (obj: Debugger) => void
     enableLog: (obj: Debugger, log: MessageView) => void
     exit: (obj: Debugger) => boolean
@@ -7778,128 +5536,251 @@ abstract class DebuggerIface {
     stepOut: (obj: Debugger) => boolean
     stepOver: (obj: Debugger) => boolean
     unload: (obj: Debugger) => boolean
+}
+
+abstract class DebuggerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerIface
+
     static name: string
 }
-class DebuggerInstructionALine {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionALine */
+
+interface DebuggerInstructionALine {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionALine
+
     /**
      * Address of the line
+     * @field 
      */
     address: number
     /**
      * Optional label
+     * @field 
      */
     label: string
     /**
      * Diassembled instruction on the line
+     * @field 
      */
     text: string
+}
+
+/**
+ * Defines a disassembled line
+ * @record 
+ */
+class DebuggerInstructionALine {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerInstructionALine
+
     static name: string
 }
-class DebuggerInstructionDisassembly {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionDisassembly */
+
+interface DebuggerInstructionDisassembly {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionDisassembly
+
     /**
      * Number of line
+     * @field 
      */
     size: number
     /**
      * Array of all lines
+     * @field 
      */
     data: DebuggerInstructionALine[]
+}
+
+/**
+ * Represents a block of diassembled instructions
+ * @record 
+ */
+class DebuggerInstructionDisassembly {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerInstructionDisassembly
+
     static name: string
 }
-abstract class DebuggerInstructionIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionIface */
+
+interface DebuggerInstructionIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionIface
+
     gIface: DebuggerIface
     runFromAddress: (obj: DebuggerInstruction, address: number) => boolean
     runToAddress: (obj: DebuggerInstruction, address: number) => boolean
     stepInInstruction: (obj: DebuggerInstruction) => boolean
     stepOverInstruction: (obj: DebuggerInstruction) => boolean
+}
+
+abstract class DebuggerInstructionIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerInstructionIface
+
     static name: string
 }
-class DebuggerMemoryBlock {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryBlock */
+
+interface DebuggerMemoryBlock {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryBlock
+
     address: number
     length: number
     data: string
+}
+
+class DebuggerMemoryBlock {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerMemoryBlock
+
     static name: string
 }
-abstract class DebuggerMemoryIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryIface */
+
+interface DebuggerMemoryIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryIface
+
     gIface: DebuggerIface
+}
+
+abstract class DebuggerMemoryIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerMemoryIface
+
     static name: string
 }
-class DebuggerRegisterData {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterData */
+
+interface DebuggerRegisterData {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterData
+
     /**
      * register identifier
+     * @field 
      */
     num: number
     /**
      * register name
+     * @field 
      */
     name: string
     /**
      * register value
+     * @field 
      */
     value: string
+}
+
+/**
+ * Defines a register data.
+ * @record 
+ */
+class DebuggerRegisterData {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerRegisterData
+
     static name: string
 }
-abstract class DebuggerRegisterIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterIface */
+
+interface DebuggerRegisterIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterIface
+
     gIface: DebuggerIface
     writeRegister: (obj: DebuggerRegister, value: DebuggerRegisterData) => boolean
+}
+
+abstract class DebuggerRegisterIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerRegisterIface
+
     static name: string
 }
-abstract class DebuggerVariableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface */
+
+interface DebuggerVariableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface
+
     gIface: DebuggerIface
     assign: (obj: DebuggerVariable, name: string, value: string) => boolean
     destroy: (obj: DebuggerVariable, name: string) => boolean
+}
+
+abstract class DebuggerVariableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerVariableIface
+
     static name: string
 }
-class DebuggerVariableObject {
-    /* Fields of IAnjuta-3.0.IAnjuta.DebuggerVariableObject */
+
+interface DebuggerVariableObject {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DebuggerVariableObject
+
     /**
      * unique variable object name created by backend
+     * @field 
      */
     name: string
     /**
      * corresponding variable name or expression
+     * @field 
      */
     expression: string
     /**
      * variable type
+     * @field 
      */
     type: string
     /**
      * variable value
+     * @field 
      */
     value: string
     /**
      * TRUE if the variable has changed
+     * @field 
      */
     changed: boolean
     /**
      * TRUE if the variable is outside current scope
+     * @field 
      */
     exited: boolean
     /**
      * TRUE if the variable has been removed
+     * @field 
      */
     deleted: boolean
     /**
      * Number of variable children, -1 if unknown
+     * @field 
      */
     children: number
     /**
      * TRUE if the children value is wrong
+     * @field 
      */
     hasMore: boolean
+}
+
+/**
+ * Defines a variable object.
+ * @record 
+ */
+class DebuggerVariableObject {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DebuggerVariableObject
+
     static name: string
 }
-abstract class DocumentIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DocumentIface */
+
+interface DocumentIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DocumentIface
+
     gIface: GObject.TypeInterface
     updateUi: (obj: Document) => void
     beginUndoAction: (obj: Document) => void
@@ -7914,10 +5795,19 @@ abstract class DocumentIface {
     paste: (obj: Document) => void
     redo: (obj: Document) => void
     undo: (obj: Document) => void
+}
+
+abstract class DocumentIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DocumentIface
+
     static name: string
 }
-abstract class DocumentManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.DocumentManagerIface */
+
+interface DocumentManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.DocumentManagerIface
+
     gIface: GObject.TypeInterface
     documentAdded: (obj: DocumentManager, doc: Document) => void
     documentRemoved: (obj: DocumentManager, doc: Document) => void
@@ -7932,98 +5822,206 @@ abstract class DocumentManagerIface {
     gotoFileLineMark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
     removeDocument: (obj: DocumentManager, document: Document, saveBefore: boolean) => boolean
     setCurrentDocument: (obj: DocumentManager, document: Document) => void
+}
+
+abstract class DocumentManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.DocumentManagerIface
+
     static name: string
 }
-abstract class EditorAssistIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistIface */
+
+interface EditorAssistIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorAssistIface
+
     gIface: EditorIface
     cancelled: (obj: EditorAssist) => void
     add: (obj: EditorAssist, provider: Provider) => void
     invoke: (obj: EditorAssist, provider: Provider) => void
     proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean) => void
     remove: (obj: EditorAssist, provider: Provider) => void
+}
+
+abstract class EditorAssistIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorAssistIface
+
     static name: string
 }
-class EditorAssistProposal {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistProposal */
+
+interface EditorAssistProposal {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorAssistProposal
+
     label: string
     markup: string
     info: string
     text: string
     icon: GdkPixbuf.Pixbuf
     data: object
+}
+
+class EditorAssistProposal {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorAssistProposal
+
     static name: string
 }
-abstract class EditorCellIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorCellIface */
+
+interface EditorCellIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorCellIface
+
     gIface: GObject.TypeInterface
     getAttribute: (obj: EditorCell) => EditorAttribute
     getChar: (obj: EditorCell, charIndex: number) => number
     getCharacter: (obj: EditorCell) => string
     getLength: (obj: EditorCell) => number
+}
+
+abstract class EditorCellIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorCellIface
+
     static name: string
 }
-abstract class EditorCellStyleIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorCellStyleIface */
+
+interface EditorCellStyleIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorCellStyleIface
+
     gIface: EditorCellIface
     getBackgroundColor: (obj: EditorCellStyle) => string
     getColor: (obj: EditorCellStyle) => string
     getFontDescription: (obj: EditorCellStyle) => string
+}
+
+abstract class EditorCellStyleIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorCellStyleIface
+
     static name: string
 }
-abstract class EditorCommentIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorCommentIface */
+
+interface EditorCommentIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorCommentIface
+
     gIface: EditorIface
     block: (obj: EditorComment) => void
     box: (obj: EditorComment) => void
     stream: (obj: EditorComment) => void
+}
+
+abstract class EditorCommentIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorCommentIface
+
     static name: string
 }
-abstract class EditorConvertIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorConvertIface */
+
+interface EditorConvertIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorConvertIface
+
     gIface: EditorIface
     toLower: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
     toUpper: (obj: EditorConvert, startPosition: Iterable, endPosition: Iterable) => void
+}
+
+abstract class EditorConvertIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorConvertIface
+
     static name: string
 }
-abstract class EditorFactoryIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorFactoryIface */
+
+interface EditorFactoryIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorFactoryIface
+
     gIface: GObject.TypeInterface
+}
+
+abstract class EditorFactoryIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorFactoryIface
+
     static name: string
 }
-abstract class EditorFoldsIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorFoldsIface */
+
+interface EditorFoldsIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorFoldsIface
+
     gIface: EditorIface
     closeAll: (obj: EditorFolds) => void
     openAll: (obj: EditorFolds) => void
     toggleCurrent: (obj: EditorFolds) => void
+}
+
+abstract class EditorFoldsIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorFoldsIface
+
     static name: string
 }
-abstract class EditorGladeSignalIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface */
+
+interface EditorGladeSignalIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface
+
     gIface: EditorIface
     drop: (obj: EditorGladeSignal, iterator: Iterable, signalData: string) => void
     dropPossible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
+}
+
+abstract class EditorGladeSignalIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface
+
     static name: string
 }
-abstract class EditorGotoIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorGotoIface */
+
+interface EditorGotoIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorGotoIface
+
     gIface: EditorIface
     endBlock: (obj: EditorGoto) => void
     matchingBrace: (obj: EditorGoto) => void
     startBlock: (obj: EditorGoto) => void
+}
+
+abstract class EditorGotoIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorGotoIface
+
     static name: string
 }
-abstract class EditorHoverIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorHoverIface */
+
+interface EditorHoverIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorHoverIface
+
     gIface: EditorIface
     hoverLeave: (obj: EditorHover, position: Iterable) => void
     hoverOver: (obj: EditorHover, position: Iterable) => void
     display: (obj: EditorHover, position: Iterable, info: string) => void
+}
+
+abstract class EditorHoverIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorHoverIface
+
     static name: string
 }
-abstract class EditorIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorIface */
+
+interface EditorIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorIface
+
     gIface: GObject.TypeInterface
     backspace: (obj: Editor) => void
     changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
@@ -8063,36 +6061,72 @@ abstract class EditorIface {
     setPopupMenu: (obj: Editor, menu: Gtk.Widget) => void
     setTabsize: (obj: Editor, tabsize: number) => void
     setUseSpaces: (obj: Editor, useSpaces: boolean) => void
+}
+
+abstract class EditorIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorIface
+
     static name: string
 }
-abstract class EditorLanguageIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface */
+
+interface EditorLanguageIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface
+
     gIface: EditorIface
     languageChanged: (obj: EditorLanguage, language: string) => void
     getLanguage: (obj: EditorLanguage) => string
     getLanguageName: (obj: EditorLanguage, language: string) => string
     getSupportedLanguages: (obj: EditorLanguage) => string[]
     setLanguage: (obj: EditorLanguage, language: string) => void
+}
+
+abstract class EditorLanguageIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorLanguageIface
+
     static name: string
 }
-abstract class EditorLineModeIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorLineModeIface */
+
+interface EditorLineModeIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorLineModeIface
+
     gIface: EditorIface
     convert: (obj: EditorLineMode, mode: EditorLineModeType) => void
     fix: (obj: EditorLineMode) => void
     get: (obj: EditorLineMode) => EditorLineModeType
     set: (obj: EditorLineMode, mode: EditorLineModeType) => void
+}
+
+abstract class EditorLineModeIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorLineModeIface
+
     static name: string
 }
-abstract class EditorSearchIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorSearchIface */
+
+interface EditorSearchIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorSearchIface
+
     gIface: EditorIface
     backward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
     forward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+}
+
+abstract class EditorSearchIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorSearchIface
+
     static name: string
 }
-abstract class EditorSelectionIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorSelectionIface */
+
+interface EditorSelectionIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorSelectionIface
+
     gIface: EditorIface
     get: (obj: EditorSelection) => string
     hasSelection: (obj: EditorSelection) => boolean
@@ -8101,62 +6135,134 @@ abstract class EditorSelectionIface {
     selectBlock: (obj: EditorSelection) => void
     selectFunction: (obj: EditorSelection) => void
     set: (obj: EditorSelection, start: Iterable, end: Iterable, scroll: boolean) => void
+}
+
+abstract class EditorSelectionIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorSelectionIface
+
     static name: string
 }
-abstract class EditorTipIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorTipIface */
+
+interface EditorTipIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorTipIface
+
     gIface: EditorIface
     cancel: (obj: EditorTip) => void
     show: (obj: EditorTip, tips: string[], position: Iterable) => void
     visible: (obj: EditorTip) => boolean
+}
+
+abstract class EditorTipIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorTipIface
+
     static name: string
 }
-abstract class EditorViewIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorViewIface */
+
+interface EditorViewIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorViewIface
+
     gIface: EditorIface
     create: (obj: EditorView) => void
     getCount: (obj: EditorView) => number
     removeCurrent: (obj: EditorView) => void
+}
+
+abstract class EditorViewIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorViewIface
+
     static name: string
 }
-abstract class EditorZoomIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EditorZoomIface */
+
+interface EditorZoomIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EditorZoomIface
+
     gIface: EditorIface
     in_: (obj: EditorZoom) => void
     out: (obj: EditorZoom) => void
+}
+
+abstract class EditorZoomIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EditorZoomIface
+
     static name: string
 }
-abstract class EnvironmentIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.EnvironmentIface */
+
+interface EnvironmentIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.EnvironmentIface
+
     gIface: GObject.TypeInterface
     getRealDirectory: (obj: Environment, dir: string) => string
     override: (obj: Environment, dirp: string, argvp: string, envp: string) => boolean
+}
+
+abstract class EnvironmentIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.EnvironmentIface
+
     static name: string
 }
-abstract class FileIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.FileIface */
+
+interface FileIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.FileIface
+
     gIface: GObject.TypeInterface
     opened: (obj: File) => void
     getFile: (obj: File) => Gio.File
     open: (obj: File, file: Gio.File) => void
+}
+
+abstract class FileIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileIface
+
     static name: string
 }
-abstract class FileLoaderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.FileLoaderIface */
+
+interface FileLoaderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.FileLoaderIface
+
     gIface: LoaderIface
     peekInterface: (obj: FileLoader, file: Gio.File) => string
+}
+
+abstract class FileLoaderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileLoaderIface
+
     static name: string
 }
-abstract class FileManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.FileManagerIface */
+
+interface FileManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.FileManagerIface
+
     gIface: GObject.TypeInterface
     sectionChanged: (obj: FileManager, file: Gio.File) => void
     setRoot: (obj: FileManager, rootUri: string) => void
     setSelected: (obj: FileManager, file: Gio.File) => void
+}
+
+abstract class FileManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileManagerIface
+
     static name: string
 }
-abstract class FileSavableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.FileSavableIface */
+
+interface FileSavableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.FileSavableIface
+
     gIface: FileIface
     saved: (obj: FileSavable, file: Gio.File) => void
     updateSaveUi: (obj: FileSavable) => void
@@ -8166,35 +6272,80 @@ abstract class FileSavableIface {
     save: (obj: FileSavable) => void
     saveAs: (obj: FileSavable, file: Gio.File) => void
     setDirty: (obj: FileSavable, dirty: boolean) => void
+}
+
+abstract class FileSavableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.FileSavableIface
+
     static name: string
 }
-abstract class GladeIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.GladeIface */
+
+interface GladeIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.GladeIface
+
     gIface: GObject.TypeInterface
     addAssociation: (obj: Glade, master: string, slave: string) => void
+}
+
+abstract class GladeIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.GladeIface
+
     static name: string
 }
-abstract class HelpIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.HelpIface */
+
+interface HelpIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.HelpIface
+
     gIface: GObject.TypeInterface
     search: (obj: Help, query: string) => void
+}
+
+abstract class HelpIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.HelpIface
+
     static name: string
 }
-abstract class IndenterIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.IndenterIface */
+
+interface IndenterIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.IndenterIface
+
     gIface: GObject.TypeInterface
     indent: (obj: Indenter, start: Iterable, end: Iterable) => void
+}
+
+abstract class IndenterIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.IndenterIface
+
     static name: string
 }
-abstract class IndicableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.IndicableIface */
+
+interface IndicableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.IndicableIface
+
     gIface: GObject.TypeInterface
     clear: (obj: Indicable) => void
     set: (obj: Indicable, beginLocation: Iterable, endLocation: Iterable, indicator: IndicableIndicator) => void
+}
+
+abstract class IndicableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.IndicableIface
+
     static name: string
 }
-abstract class IterableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.IterableIface */
+
+interface IterableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.IterableIface
+
     gIface: GObject.TypeInterface
     assign: (obj: Iterable, srcIter: Iterable) => void
     clone: (obj: Iterable) => Iterable
@@ -8207,18 +6358,36 @@ abstract class IterableIface {
     next: (obj: Iterable) => boolean
     previous: (obj: Iterable) => boolean
     setPosition: (obj: Iterable, position: number) => boolean
+}
+
+abstract class IterableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.IterableIface
+
     static name: string
 }
-abstract class IterableTreeIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.IterableTreeIface */
+
+interface IterableTreeIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.IterableTreeIface
+
     gIface: IterableIface
     children: (obj: IterableTree) => boolean
     hasChildren: (obj: IterableTree) => boolean
     parent: (obj: IterableTree) => boolean
+}
+
+abstract class IterableTreeIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.IterableTreeIface
+
     static name: string
 }
-abstract class LanguageIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.LanguageIface */
+
+interface LanguageIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.LanguageIface
+
     gIface: GObject.TypeInterface
     getFromEditor: (obj: Language, editor: EditorLanguage) => LanguageId
     getFromMimeType: (obj: Language, mimeType: string) => LanguageId
@@ -8227,45 +6396,90 @@ abstract class LanguageIface {
     getMakeTarget: (obj: Language, id: LanguageId) => string
     getName: (obj: Language, id: LanguageId) => string
     getNameFromEditor: (obj: Language, editor: EditorLanguage) => string
+}
+
+abstract class LanguageIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.LanguageIface
+
     static name: string
 }
-abstract class LanguageProviderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.LanguageProviderIface */
+
+interface LanguageProviderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.LanguageProviderIface
+
     gIface: ProviderIface
     getCalltipCache: (obj: LanguageProvider, callContext: string) => string[]
     getCalltipContext: (obj: LanguageProvider, iter: Iterable) => string
     newCalltip: (obj: LanguageProvider, callContext: string, iter: Iterable) => void
     populateCompletions: (obj: LanguageProvider, iter: Iterable) => Iterable | null
+}
+
+abstract class LanguageProviderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.LanguageProviderIface
+
     static name: string
 }
-abstract class LoaderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.LoaderIface */
+
+interface LoaderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.LoaderIface
+
     gIface: GObject.TypeInterface
+}
+
+abstract class LoaderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.LoaderIface
+
     static name: string
 }
-abstract class MarkableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.MarkableIface */
+
+interface MarkableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.MarkableIface
+
     gIface: GObject.TypeInterface
     markerClicked: (obj: Markable, doubleClick: boolean, location: number) => void
     deleteAllMarkers: (obj: Markable, marker: MarkableMarker) => void
     isMarkerSet: (obj: Markable, location: number, marker: MarkableMarker) => boolean
     locationFromHandle: (obj: Markable, handle: number) => number
-    mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip?: string | null) => number
+    mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip: string | null) => number
     unmark: (obj: Markable, location: number, marker: MarkableMarker) => void
+}
+
+abstract class MarkableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.MarkableIface
+
     static name: string
 }
-abstract class MessageManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.MessageManagerIface */
+
+interface MessageManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.MessageManagerIface
+
     gIface: GObject.TypeInterface
     removeView: (obj: MessageManager, view: MessageView) => void
     setCurrentView: (obj: MessageManager, view: MessageView) => void
     setViewIcon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
     setViewIconFromStock: (obj: MessageManager, view: MessageView, icon: string) => void
     setViewTitle: (obj: MessageManager, view: MessageView, title: string) => void
+}
+
+abstract class MessageManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.MessageManagerIface
+
     static name: string
 }
-abstract class MessageViewIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.MessageViewIface */
+
+interface MessageViewIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.MessageViewIface
+
     gIface: GObject.TypeInterface
     bufferFlushed: (obj: MessageView, line: string) => void
     messageClicked: (obj: MessageView, message: string) => void
@@ -8275,73 +6489,136 @@ abstract class MessageViewIface {
     getCurrentMessage: (obj: MessageView) => string
     selectNext: (obj: MessageView) => void
     selectPrevious: (obj: MessageView) => void
+}
+
+abstract class MessageViewIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.MessageViewIface
+
     static name: string
 }
-abstract class PluginFactoryIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.PluginFactoryIface */
+
+interface PluginFactoryIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.PluginFactoryIface
+
     gIface: GObject.TypeInterface
+}
+
+abstract class PluginFactoryIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.PluginFactoryIface
+
     static name: string
 }
-abstract class PreferencesIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.PreferencesIface */
+
+interface PreferencesIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.PreferencesIface
+
     gIface: GObject.TypeInterface
     merge: (obj: Preferences, prefs: Anjuta.Preferences) => void
     unmerge: (obj: Preferences, prefs: Anjuta.Preferences) => void
+}
+
+abstract class PreferencesIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.PreferencesIface
+
     static name: string
 }
-abstract class PrintIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.PrintIface */
+
+interface PrintIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.PrintIface
+
     gIface: GObject.TypeInterface
     print: (obj: Print) => void
     printPreview: (obj: Print) => void
+}
+
+abstract class PrintIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.PrintIface
+
     static name: string
 }
-abstract class ProjectBackendIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.ProjectBackendIface */
+
+interface ProjectBackendIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.ProjectBackendIface
+
     gIface: GObject.TypeInterface
     newProject: (obj: ProjectBackend, file: Gio.File) => Project
     probe: (obj: ProjectBackend, directory: Gio.File) => number
+}
+
+abstract class ProjectBackendIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectBackendIface
+
     static name: string
 }
-abstract class ProjectChooserIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.ProjectChooserIface */
+
+interface ProjectChooserIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.ProjectChooserIface
+
     gIface: GObject.TypeInterface
     changed: (obj: ProjectChooser) => void
     getSelected: (obj: ProjectChooser) => Gio.File
     setProjectModel: (obj: ProjectChooser, manager: ProjectManager, childType: Anjuta.ProjectNodeType) => boolean
+}
+
+abstract class ProjectChooserIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectChooserIface
+
     static name: string
 }
-abstract class ProjectIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.ProjectIface */
+
+interface ProjectIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.ProjectIface
+
     gIface: GObject.TypeInterface
-    fileChanged: (obj: Project, node?: object | null) => void
+    fileChanged: (obj: Project, node: object | null) => void
     nodeChanged: (obj: Project, node: object | null, error: GLib.Error) => void
     nodeLoaded: (obj: Project, node: object | null, error: GLib.Error) => void
     nodeSaved: (obj: Project, node: object | null, error: GLib.Error) => void
-    addNodeAfter: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
-    addNodeBefore: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
+    addNodeAfter: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null) => Anjuta.ProjectNode
+    addNodeBefore: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null) => Anjuta.ProjectNode
     getNodeInfo: (obj: Project) => Anjuta.ProjectNodeInfo[]
     getRoot: (obj: Project) => Anjuta.ProjectNode
     isLoaded: (obj: Project) => boolean
     loadNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
     removeNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name?: string | null) => boolean
+    removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null) => boolean
     saveNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
     setProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
+}
+
+abstract class ProjectIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectIface
+
     static name: string
 }
-abstract class ProjectManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.ProjectManagerIface */
+
+interface ProjectManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.ProjectManagerIface
+
     gIface: GObject.TypeInterface
     elementAdded: (obj: ProjectManager, element: Gio.File) => void
     elementRemoved: (obj: ProjectManager, element: Gio.File) => void
     elementSelected: (obj: ProjectManager, element: Gio.File) => void
     projectLoaded: (obj: ProjectManager, error: GLib.Error) => void
-    addGroup: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
-    addSource: (obj: ProjectManager, name: string, defaultTarget?: Gio.File | null) => Gio.File
+    addGroup: (obj: ProjectManager, name: string, defaultGroup: Gio.File | null) => Gio.File
+    addSource: (obj: ProjectManager, name: string, defaultTarget: Gio.File | null) => Gio.File
     addSourceQuiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
-    addSources: (obj: ProjectManager, names: string[], defaultTarget?: Gio.File | null) => Gio.File[]
-    addTarget: (obj: ProjectManager, name: string, defaultGroup?: Gio.File | null) => Gio.File
+    addSources: (obj: ProjectManager, names: string[], defaultTarget: Gio.File | null) => Gio.File[]
+    addTarget: (obj: ProjectManager, name: string, defaultGroup: Gio.File | null) => Gio.File
     getCapabilities: (obj: ProjectManager) => number
     getChildren: (obj: ProjectManager, parent: Gio.File, childrenType: number) => Gio.File[]
     getCurrentProject: (obj: ProjectManager) => Project
@@ -8352,63 +6629,135 @@ abstract class ProjectManagerIface {
     getTargets: (obj: ProjectManager, targetType: Anjuta.ProjectNodeType) => Gio.File[]
     isOpen: (obj: ProjectManager) => boolean
     removeFile: (obj: ProjectManager, file: Gio.File) => boolean
+}
+
+abstract class ProjectManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProjectManagerIface
+
     static name: string
 }
-abstract class ProviderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.ProviderIface */
+
+interface ProviderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.ProviderIface
+
     gIface: GObject.TypeInterface
-    activate: (obj: Provider, iter: Iterable, data?: object | null) => void
+    activate: (obj: Provider, iter: Iterable, data: object | null) => void
     getName: (obj: Provider) => string
     getStartIter: (obj: Provider) => Iterable
     populate: (obj: Provider, iter: Iterable) => void
+}
+
+abstract class ProviderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.ProviderIface
+
     static name: string
 }
-abstract class SnippetsManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface */
+
+interface SnippetsManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface
+
     gIface: GObject.TypeInterface
     insert: (obj: SnippetsManager, key: string, editingSession: boolean) => boolean
+}
+
+abstract class SnippetsManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SnippetsManagerIface
+
     static name: string
 }
-abstract class StreamIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.StreamIface */
+
+interface StreamIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.StreamIface
+
     gIface: GObject.TypeInterface
-    open: (obj: Stream, stream?: object | null) => void
+    open: (obj: Stream, stream: object | null) => void
+}
+
+abstract class StreamIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.StreamIface
+
     static name: string
 }
-abstract class StreamLoaderIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.StreamLoaderIface */
+
+interface StreamLoaderIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.StreamLoaderIface
+
     gIface: LoaderIface
-    peekInterface: (obj: StreamLoader, stream?: object | null) => string
+    peekInterface: (obj: StreamLoader, stream: object | null) => string
+}
+
+abstract class StreamLoaderIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.StreamLoaderIface
+
     static name: string
 }
-abstract class StreamSavableIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.StreamSavableIface */
+
+interface StreamSavableIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.StreamSavableIface
+
     gIface: StreamIface
-    save: (obj: StreamSavable, stream?: object | null) => void
+    save: (obj: StreamSavable, stream: object | null) => void
+}
+
+abstract class StreamSavableIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.StreamSavableIface
+
     static name: string
 }
-abstract class SymbolIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.SymbolIface */
+
+interface SymbolIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.SymbolIface
+
     gIface: GObject.TypeInterface
     getBoolean: (obj: Symbol, field: SymbolField) => boolean
     getIcon: (obj: Symbol) => GdkPixbuf.Pixbuf
     getInt: (obj: Symbol, field: SymbolField) => number
     getString: (obj: Symbol, field: SymbolField) => string
     getSymType: (obj: Symbol) => SymbolType
+}
+
+abstract class SymbolIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SymbolIface
+
     static name: string
 }
-abstract class SymbolManagerIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.SymbolManagerIface */
+
+interface SymbolManagerIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.SymbolManagerIface
+
     gIface: GObject.TypeInterface
     prjScanEnd: (obj: SymbolManager, processId: number) => void
     sysScanEnd: (obj: SymbolManager, processId: number) => void
     activatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => boolean
     deactivateAll: (obj: SymbolManager) => void
     deactivatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => void
+}
+
+abstract class SymbolManagerIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SymbolManagerIface
+
     static name: string
 }
-abstract class SymbolQueryIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.SymbolQueryIface */
+
+interface SymbolQueryIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.SymbolQueryIface
+
     gIface: GObject.TypeInterface
     asyncResult: (obj: SymbolQuery, result: GObject.Object) => void
     cancel: (obj: SymbolQuery) => void
@@ -8420,36 +6769,79 @@ abstract class SymbolQueryIface {
     setMode: (obj: SymbolQuery, mode: SymbolQueryMode) => void
     setOffset: (obj: SymbolQuery, offset: number) => void
     setOrderBy: (obj: SymbolQuery, field: SymbolField) => void
+}
+
+abstract class SymbolQueryIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.SymbolQueryIface
+
     static name: string
 }
-abstract class TerminalIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.TerminalIface */
+
+interface TerminalIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.TerminalIface
+
     gIface: GObject.TypeInterface
     childExited: (obj: Terminal, pid: number, status: number) => void
     executeCommand: (obj: Terminal, directory: string, command: string, environment: string[]) => number
+}
+
+abstract class TerminalIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.TerminalIface
+
     static name: string
 }
-abstract class TodoIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.TodoIface */
+
+interface TodoIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.TodoIface
+
     gIface: GObject.TypeInterface
     load: (obj: Todo, file: Gio.File) => void
+}
+
+abstract class TodoIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.TodoIface
+
     static name: string
 }
-abstract class VcsIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.VcsIface */
+
+interface VcsIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.VcsIface
+
     gIface: GObject.TypeInterface
     statusChanged: (obj: Vcs) => void
     add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
     checkout: (obj: Vcs, repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
     remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
+}
+
+abstract class VcsIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.VcsIface
+
     static name: string
 }
-abstract class WizardIface {
-    /* Fields of IAnjuta-3.0.IAnjuta.WizardIface */
+
+interface WizardIface {
+
+    // Own fields of IAnjuta-3.0.IAnjuta.WizardIface
+
     gIface: GObject.TypeInterface
     activate: (obj: Wizard) => void
+}
+
+abstract class WizardIface {
+
+    // Own properties of IAnjuta-3.0.IAnjuta.WizardIface
+
     static name: string
 }
+
     type BuilderHandle = object
     type LanguageId = number
 }

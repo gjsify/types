@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -536,6 +538,7 @@ enum VCardFormat {
 }
 /**
  * Flags that control the behaviour of an #EBookClientView.
+ * @bitfield 
  */
 enum BookClientViewFlags {
     /**
@@ -551,6 +554,7 @@ enum BookClientViewFlags {
 }
 /**
  * Defines the behaviour of e_book_client_cursor_step().
+ * @bitfield 
  */
 enum BookCursorStepFlags {
     /**
@@ -567,6 +571,7 @@ enum BookCursorStepFlags {
  * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
  * is the default behavior (and it is used when no other conflict resolution flag is set).
  * The flags can be ignored when the operation or the backend don't support it.
+ * @bitfield 
  */
 enum BookOperationFlags {
     /**
@@ -709,179 +714,326 @@ const VCARD_21_VALID_PARAMETERS: string
  * FIXME: Document me!
  */
 const VCARD_21_VALID_PROPERTIES: string
-function addressWesternParse(inAddress?: string | null): AddressWestern | null
-function bookClientErrorCreate(code: BookClientError, customMsg?: string | null): GLib.Error
+/**
+ * Parses a string representing a mailing address into a
+ * structure of type #EAddressWestern.
+ * @param inAddress a string representing a mailing address
+ */
+function addressWesternParse(inAddress: string | null): AddressWestern | null
+function bookClientErrorCreate(code: BookClientError, customMsg: string | null): GLib.Error
 function bookClientErrorQuark(): GLib.Quark
+/**
+ * Get localized human readable description of the given error code.
+ * @param code an #EBookClientError code
+ */
 function bookClientErrorToString(code: BookClientError): string
+/**
+ * Create a new #EBookQuery which is the logical AND of the queries in #qs.
+ * @param nqs the number of queries to AND
+ * @param qs pointer to an array of #EBookQuery items
+ * @param unref if %TRUE, the new query takes ownership of the existing queries
+ */
 function bookQueryAnd(nqs: number, qs: BookQuery, unref: boolean): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if any field contains `value`.
+ * @param value a value
+ */
 function bookQueryAnyFieldContains(value: string): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if the field `field` exists.
+ * @param field an #EContactField
+ */
 function bookQueryFieldExists(field: ContactField): BookQuery
+/**
+ * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+ * @param field an #EContactField to test
+ * @param test the test to apply
+ * @param value the value to test for
+ */
 function bookQueryFieldTest(field: ContactField, test: BookQueryTest, value: string): BookQuery
+/**
+ * Parse `query_string` and return a new #EBookQuery representing it.
+ * @param queryString the query
+ */
 function bookQueryFromString(queryString: string): BookQuery
+/**
+ * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
+ * @param nqs the number of queries to OR
+ * @param qs pointer to an array of #EBookQuery items
+ * @param unref if %TRUE, the new query takes ownership of the existing queries
+ */
 function bookQueryOr(nqs: number, qs: BookQuery, unref: boolean): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if the field `field` exists. `field`
+ * should be a vCard field name, such as #EVC_FN or #EVC_X_MSN.
+ * @param field a field name
+ */
 function bookQueryVcardFieldExists(field: string): BookQuery
+/**
+ * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+ * @param field a EVCard field name to test
+ * @param test the test to apply
+ * @param value the value to test for
+ */
 function bookQueryVcardFieldTest(field: string, test: BookQueryTest, value: string): BookQuery
+/**
+ * Encodes the #EConflictResolution into the bit-or of #EBookOperationFlags.
+ * The returned value can be bit-or-ed with other #EBookOperationFlags values.
+ * @param conflictResolution an #EConflictResolution
+ */
 function bookUtilConflictResolutionToOperationFlags(conflictResolution: EDataServer.ConflictResolution): number
+/**
+ * Parses the `email_address` and calls `func` for each found address.
+ * The first parameter of the `func` is the name, the second parameter
+ * of the `func` is the email, the third parameters of the `func` is
+ * the `user_data`. The `func` returns %TRUE, to continue processing.
+ * @param emailAddress one or more email addresses as string
+ * @param func a function to call for each email `user_data` (closure func): user data passed to `func`
+ */
 function bookUtilForeachAddress(emailAddress: string, func: GLib.HRFunc): void
+/**
+ * Decodes the #EConflictResolution from the bit-or of #EBookOperationFlags.
+ * @param flags bit-or of #EBookOperationFlags
+ */
 function bookUtilOperationFlagsToConflictResolution(flags: number): EDataServer.ConflictResolution
+/**
+ * Copies a list of allocated strings, specifically
+ * for the #EContactAttrList boxed type used for multi valued
+ * contact fields.
+ * @param list A #GList of strings
+ */
 function contactAttrListCopy(list: string[]): string[]
+/**
+ * Frees a list of allocated strings, specifically
+ * for the #EContactAttrList boxed type used for multi valued
+ * contact fields.
+ * @param list A #GList of strings
+ */
 function contactAttrListFree(list: string[]): void
+/**
+ * Creates a new #EContactDate based on `str`.
+ * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
+ */
 function contactDateFromString(str: string): ContactDate
+/**
+ * Creates a new #EContactName based on the parsed `name_str`.
+ * @param nameStr a string representing a contact's full name
+ */
 function contactNameFromString(nameStr: string): ContactName
+/**
+ * Parses `full_name` and returns an #ENameWestern struct filled with
+ * the component parts of the name.
+ * @param fullName A string containing a western name.
+ */
 function nameWesternParse(fullName: string): NameWestern
+/**
+ * Compares two phone numbers.
+ * @param firstNumber the first EPhoneNumber to compare
+ * @param secondNumber the second EPhoneNumber to compare
+ */
 function phoneNumberCompareStrings(firstNumber: string, secondNumber: string): PhoneNumberMatch
-function phoneNumberCompareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode?: string | null): PhoneNumberMatch
+/**
+ * Compares two phone numbers within the context of `region_code`.
+ * @param firstNumber the first EPhoneNumber to compare
+ * @param secondNumber the second EPhoneNumber to compare
+ * @param regionCode a two-letter country code, or %NULL
+ */
+function phoneNumberCompareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode: string | null): PhoneNumberMatch
 function phoneNumberErrorQuark(): GLib.Quark
-function phoneNumberFromString(phoneNumber: string, regionCode?: string | null): PhoneNumber
-function phoneNumberGetCountryCodeForRegion(regionCode?: string | null): number
+/**
+ * Parses the string passed in `phone_number`. Note that no validation is
+ * performed whether the recognized phone number is valid for a particular
+ * region.
+ * 
+ * The two-letter country code passed in `region_code` only is used if the
+ * `phone_number` is not written in international format. The application's
+ * default region as returned by e_phone_number_get_default_region() is used
+ * if `region_code` is %NULL.
+ * 
+ * If the number is guaranteed to start with a '+' followed by the country
+ * calling code, then "ZZ" can be passed for `region_code`.
+ * @param phoneNumber the phone number to parse
+ * @param regionCode a two-letter country code, or %NULL
+ */
+function phoneNumberFromString(phoneNumber: string, regionCode: string | null): PhoneNumber
+/**
+ * Retrieves the preferred country calling code for `region_code,`
+ * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
+ * 
+ * If %NULL is passed for `region_code` the default region as returned by
+ * e_phone_number_get_default_region() is used.
+ * @param regionCode a two-letter country code, a locale name, or %NULL
+ */
+function phoneNumberGetCountryCodeForRegion(regionCode: string | null): number
+/**
+ * Retrieves the current two-letter country code that's used by default for
+ * parsing phone numbers in e_phone_number_from_string(). It can be useful
+ * to store this number before parsing a bigger number of phone numbers.
+ * 
+ * The result of this functions depends on the current setup of the
+ * %LC_ADDRESS category: If that category provides a reasonable value
+ * for %_NL_ADDRESS_COUNTRY_AB2 this value is returned. Otherwise the
+ * locale name configured for %LC_ADDRESS is parsed.
+ */
 function phoneNumberGetDefaultRegion(): string
+/**
+ * Checks if phone number support is available. It is recommended to call this
+ * function before using any of the phone-utils functions to ensure that the
+ * required functionality is available, and to pick alternative mechanisms if
+ * needed.
+ */
 function phoneNumberIsSupported(): boolean
 interface Contact_ConstructProps extends VCard_ConstructProps {
-    /* Constructor properties of EBookContacts-1.2.EBookContacts.Contact */
-    rev?: string
-    address?: any
-    addressHome?: ContactAddress
-    addressLabelHome?: string
-    addressLabelOther?: string
-    addressLabelWork?: string
-    addressOther?: ContactAddress
-    addressWork?: ContactAddress
-    anniversary?: ContactDate
-    assistant?: string
-    assistantPhone?: string
-    birthDate?: ContactDate
-    blogUrl?: string
-    bookUid?: string
-    businessFax?: string
-    businessPhone?: string
-    businessPhone2?: string
-    callbackPhone?: string
-    caluri?: string
-    carPhone?: string
-    categories?: string
-    categoryList?: object
-    companyPhone?: string
-    email?: any
-    email1?: string
-    email2?: string
-    email3?: string
-    email4?: string
-    familyName?: string
-    fburl?: string
-    fileAs?: string
-    fullName?: string
-    geo?: ContactGeo
-    givenName?: string
-    homeFax?: string
-    homePhone?: string
-    homePhone2?: string
-    homepageUrl?: string
-    icscalendar?: string
-    id?: string
-    imAim?: any
-    imAimHome1?: string
-    imAimHome2?: string
-    imAimHome3?: string
-    imAimWork1?: string
-    imAimWork2?: string
-    imAimWork3?: string
-    imGadugadu?: any
-    imGadugaduHome1?: string
-    imGadugaduHome2?: string
-    imGadugaduHome3?: string
-    imGadugaduWork1?: string
-    imGadugaduWork2?: string
-    imGadugaduWork3?: string
-    imGoogleTalk?: any
-    imGoogleTalkHome1?: string
-    imGoogleTalkHome2?: string
-    imGoogleTalkHome3?: string
-    imGoogleTalkWork1?: string
-    imGoogleTalkWork2?: string
-    imGoogleTalkWork3?: string
-    imGroupwise?: any
-    imGroupwiseHome1?: string
-    imGroupwiseHome2?: string
-    imGroupwiseHome3?: string
-    imGroupwiseWork1?: string
-    imGroupwiseWork2?: string
-    imGroupwiseWork3?: string
-    imIcq?: any
-    imIcqHome1?: string
-    imIcqHome2?: string
-    imIcqHome3?: string
-    imIcqWork1?: string
-    imIcqWork2?: string
-    imIcqWork3?: string
-    imJabber?: any
-    imJabberHome1?: string
-    imJabberHome2?: string
-    imJabberHome3?: string
-    imJabberWork1?: string
-    imJabberWork2?: string
-    imJabberWork3?: string
-    imMatrix?: any
-    imMatrixHome1?: string
-    imMatrixHome2?: string
-    imMatrixHome3?: string
-    imMatrixWork1?: string
-    imMatrixWork2?: string
-    imMatrixWork3?: string
-    imMsn?: any
-    imMsnHome1?: string
-    imMsnHome2?: string
-    imMsnHome3?: string
-    imMsnWork1?: string
-    imMsnWork2?: string
-    imMsnWork3?: string
-    imSkype?: any
-    imSkypeHome1?: string
-    imSkypeHome2?: string
-    imSkypeHome3?: string
-    imSkypeWork1?: string
-    imSkypeWork2?: string
-    imSkypeWork3?: string
-    imTwitter?: any
-    imYahoo?: any
-    imYahooHome1?: string
-    imYahooHome2?: string
-    imYahooHome3?: string
-    imYahooWork1?: string
-    imYahooWork2?: string
-    imYahooWork3?: string
-    isdnPhone?: string
-    list?: boolean
-    listShowAddresses?: boolean
-    logo?: ContactPhoto
-    mailer?: string
-    manager?: string
-    mobilePhone?: string
-    name?: ContactName
-    nickname?: string
-    note?: string
-    office?: string
-    org?: string
-    orgUnit?: string
-    otherFax?: string
-    otherPhone?: string
-    pager?: string
-    pgpCert?: ContactCert
-    phone?: any
-    photo?: ContactPhoto
-    primaryPhone?: string
-    radio?: string
-    role?: string
-    sip?: any
-    spouse?: string
-    telex?: string
-    title?: string
-    tty?: string
-    videoUrl?: string
-    wantsHtml?: boolean
-    x509Cert?: ContactCert
+
+    // Own constructor properties of EBookContacts-1.2.EBookContacts.Contact
+
+    rev?: string | null
+    address?: any | null
+    addressHome?: ContactAddress | null
+    addressLabelHome?: string | null
+    addressLabelOther?: string | null
+    addressLabelWork?: string | null
+    addressOther?: ContactAddress | null
+    addressWork?: ContactAddress | null
+    anniversary?: ContactDate | null
+    assistant?: string | null
+    assistantPhone?: string | null
+    birthDate?: ContactDate | null
+    blogUrl?: string | null
+    bookUid?: string | null
+    businessFax?: string | null
+    businessPhone?: string | null
+    businessPhone2?: string | null
+    callbackPhone?: string | null
+    caluri?: string | null
+    carPhone?: string | null
+    categories?: string | null
+    categoryList?: object | null
+    companyPhone?: string | null
+    email?: any | null
+    email1?: string | null
+    email2?: string | null
+    email3?: string | null
+    email4?: string | null
+    familyName?: string | null
+    fburl?: string | null
+    fileAs?: string | null
+    fullName?: string | null
+    geo?: ContactGeo | null
+    givenName?: string | null
+    homeFax?: string | null
+    homePhone?: string | null
+    homePhone2?: string | null
+    homepageUrl?: string | null
+    icscalendar?: string | null
+    id?: string | null
+    imAim?: any | null
+    imAimHome1?: string | null
+    imAimHome2?: string | null
+    imAimHome3?: string | null
+    imAimWork1?: string | null
+    imAimWork2?: string | null
+    imAimWork3?: string | null
+    imGadugadu?: any | null
+    imGadugaduHome1?: string | null
+    imGadugaduHome2?: string | null
+    imGadugaduHome3?: string | null
+    imGadugaduWork1?: string | null
+    imGadugaduWork2?: string | null
+    imGadugaduWork3?: string | null
+    imGoogleTalk?: any | null
+    imGoogleTalkHome1?: string | null
+    imGoogleTalkHome2?: string | null
+    imGoogleTalkHome3?: string | null
+    imGoogleTalkWork1?: string | null
+    imGoogleTalkWork2?: string | null
+    imGoogleTalkWork3?: string | null
+    imGroupwise?: any | null
+    imGroupwiseHome1?: string | null
+    imGroupwiseHome2?: string | null
+    imGroupwiseHome3?: string | null
+    imGroupwiseWork1?: string | null
+    imGroupwiseWork2?: string | null
+    imGroupwiseWork3?: string | null
+    imIcq?: any | null
+    imIcqHome1?: string | null
+    imIcqHome2?: string | null
+    imIcqHome3?: string | null
+    imIcqWork1?: string | null
+    imIcqWork2?: string | null
+    imIcqWork3?: string | null
+    imJabber?: any | null
+    imJabberHome1?: string | null
+    imJabberHome2?: string | null
+    imJabberHome3?: string | null
+    imJabberWork1?: string | null
+    imJabberWork2?: string | null
+    imJabberWork3?: string | null
+    imMatrix?: any | null
+    imMatrixHome1?: string | null
+    imMatrixHome2?: string | null
+    imMatrixHome3?: string | null
+    imMatrixWork1?: string | null
+    imMatrixWork2?: string | null
+    imMatrixWork3?: string | null
+    imMsn?: any | null
+    imMsnHome1?: string | null
+    imMsnHome2?: string | null
+    imMsnHome3?: string | null
+    imMsnWork1?: string | null
+    imMsnWork2?: string | null
+    imMsnWork3?: string | null
+    imSkype?: any | null
+    imSkypeHome1?: string | null
+    imSkypeHome2?: string | null
+    imSkypeHome3?: string | null
+    imSkypeWork1?: string | null
+    imSkypeWork2?: string | null
+    imSkypeWork3?: string | null
+    imTwitter?: any | null
+    imYahoo?: any | null
+    imYahooHome1?: string | null
+    imYahooHome2?: string | null
+    imYahooHome3?: string | null
+    imYahooWork1?: string | null
+    imYahooWork2?: string | null
+    imYahooWork3?: string | null
+    isdnPhone?: string | null
+    list?: boolean | null
+    listShowAddresses?: boolean | null
+    logo?: ContactPhoto | null
+    mailer?: string | null
+    manager?: string | null
+    mobilePhone?: string | null
+    name?: ContactName | null
+    nickname?: string | null
+    note?: string | null
+    office?: string | null
+    org?: string | null
+    orgUnit?: string | null
+    otherFax?: string | null
+    otherPhone?: string | null
+    pager?: string | null
+    pgpCert?: ContactCert | null
+    phone?: any | null
+    photo?: ContactPhoto | null
+    primaryPhone?: string | null
+    radio?: string | null
+    role?: string | null
+    sip?: any | null
+    spouse?: string | null
+    telex?: string | null
+    title?: string | null
+    tty?: string | null
+    videoUrl?: string | null
+    wantsHtml?: boolean | null
+    x509Cert?: ContactCert | null
 }
-class Contact {
-    /* Properties of EBookContacts-1.2.EBookContacts.Contact */
+
+interface Contact {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.Contact
+
     rev: string
     address: any
     addressHome: ContactAddress
@@ -1024,11 +1176,13 @@ class Contact {
     videoUrl: string
     wantsHtml: boolean
     x509Cert: ContactCert
-    /* Fields of EBookContacts-1.2.EBookContacts.VCard */
-    parent: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.Contact */
+
+    // Own fields of EBookContacts-1.2.EBookContacts.Contact
+
+    parent: VCard
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.Contact
+
     /**
      * Creates a copy of `contact`.
      */
@@ -1042,7 +1196,17 @@ class Contact {
      * Gets a list of the vcard attributes for `contact'`s `field_id`.
      * @param fieldId an #EContactField
      */
-    getAttributes(fieldId: ContactField): VCardAttribute[]
+    getAttributes(fieldId?: ContactField): VCardAttribute[]
+
+    // Overloads of getAttributes
+
+    /**
+     * Gets the list of all attributes from `evcard`. The list and its
+     * contents are owned by `evcard,` and must not be freed.
+     */
+    getAttributes(): VCardAttribute[]
+    getAttributes(...args: any[]): any
+    getAttributes(...args: any[]): VCardAttribute[] | any
     /**
      * Gets a list of the vcard attributes for `contact'`s `field_ids`.
      * @param fieldIds an array of #EContactField
@@ -1066,7 +1230,7 @@ class Contact {
      * @param fieldId an #EContactField
      * @param value a value whose type depends on the `field_id`
      */
-    set(fieldId: ContactField, value?: object | null): void
+    set(fieldId: ContactField, value: object | null): void
     /**
      * Sets the vcard attributes for `contact'`s `field_id`.
      * Attributes are added to the contact in the same order as they are in `attributes`.
@@ -1074,1205 +1238,768 @@ class Contact {
      * @param attributes a #GList of pointers to #EVCardAttribute
      */
     setAttributes(fieldId: ContactField, attributes: VCardAttribute[]): void
-    /* Methods of EBookContacts-1.2.EBookContacts.VCard */
-    /**
-     * Prepends `attr` to `evc`. This takes ownership of `attr`.
-     * @param attr an #EVCardAttribute to add
-     */
-    addAttribute(attr: VCardAttribute): void
-    /**
-     * Prepends `attr` to `evcard,` setting it to `value`. This takes ownership of
-     * `attr`.
-     * 
-     * This is a convenience wrapper around e_vcard_attribute_add_value() and
-     * e_vcard_add_attribute().
-     * @param attr an #EVCardAttribute to add
-     * @param value a value to assign to the attribute
-     */
-    addAttributeWithValue(attr: VCardAttribute, value: string): void
-    /**
-     * Appends `attr` to `evc` to the end of a list of attributes. This takes
-     * ownership of `attr`.
-     * @param attr an #EVCardAttribute to append
-     */
-    appendAttribute(attr: VCardAttribute): void
-    /**
-     * Appends `attr` to `evcard,` setting it to `value`. This takes ownership of
-     * `attr`.
-     * 
-     * This is a convenience wrapper around e_vcard_attribute_add_value() and
-     * e_vcard_append_attribute().
-     * @param attr an #EVCardAttribute to append
-     * @param value a value to assign to the attribute
-     */
-    appendAttributeWithValue(attr: VCardAttribute, value: string): void
-    /**
-     * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
-     * 
-     * This modifies `evc`.
-     * @param str a vCard string
-     */
-    construct(str: string): void
-    /**
-     * Similar to e_vcard_construct_with_uid(), but can also
-     * be used with an `str` that is not %NULL terminated.
-     * @param str a vCard string
-     * @param len length of `str,` or -1 if `str` is %NULL terminated
-     * @param uid a unique ID string
-     */
-    constructFull(str: string, len: number, uid?: string | null): void
-    /**
-     * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
-     * adding a new UID attribute with the value given in `uid` (if `uid` is
-     * non-%NULL).
-     * 
-     * This modifies `evc`.
-     * @param str a vCard string
-     * @param uid a unique ID string
-     */
-    constructWithUid(str: string, uid?: string | null): void
-    /**
-     * Prints a dump of `evc'`s structure to stdout. Used for
-     * debugging.
-     */
-    dumpStructure(): void
-    /**
-     * Get the attribute `name` from `evc`.  The #EVCardAttribute is owned by
-     * `evcard` and should not be freed. If the attribute does not exist, %NULL is
-     * returned.
-     * 
-     * <note><para>This will only return the <emphasis>first</emphasis> attribute
-     * with the given `name`. To get other attributes of that name (for example,
-     * other <code>TEL</code> attributes if a contact has multiple telephone
-     * numbers), use e_vcard_get_attributes() and iterate over the list searching
-     * for matching attributes.</para>
-     * <para>This method iterates over all attributes in the #EVCard, so should not
-     * be called often. If extracting a large number of attributes from a vCard, it
-     * is more efficient to iterate once over the list returned by
-     * e_vcard_get_attributes().</para></note>
-     * @param name the name of the attribute to get
-     */
-    getAttribute(name: string): VCardAttribute | null
-    /**
-     * Similar to e_vcard_get_attribute() but this method will not attempt to
-     * parse the vCard if it is not already parsed.
-     * @param name the name of the attribute to get
-     */
-    getAttributeIfParsed(name: string): VCardAttribute | null
-    /**
-     * Gets the list of all attributes from `evcard`. The list and its
-     * contents are owned by `evcard,` and must not be freed.
-     */
-    getAttributes(): VCardAttribute[]
-    /**
-     * Check if the `evc` has been parsed already, as #EVCard implements lazy parsing
-     * of its vCard data. Used for debugging.
-     */
-    isParsed(): boolean
-    /**
-     * Removes `attr` from `evc` and frees it. This takes ownership of `attr`.
-     * @param attr an #EVCardAttribute to remove
-     */
-    removeAttribute(attr: VCardAttribute): void
-    /**
-     * Removes all the attributes with group name and attribute name equal to the
-     * passed in values. If `attr_group` is %NULL or an empty string,
-     * it removes all the attributes with passed in name irrespective of
-     * their group names.
-     * @param attrGroup group name of attributes to be removed
-     * @param attrName name of the arributes to be removed
-     */
-    removeAttributes(attrGroup: string | null, attrName: string): void
-    /**
-     * Exports `evc` to a string representation, specified
-     * by the `format` argument.
-     * @param format the format to export to
-     */
-    toString(format: VCardFormat): string
-    utilDupXAttribute(xName: string): string | null
-    /**
-     * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
-     * removes it from `vcard,` when `value` is %NULL.
-     * @param xName the attribute name, which starts with "X-"
-     * @param value the value to set, or %NULL to unset
-     */
-    utilSetXAttribute(xName: string, value?: string | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::Rev", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::Rev", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::Rev", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::Rev", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.Contact
+
+    connect(sigName: "notify::Rev", callback: (...args: any[]) => void): number
+    on(sigName: "notify::Rev", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::Rev", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::Rev", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::Rev", ...args: any[]): void
+    connect(sigName: "notify::address", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-home", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-home", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address", ...args: any[]): void
+    connect(sigName: "notify::address-home", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-home", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-home", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-label-home", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-label-home", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-label-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-label-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-home", ...args: any[]): void
+    connect(sigName: "notify::address-label-home", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-label-home", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-label-home", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-label-home", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-label-other", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-label-other", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-label-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-label-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-label-home", ...args: any[]): void
+    connect(sigName: "notify::address-label-other", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-label-other", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-label-other", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-label-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-label-work", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-label-work", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-label-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-label-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-label-other", ...args: any[]): void
+    connect(sigName: "notify::address-label-work", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-label-work", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-label-work", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-label-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-other", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-other", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-label-work", ...args: any[]): void
+    connect(sigName: "notify::address-other", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-other", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-other", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-other", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::address-work", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::address-work", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::address-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::address-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-other", ...args: any[]): void
+    connect(sigName: "notify::address-work", callback: (...args: any[]) => void): number
+    on(sigName: "notify::address-work", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::address-work", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::address-work", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::anniversary", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::anniversary", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::anniversary", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::anniversary", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::address-work", ...args: any[]): void
+    connect(sigName: "notify::anniversary", callback: (...args: any[]) => void): number
+    on(sigName: "notify::anniversary", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::anniversary", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::anniversary", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::assistant", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::assistant", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::assistant", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::assistant", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::anniversary", ...args: any[]): void
+    connect(sigName: "notify::assistant", callback: (...args: any[]) => void): number
+    on(sigName: "notify::assistant", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::assistant", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::assistant", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::assistant-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::assistant-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::assistant-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::assistant-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::assistant", ...args: any[]): void
+    connect(sigName: "notify::assistant-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::assistant-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::assistant-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::assistant-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::birth-date", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::birth-date", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::birth-date", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::birth-date", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::assistant-phone", ...args: any[]): void
+    connect(sigName: "notify::birth-date", callback: (...args: any[]) => void): number
+    on(sigName: "notify::birth-date", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::birth-date", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::birth-date", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::blog-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::blog-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::blog-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::blog-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::birth-date", ...args: any[]): void
+    connect(sigName: "notify::blog-url", callback: (...args: any[]) => void): number
+    on(sigName: "notify::blog-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::blog-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::blog-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::book-uid", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::book-uid", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::book-uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::book-uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::blog-url", ...args: any[]): void
+    connect(sigName: "notify::book-uid", callback: (...args: any[]) => void): number
+    on(sigName: "notify::book-uid", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::book-uid", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::book-uid", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::business-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::business-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::business-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::business-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::book-uid", ...args: any[]): void
+    connect(sigName: "notify::business-fax", callback: (...args: any[]) => void): number
+    on(sigName: "notify::business-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::business-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::business-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::business-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::business-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::business-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::business-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::business-fax", ...args: any[]): void
+    connect(sigName: "notify::business-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::business-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::business-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::business-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::business-phone-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::business-phone-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::business-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::business-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::business-phone", ...args: any[]): void
+    connect(sigName: "notify::business-phone-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::business-phone-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::business-phone-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::business-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::callback-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::callback-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::callback-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::callback-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::business-phone-2", ...args: any[]): void
+    connect(sigName: "notify::callback-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::callback-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::callback-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::callback-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::caluri", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::caluri", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::caluri", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::caluri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::callback-phone", ...args: any[]): void
+    connect(sigName: "notify::caluri", callback: (...args: any[]) => void): number
+    on(sigName: "notify::caluri", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::caluri", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::caluri", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::car-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::car-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::car-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::car-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::caluri", ...args: any[]): void
+    connect(sigName: "notify::car-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::car-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::car-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::car-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::categories", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::categories", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::categories", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::categories", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::car-phone", ...args: any[]): void
+    connect(sigName: "notify::categories", callback: (...args: any[]) => void): number
+    on(sigName: "notify::categories", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::categories", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::categories", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::category-list", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::category-list", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::category-list", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::category-list", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::categories", ...args: any[]): void
+    connect(sigName: "notify::category-list", callback: (...args: any[]) => void): number
+    on(sigName: "notify::category-list", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::category-list", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::category-list", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::company-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::company-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::company-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::company-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::category-list", ...args: any[]): void
+    connect(sigName: "notify::company-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::company-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::company-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::company-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::email", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::email", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::email", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::email", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::company-phone", ...args: any[]): void
+    connect(sigName: "notify::email", callback: (...args: any[]) => void): number
+    on(sigName: "notify::email", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::email", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::email", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::email-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::email-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::email-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::email-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::email", ...args: any[]): void
+    connect(sigName: "notify::email-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::email-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::email-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::email-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::email-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::email-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::email-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::email-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::email-1", ...args: any[]): void
+    connect(sigName: "notify::email-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::email-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::email-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::email-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::email-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::email-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::email-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::email-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::email-2", ...args: any[]): void
+    connect(sigName: "notify::email-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::email-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::email-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::email-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::email-4", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::email-4", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::email-4", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::email-4", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::email-3", ...args: any[]): void
+    connect(sigName: "notify::email-4", callback: (...args: any[]) => void): number
+    on(sigName: "notify::email-4", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::email-4", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::email-4", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::family-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::family-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::family-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::family-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::email-4", ...args: any[]): void
+    connect(sigName: "notify::family-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::family-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::family-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::family-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::fburl", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::fburl", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::fburl", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::fburl", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::family-name", ...args: any[]): void
+    connect(sigName: "notify::fburl", callback: (...args: any[]) => void): number
+    on(sigName: "notify::fburl", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::fburl", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::fburl", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::file-as", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::file-as", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::file-as", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::file-as", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::fburl", ...args: any[]): void
+    connect(sigName: "notify::file-as", callback: (...args: any[]) => void): number
+    on(sigName: "notify::file-as", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::file-as", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::file-as", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::full-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::full-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::full-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::full-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::file-as", ...args: any[]): void
+    connect(sigName: "notify::full-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::full-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::full-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::full-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::geo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::geo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::geo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::geo", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::full-name", ...args: any[]): void
+    connect(sigName: "notify::geo", callback: (...args: any[]) => void): number
+    on(sigName: "notify::geo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::geo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::geo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::given-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::given-name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::given-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::given-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::geo", ...args: any[]): void
+    connect(sigName: "notify::given-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::given-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::given-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::given-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::home-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::home-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::home-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::home-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::given-name", ...args: any[]): void
+    connect(sigName: "notify::home-fax", callback: (...args: any[]) => void): number
+    on(sigName: "notify::home-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::home-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::home-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::home-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::home-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::home-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::home-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::home-fax", ...args: any[]): void
+    connect(sigName: "notify::home-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::home-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::home-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::home-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::home-phone-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::home-phone-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::home-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::home-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::home-phone", ...args: any[]): void
+    connect(sigName: "notify::home-phone-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::home-phone-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::home-phone-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::home-phone-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::homepage-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::homepage-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::homepage-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::homepage-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::home-phone-2", ...args: any[]): void
+    connect(sigName: "notify::homepage-url", callback: (...args: any[]) => void): number
+    on(sigName: "notify::homepage-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::homepage-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::homepage-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::icscalendar", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::icscalendar", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::icscalendar", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::icscalendar", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::homepage-url", ...args: any[]): void
+    connect(sigName: "notify::icscalendar", callback: (...args: any[]) => void): number
+    on(sigName: "notify::icscalendar", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::icscalendar", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::icscalendar", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::icscalendar", ...args: any[]): void
+    connect(sigName: "notify::id", callback: (...args: any[]) => void): number
+    on(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::id", ...args: any[]): void
+    connect(sigName: "notify::im-aim", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim", ...args: any[]): void
+    connect(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-aim-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-aim-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-aim-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-aim-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-gadugadu-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-gadugadu-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-gadugadu-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-gadugadu-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-google-talk-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-google-talk-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-google-talk-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-google-talk-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-groupwise-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-groupwise-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-groupwise-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-groupwise-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-icq", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq", ...args: any[]): void
+    connect(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-icq-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-icq-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-icq-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-icq-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-jabber", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-jabber-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-jabber-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-jabber-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-jabber-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-matrix", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-matrix-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-matrix-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-matrix-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-matrix-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-msn", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn", ...args: any[]): void
+    connect(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-msn-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-msn-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-msn-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-msn-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-skype", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype", ...args: any[]): void
+    connect(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-skype-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-skype-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-skype-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-twitter", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-twitter", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-twitter", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-twitter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-skype-work-3", ...args: any[]): void
+    connect(sigName: "notify::im-twitter", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-twitter", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-twitter", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-twitter", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-twitter", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-home-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-home-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-home-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-home-1", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-home-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-home-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-home-2", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-home-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-work-1", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-home-3", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-work-1", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-work-2", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-work-1", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-work-2", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::im-yahoo-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::im-yahoo-work-3", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-work-2", ...args: any[]): void
+    connect(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void): number
+    on(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::im-yahoo-work-3", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::isdn-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::isdn-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::isdn-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::isdn-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::im-yahoo-work-3", ...args: any[]): void
+    connect(sigName: "notify::isdn-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::isdn-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::isdn-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::isdn-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::list", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::list", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::list", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::list", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::isdn-phone", ...args: any[]): void
+    connect(sigName: "notify::list", callback: (...args: any[]) => void): number
+    on(sigName: "notify::list", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::list", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::list", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::list-show-addresses", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::list-show-addresses", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::list", ...args: any[]): void
+    connect(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void): number
+    on(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::list-show-addresses", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::logo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::logo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::logo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::logo", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::list-show-addresses", ...args: any[]): void
+    connect(sigName: "notify::logo", callback: (...args: any[]) => void): number
+    on(sigName: "notify::logo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::logo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::logo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::mailer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::mailer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::mailer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::mailer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::logo", ...args: any[]): void
+    connect(sigName: "notify::mailer", callback: (...args: any[]) => void): number
+    on(sigName: "notify::mailer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::mailer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mailer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::manager", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::manager", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::mailer", ...args: any[]): void
+    connect(sigName: "notify::manager", callback: (...args: any[]) => void): number
+    on(sigName: "notify::manager", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::manager", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::manager", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::mobile-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::mobile-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::mobile-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::mobile-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::manager", ...args: any[]): void
+    connect(sigName: "notify::mobile-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::mobile-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::mobile-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mobile-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::mobile-phone", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::name-or-org", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name-or-org", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::name-or-org", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::name-or-org", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::name-or-org", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name-or-org", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name-or-org", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::name-or-org", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::nickname", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::nickname", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name-or-org", ...args: any[]): void
+    connect(sigName: "notify::nickname", callback: (...args: any[]) => void): number
+    on(sigName: "notify::nickname", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::nickname", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::note", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::note", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::note", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::note", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::nickname", ...args: any[]): void
+    connect(sigName: "notify::note", callback: (...args: any[]) => void): number
+    on(sigName: "notify::note", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::note", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::note", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::office", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::office", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::office", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::office", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::note", ...args: any[]): void
+    connect(sigName: "notify::office", callback: (...args: any[]) => void): number
+    on(sigName: "notify::office", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::office", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::office", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::org", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::org", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::org", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::org", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::office", ...args: any[]): void
+    connect(sigName: "notify::org", callback: (...args: any[]) => void): number
+    on(sigName: "notify::org", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::org", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::org", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::org-unit", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::org-unit", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::org-unit", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::org-unit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::org", ...args: any[]): void
+    connect(sigName: "notify::org-unit", callback: (...args: any[]) => void): number
+    on(sigName: "notify::org-unit", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::org-unit", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::org-unit", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::other-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::other-fax", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::other-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::other-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::org-unit", ...args: any[]): void
+    connect(sigName: "notify::other-fax", callback: (...args: any[]) => void): number
+    on(sigName: "notify::other-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::other-fax", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::other-fax", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::other-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::other-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::other-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::other-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::other-fax", ...args: any[]): void
+    connect(sigName: "notify::other-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::other-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::other-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::other-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::pager", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::pager", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::pager", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::pager", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::other-phone", ...args: any[]): void
+    connect(sigName: "notify::pager", callback: (...args: any[]) => void): number
+    on(sigName: "notify::pager", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::pager", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::pager", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::pgpCert", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::pgpCert", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::pgpCert", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::pgpCert", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::pager", ...args: any[]): void
+    connect(sigName: "notify::pgpCert", callback: (...args: any[]) => void): number
+    on(sigName: "notify::pgpCert", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::pgpCert", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::pgpCert", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::pgpCert", ...args: any[]): void
+    connect(sigName: "notify::phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::photo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::photo", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::photo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::photo", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::phone", ...args: any[]): void
+    connect(sigName: "notify::photo", callback: (...args: any[]) => void): number
+    on(sigName: "notify::photo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::photo", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::photo", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::primary-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::primary-phone", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::primary-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::primary-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::photo", ...args: any[]): void
+    connect(sigName: "notify::primary-phone", callback: (...args: any[]) => void): number
+    on(sigName: "notify::primary-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::primary-phone", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::primary-phone", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::radio", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::radio", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::radio", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::radio", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::primary-phone", ...args: any[]): void
+    connect(sigName: "notify::radio", callback: (...args: any[]) => void): number
+    on(sigName: "notify::radio", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::radio", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::radio", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::role", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::role", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::role", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::role", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::radio", ...args: any[]): void
+    connect(sigName: "notify::role", callback: (...args: any[]) => void): number
+    on(sigName: "notify::role", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::role", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::role", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::sip", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sip", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::sip", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::sip", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::role", ...args: any[]): void
+    connect(sigName: "notify::sip", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sip", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sip", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::sip", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::spouse", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::spouse", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::spouse", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::spouse", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sip", ...args: any[]): void
+    connect(sigName: "notify::spouse", callback: (...args: any[]) => void): number
+    on(sigName: "notify::spouse", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::spouse", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::spouse", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::telex", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::telex", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::telex", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::telex", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::spouse", ...args: any[]): void
+    connect(sigName: "notify::telex", callback: (...args: any[]) => void): number
+    on(sigName: "notify::telex", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::telex", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::telex", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::telex", ...args: any[]): void
+    connect(sigName: "notify::title", callback: (...args: any[]) => void): number
+    on(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::tty", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::tty", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::tty", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::tty", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::tty", callback: (...args: any[]) => void): number
+    on(sigName: "notify::tty", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::tty", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::tty", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::video-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::video-url", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::video-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::video-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::tty", ...args: any[]): void
+    connect(sigName: "notify::video-url", callback: (...args: any[]) => void): number
+    on(sigName: "notify::video-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::video-url", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::video-url", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::wants-html", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::wants-html", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::wants-html", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::wants-html", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::video-url", ...args: any[]): void
+    connect(sigName: "notify::wants-html", callback: (...args: any[]) => void): number
+    on(sigName: "notify::wants-html", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::wants-html", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::wants-html", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::x509Cert", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::x509Cert", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::x509Cert", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::x509Cert", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::wants-html", ...args: any[]): void
+    connect(sigName: "notify::x509Cert", callback: (...args: any[]) => void): number
+    on(sigName: "notify::x509Cert", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::x509Cert", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::x509Cert", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::x509Cert", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Contact extends VCard {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.Contact
+
     static name: string
-    constructor (config?: Contact_ConstructProps)
-    _init (config?: Contact_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Contact>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.Contact
+
+    constructor(config?: Contact_ConstructProps) 
+    /**
+     * Creates a new, blank #EContact.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new, blank #EContact.
+     * @constructor 
+     */
     static new(): Contact
-    /* Function overloads */
-    static new(): Contact
+
+    // Overloads of new
+
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
+    static new(): VCard
+    /**
+     * Creates a new #EContact based on a vcard.
+     * @constructor 
+     * @param vcard a string representing a vcard
+     */
     static newFromVcard(vcard: string): Contact
+    /**
+     * Creates a new #EContact based on a vcard and a predefined UID.
+     * @constructor 
+     * @param vcard a string representing a vcard
+     * @param uid a contact UID
+     */
     static newFromVcardWithUid(vcard: string, uid: string): Contact
+    _init(config?: Contact_ConstructProps): void
     /**
      * Gets the #EContactField corresponding to the `field_name`.
      * @param fieldName a string representing a contact field
@@ -2299,7 +2026,7 @@ class Contact {
      * what kind of value can be passed to e_contact_set().
      * @param fieldId an #EContactField
      */
-    static fieldType(fieldId: ContactField): GObject.Type
+    static fieldType(fieldId: ContactField): GObject.GType
     /**
      * Gets a human-readable, translated string representation
      * of `field_id`.
@@ -2311,22 +2038,25 @@ class Contact {
      * @param fieldId an #EContactField
      */
     static vcardAttribute(fieldId: ContactField): string
-    static $gtype: GObject.Type
 }
+
 interface SourceBackendSummarySetup_ConstructProps extends EDataServer.SourceExtension_ConstructProps {
-    /* Constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
-    indexedFields?: string
-    summaryFields?: string
+
+    // Own constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    indexedFields?: string | null
+    summaryFields?: string | null
 }
-class SourceBackendSummarySetup {
-    /* Properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
+
+interface SourceBackendSummarySetup {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
     indexedFields: string
     summaryFields: string
-    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
-    readonly source: EDataServer.Source
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
     /**
      * Fetches the #EContactFields configured to be indexed, with thier respective #EBookIndexTypes.
      */
@@ -2369,414 +2099,60 @@ class SourceBackendSummarySetup {
      * @param nFields The number of #EContactFields in `fields`
      */
     setSummaryFieldsv(fields: ContactField, nFields: number): void
-    /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
-    /**
-     * Returns the #ESource instance to which `extension` belongs.
-     * 
-     * Note this function is not thread-safe.  The returned #ESource could
-     * be finalized by another thread while the caller is still using it.
-     */
-    getSource(): EDataServer.Source
-    /**
-     * Acquires a property lock, thus no other thread can change properties
-     * of the `extension` until the lock is released.
-     */
-    propertyLock(): void
-    /**
-     * Releases a property lock, previously acquired with e_source_extension_property_lock(),
-     * thus other threads can change properties of the `extension`.
-     */
-    propertyUnlock(): void
-    /**
-     * Returns the #ESource instance to which the `extension` belongs.
-     * 
-     * The returned #ESource is referenced for thread-safety.  Unreference
-     * the #ESource with g_object_unref() when finished with it.
-     */
-    refSource(): EDataServer.Source
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::indexed-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::indexed-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::indexed-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::indexed-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    connect(sigName: "notify::indexed-fields", callback: (...args: any[]) => void): number
+    on(sigName: "notify::indexed-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::indexed-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::indexed-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::summary-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::summary-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::summary-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::summary-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::indexed-fields", ...args: any[]): void
+    connect(sigName: "notify::summary-fields", callback: (...args: any[]) => void): number
+    on(sigName: "notify::summary-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::summary-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::summary-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::summary-fields", ...args: any[]): void
+    connect(sigName: "notify::source", callback: (...args: any[]) => void): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::source", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: SourceBackendSummarySetup_ConstructProps)
-    _init (config?: SourceBackendSummarySetup_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class SourceBackendSummarySetup extends EDataServer.SourceExtension {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    static name: string
+    static $gtype: GObject.GType<SourceBackendSummarySetup>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    constructor(config?: SourceBackendSummarySetup_ConstructProps) 
+    _init(config?: SourceBackendSummarySetup_ConstructProps): void
+}
+
 interface VCard_ConstructProps extends GObject.Object_ConstructProps {
 }
-class VCard {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.VCard */
+
+interface VCard {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.VCard
+
+    parent: GObject.Object
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCard
+
     /**
      * Prepends `attr` to `evc`. This takes ownership of `attr`.
      * @param attr an #EVCardAttribute to add
@@ -2822,7 +2198,7 @@ class VCard {
      * @param len length of `str,` or -1 if `str` is %NULL terminated
      * @param uid a unique ID string
      */
-    constructFull(str: string, len: number, uid?: string | null): void
+    constructFull(str: string, len: number, uid: string | null): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
      * adding a new UID attribute with the value given in `uid` (if `uid` is
@@ -2832,7 +2208,7 @@ class VCard {
      * @param str a vCard string
      * @param uid a unique ID string
      */
-    constructWithUid(str: string, uid?: string | null): void
+    constructWithUid(str: string, uid: string | null): void
     /**
      * Prints a dump of `evc'`s structure to stdout. Used for
      * debugging.
@@ -2898,370 +2274,45 @@ class VCard {
      * @param xName the attribute name, which starts with "X-"
      * @param value the value to set, or %NULL to unset
      */
-    utilSetXAttribute(xName: string, value?: string | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    utilSetXAttribute(xName: string, value: string | null): void
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.VCard
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class VCard extends GObject.Object {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCard
+
     static name: string
-    constructor (config?: VCard_ConstructProps)
-    _init (config?: VCard_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<VCard>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCard
+
+    constructor(config?: VCard_ConstructProps) 
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
     static new(): VCard
+    /**
+     * Creates a new #EVCard from the passed-in string
+     * representation.
+     * @constructor 
+     * @param str a string representation of the vcard to create
+     */
     static newFromString(str: string): VCard
+    _init(config?: VCard_ConstructProps): void
     /**
      * Escapes a string according to RFC2426, section 5.
      * @param s the string to escape
@@ -3272,39 +2323,50 @@ class VCard {
      * @param s the string to unescape
      */
     static unescapeString(s: string): string
-    static $gtype: GObject.Type
 }
-class AddressWestern {
-    /* Fields of EBookContacts-1.2.EBookContacts.AddressWestern */
+
+interface AddressWestern {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * PO Box.
+     * @field 
      */
     poBox: string
     /**
      * TODO, we're not sure what this is.
+     * @field 
      */
     extended: string
     /**
      * Street name
+     * @field 
      */
     street: string
     /**
      * City or town
+     * @field 
      */
     locality: string
     /**
      * State or province
+     * @field 
      */
     region: string
     /**
      * Postal Code
+     * @field 
      */
     postalCode: string
     /**
      * Country
+     * @field 
      */
     country: string
-    /* Methods of EBookContacts-1.2.EBookContacts.AddressWestern */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * Creates a copy of `eaw`.
      */
@@ -3313,29 +2375,59 @@ class AddressWestern {
      * Frees `eaw` and its contents.
      */
     free(): void
+}
+
+/**
+ * Western address structure.
+ * @record 
+ */
+class AddressWestern {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.AddressWestern
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * Parses a string representing a mailing address into a
      * structure of type #EAddressWestern.
      * @param inAddress a string representing a mailing address
      */
-    static parse(inAddress?: string | null): AddressWestern | null
+    static parse(inAddress: string | null): AddressWestern | null
 }
-class BookChange {
-    /* Fields of EBookContacts-1.2.EBookContacts.BookChange */
+
+interface BookChange {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.BookChange
+
     /**
      * The #EBookChangeType
+     * @field 
      */
     changeType: BookChangeType
     /**
      * The #EContact which changed
+     * @field 
      */
     contact: Contact
+}
+
+/**
+ * This is a part of the deprecated #EBook API.
+ * @record 
+ */
+class BookChange {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookChange
+
     static name: string
 }
-class BookQuery {
-    /* Methods of EBookContacts-1.2.EBookContacts.BookQuery */
+
+interface BookQuery {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.BookQuery
+
     /**
      * Creates a copy of `q`.
      */
@@ -3358,8 +2450,16 @@ class BookQuery {
      * will be freed and any child queries will have e_book_query_unref() called.
      */
     unref(): void
+}
+
+class BookQuery {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookQuery
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.BookQuery
+
     /**
      * Create a new #EBookQuery which is the logical AND of the queries in #qs.
      * @param nqs the number of queries to AND
@@ -3410,8 +2510,11 @@ class BookQuery {
      */
     static vcardFieldTest(field: string, test: BookQueryTest, value: string): BookQuery
 }
-class ContactAddress {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactAddress */
+
+interface ContactAddress {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactAddress
+
     addressFormat: string
     po: string
     ext: string
@@ -3420,43 +2523,94 @@ class ContactAddress {
     region: string
     code: string
     country: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactAddress */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactAddress
+
     /**
      * Frees the `address` struct and its contents.
      */
     free(): void
+}
+
+class ContactAddress {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactAddress
+
     static name: string
-    static new(): ContactAddress
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactAddress
+
+    /**
+     * Creates a new #EContactAddress struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactAddress struct.
+     * @constructor 
+     */
     static new(): ContactAddress
 }
-class ContactCert {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactCert */
+
+interface ContactCert {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactCert
+
     length: number
     data: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactCert */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactCert
+
     /**
      * Frees the `cert` struct and its contents.
      */
     free(): void
+}
+
+class ContactCert {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactCert
+
     static name: string
-    static new(): ContactCert
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactCert
+
+    /**
+     * Creates an #EContactCert struct with all values set to 0.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates an #EContactCert struct with all values set to 0.
+     * @constructor 
+     */
     static new(): ContactCert
 }
-abstract class ContactClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactClass */
+
+interface ContactClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactClass
+
     parentClass: VCardClass
+}
+
+abstract class ContactClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactClass
+
     static name: string
 }
-class ContactDate {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactDate */
+
+interface ContactDate {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactDate
+
     year: number
     month: number
     day: number
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactDate */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactDate
+
     /**
      * Checks if `dt1` and `dt2` are the same date.
      * @param dt2 an #EContactDate
@@ -3471,10 +2625,25 @@ class ContactDate {
      * on the values of `dt`.
      */
     toString(): string
+}
+
+class ContactDate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactDate
+
     static name: string
-    static new(): ContactDate
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactDate
+
+    /**
+     * Creates a new #EContactDate struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactDate struct.
+     * @constructor 
+     */
     static new(): ContactDate
     /**
      * Creates a new #EContactDate based on `str`.
@@ -3482,35 +2651,62 @@ class ContactDate {
      */
     static fromString(str: string): ContactDate
 }
-class ContactGeo {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactGeo */
+
+interface ContactGeo {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactGeo
+
     /**
      * latitude
+     * @field 
      */
     latitude: number
     /**
      * longitude
+     * @field 
      */
     longitude: number
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactGeo */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactGeo
+
     /**
      * Frees the `geo` struct and its contents.
      */
     free(): void
+}
+
+class ContactGeo {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactGeo
+
     static name: string
-    static new(): ContactGeo
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactGeo
+
+    /**
+     * Creates an #EContactGeo struct with all coordinates set to 0.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates an #EContactGeo struct with all coordinates set to 0.
+     * @constructor 
+     */
     static new(): ContactGeo
 }
-class ContactName {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactName */
+
+interface ContactName {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactName
+
     family: string
     given: string
     additional: string
     prefixes: string
     suffixes: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactName */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactName
+
     /**
      * Creates a copy of `n`.
      */
@@ -3523,10 +2719,25 @@ class ContactName {
      * Generates a string representation of `name`.
      */
     toString(): string
+}
+
+class ContactName {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactName
+
     static name: string
-    static new(): ContactName
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactName
+
+    /**
+     * Creates a new #EContactName struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactName struct.
+     * @constructor 
+     */
     static new(): ContactName
     /**
      * Creates a new #EContactName based on the parsed `name_str`.
@@ -3534,10 +2745,15 @@ class ContactName {
      */
     static fromString(nameStr: string): ContactName
 }
-class ContactPhoto {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactPhoto */
+
+interface ContactPhoto {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     type: ContactPhotoType
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactPhoto */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     /**
      * Creates a copy of `photo`.
      */
@@ -3573,17 +2789,42 @@ class ContactPhoto {
      * @param uri the `photo'`s URI
      */
     setUri(uri: string): void
+}
+
+class ContactPhoto {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     static name: string
-    static new(): ContactPhoto
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactPhoto
+
+    /**
+     * Creates a new #EContactPhoto struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactPhoto struct.
+     * @constructor 
+     */
     static new(): ContactPhoto
 }
+
+interface ContactPrivate {
+}
+
 class ContactPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactPrivate
+
     static name: string
 }
-class NameWestern {
-    /* Fields of EBookContacts-1.2.EBookContacts.NameWestern */
+
+interface NameWestern {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.NameWestern
+
     prefix: string
     first: string
     middle: string
@@ -3591,7 +2832,9 @@ class NameWestern {
     last: string
     suffix: string
     full: string
-    /* Methods of EBookContacts-1.2.EBookContacts.NameWestern */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.NameWestern
+
     /**
      * Creates a copy of `w`.
      */
@@ -3600,8 +2843,16 @@ class NameWestern {
      * Frees the `w` struct and its contents.
      */
     free(): void
+}
+
+class NameWestern {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.NameWestern
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.NameWestern
+
     /**
      * Parses `full_name` and returns an #ENameWestern struct filled with
      * the component parts of the name.
@@ -3609,8 +2860,11 @@ class NameWestern {
      */
     static parse(fullName: string): NameWestern
 }
-class PhoneNumber {
-    /* Methods of EBookContacts-1.2.EBookContacts.PhoneNumber */
+
+interface PhoneNumber {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     /**
      * Compares two phone numbers.
      * @param secondNumber the second EPhoneNumber to compare
@@ -3630,7 +2884,7 @@ class PhoneNumber {
      * function would return one and assing E_PHONE_NUMBER_COUNTRY_FROM_FQTN to `source`.
      * @param source an optional location for storing the phone number's origin, or %NULL
      */
-    getCountryCode(source?: PhoneNumberCountrySource | null): number
+    getCountryCode(source: PhoneNumberCountrySource | null): number
     /**
      * Queries the national portion of `phone_number` without any call-out
      * prefixes. For instance when parsing "+1-617-5423789" this function would
@@ -3642,8 +2896,21 @@ class PhoneNumber {
      * @param format the phone number format to apply
      */
     toString(format: PhoneNumberFormat): string
+}
+
+/**
+ * This opaque type describes a parsed phone number. It can be copied using
+ * e_phone_number_copy(). To release it call e_phone_number_free().
+ * @record 
+ */
+class PhoneNumber {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     /**
      * Compares two phone numbers.
      * @param firstNumber the first EPhoneNumber to compare
@@ -3656,7 +2923,7 @@ class PhoneNumber {
      * @param secondNumber the second EPhoneNumber to compare
      * @param regionCode a two-letter country code, or %NULL
      */
-    static compareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode?: string | null): PhoneNumberMatch
+    static compareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode: string | null): PhoneNumberMatch
     static errorQuark(): GLib.Quark
     /**
      * Parses the string passed in `phone_number`. Note that no validation is
@@ -3673,7 +2940,7 @@ class PhoneNumber {
      * @param phoneNumber the phone number to parse
      * @param regionCode a two-letter country code, or %NULL
      */
-    static fromString(phoneNumber: string, regionCode?: string | null): PhoneNumber
+    static fromString(phoneNumber: string, regionCode: string | null): PhoneNumber
     /**
      * Retrieves the preferred country calling code for `region_code,`
      * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
@@ -3682,7 +2949,7 @@ class PhoneNumber {
      * e_phone_number_get_default_region() is used.
      * @param regionCode a two-letter country code, a locale name, or %NULL
      */
-    static getCountryCodeForRegion(regionCode?: string | null): number
+    static getCountryCodeForRegion(regionCode: string | null): number
     /**
      * Retrieves the current two-letter country code that's used by default for
      * parsing phone numbers in e_phone_number_from_string(). It can be useful
@@ -3702,16 +2969,35 @@ class PhoneNumber {
      */
     static isSupported(): boolean
 }
-abstract class SourceBackendSummarySetupClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass */
+
+interface SourceBackendSummarySetupClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass
+
     parentClass: EDataServer.SourceBackendClass
+}
+
+abstract class SourceBackendSummarySetupClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass
+
     static name: string
 }
+
+interface SourceBackendSummarySetupPrivate {
+}
+
 class SourceBackendSummarySetupPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupPrivate
+
     static name: string
 }
-class VCardAttribute {
-    /* Methods of EBookContacts-1.2.EBookContacts.VCardAttribute */
+
+interface VCardAttribute {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCardAttribute
+
     /**
      * Prepends `param` to `attr'`s list of parameters. This takes ownership of
      * `param` (and all its values).
@@ -3875,14 +3161,40 @@ class VCardAttribute {
      * Removes and frees all values from `attr`.
      */
     removeValues(): void
+}
+
+class VCardAttribute {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardAttribute
+
     static name: string
-    static new(attrGroup: string | null, attrName: string): VCardAttribute
-    constructor(attrGroup: string | null, attrName: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCardAttribute
+
+    /**
+     * Creates a new #EVCardAttribute with the specified group and
+     * attribute names. The `attr_group` may be %NULL or the empty string if no
+     * group is needed.
+     * @constructor 
+     * @param attrGroup a group name
+     * @param attrName an attribute name
+     */
+    constructor(attrGroup: string | null, attrName: string) 
+    /**
+     * Creates a new #EVCardAttribute with the specified group and
+     * attribute names. The `attr_group` may be %NULL or the empty string if no
+     * group is needed.
+     * @constructor 
+     * @param attrGroup a group name
+     * @param attrName an attribute name
+     */
     static new(attrGroup: string | null, attrName: string): VCardAttribute
 }
-class VCardAttributeParam {
-    /* Methods of EBookContacts-1.2.EBookContacts.VCardAttributeParam */
+
+interface VCardAttributeParam {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
     /**
      * Appends `value` to `param'`s list of values.
      * @param value a string value to add
@@ -3924,19 +3236,53 @@ class VCardAttributeParam {
      * Removes and frees all values from `param`.
      */
     removeValues(): void
+}
+
+class VCardAttributeParam {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
     static name: string
-    static new(name: string): VCardAttributeParam
-    constructor(name: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
+    /**
+     * Creates a new parameter named `name`.
+     * @constructor 
+     * @param name the name of the new parameter
+     */
+    constructor(name: string) 
+    /**
+     * Creates a new parameter named `name`.
+     * @constructor 
+     * @param name the name of the new parameter
+     */
     static new(name: string): VCardAttributeParam
 }
-abstract class VCardClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.VCardClass */
+
+interface VCardClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.VCardClass
+
     parentClass: GObject.ObjectClass
+}
+
+abstract class VCardClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardClass
+
     static name: string
 }
+
+interface VCardPrivate {
+}
+
 class VCardPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardPrivate
+
     static name: string
 }
+
 }
 export default EBookContacts;

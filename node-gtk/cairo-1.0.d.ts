@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -231,51 +233,139 @@ enum RegionOverlap {
     PART,
 }
 function imageSurfaceCreate(): void
+interface Context {
+}
+
 class Context {
+
+    // Own properties of cairo-1.0.cairo.Context
+
     static name: string
 }
+
+interface Device {
+}
+
 class Device {
+
+    // Own properties of cairo-1.0.cairo.Device
+
     static name: string
 }
+
+interface Surface {
+}
+
 class Surface {
+
+    // Own properties of cairo-1.0.cairo.Surface
+
     static name: string
 }
+
+interface Matrix {
+}
+
 class Matrix {
+
+    // Own properties of cairo-1.0.cairo.Matrix
+
     static name: string
 }
+
+interface Pattern {
+}
+
 class Pattern {
+
+    // Own properties of cairo-1.0.cairo.Pattern
+
     static name: string
 }
+
+interface Region {
+}
+
 class Region {
+
+    // Own properties of cairo-1.0.cairo.Region
+
     static name: string
 }
+
+interface FontOptions {
+}
+
 class FontOptions {
+
+    // Own properties of cairo-1.0.cairo.FontOptions
+
     static name: string
 }
+
+interface FontFace {
+}
+
 class FontFace {
+
+    // Own properties of cairo-1.0.cairo.FontFace
+
     static name: string
 }
+
+interface ScaledFont {
+}
+
 class ScaledFont {
+
+    // Own properties of cairo-1.0.cairo.ScaledFont
+
     static name: string
 }
+
+interface Path {
+}
+
 class Path {
+
+    // Own properties of cairo-1.0.cairo.Path
+
     static name: string
 }
+
+interface Rectangle {
+
+    // Own fields of cairo-1.0.cairo.Rectangle
+
+    x: number
+    y: number
+    width: number
+    height: number
+}
+
 class Rectangle {
-    /* Fields of cairo-1.0.cairo.Rectangle */
+
+    // Own properties of cairo-1.0.cairo.Rectangle
+
+    static name: string
+}
+
+interface RectangleInt {
+
+    // Own fields of cairo-1.0.cairo.RectangleInt
+
     x: number
     y: number
     width: number
     height: number
-    static name: string
 }
+
 class RectangleInt {
-    /* Fields of cairo-1.0.cairo.RectangleInt */
-    x: number
-    y: number
-    width: number
-    height: number
+
+    // Own properties of cairo-1.0.cairo.RectangleInt
+
     static name: string
 }
+
 }
 export default cairo;

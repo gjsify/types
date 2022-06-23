@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -132,42 +134,180 @@ enum Format {
      */
     XAR,
 }
+/**
+ * Checks whether a mime type is supported by autoar. This function does no
+ * blocking IO.
+ * @param mimeType a string representing the mime type
+ */
 function checkMimeTypeSupported(mimeType: string): boolean
+/**
+ * Gets description of the filter from the internal static data.
+ * @param filter an #AutoarFilter
+ */
 function filterGetDescription(filter: Filter): string
+/**
+ * Gets description of the filter from libarchive. This function creates
+ * and destroys an archive object in order to get the description string.
+ * @param filter an #AutoarFilter
+ */
 function filterGetDescriptionLibarchive(filter: Filter): string
+/**
+ * Gets the file name extension of the filter from the internal static data.
+ * @param filter an #AutoarFilter
+ */
 function filterGetExtension(filter: Filter): string
+/**
+ * Gets the filter code used by libarchive. You can use the return value
+ * as the argument for archive_write_add_filter().
+ * @param filter an #AutoarFilter
+ */
 function filterGetFilterLibarchive(filter: Filter): number
+/**
+ * Gets the MIME type of the filter from the internal static data.
+ * @param filter an #AutoarFilter
+ */
 function filterGetMimeType(filter: Filter): string
+/**
+ * Checks whether an #AutoarFilter is valid.
+ * @param filter an #AutoarFilter
+ */
 function filterIsValid(filter: Filter): boolean
+/**
+ * Gets the maximal allowed values of #AutoarFilter
+ */
 function filterLast(): number
+/**
+ * Gets the description for an archive `format` compressed by
+ * `filter` using #GContentType and autoar_format_filter_get_mime_type().
+ * @param format an #AutoarFormat
+ * @param filter an #AutoarFilter
+ */
 function formatFilterGetDescription(format: Format, filter: Filter): string
+/**
+ * Gets the file name extension for an archive `format` compressed by
+ * `filter`. The first character of the returned string is always '.'
+ * @param format an #AutoarFormat
+ * @param filter an #AutoarFilter
+ */
 function formatFilterGetExtension(format: Format, filter: Filter): string
+/**
+ * Gets the MIME type for an archive `format` compressed by
+ * `filter`. This function always succeed, but it is not guaranteed
+ * that the returned MIME type exists and can be recognized by applications.
+ * Some combination of format and filter seldom exists in application,
+ * so this function can only generate the string based on some
+ * non-standard rules.
+ * @param format an #AutoarFormat
+ * @param filter an #AutoarFilter
+ */
 function formatFilterGetMimeType(format: Format, filter: Filter): string
+/**
+ * Gets description of the format from the internal static data.
+ * @param format an #AutoarFormat
+ */
 function formatGetDescription(format: Format): string
+/**
+ * Gets description of the format from libarchive. This function creates
+ * and destroys an archive object in order to get the description string.
+ * @param format an #AutoarFormat
+ */
 function formatGetDescriptionLibarchive(format: Format): string
+/**
+ * Gets the file name extension of the format from the internal static data.
+ * @param format an #AutoarFormat
+ */
 function formatGetExtension(format: Format): string
+/**
+ * Gets the format code used by libarchive. You can use the return value
+ * as the argument for archive_read_support_format_by_code() and
+ * archive_write_set_format(). However, some format cannot be set using
+ * these two functions because of problems inside libarchive. Use
+ * autoar_format_get_libarchive_read() and
+ * autoar_format_get_libarchive_write() to get the function pointer
+ * is the more reliable way to set format on the archive object.
+ * @param format an #AutoarFormat
+ */
 function formatGetFormatLibarchive(format: Format): number
+/**
+ * Gets the MIME type of the format from the internal static data.
+ * @param format an #AutoarFormat
+ */
 function formatGetMimeType(format: Format): string
+/**
+ * Checks whether an #AutoarFormat is valid.
+ * @param format an #AutoarFormat
+ */
 function formatIsValid(format: Format): boolean
+/**
+ * Gets the maximal allowed values of #AutoarFormat
+ */
 function formatLast(): number
+/**
+ * Gets the libarchive Error Quark.
+ */
 function libarchiveQuark(): GLib.Quark
+/**
+ * This function will query the file's mime type and then call
+ * autoar_check_mime_type_supported(), so it does blocking IO.
+ * @param file a #GFile to check if its mime type is supported
+ */
 function queryMimeTypeSupported(file: Gio.File): boolean
 interface FilterFunc {
-    (a?: object | null): number
+    (a: object | null): number
 }
 interface FormatFunc {
-    (a?: object | null): number
+    (a: object | null): number
 }
 interface Compressor_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of GnomeAutoar-0.1.GnomeAutoar.Compressor */
-    createTopLevelDirectory?: boolean
-    notifyInterval?: number
-    outputFile?: Gio.File
-    outputIsDest?: boolean
-    sourceFiles?: object
+
+    // Own constructor properties of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
+    createTopLevelDirectory?: boolean | null
+    notifyInterval?: number | null
+    outputFile?: Gio.File | null
+    outputIsDest?: boolean | null
+    sourceFiles?: object | null
 }
-class Compressor {
-    /* Properties of GnomeAutoar-0.1.GnomeAutoar.Compressor */
+
+/**
+ * Signal callback interface for `cancelled`
+ */
+interface Compressor_CancelledSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `completed`
+ */
+interface Compressor_CompletedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `decide-dest`
+ */
+interface Compressor_DecideDestSignalCallback {
+    (destination: Gio.File): void
+}
+
+/**
+ * Signal callback interface for `error`
+ */
+interface Compressor_ErrorSignalCallback {
+    (error: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `progress`
+ */
+interface Compressor_ProgressSignalCallback {
+    (completedSize: number, completedFiles: number): void
+}
+
+interface Compressor {
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
     readonly completedFiles: number
     readonly completedSize: number
     createTopLevelDirectory: boolean
@@ -177,9 +317,9 @@ class Compressor {
     outputIsDest: boolean
     readonly size: number
     readonly sourceFiles: object
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GnomeAutoar-0.1.GnomeAutoar.Compressor */
+
+    // Owm methods of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
     /**
      * Gets the number of files has been read
      */
@@ -262,7 +402,7 @@ class Compressor {
      * thread as the caller of this functions.
      * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
-    start(cancellable?: Gio.Cancellable | null): void
+    start(cancellable: Gio.Cancellable | null): void
     /**
      * Asynchronously runs the archive creating work. You should connect to
      * #AutoarCompressor::cancelled, #AutoarCompressor::error, and
@@ -271,484 +411,198 @@ class Compressor {
      * safely manipulate GTK+ widgets in the callbacks.
      * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
-    startAsync(cancellable?: Gio.Cancellable | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GnomeAutoar-0.1.GnomeAutoar.Compressor */
-    /**
-     * This signal is emitted after archive creating job is cancelled by the
-     * #GCancellable.
-     */
-    connect(sigName: "cancelled", callback: (() => void)): number
-    on(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cancelled", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cancelled"): void
-    /**
-     * This signal is emitted after the archive creating job is successfully
-     * completed.
-     */
-    connect(sigName: "completed", callback: (() => void)): number
-    on(sigName: "completed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "completed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "completed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "completed"): void
-    /**
-     * This signal is emitted when the location of the new archive is determined.
-     * @param destination the location of the new archive
-     */
-    connect(sigName: "decide-dest", callback: ((destination: Gio.File) => void)): number
-    on(sigName: "decide-dest", callback: (destination: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "decide-dest", callback: (destination: Gio.File) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "decide-dest", callback: (destination: Gio.File) => void): NodeJS.EventEmitter
-    emit(sigName: "decide-dest", destination: Gio.File): void
-    /**
-     * This signal is emitted when error occurs and all jobs should be terminated.
-     * Possible error domains are %AUTOAR_COMPRESSOR_ERROR, %G_IO_ERROR, and
-     * %AUTOAR_LIBARCHIVE_ERROR, which represent error occurs in #AutoarCompressor,
-     * GIO, and libarchive, respectively. The #GError is owned by #AutoarCompressor
-     * and should not be freed.
-     * @param error the #GError
-     */
-    connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
-    on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "error", callback: (error: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "error", error: GLib.Error): void
-    /**
-     * This signal is used to report progress of creating archives. The value of
-     * `completed_size` and `completed_files` are the same as the
-     * #AutoarCompressor:completed_size and #AutoarCompressor:completed_files properties,
-     * respectively.
-     * @param completedSize bytes has been read from source files and directories
-     * @param completedFiles number of files and directories has been read
-     */
-    connect(sigName: "progress", callback: ((completedSize: number, completedFiles: number) => void)): number
-    on(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void): NodeJS.EventEmitter
-    emit(sigName: "progress", completedSize: number, completedFiles: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::completed-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::completed-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    startAsync(cancellable: Gio.Cancellable | null): void
+
+    // Own signals of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
+    connect(sigName: "cancelled", callback: Compressor_CancelledSignalCallback): number
+    on(sigName: "cancelled", callback: Compressor_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "cancelled", callback: Compressor_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "cancelled", callback: Compressor_CancelledSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "cancelled", ...args: any[]): void
+    connect(sigName: "completed", callback: Compressor_CompletedSignalCallback): number
+    on(sigName: "completed", callback: Compressor_CompletedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "completed", callback: Compressor_CompletedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "completed", callback: Compressor_CompletedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "completed", ...args: any[]): void
+    connect(sigName: "decide-dest", callback: Compressor_DecideDestSignalCallback): number
+    on(sigName: "decide-dest", callback: Compressor_DecideDestSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "decide-dest", callback: Compressor_DecideDestSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "decide-dest", callback: Compressor_DecideDestSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "decide-dest", ...args: any[]): void
+    connect(sigName: "error", callback: Compressor_ErrorSignalCallback): number
+    on(sigName: "error", callback: Compressor_ErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "error", callback: Compressor_ErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "error", callback: Compressor_ErrorSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "error", ...args: any[]): void
+    connect(sigName: "progress", callback: Compressor_ProgressSignalCallback): number
+    on(sigName: "progress", callback: Compressor_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "progress", callback: Compressor_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "progress", callback: Compressor_ProgressSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "progress", completedFiles: number, ...args: any[]): void
+
+    // Class property signals of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
+    connect(sigName: "notify::completed-files", callback: (...args: any[]) => void): number
+    on(sigName: "notify::completed-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::completed-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::completed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::completed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::completed-files", ...args: any[]): void
+    connect(sigName: "notify::completed-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::completed-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::completed-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::create-top-level-directory", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::create-top-level-directory", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::completed-size", ...args: any[]): void
+    connect(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void): number
+    on(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::create-top-level-directory", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::files", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::create-top-level-directory", ...args: any[]): void
+    connect(sigName: "notify::files", callback: (...args: any[]) => void): number
+    on(sigName: "notify::files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::notify-interval", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::notify-interval", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::files", ...args: any[]): void
+    connect(sigName: "notify::notify-interval", callback: (...args: any[]) => void): number
+    on(sigName: "notify::notify-interval", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::notify-interval", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::output-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::output-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::notify-interval", ...args: any[]): void
+    connect(sigName: "notify::output-file", callback: (...args: any[]) => void): number
+    on(sigName: "notify::output-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::output-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::output-is-dest", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::output-is-dest", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::output-file", ...args: any[]): void
+    connect(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): number
+    on(sigName: "notify::output-is-dest", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::output-is-dest", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::output-is-dest", ...args: any[]): void
+    connect(sigName: "notify::size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::source-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::source-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::source-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::source-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::size", ...args: any[]): void
+    connect(sigName: "notify::source-files", callback: (...args: any[]) => void): number
+    on(sigName: "notify::source-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::source-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::source-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::source-files", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Compressor extends GObject.Object {
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
     static name: string
-    constructor (config?: Compressor_ConstructProps)
-    _init (config?: Compressor_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Compressor>
+
+    // Constructors of GnomeAutoar-0.1.GnomeAutoar.Compressor
+
+    constructor(config?: Compressor_ConstructProps) 
+    /**
+     * Create a new #AutoarCompressor object.
+     * @constructor 
+     * @param sourceFiles a #GList of source #GFiles to be archived
+     * @param outputFile output directory of the new archive, or the file name of the new archive if you set #AutoarCompressor:output-is-dest on the returned object
+     * @param format the compression format
+     * @param filter the compression filter
+     * @param createTopLevelDirectory 
+     */
+    constructor(sourceFiles: Gio.File[], outputFile: Gio.File, format: Format, filter: Filter, createTopLevelDirectory: boolean) 
+    /**
+     * Create a new #AutoarCompressor object.
+     * @constructor 
+     * @param sourceFiles a #GList of source #GFiles to be archived
+     * @param outputFile output directory of the new archive, or the file name of the new archive if you set #AutoarCompressor:output-is-dest on the returned object
+     * @param format the compression format
+     * @param filter the compression filter
+     * @param createTopLevelDirectory 
+     */
     static new(sourceFiles: Gio.File[], outputFile: Gio.File, format: Format, filter: Filter, createTopLevelDirectory: boolean): Compressor
+    _init(config?: Compressor_ConstructProps): void
     /**
      * Gets the #AutoarCompressor Error Quark.
      */
     static quark(): GLib.Quark
-    static $gtype: GObject.Type
 }
+
 interface Extractor_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of GnomeAutoar-0.1.GnomeAutoar.Extractor */
-    deleteAfterExtraction?: boolean
-    notifyInterval?: number
-    outputFile?: Gio.File
-    outputIsDest?: boolean
-    sourceFile?: Gio.File
+
+    // Own constructor properties of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
+    deleteAfterExtraction?: boolean | null
+    notifyInterval?: number | null
+    outputFile?: Gio.File | null
+    outputIsDest?: boolean | null
+    sourceFile?: Gio.File | null
 }
-class Extractor {
-    /* Properties of GnomeAutoar-0.1.GnomeAutoar.Extractor */
+
+/**
+ * Signal callback interface for `cancelled`
+ */
+interface Extractor_CancelledSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `completed`
+ */
+interface Extractor_CompletedSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `conflict`
+ */
+interface Extractor_ConflictSignalCallback {
+    (file: Gio.File, newFile: object | null): number
+}
+
+/**
+ * Signal callback interface for `decide-destination`
+ */
+interface Extractor_DecideDestinationSignalCallback {
+    (destination: Gio.File, files: object | null): GObject.Object
+}
+
+/**
+ * Signal callback interface for `error`
+ */
+interface Extractor_ErrorSignalCallback {
+    (error: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `progress`
+ */
+interface Extractor_ProgressSignalCallback {
+    (completedSize: number, completedFiles: number): void
+}
+
+/**
+ * Signal callback interface for `request-passphrase`
+ */
+interface Extractor_RequestPassphraseSignalCallback {
+    (): string
+}
+
+/**
+ * Signal callback interface for `scanned`
+ */
+interface Extractor_ScannedSignalCallback {
+    (files: number): void
+}
+
+interface Extractor {
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
     readonly completedFiles: number
     readonly completedSize: number
     deleteAfterExtraction: boolean
@@ -758,9 +612,9 @@ class Extractor {
     readonly sourceFile: Gio.File
     readonly totalFiles: number
     readonly totalSize: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GnomeAutoar-0.1.GnomeAutoar.Extractor */
+
+    // Owm methods of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
     /**
      * Gets the number of files has been written to disk.
      */
@@ -838,7 +692,7 @@ class Extractor {
      * thread as the caller of this functions.
      * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
-    start(cancellable?: Gio.Cancellable | null): void
+    start(cancellable: Gio.Cancellable | null): void
     /**
      * Asynchronously runs the archive extracting work. You should connect to
      * #AutoarExtractor::cancelled, #AutoarExtractor::error, and
@@ -847,500 +701,163 @@ class Extractor {
      * safely manipulate GTK+ widgets in the callbacks.
      * @param cancellable optional #GCancellable object, or %NULL to ignore
      */
-    startAsync(cancellable?: Gio.Cancellable | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GnomeAutoar-0.1.GnomeAutoar.Extractor */
-    /**
-     * This signal is emitted after archive extracting job is cancelled by the
-     * #GCancellable.
-     */
-    connect(sigName: "cancelled", callback: (() => void)): number
-    on(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "cancelled", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "cancelled", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "cancelled"): void
-    /**
-     * This signal is emitted after the archive extracting job is successfully
-     * completed.
-     */
-    connect(sigName: "completed", callback: (() => void)): number
-    on(sigName: "completed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "completed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "completed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "completed"): void
-    connect(sigName: "conflict", callback: ((file: Gio.File, newFile?: object | null) => number)): number
-    on(sigName: "conflict", callback: (file: Gio.File, newFile?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "conflict", callback: (file: Gio.File, newFile?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "conflict", callback: (file: Gio.File, newFile?: object | null) => void): NodeJS.EventEmitter
-    emit(sigName: "conflict", file: Gio.File, newFile?: object | null): void
-    connect(sigName: "decide-destination", callback: ((destination: Gio.File, files?: object | null) => GObject.Object)): number
-    on(sigName: "decide-destination", callback: (destination: Gio.File, files?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "decide-destination", callback: (destination: Gio.File, files?: object | null) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "decide-destination", callback: (destination: Gio.File, files?: object | null) => void): NodeJS.EventEmitter
-    emit(sigName: "decide-destination", destination: Gio.File, files?: object | null): void
-    /**
-     * This signal is emitted when error occurs and all jobs should be terminated.
-     * Possible error domains are %AUTOAR_EXTRACTOR_ERROR, %G_IO_ERROR, and
-     * %AUTOAR_LIBARCHIVE_ERROR, which represent error occurs in #AutoarExtractor,
-     * GIO, and libarchive, respectively. The #GError is owned by #AutoarExtractor
-     * and should not be freed.
-     * @param error the #GError
-     */
-    connect(sigName: "error", callback: ((error: GLib.Error) => void)): number
-    on(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "error", callback: (error: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "error", callback: (error: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "error", error: GLib.Error): void
-    /**
-     * This signal is used to report progress of extraction.
-     * @param completedSize bytes has been written to disk
-     * @param completedFiles number of files have been written to disk
-     */
-    connect(sigName: "progress", callback: ((completedSize: number, completedFiles: number) => void)): number
-    on(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "progress", callback: (completedSize: number, completedFiles: number) => void): NodeJS.EventEmitter
-    emit(sigName: "progress", completedSize: number, completedFiles: number): void
-    /**
-     * This signal is emitted when the archive extracting job needs a
-     * passphrase.
-     */
-    connect(sigName: "request-passphrase", callback: (() => string)): number
-    on(sigName: "request-passphrase", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "request-passphrase", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "request-passphrase", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "request-passphrase"): void
-    /**
-     * This signal is emitted when #AutoarExtractor finish scanning filename entries
-     * in the source archive.
-     * @param files the number of files will be extracted from the source archive
-     */
-    connect(sigName: "scanned", callback: ((files: number) => void)): number
-    on(sigName: "scanned", callback: (files: number) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "scanned", callback: (files: number) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "scanned", callback: (files: number) => void): NodeJS.EventEmitter
-    emit(sigName: "scanned", files: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::completed-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::completed-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    startAsync(cancellable: Gio.Cancellable | null): void
+
+    // Own signals of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
+    connect(sigName: "cancelled", callback: Extractor_CancelledSignalCallback): number
+    on(sigName: "cancelled", callback: Extractor_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "cancelled", callback: Extractor_CancelledSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "cancelled", callback: Extractor_CancelledSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "cancelled", ...args: any[]): void
+    connect(sigName: "completed", callback: Extractor_CompletedSignalCallback): number
+    on(sigName: "completed", callback: Extractor_CompletedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "completed", callback: Extractor_CompletedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "completed", callback: Extractor_CompletedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "completed", ...args: any[]): void
+    connect(sigName: "conflict", callback: Extractor_ConflictSignalCallback): number
+    on(sigName: "conflict", callback: Extractor_ConflictSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "conflict", callback: Extractor_ConflictSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "conflict", callback: Extractor_ConflictSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "conflict", newFile: object | null, ...args: any[]): void
+    connect(sigName: "decide-destination", callback: Extractor_DecideDestinationSignalCallback): number
+    on(sigName: "decide-destination", callback: Extractor_DecideDestinationSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "decide-destination", callback: Extractor_DecideDestinationSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "decide-destination", callback: Extractor_DecideDestinationSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "decide-destination", files: object | null, ...args: any[]): void
+    connect(sigName: "error", callback: Extractor_ErrorSignalCallback): number
+    on(sigName: "error", callback: Extractor_ErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "error", callback: Extractor_ErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "error", callback: Extractor_ErrorSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "error", ...args: any[]): void
+    connect(sigName: "progress", callback: Extractor_ProgressSignalCallback): number
+    on(sigName: "progress", callback: Extractor_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "progress", callback: Extractor_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "progress", callback: Extractor_ProgressSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "progress", completedFiles: number, ...args: any[]): void
+    connect(sigName: "request-passphrase", callback: Extractor_RequestPassphraseSignalCallback): number
+    on(sigName: "request-passphrase", callback: Extractor_RequestPassphraseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "request-passphrase", callback: Extractor_RequestPassphraseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "request-passphrase", callback: Extractor_RequestPassphraseSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "request-passphrase", ...args: any[]): void
+    connect(sigName: "scanned", callback: Extractor_ScannedSignalCallback): number
+    on(sigName: "scanned", callback: Extractor_ScannedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "scanned", callback: Extractor_ScannedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "scanned", callback: Extractor_ScannedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "scanned", ...args: any[]): void
+
+    // Class property signals of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
+    connect(sigName: "notify::completed-files", callback: (...args: any[]) => void): number
+    on(sigName: "notify::completed-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::completed-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::completed-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::completed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::completed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::completed-files", ...args: any[]): void
+    connect(sigName: "notify::completed-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::completed-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::completed-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::completed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::delete-after-extraction", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::delete-after-extraction", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::completed-size", ...args: any[]): void
+    connect(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void): number
+    on(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::delete-after-extraction", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::notify-interval", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::notify-interval", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::delete-after-extraction", ...args: any[]): void
+    connect(sigName: "notify::notify-interval", callback: (...args: any[]) => void): number
+    on(sigName: "notify::notify-interval", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::notify-interval", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::notify-interval", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::output-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::output-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::notify-interval", ...args: any[]): void
+    connect(sigName: "notify::output-file", callback: (...args: any[]) => void): number
+    on(sigName: "notify::output-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::output-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::output-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::output-is-dest", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::output-is-dest", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::output-file", ...args: any[]): void
+    connect(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): number
+    on(sigName: "notify::output-is-dest", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::output-is-dest", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::output-is-dest", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::source-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::source-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::source-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::source-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::output-is-dest", ...args: any[]): void
+    connect(sigName: "notify::source-file", callback: (...args: any[]) => void): number
+    on(sigName: "notify::source-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::source-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::source-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::total-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::total-files", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::total-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::total-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::source-file", ...args: any[]): void
+    connect(sigName: "notify::total-files", callback: (...args: any[]) => void): number
+    on(sigName: "notify::total-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::total-files", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::total-files", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::total-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::total-size", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::total-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::total-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::total-files", ...args: any[]): void
+    connect(sigName: "notify::total-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::total-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::total-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::total-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::total-size", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Extractor extends GObject.Object {
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
     static name: string
-    constructor (config?: Extractor_ConstructProps)
-    _init (config?: Extractor_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Extractor>
+
+    // Constructors of GnomeAutoar-0.1.GnomeAutoar.Extractor
+
+    constructor(config?: Extractor_ConstructProps) 
+    /**
+     * Create a new #AutoarExtractor object.
+     * @constructor 
+     * @param sourceFile a #GFile for the source archive
+     * @param outputFile a #GFile for the directory where the files will be extracted
+     */
+    constructor(sourceFile: Gio.File, outputFile: Gio.File) 
+    /**
+     * Create a new #AutoarExtractor object.
+     * @constructor 
+     * @param sourceFile a #GFile for the source archive
+     * @param outputFile a #GFile for the directory where the files will be extracted
+     */
     static new(sourceFile: Gio.File, outputFile: Gio.File): Extractor
+    _init(config?: Extractor_ConstructProps): void
     /**
      * Gets the #AutoarExtractor Error Quark.
      */
     static quark(): GLib.Quark
-    static $gtype: GObject.Type
 }
+
+interface CompressorClass {
+
+    // Own fields of GnomeAutoar-0.1.GnomeAutoar.CompressorClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class CompressorClass {
-    /* Fields of GnomeAutoar-0.1.GnomeAutoar.CompressorClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.CompressorClass
+
     static name: string
 }
+
+interface ExtractorClass {
+
+    // Own fields of GnomeAutoar-0.1.GnomeAutoar.ExtractorClass
+
+    parentClass: GObject.ObjectClass
+}
+
 abstract class ExtractorClass {
-    /* Fields of GnomeAutoar-0.1.GnomeAutoar.ExtractorClass */
-    parentClass: GObject.ObjectClass
+
+    // Own properties of GnomeAutoar-0.1.GnomeAutoar.ExtractorClass
+
     static name: string
 }
+
 }
 export default GnomeAutoar;

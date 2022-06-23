@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -346,72 +348,178 @@ const SDP_BWTYPE_RS: string
  * Transport Independent Application Specific Maximum bandwidth (RFC 3890).
  */
 const SDP_BWTYPE_TIAS: string
+/**
+ * Check if the given `addr` is a multicast address.
+ * @param nettype a network type
+ * @param addrtype an address type
+ * @param addr an address
+ */
 function sdpAddressIsMulticast(nettype: string, addrtype: string, addr: string): boolean
+/**
+ * Makes key management data
+ * @param uri a #gchar URI
+ * @param base64 a #gchar base64-encoded key data
+ */
 function sdpMakeKeymgmt(uri: string, base64: string): string
+/**
+ * Allocate a new GstSDPMedia and store the result in `media`.
+ */
 function sdpMediaNew(): [ /* returnType */ SDPResult, /* media */ SDPMedia ]
+/**
+ * Mapping of caps to SDP fields:
+ * 
+ * a=rtpmap:(payload) (encoding_name) or (clock_rate)[or (encoding_params)]
+ * 
+ * a=framesize:(payload) (width)-(height)
+ * 
+ * a=fmtp:(payload) (param)[=(value)];...
+ * 
+ * a=rtcp-fb:(payload) (param1) [param2]...
+ * 
+ * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+ * @param caps a #GstCaps
+ * @param media a #GstSDPMedia
+ */
 function sdpMediaSetMediaFromCaps(caps: Gst.Caps, media: SDPMedia): SDPResult
+/**
+ * Creates a uri from `msg` with the given `scheme`. The uri has the format:
+ * 
+ *  \`scheme:`///[#type=value *[&type=value]]
+ * 
+ *  Where each value is url encoded.
+ * @param scheme the uri scheme
+ * @param msg the #GstSDPMessage
+ */
 function sdpMessageAsUri(scheme: string, msg: SDPMessage): string
+/**
+ * Allocate a new GstSDPMessage and store the result in `msg`.
+ */
 function sdpMessageNew(): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
+/**
+ * Parse `text` and create a new SDPMessage from these.
+ * @param text A dynamically allocated string representing the SDP description
+ */
 function sdpMessageNewFromText(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
+/**
+ * Parse the contents of `size` bytes pointed to by `data` and store the result in
+ * `msg`.
+ * @param data the start of the buffer
+ * @param msg the result #GstSDPMessage
+ */
 function sdpMessageParseBuffer(data: Uint8Array, msg: SDPMessage): SDPResult
+/**
+ * Parse the null-terminated `uri` and store the result in `msg`.
+ * 
+ * The uri should be of the form:
+ * 
+ *  scheme://[address[:ttl=ttl][:noa=noa]]/[sessionname]
+ *               [#type=value *[&type=value]]
+ * 
+ *  where value is url encoded. This looslely resembles
+ *  http://tools.ietf.org/html/draft-fujikawa-sdp-url-01
+ * @param uri the start of the uri
+ * @param msg the result #GstSDPMessage
+ */
 function sdpMessageParseUri(uri: string, msg: SDPMessage): SDPResult
+interface MIKEYDecryptInfo {
+}
+
 class MIKEYDecryptInfo {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYDecryptInfo
+
     static name: string
 }
+
+interface MIKEYEncryptInfo {
+}
+
 class MIKEYEncryptInfo {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYEncryptInfo
+
     static name: string
 }
-class MIKEYMapSRTP {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYMapSRTP */
+
+interface MIKEYMapSRTP {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYMapSRTP
+
     /**
      * The security policy applied for the stream with `ssrc`
+     * @field 
      */
     policy: number
     /**
      * the SSRC that must be used for the stream
+     * @field 
      */
     ssrc: number
     /**
      * current rollover counter
+     * @field 
      */
     roc: number
+}
+
+/**
+ * The Security policy Map item for SRTP
+ * @record 
+ */
+class MIKEYMapSRTP {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYMapSRTP
+
     static name: string
 }
-class MIKEYMessage {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYMessage */
+
+interface MIKEYMessage {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYMessage
+
     /**
      * the version
+     * @field 
      */
     version: number
     /**
      * the #GstMIKEYType message type
+     * @field 
      */
     type: MIKEYType
     /**
      * verify flag
+     * @field 
      */
     v: boolean
     /**
      * a #GstMIKEYPRFFunc
+     * @field 
      */
     prfFunc: MIKEYPRFFunc
     /**
      * Identifies the Crypto Session Bundle
+     * @field 
      */
     cSBId: number
     /**
      * a #GstMIKEYMapType
+     * @field 
      */
     mapType: MIKEYMapType
     /**
      * map info array of type depending on `map_type`
+     * @field 
      */
     mapInfo: object[]
     /**
      * the payload array of #GstMIKEYPayload
+     * @field 
      */
     payloads: object[]
-    /* Methods of GstSdp-1.0.GstSdp.MIKEYMessage */
+
+    // Owm methods of GstSdp-1.0.GstSdp.MIKEYMessage
+
     /**
      * Add a Crypto policy for SRTP to `msg`.
      * @param policy The security policy applied for the stream with `ssrc`
@@ -529,26 +637,73 @@ class MIKEYMessage {
      */
     toBytes(info: MIKEYEncryptInfo): any
     toCaps(caps: Gst.Caps): boolean
+}
+
+/**
+ * Structure holding the information of the MIKEY message
+ * @record 
+ */
+class MIKEYMessage {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYMessage
+
     static name: string
+
+    // Constructors of GstSdp-1.0.GstSdp.MIKEYMessage
+
+    /**
+     * Make a new MIKEY message.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Make a new MIKEY message.
+     * @constructor 
+     */
     static new(): MIKEYMessage
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MIKEYMessage
+    /**
+     * Make a new #GstMIKEYMessage from `bytes`.
+     * @constructor 
+     * @param bytes a #GBytes
+     * @param info a #GstMIKEYDecryptInfo
+     */
     static newFromBytes(bytes: any, info: MIKEYDecryptInfo): MIKEYMessage
+    /**
+     * Makes mikey message including:
+     *  - Security Policy Payload
+     *  - Key Data Transport Payload
+     *  - Key Data Sub-Payload
+     * @constructor 
+     * @param caps a #GstCaps, including SRTP parameters (srtp/srtcp cipher, authorization, key data)
+     */
     static newFromCaps(caps: Gst.Caps): MIKEYMessage
+    /**
+     * Parse `size` bytes from `data` into a #GstMIKEYMessage. `info` contains the
+     * parameters to decrypt and verify the data.
+     * @constructor 
+     * @param data bytes to read
+     * @param info #GstMIKEYDecryptInfo
+     */
     static newFromData(data: Uint8Array, info: MIKEYDecryptInfo): MIKEYMessage
 }
-class MIKEYPayload {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayload */
+
+interface MIKEYPayload {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayload
+
     /**
      * the payload type
+     * @field 
      */
     type: MIKEYPayloadType
     /**
      * length of the payload
+     * @field 
      */
     len: number
-    /* Methods of GstSdp-1.0.GstSdp.MIKEYPayload */
+
+    // Owm methods of GstSdp-1.0.GstSdp.MIKEYPayload
+
     /**
      * Add a new sub payload to `payload`.
      * @param newpay a #GstMIKEYPayload to add
@@ -595,7 +750,7 @@ class MIKEYPayload {
      * salt data will be removed.
      * @param saltData the salt
      */
-    keyDataSetSalt(saltData?: Uint8Array | null): boolean
+    keyDataSetSalt(saltData: Uint8Array | null): boolean
     /**
      * Set the SPI/MKI validity in the %GST_MIKEY_PT_KEY_DATA `payload`.
      * @param spiData the SPI/MKI data
@@ -649,171 +804,325 @@ class MIKEYPayload {
      * @param tsValue the timestamp value
      */
     tSet(type: MIKEYTSType, tsValue: Uint8Array): boolean
+}
+
+/**
+ * Hold the common fields for all payloads
+ * @record 
+ */
+class MIKEYPayload {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayload
+
     static name: string
-    static new(type: MIKEYPayloadType): MIKEYPayload
-    constructor(type: MIKEYPayloadType)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstSdp-1.0.GstSdp.MIKEYPayload
+
+    /**
+     * Make a new #GstMIKEYPayload with `type`.
+     * @constructor 
+     * @param type a #GstMIKEYPayloadType
+     */
+    constructor(type: MIKEYPayloadType) 
+    /**
+     * Make a new #GstMIKEYPayload with `type`.
+     * @constructor 
+     * @param type a #GstMIKEYPayloadType
+     */
     static new(type: MIKEYPayloadType): MIKEYPayload
 }
-class MIKEYPayloadKEMAC {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadKEMAC */
+
+interface MIKEYPayloadKEMAC {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadKEMAC
+
     /**
      * the common #GstMIKEYPayload
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * the #GstMIKEYEncAlg
+     * @field 
      */
     encAlg: MIKEYEncAlg
     /**
      * the #GstMIKEYMacAlg
+     * @field 
      */
     macAlg: MIKEYMacAlg
     /**
      * the subpayloads
+     * @field 
      */
     subpayloads: object[]
+}
+
+/**
+ * A structure holding the KEMAC payload
+ * @record 
+ */
+class MIKEYPayloadKEMAC {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadKEMAC
+
     static name: string
 }
-class MIKEYPayloadKeyData {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadKeyData */
+
+interface MIKEYPayloadKeyData {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadKeyData
+
     /**
      * the payload header
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * the #GstMIKEYKeyDataType of `key_data`
+     * @field 
      */
     keyType: MIKEYKeyDataType
     /**
      * length of `key_data`
+     * @field 
      */
     keyLen: number
     /**
      * the key data
+     * @field 
      */
     keyData: number
     /**
      * the length of `salt_data,` can be 0
+     * @field 
      */
     saltLen: number
     /**
      * salt data
+     * @field 
      */
     saltData: number
     /**
      * the Key Validity type
+     * @field 
      */
     kvType: MIKEYKVType
     /**
      * length of `kv_data`
+     * @field 
      */
     kvLen: Uint8Array
     /**
      * key validity data
+     * @field 
      */
     kvData: Uint8Array
+}
+
+/**
+ * The Key data payload contains key material. It should be added as sub
+ * payload to the KEMAC.
+ * @record 
+ */
+class MIKEYPayloadKeyData {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadKeyData
+
     static name: string
 }
-class MIKEYPayloadPKE {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadPKE */
+
+interface MIKEYPayloadPKE {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadPKE
+
     /**
      * the common #GstMIKEYPayload
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * envelope key cache indicator
+     * @field 
      */
     c: MIKEYCacheType
     /**
      * length of `data`
+     * @field 
      */
     dataLen: number
     /**
      * the encrypted envelope key
+     * @field 
      */
     data: number
+}
+
+/**
+ * The Envelope data payload contains the encrypted envelope key that is
+ * used in the public-key transport to protect the data in the Key data
+ * transport payload.  The encryption algorithm used is implicit from
+ * the certificate/public key used.
+ * @record 
+ */
+class MIKEYPayloadPKE {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadPKE
+
     static name: string
 }
-class MIKEYPayloadRAND {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadRAND */
+
+interface MIKEYPayloadRAND {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadRAND
+
     /**
      * the payload header
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * the length of `rand`
+     * @field 
      */
     len: number
     /**
      * random values
+     * @field 
      */
     rand: number
+}
+
+/**
+ * The RAND payload consists of a (pseudo-)random bit-string
+ * @record 
+ */
+class MIKEYPayloadRAND {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadRAND
+
     static name: string
 }
-class MIKEYPayloadSP {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadSP */
+
+interface MIKEYPayloadSP {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadSP
+
     /**
      * the payload header
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * the policy number
+     * @field 
      */
     policy: number
     /**
      * the security protocol
+     * @field 
      */
     proto: MIKEYSecProto
     /**
      * array of #GstMIKEYPayloadSPParam
+     * @field 
      */
     params: object[]
+}
+
+/**
+ * The Security Policy payload defines a set of policies that apply to a
+ * specific security protocol
+ * @record 
+ */
+class MIKEYPayloadSP {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadSP
+
     static name: string
 }
-class MIKEYPayloadSPParam {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadSPParam */
+
+interface MIKEYPayloadSPParam {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadSPParam
+
     /**
      * specifies the type of the parameter
+     * @field 
      */
     type: number
     /**
      * specifies the length of `val`
+     * @field 
      */
     len: number
     /**
      * specifies the value of the parameter
+     * @field 
      */
     val: number
+}
+
+/**
+ * A Type/Length/Value field for security parameters
+ * @record 
+ */
+class MIKEYPayloadSPParam {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadSPParam
+
     static name: string
 }
-class MIKEYPayloadT {
-    /* Fields of GstSdp-1.0.GstSdp.MIKEYPayloadT */
+
+interface MIKEYPayloadT {
+
+    // Own fields of GstSdp-1.0.GstSdp.MIKEYPayloadT
+
     /**
      * the payload header
+     * @field 
      */
     pt: MIKEYPayload
     /**
      * a #GstMIKEYTSType
+     * @field 
      */
     type: MIKEYTSType
     /**
      * the timestamp value
+     * @field 
      */
     tsValue: number
+}
+
+/**
+ * The timestamp payload carries the timestamp information
+ * @record 
+ */
+class MIKEYPayloadT {
+
+    // Own properties of GstSdp-1.0.GstSdp.MIKEYPayloadT
+
     static name: string
 }
-class SDPAttribute {
-    /* Fields of GstSdp-1.0.GstSdp.SDPAttribute */
+
+interface SDPAttribute {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPAttribute
+
     /**
      * the attribute key
+     * @field 
      */
     key: string
     /**
      * the attribute value or NULL when it was a property attribute
+     * @field 
      */
     value: string
-    /* Methods of GstSdp-1.0.GstSdp.SDPAttribute */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPAttribute
+
     /**
      * Clear the attribute.
      */
@@ -823,20 +1132,37 @@ class SDPAttribute {
      * @param key the key
      * @param value the value
      */
-    set(key: string, value?: string | null): SDPResult
+    set(key: string, value: string | null): SDPResult
+}
+
+/**
+ * The contents of the SDP "a=" field which contains a key/value pair.
+ * @record 
+ */
+class SDPAttribute {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPAttribute
+
     static name: string
 }
-class SDPBandwidth {
-    /* Fields of GstSdp-1.0.GstSdp.SDPBandwidth */
+
+interface SDPBandwidth {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPBandwidth
+
     /**
      * the bandwidth modifier type
+     * @field 
      */
     bwtype: string
     /**
      * the bandwidth in kilobits per second
+     * @field 
      */
     bandwidth: number
-    /* Methods of GstSdp-1.0.GstSdp.SDPBandwidth */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPBandwidth
+
     /**
      * Reset the bandwidth information in `bw`.
      */
@@ -847,32 +1173,53 @@ class SDPBandwidth {
      * @param bandwidth the bandwidth in kilobits per second
      */
     set(bwtype: string, bandwidth: number): SDPResult
+}
+
+/**
+ * The contents of the SDP "b=" field which specifies the proposed bandwidth to
+ * be used by the session or media.
+ * @record 
+ */
+class SDPBandwidth {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPBandwidth
+
     static name: string
 }
-class SDPConnection {
-    /* Fields of GstSdp-1.0.GstSdp.SDPConnection */
+
+interface SDPConnection {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPConnection
+
     /**
      * the type of network. "IN" is defined to have the meaning
      *    "Internet".
+     * @field 
      */
     nettype: string
     /**
      * the type of `address`.
+     * @field 
      */
     addrtype: string
     /**
      * the address
+     * @field 
      */
     address: string
     /**
      * the time to live of the address
+     * @field 
      */
     ttl: number
     /**
      * the number of layers
+     * @field 
      */
     addrNumber: number
-    /* Methods of GstSdp-1.0.GstSdp.SDPConnection */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPConnection
+
     /**
      * Clear the connection.
      */
@@ -886,69 +1233,110 @@ class SDPConnection {
      * @param addrNumber the number of layers
      */
     set(nettype: string, addrtype: string, address: string, ttl: number, addrNumber: number): SDPResult
+}
+
+/**
+ * The contents of the SDP "c=" field which contains connection data.
+ * @record 
+ */
+class SDPConnection {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPConnection
+
     static name: string
 }
-class SDPKey {
-    /* Fields of GstSdp-1.0.GstSdp.SDPKey */
+
+interface SDPKey {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPKey
+
     /**
      * the encryption type
+     * @field 
      */
     type: string
     /**
      * the encryption data
+     * @field 
      */
     data: string
+}
+
+/**
+ * The contents of the SDP "k=" field which is used to convey encryption
+ * keys.
+ * @record 
+ */
+class SDPKey {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPKey
+
     static name: string
 }
-class SDPMedia {
-    /* Fields of GstSdp-1.0.GstSdp.SDPMedia */
+
+interface SDPMedia {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPMedia
+
     /**
      * the media type
+     * @field 
      */
     media: string
     /**
      * the transport port to which the media stream will be sent
+     * @field 
      */
     port: number
     /**
      * the number of ports or -1 if only one port was specified
+     * @field 
      */
     numPorts: number
     /**
      * the transport protocol
+     * @field 
      */
     proto: string
     /**
      * an array of #gchar formats
+     * @field 
      */
     fmts: object[]
     /**
      * the media title
+     * @field 
      */
     information: string
     /**
      * array of #GstSDPConnection with media connection information
+     * @field 
      */
     connections: object[]
     /**
      * array of #GstSDPBandwidth with media bandwidth information
+     * @field 
      */
     bandwidths: object[]
     /**
      * the encryption key
+     * @field 
      */
     key: SDPKey
     /**
      * array of #GstSDPAttribute with the additional media attributes
+     * @field 
      */
     attributes: object[]
-    /* Methods of GstSdp-1.0.GstSdp.SDPMedia */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPMedia
+
     /**
      * Add the attribute with `key` and `value` to `media`.
      * @param key a key
      * @param value a value
      */
-    addAttribute(key: string, value?: string | null): SDPResult
+    addAttribute(key: string, value: string | null): SDPResult
     /**
      * Add the bandwidth information with `bwtype` and `bandwidth` to `media`.
      * @param bwtype the bandwidth modifier type
@@ -1192,8 +1580,24 @@ class SDPMedia {
      * stack and initialized with gst_sdp_media_init().
      */
     uninit(): SDPResult
+}
+
+/**
+ * The contents of the SDP "m=" field with all related fields.
+ * @record 
+ */
+class SDPMedia {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPMedia
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstSdp-1.0.GstSdp.SDPMedia
+
+    /**
+     * Allocate a new GstSDPMedia and store the result in `media`.
+     */
+    static new(): [ /* returnType */ SDPResult, /* media */ SDPMedia ]
     /**
      * Mapping of caps to SDP fields:
      * 
@@ -1211,71 +1615,90 @@ class SDPMedia {
      */
     static setMediaFromCaps(caps: Gst.Caps, media: SDPMedia): SDPResult
 }
-class SDPMessage {
-    /* Fields of GstSdp-1.0.GstSdp.SDPMessage */
+
+interface SDPMessage {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPMessage
+
     /**
      * the protocol version
+     * @field 
      */
     version: string
     /**
      * owner/creator and session identifier
+     * @field 
      */
     origin: SDPOrigin
     /**
      * session name
+     * @field 
      */
     sessionName: string
     /**
      * session information
+     * @field 
      */
     information: string
     /**
      * URI of description
+     * @field 
      */
     uri: string
     /**
      * array of #gchar with email addresses
+     * @field 
      */
     emails: object[]
     /**
      * array of #gchar with phone numbers
+     * @field 
      */
     phones: object[]
     /**
      * connection information for the session
+     * @field 
      */
     connection: SDPConnection
     /**
      * array of #GstSDPBandwidth with bandwidth information
+     * @field 
      */
     bandwidths: object[]
     /**
      * array of #GstSDPTime with time descriptions
+     * @field 
      */
     times: object[]
     /**
      * array of #GstSDPZone with time zone adjustments
+     * @field 
      */
     zones: object[]
     /**
      * encryption key
+     * @field 
      */
     key: SDPKey
     /**
      * array of #GstSDPAttribute with session attributes
+     * @field 
      */
     attributes: object[]
     /**
      * array of #GstSDPMedia with media descriptions
+     * @field 
      */
     medias: object[]
-    /* Methods of GstSdp-1.0.GstSdp.SDPMessage */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPMessage
+
     /**
      * Add the attribute with `key` and `value` to `msg`.
      * @param key the key
      * @param value the value
      */
-    addAttribute(key: string, value?: string | null): SDPResult
+    addAttribute(key: string, value: string | null): SDPResult
     /**
      * Add the specified bandwidth information to `msg`.
      * @param bwtype the bandwidth modifier type
@@ -1615,8 +2038,30 @@ class SDPMessage {
      * Get the number of time zone information entries in `msg`.
      */
     zonesLen(): number
+}
+
+/**
+ * The GstSDPMessage helper functions makes it easy to parse and create SDP
+ * messages.
+ * @record 
+ */
+class SDPMessage {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPMessage
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GstSdp-1.0.GstSdp.SDPMessage
+
+    /**
+     * Allocate a new GstSDPMessage and store the result in `msg`.
+     */
+    static new(): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
+    /**
+     * Parse `text` and create a new SDPMessage from these.
+     * @param text A dynamically allocated string representing the SDP description
+     */
+    static newFromText(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
     /**
      * Creates a uri from `msg` with the given `scheme`. The uri has the format:
      * 
@@ -1627,11 +2072,6 @@ class SDPMessage {
      * @param msg the #GstSDPMessage
      */
     static asUri(scheme: string, msg: SDPMessage): string
-    /**
-     * Parse `text` and create a new SDPMessage from these.
-     * @param text A dynamically allocated string representing the SDP description
-     */
-    static newFromText(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
     /**
      * Parse the contents of `size` bytes pointed to by `data` and store the result in
      * `msg`.
@@ -1654,56 +2094,85 @@ class SDPMessage {
      */
     static parseUri(uri: string, msg: SDPMessage): SDPResult
 }
-class SDPOrigin {
-    /* Fields of GstSdp-1.0.GstSdp.SDPOrigin */
+
+interface SDPOrigin {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPOrigin
+
     /**
      * the user's login on the originating host, or it is "-"
      *    if the originating host does not support the concept of user ids.
+     * @field 
      */
     username: string
     /**
      * is a numeric string such that the tuple of `username,` `sess_id,`
      *    `nettype,` `addrtype` and `addr` form a globally unique identifier for the
      *    session.
+     * @field 
      */
     sessId: string
     /**
      * a version number for this announcement
+     * @field 
      */
     sessVersion: string
     /**
      * the type of network. "IN" is defined to have the meaning
      *    "Internet".
+     * @field 
      */
     nettype: string
     /**
      * the type of `addr`.
+     * @field 
      */
     addrtype: string
     /**
      * the globally unique address of the machine from which the session was
      *     created.
+     * @field 
      */
     addr: string
+}
+
+/**
+ * The contents of the SDP "o=" field which gives the originator of the session
+ * (their username and the address of the user's host) plus a session id and
+ * session version number.
+ * @record 
+ */
+class SDPOrigin {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPOrigin
+
     static name: string
 }
-class SDPTime {
-    /* Fields of GstSdp-1.0.GstSdp.SDPTime */
+
+interface SDPTime {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPTime
+
     /**
      * start time for the conference. The value is the decimal
      *     representation of Network Time Protocol (NTP) time values in seconds
+     * @field 
      */
     start: string
     /**
      * stop time for the conference. The value is the decimal
      *     representation of Network Time Protocol (NTP) time values in seconds
+     * @field 
      */
     stop: string
     /**
      * repeat times for a session
+     * @field 
      */
     repeat: object[]
-    /* Methods of GstSdp-1.0.GstSdp.SDPTime */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPTime
+
     /**
      * Reset the time information in `t`.
      */
@@ -1715,19 +2184,37 @@ class SDPTime {
      * @param repeat the repeat times
      */
     set(start: string, stop: string, repeat: string[]): SDPResult
+}
+
+/**
+ * The contents of the SDP "t=" field which specify the start and stop times for
+ * a conference session.
+ * @record 
+ */
+class SDPTime {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPTime
+
     static name: string
 }
-class SDPZone {
-    /* Fields of GstSdp-1.0.GstSdp.SDPZone */
+
+interface SDPZone {
+
+    // Own fields of GstSdp-1.0.GstSdp.SDPZone
+
     /**
      * the NTP time that a time zone adjustment happens
+     * @field 
      */
     time: string
     /**
      * the offset from the time when the session was first scheduled
+     * @field 
      */
     typedTime: string
-    /* Methods of GstSdp-1.0.GstSdp.SDPZone */
+
+    // Owm methods of GstSdp-1.0.GstSdp.SDPZone
+
     /**
      * Reset the zone information in `zone`.
      */
@@ -1738,7 +2225,20 @@ class SDPZone {
      * @param typedTime the offset from the time when the session was first scheduled
      */
     set(adjTime: string, typedTime: string): SDPResult
+}
+
+/**
+ * The contents of the SDP "z=" field which allows the sender to
+ * specify a list of time zone adjustments and offsets from the base
+ * time.
+ * @record 
+ */
+class SDPZone {
+
+    // Own properties of GstSdp-1.0.GstSdp.SDPZone
+
     static name: string
 }
+
 }
 export default GstSdp;

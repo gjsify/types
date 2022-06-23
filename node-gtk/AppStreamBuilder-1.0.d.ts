@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -49,6 +51,7 @@ enum PackageLogLevel {
 }
 /**
  * The flags to use when processing the context.
+ * @bitfield 
  */
 enum ContextFlags {
     /**
@@ -123,12 +126,15 @@ const PACKAGE_ENSURE_URL: number
 const PACKAGE_ENSURE_VCS: number
 interface App_ConstructProps extends AppStreamGlib.App_ConstructProps {
 }
-class App {
-    /* Fields of AppStreamGlib-1.0.AppStreamGlib.App */
+
+interface App {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.App
+
     parentInstance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.App */
+
+    // Owm methods of AppStreamBuilder-1.0.AppStreamBuilder.App
+
     /**
      * Gets the package that backs the application.
      */
@@ -148,1098 +154,62 @@ class App {
      * @param pkg A #AsbPackage
      */
     setPackage(pkg: Package): void
-    /* Methods of AppStreamGlib-1.0.AppStreamGlib.App */
-    /**
-     * Adds a addon to an application.
-     * @param addon a #AsApp instance.
-     */
-    addAddon(addon: AppStreamGlib.App): void
-    /**
-     * Adds a agreement to an application.
-     * @param agreement a #AsAgreement instance.
-     */
-    addAgreement(agreement: AppStreamGlib.Agreement): void
-    /**
-     * Adds a package name to an application.
-     * @param arch the package name.
-     */
-    addArch(arch: string): void
-    /**
-     * Adds a bundle to an application.
-     * @param bundle a #AsBundle instance.
-     */
-    addBundle(bundle: AppStreamGlib.Bundle): void
-    /**
-     * Adds a menu category to the application.
-     * @param category the category.
-     */
-    addCategory(category: string): void
-    /**
-     * Adds a desktop that requires this application to be installed.
-     * @param compulsoryForDesktop the desktop string, e.g. "GNOME".
-     */
-    addCompulsoryForDesktop(compulsoryForDesktop: string): void
-    /**
-     * Adds a content_rating to an application.
-     * @param contentRating a #AsContentRating instance.
-     */
-    addContentRating(contentRating: AppStreamGlib.ContentRating): void
-    /**
-     * Adds a parent ID to the application.
-     * @param extends_ the full ID, e.g. "eclipse.desktop".
-     */
-    addExtends(extends_: string): void
-    /**
-     * Add a format the application has been built from.
-     * @param format the #AsFormat.
-     */
-    addFormat(format: AppStreamGlib.Format): void
-    /**
-     * Adds a icon to an application.
-     * @param icon a #AsIcon instance.
-     */
-    addIcon(icon: AppStreamGlib.Icon): void
-    /**
-     * Add a keyword the application should match against.
-     * @param locale the locale. e.g. "en_GB"
-     * @param keyword the keyword.
-     */
-    addKeyword(locale: string | null, keyword: string): void
-    /**
-     * Add a kudo the application has obtained.
-     * @param kudo the kudo.
-     */
-    addKudo(kudo: string): void
-    /**
-     * Add a kudo the application has obtained.
-     * @param kudoKind the #AsKudoKind.
-     */
-    addKudoKind(kudoKind: AppStreamGlib.KudoKind): void
-    /**
-     * Adds a language to the application.
-     * @param percentage the percentage completion of the translation, or 0 for unknown
-     * @param locale the locale. e.g. "en_GB"
-     */
-    addLanguage(percentage: number, locale?: string | null): void
-    /**
-     * Adds a launchable to an application.
-     * @param launchable a #AsLaunchable instance.
-     */
-    addLaunchable(launchable: AppStreamGlib.Launchable): void
-    /**
-     * Adds a metadata entry to the application.
-     * @param key the metadata key.
-     * @param value the value to store.
-     */
-    addMetadata(key: string, value?: string | null): void
-    /**
-     * Adds a mimetype the application can process.
-     * @param mimetype the mimetype.
-     */
-    addMimetype(mimetype: string): void
-    /**
-     * Add a permission the application has obtained.
-     * @param permission the permission.
-     */
-    addPermission(permission: string): void
-    /**
-     * Adds a package name to an application.
-     * @param pkgname the package name.
-     */
-    addPkgname(pkgname: string): void
-    /**
-     * Adds a provide to an application.
-     * @param provide a #AsProvide instance.
-     */
-    addProvide(provide: AppStreamGlib.Provide): void
-    /**
-     * Adds a specific attribute to an application.
-     * @param quirk the #AsAppQuirk, e.g. %AS_APP_QUIRK_PROVENANCE
-     */
-    addQuirk(quirk: AppStreamGlib.AppQuirk): void
-    /**
-     * Adds a release to an application.
-     * @param release a #AsRelease instance.
-     */
-    addRelease(release: AppStreamGlib.Release): void
-    /**
-     * Adds a require to an application.
-     * @param require a #AsRequire instance.
-     */
-    addRequire(require: AppStreamGlib.Require): void
-    /**
-     * Adds a review to an application.
-     * @param review a #AsReview instance.
-     */
-    addReview(review: AppStreamGlib.Review): void
-    /**
-     * Adds a screenshot to an application.
-     * @param screenshot a #AsScreenshot instance.
-     */
-    addScreenshot(screenshot: AppStreamGlib.Screenshot): void
-    /**
-     * Adds a suggest to an application.
-     * @param suggest a #AsSuggest instance.
-     */
-    addSuggest(suggest: AppStreamGlib.Suggest): void
-    /**
-     * Adds a translation to an application.
-     * @param translation a #AsTranslation instance.
-     */
-    addTranslation(translation: AppStreamGlib.Translation): void
-    /**
-     * Adds some URL data to the application.
-     * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE
-     * @param url the full URL.
-     */
-    addUrl(urlKind: AppStreamGlib.UrlKind, url: string): void
-    /**
-     * Converts all the icons in the application to a specific kind.
-     * @param kind the AsIconKind, e.g. %AS_ICON_KIND_EMBEDDED.
-     */
-    convertIcons(kind: AppStreamGlib.IconKind): boolean
-    /**
-     * Compare one application with another for equality using the following
-     * properties:
-     * 
-     *  1. scope, e.g. `system` or `user`
-     *  2. bundle kind, e.g. `package` or `flatpak`
-     *  3. origin, e.g. `fedora` or `gnome-apps-nightly`
-     *  4. kind, e.g. `app` or `runtime`
-     *  5. AppStream ID, e.g. `gimp.desktop`
-     *  6. branch, e.g. `stable` or `master`
-     * @param app2 another #AsApp instance.
-     */
-    equal(app2: AppStreamGlib.App): boolean
-    /**
-     * Gets all the addons the application has.
-     */
-    getAddons(): AppStreamGlib.App[]
-    /**
-     * Gets a agreement the application has defined of a specific type.
-     * @param kind an agreement kind, e.g. %AS_AGREEMENT_KIND_EULA
-     */
-    getAgreementByKind(kind: AppStreamGlib.AgreementKind): AppStreamGlib.Agreement
-    /**
-     * Gets a privacy policys the application has defined of a specific type.
-     */
-    getAgreementDefault(): AppStreamGlib.Agreement
-    /**
-     * Gets the supported architectures for the application, or an empty list
-     * if all architectures are supported.
-     */
-    getArchitectures(): string[]
-    /**
-     * Gets the branch for the application.
-     */
-    getBranch(): string
-    /**
-     * Finds the default bundle.
-     */
-    getBundleDefault(): AppStreamGlib.Bundle
-    /**
-     * Gets any bundles the application has defined.
-     */
-    getBundles(): AppStreamGlib.Bundle[]
-    /**
-     * Get the application categories.
-     */
-    getCategories(): string[]
-    /**
-     * Gets the application summary for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getComment(locale?: string | null): string
-    /**
-     * Gets the comments set for the application.
-     */
-    getComments(): GLib.HashTable
-    /**
-     * Returns the desktops where this application is compulsory.
-     */
-    getCompulsoryForDesktops(): string[]
-    /**
-     * Gets a content ratings the application has defined of a specific type.
-     * @param kind a ratings kind, e.g. "oars-1.0"
-     */
-    getContentRating(kind: string): AppStreamGlib.ContentRating
-    /**
-     * Gets any content_ratings the application has defined.
-     */
-    getContentRatings(): AppStreamGlib.ContentRating[]
-    /**
-     * Gets the application description markup for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getDescription(locale?: string | null): string
-    /**
-     * Gets the descriptions set for the application.
-     */
-    getDescriptions(): GLib.HashTable
-    /**
-     * Gets the application developer name for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getDeveloperName(locale?: string | null): string
-    /**
-     * Gets the developer_names set for the application.
-     */
-    getDeveloperNames(): GLib.HashTable
-    /**
-     * Gets the IDs that are extended from the addon.
-     */
-    getExtends(): string[]
-    /**
-     * Searches the list of formats for a specific filename.
-     * @param filename a filename, e.g. "/home/hughsie/dave.desktop"
-     */
-    getFormatByFilename(filename: string): AppStreamGlib.Format
-    /**
-     * Searches the list of formats for a specific format kind.
-     * @param kind a #AsFormatKind, e.g. %AS_FORMAT_KIND_APPDATA
-     */
-    getFormatByKind(kind: AppStreamGlib.FormatKind): AppStreamGlib.Format
-    /**
-     * Returns the default format.
-     */
-    getFormatDefault(): AppStreamGlib.Format
-    /**
-     * Gets any formats that make up the application.
-     */
-    getFormats(): string[]
-    /**
-     * Finds the default icon.
-     */
-    getIconDefault(): AppStreamGlib.Icon
-    /**
-     * Finds an icon of a specific size.
-     * @param width Size in pixels
-     * @param height Size in pixels
-     */
-    getIconForSize(width: number, height: number): AppStreamGlib.Icon
-    /**
-     * Gets the application icon path.
-     */
-    getIconPath(): string
-    /**
-     * Gets any icons the application has defined.
-     */
-    getIcons(): AppStreamGlib.Icon[]
-    /**
-     * Gets the full ID value.
-     */
-    getId(): string
-    /**
-     * Returns a filename which represents the applications ID, e.g. "gimp.desktop"
-     * becomes "gimp" and is used for cache directories.
-     */
-    getIdFilename(): string
-    /**
-     * Gets the ID kind.
-     */
-    getIdKind(): AppStreamGlib.IdKind
-    /**
-     * Gets the full ID value, stripping any prefix.
-     */
-    getIdNoPrefix(): string
-    /**
-     * Gets any keywords the application should match against.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getKeywords(locale?: string | null): string[]
-    /**
-     * Gets the ID kind.
-     */
-    getKind(): AppStreamGlib.AppKind
-    /**
-     * Gets any kudos the application has obtained.
-     */
-    getKudos(): string[]
-    /**
-     * Gets the language coverage for the specific language.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getLanguage(locale?: string | null): number
-    /**
-     * Get a list of all languages.
-     */
-    getLanguages(): string[]
-    /**
-     * Searches the list of launchables for a specific launchable kind.
-     * @param kind a #AsLaunchableKind, e.g. %AS_FORMAT_KIND_APPDATA
-     */
-    getLaunchableByKind(kind: AppStreamGlib.LaunchableKind): AppStreamGlib.Launchable
-    /**
-     * Returns the default launchable.
-     */
-    getLaunchableDefault(): AppStreamGlib.Launchable
-    /**
-     * Gets all the launchables the application has.
-     */
-    getLaunchables(): AppStreamGlib.Launchable[]
-    /**
-     * Gets the merge_kind of the application.
-     */
-    getMergeKind(): AppStreamGlib.AppMergeKind
-    /**
-     * Gets the metadata set for the application.
-     */
-    getMetadata(): GLib.HashTable
-    /**
-     * Gets some metadata item.
-     * @param key the metadata key.
-     */
-    getMetadataItem(key: string): string
-    /**
-     * Gets the application project license.
-     */
-    getMetadataLicense(): string
-    /**
-     * Gets any mimetypes the application will register.
-     */
-    getMimetypes(): string[]
-    /**
-     * Gets the application name for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     */
-    getName(locale?: string | null): string
-    /**
-     * Gets the names set for the application.
-     */
-    getNames(): GLib.HashTable
-    /**
-     * Gets the application origin.
-     */
-    getOrigin(): string
-    /**
-     * Gets any permissions the application has obtained.
-     */
-    getPermissions(): string[]
-    /**
-     * Gets the default package name.
-     */
-    getPkgnameDefault(): string
-    /**
-     * Gets the package names (if any) for the application.
-     */
-    getPkgnames(): string[]
-    /**
-     * Gets the application priority. Larger values trump smaller values.
-     */
-    getPriority(): number
-    /**
-     * Gets an application project group.
-     */
-    getProjectGroup(): string
-    /**
-     * Gets the application project license.
-     */
-    getProjectLicense(): string
-    /**
-     * Gets all the provides the application has.
-     */
-    getProvides(): AppStreamGlib.Provide[]
-    /**
-     * Gets a specific release from the application.
-     * @param version a version string
-     */
-    getRelease(version: string): AppStreamGlib.Release
-    /**
-     * Gets a specific release from the application.
-     * @param version a release version number, e.g. "1.2.3"
-     */
-    getReleaseByVersion(version: string): AppStreamGlib.Release
-    /**
-     * Gets the default (newest) release from the application.
-     */
-    getReleaseDefault(): AppStreamGlib.Release
-    /**
-     * Gets all the releases the application has had.
-     */
-    getReleases(): AppStreamGlib.Release[]
-    /**
-     * Gets a specific requirement for the application.
-     * @param kind a #AsRequireKind, e.g. %AS_REQUIRE_KIND_FIRMWARE
-     * @param value a string, or NULL, e.g. `bootloader`
-     */
-    getRequireByValue(kind: AppStreamGlib.RequireKind, value: string): AppStreamGlib.Require
-    /**
-     * Gets any requires the application has defined. A rquirement could be that
-     * a firmware version has to be below a defined version or that another
-     * application is required to be installed.
-     */
-    getRequires(): AppStreamGlib.Require[]
-    /**
-     * Gets any reviews the application has defined.
-     */
-    getReviews(): AppStreamGlib.Screenshot[]
-    /**
-     * Gets the scope of the application.
-     */
-    getScope(): AppStreamGlib.AppScope
-    /**
-     * Gets the default screenshot for the component.
-     */
-    getScreenshotDefault(): AppStreamGlib.Screenshot
-    /**
-     * Gets any screenshots the application has defined.
-     */
-    getScreenshots(): AppStreamGlib.Screenshot[]
-    /**
-     * Gets the token match fields. The bitfield given here is used to choose what
-     * is included in the token cache.
-     */
-    getSearchMatch(): number
-    /**
-     * Gets the default source filename the instance was populated from.
-     */
-    getSourceFile(): string
-    /**
-     * Gets the source kind, i.e. where the AsApp came from.
-     */
-    getSourceKind(): AppStreamGlib.FormatKind
-    /**
-     * Gets the source package name that produced the binary package.
-     * Only source packages producing more than one binary package will have this
-     * entry set.
-     */
-    getSourcePkgname(): string
-    /**
-     * Gets the application state.
-     */
-    getState(): AppStreamGlib.AppState
-    /**
-     * Gets any suggests the application has defined.
-     */
-    getSuggests(): AppStreamGlib.Suggest[]
-    /**
-     * Gets any translations the application has defined.
-     */
-    getTranslations(): AppStreamGlib.Translation[]
-    /**
-     * Gets the trust flags, i.e. how trusted the incoming data is.
-     */
-    getTrustFlags(): number
-    /**
-     * Gets the unique ID value to represent the component.
-     */
-    getUniqueId(): string
-    /**
-     * Gets the application upstream update contact email.
-     */
-    getUpdateContact(): string
-    /**
-     * Gets a URL.
-     * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE.
-     */
-    getUrlItem(urlKind: AppStreamGlib.UrlKind): string
-    /**
-     * Gets the URLs set for the application.
-     */
-    getUrls(): GLib.HashTable
-    /**
-     * Gets the list of vetos.
-     */
-    getVetos(): string[]
-    /**
-     * Searches the category list for a specific item.
-     * @param category a category string, e.g. "DesktopSettings"
-     */
-    hasCategory(category: string): boolean
-    /**
-     * Searches the compulsory for desktop list for a specific item.
-     * @param desktop a desktop string, e.g. "GNOME"
-     */
-    hasCompulsoryForDesktop(desktop: string): boolean
-    /**
-     * Searches the kudo list for a specific item.
-     * @param kudo a kudo string, e.g. "SearchProvider"
-     */
-    hasKudo(kudo: string): boolean
-    /**
-     * Searches the kudo list for a specific item.
-     * @param kudo a #AsKudoKind, e.g. %AS_KUDO_KIND_SEARCH_PROVIDER
-     */
-    hasKudoKind(kudo: AppStreamGlib.KudoKind): boolean
-    /**
-     * Searches the permission list for a specific item.
-     * @param permission a permission string, e.g. "Network"
-     */
-    hasPermission(permission: string): boolean
-    /**
-     * Queries to see if an application has a specific attribute.
-     * @param quirk the #AsAppQuirk, e.g. %AS_APP_QUIRK_PROVENANCE
-     */
-    hasQuirk(quirk: AppStreamGlib.AppQuirk): boolean
-    /**
-     * Parses an AppData file and populates the application state.
-     * @param data data to parse.
-     * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
-     */
-    parseData(data: any, flags: number): boolean
-    /**
-     * Parses a desktop or AppData file and populates the application state.
-     * 
-     * Applications that are not suitable for the store will have vetos added.
-     * @param filename file to load.
-     * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
-     */
-    parseFile(filename: string, flags: number): boolean
-    /**
-     * Removed a menu category from the application.
-     * @param category the category.
-     */
-    removeCategory(category: string): void
-    /**
-     * Removes a format the application has been built from.
-     * @param format the #AsFormat.
-     */
-    removeFormat(format: AppStreamGlib.Format): void
-    /**
-     * Remove a kudo the application has obtained.
-     * @param kudo the kudo.
-     */
-    removeKudo(kudo: string): void
-    /**
-     * Removes a metadata item from the application.
-     * @param key the metadata key.
-     */
-    removeMetadata(key: string): void
-    /**
-     * Removes a reason to not include the application in the metadata.
-     * @param description veto string
-     */
-    removeVeto(description: string): void
-    /**
-     * Searches application data for a specific keyword.
-     * @param search the search term.
-     */
-    searchMatches(search: string): number
-    /**
-     * Searches application data for all the specific keywords.
-     * @param search the search terms.
-     */
-    searchMatchesAll(search: string): number
-    /**
-     * Set the branch that the instance was sourced from.
-     * @param branch the branch, e.g. "master" or "3-16".
-     */
-    setBranch(branch: string): void
-    /**
-     * Sets the application summary for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     * @param comment the application summary.
-     */
-    setComment(locale: string | null, comment: string): void
-    /**
-     * Sets the application descrption markup for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     * @param description the application description.
-     */
-    setDescription(locale: string | null, description: string): void
-    /**
-     * Sets the application developer name for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     * @param developerName the application developer name.
-     */
-    setDeveloperName(locale: string | null, developerName: string): void
-    /**
-     * Sets the icon path, where local icons would be found.
-     * @param iconPath the local path.
-     */
-    setIconPath(iconPath: string): void
-    /**
-     * Sets a new application ID. Any invalid characters will be automatically replaced.
-     * @param id the new _full_ application ID, e.g. "org.gnome.Software.desktop".
-     */
-    setId(id: string): void
-    /**
-     * Sets the application kind.
-     * @param idKind the #AsAppKind.
-     */
-    setIdKind(idKind: AppStreamGlib.IdKind): void
-    /**
-     * Sets the application kind.
-     * @param kind the #AsAppKind.
-     */
-    setKind(kind: AppStreamGlib.AppKind): void
-    /**
-     * Sets the merge kind of the application.
-     * @param mergeKind the #AsAppMergeKind.
-     */
-    setMergeKind(mergeKind: AppStreamGlib.AppMergeKind): void
-    /**
-     * Set the project license.
-     * @param metadataLicense the project license string.
-     */
-    setMetadataLicense(metadataLicense: string): void
-    /**
-     * Sets the application name for a specific locale.
-     * @param locale the locale. e.g. "en_GB"
-     * @param name the application name.
-     */
-    setName(locale: string | null, name: string): void
-    /**
-     * Sets the application origin.
-     * @param origin the origin, e.g. "fedora-21"
-     */
-    setOrigin(origin: string): void
-    /**
-     * Sets the application priority, where 0 is default and positive numbers
-     * are better than negative numbers.
-     * @param priority the priority.
-     */
-    setPriority(priority: number): void
-    /**
-     * Set any project affiliation.
-     * @param projectGroup the project group, e.g. "GNOME".
-     */
-    setProjectGroup(projectGroup: string): void
-    /**
-     * Set the project license.
-     * @param projectLicense the project license string.
-     */
-    setProjectLicense(projectLicense: string): void
-    /**
-     * Sets the scope of the application.
-     * @param scope the #AsAppScope.
-     */
-    setScope(scope: AppStreamGlib.AppScope): void
-    /**
-     * Sets the token match fields. The bitfield given here is used to choose what
-     * is included in the token cache.
-     * @param searchMatch the #AsAppSearchMatch, e.g. %AS_APP_SEARCH_MATCH_PKGNAME
-     */
-    setSearchMatch(searchMatch: number): void
-    /**
-     * Set the file that the instance was sourced from.
-     * @param sourceFile the filename.
-     */
-    setSourceFile(sourceFile: string): void
-    /**
-     * Sets the source kind.
-     * @param sourceKind the #AsFormatKind.
-     */
-    setSourceKind(sourceKind: AppStreamGlib.FormatKind): void
-    /**
-     * Set the project license.
-     * @param sourcePkgname the project license string.
-     */
-    setSourcePkgname(sourcePkgname: string): void
-    /**
-     * Sets the application state.
-     * @param state the #AsAppState.
-     */
-    setState(state: AppStreamGlib.AppState): void
-    /**
-     * Sets the check flags, where %AS_APP_TRUST_FLAG_COMPLETE is completely
-     * trusted input.
-     * @param trustFlags the #AsAppTrustFlags.
-     */
-    setTrustFlags(trustFlags: number): void
-    /**
-     * Set the project license.
-     * @param updateContact the project license string.
-     */
-    setUpdateContact(updateContact: string): void
-    /**
-     * Copies information from the donor to the application object.
-     * @param donor the donor.
-     */
-    subsume(donor: AppStreamGlib.App): void
-    /**
-     * Copies information from the donor to the application object.
-     * @param donor the donor.
-     * @param flags any optional #AsAppSubsumeFlags, e.g. %AS_APP_SUBSUME_FLAG_NO_OVERWRITE
-     */
-    subsumeFull(donor: AppStreamGlib.App, flags: number): void
-    /**
-     * Exports a DOM tree to an XML file.
-     * @param file a #GFile
-     * @param cancellable A #GCancellable
-     */
-    toFile(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Exports a DOM tree to an XML string.
-     */
-    toXml(): GLib.String
-    /**
-     * Validates data in the instance for style and consistency.
-     * @param flags the #AsAppValidateFlags to use, e.g. %AS_APP_VALIDATE_FLAG_NONE
-     */
-    validate(flags: number): AppStreamGlib.Problem[]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of AppStreamBuilder-1.0.AppStreamBuilder.App
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: App_ConstructProps)
-    _init (config?: App_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(pkg: Package, id: string): App
-    /* Function overloads */
-    static new(): App
-    static $gtype: GObject.Type
 }
+
+class App extends AppStreamGlib.App {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.App
+
+    static name: string
+    static $gtype: GObject.GType<App>
+
+    // Constructors of AppStreamBuilder-1.0.AppStreamBuilder.App
+
+    constructor(config?: App_ConstructProps) 
+    /**
+     * Creates a new application object.
+     * @constructor 
+     * @param pkg A #AsbPackage, or %NULL
+     * @param id The ID for the package, or %NULL
+     */
+    constructor(pkg: Package, id: string) 
+    /**
+     * Creates a new application object.
+     * @constructor 
+     * @param pkg A #AsbPackage, or %NULL
+     * @param id The ID for the package, or %NULL
+     */
+    static new(pkg: Package, id: string): App
+
+    // Overloads of new
+
+    /**
+     * Creates a new #AsApp.
+     * @constructor 
+     */
+    static new(): AppStreamGlib.App
+    _init(config?: App_ConstructProps): void
+}
+
 interface Context_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Context {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Context */
+
+interface Context {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.Context
+
+    parentInstance: GObject.Object
+
+    // Owm methods of AppStreamBuilder-1.0.AppStreamBuilder.Context
+
     /**
      * Adds an application to the context.
      * @param app A #AsbApp
@@ -1366,376 +336,50 @@ class Context {
      * Sets up the context ready for use.
      */
     setup(): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of AppStreamBuilder-1.0.AppStreamBuilder.Context
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Context_ConstructProps)
-    _init (config?: Context_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Context
-    static $gtype: GObject.Type
 }
+
+class Context extends GObject.Object {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.Context
+
+    static name: string
+    static $gtype: GObject.GType<Context>
+
+    // Constructors of AppStreamBuilder-1.0.AppStreamBuilder.Context
+
+    constructor(config?: Context_ConstructProps) 
+    /**
+     * Creates a new high-level instance.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new high-level instance.
+     * @constructor 
+     */
+    static new(): Context
+    _init(config?: Context_ConstructProps): void
+}
+
 interface Package_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Package {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Package */
+
+interface Package {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.Package
+
+    parentInstance: GObject.Object
+
+    // Owm methods of AppStreamBuilder-1.0.AppStreamBuilder.Package
+
     /**
      * Add a package dependancy.
      * @param dep package dep
@@ -1955,376 +599,56 @@ class Package {
      * @param version package version
      */
     setVersion(version: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of AppStreamBuilder-1.0.AppStreamBuilder.Package
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Package_ConstructProps)
-    _init (config?: Package_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Package
-    static $gtype: GObject.Type
 }
+
+class Package extends GObject.Object {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.Package
+
+    static name: string
+    static $gtype: GObject.GType<Package>
+
+    // Constructors of AppStreamBuilder-1.0.AppStreamBuilder.Package
+
+    constructor(config?: Package_ConstructProps) 
+    /**
+     * Creates a new %AsbPackage.
+     * 
+     * You don't need to use this function unless you want a memory-backed package
+     * for testing purposes.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new %AsbPackage.
+     * 
+     * You don't need to use this function unless you want a memory-backed package
+     * for testing purposes.
+     * @constructor 
+     */
+    static new(): Package
+    _init(config?: Package_ConstructProps): void
+}
+
 interface Task_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Task {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of AppStreamBuilder-1.0.AppStreamBuilder.Task */
+
+interface Task {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.Task
+
+    parentInstance: GObject.Object
+
+    // Owm methods of AppStreamBuilder-1.0.AppStreamBuilder.Task
+
     /**
      * Processes the task.
      */
@@ -2334,395 +658,102 @@ class Task {
      * @param pkg A #AsbPackage
      */
     setPackage(pkg: Package): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of AppStreamBuilder-1.0.AppStreamBuilder.Task
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Task extends GObject.Object {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.Task
+
     static name: string
-    constructor (config?: Task_ConstructProps)
-    _init (config?: Task_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Task>
+
+    // Constructors of AppStreamBuilder-1.0.AppStreamBuilder.Task
+
+    constructor(config?: Task_ConstructProps) 
+    /**
+     * Creates a new task.
+     * @constructor 
+     * @param ctx A #AsbContext
+     */
+    constructor(ctx: Context) 
+    /**
+     * Creates a new task.
+     * @constructor 
+     * @param ctx A #AsbContext
+     */
     static new(ctx: Context): Task
-    static $gtype: GObject.Type
+    _init(config?: Task_ConstructProps): void
 }
-abstract class AppClass {
-    /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.AppClass */
+
+interface AppClass {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.AppClass
+
     parentClass: AppStreamGlib.AppClass
+}
+
+abstract class AppClass {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.AppClass
+
     static name: string
 }
-abstract class ContextClass {
-    /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.ContextClass */
+
+interface ContextClass {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.ContextClass
+
     parentClass: GObject.ObjectClass
+}
+
+abstract class ContextClass {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.ContextClass
+
     static name: string
 }
-abstract class PackageClass {
-    /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.PackageClass */
+
+interface PackageClass {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.PackageClass
+
     parentClass: GObject.ObjectClass
     open: (pkg: Package, filename: string) => boolean
     ensure: (pkg: Package, flags: PackageEnsureFlags) => boolean
     explode: (pkg: Package, dir: string, glob: string[]) => boolean
     compare: (pkg1: Package, pkg2: Package) => number
     close: (pkg: Package) => boolean
+}
+
+abstract class PackageClass {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.PackageClass
+
     static name: string
 }
-abstract class TaskClass {
-    /* Fields of AppStreamBuilder-1.0.AppStreamBuilder.TaskClass */
+
+interface TaskClass {
+
+    // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.TaskClass
+
     parentClass: GObject.ObjectClass
+}
+
+abstract class TaskClass {
+
+    // Own properties of AppStreamBuilder-1.0.AppStreamBuilder.TaskClass
+
     static name: string
 }
+
     type PackageEnsureFlags = number
 }
 export default AppStreamBuilder;

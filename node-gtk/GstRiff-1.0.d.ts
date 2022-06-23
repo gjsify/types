@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -181,10 +183,45 @@ const RIFF_WAVE_FORMAT_ZYXEL_ADPCM: number
 function riffCreateAudioTemplateCaps(): Gst.Caps
 function riffCreateIavsTemplateCaps(): Gst.Caps
 function riffCreateVideoTemplateCaps(): Gst.Caps
+/**
+ * Initialize riff library.
+ */
 function riffInit(): void
+/**
+ * Reads a single chunk.
+ * @param element caller element (used for debugging).
+ * @param buf input buffer.
+ * @param offset offset in the buffer in the caller. Is incremented          by the read size by this function.
+ * @param fourcc fourcc (returned by this function0 of the chunk.
+ * @param chunkData buffer (returned by the function) containing the              chunk data, which may be NULL if chunksize == 0
+ */
 function riffParseChunk(element: Gst.Element, buf: Gst.Buffer, offset: number, fourcc: number, chunkData: Gst.Buffer): boolean
+/**
+ * Reads the first few bytes from the provided buffer, checks
+ * if this stream is a RIFF stream, and determines document type.
+ * This function takes ownership of `buf` so it should not be used anymore
+ * after calling this function.
+ * @param element caller element (used for debugging/error).
+ * @param buf input buffer from which the file header will be parsed,       should be at least 12 bytes long.
+ * @param doctype a fourcc (returned by this function) to indicate the           type of document (according to the header).
+ */
 function riffParseFileHeader(element: Gst.Element, buf: Gst.Buffer, doctype: number): boolean
+/**
+ * Parses stream metadata from input data.
+ * @param element caller element (used for debugging/error).
+ * @param buf input data to be used for parsing, stripped from header.
+ * @param taglist a pointer to a taglist (returned by this function)           containing information about this stream. May be           NULL if no supported tags were found.
+ */
 function riffParseInfo(element: Gst.Element, buf: Gst.Buffer, taglist: Gst.TagList): void
+/**
+ * Reads a single chunk of data. 'JUNK' chunks are skipped
+ * automatically.
+ * @param element caller element (used for debugging).
+ * @param pad pad to pull data from.
+ * @param offset offset to pull from, incremented by this function.
+ * @param tag fourcc of the chunk (returned by this function).
+ * @param chunkData buffer (returned by this function).
+ */
 function riffReadChunk(element: Gst.Element, pad: Gst.Pad, offset: number, tag: number, chunkData: Gst.Buffer): Gst.FlowReturn
 }
 export default GstRiff;

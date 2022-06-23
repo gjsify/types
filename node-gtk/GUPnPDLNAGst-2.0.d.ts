@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -20,6 +22,14 @@ import type GUPnPDLNA from './GUPnPDLNA-2.0';
 
 export namespace GUPnPDLNAGst {
 
+/**
+ * This utility function creates a #GUPnPDLNAInformation from
+ * #GstDiscovererInfo. Its purpose is mainly to pass its result to
+ * gupnp_dlna_profile_guesser_guess_profile_from_info() to avoid
+ * rediscovering of a URI. Created #GUPnPDLNAInformation takes a
+ * reference on `info`.
+ * @param info A #GstDiscovererInfo object.
+ */
 function utilsInformationFromDiscovererInfo(info: GstPbutils.DiscovererInfo): GUPnPDLNA.Information
 }
 export default GUPnPDLNAGst;

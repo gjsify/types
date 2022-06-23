@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -27,6 +29,7 @@ enum UriResult {
 }
 /**
  * Flags that are passed to p11_kit_pin_request() and registered callbacks.
+ * @bitfield 
  */
 enum PinFlags {
     USER_LOGIN,
@@ -41,6 +44,7 @@ enum PinFlags {
  * p11_kit_uri_parse() to denote in what context the URI will be used.
  * 
  * The various types can be combined.
+ * @bitfield 
  */
 enum UriType {
     OBJECT,
@@ -54,18 +58,78 @@ enum UriType {
 const PIN_FALLBACK: string
 const URI_SCHEME: string
 const URI_SCHEME_LEN: number
+/**
+ * In PKCS\#11 structures many strings are encoded in a strange way. The string
+ * is placed in a fixed length buffer and then padded with spaces.
+ * 
+ * This function copies the space padded string into a normal null-terminated
+ * string. The result is owned by the caller.
+ * 
+ * <informalexample><programlisting>
+ * CK_INFO info;
+ * char *description;
+ *    ...
+ * description = p11_kit_space_strdup (info->libraryDescription, sizeof (info->libraryDescription));
+ * </programlisting></informalexample>
+ * @param string Pointer to string block
+ * @param maxLength Maximum length of string block
+ */
 function spaceStrdup(string: number, maxLength: number): string
+/**
+ * In PKCS\#11 structures many strings are encoded in a strange way. The string
+ * is placed in a fixed length buffer and then padded with spaces.
+ * 
+ * This function determines the actual length of the string. Since the string
+ * is not null-terminated you need to pass in the size of buffer as max_length.
+ * The string will never be longer than this buffer.
+ * 
+ * <informalexample><programlisting>
+ * CK_INFO info;
+ * size_t length;
+ *    ...
+ * length = p11_kit_space_strlen (info->libraryDescription, sizeof (info->libraryDescription));
+ * </programlisting></informalexample>
+ * @param string Pointer to string block
+ * @param maxLength Maximum length of string block
+ */
 function spaceStrlen(string: number, maxLength: number): number
+/**
+ * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
+ * error codes that can be returned from p11_kit_uri_parse() or
+ * p11_kit_uri_format(). As a special case %NULL, will be returned for
+ * %P11_KIT_URI_OK.
+ * @param code The error code
+ */
 function uriMessage(code: number): string
+/**
+ * Parse a PKCS\#11 URI string.
+ * 
+ * PKCS\#11 URIs can represent tokens, objects or modules. The uri_type argument
+ * allows the caller to specify what type of URI is expected and the sorts of
+ * things the URI should match. %P11_KIT_URI_FOR_ANY can be used to parse a URI
+ * for any context. It's then up to the caller to make sense of the way that
+ * it is used.
+ * 
+ * If the PKCS\#11 URI contains unrecognized URI parts or parts not applicable
+ * to the specified context, then the unrecognized flag will be set. This will
+ * prevent the URI from matching using the various match functions.
+ * @param string The string to parse
+ * @param uriType The type of URI that is expected
+ * @param uri The blank URI to parse the values into
+ */
 function uriParse(string: string, uriType: UriType, uri: Uri): number
 /**
  * A function called to free or cleanup `data`.
+ * @callback 
+ * @param data the data to destroy
  */
 interface pin_destroy_func {
     (data: object): void
 }
-class Pin {
-    /* Methods of P11Kit-1.0.P11Kit.Pin */
+interface Pin {
+
+    // Owm methods of P11Kit-1.0.P11Kit.Pin
+
     /**
      * Get the length of the PIN value from a P11KitPin.
      */
@@ -85,10 +149,24 @@ class Pin {
      * then the PIN will be freed and will no longer be in memory.
      */
     unref(): void
+}
+
+/**
+ * A structure representing a PKCS\#11 PIN. There are no public fields
+ * visible in this structure. Use the various accessor functions.
+ * @record 
+ */
+class Pin {
+
+    // Own properties of P11Kit-1.0.P11Kit.Pin
+
     static name: string
 }
-class Uri {
-    /* Methods of P11Kit-1.0.P11Kit.Uri */
+
+interface Uri {
+
+    // Owm methods of P11Kit-1.0.P11Kit.Uri
+
     /**
      * Get the unrecognized flag for this URI.
      * 
@@ -139,8 +217,21 @@ class Uri {
      * @param unrecognized The new unregognized flag value
      */
     setUnrecognized(unrecognized: number): void
+}
+
+/**
+ * A structure representing a PKCS\#11 URI. There are no public fields
+ * visible in this structure. Use the various accessor functions.
+ * @record 
+ */
+class Uri {
+
+    // Own properties of P11Kit-1.0.P11Kit.Uri
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of P11Kit-1.0.P11Kit.Uri
+
     /**
      * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
      * error codes that can be returned from p11_kit_uri_parse() or
@@ -167,5 +258,6 @@ class Uri {
      */
     static parse(string: string, uriType: UriType, uri: Uri): number
 }
+
 }
 export default P11Kit;

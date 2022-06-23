@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -1366,6 +1368,7 @@ enum Size {
  * 
  * Input args with `VIPS_ARGUMENT_MODIFY` will be modified by the operation.
  * This is used for things like the in-place drawing operations.
+ * @bitfield 
  */
 enum ArgumentFlags {
     /**
@@ -1421,6 +1424,7 @@ enum ArgumentFlags {
  * #VIPS_FOREIGN_BIGENDIAN means that image pixels are most-significant byte
  * first. Depending on the native byte order of the host machine, you may
  * need to swap bytes. See vips_copy().
+ * @bitfield 
  */
 enum ForeignFlags {
     /**
@@ -1444,6 +1448,7 @@ enum ForeignFlags {
 /**
  * http://www.w3.org/TR/PNG-Filters.html
  * The values mirror those of png.h in libpng.
+ * @bitfield 
  */
 enum ForeignPngFilter {
     /**
@@ -1493,6 +1498,7 @@ enum ForeignPngFilter {
  * 
  * `VIPS_OPERATION_DEPRECATED` means this is an old operation kept in vips for
  * compatibility only and should be hidden from users.
+ * @bitfield 
  */
 enum OperationFlags {
     /**
@@ -1701,76 +1707,584 @@ const TRANSFORM_SHIFT: number
 const VERSION: string
 const VERSION_STRING: string
 function objectSetMember(object: Object, pspec: GObject.ParamSpec, member: GObject.Object, argument: GObject.Object): void
+/**
+ * Add the standard vips %GOptionEntry to a %GOptionGroup.
+ * 
+ * See also: g_option_group_new().
+ * @param optionGroup group to add to
+ */
 function addOptionEntries(optionGroup: GLib.OptionGroup): void
 function areaFreeCb(mem: object | null, area: Area): number
+/**
+ * Return %TRUE if `format` is uchar or schar.
+ * @param format format to test
+ */
 function bandFormatIs8bit(format: BandFormat): boolean
+/**
+ * Return %TRUE if `fmt` is one of the complex types.
+ * @param format format to test
+ */
 function bandFormatIscomplex(format: BandFormat): boolean
+/**
+ * Return %TRUE if `format` is one of the float types.
+ * @param format format to test
+ */
 function bandFormatIsfloat(format: BandFormat): boolean
+/**
+ * Return %TRUE if `format` is one of the integer types.
+ * @param format format to test
+ */
 function bandFormatIsint(format: BandFormat): boolean
+/**
+ * Return %TRUE if `format` is one of the unsigned integer types.
+ * @param format format to test
+ */
 function bandFormatIsuint(format: BandFormat): boolean
+/**
+ * Like vips_blob_new(), but take a copy of the data. Useful for bindings
+ * which struggle with callbacks.
+ * 
+ * See also: vips_blob_new().
+ * @param data data to store
+ */
 function blobCopy(data: Uint8Array): Blob
+/**
+ * Drop the whole operation cache, handy for leak tracking. Also called
+ * automatically on vips_shutdown().
+ */
 function cacheDropAll(): void
+/**
+ * Get the maximum number of operations we keep in cache.
+ */
 function cacheGetMax(): number
+/**
+ * Get the maximum number of tracked files we allow before we start dropping
+ * cached operations. See vips_tracked_get_files().
+ * 
+ * libvips only tracks file descriptors it allocates, it can't track ones
+ * allocated by external libraries. If you use an operation like
+ * vips_magickload(), most of the descriptors it uses won't be included.
+ * 
+ * See also: vips_tracked_get_files().
+ */
 function cacheGetMaxFiles(): number
+/**
+ * Get the maximum amount of tracked memory we allow before we start dropping
+ * cached operations. See vips_tracked_get_mem().
+ * 
+ * See also: vips_tracked_get_mem().
+ */
 function cacheGetMaxMem(): number
+/**
+ * Get the current number of operations in cache.
+ */
 function cacheGetSize(): number
+/**
+ * Add a built operation to the cache. The cache will ref the operation.
+ * @param operation pointer to operation to add
+ */
 function cacheOperationAdd(operation: Operation): void
+/**
+ * A binding-friendly version of vips_cache_operation_buildp().
+ * 
+ * After calling this, `operation` has the same ref count as when it went in,
+ * and the result must be freed with vips_object_unref_outputs() and
+ * g_object_unref().
+ * @param operation operation to lookup
+ */
 function cacheOperationBuild(operation: Operation): Operation
+/**
+ * Look up an unbuilt `operation` in the cache. If we get a hit, ref and
+ * return the old operation. If there's no hit, return NULL.
+ * @param operation pointer to operation to lookup
+ */
 function cacheOperationLookup(operation: Operation): Operation
+/**
+ * Print the whole operation cache to stdout. Handy for debugging.
+ */
 function cachePrint(): void
+/**
+ * Handy for debugging. Print the operation cache to stdout just before exit.
+ * 
+ * See also: vips_cache_set_trace().
+ * @param dump if %TRUE, dump the operation cache on exit
+ */
 function cacheSetDump(dump: boolean): void
+/**
+ * Set the maximum number of operations we keep in cache.
+ * @param max maximum number of operation to cache
+ */
 function cacheSetMax(max: number): void
+/**
+ * Set the maximum number of tracked files we allow before we start dropping
+ * cached operations. See vips_tracked_get_files().
+ * 
+ * See also: vips_tracked_get_files().
+ * @param maxFiles max open files we allow
+ */
 function cacheSetMaxFiles(maxFiles: number): void
+/**
+ * Set the maximum amount of tracked memory we allow before we start dropping
+ * cached operations. See vips_tracked_get_mem().
+ * 
+ * libvips only tracks memory it allocates, it can't track memory allocated by
+ * external libraries. If you use an operation like vips_magickload(), most of
+ * the memory it uses won't be included.
+ * 
+ * See also: vips_tracked_get_mem().
+ * @param maxMem maximum amount of tracked memory we use
+ */
 function cacheSetMaxMem(maxMem: number): void
+/**
+ * Handy for debugging. Print operation cache actions to stdout as we run.
+ * 
+ * You can set the environment variable `VIPS_TRACE` to turn this option on, or
+ * use the command-line flag `--vips-cache-trace`.
+ * 
+ * See also: vips_cache_set_dump().
+ * @param trace if %TRUE, trace the operation cache
+ */
 function cacheSetTrace(trace: boolean): void
 function callArgv(operation: Operation, argc: number, argv: string): number
 function callOptions(group: GLib.OptionGroup, operation: Operation): void
+/**
+ * Check that the image is 8 or 16-bit integer, signed or unsigned.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function check8or16(domain: string, im: Image): number
+/**
+ * `bandno` should be a valid band number (ie. 0 to im->Bands - 1), or can be
+ * -1, meaning all bands.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param bandno band number
+ */
 function checkBandno(domain: string, im: Image, bandno: number): number
+/**
+ * Check that the image has `bands` bands.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param bands must have this many bands
+ */
 function checkBands(domain: string, im: Image, bands: number): number
+/**
+ * Check that the image has either one or three bands.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkBands1or3(domain: string, im: Image): number
+/**
+ * Check that the images have the same number of bands, or that one of the
+ * images has just 1 band.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im1 first image to check
+ * @param im2 second image to check
+ */
 function checkBands1orn(domain: string, im1: Image, im2: Image): number
+/**
+ * Check that an image has 1 or `n` bands. Handy for unary operations, cf.
+ * vips_check_bands_1orn().
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_check_bands_1orn().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param n number of bands, or 1
+ */
 function checkBands1ornUnary(domain: string, im: Image, n: number): number
+/**
+ * Check that the image has at least `bands` bands.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param bands at least this many bands
+ */
 function checkBandsAtleast(domain: string, im: Image, bands: number): number
+/**
+ * Check that the images have the same number of bands.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im1 first image to check
+ * @param im2 second image to check
+ */
 function checkBandsSame(domain: string, im1: Image, im2: Image): number
+/**
+ * Check that the image has the required `coding`.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param coding required coding
+ */
 function checkCoding(domain: string, im: Image, coding: Coding): number
+/**
+ * Check that the image is uncoded, LABQ coded or RAD coded.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkCodingKnown(domain: string, im: Image): number
+/**
+ * Check that the image is uncoded or LABQ coded.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkCodingNoneorlabq(domain: string, im: Image): number
+/**
+ * Check that the images have the same coding.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im1 first image to check
+ * @param im2 second image to check
+ */
 function checkCodingSame(domain: string, im1: Image, im2: Image): number
+/**
+ * Check that the image is complex.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkComplex(domain: string, im: Image): number
+/**
+ * Check that the image has the specified format.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ * @param fmt format to test for
+ */
 function checkFormat(domain: string, im: Image, fmt: BandFormat): number
+/**
+ * Check that the images have the same format.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im1 first image to check
+ * @param im2 second image to check
+ */
 function checkFormatSame(domain: string, im1: Image, im2: Image): number
+/**
+ * Histogram images must have width or height 1, and must not have more than
+ * 65536 elements. Return 0 if the image will pass as a histogram, or -1 and
+ * set an error message otherwise.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkHist(domain: string, im: Image): number
+/**
+ * Check that the image is in one of the integer formats.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkInt(domain: string, im: Image): number
+/**
+ * Matrix images must have width and height less than 100000 and have 1 band.
+ * 
+ * Return 0 if the image will pass as a matrix, or -1 and set an error
+ * message otherwise.
+ * 
+ * `out` is set to be `im` cast to double and stored in memory. Use
+ * VIPS_MATRIX() to address values in `out`.
+ * 
+ * You must unref `out` when you are done with it.
+ * 
+ * See also: VIPS_MATRIX(), vips_object_local()
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkMatrix(domain: string, im: Image): [ /* returnType */ number, /* out */ Image ]
+/**
+ * Check that the image has exactly one band.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkMono(domain: string, im: Image): number
+/**
+ * Check that the image is not complex.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkNoncomplex(domain: string, im: Image): number
+/**
+ * Check that the image is square and that the sides are odd.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkOddsquare(domain: string, im: Image): number
+/**
+ * Check that `prec` image is either float or int.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param precision precision to check
+ */
 function checkPrecisionIntfloat(domain: string, precision: Precision): number
+/**
+ * Separable matrix images must have width or height 1.
+ * Return 0 if the image will pass, or -1 and
+ * set an error message otherwise.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkSeparable(domain: string, im: Image): number
+/**
+ * Check that the images have the same size.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im1 first image to check
+ * @param im2 second image to check
+ */
 function checkSizeSame(domain: string, im1: Image, im2: Image): number
+/**
+ * Check that the image is has two "components", ie. is a one-band complex or
+ * a two-band non-complex.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkTwocomponents(domain: string, im: Image): number
+/**
+ * Check that the image is 8 or 16-bit unsigned integer.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkU8or16(domain: string, im: Image): number
+/**
+ * Check that the image is 8 or 16-bit unsigned integer, or float.
+ * Otherwise set an error message and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkU8or16orf(domain: string, im: Image): number
+/**
+ * Check that the image is in one of the unsigned integer formats.
+ * Otherwise set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkUint(domain: string, im: Image): number
+/**
+ * Check that the image is unsigned int or float.
+ * Otherwise set an error message and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkUintorf(domain: string, im: Image): number
+/**
+ * Check that the image is not coded.
+ * If not, set an error message
+ * and return non-zero.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param im image to check
+ */
 function checkUncoded(domain: string, im: Image): number
+/**
+ * Operations with a vector constant need a 1-element vector, or a vector with
+ * the same number of elements as there are bands in the image, or a 1-band
+ * image and a many-element vector.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param n number of elements in vector
+ * @param im image to check against
+ */
 function checkVector(domain: string, n: number, im: Image): number
+/**
+ * Check that `n` == `len`.
+ * 
+ * See also: vips_error().
+ * @param domain the originating domain for the error message
+ * @param n number of elements in vector
+ * @param len number of elements vector should have
+ */
 function checkVectorLength(domain: string, n: number, len: number): number
+/**
+ * Search below `basename,` return the first class whose name or `nickname`
+ * matches.
+ * 
+ * See also: vips_type_find()
+ * @param basename name of base class
+ * @param nickname search for a class with this nickname
+ */
 function classFind(basename: string, nickname: string): ObjectClass
+/**
+ * Calculate Ccmc from C.
+ * @param c Chroma
+ */
 function colC2Ccmc(c: number): number
+/**
+ * Calculate C from Ccmc using a table.
+ * Call vips_col_make_tables_CMC() at
+ * least once before using this function.
+ * @param ccmc Ccmc
+ */
 function colCcmc2C(ccmc: number): number
+/**
+ * Calculate ab from Ch, h in degrees.
+ * @param c Chroma
+ * @param h Hue angle (degrees)
+ * @param a return CIE a* value
+ * @param b return CIE b* value
+ */
 function colCh2ab(c: number, h: number, a: number, b: number): void
+/**
+ * Calculate hcmc from C and h.
+ * @param c Chroma
+ * @param h Hue (degrees)
+ */
 function colCh2hcmc(c: number, h: number): number
+/**
+ * Calculate h from C and hcmc, using a table.
+ * Call vips_col_make_tables_CMC() at
+ * least once before using this function.
+ * @param c Chroma
+ * @param hcmc Hue cmc (degrees)
+ */
 function colChcmc2h(c: number, hcmc: number): number
+/**
+ * Calculate Lcmc from L.
+ * @param l CIE L*
+ */
 function colL2Lcmc(l: number): number
+/**
+ * Calculate XYZ from Lab, D65.
+ * 
+ * See also: vips_Lab2XYZ().
+ * @param l Input CIE Lab value
+ * @param a Input CIE Lab value
+ * @param b Input CIE Lab value
+ */
 function colLab2XYZ(l: number, a: number, b: number): [ /* x */ number, /* y */ number, /* z */ number ]
+/**
+ * Calculate L from Lcmc using a table. Call vips_col_make_tables_CMC() at
+ * least once before using this function.
+ * @param lcmc L cmc
+ */
 function colLcmc2L(lcmc: number): number
+/**
+ * Calculate XYZ from Lab, D65.
+ * 
+ * See also: vips_XYZ2Lab().
+ * @param x Input CIE XYZ colour
+ * @param y Input CIE XYZ colour
+ * @param z Input CIE XYZ colour
+ */
 function colXYZ2Lab(x: number, y: number, z: number): [ /* l */ number, /* a */ number, /* b */ number ]
+/**
+ * Turn XYZ into scRGB.
+ * 
+ * See also: vips_XYZ2scRGB().
+ * @param x Input XYZ value
+ * @param y Input XYZ value
+ * @param z Input XYZ value
+ */
 function colXYZ2scRGB(x: number, y: number, z: number): [ /* returnType */ number, /* r */ number, /* g */ number, /* b */ number ]
 function colAb2Ch(a: number, b: number, c: number, h: number): void
 function colAb2h(a: number, b: number): number
+/**
+ * CIEDE2000, from:
+ * 
+ * Luo, Cui, Rigg, "The Development of the CIE 2000 Colour-Difference
+ * Formula: CIEDE2000", COLOR research and application, pp 340
+ * @param l1 Input coordinate 1
+ * @param a1 Input coordinate 1
+ * @param b1 Input coordinate 1
+ * @param l2 Input coordinate 2
+ * @param a2 Input coordinate 2
+ * @param b2 Input coordinate 2
+ */
 function colDE00(l1: number, a1: number, b1: number, l2: number, a2: number, b2: number): number
+/**
+ * Make the lookup tables for cmc.
+ */
 function colMakeTablesCMC(): void
 function colSRGB2scRGB16(r: number, g: number, b: number, r_: number, g_: number, b_: number): number
 function colSRGB2scRGB16Noclip(r: number, g: number, b: number, r_: number, g_: number, b_: number): number
@@ -1778,93 +2292,553 @@ function colSRGB2scRGB8(r: number, g: number, b: number, r_: number, g_: number,
 function colSRGB2scRGB8Noclip(r: number, g: number, b: number, r_: number, g_: number, b_: number): number
 function colScRGB2BW16(r: number, g: number, b: number, g_: number, og: number): number
 function colScRGB2BW8(r: number, g: number, b: number, g_: number, og: number): number
+/**
+ * Turn scRGB into XYZ.
+ * 
+ * See also: vips_scRGB2XYZ().
+ * @param r Input scRGB value
+ * @param g Input scRGB value
+ * @param b Input scRGB value
+ */
 function colScRGB2XYZ(r: number, g: number, b: number): [ /* returnType */ number, /* x */ number, /* y */ number, /* z */ number ]
 function colScRGB2sRGB16(r: number, g: number, b: number, r_: number, g_: number, b_: number, og: number): number
 function colScRGB2sRGB8(r: number, g: number, b: number, r_: number, g_: number, b_: number, og: number): number
+/**
+ * Returns the number of worker threads that vips should use when running a
+ * #VipsThreadPool.
+ * 
+ * vips gets this values from these sources in turn:
+ * 
+ * If vips_concurrency_set() has been called, this value is used. The special
+ * value 0 means "default". You can also use the command-line argument
+ * "--vips-concurrency" to set this value.
+ * 
+ * If vips_concurrency_set() has not been called and no command-line argument
+ * was used, vips uses the value of the environment variable VIPS_CONCURRENCY,
+ * 
+ * If VIPS_CONCURRENCY has not been set, vips finds the number of hardware
+ * threads that the host machine can run in parallel and uses that value.
+ * 
+ * The final value is clipped to the range 1 - 1024.
+ * 
+ * See also: vips_concurrency_get().
+ */
 function concurrencyGet(): number
+/**
+ * Sets the number of worker threads that vips should use when running a
+ * #VipsThreadPool.
+ * 
+ * The special value 0 means "default". In this case, the number of threads is
+ * set by the environment variable VIPS_CONCURRENCY, or if that is not set, the
+ * number of threads available on the host machine.
+ * 
+ * See also: vips_concurrency_get().
+ * @param concurrency number of threads to run
+ */
 function concurrencySet(concurrency: number): void
+/**
+ * Get a pointer to the start of the error buffer as a C string.
+ * The string is owned by the error system and must not be freed.
+ * 
+ * See also: vips_error_clear().
+ */
 function errorBuffer(): string
+/**
+ * Return a copy of the vips error buffer, and clear it.
+ */
 function errorBufferCopy(): string
+/**
+ * Clear and reset the error buffer. This is typically called after presenting
+ * an error to the user.
+ * 
+ * See also: vips_error_buffer().
+ */
 function errorClear(): void
+/**
+ * Stop errors being logged. Use vips_error_thaw() to unfreeze. You can
+ * nest freeze/thaw pairs.
+ */
 function errorFreeze(): void
+/**
+ * This function sets the glib error pointer from the vips error buffer and
+ * clears it. It's handy for returning errors to glib functions from vips.
+ * 
+ * See vips_g_error() for the inverse operation.
+ * 
+ * See also: g_set_error(), vips_g_error().
+ */
 function errorG(): void
+/**
+ * Reenable error logging.
+ */
 function errorThaw(): void
+/**
+ * Given a vips filename like "fred.jpg[Q=90]", return a new string of
+ * just the filename part, "fred.jpg" in this case.
+ * 
+ * Useful for language bindings.
+ * 
+ * See also: vips_filename_get_options().
+ * @param vipsFilename a filename including a set of options
+ */
 function filenameGetFilename(vipsFilename: string): string
+/**
+ * Given a vips filename like "fred.jpg[Q=90]", return a new string of
+ * just the options part, "[Q=90]" in this case.
+ * 
+ * Useful for language bindings.
+ * 
+ * See also: vips_filename_get_filename().
+ * @param vipsFilename a filename including a set of options
+ */
 function filenameGetOptions(vipsFilename: string): string
 function formatSizeof(format: BandFormat): number
+/**
+ * This function adds the %GError to the vips error buffer and clears it. It's
+ * the opposite of vips_error_g().
+ * 
+ * See also: vips_error_g().
+ */
 function gError(): void
+/**
+ * See also: VIPS_INIT().
+ */
 function getArgv0(): string
+/**
+ * Return the number of bytes at which we flip between open via memory and
+ * open via disc. This defaults to 100mb, but can be changed with the
+ * VIPS_DISC_THRESHOLD environment variable or the --vips-disc-threshold
+ * command-line flag. See vips_image_new_from_file().
+ */
 function getDiscThreshold(): number
+/**
+ * Return the program name. This can be useful for the user tio see,.
+ * 
+ * See also: VIPS_INIT().
+ */
 function getPrgname(): string
+/**
+ * vips_guess_libdir() tries to guess the install directory (usually the
+ * configure libdir, or $prefix/lib). You should pass
+ * in the value of argv[0] (the name your program was run as) as a clue to
+ * help it out, plus the name of the environment variable you let the user
+ * override your package install area with (eg. "VIPSHOME").
+ * 
+ * On success, vips_guess_libdir() returns the libdir it discovered, and as a
+ * side effect, sets the prefix environment variable (if it's not set).
+ * 
+ * Don't free the return string!
+ * 
+ * See also: vips_guess_prefix().
+ * @param argv0 program name (typically argv[0])
+ * @param envName save prefix in this environment variable
+ */
 function guessLibdir(argv0: string, envName: string): string
+/**
+ * vips_guess_prefix() tries to guess the install directory. You should pass
+ * in the value of argv[0] (the name your program was run as) as a clue to
+ * help it out, plus the name of the environment variable you let the user
+ * override your package install area with (eg. "VIPSHOME").
+ * 
+ * On success, vips_guess_prefix() returns the prefix it discovered, and as a
+ * side effect, sets the environment variable (if it's not set).
+ * 
+ * Don't free the return string!
+ * 
+ * See also: vips_guess_libdir().
+ * @param argv0 program name (typically argv[0])
+ * @param envName save prefix in this environment variable
+ */
 function guessPrefix(argv0: string, envName: string): string
 function iccIsCompatibleProfile(image: Image, data: object | null, dataLength: number): boolean
+/**
+ * VIPS can optionally be built without the ICC library. Use this function to
+ * test for its availability.
+ */
 function iccPresent(): number
+/**
+ * This function starts up libvips, see VIPS_INIT().
+ * 
+ * This function is for bindings which need to start up vips. C programs
+ * should use the VIPS_INIT() macro, which does some extra checks.
+ * 
+ * See also: VIPS_INIT().
+ * @param argv0 name of application
+ */
 function init(argv0: string): number
+/**
+ * Turn on or off vips leak checking. See also --vips-leak,
+ * vips_add_option_entries() and the `VIPS_LEAK` environment variable.
+ * 
+ * You should call this very early in your program.
+ * @param leak turn leak checking on or off
+ */
 function leakSet(leak: boolean): void
+/**
+ * g_malloc() local to `object,` that is, the memory will be automatically
+ * freed for you when the object is closed. If `object` is %NULL, you need to
+ * free the memory explicitly with g_free().
+ * 
+ * This function cannot fail. See vips_tracked_malloc() if you are
+ * allocating large amounts of memory.
+ * 
+ * See also: vips_tracked_malloc().
+ * @param object allocate memory local to this #VipsObject, or %NULL
+ * @param size number of bytes to allocate
+ */
 function malloc(object: Object | null, size: number): object | null
-function nicknameFind(type: GObject.Type): string
+/**
+ * Return the VIPS nickname for a %GType. Handy for language bindings.
+ * @param type #GType to search for
+ */
+function nicknameFind(type: GObject.GType): string
+/**
+ * Return the filename part of a vips7 path. For testing only.
+ * @param path path to split
+ */
 function pathFilename7(path: string): string
+/**
+ * Return the mode part of a vips7 path. For testing only.
+ * @param path path to split
+ */
 function pathMode7(path: string): string
+/**
+ * If set, vips will print messages about the progress of computation to
+ * stdout. This can also be enabled with the --vips-progress option, or by
+ * setting the environment variable VIPS_PROGRESS.
+ * @param progress %TRUE to enable progress messages
+ */
 function progressSet(progress: boolean): void
+/**
+ * Pythagorean distance between two points in colour space. Lab/XYZ/CMC etc.
+ * @param l1 Input coordinate 1
+ * @param a1 Input coordinate 1
+ * @param b1 Input coordinate 1
+ * @param l2 Input coordinate 2
+ * @param a2 Input coordinate 2
+ * @param b2 Input coordinate 2
+ */
 function pythagoras(l1: number, a1: number, b1: number, l2: number, a2: number, b2: number): number
+/**
+ * Call this to drop caches, close plugins, terminate background threads, and
+ * finalize any internal library testing.
+ * 
+ * vips_shutdown() is optional. If you don't call it, your platform will
+ * clean up for you. The only negative consequences are that the leak checker
+ * and the profiler will not work.
+ * 
+ * You may call VIPS_INIT() many times and vips_shutdown() many times, but you
+ * must not call VIPS_INIT() after vips_shutdown(). In other words, you cannot
+ * stop and restart libvips.
+ * 
+ * See also: vips_profile_set(), vips_leak_set().
+ */
 function shutdown(): void
+/**
+ * g_strdup() a string. When `object` is freed, the string will be freed for
+ * you.  If `object` is %NULL, you need to
+ * free the memory yourself with g_free().
+ * 
+ * This function cannot fail.
+ * 
+ * See also: vips_malloc().
+ * @param object allocate memory local to this #VipsObject, or %NULL
+ * @param str string to copy
+ */
 function strdup(object: Object | null, str: string): string
+/**
+ * Free any thread-private data and flush any profiling information.
+ * 
+ * This function needs to be called when a thread that has been using vips
+ * exits. It is called for you by vips_shutdown() and for any threads created
+ * within the #VipsThreadPool.
+ * 
+ * You will need to call it from threads created in
+ * other ways or there will be memory leaks. If you do not call it, vips
+ * will generate a warning message.
+ * 
+ * It may be called many times, and you can continue using vips after
+ * calling it. Calling it too often will reduce performance.
+ */
 function threadShutdown(): void
+/**
+ * Exactly as close(2), but update the number of files currently open via
+ * vips_tracked_get_files(). This is used
+ * by the vips operation cache to drop cache when the number of files
+ * available is low.
+ * 
+ * You must only close file descriptors opened with vips_tracked_open().
+ * 
+ * See also: vips_tracked_open(), vips_tracked_get_files().
+ * @param fd file to close()
+ */
 function trackedClose(fd: number): number
-function trackedFree(s?: object | null): void
+/**
+ * Only use it to free
+ * memory that was previously allocated with vips_tracked_malloc() with a
+ * %NULL first argument.
+ * 
+ * See also: vips_tracked_malloc().
+ * @param s memory to free
+ */
+function trackedFree(s: object | null): void
+/**
+ * Returns the number of active allocations.
+ */
 function trackedGetAllocs(): number
+/**
+ * Returns the number of open files.
+ */
 function trackedGetFiles(): number
+/**
+ * Returns the number of bytes currently allocated via vips_malloc() and
+ * friends. vips uses this figure to decide when to start dropping cache, see
+ * #VipsOperation.
+ */
 function trackedGetMem(): number
+/**
+ * Returns the largest number of bytes simultaneously allocated via
+ * vips_tracked_malloc(). Handy for estimating max memory requirements for a
+ * program.
+ */
 function trackedGetMemHighwater(): number
+/**
+ * Allocate an area of memory that will be tracked by vips_tracked_get_mem()
+ * and friends.
+ * 
+ * If allocation fails, vips_malloc() returns %NULL and
+ * sets an error message.
+ * 
+ * You must only free the memory returned with vips_tracked_free().
+ * 
+ * See also: vips_tracked_free(), vips_malloc().
+ * @param size number of bytes to allocate
+ */
 function trackedMalloc(size: number): object | null
+/**
+ * Exactly as open(2), but the number of files currently open via
+ * vips_tracked_open() is available via vips_tracked_get_files(). This is used
+ * by the vips operation cache to drop cache when the number of files
+ * available is low.
+ * 
+ * You must only close the file descriptor with vips_tracked_close().
+ * 
+ * `pathname` should be utf8.
+ * 
+ * See also: vips_tracked_close(), vips_tracked_get_files().
+ * @param pathname name of file to open
+ * @param flags flags for open()
+ * @param mode open mode
+ */
 function trackedOpen(pathname: string, flags: number, mode: number): number
-function typeDepth(type: GObject.Type): number
-function typeFind(basename: string, nickname: string): GObject.Type
-function valueGetArea(value: any): [ /* returnType */ object | null, /* length */ number | null ]
-function valueGetArray(value: any): [ /* returnType */ object | null, /* n */ number | null, /* type */ GObject.Type | null, /* sizeofType */ number | null ]
+function typeDepth(type: GObject.GType): number
+/**
+ * Search below `basename,` return the %GType of the class whose name or
+ * `nickname` matches, or 0 for not found.
+ * If `basename` is NULL, the whole of #VipsObject is searched.
+ * 
+ * This function uses a cache, so it should be quick.
+ * 
+ * See also: vips_class_find()
+ * @param basename name of base class
+ * @param nickname search for a class with this nickname
+ */
+function typeFind(basename: string, nickname: string): GObject.GType
+/**
+ * Get the pointer from an area. Don't touch count (area is static).
+ * @param value get from this value
+ */
+function valueGetArea(value: any): [ /* returnType */ object | null, /* length */ number ]
+/**
+ * Return the pointer to the array held by `value`.
+ * Optionally return the other properties of the array in `n,` `type,`
+ * `sizeof_type`.
+ * 
+ * See also: vips_value_set_array().
+ * @param value %GValue to get from
+ */
+function valueGetArray(value: any): [ /* returnType */ object | null, /* n */ number, /* type */ GObject.GType, /* sizeofType */ number ]
+/**
+ * Return the start of the array of doubles held by `value`.
+ * optionally return the number of elements in `n`.
+ * 
+ * See also: vips_array_double_new().
+ * @param value %GValue to get from
+ */
 function valueGetArrayDouble(value: any): number[]
+/**
+ * Return the start of the array of images held by `value`.
+ * optionally return the number of elements in `n`.
+ * 
+ * See also: vips_value_set_array_image().
+ * @param value %GValue to get from
+ */
 function valueGetArrayImage(value: any): Image[]
+/**
+ * Return the start of the array of ints held by `value`.
+ * optionally return the number of elements in `n`.
+ * 
+ * See also: vips_array_int_new().
+ * @param value %GValue to get from
+ */
 function valueGetArrayInt(value: any): number[]
-function valueGetBlob(value: any): [ /* returnType */ object | null, /* length */ number | null ]
-function valueGetRefString(value: any): [ /* returnType */ string, /* length */ number | null ]
+/**
+ * Returns the data pointer from a blob. Optionally returns the length too.
+ * 
+ * blobs are things like ICC profiles or EXIF data. They are relocatable, and
+ * are saved to VIPS files for you coded as base64 inside the XML. They are
+ * copied by copying reference-counted pointers.
+ * 
+ * See also: vips_value_set_blob()
+ * @param value GValue to set
+ */
+function valueGetBlob(value: any): [ /* returnType */ object | null, /* length */ number ]
+/**
+ * Get the C string held internally by the %GValue.
+ * @param value %GValue to get from
+ */
+function valueGetRefString(value: any): [ /* returnType */ string, /* length */ number ]
+/**
+ * Get the C string held internally by the GValue.
+ * @param value GValue to get from
+ */
 function valueGetSaveString(value: any): string
 function valueIsNull(psoec: GObject.ParamSpec, value: any): boolean
+/**
+ * Set value to be a ref-counted area of memory with a free function.
+ * @param value set this value
+ * @param freeFn data will be freed with this function
+ */
 function valueSetArea(value: any, freeFn: CallbackFn): void
-function valueSetArray(n: number, type: GObject.Type, sizeofType: number): /* value */ any
+/**
+ * Set `value` to be an array of things.
+ * 
+ * This allocates memory but does not
+ * initialise the contents: get the pointer and write instead.
+ * @param n number of elements
+ * @param type the type of each element
+ * @param sizeofType the sizeof each element
+ */
+function valueSetArray(n: number, type: GObject.GType, sizeofType: number): /* value */ any
+/**
+ * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
+ * 
+ * See also: vips_array_double_get().
+ * @param value %GValue to get from
+ * @param array array of doubles
+ */
 function valueSetArrayDouble(value: any, array: number[] | null): void
+/**
+ * Set `value` to hold an array of images. Pass in the array length in `n`.
+ * 
+ * See also: vips_array_image_get().
+ * @param value %GValue to get from
+ * @param n the number of elements
+ */
 function valueSetArrayImage(value: any, n: number): void
+/**
+ * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
+ * 
+ * See also: vips_array_int_get().
+ * @param value %GValue to get from
+ * @param array array of ints
+ */
 function valueSetArrayInt(value: any, array: number[] | null): void
+/**
+ * Set `value` to hold an array of %GObject. Pass in the array length in `n`.
+ * 
+ * See also: vips_value_get_array_object().
+ * @param n the number of elements
+ */
 function valueSetArrayObject(n: number): /* value */ any
+/**
+ * Sets `value` to hold a `data`. When `value` is freed, `data` will be
+ * freed with `free_fn`. `value` also holds a note of the size of the memory
+ * area.
+ * 
+ * blobs are things like ICC profiles or EXIF data. They are relocatable, and
+ * are saved to VIPS files for you coded as base64 inside the XML. They are
+ * copied by copying reference-counted pointers.
+ * 
+ * See also: vips_value_get_blob()
+ * @param freeFn free function for `data`
+ * @param length length of memory area
+ */
 function valueSetBlob(freeFn: CallbackFn, length: number): /* value */ any
+/**
+ * Just like vips_value_set_blob(), but when
+ * `value` is freed, `data` will be
+ * freed with g_free().
+ * 
+ * This can be easier to call for language bindings.
+ * 
+ * See also: vips_value_set_blob()
+ * @param value GValue to set
+ * @param data pointer to area of memory
+ * @param length length of memory area
+ */
 function valueSetBlobFree(value: any, data: object | null, length: number): void
+/**
+ * Copies the C string `str` into `value`.
+ * 
+ * vips_ref_string are immutable C strings that are copied between images by
+ * copying reference-counted pointers, making them much more efficient than
+ * regular %GValue strings.
+ * 
+ * `str` should be a valid utf-8 string.
+ * @param str C string to copy into the GValue
+ */
 function valueSetRefString(str: string): /* value */ any
+/**
+ * Copies the C string into `value`.
+ * 
+ * `str` should be a valid utf-8 string.
+ * @param str C string to copy into the GValue
+ */
 function valueSetSaveString(str: string): /* value */ any
+/**
+ * Get the major, minor or micro library version, with `flag` values 0, 1 and
+ * 2.
+ * 
+ * Get the ABI current, revision and age (as used by libtool) with `flag`
+ * values 3, 4, 5.
+ * @param flag which field of the version to get
+ */
 function version(flag: number): number
+/**
+ * Get the VIPS version as a static string, including a build date and time.
+ * Do not free.
+ */
 function versionString(): string
 interface ArgumentClassMapFn {
-    (objectClass: ObjectClass, pspec: GObject.ParamSpec, argumentClass: ArgumentClass, a?: object | null, b?: object | null): object | null
+    (objectClass: ObjectClass, pspec: GObject.ParamSpec, argumentClass: ArgumentClass, a: object | null, b: object | null): object | null
 }
 interface ArgumentMapFn {
-    (object: Object, pspec: GObject.ParamSpec, argumentClass: ArgumentClass, argumentInstance: ArgumentInstance, a?: object | null, b?: object | null): object | null
+    (object: Object, pspec: GObject.ParamSpec, argumentClass: ArgumentClass, argumentInstance: ArgumentInstance, a: object | null, b: object | null): object | null
 }
 interface CallbackFn {
-    (a?: object | null, b?: object | null): number
+    (a: object | null, b: object | null): number
 }
 interface ClassMapFn {
-    (cls: ObjectClass, a?: object | null): object | null
+    (cls: ObjectClass, a: object | null): object | null
 }
 /**
  * Fill `out->`valid with pixels. `seq` contains per-thread state, such as the
  * input regions. Set `stop` to %TRUE to stop processing.
  * 
  * See also: vips_image_generate(), vips_stop_many().
+ * @callback 
+ * @param out #VipsRegion to fill
+ * @param seq sequence value
+ * @param a user data
+ * @param b user data
+ * @param stop set this to stop processing
  */
 interface GenerateFn {
     (out: Region, seq: object | null, a: object | null, b: object | null, stop: boolean): number
 }
 interface ImageMapFn {
-    (image: Image, name: string, value: any, a?: object | null): object | null
+    (image: Image, name: string, value: any, a: object | null): object | null
 }
 /**
  * An interpolation function. It should read source pixels from `in` with
@@ -1874,538 +2848,96 @@ interface ImageMapFn {
  * The interpolated value should be written to the pixel pointed to by `out`.
  * 
  * See also: #VipsInterpolateClass.
+ * @callback 
+ * @param interpolate the interpolator
+ * @param out write the interpolated pixel here
+ * @param in_ read source pixels from here
+ * @param x interpolate value at this position
+ * @param y interpolate value at this position
  */
 interface InterpolateMethod {
     (interpolate: Interpolate, out: object | null, in_: Region, x: number, y: number): void
 }
 interface ObjectSetArguments {
-    (object: Object, a?: object | null, b?: object | null): object | null
+    (object: Object, a: object | null, b: object | null): object | null
 }
 interface OperationBuildFn {
     (object: Object): boolean
 }
 interface SListFold2Fn {
-    (item?: object | null, a?: object | null, b?: object | null, c?: object | null): object | null
+    (item: object | null, a: object | null, b: object | null, c: object | null): object | null
 }
 interface SListMap2Fn {
-    (item?: object | null, a?: object | null, b?: object | null): object | null
+    (item: object | null, a: object | null, b: object | null): object | null
 }
 interface SListMap4Fn {
-    (item?: object | null, a?: object | null, b?: object | null, c?: object | null, d?: object | null): object | null
+    (item: object | null, a: object | null, b: object | null, c: object | null, d: object | null): object | null
 }
 /**
  * Start a new processing sequence for this generate function. This allocates
  * per-thread state, such as an input region.
  * 
  * See also: vips_start_one(), vips_start_many().
+ * @callback 
+ * @param out image being calculated
+ * @param a user data
+ * @param b user data
  */
 interface StartFn {
-    (out: Image, a?: object | null, b?: object | null): object | null
+    (out: Image, a: object | null, b: object | null): object | null
 }
 /**
  * Stop a processing sequence. This frees
  * per-thread state, such as an input region.
  * 
  * See also: vips_stop_one(), vips_stop_many().
+ * @callback 
+ * @param seq sequence value
+ * @param a user data
+ * @param b user data
  */
 interface StopFn {
-    (seq?: object | null, a?: object | null, b?: object | null): number
+    (seq: object | null, a: object | null, b: object | null): number
 }
 interface TypeMap2Fn {
-    (type: GObject.Type, a?: object | null, b?: object | null): object | null
+    (type: GObject.GType, a: object | null, b: object | null): object | null
 }
 interface TypeMapFn {
-    (type: GObject.Type, a?: object | null): object | null
+    (type: GObject.GType, a: object | null): object | null
 }
 interface Foreign_ConstructProps extends Operation_ConstructProps {
 }
-class Foreign {
-    /* Fields of Vips-8.0.Vips.Operation */
-    parentInstance: Object
-    hash: number
-    foundHash: boolean
-    pixels: number
-    /* Fields of Vips-8.0.Vips.Object */
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Operation */
-    /**
-     * Returns the set of flags for this operation.
-     */
-    getFlags(): OperationFlags
-    invalidate(): void
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Operation */
-    connect(sigName: "invalidate", callback: (() => void)): number
-    on(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "invalidate", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "invalidate"): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface Foreign {
+
+    // Conflicting properties
+
+    parentInstance: any
+
+    // Own fields of Vips-8.0.Vips.Foreign
+
+    parentObject: Operation
+
+    // Class property signals of Vips-8.0.Vips.Foreign
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Foreign extends Operation {
+
+    // Own properties of Vips-8.0.Vips.Foreign
+
     static name: string
-    constructor (config?: Foreign_ConstructProps)
-    _init (config?: Foreign_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Foreign>
+
+    // Constructors of Vips-8.0.Vips.Foreign
+
+    constructor(config?: Foreign_ConstructProps) 
+    _init(config?: Foreign_ConstructProps): void
     /**
      * Searches for an operation you could use to load `filename`. Any trailing
      * options on `filename` are stripped and ignored.
@@ -2511,1077 +3043,198 @@ class Foreign {
      * @param a user data
      * @param b user data
      */
-    static map(base: string, fn: SListMap2Fn, a?: object | null, b?: object | null): object | null
-    static $gtype: GObject.Type
+    static map(base: string, fn: SListMap2Fn, a: object | null, b: object | null): object | null
 }
+
 interface ForeignLoad_ConstructProps extends Foreign_ConstructProps {
-    /* Constructor properties of Vips-8.0.Vips.ForeignLoad */
-    disc?: boolean
-    fail?: boolean
-    memory?: boolean
-    out?: Image
-    sequential?: boolean
+
+    // Own constructor properties of Vips-8.0.Vips.ForeignLoad
+
+    disc?: boolean | null
+    fail?: boolean | null
+    memory?: boolean | null
+    out?: Image | null
+    sequential?: boolean | null
 }
-class ForeignLoad {
-    /* Properties of Vips-8.0.Vips.ForeignLoad */
-    disc: boolean
+
+interface ForeignLoad {
+
+    // Own properties of Vips-8.0.Vips.ForeignLoad
+
     fail: boolean
     memory: boolean
-    out: Image
     sequential: boolean
-    /* Fields of Vips-8.0.Vips.Foreign */
-    parentObject: Operation
-    /* Fields of Vips-8.0.Vips.Operation */
-    parentInstance: Object
-    hash: number
-    foundHash: boolean
-    pixels: number
-    /* Fields of Vips-8.0.Vips.Object */
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Operation */
-    /**
-     * Returns the set of flags for this operation.
-     */
-    getFlags(): OperationFlags
-    invalidate(): void
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Operation */
-    connect(sigName: "invalidate", callback: (() => void)): number
-    on(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "invalidate", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "invalidate"): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::disc", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::disc", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::disc", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::disc", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::disc", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::fail", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::fail", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::fail", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::fail", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Conflicting properties
+
+    parentInstance: any
+
+    // Own fields of Vips-8.0.Vips.ForeignLoad
+
+    parentObject: Foreign
+    out: Image
+    real: Image
+    nocache: boolean
+    disc: boolean
+    error: boolean
+
+    // Class property signals of Vips-8.0.Vips.ForeignLoad
+
+    connect(sigName: "notify::fail", callback: (...args: any[]) => void): number
+    on(sigName: "notify::fail", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::fail", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::fail", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::memory", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::memory", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::fail", ...args: any[]): void
+    connect(sigName: "notify::memory", callback: (...args: any[]) => void): number
+    on(sigName: "notify::memory", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::memory", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::memory", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::out", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::out", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::out", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::out", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::out", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::sequential", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sequential", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::sequential", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::sequential", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::memory", ...args: any[]): void
+    connect(sigName: "notify::sequential", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sequential", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sequential", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::sequential", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::sequential", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: ForeignLoad_ConstructProps)
-    _init (config?: ForeignLoad_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class ForeignLoad extends Foreign {
+
+    // Own properties of Vips-8.0.Vips.ForeignLoad
+
+    static name: string
+    static $gtype: GObject.GType<ForeignLoad>
+
+    // Constructors of Vips-8.0.Vips.ForeignLoad
+
+    constructor(config?: ForeignLoad_ConstructProps) 
+    _init(config?: ForeignLoad_ConstructProps): void
+}
+
 interface ForeignSave_ConstructProps extends Foreign_ConstructProps {
-    /* Constructor properties of Vips-8.0.Vips.ForeignSave */
-    background?: ArrayDouble
-    "in"?: Image
-    pageHeight?: number
-    strip?: boolean
+
+    // Own constructor properties of Vips-8.0.Vips.ForeignSave
+
+    background?: ArrayDouble | null
+    "in"?: Image | null
+    pageHeight?: number | null
+    strip?: boolean | null
 }
-class ForeignSave {
-    /* Properties of Vips-8.0.Vips.ForeignSave */
-    background: ArrayDouble
+
+interface ForeignSave {
+
+    // Own properties of Vips-8.0.Vips.ForeignSave
+
     "in": Image
-    pageHeight: number
+
+    // Conflicting properties
+
+    parentInstance: any
+
+    // Own fields of Vips-8.0.Vips.ForeignSave
+
+    parentObject: Foreign
     strip: boolean
-    /* Fields of Vips-8.0.Vips.Foreign */
-    parentObject: Operation
-    /* Fields of Vips-8.0.Vips.Operation */
-    parentInstance: Object
-    hash: number
-    foundHash: boolean
-    pixels: number
-    /* Fields of Vips-8.0.Vips.Object */
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Operation */
-    /**
-     * Returns the set of flags for this operation.
-     */
-    getFlags(): OperationFlags
-    invalidate(): void
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Operation */
-    connect(sigName: "invalidate", callback: (() => void)): number
-    on(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "invalidate", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "invalidate"): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::background", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::background", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::background", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::in", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::in", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::in", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::in", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    background: ArrayDouble
+    pageHeight: number
+    in_: Image
+    ready: Image
+
+    // Class property signals of Vips-8.0.Vips.ForeignSave
+
+    connect(sigName: "notify::in", callback: (...args: any[]) => void): number
+    on(sigName: "notify::in", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::in", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::in", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::page-height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::page-height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::page-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::page-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::page-height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::strip", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::strip", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::strip", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::strip", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::strip", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::in", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class ForeignSave extends Foreign {
+
+    // Own properties of Vips-8.0.Vips.ForeignSave
+
     static name: string
-    constructor (config?: ForeignSave_ConstructProps)
-    _init (config?: ForeignSave_ConstructProps): void
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<ForeignSave>
+
+    // Constructors of Vips-8.0.Vips.ForeignSave
+
+    constructor(config?: ForeignSave_ConstructProps) 
+    _init(config?: ForeignSave_ConstructProps): void
 }
+
 interface Image_ConstructProps extends Object_ConstructProps {
-    /* Constructor properties of Vips-8.0.Vips.Image */
-    bands?: number
-    filename?: string
-    foreignBuffer?: object
-    height?: number
-    kill?: boolean
-    mode?: string
-    sizeofHeader?: number
-    width?: number
-    xoffset?: number
-    xres?: number
-    yoffset?: number
-    yres?: number
+
+    // Own constructor properties of Vips-8.0.Vips.Image
+
+    bands?: number | null
+    filename?: string | null
+    foreignBuffer?: object | null
+    height?: number | null
+    kill?: boolean | null
+    mode?: string | null
+    sizeofHeader?: number | null
+    width?: number | null
+    xoffset?: number | null
+    xres?: number | null
+    yoffset?: number | null
+    yres?: number | null
 }
-class Image {
-    /* Properties of Vips-8.0.Vips.Image */
+
+/**
+ * Signal callback interface for `eval`
+ */
+interface Image_EvalSignalCallback {
+    (progress: Progress): void
+}
+
+/**
+ * Signal callback interface for `invalidate`
+ */
+interface Image_InvalidateSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `minimise`
+ */
+interface Image_MinimiseSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `posteval`
+ */
+interface Image_PostevalSignalCallback {
+    (progress: Progress): void
+}
+
+/**
+ * Signal callback interface for `preeval`
+ */
+interface Image_PreevalSignalCallback {
+    (progress: Progress): void
+}
+
+/**
+ * Signal callback interface for `written`
+ */
+interface Image_WrittenSignalCallback {
+    (): void
+}
+
+interface Image {
+
+    // Own properties of Vips-8.0.Vips.Image
+
     bands: number
     filename: string
     foreignBuffer: object
@@ -3594,20 +3247,13 @@ class Image {
     xres: number
     yoffset: number
     yres: number
-    /* Fields of Vips-8.0.Vips.Object */
-    parentInstance: GObject.Object
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Image */
+
+    // Own fields of Vips-8.0.Vips.Image
+
+    parentInstance: Object
+
+    // Owm methods of Vips-8.0.Vips.Image
+
     /**
      * Remove the orientation tag on `image`. Also remove any exif orientation tags.
      * You must vips_copy() the image before calling this function since it
@@ -3673,7 +3319,7 @@ class Image {
      * is intended to be used with g_signal_connect.
      * @param buffer the orignal buffer that was stolen
      */
-    freeBuffer(buffer?: object | null): void
+    freeBuffer(buffer: object | null): void
     /**
      * Fill `value_copy` with a copy of the header field. `value_copy` must be zeroed
      * but uninitialised.
@@ -3784,6 +3430,16 @@ class Image {
      * See also: vips_image_wio_input(), vips_image_copy_memory().
      */
     getData(): object | null
+
+    // Overloads of getData
+
+    /**
+     * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
+     */
+    getData(key?: string): object | null
+    getData(...args: any[]): any
+    getData(args_or_key?: any[] | string): object | null | any
     /**
      * Gets `out` from `im` under the name `name`.
      * The value will be transformed into
@@ -3904,7 +3560,7 @@ class Image {
      * See also: vips_image_get().
      * @param name the name to search for
      */
-    getTypeof(name: string): GObject.Type
+    getTypeof(name: string): GObject.GType
     getWidth(): number
     getXoffset(): number
     getXres(): number
@@ -4035,7 +3691,7 @@ class Image {
      * See also: vips_image_get_typeof(), vips_image_get().
      * @param a user data for function
      */
-    map(a?: object | null): object | null
+    map(a: object | null): object | null
     /**
      * Minimise memory use on this image and any upstream images, that is, images
      * which this image depends upon. This function is called automatically at the
@@ -4283,629 +3939,296 @@ class Image {
      * See also: vips_image_write_to_buffer().
      */
     writeToMemory(): Uint8Array
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Image */
-    /**
-     * The ::eval signal is emitted once per work unit (typically a 128 x
-     * 128 area of pixels) during image computation.
-     * 
-     * You can use this signal to update user-interfaces with progress
-     * feedback. Beware of updating too frequently: you will usually
-     * need some throttling mechanism.
-     * 
-     * Use vips_image_set_progress() to turn on progress reporting for an
-     * image.
-     * @param progress #VipsProgress for this image
-     */
-    connect(sigName: "eval", callback: ((progress: Progress) => void)): number
-    on(sigName: "eval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "eval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "eval", callback: (progress: Progress) => void): NodeJS.EventEmitter
-    emit(sigName: "eval", progress: Progress): void
-    /**
-     * The ::invalidate signal is emitted when an image or one of it's
-     * upstream data sources has been destructively modified. See
-     * vips_image_invalidate_all().
-     */
-    connect(sigName: "invalidate", callback: (() => void)): number
-    on(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "invalidate", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "invalidate"): void
-    /**
-     * The ::minimise signal is emitted when an image has been asked to
-     * minimise memory usage. All non-essential caches are dropped.
-     * See vips_image_minimise_all().
-     */
-    connect(sigName: "minimise", callback: (() => void)): number
-    on(sigName: "minimise", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "minimise", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "minimise", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "minimise"): void
-    /**
-     * The ::posteval signal is emitted once at the end of the computation
-     * of `image`. It's a good place to shut down evaluation feedback.
-     * 
-     * Use vips_image_set_progress() to turn on progress reporting for an
-     * image.
-     * @param progress #VipsProgress for this image
-     */
-    connect(sigName: "posteval", callback: ((progress: Progress) => void)): number
-    on(sigName: "posteval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "posteval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "posteval", callback: (progress: Progress) => void): NodeJS.EventEmitter
-    emit(sigName: "posteval", progress: Progress): void
-    /**
-     * The ::preeval signal is emitted once before computation of `image`
-     * starts. It's a good place to set up evaluation feedback.
-     * 
-     * Use vips_image_set_progress() to turn on progress reporting for an
-     * image.
-     * @param progress #VipsProgress for this image
-     */
-    connect(sigName: "preeval", callback: ((progress: Progress) => void)): number
-    on(sigName: "preeval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preeval", callback: (progress: Progress) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preeval", callback: (progress: Progress) => void): NodeJS.EventEmitter
-    emit(sigName: "preeval", progress: Progress): void
-    /**
-     * The ::written signal is emitted just after an image has been
-     * written to. It is
-     * used by vips to implement things like write to foreign file
-     * formats.
-     */
-    connect(sigName: "written", callback: (() => void)): number
-    on(sigName: "written", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "written", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "written", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "written"): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::bands", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::bands", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::bands", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::bands", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own signals of Vips-8.0.Vips.Image
+
+    connect(sigName: "eval", callback: Image_EvalSignalCallback): number
+    on(sigName: "eval", callback: Image_EvalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "eval", callback: Image_EvalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "eval", callback: Image_EvalSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "eval", ...args: any[]): void
+    connect(sigName: "invalidate", callback: Image_InvalidateSignalCallback): number
+    on(sigName: "invalidate", callback: Image_InvalidateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "invalidate", callback: Image_InvalidateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "invalidate", callback: Image_InvalidateSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "invalidate", ...args: any[]): void
+    connect(sigName: "minimise", callback: Image_MinimiseSignalCallback): number
+    on(sigName: "minimise", callback: Image_MinimiseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "minimise", callback: Image_MinimiseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "minimise", callback: Image_MinimiseSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "minimise", ...args: any[]): void
+    connect(sigName: "posteval", callback: Image_PostevalSignalCallback): number
+    on(sigName: "posteval", callback: Image_PostevalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "posteval", callback: Image_PostevalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "posteval", callback: Image_PostevalSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "posteval", ...args: any[]): void
+    connect(sigName: "preeval", callback: Image_PreevalSignalCallback): number
+    on(sigName: "preeval", callback: Image_PreevalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "preeval", callback: Image_PreevalSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "preeval", callback: Image_PreevalSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "preeval", ...args: any[]): void
+    connect(sigName: "written", callback: Image_WrittenSignalCallback): number
+    on(sigName: "written", callback: Image_WrittenSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "written", callback: Image_WrittenSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "written", callback: Image_WrittenSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "written", ...args: any[]): void
+
+    // Class property signals of Vips-8.0.Vips.Image
+
+    connect(sigName: "notify::bands", callback: (...args: any[]) => void): number
+    on(sigName: "notify::bands", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::bands", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::bands", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::filename", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::bands", ...args: any[]): void
+    connect(sigName: "notify::filename", callback: (...args: any[]) => void): number
+    on(sigName: "notify::filename", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::filename", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::filename", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::foreign-buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::foreign-buffer", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::filename", ...args: any[]): void
+    connect(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void): number
+    on(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::foreign-buffer", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::foreign-buffer", ...args: any[]): void
+    connect(sigName: "notify::height", callback: (...args: any[]) => void): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::kill", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::kill", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::kill", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::kill", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::height", ...args: any[]): void
+    connect(sigName: "notify::kill", callback: (...args: any[]) => void): number
+    on(sigName: "notify::kill", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::kill", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::kill", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::mode", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::mode", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::kill", ...args: any[]): void
+    connect(sigName: "notify::mode", callback: (...args: any[]) => void): number
+    on(sigName: "notify::mode", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::mode", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::sizeof-header", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sizeof-header", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::sizeof-header", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::sizeof-header", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::mode", ...args: any[]): void
+    connect(sigName: "notify::sizeof-header", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sizeof-header", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sizeof-header", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::sizeof-header", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sizeof-header", ...args: any[]): void
+    connect(sigName: "notify::width", callback: (...args: any[]) => void): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::xoffset", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::xoffset", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::xoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::xoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::width", ...args: any[]): void
+    connect(sigName: "notify::xoffset", callback: (...args: any[]) => void): number
+    on(sigName: "notify::xoffset", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::xoffset", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::xoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::xres", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::xres", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::xres", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::xres", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::xoffset", ...args: any[]): void
+    connect(sigName: "notify::xres", callback: (...args: any[]) => void): number
+    on(sigName: "notify::xres", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::xres", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::xres", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::yoffset", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::yoffset", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::yoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::yoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::xres", ...args: any[]): void
+    connect(sigName: "notify::yoffset", callback: (...args: any[]) => void): number
+    on(sigName: "notify::yoffset", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::yoffset", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::yoffset", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::yres", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::yres", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::yres", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::yres", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::yoffset", ...args: any[]): void
+    connect(sigName: "notify::yres", callback: (...args: any[]) => void): number
+    on(sigName: "notify::yres", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::yres", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::yres", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::yres", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Image_ConstructProps)
-    _init (config?: Image_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static memory(): Image
-    static new(): Image
-    static newFromFileRW(filename: string): Image
-    static newFromFileRaw(filename: string, xsize: number, ysize: number, bands: number, offset: number): Image
-    static newFromImage(image: Image, c: number[]): Image
-    static newFromImage1(image: Image, c: number): Image
-    static newFromMemory(data: Uint8Array, width: number, height: number, bands: number, format: BandFormat): Image
-    static newFromMemoryCopy(data: Uint8Array, width: number, height: number, bands: number, format: BandFormat): Image
-    static newMatrix(width: number, height: number): Image
-    static newMatrixFromArray(width: number, height: number, array: number[]): Image
-    static newTempFile(format: string): Image
-    static getFormatMax(format: BandFormat): number
-    static $gtype: GObject.Type
 }
+
+/**
+ * An image. These can represent an image on disc, a memory buffer, an image
+ * in the process of being written to disc or a partially evaluated image
+ * in memory.
+ * @class 
+ */
+class Image extends Object {
+
+    // Own properties of Vips-8.0.Vips.Image
+
+    static name: string
+    static $gtype: GObject.GType<Image>
+
+    // Constructors of Vips-8.0.Vips.Image
+
+    constructor(config?: Image_ConstructProps) 
+    /**
+     * A renamed vips_image_new_memory() ... Some gobject binding systems do not
+     * like more than one _new() method.
+     * 
+     * See also: vips_image_new_memory().
+     * @constructor 
+     */
+    static memory(): Image
+    /**
+     * vips_image_new() creates a new, empty #VipsImage.
+     * If you write to one of these images, vips will just attach some callbacks,
+     * no pixels will be generated.
+     * 
+     * Write pixels to an image with vips_image_generate() or
+     * vips_image_write_line(). Write a whole image to another image with
+     * vips_image_write().
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * vips_image_new() creates a new, empty #VipsImage.
+     * If you write to one of these images, vips will just attach some callbacks,
+     * no pixels will be generated.
+     * 
+     * Write pixels to an image with vips_image_generate() or
+     * vips_image_write_line(). Write a whole image to another image with
+     * vips_image_write().
+     * @constructor 
+     */
+    static new(): Image
+    /**
+     * Opens the named file for simultaneous reading and writing. This will only
+     * work for VIPS files in a format native to your machine. It is only for
+     * paintbox-type applications.
+     * 
+     * See also: vips_draw_circle().
+     * @constructor 
+     * @param filename filename to open
+     */
+    static newFromFileRW(filename: string): Image
+    /**
+     * This function maps the named file and returns a #VipsImage you can use to
+     * read it.
+     * 
+     * It returns an 8-bit image with `bands` bands. If the image is not 8-bit, use
+     * vips_copy() to transform the descriptor after loading it.
+     * 
+     * See also: vips_copy(), vips_rawload(), vips_image_new_from_file().
+     * @constructor 
+     * @param filename filename to open
+     * @param xsize image width
+     * @param ysize image height
+     * @param bands image bands (or bytes per pixel)
+     * @param offset bytes to skip at start of file
+     */
+    static newFromFileRaw(filename: string, xsize: number, ysize: number, bands: number, offset: number): Image
+    /**
+     * Creates a new image with width, height, format, interpretation, resolution
+     * and offset taken from `image,` but with number of bands taken from `n` and the
+     * value of each band element set from `c`.
+     * 
+     * See also: vips_image_new_from_image1()
+     * @constructor 
+     * @param image image to copy
+     * @param c array of constants
+     */
+    static newFromImage(image: Image, c: number[]): Image
+    /**
+     * Creates a new image with width, height, format, interpretation, resolution
+     * and offset taken from `image,` but with one band and each pixel having the
+     * value `c`.
+     * 
+     * See also: vips_image_new_from_image()
+     * @constructor 
+     * @param image image to copy
+     * @param c constants
+     */
+    static newFromImage1(image: Image, c: number): Image
+    /**
+     * This function wraps a #VipsImage around a memory area. The memory area
+     * must be a simple array, for example RGBRGBRGB, left-to-right,
+     * top-to-bottom. Use vips_image_new_from_buffer() to load an area of memory
+     * containing an image in a format.
+     * 
+     * VIPS does not take
+     * responsibility for the area of memory, it's up to you to make sure it's
+     * freed when the image is closed. See for example #VipsObject::close.
+     * 
+     * Because VIPS is "borrowing" `data` from the caller, this function is
+     * extremely dangerous. Unless you are very careful, you will get crashes or
+     * memory corruption. Use vips_image_new_from_memory_copy() instead if you are
+     * at all unsure.
+     * 
+     * Use vips_copy() to set other image properties.
+     * 
+     * See also: vips_image_new(), vips_image_write_to_memory(),
+     * vips_image_new_from_memory_copy().
+     * @constructor 
+     * @param data start of memory area
+     * @param width image width
+     * @param height image height
+     * @param bands image bands (or bytes per pixel)
+     * @param format image format
+     */
+    static newFromMemory(data: Uint8Array, width: number, height: number, bands: number, format: BandFormat): Image
+    /**
+     * Like vips_image_new_from_memory(), but VIPS will make a copy of the memory
+     * area. This means more memory use and an extra copy operation, but is much
+     * simpler and safer.
+     * 
+     * See also: vips_image_new_from_memory().
+     * @constructor 
+     * @param data start of memory area
+     * @param width image width
+     * @param height image height
+     * @param bands image bands (or bytes per pixel)
+     * @param format image format
+     */
+    static newFromMemoryCopy(data: Uint8Array, width: number, height: number, bands: number, format: BandFormat): Image
+    /**
+     * This convenience function makes an image which is a matrix: a one-band
+     * #VIPS_FORMAT_DOUBLE image held in memory.
+     * 
+     * Use VIPS_IMAGE_ADDR(), or VIPS_MATRIX() to address pixels in the image.
+     * 
+     * Use vips_image_set_double() to set "scale" and "offset", if required.
+     * 
+     * See also: vips_image_new_matrixv()
+     * @constructor 
+     * @param width image width
+     * @param height image height
+     */
+    static newMatrix(width: number, height: number): Image
+    /**
+     * A binding-friendly version of vips_image_new_matrixv().
+     * @constructor 
+     * @param width image width
+     * @param height image height
+     * @param array array of elements
+     */
+    static newMatrixFromArray(width: number, height: number, array: number[]): Image
+    /**
+     * Make a #VipsImage which, when written to, will create a temporary file on
+     * disc. The file will be automatically deleted when the image is destroyed.
+     * `format` is something like "&percnt;s.v" for a vips file.
+     * 
+     * The file is created in the temporary directory. This is set with the
+     * environment variable TMPDIR. If this is not set, then on Unix systems, vips
+     * will default to /tmp. On Windows, vips uses GetTempPath() to find the
+     * temporary directory.
+     * 
+     * See also: vips_image_new().
+     * @constructor 
+     * @param format format of file
+     */
+    static newTempFile(format: string): Image
+    _init(config?: Image_ConstructProps): void
+    static getFormatMax(format: BandFormat): number
+}
+
 interface Interpolate_ConstructProps extends Object_ConstructProps {
 }
-class Interpolate {
-    /* Fields of Vips-8.0.Vips.Object */
-    parentInstance: GObject.Object
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Interpolate */
+
+interface Interpolate {
+
+    // Own fields of Vips-8.0.Vips.Interpolate
+
+    parentObject: Object
+
+    // Owm methods of Vips-8.0.Vips.Interpolate
+
     /**
      * Look up an interpolators desired window offset.
      */
@@ -4914,464 +4237,45 @@ class Interpolate {
      * Look up an interpolators desired window size.
      */
     getWindowSize(): number
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Vips-8.0.Vips.Interpolate
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Interpolate extends Object {
+
+    // Own properties of Vips-8.0.Vips.Interpolate
+
     static name: string
-    constructor (config?: Interpolate_ConstructProps)
-    _init (config?: Interpolate_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Interpolate>
+
+    // Constructors of Vips-8.0.Vips.Interpolate
+
+    constructor(config?: Interpolate_ConstructProps) 
+    /**
+     * Look up an interpolator from a nickname and make one. You need to free the
+     * result with g_object_unref() when you're done with it.
+     * 
+     * See also: vips_type_find().
+     * @constructor 
+     * @param nickname nickname for interpolator
+     */
+    constructor(nickname: string) 
+    /**
+     * Look up an interpolator from a nickname and make one. You need to free the
+     * result with g_object_unref() when you're done with it.
+     * 
+     * See also: vips_type_find().
+     * @constructor 
+     * @param nickname nickname for interpolator
+     */
     static new(nickname: string): Interpolate
+    _init(config?: Interpolate_ConstructProps): void
     /**
      * A convenience function that returns a bilinear interpolator you
      * don't need to free.
@@ -5382,20 +4286,61 @@ class Interpolate {
      * don't need to free.
      */
     static nearestStatic(): Interpolate
-    static $gtype: GObject.Type
 }
+
 interface Object_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Vips-8.0.Vips.Object */
-    description?: string
-    nickname?: string
+
+    // Own constructor properties of Vips-8.0.Vips.Object
+
+    description?: string | null
+    nickname?: string | null
 }
-class Object {
-    /* Properties of Vips-8.0.Vips.Object */
-    description: string
+
+/**
+ * Signal callback interface for `close`
+ */
+interface Object_CloseSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `postbuild`
+ */
+interface Object_PostbuildSignalCallback {
+    (): number
+}
+
+/**
+ * Signal callback interface for `postclose`
+ */
+interface Object_PostcloseSignalCallback {
+    (): void
+}
+
+/**
+ * Signal callback interface for `preclose`
+ */
+interface Object_PrecloseSignalCallback {
+    (): void
+}
+
+interface Object {
+
+    // Own fields of Vips-8.0.Vips.Object
+
+    parentInstance: GObject.Object
+    constructed: boolean
+    staticObject: boolean
+    argumentTable: ArgumentTable
     nickname: string
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Object */
+    description: string
+    preclose: boolean
+    close: boolean
+    postclose: boolean
+    localMemory: number
+
+    // Owm methods of Vips-8.0.Vips.Object
+
     /**
      * Convenience: has an argument been assigned. Useful for bindings.
      * @param name arg to fetch
@@ -5423,7 +4368,6 @@ class Object {
      */
     getDescription(): string
     localCb(gobject: GObject.Object): void
-    preclose(): void
     printDump(): void
     printName(): void
     printSummary(): void
@@ -5455,928 +4399,159 @@ class Object {
      * See also: vips_cache_operation_build().
      */
     unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::description", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::description", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::nickname", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::nickname", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::nickname", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Vips-8.0.Vips.Object
+
+    connect(sigName: "close", callback: Object_CloseSignalCallback): number
+    on(sigName: "close", callback: Object_CloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "close", callback: Object_CloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "close", callback: Object_CloseSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "close", ...args: any[]): void
+    connect(sigName: "postbuild", callback: Object_PostbuildSignalCallback): number
+    on(sigName: "postbuild", callback: Object_PostbuildSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "postbuild", callback: Object_PostbuildSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "postbuild", callback: Object_PostbuildSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "postbuild", ...args: any[]): void
+    connect(sigName: "postclose", callback: Object_PostcloseSignalCallback): number
+    on(sigName: "postclose", callback: Object_PostcloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "postclose", callback: Object_PostcloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "postclose", callback: Object_PostcloseSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "postclose", ...args: any[]): void
+    connect(sigName: "preclose", callback: Object_PrecloseSignalCallback): number
+    on(sigName: "preclose", callback: Object_PrecloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "preclose", callback: Object_PrecloseSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "preclose", callback: Object_PrecloseSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "preclose", ...args: any[]): void
+
+    // Class property signals of Vips-8.0.Vips.Object
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Object extends GObject.Object {
+
+    // Own properties of Vips-8.0.Vips.Object
+
     static name: string
-    constructor (config?: Object_ConstructProps)
-    _init (config?: Object_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Object>
+
+    // Constructors of Vips-8.0.Vips.Object
+
+    constructor(config?: Object_ConstructProps) 
     static newFromString(objectClass: ObjectClass, p: string): Object
+    _init(config?: Object_ConstructProps): void
     static getProperty(gobject: GObject.Object, propertyId: number, value: any, pspec: GObject.ParamSpec): void
     static printAll(): void
     static printSummaryClass(klass: ObjectClass): void
     static sanityAll(): void
     static setProperty(gobject: GObject.Object, propertyId: number, value: any, pspec: GObject.ParamSpec): void
-    static installArgument(cls: Object | Function | GObject.Type, pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void
-    static $gtype: GObject.Type
+    static installArgument(cls: Object | Function | GObject.GType, pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void
 }
+
 interface Operation_ConstructProps extends Object_ConstructProps {
 }
-class Operation {
-    /* Fields of Vips-8.0.Vips.Object */
-    parentInstance: GObject.Object
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Operation */
+
+/**
+ * Signal callback interface for `invalidate`
+ */
+interface Operation_InvalidateSignalCallback {
+    (): void
+}
+
+interface Operation {
+
+    // Own fields of Vips-8.0.Vips.Operation
+
+    parentInstance: Object
+    hash: number
+    foundHash: boolean
+    pixels: number
+
+    // Owm methods of Vips-8.0.Vips.Operation
+
     /**
      * Returns the set of flags for this operation.
      */
     getFlags(): OperationFlags
     invalidate(): void
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Operation */
-    connect(sigName: "invalidate", callback: (() => void)): number
-    on(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "invalidate", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "invalidate", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "invalidate"): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Vips-8.0.Vips.Operation
+
+    connect(sigName: "invalidate", callback: Operation_InvalidateSignalCallback): number
+    on(sigName: "invalidate", callback: Operation_InvalidateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "invalidate", callback: Operation_InvalidateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "invalidate", callback: Operation_InvalidateSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "invalidate", ...args: any[]): void
+
+    // Class property signals of Vips-8.0.Vips.Operation
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Operation_ConstructProps)
-    _init (config?: Operation_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(name: string): Operation
-    static $gtype: GObject.Type
 }
+
+class Operation extends Object {
+
+    // Own properties of Vips-8.0.Vips.Operation
+
+    static name: string
+    static $gtype: GObject.GType<Operation>
+
+    // Constructors of Vips-8.0.Vips.Operation
+
+    constructor(config?: Operation_ConstructProps) 
+    /**
+     * Return a new #VipsOperation with the specified nickname. Useful for
+     * language bindings.
+     * 
+     * You'll need to set
+     * any arguments and build the operation before you can use it. See
+     * vips_call() for a higher-level way to make new operations.
+     * @constructor 
+     * @param name nickname of operation to create
+     */
+    constructor(name: string) 
+    /**
+     * Return a new #VipsOperation with the specified nickname. Useful for
+     * language bindings.
+     * 
+     * You'll need to set
+     * any arguments and build the operation before you can use it. See
+     * vips_call() for a higher-level way to make new operations.
+     * @constructor 
+     * @param name nickname of operation to create
+     */
+    static new(name: string): Operation
+    _init(config?: Operation_ConstructProps): void
+}
+
 interface Region_ConstructProps extends Object_ConstructProps {
 }
-class Region {
-    /* Fields of Vips-8.0.Vips.Object */
-    parentInstance: GObject.Object
-    constructed: boolean
-    staticObject: boolean
-    argumentTable: ArgumentTable
-    nickname: string
-    description: string
-    preclose: boolean
-    close: boolean
-    postclose: boolean
-    localMemory: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Vips-8.0.Vips.Region */
+
+interface Region {
+
+    // Own fields of Vips-8.0.Vips.Region
+
+    parentObject: Object
+    /**
+     * the #VipsImage that this region is defined on
+     * @field 
+     */
+    im: Image
+    /**
+     * the #VipsRect of pixels that this region represents
+     * @field 
+     */
+    valid: Rect
+
+    // Owm methods of Vips-8.0.Vips.Region
+
     /**
      * Paints 0 into the valid part of `reg`.
      * 
@@ -6552,533 +4727,243 @@ class Region {
      */
     shrinkMethod(to: Region, target: Rect, method: RegionShrink): [ /* returnType */ number, /* to */ Region ]
     width(): number
-    /* Methods of Vips-8.0.Vips.Object */
-    /**
-     * Convenience: has an argument been assigned. Useful for bindings.
-     * @param name arg to fetch
-     */
-    argumentIsset(name: string): boolean
-    argumentNeedsstring(name: string): boolean
-    build(): number
-    /**
-     * Convenience: get the flags for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentFlags(name: string): ArgumentFlags
-    /**
-     * Convenience: get the priority for an argument. Useful for bindings.
-     * @param name arg to fetch
-     */
-    getArgumentPriority(name: string): number
-    getArgumentToString(name: string, arg: string): number
-    /**
-     * Fetch the object description. Useful for language bindings.
-     * 
-     * `object`.description is only avaliable after _build(), which can be too
-     * late. This function fetches from the instance, if possible, but falls back
-     * to the class description if we are too early.
-     */
-    getDescription(): string
-    localCb(gobject: GObject.Object): void
-    printDump(): void
-    printName(): void
-    printSummary(): void
-    rewind(): void
-    sanity(): boolean
-    setArgumentFromString(name: string, value: string): number
-    /**
-     * Set object arguments from a string. The string can be something like
-     * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
-     * enclosed in brackets.
-     * 
-     * You'd typically use this between creating the object and building it.
-     * 
-     * See also: vips_object_set(), vips_object_build(),
-     * vips_cache_operation_buildp().
-     * @param string arguments as a string
-     */
-    setFromString(string: string): number
-    setRequired(value: string): number
-    setStatic(staticObject: boolean): void
-    /**
-     * Unref all assigned output objects. Useful for language bindings.
-     * 
-     * After an object is built, all output args are owned by the caller. If
-     * something goes wrong before then, we have to unref the outputs that have
-     * been made so far. This function can also be useful for callers when
-     * they've finished processing outputs themselves.
-     * 
-     * See also: vips_cache_operation_build().
-     */
-    unrefOutputs(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of Vips-8.0.Vips.Object */
-    /**
-     * The ::close signal is emitted once during object close. The object
-     * is dying and may not work.
-     */
-    connect(sigName: "close", callback: (() => void)): number
-    on(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "close", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "close", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "close"): void
-    /**
-     * The ::postbuild signal is emitted once just after successful object
-     * construction. Return non-zero to cause object construction to fail.
-     */
-    connect(sigName: "postbuild", callback: (() => number)): number
-    on(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postbuild", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postbuild", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postbuild"): void
-    /**
-     * The ::postclose signal is emitted once after object close. The
-     * object pointer is still valid, but nothing else.
-     */
-    connect(sigName: "postclose", callback: (() => void)): number
-    on(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "postclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "postclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "postclose"): void
-    /**
-     * The ::preclose signal is emitted once just before object close
-     * starts. The oject is still alive.
-     */
-    connect(sigName: "preclose", callback: (() => void)): number
-    on(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "preclose", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "preclose", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "preclose"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Vips-8.0.Vips.Region
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Region_ConstructProps)
-    _init (config?: Region_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(image: Image): Region
-    static $gtype: GObject.Type
 }
-class Area {
-    /* Fields of Vips-8.0.Vips.Area */
+
+/**
+ * A small part of a #VipsImage. `valid` holds the left/top/width/height of the
+ * area of pixels that are available from the region.
+ * 
+ * See also: VIPS_REGION_ADDR(), vips_region_new(), vips_region_prepare().
+ * @class 
+ */
+class Region extends Object {
+
+    // Own properties of Vips-8.0.Vips.Region
+
+    static name: string
+    static $gtype: GObject.GType<Region>
+
+    // Constructors of Vips-8.0.Vips.Region
+
+    constructor(config?: Region_ConstructProps) 
+    /**
+     * Create a region. #VipsRegion s start out empty, you need to call
+     * vips_region_prepare() to fill them with pixels.
+     * 
+     * See also: vips_region_prepare().
+     * @constructor 
+     * @param image image to create this region on
+     */
+    constructor(image: Image) 
+    /**
+     * Create a region. #VipsRegion s start out empty, you need to call
+     * vips_region_prepare() to fill them with pixels.
+     * 
+     * See also: vips_region_prepare().
+     * @constructor 
+     * @param image image to create this region on
+     */
+    static new(image: Image): Region
+    _init(config?: Region_ConstructProps): void
+}
+
+interface Area {
+
+    // Own fields of Vips-8.0.Vips.Area
+
     data: object
     length: number
     n: number
-    /* Methods of Vips-8.0.Vips.Area */
+
+    // Owm methods of Vips-8.0.Vips.Area
+
     copy(): Area
     /**
      * Return the data pointer plus optionally the length in bytes of an area,
      * the number of elements, the %GType of each element and the sizeof() each
      * element.
      */
-    getData(): [ /* returnType */ object | null, /* length */ number | null, /* n */ number | null, /* type */ GObject.Type | null, /* sizeofType */ number | null ]
+    getData(): [ /* returnType */ object | null, /* length */ number, /* n */ number, /* type */ GObject.GType, /* sizeofType */ number ]
     unref(): void
+}
+
+class Area {
+
+    // Own properties of Vips-8.0.Vips.Area
+
     static name: string
+
+    // Constructors of Vips-8.0.Vips.Area
+
+    /**
+     * A VipsArea wraps a chunk of memory. It adds reference counting and a free
+     * function. It also keeps a count and a %GType, so the area can be an array.
+     * 
+     * This type is used for things like passing an array of double or an array of
+     * #VipsObject pointers to operations, and for reference-counted immutable
+     * strings.
+     * 
+     * Inital count == 1, so _unref() after attaching somewhere.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param freeFn `data` will be freed with this function
+     */
+    constructor(freeFn: CallbackFn) 
+    /**
+     * A VipsArea wraps a chunk of memory. It adds reference counting and a free
+     * function. It also keeps a count and a %GType, so the area can be an array.
+     * 
+     * This type is used for things like passing an array of double or an array of
+     * #VipsObject pointers to operations, and for reference-counted immutable
+     * strings.
+     * 
+     * Inital count == 1, so _unref() after attaching somewhere.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param freeFn `data` will be freed with this function
+     */
     static new(freeFn: CallbackFn): Area
-    constructor(freeFn: CallbackFn)
-    /* Static methods and pseudo-constructors */
-    static new(freeFn: CallbackFn): Area
-    static newArray(type: GObject.Type, sizeofType: number, n: number): Area
+    /**
+     * An area which holds an array of elements of some %GType. To set values for
+     * the elements, get the pointer and write.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param type %GType of elements to store
+     * @param sizeofType sizeof() an element in the array
+     * @param n number of elements in the array
+     */
+    static newArray(type: GObject.GType, sizeofType: number, n: number): Area
+    /**
+     * An area which holds an array of %GObject s. See vips_area_new_array(). When
+     * the area is freed, each %GObject will be unreffed.
+     * 
+     * Add an extra NULL element at the end, handy for eg.
+     * vips_image_pipeline_array() etc.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param n number of elements in the array
+     */
     static newArrayObject(n: number): Area
     static freeCb(mem: object | null, area: Area): number
 }
-class Argument {
-    /* Fields of Vips-8.0.Vips.Argument */
+
+interface Argument {
+
+    // Own fields of Vips-8.0.Vips.Argument
+
     pspec: GObject.ParamSpec
+}
+
+class Argument {
+
+    // Own properties of Vips-8.0.Vips.Argument
+
     static name: string
 }
-class ArgumentClass {
-    /* Fields of Vips-8.0.Vips.ArgumentClass */
+
+interface ArgumentClass {
+
+    // Own fields of Vips-8.0.Vips.ArgumentClass
+
     parent: Argument
     objectClass: ObjectClass
     flags: ArgumentFlags
     priority: number
     offset: number
-    /* Methods of Vips-8.0.Vips.ArgumentClass */
+
+    // Owm methods of Vips-8.0.Vips.ArgumentClass
+
     needsstring(): boolean
+}
+
+class ArgumentClass {
+
+    // Own properties of Vips-8.0.Vips.ArgumentClass
+
     static name: string
 }
-class ArgumentInstance {
-    /* Fields of Vips-8.0.Vips.ArgumentInstance */
+
+interface ArgumentInstance {
+
+    // Own fields of Vips-8.0.Vips.ArgumentInstance
+
     parent: Argument
     argumentClass: ArgumentClass
     object: Object
     assigned: boolean
     closeId: number
     invalidateId: number
+}
+
+class ArgumentInstance {
+
+    // Own properties of Vips-8.0.Vips.ArgumentInstance
+
     static name: string
 }
-class ArrayDouble {
-    /* Fields of Vips-8.0.Vips.ArrayDouble */
+
+interface ArrayDouble {
+
+    // Own fields of Vips-8.0.Vips.ArrayDouble
+
     area: Area
-    /* Methods of Vips-8.0.Vips.ArrayDouble */
+
+    // Owm methods of Vips-8.0.Vips.ArrayDouble
+
     /**
      * Fetch a double array from a #VipsArrayDouble. Useful for language bindings.
      */
     get(): number[]
+}
+
+class ArrayDouble {
+
+    // Own properties of Vips-8.0.Vips.ArrayDouble
+
     static name: string
-    static new(array: number[]): ArrayDouble
-    constructor(array: number[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.ArrayDouble
+
+    /**
+     * Allocate a new array of doubles and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of double
+     */
+    constructor(array: number[]) 
+    /**
+     * Allocate a new array of doubles and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of double
+     */
     static new(array: number[]): ArrayDouble
 }
-class ArrayImage {
-    /* Fields of Vips-8.0.Vips.ArrayImage */
+
+interface ArrayImage {
+
+    // Own fields of Vips-8.0.Vips.ArrayImage
+
     area: Area
-    /* Methods of Vips-8.0.Vips.ArrayImage */
+
+    // Owm methods of Vips-8.0.Vips.ArrayImage
+
     /**
      * Make a new #VipsArrayImage, one larger than `array,` with `image` appended
      * to the end.
@@ -7093,42 +4978,153 @@ class ArrayImage {
      * Fetch an image array from a #VipsArrayImage. Useful for language bindings.
      */
     get(): Image[]
+}
+
+class ArrayImage {
+
+    // Own properties of Vips-8.0.Vips.ArrayImage
+
     static name: string
-    static new(array: Image[]): ArrayImage
-    constructor(array: Image[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.ArrayImage
+
+    /**
+     * Make an empty image array.
+     * Handy with vips_array_image_add() for bindings
+     * which can't handle object array arguments.
+     * 
+     * See also: vips_array_image_add().
+     * @constructor 
+     */
     static empty(): ArrayImage
+    /**
+     * Allocate a new array of images and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * The images will all be reffed by this function. They
+     * will be automatically unreffed for you by
+     * vips_area_unref().
+     * 
+     * Add an extra NULL element at the end, handy for eg.
+     * vips_image_pipeline_array() etc.
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of #VipsImage
+     */
+    constructor(array: Image[]) 
+    /**
+     * Allocate a new array of images and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * The images will all be reffed by this function. They
+     * will be automatically unreffed for you by
+     * vips_area_unref().
+     * 
+     * Add an extra NULL element at the end, handy for eg.
+     * vips_image_pipeline_array() etc.
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of #VipsImage
+     */
     static new(array: Image[]): ArrayImage
     static newFromString(string: string, flags: Access): ArrayImage
 }
-class ArrayInt {
-    /* Fields of Vips-8.0.Vips.ArrayInt */
+
+interface ArrayInt {
+
+    // Own fields of Vips-8.0.Vips.ArrayInt
+
     area: Area
-    /* Methods of Vips-8.0.Vips.ArrayInt */
+
+    // Owm methods of Vips-8.0.Vips.ArrayInt
+
     /**
      * Fetch an int array from a #VipsArrayInt. Useful for language bindings.
      */
     get(): number[]
+}
+
+class ArrayInt {
+
+    // Own properties of Vips-8.0.Vips.ArrayInt
+
     static name: string
-    static new(array: number[]): ArrayInt
-    constructor(array: number[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.ArrayInt
+
+    /**
+     * Allocate a new array of ints and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of int
+     */
+    constructor(array: number[]) 
+    /**
+     * Allocate a new array of ints and copy `array` into it. Free with
+     * vips_area_unref().
+     * 
+     * See also: #VipsArea.
+     * @constructor 
+     * @param array array of int
+     */
     static new(array: number[]): ArrayInt
 }
-class Blob {
-    /* Fields of Vips-8.0.Vips.Blob */
+
+interface Blob {
+
+    // Own fields of Vips-8.0.Vips.Blob
+
     area: Area
-    /* Methods of Vips-8.0.Vips.Blob */
+
+    // Owm methods of Vips-8.0.Vips.Blob
+
     /**
      * Get the data from a #VipsBlob.
      * 
      * See also: vips_blob_new().
      */
     get(): Uint8Array
+}
+
+class Blob {
+
+    // Own properties of Vips-8.0.Vips.Blob
+
     static name: string
-    static new(freeFn: CallbackFn | null, data: Uint8Array): Blob
-    constructor(freeFn: CallbackFn | null, data: Uint8Array)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.Blob
+
+    /**
+     * Like vips_area_new(), but track a length as well. The returned #VipsBlob
+     * takes ownership of `data` and will free it with `free_fn`. Pass %NULL for
+     * `free_fn` to not transfer ownership.
+     * 
+     * An area of mem with a free func and a length (some sort of binary object,
+     * like an ICC profile).
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param freeFn `data` will be freed with this function
+     * @param data data to store
+     */
+    constructor(freeFn: CallbackFn | null, data: Uint8Array) 
+    /**
+     * Like vips_area_new(), but track a length as well. The returned #VipsBlob
+     * takes ownership of `data` and will free it with `free_fn`. Pass %NULL for
+     * `free_fn` to not transfer ownership.
+     * 
+     * An area of mem with a free func and a length (some sort of binary object,
+     * like an ICC profile).
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param freeFn `data` will be freed with this function
+     * @param data data to store
+     */
     static new(freeFn: CallbackFn | null, data: Uint8Array): Blob
     /**
      * Like vips_blob_new(), but take a copy of the data. Useful for bindings
@@ -7139,15 +5135,27 @@ class Blob {
      */
     static copy(data: Uint8Array): Blob
 }
-abstract class ForeignClass {
-    /* Fields of Vips-8.0.Vips.ForeignClass */
+
+interface ForeignClass {
+
+    // Own fields of Vips-8.0.Vips.ForeignClass
+
     parentClass: OperationClass
     priority: number
     suffs: string
+}
+
+abstract class ForeignClass {
+
+    // Own properties of Vips-8.0.Vips.ForeignClass
+
     static name: string
 }
-abstract class ForeignLoadClass {
-    /* Fields of Vips-8.0.Vips.ForeignLoadClass */
+
+interface ForeignLoadClass {
+
+    // Own fields of Vips-8.0.Vips.ForeignLoadClass
+
     parentClass: ForeignClass
     isA: (filename: string) => boolean
     isABuffer: (data: object, size: number) => boolean
@@ -7156,51 +5164,119 @@ abstract class ForeignLoadClass {
     getFlags: (load: ForeignLoad) => ForeignFlags
     header: (load: ForeignLoad) => number
     load: (load: ForeignLoad) => number
+}
+
+abstract class ForeignLoadClass {
+
+    // Own properties of Vips-8.0.Vips.ForeignLoadClass
+
     static name: string
 }
-abstract class ForeignSaveClass {
-    /* Fields of Vips-8.0.Vips.ForeignSaveClass */
+
+interface ForeignSaveClass {
+
+    // Own fields of Vips-8.0.Vips.ForeignSaveClass
+
     parentClass: ForeignClass
     saveable: Saveable
     formatTable: BandFormat
     coding: boolean[]
+}
+
+abstract class ForeignSaveClass {
+
+    // Own properties of Vips-8.0.Vips.ForeignSaveClass
+
     static name: string
 }
-abstract class ImageClass {
-    /* Fields of Vips-8.0.Vips.ImageClass */
+
+interface ImageClass {
+
+    // Own fields of Vips-8.0.Vips.ImageClass
+
     parentClass: ObjectClass
-    preeval: (image: Image, progress: Progress, data?: object | null) => void
-    eval_: (image: Image, progress: Progress, data?: object | null) => void
-    posteval: (image: Image, progress: Progress, data?: object | null) => void
-    written: (image: Image, result: number, data?: object | null) => void
-    invalidate: (image: Image, data?: object | null) => void
-    minimise: (image: Image, data?: object | null) => void
+    preeval: (image: Image, progress: Progress, data: object | null) => void
+    eval_: (image: Image, progress: Progress, data: object | null) => void
+    posteval: (image: Image, progress: Progress, data: object | null) => void
+    written: (image: Image, result: number, data: object | null) => void
+    invalidate: (image: Image, data: object | null) => void
+    minimise: (image: Image, data: object | null) => void
+}
+
+abstract class ImageClass {
+
+    // Own properties of Vips-8.0.Vips.ImageClass
+
     static name: string
 }
-abstract class InterpolateClass {
-    /* Fields of Vips-8.0.Vips.InterpolateClass */
+
+interface InterpolateClass {
+
+    // Own fields of Vips-8.0.Vips.InterpolateClass
+
     parentClass: ObjectClass
     /**
      * the interpolation method
+     * @field 
      */
     interpolate: InterpolateMethod
     getWindowSize: (interpolate: Interpolate) => number
     /**
      * or just set this for a constant window size
+     * @field 
      */
     windowSize: number
     getWindowOffset: (interpolate: Interpolate) => number
     /**
      * or just set this for a constant window offset
+     * @field 
      */
     windowOffset: number
+}
+
+/**
+ * The abstract base class for the various VIPS interpolation functions.
+ * Use "vips --list classes" to see all the interpolators available.
+ * 
+ * An interpolator consists of a function to perform the interpolation, plus
+ * some extra data fields which tell vips how to call the function and what
+ * data it needs.
+ * 
+ * `window_size` is the size of the window that the interpolator needs. For
+ * example, a bicubic interpolator needs to see a window of 4x4 pixels to be
+ * able to interpolate a value.
+ * 
+ * You can either have a function in `get_window_size` which returns the window
+ * that a specific interpolator needs, or you can leave `get_window_size` %NULL
+ * and set a constant value in `window_size`.
+ * 
+ * `window_offset` is how much to offset the window up and left of (x, y). For
+ * example, a bicubic interpolator will want a `window_offset` of 1.
+ * 
+ * You can either have a function in `get_window_offset` which returns the
+ * offset that a specific interpolator needs, or you can leave
+ * `get_window_offset` %NULL and set a constant value in `window_offset`.
+ * 
+ * You also need to set `nickname` and `description` in #VipsObject.
+ * 
+ * See also: #VipsInterpolateMethod, #VipsObject,
+ * vips_interpolate_bilinear_static().
+ * @record 
+ */
+abstract class InterpolateClass {
+
+    // Own properties of Vips-8.0.Vips.InterpolateClass
+
     static name: string
 }
-abstract class ObjectClass {
-    /* Fields of Vips-8.0.Vips.ObjectClass */
+
+interface ObjectClass {
+
+    // Own fields of Vips-8.0.Vips.ObjectClass
+
     parentClass: GObject.ObjectClass
     build: (object: Object) => number
-    postbuild: (object: Object, data?: object | null) => number
+    postbuild: (object: Object, data: object | null) => number
     rewind: (object: Object) => void
     preclose: (object: Object) => void
     close: (object: Object) => void
@@ -7211,48 +5287,87 @@ abstract class ObjectClass {
     description: string
     argumentTable: ArgumentTable
     argumentTableTraverse: object[]
-    argumentTableTraverseGtype: GObject.Type
+    argumentTableTraverseGtype: GObject.GType
     deprecated: boolean
-    /* Methods of Vips-8.0.Vips.ObjectClass */
-    static installArgument(cls: Object | Function | GObject.Type, pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void
-    static name: string
 }
-abstract class OperationClass {
-    /* Fields of Vips-8.0.Vips.OperationClass */
+
+abstract class ObjectClass {
+
+    // Own properties of Vips-8.0.Vips.ObjectClass
+
+    static name: string
+
+    // Owm static methods of Vips-8.0.Vips.ObjectClass
+
+    static installArgument(cls: Object | Function | GObject.GType, pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void
+}
+
+interface OperationClass {
+
+    // Own fields of Vips-8.0.Vips.OperationClass
+
     parentClass: ObjectClass
     getFlags: (operation: Operation) => OperationFlags
     flags: OperationFlags
     invalidate: (operation: Operation) => void
+}
+
+abstract class OperationClass {
+
+    // Own properties of Vips-8.0.Vips.OperationClass
+
     static name: string
 }
-class Progress {
-    /* Fields of Vips-8.0.Vips.Progress */
+
+interface Progress {
+
+    // Own fields of Vips-8.0.Vips.Progress
+
     /**
      * Time we have been running
+     * @field 
      */
     run: number
     /**
      * Estimated seconds of computation left
+     * @field 
      */
     eta: number
     /**
      * Number of pels we expect to calculate
+     * @field 
      */
     tpels: number
     /**
      * Number of pels calculated so far
+     * @field 
      */
     npels: number
     /**
      * Percent complete
+     * @field 
      */
     percent: number
     /**
      * Start time
+     * @field 
      */
     start: GLib.Timer
+}
+
+/**
+ * A structure available to eval callbacks giving information on evaluation
+ * progress. See #VipsImage::eval.
+ * @record 
+ */
+class Progress {
+
+    // Own properties of Vips-8.0.Vips.Progress
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.Progress
+
     /**
      * If set, vips will print messages about the progress of computation to
      * stdout. This can also be enabled with the --vips-progress option, or by
@@ -7261,25 +5376,34 @@ class Progress {
      */
     static set(progress: boolean): void
 }
-class Rect {
-    /* Fields of Vips-8.0.Vips.Rect */
+
+interface Rect {
+
+    // Own fields of Vips-8.0.Vips.Rect
+
     /**
      * left edge of rectangle
+     * @field 
      */
     left: number
     /**
      * top edge of rectangle
+     * @field 
      */
     top: number
     /**
      * width of rectangle
+     * @field 
      */
     width: number
     /**
      * height of rectangle
+     * @field 
      */
     height: number
-    /* Methods of Vips-8.0.Vips.Rect */
+
+    // Owm methods of Vips-8.0.Vips.Rect
+
     /**
      * Is `r1` equal to `r2`?
      * @param r2 second rectangle
@@ -7325,45 +5449,122 @@ class Rect {
      * @param r2 input rectangle 2
      */
     unionrect(r2: Rect): /* out */ Rect
+}
+
+/**
+ * A #VipsRect is a rectangular area of pixels. This is a struct for
+ * performing simple rectangle algebra.
+ * @record 
+ */
+class Rect {
+
+    // Own properties of Vips-8.0.Vips.Rect
+
     static name: string
 }
-class RefString {
-    /* Fields of Vips-8.0.Vips.RefString */
+
+interface RefString {
+
+    // Own fields of Vips-8.0.Vips.RefString
+
     area: Area
-    /* Methods of Vips-8.0.Vips.RefString */
+
+    // Owm methods of Vips-8.0.Vips.RefString
+
     /**
      * Get a pointer to the private string inside a refstr. Handy for language
      * bindings.
      * 
      * See also: vips_value_get_ref_string().
      */
-    get(): [ /* returnType */ string, /* length */ number | null ]
+    get(): [ /* returnType */ string, /* length */ number ]
+}
+
+class RefString {
+
+    // Own properties of Vips-8.0.Vips.RefString
+
     static name: string
-    static new(str: string): RefString
-    constructor(str: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.RefString
+
+    /**
+     * Create a new refstring. These are reference-counted immutable strings, used
+     * to store string data in vips image metadata.
+     * 
+     * Strings must be valid utf-8; use blob for binary data.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param str string to store
+     */
+    constructor(str: string) 
+    /**
+     * Create a new refstring. These are reference-counted immutable strings, used
+     * to store string data in vips image metadata.
+     * 
+     * Strings must be valid utf-8; use blob for binary data.
+     * 
+     * See also: vips_area_unref().
+     * @constructor 
+     * @param str string to store
+     */
     static new(str: string): RefString
 }
-abstract class RegionClass {
-    /* Fields of Vips-8.0.Vips.RegionClass */
+
+interface RegionClass {
+
+    // Own fields of Vips-8.0.Vips.RegionClass
+
     parentClass: ObjectClass
+}
+
+abstract class RegionClass {
+
+    // Own properties of Vips-8.0.Vips.RegionClass
+
     static name: string
 }
+
+interface Source {
+}
+
 class Source {
+
+    // Own properties of Vips-8.0.Vips.Source
+
     static name: string
 }
+
+interface Target {
+}
+
 class Target {
+
+    // Own properties of Vips-8.0.Vips.Target
+
     static name: string
 }
-class Thing {
-    /* Fields of Vips-8.0.Vips.Thing */
+
+interface Thing {
+
+    // Own fields of Vips-8.0.Vips.Thing
+
     i: number
+}
+
+class Thing {
+
+    // Own properties of Vips-8.0.Vips.Thing
+
     static name: string
-    static new(i: number): Thing
-    constructor(i: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Vips-8.0.Vips.Thing
+
+    constructor(i: number) 
     static new(i: number): Thing
 }
+
     type ArgumentTable = GLib.HashTable
     type Pel = number
 }

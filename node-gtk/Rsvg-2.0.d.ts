@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -72,6 +74,7 @@ enum Unit {
  * Configuration flags for an [class`Rsvg`.Handle].  Note that not all of [class`Rsvg`.Handle]'s
  * constructors let you specify flags.  For this reason, [ctor`Rsvg`.Handle.new_from_gfile_sync]
  * and [ctor`Rsvg`.Handle.new_from_stream_sync] are the preferred ways to create a handle.
+ * @bitfield 
  */
 enum HandleFlags {
     /**
@@ -165,48 +168,123 @@ const MINOR_VERSION: number
  * `rsvg_version` instead.
  */
 const VERSION: string
+/**
+ * This function does nothing.
+ */
 function cleanup(): void
+/**
+ * The error domain for RSVG
+ */
 function errorQuark(): GLib.Quark
+/**
+ * This function does nothing.
+ */
 function init(): void
+/**
+ * Loads a new `GdkPixbuf` from `filename` and returns it.  The caller must
+ * assume the reference to the reurned pixbuf. If an error occurred, `error` is
+ * set and `NULL` is returned.
+ * @param filename A file name
+ */
 function pixbufFromFile(filename: string): GdkPixbuf.Pixbuf | null
+/**
+ * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is uniformly
+ * scaled so that the it fits into a rectangle of size `max_width * max_height`. The
+ * caller must assume the reference to the returned pixbuf. If an error occurred,
+ * `error` is set and `NULL` is returned.
+ * @param filename A file name
+ * @param maxWidth The requested max width
+ * @param maxHeight The requested max height
+ */
 function pixbufFromFileAtMaxSize(filename: string, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
+/**
+ * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
+ * from the size indicated to the new size indicated by `width` and `height`.  If
+ * both of these are -1, then the default size of the image being loaded is
+ * used.  The caller must assume the reference to the returned pixbuf. If an
+ * error occurred, `error` is set and `NULL` is returned.
+ * @param filename A file name
+ * @param width The new width, or -1
+ * @param height The new height, or -1
+ */
 function pixbufFromFileAtSize(filename: string, width: number, height: number): GdkPixbuf.Pixbuf | null
+/**
+ * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
+ * from the size indicated by the file by a factor of `x_zoom` and `y_zoom`.  The
+ * caller must assume the reference to the returned pixbuf. If an error
+ * occurred, `error` is set and `NULL` is returned.
+ * @param filename A file name
+ * @param xZoom The horizontal zoom factor
+ * @param yZoom The vertical zoom factor
+ */
 function pixbufFromFileAtZoom(filename: string, xZoom: number, yZoom: number): GdkPixbuf.Pixbuf | null
+/**
+ * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
+ * from the size indicated by the file by a factor of `x_zoom` and `y_zoom`. If the
+ * resulting pixbuf would be larger than max_width/max_heigh it is uniformly scaled
+ * down to fit in that rectangle. The caller must assume the reference to the
+ * returned pixbuf. If an error occurred, `error` is set and `NULL` is returned.
+ * @param filename A file name
+ * @param xZoom The horizontal zoom factor
+ * @param yZoom The vertical zoom factor
+ * @param maxWidth The requested max width
+ * @param maxHeight The requested max height
+ */
 function pixbufFromFileAtZoomWithMax(filename: string, xZoom: number, yZoom: number, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
+/**
+ * Do not use this function.  Create an [class`Rsvg`.Handle] and call
+ * [method`Rsvg`.Handle.set_dpi] on it instead.
+ * @param dpi Dots Per Inch (aka Pixels Per Inch)
+ */
 function setDefaultDpi(dpi: number): void
+/**
+ * Do not use this function.  Create an [class`Rsvg`.Handle] and call
+ * [method`Rsvg`.Handle.set_dpi_x_y] on it instead.
+ * @param dpiX Dots Per Inch (aka Pixels Per Inch)
+ * @param dpiY Dots Per Inch (aka Pixels Per Inch)
+ */
 function setDefaultDpiXY(dpiX: number, dpiY: number): void
+/**
+ * This function does nothing.
+ */
 function term(): void
 /**
  * Function to let a user of the library specify the SVG's dimensions
  * 
  * See the documentation for [method`Rsvg`.Handle.set_size_callback] for an example, and
  * for the reasons for deprecation.
+ * @callback 
  */
 interface SizeFunc {
     (): void
 }
 interface Handle_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Rsvg-2.0.Rsvg.Handle */
+
+    // Own constructor properties of Rsvg-2.0.Rsvg.Handle
+
     /**
      * Base URI, to be used to resolve relative references for resources.  See the section
      * "Security and locations of referenced files" for details.
      */
-    baseUri?: string
+    baseUri?: string | null
     /**
      * Horizontal resolution in dots per inch.
      */
-    dpiX?: number
+    dpiX?: number | null
     /**
      * Horizontal resolution in dots per inch.
      */
-    dpiY?: number
+    dpiY?: number | null
     /**
      * Flags from [flags`Rsvg`.HandleFlags].
      */
-    flags?: HandleFlags
+    flags?: HandleFlags | null
 }
-class Handle {
-    /* Properties of Rsvg-2.0.Rsvg.Handle */
+
+interface Handle {
+
+    // Own properties of Rsvg-2.0.Rsvg.Handle
+
     /**
      * Base URI, to be used to resolve relative references for resources.  See the section
      * "Security and locations of referenced files" for details.
@@ -256,9 +334,13 @@ class Handle {
      * as specified by [method`Rsvg`.Handle.set_size_callback].
      */
     readonly width: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Rsvg-2.0.Rsvg.Handle */
+
+    // Own fields of Rsvg-2.0.Rsvg.Handle
+
+    parent: GObject.Object
+
+    // Owm methods of Rsvg-2.0.Rsvg.Handle
+
     /**
      * This is used after calling [method`Rsvg`.Handle.write] to indicate that there is no more data
      * to consume, and to start the actual parsing of the SVG document.  The only reason to
@@ -300,7 +382,7 @@ class Handle {
      * has an `id="foo"` attribute.
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
      */
-    getDimensionsSub(id?: string | null): [ /* returnType */ boolean, /* dimensionData */ DimensionData ]
+    getDimensionsSub(id: string | null): [ /* returnType */ boolean, /* dimensionData */ DimensionData ]
     /**
      * Computes the ink rectangle and logical rectangle of a single SVG element.
      * 
@@ -332,7 +414,7 @@ class Handle {
      * the child elements.
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
      */
-    getGeometryForElement(id?: string | null): [ /* returnType */ boolean, /* outInkRect */ Rectangle | null, /* outLogicalRect */ Rectangle | null ]
+    getGeometryForElement(id: string | null): [ /* returnType */ boolean, /* outInkRect */ Rectangle, /* outLogicalRect */ Rectangle ]
     /**
      * Computes the ink rectangle and logical rectangle of an SVG element, or the
      * whole SVG, as if the whole SVG were rendered to a specific viewport.
@@ -359,7 +441,7 @@ class Handle {
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
      * @param viewport Viewport size at which the whole SVG would be fitted.
      */
-    getGeometryForLayer(id: string | null, viewport: Rectangle): [ /* returnType */ boolean, /* outInkRect */ Rectangle | null, /* outLogicalRect */ Rectangle | null ]
+    getGeometryForLayer(id: string | null, viewport: Rectangle): [ /* returnType */ boolean, /* outInkRect */ Rectangle, /* outLogicalRect */ Rectangle ]
     /**
      * In simple terms, queries the `width`, `height`, and `viewBox` attributes in an SVG document.
      * 
@@ -407,7 +489,7 @@ class Handle {
      * 
      * Panics: this function will panic if the `handle` is not fully-loaded.
      */
-    getIntrinsicDimensions(): [ /* outHasWidth */ boolean | null, /* outWidth */ Length | null, /* outHasHeight */ boolean | null, /* outHeight */ Length | null, /* outHasViewbox */ boolean | null, /* outViewbox */ Rectangle | null ]
+    getIntrinsicDimensions(): [ /* outHasWidth */ boolean, /* outWidth */ Length, /* outHasHeight */ boolean, /* outHeight */ Length, /* outHasViewbox */ boolean, /* outViewbox */ Rectangle ]
     /**
      * Converts an SVG document's intrinsic dimensions to pixels, and returns the result.
      * 
@@ -455,7 +537,7 @@ class Handle {
      * documents to a size chosen by the application, by passing a suitably-sized viewport to
      * [method`Rsvg`.Handle.render_document].
      */
-    getIntrinsicSizeInPixels(): [ /* returnType */ boolean, /* outWidth */ number | null, /* outHeight */ number | null ]
+    getIntrinsicSizeInPixels(): [ /* returnType */ boolean, /* outWidth */ number, /* outHeight */ number ]
     getMetadata(): string | null
     /**
      * Returns the pixbuf loaded by `handle`.  The pixbuf returned will be reffed, so
@@ -490,7 +572,7 @@ class Handle {
      * the section "[API ordering](class.Handle.html#api-ordering)" for details.
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
      */
-    getPixbufSub(id?: string | null): GdkPixbuf.Pixbuf | null
+    getPixbufSub(id: string | null): GdkPixbuf.Pixbuf | null
     /**
      * Get the position of a subelement of the SVG file. Do not call from within
      * the size_func callback, because an infinite loop will occur.
@@ -503,7 +585,7 @@ class Handle {
      * has an `id="foo"` attribute.
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass %NULL to use the whole SVG.
      */
-    getPositionSub(id?: string | null): [ /* returnType */ boolean, /* positionData */ PositionData ]
+    getPositionSub(id: string | null): [ /* returnType */ boolean, /* positionData */ PositionData ]
     getTitle(): string | null
     /**
      * Checks whether the element `id` exists in the SVG document.
@@ -536,7 +618,7 @@ class Handle {
      * @param stream a `GInputStream`
      * @param cancellable a `GCancellable`, or `NULL`
      */
-    readStreamSync(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean
+    readStreamSync(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean
     /**
      * Draws a loaded SVG handle to a Cairo context.  Please try to use
      * [method`Rsvg`.Handle.render_document] instead, which allows you to pick the size
@@ -631,7 +713,7 @@ class Handle {
      * @param cr A Cairo context
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG.
      */
-    renderCairoSub(cr: cairo.Context, id?: string | null): boolean
+    renderCairoSub(cr: cairo.Context, id: string | null): boolean
     /**
      * Renders the whole SVG document fitted to a viewport.
      * 
@@ -774,501 +856,514 @@ class Handle {
      * @param buf pointer to svg data
      */
     write(buf: Uint8Array): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::base-uri", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::base-uri", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::base-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::base-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of Rsvg-2.0.Rsvg.Handle
+
+    connect(sigName: "notify::base-uri", callback: (...args: any[]) => void): number
+    on(sigName: "notify::base-uri", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::base-uri", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::base-uri", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::desc", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::desc", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::desc", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::desc", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::base-uri", ...args: any[]): void
+    connect(sigName: "notify::desc", callback: (...args: any[]) => void): number
+    on(sigName: "notify::desc", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::desc", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::desc", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::dpi-x", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::dpi-x", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::dpi-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::dpi-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::desc", ...args: any[]): void
+    connect(sigName: "notify::dpi-x", callback: (...args: any[]) => void): number
+    on(sigName: "notify::dpi-x", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::dpi-x", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::dpi-x", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::dpi-y", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::dpi-y", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::dpi-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::dpi-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::dpi-x", ...args: any[]): void
+    connect(sigName: "notify::dpi-y", callback: (...args: any[]) => void): number
+    on(sigName: "notify::dpi-y", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::dpi-y", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::dpi-y", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::em", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::em", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::em", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::em", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::dpi-y", ...args: any[]): void
+    connect(sigName: "notify::em", callback: (...args: any[]) => void): number
+    on(sigName: "notify::em", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::em", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::em", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::ex", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::ex", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::ex", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::ex", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::em", ...args: any[]): void
+    connect(sigName: "notify::ex", callback: (...args: any[]) => void): number
+    on(sigName: "notify::ex", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::ex", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::ex", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::flags", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::ex", ...args: any[]): void
+    connect(sigName: "notify::flags", callback: (...args: any[]) => void): number
+    on(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::height", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::flags", ...args: any[]): void
+    connect(sigName: "notify::height", callback: (...args: any[]) => void): number
+    on(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::height", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::height", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::metadata", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::metadata", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::height", ...args: any[]): void
+    connect(sigName: "notify::metadata", callback: (...args: any[]) => void): number
+    on(sigName: "notify::metadata", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::metadata", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::title", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::metadata", ...args: any[]): void
+    connect(sigName: "notify::title", callback: (...args: any[]) => void): number
+    on(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::title", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::width", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::width", callback: (...args: any[]) => void): number
+    on(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::width", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::width", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::width", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Handle_ConstructProps)
-    _init (config?: Handle_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Handle
-    static newFromData(data: Uint8Array): Handle
-    static newFromFile(filename: string): Handle
-    static newFromGfileSync(file: Gio.File, flags: HandleFlags, cancellable?: Gio.Cancellable | null): Handle
-    static newFromStreamSync(inputStream: Gio.InputStream, baseFile: Gio.File | null, flags: HandleFlags, cancellable?: Gio.Cancellable | null): Handle
-    static newWithFlags(flags: HandleFlags): Handle
-    static $gtype: GObject.Type
 }
-class DimensionData {
-    /* Fields of Rsvg-2.0.Rsvg.DimensionData */
+
+/**
+ * [class`Rsvg`.Handle] loads an SVG document into memory.
+ * 
+ * This is the main entry point into the librsvg library.  An [class`Rsvg`.Handle] is an
+ * object that represents SVG data in memory.  Your program creates an
+ * [class`Rsvg`.Handle] from an SVG file, or from a memory buffer that contains SVG data,
+ * or in the most general form, from a `GInputStream` that will provide SVG data.
+ * 
+ * Librsvg can load SVG images and render them to Cairo surfaces,
+ * using a mixture of SVG's [static mode] and [secure static mode].
+ * Librsvg does not do animation nor scripting, and can load
+ * references to external data only in some situations; see below.
+ * 
+ * Librsvg supports reading [SVG 1.1](https://www.w3.org/TR/SVG11/) data, and is gradually
+ * adding support for features in [SVG 2](https://www.w3.org/TR/SVG2/).  Librsvg also
+ * supports SVGZ files, which are just an SVG stream compressed with the GZIP algorithm.
+ * 
+ * [static mode]: https://www.w3.org/TR/SVG2/conform.html#static-mode
+ * [secure static mode]: https://www.w3.org/TR/SVG2/conform.html#secure-static-mode
+ * 
+ * # The "base file" and resolving references to external files
+ * 
+ * When you load an SVG, librsvg needs to know the location of the "base file"
+ * for it.  This is so that librsvg can determine the location of referenced
+ * entities.  For example, say you have an SVG in `/foo/bar/foo.svg`
+ * and that it has an image element like this:
+ * 
+ * ```
+ * <image href="resources/foo.png" .../>
+ * ```
+ * 
+ * In this case, librsvg needs to know the location of the toplevel
+ * `/foo/bar/foo.svg` so that it can generate the appropriate
+ * reference to `/foo/bar/resources/foo.png`.
+ * 
+ * ## Security and locations of referenced files
+ * 
+ * When processing an SVG, librsvg will only load referenced files if they are
+ * in the same directory as the base file, or in a subdirectory of it.  That is,
+ * if the base file is `/foo/bar/baz.svg`, then librsvg will
+ * only try to load referenced files (from SVG's
+ * `<image>` element, for example, or from content
+ * included through XML entities) if those files are in `/foo/bar/*` or in `/foo/bar/*\/.../*`.
+ * This is so that malicious SVG files cannot include files that are in a directory above.
+ * 
+ * The full set of rules for deciding which URLs may be loaded is as follows;
+ * they are applied in order.  A referenced URL will not be loaded as soon as
+ * one of these rules fails:
+ * 
+ * 1. All `data:` URLs may be loaded.  These are sometimes used
+ *    to include raster image data, encoded as base-64, directly in an SVG file.
+ * 
+ * 2. All other URL schemes in references require a base URL.  For
+ *    example, this means that if you load an SVG with
+ *    [ctor`Rsvg`.Handle.new_from_data] without calling [method`Rsvg`.Handle.set_base_uri],
+ *    then any referenced files will not be allowed (e.g. raster images to be
+ *    loaded from other files will not work).
+ * 
+ * 3. If referenced URLs are absolute, rather than relative, then they must
+ *    have the same scheme as the base URL.  For example, if the base URL has a
+ *    `file` scheme, then all URL references inside the SVG must
+ *    also have the `file` scheme, or be relative references which
+ *    will be resolved against the base URL.
+ * 
+ * 4. If referenced URLs have a `resource` scheme, that is,
+ *    if they are included into your binary program with GLib's resource
+ *    mechanism, they are allowed to be loaded (provided that the base URL is
+ *    also a `resource`, per the previous rule).
+ * 
+ * 5. Otherwise, non-`file` schemes are not allowed.  For
+ *    example, librsvg will not load `http` resources, to keep
+ *    malicious SVG data from "phoning home".
+ * 
+ * 6. A relative URL must resolve to the same directory as the base URL, or to
+ *    one of its subdirectories.  Librsvg will canonicalize filenames, by
+ *    removing ".." path components and resolving symbolic links, to decide whether
+ *    files meet these conditions.
+ * 
+ * # Loading an SVG with GIO
+ * 
+ * This is the easiest and most resource-efficient way of loading SVG data into
+ * an [class`Rsvg`.Handle].
+ * 
+ * If you have a `GFile` that stands for an SVG file, you can simply call
+ * [ctor`Rsvg`.Handle.new_from_gfile_sync] to load an [class`Rsvg`.Handle] from it.
+ * 
+ * Alternatively, if you have a `GInputStream`, you can use
+ * [ctor`Rsvg`.Handle.new_from_stream_sync].
+ * 
+ * Both of those methods allow specifying a `GCancellable`, so the loading
+ * process can be cancelled from another thread.
+ * 
+ * ## Loading an SVG from memory
+ * 
+ * If you already have SVG data in a byte buffer in memory, you can create a
+ * memory input stream with [ctor`Gio`.MemoryInputStream.new_from_data] and feed that
+ * to [ctor`Rsvg`.Handle.new_from_stream_sync].
+ * 
+ * Note that in this case, it is important that you specify the base_file for
+ * the in-memory SVG data.  Librsvg uses the base_file to resolve links to
+ * external content, like raster images.
+ * 
+ * # Loading an SVG without GIO
+ * 
+ * You can load an [class`Rsvg`.Handle] from a simple filename or URI with
+ * [ctor`Rsvg`.Handle.new_from_file].  Note that this is a blocking operation; there
+ * is no way to cancel it if loading a remote URI takes a long time.  Also, note that
+ * this method does not let you specify [flags`Rsvg`.HandleFlags].
+ * 
+ * Otherwise, loading an SVG without GIO is not recommended, since librsvg will
+ * need to buffer your entire data internally before actually being able to
+ * parse it.  The deprecated way of doing this is by creating a handle with
+ * [ctor`Rsvg`.Handle.new] or [ctor`Rsvg`.Handle.new_with_flags], and then using
+ * [method`Rsvg`.Handle.write] and [method`Rsvg`.Handle.close] to feed the handle with SVG data.
+ * Still, please try to use the GIO stream functions instead.
+ * 
+ * # Resolution of the rendered image (dots per inch, or DPI)
+ * 
+ * SVG images can contain dimensions like "`5cm`" or
+ * "`2pt`" that must be converted from physical units into
+ * device units.  To do this, librsvg needs to know the actual dots per inch
+ * (DPI) of your target device.  You can call [method`Rsvg`.Handle.set_dpi] or
+ * [method`Rsvg`.Handle.set_dpi_x_y] on an [class`Rsvg`.Handle] to set the DPI before rendering
+ * it.
+ * 
+ * # Rendering
+ * 
+ * The preferred way to render a whole SVG document is to use
+ * [method`Rsvg`.Handle.render_document].  Please see its documentation for
+ * details.
+ * 
+ * # API ordering
+ * 
+ * Due to the way the librsvg API evolved over time, an [class`Rsvg`.Handle] object is available
+ * for use as soon as it is constructed.  However, not all of its methods can be
+ * called at any time.  For example, an [class`Rsvg`.Handle] just constructed with [ctor`Rsvg`.Handle.new]
+ * is not loaded yet, and it does not make sense to call [method`Rsvg`.Handle.render_document] on it
+ * just at that point.
+ * 
+ * The documentation for the available methods in [class`Rsvg`.Handle] may mention that a particular
+ * method is only callable on a "fully loaded handle".  This means either:
+ * 
+ * * The handle was loaded with [method`Rsvg`.Handle.write] and [method`Rsvg`.Handle.close], and
+ *   those functions returned no errors.
+ * 
+ * * The handle was loaded with [method`Rsvg`.Handle.read_stream_sync] and that function
+ *   returned no errors.
+ * 
+ * Before librsvg 2.46, the library did not fully verify that a handle was in a
+ * fully loaded state for the methods that require it.  To preserve
+ * compatibility with old code which inadvertently called the API without
+ * checking for errors, or which called some methods outside of the expected
+ * order, librsvg will just emit a `g_critical()` message in those cases.
+ * 
+ * New methods introduced in librsvg 2.46 and later will check for the correct
+ * ordering, and panic if they are called out of order.  This will abort
+ * the program as if it had a failed assertion.
+ * @class 
+ */
+class Handle extends GObject.Object {
+
+    // Own properties of Rsvg-2.0.Rsvg.Handle
+
+    static name: string
+    static $gtype: GObject.GType<Handle>
+
+    // Constructors of Rsvg-2.0.Rsvg.Handle
+
+    constructor(config?: Handle_ConstructProps) 
+    /**
+     * Returns a new rsvg handle.  Must be freed with [method`GObject`.Object.unref].  This
+     * handle can be used to load an image.
+     * 
+     * The preferred way of loading SVG data into the returned [class`Rsvg`.Handle] is with
+     * [method`Rsvg`.Handle.read_stream_sync].
+     * 
+     * The deprecated way of loading SVG data is with [method`Rsvg`.Handle.write] and
+     * [method`Rsvg`.Handle.close]; note that these require buffering the entire file
+     * internally, and for this reason it is better to use the stream functions:
+     * [ctor`Rsvg`.Handle.new_from_stream_sync], [method`Rsvg`.Handle.read_stream_sync], or
+     * [ctor`Rsvg`.Handle.new_from_gfile_sync].
+     * 
+     * After loading the [class`Rsvg`.Handle] with data, you can render it using Cairo or get
+     * a GdkPixbuf from it. When finished, free the handle with [method`GObject`.Object.unref]. No
+     * more than one image can be loaded with one handle.
+     * 
+     * Note that this function creates an [class`Rsvg`.Handle] with no flags set.  If you
+     * require any of [flags`Rsvg`.HandleFlags] to be set, use any of
+     * [ctor`Rsvg`.Handle.new_with_flags], [ctor`Rsvg`.Handle.new_from_stream_sync], or
+     * [ctor`Rsvg`.Handle.new_from_gfile_sync].
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Returns a new rsvg handle.  Must be freed with [method`GObject`.Object.unref].  This
+     * handle can be used to load an image.
+     * 
+     * The preferred way of loading SVG data into the returned [class`Rsvg`.Handle] is with
+     * [method`Rsvg`.Handle.read_stream_sync].
+     * 
+     * The deprecated way of loading SVG data is with [method`Rsvg`.Handle.write] and
+     * [method`Rsvg`.Handle.close]; note that these require buffering the entire file
+     * internally, and for this reason it is better to use the stream functions:
+     * [ctor`Rsvg`.Handle.new_from_stream_sync], [method`Rsvg`.Handle.read_stream_sync], or
+     * [ctor`Rsvg`.Handle.new_from_gfile_sync].
+     * 
+     * After loading the [class`Rsvg`.Handle] with data, you can render it using Cairo or get
+     * a GdkPixbuf from it. When finished, free the handle with [method`GObject`.Object.unref]. No
+     * more than one image can be loaded with one handle.
+     * 
+     * Note that this function creates an [class`Rsvg`.Handle] with no flags set.  If you
+     * require any of [flags`Rsvg`.HandleFlags] to be set, use any of
+     * [ctor`Rsvg`.Handle.new_with_flags], [ctor`Rsvg`.Handle.new_from_stream_sync], or
+     * [ctor`Rsvg`.Handle.new_from_gfile_sync].
+     * @constructor 
+     */
+    static new(): Handle
+    /**
+     * Loads the SVG specified by `data`.  Note that this function creates an
+     * [class`Rsvg`.Handle] without a base URL, and without any [flags`Rsvg`.HandleFlags].  If you
+     * need these, use [ctor`Rsvg`.Handle.new_from_stream_sync] instead by creating
+     * a [class`Gio`.MemoryInputStream] from your data.
+     * @constructor 
+     * @param data The SVG data
+     */
+    static newFromData(data: Uint8Array): Handle
+    /**
+     * Loads the SVG specified by `file_name`.  Note that this function, like
+     * [ctor`Rsvg`.Handle.new], does not specify any loading flags for the resulting
+     * handle.  If you require the use of [flags`Rsvg`.HandleFlags], use
+     * [ctor`Rsvg`.Handle.new_from_gfile_sync].
+     * @constructor 
+     * @param filename The file name to load, or a URI.
+     */
+    static newFromFile(filename: string): Handle
+    /**
+     * Creates a new [class`Rsvg`.Handle] for `file`.
+     * 
+     * This function sets the "base file" of the handle to be `file` itself, so SVG
+     * elements like `<image>` which reference external
+     * resources will be resolved relative to the location of `file`.
+     * 
+     * If `cancellable` is not `NULL`, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the
+     * operation was cancelled, the error `G_IO_ERROR_CANCELLED` will be
+     * returned in `error`.
+     * @constructor 
+     * @param file a `GFile`
+     * @param flags flags from [flags`Rsvg`.HandleFlags]
+     * @param cancellable a `GCancellable`, or `NULL`
+     */
+    static newFromGfileSync(file: Gio.File, flags: HandleFlags, cancellable: Gio.Cancellable | null): Handle
+    /**
+     * Creates a new [class`Rsvg`.Handle] for `stream`.
+     * 
+     * This function sets the "base file" of the handle to be `base_file` if
+     * provided.  SVG elements like `<image>` which reference
+     * external resources will be resolved relative to the location of `base_file`.
+     * 
+     * If `cancellable` is not `NULL`, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the
+     * operation was cancelled, the error `G_IO_ERROR_CANCELLED` will be
+     * returned in `error`.
+     * @constructor 
+     * @param inputStream a `GInputStream`
+     * @param baseFile a `GFile`, or `NULL`
+     * @param flags flags from [flags`Rsvg`.HandleFlags]
+     * @param cancellable a `GCancellable`, or `NULL`
+     */
+    static newFromStreamSync(inputStream: Gio.InputStream, baseFile: Gio.File | null, flags: HandleFlags, cancellable: Gio.Cancellable | null): Handle
+    /**
+     * Creates a new [class`Rsvg`.Handle] with flags `flags`.  After calling this function,
+     * you can feed the resulting handle with SVG data by using
+     * [method`Rsvg`.Handle.read_stream_sync].
+     * @constructor 
+     * @param flags flags from [flags`Rsvg`.HandleFlags]
+     */
+    static newWithFlags(flags: HandleFlags): Handle
+    _init(config?: Handle_ConstructProps): void
+}
+
+interface DimensionData {
+
+    // Own fields of Rsvg-2.0.Rsvg.DimensionData
+
     /**
      * SVG's width, in pixels
+     * @field 
      */
     width: number
     /**
      * SVG's height, in pixels
+     * @field 
      */
     height: number
     /**
      * SVG's original width, unmodified by `RsvgSizeFunc`
+     * @field 
      */
     em: number
     /**
      * SVG's original height, unmodified by `RsvgSizeFunc`
+     * @field 
      */
     ex: number
+}
+
+/**
+ * Dimensions of an SVG image from [method`Rsvg`.Handle.get_dimensions], or an
+ * individual element from [method`Rsvg`.Handle.get_dimensions_sub].  Please see
+ * the deprecation documentation for those functions.
+ * @record 
+ */
+class DimensionData {
+
+    // Own properties of Rsvg-2.0.Rsvg.DimensionData
+
     static name: string
 }
-abstract class HandleClass {
-    /* Fields of Rsvg-2.0.Rsvg.HandleClass */
+
+interface HandleClass {
+
+    // Own fields of Rsvg-2.0.Rsvg.HandleClass
+
     /**
      * parent class
+     * @field 
      */
     parent: GObject.ObjectClass
+}
+
+/**
+ * Class structure for [class`Rsvg`.Handle].
+ * @record 
+ */
+abstract class HandleClass {
+
+    // Own properties of Rsvg-2.0.Rsvg.HandleClass
+
     static name: string
 }
-class Length {
-    /* Fields of Rsvg-2.0.Rsvg.Length */
+
+interface Length {
+
+    // Own fields of Rsvg-2.0.Rsvg.Length
+
     /**
      * numeric part of the length
+     * @field 
      */
     length: number
     /**
      * unit part of the length
+     * @field 
      */
     unit: Unit
+}
+
+/**
+ * `RsvgLength` values are used in [method`Rsvg`.Handle.get_intrinsic_dimensions], for
+ * example, to return the CSS length values of the `width` and
+ * `height` attributes of an `<svg>` element.
+ * 
+ * This is equivalent to [CSS lengths](https://www.w3.org/TR/CSS21/syndata.html#length-units).
+ * 
+ * It is up to the calling application to convert lengths in non-pixel units
+ * (i.e. those where the `unit` field is not `RSVG_UNIT_PX`) into something
+ * meaningful to the application.  For example, if your application knows the
+ * dots-per-inch (DPI) it is using, it can convert lengths with `unit` in
+ * `RSVG_UNIT_IN` or other physical units.
+ * @record 
+ */
+class Length {
+
+    // Own properties of Rsvg-2.0.Rsvg.Length
+
     static name: string
 }
-class PositionData {
-    /* Fields of Rsvg-2.0.Rsvg.PositionData */
+
+interface PositionData {
+
+    // Own fields of Rsvg-2.0.Rsvg.PositionData
+
     /**
      * position on the x axis
+     * @field 
      */
     x: number
     /**
      * position on the y axis
+     * @field 
      */
     y: number
+}
+
+/**
+ * Position of an SVG fragment from [method`Rsvg`.Handle.get_position_sub].  Please
+ * the deprecation documentation for that function.
+ * @record 
+ */
+class PositionData {
+
+    // Own properties of Rsvg-2.0.Rsvg.PositionData
+
     static name: string
 }
-class Rectangle {
-    /* Fields of Rsvg-2.0.Rsvg.Rectangle */
+
+interface Rectangle {
+
+    // Own fields of Rsvg-2.0.Rsvg.Rectangle
+
     /**
      * X coordinate of the left side of the rectangle
+     * @field 
      */
     x: number
     /**
      * Y coordinate of the the top side of the rectangle
+     * @field 
      */
     y: number
     /**
      * width of the rectangle
+     * @field 
      */
     width: number
     /**
      * height of the rectangle
+     * @field 
      */
     height: number
+}
+
+/**
+ * A data structure for holding a rectangle.
+ * @record 
+ */
+class Rectangle {
+
+    // Own properties of Rsvg-2.0.Rsvg.Rectangle
+
     static name: string
 }
+
 }
 export default Rsvg;

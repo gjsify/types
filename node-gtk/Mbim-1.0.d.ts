@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -2655,6 +2657,7 @@ enum WakeType {
 }
 /**
  * Cellular class.
+ * @bitfield 
  */
 enum CellularClass {
     /**
@@ -2668,6 +2671,7 @@ enum CellularClass {
 }
 /**
  * Control capabilities.
+ * @bitfield 
  */
 enum CtrlCaps {
     /**
@@ -2716,6 +2720,7 @@ enum CtrlCaps {
  * 
  * This type is updated in MBIM Extension v3.0 in a non-backwards compatible
  * way, see #MbimDataClassV3.
+ * @bitfield 
  */
 enum DataClass {
     /**
@@ -2790,6 +2795,7 @@ enum DataClass {
  * identify the specific 5G setup.
  * 
  * This type should be considered incompatible with #MbimDataClass.
+ * @bitfield 
  */
 enum DataClassV3 {
     /**
@@ -2855,6 +2861,7 @@ enum DataClassV3 {
 }
 /**
  * Flags specifying the data subclass.
+ * @bitfield 
  */
 enum DataSubclass {
     /**
@@ -2884,6 +2891,7 @@ enum DataSubclass {
 }
 /**
  * Flags to specify which actions to be performed when the device is open.
+ * @bitfield 
  */
 enum DeviceOpenFlags {
     /**
@@ -2905,6 +2913,7 @@ enum DeviceOpenFlags {
 }
 /**
  * Frequency Range.
+ * @bitfield 
  */
 enum FrequencyRange {
     /**
@@ -2922,6 +2931,7 @@ enum FrequencyRange {
 }
 /**
  * Mask of available information about an IP address.
+ * @bitfield 
  */
 enum IPConfigurationAvailableFlag {
     /**
@@ -2947,6 +2957,7 @@ enum IPConfigurationAvailableFlag {
 }
 /**
  * State of the provider.
+ * @bitfield 
  */
 enum ProviderState {
     /**
@@ -2980,6 +2991,7 @@ enum ProviderState {
 }
 /**
  * Flag specifying how the ready info is treated.
+ * @bitfield 
  */
 enum ReadyInfoFlag {
     /**
@@ -2993,6 +3005,7 @@ enum ReadyInfoFlag {
 }
 /**
  * Registration flags.
+ * @bitfield 
  */
 enum RegistrationFlag {
     /**
@@ -3010,6 +3023,7 @@ enum RegistrationFlag {
 }
 /**
  * SIM class.
+ * @bitfield 
  */
 enum SimClass {
     /**
@@ -3023,6 +3037,7 @@ enum SimClass {
 }
 /**
  * SMS capabilities.
+ * @bitfield 
  */
 enum SmsCaps {
     /**
@@ -3044,6 +3059,7 @@ enum SmsCaps {
 }
 /**
  * Flags specifying SIM related details.
+ * @bitfield 
  */
 enum SubscriberReadyStatusFlag {
     /**
@@ -3123,177 +3139,847 @@ const PROXY_N_DEVICES: string
  * Symbol defining the default abstract socket name where the #MbimProxy will listen.
  */
 const PROXY_SOCKET_PATH: string
+/**
+ * Gets the nickname string for the #MbimAccessMediaType specified at `val`.
+ * @param val a MbimAccessMediaType.
+ */
 function accessMediaTypeGetString(val: AccessMediaType): string
+/**
+ * Gets the nickname string for the #MbimActivationCommand specified at `val`.
+ * @param val a MbimActivationCommand.
+ */
 function activationCommandGetString(val: ActivationCommand): string
+/**
+ * Gets the nickname string for the #MbimActivationState specified at `val`.
+ * @param val a MbimActivationState.
+ */
 function activationStateGetString(val: ActivationState): string
+/**
+ * Frees the memory allocated for the array of #MbimAtdsProvider structs.
+ * @param array a #NULL terminated array of #MbimAtdsProvider structs.
+ */
 function atdsProviderArrayFree(array: AtdsProviderArray): void
+/**
+ * Gets the nickname string for the #MbimAtdsProviderPlmnMode specified at `val`.
+ * @param val a MbimAtdsProviderPlmnMode.
+ */
 function atdsProviderPlmnModeGetString(val: AtdsProviderPlmnMode): string
+/**
+ * Gets the nickname string for the #MbimAtdsRatMode specified at `val`.
+ * @param val a MbimAtdsRatMode.
+ */
 function atdsRatModeGetString(val: AtdsRatMode): string
+/**
+ * Gets the nickname string for the #MbimAuthProtocol specified at `val`.
+ * @param val a MbimAuthProtocol.
+ */
 function authProtocolGetString(val: AuthProtocol): string
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
+ * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
+ */
 function cellInfoCdmaArrayFree(array: CellInfoCdmaArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
+ * @param array a #NULL terminated array of #MbimCellInfoNeighboringGsm structs.
+ */
 function cellInfoNeighboringGsmArrayFree(array: CellInfoNeighboringGsmArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
+ * @param array a #NULL terminated array of #MbimCellInfoNeighboringLte structs.
+ */
 function cellInfoNeighboringLteArrayFree(array: CellInfoNeighboringLteArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
+ * @param array a #NULL terminated array of #MbimCellInfoNeighboringNr structs.
+ */
 function cellInfoNeighboringNrArrayFree(array: CellInfoNeighboringNrArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
+ * @param array a #NULL terminated array of #MbimCellInfoNeighboringTdscdma structs.
+ */
 function cellInfoNeighboringTdscdmaArrayFree(array: CellInfoNeighboringTdscdmaArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
+ * @param array a #NULL terminated array of #MbimCellInfoNeighboringUmts structs.
+ */
 function cellInfoNeighboringUmtsArrayFree(array: CellInfoNeighboringUmtsArray): void
+/**
+ * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
+ * @param array a #NULL terminated array of #MbimCellInfoServingNr structs.
+ */
 function cellInfoServingNrArrayFree(array: CellInfoServingNrArray): void
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimCellularClass in `mask`.
+ * @param mask bitmask of MbimCellularClass values.
+ */
 function cellularClassBuildStringFromMask(mask: CellularClass): string
+/**
+ * Gets the nickname string for the #MbimCidAtds specified at `val`.
+ * @param val a MbimCidAtds.
+ */
 function cidAtdsGetString(val: CidAtds): string
+/**
+ * Gets the nickname string for the #MbimCidAuth specified at `val`.
+ * @param val a MbimCidAuth.
+ */
 function cidAuthGetString(val: CidAuth): string
+/**
+ * Gets the nickname string for the #MbimCidBasicConnect specified at `val`.
+ * @param val a MbimCidBasicConnect.
+ */
 function cidBasicConnectGetString(val: CidBasicConnect): string
+/**
+ * Checks whether the given command allows notifying.
+ * @param service a #MbimService.
+ * @param cid a command ID.
+ */
 function cidCanNotify(service: Service, cid: number): boolean
+/**
+ * Checks whether the given command allows querying.
+ * @param service a #MbimService.
+ * @param cid a command ID.
+ */
 function cidCanQuery(service: Service, cid: number): boolean
+/**
+ * Checks whether the given command allows setting.
+ * @param service a #MbimService.
+ * @param cid a command ID.
+ */
 function cidCanSet(service: Service, cid: number): boolean
+/**
+ * Gets the nickname string for the #MbimCidDss specified at `val`.
+ * @param val a MbimCidDss.
+ */
 function cidDssGetString(val: CidDss): string
+/**
+ * Gets a printable string for the command specified by the `service` and the
+ * `cid`.
+ * @param service a #MbimService.
+ * @param cid a command ID.
+ */
 function cidGetPrintable(service: Service, cid: number): string
+/**
+ * Gets the nickname string for the #MbimCidIntelFirmwareUpdate specified at `val`.
+ * @param val a MbimCidIntelFirmwareUpdate.
+ */
 function cidIntelFirmwareUpdateGetString(val: CidIntelFirmwareUpdate): string
+/**
+ * Gets the nickname string for the #MbimCidMsBasicConnectExtensions specified at `val`.
+ * @param val a MbimCidMsBasicConnectExtensions.
+ */
 function cidMsBasicConnectExtensionsGetString(val: CidMsBasicConnectExtensions): string
+/**
+ * Gets the nickname string for the #MbimCidMsFirmwareId specified at `val`.
+ * @param val a MbimCidMsFirmwareId.
+ */
 function cidMsFirmwareIdGetString(val: CidMsFirmwareId): string
+/**
+ * Gets the nickname string for the #MbimCidMsHostShutdown specified at `val`.
+ * @param val a MbimCidMsHostShutdown.
+ */
 function cidMsHostShutdownGetString(val: CidMsHostShutdown): string
+/**
+ * Gets the nickname string for the #MbimCidMsSar specified at `val`.
+ * @param val a MbimCidMsSar.
+ */
 function cidMsSarGetString(val: CidMsSar): string
+/**
+ * Gets the nickname string for the #MbimCidMsUiccLowLevelAccess specified at `val`.
+ * @param val a MbimCidMsUiccLowLevelAccess.
+ */
 function cidMsUiccLowLevelAccessGetString(val: CidMsUiccLowLevelAccess): string
+/**
+ * Gets the nickname string for the #MbimCidPhonebook specified at `val`.
+ * @param val a MbimCidPhonebook.
+ */
 function cidPhonebookGetString(val: CidPhonebook): string
+/**
+ * Gets the nickname string for the #MbimCidProxyControl specified at `val`.
+ * @param val a MbimCidProxyControl.
+ */
 function cidProxyControlGetString(val: CidProxyControl): string
+/**
+ * Gets the nickname string for the #MbimCidQdu specified at `val`.
+ * @param val a MbimCidQdu.
+ */
 function cidQduGetString(val: CidQdu): string
+/**
+ * Gets the nickname string for the #MbimCidQmi specified at `val`.
+ * @param val a MbimCidQmi.
+ */
 function cidQmiGetString(val: CidQmi): string
+/**
+ * Gets the nickname string for the #MbimCidQuectel specified at `val`.
+ * @param val a MbimCidQuectel.
+ */
 function cidQuectelGetString(val: CidQuectel): string
+/**
+ * Gets the nickname string for the #MbimCidSms specified at `val`.
+ * @param val a MbimCidSms.
+ */
 function cidSmsGetString(val: CidSms): string
+/**
+ * Gets the nickname string for the #MbimCidStk specified at `val`.
+ * @param val a MbimCidStk.
+ */
 function cidStkGetString(val: CidStk): string
+/**
+ * Gets the nickname string for the #MbimCidUssd specified at `val`.
+ * @param val a MbimCidUssd.
+ */
 function cidUssdGetString(val: CidUssd): string
+/**
+ * Gets the nickname string for the #MbimCompression specified at `val`.
+ * @param val a MbimCompression.
+ */
 function compressionGetString(val: Compression): string
+/**
+ * Gets the nickname string for the #MbimContextIpType specified at `val`.
+ * @param val a MbimContextIpType.
+ */
 function contextIpTypeGetString(val: ContextIpType): string
+/**
+ * Gets the nickname string for the #MbimContextMediaType specified at `val`.
+ * @param val a MbimContextMediaType.
+ */
 function contextMediaTypeGetString(val: ContextMediaType): string
+/**
+ * Gets the nickname string for the #MbimContextOperation specified at `val`.
+ * @param val a MbimContextOperation.
+ */
 function contextOperationGetString(val: ContextOperation): string
+/**
+ * Gets the nickname string for the #MbimContextRoamingControl specified at `val`.
+ * @param val a MbimContextRoamingControl.
+ */
 function contextRoamingControlGetString(val: ContextRoamingControl): string
+/**
+ * Gets the nickname string for the #MbimContextSource specified at `val`.
+ * @param val a MbimContextSource.
+ */
 function contextSourceGetString(val: ContextSource): string
+/**
+ * Gets the nickname string for the #MbimContextState specified at `val`.
+ * @param val a MbimContextState.
+ */
 function contextStateGetString(val: ContextState): string
+/**
+ * Gets the nickname string for the #MbimContextType specified at `val`.
+ * @param val a MbimContextType.
+ */
 function contextTypeGetString(val: ContextType): string
+/**
+ * Gets the nickname string for the #MbimCoreError specified at `val`.
+ * @param val a MbimCoreError.
+ */
 function coreErrorGetString(val: CoreError): string
 function coreErrorQuark(): GLib.Quark
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimCtrlCaps in `mask`.
+ * @param mask bitmask of MbimCtrlCaps values.
+ */
 function ctrlCapsBuildStringFromMask(mask: CtrlCaps): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimDataClass in `mask`.
+ * @param mask bitmask of MbimDataClass values.
+ */
 function dataClassBuildStringFromMask(mask: DataClass): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimDataClassV3 in `mask`.
+ * @param mask bitmask of MbimDataClassV3 values.
+ */
 function dataClassV3BuildStringFromMask(mask: DataClassV3): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimDataSubclass in `mask`.
+ * @param mask bitmask of MbimDataSubclass values.
+ */
 function dataSubclassBuildStringFromMask(mask: DataSubclass): string
+/**
+ * Gets the nickname string for the #MbimDefaultPduActivationHint specified at `val`.
+ * @param val a MbimDefaultPduActivationHint.
+ */
 function defaultPduActivationHintGetString(val: DefaultPduActivationHint): string
+/**
+ * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
+ * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
+ */
 function deviceServiceElementArrayFree(array: DeviceServiceElementArray): void
+/**
+ * Gets the nickname string for the #MbimDeviceType specified at `val`.
+ * @param val a MbimDeviceType.
+ */
 function deviceTypeGetString(val: DeviceType): string
+/**
+ * Gets the nickname string for the #MbimDrxCycle specified at `val`.
+ * @param val a MbimDrxCycle.
+ */
 function drxCycleGetString(val: DrxCycle): string
+/**
+ * Gets the nickname string for the #MbimDssLinkState specified at `val`.
+ * @param val a MbimDssLinkState.
+ */
 function dssLinkStateGetString(val: DssLinkState): string
+/**
+ * Gets the nickname string for the #MbimEmergencyModeState specified at `val`.
+ * @param val a MbimEmergencyModeState.
+ */
 function emergencyModeStateGetString(val: EmergencyModeState): string
+/**
+ * Frees the memory allocated for the array of #MbimEventEntry structs.
+ * @param array a #NULL terminated array of #MbimEventEntry structs.
+ */
 function eventEntryArrayFree(array: EventEntryArray): void
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimFrequencyRange in `mask`.
+ * @param mask bitmask of MbimFrequencyRange values.
+ */
 function frequencyRangeBuildStringFromMask(mask: FrequencyRange): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimIPConfigurationAvailableFlag in `mask`.
+ * @param mask bitmask of MbimIPConfigurationAvailableFlag values.
+ */
 function ipConfigurationAvailableFlagBuildStringFromMask(mask: IPConfigurationAvailableFlag): string
+/**
+ * Frees the memory allocated for the array of #MbimIPv4Element structs.
+ * @param array a #NULL terminated array of #MbimIPv4Element structs.
+ */
 function ipv4ElementArrayFree(array: IPv4ElementArray): void
+/**
+ * Frees the memory allocated for the array of #MbimIPv6Element structs.
+ * @param array a #NULL terminated array of #MbimIPv6Element structs.
+ */
 function ipv6ElementArrayFree(array: IPv6ElementArray): void
+/**
+ * Gets the nickname string for the #MbimLadnInfo specified at `val`.
+ * @param val a MbimLadnInfo.
+ */
 function ladnInfoGetString(val: LadnInfo): string
+/**
+ * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
+ * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
+ */
 function lteAttachConfigurationArrayFree(array: LteAttachConfigurationArray): void
+/**
+ * Gets the nickname string for the #MbimLteAttachContextOperation specified at `val`.
+ * @param val a MbimLteAttachContextOperation.
+ */
 function lteAttachContextOperationGetString(val: LteAttachContextOperation): string
+/**
+ * Gets the nickname string for the #MbimLteAttachContextRoamingControl specified at `val`.
+ * @param val a MbimLteAttachContextRoamingControl.
+ */
 function lteAttachContextRoamingControlGetString(val: LteAttachContextRoamingControl): string
+/**
+ * Gets the nickname string for the #MbimLteAttachState specified at `val`.
+ * @param val a MbimLteAttachState.
+ */
 function lteAttachStateGetString(val: LteAttachState): string
+/**
+ * Frees the memory allocated for the #MbimLteAttachStatus.
+ * @param var_ a #MbimLteAttachStatus.
+ */
 function lteAttachStatusFree(var_: DeprecatedLteAttachStatus): void
+/**
+ * Gets the nickname string for the #MbimMessageCommandType specified at `val`.
+ * @param val a MbimMessageCommandType.
+ */
 function messageCommandTypeGetString(val: MessageCommandType): string
+/**
+ * Gets the nickname string for the #MbimMessageType specified at `val`.
+ * @param val a MbimMessageType.
+ */
 function messageTypeGetString(val: MessageType): string
+/**
+ * Gets the nickname string for the #MbimMicoMode specified at `val`.
+ * @param val a MbimMicoMode.
+ */
 function micoModeGetString(val: MicoMode): string
+/**
+ * Gets the nickname string for the #MbimModemConfigurationStatus specified at `val`.
+ * @param val a MbimModemConfigurationStatus.
+ */
 function modemConfigurationStatusGetString(val: ModemConfigurationStatus): string
+/**
+ * Gets the nickname string for the #MbimNetworkIdleHintState specified at `val`.
+ * @param val a MbimNetworkIdleHintState.
+ */
 function networkIdleHintStateGetString(val: NetworkIdleHintState): string
+/**
+ * Gets the nickname string for the #MbimNwError specified at `val`.
+ * @param val a MbimNwError.
+ */
 function nwErrorGetString(val: NwError): string
+/**
+ * Frees the memory allocated for the array of #MbimPacketFilter structs.
+ * @param array a #NULL terminated array of #MbimPacketFilter structs.
+ */
 function packetFilterArrayFree(array: PacketFilterArray): void
+/**
+ * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
+ * @param array a #NULL terminated array of #MbimPacketFilterV3 structs.
+ */
 function packetFilterV3ArrayFree(array: PacketFilterV3Array): void
+/**
+ * Gets the nickname string for the #MbimPacketServiceAction specified at `val`.
+ * @param val a MbimPacketServiceAction.
+ */
 function packetServiceActionGetString(val: PacketServiceAction): string
+/**
+ * Gets the nickname string for the #MbimPacketServiceState specified at `val`.
+ * @param val a MbimPacketServiceState.
+ */
 function packetServiceStateGetString(val: PacketServiceState): string
+/**
+ * Gets the nickname string for the #MbimPcoType specified at `val`.
+ * @param val a MbimPcoType.
+ */
 function pcoTypeGetString(val: PcoType): string
+/**
+ * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
+ * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
+ */
 function phonebookEntryArrayFree(array: PhonebookEntryArray): void
+/**
+ * Gets the nickname string for the #MbimPhonebookFlag specified at `val`.
+ * @param val a MbimPhonebookFlag.
+ */
 function phonebookFlagGetString(val: PhonebookFlag): string
+/**
+ * Gets the nickname string for the #MbimPhonebookState specified at `val`.
+ * @param val a MbimPhonebookState.
+ */
 function phonebookStateGetString(val: PhonebookState): string
+/**
+ * Gets the nickname string for the #MbimPhonebookWriteFlag specified at `val`.
+ * @param val a MbimPhonebookWriteFlag.
+ */
 function phonebookWriteFlagGetString(val: PhonebookWriteFlag): string
+/**
+ * Gets the nickname string for the #MbimPinFormat specified at `val`.
+ * @param val a MbimPinFormat.
+ */
 function pinFormatGetString(val: PinFormat): string
+/**
+ * Gets the nickname string for the #MbimPinMode specified at `val`.
+ * @param val a MbimPinMode.
+ */
 function pinModeGetString(val: PinMode): string
+/**
+ * Gets the nickname string for the #MbimPinOperation specified at `val`.
+ * @param val a MbimPinOperation.
+ */
 function pinOperationGetString(val: PinOperation): string
+/**
+ * Gets the nickname string for the #MbimPinState specified at `val`.
+ * @param val a MbimPinState.
+ */
 function pinStateGetString(val: PinState): string
+/**
+ * Gets the nickname string for the #MbimPinType specified at `val`.
+ * @param val a MbimPinType.
+ */
 function pinTypeGetString(val: PinType): string
+/**
+ * Gets the nickname string for the #MbimProtocolError specified at `val`.
+ * @param val a MbimProtocolError.
+ */
 function protocolErrorGetString(val: ProtocolError): string
 function protocolErrorQuark(): GLib.Quark
+/**
+ * Frees the memory allocated for the array of #MbimProvider structs.
+ * @param array a #NULL terminated array of #MbimProvider structs.
+ */
 function providerArrayFree(array: ProviderArray): void
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimProviderState in `mask`.
+ * @param mask bitmask of MbimProviderState values.
+ */
 function providerStateBuildStringFromMask(mask: ProviderState): string
+/**
+ * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
+ * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
+ */
 function provisionedContextElementArrayFree(array: ProvisionedContextElementArray): void
+/**
+ * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
+ * @param array a #NULL terminated array of #MbimProvisionedContextElementV2 structs.
+ */
 function provisionedContextElementV2ArrayFree(array: ProvisionedContextElementV2Array): void
+/**
+ * Gets the nickname string for the #MbimQduFileType specified at `val`.
+ * @param val a MbimQduFileType.
+ */
 function qduFileTypeGetString(val: QduFileType): string
+/**
+ * Gets the nickname string for the #MbimQduQuectelRebootType specified at `val`.
+ * @param val a MbimQduQuectelRebootType.
+ */
 function qduQuectelRebootTypeGetString(val: QduQuectelRebootType): string
+/**
+ * Gets the nickname string for the #MbimQduQuectelVersionType specified at `val`.
+ * @param val a MbimQduQuectelVersionType.
+ */
 function qduQuectelVersionTypeGetString(val: QduQuectelVersionType): string
+/**
+ * Gets the nickname string for the #MbimQduSessionAction specified at `val`.
+ * @param val a MbimQduSessionAction.
+ */
 function qduSessionActionGetString(val: QduSessionAction): string
+/**
+ * Gets the nickname string for the #MbimQduSessionResult specified at `val`.
+ * @param val a MbimQduSessionResult.
+ */
 function qduSessionResultGetString(val: QduSessionResult): string
+/**
+ * Gets the nickname string for the #MbimQduSessionStatus specified at `val`.
+ * @param val a MbimQduSessionStatus.
+ */
 function qduSessionStatusGetString(val: QduSessionStatus): string
+/**
+ * Gets the nickname string for the #MbimQduSessionType specified at `val`.
+ * @param val a MbimQduSessionType.
+ */
 function qduSessionTypeGetString(val: QduSessionType): string
+/**
+ * Gets the nickname string for the #MbimQuectelRadioSwitchState specified at `val`.
+ * @param val a MbimQuectelRadioSwitchState.
+ */
 function quectelRadioSwitchStateGetString(val: QuectelRadioSwitchState): string
+/**
+ * Gets the nickname string for the #MbimRadioSwitchState specified at `val`.
+ * @param val a MbimRadioSwitchState.
+ */
 function radioSwitchStateGetString(val: RadioSwitchState): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimReadyInfoFlag in `mask`.
+ * @param mask bitmask of MbimReadyInfoFlag values.
+ */
 function readyInfoFlagBuildStringFromMask(mask: ReadyInfoFlag): string
+/**
+ * Gets the nickname string for the #MbimRegisterAction specified at `val`.
+ * @param val a MbimRegisterAction.
+ */
 function registerActionGetString(val: RegisterAction): string
+/**
+ * Register a custom service
+ * @param uuid MbimUuid structure corresponding to service
+ * @param nickname a printable name for service
+ */
 function registerCustomService(uuid: Uuid, nickname: string): number
+/**
+ * Gets the nickname string for the #MbimRegisterMode specified at `val`.
+ * @param val a MbimRegisterMode.
+ */
 function registerModeGetString(val: RegisterMode): string
+/**
+ * Gets the nickname string for the #MbimRegisterState specified at `val`.
+ * @param val a MbimRegisterState.
+ */
 function registerStateGetString(val: RegisterState): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimRegistrationFlag in `mask`.
+ * @param mask bitmask of MbimRegistrationFlag values.
+ */
 function registrationFlagBuildStringFromMask(mask: RegistrationFlag): string
+/**
+ * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
+ * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
+ */
 function rsrpSnrInfoArrayFree(array: RsrpSnrInfoArray): void
+/**
+ * Gets the nickname string for the #MbimSarBackoffState specified at `val`.
+ * @param val a MbimSarBackoffState.
+ */
 function sarBackoffStateGetString(val: SarBackoffState): string
+/**
+ * Frees the memory allocated for the array of #MbimSarConfigState structs.
+ * @param array a #NULL terminated array of #MbimSarConfigState structs.
+ */
 function sarConfigStateArrayFree(array: SarConfigStateArray): void
+/**
+ * Gets the nickname string for the #MbimSarControlMode specified at `val`.
+ * @param val a MbimSarControlMode.
+ */
 function sarControlModeGetString(val: SarControlMode): string
+/**
+ * Gets the nickname string for the #MbimSarWifiHardwareState specified at `val`.
+ * @param val a MbimSarWifiHardwareState.
+ */
 function sarWifiHardwareStateGetString(val: SarWifiHardwareState): string
+/**
+ * Gets the nickname string for the #MbimService specified at `val`.
+ * @param val a MbimService.
+ */
 function serviceGetString(val: Service): string
+/**
+ * Checks whether `id` is a custom or standard service.
+ * @param id ID of the service
+ */
 function serviceIdIsCustom(id: number): boolean
+/**
+ * Gets the nickname string for the `service`.
+ * 
+ * As opposed to mbim_service_get_string(), this methods takes into account
+ * custom services that may have been registered by the user.
+ * @param service a MbimService or custom service.
+ */
 function serviceLookupName(service: number): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimSimClass in `mask`.
+ * @param mask bitmask of MbimSimClass values.
+ */
 function simClassBuildStringFromMask(mask: SimClass): string
+/**
+ * Frees the memory allocated for the array of #MbimSlot structs.
+ * @param array a #NULL terminated array of #MbimSlot structs.
+ */
 function slotArrayFree(array: SlotArray): void
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimSmsCaps in `mask`.
+ * @param mask bitmask of MbimSmsCaps values.
+ */
 function smsCapsBuildStringFromMask(mask: SmsCaps): string
+/**
+ * Gets the nickname string for the #MbimSmsCdmaEncoding specified at `val`.
+ * @param val a MbimSmsCdmaEncoding.
+ */
 function smsCdmaEncodingGetString(val: SmsCdmaEncoding): string
+/**
+ * Gets the nickname string for the #MbimSmsCdmaLang specified at `val`.
+ * @param val a MbimSmsCdmaLang.
+ */
 function smsCdmaLangGetString(val: SmsCdmaLang): string
+/**
+ * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
+ * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
+ */
 function smsCdmaReadRecordArrayFree(array: SmsCdmaReadRecordArray): void
+/**
+ * Gets the nickname string for the #MbimSmsFlag specified at `val`.
+ * @param val a MbimSmsFlag.
+ */
 function smsFlagGetString(val: SmsFlag): string
+/**
+ * Gets the nickname string for the #MbimSmsFormat specified at `val`.
+ * @param val a MbimSmsFormat.
+ */
 function smsFormatGetString(val: SmsFormat): string
+/**
+ * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
+ * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
+ */
 function smsPduReadRecordArrayFree(array: SmsPduReadRecordArray): void
+/**
+ * Gets the nickname string for the #MbimSmsStatusFlag specified at `val`.
+ * @param val a MbimSmsStatusFlag.
+ */
 function smsStatusFlagGetString(val: SmsStatusFlag): string
+/**
+ * Gets the nickname string for the #MbimSmsStatus specified at `val`.
+ * @param val a MbimSmsStatus.
+ */
 function smsStatusGetString(val: SmsStatus): string
+/**
+ * Gets the nickname string for the #MbimSmsStorageState specified at `val`.
+ * @param val a MbimSmsStorageState.
+ */
 function smsStorageStateGetString(val: SmsStorageState): string
+/**
+ * Gets the nickname string for the #MbimStatusError specified at `val`.
+ * @param val a MbimStatusError.
+ */
 function statusErrorGetString(val: StatusError): string
 function statusErrorQuark(): GLib.Quark
+/**
+ * Gets the nickname string for the #MbimStkPacProfile specified at `val`.
+ * @param val a MbimStkPacProfile.
+ */
 function stkPacProfileGetString(val: StkPacProfile): string
+/**
+ * Gets the nickname string for the #MbimStkPacType specified at `val`.
+ * @param val a MbimStkPacType.
+ */
 function stkPacTypeGetString(val: StkPacType): string
+/**
+ * Gets the nickname string for the #MbimSubscriberReadyState specified at `val`.
+ * @param val a MbimSubscriberReadyState.
+ */
 function subscriberReadyStateGetString(val: SubscriberReadyState): string
+/**
+ * Builds a string containing a comma-separated list of nicknames for
+ * each #MbimSubscriberReadyStatusFlag in `mask`.
+ * @param mask bitmask of MbimSubscriberReadyStatusFlag values.
+ */
 function subscriberReadyStatusFlagBuildStringFromMask(mask: SubscriberReadyStatusFlag): string
+/**
+ * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
+ * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
+ */
 function terminalCapabilityInfoArrayFree(array: TerminalCapabilityInfoArray): void
+/**
+ * Gets the nickname string for the #MbimTlvType specified at `val`.
+ * @param val a MbimTlvType.
+ */
 function tlvTypeGetString(val: TlvType): string
+/**
+ * Gets the nickname string for the #MbimTransmissionNotificationStatus specified at `val`.
+ * @param val a MbimTransmissionNotificationStatus.
+ */
 function transmissionNotificationStatusGetString(val: TransmissionNotificationStatus): string
+/**
+ * Gets the nickname string for the #MbimTransmissionState specified at `val`.
+ * @param val a MbimTransmissionState.
+ */
 function transmissionStateGetString(val: TransmissionState): string
+/**
+ * Gets the nickname string for the #MbimUiccClassByteType specified at `val`.
+ * @param val a MbimUiccClassByteType.
+ */
 function uiccClassByteTypeGetString(val: UiccClassByteType): string
+/**
+ * Gets the nickname string for the #MbimUiccPassThroughAction specified at `val`.
+ * @param val a MbimUiccPassThroughAction.
+ */
 function uiccPassThroughActionGetString(val: UiccPassThroughAction): string
+/**
+ * Gets the nickname string for the #MbimUiccPassThroughStatus specified at `val`.
+ * @param val a MbimUiccPassThroughStatus.
+ */
 function uiccPassThroughStatusGetString(val: UiccPassThroughStatus): string
+/**
+ * Gets the nickname string for the #MbimUiccSecureMessaging specified at `val`.
+ * @param val a MbimUiccSecureMessaging.
+ */
 function uiccSecureMessagingGetString(val: UiccSecureMessaging): string
+/**
+ * Gets the nickname string for the #MbimUiccSlotState specified at `val`.
+ * @param val a MbimUiccSlotState.
+ */
 function uiccSlotStateGetString(val: UiccSlotState): string
+/**
+ * Unregister a custom service.
+ * @param id ID of the service to unregister.MbimUuid structure corresponding to service
+ */
 function unregisterCustomService(id: number): boolean
+/**
+ * Gets the nickname string for the #MbimUssdAction specified at `val`.
+ * @param val a MbimUssdAction.
+ */
 function ussdActionGetString(val: UssdAction): string
+/**
+ * Gets the nickname string for the #MbimUssdResponse specified at `val`.
+ * @param val a MbimUssdResponse.
+ */
 function ussdResponseGetString(val: UssdResponse): string
+/**
+ * Gets the nickname string for the #MbimUssdSessionState specified at `val`.
+ * @param val a MbimUssdSessionState.
+ */
 function ussdSessionStateGetString(val: UssdSessionState): string
+/**
+ * Checks whether MBIM message traces are currently enabled.
+ */
 function utilsGetTracesEnabled(): boolean
+/**
+ * Sets whether MBIM message traces are enabled or disabled.
+ * @param enabled %TRUE to enable traces, %FALSE to disable them.
+ */
 function utilsSetTracesEnabled(enabled: boolean): void
+/**
+ * Get the UUID corresponding to `context_type`.
+ * @param contextType a #MbimContextType.
+ */
 function uuidFromContextType(contextType: ContextType): Uuid
+/**
+ * Fills in `uuid` from the printable representation give in `str`.
+ * 
+ * Only ccepts `str` written with dashes separating items, e.g.:
+ *  a289cc33-bcbb-8b4f-b6b0-133ec2aae6df
+ * @param str a MBIM UUID.
+ * @param uuid pointer to the target #MbimUuid.
+ */
 function uuidFromPrintable(str: string, uuid: Uuid): boolean
+/**
+ * Get the UUID corresponding to `service`.
+ * 
+ * The `service` needs to be either a generic one (including #MBIM_SERVICE_INVALID)
+ * or a custom registered one.
+ * @param service a #MbimService.
+ */
 function uuidFromService(service: Service): Uuid
+/**
+ * Gets the nickname string for the #MbimVisibleProvidersAction specified at `val`.
+ * @param val a MbimVisibleProvidersAction.
+ */
 function visibleProvidersActionGetString(val: VisibleProvidersAction): string
+/**
+ * Gets the nickname string for the #MbimVoiceCallState specified at `val`.
+ * @param val a MbimVoiceCallState.
+ */
 function voiceCallStateGetString(val: VoiceCallState): string
+/**
+ * Gets the nickname string for the #MbimVoiceClass specified at `val`.
+ * @param val a MbimVoiceClass.
+ */
 function voiceClassGetString(val: VoiceClass): string
+/**
+ * Gets the nickname string for the #MbimWakeType specified at `val`.
+ * @param val a MbimWakeType.
+ */
 function wakeTypeGetString(val: WakeType): string
-interface Device_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Mbim-1.0.Mbim.Device */
-    deviceFile?: Gio.File
-    deviceInSession?: boolean
-    deviceTransactionId?: number
+interface Device_ConstructProps extends Gio.AsyncInitable_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of Mbim-1.0.Mbim.Device
+
+    deviceFile?: Gio.File | null
+    deviceInSession?: boolean | null
+    deviceTransactionId?: number | null
 }
-class Device {
-    /* Properties of Mbim-1.0.Mbim.Device */
+
+/**
+ * Signal callback interface for `device-error`
+ */
+interface Device_DeviceErrorSignalCallback {
+    (object: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `device-indicate-status`
+ */
+interface Device_DeviceIndicateStatusSignalCallback {
+    (object: Message): void
+}
+
+/**
+ * Signal callback interface for `device-removed`
+ */
+interface Device_DeviceRemovedSignalCallback {
+    (): void
+}
+
+interface Device extends Gio.AsyncInitable {
+
+    // Own properties of Mbim-1.0.Mbim.Device
+
     readonly deviceFile: Gio.File
     deviceInSession: boolean
     deviceTransactionId: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of Mbim-1.0.Mbim.Device */
+
+    // Owm methods of Mbim-1.0.Mbim.Device
+
     /**
      * Asynchronously creates a new virtual network device node on top of
      * `base_ifname`. This allows having multiple net interfaces running on top of
@@ -3317,7 +4003,7 @@ class Device {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    addLink(sessionId: number, baseIfname: string, ifnamePrefix: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    addLink(sessionId: number, baseIfname: string, ifnamePrefix: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_add_link().
      * @param res a #GAsyncResult.
@@ -3344,7 +4030,7 @@ class Device {
      * @param cancellable optional #GCancellable object, #NULL to ignore.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    close(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    close(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous close operation started with mbim_device_close().
      * @param res a #GAsyncResult.
@@ -3364,7 +4050,7 @@ class Device {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_command().
      * @param res a #GAsyncResult.
@@ -3387,7 +4073,7 @@ class Device {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteAllLinks(baseIfname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    deleteAllLinks(baseIfname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_all_links().
      * @param res a #GAsyncResult.
@@ -3406,7 +4092,7 @@ class Device {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteLink(ifname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    deleteLink(ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_link().
      * @param res a #GAsyncResult.
@@ -3459,7 +4145,7 @@ class Device {
      * @param cancellable optional #GCancellable object, #NULL to ignore.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    open(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous open operation started with mbim_device_open().
      * @param res a #GAsyncResult.
@@ -3478,7 +4164,7 @@ class Device {
      * @param cancellable optional #GCancellable object, #NULL to ignore.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    openFull(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    openFull(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous open operation started with mbim_device_open_full().
      * @param res a #GAsyncResult.
@@ -3500,1351 +4186,919 @@ class Device {
      * @param msMbimexVersionMinor minor version number of the MS MBIMEx support.
      */
     setMsMbimexVersion(msMbimexVersionMajor: number, msMbimexVersionMinor: number): boolean
-    /* Methods of GObject-2.0.GObject.Object */
+
+    // Own signals of Mbim-1.0.Mbim.Device
+
+    connect(sigName: "device-error", callback: Device_DeviceErrorSignalCallback): number
+    on(sigName: "device-error", callback: Device_DeviceErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-error", callback: Device_DeviceErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-error", callback: Device_DeviceErrorSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-error", ...args: any[]): void
+    connect(sigName: "device-indicate-status", callback: Device_DeviceIndicateStatusSignalCallback): number
+    on(sigName: "device-indicate-status", callback: Device_DeviceIndicateStatusSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-indicate-status", callback: Device_DeviceIndicateStatusSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-indicate-status", callback: Device_DeviceIndicateStatusSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-indicate-status", ...args: any[]): void
+    connect(sigName: "device-removed", callback: Device_DeviceRemovedSignalCallback): number
+    on(sigName: "device-removed", callback: Device_DeviceRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "device-removed", callback: Device_DeviceRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "device-removed", callback: Device_DeviceRemovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "device-removed", ...args: any[]): void
+
+    // Class property signals of Mbim-1.0.Mbim.Device
+
+    connect(sigName: "notify::device-file", callback: (...args: any[]) => void): number
+    on(sigName: "notify::device-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::device-file", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::device-file", ...args: any[]): void
+    connect(sigName: "notify::device-in-session", callback: (...args: any[]) => void): number
+    on(sigName: "notify::device-in-session", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::device-in-session", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::device-in-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::device-in-session", ...args: any[]): void
+    connect(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void): number
+    on(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::device-transaction-id", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+}
+
+/**
+ * The #MbimDevice structure contains private data and should only be accessed
+ * using the provided API.
+ * @class 
+ */
+class Device extends GObject.Object {
+
+    // Own properties of Mbim-1.0.Mbim.Device
+
+    static name: string
+    static $gtype: GObject.GType<Device>
+
+    // Constructors of Mbim-1.0.Mbim.Device
+
+    constructor(config?: Device_ConstructProps) 
     /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.AsyncInitable */
-    /**
-     * Starts asynchronous initialization of the object implementing the
-     * interface. This must be done before any real use of the object after
-     * initial construction. If the object also implements #GInitable you can
-     * optionally call g_initable_init() instead.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_async_initable_new_async() should typically be used instead.
-     * 
-     * When the initialization is finished, `callback` will be called. You can
-     * then call g_async_initable_init_finish() to get the result of the
-     * initialization.
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not
-     * %NULL, then initialization can be cancelled by triggering the cancellable
-     * object from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
-     * the object doesn't support cancellable initialization, the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * As with #GInitable, if the object is not initialized, or initialization
-     * returns with an error, then all operations on the object except
-     * g_object_ref() and g_object_unref() are considered to be invalid, and
-     * have undefined behaviour. They will often fail with g_critical() or
-     * g_warning(), but this must not be relied on.
-     * 
-     * Callers should not assume that a class which implements #GAsyncInitable can
-     * be initialized multiple times; for more information, see g_initable_init().
-     * If a class explicitly supports being initialized multiple times,
-     * implementation requires yielding all subsequent calls to init_async() on the
-     * results of the first call.
-     * 
-     * For classes that also support the #GInitable interface, the default
-     * implementation of this method will run the g_initable_init() function
-     * in a thread, so if you want to support asynchronous initialization via
-     * threads, just implement the #GAsyncInitable interface without overriding
-     * any interface methods.
-     * @param ioPriority the [I/O priority][io-priority] of the operation
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes asynchronous initialization and returns the result.
-     * See g_async_initable_init_async().
+     * Finishes an operation started with mbim_device_new().
+     * @constructor 
      * @param res a #GAsyncResult.
      */
-    initFinish(res: Gio.AsyncResult): boolean
-    /**
-     * Finishes the async construction for the various g_async_initable_new
-     * calls, returning the created object or %NULL on error.
-     * @param res the #GAsyncResult from the callback
-     */
-    newFinish(res: Gio.AsyncResult): GObject.Object
-    /* Signals of Mbim-1.0.Mbim.Device */
-    connect(sigName: "device-error", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "device-error", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-error", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-error", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "device-error", object: GLib.Error): void
-    connect(sigName: "device-indicate-status", callback: ((object: Message) => void)): number
-    on(sigName: "device-indicate-status", callback: (object: Message) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-indicate-status", callback: (object: Message) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-indicate-status", callback: (object: Message) => void): NodeJS.EventEmitter
-    emit(sigName: "device-indicate-status", object: Message): void
-    connect(sigName: "device-removed", callback: (() => void)): number
-    on(sigName: "device-removed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "device-removed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "device-removed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "device-removed"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::device-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::device-file", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::device-in-session", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::device-in-session", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::device-in-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::device-in-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::device-in-session", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::device-transaction-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::device-transaction-id", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    off(sigName: "notify::device-transaction-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Device_ConstructProps)
-    _init (config?: Device_ConstructProps): void
-    /* Static methods and pseudo-constructors */
     static newFinish(res: Gio.AsyncResult): Device
+    _init(config?: Device_ConstructProps): void
     /**
-     * Helper function for constructing #GAsyncInitable object. This is
-     * similar to g_object_newv() but also initializes the object asynchronously.
-     * 
-     * When the initialization is finished, `callback` will be called. You can
-     * then call g_async_initable_new_finish() to get the new object and check
-     * for any errors.
-     * @param objectType a #GType supporting #GAsyncInitable.
-     * @param nParameters the number of parameters in `parameters`
-     * @param parameters the parameters to use to construct the object
-     * @param ioPriority the [I/O priority][io-priority] of the operation
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
+     * Asynchronously creates a #MbimDevice object to manage `file`.
+     * When the operation is finished, `callback` will be invoked. You can then call
+     * mbim_device_new_finish() to get the result of the operation.
+     * @param file a #GFile.
+     * @param cancellable optional #GCancellable object, #NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is finished.
      */
-    static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    static $gtype: GObject.Type
+    static new(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
+
 interface Proxy_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Proxy {
-    /* Properties of Mbim-1.0.Mbim.Proxy */
+
+interface Proxy {
+
+    // Own properties of Mbim-1.0.Mbim.Proxy
+
     readonly mbimProxyNClients: number
     readonly mbimProxyNDevices: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::mbim-proxy-n-clients", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::mbim-proxy-n-clients", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own fields of Mbim-1.0.Mbim.Proxy
+
+    parent: GObject.Object
+    priv: ProxyPrivate
+
+    // Class property signals of Mbim-1.0.Mbim.Proxy
+
+    connect(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void): number
+    on(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mbim-proxy-n-clients", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::mbim-proxy-n-devices", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::mbim-proxy-n-devices", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::mbim-proxy-n-clients", ...args: any[]): void
+    connect(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void): number
+    on(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mbim-proxy-n-devices", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::mbim-proxy-n-devices", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: Proxy_ConstructProps)
-    _init (config?: Proxy_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Proxy
-    static $gtype: GObject.Type
 }
-class AtdsProvider {
-    /* Fields of Mbim-1.0.Mbim.AtdsProvider */
+
+/**
+ * The #MbimProxy structure contains private data and should only be accessed
+ * using the provided API.
+ * @class 
+ */
+class Proxy extends GObject.Object {
+
+    // Own properties of Mbim-1.0.Mbim.Proxy
+
+    static name: string
+    static $gtype: GObject.GType<Proxy>
+
+    // Constructors of Mbim-1.0.Mbim.Proxy
+
+    constructor(config?: Proxy_ConstructProps) 
+    /**
+     * Creates a #MbimProxy object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a #MbimProxy object.
+     * @constructor 
+     */
+    static new(): Proxy
+    _init(config?: Proxy_ConstructProps): void
+}
+
+interface AtdsProvider {
+
+    // Own fields of Mbim-1.0.Mbim.AtdsProvider
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #MbimProviderState given as a #guint32.
+     * @field 
      */
     providerState: number
     /**
      * a string.
+     * @field 
      */
     providerName: string
     /**
      * a #MbimAtdsProviderPlmnMode given as a #guint32.
+     * @field 
      */
     plmnMode: number
     /**
      * a #guint32.
+     * @field 
      */
     rssi: number
     /**
      * a #guint32.
+     * @field 
      */
     errorRate: number
+}
+
+/**
+ * A MbimAtdsProvider element.
+ * @record 
+ */
+class AtdsProvider {
+
+    // Own properties of Mbim-1.0.Mbim.AtdsProvider
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.AtdsProvider
+
     /**
      * Frees the memory allocated for the array of #MbimAtdsProvider structs.
      * @param array a #NULL terminated array of #MbimAtdsProvider structs.
      */
     static arrayFree(array: AtdsProviderArray): void
 }
-class CellInfoCdma {
-    /* Fields of Mbim-1.0.Mbim.CellInfoCdma */
+
+interface CellInfoCdma {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoCdma
+
     /**
      * a #guint32.
+     * @field 
      */
     servingCellFlag: number
     /**
      * a #guint32.
+     * @field 
      */
     nid: number
     /**
      * a #guint32.
+     * @field 
      */
     sid: number
     /**
      * a #guint32.
+     * @field 
      */
     baseStationId: number
     /**
      * a #guint32.
+     * @field 
      */
     baseLatitude: number
     /**
      * a #guint32.
+     * @field 
      */
     baseLongitude: number
     /**
      * a #guint32.
+     * @field 
      */
     refPn: number
     /**
      * a #guint32.
+     * @field 
      */
     gpsSeconds: number
     /**
      * a #guint32.
+     * @field 
      */
     pilotStrength: number
+}
+
+/**
+ * A MbimCellInfoCdma element.
+ * @record 
+ */
+class CellInfoCdma {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoCdma
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoCdma
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
      * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
      */
     static arrayFree(array: CellInfoCdmaArray): void
 }
-class CellInfoNeighboringGsm {
-    /* Fields of Mbim-1.0.Mbim.CellInfoNeighboringGsm */
+
+interface CellInfoNeighboringGsm {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoNeighboringGsm
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     arfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     baseStationId: number
     /**
      * a #guint32.
+     * @field 
      */
     rxLevel: number
+}
+
+/**
+ * A MbimCellInfoNeighboringGsm element.
+ * @record 
+ */
+class CellInfoNeighboringGsm {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoNeighboringGsm
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoNeighboringGsm
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
      * @param array a #NULL terminated array of #MbimCellInfoNeighboringGsm structs.
      */
     static arrayFree(array: CellInfoNeighboringGsmArray): void
 }
-class CellInfoNeighboringLte {
-    /* Fields of Mbim-1.0.Mbim.CellInfoNeighboringLte */
+
+interface CellInfoNeighboringLte {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoNeighboringLte
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     earfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     physicalCellId: number
     /**
      * a #guint32.
+     * @field 
      */
     tac: number
     /**
      * a #gint32.
+     * @field 
      */
     rsrp: number
     /**
      * a #gint32.
+     * @field 
      */
     rsrq: number
+}
+
+/**
+ * A MbimCellInfoNeighboringLte element.
+ * @record 
+ */
+class CellInfoNeighboringLte {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoNeighboringLte
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoNeighboringLte
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
      * @param array a #NULL terminated array of #MbimCellInfoNeighboringLte structs.
      */
     static arrayFree(array: CellInfoNeighboringLteArray): void
 }
-class CellInfoNeighboringNr {
-    /* Fields of Mbim-1.0.Mbim.CellInfoNeighboringNr */
+
+interface CellInfoNeighboringNr {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoNeighboringNr
+
     /**
      * a #MbimDataSubclass given as a #guint32.
+     * @field 
      */
     systemSubType: number
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a string.
+     * @field 
      */
     cellId: string
     /**
      * a #guint32.
+     * @field 
      */
     physicalCellId: number
     /**
      * a #guint32.
+     * @field 
      */
     tac: number
     /**
      * a #guint32.
+     * @field 
      */
     rsrp: number
     /**
      * a #guint32.
+     * @field 
      */
     rsrq: number
     /**
      * a #guint32.
+     * @field 
      */
     sinr: number
+}
+
+/**
+ * A MbimCellInfoNeighboringNr element.
+ * @record 
+ */
+class CellInfoNeighboringNr {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoNeighboringNr
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoNeighboringNr
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
      * @param array a #NULL terminated array of #MbimCellInfoNeighboringNr structs.
      */
     static arrayFree(array: CellInfoNeighboringNrArray): void
 }
-class CellInfoNeighboringTdscdma {
-    /* Fields of Mbim-1.0.Mbim.CellInfoNeighboringTdscdma */
+
+interface CellInfoNeighboringTdscdma {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoNeighboringTdscdma
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     uarfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     cellParameterId: number
     /**
      * a #guint32.
+     * @field 
      */
     timingAdvance: number
     /**
      * a #gint32.
+     * @field 
      */
     rscp: number
     /**
      * a #guint32.
+     * @field 
      */
     pathLoss: number
+}
+
+/**
+ * A MbimCellInfoNeighboringTdscdma element.
+ * @record 
+ */
+class CellInfoNeighboringTdscdma {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoNeighboringTdscdma
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoNeighboringTdscdma
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
      * @param array a #NULL terminated array of #MbimCellInfoNeighboringTdscdma structs.
      */
     static arrayFree(array: CellInfoNeighboringTdscdmaArray): void
 }
-class CellInfoNeighboringUmts {
-    /* Fields of Mbim-1.0.Mbim.CellInfoNeighboringUmts */
+
+interface CellInfoNeighboringUmts {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoNeighboringUmts
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     uarfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     primaryScramblingCode: number
     /**
      * a #gint32.
+     * @field 
      */
     rscp: number
     /**
      * a #gint32.
+     * @field 
      */
     ecno: number
     /**
      * a #guint32.
+     * @field 
      */
     pathLoss: number
+}
+
+/**
+ * A MbimCellInfoNeighboringUmts element.
+ * @record 
+ */
+class CellInfoNeighboringUmts {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoNeighboringUmts
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoNeighboringUmts
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
      * @param array a #NULL terminated array of #MbimCellInfoNeighboringUmts structs.
      */
     static arrayFree(array: CellInfoNeighboringUmtsArray): void
 }
-class CellInfoServingGsm {
-    /* Fields of Mbim-1.0.Mbim.CellInfoServingGsm */
+
+interface CellInfoServingGsm {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoServingGsm
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     timingAdvance: number
     /**
      * a #guint32.
+     * @field 
      */
     arfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     baseStationId: number
     /**
      * a #guint32.
+     * @field 
      */
     rxLevel: number
-    /* Methods of Mbim-1.0.Mbim.CellInfoServingGsm */
+
+    // Owm methods of Mbim-1.0.Mbim.CellInfoServingGsm
+
     /**
      * Frees the memory allocated for the #MbimCellInfoServingGsm.
      */
     free(): void
+}
+
+/**
+ * A MbimCellInfoServingGsm element.
+ * @record 
+ */
+class CellInfoServingGsm {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoServingGsm
+
     static name: string
 }
-class CellInfoServingLte {
-    /* Fields of Mbim-1.0.Mbim.CellInfoServingLte */
+
+interface CellInfoServingLte {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoServingLte
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     earfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     physicalCellId: number
     /**
      * a #guint32.
+     * @field 
      */
     tac: number
     /**
      * a #gint32.
+     * @field 
      */
     rsrp: number
     /**
      * a #gint32.
+     * @field 
      */
     rsrq: number
     /**
      * a #guint32.
+     * @field 
      */
     timingAdvance: number
-    /* Methods of Mbim-1.0.Mbim.CellInfoServingLte */
+
+    // Owm methods of Mbim-1.0.Mbim.CellInfoServingLte
+
     /**
      * Frees the memory allocated for the #MbimCellInfoServingLte.
      */
     free(): void
+}
+
+/**
+ * A MbimCellInfoServingLte element.
+ * @record 
+ */
+class CellInfoServingLte {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoServingLte
+
     static name: string
 }
-class CellInfoServingNr {
-    /* Fields of Mbim-1.0.Mbim.CellInfoServingNr */
+
+interface CellInfoServingNr {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoServingNr
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint64.
+     * @field 
      */
     nci: number
     /**
      * a #guint32.
+     * @field 
      */
     physicalCellId: number
     /**
      * a #guint32.
+     * @field 
      */
     nrarfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     tac: number
     /**
      * a #guint32.
+     * @field 
      */
     rsrp: number
     /**
      * a #guint32.
+     * @field 
      */
     rsrq: number
     /**
      * a #guint32.
+     * @field 
      */
     sinr: number
     /**
      * a #guint64.
+     * @field 
      */
     timingAdvance: number
+}
+
+/**
+ * A MbimCellInfoServingNr element.
+ * @record 
+ */
+class CellInfoServingNr {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoServingNr
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.CellInfoServingNr
+
     /**
      * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
      * @param array a #NULL terminated array of #MbimCellInfoServingNr structs.
      */
     static arrayFree(array: CellInfoServingNrArray): void
 }
-class CellInfoServingTdscdma {
-    /* Fields of Mbim-1.0.Mbim.CellInfoServingTdscdma */
+
+interface CellInfoServingTdscdma {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoServingTdscdma
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     uarfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     cellParameterId: number
     /**
      * a #guint32.
+     * @field 
      */
     timingAdvance: number
     /**
      * a #gint32.
+     * @field 
      */
     rscp: number
     /**
      * a #guint32.
+     * @field 
      */
     pathLoss: number
-    /* Methods of Mbim-1.0.Mbim.CellInfoServingTdscdma */
+
+    // Owm methods of Mbim-1.0.Mbim.CellInfoServingTdscdma
+
     /**
      * Frees the memory allocated for the #MbimCellInfoServingTdscdma.
      */
     free(): void
+}
+
+/**
+ * A MbimCellInfoServingTdscdma element.
+ * @record 
+ */
+class CellInfoServingTdscdma {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoServingTdscdma
+
     static name: string
 }
-class CellInfoServingUmts {
-    /* Fields of Mbim-1.0.Mbim.CellInfoServingUmts */
+
+interface CellInfoServingUmts {
+
+    // Own fields of Mbim-1.0.Mbim.CellInfoServingUmts
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #guint32.
+     * @field 
      */
     locationAreaCode: number
     /**
      * a #guint32.
+     * @field 
      */
     cellId: number
     /**
      * a #guint32.
+     * @field 
      */
     frequencyInfoUl: number
     /**
      * a #guint32.
+     * @field 
      */
     frequencyInfoDl: number
     /**
      * a #guint32.
+     * @field 
      */
     frequencyInfoNt: number
     /**
      * a #guint32.
+     * @field 
      */
     uarfcn: number
     /**
      * a #guint32.
+     * @field 
      */
     primaryScramblingCode: number
     /**
      * a #gint32.
+     * @field 
      */
     rscp: number
     /**
      * a #gint32.
+     * @field 
      */
     ecno: number
     /**
      * a #guint32.
+     * @field 
      */
     pathLoss: number
-    /* Methods of Mbim-1.0.Mbim.CellInfoServingUmts */
+
+    // Owm methods of Mbim-1.0.Mbim.CellInfoServingUmts
+
     /**
      * Frees the memory allocated for the #MbimCellInfoServingUmts.
      */
     free(): void
+}
+
+/**
+ * A MbimCellInfoServingUmts element.
+ * @record 
+ */
+class CellInfoServingUmts {
+
+    // Own properties of Mbim-1.0.Mbim.CellInfoServingUmts
+
     static name: string
 }
-class DeprecatedLteAttachStatus {
-    /* Fields of Mbim-1.0.Mbim.DeprecatedLteAttachStatus */
+
+interface DeprecatedLteAttachStatus {
+
+    // Own fields of Mbim-1.0.Mbim.DeprecatedLteAttachStatus
+
     lteAttachState: number
     ipType: number
     accessString: string
@@ -4852,194 +5106,340 @@ class DeprecatedLteAttachStatus {
     password: string
     compression: number
     authProtocol: number
+}
+
+class DeprecatedLteAttachStatus {
+
+    // Own properties of Mbim-1.0.Mbim.DeprecatedLteAttachStatus
+
     static name: string
 }
+
+interface DeviceClass {
+}
+
 abstract class DeviceClass {
+
+    // Own properties of Mbim-1.0.Mbim.DeviceClass
+
     static name: string
 }
+
+interface DevicePrivate {
+}
+
 class DevicePrivate {
+
+    // Own properties of Mbim-1.0.Mbim.DevicePrivate
+
     static name: string
 }
-class DeviceServiceElement {
-    /* Fields of Mbim-1.0.Mbim.DeviceServiceElement */
+
+interface DeviceServiceElement {
+
+    // Own fields of Mbim-1.0.Mbim.DeviceServiceElement
+
     /**
      * a #MbimUuid.
+     * @field 
      */
     deviceServiceId: Uuid
     /**
      * a #guint32.
+     * @field 
      */
     dssPayload: number
     /**
      * a #guint32.
+     * @field 
      */
     maxDssInstances: number
     /**
      * a #guint32.
+     * @field 
      */
     cidsCount: number
     /**
      * an array of #guint32 values.
+     * @field 
      */
     cids: number
+}
+
+/**
+ * A MbimDeviceServiceElement element.
+ * @record 
+ */
+class DeviceServiceElement {
+
+    // Own properties of Mbim-1.0.Mbim.DeviceServiceElement
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.DeviceServiceElement
+
     /**
      * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
      * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
      */
     static arrayFree(array: DeviceServiceElementArray): void
 }
-class EventEntry {
-    /* Fields of Mbim-1.0.Mbim.EventEntry */
+
+interface EventEntry {
+
+    // Own fields of Mbim-1.0.Mbim.EventEntry
+
     /**
      * a #MbimUuid.
+     * @field 
      */
     deviceServiceId: Uuid
     /**
      * a #guint32.
+     * @field 
      */
     cidsCount: number
     /**
      * an array of #guint32 values.
+     * @field 
      */
     cids: number
+}
+
+/**
+ * A MbimEventEntry element.
+ * @record 
+ */
+class EventEntry {
+
+    // Own properties of Mbim-1.0.Mbim.EventEntry
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.EventEntry
+
     /**
      * Frees the memory allocated for the array of #MbimEventEntry structs.
      * @param array a #NULL terminated array of #MbimEventEntry structs.
      */
     static arrayFree(array: EventEntryArray): void
 }
-class IPv4 {
-    /* Fields of Mbim-1.0.Mbim.IPv4 */
+
+interface IPv4 {
+
+    // Own fields of Mbim-1.0.Mbim.IPv4
+
     /**
      * 4 bytes specifying the IPv4 address.
+     * @field 
      */
     addr: Uint8Array
+}
+
+/**
+ * An IPv4 address.
+ * @record 
+ */
+class IPv4 {
+
+    // Own properties of Mbim-1.0.Mbim.IPv4
+
     static name: string
 }
-class IPv4Element {
-    /* Fields of Mbim-1.0.Mbim.IPv4Element */
+
+interface IPv4Element {
+
+    // Own fields of Mbim-1.0.Mbim.IPv4Element
+
     /**
      * a #guint32.
+     * @field 
      */
     onLinkPrefixLength: number
     /**
      * a #MbimIPv4.
+     * @field 
      */
     ipv4Address: IPv4
+}
+
+/**
+ * A MbimIPv4Element element.
+ * @record 
+ */
+class IPv4Element {
+
+    // Own properties of Mbim-1.0.Mbim.IPv4Element
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.IPv4Element
+
     /**
      * Frees the memory allocated for the array of #MbimIPv4Element structs.
      * @param array a #NULL terminated array of #MbimIPv4Element structs.
      */
     static arrayFree(array: IPv4ElementArray): void
 }
-class IPv6 {
-    /* Fields of Mbim-1.0.Mbim.IPv6 */
+
+interface IPv6 {
+
+    // Own fields of Mbim-1.0.Mbim.IPv6
+
     /**
      * 16 bytes specifying the IPv6 address.
+     * @field 
      */
     addr: Uint8Array
+}
+
+/**
+ * An IPv6 address.
+ * @record 
+ */
+class IPv6 {
+
+    // Own properties of Mbim-1.0.Mbim.IPv6
+
     static name: string
 }
-class IPv6Element {
-    /* Fields of Mbim-1.0.Mbim.IPv6Element */
+
+interface IPv6Element {
+
+    // Own fields of Mbim-1.0.Mbim.IPv6Element
+
     /**
      * a #guint32.
+     * @field 
      */
     onLinkPrefixLength: number
     /**
      * a #MbimIPv6
+     * @field 
      */
     ipv6Address: IPv6
+}
+
+/**
+ * A MbimIPv6Element element.
+ * @record 
+ */
+class IPv6Element {
+
+    // Own properties of Mbim-1.0.Mbim.IPv6Element
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.IPv6Element
+
     /**
      * Frees the memory allocated for the array of #MbimIPv6Element structs.
      * @param array a #NULL terminated array of #MbimIPv6Element structs.
      */
     static arrayFree(array: IPv6ElementArray): void
 }
-class LteAttachConfiguration {
-    /* Fields of Mbim-1.0.Mbim.LteAttachConfiguration */
+
+interface LteAttachConfiguration {
+
+    // Own fields of Mbim-1.0.Mbim.LteAttachConfiguration
+
     /**
      * a #MbimContextIpType given as a #guint32.
+     * @field 
      */
     ipType: number
     /**
      * a #MbimLteAttachContextRoamingControl given as a #guint32.
+     * @field 
      */
     roaming: number
     /**
      * a #MbimContextSource given as a #guint32.
+     * @field 
      */
     source: number
     /**
      * a string.
+     * @field 
      */
     accessString: string
     /**
      * a string.
+     * @field 
      */
     userName: string
     /**
      * a string.
+     * @field 
      */
     password: string
     /**
      * a #MbimCompression given as a #guint32.
+     * @field 
      */
     compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
+     * @field 
      */
     authProtocol: number
+}
+
+/**
+ * A MbimLteAttachConfiguration element.
+ * @record 
+ */
+class LteAttachConfiguration {
+
+    // Own properties of Mbim-1.0.Mbim.LteAttachConfiguration
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.LteAttachConfiguration
+
     /**
      * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
      * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
      */
     static arrayFree(array: LteAttachConfigurationArray): void
 }
-class Message {
-    /* Methods of Mbim-1.0.Mbim.Message */
+
+interface Message {
+
+    // Owm methods of Mbim-1.0.Mbim.Message
+
     /**
      * Parses and returns parameters of the 'Location' response command in the 'ATDS' service.
      */
-    atdsLocationResponseParse(): [ /* returnType */ boolean, /* outLac */ number | null, /* outTac */ number | null, /* outCellId */ number | null ]
+    atdsLocationResponseParse(): [ /* returnType */ boolean, /* outLac */ number, /* outTac */ number, /* outCellId */ number ]
     /**
      * Parses and returns parameters of the 'Operators' response command in the 'ATDS' service.
      */
-    atdsOperatorsResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ AtdsProvider[] | null ]
+    atdsOperatorsResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ AtdsProvider[] ]
     /**
      * Parses and returns parameters of the 'RAT' response command in the 'ATDS' service.
      */
-    atdsRatResponseParse(): [ /* returnType */ boolean, /* outMode */ AtdsRatMode | null ]
+    atdsRatResponseParse(): [ /* returnType */ boolean, /* outMode */ AtdsRatMode ]
     /**
      * Parses and returns parameters of the 'Register State' response command in the 'ATDS' service.
      */
-    atdsRegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outRegisterState */ RegisterState | null, /* outRegisterMode */ RegisterMode | null, /* outAvailableDataClasses */ DataClass | null, /* outCurrentCellularClass */ CellularClass | null, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag | null ]
+    atdsRegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Parses and returns parameters of the 'Signal' response command in the 'ATDS' service.
      */
-    atdsSignalResponseParse(): [ /* returnType */ boolean, /* outRssi */ number | null, /* outErrorRate */ number | null, /* outRscp */ number | null, /* outEcno */ number | null, /* outRsrq */ number | null, /* outRsrp */ number | null, /* outRssnr */ number | null ]
+    atdsSignalResponseParse(): [ /* returnType */ boolean, /* outRssi */ number, /* outErrorRate */ number, /* outRscp */ number, /* outEcno */ number, /* outRsrq */ number, /* outRsrp */ number, /* outRssnr */ number ]
     /**
      * Parses and returns parameters of the 'Aka' response command in the 'Auth' service.
      */
-    authAkaResponseParse(): [ /* returnType */ boolean, /* outRes */ Uint8Array | null, /* outResLen */ number | null, /* outIntegratingKey */ Uint8Array | null, /* outCipheringKey */ Uint8Array | null, /* outAuts */ Uint8Array | null ]
+    authAkaResponseParse(): [ /* returnType */ boolean, /* outRes */ Uint8Array, /* outResLen */ number, /* outIntegratingKey */ Uint8Array, /* outCipheringKey */ Uint8Array, /* outAuts */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Akap' response command in the 'Auth' service.
      */
-    authAkapResponseParse(): [ /* returnType */ boolean, /* outRes */ Uint8Array | null, /* outResLen */ number | null, /* outIntegratingKey */ Uint8Array | null, /* outCipheringKey */ Uint8Array | null, /* outAuts */ Uint8Array | null ]
+    authAkapResponseParse(): [ /* returnType */ boolean, /* outRes */ Uint8Array, /* outResLen */ number, /* outIntegratingKey */ Uint8Array, /* outCipheringKey */ Uint8Array, /* outAuts */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Sim' response command in the 'Auth' service.
      */
-    authSimResponseParse(): [ /* returnType */ boolean, /* outSres1 */ number | null, /* outKc1 */ number | null, /* outSres2 */ number | null, /* outKc2 */ number | null, /* outSres3 */ number | null, /* outKc3 */ number | null, /* outN */ number | null ]
+    authSimResponseParse(): [ /* returnType */ boolean, /* outSres1 */ number, /* outKc1 */ number, /* outSres2 */ number, /* outKc2 */ number, /* outSres3 */ number, /* outKc3 */ number, /* outN */ number ]
     /**
      * Gets the result of the 'Close' operation in the %MBIM_MESSAGE_TYPE_CLOSE_DONE message.
      */
@@ -5101,19 +5501,19 @@ class Message {
     /**
      * Parses and returns parameters of the 'Connect' notification command in the 'Basic Connect' service.
      */
-    connectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outActivationState */ ActivationState | null, /* outVoiceCallState */ VoiceCallState | null, /* outIpType */ ContextIpType | null, /* outContextType */ Uuid | null, /* outNwError */ number | null ]
+    connectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number ]
     /**
      * Parses and returns parameters of the 'Connect' response command in the 'Basic Connect' service.
      */
-    connectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outActivationState */ ActivationState | null, /* outVoiceCallState */ VoiceCallState | null, /* outIpType */ ContextIpType | null, /* outContextType */ Uuid | null, /* outNwError */ number | null ]
+    connectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number ]
     /**
      * Parses and returns parameters of the 'Device Caps' response command in the 'Basic Connect' service.
      */
-    deviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType | null, /* outCellularClass */ CellularClass | null, /* outVoiceClass */ VoiceClass | null, /* outSimClass */ SimClass | null, /* outDataClass */ DataClass | null, /* outSmsCaps */ SmsCaps | null, /* outControlCaps */ CtrlCaps | null, /* outMaxSessions */ number | null, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null ]
+    deviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string ]
     /**
      * Parses and returns parameters of the 'Device Service Subscribe List' response command in the 'Basic Connect' service.
      */
-    deviceServiceSubscribeListResponseParse(): [ /* returnType */ boolean, /* outEventsCount */ number | null, /* outEvents */ EventEntry[] | null ]
+    deviceServiceSubscribeListResponseParse(): [ /* returnType */ boolean, /* outEventsCount */ number, /* outEvents */ EventEntry[] ]
     /**
      * Create a new request for the 'Events' response command in the 'Basic Connect' service.
      * @param eventsCount return location for a #guint32, or %NULL if the 'EventsCount' field is not needed.
@@ -5123,7 +5523,7 @@ class Message {
     /**
      * Parses and returns parameters of the 'Device Services' response command in the 'Basic Connect' service.
      */
-    deviceServicesResponseParse(): [ /* returnType */ boolean, /* outDeviceServicesCount */ number | null, /* outMaxDssSessions */ number | null, /* outDeviceServices */ DeviceServiceElement[] | null ]
+    deviceServicesResponseParse(): [ /* returnType */ boolean, /* outDeviceServicesCount */ number, /* outMaxDssSessions */ number, /* outDeviceServices */ DeviceServiceElement[] ]
     /**
      * Parses and returns parameters of the 'Connect' response command in the 'DSS' service.
      */
@@ -5135,11 +5535,11 @@ class Message {
     /**
      * Parses and returns parameters of the 'Emergency Mode' notification command in the 'Basic Connect' service.
      */
-    emergencyModeNotificationParse(): [ /* returnType */ boolean, /* outState */ EmergencyModeState | null ]
+    emergencyModeNotificationParse(): [ /* returnType */ boolean, /* outState */ EmergencyModeState ]
     /**
      * Parses and returns parameters of the 'Emergency Mode' response command in the 'Basic Connect' service.
      */
-    emergencyModeResponseParse(): [ /* returnType */ boolean, /* outState */ EmergencyModeState | null ]
+    emergencyModeResponseParse(): [ /* returnType */ boolean, /* outState */ EmergencyModeState ]
     /**
      * Get the error in a %MBIM_MESSAGE_TYPE_HOST_ERROR or
      * %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message.
@@ -5201,7 +5601,7 @@ class Message {
     /**
      * Parses and returns parameters of the 'Home Provider' response command in the 'Basic Connect' service.
      */
-    homeProviderResponseParse(): [ /* returnType */ boolean, /* outProvider */ Provider | null ]
+    homeProviderResponseParse(): [ /* returnType */ boolean, /* outProvider */ Provider ]
     /**
      * Get the command id of a %MBIM_MESSAGE_TYPE_INDICATE_STATUS message.
      */
@@ -5221,227 +5621,227 @@ class Message {
     /**
      * Parses and returns parameters of the 'IP Configuration' notification command in the 'Basic Connect' service.
      */
-    ipConfigurationNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outIpv4ConfigurationAvailable */ IPConfigurationAvailableFlag | null, /* outIpv6ConfigurationAvailable */ IPConfigurationAvailableFlag | null, /* outIpv4AddressCount */ number | null, /* outIpv4Address */ IPv4Element[] | null, /* outIpv6AddressCount */ number | null, /* outIpv6Address */ IPv6Element[] | null, /* outIpv4Gateway */ IPv4 | null, /* outIpv6Gateway */ IPv6 | null, /* outIpv4DnsServerCount */ number | null, /* outIpv4DnsServer */ IPv4[] | null, /* outIpv6DnsServerCount */ number | null, /* outIpv6DnsServer */ IPv6[] | null, /* outIpv4Mtu */ number | null, /* outIpv6Mtu */ number | null ]
+    ipConfigurationNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outIpv4ConfigurationAvailable */ IPConfigurationAvailableFlag, /* outIpv6ConfigurationAvailable */ IPConfigurationAvailableFlag, /* outIpv4AddressCount */ number, /* outIpv4Address */ IPv4Element[], /* outIpv6AddressCount */ number, /* outIpv6Address */ IPv6Element[], /* outIpv4Gateway */ IPv4, /* outIpv6Gateway */ IPv6, /* outIpv4DnsServerCount */ number, /* outIpv4DnsServer */ IPv4[], /* outIpv6DnsServerCount */ number, /* outIpv6DnsServer */ IPv6[], /* outIpv4Mtu */ number, /* outIpv6Mtu */ number ]
     /**
      * Parses and returns parameters of the 'IP Configuration' response command in the 'Basic Connect' service.
      */
-    ipConfigurationResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outIpv4ConfigurationAvailable */ IPConfigurationAvailableFlag | null, /* outIpv6ConfigurationAvailable */ IPConfigurationAvailableFlag | null, /* outIpv4AddressCount */ number | null, /* outIpv4Address */ IPv4Element[] | null, /* outIpv6AddressCount */ number | null, /* outIpv6Address */ IPv6Element[] | null, /* outIpv4Gateway */ IPv4 | null, /* outIpv6Gateway */ IPv6 | null, /* outIpv4DnsServerCount */ number | null, /* outIpv4DnsServer */ IPv4[] | null, /* outIpv6DnsServerCount */ number | null, /* outIpv6DnsServer */ IPv6[] | null, /* outIpv4Mtu */ number | null, /* outIpv6Mtu */ number | null ]
+    ipConfigurationResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outIpv4ConfigurationAvailable */ IPConfigurationAvailableFlag, /* outIpv6ConfigurationAvailable */ IPConfigurationAvailableFlag, /* outIpv4AddressCount */ number, /* outIpv4Address */ IPv4Element[], /* outIpv6AddressCount */ number, /* outIpv6Address */ IPv6Element[], /* outIpv4Gateway */ IPv4, /* outIpv6Gateway */ IPv6, /* outIpv4DnsServerCount */ number, /* outIpv4DnsServer */ IPv4[], /* outIpv6DnsServerCount */ number, /* outIpv6DnsServer */ IPv6[], /* outIpv4Mtu */ number, /* outIpv6Mtu */ number ]
     /**
      * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Basic Connect' service.
      */
-    ipPacketFiltersResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outPacketFiltersCount */ number | null, /* outPacketFilters */ PacketFilter[] | null ]
+    ipPacketFiltersResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outPacketFiltersCount */ number, /* outPacketFilters */ PacketFilter[] ]
     /**
      * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsBaseStationsInfoResponseParse(): [ /* returnType */ boolean, /* outSystemType */ DataClass | null, /* outGsmServingCell */ CellInfoServingGsm | null, /* outUmtsServingCell */ CellInfoServingUmts | null, /* outTdscdmaServingCell */ CellInfoServingTdscdma | null, /* outLteServingCell */ CellInfoServingLte | null, /* outGsmNeighboringCellsCount */ number | null, /* outGsmNeighboringCells */ CellInfoNeighboringGsm[] | null, /* outUmtsNeighboringCellsCount */ number | null, /* outUmtsNeighboringCells */ CellInfoNeighboringUmts[] | null, /* outTdscdmaNeighboringCellsCount */ number | null, /* outTdscdmaNeighboringCells */ CellInfoNeighboringTdscdma[] | null, /* outLteNeighboringCellsCount */ number | null, /* outLteNeighboringCells */ CellInfoNeighboringLte[] | null, /* outCdmaCellsCount */ number | null, /* outCdmaCells */ CellInfoCdma[] | null ]
+    msBasicConnectExtensionsBaseStationsInfoResponseParse(): [ /* returnType */ boolean, /* outSystemType */ DataClass, /* outGsmServingCell */ CellInfoServingGsm | null, /* outUmtsServingCell */ CellInfoServingUmts | null, /* outTdscdmaServingCell */ CellInfoServingTdscdma | null, /* outLteServingCell */ CellInfoServingLte | null, /* outGsmNeighboringCellsCount */ number, /* outGsmNeighboringCells */ CellInfoNeighboringGsm[] | null, /* outUmtsNeighboringCellsCount */ number, /* outUmtsNeighboringCells */ CellInfoNeighboringUmts[] | null, /* outTdscdmaNeighboringCellsCount */ number, /* outTdscdmaNeighboringCells */ CellInfoNeighboringTdscdma[] | null, /* outLteNeighboringCellsCount */ number, /* outLteNeighboringCells */ CellInfoNeighboringLte[] | null, /* outCdmaCellsCount */ number, /* outCdmaCells */ CellInfoCdma[] | null ]
     /**
      * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsDeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType | null, /* outCellularClass */ CellularClass | null, /* outVoiceClass */ VoiceClass | null, /* outSmsClass */ SimClass | null, /* outDataClass */ DataClass | null, /* outSmsCaps */ SmsCaps | null, /* outControlCaps */ CtrlCaps | null, /* outMaxSessions */ number | null, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null, /* outExecutorIndex */ number | null ]
+    msBasicConnectExtensionsDeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSmsClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string, /* outExecutorIndex */ number ]
     /**
      * Parses and returns parameters of the 'Device Slot Mappings' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsDeviceSlotMappingsResponseParse(): [ /* returnType */ boolean, /* outMapCount */ number | null, /* outSlotMap */ Slot[] | null ]
+    msBasicConnectExtensionsDeviceSlotMappingsResponseParse(): [ /* returnType */ boolean, /* outMapCount */ number, /* outSlotMap */ Slot[] ]
     /**
      * Parses and returns parameters of the 'Location Info Status' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLocationInfoStatusNotificationParse(): [ /* returnType */ boolean, /* outLocationAreaCode */ number | null, /* outTrackingAreaCode */ number | null, /* outCellId */ number | null ]
+    msBasicConnectExtensionsLocationInfoStatusNotificationParse(): [ /* returnType */ boolean, /* outLocationAreaCode */ number, /* outTrackingAreaCode */ number, /* outCellId */ number ]
     /**
      * Parses and returns parameters of the 'Location Info Status' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLocationInfoStatusResponseParse(): [ /* returnType */ boolean, /* outLocationAreaCode */ number | null, /* outTrackingAreaCode */ number | null, /* outCellId */ number | null ]
+    msBasicConnectExtensionsLocationInfoStatusResponseParse(): [ /* returnType */ boolean, /* outLocationAreaCode */ number, /* outTrackingAreaCode */ number, /* outCellId */ number ]
     /**
      * Parses and returns parameters of the 'Lte Attach Configuration' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachConfigurationNotificationParse(): [ /* returnType */ boolean, /* outConfigurationCount */ number | null, /* outConfigurations */ LteAttachConfiguration[] | null ]
+    msBasicConnectExtensionsLteAttachConfigurationNotificationParse(): [ /* returnType */ boolean, /* outConfigurationCount */ number, /* outConfigurations */ LteAttachConfiguration[] ]
     /**
      * Parses and returns parameters of the 'Lte Attach Configuration' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationCount */ number | null, /* outConfigurations */ LteAttachConfiguration[] | null ]
+    msBasicConnectExtensionsLteAttachConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationCount */ number, /* outConfigurations */ LteAttachConfiguration[] ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState | null, /* outIpType */ ContextIpType | null, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression | null, /* outAuthProtocol */ AuthProtocol | null ]
+    msBasicConnectExtensionsLteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState | null, /* outIpType */ ContextIpType | null, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression | null, /* outAuthProtocol */ AuthProtocol | null ]
+    msBasicConnectExtensionsLteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Status' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachStatusNotificationParse(): [ /* returnType */ boolean, /* outLteAttachStatus */ DeprecatedLteAttachStatus | null ]
+    msBasicConnectExtensionsLteAttachStatusNotificationParse(): [ /* returnType */ boolean, /* outLteAttachStatus */ DeprecatedLteAttachStatus ]
     /**
      * Parses and returns parameters of the 'Lte Attach Status' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsLteAttachStatusResponseParse(): [ /* returnType */ boolean, /* outLteAttachStatus */ DeprecatedLteAttachStatus | null ]
+    msBasicConnectExtensionsLteAttachStatusResponseParse(): [ /* returnType */ boolean, /* outLteAttachStatus */ DeprecatedLteAttachStatus ]
     /**
      * Parses and returns parameters of the 'PCO' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsPcoNotificationParse(): [ /* returnType */ boolean, /* outPcoValue */ PcoValue | null ]
+    msBasicConnectExtensionsPcoNotificationParse(): [ /* returnType */ boolean, /* outPcoValue */ PcoValue ]
     /**
      * Parses and returns parameters of the 'PCO' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsPcoResponseParse(): [ /* returnType */ boolean, /* outPcoValue */ PcoValue | null ]
+    msBasicConnectExtensionsPcoResponseParse(): [ /* returnType */ boolean, /* outPcoValue */ PcoValue ]
     /**
      * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsProvisionedContextsNotificationParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number | null, /* outProvisionedContexts */ ProvisionedContextElementV2[] | null ]
+    msBasicConnectExtensionsProvisionedContextsNotificationParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number, /* outProvisionedContexts */ ProvisionedContextElementV2[] ]
     /**
      * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsProvisionedContextsResponseParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number | null, /* outProvisionedContexts */ ProvisionedContextElementV2[] | null ]
+    msBasicConnectExtensionsProvisionedContextsResponseParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number, /* outProvisionedContexts */ ProvisionedContextElementV2[] ]
     /**
      * Parses and returns parameters of the 'Slot Info Status' notification command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsSlotInfoStatusNotificationParse(): [ /* returnType */ boolean, /* outSlotIndex */ number | null, /* outState */ UiccSlotState | null ]
+    msBasicConnectExtensionsSlotInfoStatusNotificationParse(): [ /* returnType */ boolean, /* outSlotIndex */ number, /* outState */ UiccSlotState ]
     /**
      * Parses and returns parameters of the 'Slot Info Status' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsSlotInfoStatusResponseParse(): [ /* returnType */ boolean, /* outSlotIndex */ number | null, /* outState */ UiccSlotState | null ]
+    msBasicConnectExtensionsSlotInfoStatusResponseParse(): [ /* returnType */ boolean, /* outSlotIndex */ number, /* outState */ UiccSlotState ]
     /**
      * Parses and returns parameters of the 'Sys Caps' response command in the 'Ms Basic Connect Extensions' service.
      */
-    msBasicConnectExtensionsSysCapsResponseParse(): [ /* returnType */ boolean, /* outNumberOfExecutors */ number | null, /* outNumberOfSlots */ number | null, /* outConcurrency */ number | null, /* outModemId */ number | null ]
+    msBasicConnectExtensionsSysCapsResponseParse(): [ /* returnType */ boolean, /* outNumberOfExecutors */ number, /* outNumberOfSlots */ number, /* outConcurrency */ number, /* outModemId */ number ]
     /**
      * Parses and returns parameters of the 'Version' response command in the 'Ms Basic Connect Extensions V2' service.
      */
-    msBasicConnectExtensionsV2VersionResponseParse(): [ /* returnType */ boolean, /* outMbimVersion */ number | null, /* outMbimExtendedVersion */ number | null ]
+    msBasicConnectExtensionsV2VersionResponseParse(): [ /* returnType */ boolean, /* outMbimVersion */ number, /* outMbimExtendedVersion */ number ]
     /**
      * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3BaseStationsInfoResponseParse(): [ /* returnType */ boolean, /* outSystemType */ DataClassV3 | null, /* outSystemSubType */ DataSubclass | null, /* outGsmServingCell */ CellInfoServingGsm | null, /* outUmtsServingCell */ CellInfoServingUmts | null, /* outTdscdmaServingCell */ CellInfoServingTdscdma | null, /* outLteServingCell */ CellInfoServingLte | null, /* outGsmNeighboringCellsCount */ number | null, /* outGsmNeighboringCells */ CellInfoNeighboringGsm[] | null, /* outUmtsNeighboringCellsCount */ number | null, /* outUmtsNeighboringCells */ CellInfoNeighboringUmts[] | null, /* outTdscdmaNeighboringCellsCount */ number | null, /* outTdscdmaNeighboringCells */ CellInfoNeighboringTdscdma[] | null, /* outLteNeighboringCellsCount */ number | null, /* outLteNeighboringCells */ CellInfoNeighboringLte[] | null, /* outCdmaCellsCount */ number | null, /* outCdmaCells */ CellInfoCdma[] | null, /* outNrServingCellsCount */ number | null, /* outNrServingCells */ CellInfoServingNr[] | null, /* outNrNeighborCellsCount */ number | null, /* outNrNeighborCells */ CellInfoNeighboringNr[] | null ]
+    msBasicConnectExtensionsV3BaseStationsInfoResponseParse(): [ /* returnType */ boolean, /* outSystemType */ DataClassV3, /* outSystemSubType */ DataSubclass, /* outGsmServingCell */ CellInfoServingGsm | null, /* outUmtsServingCell */ CellInfoServingUmts | null, /* outTdscdmaServingCell */ CellInfoServingTdscdma | null, /* outLteServingCell */ CellInfoServingLte | null, /* outGsmNeighboringCellsCount */ number, /* outGsmNeighboringCells */ CellInfoNeighboringGsm[] | null, /* outUmtsNeighboringCellsCount */ number, /* outUmtsNeighboringCells */ CellInfoNeighboringUmts[] | null, /* outTdscdmaNeighboringCellsCount */ number, /* outTdscdmaNeighboringCells */ CellInfoNeighboringTdscdma[] | null, /* outLteNeighboringCellsCount */ number, /* outLteNeighboringCells */ CellInfoNeighboringLte[] | null, /* outCdmaCellsCount */ number, /* outCdmaCells */ CellInfoCdma[] | null, /* outNrServingCellsCount */ number, /* outNrServingCells */ CellInfoServingNr[] | null, /* outNrNeighborCellsCount */ number, /* outNrNeighborCells */ CellInfoNeighboringNr[] | null ]
     /**
      * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3DeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType | null, /* outCellularClass */ CellularClass | null, /* outVoiceClass */ VoiceClass | null, /* outSimClass */ SimClass | null, /* outDataClass */ DataClassV3 | null, /* outSmsCaps */ SmsCaps | null, /* outControlCaps */ CtrlCaps | null, /* outDataSubclass */ DataSubclass | null, /* outMaxSessions */ number | null, /* outExecutorIndex */ number | null, /* outWcdmaBandClass */ number | null, /* outLteBandClassCount */ number | null, /* outLteBandClass */ number | null, /* outNrBandClassCount */ number | null, /* outNrBandClass */ number | null, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null ]
+    msBasicConnectExtensionsV3DeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClassV3, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outDataSubclass */ DataSubclass, /* outMaxSessions */ number, /* outExecutorIndex */ number, /* outWcdmaBandClass */ number, /* outLteBandClassCount */ number, /* outLteBandClass */ number | null, /* outNrBandClassCount */ number, /* outNrBandClass */ number | null, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3LteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState | null, /* outNwError */ NwError | null, /* outIpType */ ContextIpType | null, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression | null, /* outAuthProtocol */ AuthProtocol | null ]
+    msBasicConnectExtensionsV3LteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3LteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState | null, /* outNwError */ NwError | null, /* outIpType */ ContextIpType | null, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression | null, /* outAuthProtocol */ AuthProtocol | null ]
+    msBasicConnectExtensionsV3LteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Modem Configuration' notification command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3ModemConfigurationNotificationParse(): [ /* returnType */ boolean, /* outModemConfigurationStatus */ ModemConfigurationStatus | null, /* outConfigurationName */ string | null, /* outUnnamedIes */ Tlv[] | null ]
+    msBasicConnectExtensionsV3ModemConfigurationNotificationParse(): [ /* returnType */ boolean, /* outModemConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Modem Configuration' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3ModemConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationStatus */ ModemConfigurationStatus | null, /* outConfigurationName */ string | null, /* outUnnamedIes */ Tlv[] | null ]
+    msBasicConnectExtensionsV3ModemConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Registration Parameters' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3RegistrationParametersResponseParse(): [ /* returnType */ boolean, /* outMicoMode */ MicoMode | null, /* outDrxCycle */ DrxCycle | null, /* outLadnInfo */ LadnInfo | null, /* outDefaultPduActivationHint */ DefaultPduActivationHint | null, /* outReRegisterIfNedeed */ boolean | null, /* outUnnamedIes */ Tlv[] | null ]
+    msBasicConnectExtensionsV3RegistrationParametersResponseParse(): [ /* returnType */ boolean, /* outMicoMode */ MicoMode, /* outDrxCycle */ DrxCycle, /* outLadnInfo */ LadnInfo, /* outDefaultPduActivationHint */ DefaultPduActivationHint, /* outReRegisterIfNedeed */ boolean, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Wake Reason' response command in the 'Ms Basic Connect Extensions V3' service.
      */
-    msBasicConnectExtensionsV3WakeReasonResponseParse(): [ /* returnType */ boolean, /* outWakeType */ WakeType | null, /* outSessionId */ number | null, /* outWakeTlv */ Tlv | null ]
+    msBasicConnectExtensionsV3WakeReasonResponseParse(): [ /* returnType */ boolean, /* outWakeType */ WakeType, /* outSessionId */ number, /* outWakeTlv */ Tlv ]
     /**
      * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2PacketServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outCurrentDataClass */ DataClass | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null, /* outFrequencyRange */ FrequencyRange | null ]
+    msBasicConnectV2PacketServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outCurrentDataClass */ DataClass, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number, /* outFrequencyRange */ FrequencyRange ]
     /**
      * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2PacketServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outCurrentDataClass */ DataClass | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null, /* outFrequencyRange */ FrequencyRange | null ]
+    msBasicConnectV2PacketServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outCurrentDataClass */ DataClass, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number, /* outFrequencyRange */ FrequencyRange ]
     /**
      * Parses and returns parameters of the 'Register State' notification command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2RegisterStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outRegisterState */ RegisterState | null, /* outRegisterMode */ RegisterMode | null, /* outAvailableDataClasses */ DataClass | null, /* outCurrentCellularClass */ CellularClass | null, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag | null, /* outPreferredDataClasses */ DataClass | null ]
+    msBasicConnectV2RegisterStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
     /**
      * Parses and returns parameters of the 'Register State' response command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2RegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outRegisterState */ RegisterState | null, /* outRegisterMode */ RegisterMode | null, /* outAvailableDataClasses */ DataClass | null, /* outCurrentCellularClass */ CellularClass | null, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag | null, /* outPreferredDataClasses */ DataClass | null ]
+    msBasicConnectV2RegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
     /**
      * Parses and returns parameters of the 'Signal State' notification command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2SignalStateNotificationParse(): [ /* returnType */ boolean, /* outRssi */ number | null, /* outErrorRate */ number | null, /* outSignalStrengthInterval */ number | null, /* outRssiThreshold */ number | null, /* outErrorRateThreshold */ number | null, /* outRsrpSnrCount */ number | null, /* outRsrpSnr */ RsrpSnrInfo[] | null ]
+    msBasicConnectV2SignalStateNotificationParse(): [ /* returnType */ boolean, /* outRssi */ number, /* outErrorRate */ number, /* outSignalStrengthInterval */ number, /* outRssiThreshold */ number, /* outErrorRateThreshold */ number, /* outRsrpSnrCount */ number, /* outRsrpSnr */ RsrpSnrInfo[] | null ]
     /**
      * Parses and returns parameters of the 'Signal State' response command in the 'Ms Basic Connect V2' service.
      */
-    msBasicConnectV2SignalStateResponseParse(): [ /* returnType */ boolean, /* outRssi */ number | null, /* outErrorRate */ number | null, /* outSignalStrengthInterval */ number | null, /* outRssiThreshold */ number | null, /* outErrorRateThreshold */ number | null, /* outRsrpSnrCount */ number | null, /* outRsrpSnr */ RsrpSnrInfo[] | null ]
+    msBasicConnectV2SignalStateResponseParse(): [ /* returnType */ boolean, /* outRssi */ number, /* outErrorRate */ number, /* outSignalStrengthInterval */ number, /* outRssiThreshold */ number, /* outErrorRateThreshold */ number, /* outRsrpSnrCount */ number, /* outRsrpSnr */ RsrpSnrInfo[] | null ]
     /**
      * Parses and returns parameters of the 'Connect' notification command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3ConnectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outActivationState */ ActivationState | null, /* outVoiceCallState */ VoiceCallState | null, /* outIpType */ ContextIpType | null, /* outContextType */ Uuid | null, /* outNwError */ number | null, /* outMediaPreference */ AccessMediaType | null, /* outAccessString */ string | null, /* outUnnamedIes */ Tlv[] | null ]
+    msBasicConnectV3ConnectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Connect' response command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3ConnectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outActivationState */ ActivationState | null, /* outVoiceCallState */ VoiceCallState | null, /* outIpType */ ContextIpType | null, /* outContextType */ Uuid | null, /* outNwError */ number | null, /* outMediaPreference */ AccessMediaType | null, /* outAccessString */ string | null, /* outUnnamedIes */ Tlv[] | null ]
+    msBasicConnectV3ConnectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3IpPacketFiltersResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number | null, /* outPacketFiltersCount */ number | null, /* outPacketFilters */ PacketFilterV3[] | null ]
+    msBasicConnectV3IpPacketFiltersResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outPacketFiltersCount */ number, /* outPacketFilters */ PacketFilterV3[] ]
     /**
      * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3PacketServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outHighestAvailableDataClass */ DataClassV3 | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null, /* outFrequencyRange */ FrequencyRange | null, /* outDataSubclass */ DataSubclass | null, /* outTai */ Tai | null ]
+    msBasicConnectV3PacketServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outHighestAvailableDataClass */ DataClassV3, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number, /* outFrequencyRange */ FrequencyRange, /* outDataSubclass */ DataSubclass, /* outTai */ Tai ]
     /**
      * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3PacketServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outHighestAvailableDataClass */ DataClassV3 | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null, /* outFrequencyRange */ FrequencyRange | null, /* outDataSubclass */ DataSubclass | null, /* outTai */ Tai | null ]
+    msBasicConnectV3PacketServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outHighestAvailableDataClass */ DataClassV3, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number, /* outFrequencyRange */ FrequencyRange, /* outDataSubclass */ DataSubclass, /* outTai */ Tai ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3SubscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState | null, /* outFlags */ SubscriberReadyStatusFlag | null, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag | null, /* outTelephoneNumbersCount */ number | null, /* outTelephoneNumbers */ string[] | null ]
+    msBasicConnectV3SubscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Ms Basic Connect V3' service.
      */
-    msBasicConnectV3SubscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState | null, /* outFlags */ SubscriberReadyStatusFlag | null, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag | null, /* outTelephoneNumbersCount */ number | null, /* outTelephoneNumbers */ string[] | null ]
+    msBasicConnectV3SubscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Get' response command in the 'MS Firmware ID' service.
      */
-    msFirmwareIdGetResponseParse(): [ /* returnType */ boolean, /* outFirmwareId */ Uuid | null ]
+    msFirmwareIdGetResponseParse(): [ /* returnType */ boolean, /* outFirmwareId */ Uuid ]
     /**
      * Parses and returns parameters of the 'Config' response command in the 'MS SAR' service.
      */
-    msSarConfigResponseParse(): [ /* returnType */ boolean, /* outMode */ SarControlMode | null, /* outBackoffState */ SarBackoffState | null, /* outWifiIntegration */ SarWifiHardwareState | null, /* outConfigStatesCount */ number | null, /* outConfigStates */ SarConfigState[] | null ]
+    msSarConfigResponseParse(): [ /* returnType */ boolean, /* outMode */ SarControlMode, /* outBackoffState */ SarBackoffState, /* outWifiIntegration */ SarWifiHardwareState, /* outConfigStatesCount */ number, /* outConfigStates */ SarConfigState[] ]
     /**
      * Parses and returns parameters of the 'Transmission status' notification command in the 'MS SAR' service.
      */
-    msSarTransmissionStatusNotificationParse(): [ /* returnType */ boolean, /* outChannelNotification */ TransmissionNotificationStatus | null, /* outTransmissionStatus */ TransmissionState | null, /* outHysteresisTimer */ number | null ]
+    msSarTransmissionStatusNotificationParse(): [ /* returnType */ boolean, /* outChannelNotification */ TransmissionNotificationStatus, /* outTransmissionStatus */ TransmissionState, /* outHysteresisTimer */ number ]
     /**
      * Parses and returns parameters of the 'Transmission status' response command in the 'MS SAR' service.
      */
-    msSarTransmissionStatusResponseParse(): [ /* returnType */ boolean, /* outChannelNotification */ TransmissionNotificationStatus | null, /* outTransmissionStatus */ TransmissionState | null, /* outHysteresisTimer */ number | null ]
+    msSarTransmissionStatusResponseParse(): [ /* returnType */ boolean, /* outChannelNotification */ TransmissionNotificationStatus, /* outTransmissionStatus */ TransmissionState, /* outHysteresisTimer */ number ]
     /**
      * Parses and returns parameters of the 'APDU' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessApduResponseParse(): [ /* returnType */ boolean, /* outStatus */ number | null, /* outResponse */ Uint8Array | null ]
+    msUiccLowLevelAccessApduResponseParse(): [ /* returnType */ boolean, /* outStatus */ number, /* outResponse */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'ATR' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessAtrResponseParse(): [ /* returnType */ boolean, /* outAtr */ string | null ]
+    msUiccLowLevelAccessAtrResponseParse(): [ /* returnType */ boolean, /* outAtr */ string ]
     /**
      * Parses and returns parameters of the 'Close Channel' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessCloseChannelResponseParse(): [ /* returnType */ boolean, /* outStatus */ number | null ]
+    msUiccLowLevelAccessCloseChannelResponseParse(): [ /* returnType */ boolean, /* outStatus */ number ]
     /**
      * Parses and returns parameters of the 'Open Channel' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessOpenChannelResponseParse(): [ /* returnType */ boolean, /* outStatus */ number | null, /* outChannel */ number | null, /* outResponse */ Uint8Array | null ]
+    msUiccLowLevelAccessOpenChannelResponseParse(): [ /* returnType */ boolean, /* outStatus */ number, /* outChannel */ number, /* outResponse */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Reset' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessResetResponseParse(): [ /* returnType */ boolean, /* outPassThroughStatus */ UiccPassThroughStatus | null ]
+    msUiccLowLevelAccessResetResponseParse(): [ /* returnType */ boolean, /* outPassThroughStatus */ UiccPassThroughStatus ]
     /**
      * Parses and returns parameters of the 'Terminal Capability' response command in the 'MS UICC Low Level Access' service.
      */
-    msUiccLowLevelAccessTerminalCapabilityResponseParse(): [ /* returnType */ boolean, /* outTerminalCapabilityCount */ number | null, /* outTerminalCapability */ TerminalCapabilityInfo[] | null ]
+    msUiccLowLevelAccessTerminalCapabilityResponseParse(): [ /* returnType */ boolean, /* outTerminalCapabilityCount */ number, /* outTerminalCapability */ TerminalCapabilityInfo[] ]
     /**
      * Parses and returns parameters of the 'Multicarrier Providers' notification command in the 'Basic Connect' service.
      */
-    multicarrierProvidersNotificationParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ Provider[] | null ]
+    multicarrierProvidersNotificationParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ Provider[] ]
     /**
      * Parses and returns parameters of the 'Multicarrier Providers' response command in the 'Basic Connect' service.
      */
-    multicarrierProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ Provider[] | null ]
+    multicarrierProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ Provider[] ]
     /**
      * Parses and returns parameters of the 'Network Idle Hint' response command in the 'Basic Connect' service.
      */
-    networkIdleHintResponseParse(): [ /* returnType */ boolean, /* outState */ NetworkIdleHintState | null ]
+    networkIdleHintResponseParse(): [ /* returnType */ boolean, /* outState */ NetworkIdleHintState ]
     /**
      * Gets the result of the 'Open' operation in the %MBIM_MESSAGE_TYPE_OPEN_DONE message.
      */
@@ -5458,23 +5858,23 @@ class Message {
     /**
      * Parses and returns parameters of the 'Packet Service' notification command in the 'Basic Connect' service.
      */
-    packetServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outHighestAvailableDataClass */ DataClass | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null ]
+    packetServiceNotificationParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outHighestAvailableDataClass */ DataClass, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number ]
     /**
      * Parses and returns parameters of the 'Packet Service' response command in the 'Basic Connect' service.
      */
-    packetServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number | null, /* outPacketServiceState */ PacketServiceState | null, /* outHighestAvailableDataClass */ DataClass | null, /* outUplinkSpeed */ number | null, /* outDownlinkSpeed */ number | null ]
+    packetServiceResponseParse(): [ /* returnType */ boolean, /* outNwError */ number, /* outPacketServiceState */ PacketServiceState, /* outHighestAvailableDataClass */ DataClass, /* outUplinkSpeed */ number, /* outDownlinkSpeed */ number ]
     /**
      * Parses and returns parameters of the 'Packet Statistics' response command in the 'Basic Connect' service.
      */
-    packetStatisticsResponseParse(): [ /* returnType */ boolean, /* outInDiscards */ number | null, /* outInErrors */ number | null, /* outInOctets */ number | null, /* outInPackets */ number | null, /* outOutOctets */ number | null, /* outOutPackets */ number | null, /* outOutErrors */ number | null, /* outOutDiscards */ number | null ]
+    packetStatisticsResponseParse(): [ /* returnType */ boolean, /* outInDiscards */ number, /* outInErrors */ number, /* outInOctets */ number, /* outInPackets */ number, /* outOutOctets */ number, /* outOutPackets */ number, /* outOutErrors */ number, /* outOutDiscards */ number ]
     /**
      * Parses and returns parameters of the 'Configuration' notification command in the 'Phonebook' service.
      */
-    phonebookConfigurationNotificationParse(): [ /* returnType */ boolean, /* outState */ PhonebookState | null, /* outNumberOfEntries */ number | null, /* outUsedEntries */ number | null, /* outMaxNumberLength */ number | null, /* outMaxName */ number | null ]
+    phonebookConfigurationNotificationParse(): [ /* returnType */ boolean, /* outState */ PhonebookState, /* outNumberOfEntries */ number, /* outUsedEntries */ number, /* outMaxNumberLength */ number, /* outMaxName */ number ]
     /**
      * Parses and returns parameters of the 'Configuration' response command in the 'Phonebook' service.
      */
-    phonebookConfigurationResponseParse(): [ /* returnType */ boolean, /* outState */ PhonebookState | null, /* outNumberOfEntries */ number | null, /* outUsedEntries */ number | null, /* outMaxNumberLength */ number | null, /* outMaxName */ number | null ]
+    phonebookConfigurationResponseParse(): [ /* returnType */ boolean, /* outState */ PhonebookState, /* outNumberOfEntries */ number, /* outUsedEntries */ number, /* outMaxNumberLength */ number, /* outMaxName */ number ]
     /**
      * Parses and returns parameters of the 'Delete' response command in the 'Phonebook' service.
      */
@@ -5482,7 +5882,7 @@ class Message {
     /**
      * Parses and returns parameters of the 'Read' response command in the 'Phonebook' service.
      */
-    phonebookReadResponseParse(): [ /* returnType */ boolean, /* outEntryCount */ number | null, /* outEntries */ PhonebookEntry[] | null ]
+    phonebookReadResponseParse(): [ /* returnType */ boolean, /* outEntryCount */ number, /* outEntries */ PhonebookEntry[] ]
     /**
      * Parses and returns parameters of the 'Write' response command in the 'Phonebook' service.
      */
@@ -5490,27 +5890,27 @@ class Message {
     /**
      * Parses and returns parameters of the 'Pin List' response command in the 'Basic Connect' service.
      */
-    pinListResponseParse(): [ /* returnType */ boolean, /* outPinDescPin1 */ PinDesc | null, /* outPinDescPin2 */ PinDesc | null, /* outPinDescDeviceSimPin */ PinDesc | null, /* outPinDescDeviceFirstSimPin */ PinDesc | null, /* outPinDescNetworkPin */ PinDesc | null, /* outPinDescNetworkSubsetPin */ PinDesc | null, /* outPinDescServiceProviderPin */ PinDesc | null, /* outPinDescCorporatePin */ PinDesc | null, /* outPinDescSubsidyLock */ PinDesc | null, /* outPinDescCustom */ PinDesc | null ]
+    pinListResponseParse(): [ /* returnType */ boolean, /* outPinDescPin1 */ PinDesc, /* outPinDescPin2 */ PinDesc, /* outPinDescDeviceSimPin */ PinDesc, /* outPinDescDeviceFirstSimPin */ PinDesc, /* outPinDescNetworkPin */ PinDesc, /* outPinDescNetworkSubsetPin */ PinDesc, /* outPinDescServiceProviderPin */ PinDesc, /* outPinDescCorporatePin */ PinDesc, /* outPinDescSubsidyLock */ PinDesc, /* outPinDescCustom */ PinDesc ]
     /**
      * Parses and returns parameters of the 'Pin' response command in the 'Basic Connect' service.
      */
-    pinResponseParse(): [ /* returnType */ boolean, /* outPinType */ PinType | null, /* outPinState */ PinState | null, /* outRemainingAttempts */ number | null ]
+    pinResponseParse(): [ /* returnType */ boolean, /* outPinType */ PinType, /* outPinState */ PinState, /* outRemainingAttempts */ number ]
     /**
      * Parses and returns parameters of the 'Preferred Providers' notification command in the 'Basic Connect' service.
      */
-    preferredProvidersNotificationParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ Provider[] | null ]
+    preferredProvidersNotificationParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ Provider[] ]
     /**
      * Parses and returns parameters of the 'Preferred Providers' response command in the 'Basic Connect' service.
      */
-    preferredProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ Provider[] | null ]
+    preferredProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ Provider[] ]
     /**
      * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Basic Connect' service.
      */
-    provisionedContextsNotificationParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number | null, /* outProvisionedContexts */ ProvisionedContextElement[] | null ]
+    provisionedContextsNotificationParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number, /* outProvisionedContexts */ ProvisionedContextElement[] ]
     /**
      * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Basic Connect' service.
      */
-    provisionedContextsResponseParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number | null, /* outProvisionedContexts */ ProvisionedContextElement[] | null ]
+    provisionedContextsResponseParse(): [ /* returnType */ boolean, /* outProvisionedContextsCount */ number, /* outProvisionedContexts */ ProvisionedContextElement[] ]
     /**
      * Parses and returns parameters of the 'Configuration' response command in the 'Proxy Control' service.
      */
@@ -5518,11 +5918,11 @@ class Message {
     /**
      * Parses and returns parameters of the 'Version' notification command in the 'Proxy Control' service.
      */
-    proxyControlVersionNotificationParse(): [ /* returnType */ boolean, /* outMbimVersion */ number | null, /* outMbimExtendedVersion */ number | null ]
+    proxyControlVersionNotificationParse(): [ /* returnType */ boolean, /* outMbimVersion */ number, /* outMbimExtendedVersion */ number ]
     /**
      * Parses and returns parameters of the 'File Open' response command in the 'QDU' service.
      */
-    qduFileOpenResponseParse(): [ /* returnType */ boolean, /* outMaxTransferSize */ number | null, /* outMaxWindowSize */ number | null ]
+    qduFileOpenResponseParse(): [ /* returnType */ boolean, /* outMaxTransferSize */ number, /* outMaxWindowSize */ number ]
     /**
      * Parses and returns parameters of the 'File Write' response command in the 'QDU' service.
      */
@@ -5530,7 +5930,7 @@ class Message {
     /**
      * Parses and returns parameters of the 'Quectel Read Version' response command in the 'QDU' service.
      */
-    qduQuectelReadVersionResponseParse(): [ /* returnType */ boolean, /* outVersionId */ number | null, /* outVersion */ string | null ]
+    qduQuectelReadVersionResponseParse(): [ /* returnType */ boolean, /* outVersionId */ number, /* outVersion */ string ]
     /**
      * Parses and returns parameters of the 'Quectel Reboot' response command in the 'QDU' service.
      */
@@ -5538,27 +5938,27 @@ class Message {
     /**
      * Parses and returns parameters of the 'Update Session' response command in the 'QDU' service.
      */
-    qduUpdateSessionResponseParse(): [ /* returnType */ boolean, /* outCurrentSessionType */ QduSessionType | null, /* outCurrentSessionStatus */ QduSessionStatus | null, /* outLastSessionType */ QduSessionType | null, /* outLastSessionResult */ QduSessionResult | null, /* outLastSessionErrorOffset */ number | null, /* outLastSessionErrorSize */ number | null ]
+    qduUpdateSessionResponseParse(): [ /* returnType */ boolean, /* outCurrentSessionType */ QduSessionType, /* outCurrentSessionStatus */ QduSessionStatus, /* outLastSessionType */ QduSessionType, /* outLastSessionResult */ QduSessionResult, /* outLastSessionErrorOffset */ number, /* outLastSessionErrorSize */ number ]
     /**
      * Parses and returns parameters of the 'msg' notification command in the 'QMI' service.
      */
-    qmiMsgNotificationParse(): [ /* returnType */ boolean, /* outQmux */ Uint8Array | null ]
+    qmiMsgNotificationParse(): [ /* returnType */ boolean, /* outQmux */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'msg' response command in the 'QMI' service.
      */
-    qmiMsgResponseParse(): [ /* returnType */ boolean, /* outQmux */ Uint8Array | null ]
+    qmiMsgResponseParse(): [ /* returnType */ boolean, /* outQmux */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Radio State' response command in the 'Quectel' service.
      */
-    quectelRadioStateResponseParse(): [ /* returnType */ boolean, /* outRadioState */ QuectelRadioSwitchState | null ]
+    quectelRadioStateResponseParse(): [ /* returnType */ boolean, /* outRadioState */ QuectelRadioSwitchState ]
     /**
      * Parses and returns parameters of the 'Radio State' notification command in the 'Basic Connect' service.
      */
-    radioStateNotificationParse(): [ /* returnType */ boolean, /* outHwRadioState */ RadioSwitchState | null, /* outSwRadioState */ RadioSwitchState | null ]
+    radioStateNotificationParse(): [ /* returnType */ boolean, /* outHwRadioState */ RadioSwitchState, /* outSwRadioState */ RadioSwitchState ]
     /**
      * Parses and returns parameters of the 'Radio State' response command in the 'Basic Connect' service.
      */
-    radioStateResponseParse(): [ /* returnType */ boolean, /* outHwRadioState */ RadioSwitchState | null, /* outSwRadioState */ RadioSwitchState | null ]
+    radioStateResponseParse(): [ /* returnType */ boolean, /* outHwRadioState */ RadioSwitchState, /* outSwRadioState */ RadioSwitchState ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -5566,11 +5966,11 @@ class Message {
     /**
      * Parses and returns parameters of the 'Register State' notification command in the 'Basic Connect' service.
      */
-    registerStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outRegisterState */ RegisterState | null, /* outRegisterMode */ RegisterMode | null, /* outAvailableDataClasses */ DataClass | null, /* outCurrentCellularClass */ CellularClass | null, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag | null ]
+    registerStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Parses and returns parameters of the 'Register State' response command in the 'Basic Connect' service.
      */
-    registerStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outRegisterState */ RegisterState | null, /* outRegisterMode */ RegisterMode | null, /* outAvailableDataClasses */ DataClass | null, /* outCurrentCellularClass */ CellularClass | null, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag | null ]
+    registerStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Gets the result of the operation from the response message, which
      * can be either a %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message or a message of the
@@ -5581,7 +5981,7 @@ class Message {
     /**
      * Parses and returns parameters of the 'Service Activation' response command in the 'Basic Connect' service.
      */
-    serviceActivationResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError | null, /* outBuffer */ Uint8Array | null ]
+    serviceActivationResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outBuffer */ Uint8Array ]
     /**
      * Sets the transaction ID of the message.
      * @param transactionId the transaction id.
@@ -5590,15 +5990,15 @@ class Message {
     /**
      * Parses and returns parameters of the 'Signal State' notification command in the 'Basic Connect' service.
      */
-    signalStateNotificationParse(): [ /* returnType */ boolean, /* outRssi */ number | null, /* outErrorRate */ number | null, /* outSignalStrengthInterval */ number | null, /* outRssiThreshold */ number | null, /* outErrorRateThreshold */ number | null ]
+    signalStateNotificationParse(): [ /* returnType */ boolean, /* outRssi */ number, /* outErrorRate */ number, /* outSignalStrengthInterval */ number, /* outRssiThreshold */ number, /* outErrorRateThreshold */ number ]
     /**
      * Parses and returns parameters of the 'Signal State' response command in the 'Basic Connect' service.
      */
-    signalStateResponseParse(): [ /* returnType */ boolean, /* outRssi */ number | null, /* outErrorRate */ number | null, /* outSignalStrengthInterval */ number | null, /* outRssiThreshold */ number | null, /* outErrorRateThreshold */ number | null ]
+    signalStateResponseParse(): [ /* returnType */ boolean, /* outRssi */ number, /* outErrorRate */ number, /* outSignalStrengthInterval */ number, /* outRssiThreshold */ number, /* outErrorRateThreshold */ number ]
     /**
      * Parses and returns parameters of the 'Configuration' response command in the 'SMS' service.
      */
-    smsConfigurationResponseParse(): [ /* returnType */ boolean, /* outSmsStorageState */ SmsStorageState | null, /* outFormat */ SmsFormat | null, /* outMaxMessages */ number | null, /* outCdmaShortMessageSize */ number | null, /* outScAddress */ string | null ]
+    smsConfigurationResponseParse(): [ /* returnType */ boolean, /* outSmsStorageState */ SmsStorageState, /* outFormat */ SmsFormat, /* outMaxMessages */ number, /* outCdmaShortMessageSize */ number, /* outScAddress */ string ]
     /**
      * Parses and returns parameters of the 'Delete' response command in the 'SMS' service.
      */
@@ -5606,47 +6006,47 @@ class Message {
     /**
      * Parses and returns parameters of the 'Message Store Status' notification command in the 'SMS' service.
      */
-    smsMessageStoreStatusNotificationParse(): [ /* returnType */ boolean, /* outFlag */ SmsStatusFlag | null, /* outMessageIndex */ number | null ]
+    smsMessageStoreStatusNotificationParse(): [ /* returnType */ boolean, /* outFlag */ SmsStatusFlag, /* outMessageIndex */ number ]
     /**
      * Parses and returns parameters of the 'Message Store Status' response command in the 'SMS' service.
      */
-    smsMessageStoreStatusResponseParse(): [ /* returnType */ boolean, /* outFlag */ SmsStatusFlag | null, /* outMessageIndex */ number | null ]
+    smsMessageStoreStatusResponseParse(): [ /* returnType */ boolean, /* outFlag */ SmsStatusFlag, /* outMessageIndex */ number ]
     /**
      * Parses and returns parameters of the 'Read' notification command in the 'SMS' service.
      */
-    smsReadNotificationParse(): [ /* returnType */ boolean, /* outFormat */ SmsFormat | null, /* outMessagesCount */ number | null, /* outPduMessages */ SmsPduReadRecord[] | null, /* outCdmaMessages */ SmsCdmaReadRecord[] | null ]
+    smsReadNotificationParse(): [ /* returnType */ boolean, /* outFormat */ SmsFormat, /* outMessagesCount */ number, /* outPduMessages */ SmsPduReadRecord[], /* outCdmaMessages */ SmsCdmaReadRecord[] ]
     /**
      * Parses and returns parameters of the 'Read' response command in the 'SMS' service.
      */
-    smsReadResponseParse(): [ /* returnType */ boolean, /* outFormat */ SmsFormat | null, /* outMessagesCount */ number | null, /* outPduMessages */ SmsPduReadRecord[] | null, /* outCdmaMessages */ SmsCdmaReadRecord[] | null ]
+    smsReadResponseParse(): [ /* returnType */ boolean, /* outFormat */ SmsFormat, /* outMessagesCount */ number, /* outPduMessages */ SmsPduReadRecord[], /* outCdmaMessages */ SmsCdmaReadRecord[] ]
     /**
      * Parses and returns parameters of the 'Send' response command in the 'SMS' service.
      */
-    smsSendResponseParse(): [ /* returnType */ boolean, /* outMessageReference */ number | null ]
+    smsSendResponseParse(): [ /* returnType */ boolean, /* outMessageReference */ number ]
     /**
      * Parses and returns parameters of the 'Envelope' response command in the 'STK' service.
      */
-    stkEnvelopeResponseParse(): [ /* returnType */ boolean, /* outEnvelopeSupport */ Uint8Array | null ]
+    stkEnvelopeResponseParse(): [ /* returnType */ boolean, /* outEnvelopeSupport */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Pac' notification command in the 'STK' service.
      */
-    stkPacNotificationParse(): [ /* returnType */ boolean, /* outPacType */ StkPacType | null, /* outDataBuffer */ Uint8Array | null ]
+    stkPacNotificationParse(): [ /* returnType */ boolean, /* outPacType */ StkPacType, /* outDataBuffer */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Pac' response command in the 'STK' service.
      */
-    stkPacResponseParse(): [ /* returnType */ boolean, /* outPacSupport */ Uint8Array | null ]
+    stkPacResponseParse(): [ /* returnType */ boolean, /* outPacSupport */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Terminal Response' response command in the 'STK' service.
      */
-    stkTerminalResponseResponseParse(): [ /* returnType */ boolean, /* outResultData */ Uint8Array | null, /* outStatusWords */ number | null ]
+    stkTerminalResponseResponseParse(): [ /* returnType */ boolean, /* outResultData */ Uint8Array, /* outStatusWords */ number ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Basic Connect' service.
      */
-    subscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState | null, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag | null, /* outTelephoneNumbersCount */ number | null, /* outTelephoneNumbers */ string[] | null ]
+    subscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Basic Connect' service.
      */
-    subscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState | null, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag | null, /* outTelephoneNumbersCount */ number | null, /* outTelephoneNumbers */ string[] | null ]
+    subscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -5655,628 +6055,1693 @@ class Message {
     /**
      * Parses and returns parameters of the '' notification command in the 'USSD' service.
      */
-    ussdNotificationParse(): [ /* returnType */ boolean, /* outResponse */ UssdResponse | null, /* outSessionState */ UssdSessionState | null, /* outDataCodingScheme */ number | null, /* outPayload */ Uint8Array | null ]
+    ussdNotificationParse(): [ /* returnType */ boolean, /* outResponse */ UssdResponse, /* outSessionState */ UssdSessionState, /* outDataCodingScheme */ number, /* outPayload */ Uint8Array ]
     /**
      * Parses and returns parameters of the '' response command in the 'USSD' service.
      */
-    ussdResponseParse(): [ /* returnType */ boolean, /* outResponse */ UssdResponse | null, /* outSessionState */ UssdSessionState | null, /* outDataCodingScheme */ number | null, /* outPayload */ Uint8Array | null ]
+    ussdResponseParse(): [ /* returnType */ boolean, /* outResponse */ UssdResponse, /* outSessionState */ UssdSessionState, /* outDataCodingScheme */ number, /* outPayload */ Uint8Array ]
     /**
      * Parses and returns parameters of the 'Visible Providers' response command in the 'Basic Connect' service.
      */
-    visibleProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number | null, /* outProviders */ Provider[] | null ]
+    visibleProvidersResponseParse(): [ /* returnType */ boolean, /* outProvidersCount */ number, /* outProviders */ Provider[] ]
+}
+
+/**
+ * An opaque type representing a MBIM message.
+ * @record 
+ */
+class Message {
+
+    // Own properties of Mbim-1.0.Mbim.Message
+
     static name: string
-    static new(data: number, dataLength: number): Message
-    constructor(data: number, dataLength: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.Message
+
+    /**
+     * Create a new request for the 'Location' query command in the 'ATDS' service.
+     * @constructor 
+     */
     static atdsLocationQueryNew(): Message
+    /**
+     * Create a new request for the 'Operators' query command in the 'ATDS' service.
+     * @constructor 
+     */
     static atdsOperatorsQueryNew(): Message
+    /**
+     * Create a new request for the 'RAT' query command in the 'ATDS' service.
+     * @constructor 
+     */
     static atdsRatQueryNew(): Message
+    /**
+     * Create a new request for the 'RAT' set command in the 'ATDS' service.
+     * @constructor 
+     * @param mode the 'Mode' field, given as a #MbimAtdsRatMode.
+     */
     static atdsRatSetNew(mode: AtdsRatMode): Message
+    /**
+     * Create a new request for the 'Register State' query command in the 'ATDS' service.
+     * @constructor 
+     */
     static atdsRegisterStateQueryNew(): Message
+    /**
+     * Create a new request for the 'Signal' query command in the 'ATDS' service.
+     * @constructor 
+     */
     static atdsSignalQueryNew(): Message
+    /**
+     * Create a new request for the 'Aka' query command in the 'Auth' service.
+     * @constructor 
+     * @param rand the 'Rand' field, given as an array of 16 #guint8 values.
+     * @param autn the 'Autn' field, given as an array of 16 #guint8 values.
+     */
     static authAkaQueryNew(rand: Uint8Array, autn: Uint8Array): Message
+    /**
+     * Create a new request for the 'Akap' query command in the 'Auth' service.
+     * @constructor 
+     * @param rand the 'Rand' field, given as an array of 16 #guint8 values.
+     * @param autn the 'Autn' field, given as an array of 16 #guint8 values.
+     * @param networkName the 'NetworkName' field, given as a string.
+     */
     static authAkapQueryNew(rand: Uint8Array, autn: Uint8Array, networkName: string): Message
+    /**
+     * Create a new request for the 'Sim' query command in the 'Auth' service.
+     * @constructor 
+     * @param rand1 the 'Rand1' field, given as an array of 16 #guint8 values.
+     * @param rand2 the 'Rand2' field, given as an array of 16 #guint8 values.
+     * @param rand3 the 'Rand3' field, given as an array of 16 #guint8 values.
+     * @param n the 'N' field, given as a #guint32.
+     */
     static authSimQueryNew(rand1: Uint8Array, rand2: Uint8Array, rand3: Uint8Array, n: number): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_CLOSE_DONE with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param errorStatusCode a #MbimStatusError.
+     */
     static closeDoneNew(transactionId: number, errorStatusCode: StatusError): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_CLOSE with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     */
     static closeNew(transactionId: number): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_COMMAND with the
+     * specified parameters and an empty information buffer.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param service a #MbimService.
+     * @param cid the command ID.
+     * @param commandType the command type.
+     */
     static commandNew(transactionId: number, service: Service, cid: number, commandType: MessageCommandType): Message
+    /**
+     * Create a new request for the 'Connect' query command in the 'Basic Connect' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param activationState the 'ActivationState' field, given as a #MbimActivationState.
+     * @param voiceCallState the 'VoiceCallState' field, given as a #MbimVoiceCallState.
+     * @param ipType the 'IpType' field, given as a #MbimContextIpType.
+     * @param contextType the 'ContextType' field, given as a #MbimUuid.
+     * @param nwError the 'NwError' field, given as a #guint32.
+     */
     static connectQueryNew(sessionId: number, activationState: ActivationState, voiceCallState: VoiceCallState, ipType: ContextIpType, contextType: Uuid, nwError: number): Message
+    /**
+     * Create a new request for the 'Connect' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param activationCommand the 'ActivationCommand' field, given as a #MbimActivationCommand.
+     * @param accessString the 'AccessString' field, given as a string.
+     * @param userName the 'UserName' field, given as a string.
+     * @param password the 'Password' field, given as a string.
+     * @param compression the 'Compression' field, given as a #MbimCompression.
+     * @param authProtocol the 'AuthProtocol' field, given as a #MbimAuthProtocol.
+     * @param ipType the 'IpType' field, given as a #MbimContextIpType.
+     * @param contextType the 'ContextType' field, given as a #MbimUuid.
+     */
     static connectSetNew(sessionId: number, activationCommand: ActivationCommand, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid): Message
+    /**
+     * Create a new request for the 'Device Caps' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static deviceCapsQueryNew(): Message
+    /**
+     * Create a new request for the 'Device Service Subscribe List' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param eventsCount the 'EventsCount' field, given as a #guint32.
+     * @param events the 'Events' field, given as an array of #MbimEventEntry items.
+     */
     static deviceServiceSubscribeListSetNew(eventsCount: number, events: EventEntry[]): Message
+    /**
+     * Create a new request for the 'Device Service Subscribe List' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param eventsCount the 'EventsCount' field, given as a #guint32.
+     * @param events the 'Events' field, given as an array of #MbimEventEntrys.
+     */
     static deviceServiceSubscriberListSetNew(eventsCount: number, events: EventEntry): Message
+    /**
+     * Create a new request for the 'Device Services' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static deviceServicesQueryNew(): Message
+    /**
+     * Create a new request for the 'Connect' set command in the 'DSS' service.
+     * @constructor 
+     * @param deviceServiceId the 'DeviceServiceId' field, given as a #MbimUuid.
+     * @param dssSessionId the 'DssSessionId' field, given as a #guint32.
+     * @param dssLinkState the 'DssLinkState' field, given as a #MbimDssLinkState.
+     */
     static dssConnectSetNew(deviceServiceId: Uuid, dssSessionId: number, dssLinkState: DssLinkState): Message
+    /**
+     * Create a new request for the 'Emergency Mode' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static emergencyModeQueryNew(): Message
+    /**
+     * Create a new request for the 'Emergency Mode' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param state the 'State' field, given as a #MbimEmergencyModeState.
+     */
     static emergencyModeSetNew(state: EmergencyModeState): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_HOST_ERROR with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param errorStatusCode a #MbimProtocolError.
+     */
     static errorNew(transactionId: number, errorStatusCode: ProtocolError): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_FUNCTION_ERROR with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param errorStatusCode a #MbimProtocolError.
+     */
     static functionErrorNew(transactionId: number, errorStatusCode: ProtocolError): Message
+    /**
+     * Create a new request for the 'Home Provider' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static homeProviderQueryNew(): Message
+    /**
+     * Create a new request for the 'Home Provider' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param provider the 'Provider' field, given as a #MbimProvider.
+     */
     static homeProviderSetNew(provider: Provider): Message
+    /**
+     * Create a new request for the 'Modem Reboot' set command in the 'Intel Firmware Update' service.
+     * @constructor 
+     */
     static intelFirmwareUpdateModemRebootSetNew(): Message
+    /**
+     * Create a new request for the 'IP Configuration' query command in the 'Basic Connect' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param ipv4ConfigurationAvailable the 'IPv4ConfigurationAvailable' field, given as a #MbimIPConfigurationAvailableFlag.
+     * @param ipv6ConfigurationAvailable the 'IPv6ConfigurationAvailable' field, given as a #MbimIPConfigurationAvailableFlag.
+     * @param ipv4AddressCount the 'IPv4AddressCount' field, given as a #guint32.
+     * @param ipv4Address the 'IPv4Address' field, given as an array of #MbimIPv4Element items.
+     * @param ipv6AddressCount the 'IPv6AddressCount' field, given as a #guint32.
+     * @param ipv6Address the 'IPv6Address' field, given as an array of #MbimIPv6Element items.
+     * @param ipv4Gateway the 'IPv4Gateway' field, given as a #MbimIPv4.
+     * @param ipv6Gateway the 'IPv6Gateway' field, given as a #MbimIPv6.
+     * @param ipv4DnsServerCount the 'IPv4DnsServerCount' field, given as a #guint32.
+     * @param ipv4DnsServer the 'IPv4DnsServer' field, given as an array of #MbimIPv4 items.
+     * @param ipv6DnsServerCount the 'IPv6DnsServerCount' field, given as a #guint32.
+     * @param ipv6DnsServer the 'IPv6DnsServer' field, given as an array of #MbimIPv6 items.
+     * @param ipv4Mtu the 'IPv4Mtu' field, given as a #guint32.
+     * @param ipv6Mtu the 'IPv6Mtu' field, given as a #guint32.
+     */
     static ipConfigurationQueryNew(sessionId: number, ipv4ConfigurationAvailable: IPConfigurationAvailableFlag, ipv6ConfigurationAvailable: IPConfigurationAvailableFlag, ipv4AddressCount: number, ipv4Address: IPv4Element[], ipv6AddressCount: number, ipv6Address: IPv6Element[], ipv4Gateway: IPv4, ipv6Gateway: IPv6, ipv4DnsServerCount: number, ipv4DnsServer: IPv4[], ipv6DnsServerCount: number, ipv6DnsServer: IPv6[], ipv4Mtu: number, ipv6Mtu: number): Message
+    /**
+     * Create a new request for the 'IP Packet Filters' query command in the 'Basic Connect' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param packetFiltersCount the 'PacketFiltersCount' field, given as a #guint32.
+     * @param packetFilters the 'PacketFilters' field, given as an array of #MbimPacketFilter items.
+     */
     static ipPacketFiltersQueryNew(sessionId: number, packetFiltersCount: number, packetFilters: PacketFilter[]): Message
+    /**
+     * Create a new request for the 'IP Packet Filters' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param packetFiltersCount the 'PacketFiltersCount' field, given as a #guint32.
+     * @param packetFilters the 'PacketFilters' field, given as an array of #MbimPacketFilter items.
+     */
     static ipPacketFiltersSetNew(sessionId: number, packetFiltersCount: number, packetFilters: PacketFilter[]): Message
+    /**
+     * Create a new request for the 'Base Stations Info' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param maxGsmCount the 'MaxGsmCount' field, given as a #guint32.
+     * @param maxUmtsCount the 'MaxUmtsCount' field, given as a #guint32.
+     * @param maxTdscdmaCount the 'MaxTdscdmaCount' field, given as a #guint32.
+     * @param maxLteCount the 'MaxLteCount' field, given as a #guint32.
+     * @param maxCdmaCount the 'MaxCdmaCount' field, given as a #guint32.
+     */
     static msBasicConnectExtensionsBaseStationsInfoQueryNew(maxGsmCount: number, maxUmtsCount: number, maxTdscdmaCount: number, maxLteCount: number, maxCdmaCount: number): Message
+    /**
+     * Create a new request for the 'Device Caps' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsDeviceCapsQueryNew(): Message
+    /**
+     * Create a new request for the 'Device Slot Mappings' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsDeviceSlotMappingsQueryNew(): Message
+    /**
+     * Create a new request for the 'Device Slot Mappings' set command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param mapCount the 'MapCount' field, given as a #guint32.
+     * @param slotMap the 'SlotMap' field, given as an array of #MbimSlot items.
+     */
     static msBasicConnectExtensionsDeviceSlotMappingsSetNew(mapCount: number, slotMap: Slot[]): Message
+    /**
+     * Create a new request for the 'Location Info Status' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsLocationInfoStatusQueryNew(): Message
+    /**
+     * Create a new request for the 'Lte Attach Configuration' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsLteAttachConfigurationQueryNew(): Message
+    /**
+     * Create a new request for the 'Lte Attach Configuration' set command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param operation the 'Operation' field, given as a #MbimLteAttachContextOperation.
+     * @param configurationCount the 'ConfigurationCount' field, given as a #guint32.
+     * @param configurations the 'Configurations' field, given as an array of #MbimLteAttachConfiguration items.
+     */
     static msBasicConnectExtensionsLteAttachConfigurationSetNew(operation: LteAttachContextOperation, configurationCount: number, configurations: LteAttachConfiguration[]): Message
+    /**
+     * Create a new request for the 'Lte Attach Info' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsLteAttachInfoQueryNew(): Message
+    /**
+     * Create a new request for the 'Lte Attach Status' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsLteAttachStatusQueryNew(): Message
+    /**
+     * Create a new request for the 'PCO' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param pcoValue the 'PcoValue' field, given as a #MbimPcoValue.
+     */
     static msBasicConnectExtensionsPcoQueryNew(pcoValue: PcoValue): Message
+    /**
+     * Create a new request for the 'Provisioned Contexts' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsProvisionedContextsQueryNew(): Message
+    /**
+     * Create a new request for the 'Provisioned Contexts' set command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param operation the 'Operation' field, given as a #MbimContextOperation.
+     * @param contextType the 'ContextType' field, given as a #MbimUuid.
+     * @param ipType the 'IpType' field, given as a #MbimContextIpType.
+     * @param state the 'State' field, given as a #MbimContextState.
+     * @param roaming the 'Roaming' field, given as a #MbimContextRoamingControl.
+     * @param mediaType the 'MediaType' field, given as a #MbimContextMediaType.
+     * @param source the 'Source' field, given as a #MbimContextSource.
+     * @param accessString the 'AccessString' field, given as a string.
+     * @param userName the 'UserName' field, given as a string.
+     * @param password the 'Password' field, given as a string.
+     * @param compression the 'Compression' field, given as a #MbimCompression.
+     * @param authProtocol the 'AuthProtocol' field, given as a #MbimAuthProtocol.
+     */
     static msBasicConnectExtensionsProvisionedContextsSetNew(operation: ContextOperation, contextType: Uuid, ipType: ContextIpType, state: ContextState, roaming: ContextRoamingControl, mediaType: ContextMediaType, source: ContextSource, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol): Message
+    /**
+     * Create a new request for the 'Slot Info Status' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @param slotIndex the 'SlotIndex' field, given as a #guint32.
+     */
     static msBasicConnectExtensionsSlotInfoStatusQueryNew(slotIndex: number): Message
+    /**
+     * Create a new request for the 'Sys Caps' query command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsSysCapsQueryNew(): Message
+    /**
+     * Create a new request for the 'Version' query command in the 'Ms Basic Connect Extensions V2' service.
+     * @constructor 
+     * @param mbimVersion the 'MbimVersion' field, given as a #guint16.
+     * @param mbimExtendedVersion the 'MbimExtendedVersion' field, given as a #guint16.
+     */
     static msBasicConnectExtensionsV2VersionQueryNew(mbimVersion: number, mbimExtendedVersion: number): Message
+    /**
+     * Create a new request for the 'Base Stations Info' query command in the 'Ms Basic Connect Extensions V3' service.
+     * @constructor 
+     * @param maxGsmCount the 'MaxGsmCount' field, given as a #guint32.
+     * @param maxUmtsCount the 'MaxUmtsCount' field, given as a #guint32.
+     * @param maxTdscdmaCount the 'MaxTdscdmaCount' field, given as a #guint32.
+     * @param maxLteCount the 'MaxLteCount' field, given as a #guint32.
+     * @param maxCdmaCount the 'MaxCdmaCount' field, given as a #guint32.
+     * @param maxNrCount the 'MaxNrCount' field, given as a #guint32.
+     */
     static msBasicConnectExtensionsV3BaseStationsInfoQueryNew(maxGsmCount: number, maxUmtsCount: number, maxTdscdmaCount: number, maxLteCount: number, maxCdmaCount: number, maxNrCount: number): Message
+    /**
+     * Create a new request for the 'Modem Configuration' query command in the 'Ms Basic Connect Extensions V3' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsV3ModemConfigurationQueryNew(): Message
+    /**
+     * Create a new request for the 'Registration Parameters' query command in the 'Ms Basic Connect Extensions V3' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsV3RegistrationParametersQueryNew(): Message
+    /**
+     * Create a new request for the 'Registration Parameters' set command in the 'Ms Basic Connect Extensions V3' service.
+     * @constructor 
+     * @param micoMode the 'MicoMode' field, given as a #MbimMicoMode.
+     * @param drxCycle the 'DrxCycle' field, given as a #MbimDrxCycle.
+     * @param ladnInfo the 'LadnInfo' field, given as a #MbimLadnInfo.
+     * @param defaultPduActivationHint the 'DefaultPduActivationHint' field, given as a #MbimDefaultPduActivationHint.
+     * @param reRegisterIfNedeed the 'ReRegisterIfNedeed' field, given as a #gboolean.
+     * @param unnamedIes the 'UnnamedIes' field, given as a list of # items.
+     */
     static msBasicConnectExtensionsV3RegistrationParametersSetNew(micoMode: MicoMode, drxCycle: DrxCycle, ladnInfo: LadnInfo, defaultPduActivationHint: DefaultPduActivationHint, reRegisterIfNedeed: boolean, unnamedIes: Tlv[]): Message
+    /**
+     * Create a new request for the 'Wake Reason' query command in the 'Ms Basic Connect Extensions V3' service.
+     * @constructor 
+     */
     static msBasicConnectExtensionsV3WakeReasonQueryNew(): Message
+    /**
+     * Create a new request for the 'Connect' query command in the 'Ms Basic Connect V3' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     */
     static msBasicConnectV3ConnectQueryNew(sessionId: number): Message
+    /**
+     * Create a new request for the 'Connect' set command in the 'Ms Basic Connect V3' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param activationCommand the 'ActivationCommand' field, given as a #MbimActivationCommand.
+     * @param compression the 'Compression' field, given as a #MbimCompression.
+     * @param authProtocol the 'AuthProtocol' field, given as a #MbimAuthProtocol.
+     * @param ipType the 'IpType' field, given as a #MbimContextIpType.
+     * @param contextType the 'ContextType' field, given as a #MbimUuid.
+     * @param mediaPreference the 'MediaPreference' field, given as a #MbimAccessMediaType.
+     * @param accessString the 'AccessString' field, given as a string.
+     * @param userName the 'UserName' field, given as a string.
+     * @param password the 'Password' field, given as a string.
+     * @param unnamedIes the 'UnnamedIes' field, given as a list of # items.
+     */
     static msBasicConnectV3ConnectSetNew(sessionId: number, activationCommand: ActivationCommand, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid, mediaPreference: AccessMediaType, accessString: string, userName: string, password: string, unnamedIes: Tlv[]): Message
+    /**
+     * Create a new request for the 'IP Packet Filters' query command in the 'Ms Basic Connect V3' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param packetFiltersCount the 'PacketFiltersCount' field, given as a #guint32.
+     * @param packetFilters the 'PacketFilters' field, given as an array of #MbimPacketFilterV3 items.
+     */
     static msBasicConnectV3IpPacketFiltersQueryNew(sessionId: number, packetFiltersCount: number, packetFilters: PacketFilterV3[]): Message
+    /**
+     * Create a new request for the 'IP Packet Filters' set command in the 'Ms Basic Connect V3' service.
+     * @constructor 
+     * @param sessionId the 'SessionId' field, given as a #guint32.
+     * @param packetFiltersCount the 'PacketFiltersCount' field, given as a #guint32.
+     * @param packetFilters the 'PacketFilters' field, given as an array of #MbimPacketFilterV3 items.
+     */
     static msBasicConnectV3IpPacketFiltersSetNew(sessionId: number, packetFiltersCount: number, packetFilters: PacketFilterV3[]): Message
+    /**
+     * Create a new request for the 'Get' query command in the 'MS Firmware ID' service.
+     * @constructor 
+     */
     static msFirmwareIdGetQueryNew(): Message
+    /**
+     * Create a new request for the 'Notify' set command in the 'MS Host Shutdown' service.
+     * @constructor 
+     */
     static msHostShutdownNotifySetNew(): Message
+    /**
+     * Create a new request for the 'Config' query command in the 'MS SAR' service.
+     * @constructor 
+     */
     static msSarConfigQueryNew(): Message
+    /**
+     * Create a new request for the 'Config' set command in the 'MS SAR' service.
+     * @constructor 
+     * @param mode the 'Mode' field, given as a #MbimSarControlMode.
+     * @param backoffState the 'BackoffState' field, given as a #MbimSarBackoffState.
+     * @param configStatesCount the 'ConfigStatesCount' field, given as a #guint32.
+     * @param configStates the 'ConfigStates' field, given as an array of #MbimSarConfigState items.
+     */
     static msSarConfigSetNew(mode: SarControlMode, backoffState: SarBackoffState, configStatesCount: number, configStates: SarConfigState[]): Message
+    /**
+     * Create a new request for the 'Transmission status' query command in the 'MS SAR' service.
+     * @constructor 
+     */
     static msSarTransmissionStatusQueryNew(): Message
+    /**
+     * Create a new request for the 'Transmission status' set command in the 'MS SAR' service.
+     * @constructor 
+     * @param channelNotification the 'ChannelNotification' field, given as a #MbimTransmissionNotificationStatus.
+     * @param hysteresisTimer the 'HysteresisTimer' field, given as a #guint32.
+     */
     static msSarTransmissionStatusSetNew(channelNotification: TransmissionNotificationStatus, hysteresisTimer: number): Message
+    /**
+     * Create a new request for the 'APDU' set command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     * @param channel the 'Channel' field, given as a #guint32.
+     * @param secureMessaging the 'SecureMessaging' field, given as a #MbimUiccSecureMessaging.
+     * @param classByteType the 'ClassByteType' field, given as a #MbimUiccClassByteType.
+     * @param command the 'Command' field, given as an array of #guint8 values.
+     */
     static msUiccLowLevelAccessApduSetNew(channel: number, secureMessaging: UiccSecureMessaging, classByteType: UiccClassByteType, command: Uint8Array): Message
+    /**
+     * Create a new request for the 'ATR' query command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     */
     static msUiccLowLevelAccessAtrQueryNew(): Message
+    /**
+     * Create a new request for the 'Close Channel' set command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     * @param channel the 'Channel' field, given as a #guint32.
+     * @param channelGroup the 'ChannelGroup' field, given as a #guint32.
+     */
     static msUiccLowLevelAccessCloseChannelSetNew(channel: number, channelGroup: number): Message
+    /**
+     * Create a new request for the 'Open Channel' set command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     * @param appId the 'AppId' field, given as an array of #guint8 values.
+     * @param selectP2Arg the 'SelectP2Arg' field, given as a #guint32.
+     * @param channelGroup the 'ChannelGroup' field, given as a #guint32.
+     */
     static msUiccLowLevelAccessOpenChannelSetNew(appId: Uint8Array, selectP2Arg: number, channelGroup: number): Message
+    /**
+     * Create a new request for the 'Reset' query command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     */
     static msUiccLowLevelAccessResetQueryNew(): Message
+    /**
+     * Create a new request for the 'Reset' set command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     * @param passThroughAction the 'PassThroughAction' field, given as a #MbimUiccPassThroughAction.
+     */
     static msUiccLowLevelAccessResetSetNew(passThroughAction: UiccPassThroughAction): Message
+    /**
+     * Create a new request for the 'Terminal Capability' query command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     */
     static msUiccLowLevelAccessTerminalCapabilityQueryNew(): Message
+    /**
+     * Create a new request for the 'Terminal Capability' set command in the 'MS UICC Low Level Access' service.
+     * @constructor 
+     * @param terminalCapabilityCount the 'TerminalCapabilityCount' field, given as a #guint32.
+     * @param terminalCapability the 'TerminalCapability' field, given as an array of #MbimTerminalCapabilityInfo items.
+     */
     static msUiccLowLevelAccessTerminalCapabilitySetNew(terminalCapabilityCount: number, terminalCapability: TerminalCapabilityInfo[]): Message
+    /**
+     * Create a new request for the 'Multicarrier Providers' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static multicarrierProvidersQueryNew(): Message
+    /**
+     * Create a new request for the 'Multicarrier Providers' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param providersCount the 'ProvidersCount' field, given as a #guint32.
+     * @param providers the 'Providers' field, given as an array of #MbimProvider items.
+     */
     static multicarrierProvidersSetNew(providersCount: number, providers: Provider[]): Message
+    /**
+     * Create a new request for the 'Network Idle Hint' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static networkIdleHintQueryNew(): Message
+    /**
+     * Create a new request for the 'Network Idle Hint' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param state the 'State' field, given as a #MbimNetworkIdleHintState.
+     */
     static networkIdleHintSetNew(state: NetworkIdleHintState): Message
+    /**
+     * Create a #MbimMessage with the given contents.
+     * @constructor 
+     * @param data contents of the message.
+     * @param dataLength length of the message.
+     */
+    constructor(data: number, dataLength: number) 
+    /**
+     * Create a #MbimMessage with the given contents.
+     * @constructor 
+     * @param data contents of the message.
+     * @param dataLength length of the message.
+     */
     static new(data: number, dataLength: number): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_OPEN_DONE with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param errorStatusCode a #MbimStatusError.
+     */
     static openDoneNew(transactionId: number, errorStatusCode: StatusError): Message
+    /**
+     * Create a new #MbimMessage of type %MBIM_MESSAGE_TYPE_OPEN with the specified
+     * parameters.
+     * @constructor 
+     * @param transactionId transaction ID.
+     * @param maxControlTransfer maximum control transfer.
+     */
     static openNew(transactionId: number, maxControlTransfer: number): Message
+    /**
+     * Create a new request for the 'Packet Service' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static packetServiceQueryNew(): Message
+    /**
+     * Create a new request for the 'Packet Service' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param packetServiceAction the 'PacketServiceAction' field, given as a #MbimPacketServiceAction.
+     */
     static packetServiceSetNew(packetServiceAction: PacketServiceAction): Message
+    /**
+     * Create a new request for the 'Packet Statistics' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static packetStatisticsQueryNew(): Message
+    /**
+     * Create a new request for the 'Configuration' query command in the 'Phonebook' service.
+     * @constructor 
+     */
     static phonebookConfigurationQueryNew(): Message
+    /**
+     * Create a new request for the 'Delete' set command in the 'Phonebook' service.
+     * @constructor 
+     * @param filterFlag the 'FilterFlag' field, given as a #MbimPhonebookFlag.
+     * @param filterMessageIndex the 'FilterMessageIndex' field, given as a #guint32.
+     */
     static phonebookDeleteSetNew(filterFlag: PhonebookFlag, filterMessageIndex: number): Message
+    /**
+     * Create a new request for the 'Read' query command in the 'Phonebook' service.
+     * @constructor 
+     * @param filterFlag the 'FilterFlag' field, given as a #MbimPhonebookFlag.
+     * @param filterMessageIndex the 'FilterMessageIndex' field, given as a #guint32.
+     */
     static phonebookReadQueryNew(filterFlag: PhonebookFlag, filterMessageIndex: number): Message
+    /**
+     * Create a new request for the 'Write' set command in the 'Phonebook' service.
+     * @constructor 
+     * @param saveFlag the 'SaveFlag' field, given as a #MbimPhonebookWriteFlag.
+     * @param saveIndex the 'SaveIndex' field, given as a #guint32.
+     * @param number the 'Number' field, given as a string.
+     * @param name the 'Name' field, given as a string.
+     */
     static phonebookWriteSetNew(saveFlag: PhonebookWriteFlag, saveIndex: number, number: string, name: string): Message
+    /**
+     * Create a new request for the 'Pin List' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static pinListQueryNew(): Message
+    /**
+     * Create a new request for the 'Pin' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static pinQueryNew(): Message
+    /**
+     * Create a new request for the 'Pin' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param pinType the 'PinType' field, given as a #MbimPinType.
+     * @param pinOperation the 'PinOperation' field, given as a #MbimPinOperation.
+     * @param pin the 'Pin' field, given as a string.
+     * @param newPin the 'NewPin' field, given as a string.
+     */
     static pinSetNew(pinType: PinType, pinOperation: PinOperation, pin: string, newPin: string): Message
+    /**
+     * Create a new request for the 'Preferred Providers' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static preferredProvidersQueryNew(): Message
+    /**
+     * Create a new request for the 'Preferred Providers' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param providersCount the 'ProvidersCount' field, given as a #guint32.
+     * @param providers the 'Providers' field, given as an array of #MbimProvider items.
+     */
     static preferredProvidersSetNew(providersCount: number, providers: Provider[]): Message
+    /**
+     * Create a new request for the 'Provisioned Contexts' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static provisionedContextsQueryNew(): Message
+    /**
+     * Create a new request for the 'Provisioned Contexts' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param contextId the 'ContextId' field, given as a #guint32.
+     * @param contextType the 'ContextType' field, given as a #MbimUuid.
+     * @param accessString the 'AccessString' field, given as a string.
+     * @param userName the 'UserName' field, given as a string.
+     * @param password the 'Password' field, given as a string.
+     * @param compression the 'Compression' field, given as a #MbimCompression.
+     * @param authProtocol the 'AuthProtocol' field, given as a #MbimAuthProtocol.
+     * @param providerId the 'ProviderId' field, given as a string.
+     */
     static provisionedContextsSetNew(contextId: number, contextType: Uuid, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol, providerId: string): Message
+    /**
+     * Create a new request for the 'Configuration' set command in the 'Proxy Control' service.
+     * @constructor 
+     * @param devicePath the 'DevicePath' field, given as a string.
+     * @param timeout the 'Timeout' field, given as a #guint32.
+     */
     static proxyControlConfigurationSetNew(devicePath: string, timeout: number): Message
+    /**
+     * Create a new request for the 'File Open' query command in the 'QDU' service.
+     * @constructor 
+     */
     static qduFileOpenQueryNew(): Message
+    /**
+     * Create a new request for the 'File Open' set command in the 'QDU' service.
+     * @constructor 
+     * @param fileType the 'FileType' field, given as a #MbimQduFileType.
+     * @param fileSize the 'FileSize' field, given as a #guint32.
+     */
     static qduFileOpenSetNew(fileType: QduFileType, fileSize: number): Message
+    /**
+     * Create a new request for the 'File Write' set command in the 'QDU' service.
+     * @constructor 
+     * @param dataBuffer the 'DataBuffer' field, given as an array of #guint8 values.
+     */
     static qduFileWriteSetNew(dataBuffer: Uint8Array): Message
+    /**
+     * Create a new request for the 'Quectel Read Version' set command in the 'QDU' service.
+     * @constructor 
+     * @param versionType the 'VersionType' field, given as a #MbimQduQuectelVersionType.
+     */
     static qduQuectelReadVersionSetNew(versionType: QduQuectelVersionType): Message
+    /**
+     * Create a new request for the 'Quectel Reboot' set command in the 'QDU' service.
+     * @constructor 
+     * @param rebootType the 'RebootType' field, given as a #MbimQduQuectelRebootType.
+     */
     static qduQuectelRebootSetNew(rebootType: QduQuectelRebootType): Message
+    /**
+     * Create a new request for the 'Update Session' query command in the 'QDU' service.
+     * @constructor 
+     */
     static qduUpdateSessionQueryNew(): Message
+    /**
+     * Create a new request for the 'Update Session' set command in the 'QDU' service.
+     * @constructor 
+     * @param sessionAction the 'SessionAction' field, given as a #MbimQduSessionAction.
+     * @param sessionType the 'SessionType' field, given as a #MbimQduSessionType.
+     */
     static qduUpdateSessionSetNew(sessionAction: QduSessionAction, sessionType: QduSessionType): Message
+    /**
+     * Create a new request for the 'msg' set command in the 'QMI' service.
+     * @constructor 
+     * @param qmiMsg the 'QmiMsg' field, given as an array of #guint8 values.
+     */
     static qmiMsgSetNew(qmiMsg: Uint8Array): Message
+    /**
+     * Create a new request for the 'Radio State' query command in the 'Quectel' service.
+     * @constructor 
+     */
     static quectelRadioStateQueryNew(): Message
+    /**
+     * Create a new request for the 'Radio State' set command in the 'Quectel' service.
+     * @constructor 
+     * @param radioState the 'RadioState' field, given as a #MbimQuectelRadioSwitchState.
+     */
     static quectelRadioStateSetNew(radioState: QuectelRadioSwitchState): Message
+    /**
+     * Create a new request for the 'Radio State' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static radioStateQueryNew(): Message
+    /**
+     * Create a new request for the 'Radio State' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param radioState the 'RadioState' field, given as a #MbimRadioSwitchState.
+     */
     static radioStateSetNew(radioState: RadioSwitchState): Message
+    /**
+     * Create a new request for the 'Register State' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static registerStateQueryNew(): Message
+    /**
+     * Create a new request for the 'Register State' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param providerId the 'ProviderId' field, given as a string.
+     * @param registerAction the 'RegisterAction' field, given as a #MbimRegisterAction.
+     * @param dataClass the 'DataClass' field, given as a #MbimDataClass.
+     */
     static registerStateSetNew(providerId: string, registerAction: RegisterAction, dataClass: DataClass): Message
+    /**
+     * Create a new request for the 'Service Activation' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param buffer the 'Buffer' field, given as an array of #guint8 values.
+     */
     static serviceActivationSetNew(buffer: Uint8Array): Message
+    /**
+     * Create a new request for the 'Signal State' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static signalStateQueryNew(): Message
+    /**
+     * Create a new request for the 'Signal State' set command in the 'Basic Connect' service.
+     * @constructor 
+     * @param signalStrengthInterval the 'SignalStrengthInterval' field, given as a #guint32.
+     * @param rssiThreshold the 'RssiThreshold' field, given as a #guint32.
+     * @param errorRateThreshold the 'ErrorRateThreshold' field, given as a #guint32.
+     */
     static signalStateSetNew(signalStrengthInterval: number, rssiThreshold: number, errorRateThreshold: number): Message
+    /**
+     * Create a new request for the 'Configuration' query command in the 'SMS' service.
+     * @constructor 
+     */
     static smsConfigurationQueryNew(): Message
+    /**
+     * Create a new request for the 'Configuration' set command in the 'SMS' service.
+     * @constructor 
+     * @param format the 'Format' field, given as a #MbimSmsFormat.
+     * @param scAddress the 'ScAddress' field, given as a string.
+     */
     static smsConfigurationSetNew(format: SmsFormat, scAddress: string): Message
+    /**
+     * Create a new request for the 'Delete' set command in the 'SMS' service.
+     * @constructor 
+     * @param flag the 'Flag' field, given as a #MbimSmsFlag.
+     * @param messageIndex the 'MessageIndex' field, given as a #guint32.
+     */
     static smsDeleteSetNew(flag: SmsFlag, messageIndex: number): Message
+    /**
+     * Create a new request for the 'Message Store Status' query command in the 'SMS' service.
+     * @constructor 
+     */
     static smsMessageStoreStatusQueryNew(): Message
+    /**
+     * Create a new request for the 'Read' query command in the 'SMS' service.
+     * @constructor 
+     * @param format the 'Format' field, given as a #MbimSmsFormat.
+     * @param flag the 'Flag' field, given as a #MbimSmsFlag.
+     * @param messageIndex the 'MessageIndex' field, given as a #guint32.
+     */
     static smsReadQueryNew(format: SmsFormat, flag: SmsFlag, messageIndex: number): Message
+    /**
+     * Create a new request for the 'Send' set command in the 'SMS' service.
+     * @constructor 
+     * @param format the 'Format' field, given as a #MbimSmsFormat.
+     * @param pduMessage the 'PduMessage' field, given as a #MbimSmsPduSendRecord.
+     * @param cdmaMessage the 'CdmaMessage' field, given as a #MbimSmsCdmaSendRecord.
+     */
     static smsSendSetNew(format: SmsFormat, pduMessage: SmsPduSendRecord, cdmaMessage: SmsCdmaSendRecord): Message
+    /**
+     * Create a new request for the 'Envelope' query command in the 'STK' service.
+     * @constructor 
+     */
     static stkEnvelopeQueryNew(): Message
+    /**
+     * Create a new request for the 'Envelope' set command in the 'STK' service.
+     * @constructor 
+     * @param data the 'Data' field, given as an array of #guint8 values.
+     */
     static stkEnvelopeSetNew(data: Uint8Array): Message
+    /**
+     * Create a new request for the 'Pac' query command in the 'STK' service.
+     * @constructor 
+     */
     static stkPacQueryNew(): Message
+    /**
+     * Create a new request for the 'Pac' set command in the 'STK' service.
+     * @constructor 
+     * @param pacHostControl the 'PacHostControl' field, given as an array of 32 #guint8 values.
+     */
     static stkPacSetNew(pacHostControl: Uint8Array): Message
+    /**
+     * Create a new request for the 'Terminal Response' set command in the 'STK' service.
+     * @constructor 
+     * @param response the 'Response' field, given as an array of #guint8 values.
+     */
     static stkTerminalResponseSetNew(response: Uint8Array): Message
+    /**
+     * Create a new request for the 'Subscriber Ready Status' query command in the 'Basic Connect' service.
+     * @constructor 
+     */
     static subscriberReadyStatusQueryNew(): Message
+    /**
+     * Create a new request for the '' set command in the 'USSD' service.
+     * @constructor 
+     * @param action the 'Action' field, given as a #MbimUssdAction.
+     * @param dataCodingScheme the 'DataCodingScheme' field, given as a #guint32.
+     * @param payload the 'Payload' field, given as an array of #guint8 values.
+     */
     static ussdSetNew(action: UssdAction, dataCodingScheme: number, payload: Uint8Array): Message
+    /**
+     * Create a new request for the 'Visible Providers' query command in the 'Basic Connect' service.
+     * @constructor 
+     * @param action the 'Action' field, given as a #MbimVisibleProvidersAction.
+     */
     static visibleProvidersQueryNew(action: VisibleProvidersAction): Message
 }
-class PacketFilter {
-    /* Fields of Mbim-1.0.Mbim.PacketFilter */
+
+interface PacketFilter {
+
+    // Own fields of Mbim-1.0.Mbim.PacketFilter
+
     /**
      * a #guint32.
+     * @field 
      */
     filterSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     packetFilter: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     packetMask: number
+}
+
+/**
+ * A MbimPacketFilter element.
+ * @record 
+ */
+class PacketFilter {
+
+    // Own properties of Mbim-1.0.Mbim.PacketFilter
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.PacketFilter
+
     /**
      * Frees the memory allocated for the array of #MbimPacketFilter structs.
      * @param array a #NULL terminated array of #MbimPacketFilter structs.
      */
     static arrayFree(array: PacketFilterArray): void
 }
-class PacketFilterV3 {
-    /* Fields of Mbim-1.0.Mbim.PacketFilterV3 */
+
+interface PacketFilterV3 {
+
+    // Own fields of Mbim-1.0.Mbim.PacketFilterV3
+
     /**
      * a #guint32.
+     * @field 
      */
     filterSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     packetFilter: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     packetMask: number
     /**
      * a #guint32.
+     * @field 
      */
     filterId: number
+}
+
+/**
+ * A MbimPacketFilterV3 element.
+ * @record 
+ */
+class PacketFilterV3 {
+
+    // Own properties of Mbim-1.0.Mbim.PacketFilterV3
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.PacketFilterV3
+
     /**
      * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
      * @param array a #NULL terminated array of #MbimPacketFilterV3 structs.
      */
     static arrayFree(array: PacketFilterV3Array): void
 }
-class PcoValue {
-    /* Fields of Mbim-1.0.Mbim.PcoValue */
+
+interface PcoValue {
+
+    // Own fields of Mbim-1.0.Mbim.PcoValue
+
     /**
      * a #guint32.
+     * @field 
      */
     sessionId: number
     /**
      * a #guint32.
+     * @field 
      */
     pcoDataSize: number
     /**
      * a #MbimPcoType given as a #guint32.
+     * @field 
      */
     pcoDataType: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     pcoDataBuffer: number
-    /* Methods of Mbim-1.0.Mbim.PcoValue */
+
+    // Owm methods of Mbim-1.0.Mbim.PcoValue
+
     /**
      * Frees the memory allocated for the #MbimPcoValue.
      */
     free(): void
+}
+
+/**
+ * A MbimPcoValue element.
+ * @record 
+ */
+class PcoValue {
+
+    // Own properties of Mbim-1.0.Mbim.PcoValue
+
     static name: string
 }
-class PhonebookEntry {
-    /* Fields of Mbim-1.0.Mbim.PhonebookEntry */
+
+interface PhonebookEntry {
+
+    // Own fields of Mbim-1.0.Mbim.PhonebookEntry
+
     /**
      * a #guint32.
+     * @field 
      */
     entryIndex: number
     /**
      * a string.
+     * @field 
      */
     number: string
     /**
      * a string.
+     * @field 
      */
     name: string
+}
+
+/**
+ * A MbimPhonebookEntry element.
+ * @record 
+ */
+class PhonebookEntry {
+
+    // Own properties of Mbim-1.0.Mbim.PhonebookEntry
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.PhonebookEntry
+
     /**
      * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
      * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
      */
     static arrayFree(array: PhonebookEntryArray): void
 }
-class PinDesc {
-    /* Fields of Mbim-1.0.Mbim.PinDesc */
+
+interface PinDesc {
+
+    // Own fields of Mbim-1.0.Mbim.PinDesc
+
     /**
      * a #MbimPinMode given as a #guint32.
+     * @field 
      */
     pinMode: number
     /**
      * a #MbimPinFormat given as a #guint32.
+     * @field 
      */
     pinFormat: number
     /**
      * a #guint32.
+     * @field 
      */
     pinLengthMin: number
     /**
      * a #guint32.
+     * @field 
      */
     pinLengthMax: number
-    /* Methods of Mbim-1.0.Mbim.PinDesc */
+
+    // Owm methods of Mbim-1.0.Mbim.PinDesc
+
     /**
      * Frees the memory allocated for the #MbimPinDesc.
      */
     free(): void
+}
+
+/**
+ * A MbimPinDesc element.
+ * @record 
+ */
+class PinDesc {
+
+    // Own properties of Mbim-1.0.Mbim.PinDesc
+
     static name: string
 }
-class Provider {
-    /* Fields of Mbim-1.0.Mbim.Provider */
+
+interface Provider {
+
+    // Own fields of Mbim-1.0.Mbim.Provider
+
     /**
      * a string.
+     * @field 
      */
     providerId: string
     /**
      * a #MbimProviderState given as a #guint32.
+     * @field 
      */
     providerState: number
     /**
      * a string.
+     * @field 
      */
     providerName: string
     /**
      * a #MbimCellularClass given as a #guint32.
+     * @field 
      */
     cellularClass: number
     /**
      * a #guint32.
+     * @field 
      */
     rssi: number
     /**
      * a #guint32.
+     * @field 
      */
     errorRate: number
-    /* Methods of Mbim-1.0.Mbim.Provider */
+
+    // Owm methods of Mbim-1.0.Mbim.Provider
+
     /**
      * Frees the memory allocated for the #MbimProvider.
      */
     free(): void
+}
+
+/**
+ * A MbimProvider element.
+ * @record 
+ */
+class Provider {
+
+    // Own properties of Mbim-1.0.Mbim.Provider
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.Provider
+
     /**
      * Frees the memory allocated for the array of #MbimProvider structs.
      * @param array a #NULL terminated array of #MbimProvider structs.
      */
     static arrayFree(array: ProviderArray): void
 }
-class ProvisionedContextElement {
-    /* Fields of Mbim-1.0.Mbim.ProvisionedContextElement */
+
+interface ProvisionedContextElement {
+
+    // Own fields of Mbim-1.0.Mbim.ProvisionedContextElement
+
     /**
      * a #guint32.
+     * @field 
      */
     contextId: number
     /**
      * a #MbimUuid.
+     * @field 
      */
     contextType: Uuid
     /**
      * a string.
+     * @field 
      */
     accessString: string
     /**
      * a string.
+     * @field 
      */
     userName: string
     /**
      * a string.
+     * @field 
      */
     password: string
     /**
      * a #MbimCompression given as a #guint32.
+     * @field 
      */
     compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
+     * @field 
      */
     authProtocol: number
+}
+
+/**
+ * A MbimProvisionedContextElement element.
+ * @record 
+ */
+class ProvisionedContextElement {
+
+    // Own properties of Mbim-1.0.Mbim.ProvisionedContextElement
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.ProvisionedContextElement
+
     /**
      * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
      * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
      */
     static arrayFree(array: ProvisionedContextElementArray): void
 }
-class ProvisionedContextElementV2 {
-    /* Fields of Mbim-1.0.Mbim.ProvisionedContextElementV2 */
+
+interface ProvisionedContextElementV2 {
+
+    // Own fields of Mbim-1.0.Mbim.ProvisionedContextElementV2
+
     /**
      * a #guint32.
+     * @field 
      */
     contextId: number
     /**
      * a #MbimUuid.
+     * @field 
      */
     contextType: Uuid
     /**
      * a #MbimContextIpType given as a #guint32.
+     * @field 
      */
     ipType: number
     /**
      * a #MbimContextState given as a #guint32.
+     * @field 
      */
     state: number
     /**
      * a #MbimContextRoamingControl given as a #guint32.
+     * @field 
      */
     roaming: number
     /**
      * a #MbimContextMediaType given as a #guint32.
+     * @field 
      */
     mediaType: number
     /**
      * a #MbimContextSource given as a #guint32.
+     * @field 
      */
     source: number
     /**
      * a string.
+     * @field 
      */
     accessString: string
     /**
      * a string.
+     * @field 
      */
     userName: string
     /**
      * a string.
+     * @field 
      */
     password: string
     /**
      * a #MbimCompression given as a #guint32.
+     * @field 
      */
     compression: number
     /**
      * a #MbimAuthProtocol given as a #guint32.
+     * @field 
      */
     authProtocol: number
+}
+
+/**
+ * A MbimProvisionedContextElementV2 element.
+ * @record 
+ */
+class ProvisionedContextElementV2 {
+
+    // Own properties of Mbim-1.0.Mbim.ProvisionedContextElementV2
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.ProvisionedContextElementV2
+
     /**
      * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
      * @param array a #NULL terminated array of #MbimProvisionedContextElementV2 structs.
      */
     static arrayFree(array: ProvisionedContextElementV2Array): void
 }
-abstract class ProxyClass {
-    /* Fields of Mbim-1.0.Mbim.ProxyClass */
+
+interface ProxyClass {
+
+    // Own fields of Mbim-1.0.Mbim.ProxyClass
+
     parent: GObject.ObjectClass
+}
+
+abstract class ProxyClass {
+
+    // Own properties of Mbim-1.0.Mbim.ProxyClass
+
     static name: string
 }
+
+interface ProxyPrivate {
+}
+
 class ProxyPrivate {
+
+    // Own properties of Mbim-1.0.Mbim.ProxyPrivate
+
     static name: string
 }
-class RsrpSnrInfo {
-    /* Fields of Mbim-1.0.Mbim.RsrpSnrInfo */
+
+interface RsrpSnrInfo {
+
+    // Own fields of Mbim-1.0.Mbim.RsrpSnrInfo
+
     /**
      * a #guint32.
+     * @field 
      */
     rsrp: number
     /**
      * a #guint32.
+     * @field 
      */
     snr: number
     /**
      * a #guint32.
+     * @field 
      */
     rsrpThreshold: number
     /**
      * a #guint32.
+     * @field 
      */
     snrThreshold: number
     /**
      * a #MbimDataClass given as a #guint32.
+     * @field 
      */
     systemType: number
+}
+
+/**
+ * A MbimRsrpSnrInfo element.
+ * @record 
+ */
+class RsrpSnrInfo {
+
+    // Own properties of Mbim-1.0.Mbim.RsrpSnrInfo
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.RsrpSnrInfo
+
     /**
      * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
      * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
      */
     static arrayFree(array: RsrpSnrInfoArray): void
 }
-class SarConfigState {
-    /* Fields of Mbim-1.0.Mbim.SarConfigState */
+
+interface SarConfigState {
+
+    // Own fields of Mbim-1.0.Mbim.SarConfigState
+
     /**
      * a #guint32.
+     * @field 
      */
     antennaIndex: number
     /**
      * a #guint32.
+     * @field 
      */
     backoffIndex: number
+}
+
+/**
+ * A MbimSarConfigState element.
+ * @record 
+ */
+class SarConfigState {
+
+    // Own properties of Mbim-1.0.Mbim.SarConfigState
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.SarConfigState
+
     /**
      * Frees the memory allocated for the array of #MbimSarConfigState structs.
      * @param array a #NULL terminated array of #MbimSarConfigState structs.
      */
     static arrayFree(array: SarConfigStateArray): void
 }
-class Slot {
-    /* Fields of Mbim-1.0.Mbim.Slot */
+
+interface Slot {
+
+    // Own fields of Mbim-1.0.Mbim.Slot
+
     /**
      * a #guint32.
+     * @field 
      */
     slot: number
+}
+
+/**
+ * A MbimSlot element.
+ * @record 
+ */
+class Slot {
+
+    // Own properties of Mbim-1.0.Mbim.Slot
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.Slot
+
     /**
      * Frees the memory allocated for the array of #MbimSlot structs.
      * @param array a #NULL terminated array of #MbimSlot structs.
      */
     static arrayFree(array: SlotArray): void
 }
-class SmsCdmaReadRecord {
-    /* Fields of Mbim-1.0.Mbim.SmsCdmaReadRecord */
+
+interface SmsCdmaReadRecord {
+
+    // Own fields of Mbim-1.0.Mbim.SmsCdmaReadRecord
+
     /**
      * a #guint32.
+     * @field 
      */
     messageIndex: number
     /**
      * a #MbimSmsStatus given as a #guint32.
+     * @field 
      */
     messageStatus: number
     /**
      * a string.
+     * @field 
      */
     address: string
     /**
      * a string.
+     * @field 
      */
     timestamp: string
     /**
      * a #MbimSmsCdmaEncoding given as a #guint32.
+     * @field 
      */
     encoding: number
     /**
      * a #MbimSmsCdmaLang given as a #guint32.
+     * @field 
      */
     language: number
     /**
      * size of the encoded_message array.
+     * @field 
      */
     encodedMessageSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     encodedMessage: number
     /**
      * a #guint32.
+     * @field 
      */
     encodedMessageSizeInCharacters: number
+}
+
+/**
+ * A MbimSmsCdmaReadRecord element.
+ * @record 
+ */
+class SmsCdmaReadRecord {
+
+    // Own properties of Mbim-1.0.Mbim.SmsCdmaReadRecord
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.SmsCdmaReadRecord
+
     /**
      * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
      * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
      */
     static arrayFree(array: SmsCdmaReadRecordArray): void
 }
-class SmsCdmaSendRecord {
-    /* Fields of Mbim-1.0.Mbim.SmsCdmaSendRecord */
+
+interface SmsCdmaSendRecord {
+
+    // Own fields of Mbim-1.0.Mbim.SmsCdmaSendRecord
+
     /**
      * a #MbimSmsCdmaEncoding given as a #guint32.
+     * @field 
      */
     encoding: number
     /**
      * a #MbimSmsCdmaLang given as a #guint32.
+     * @field 
      */
     language: number
     /**
      * a string.
+     * @field 
      */
     address: string
     /**
      * size of the encoded_message array.
+     * @field 
      */
     encodedMessageSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     encodedMessage: number
     /**
      * a #guint32.
+     * @field 
      */
     encodedMessageSizeInCharacters: number
-    /* Methods of Mbim-1.0.Mbim.SmsCdmaSendRecord */
+
+    // Owm methods of Mbim-1.0.Mbim.SmsCdmaSendRecord
+
     /**
      * Frees the memory allocated for the #MbimSmsCdmaSendRecord.
      */
     free(): void
+}
+
+/**
+ * A MbimSmsCdmaSendRecord element.
+ * @record 
+ */
+class SmsCdmaSendRecord {
+
+    // Own properties of Mbim-1.0.Mbim.SmsCdmaSendRecord
+
     static name: string
 }
-class SmsPduReadRecord {
-    /* Fields of Mbim-1.0.Mbim.SmsPduReadRecord */
+
+interface SmsPduReadRecord {
+
+    // Own fields of Mbim-1.0.Mbim.SmsPduReadRecord
+
     /**
      * a #guint32.
+     * @field 
      */
     messageIndex: number
     /**
      * a #MbimSmsStatus given as a #guint32.
+     * @field 
      */
     messageStatus: number
     /**
      * size of the pdu_data array.
+     * @field 
      */
     pduDataSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     pduData: number
+}
+
+/**
+ * A MbimSmsPduReadRecord element.
+ * @record 
+ */
+class SmsPduReadRecord {
+
+    // Own properties of Mbim-1.0.Mbim.SmsPduReadRecord
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.SmsPduReadRecord
+
     /**
      * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
      * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
      */
     static arrayFree(array: SmsPduReadRecordArray): void
 }
-class SmsPduSendRecord {
-    /* Fields of Mbim-1.0.Mbim.SmsPduSendRecord */
+
+interface SmsPduSendRecord {
+
+    // Own fields of Mbim-1.0.Mbim.SmsPduSendRecord
+
     /**
      * size of the pdu_data array.
+     * @field 
      */
     pduDataSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     pduData: number
-    /* Methods of Mbim-1.0.Mbim.SmsPduSendRecord */
+
+    // Owm methods of Mbim-1.0.Mbim.SmsPduSendRecord
+
     /**
      * Frees the memory allocated for the #MbimSmsPduSendRecord.
      */
     free(): void
+}
+
+/**
+ * A MbimSmsPduSendRecord element.
+ * @record 
+ */
+class SmsPduSendRecord {
+
+    // Own properties of Mbim-1.0.Mbim.SmsPduSendRecord
+
     static name: string
 }
-class Tai {
-    /* Fields of Mbim-1.0.Mbim.Tai */
+
+interface Tai {
+
+    // Own fields of Mbim-1.0.Mbim.Tai
+
     /**
      * a #guint16.
+     * @field 
      */
     plmnMcc: number
     /**
      * a #guint16.
+     * @field 
      */
     plmnMnc: number
     /**
      * a #guint32.
+     * @field 
      */
     tac: number
-    /* Methods of Mbim-1.0.Mbim.Tai */
+
+    // Owm methods of Mbim-1.0.Mbim.Tai
+
     /**
      * Frees the memory allocated for the #MbimTai.
      */
     free(): void
+}
+
+/**
+ * A MbimTai element.
+ * @record 
+ */
+class Tai {
+
+    // Own properties of Mbim-1.0.Mbim.Tai
+
     static name: string
 }
-class TerminalCapabilityInfo {
-    /* Fields of Mbim-1.0.Mbim.TerminalCapabilityInfo */
+
+interface TerminalCapabilityInfo {
+
+    // Own fields of Mbim-1.0.Mbim.TerminalCapabilityInfo
+
     /**
      * size of the terminal_capability_data array.
+     * @field 
      */
     terminalCapabilityDataSize: number
     /**
      * an array of #guint8 values.
+     * @field 
      */
     terminalCapabilityData: number
+}
+
+/**
+ * A MbimTerminalCapabilityInfo element.
+ * @record 
+ */
+class TerminalCapabilityInfo {
+
+    // Own properties of Mbim-1.0.Mbim.TerminalCapabilityInfo
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.TerminalCapabilityInfo
+
     /**
      * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
      * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
      */
     static arrayFree(array: TerminalCapabilityInfoArray): void
 }
-class Tlv {
-    /* Methods of Mbim-1.0.Mbim.Tlv */
+
+interface Tlv {
+
+    // Owm methods of Mbim-1.0.Mbim.Tlv
+
     /**
      * Create a #MbimTlv with the same contents as `self`.
      */
@@ -6299,7 +7764,7 @@ class Tlv {
      * The method may return a successful return even with on empty arrays (i.e.
      * with `array_size` set to 0 and `array` set to %NULL).
      */
-    guint16ArrayGet(): [ /* returnType */ boolean, /* arraySize */ number | null, /* array */ number | null ]
+    guint16ArrayGet(): [ /* returnType */ boolean, /* arraySize */ number, /* array */ number ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -6319,26 +7784,61 @@ class Tlv {
      * The method may return a successful return even with on empty payload (i.e.
      * with `payload_size` set to 0 and `payload` set to %NULL).
      */
-    wakeCommandGet(): [ /* returnType */ boolean, /* service */ Uuid | null, /* cid */ number | null, /* payloadSize */ number | null, /* payload */ number | null ]
+    wakeCommandGet(): [ /* returnType */ boolean, /* service */ Uuid, /* cid */ number, /* payloadSize */ number, /* payload */ number ]
     /**
      * Get the contents of a wake packet TLV.
      */
-    wakePacketGet(): [ /* returnType */ boolean, /* filterId */ number | null, /* originalPacketSize */ number | null, /* packetSize */ number | null, /* packet */ number | null ]
+    wakePacketGet(): [ /* returnType */ boolean, /* filterId */ number, /* originalPacketSize */ number, /* packetSize */ number, /* packet */ number ]
+}
+
+/**
+ * An opaque type representing a MBIM TLV.
+ * @record 
+ */
+class Tlv {
+
+    // Own properties of Mbim-1.0.Mbim.Tlv
+
     static name: string
+
+    // Constructors of Mbim-1.0.Mbim.Tlv
+
+    /**
+     * Create a #MbimTlv with the given contents.
+     * @constructor 
+     * @param type a #MbimTlvType.
+     * @param data contents of the TLV.
+     * @param dataLength length of the message.
+     */
+    constructor(type: TlvType, data: number, dataLength: number) 
+    /**
+     * Create a #MbimTlv with the given contents.
+     * @constructor 
+     * @param type a #MbimTlvType.
+     * @param data contents of the TLV.
+     * @param dataLength length of the message.
+     */
     static new(type: TlvType, data: number, dataLength: number): Tlv
-    constructor(type: TlvType, data: number, dataLength: number)
-    /* Static methods and pseudo-constructors */
-    static new(type: TlvType, data: number, dataLength: number): Tlv
+    /**
+     * Create a #MbimTlv of type %MBIM_TLV_TYPE_WCHAR_STR with the given contents.
+     * @constructor 
+     * @param str a string.
+     */
     static stringNew(str: string): Tlv
 }
-class Uuid {
-    /* Fields of Mbim-1.0.Mbim.Uuid */
+
+interface Uuid {
+
+    // Own fields of Mbim-1.0.Mbim.Uuid
+
     a: Uint8Array
     b: Uint8Array
     c: Uint8Array
     d: Uint8Array
     e: Uint8Array
-    /* Methods of Mbim-1.0.Mbim.Uuid */
+
+    // Owm methods of Mbim-1.0.Mbim.Uuid
+
     /**
      * Compare two %MbimUuid values.
      * @param b a #MbimUuid.
@@ -6356,8 +7856,20 @@ class Uuid {
      * Get the service corresponding to `uuid`.
      */
     toService(): Service
+}
+
+/**
+ * A UUID as defined in MBIM.
+ * @record 
+ */
+class Uuid {
+
+    // Own properties of Mbim-1.0.Mbim.Uuid
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Mbim-1.0.Mbim.Uuid
+
     /**
      * Get the UUID corresponding to `context_type`.
      * @param contextType a #MbimContextType.
@@ -6381,6 +7893,7 @@ class Uuid {
      */
     static fromService(service: Service): Uuid
 }
+
     type AtdsProviderArray = AtdsProvider
     type CellInfoCdmaArray = CellInfoCdma
     type CellInfoNeighboringGsmArray = CellInfoNeighboringGsm

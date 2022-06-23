@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
@@ -53,44 +55,34 @@ enum BookStatus {
     NOT_SUPPORTED,
 }
 function bookErrorQuark(): GLib.Quark
-function bookUtilsGetRecipientCertificatesSync(registry: EDataServer.SourceRegistry, onlyClients: BookClient[] | null, flags: Camel.RecipientCertificateFlags, recipients: string[], cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificates */ string[] ]
-interface BookClient_ConstructProps extends EDataServer.Client_ConstructProps {
+/**
+ * Synchronously searches for `recipients` S/MIME or PGP certificates either
+ * in provided `only_clients` #EBookClient, or, when %NULL, in each found
+ * address book configured for auto-completion.
+ * 
+ * This function can be used within camel_session_get_recipient_certificates_sync()
+ * implementation.
+ * @param registry an #ESourceRegistry
+ * @param onlyClients optional #GSList of    the #EBookClient objects to search for the certificates in, or %NULL
+ * @param flags bit-or of #CamelRecipientCertificateFlags
+ * @param recipients a #GPtrArray of recipients' email addresses
+ * @param cancellable optional #GCancellable object, or %NULL
+ */
+function bookUtilsGetRecipientCertificatesSync(registry: EDataServer.SourceRegistry, onlyClients: BookClient[] | null, flags: Camel.RecipientCertificateFlags, recipients: string[], cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificates */ string[] ]
+interface BookClient_ConstructProps extends Gio.AsyncInitable_ConstructProps, Gio.Initable_ConstructProps, EDataServer.Client_ConstructProps {
 }
-class BookClient {
-    /* Properties of EBook-1.2.EBook.BookClient */
+
+interface BookClient extends Gio.AsyncInitable, Gio.Initable {
+
+    // Own properties of EBook-1.2.EBook.BookClient
+
     /**
      * The currently active locale for this addressbook.
      */
     readonly locale: string
-    /* Properties of EDataServer-1.2.EDataServer.Client */
-    /**
-     * The capabilities of this client
-     */
-    readonly capabilities: object
-    /**
-     * The main loop context in which notifications for
-     * this client will be delivered.
-     */
-    readonly mainContext: GLib.MainContext
-    /**
-     * Whether this client's backing data is online.
-     */
-    online: boolean
-    /**
-     * Whether this client is open and ready to use.
-     */
-    readonly opened: boolean
-    /**
-     * Whether this client's backing data is readonly.
-     */
-    readonly readonly: boolean
-    /**
-     * The #ESource for which this client was created.
-     */
-    readonly source: EDataServer.Source
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBook-1.2.EBook.BookClient */
+
+    // Owm methods of EBook-1.2.EBook.BookClient
+
     /**
      * Adds `contact` to `client`.
      * The call is finished by e_book_client_add_contact_finish()
@@ -100,7 +92,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    addContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    addContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_add_contact() and
      * sets `out_added_uid` to a UID of a newly added contact.
@@ -109,7 +101,7 @@ class BookClient {
      * Note: This is not modifying original #EContact.
      * @param result a #GAsyncResult
      */
-    addContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUid */ string | null ]
+    addContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUid */ string ]
     /**
      * Adds `contact` to `client` and
      * sets `out_added_uid` to a UID of a newly added contact.
@@ -121,7 +113,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    addContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUid */ string | null ]
+    addContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUid */ string ]
     /**
      * Adds `contacts` to `client`.
      * The call is finished by e_book_client_add_contacts_finish()
@@ -131,7 +123,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    addContacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    addContacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_add_contacts() and
      * sets `out_added_uids` to the UIDs of newly added contacts if successful.
@@ -143,7 +135,7 @@ class BookClient {
      * Note: This is not modifying original #EContact objects.
      * @param result a #GAsyncResult
      */
-    addContactsFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUids */ string[] | null ]
+    addContactsFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUids */ string[] ]
     /**
      * Adds `contacts` to `client` and
      * sets `out_added_uids` to the UIDs of newly added contacts if successful.
@@ -158,7 +150,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    addContactsSync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUids */ string[] | null ]
+    addContactsSync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUids */ string[] ]
     /**
      * Asynchronously checks whether contains an `email_address`. When the `email_address`
      * contains multiple addresses, then returns %TRUE when at least one
@@ -171,13 +163,13 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    containsEmail(emailAddress: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    containsEmail(emailAddress: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_contains_email().
      * @param result a #GAsyncResult
      */
     containsEmailFinish(result: Gio.AsyncResult): boolean
-    containsEmailSync(emailAddress: string, cancellable?: Gio.Cancellable | null): boolean
+    containsEmailSync(emailAddress: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Receive #EContact from the `client` for the gived `uid`.
      * The call is finished by e_book_client_get_contact_finish()
@@ -186,14 +178,14 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContact(uid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getContact(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contact().
      * If successful, then the `out_contact` is set to newly allocated
      * #EContact, which should be freed with g_object_unref().
      * @param result a #GAsyncResult
      */
-    getContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact | null ]
+    getContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact ]
     /**
      * Receive #EContact from the `client` for the gived `uid`.
      * If successful, then the `out_contact` is set to newly allocated
@@ -201,7 +193,7 @@ class BookClient {
      * @param uid a unique string ID specifying the contact
      * @param cancellable a #GCancellable; can be %NULL
      */
-    getContactSync(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact ]
+    getContactSync(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact ]
     /**
      * Query `client` with `sexp,` receiving a list of contacts which
      * matched. The call is finished by e_book_client_get_contacts_finish()
@@ -213,7 +205,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContacts(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getContacts(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts().
      * If successful, then the `out_contacts` is set to newly allocated list of
@@ -231,7 +223,7 @@ class BookClient {
      * @param sexp an S-expression representing the query
      * @param cancellable a #GCancellable; can be %NULL
      */
-    getContactsSync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContacts */ EBookContacts.Contact[] ]
+    getContactsSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContacts */ EBookContacts.Contact[] ]
     /**
      * Query `client` with `sexp,` receiving a list of contacts UIDs which
      * matched. The call is finished by e_book_client_get_contacts_uids_finish()
@@ -243,7 +235,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContactsUids(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getContactsUids(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts_uids().
      * If successful, then the `out_contact_uids` is set to newly allocated list
@@ -261,7 +253,7 @@ class BookClient {
      * @param sexp an S-expression representing the query
      * @param cancellable a #GCancellable; can be %NULL
      */
-    getContactsUidsSync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContactUids */ string[] ]
+    getContactsUidsSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContactUids */ string[] ]
     /**
      * Create an #EBookClientCursor.
      * The call is finished by e_book_client_get_view_finish()
@@ -276,7 +268,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getCursor(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getCursor(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_cursor().
      * If successful, then the `out_cursor` is set to newly create
@@ -298,7 +290,7 @@ class BookClient {
      * @param nFields the length of the input `sort_fields` and `sort_types` arrays
      * @param cancellable a #GCancellable; can be %NULL
      */
-    getCursorSync(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCursor */ BookClientCursor ]
+    getCursorSync(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCursor */ BookClientCursor ]
     /**
      * Reports the locale in use for `client`. The addressbook might sort contacts
      * in different orders, or store and compare phone numbers in different ways
@@ -321,7 +313,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getView(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    getView(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_view().
      * If successful, then the `out_view` is set to newly allocated
@@ -339,7 +331,7 @@ class BookClient {
      * @param sexp an S-expression representing the query
      * @param cancellable a #GCancellable; can be %NULL
      */
-    getViewSync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ BookClientView ]
+    getViewSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ BookClientView ]
     /**
      * Applies the changes made to `contact` to the stored version in `client`.
      * The call is finished by e_book_client_modify_contact_finish()
@@ -349,7 +341,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    modifyContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modifyContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_modify_contact().
      * @param result a #GAsyncResult
@@ -361,7 +353,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    modifyContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    modifyContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Applies the changes made to `contacts` to the stored versions in `client`.
      * The call is finished by e_book_client_modify_contacts_finish()
@@ -371,7 +363,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    modifyContacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modifyContacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_modify_contacts().
      * @param result a #GAsyncResult
@@ -383,7 +375,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    modifyContactsSync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    modifyContactsSync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes `contact` from the `client`.
      * The call is finished by e_book_client_remove_contact_finish()
@@ -393,7 +385,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    removeContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    removeContact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Removes contact with `uid` from the `client`.
      * The call is finished by e_book_client_remove_contact_by_uid_finish()
@@ -403,7 +395,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    removeContactByUid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    removeContactByUid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_remove_contact_by_uid().
      * @param result a #GAsyncResult
@@ -415,7 +407,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    removeContactByUidSync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    removeContactByUidSync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Finishes previous call of e_book_client_remove_contact().
      * @param result a #GAsyncResult
@@ -427,7 +419,7 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    removeContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    removeContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes the contacts with uids from the list `uids` from `client`.  This is
      * always more efficient than calling e_book_client_remove_contact() if you
@@ -440,7 +432,7 @@ class BookClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    removeContacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    removeContacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_remove_contacts().
      * @param result a #GAsyncResult
@@ -455,779 +447,90 @@ class BookClient {
      * @param opflags bit-or of #EBookOperationFlags
      * @param cancellable a #GCancellable; can be %NULL
      */
-    removeContactsSync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    removeContactsSync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Specify that `contact` residing in `client` is the #EContact that
      * refers to the user of the address book.
      * @param contact an #EContact
      */
     setSelf(contact: EBookContacts.Contact): boolean
-    /* Methods of EDataServer-1.2.EDataServer.Client */
-    /**
-     * Cancels all pending operations started on `client`.
-     */
-    cancelAll(): void
-    /**
-     * Check if backend supports particular capability.
-     * To get all capabilities use e_client_get_capabilities().
-     * @param capability a capability
-     */
-    checkCapability(capability: string): boolean
-    /**
-     * Checks whether a client supports explicit refreshing
-     * (see e_client_refresh()).
-     */
-    checkRefreshSupported(): boolean
-    /**
-     * Returns a D-Bus bus name that will be used to connect the
-     * client to the backend subprocess.
-     */
-    dupBusName(): string
-    /**
-     * Queries `client'`s backend for a property of name `prop_name`.
-     * The call is finished by e_client_get_backend_property_finish()
-     * from the `callback`.
-     * @param propName property name, whose value to retrieve; cannot be %NULL
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    getBackendProperty(propName: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_get_backend_property().
-     * @param result a #GAsyncResult
-     */
-    getBackendPropertyFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* propValue */ string ]
-    /**
-     * Queries `client'`s backend for a property of name `prop_name`.
-     * @param propName property name, whose value to retrieve; cannot be %NULL
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    getBackendPropertySync(propName: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* propValue */ string ]
-    /**
-     * Get list of strings with capabilities advertised by a backend.
-     * This list, together with inner strings, is owned by the `client`.
-     * To check for individual capabilities use e_client_check_capability().
-     */
-    getCapabilities(): string[]
-    /**
-     * Get the #ESource that this client has assigned.
-     */
-    getSource(): EDataServer.Source
-    /**
-     * Check if this `client` is connected.
-     */
-    isOnline(): boolean
-    /**
-     * Check if this `client` is fully opened. This includes
-     * everything from e_client_open() call up to the authentication,
-     * if required by a backend. Client cannot do any other operation
-     * during the opening phase except of authenticate or cancel it.
-     * Every other operation results in an %E_CLIENT_ERROR_BUSY error.
-     */
-    isOpened(): boolean
-    /**
-     * Check if this `client` is read-only.
-     */
-    isReadonly(): boolean
-    /**
-     * Opens the `client,` making it ready for queries and other operations.
-     * The call is finished by e_client_open_finish() from the `callback`.
-     * @param onlyIfExists this parameter is not used anymore
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    open(onlyIfExists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_open().
-     * @param result a #GAsyncResult
-     */
-    openFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Opens the `client,` making it ready for queries and other operations.
-     * @param onlyIfExists this parameter is not used anymore
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    openSync(onlyIfExists: boolean, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Returns the #GMainContext on which event sources for `client` are to
-     * be attached.
-     * 
-     * The returned #GMainContext is referenced for thread-safety and must be
-     * unreferenced with g_main_context_unref() when finished with it.
-     */
-    refMainContext(): GLib.MainContext
-    /**
-     * Initiates refresh on the `client`. Finishing the method doesn't mean
-     * that the refresh is done, backend only notifies whether it started
-     * refreshing or not. Use e_client_check_refresh_supported() to check
-     * whether the backend supports this method.
-     * The call is finished by e_client_refresh_finish() from the `callback`.
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_refresh().
-     * @param result a #GAsyncResult
-     */
-    refreshFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Initiates refresh on the `client`. Finishing the method doesn't mean
-     * that the refresh is done, backend only notifies whether it started
-     * refreshing or not. Use e_client_check_refresh_supported() to check
-     * whether the backend supports this method.
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    refreshSync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Removes the backing data for this #EClient. For example, with the file
-     * backend this deletes the database file. You cannot get it back!
-     * The call is finished by e_client_remove_finish() from the `callback`.
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_remove().
-     * @param result a #GAsyncResult
-     */
-    removeFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Removes the backing data for this #EClient. For example, with the file
-     * backend this deletes the database file. You cannot get it back!
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    removeSync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Initiates retrieval of capabilities on the `client`. This is usually
-     * required only once, after the `client` is opened. The returned value
-     * is cached and any subsequent call of e_client_get_capabilities() and
-     * e_client_check_capability() is using the cached value.
-     * The call is finished by e_client_retrieve_capabilities_finish()
-     * from the `callback`.
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    retrieveCapabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_retrieve_capabilities().
-     * Returned value of `capabilities` should be freed with g_free(),
-     * when no longer needed.
-     * @param result a #GAsyncResult
-     */
-    retrieveCapabilitiesFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
-    /**
-     * Initiates retrieval of capabilities on the `client`. This is usually
-     * required only once, after the `client` is opened. The returned value
-     * is cached and any subsequent call of e_client_get_capabilities() and
-     * e_client_check_capability() is using the cached value. Returned value
-     * of `capabilities` should be freed with g_free(), when no longer needed.
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    retrieveCapabilitiesSync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
-    /**
-     * Asynchronously retrieves `client` properties to match server-side values,
-     * without waiting for the D-Bus property change notifications delivery.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_client_retrieve_properties_finish() to get the result of the operation.
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    retrieveProperties(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_client_retrieve_properties().
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param result a #GAsyncResult
-     */
-    retrievePropertiesFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Retrieves `client` properties to match server-side values, without waiting
-     * for the D-Bus property change notifications delivery.
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    retrievePropertiesSync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Sets `client'`s backend property of name `prop_name`
-     * to value `prop_value`. The call is finished
-     * by e_client_set_backend_property_finish() from the `callback`.
-     * @param propName property name, whose value to change; cannot be %NULL
-     * @param propValue property value, to set; cannot be %NULL
-     * @param cancellable a #GCancellable; can be %NULL
-     * @param callback callback to call when a result is ready
-     */
-    setBackendProperty(propName: string, propValue: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_set_backend_property().
-     * @param result a #GAsyncResult
-     */
-    setBackendPropertyFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Sets `client'`s backend property of name `prop_name`
-     * to value `prop_value`.
-     * @param propName property name, whose value to change; cannot be %NULL
-     * @param propValue property value, to set; cannot be %NULL
-     * @param cancellable a #GCancellable; can be %NULL
-     */
-    setBackendPropertySync(propName: string, propValue: string, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Sets a D-Bus bus name that will be used to connect the client
-     * to the backend subprocess.
-     * @param busName a string representing a D-Bus bus name
-     */
-    setBusName(busName: string): void
-    /**
-     * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
-     * `dbus_erorr` and `out_error` can point to the same variable.
-     * @param dbusError a #GError returned bu D-Bus
-     */
-    unwrapDbusError(dbusError: GLib.Error): void
-    /**
-     * Asynchronously waits until the `client` is connected (according
-     * to `ESource:`:connection-status property), but not longer than `timeout_seconds`.
-     * 
-     * The call is finished by e_client_wait_for_connected_finish() from
-     * the `callback`.
-     * @param timeoutSeconds a timeout for the wait, in seconds
-     * @param cancellable a #GCancellable; or %NULL
-     * @param callback callback to call when a result is ready
-     */
-    waitForConnected(timeoutSeconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes previous call of e_client_wait_for_connected().
-     * @param result a #GAsyncResult
-     */
-    waitForConnectedFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Synchronously waits until the `client` is connected (according
-     * to `ESource:`:connection-status property), but not longer than `timeout_seconds`.
-     * 
-     * Note: This also calls e_client_retrieve_properties_sync() on success, to have
-     *   up-to-date property values on the client side, without a delay due
-     *   to property change notifcations delivery through D-Bus.
-     * @param timeoutSeconds a timeout for the wait, in seconds
-     * @param cancellable a #GCancellable; or %NULL
-     */
-    waitForConnectedSync(timeoutSeconds: number, cancellable?: Gio.Cancellable | null): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.AsyncInitable */
-    /**
-     * Starts asynchronous initialization of the object implementing the
-     * interface. This must be done before any real use of the object after
-     * initial construction. If the object also implements #GInitable you can
-     * optionally call g_initable_init() instead.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_async_initable_new_async() should typically be used instead.
-     * 
-     * When the initialization is finished, `callback` will be called. You can
-     * then call g_async_initable_init_finish() to get the result of the
-     * initialization.
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not
-     * %NULL, then initialization can be cancelled by triggering the cancellable
-     * object from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
-     * the object doesn't support cancellable initialization, the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * As with #GInitable, if the object is not initialized, or initialization
-     * returns with an error, then all operations on the object except
-     * g_object_ref() and g_object_unref() are considered to be invalid, and
-     * have undefined behaviour. They will often fail with g_critical() or
-     * g_warning(), but this must not be relied on.
-     * 
-     * Callers should not assume that a class which implements #GAsyncInitable can
-     * be initialized multiple times; for more information, see g_initable_init().
-     * If a class explicitly supports being initialized multiple times,
-     * implementation requires yielding all subsequent calls to init_async() on the
-     * results of the first call.
-     * 
-     * For classes that also support the #GInitable interface, the default
-     * implementation of this method will run the g_initable_init() function
-     * in a thread, so if you want to support asynchronous initialization via
-     * threads, just implement the #GAsyncInitable interface without overriding
-     * any interface methods.
-     * @param ioPriority the [I/O priority][io-priority] of the operation
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes asynchronous initialization and returns the result.
-     * See g_async_initable_init_async().
-     * @param res a #GAsyncResult.
-     */
-    initFinish(res: Gio.AsyncResult): boolean
-    /**
-     * Finishes the async construction for the various g_async_initable_new
-     * calls, returning the created object or %NULL on error.
-     * @param res the #GAsyncResult from the callback
-     */
-    newFinish(res: Gio.AsyncResult): GObject.Object
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Signals of EDataServer-1.2.EDataServer.Client */
-    connect(sigName: "backend-died", callback: (() => void)): number
-    on(sigName: "backend-died", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backend-died", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backend-died", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "backend-died"): void
-    connect(sigName: "backend-error", callback: ((object: string) => void)): number
-    on(sigName: "backend-error", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backend-error", callback: (object: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backend-error", callback: (object: string) => void): NodeJS.EventEmitter
-    emit(sigName: "backend-error", object: string): void
-    connect(sigName: "backend-property-changed", callback: ((object: string, p0: string) => void)): number
-    on(sigName: "backend-property-changed", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "backend-property-changed", callback: (object: string, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "backend-property-changed", callback: (object: string, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "backend-property-changed", object: string, p0: string): void
-    connect(sigName: "opened", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "opened", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "opened", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "opened", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "opened", object: GLib.Error): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::locale", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::locale", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::locale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::locale", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Class property signals of EBook-1.2.EBook.BookClient
+
+    connect(sigName: "notify::locale", callback: (...args: any[]) => void): number
+    on(sigName: "notify::locale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::locale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::locale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::capabilities", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::capabilities", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::locale", ...args: any[]): void
+    connect(sigName: "notify::capabilities", callback: (...args: any[]) => void): number
+    on(sigName: "notify::capabilities", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::capabilities", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::capabilities", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::main-context", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::capabilities", ...args: any[]): void
+    connect(sigName: "notify::main-context", callback: (...args: any[]) => void): number
+    on(sigName: "notify::main-context", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::main-context", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::main-context", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::online", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::online", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::main-context", ...args: any[]): void
+    connect(sigName: "notify::online", callback: (...args: any[]) => void): number
+    on(sigName: "notify::online", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::online", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::online", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::opened", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::opened", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::online", ...args: any[]): void
+    connect(sigName: "notify::opened", callback: (...args: any[]) => void): number
+    on(sigName: "notify::opened", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::opened", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::readonly", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::readonly", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::readonly", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::readonly", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::opened", ...args: any[]): void
+    connect(sigName: "notify::readonly", callback: (...args: any[]) => void): number
+    on(sigName: "notify::readonly", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::readonly", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::readonly", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::source", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::readonly", ...args: any[]): void
+    connect(sigName: "notify::source", callback: (...args: any[]) => void): number
+    on(sigName: "notify::source", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::source", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::source", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::source", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class BookClient extends EDataServer.Client {
+
+    // Own properties of EBook-1.2.EBook.BookClient
+
     static name: string
-    constructor (config?: BookClient_ConstructProps)
-    _init (config?: BookClient_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<BookClient>
+
+    // Constructors of EBook-1.2.EBook.BookClient
+
+    constructor(config?: BookClient_ConstructProps) 
+    /**
+     * Creates a new #EBookClient corresponding to the given source.  There are
+     * only two operations that are valid on this book at this point:
+     * e_client_open(), and e_client_remove().
+     * @constructor 
+     * @param source An #ESource pointer
+     */
+    constructor(source: EDataServer.Source) 
+    /**
+     * Creates a new #EBookClient corresponding to the given source.  There are
+     * only two operations that are valid on this book at this point:
+     * e_client_open(), and e_client_remove().
+     * @constructor 
+     * @param source An #ESource pointer
+     */
     static new(source: EDataServer.Source): BookClient
+    _init(config?: BookClient_ConstructProps): void
     /**
      * Asynchronously creates a new #EBookClient for `source`.
      * 
@@ -1250,7 +553,7 @@ class BookClient {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    static connect(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    static connect(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like e_book_client_connect(), except creates the book client for
      * direct read access to the underlying addressbook.
@@ -1262,7 +565,7 @@ class BookClient {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    static connectDirect(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    static connectDirect(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_book_client_connect_direct().
      * If an error occurs in connecting to the D-Bus service, the function sets
@@ -1282,7 +585,7 @@ class BookClient {
      * @param waitForConnectedSeconds timeout, in seconds, to wait for the backend to be fully connected
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    static connectDirectSync(registry: EDataServer.SourceRegistry, source: EDataServer.Source, waitForConnectedSeconds: number, cancellable?: Gio.Cancellable | null): BookClient
+    static connectDirectSync(registry: EDataServer.SourceRegistry, source: EDataServer.Source, waitForConnectedSeconds: number, cancellable: Gio.Cancellable | null): BookClient
     /**
      * Finishes the operation started with e_book_client_connect().  If an
      * error occurs in connecting to the D-Bus service, the function sets
@@ -1317,7 +620,7 @@ class BookClient {
      * @param waitForConnectedSeconds timeout, in seconds, to wait for the backend to be fully connected
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    static connectSync(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable?: Gio.Cancellable | null): BookClient
+    static connectSync(source: EDataServer.Source, waitForConnectedSeconds: number, cancellable: Gio.Cancellable | null): BookClient
     /**
      * Get the #EContact referring to the user of the address book
      * and set it in `out_contact` and `out_client`.
@@ -1329,38 +632,16 @@ class BookClient {
      * @param contact an #EContact
      */
     static isSelf(contact: EBookContacts.Contact): boolean
-    /**
-     * Helper function for constructing #GAsyncInitable object. This is
-     * similar to g_object_newv() but also initializes the object asynchronously.
-     * 
-     * When the initialization is finished, `callback` will be called. You can
-     * then call g_async_initable_new_finish() to get the new object and check
-     * for any errors.
-     * @param objectType a #GType supporting #GAsyncInitable.
-     * @param nParameters the number of parameters in `parameters`
-     * @param parameters the parameters to use to construct the object
-     * @param ioPriority the [I/O priority][io-priority] of the operation
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
-     */
-    static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param objectType a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
 }
-interface BookClientCursor_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of EBook-1.2.EBook.BookClientCursor */
+
+interface BookClientCursor_ConstructProps extends Gio.Initable_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of EBook-1.2.EBook.BookClientCursor
+
     /**
      * The #EBookClient which this cursor was created for
      */
-    client?: BookClient
+    client?: BookClient | null
     /**
      * The #GDBusConnection to the addressbook server.
      * 
@@ -1368,7 +649,7 @@ interface BookClientCursor_ConstructProps extends GObject.Object_ConstructProps 
      * cursor, to construct the cursor use e_book_client_get_cursor().
      * </para></note>
      */
-    connection?: Gio.DBusConnection
+    connection?: Gio.DBusConnection | null
     /**
      * The #GMainContext in which the #EBookClient created this cursor.
      * 
@@ -1376,7 +657,7 @@ interface BookClientCursor_ConstructProps extends GObject.Object_ConstructProps 
      * cursor, to construct the cursor use e_book_client_get_cursor().
      * </para></note>
      */
-    context?: GLib.MainContext
+    context?: GLib.MainContext | null
     /**
      * The D-Bus object path to find the server side cursor object.
      * 
@@ -1384,7 +665,7 @@ interface BookClientCursor_ConstructProps extends GObject.Object_ConstructProps 
      * cursor, to construct the cursor use e_book_client_get_cursor().
      * </para></note>
      */
-    objectPath?: string
+    objectPath?: string | null
     /**
      * The #EContactField names to sort this cursor with
      * 
@@ -1392,10 +673,20 @@ interface BookClientCursor_ConstructProps extends GObject.Object_ConstructProps 
      * cursor, to construct the cursor use e_book_client_get_cursor().
      * </para></note>
      */
-    sortFields?: string[]
+    sortFields?: string[] | null
 }
-class BookClientCursor {
-    /* Properties of EBook-1.2.EBook.BookClientCursor */
+
+/**
+ * Signal callback interface for `refresh`
+ */
+interface BookClientCursor_RefreshSignalCallback {
+    (): void
+}
+
+interface BookClientCursor extends Gio.Initable {
+
+    // Own properties of EBook-1.2.EBook.BookClientCursor
+
     /**
      * The currently <link linkend="cursor-alphabet">active alphabet</link>.
      * 
@@ -1478,9 +769,9 @@ class BookClientCursor {
      * default context at cursor creation time.
      */
     readonly total: number
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBook-1.2.EBook.BookClientCursor */
+
+    // Owm methods of EBook-1.2.EBook.BookClientCursor
+
     /**
      * Fetches the array of displayable labels for the <link linkend="cursor-alphabet">active alphabet</link>.
      * 
@@ -1502,7 +793,7 @@ class BookClientCursor {
      * very common or expected to have names in Latin script as well as names
      * in another script.
      */
-    getAlphabet(): [ /* returnType */ string[], /* nLabels */ number | null, /* underflow */ number | null, /* inflow */ number | null, /* overflow */ number | null ]
+    getAlphabet(): [ /* returnType */ string[], /* nLabels */ number, /* underflow */ number, /* inflow */ number, /* overflow */ number ]
     /**
      * Checks which alphabetic index `contact` would be sorted
      * into according to `cursor`.
@@ -1555,7 +846,7 @@ class BookClientCursor {
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      * @param callback callback to call when a result is ready
      */
-    setAlphabeticIndex(index: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    setAlphabeticIndex(index: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_set_alphabetic_index().
      * @param result a #GAsyncResult
@@ -1588,7 +879,7 @@ class BookClientCursor {
      * @param index the alphabetic index
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
-    setAlphabeticIndexSync(index: number, cancellable?: Gio.Cancellable | null): boolean
+    setAlphabeticIndexSync(index: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
      * 
@@ -1600,7 +891,7 @@ class BookClientCursor {
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      * @param callback callback to call when a result is ready
      */
-    setSexp(sexp: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    setSexp(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_set_sexp(), reporting
      * whether the new search expression was accepted.
@@ -1626,7 +917,7 @@ class BookClientCursor {
      * @param sexp the new search expression for `cursor`
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
-    setSexpSync(sexp: string, cancellable?: Gio.Cancellable | null): boolean
+    setSexpSync(sexp: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
      * a maximum of `count` and fetch the results traversed.
@@ -1641,13 +932,13 @@ class BookClientCursor {
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      * @param callback callback to call when a result is ready
      */
-    step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_step(), fetching
      * any contacts which might have been returned by the call.
      * @param result a #GAsyncResult
      */
-    stepFinish(result: Gio.AsyncResult): [ /* returnType */ number, /* outContacts */ EBookContacts.Contact[] | null ]
+    stepFinish(result: Gio.AsyncResult): [ /* returnType */ number, /* outContacts */ EBookContacts.Contact[] ]
     /**
      * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
      * a maximum of `count` and fetch the results traversed.
@@ -1684,490 +975,136 @@ class BookClientCursor {
      * @param count a positive or negative amount of contacts to try and fetch
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      */
-    stepSync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* outContacts */ EBookContacts.Contact[] | null ]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Signals of EBook-1.2.EBook.BookClientCursor */
-    /**
-     * Indicates that the addressbook has been modified and
-     * that any content currently being displayed from the current
-     * cursor position should be reloaded.
-     * 
-     * This signal is guaranteed to be delivered in the #GMainContext
-     * which was the thread default context at cursor creation time.
-     */
-    connect(sigName: "refresh", callback: (() => void)): number
-    on(sigName: "refresh", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "refresh", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "refresh", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "refresh"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::alphabet", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::alphabet", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::alphabet", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::alphabet", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    stepSync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [ /* returnType */ number, /* outContacts */ EBookContacts.Contact[] ]
+
+    // Own signals of EBook-1.2.EBook.BookClientCursor
+
+    connect(sigName: "refresh", callback: BookClientCursor_RefreshSignalCallback): number
+    on(sigName: "refresh", callback: BookClientCursor_RefreshSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "refresh", callback: BookClientCursor_RefreshSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "refresh", callback: BookClientCursor_RefreshSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "refresh", ...args: any[]): void
+
+    // Class property signals of EBook-1.2.EBook.BookClientCursor
+
+    connect(sigName: "notify::alphabet", callback: (...args: any[]) => void): number
+    on(sigName: "notify::alphabet", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::alphabet", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::alphabet", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::alphabet", ...args: any[]): void
+    connect(sigName: "notify::client", callback: (...args: any[]) => void): number
+    on(sigName: "notify::client", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::client", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::client", ...args: any[]): void
+    connect(sigName: "notify::connection", callback: (...args: any[]) => void): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::context", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::context", callback: (...args: any[]) => void): number
+    on(sigName: "notify::context", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::context", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::context", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::object-path", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::object-path", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::context", ...args: any[]): void
+    connect(sigName: "notify::object-path", callback: (...args: any[]) => void): number
+    on(sigName: "notify::object-path", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::object-path", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::position", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::position", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::position", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::position", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::object-path", ...args: any[]): void
+    connect(sigName: "notify::position", callback: (...args: any[]) => void): number
+    on(sigName: "notify::position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::position", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::sort-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sort-fields", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::sort-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::sort-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::position", ...args: any[]): void
+    connect(sigName: "notify::sort-fields", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sort-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sort-fields", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::sort-fields", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::total", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::total", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::total", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::total", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sort-fields", ...args: any[]): void
+    connect(sigName: "notify::total", callback: (...args: any[]) => void): number
+    on(sigName: "notify::total", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::total", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::total", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::total", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+/**
+ * Contains only private data.
+ * @class 
+ */
+class BookClientCursor extends GObject.Object {
+
+    // Own properties of EBook-1.2.EBook.BookClientCursor
+
     static name: string
-    constructor (config?: BookClientCursor_ConstructProps)
-    _init (config?: BookClientCursor_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param objectType a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<BookClientCursor>
+
+    // Constructors of EBook-1.2.EBook.BookClientCursor
+
+    constructor(config?: BookClientCursor_ConstructProps) 
+    _init(config?: BookClientCursor_ConstructProps): void
 }
-interface BookClientView_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of EBook-1.2.EBook.BookClientView */
-    client?: BookClient
-    connection?: Gio.DBusConnection
-    objectPath?: string
+
+interface BookClientView_ConstructProps extends Gio.Initable_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of EBook-1.2.EBook.BookClientView
+
+    client?: BookClient | null
+    connection?: Gio.DBusConnection | null
+    objectPath?: string | null
 }
-class BookClientView {
-    /* Properties of EBook-1.2.EBook.BookClientView */
+
+/**
+ * Signal callback interface for `complete`
+ */
+interface BookClientView_CompleteSignalCallback {
+    (object: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `objects-added`
+ */
+interface BookClientView_ObjectsAddedSignalCallback {
+    (objects: EBookContacts.Contact[]): void
+}
+
+/**
+ * Signal callback interface for `objects-modified`
+ */
+interface BookClientView_ObjectsModifiedSignalCallback {
+    (objects: EBookContacts.Contact[]): void
+}
+
+/**
+ * Signal callback interface for `objects-removed`
+ */
+interface BookClientView_ObjectsRemovedSignalCallback {
+    (uids: string[]): void
+}
+
+/**
+ * Signal callback interface for `progress`
+ */
+interface BookClientView_ProgressSignalCallback {
+    (object: number, p0: string): void
+}
+
+interface BookClientView extends Gio.Initable {
+
+    // Own properties of EBook-1.2.EBook.BookClientView
+
     readonly client: BookClient
     readonly connection: Gio.DBusConnection
     readonly objectPath: string
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBook-1.2.EBook.BookClientView */
+
+    // Owm methods of EBook-1.2.EBook.BookClientView
+
     /**
      * Returns the #EBookClientView:client associated with `client_view`.
      */
@@ -2215,468 +1152,96 @@ class BookClientView {
      * Tells `client_view` to stop processing events.
      */
     stop(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Signals of EBook-1.2.EBook.BookClientView */
-    connect(sigName: "complete", callback: ((object: GLib.Error) => void)): number
-    on(sigName: "complete", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "complete", callback: (object: GLib.Error) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "complete", callback: (object: GLib.Error) => void): NodeJS.EventEmitter
-    emit(sigName: "complete", object: GLib.Error): void
-    connect(sigName: "objects-added", callback: ((objects: EBookContacts.Contact[]) => void)): number
-    on(sigName: "objects-added", callback: (objects: EBookContacts.Contact[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "objects-added", callback: (objects: EBookContacts.Contact[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "objects-added", callback: (objects: EBookContacts.Contact[]) => void): NodeJS.EventEmitter
-    emit(sigName: "objects-added", objects: EBookContacts.Contact[]): void
-    connect(sigName: "objects-modified", callback: ((objects: EBookContacts.Contact[]) => void)): number
-    on(sigName: "objects-modified", callback: (objects: EBookContacts.Contact[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "objects-modified", callback: (objects: EBookContacts.Contact[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "objects-modified", callback: (objects: EBookContacts.Contact[]) => void): NodeJS.EventEmitter
-    emit(sigName: "objects-modified", objects: EBookContacts.Contact[]): void
-    connect(sigName: "objects-removed", callback: ((uids: string[]) => void)): number
-    on(sigName: "objects-removed", callback: (uids: string[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "objects-removed", callback: (uids: string[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "objects-removed", callback: (uids: string[]) => void): NodeJS.EventEmitter
-    emit(sigName: "objects-removed", uids: string[]): void
-    connect(sigName: "progress", callback: ((object: number, p0: string) => void)): number
-    on(sigName: "progress", callback: (object: number, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "progress", callback: (object: number, p0: string) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "progress", callback: (object: number, p0: string) => void): NodeJS.EventEmitter
-    emit(sigName: "progress", object: number, p0: string): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
+
+    // Own signals of EBook-1.2.EBook.BookClientView
+
+    connect(sigName: "complete", callback: BookClientView_CompleteSignalCallback): number
+    on(sigName: "complete", callback: BookClientView_CompleteSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "complete", callback: BookClientView_CompleteSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "complete", callback: BookClientView_CompleteSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "complete", ...args: any[]): void
+    connect(sigName: "objects-added", callback: BookClientView_ObjectsAddedSignalCallback): number
+    on(sigName: "objects-added", callback: BookClientView_ObjectsAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "objects-added", callback: BookClientView_ObjectsAddedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "objects-added", callback: BookClientView_ObjectsAddedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "objects-added", ...args: any[]): void
+    connect(sigName: "objects-modified", callback: BookClientView_ObjectsModifiedSignalCallback): number
+    on(sigName: "objects-modified", callback: BookClientView_ObjectsModifiedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "objects-modified", callback: BookClientView_ObjectsModifiedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "objects-modified", callback: BookClientView_ObjectsModifiedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "objects-modified", ...args: any[]): void
+    connect(sigName: "objects-removed", callback: BookClientView_ObjectsRemovedSignalCallback): number
+    on(sigName: "objects-removed", callback: BookClientView_ObjectsRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "objects-removed", callback: BookClientView_ObjectsRemovedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "objects-removed", callback: BookClientView_ObjectsRemovedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "objects-removed", ...args: any[]): void
+    connect(sigName: "progress", callback: BookClientView_ProgressSignalCallback): number
+    on(sigName: "progress", callback: BookClientView_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "progress", callback: BookClientView_ProgressSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "progress", callback: BookClientView_ProgressSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "progress", p0: string, ...args: any[]): void
+
+    // Class property signals of EBook-1.2.EBook.BookClientView
+
+    connect(sigName: "notify::client", callback: (...args: any[]) => void): number
+    on(sigName: "notify::client", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::client", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::client", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::client", ...args: any[]): void
+    connect(sigName: "notify::connection", callback: (...args: any[]) => void): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: "notify::object-path", callback: ((pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::object-path", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    once(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::object-path", callback: (...args: any[]) => void): number
+    on(sigName: "notify::object-path", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::object-path", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::object-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::object-path", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
-    static name: string
-    constructor (config?: BookClientView_ConstructProps)
-    _init (config?: BookClientView_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param objectType a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
 }
+
+/**
+ * Contains only private data the should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class BookClientView extends GObject.Object {
+
+    // Own properties of EBook-1.2.EBook.BookClientView
+
+    static name: string
+    static $gtype: GObject.GType<BookClientView>
+
+    // Constructors of EBook-1.2.EBook.BookClientView
+
+    constructor(config?: BookClientView_ConstructProps) 
+    _init(config?: BookClientView_ConstructProps): void
+}
+
 interface Destination_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Destination {
-    /* Fields of GObject-2.0.GObject.Object */
-    gTypeInstance: GObject.TypeInstance
-    /* Methods of EBook-1.2.EBook.Destination */
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface Destination_ChangedSignalCallback {
+    (): void
+}
+
+interface Destination {
+
+    // Own fields of EBook-1.2.EBook.Destination
+
+    object: GObject.Object
+    priv: DestinationPrivate
+
+    // Owm methods of EBook-1.2.EBook.Destination
+
     /**
      * Creates a new #EDestination identical to `dest`.
      */
@@ -2829,374 +1394,45 @@ class Destination {
      * @param raw an unparsed string
      */
     setRaw(raw: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param sourceProperty the property on `source` to bind
-     * @param target the target #GObject
-     * @param targetProperty the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    forceFloating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freezeNotify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    getData(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param propertyName the name of the property to get
-     * @param value return location for the property value
-     */
-    getProperty(propertyName: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    getQdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    isFloating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param propertyName the name of a property installed on the class of `object`.
-     */
-    notify(propertyName: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notifyByPspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    refSink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    runDispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    setData(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param propertyName the name of the property to set
-     * @param value the value
-     */
-    setProperty(propertyName: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    stealData(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    stealQdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thawNotify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watchClosure(closure: Function): void
-    /* Signals of EBook-1.2.EBook.Destination */
-    connect(sigName: "changed", callback: (() => void)): number
-    on(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "changed", callback: () => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "changed", callback: () => void): NodeJS.EventEmitter
-    emit(sigName: "changed"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
-    on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of EBook-1.2.EBook.Destination
+
+    connect(sigName: "changed", callback: Destination_ChangedSignalCallback): number
+    on(sigName: "changed", callback: Destination_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "changed", callback: Destination_ChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "changed", callback: Destination_ChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "changed", ...args: any[]): void
+
+    // Class property signals of EBook-1.2.EBook.Destination
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    on(sigName: string, callback: any): NodeJS.EventEmitter
-    once(sigName: string, callback: any): NodeJS.EventEmitter
-    off(sigName: string, callback: any): NodeJS.EventEmitter
+}
+
+class Destination extends GObject.Object {
+
+    // Own properties of EBook-1.2.EBook.Destination
+
     static name: string
-    constructor (config?: Destination_ConstructProps)
-    _init (config?: Destination_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Destination>
+
+    // Constructors of EBook-1.2.EBook.Destination
+
+    constructor(config?: Destination_ConstructProps) 
+    /**
+     * Creates a new #EDestination with blank values.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EDestination with blank values.
+     * @constructor 
+     */
     static new(): Destination
+    _init(config?: Destination_ConstructProps): void
     /**
      * Exports multiple #EDestination elements to a single XML document.
      * @param destv a %NULL-terminated array of pointers to #EDestination
@@ -3224,39 +1460,113 @@ class Destination {
      * @param str an XML string
      */
     static importv(str: string): Destination[]
-    static $gtype: GObject.Type
 }
+
+interface BookClientClass {
+}
+
+/**
+ * Class structure for the #EBookClient class.
+ * @record 
+ */
 abstract class BookClientClass {
+
+    // Own properties of EBook-1.2.EBook.BookClientClass
+
     static name: string
 }
-abstract class BookClientCursorClass {
-    /* Fields of EBook-1.2.EBook.BookClientCursorClass */
+
+interface BookClientCursorClass {
+
+    // Own fields of EBook-1.2.EBook.BookClientCursorClass
+
     refresh: (cursor: BookClientCursor) => void
+}
+
+/**
+ * The cursor class structure.
+ * @record 
+ */
+abstract class BookClientCursorClass {
+
+    // Own properties of EBook-1.2.EBook.BookClientCursorClass
+
     static name: string
 }
+
+interface BookClientCursorPrivate {
+}
+
 class BookClientCursorPrivate {
+
+    // Own properties of EBook-1.2.EBook.BookClientCursorPrivate
+
     static name: string
 }
+
+interface BookClientPrivate {
+}
+
 class BookClientPrivate {
+
+    // Own properties of EBook-1.2.EBook.BookClientPrivate
+
     static name: string
 }
-abstract class BookClientViewClass {
-    /* Fields of EBook-1.2.EBook.BookClientViewClass */
+
+interface BookClientViewClass {
+
+    // Own fields of EBook-1.2.EBook.BookClientViewClass
+
     progress: (clientView: BookClientView, percent: number, message: string) => void
     complete: (clientView: BookClientView, error: GLib.Error) => void
+}
+
+/**
+ * Class structure for the #EBookClient class.
+ * @record 
+ */
+abstract class BookClientViewClass {
+
+    // Own properties of EBook-1.2.EBook.BookClientViewClass
+
     static name: string
 }
+
+interface BookClientViewPrivate {
+}
+
 class BookClientViewPrivate {
+
+    // Own properties of EBook-1.2.EBook.BookClientViewPrivate
+
     static name: string
 }
-abstract class DestinationClass {
-    /* Fields of EBook-1.2.EBook.DestinationClass */
+
+interface DestinationClass {
+
+    // Own fields of EBook-1.2.EBook.DestinationClass
+
     parentClass: GObject.ObjectClass
     changed: (destination: Destination) => void
+}
+
+abstract class DestinationClass {
+
+    // Own properties of EBook-1.2.EBook.DestinationClass
+
     static name: string
 }
+
+interface DestinationPrivate {
+}
+
 class DestinationPrivate {
+
+    // Own properties of EBook-1.2.EBook.DestinationPrivate
+
     static name: string
 }
+
 }
 export default EBook;
