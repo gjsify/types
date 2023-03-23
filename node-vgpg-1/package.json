@@ -1,0 +1,64 @@
+{
+    "name": "@girs/node-vgpg-1",
+    "version": "1.0.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for Vgpg-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "node-vgpg-1.js",
+    "main": "node-vgpg-1.js",
+    "typedoc": {
+        "entryPoint": "./node-vgpg-1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Vgpg-1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-vgpg-1.d.ts",
+                "default": "./node-vgpg-1.js"
+            },
+            "require": {
+                "types": "./node-vgpg-1.d.cts",
+                "default": "./node-vgpg-1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-vgpg-1.d.ts",
+        "test:cjs": "tsc --noEmit node-vgpg-1.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gcalc-2": "workspace:^",
+        "@girs/node-gee-0.8": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gxml-0.20": "workspace:^",
+        "@girs/node-json-1.0": "workspace:^",
+        "@girs/node-libxml2-2.0": "workspace:^",
+        "@girs/node-vda-1": "workspace:^",
+        "@girs/node-vgda-1": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Vgpg-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

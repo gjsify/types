@@ -1,0 +1,55 @@
+{
+    "name": "@girs/gst-0.10",
+    "version": "0.10.29-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29",
+    "type": "module",
+    "module": "gst-0.10.js",
+    "main": "gst-0.10.js",
+    "typedoc": {
+        "entryPoint": "./gst-0.10.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gst-0.10",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gst-0.10.d.ts",
+                "default": "./gst-0.10.js"
+            },
+            "require": {
+                "types": "./gst-0.10.d.cts",
+                "default": "./gst-0.10.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gst-0.10.d.ts",
+        "test:cjs": "tsc --noEmit gst-0.10.d.cts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Gst-0.10"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

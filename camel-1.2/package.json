@@ -1,0 +1,55 @@
+{
+    "name": "@girs/camel-1.2",
+    "version": "1.2.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Camel-1.2, generated from library version 1.2.0",
+    "type": "module",
+    "module": "camel-1.2.js",
+    "main": "camel-1.2.js",
+    "typedoc": {
+        "entryPoint": "./camel-1.2.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Camel-1.2",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./camel-1.2.d.ts",
+                "default": "./camel-1.2.js"
+            },
+            "require": {
+                "types": "./camel-1.2.d.cts",
+                "default": "./camel-1.2.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit camel-1.2.d.ts",
+        "test:cjs": "tsc --noEmit camel-1.2.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Camel-1.2"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

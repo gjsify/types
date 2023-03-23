@@ -1,0 +1,53 @@
+{
+    "name": "@girs/gegl-0.3",
+    "version": "0.3.35-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35",
+    "type": "module",
+    "module": "gegl-0.3.js",
+    "main": "gegl-0.3.js",
+    "typedoc": {
+        "entryPoint": "./gegl-0.3.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gegl-0.3",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gegl-0.3.d.ts",
+                "default": "./gegl-0.3.js"
+            },
+            "require": {
+                "types": "./gegl-0.3.d.cts",
+                "default": "./gegl-0.3.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gegl-0.3.d.ts",
+        "test:cjs": "tsc --noEmit gegl-0.3.d.cts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Gegl-0.3"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

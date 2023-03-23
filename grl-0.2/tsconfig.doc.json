@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    // General settings for code interpretation
+    "target": "ESNext",
+    "module": "ESNext",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noEmitOnError": false,
+    "baseUrl": "./",
+    "rootDir": ".",
+    // General settings for code generation
+    "removeComments": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "newLine": "LF"
+  },
+  "include": ["./grl-0.2.d.ts"]
+}

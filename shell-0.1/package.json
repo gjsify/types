@@ -1,0 +1,82 @@
+{
+    "name": "@girs/shell-0.1",
+    "version": "0.1.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Shell-0.1, generated from library version 0.1.0",
+    "type": "module",
+    "module": "shell-0.1.js",
+    "main": "shell-0.1.js",
+    "typedoc": {
+        "entryPoint": "./shell-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Shell-0.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./shell-0.1.d.ts",
+                "default": "./shell-0.1.js"
+            },
+            "require": {
+                "types": "./shell-0.1.d.cts",
+                "default": "./shell-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit shell-0.1.d.ts",
+        "test:cjs": "tsc --noEmit shell-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/cally-11": "workspace:^",
+        "@girs/clutter-11": "workspace:^",
+        "@girs/cogl-11": "workspace:^",
+        "@girs/coglpango-11": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gck-2": "workspace:^",
+        "@girs/gcr-4": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/gvc-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/meta-11": "workspace:^",
+        "@girs/nm-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/polkit-1.0": "workspace:^",
+        "@girs/polkitagent-1.0": "workspace:^",
+        "@girs/st-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Shell-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

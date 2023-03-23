@@ -1,0 +1,56 @@
+{
+    "name": "@girs/grss-0.7",
+    "version": "0.7.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0",
+    "type": "module",
+    "module": "grss-0.7.js",
+    "main": "grss-0.7.js",
+    "typedoc": {
+        "entryPoint": "./grss-0.7.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Grss-0.7",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./grss-0.7.d.ts",
+                "default": "./grss-0.7.js"
+            },
+            "require": {
+                "types": "./grss-0.7.d.cts",
+                "default": "./grss-0.7.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit grss-0.7.d.ts",
+        "test:cjs": "tsc --noEmit grss-0.7.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-2.4": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Grss-0.7"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

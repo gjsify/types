@@ -1,0 +1,60 @@
+{
+    "name": "@girs/node-gfbgraph-0.3",
+    "version": "0.3.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for GFBGraph-0.3, generated from library version 0.3.0",
+    "type": "module",
+    "module": "node-gfbgraph-0.3.js",
+    "main": "node-gfbgraph-0.3.js",
+    "typedoc": {
+        "entryPoint": "./node-gfbgraph-0.3.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GFBGraph-0.3",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-gfbgraph-0.3.d.ts",
+                "default": "./node-gfbgraph-0.3.js"
+            },
+            "require": {
+                "types": "./node-gfbgraph-0.3.d.cts",
+                "default": "./node-gfbgraph-0.3.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-gfbgraph-0.3.d.ts",
+        "test:cjs": "tsc --noEmit node-gfbgraph-0.3.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-json-1.0": "workspace:^",
+        "@girs/node-rest-0.7": "workspace:^",
+        "@girs/node-soup-2.4": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GFBGraph-0.3"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

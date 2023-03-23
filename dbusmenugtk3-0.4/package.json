@@ -1,0 +1,65 @@
+{
+    "name": "@girs/dbusmenugtk3-0.4",
+    "version": "0.4.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0",
+    "type": "module",
+    "module": "dbusmenugtk3-0.4.js",
+    "main": "dbusmenugtk3-0.4.js",
+    "typedoc": {
+        "entryPoint": "./dbusmenugtk3-0.4.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "DbusmenuGtk3-0.4",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dbusmenugtk3-0.4.d.ts",
+                "default": "./dbusmenugtk3-0.4.js"
+            },
+            "require": {
+                "types": "./dbusmenugtk3-0.4.d.cts",
+                "default": "./dbusmenugtk3-0.4.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit dbusmenugtk3-0.4.d.ts",
+        "test:cjs": "tsc --noEmit dbusmenugtk3-0.4.d.cts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/dbusmenu-0.4": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "DbusmenuGtk3-0.4"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

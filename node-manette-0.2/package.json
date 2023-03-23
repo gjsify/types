@@ -1,0 +1,58 @@
+{
+    "name": "@girs/node-manette-0.2",
+    "version": "0.2.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for Manette-0.2, generated from library version 0.2.0",
+    "type": "module",
+    "module": "node-manette-0.2.js",
+    "main": "node-manette-0.2.js",
+    "typedoc": {
+        "entryPoint": "./node-manette-0.2.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Manette-0.2",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-manette-0.2.d.ts",
+                "default": "./node-manette-0.2.js"
+            },
+            "require": {
+                "types": "./node-manette-0.2.d.cts",
+                "default": "./node-manette-0.2.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-manette-0.2.d.ts",
+        "test:cjs": "tsc --noEmit node-manette-0.2.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gudev-1.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Manette-0.2"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

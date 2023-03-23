@@ -1,0 +1,58 @@
+{
+    "name": "@girs/node-folks-0.7",
+    "version": "0.7.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for Folks-0.7, generated from library version 0.7.0",
+    "type": "module",
+    "module": "node-folks-0.7.js",
+    "main": "node-folks-0.7.js",
+    "typedoc": {
+        "entryPoint": "./node-folks-0.7.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Folks-0.7",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-folks-0.7.d.ts",
+                "default": "./node-folks-0.7.js"
+            },
+            "require": {
+                "types": "./node-folks-0.7.d.cts",
+                "default": "./node-folks-0.7.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-folks-0.7.d.ts",
+        "test:cjs": "tsc --noEmit node-folks-0.7.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gee-0.8": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Folks-0.7"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

@@ -1,0 +1,52 @@
+{
+    "name": "@girs/dbus-1.0",
+    "version": "1.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for DBus-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "dbus-1.0.js",
+    "main": "dbus-1.0.js",
+    "typedoc": {
+        "entryPoint": "./dbus-1.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "DBus-1.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dbus-1.0.d.ts",
+                "default": "./dbus-1.0.js"
+            },
+            "require": {
+                "types": "./dbus-1.0.d.cts",
+                "default": "./dbus-1.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit dbus-1.0.d.ts",
+        "test:cjs": "tsc --noEmit dbus-1.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "DBus-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

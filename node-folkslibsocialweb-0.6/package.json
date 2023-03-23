@@ -1,0 +1,60 @@
+{
+    "name": "@girs/node-folkslibsocialweb-0.6",
+    "version": "0.6.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for FolksLibsocialweb-0.6, generated from library version 0.6.0",
+    "type": "module",
+    "module": "node-folkslibsocialweb-0.6.js",
+    "main": "node-folkslibsocialweb-0.6.js",
+    "typedoc": {
+        "entryPoint": "./node-folkslibsocialweb-0.6.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "FolksLibsocialweb-0.6",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-folkslibsocialweb-0.6.d.ts",
+                "default": "./node-folkslibsocialweb-0.6.js"
+            },
+            "require": {
+                "types": "./node-folkslibsocialweb-0.6.d.cts",
+                "default": "./node-folkslibsocialweb-0.6.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-folkslibsocialweb-0.6.d.ts",
+        "test:cjs": "tsc --noEmit node-folkslibsocialweb-0.6.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-folks-0.6": "workspace:^",
+        "@girs/node-gee-0.8": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-socialwebclient-0.25": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "FolksLibsocialweb-0.6"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

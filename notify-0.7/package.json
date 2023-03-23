@@ -1,0 +1,56 @@
+{
+    "name": "@girs/notify-0.7",
+    "version": "0.8.1-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Notify-0.7, generated from library version 0.8.1",
+    "type": "module",
+    "module": "notify-0.7.js",
+    "main": "notify-0.7.js",
+    "typedoc": {
+        "entryPoint": "./notify-0.7.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Notify-0.7",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./notify-0.7.d.ts",
+                "default": "./notify-0.7.js"
+            },
+            "require": {
+                "types": "./notify-0.7.d.cts",
+                "default": "./notify-0.7.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit notify-0.7.d.ts",
+        "test:cjs": "tsc --noEmit notify-0.7.d.cts"
+    },
+    "dependencies": {
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Notify-0.7"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

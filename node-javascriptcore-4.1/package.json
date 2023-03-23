@@ -1,0 +1,56 @@
+{
+    "name": "@girs/node-javascriptcore-4.1",
+    "version": "2.38.5-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.38.5",
+    "type": "module",
+    "module": "node-javascriptcore-4.1.js",
+    "main": "node-javascriptcore-4.1.js",
+    "typedoc": {
+        "entryPoint": "./node-javascriptcore-4.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "JavaScriptCore-4.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-javascriptcore-4.1.d.ts",
+                "default": "./node-javascriptcore-4.1.js"
+            },
+            "require": {
+                "types": "./node-javascriptcore-4.1.d.cts",
+                "default": "./node-javascriptcore-4.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-javascriptcore-4.1.d.ts",
+        "test:cjs": "tsc --noEmit node-javascriptcore-4.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "JavaScriptCore-4.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

@@ -1,0 +1,56 @@
+{
+    "name": "@girs/farstream-0.1",
+    "version": "0.1.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Farstream-0.1, generated from library version 0.1.0",
+    "type": "module",
+    "module": "farstream-0.1.js",
+    "main": "farstream-0.1.js",
+    "typedoc": {
+        "entryPoint": "./farstream-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Farstream-0.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./farstream-0.1.d.ts",
+                "default": "./farstream-0.1.js"
+            },
+            "require": {
+                "types": "./farstream-0.1.d.cts",
+                "default": "./farstream-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit farstream-0.1.d.ts",
+        "test:cjs": "tsc --noEmit farstream-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Farstream-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

@@ -1,0 +1,58 @@
+{
+    "name": "@girs/node-gxps-0.1",
+    "version": "0.3.2-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2",
+    "type": "module",
+    "module": "node-gxps-0.1.js",
+    "main": "node-gxps-0.1.js",
+    "typedoc": {
+        "entryPoint": "./node-gxps-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GXPS-0.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-gxps-0.1.d.ts",
+                "default": "./node-gxps-0.1.js"
+            },
+            "require": {
+                "types": "./node-gxps-0.1.d.cts",
+                "default": "./node-gxps-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-gxps-0.1.d.ts",
+        "test:cjs": "tsc --noEmit node-gxps-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-cairo-1.0": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GXPS-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

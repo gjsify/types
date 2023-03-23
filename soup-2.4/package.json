@@ -1,0 +1,54 @@
+{
+    "name": "@girs/soup-2.4",
+    "version": "2.74.3-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
+    "type": "module",
+    "module": "soup-2.4.js",
+    "main": "soup-2.4.js",
+    "typedoc": {
+        "entryPoint": "./soup-2.4.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Soup-2.4",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./soup-2.4.d.ts",
+                "default": "./soup-2.4.js"
+            },
+            "require": {
+                "types": "./soup-2.4.d.cts",
+                "default": "./soup-2.4.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit soup-2.4.d.ts",
+        "test:cjs": "tsc --noEmit soup-2.4.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Soup-2.4"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

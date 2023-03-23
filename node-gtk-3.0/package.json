@@ -1,0 +1,66 @@
+{
+    "name": "@girs/node-gtk-3.0",
+    "version": "3.24.36-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for Gtk-3.0, generated from library version 3.24.36",
+    "type": "module",
+    "module": "node-gtk-3.0.js",
+    "main": "node-gtk-3.0.js",
+    "typedoc": {
+        "entryPoint": "./node-gtk-3.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gtk-3.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-gtk-3.0.d.ts",
+                "default": "./node-gtk-3.0.js"
+            },
+            "require": {
+                "types": "./node-gtk-3.0.d.cts",
+                "default": "./node-gtk-3.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-gtk-3.0.d.ts",
+        "test:cjs": "tsc --noEmit node-gtk-3.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-atk-1.0": "workspace:^",
+        "@girs/node-cairo-1.0": "workspace:^",
+        "@girs/node-freetype2-2.0": "workspace:^",
+        "@girs/node-gdk-3.0": "workspace:^",
+        "@girs/node-gdkpixbuf-2.0": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gmodule-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-harfbuzz-0.0": "workspace:^",
+        "@girs/node-pango-1.0": "workspace:^",
+        "@girs/node-xlib-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Gtk-3.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

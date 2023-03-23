@@ -1,0 +1,53 @@
+{
+    "name": "@girs/gupnpdlna-2.0",
+    "version": "2.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for GUPnPDLNA-2.0, generated from library version 2.0.0",
+    "type": "module",
+    "module": "gupnpdlna-2.0.js",
+    "main": "gupnpdlna-2.0.js",
+    "typedoc": {
+        "entryPoint": "./gupnpdlna-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GUPnPDLNA-2.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gupnpdlna-2.0.d.ts",
+                "default": "./gupnpdlna-2.0.js"
+            },
+            "require": {
+                "types": "./gupnpdlna-2.0.d.cts",
+                "default": "./gupnpdlna-2.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gupnpdlna-2.0.d.ts",
+        "test:cjs": "tsc --noEmit gupnpdlna-2.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GUPnPDLNA-2.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

@@ -1,0 +1,34 @@
+
+# TelepathyGLib-0.12
+
+Node.js TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+
+Telepathy is a D-Bus framework for unifying real time communication, including instant messaging, voice calls and video calls. It abstracts differences between protocols to provide a unified interface for applications.
+
+## Install
+
+To use this type definitions, install them with NPM like this:
+```bash
+npm install @girs/node-telepathyglib-0.12
+```
+
+## Usage
+
+You can import this package into your project like this:
+```ts
+import TelepathyGLib from '@girs/node-telepathyglib-0.12';
+```
+
+Or if you prefer CommonJS, you can also use this:
+```ts
+const TelepathyGLib = require('@girs/node-telepathyglib-0.12');
+```
+
+If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:
+
+```ts
+const gi = require('node-gtk')
+const TelepathyGLib = gi.require('TelepathyGLib', '0.12')
+```
+
+Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).

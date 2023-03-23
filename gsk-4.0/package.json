@@ -1,0 +1,63 @@
+{
+    "name": "@girs/gsk-4.0",
+    "version": "4.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Gsk-4.0, generated from library version 4.0.0",
+    "type": "module",
+    "module": "gsk-4.0.js",
+    "main": "gsk-4.0.js",
+    "typedoc": {
+        "entryPoint": "./gsk-4.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gsk-4.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gsk-4.0.d.ts",
+                "default": "./gsk-4.0.js"
+            },
+            "require": {
+                "types": "./gsk-4.0.d.cts",
+                "default": "./gsk-4.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gsk-4.0.d.ts",
+        "test:cjs": "tsc --noEmit gsk-4.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-4.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Gsk-4.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

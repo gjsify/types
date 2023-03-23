@@ -1,0 +1,57 @@
+{
+    "name": "@girs/node-socialwebclient-0.25",
+    "version": "0.25.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0",
+    "type": "module",
+    "module": "node-socialwebclient-0.25.js",
+    "main": "node-socialwebclient-0.25.js",
+    "typedoc": {
+        "entryPoint": "./node-socialwebclient-0.25.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "SocialWebClient-0.25",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-socialwebclient-0.25.d.ts",
+                "default": "./node-socialwebclient-0.25.js"
+            },
+            "require": {
+                "types": "./node-socialwebclient-0.25.d.cts",
+                "default": "./node-socialwebclient-0.25.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-socialwebclient-0.25.d.ts",
+        "test:cjs": "tsc --noEmit node-socialwebclient-0.25.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "SocialWebClient-0.25"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

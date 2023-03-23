@@ -1,0 +1,52 @@
+{
+    "name": "@girs/xlib-2.0",
+    "version": "2.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for xlib-2.0, generated from library version 2.0.0",
+    "type": "module",
+    "module": "xlib-2.0.js",
+    "main": "xlib-2.0.js",
+    "typedoc": {
+        "entryPoint": "./xlib-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "xlib-2.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./xlib-2.0.d.ts",
+                "default": "./xlib-2.0.js"
+            },
+            "require": {
+                "types": "./xlib-2.0.d.cts",
+                "default": "./xlib-2.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit xlib-2.0.d.ts",
+        "test:cjs": "tsc --noEmit xlib-2.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "xlib-2.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

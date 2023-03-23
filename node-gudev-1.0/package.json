@@ -1,0 +1,56 @@
+{
+    "name": "@girs/node-gudev-1.0",
+    "version": "1.0.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for GUdev-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "node-gudev-1.0.js",
+    "main": "node-gudev-1.0.js",
+    "typedoc": {
+        "entryPoint": "./node-gudev-1.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GUdev-1.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-gudev-1.0.d.ts",
+                "default": "./node-gudev-1.0.js"
+            },
+            "require": {
+                "types": "./node-gudev-1.0.d.cts",
+                "default": "./node-gudev-1.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-gudev-1.0.d.ts",
+        "test:cjs": "tsc --noEmit node-gudev-1.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GUdev-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

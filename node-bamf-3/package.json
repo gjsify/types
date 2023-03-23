@@ -1,0 +1,56 @@
+{
+    "name": "@girs/node-bamf-3",
+    "version": "3.0.0-3.0.0-beta.12",
+    "description": "Node.js TypeScript type definitions for Bamf-3, generated from library version 3.0.0",
+    "type": "module",
+    "module": "node-bamf-3.js",
+    "main": "node-bamf-3.js",
+    "typedoc": {
+        "entryPoint": "./node-bamf-3.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Bamf-3",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-bamf-3.d.ts",
+                "default": "./node-bamf-3.js"
+            },
+            "require": {
+                "types": "./node-bamf-3.d.cts",
+                "default": "./node-bamf-3.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-bamf-3.d.ts",
+        "test:cjs": "tsc --noEmit node-bamf-3.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Bamf-3"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

@@ -1,0 +1,54 @@
+{
+    "name": "@girs/gck-1",
+    "version": "1.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Gck-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gck-1.js",
+    "main": "gck-1.js",
+    "typedoc": {
+        "entryPoint": "./gck-1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gck-1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gck-1.d.ts",
+                "default": "./gck-1.js"
+            },
+            "require": {
+                "types": "./gck-1.d.cts",
+                "default": "./gck-1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gck-1.d.ts",
+        "test:cjs": "tsc --noEmit gck-1.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Gck-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

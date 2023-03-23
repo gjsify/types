@@ -1,0 +1,64 @@
+{
+    "name": "@girs/goocanvas-2.0",
+    "version": "2.0.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for GooCanvas-2.0, generated from library version 2.0.0",
+    "type": "module",
+    "module": "goocanvas-2.0.js",
+    "main": "goocanvas-2.0.js",
+    "typedoc": {
+        "entryPoint": "./goocanvas-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GooCanvas-2.0",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./goocanvas-2.0.d.ts",
+                "default": "./goocanvas-2.0.js"
+            },
+            "require": {
+                "types": "./goocanvas-2.0.d.cts",
+                "default": "./goocanvas-2.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit goocanvas-2.0.d.ts",
+        "test:cjs": "tsc --noEmit goocanvas-2.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GooCanvas-2.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

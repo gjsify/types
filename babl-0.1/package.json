@@ -1,0 +1,52 @@
+{
+    "name": "@girs/babl-0.1",
+    "version": "0.1.99-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.99",
+    "type": "module",
+    "module": "babl-0.1.js",
+    "main": "babl-0.1.js",
+    "typedoc": {
+        "entryPoint": "./babl-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Babl-0.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./babl-0.1.d.ts",
+                "default": "./babl-0.1.js"
+            },
+            "require": {
+                "types": "./babl-0.1.d.cts",
+                "default": "./babl-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit babl-0.1.d.ts",
+        "test:cjs": "tsc --noEmit babl-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "Babl-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

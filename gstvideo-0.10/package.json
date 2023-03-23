@@ -1,0 +1,57 @@
+{
+    "name": "@girs/gstvideo-0.10",
+    "version": "0.10.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for GstVideo-0.10, generated from library version 0.10.0",
+    "type": "module",
+    "module": "gstvideo-0.10.js",
+    "main": "gstvideo-0.10.js",
+    "typedoc": {
+        "entryPoint": "./gstvideo-0.10.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GstVideo-0.10",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gstvideo-0.10.d.ts",
+                "default": "./gstvideo-0.10.js"
+            },
+            "require": {
+                "types": "./gstvideo-0.10.d.cts",
+                "default": "./gstvideo-0.10.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gstvideo-0.10.d.ts",
+        "test:cjs": "tsc --noEmit gstvideo-0.10.d.cts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/gstbase-0.10": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GstVideo-0.10"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}

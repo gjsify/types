@@ -1,0 +1,54 @@
+{
+    "name": "@girs/gnomeautoar-0.1",
+    "version": "0.1.0-3.0.0-beta.12",
+    "description": "GJS TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0",
+    "type": "module",
+    "module": "gnomeautoar-0.1.js",
+    "main": "gnomeautoar-0.1.js",
+    "typedoc": {
+        "entryPoint": "./gnomeautoar-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GnomeAutoar-0.1",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./gnomeautoar-0.1.d.ts",
+                "default": "./gnomeautoar-0.1.js"
+            },
+            "require": {
+                "types": "./gnomeautoar-0.1.d.cts",
+                "default": "./gnomeautoar-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gnomeautoar-0.1.d.ts",
+        "test:cjs": "tsc --noEmit gnomeautoar-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "GnomeAutoar-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+}
