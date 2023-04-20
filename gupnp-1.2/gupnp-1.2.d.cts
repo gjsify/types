@@ -288,6 +288,28 @@ export interface Acl {
      * @param callback Callback to call after the function is done.
      */
     is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of is_allowed_async
+
+    /**
+     * Promisified version of {@link is_allowed_async}
+     * 
+     * Optional. Check asynchronously whether an IP address is allowed to access
+     * this resource. Use this function if the process of verifying the access right
+     * is expected to take some time, for example when using D-Bus etc.
+     * 
+     * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
+     * 
+     * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer
+     * @param agent The User-Agent header of the peer or %NULL if not unknown.
+     * @param cancellable A #GCancellable which can be used to cancel the operation.
+     * @returns A Promise of the result of {@link is_allowed_async}
+     */
+    is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     is_allowed_finish(res: Gio.AsyncResult): boolean
 
     // Own virtual methods of GUPnP-1.2.GUPnP.Acl
@@ -2200,6 +2222,22 @@ export interface ServiceInfo {
      * @param callback callback to be called when introspeciton object is ready.
      */
     introspect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of introspect_async
+
+    /**
+     * Promisified version of {@link introspect_async}
+     * 
+     * Note that introspection object is created from the information in service
+     * description document (SCPD) provided by the service so it can not be created
+     * if the service does not provide a SCPD.
+     * 
+     * If `cancellable` is used to cancel the call, `callback` will be called with
+     * error code %G_IO_ERROR_CANCELLED.
+     * @param cancellable #GCancellable that can be used to cancel the call, or %NULL.
+     * @returns A Promise of: %NULL, if the call had an error, a #GUPnPServiceIntrospection object otherwise.
+     */
+    introspect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>
     /**
      * Finish an asynchronous call initiated with
      * gupnp_service_info_introspect_async().
@@ -2423,6 +2461,23 @@ export interface ServiceProxy {
      * @param callback A #GAsyncReadyCallback to call when the action is finished.
      */
     call_action_async(action: ServiceProxyAction, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of call_action_async
+
+    /**
+     * Promisified version of {@link call_action_async}
+     * 
+     * Start a call on the remote UPnP service using the pre-configured `action`.
+     * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
+     * the call and gupnp_service_proxy_action_get_result(),
+     * gupnp_service_proxy_action_get_result_hash() or
+     * gupnp_service_proxy_action_get_result_list() to extract the result of the
+     * remote call.
+     * @param action A #GUPnPServiceProxyAction to call
+     * @param cancellable A #GCancellable which can be used to cancel the current action call
+     * @returns A Promise of: %NULL, if the call had an error, the action otherwise.
+     */
+    call_action_async(action: ServiceProxyAction, cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceProxyAction | null>
     /**
      * Finish an asynchronous call initiated with
      * gupnp_service_proxy_call_action_async().

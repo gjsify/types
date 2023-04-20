@@ -9,22 +9,22 @@
  * WebKit-6.0
  */
 
-import type Soup from '@girs/node-soup-3.0';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type JavaScriptCore from '@girs/node-javascriptcore-6.0';
-import type Gtk from '@girs/node-gtk-4.0';
-import type Gsk from '@girs/node-gsk-4.0';
-import type Graphene from '@girs/node-graphene-1.0';
-import type Gdk from '@girs/node-gdk-4.0';
-import type cairo from '@girs/node-cairo-1.0';
-import type PangoCairo from '@girs/node-pangocairo-1.0';
-import type Pango from '@girs/node-pango-1.0';
-import type HarfBuzz from '@girs/node-harfbuzz-0.0';
-import type freetype2 from '@girs/node-freetype2-2.0';
-import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
-import type GModule from '@girs/node-gmodule-2.0';
+import type Soup from '@girs/soup-3.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type JavaScriptCore from '@girs/javascriptcore-6.0';
+import type Gtk from '@girs/gtk-4.0';
+import type Gsk from '@girs/gsk-4.0';
+import type Graphene from '@girs/graphene-1.0';
+import type Gdk from '@girs/gdk-4.0';
+import type cairo from '@girs/cairo-1.0';
+import type PangoCairo from '@girs/pangocairo-1.0';
+import type Pango from '@girs/pango-1.0';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace WebKit {
 
@@ -2672,7 +2672,7 @@ interface Download {
      */
     allowOverwrite: boolean
     /**
-     * The local URI to where the download will be saved.
+     * The local path to where the download will be saved.
      */
     readonly destination: string | null
     /**
@@ -2711,12 +2711,11 @@ interface Download {
      */
     getAllowOverwrite(): boolean
     /**
-     * Obtains the URI to which the downloaded file will be written.
+     * Obtains the destination to which the downloaded file will be written.
      * 
-     * You
-     * can connect to #WebKitDownload::created-destination to make
+     * You can connect to #WebKitDownload::created-destination to make
      * sure this method returns a valid destination.
-     * @returns the destination URI or %NULL
+     * @returns the destination or %NULL
      */
     getDestination(): string | null
     /**
@@ -2774,27 +2773,24 @@ interface Download {
      */
     setAllowOverwrite(allowed: boolean): void
     /**
-     * Sets the URI to which the downloaded file will be written.
+     * Sets the destination to which the downloaded file will be written.
      * 
      * This method should be called before the download transfer
      * starts or it will not have any effect on the ongoing download
      * operation. To set the destination using the filename suggested
      * by the server connect to #WebKitDownload::decide-destination
      * signal and call webkit_download_set_destination(). If you want to
-     * set a fixed destination URI that doesn't depend on the suggested
+     * set a fixed destination that doesn't depend on the suggested
      * filename you can connect to notify::response signal and call
      * webkit_download_set_destination().
+     * 
      * If #WebKitDownload::decide-destination signal is not handled
-     * and destination URI is not set when the download transfer starts,
+     * and destination is not set when the download transfer starts,
      * the file will be saved with the filename suggested by the server in
      * %G_USER_DIRECTORY_DOWNLOAD directory.
-     * @param uri the destination URI
+     * @param destination the destination
      */
-    setDestination(uri: string | null): void
-
-    // Own virtual methods of WebKit-6.0.WebKit.Download
-
-    decideDestination(suggestedFilename: string | null): boolean
+    setDestination(destination: string | null): void
 
     // Own signals of WebKit-6.0.WebKit.Download
 
@@ -7467,6 +7463,11 @@ interface URISchemeRequest {
      */
     finishWithResponse(response: URISchemeResponse): void
     /**
+     * Get the request body.
+     * @returns (nullable): the body of the @request.
+     */
+    getHttpBody(): Gio.InputStream
+    /**
      * Get the #SoupMessageHeaders of the request.
      * @returns the #SoupMessageHeaders of the @request.
      */
@@ -7876,14 +7877,14 @@ module UserContentManager {
      * Signal callback interface for `script-message-received`
      */
     interface ScriptMessageReceivedSignalCallback {
-        (jsResult: JavascriptResult): void
+        (value: JavaScriptCore.Value): void
     }
 
     /**
      * Signal callback interface for `script-message-with-reply-received`
      */
     interface ScriptMessageWithReplyReceivedSignalCallback {
-        (jsResult: JavascriptResult, reply: ScriptMessageReply): boolean
+        (value: JavaScriptCore.Value, reply: ScriptMessageReply): boolean
     }
 
 
@@ -8280,12 +8281,12 @@ interface UserMessage {
 }
 
 /**
- * Message that can be sent between the UI process and web extensions.
+ * Message that can be sent between the UI process and web process extensions.
  * 
  * A WebKitUserMessage is a message that can be used for the communication between the UI process
- * and web extensions. A WebKitUserMessage always has a name, and it can also include parameters and
- * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all #WebKitWebExtension<!-- -->s,
- * from a #WebKitWebExtension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
+ * and web process extensions. A WebKitUserMessage always has a name, and it can also include parameters and
+ * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all web process extensions,
+ * from a web process extension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
  * corresponding #WebKitWebPage (and vice versa). One to one messages can be replied to directly with
  * webkit_user_message_send_reply().
  * @class 
@@ -8346,9 +8347,9 @@ module WebContext {
     }
 
     /**
-     * Signal callback interface for `initialize-web-extensions`
+     * Signal callback interface for `initialize-web-process-extensions`
      */
-    interface InitializeWebExtensionsSignalCallback {
+    interface InitializeWebProcessExtensionsSignalCallback {
         (): void
     }
 
@@ -8468,7 +8469,27 @@ interface WebContext {
      * Get the #WebKitWebContext:time-zone-override property.
      */
     getTimeZoneOverride(): string | null
-    // Has conflict: initializeNotificationPermissions(allowedOrigins: SecurityOrigin[], disallowedOrigins: SecurityOrigin[]): void
+    /**
+     * Sets initial desktop notification permissions for the `context`.
+     * 
+     * `allowed_origins` and `disallowed_origins` must each be #GList of
+     * #WebKitSecurityOrigin objects representing origins that will,
+     * respectively, either always or never have permission to show desktop
+     * notifications. No #WebKitNotificationPermissionRequest will ever be
+     * generated for any of the security origins represented in
+     * `allowed_origins` or `disallowed_origins`. This function is necessary
+     * because some webpages proactively check whether they have permission
+     * to display notifications without ever creating a permission request.
+     * 
+     * This function only affects web processes that have not already been
+     * created. The best time to call it is when handling
+     * #WebKitWebContext::initialize-notification-permissions so as to
+     * ensure that new web processes receive the most recent set of
+     * permissions.
+     * @param allowedOrigins a #GList of security origins
+     * @param disallowedOrigins a #GList of security origins
+     */
+    initializeNotificationPermissions(allowedOrigins: SecurityOrigin[], disallowedOrigins: SecurityOrigin[]): void
     /**
      * Get whether automation is allowed in `context`.
      * 
@@ -8519,7 +8540,7 @@ interface WebContext {
      */
     registerUriScheme(scheme: string | null, callback: URISchemeRequestCallback): void
     /**
-     * Send `message` to all #WebKitWebExtension<!-- -->s associated to `context`.
+     * Send `message` to all web process extensions associated to `context`.
      * 
      * If `message` is floating, it's consumed.
      * @param message a #WebKitUserMessage
@@ -8598,34 +8619,27 @@ interface WebContext {
      */
     setSpellCheckingLanguages(languages: string[]): void
     /**
-     * Set the directory where WebKit will look for Web Extensions.
+     * Set the directory where WebKit will look for web process extensions.
      * 
      * This method must be called before loading anything in this context,
      * otherwise it will not have any effect. You can connect to
-     * #WebKitWebContext::initialize-web-extensions to call this method
+     * #WebKitWebContext::initialize-web-process-extensions to call this method
      * before anything is loaded.
      * @param directory the directory to add
      */
-    setWebExtensionsDirectory(directory: string | null): void
+    setWebProcessExtensionsDirectory(directory: string | null): void
     /**
      * Set user data to be passed to Web Extensions on initialization.
      * 
      * The data will be passed to the
-     * #WebKitWebExtensionInitializeWithUserDataFunction.
+     * #WebKitWebProcessExtensionInitializeWithUserDataFunction.
      * This method must be called before loading anything in this context,
      * otherwise it will not have any effect. You can connect to
-     * #WebKitWebContext::initialize-web-extensions to call this method
+     * #WebKitWebContext::initialize-web-process-extensions to call this method
      * before anything is loaded.
      * @param userData a #GVariant
      */
-    setWebExtensionsInitializationUserData(userData: GLib.Variant): void
-
-    // Own virtual methods of WebKit-6.0.WebKit.WebContext
-
-    automationStarted(session: AutomationSession): void
-    initializeNotificationPermissions(): void
-    initializeWebExtensions(): void
-    userMessageReceived(message: UserMessage): boolean
+    setWebProcessExtensionsInitializationUserData(userData: GLib.Variant): void
 
     // Own signals of WebKit-6.0.WebKit.WebContext
 
@@ -8639,11 +8653,11 @@ interface WebContext {
     once(sigName: "initialize-notification-permissions", callback: WebContext.InitializeNotificationPermissionsSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "initialize-notification-permissions", callback: WebContext.InitializeNotificationPermissionsSignalCallback): NodeJS.EventEmitter
     emit(sigName: "initialize-notification-permissions", ...args: any[]): void
-    connect(sigName: "initialize-web-extensions", callback: WebContext.InitializeWebExtensionsSignalCallback): number
-    on(sigName: "initialize-web-extensions", callback: WebContext.InitializeWebExtensionsSignalCallback, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "initialize-web-extensions", callback: WebContext.InitializeWebExtensionsSignalCallback, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "initialize-web-extensions", callback: WebContext.InitializeWebExtensionsSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "initialize-web-extensions", ...args: any[]): void
+    connect(sigName: "initialize-web-process-extensions", callback: WebContext.InitializeWebProcessExtensionsSignalCallback): number
+    on(sigName: "initialize-web-process-extensions", callback: WebContext.InitializeWebProcessExtensionsSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "initialize-web-process-extensions", callback: WebContext.InitializeWebProcessExtensionsSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "initialize-web-process-extensions", callback: WebContext.InitializeWebProcessExtensionsSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "initialize-web-process-extensions", ...args: any[]): void
     connect(sigName: "user-message-received", callback: WebContext.UserMessageReceivedSignalCallback): number
     on(sigName: "user-message-received", callback: WebContext.UserMessageReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "user-message-received", callback: WebContext.UserMessageReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -9679,18 +9693,16 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      *                               GAsyncResult *result,
      *                               gpointer      user_data)
      * {
-     *     WebKitJavascriptResult *js_result;
      *     JSCValue               *value;
      *     GError                 *error = NULL;
      * 
-     *     js_result = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
-     *     if (!js_result) {
+     *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
+     *     if (!value) {
      *         g_warning ("Error running javascript: %s", error->message);
      *         g_error_free (error);
      *         return;
      *     }
      * 
-     *     value = webkit_javascript_result_get_js_value (js_result);
      *     if (jsc_value_is_number (value)) {
      *         gint32        int_value = jsc_value_to_string (value);
      *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -9728,9 +9740,9 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
     /**
      * Finish an asynchronous operation started with webkit_web_view_call_async_javascript_function().
      * @param result a #GAsyncResult
-     * @returns a #WebKitJavascriptResult with the return value of the async function    or %NULL in case of error
+     * @returns a #JSCValue with the return value of the async function    or %NULL in case of error
      */
-    callAsyncJavascriptFunctionFinish(result: Gio.AsyncResult): JavascriptResult
+    callAsyncJavascriptFunctionFinish(result: Gio.AsyncResult): JavaScriptCore.Value
     /**
      * Asynchronously check if it is possible to execute the given editing command.
      * 
@@ -9791,18 +9803,16 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      *                               GAsyncResult *result,
      *                               gpointer      user_data)
      * {
-     *     WebKitJavascriptResult *js_result;
      *     JSCValue               *value;
      *     GError                 *error = NULL;
      * 
-     *     js_result = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
-     *     if (!js_result) {
+     *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
+     *     if (!value) {
      *         g_warning ("Error running javascript: %s", error->message);
      *         g_error_free (error);
      *         return;
      *     }
      * 
-     *     value = webkit_javascript_result_get_js_value (js_result);
      *     if (jsc_value_is_string (value)) {
      *         gchar        *str_value = jsc_value_to_string (value);
      *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -9837,9 +9847,9 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
     /**
      * Finish an asynchronous operation started with webkit_web_view_evaluate_javascript().
      * @param result a #GAsyncResult
-     * @returns a #WebKitJavascriptResult with the result of the last executed statement in script    or %NULL in case of error
+     * @returns a #JSCValue with the result of the last executed statement in script    or %NULL in case of error
      */
-    evaluateJavascriptFinish(result: Gio.AsyncResult): JavascriptResult
+    evaluateJavascriptFinish(result: Gio.AsyncResult): JavaScriptCore.Value
     /**
      * Request to execute the given `command` for `web_view`.
      * 
@@ -12154,22 +12164,11 @@ interface DownloadClass {
     // Own fields of WebKit-6.0.WebKit.DownloadClass
 
     parentClass: GObject.ObjectClass
-    decideDestination: (download: Download, suggestedFilename: string | null) => boolean
 }
 
 abstract class DownloadClass {
 
     // Own properties of WebKit-6.0.WebKit.DownloadClass
-
-    static name: string
-}
-
-interface DownloadPrivate {
-}
-
-class DownloadPrivate {
-
-    // Own properties of WebKit-6.0.WebKit.DownloadPrivate
 
     static name: string
 }
@@ -12549,44 +12548,6 @@ class InputMethodUnderline {
      * @returns A newly created #WebKitInputMethodUnderline
      */
     static new(startOffset: number, endOffset: number): InputMethodUnderline
-}
-
-interface JavascriptResult {
-
-    // Owm methods of WebKit-6.0.WebKit.JavascriptResult
-
-    /**
-     * Get the #JSCValue of `js_result`.
-     * @returns the #JSCValue of the #WebKitJavascriptResult
-     */
-    getJsValue(): JavaScriptCore.Value
-    /**
-     * Atomically increments the reference count of `js_result` by one.
-     * 
-     * This function is MT-safe and may be called from any thread.
-     * @returns The passed in #WebKitJavascriptResult
-     */
-    ref(): JavascriptResult
-    /**
-     * Atomically decrements the reference count of `js_result` by one.
-     * 
-     * If the reference count drops to 0,
-     * all memory allocated by the #WebKitJavascriptResult is
-     * released. This function is MT-safe and may be called from any
-     * thread.
-     */
-    unref(): void
-}
-
-/**
- * Result of JavaScript evaluation in a web view.
- * @record 
- */
-class JavascriptResult {
-
-    // Own properties of WebKit-6.0.WebKit.JavascriptResult
-
-    static name: string
 }
 
 interface MediaKeySystemPermissionRequestClass {
@@ -13796,26 +13757,12 @@ interface WebContextClass {
 
     // Own fields of WebKit-6.0.WebKit.WebContextClass
 
-    parent: GObject.ObjectClass
-    initializeWebExtensions: (context: WebContext) => void
-    initializeNotificationPermissions: (context: WebContext) => void
-    automationStarted: (context: WebContext, session: AutomationSession) => void
-    userMessageReceived: (context: WebContext, message: UserMessage) => boolean
+    parentClass: GObject.ObjectClass
 }
 
 abstract class WebContextClass {
 
     // Own properties of WebKit-6.0.WebKit.WebContextClass
-
-    static name: string
-}
-
-interface WebContextPrivate {
-}
-
-class WebContextPrivate {
-
-    // Own properties of WebKit-6.0.WebKit.WebContextPrivate
 
     static name: string
 }

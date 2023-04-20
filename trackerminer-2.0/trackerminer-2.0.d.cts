@@ -294,6 +294,40 @@ export interface DataProvider {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     begin_async(url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of begin_async
+
+    /**
+     * Promisified version of {@link begin_async}
+     * 
+     * Precisely the same operation as tracker_data_provider_begin()
+     * is performing, but asynchronously.
+     * 
+     * When all i/o for the operation is finished the `callback` will be
+     * called with the requested information.
+     * 
+     * See the documentation of #TrackerDataProvider for information about the
+     * order of returned files.
+     * 
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param url a #GFile to enumerate
+     * @param attributes an attribute query string
+     * @param flags a set of #TrackerDirectoryFlags
+     * @param io_priority the I/O priority of the request (example: %G_PRIORITY_DEFAULT)
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a #GFileEnumerator or %NULL on failure. This must be freed with g_object_unref().
+     */
+    begin_async(url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.FileEnumerator>
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().

@@ -1,7 +1,7 @@
 
 # Tracker-2.0
 
-GJS TypeScript type definitions for Tracker-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for Tracker-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 The libtracker-miner library is the foundation for Tracker data miners, these miners will extract metadata and insert it in SPARQL form to a TrackerSparqlConnection.
 

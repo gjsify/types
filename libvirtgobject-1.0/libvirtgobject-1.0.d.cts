@@ -364,6 +364,17 @@ export interface Connection {
      */
     fetch_domains(cancellable: Gio.Cancellable | null): boolean
     fetch_domains_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_domains_async
+
+    /**
+     * Promisified version of {@link fetch_domains_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link fetch_domains_async}
+     */
+    fetch_domains_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_domains_finish(result: Gio.AsyncResult): boolean
     /**
      * Use this method to fetch information on all network interfaces
@@ -375,6 +386,17 @@ export interface Connection {
      */
     fetch_interfaces(cancellable: Gio.Cancellable | null): boolean
     fetch_interfaces_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_interfaces_async
+
+    /**
+     * Promisified version of {@link fetch_interfaces_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link fetch_interfaces_async}
+     */
+    fetch_interfaces_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_interfaces_finish(result: Gio.AsyncResult): boolean
     /**
      * Use this method to fetch all networks managed by connection
@@ -385,6 +407,17 @@ export interface Connection {
      */
     fetch_networks(cancellable: Gio.Cancellable | null): boolean
     fetch_networks_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_networks_async
+
+    /**
+     * Promisified version of {@link fetch_networks_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link fetch_networks_async}
+     */
+    fetch_networks_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_networks_finish(result: Gio.AsyncResult): boolean
     /**
      * Use this method to fetch all storage pools managed by connection
@@ -395,6 +428,17 @@ export interface Connection {
      */
     fetch_storage_pools(cancellable: Gio.Cancellable | null): boolean
     fetch_storage_pools_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_storage_pools_async
+
+    /**
+     * Promisified version of {@link fetch_storage_pools_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link fetch_storage_pools_async}
+     */
+    fetch_storage_pools_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_storage_pools_finish(result: Gio.AsyncResult): boolean
     find_domain_by_id(id: number): Domain
     find_domain_by_name(name: string | null): Domain
@@ -413,10 +457,37 @@ export interface Connection {
     find_storage_pool_by_name(name: string | null): StoragePool
     get_capabilities(): LibvirtGConfig.Capabilities
     get_capabilities_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_capabilities_async
+
+    /**
+     * Promisified version of {@link get_capabilities_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of: a #GVirConfigCapabilities or NULL. The returned object should be unreffed with g_object_unref() when no longer needed.
+     */
+    get_capabilities_async(cancellable: Gio.Cancellable | null): globalThis.Promise<LibvirtGConfig.Capabilities>
     get_capabilities_finish(result: Gio.AsyncResult): LibvirtGConfig.Capabilities
     get_domain(uuid: string | null): Domain
     get_domain_capabilities(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number): LibvirtGConfig.DomainCapabilities
     get_domain_capabilities_async(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_domain_capabilities_async
+
+    /**
+     * Promisified version of {@link get_domain_capabilities_async}
+     * 
+     * 
+     * @param emulatorbin path to emulator
+     * @param arch domain architecture
+     * @param machine machine type
+     * @param virttype virtualization type
+     * @param flags extra flags; not used yet, so callers should always pass 0
+     * @param cancellable cancellation object
+     * @returns A Promise of: a #GVirConfigDomainCapabilities or NULL. The returned object should be unreffed with g_object_unref() when no longer needed.
+     */
+    get_domain_capabilities_async(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<LibvirtGConfig.DomainCapabilities>
     get_domain_capabilities_finish(result: Gio.AsyncResult): LibvirtGConfig.DomainCapabilities
     /**
      * Gets a list of the domains available through `conn`.
@@ -469,9 +540,31 @@ export interface Connection {
     is_read_only(): boolean
     open(cancellable: Gio.Cancellable | null): boolean
     open_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_async
+
+    /**
+     * Promisified version of {@link open_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link open_async}
+     */
+    open_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_finish(result: Gio.AsyncResult): boolean
     open_read_only(cancellable: Gio.Cancellable | null): boolean
     open_read_only_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_read_only_async
+
+    /**
+     * Promisified version of {@link open_read_only_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link open_read_only_async}
+     */
+    open_read_only_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_read_only_finish(result: Gio.AsyncResult): boolean
     /**
      * Restores the domain saved with #gvir_domain_save_to_file
@@ -490,6 +583,20 @@ export interface Connection {
      * @param callback completion callback
      */
     restore_domain_from_file_async(filename: string | null, custom_conf: LibvirtGConfig.Domain | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of restore_domain_from_file_async
+
+    /**
+     * Promisified version of {@link restore_domain_from_file_async}
+     * 
+     * Asynchronous variant of #gvir_connection_restore_domain_from_file
+     * @param filename path to input file
+     * @param custom_conf configuration for domain
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of: TRUE if domain was restored successfully, FALSE otherwise.
+     */
+    restore_domain_from_file_async(filename: string | null, custom_conf: LibvirtGConfig.Domain | null, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the operation started by #gvir_restore_domain_from_file_async.
      * @param result async method result
@@ -630,10 +737,35 @@ export interface Domain {
 
     create_snapshot(custom_conf: LibvirtGConfig.DomainSnapshot | null, flags: number): DomainSnapshot
     create_snapshot_async(custom_conf: LibvirtGConfig.DomainSnapshot | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_snapshot_async
+
+    /**
+     * Promisified version of {@link create_snapshot_async}
+     * 
+     * 
+     * @param custom_conf Configuration of snapshot or %NULL
+     * @param flags Bitwise-OR of #GVirDomainSnapshotCreateFlags
+     * @param cancellable cancellation object
+     * @returns A Promise of: The created snapshot
+     */
+    create_snapshot_async(custom_conf: LibvirtGConfig.DomainSnapshot | null, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<DomainSnapshot>
     create_snapshot_finish(result: Gio.AsyncResult): DomainSnapshot
     delete(flags: number): boolean
     fetch_snapshots(list_flags: number, cancellable: Gio.Cancellable | null): boolean
     fetch_snapshots_async(list_flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_snapshots_async
+
+    /**
+     * Promisified version of {@link fetch_snapshots_async}
+     * 
+     * 
+     * @param list_flags bitwise-OR of #GVirDomainSnapshotListFlags
+     * @param cancellable cancellation object
+     * @returns A Promise of: TRUE on success, FALSE otherwise.
+     */
+    fetch_snapshots_async(list_flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_snapshots_finish(res: Gio.AsyncResult): boolean
     get_config(flags: number): LibvirtGConfig.Domain
     /**
@@ -652,6 +784,17 @@ export interface Domain {
      * @param callback completion callback
      */
     get_info_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_info_async
+
+    /**
+     * Promisified version of {@link get_info_async}
+     * 
+     * Asynchronous variant of #gvir_domain_get_info.
+     * @param cancellable cancellation object
+     * @returns A Promise of: the info. The returned object should be unreffed with g_object_unref() when no longer needed.
+     */
+    get_info_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DomainInfo>
     /**
      * Finishes the operation started by #gvir_domain_get_info_async.
      * @param result async method result
@@ -701,6 +844,17 @@ export interface Domain {
      * @param callback completion callback
      */
     resume_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of resume_async
+
+    /**
+     * Promisified version of {@link resume_async}
+     * 
+     * Asynchronous variant of #gvir_domain_resume.
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link resume_async}
+     */
+    resume_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     resume_finish(result: Gio.AsyncResult): boolean
     /**
      * Saves the state of the domain on disk and stops it. Use #gvir_domain_start
@@ -717,6 +871,18 @@ export interface Domain {
      * @param callback completion callback
      */
     save_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Asynchronous variant of #gvir_domain_save.
+     * @param flags extra flags, currently unused
+     * @param cancellable cancellation object
+     * @returns A Promise of: TRUE if domain was saved successfully, FALSE otherwise.
+     */
+    save_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the operation started by #gvir_domain_save_async.
      * @param result async method result
@@ -733,6 +899,20 @@ export interface Domain {
      * @param callback completion callback
      */
     save_to_file_async(filename: string | null, custom_conf: LibvirtGConfig.Domain | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_to_file_async
+
+    /**
+     * Promisified version of {@link save_to_file_async}
+     * 
+     * Asynchronous variant of #gvir_domain_save_to_file
+     * @param filename path to output file
+     * @param custom_conf configuration for domain or NULL
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of: TRUE if domain was saved successfully, FALSE otherwise.
+     */
+    save_to_file_async(filename: string | null, custom_conf: LibvirtGConfig.Domain | null, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the operation started by #gvir_domain_save_to_file_async.
      * @param result async method result
@@ -770,6 +950,19 @@ export interface Domain {
      * @param callback completion callback
      */
     set_time_async(date_time: GLib.DateTime | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_time_async
+
+    /**
+     * Promisified version of {@link set_time_async}
+     * 
+     * Asynchronous variant of #gvir_domain_set_time.
+     * @param date_time the time to set as #GDateTime.
+     * @param flags bitwise-OR of #GVirDomainSetTimeFlags.
+     * @param cancellable cancellation object
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    set_time_async(date_time: GLib.DateTime | null, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the operation started by #gvir_domain_set_time_async.
      * @param result async method result
@@ -785,6 +978,18 @@ export interface Domain {
      * @param callback completion callback
      */
     start_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of start_async
+
+    /**
+     * Promisified version of {@link start_async}
+     * 
+     * Asynchronous variant of #gvir_domain_start.
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link start_async}
+     */
+    start_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     start_finish(result: Gio.AsyncResult): boolean
     stop(flags: number): boolean
     /**
@@ -809,6 +1014,18 @@ export interface Domain {
      * @param callback completion callback
      */
     wakeup_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of wakeup_async
+
+    /**
+     * Promisified version of {@link wakeup_async}
+     * 
+     * Asynchronous variant of #gvir_domain_wakeup.
+     * @param flags placeholder for flags, pass 0
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link wakeup_async}
+     */
+    wakeup_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     wakeup_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of LibvirtGObject-1.0.LibvirtGObject.Domain
@@ -1067,12 +1284,36 @@ export interface DomainSnapshot {
 
     delete(flags: number): boolean
     delete_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_async
+
+    /**
+     * Promisified version of {@link delete_async}
+     * 
+     * 
+     * @param flags Bitwise-OR of #GVirDomainSnapshotDeleteFlags
+     * @param cancellable cancellation object
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    delete_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     delete_finish(res: Gio.AsyncResult): boolean
     get_config(flags: number): LibvirtGConfig.DomainSnapshot
     get_is_current(flags: number): [ /* returnType */ boolean, /* is_current */ boolean ]
     get_name(): string | null
     revert_to(flags: number): boolean
     revert_to_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of revert_to_async
+
+    /**
+     * Promisified version of {@link revert_to_async}
+     * 
+     * 
+     * @param flags Bitwise OR of #GVirDomainSnapshotRevertFlags
+     * @param cancellable cancellation object
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    revert_to_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     revert_to_finish(result: Gio.AsyncResult): boolean
     /**
      * Updates the given snapshot's configuration according to the
@@ -1555,10 +1796,34 @@ export interface StoragePool {
 
     build(flags: number): boolean
     build_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of build_async
+
+    /**
+     * Promisified version of {@link build_async}
+     * 
+     * 
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of: #True on success, #False otherwise.
+     */
+    build_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     build_finish(result: Gio.AsyncResult): boolean
     create_volume(conf: LibvirtGConfig.StorageVol): StorageVol
     delete(flags: number): boolean
     delete_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_async
+
+    /**
+     * Promisified version of {@link delete_async}
+     * 
+     * 
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of: #True on success, #False otherwise.
+     */
+    delete_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     delete_finish(result: Gio.AsyncResult): boolean
     get_active(): boolean
     get_autostart(): boolean
@@ -1571,6 +1836,17 @@ export interface StoragePool {
     get_volumes(): StorageVol[]
     refresh(cancellable: Gio.Cancellable | null): boolean
     refresh_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of refresh_async
+
+    /**
+     * Promisified version of {@link refresh_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of the result of {@link refresh_async}
+     */
+    refresh_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     refresh_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets whether or not storage pool `pool` is started automatically on boot.
@@ -1580,12 +1856,46 @@ export interface StoragePool {
     set_autostart(autostart: boolean): boolean
     start(flags: number): boolean
     start_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of start_async
+
+    /**
+     * Promisified version of {@link start_async}
+     * 
+     * 
+     * @param flags the flags
+     * @param cancellable cancellation object
+     * @returns A Promise of: #True on success, #False otherwise.
+     */
+    start_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     start_finish(result: Gio.AsyncResult): boolean
     stop(): boolean
     stop_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of stop_async
+
+    /**
+     * Promisified version of {@link stop_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of: #True on success, #False otherwise.
+     */
+    stop_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     stop_finish(result: Gio.AsyncResult): boolean
     undefine(): boolean
     undefine_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of undefine_async
+
+    /**
+     * Promisified version of {@link undefine_async}
+     * 
+     * 
+     * @param cancellable cancellation object
+     * @returns A Promise of: #True on success, #False otherwise.
+     */
+    undefine_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     undefine_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.StoragePool

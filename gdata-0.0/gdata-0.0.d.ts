@@ -1548,6 +1548,27 @@ interface Authorizer {
      * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
      */
     refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of refresh_authorization_async
+
+    /**
+     * Promisified version of {@link refresh_authorization_async}
+     * 
+     * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+     * method is called, so can safely be freed after this method returns.
+     * 
+     * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+     * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+     * latter will be called from a new thread to make it asynchronous.
+     * 
+     * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+     * to get the results of the operation.
+     * 
+     * This method is thread safe.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
+     */
+    refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
      * 
@@ -1778,6 +1799,25 @@ interface Commentable extends Entry {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished
      */
     delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_comment_async
+
+    /**
+     * Promisified version of {@link delete_comment_async}
+     * 
+     * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+     * this method returns.
+     * 
+     * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+     * operation.
+     * @param service a #GDataService with which the comment will be deleted
+     * @param comment_ a comment to be deleted
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: %TRUE if the comment was successfully deleted, %FALSE otherwise
+     */
+    delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
      * @param result a #GAsyncResult
@@ -1808,6 +1848,25 @@ interface Commentable extends Entry {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished
      */
     insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of insert_comment_async
+
+    /**
+     * Promisified version of {@link insert_comment_async}
+     * 
+     * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+     * method returns.
+     * 
+     * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+     * operation.
+     * @param service a #GDataService with which the comment will be added
+     * @param comment_ a new comment to be added to the #GDataCommentable
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: the added #GDataComment, or %NULL; unref with g_object_unref()
+     */
+    insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<Comment | null>
     /**
      * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
      * @param result a #GAsyncResult
@@ -1842,6 +1901,26 @@ interface Commentable extends Entry {
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
     query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_comments_async
+
+    /**
+     * Promisified version of {@link query_comments_async}
+     * 
+     * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+     * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+     * 
+     * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+     * operation.
+     * @param service a #GDataService representing the service with which the object's comments will be manipulated
+     * @param query a #GDataQuery with query parameters, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+     * @returns A Promise of: a #GDataFeed of #GDataComments, or %NULL; unref with g_object_unref()
+     */
+    query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed | null>
     /**
      * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
      * @param result a #GAsyncResult
@@ -2632,6 +2711,24 @@ interface BatchOperation {
      * @param callback a #GAsyncReadyCallback to call when the batch operation is finished, or %NULL
      */
     run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of run_async
+
+    /**
+     * Promisified version of {@link run_async}
+     * 
+     * Run the #GDataBatchOperation asynchronously. This will send all the operations in the batch operation to the server, and call their respective
+     * callbacks asynchronously (i.e. in idle functions in the main thread, usually after gdata_batch_operation_run_async() has returned) as the
+     * server returns results for each operation. `self` is reffed when this function is called, so can safely be unreffed after this function returns.
+     * 
+     * For more details, see gdata_batch_operation_run(), which is the synchronous version of this function.
+     * 
+     * When the entire batch operation is finished, `callback` will be called. You can then call gdata_batch_operation_run_finish() to get the results of
+     * the batch operation.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise
+     */
+    run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous batch operation run with gdata_batch_operation_run_async().
      * 
@@ -6234,6 +6331,25 @@ interface DocumentsService extends Batchable {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
      */
     add_entry_to_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of add_entry_to_folder_async
+
+    /**
+     * Promisified version of {@link add_entry_to_folder_async}
+     * 
+     * Add the given `entry` to the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+     * after this function returns.
+     * 
+     * For more details, see gdata_documents_service_add_entry_to_folder(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_add_entry_to_folder_finish() to get the results
+     * of the operation.
+     * @param entry the #GDataDocumentsEntry to add to `folder`
+     * @param folder the #GDataDocumentsFolder to add `entry` to
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: an updated #GDataDocumentsEntry, or %NULL; unref with g_object_unref()
+     */
+    add_entry_to_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsEntry>
     /**
      * Finish an asynchronous operation to add a #GDataDocumentsEntry to a folder started with gdata_documents_service_add_entry_to_folder_async().
      * @param async_result a #GAsyncResult
@@ -6262,6 +6378,24 @@ interface DocumentsService extends Batchable {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
      */
     copy_document_async(document: DocumentsDocument, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of copy_document_async
+
+    /**
+     * Promisified version of {@link copy_document_async}
+     * 
+     * Copy the given `document,` producing a duplicate document in the same folder and returning its #GDataDocumentsDocument. `self` and `document` are
+     * both reffed when this function is called, so can safely be unreffed after this function returns.
+     * 
+     * For more details, see gdata_documents_service_copy_document(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_copy_document_finish() to get the results
+     * of the operation.
+     * @param document the #GDataDocumentsDocument to copy
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: the duplicate #GDataDocumentsDocument, or %NULL; unref with g_object_unref()
+     */
+    copy_document_async(document: DocumentsDocument, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsDocument>
     /**
      * Finish an asynchronous operation to copy a #GDataDocumentsDocument started with gdata_documents_service_copy_document_async().
      * @param async_result a #GAsyncResult
@@ -6302,6 +6436,23 @@ interface DocumentsService extends Batchable {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
      */
     get_metadata_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_metadata_async
+
+    /**
+     * Promisified version of {@link get_metadata_async}
+     * 
+     * Gets a #GDataDocumentsMetadata object containing metadata about the documents
+     * service itself, like how large the user quota is.
+     * 
+     * For more details, see gdata_documents_service_get_metadata(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_get_metadata_finish() to get the results
+     * of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: the service's metadata object; unref with g_object_unref()
+     */
+    get_metadata_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsMetadata>
     /**
      * Finish an asynchronous operation to get a #GDataDocumentsMetadata started with gdata_documents_service_get_metadata_async().
      * @param async_result a #GAsyncResult
@@ -6378,6 +6529,25 @@ interface DocumentsService extends Batchable {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
      */
     remove_entry_from_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_entry_from_folder_async
+
+    /**
+     * Promisified version of {@link remove_entry_from_folder_async}
+     * 
+     * Remove the given `entry` from the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+     * after this function returns.
+     * 
+     * For more details, see gdata_documents_service_remove_entry_from_folder(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_remove_entry_from_folder_finish() to get the
+     * results of the operation.
+     * @param entry the #GDataDocumentsEntry to remove from `folder`
+     * @param folder the #GDataDocumentsFolder to remove `entry` from
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: an updated #GDataDocumentsEntry, or %NULL; unref with g_object_unref()
+     */
+    remove_entry_from_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsEntry>
     /**
      * Finish an asynchronous operation to remove a #GDataDocumentsEntry from a folder started with
      * gdata_documents_service_remove_entry_from_folder_async().
@@ -12706,6 +12876,18 @@ interface OAuth2Authorizer extends Authorizer {
      * @param callback a #GAsyncReadyCallback to call when authorization is finished
      */
     request_authorization_async(authorization_code: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_authorization_async
+
+    /**
+     * Promisified version of {@link request_authorization_async}
+     * 
+     * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
+     * @param authorization_code code returned from the authentication page
+     * @param cancellable an optional #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if authorization was successful, %FALSE otherwise
+     */
+    request_authorization_async(authorization_code: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous authorization operation started with
      * gdata_oauth2_authorizer_request_authorization_async().
@@ -14551,6 +14733,23 @@ interface PicasaWebService {
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
     get_user_async(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_user_async
+
+    /**
+     * Promisified version of {@link get_user_async}
+     * 
+     * Queries the service to return the user specified by `username`.
+     * 
+     * For more details, see gdata_picasaweb_service_get_user() which is the synchronous version of this method.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_picasaweb_service_get_user_finish() to get the results of the
+     * operation.
+     * @param username the username of the user whose information you wish to retrieve, or %NULL for the currently authenticated user
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: a #GDataPicasaWebUser; unref with g_object_unref()
+     */
+    get_user_async(username: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<PicasaWebUser>
     /**
      * Finishes an asynchronous user retrieval operation started with gdata_picasaweb_service_get_user_async().
      * @param result a #GAsyncResult
@@ -15464,6 +15663,25 @@ interface Service {
      * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
      */
     delete_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_entry_async
+
+    /**
+     * Promisified version of {@link delete_entry_async}
+     * 
+     * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+     * so can safely be unreffed after this function returns.
+     * 
+     * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+     * to get the results of the operation.
+     * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+     * @param entry the #GDataEntry to delete
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise
+     */
+    delete_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
      * @param async_result a #GAsyncResult
@@ -15530,6 +15748,26 @@ interface Service {
      * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
      */
     insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of insert_entry_async
+
+    /**
+     * Promisified version of {@link insert_entry_async}
+     * 
+     * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+     * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+     * 
+     * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+     * to get the results of the operation.
+     * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+     * @param upload_uri the URI to which the upload should be sent
+     * @param entry the #GDataEntry to insert
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: an updated #GDataEntry, or %NULL; unref with g_object_unref()
+     */
+    insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
     /**
      * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
      * @param async_result a #GAsyncResult
@@ -15591,6 +15829,28 @@ interface Service {
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
     query_async(domain: AuthorizationDomain | null, feed_uri: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_async
+
+    /**
+     * Promisified version of {@link query_async}
+     * 
+     * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+     * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+     * 
+     * For more details, see gdata_service_query(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+     * to get the results of the operation.
+     * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+     * @param feed_uri the feed URI to query, including the host name and protocol
+     * @param query a #GDataQuery with the query parameters, or %NULL
+     * @param entry_type a #GType for the #GDataEntrys to build from the XML
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+     * @returns A Promise of: a #GDataFeed of query results, or %NULL; unref with g_object_unref()
+     */
+    query_async(domain: AuthorizationDomain | null, feed_uri: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed>
     /**
      * Finishes an asynchronous query operation started with gdata_service_query_async().
      * @param async_result a #GAsyncResult
@@ -15631,6 +15891,28 @@ interface Service {
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
     query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_single_entry_async
+
+    /**
+     * Promisified version of {@link query_single_entry_async}
+     * 
+     * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+     * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+     * function is called, so can safely be freed after this function returns.
+     * 
+     * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+     * to get the results of the operation.
+     * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+     * @param entry_id the entry ID of the desired entry
+     * @param query a #GDataQuery with the query parameters, or %NULL
+     * @param entry_type a #GType for the #GDataEntry to build from the XML
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: a #GDataEntry, or %NULL; unref with g_object_unref()
+     */
+    query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
     /**
      * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
      * @param async_result a #GAsyncResult
@@ -15700,6 +15982,25 @@ interface Service {
      * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
      */
     update_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_entry_async
+
+    /**
+     * Promisified version of {@link update_entry_async}
+     * 
+     * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+     * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+     * 
+     * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+     * to get the results of the operation.
+     * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+     * @param entry the #GDataEntry to update
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: an updated #GDataEntry, or %NULL; unref with g_object_unref()
+     */
+    update_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
     /**
      * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
      * @param async_result a #GAsyncResult
@@ -17759,6 +18060,23 @@ interface YouTubeService extends Batchable {
      * @param callback a #GAsyncReadyCallback to call when the request is finished
      */
     get_categories_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_categories_async
+
+    /**
+     * Promisified version of {@link get_categories_async}
+     * 
+     * Gets a list of the categories currently in use on YouTube. `self` is reffed when this function is called, so can safely be unreffed after this
+     * function returns.
+     * 
+     * For more details, see gdata_youtube_service_get_categories(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call gdata_youtube_service_get_categories_finish() to get the results of the
+     * operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: a #GDataAPPCategories, or %NULL; unref with g_object_unref()
+     */
+    get_categories_async(cancellable: Gio.Cancellable | null): globalThis.Promise<APPCategories>
     /**
      * Finishes an asynchronous request for a list of categories on YouTube, as started with gdata_youtube_service_get_categories_async().
      * @param async_result a #GAsyncResult

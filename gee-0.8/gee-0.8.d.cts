@@ -701,6 +701,17 @@ export interface Future extends GObject.Object {
     wait(): any | null
     wait_until(end_time: number): [ /* returnType */ boolean, /* value */ any ]
     wait_async(_callback_: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of wait_async
+
+    /**
+     * Promisified version of {@link wait_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link wait_async}
+     */
+    wait_async(): globalThis.Promise<any | null>
     wait_finish(_res_: Gio.AsyncResult): any | null
     map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
     light_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future

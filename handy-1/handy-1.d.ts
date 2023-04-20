@@ -1577,6 +1577,21 @@ interface Avatar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param callback a [callback`Gio`.AsyncReadyCallback] to call when   the avatar is generated
      */
     draw_to_pixbuf_async(size: number, scale_factor: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of draw_to_pixbuf_async
+
+    /**
+     * Promisified version of {@link draw_to_pixbuf_async}
+     * 
+     * Renders asynchronously `self` into a pixbuf at `size` and `scale_factor`.
+     * 
+     * This can be used to export the fallback avatar.
+     * @param size the size of the pixbuf
+     * @param scale_factor the scale factor
+     * @param cancellable a cancellable
+     * @returns A Promise of: the resulting pixbuf
+     */
+    draw_to_pixbuf_async(size: number, scale_factor: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>
     /**
      * Finishes an asynchronous draw of an avatar to a pixbuf.
      * @param async_result a [iface`Gio`.AsyncResult]

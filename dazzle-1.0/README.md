@@ -1,7 +1,7 @@
 
 # Dazzle-1.0
 
-GJS TypeScript type definitions for Dazzle-1.0, generated from library version 3.44.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for Dazzle-1.0, generated from library version 3.44.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 The libdazzle library is a companion library to GObject and Gtk+. It provides various features that we wish were in the underlying library but cannot for various reasons. In most cases, they are wildly out of scope for those libraries. In other cases, our design isn't quite generic enough to work for everyone.
 

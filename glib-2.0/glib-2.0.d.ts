@@ -3670,6 +3670,18 @@ const CSET_DIGITS: string | null
  */
 const CSET_a_2_z: string | null
 /**
+ * The C standard version the code is compiling against, it's normally
+ * defined with the same value of `__STDC_VERSION__` for C standard
+ * compatible compilers, while it uses the lowest standard version
+ * in pure MSVC, given that in such compiler the definition depends on
+ * a compilation flag.
+ * 
+ * This is granted to be undefined when compiling with a C++ compiler.
+ * 
+ * See also: %G_C_STD_CHECK_VERSION and %G_CXX_STD_VERSION
+ */
+const C_STD_VERSION: number
+/**
  * A bitmask that restricts the possible flags passed to
  * g_datalist_set_flags(). Passing a flags value where
  * flags & ~G_DATALIST_FLAGS_MASK != 0 is an error.
@@ -4459,7 +4471,7 @@ function access(filename: string, mode: number): number
  * the program is terminated.
  * 
  * Aligned memory allocations returned by this function can only be
- * freed using g_aligned_free().
+ * freed using g_aligned_free_sized() or g_aligned_free().
  * @param n_blocks the number of blocks to allocate
  * @param n_block_bytes the size of each block in bytes
  * @param alignment the alignment to be enforced, which must be a positive power of 2   and a multiple of `sizeof(void*)`
@@ -4480,6 +4492,21 @@ function aligned_alloc0(n_blocks: number, n_block_bytes: number, alignment: numb
  * @param mem the memory to deallocate
  */
 function aligned_free(mem: any | null): void
+/**
+ * Frees the memory pointed to by `mem,` assuming it is has the given `size` and
+ * `alignment`.
+ * 
+ * If `mem` is %NULL this is a no-op (and `size` is ignored).
+ * 
+ * It is an error if `size` doesn’t match the size, or `alignment` doesn’t match
+ * the alignment, passed when `mem` was allocated. `size` and `alignment` are
+ * passed to this function to allow optimizations in the allocator. If you
+ * don’t know either of them, use g_aligned_free() instead.
+ * @param mem the memory to free
+ * @param alignment alignment of `mem`
+ * @param size size of `mem,` in bytes
+ */
+function aligned_free_sized(mem: any | null, alignment: number, size: number): void
 /**
  * Determines the numeric value of a character as a decimal digit.
  * Differs from g_unichar_digit_value() because it takes a char, so
@@ -5270,7 +5297,7 @@ function base64_encode_step(in_: Uint8Array, break_lines: boolean, state: number
  * components. It returns a pointer into the given file name
  * string.
  * @param file_name the name of the file
- * @returns the name of the file without any leading     directory components
+ * @returns the name of the file without any leading   directory components
  */
 function basename(file_name: string): string
 /**
@@ -5354,19 +5381,26 @@ function bit_trylock(address: number, lock_bit: number): boolean
 function bit_unlock(address: number, lock_bit: number): void
 function bookmark_file_error_quark(): Quark
 /**
- * Behaves exactly like g_build_filename(), but takes the path elements
- * as a string array, instead of varargs. This function is mainly
+ * Creates a filename from a vector of elements using the correct
+ * separator for the current platform.
+ * 
+ * This function behaves exactly like g_build_filename(), but takes the path
+ * elements as a string array, instead of varargs. This function is mainly
  * meant for language bindings.
- * @param args %NULL-terminated     array of strings containing the path elements.
- * @returns a newly-allocated string that     must be freed with g_free().
+ * 
+ * If you are building a path programmatically you may want to use
+ * #GPathBuf instead.
+ * @param args %NULL-terminated   array of strings containing the path elements.
+ * @returns the newly allocated path
  */
 function build_filenamev(args: string[]): string
 /**
  * Behaves exactly like g_build_path(), but takes the path elements
- * as a string array, instead of varargs. This function is mainly
- * meant for language bindings.
+ * as a string array, instead of variadic arguments.
+ * 
+ * This function is mainly meant for language bindings.
  * @param separator a string used to separator the elements of the path.
- * @param args %NULL-terminated     array of strings containing the path elements.
+ * @param args %NULL-terminated   array of strings containing the path elements.
  * @returns a newly-allocated string that     must be freed with g_free().
  */
 function build_pathv(separator: string | null, args: string[]): string
@@ -5442,7 +5476,7 @@ function byte_array_unref(array: Uint8Array): void
  * No file system I/O is done.
  * @param filename the name of the file
  * @param relative_to the relative directory, or %NULL to use the current working directory
- * @returns a newly allocated string with the canonical file path
+ * @returns a newly allocated string with the   canonical file path
  */
 function canonicalize_filename(filename: string, relative_to: string | null): string
 /**
@@ -5946,8 +5980,8 @@ function dgettext(domain: string | null, msgid: string | null): string | null
  * 
  * Note that in contrast to g_mkdtemp() (and mkdtemp()) `tmpl` is not
  * modified, and might thus be a read-only literal string.
- * @param tmpl Template for directory name,     as in g_mkdtemp(), basename only, or %NULL for a default template
- * @returns The actual name used. This string     should be freed with g_free() when not needed any longer and is     is in the GLib file name encoding. In case of errors, %NULL is     returned and @error will be set.
+ * @param tmpl Template for directory name,   as in g_mkdtemp(), basename only, or %NULL for a default template
+ * @returns The actual name used. This string   should be freed with g_free() when not needed any longer and is   is in the GLib file name encoding. In case of errors, %NULL is   returned and @error will be set.
  */
 function dir_make_tmp(tmpl: string | null): string
 /**
@@ -6119,21 +6153,22 @@ function file_get_contents(filename: string): [ /* returnType */ boolean, /* con
  * is returned in `name_used`. This string should be freed with g_free()
  * when not needed any longer. The returned name is in the GLib file
  * name encoding.
- * @param tmpl Template for file name, as in     g_mkstemp(), basename only, or %NULL for a default template
- * @returns A file handle (as from open()) to the file opened for     reading and writing. The file is opened in binary mode on platforms     where there is a difference. The file handle should be closed with     close(). In case of errors, -1 is returned and @error will be set.
+ * @param tmpl Template for file name, as in   g_mkstemp(), basename only, or %NULL for a default template
+ * @returns A file handle (as from open()) to the file opened for   reading and writing. The file is opened in binary mode on platforms   where there is a difference. The file handle should be closed with   close(). In case of errors, -1 is returned and @error will be set.
  */
 function file_open_tmp(tmpl: string | null): [ /* returnType */ number, /* name_used */ string ]
 /**
  * Reads the contents of the symbolic link `filename` like the POSIX
- * readlink() function.
+ * `readlink()` function.
  * 
- * The returned string is in the encoding used
- * for filenames. Use g_filename_to_utf8() to convert it to UTF-8.
+ * The returned string is in the encoding used for filenames. Use
+ * g_filename_to_utf8() to convert it to UTF-8.
  * 
- * The returned string may also be a relative path. Use g_build_filename() to
- * convert it to an absolute path:
+ * The returned string may also be a relative path. Use g_build_filename()
+ * to convert it to an absolute path:
  * 
- * ```
+ * 
+ * ```c
  * g_autoptr(GError) local_error = NULL;
  * g_autofree gchar *link_target = g_file_read_link ("/etc/localtime", &local_error);
  * 
@@ -6149,7 +6184,7 @@ function file_open_tmp(tmpl: string | null): [ /* returnType */ number, /* name_
  * ```
  * 
  * @param filename the symbolic link
- * @returns A newly-allocated string with     the contents of the symbolic link, or %NULL if an error occurred.
+ * @returns A newly-allocated string with   the contents of the symbolic link, or %NULL if an error occurred.
  */
 function file_read_link(filename: string): string
 /**
@@ -6241,16 +6276,34 @@ function file_set_contents_full(filename: string, contents: Uint8Array, flags: F
  * 
  * You should never use g_file_test() to test whether it is safe
  * to perform an operation, because there is always the possibility
- * of the condition changing before you actually perform the operation.
+ * of the condition changing before you actually perform the operation,
+ * see [TOCTOU](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use).
+ * 
  * For example, you might think you could use %G_FILE_TEST_IS_SYMLINK
  * to know whether it is safe to write to a file without being
  * tricked into writing into a different location. It doesn't work!
+ * 
  * 
  * ```c
  *  // DON'T DO THIS
  *  if (!g_file_test (filename, G_FILE_TEST_IS_SYMLINK))
  *    {
  *      fd = g_open (filename, O_WRONLY);
+ *      // write to fd
+ *    }
+ * 
+ *  // DO THIS INSTEAD
+ *  fd = g_open (filename, O_WRONLY | O_NOFOLLOW | O_CLOEXEC);
+ *  if (fd == -1)
+ *    {
+ *      // check error
+ *      if (errno == ELOOP)
+ *        // file is a symlink and can be ignored
+ *      else
+ *        // handle errors as before
+ *    }
+ *  else
+ *    {
  *      // write to fd
  *    }
  * ```
@@ -6430,11 +6483,26 @@ function format_size_full(size: number, flags: FormatSizeFlags): string | null
 /**
  * Frees the memory pointed to by `mem`.
  * 
+ * If you know the allocated size of `mem,` calling g_free_sized() may be faster,
+ * depending on the libc implementation in use.
+ * 
  * If `mem` is %NULL it simply returns, so there is no need to check `mem`
  * against %NULL before calling this function.
  * @param mem the memory to free
  */
 function free(mem: any | null): void
+/**
+ * Frees the memory pointed to by `mem,` assuming it is has the given `size`.
+ * 
+ * If `mem` is %NULL this is a no-op (and `size` is ignored).
+ * 
+ * It is an error if `size` doesn’t match the size passed when `mem` was
+ * allocated. `size` is passed to this function to allow optimizations in the
+ * allocator. If you don’t know the allocation size, use g_free() instead.
+ * @param mem the memory to free
+ * @param size size of `mem,` in bytes
+ */
+function free_sized(mem: any | null, size: number): void
 /**
  * Gets a human-readable name for the application, as set by
  * g_set_application_name(). This name should be localized if
@@ -6460,7 +6528,8 @@ function get_application_name(): string | null
  * 
  * On Linux, the character set is found by consulting nl_langinfo() if
  * available. If not, the environment variables `LC_ALL`, `LC_CTYPE`, `LANG`
- * and `CHARSET` are queried in order.
+ * and `CHARSET` are queried in order. nl_langinfo() returns the C locale if
+ * no locale has been loaded by setlocale().
  * 
  * The return value is %TRUE if the locale's encoding is UTF-8, in that
  * case you can perhaps avoid calling g_convert().
@@ -7729,11 +7798,11 @@ function log_writer_standard_streams(log_level: LogLevelFlags, fields: LogField[
  */
 function log_writer_supports_color(output_fd: number): boolean
 /**
- * Returns the global default main context. This is the main context
+ * Returns the global-default main context. This is the main context
  * used for main loop functions when a main loop is not explicitly
  * specified, and corresponds to the "main" main loop. See also
  * g_main_context_get_thread_default().
- * @returns the global default main context.
+ * @returns the global-default main context.
  */
 function main_context_default(): MainContext
 /**
@@ -7748,7 +7817,7 @@ function main_context_default(): MainContext
  * 
  * If you need to hold a reference on the context, use
  * g_main_context_ref_thread_default() instead.
- * @returns the thread-default #GMainContext, or %NULL if the thread-default context is the global default context.
+ * @returns the thread-default #GMainContext, or %NULL if the thread-default context is the global-default main context.
  */
 function main_context_get_thread_default(): MainContext | null
 /**
@@ -7756,7 +7825,7 @@ function main_context_get_thread_default(): MainContext | null
  * g_main_context_get_thread_default(), but also adds a reference to
  * it with g_main_context_ref(). In addition, unlike
  * g_main_context_get_thread_default(), if the thread-default context
- * is the global default context, this will return that #GMainContext
+ * is the global-default context, this will return that #GMainContext
  * (with a ref added to it) rather than returning %NULL.
  * @returns the thread-default #GMainContext. Unref     with g_main_context_unref() when you are done with it.
  */
@@ -8128,6 +8197,21 @@ function option_error_quark(): Quark
  */
 function parse_debug_string(string: string | null, keys: DebugKey[]): number
 /**
+ * Compares two path buffers for equality and returns `TRUE`
+ * if they are equal.
+ * 
+ * The path inside the paths buffers are not going to be normalized,
+ * so `X/Y/Z/A/..`, `X/./Y/Z` and `X/Y/Z` are not going to be considered
+ * equal.
+ * 
+ * This function can be passed to g_hash_table_new() as the
+ * `key_equal_func` parameter.
+ * @param v1 a path buffer to compare
+ * @param v2 a path buffer to compare
+ * @returns `TRUE` if the two path buffers are equal,   and `FALSE` otherwise
+ */
+function path_buf_equal(v1: any, v2: any): boolean
+/**
  * Gets the last component of the filename.
  * 
  * If `file_name` ends with a directory separator it gets the component
@@ -8135,7 +8219,7 @@ function parse_debug_string(string: string | null, keys: DebugKey[]): number
  * separators (and on Windows, possibly a drive letter), a single
  * separator is returned. If `file_name` is empty, it gets ".".
  * @param file_name the name of the file
- * @returns a newly allocated string    containing the last component of the filename
+ * @returns a newly allocated string   containing the last component of the filename
  */
 function path_get_basename(file_name: string): string
 /**
@@ -8566,9 +8650,10 @@ function regex_escape_nul(string: string | null, length: number): string | null
  * in this case remember to specify the correct length of `string`
  * in `length`.
  * @param string the string to escape
+ * @param length the length of `string,` in bytes, or -1 if `string` is nul-terminated
  * @returns a newly-allocated escaped string
  */
-function regex_escape_string(string: string[]): string | null
+function regex_escape_string(string: string | null, length: number): string | null
 /**
  * Scans for a match in `string` for `pattern`.
  * 
@@ -8864,28 +8949,25 @@ function shell_quote(unquoted_string: string): string
  */
 function shell_unquote(quoted_string: string): string
 /**
- * Allocates a block of memory from the slice allocator.
+ * Allocates a block of memory from the libc allocator.
  * 
  * The block address handed out can be expected to be aligned
- * to at least `1 * sizeof (void*)`, though in general slices
- * are `2 * sizeof (void*)` bytes aligned; if a `malloc()`
- * fallback implementation is used instead, the alignment may
- * be reduced in a libc dependent fashion.
+ * to at least `1 * sizeof (void*)`.
  * 
- * Note that the underlying slice allocation mechanism can
- * be changed with the [`G_SLICE=always-malloc`][G_SLICE]
- * environment variable.
+ * Since GLib 2.76 this always uses the system malloc() implementation
+ * internally.
  * @param block_size the number of bytes to allocate
  * @returns a pointer to the allocated memory block, which will   be %NULL if and only if @mem_size is 0
  */
 function slice_alloc(block_size: number): any | null
 /**
  * Allocates a block of memory via g_slice_alloc() and initializes
- * the returned memory to 0. Note that the underlying slice allocation
- * mechanism can be changed with the [`G_SLICE=always-malloc`][G_SLICE]
- * environment variable.
+ * the returned memory to 0.
+ * 
+ * Since GLib 2.76 this always uses the system malloc() implementation
+ * internally.
  * @param block_size the number of bytes to allocate
- * @returns a pointer to the allocated block, which will be %NULL if and only    if @mem_size is 0
+ * @returns a pointer to the allocated block, which will be %NULL    if and only if @mem_size is 0
  */
 function slice_alloc0(block_size: number): any | null
 /**
@@ -8893,9 +8975,12 @@ function slice_alloc0(block_size: number): any | null
  * and copies `block_size` bytes into it from `mem_block`.
  * 
  * `mem_block` must be non-%NULL if `block_size` is non-zero.
+ * 
+ * Since GLib 2.76 this always uses the system malloc() implementation
+ * internally.
  * @param block_size the number of bytes to allocate
  * @param mem_block the memory to copy
- * @returns a pointer to the allocated memory block, which will be %NULL if and    only if @mem_size is 0
+ * @returns a pointer to the allocated memory block,    which will be %NULL if and only if @mem_size is 0
  */
 function slice_copy(block_size: number, mem_block: any | null): any | null
 /**
@@ -8905,9 +8990,12 @@ function slice_copy(block_size: number, mem_block: any | null): any | null
  * g_slice_alloc0() and the `block_size` has to match the size
  * specified upon allocation. Note that the exact release behaviour
  * can be changed with the [`G_DEBUG=gc-friendly`][G_DEBUG] environment
- * variable, also see [`G_SLICE`][G_SLICE] for related debugging options.
+ * variable.
  * 
  * If `mem_block` is %NULL, this function does nothing.
+ * 
+ * Since GLib 2.76 this always uses the system free_sized() implementation
+ * internally.
  * @param block_size the size of the block
  * @param mem_block a pointer to the block to free
  */
@@ -8920,10 +9008,12 @@ function slice_free1(block_size: number, mem_block: any | null): void
  * `next` pointer (similar to #GSList). The offset of the `next`
  * field in each block is passed as third argument.
  * Note that the exact release behaviour can be changed with the
- * [`G_DEBUG=gc-friendly`][G_DEBUG] environment variable, also see
- * [`G_SLICE`][G_SLICE] for related debugging options.
+ * [`G_DEBUG=gc-friendly`][G_DEBUG] environment variable.
  * 
  * If `mem_chain` is %NULL, this function does nothing.
+ * 
+ * Since GLib 2.76 this always uses the system free_sized() implementation
+ * internally.
  * @param block_size the size of the blocks
  * @param mem_chain a pointer to the first block of the chain
  * @param next_offset the offset of the `next` field in the blocks
@@ -9414,13 +9504,13 @@ function spawn_exit_error_quark(): Quark
  */
 function spawn_sync(working_directory: string | null, argv: string[], envp: string[] | null, flags: SpawnFlags, child_setup: SpawnChildSetupFunc | null): [ /* returnType */ boolean, /* standard_output */ Uint8Array, /* standard_error */ Uint8Array, /* wait_status */ number ]
 /**
- * Copies a nul-terminated string into the dest buffer, include the
- * trailing nul, and return a pointer to the trailing nul byte.
- * This is useful for concatenating multiple strings together
- * without having to repeatedly scan for the end.
+ * Copies a nul-terminated string into the destination buffer, including
+ * the trailing nul byte, and returns a pointer to the trailing nul byte
+ * in `dest`.  The return value is useful for concatenating multiple
+ * strings without having to repeatedly scan for the end.
  * @param dest destination buffer.
  * @param src source string.
- * @returns a pointer to trailing nul byte.
+ * @returns a pointer to the trailing nul byte in `dest`.
  */
 function stpcpy(dest: string | null, src: string | null): string | null
 /**
@@ -10087,6 +10177,8 @@ function test_get_dir(file_type: TestFileType): string
  * e.g. g_test_add() when the test was added.
  * 
  * This function returns a valid string only within a test function.
+ * 
+ * Note that this is a test path, not a file system path.
  * @returns the test path for the test currently being run
  */
 function test_get_path(): string | null
@@ -10693,18 +10785,16 @@ function try_realloc_n(mem: any | null, n_blocks: number, n_block_bytes: number)
  * Convert a string from UCS-4 to UTF-16. A 0 character will be
  * added to the result after the converted text.
  * @param str a UCS-4 encoded string
- * @param len the maximum length (number of characters) of `str` to use.     If `len` < 0, then the string is nul-terminated.
  * @returns a pointer to a newly allocated UTF-16 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
  */
-function ucs4_to_utf16(str: string, len: number): [ /* returnType */ number, /* items_read */ number, /* items_written */ number ]
+function ucs4_to_utf16(str: string): [ /* returnType */ number, /* items_read */ number, /* items_written */ number ]
 /**
  * Convert a string from a 32-bit fixed width representation as UCS-4.
  * to UTF-8. The result will be terminated with a 0 byte.
  * @param str a UCS-4 encoded string
- * @param len the maximum length (number of characters) of `str` to use.     If `len` < 0, then the string is nul-terminated.
  * @returns a pointer to a newly allocated UTF-8 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set. In that case, @items_read     will be set to the position of the first invalid input character.
  */
-function ucs4_to_utf8(str: string, len: number): [ /* returnType */ string | null, /* items_read */ number, /* items_written */ number ]
+function ucs4_to_utf8(str: string): [ /* returnType */ string | null, /* items_read */ number, /* items_written */ number ]
 /**
  * Determines the break type of `c`. `c` should be a Unicode character
  * (to derive a character from UTF-8 encoded text, use
@@ -11049,9 +11139,8 @@ function unicode_canonical_decomposition(ch: string, result_len: number): string
  * according to their combining classes.  See the Unicode
  * manual for more information.
  * @param string a UCS-4 encoded string.
- * @param len the maximum length of `string` to use.
  */
-function unicode_canonical_ordering(string: string, len: number): void
+function unicode_canonical_ordering(string: string): void
 /**
  * Looks up the Unicode script for `iso1`5924.  ISO 15924 assigns four-letter
  * codes to scripts.  For example, the code for Arabic is 'Arab'.
@@ -11556,10 +11645,9 @@ function usleep(microseconds: number): void
  * Convert a string from UTF-16 to UCS-4. The result will be
  * nul-terminated.
  * @param str a UTF-16 encoded string
- * @param len the maximum length (number of #gunichar2) of `str` to use.     If `len` < 0, then the string is nul-terminated.
  * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
  */
-function utf16_to_ucs4(str: number, len: number): [ /* returnType */ string, /* items_read */ number, /* items_written */ number ]
+function utf16_to_ucs4(str: number[]): [ /* returnType */ string, /* items_read */ number, /* items_written */ number ]
 /**
  * Convert a string from UTF-16 to UTF-8. The result will be
  * terminated with a 0 byte.
@@ -11575,10 +11663,9 @@ function utf16_to_ucs4(str: number, len: number): [ /* returnType */ string, /* 
  * be correctly interpreted as UTF-16, i.e. it doesn't contain
  * unpaired surrogates or partial character sequences.
  * @param str a UTF-16 encoded string
- * @param len the maximum length (number of #gunichar2) of `str` to use.     If `len` < 0, then the string is nul-terminated.
  * @returns a pointer to a newly allocated UTF-8 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
  */
-function utf16_to_utf8(str: number, len: number): [ /* returnType */ string | null, /* items_read */ number, /* items_written */ number ]
+function utf16_to_utf8(str: number[]): [ /* returnType */ string | null, /* items_read */ number, /* items_written */ number ]
 /**
  * Converts a string into a form that is independent of case. The
  * result will not correspond to any particular case, but can be
@@ -12156,10 +12243,11 @@ interface CompareFunc {
  * when doing a deep-copy of a tree.
  * @callback 
  * @param src A pointer to the data which should be copied
+ * @param data Additional data
  * @returns A pointer to the copy
  */
 interface CopyFunc {
-    (src: any): any
+    (src: any, data: any | null): any
 }
 /**
  * Specifies the type of function passed to g_dataset_foreach(). It is
@@ -12360,10 +12448,11 @@ interface HookCheckFunc {
  * Defines the type of function used by g_hook_list_marshal_check().
  * @callback 
  * @param hook a #GHook
+ * @param marshal_data user data
  * @returns %FALSE if @hook should be destroyed
  */
 interface HookCheckMarshaller {
-    (hook: Hook): boolean
+    (hook: Hook, marshal_data: any | null): boolean
 }
 /**
  * Defines the type of function used to compare #GHook elements in
@@ -12390,10 +12479,11 @@ interface HookFinalizeFunc {
  * Defines the type of the function passed to g_hook_find().
  * @callback 
  * @param hook a #GHook
+ * @param data user data passed to g_hook_find_func()
  * @returns %TRUE if the required #GHook has been found
  */
 interface HookFindFunc {
-    (hook: Hook): boolean
+    (hook: Hook, data: any | null): boolean
 }
 /**
  * Defines the type of a hook function that can be invoked
@@ -12408,9 +12498,10 @@ interface HookFunc {
  * Defines the type of function used by g_hook_list_marshal().
  * @callback 
  * @param hook a #GHook
+ * @param marshal_data user data
  */
 interface HookMarshaller {
-    (hook: Hook): void
+    (hook: Hook, marshal_data: any | null): void
 }
 /**
  * Specifies the type of function passed to g_io_add_watch() or
@@ -12419,10 +12510,11 @@ interface HookMarshaller {
  * @callback 
  * @param source the #GIOChannel event source
  * @param condition the condition which has been satisfied
+ * @param data user data set in g_io_add_watch() or g_io_add_watch_full()
  * @returns the function should return %FALSE if the event source          should be removed
  */
 interface IOFunc {
-    (source: IOChannel, condition: IOCondition): boolean
+    (source: IOChannel, condition: IOCondition, data: any | null): boolean
 }
 /**
  * Specifies the prototype of log handler functions.
@@ -12476,9 +12568,10 @@ interface LogWriterFunc {
  * data passed to g_node_children_foreach().
  * @callback 
  * @param node a #GNode.
+ * @param data user data passed to g_node_children_foreach().
  */
 interface NodeForeachFunc {
-    (node: Node): void
+    (node: Node, data: any | null): void
 }
 /**
  * Specifies the type of function passed to g_node_traverse(). The
@@ -12487,10 +12580,11 @@ interface NodeForeachFunc {
  * %TRUE, then the traversal is stopped.
  * @callback 
  * @param node a #GNode.
+ * @param data user data passed to g_node_traverse().
  * @returns %TRUE to stop the traversal.
  */
 interface NodeTraverseFunc {
-    (node: Node): boolean
+    (node: Node, data: any | null): boolean
 }
 /**
  * The type of function to be passed as callback for %G_OPTION_ARG_CALLBACK
@@ -12498,29 +12592,32 @@ interface NodeTraverseFunc {
  * @callback 
  * @param option_name The name of the option being parsed. This will be either a  single dash followed by a single letter (for a short name) or two dashes  followed by a long option name.
  * @param value The value to be parsed.
+ * @param data User data added to the #GOptionGroup containing the option when it  was created with g_option_group_new()
  * @returns %TRUE if the option was successfully parsed, %FALSE if an error  occurred, in which case @error should be set with g_set_error()
  */
 interface OptionArgFunc {
-    (option_name: string | null, value: string | null): boolean
+    (option_name: string | null, value: string | null, data: any | null): boolean
 }
 /**
  * The type of function to be used as callback when a parse error occurs.
  * @callback 
  * @param context The active #GOptionContext
  * @param group The group to which the function belongs
+ * @param data User data added to the #GOptionGroup containing the option when it  was created with g_option_group_new()
  */
 interface OptionErrorFunc {
-    (context: OptionContext, group: OptionGroup): void
+    (context: OptionContext, group: OptionGroup, data: any | null): void
 }
 /**
  * The type of function that can be called before and after parsing.
  * @callback 
  * @param context The active #GOptionContext
  * @param group The group to which the function belongs
+ * @param data User data added to the #GOptionGroup containing the option when it  was created with g_option_group_new()
  * @returns %TRUE if the function completed successfully, %FALSE if an error  occurred, in which case @error should be set with g_set_error()
  */
 interface OptionParseFunc {
-    (context: OptionContext, group: OptionGroup): boolean
+    (context: OptionContext, group: OptionGroup, data: any | null): boolean
 }
 /**
  * Specifies the type of function passed to g_main_context_set_poll_func().
@@ -12573,10 +12670,11 @@ interface ScannerMsgFunc {
  * @callback 
  * @param a a #GSequenceIter
  * @param b a #GSequenceIter
+ * @param data user data
  * @returns zero if the iterators are equal, a negative value if @a     comes before @b, and a positive value if @b comes before @a.
  */
 interface SequenceIterCompareFunc {
-    (a: SequenceIter, b: SequenceIter): number
+    (a: SequenceIter, b: SequenceIter, data: any | null): number
 }
 /**
  * Dispose function for `source`. See g_source_set_dispose_function() for
@@ -12650,9 +12748,10 @@ interface SourceOnceFunc {
  * and g_environ_unsetenv(), and then pass the complete environment
  * list to the `g_spawn...` function.
  * @callback 
+ * @param data user data passed to the function.
  */
 interface SpawnChildSetupFunc {
-    (): void
+    (data: any | null): void
 }
 /**
  * The type used for test case functions that take an extra pointer
@@ -12701,20 +12800,22 @@ interface TestLogFatalFunc {
  * Specifies the type of the `func` functions passed to g_thread_new()
  * or g_thread_try_new().
  * @callback 
+ * @param data data passed to the thread
  * @returns the return value of the thread
  */
 interface ThreadFunc {
-    (): any | null
+    (data: any | null): any | null
 }
 /**
  * The type of functions which are used to translate user-visible
  * strings, for <option>--help</option> output.
  * @callback 
  * @param str the untranslated string
+ * @param data user data specified when installing the function, e.g.  in g_option_group_set_translate_func()
  * @returns a translation of the string for the current locale.  The returned string is owned by GLib and must not be freed.
  */
 interface TranslateFunc {
-    (str: string | null): string | null
+    (str: string | null, data: any | null): string | null
 }
 /**
  * Specifies the type of function passed to g_tree_traverse(). It is
@@ -12724,10 +12825,11 @@ interface TranslateFunc {
  * @callback 
  * @param key a key of a #GTree node
  * @param value the value corresponding to the key
+ * @param data user data passed to g_tree_traverse()
  * @returns %TRUE to stop the traversal
  */
 interface TraverseFunc {
-    (key: any | null, value: any | null): boolean
+    (key: any | null, value: any | null, data: any | null): boolean
 }
 /**
  * Specifies the type of function passed to g_tree_foreach_node(). It is
@@ -12736,10 +12838,11 @@ interface TraverseFunc {
  * stopped.
  * @callback 
  * @param node a #GTreeNode
+ * @param data user data passed to g_tree_foreach_node()
  * @returns %TRUE to stop the traversal
  */
 interface TraverseNodeFunc {
-    (node: TreeNode): boolean
+    (node: TreeNode, data: any | null): boolean
 }
 /**
  * The type of functions to be called when a UNIX fd watch source
@@ -15454,8 +15557,8 @@ class Dir {
      * 
      * Note that in contrast to g_mkdtemp() (and mkdtemp()) `tmpl` is not
      * modified, and might thus be a read-only literal string.
-     * @param tmpl Template for directory name,     as in g_mkdtemp(), basename only, or %NULL for a default template
-     * @returns The actual name used. This string     should be freed with g_free() when not needed any longer and is     is in the GLib file name encoding. In case of errors, %NULL is     returned and @error will be set.
+     * @param tmpl Template for directory name,   as in g_mkdtemp(), basename only, or %NULL for a default template
+     * @returns The actual name used. This string   should be freed with g_free() when not needed any longer and is   is in the GLib file name encoding. In case of errors, %NULL is   returned and @error will be set.
      */
     static make_tmp(tmpl: string | null): string
 }
@@ -16187,10 +16290,9 @@ interface IOChannel {
      * This returns the string that #GIOChannel uses to determine
      * where in the file a line break occurs. A value of %NULL
      * indicates autodetection.
-     * @param length a location to return the length of the line terminator
      * @returns The line termination string. This value   is owned by GLib and must not be freed.
      */
-    get_line_term(length: number): string | null
+    get_line_term(): [ /* returnType */ string | null, /* length */ number ]
     /**
      * Initializes a #GIOChannel struct.
      * 
@@ -17093,6 +17195,9 @@ interface MainContext {
      * You must be the owner of a context before you
      * can call g_main_context_prepare(), g_main_context_query(),
      * g_main_context_check(), g_main_context_dispatch().
+     * 
+     * Since 2.76 `context` can be %NULL to use the global-default
+     * main context.
      * @returns %TRUE if the operation succeeded, and   this thread is now the owner of @context.
      */
     acquire(): boolean
@@ -17112,6 +17217,9 @@ interface MainContext {
      * 
      * You must have successfully acquired the context with
      * g_main_context_acquire() before you may call this function.
+     * 
+     * Since 2.76 `context` can be %NULL to use the global-default
+     * main context.
      * @param max_priority the maximum numerical priority of sources to check
      * @param fds array of #GPollFD's that was passed to       the last call to g_main_context_query()
      * @returns %TRUE if some sources are ready to be dispatched.
@@ -17122,6 +17230,9 @@ interface MainContext {
      * 
      * You must have successfully acquired the context with
      * g_main_context_acquire() before you may call this function.
+     * 
+     * Since 2.76 `context` can be %NULL to use the global-default
+     * main context.
      */
     dispatch(): void
     /**
@@ -17222,7 +17333,7 @@ interface MainContext {
      * (such as most [gio][gio]-based I/O) which are
      * started in this thread to run under `context` and deliver their
      * results to its main loop, rather than running under the global
-     * default context in the main thread. Note that calling this function
+     * default main context in the main thread. Note that calling this function
      * changes the context returned by g_main_context_get_thread_default(),
      * not the one returned by g_main_context_default(), so it does not affect
      * the context used by functions like g_idle_add().
@@ -17373,11 +17484,11 @@ class MainContext {
      */
     static new_with_flags(flags: MainContextFlags): MainContext
     /**
-     * Returns the global default main context. This is the main context
+     * Returns the global-default main context. This is the main context
      * used for main loop functions when a main loop is not explicitly
      * specified, and corresponds to the "main" main loop. See also
      * g_main_context_get_thread_default().
-     * @returns the global default main context.
+     * @returns the global-default main context.
      */
     static default(): MainContext
     /**
@@ -17392,7 +17503,7 @@ class MainContext {
      * 
      * If you need to hold a reference on the context, use
      * g_main_context_ref_thread_default() instead.
-     * @returns the thread-default #GMainContext, or %NULL if the thread-default context is the global default context.
+     * @returns the thread-default #GMainContext, or %NULL if the thread-default context is the global-default main context.
      */
     static get_thread_default(): MainContext | null
     /**
@@ -17400,7 +17511,7 @@ class MainContext {
      * g_main_context_get_thread_default(), but also adds a reference to
      * it with g_main_context_ref(). In addition, unlike
      * g_main_context_get_thread_default(), if the thread-default context
-     * is the global default context, this will return that #GMainContext
+     * is the global-default context, this will return that #GMainContext
      * (with a ref added to it) rather than returning %NULL.
      * @returns the thread-default #GMainContext. Unref     with g_main_context_unref() when you are done with it.
      */
@@ -17464,7 +17575,7 @@ class MainLoop {
     /**
      * Creates a new #GMainLoop structure.
      * @constructor 
-     * @param context a #GMainContext  (if %NULL, the default context will be used).
+     * @param context a #GMainContext  (if %NULL, the global-default   main context will be used).
      * @param is_running set to %TRUE to indicate that the loop is running. This is not very important since calling g_main_loop_run() will set this to %TRUE anyway.
      * @returns a new #GMainLoop.
      */
@@ -17472,7 +17583,7 @@ class MainLoop {
     /**
      * Creates a new #GMainLoop structure.
      * @constructor 
-     * @param context a #GMainContext  (if %NULL, the default context will be used).
+     * @param context a #GMainContext  (if %NULL, the global-default   main context will be used).
      * @param is_running set to %TRUE to indicate that the loop is running. This is not very important since calling g_main_loop_run() will set this to %TRUE anyway.
      * @returns a new #GMainLoop.
      */
@@ -18727,6 +18838,239 @@ class OptionGroup {
     static new(name: string | null, description: string | null, help_description: string | null, user_data: any | null, destroy: DestroyNotify | null): OptionGroup
 }
 
+interface PathBuf {
+
+    // Owm methods of GLib-2.0.GLib.PathBuf
+
+    /**
+     * Clears the contents of the path buffer.
+     * 
+     * This function should be use to free the resources in a stack-allocated
+     * `GPathBuf` initialized using g_path_buf_init() or
+     * g_path_buf_init_from_path().
+     */
+    clear(): void
+    /**
+     * Clears the contents of the path buffer and returns the built path.
+     * 
+     * This function returns `NULL` if the `GPathBuf` is empty.
+     * 
+     * See also: g_path_buf_to_path()
+     * @returns the built path
+     */
+    clear_to_path(): string | null
+    /**
+     * Frees a `GPathBuf` allocated by g_path_buf_new().
+     */
+    free(): void
+    /**
+     * Frees a `GPathBuf` allocated by g_path_buf_new(), and
+     * returns the path inside the buffer.
+     * 
+     * This function returns `NULL` if the `GPathBuf` is empty.
+     * 
+     * See also: g_path_buf_to_path()
+     * @returns the path
+     */
+    free_to_path(): string | null
+    /**
+     * Initializes a `GPathBuf` instance.
+     * @returns the initialized path builder
+     */
+    init(): PathBuf
+    /**
+     * Initializes a `GPathBuf` instance with the given path.
+     * @param path a file system path
+     * @returns the initialized path builder
+     */
+    init_from_path(path: string | null): PathBuf
+    /**
+     * Removes the last element of the path buffer.
+     * 
+     * If there is only one element in the path buffer (for example, `/` on
+     * Unix-like operating systems or the drive on Windows systems), it will
+     * not be removed and %FALSE will be returned instead.
+     * 
+     * 
+     * ```c
+     * GPathBuf buf, cmp;
+     * 
+     * g_path_buf_init_from_path (&buf, "/bin/sh");
+     * 
+     * g_path_buf_pop (&buf);
+     * g_path_buf_init_from_path (&cmp, "/bin");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp));
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_pop (&buf);
+     * g_path_buf_init_from_path (&cmp, "/");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp));
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_clear (&buf);
+     * ```
+     * 
+     * @returns `TRUE` if the buffer was modified and `FALSE` otherwise
+     */
+    pop(): boolean
+    /**
+     * Extends the given path buffer with `path`.
+     * 
+     * If `path` is absolute, it replaces the current path.
+     * 
+     * If `path` contains a directory separator, the buffer is extended by
+     * as many elements the path provides.
+     * 
+     * On Windows, both forward slashes and backslashes are treated as
+     * directory separators. On other platforms, %G_DIR_SEPARATOR_S is the
+     * only directory separator.
+     * 
+     * 
+     * ```c
+     * GPathBuf buf, cmp;
+     * 
+     * g_path_buf_init_from_path (&buf, "/tmp");
+     * g_path_buf_push (&buf, ".X11-unix/X0");
+     * g_path_buf_init_from_path (&cmp, "/tmp/.X11-unix/X0");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp));
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_push (&buf, "/etc/locale.conf");
+     * g_path_buf_init_from_path (&cmp, "/etc/locale.conf");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp));
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_clear (&buf);
+     * ```
+     * 
+     * @param path a path
+     * @returns the same pointer to @buf, for convenience
+     */
+    push(path: string): PathBuf
+    /**
+     * Adds an extension to the file name in the path buffer.
+     * 
+     * If `extension` is `NULL`, the extension will be unset.
+     * 
+     * If the path buffer does not have a file name set, this function returns
+     * `FALSE` and leaves the path buffer unmodified.
+     * @param extension the file extension
+     * @returns `TRUE` if the extension was replaced, and `FALSE` otherwise
+     */
+    set_extension(extension: string | null): boolean
+    /**
+     * Sets the file name of the path.
+     * 
+     * If the path buffer is empty, the filename is left unset and this
+     * function returns `FALSE`.
+     * 
+     * If the path buffer only contains the root element (on Unix-like operating
+     * systems) or the drive (on Windows), this is the equivalent of pushing
+     * the new `file_name`.
+     * 
+     * If the path buffer contains a path, this is the equivalent of
+     * popping the path buffer and pushing `file_name,` creating a
+     * sibling of the original path.
+     * 
+     * 
+     * ```c
+     * GPathBuf buf, cmp;
+     * 
+     * g_path_buf_init_from_path (&buf, "/");
+     * 
+     * g_path_buf_set_filename (&buf, "bar");
+     * g_path_buf_init_from_path (&cmp, "/bar");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp));
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_set_filename (&buf, "baz.txt");
+     * g_path_buf_init_from_path (&cmp, "/baz.txt");
+     * g_assert_true (g_path_buf_equal (&buf, &cmp);
+     * g_path_buf_clear (&cmp);
+     * 
+     * g_path_buf_clear (&buf);
+     * ```
+     * 
+     * @param file_name the file name in the path
+     * @returns `TRUE` if the file name was replaced, and `FALSE` otherwise
+     */
+    set_filename(file_name: string): boolean
+    /**
+     * Retrieves the built path from the path buffer.
+     * 
+     * On Windows, the result contains backslashes as directory separators,
+     * even if forward slashes were used in input.
+     * 
+     * If the path buffer is empty, this function returns `NULL`.
+     * @returns the path
+     */
+    to_path(): string | null
+}
+
+/**
+ * `GPathBuf` is a helper type that allows you to easily build paths from
+ * individual elements, using the platform specific conventions for path
+ * separators.
+ * 
+ * 
+ * ```c
+ * g_auto (GPathBuf) path;
+ * 
+ * g_path_buf_init (&path);
+ * 
+ * g_path_buf_push (&path, "usr");
+ * g_path_buf_push (&path, "bin");
+ * g_path_buf_push (&path, "echo");
+ * 
+ * g_autofree char *echo = g_path_buf_to_path (&path);
+ * g_assert_cmpstr (echo, ==, "/usr/bin/echo");
+ * ```
+ * 
+ * 
+ * You can also load a full path and then operate on its components:
+ * 
+ * 
+ * ```c
+ * g_auto (GPathBuf) path;
+ * 
+ * g_path_buf_init_from_path (&path, "/usr/bin/echo");
+ * 
+ * g_path_buf_pop (&path);
+ * g_path_buf_push (&path, "sh");
+ * 
+ * g_autofree char *sh = g_path_buf_to_path (&path);
+ * g_assert_cmpstr (sh, ==, "/usr/bin/sh");
+ * ```
+ * 
+ * 
+ * `GPathBuf` is available since GLib 2.76.
+ * @record 
+ */
+class PathBuf {
+
+    // Own properties of GLib-2.0.GLib.PathBuf
+
+    static name: string
+
+    // Constructors of GLib-2.0.GLib.PathBuf
+
+    /**
+     * Compares two path buffers for equality and returns `TRUE`
+     * if they are equal.
+     * 
+     * The path inside the paths buffers are not going to be normalized,
+     * so `X/Y/Z/A/..`, `X/./Y/Z` and `X/Y/Z` are not going to be considered
+     * equal.
+     * 
+     * This function can be passed to g_hash_table_new() as the
+     * `key_equal_func` parameter.
+     * @param v1 a path buffer to compare
+     * @param v2 a path buffer to compare
+     * @returns `TRUE` if the two path buffers are equal,   and `FALSE` otherwise
+     */
+    static equal(v1: any, v2: any): boolean
+}
+
 interface PatternSpec {
 
     // Owm methods of GLib-2.0.GLib.PatternSpec
@@ -19884,9 +20228,10 @@ class Regex {
      * in this case remember to specify the correct length of `string`
      * in `length`.
      * @param string the string to escape
+     * @param length the length of `string,` in bytes, or -1 if `string` is nul-terminated
      * @returns a newly-allocated escaped string
      */
-    static escape_string(string: string[]): string | null
+    static escape_string(string: string | null, length: number): string | null
     /**
      * Scans for a match in `string` for `pattern`.
      * 
@@ -20668,7 +21013,7 @@ interface Source {
      * 
      * This function is safe to call from any thread, regardless of which thread
      * the `context` is running in.
-     * @param context a #GMainContext (if %NULL, the default context will be used)
+     * @param context a #GMainContext (if %NULL, the global-default   main context will be used)
      * @returns the ID (greater than 0) for the source within the   #GMainContext.
      */
     attach(context: MainContext | null): number
@@ -21346,10 +21691,21 @@ interface String {
      * If `free_segment` is %TRUE it also frees the character data.  If
      * it's %FALSE, the caller gains ownership of the buffer and must
      * free it after use with g_free().
+     * 
+     * Instead of passing %FALSE to this function, consider using
+     * g_string_free_and_steal().
      * @param free_segment if %TRUE, the actual character data is freed as well
      * @returns the character data of @string          (i.e. %NULL if @free_segment is %TRUE)
      */
     free(free_segment: boolean): string | null
+    /**
+     * Frees the memory allocated for the #GString.
+     * 
+     * The caller gains ownership of the buffer and
+     * must free it after use with g_free().
+     * @returns the character data of @string
+     */
+    free_and_steal(): string | null
     /**
      * Transfers ownership of the contents of `string` to a newly allocated
      * #GBytes.  The #GString structure itself is deallocated, and it is
@@ -22298,7 +22654,7 @@ interface TimeZone {
      * @param time_ a pointer to a number of seconds since January 1, 1970
      * @returns the interval containing @time_, never -1
      */
-    adjust_time(type: TimeType, time_: number): number
+    adjust_time(type: TimeType, time_: number): [ /* returnType */ number, /* time_ */ number ]
     /**
      * Finds an interval within `tz` that corresponds to the given `time_`.
      * The meaning of `time_` depends on `type`.
@@ -23553,6 +23909,11 @@ interface Variant {
      * contain multi-byte numeric data.  That include strings, booleans,
      * bytes and containers containing only these things (recursively).
      * 
+     * While this function can safely handle untrusted, non-normal data, it is
+     * recommended to check whether the input is in normal form beforehand, using
+     * g_variant_is_normal_form(), and to reject non-normal inputs if your
+     * application can be strict about what inputs it rejects.
+     * 
      * The returned value is always in normal form and is marked as trusted.
      * A full, not floating, reference is returned.
      * @returns the byteswapped form of @value
@@ -23855,7 +24216,9 @@ interface Variant {
      * marked as trusted and a new reference to it is returned.
      * 
      * If `value` is found not to be in normal form then a new trusted
-     * #GVariant is created with the same value as `value`.
+     * #GVariant is created with the same value as `value`. The non-normal parts of
+     * `value` will be replaced with default values which are guaranteed to be in
+     * normal form.
      * 
      * It makes sense to call this function if you've received #GVariant
      * data from untrusted sources and you want to ensure your serialized

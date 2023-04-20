@@ -1177,6 +1177,17 @@ export interface ProxyCall {
      * @param callback callback to call when the async call is finished
      */
     invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of invoke_async
+
+    /**
+     * Promisified version of {@link invoke_async}
+     * 
+     * A GIO-style version of rest_proxy_call_async().
+     * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+     * @returns A Promise of: %TRUE on success
+     */
+    invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     invoke_finish(result: Gio.AsyncResult): boolean
     /**
      * Get the value of the header called `header`.

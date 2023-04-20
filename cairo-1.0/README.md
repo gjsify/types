@@ -1,7 +1,7 @@
 
 # cairo-1.0
 
-GJS TypeScript type definitions for cairo-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for cairo-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 Cairo is a 2D graphics library with support for multiple output devices like the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG.
 

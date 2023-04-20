@@ -149,6 +149,25 @@ interface Client {
      * @param callback a callback to executed upon completion
      */
     call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of call_async
+
+    /**
+     * Promisified version of {@link call_async}
+     * 
+     * Asynchronously calls `method` with `params` on the remote peer.
+     * 
+     * Upon completion or failure, `callback` is executed and it should
+     * call [method`Client`.call_finish] to complete the request and release
+     * any memory held.
+     * 
+     * If `params` is floating, the floating reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if successful and @return_value is set, otherwise %FALSE and @error is set.
+     */
+    call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* return_value */ GLib.Variant | null>
     /**
      * Completes an asynchronous call to [method`Client`.call_async].
      * @param result A #GAsyncResult provided to the callback in [method`Client`.call_async]
@@ -196,6 +215,20 @@ interface Client {
      * @param callback 
      */
     close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Asynchronous version of [method`Client`.close].
+     * 
+     * Currently this operation is implemented synchronously, but in the future may
+     * be converted to using asynchronous operations.
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
+     */
+    close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Completes an asynchronous request of [method`Client`.close_async].
      * @param result 
@@ -219,6 +252,19 @@ interface Client {
      */
     reply(id: GLib.Variant, result: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of reply_async
+
+    /**
+     * Promisified version of {@link reply_async}
+     * 
+     * 
+     * @param id 
+     * @param result 
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
+     */
+    reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Asynchronously replies to the peer, sending a JSON-RPC error message.
      * 
@@ -232,6 +278,24 @@ interface Client {
      * @param callback A #GAsyncReadyCallback or %NULL
      */
     reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of reply_error_async
+
+    /**
+     * Promisified version of {@link reply_error_async}
+     * 
+     * Asynchronously replies to the peer, sending a JSON-RPC error message.
+     * 
+     * Call [method`Client`.reply_error_finish] to get the result of this operation.
+     * 
+     * If `id` is floating, it's floating reference is consumed.
+     * @param id A [struct`GLib`.Variant] containing the call id
+     * @param code The error code
+     * @param message An optional error message
+     * @param cancellable A #GCancellable, or %NULL
+     * @returns A Promise of the result of {@link reply_error_async}
+     */
+    reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     reply_error_finish(result: Gio.AsyncResult): boolean
     /**
      * Completes an asynchronous request to [method`Client`.reply_async].
@@ -267,6 +331,27 @@ interface Client {
      * @param callback 
      */
     send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_notification_async
+
+    /**
+     * Promisified version of {@link send_notification_async}
+     * 
+     * Asynchronously calls `method` with `params` on the remote peer.
+     * 
+     * This function will not wait or expect a reply from the peer.
+     * 
+     * This function is useful when the caller wants to be notified that
+     * the bytes have been delivered to the underlying stream. This does
+     * not indicate that the peer has received them.
+     * 
+     * If `params` is floating then the reference is consumed.
+     * @param method The name of the method to call
+     * @param params A [struct`GLib`.Variant] of parameters or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if the bytes have been flushed to the [class@Gio.IOStream]; otherwise   %FALSE and @error is set.
+     */
+    send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Completes an asynchronous call to [method`Client`.send_notification_async].
      * 
@@ -409,6 +494,17 @@ interface InputStream extends Gio.Seekable {
 
     read_message(cancellable: Gio.Cancellable | null, message: GLib.Variant): boolean
     read_message_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_message_async
+
+    /**
+     * Promisified version of {@link read_message_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link read_message_async}
+     */
+    read_message_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     read_message_finish(result: Gio.AsyncResult, message: GLib.Variant): boolean
 
     // Class property signals of Jsonrpc-1.0.Jsonrpc.InputStream
@@ -510,6 +606,21 @@ interface OutputStream extends Gio.Seekable {
      * @param callback a #GAsyncReadyCallback or %NULL
      */
     write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_message_async
+
+    /**
+     * Promisified version of {@link write_message_async}
+     * 
+     * Asynchronously sends a message to the peer.
+     * 
+     * This asynchronous operation will complete once the message has
+     * been buffered, and there is no guarantee the peer received it.
+     * @param message a #GVariant
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of the result of {@link write_message_async}
+     */
+    write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     write_message_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of Jsonrpc-1.0.Jsonrpc.OutputStream

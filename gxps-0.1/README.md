@@ -1,7 +1,7 @@
 
 # GXPS-0.1
 
-GJS TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 

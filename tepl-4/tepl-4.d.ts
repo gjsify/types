@@ -1395,6 +1395,21 @@ interface FileLoader {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads asynchronously the file content into the #TeplBuffer.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the content has been loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file loading started with tepl_file_loader_load_async().
      * @param result a #GAsyncResult.
@@ -1536,6 +1551,24 @@ interface FileMetadata {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * The asynchronous version of tepl_file_metadata_load().
+     * 
+     * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
+     * this function loads the metadata synchronously. A future version might fix
+     * this.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the metadata was loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the metadata loading started with tepl_file_metadata_load_async().
      * @param result a #GAsyncResult.
@@ -1565,6 +1598,23 @@ interface FileMetadata {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * The asynchronous version of tepl_file_metadata_save().
+     * 
+     * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
+     * function saves the metadata synchronously. A future version might fix this.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the metadata was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the metadata saving started with tepl_file_metadata_save_async().
      * @param result a #GAsyncResult.
@@ -1710,6 +1760,20 @@ interface FileSaver {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the buffer into the file. See the #GAsyncResult
+     * documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the file was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file saving started with tepl_file_saver_save_async().
      * 
@@ -2359,6 +2423,26 @@ interface MetadataStore {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads asynchronously the content of the store file. You need to call
+     * tepl_metadata_store_set_store_file() before.
+     * 
+     * You can call this function only once. Once the #TeplMetadataStore is loaded
+     * it cannot be loaded a second time. A good moment to call this function is on
+     * application startup. TODO "application startup": refer to #GApplication API,
+     * the exact startup phase.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the metadata was loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the metadata loading started with tepl_metadata_store_load_async().
      * 
@@ -2749,6 +2833,19 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_as_async
+
+    /**
+     * Promisified version of {@link save_as_async}
+     * 
+     * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
+     * appropriate #TeplFileSaver and asynchronously runs it.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @returns A Promise of: whether the tab was saved successfully.
+     */
+    save_as_async(): globalThis.Promise<boolean>
     /**
      * The same as tepl_tab_save_as_async(), but without callback.
      * 
@@ -2771,6 +2868,19 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
+     * be %NULL.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @returns A Promise of: whether the tab was saved successfully.
+     */
+    save_async(): globalThis.Promise<boolean>
     /**
      * The same as tepl_tab_save_async(), but without callback.
      * 

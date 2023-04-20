@@ -7,6 +7,9 @@
 
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import gettext from './gettext.js';
+import system from './system.js';
+import cairo from './cairo.js';
 
         import type Accounts10 from "@girs/accounts-1.0";
         import type AccountsService10 from "@girs/accountsservice-1.0";
@@ -291,6 +294,7 @@ import type GLib from '@girs/glib-2.0';
         import type PangoXft10 from "@girs/pangoxft-1.0";
         import type Parquet10 from "@girs/parquet-1.0";
         import type Peas10 from "@girs/peas-1.0";
+        import type Peas2 from "@girs/peas-2";
         import type PeasGtk10 from "@girs/peasgtk-1.0";
         import type Plasma10 from "@girs/plasma-1.0";
         import type Pnl10 from "@girs/pnl-1.0";
@@ -368,6 +372,7 @@ import type GLib from '@girs/glib-2.0';
         import type WebKit2WebExtension41 from "@girs/webkit2webextension-4.1";
         import type WebKit2WebExtension50 from "@girs/webkit2webextension-5.0";
         import type WebKitWebExtension60 from "@girs/webkitwebextension-6.0";
+        import type WebKitWebProcessExtension60 from "@girs/webkitwebprocessextension-6.0";
         import type Wnck30 from "@girs/wnck-3.0";
         import type Xdp10 from "@girs/xdp-1.0";
         import type XdpGtk310 from "@girs/xdpgtk3-1.0";
@@ -394,17 +399,16 @@ import type GLib from '@girs/glib-2.0';
         import type GstTag010 from "@girs/gsttag-0.10";
         import type GstVideo010 from "@girs/gstvideo-0.10";
         import type SocialWebClient025 from "@girs/socialwebclient-0.25";
-        import type AppIndicator301 from "@girs/appindicator3-0.1";
-        import type CloudProviders03 from "@girs/cloudproviders-0.3";
         import type Gvc10 from "@girs/gvc-1.0";
-        import type Shell01 from "@girs/shell-0.1";
-        import type St10 from "@girs/st-1.0";
+        import type Shell12 from "@girs/shell-12";
+        import type St12 from "@girs/st-12";
         import type Shew0 from "@girs/shew-0";
-        import type Cally11 from "@girs/cally-11";
-        import type Clutter11 from "@girs/clutter-11";
-        import type Cogl11 from "@girs/cogl-11";
-        import type CoglPango11 from "@girs/coglpango-11";
-        import type Meta11 from "@girs/meta-11";
+        import type Cally12 from "@girs/cally-12";
+        import type Clutter12 from "@girs/clutter-12";
+        import type Cogl12 from "@girs/cogl-12";
+        import type CoglPango12 from "@girs/coglpango-12";
+        import type Meta12 from "@girs/meta-12";
+        import type MetaTest12 from "@girs/metatest-12";
 
 // https://gitlab.gnome.org/GNOME/gjs/-/blob/1.72.0/modules/script/package.js
 declare namespace package {
@@ -441,22 +445,6 @@ declare namespace package {
     /** @deprecated Use JS string interpolation */
     export function initFormat(): void
     export function initSubmodule(module: string): void
-}
-
-declare namespace system {
-    export const programInvocationName: string
-    export const version: number
-    export const programPath: string | null
-    /** Equal to ARGV */
-    export const programArgs: string[]
-    export function exit(code: number): void
-    export function addressOfGObject(o: GObject.Object): object
-    export function addressOf(o: any): object
-    /** Runs the garbage collector */
-    export function gc(): void
-    export function refcount(o: GObject.Object): number
-    export function dumpHeap(path: string): void
-    export function dumpMemoryInfo(path: string): void
 }
 
 declare namespace byteArray {
@@ -496,33 +484,6 @@ declare namespace console {
 declare namespace lang {
     // TODO: There is a lot more in Lang
     export function Class(props: any): void
-}
-
-declare namespace gettext {
-    export enum LocaleCategory {
-        ALL,
-        COLLATE,
-        CTYPE,
-        MESSAGES,
-        MONETARY,
-        NUMERIC,
-        TIME,
-    }
-    export function setlocale(category: number, locale: string | null): string
-    export function textdomain(domainname: string | null): string
-    export function bindtextdomain(domainname: string, dirname: string | null): string
-    export function gettext(msgid: string): string
-    export function dgettext(domainname: string | null, msgid: string): string
-    export function dcgettext(domainname: string | null, msgid: string, category: number): string
-    export function ngettext(msgid: string, msgid_plural: string, n: number): string
-    export function dngettext(domainname: string, msgid: string, msgid_plural: string, n: number): string
-    export function pgettext(context: string, msgid: string): string
-    export function dpgettext(dom: string | null, context: string, msgid: string): string
-    export function domain(domainName: string): {
-        gettext: (msgid: string) => string
-        ngettext: (msgid: string, msgid_plural: string, n: number) => string
-        pgettext: (context: string, msgid: string) => string
-    }
 }
 
 declare namespace format {
@@ -1188,14 +1149,14 @@ declare global {
               Bump:                typeof Bump01
               Cally:                typeof Cally10
                   |
-                typeof Cally11
+                typeof Cally12
               Camel:                typeof Camel12
               Caribou:                typeof Caribou10
               Champlain:                typeof Champlain012
               Cheese:                typeof Cheese30
               Clutter:                typeof Clutter10
                   |
-                typeof Clutter11
+                typeof Clutter12
               ClutterGdk:                typeof ClutterGdk10
               ClutterGst:                typeof ClutterGst10
                   |
@@ -1207,13 +1168,13 @@ declare global {
                   |
                 typeof Cogl20
                   |
-                typeof Cogl11
+                typeof Cogl12
               CoglGst:                typeof CoglGst20
               CoglPango:                typeof CoglPango10
                   |
                 typeof CoglPango20
                   |
-                typeof CoglPango11
+                typeof CoglPango12
               ColorHug:                typeof ColorHug10
               Colord:                typeof Colord10
               ColordGtk:                typeof ColordGtk10
@@ -1520,6 +1481,8 @@ declare global {
               PangoXft:                typeof PangoXft10
               Parquet:                typeof Parquet10
               Peas:                typeof Peas10
+                  |
+                typeof Peas2
               PeasGtk:                typeof PeasGtk10
               Plasma:                typeof Plasma10
               Pnl:                typeof Pnl10
@@ -1618,6 +1581,7 @@ declare global {
                   |
                 typeof WebKit2WebExtension50
               WebKitWebExtension:                typeof WebKitWebExtension60
+              WebKitWebProcessExtension:                typeof WebKitWebProcessExtension60
               Wnck:                typeof Wnck30
               Xdp:                typeof Xdp10
               XdpGtk3:                typeof XdpGtk310
@@ -1638,13 +1602,12 @@ declare global {
               ArrowCUDA:                typeof ArrowCUDA10
               GstInterfaces:                typeof GstInterfaces010
               SocialWebClient:                typeof SocialWebClient025
-              AppIndicator3:                typeof AppIndicator301
-              CloudProviders:                typeof CloudProviders03
               Gvc:                typeof Gvc10
-              Shell:                typeof Shell01
-              St:                typeof St10
+              Shell:                typeof Shell12
+              St:                typeof St12
               Shew:                typeof Shew0
-              Meta:                typeof Meta11
+              Meta:                typeof Meta12
+              MetaTest:                typeof MetaTest12
             versions: {
                   Accounts:                    '1.0'
                   AccountsService:                    '1.0'
@@ -1668,14 +1631,14 @@ declare global {
                   Bump:                    '0.1'
                   Cally:                    '1.0'
                       |
-                    '11'
+                    '12'
                   Camel:                    '1.2'
                   Caribou:                    '1.0'
                   Champlain:                    '0.12'
                   Cheese:                    '3.0'
                   Clutter:                    '1.0'
                       |
-                    '11'
+                    '12'
                   ClutterGdk:                    '1.0'
                   ClutterGst:                    '1.0'
                       |
@@ -1687,13 +1650,13 @@ declare global {
                       |
                     '2.0'
                       |
-                    '11'
+                    '12'
                   CoglGst:                    '2.0'
                   CoglPango:                    '1.0'
                       |
                     '2.0'
                       |
-                    '11'
+                    '12'
                   ColorHug:                    '1.0'
                   Colord:                    '1.0'
                   ColordGtk:                    '1.0'
@@ -2000,6 +1963,8 @@ declare global {
                   PangoXft:                    '1.0'
                   Parquet:                    '1.0'
                   Peas:                    '1.0'
+                      |
+                    '2'
                   PeasGtk:                    '1.0'
                   Plasma:                    '1.0'
                   Pnl:                    '1.0'
@@ -2098,6 +2063,7 @@ declare global {
                       |
                     '5.0'
                   WebKitWebExtension:                    '6.0'
+                  WebKitWebProcessExtension:                    '6.0'
                   Wnck:                    '3.0'
                   Xdp:                    '1.0'
                   XdpGtk3:                    '1.0'
@@ -2118,13 +2084,12 @@ declare global {
                   ArrowCUDA:                    '1.0'
                   GstInterfaces:                    '0.10'
                   SocialWebClient:                    '0.25'
-                  AppIndicator3:                    '0.1'
-                  CloudProviders:                    '0.3'
                   Gvc:                    '1.0'
-                  Shell:                    '0.1'
-                  St:                    '1.0'
+                  Shell:                    '12'
+                  St:                    '12'
                   Shew:                    '0'
-                  Meta:                    '11'
+                  Meta:                    '12'
+                  MetaTest:                    '12'
             }
         }
 
@@ -2138,6 +2103,7 @@ declare global {
         gettext: typeof gettext
         byteArray: typeof byteArray
         format: typeof format
+        cairo: typeof cairo
     }
 }
 

@@ -3078,6 +3078,18 @@ interface FormField {
      * @param callback a #GAsyncReadyCallback to call when the signature is validated
      */
     signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of signature_validate_async
+
+    /**
+     * Promisified version of {@link signature_validate_async}
+     * 
+     * Asynchronously validates the cryptographic signature contained in `signature_field`.
+     * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
+     * @param cancellable optional #GCancellable object
+     * @returns A Promise of: a #PopplerSignatureInfo structure containing signature metadata and validation status                                Free the returned structure with poppler_signature_info_free().
+     */
+    signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<SignatureInfo>
     /**
      * Finishes validation of the cryptographic signature contained in `signature_field`.
      * See poppler_form_field_signature_validate_async().

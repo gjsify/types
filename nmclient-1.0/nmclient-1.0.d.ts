@@ -1599,6 +1599,20 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param callback callback to call with the result
      */
     check_connectivity_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of check_connectivity_async
+
+    /**
+     * Promisified version of {@link check_connectivity_async}
+     * 
+     * Asynchronously updates the network connectivity state and invokes
+     * `callback` when complete. Contrast nm_client_get_connectivity(),
+     * which (immediately) returns the most recent known state without
+     * re-checking, and nm_client_check_connectivity(), which blocks.
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: the (new) current connectivity state
+     */
+    check_connectivity_async(cancellable: Gio.Cancellable | null): globalThis.Promise<NetworkManager.ConnectivityState>
     /**
      * Retrieves the result of an nm_client_check_connectivity_async()
      * call.

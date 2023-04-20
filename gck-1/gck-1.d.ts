@@ -209,6 +209,17 @@ function modules_initialize_registered(cancellable: Gio.Cancellable | null): Mod
  * @param callback a callback which will be called when the operation completes
  */
 function modules_initialize_registered_async<Z = unknown>(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of modules_initialize_registered_async
+
+/**
+ * Promisified version of {@link modules_initialize_registered_async}
+ * 
+ * Load and initialize all the registered modules asynchronously.
+ * @param cancellable optional cancellation object
+ * @returns A Promise of: a list of newly initialized #GckModule objects
+ */
+function modules_initialize_registered_async<Z = unknown>(cancellable: Gio.Cancellable | null): globalThis.Promise<Module[]>
 /**
  * Finishes the asynchronous operation to initialize the registered
  * PKCS#11 modules.
@@ -383,6 +394,21 @@ interface ObjectCache extends Object {
      * @param callback called when the operation completes
      */
     update_async(attr_types: number[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_async
+
+    /**
+     * Promisified version of {@link update_async}
+     * 
+     * Update the object cache with given attributes. If an attribute already
+     * exists in the cache, it will be updated, and if it doesn't it will be added.
+     * 
+     * This call will return immediately and complete asynchronously.
+     * @param attr_types the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @returns A Promise of: whether the cache update was successful
+     */
+    update_async(attr_types: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete an asynchronous operation to update the object cache with given
      * attributes.
@@ -555,6 +581,21 @@ interface Enumerator {
      * @param callback Called when the result is ready
      */
     next_async(max_objects: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_async
+
+    /**
+     * Promisified version of {@link next_async}
+     * 
+     * Get the next set of objects from the enumerator. This operation completes
+     * asynchronously.The maximum number of objects can be specified with
+     * `max_objects`. If -1 is specified, then all the remaining objects will be
+     * enumerated.
+     * @param max_objects The maximum number of objects to get
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: The list of objects, which should be freed with gck_list_unref_free()
+     */
+    next_async(max_objects: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Object[]>
     /**
      * Complete an operation to enumerate next objects.
      * 
@@ -898,6 +939,27 @@ interface Object {
      * @param callback called when the operation completes
      */
     cache_lookup_async(attr_types: number[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of cache_lookup_async
+
+    /**
+     * Promisified version of {@link cache_lookup_async}
+     * 
+     * Lookup attributes in the cache, or retrieve them from the object if necessary.
+     * 
+     * If `object` is a #GckObjectCache then this will lookup the attributes there
+     * first if available, otherwise will read them from the object and update
+     * the cache.
+     * 
+     * If `object` is not a #GckObjectCache, then the attributes will simply be
+     * read from the object.
+     * 
+     * This will return immediately and complete asynchronously
+     * @param attr_types the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @returns A Promise of: the attributes retrieved or %NULL on failure
+     */
+    cache_lookup_async(attr_types: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<Attributes>
     /**
      * Complete an operation to lookup attributes in the cache or retrieve them
      * from the object if necessary.
@@ -919,6 +981,18 @@ interface Object {
      * @param callback Callback which is called when operation completes.
      */
     destroy_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of destroy_async
+
+    /**
+     * Promisified version of {@link destroy_async}
+     * 
+     * Destroy a PKCS#11 object, deleting it from storage or the session.
+     * This call will return immediately and complete asynchronously.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @returns A Promise of: Whether the object was destroyed successfully or not.
+     */
+    destroy_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the status of the operation to destroy a PKCS#11 object, begun with
      * gck_object_destroy_async().
@@ -945,6 +1019,23 @@ interface Object {
      * @param callback A callback which is called when the operation completes.
      */
     get_async(attr_types: number[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_async
+
+    /**
+     * Promisified version of {@link get_async}
+     * 
+     * Get the specified attributes from the object. The attributes will be cleared
+     * of their current values, and new attributes will be stored. The attributes
+     * should not be accessed in any way except for referencing and unreferencing
+     * them until gck_object_get_finish() is called.
+     * 
+     * This call returns immediately and completes asynchronously.
+     * @param attr_types the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
+     * @returns A Promise of: The filled in attributes structure if successful or %NULL if not successful.
+     */
+    get_async(attr_types: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<Attributes>
     /**
      * Get the data for the specified attribute from the object. For convenience
      * the returned data has a null terminator.
@@ -974,6 +1065,21 @@ interface Object {
      * @param callback Called when the operation completes.
      */
     get_data_async(attr_type: number, allocator: Allocator, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_data_async
+
+    /**
+     * Promisified version of {@link get_data_async}
+     * 
+     * Get the data for the specified attribute from the object.
+     * 
+     * This call will return immediately and complete asynchronously.
+     * @param attr_type The attribute to get data for.
+     * @param allocator An allocator with which to allocate memory for the data, or %NULL for default.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: The PKCS#11 attribute data          or %NULL if an error occurred.
+     */
+    get_data_async(attr_type: number, allocator: Allocator, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     /**
      * Get the result of an operation to get attribute data from
      * an object. For convenience the returned data has an extra null terminator,
@@ -1042,6 +1148,21 @@ interface Object {
      * @param callback Called when the operation completes.
      */
     get_template_async(attr_type: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_template_async
+
+    /**
+     * Promisified version of {@link get_template_async}
+     * 
+     * Get an attribute template from the object. The `attr_type` must be for
+     * an attribute which returns a template.
+     * 
+     * This call will return immediately and complete asynchronously.
+     * @param attr_type The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: the resulting PKCS#11 attribute template, or %NULL          if an error occurred
+     */
+    get_template_async(attr_type: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Attributes>
     /**
      * Get the result of an operation to get attribute template from
      * an object.
@@ -1076,6 +1197,21 @@ interface Object {
      * @param callback Callback which is called when operation completes.
      */
     set_async(attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_async
+
+    /**
+     * Promisified version of {@link set_async}
+     * 
+     * Set PKCS#11 attributes on an object. This call will return
+     * immediately and completes asynchronously.
+     * 
+     * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @returns A Promise of: Whether the attributes were successfully set on the object or not.
+     */
+    set_async(attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the status of the operation to set attributes on a PKCS#11 object,
      * begun with gck_object_set_async().
@@ -1109,6 +1245,24 @@ interface Object {
      * @param callback Called when the operation completes.
      */
     set_template_async(attr_type: number, attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_template_async
+
+    /**
+     * Promisified version of {@link set_template_async}
+     * 
+     * Set an attribute template on the object. The attr_type must be for
+     * an attribute which contains a template.
+     * 
+     * If the `attrs` #GckAttributes is floating, it is consumed.
+     * 
+     * This call will return immediately and complete asynchronously.
+     * @param attr_type The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: %TRUE if the operation succeeded.
+     */
+    set_template_async(attr_type: number, attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of an operation to set attribute template on
      * an object.
@@ -1384,6 +1538,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     create_object_async(attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_object_async
+
+    /**
+     * Promisified version of {@link create_object_async}
+     * 
+     * Create a new PKCS#11 object. This call will return immediately
+     * and complete asynchronously.
+     * 
+     * If `attrs` is a floating reference, it is consumed.
+     * @param attrs The attributes to create the object with.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: the newly created object or %NULL if an error occurred
+     */
+    create_object_async(attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object>
     /**
      * Get the result of creating a new PKCS#11 object.
      * @param result The result passed to the callback.
@@ -1410,6 +1579,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     decrypt_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of decrypt_async
+
+    /**
+     * Promisified version of {@link decrypt_async}
+     * 
+     * Decrypt data in a mechanism specific manner. This call will
+     * return immediately and complete asynchronously.
+     * @param key The key to decrypt with.
+     * @param mechanism The mechanism type and parameters to use for decryption.
+     * @param input data to decrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @returns A Promise of: the data that was decrypted,          or %NULL if an error occurred
+     */
+    decrypt_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     /**
      * Get the result of an decryption operation.
      * @param result The result object passed to the callback.
@@ -1450,6 +1634,23 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     derive_key_async(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of derive_key_async
+
+    /**
+     * Promisified version of {@link derive_key_async}
+     * 
+     * Derive a key from another key. This call will
+     * return immediately and complete asynchronously.
+     * 
+     * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param base The key to derive from.
+     * @param mechanism The mechanism to use for derivation.
+     * @param attrs Additional attributes for the derived key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: the new derived key or %NULL if the operation          failed
+     */
+    derive_key_async(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object>
     /**
      * Get the result of a derive key operation.
      * @param result The async result passed to the callback.
@@ -1488,6 +1689,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     encrypt_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of encrypt_async
+
+    /**
+     * Promisified version of {@link encrypt_async}
+     * 
+     * Encrypt data in a mechanism specific manner. This call will
+     * return immediately and complete asynchronously.
+     * @param key The key to encrypt with.
+     * @param mechanism The mechanism type and parameters to use for encryption.
+     * @param input the data to encrypt
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @returns A Promise of: the data that was encrypted,          or %NULL if an error occurred.
+     */
+    encrypt_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     /**
      * Get the result of an encryption operation.
      * @param result The result object passed to the callback.
@@ -1534,6 +1750,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback called when the operation completes
      */
     find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of find_handles_async
+
+    /**
+     * Promisified version of {@link find_handles_async}
+     * 
+     * Find the objects matching the passed attributes. This call will
+     * return immediately and complete asynchronously.
+     * 
+     * If `match` is a floating reference, it is consumed.
+     * @param match the attributes to match against the objects
+     * @param cancellable optional cancellation object or %NULL
+     * @returns A Promise of: an array of          handles that matched, which may be empty, or %NULL on failure
+     */
+    find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<number[] | null>
     /**
      * Get the result of a find handles operation.
      * @param result the asynchronous result
@@ -1560,6 +1791,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     find_objects_async(match: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of find_objects_async
+
+    /**
+     * Promisified version of {@link find_objects_async}
+     * 
+     * Find the objects matching the passed attributes. This call will
+     * return immediately and complete asynchronously.
+     * 
+     * If the `match` #GckAttributes is floating, it is consumed.
+     * @param match The attributes to match.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: a list of the matching          objects, which may be empty
+     */
+    find_objects_async(match: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object[]>
     /**
      * Get the result of a find operation.
      * @param result The attributes to match.
@@ -1592,6 +1838,24 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     generate_key_pair_async(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_key_pair_async
+
+    /**
+     * Promisified version of {@link generate_key_pair_async}
+     * 
+     * Generate a new key pair of public and private keys. This call will
+     * return immediately and complete asynchronously.
+     * 
+     * If `public_attrs` and/or `private_attrs` is a floating reference, it is
+     * consumed.
+     * @param mechanism The mechanism to use for key generation.
+     * @param public_attrs Additional attributes for the generated public key.
+     * @param private_attrs Additional attributes for the generated private key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: %TRUE if the operation succeeded.
+     */
+    generate_key_pair_async(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* public_key */ Object, /* private_key */ Object ]>
     /**
      * Get the result of a generate key pair operation.
      * @param result The async result passed to the callback.
@@ -1669,6 +1933,22 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of init_pin_async
+
+    /**
+     * Promisified version of {@link init_pin_async}
+     * 
+     * Initialize the user's pin on this slot that this session is opened on.
+     * According to the PKCS#11 standards, the session must be logged in with
+     * the `CKU_SO` user type.
+     * 
+     * This call will return immediately and completes asynchronously.
+     * @param pin the user's PIN, or %NULL for protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: Whether the operation was successful or not.
+     */
+    init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of initializing a user's PIN.
      * @param result The result passed to the callback.
@@ -1693,6 +1973,20 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     login_async(user_type: number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of login_async
+
+    /**
+     * Promisified version of {@link login_async}
+     * 
+     * Login the user on the session. This call will return
+     * immediately and completes asynchronously.
+     * @param user_type The type of login user.
+     * @param pin the user's PIN, or %NULL for       protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: Whether the operation was successful or not.
+     */
+    login_async(user_type: number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of a login operation.
      * @param result The result passed to the callback.
@@ -1717,6 +2011,20 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback called when the operation completes
      */
     login_interactive_async(user_type: number, interaction: Gio.TlsInteraction | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of login_interactive_async
+
+    /**
+     * Promisified version of {@link login_interactive_async}
+     * 
+     * Login the user on the session prompting for passwords interactively when
+     * necessary. This call will return immediately and completes asynchronously.
+     * @param user_type the type of login user
+     * @param interaction interaction to request PIN when necessary
+     * @param cancellable optional cancellation object, or %NULL
+     * @returns A Promise of: Whether the operation was successful or not.
+     */
+    login_interactive_async(user_type: number, interaction: Gio.TlsInteraction | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of a login operation.
      * @param result the result passed to the callback
@@ -1736,6 +2044,18 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     logout_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of logout_async
+
+    /**
+     * Promisified version of {@link logout_async}
+     * 
+     * Log out of the session. This call returns immediately and completes
+     * asynchronously.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: Whether the logout was successful or not.
+     */
+    logout_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of logging out of a session.
      * @param result The result passed to the callback.
@@ -1769,6 +2089,22 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     set_pin_async(old_pin: Uint8Array | null, n_old_pin: number, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_pin_async
+
+    /**
+     * Promisified version of {@link set_pin_async}
+     * 
+     * Change the user's pin on this slot that this session is opened on.
+     * 
+     * This call will return immediately and completes asynchronously.
+     * @param old_pin the user's old PIN, or %NULL           for protected authentication path
+     * @param n_old_pin the length of the old PIN
+     * @param new_pin the user's new PIN, or %NULL           for protected authentication path
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: Whether the operation was successful or not.
+     */
+    set_pin_async(old_pin: Uint8Array | null, n_old_pin: number, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of changing a user's PIN.
      * @param result The result passed to the callback.
@@ -1795,6 +2131,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     sign_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of sign_async
+
+    /**
+     * Promisified version of {@link sign_async}
+     * 
+     * Sign data in a mechanism specific manner. This call will
+     * return immediately and complete asynchronously.
+     * @param key The key to sign with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to sign
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @returns A Promise of: the data that was signed,          or %NULL if an error occurred
+     */
+    sign_async(key: Object, mechanism: Mechanism, input: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     /**
      * Get the result of an signing operation.
      * @param result The result object passed to the callback.
@@ -1838,6 +2189,24 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     unwrap_key_async(wrapper: Object, mechanism: Mechanism, input: Uint8Array, attrs: Attributes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unwrap_key_async
+
+    /**
+     * Promisified version of {@link unwrap_key_async}
+     * 
+     * Unwrap a key from a byte stream. This call will
+     * return immediately and complete asynchronously.
+     * 
+     * If `attrs` is a floating reference, it is consumed.
+     * @param wrapper The key to use for unwrapping.
+     * @param mechanism The mechanism to use for unwrapping.
+     * @param input the wrapped data as a byte stream
+     * @param attrs Additional attributes for the unwrapped key.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: the new unwrapped key or %NULL if the operation          failed.
+     */
+    unwrap_key_async(wrapper: Object, mechanism: Mechanism, input: Uint8Array, attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object>
     /**
      * Get the result of a unwrap key operation.
      * @param result The async result passed to the callback.
@@ -1879,6 +2248,22 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     verify_async(key: Object, mechanism: Mechanism, input: Uint8Array, signature: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of verify_async
+
+    /**
+     * Promisified version of {@link verify_async}
+     * 
+     * Verify data in a mechanism specific manner. This call returns
+     * immediately and completes asynchronously.
+     * @param key The key to verify with.
+     * @param mechanism The mechanism type and parameters to use for signing.
+     * @param input data to verify
+     * @param signature the signature
+     * @param cancellable A GCancellable which can be used to cancel the operation.
+     * @returns A Promise of: %TRUE if the data verified correctly, otherwise a failure or error occurred.
+     */
+    verify_async(key: Object, mechanism: Mechanism, input: Uint8Array, signature: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Get the result of an verify operation.
      * @param result The result object passed to the callback.
@@ -1916,6 +2301,21 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * @param callback Called when the operation completes.
      */
     wrap_key_async(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of wrap_key_async
+
+    /**
+     * Promisified version of {@link wrap_key_async}
+     * 
+     * Wrap a key into a byte stream. This call will
+     * return immediately and complete asynchronously.
+     * @param wrapper The key to use for wrapping.
+     * @param mechanism The mechanism to use for wrapping.
+     * @param wrapped The key to wrap.
+     * @param cancellable Optional cancellation object or %NULL.
+     * @returns A Promise of: the wrapped data or %NULL          if the operation failed
+     */
+    wrap_key_async(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     /**
      * Get the result of a wrap key operation.
      * @param result The async result passed to the callback.
@@ -2151,6 +2551,21 @@ interface Slot {
      * @param callback Called when the operation completes.
      */
     open_session_async(options: SessionOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_session_async
+
+    /**
+     * Promisified version of {@link open_session_async}
+     * 
+     * Open a session on the slot. If the 'auto reuse' setting is set,
+     * then this may be a recycled session with the same flags.
+     * 
+     * This call will return immediately and complete asynchronously.
+     * @param options The options to open the new session with.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @returns A Promise of: the new session or %NULL if an error occurs
+     */
+    open_session_async(options: SessionOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<Session>
     /**
      * Get the result of an open session operation. If the 'auto reuse' setting is set,
      * then this may be a recycled session with the same flags.

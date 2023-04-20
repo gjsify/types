@@ -3796,6 +3796,19 @@ function list_connection_managers(bus_daemon: DBusDaemon, callback: ConnectionMa
  * @param callback a callback to call with a list of CMs
  */
 function list_connection_managers_async<Z = unknown>(dbus_daemon: DBusDaemon | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of list_connection_managers_async
+
+/**
+ * Promisified version of {@link list_connection_managers_async}
+ * 
+ * List the available (running or installed) connection managers,
+ * asynchronously, and wait for their %TP_CONNECTION_MANAGER_FEATURE_CORE
+ * feature to be ready.
+ * @param dbus_daemon a #TpDBusDaemon, or %NULL to use  tp_dbus_daemon_dup()
+ * @returns A Promise of: a  newly allocated list of references to #TpConnectionManager objects
+ */
+function list_connection_managers_async<Z = unknown>(dbus_daemon: DBusDaemon | null): globalThis.Promise<ConnectionManager[]>
 /**
  * Finish listing the available connection managers.
  * 
@@ -5096,6 +5109,21 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     dup_storage_specific_information_vardict_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of dup_storage_specific_information_vardict_async
+
+    /**
+     * Promisified version of {@link dup_storage_specific_information_vardict_async}
+     * 
+     * Makes an asynchronous request of `self'`s StorageSpecificInformation
+     * property (part of the Account.Interface.Storage interface).
+     * 
+     * When the operation is finished, `callback` will be called. You must then
+     * call tp_account_dup_storage_specific_information_vardict_finish() to get the
+     * result of the request.
+     * @returns A Promise of: a map from strings to variants,  of type %G_VARIANT_TYPE_VARDICT
+     */
+    dup_storage_specific_information_vardict_async(): globalThis.Promise<GLib.Variant>
     /**
      * Retrieve the value of the request begun with
      * tp_account_dup_storage_specific_information_vardict_async().
@@ -5131,6 +5159,18 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     get_avatar_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_avatar_async
+
+    /**
+     * Promisified version of {@link get_avatar_async}
+     * 
+     * Requests an asynchronous get of `account'`s avatar. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_get_avatar_finish() to get the result of the operation.
+     * @returns A Promise of: a #GArray of #guchar  containing the bytes of the account's avatar, or %NULL on failure
+     */
+    get_avatar_async(): globalThis.Promise<Uint8Array>
     /**
      * Finishes an async get operation of `account'`s avatar.
      * 
@@ -5282,6 +5322,21 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     get_storage_specific_information_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_storage_specific_information_async
+
+    /**
+     * Promisified version of {@link get_storage_specific_information_async}
+     * 
+     * Makes an asynchronous request of `self'`s StorageSpecificInformation
+     * property (part of the Account.Interface.Storage interface).
+     * 
+     * When the operation is finished, `callback` will be called. You must then
+     * call tp_account_get_storage_specific_information_finish() to get the
+     * result of the request.
+     * @returns A Promise of: a #GHashTable  of strings to GValues representing the D-Bus type a{sv}.
+     */
+    get_storage_specific_information_async(): globalThis.Promise<GLib.HashTable>
     /**
      * Retrieve the value of the request begun with
      * tp_account_get_storage_specific_information_async().
@@ -5323,6 +5378,18 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     reconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of reconnect_async
+
+    /**
+     * Promisified version of {@link reconnect_async}
+     * 
+     * Requests an asynchronous reconnect of `account`. When the operation is
+     * finished, `callback` will be called. You can then call
+     * tp_account_reconnect_finish() to get the result of the operation.
+     * @returns A Promise of: %TRUE if the reconnect call was successful, otherwise %FALSE
+     */
+    reconnect_async(): globalThis.Promise<boolean>
     /**
      * Finishes an async reconnect of `account`.
      * @param result a #GAsyncResult
@@ -5336,6 +5403,18 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     remove_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_async
+
+    /**
+     * Promisified version of {@link remove_async}
+     * 
+     * Requests an asynchronous removal of `account`. When the operation is
+     * finished, `callback` will be called. You can then call
+     * tp_account_remove_finish() to get the result of the operation.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    remove_async(): globalThis.Promise<boolean>
     /**
      * Finishes an async removal of `account`.
      * @param result a #GAsyncResult
@@ -5352,6 +5431,21 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     request_presence_async(type: ConnectionPresenceType, status: string | null, message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_presence_async
+
+    /**
+     * Promisified version of {@link request_presence_async}
+     * 
+     * Requests an asynchronous change of presence on `account`. When the
+     * operation is finished, `callback` will be called. You can then call
+     * tp_account_request_presence_finish() to get the result of the operation.
+     * @param type the requested presence
+     * @param status a status message to set, or %NULL
+     * @param message a message for the change, or %NULL
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    request_presence_async(type: ConnectionPresenceType, status: string | null, message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async presence change request on `account`.
      * @param result a #GAsyncResult
@@ -5369,6 +5463,22 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_automatic_presence_async(type: ConnectionPresenceType, status: string | null, message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_automatic_presence_async
+
+    /**
+     * Promisified version of {@link set_automatic_presence_async}
+     * 
+     * Requests an asynchronous change of `account'`s automatic presence. When the
+     * operation is finished, `callback` will be called. You can then call
+     * tp_account_set_automatic_presence_finish() to get the result of the
+     * operation.
+     * @param type the requested presence
+     * @param status a status message to set, or %NULL
+     * @param message a message for the change, or %NULL
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    set_automatic_presence_async(type: ConnectionPresenceType, status: string | null, message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous request to change the automatic presence of
      * `account`.
@@ -5387,6 +5497,22 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_avatar_async(avatar: Uint8Array | null, mime_type: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_avatar_async
+
+    /**
+     * Promisified version of {@link set_avatar_async}
+     * 
+     * Requests an asynchronous change of the Avatar parameter on `self`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_set_avatar_finish() to get the result of the operation.
+     * 
+     * If `len` equals 0, the avatar is cleared.
+     * @param avatar a new avatar to set; can be %NULL  only if `len` equals 0
+     * @param mime_type the MIME type of the new avatar; can be %NULL  only if `len` equals 0
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    set_avatar_async(avatar: Uint8Array | null, mime_type: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async avatar change request on `account`.
      * @param result a #GAsyncResult
@@ -5402,6 +5528,20 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_connect_automatically_async(connect_automatically: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_connect_automatically_async
+
+    /**
+     * Promisified version of {@link set_connect_automatically_async}
+     * 
+     * Requests an asynchronous set of the ConnectAutomatically property of
+     * `account`. When the operation is finished, `callback` will be called. You can
+     * then call tp_account_set_display_name_finish() to get the result of the
+     * operation.
+     * @param connect_automatically new value for the parameter
+     * @returns A Promise of: %TRUE if the call was successful, otherwise %FALSE
+     */
+    set_connect_automatically_async(connect_automatically: boolean): globalThis.Promise<boolean>
     /**
      * Finishes an async set of the ConnectAutomatically property.
      * @param result a #GAsyncResult
@@ -5416,6 +5556,19 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_display_name_async(display_name: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_display_name_async
+
+    /**
+     * Promisified version of {@link set_display_name_async}
+     * 
+     * Requests an asynchronous set of the DisplayName property of `account`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_set_display_name_finish() to get the result of the operation.
+     * @param display_name a new display name, or %NULL to unset the display name
+     * @returns A Promise of: %TRUE if the call was successful, otherwise %FALSE
+     */
+    set_display_name_async(display_name: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async set of the DisplayName property.
      * @param result a #GAsyncResult
@@ -5430,6 +5583,19 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_enabled_async
+
+    /**
+     * Promisified version of {@link set_enabled_async}
+     * 
+     * Requests an asynchronous set of the Enabled property of `account`. When the
+     * operation is finished, `callback` will be called. You can then call
+     * tp_account_set_enabled_finish() to get the result of the operation.
+     * @param enabled the new enabled value of `account`
+     * @returns A Promise of: %TRUE if the set was successful, otherwise %FALSE
+     */
+    set_enabled_async(enabled: boolean): globalThis.Promise<boolean>
     /**
      * Finishes an async set of the Enabled property.
      * @param result a #GAsyncResult
@@ -5444,6 +5610,19 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_icon_name_async(icon_name: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_icon_name_async
+
+    /**
+     * Promisified version of {@link set_icon_name_async}
+     * 
+     * Requests an asynchronous set of the Icon property of `account`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_set_icon_name_finish() to get the result of the operation.
+     * @param icon_name a new icon name, or %NULL to unset the icon name
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    set_icon_name_async(icon_name: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async set of the Icon parameter.
      * @param result a #GAsyncResult
@@ -5458,6 +5637,19 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_nickname_async(nickname: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_nickname_async
+
+    /**
+     * Promisified version of {@link set_nickname_async}
+     * 
+     * Requests an asynchronous change of the Nickname parameter on `account`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_set_nickname_finish() to get the result of the operation.
+     * @param nickname a new nickname to set
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    set_nickname_async(nickname: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async nickname change request on `account`.
      * @param result a #GAsyncResult
@@ -5472,6 +5664,19 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_service_async(service: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_service_async
+
+    /**
+     * Promisified version of {@link set_service_async}
+     * 
+     * Requests an asynchronous set of the Service property on `self`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_account_set_service_finish() to get the result of the operation.
+     * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    set_service_async(service: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async set of the Service parameter.
      * @param result a #GAsyncResult
@@ -5496,6 +5701,29 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     set_uri_scheme_association_async(scheme: string | null, associate: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_uri_scheme_association_async
+
+    /**
+     * Promisified version of {@link set_uri_scheme_association_async}
+     * 
+     * Add `scheme` to the list of additional URI schemes that would be returned
+     * by tp_account_get_uri_schemes(), or remove it from that list.
+     * 
+     * `scheme` should not be the primary URI scheme for the account's
+     * protocol (for instance, "xmpp" for XMPP, or "sip" or "sips" for SIP),
+     * since the account should be assumed to be useful for those schemes
+     * regardless of the contents of the list.
+     * 
+     * Calling this method does not require the %TP_ACCOUNT_FEATURE_ADDRESSING
+     * feature to be enabled, but the change will not be reflected in the result
+     * of tp_account_get_uri_schemes() or tp_account_associated_with_uri_scheme()
+     * unless that feature has been enabled.
+     * @param scheme a non-%NULL URI scheme such as "tel"
+     * @param associate %TRUE to use this account for `scheme,` or %FALSE to not use it
+     * @returns A Promise of: %TRUE if the call was successful, otherwise %FALSE
+     */
+    set_uri_scheme_association_async(scheme: string | null, associate: boolean): globalThis.Promise<boolean>
     /**
      * Interpret the result of tp_account_set_uri_scheme_association_async().
      * @param result a #GAsyncResult
@@ -5511,6 +5739,20 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     update_parameters_async(parameters: GLib.HashTable, unset_parameters: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_parameters_async
+
+    /**
+     * Promisified version of {@link update_parameters_async}
+     * 
+     * Requests an asynchronous update of parameters of `account`. When the
+     * operation is finished, `callback` will be called. You can then call
+     * tp_account_update_parameters_finish() to get the result of the operation.
+     * @param parameters new  parameters to set on `account`
+     * @param unset_parameters list of parameters to unset on `account`
+     * @returns A Promise of: %TRUE if the request succeeded, otherwise %FALSE
+     */
+    update_parameters_async(parameters: GLib.HashTable, unset_parameters: string | null): globalThis.Promise</* reconnect_required */ string[]>
     /**
      * Finishes an async update of the parameters on `account`.
      * @param result a #GAsyncResult
@@ -5531,6 +5773,25 @@ interface Account {
      * @param callback a callback to call when the request is satisfied
      */
     update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_parameters_vardict_async
+
+    /**
+     * Promisified version of {@link update_parameters_vardict_async}
+     * 
+     * Requests an asynchronous update of parameters of `account`. When the
+     * operation is finished, `callback` will be called. You can then call
+     * tp_account_update_parameters_finish() to get the result of the operation.
+     * 
+     * If `parameters` is a floating reference (see g_variant_ref_sink()),
+     * ownership of `parameters` is taken by this function. This means
+     * you can pass the result of g_variant_new() or g_variant_new_parsed()
+     * directly to this function without additional reference-count management.
+     * @param parameters a variant of type %G_VARIANT_TYPE_VARDICT  containing new parameters to set on `account`
+     * @param unset_parameters list of parameters to unset on `account`
+     * @returns A Promise of: %TRUE if the request succeeded, otherwise %FALSE
+     */
+    update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[]): globalThis.Promise</* reconnect_required */ string[]>
     /**
      * Finishes an async update of the parameters on `account`.
      * @param result a #GAsyncResult
@@ -5913,6 +6174,29 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     create_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_and_handle_channel_async
+
+    /**
+     * Promisified version of {@link create_and_handle_channel_async}
+     * 
+     * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * that you are going to handle yourself.
+     * When the operation is finished, `callback` will be called. You can then call
+     * tp_account_channel_request_create_and_handle_channel_finish() to get the
+     * result of the operation.
+     * 
+     * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+     * acting like tp_account_channel_request_create_channel_async() with the
+     * temporary #TpBaseClient as the `preferred_handler`.)
+     * 
+     * The caller is responsible for closing the channel with
+     * tp_cli_channel_call_close() when it has finished handling it.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a new reference on a #TpChannel if the channel was successfully created and you are handling it, otherwise %NULL.
+     */
+    create_and_handle_channel_async(cancellable: Gio.Cancellable | null): globalThis.Promise</* context */ HandleChannelsContext>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_handle_channel_async().
@@ -5944,6 +6228,29 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     create_and_observe_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_and_observe_channel_async
+
+    /**
+     * Promisified version of {@link create_and_observe_channel_async}
+     * 
+     * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * and let the ChannelDispatcher dispatch it to an handler.
+     * `callback` will be called when the channel has been created and dispatched,
+     * or the request has failed.
+     * You can then call tp_account_channel_request_create_channel_finish() to
+     * get the result of the operation and a #TpChannel representing the channel
+     * which has been created. Note that you are <emphasis>not</emphasis> handling
+     * this channel and so should interact with the channel as an Observer.
+     * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+     * the Telepathy book</ulink> for details about how clients should interact
+     * with channels.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a newly created #TpChannel if the channel was successfully created and dispatched, otherwise %NULL.
+     */
+    create_and_observe_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Channel>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
@@ -5964,6 +6271,24 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     create_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_channel_async
+
+    /**
+     * Promisified version of {@link create_channel_async}
+     * 
+     * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * and let the ChannelDispatcher dispatch it to an handler.
+     * `callback` will be called when the channel has been created and dispatched,
+     * or the request has failed.
+     * You can then call tp_account_channel_request_create_channel_finish() to
+     * get the result of the operation.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE if the channel was successfully created and dispatched, otherwise %FALSE.
+     */
+    create_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_channel_async().
@@ -6000,6 +6325,34 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     ensure_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ensure_and_handle_channel_async
+
+    /**
+     * Promisified version of {@link ensure_and_handle_channel_async}
+     * 
+     * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * that you are going to handle yourself.
+     * When the operation is finished, `callback` will be called. You can then call
+     * tp_account_channel_request_ensure_and_handle_channel_finish() to get the
+     * result of the operation.
+     * 
+     * If the channel already exists and is already being handled, or if a
+     * newly created channel is sent to a different handler, this operation
+     * will fail with the error %TP_ERROR_NOT_YOURS. The other handler
+     * will be notified that the channel was requested again (for instance
+     * with #TpAccountChannelRequest::re-handled,
+     * #TpBaseClientClassHandleChannelsImpl or #TpSimpleHandler:callback),
+     * and can move its window to the foreground, if applicable.
+     * 
+     * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+     * acting like tp_account_channel_request_ensure_channel_async() with the
+     * temporary #TpBaseClient as the `preferred_handler`.)
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a new reference on a #TpChannel if the channel was successfully created and you are handling it, otherwise %NULL.
+     */
+    ensure_and_handle_channel_async(cancellable: Gio.Cancellable | null): globalThis.Promise</* context */ HandleChannelsContext>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_ensure_and_handle_channel_async().
@@ -6042,6 +6395,36 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     ensure_and_observe_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ensure_and_observe_channel_async
+
+    /**
+     * Promisified version of {@link ensure_and_observe_channel_async}
+     * 
+     * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * and let the ChannelDispatcher dispatch it to an handler.
+     * `callback` will be called when the channel has been created and dispatched,
+     * or the request has failed.
+     * You can then call tp_account_channel_request_create_channel_finish() to
+     * get the result of the operation and a #TpChannel representing the channel
+     * which has been created. Note that you are <emphasis>not</emphasis> handling
+     * this channel and so should interact with the channel as an Observer.
+     * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+     * the Telepathy book</ulink> for details about how clients should interact
+     * with channels.
+     * 
+     * If a suitable channel already existed, its handler will be notified that
+     * the channel was requested again (for instance with
+     * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+     * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+     * so that it can re-present the window to the user, for example.
+     * Otherwise, a new channel will be created and dispatched to a handler.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a newly created #TpChannel if the channel was successfully ensure and (re-)dispatched, otherwise %NULL.
+     */
+    ensure_and_observe_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Channel>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
@@ -6071,6 +6454,33 @@ interface AccountChannelRequest {
      * @param callback a callback to call when the request is satisfied
      */
     ensure_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ensure_channel_async
+
+    /**
+     * Promisified version of {@link ensure_channel_async}
+     * 
+     * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+     * channel with the properties defined in #TpAccountChannelRequest:request
+     * and let the ChannelDispatcher dispatch it to an handler.
+     * 
+     * If a suitable channel already existed, its handler will be notified that
+     * the channel was requested again (for instance with
+     * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+     * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+     * so that it can re-present the window to the user, for example.
+     * Otherwise, a new channel will be created and dispatched to a handler.
+     * 
+     * `callback` will be called when an existing channel's handler has been
+     * notified, a new channel has been created and dispatched, or the request
+     * has failed.
+     * You can then call tp_account_channel_request_ensure_channel_finish() to
+     * get the result of the operation.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE if the channel was successfully ensured and (re-)dispatched, otherwise %FALSE.
+     */
+    ensure_channel_async(preferred_handler: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_ensure_channel_async().
@@ -6608,6 +7018,33 @@ interface AccountManager {
      * @param callback a callback to call when the request is satisfied
      */
     create_account_async(connection_manager: string | null, protocol: string | null, display_name: string | null, parameters: GLib.HashTable, properties: GLib.HashTable, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_account_async
+
+    /**
+     * Promisified version of {@link create_account_async}
+     * 
+     * Requests an asynchronous create of an account on the account manager
+     * `manager`. When the operation is finished, `callback` will be called. You can
+     * then call tp_account_manager_create_account_finish() to get the result of
+     * the operation.
+     * 
+     * The #TpAccount returned by tp_account_manager_create_account_finish()
+     * will already have %TP_ACCOUNT_FEATURE_CORE prepared, along with all
+     * features previously passed to
+     * tp_simple_client_factory_add_account_features() for the account
+     * manager's #TpProxy:factory.
+     * 
+     * It is usually better to use #TpAccountRequest instead, particularly when
+     * using high-level language bindings.
+     * @param connection_manager the name of a connection manager
+     * @param protocol the name of a protocol
+     * @param display_name the display name for the account
+     * @param parameters parameters  for the new account
+     * @param properties properties  for the new account
+     * @returns A Promise of: a new #TpAccount which was just created on  success, otherwise %NULL
+     */
+    create_account_async(connection_manager: string | null, protocol: string | null, display_name: string | null, parameters: GLib.HashTable, properties: GLib.HashTable): globalThis.Promise<Account>
     /**
      * Finishes an async create account operation, and returns a new #TpAccount
      * object. It has %TP_ACCOUNT_FEATURE_CORE prepared, along with all
@@ -7072,6 +7509,22 @@ interface AccountRequest {
      * @param callback a function to call when the account has been created
      */
     create_account_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_account_async
+
+    /**
+     * Promisified version of {@link create_account_async}
+     * 
+     * Start an asynchronous operation to create the account `self` on the
+     * account manager.
+     * 
+     * `callback` will only be called when the newly created #TpAccount has
+     * the %TP_ACCOUNT_FEATURE_CORE feature ready on it, so when calling
+     * tp_account_request_create_account_finish(), one can guarantee this
+     * feature.
+     * @returns A Promise of: a new ref to a #TpAccount, or %NULL
+     */
+    create_account_async(): globalThis.Promise<Account>
     /**
      * Finishes an asynchronous account creation operation and returns a
      * new ref to a #TpAccount object. The returned account will have the
@@ -7890,6 +8343,22 @@ interface BaseClient {
      * @param callback a callback to call when the request is satisfied
      */
     delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delegate_channels_async
+
+    /**
+     * Promisified version of {@link delegate_channels_async}
+     * 
+     * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
+     * stopping handling `channels` and pass them to another Handler.
+     * You can then call tp_base_client_delegate_channels_finish() to
+     * get the result of the operation.
+     * @param channels a #GList of #TpChannel handled by `self`
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+     * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
+     * @returns A Promise of: %TRUE if the operation succeed, @delegated and @not_delegated can be used to know the channels that @self is not handling any more, otherwise %FALSE.
+     */
+    delegate_channels_async(channels: Channel[], user_action_time: number, preferred_handler: string | null): globalThis.Promise<[ /* delegated */ Channel[], /* not_delegated */ GLib.HashTable ]>
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
@@ -8584,6 +9053,23 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     accept_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_async
+
+    /**
+     * Promisified version of {@link accept_async}
+     * 
+     * For incoming calls with #TpCallChannel:state set to
+     * %TP_CALL_STATE_INITIALISED, accept the incoming call. This changes
+     * #TpCallChannel:state to %TP_CALL_STATE_ACCEPTED.
+     * 
+     * For outgoing calls with #TpCallChannel:state set to
+     * %TP_CALL_STATE_PENDING_INITIATOR, actually call the remote contact; this
+     * changes #TpCallChannel:state to
+     * %TP_CALL_STATE_INITIALISING.
+     * @returns A Promise of the result of {@link accept_async}
+     */
+    accept_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_accept_async().
      * @param result a #GAsyncResult
@@ -8599,6 +9085,21 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     add_content_async(name: string | null, type: MediaStreamType, initial_direction: MediaStreamDirection, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of add_content_async
+
+    /**
+     * Promisified version of {@link add_content_async}
+     * 
+     * Request that a new Content of type `type` is added to `self`. Callers should
+     * check the value of the #TpCallChannel:mutable-contents property before trying
+     * to add another content as it might not be allowed.
+     * @param name the suggested name of the content to add
+     * @param type the media stream type of the content to be added to the call, from  #TpMediaStreamType
+     * @param initial_direction The initial direction of the content
+     * @returns A Promise of: reference to the new #TpCallContent.
+     */
+    add_content_async(name: string | null, type: MediaStreamType, initial_direction: MediaStreamDirection): globalThis.Promise<CallContent>
     /**
      * Finishes tp_call_channel_add_content_async().
      * 
@@ -8636,6 +9137,20 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     hangup_async(reason: CallStateChangeReason, detailed_reason: string | null, message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of hangup_async
+
+    /**
+     * Promisified version of {@link hangup_async}
+     * 
+     * Request that the call is ended. All contents will be removed from `self` so
+     * that the #TpCallChannel:contents property will be the empty list.
+     * @param reason a TpCallStateChangeReason
+     * @param detailed_reason a more specific reason for the call hangup, if one is  available, or an empty or %NULL string otherwise
+     * @param message a human-readable message to be sent to the remote contact(s)
+     * @returns A Promise of the result of {@link hangup_async}
+     */
+    hangup_async(reason: CallStateChangeReason, detailed_reason: string | null, message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_hangup_async().
      * @param result a #GAsyncResult
@@ -8684,6 +9199,20 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     request_hold_async(hold: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_hold_async
+
+    /**
+     * Promisified version of {@link request_hold_async}
+     * 
+     * Requests that the connection manager holds or unholds the call. Watch
+     * #TpCallChannel:hold-state property to know when the channel goes on
+     * hold or is unheld. Unholding may fail if the streaming implementation
+     * can not obtain all the resources needed to restart the call.
+     * @param hold Whether to request a hold or a unhold
+     * @returns A Promise of the result of {@link request_hold_async}
+     */
+    request_hold_async(hold: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_request_hold_async
      * @param result a #GAsyncResult
@@ -8699,6 +9228,21 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     send_tones_async(tones: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_tones_async
+
+    /**
+     * Promisified version of {@link send_tones_async}
+     * 
+     * Send `tones` on every of `self'`s contents which have the
+     * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+     * 
+     * For more details, see tp_call_content_send_tones_async().
+     * @param tones a string representation of one or more DTMF events.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    send_tones_async(tones: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_send_tones_async().
      * @param result a #GAsyncResult
@@ -8711,6 +9255,17 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     set_queued_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_queued_async
+
+    /**
+     * Promisified version of {@link set_queued_async}
+     * 
+     * Notifies the CM that the local user is already in a call, so this call has
+     * been put in a call-waiting style queue.
+     * @returns A Promise of the result of {@link set_queued_async}
+     */
+    set_queued_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_set_queued_async().
      * @param result a #GAsyncResult
@@ -8721,6 +9276,16 @@ interface CallChannel {
      * @param callback a callback to call when the operation finishes
      */
     set_ringing_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_ringing_async
+
+    /**
+     * Promisified version of {@link set_ringing_async}
+     * 
+     * Indicate that the local user has been alerted about the incoming call.
+     * @returns A Promise of the result of {@link set_ringing_async}
+     */
+    set_ringing_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_channel_set_ringing_async().
      * @param result a #GAsyncResult
@@ -8963,6 +9528,17 @@ interface CallContent {
      * @param callback a callback to call when the operation finishes
      */
     remove_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_async
+
+    /**
+     * Promisified version of {@link remove_async}
+     * 
+     * Remove the content from the call. This will cause #TpCallContent::removed
+     * to be emitted.
+     * @returns A Promise of the result of {@link remove_async}
+     */
+    remove_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_content_remove_async().
      * @param result a #GAsyncResult
@@ -8978,6 +9554,21 @@ interface CallContent {
      * @param callback a callback to call when the operation finishes
      */
     send_tones_async(tones: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_tones_async
+
+    /**
+     * Promisified version of {@link send_tones_async}
+     * 
+     * Send `tones` DTMF code on `self` content. `self` must have the
+     * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+     * 
+     * If DTMF tones are already being played, this request is queued.
+     * @param tones a string representation of one or more DTMF events.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    send_tones_async(tones: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_content_send_tones_async().
      * @param result a #GAsyncResult
@@ -9152,6 +9743,24 @@ interface CallStream {
      * @param callback a callback to call when the operation finishes
      */
     request_receiving_async(contact: Contact, receive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_receiving_async
+
+    /**
+     * Promisified version of {@link request_receiving_async}
+     * 
+     * Request that a remote contact stops or starts sending on this stream.
+     * 
+     * The #TpCallStream:can-request-receiving property defines whether the protocol
+     * allows the local user to request the other side start sending on this stream.
+     * 
+     * If `receive` is %TRUE, request that the given contact starts to send media.
+     * If `receive` is %FALSE, request that the given contact stops sending media.
+     * @param contact contact from which sending is requested
+     * @param receive the requested receiving state
+     * @returns A Promise of the result of {@link request_receiving_async}
+     */
+    request_receiving_async(contact: Contact, receive: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_stream_request_receiving_async().
      * @param result a #GAsyncResult
@@ -9169,6 +9778,23 @@ interface CallStream {
      * @param callback a callback to call when the operation finishes
      */
     set_sending_async(send: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_sending_async
+
+    /**
+     * Promisified version of {@link set_sending_async}
+     * 
+     * Set the stream to start or stop sending media from the local user to other
+     * contacts.
+     * 
+     * If `send` is %TRUE, #TpCallStream:local-sending-state should change to
+     * %TP_SENDING_STATE_SENDING, if it isn't already.
+     * If `send` is %FALSE, #TpCallStream:local-sending-state should change to
+     * %TP_SENDING_STATE_NONE, if it isn't already.
+     * @param send the requested sending state
+     * @returns A Promise of the result of {@link set_sending_async}
+     */
+    set_sending_async(send: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_call_stream_set_sending_async().
      * @param result a #GAsyncResult
@@ -9761,6 +10387,21 @@ interface Channel {
      * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
      */
     close_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Close channel `self`. In most cases, it's generally cleaner to use
+     * tp_channel_leave_async() instead to properly leave and close the channel.
+     * 
+     * When the channel has been closed, `callback` will be called.
+     * You can then call tp_channel_close_finish() to get the result of
+     * the operation.
+     * @returns A Promise of: %TRUE if the channel has been closed; %FALSE otherwise
+     */
+    close_async(): globalThis.Promise<boolean>
     /**
      * Finishes a call to tp_channel_leave_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
@@ -9778,6 +10419,22 @@ interface Channel {
      * @param callback a callback to call when we left the channel
      */
     destroy_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of destroy_async
+
+    /**
+     * Promisified version of {@link destroy_async}
+     * 
+     * Destroy channel `self`.
+     * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_DESTROYABLE
+     * or if for any reason we can't destroy the channel, we close it.
+     * 
+     * When the channel has been destroyed or closed, `callback` will be called.
+     * You can then call tp_channel_destroy_finish() to get the result of
+     * the operation.
+     * @returns A Promise of: %TRUE if the channel has been destroyed or closed; %FALSE otherwise
+     */
+    destroy_async(): globalThis.Promise<boolean>
     /**
      * Completes a call to tp_channel_destroy_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
@@ -10083,6 +10740,24 @@ interface Channel {
      * @param callback a callback to call when we joined the channel
      */
     join_async(message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of join_async
+
+    /**
+     * Promisified version of {@link join_async}
+     * 
+     * Join channel `self` with `message` as join message.
+     * 
+     * When we joined the channel, `callback` will be called.
+     * You can then call tp_channel_join_finish() to get the result of
+     * the operation.
+     * 
+     * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
+     * must be prepared before calling this function.
+     * @param message the join message
+     * @returns A Promise of: %TRUE if the channel was successfully joined; %FALSE otherwise
+     */
+    join_async(message: string | null): globalThis.Promise<boolean>
     /**
      * Completes a call to tp_channel_join_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
@@ -10106,6 +10781,28 @@ interface Channel {
      * @param callback a callback to call when we left the channel
      */
     leave_async(reason: ChannelGroupChangeReason, message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of leave_async
+
+    /**
+     * Promisified version of {@link leave_async}
+     * 
+     * Leave channel `self` with `reason` as reason and `message` as leave message.
+     * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_GROUP or if
+     * for any reason we can't properly leave the channel, we close it.
+     * 
+     * When we left the channel, `callback` will be called.
+     * You can then call tp_channel_leave_finish() to get the result of
+     * the operation.
+     * 
+     * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
+     * does not have to be prepared and will be prepared for you. But this is a
+     * deprecated behaviour.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @returns A Promise of: %TRUE if the channel has been left; %FALSE otherwise
+     */
+    leave_async(reason: ChannelGroupChangeReason, message: string | null): globalThis.Promise<boolean>
     /**
      * Completes a call to tp_channel_leave_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
@@ -10125,6 +10822,24 @@ interface Channel {
      * @param callback a callback to call when `password` has been provided
      */
     provide_password_async(password: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of provide_password_async
+
+    /**
+     * Promisified version of {@link provide_password_async}
+     * 
+     * Provide `password` so that `self` can be joined.
+     * This function must be called with the correct password in order for
+     * channel joining to proceed if the TpChannel:password-needed property
+     * is set.
+     * 
+     * Once the password has been provided, `callback` will be
+     * called. You can then call tp_channel_provide_password_finish()
+     * to get the result of the operation.
+     * @param password the password
+     * @returns A Promise of: %TRUE if the password has been provided and accepted, %FALSE otherwise.
+     */
+    provide_password_async(password: string | null): globalThis.Promise<boolean>
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
@@ -10388,6 +11103,27 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the call returns
      */
     claim_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of claim_async
+
+    /**
+     * Promisified version of {@link claim_async}
+     * 
+     * Called by an approver to claim channels for handling internally.
+     * If this method is called successfully, the process calling this
+     * method becomes the handler for the channel.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted, in the same way as for
+     * tp_channel_dispatch_operation_handle_with_async().
+     * 
+     * This method may fail because the dispatch operation has already
+     * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+     * for more details. The approver MUST NOT attempt to interact with
+     * the channels further in this case.
+     * @returns A Promise of: %TRUE if the Claim() call was successful, otherwise %FALSE
+     */
+    claim_async(): globalThis.Promise<boolean>
     /**
      * Finishes an async call to Claim().
      * @param result a #GAsyncResult
@@ -10417,6 +11153,34 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the call returns
      */
     claim_with_async(client: BaseClient, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of claim_with_async
+
+    /**
+     * Promisified version of {@link claim_with_async}
+     * 
+     * Called by an approver to claim channels for handling internally.
+     * If this method is called successfully, the process calling this
+     * method becomes the handler for the channel.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted, in the same way as for
+     * tp_channel_dispatch_operation_handle_with_async().
+     * 
+     * This method may fail because the dispatch operation has already
+     * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+     * for more details. The approver MUST NOT attempt to interact with
+     * the channels further in this case.
+     * 
+     * This is an improved version of tp_channel_dispatch_operation_claim_async()
+     * as it tells `client` about the new channels being handled.
+     * 
+     * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+     * calling this function.
+     * @param client the #TpBaseClient claiming `self`
+     * @returns A Promise of: %TRUE if the Claim() call was successful, otherwise %FALSE
+     */
+    claim_with_async(client: BaseClient): globalThis.Promise<boolean>
     /**
      * Finishes an async call to Claim() initiated using
      * tp_channel_dispatch_operation_claim_with_async().
@@ -10442,6 +11206,29 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the request has been satisfied
      */
     close_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_channels_async
+
+    /**
+     * Promisified version of {@link close_channels_async}
+     * 
+     * Called by an approver to claim channels and close them all right away.
+     * If this method is called successfully, `self` has been claimed and
+     * tp_channel_close_async() has been called on all of its channels.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted, in the same way as for
+     * tp_channel_dispatch_operation_handle_with_async().
+     * 
+     * This method may fail because the dispatch operation has already
+     * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+     * for more details.
+     * 
+     * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+     * calling this function.
+     * @returns A Promise of: %TRUE if the Claim() call was successful and Close() has at least been attempted on all the channels, otherwise %FALSE
+     */
+    close_channels_async(): globalThis.Promise<boolean>
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_close_channels_async().
@@ -10467,6 +11254,29 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the request has been satisfied
      */
     destroy_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of destroy_channels_async
+
+    /**
+     * Promisified version of {@link destroy_channels_async}
+     * 
+     * Called by an approver to claim channels and destroy them all right away.
+     * If this method is called successfully, `self` has been claimed and
+     * tp_channel_destroy_async() has been called on all of its channels.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted, in the same way as for
+     * tp_channel_dispatch_operation_handle_with_async().
+     * 
+     * This method may fail because the dispatch operation has already
+     * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+     * for more details.
+     * 
+     * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+     * calling this function.
+     * @returns A Promise of: %TRUE if the Claim() call was successful and tp_channel_destroy_async() has at least been attempted on all the channels, otherwise %FALSE
+     */
+    destroy_channels_async(): globalThis.Promise<boolean>
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_destroy_channels_async().
@@ -10504,6 +11314,33 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the call returns
      */
     handle_with_async(handler: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of handle_with_async
+
+    /**
+     * Promisified version of {@link handle_with_async}
+     * 
+     * Called by an approver to accept a channel bundle and request that the
+     * given handler be used to handle it.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted with the TP_DBUS_ERROR_OBJECT_REMOVED error code.
+     * 
+     * However, this method may fail because the dispatch has already been
+     * completed and the object has already gone. If this occurs, it indicates
+     * that another approver has asked for the bundle to be handled by a
+     * particular handler. The approver MUST NOT attempt to interact with
+     * the channels further in this case, unless it is separately
+     * invoked as the handler.
+     * 
+     * Approvers which are also channel handlers SHOULD use
+     * tp_channel_dispatch_operation_claim_async() instead
+     * of tp_channel_dispatch_operation_handle_with_async() to request
+     * that they can handle a channel bundle themselves.
+     * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+     * @returns A Promise of: %TRUE if the HandleWith() call was successful, otherwise %FALSE
+     */
+    handle_with_async(handler: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async call to HandleWith().
      * @param result a #GAsyncResult
@@ -10530,6 +11367,31 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the call returns
      */
     handle_with_time_async(handler: string | null, user_action_time: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of handle_with_time_async
+
+    /**
+     * Promisified version of {@link handle_with_time_async}
+     * 
+     * A variant of tp_channel_dispatch_operation_handle_with_async()
+     * allowing the approver to pass an user action time.
+     * This timestamp will be passed to the Handler when HandleChannels is called.
+     * 
+     * If an X server timestamp for the user action causing this method call is
+     * available, `user_action_time` should be this timestamp (for instance, the
+     * result of gdk_event_get_time() if it is not %GDK_CURRENT_TIME). Otherwise, it
+     * may be %TP_USER_ACTION_TIME_NOT_USER_ACTION to behave as if there was no
+     * user action or it happened a long time ago, or
+     * %TP_USER_ACTION_TIME_CURRENT_TIME to have the Handler behave as though the
+     * user action had just happened (resembling, but not numerically equal to,
+     * %GDK_CURRENT_TIME).
+     * 
+     * This method has been introduced in telepathy-mission-control 5.5.0.
+     * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+     * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME
+     * @returns A Promise of: %TRUE if the HandleWithTime() call was successful, otherwise %FALSE
+     */
+    handle_with_time_async(handler: string | null, user_action_time: number): globalThis.Promise<boolean>
     /**
      * Finishes an async call to HandleWithTime().
      * @param result a #GAsyncResult
@@ -10556,6 +11418,31 @@ interface ChannelDispatchOperation {
      * @param callback a callback to call when the request has been satisfied
      */
     leave_channels_async(reason: ChannelGroupChangeReason, message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of leave_channels_async
+
+    /**
+     * Promisified version of {@link leave_channels_async}
+     * 
+     * Called by an approver to claim channels and leave them all right away.
+     * If this method is called successfully, `self` has been claimed and
+     * tp_channel_leave_async() has been called on all of its channels.
+     * 
+     * If successful, this method will cause the #TpProxy::invalidated signal
+     * to be emitted, in the same way as for
+     * tp_channel_dispatch_operation_handle_with_async().
+     * 
+     * This method may fail because the dispatch operation has already
+     * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+     * for more details.
+     * 
+     * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+     * calling this function.
+     * @param reason the leave reason
+     * @param message the leave message
+     * @returns A Promise of: %TRUE if the Claim() call was successful and tp_channel_leave_async() has at least been attempted on all the channels, otherwise %FALSE
+     */
+    leave_channels_async(reason: ChannelGroupChangeReason, message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_leave_channels_async().
@@ -10724,6 +11611,21 @@ interface ChannelDispatcher {
      * @param callback a callback to call when the request is satisfied
      */
     present_channel_async(channel: Channel, user_action_time: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of present_channel_async
+
+    /**
+     * Promisified version of {@link present_channel_async}
+     * 
+     * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
+     * to the handler of `channel` to re-present it to the user.
+     * You can then call tp_channel_dispatcher_present_channel_finish() to
+     * get the result of the operation.
+     * @param channel a #TpChannel
+     * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
+     * @returns A Promise of: %TRUE if the call succeeded, otherwise %FALSE.
+     */
+    present_channel_async(channel: Channel, user_action_time: number): globalThis.Promise<boolean>
     /**
      * Finishes an async channel presentation request started using
      * tp_channel_dispatcher_present_channel_async().
@@ -11442,6 +12344,21 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     add_to_group_async(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of add_to_group_async
+
+    /**
+     * Promisified version of {@link add_to_group_async}
+     * 
+     * Add the given `contacts` to the given `group,` creating it if necessary.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects to  include in the group.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    add_to_group_async(group: string | null, contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_add_to_group_async()
      * @param result a #GAsyncResult
@@ -11459,6 +12376,22 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     authorize_publication_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of authorize_publication_async
+
+    /**
+     * Promisified version of {@link authorize_publication_async}
+     * 
+     * For each of the given `contacts,` request that the local user's presence is
+     * sent to that contact, i.e. that their #TpContact:publish-state property
+     * becomes %TP_SUBSCRIPTION_STATE_YES.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  authorize
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    authorize_publication_async(contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_authorize_publication_async()
      * @param result a #GAsyncResult
@@ -11490,6 +12423,18 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     block_contacts_async(contacts: Contact[], report_abusive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of block_contacts_async
+
+    /**
+     * Promisified version of {@link block_contacts_async}
+     * 
+     * Direct the server to block `contacts`.
+     * @param contacts An array of #TpContact objects to  block
+     * @param report_abusive If %TRUE, report these contacts as abusive to the server administrators as well as blocking them. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    block_contacts_async(contacts: Contact[], report_abusive: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_block_contacts_async()
      * @param result a #GAsyncResult
@@ -11508,6 +12453,22 @@ interface Connection {
      * @param callback a callback to call when the request is satisfied
      */
     disconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of disconnect_async
+
+    /**
+     * Promisified version of {@link disconnect_async}
+     * 
+     * Disconnect the connection.
+     * 
+     * This method is intended for use by AccountManager implementations,
+     * such as Mission Control. To disconnect a connection managed by an
+     * AccountManager, either use tp_account_request_presence_async()
+     * or tp_account_set_enabled_async(), depending whether the intention is
+     * to put the account offline temporarily, or disable it longer-term.
+     * @returns A Promise of: %TRUE if the call was successful, otherwise %FALSE
+     */
+    disconnect_async(): globalThis.Promise<boolean>
     /**
      * Interpret the result of tp_connection_disconnect_async().
      * @param result a #GAsyncResult
@@ -11528,6 +12489,25 @@ interface Connection {
      * @param callback A user callback to call when the contact is ready
      */
     dup_contact_by_id_async(id: string | null, features: ContactFeature[] | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of dup_contact_by_id_async
+
+    /**
+     * Promisified version of {@link dup_contact_by_id_async}
+     * 
+     * Create a #TpContact object and make any asynchronous method calls necessary
+     * to ensure that all the features specified in `features` are ready for use
+     * (if they are supported at all).
+     * 
+     * It is not an error to put features in `features` even if the connection
+     * manager doesn't support them - users of this method should have a static
+     * list of features they would like to use if possible, and use it for all
+     * connection managers.
+     * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
+     * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if `n_features` is 0)
+     * @returns A Promise of: a #TpContact or %NULL on error.
+     */
+    dup_contact_by_id_async(id: string | null, features: ContactFeature[] | null): globalThis.Promise<Contact>
     /**
      * Finishes tp_connection_dup_contact_by_id_async().
      * @param result a #GAsyncResult
@@ -11894,6 +12874,21 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     remove_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_contacts_async
+
+    /**
+     * Promisified version of {@link remove_contacts_async}
+     * 
+     * Remove the given `contacts` from the contact list entirely. It is
+     * protocol-dependent whether this works, and under which circumstances.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    remove_contacts_async(contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_remove_contacts_async()
      * @param result a #GAsyncResult
@@ -11911,6 +12906,22 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     remove_from_group_async(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_from_group_async
+
+    /**
+     * Promisified version of {@link remove_from_group_async}
+     * 
+     * Remove the given `contacts` from the given `group`. If there are no members
+     * left in the group afterwards, the group MAY itself be removed.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects to  remove from the group.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    remove_from_group_async(group: string | null, contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_remove_from_group_async()
      * @param result a #GAsyncResult
@@ -11926,6 +12937,20 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     remove_group_async(group: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_group_async
+
+    /**
+     * Promisified version of {@link remove_group_async}
+     * 
+     * Remove all members from the given group, then remove the group itself.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to remove.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    remove_group_async(group: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_remove_group_async()
      * @param result a #GAsyncResult
@@ -11946,6 +12971,25 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     rename_group_async(old_name: string | null, new_name: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rename_group_async
+
+    /**
+     * Promisified version of {@link rename_group_async}
+     * 
+     * Rename the given `old_name`.
+     * 
+     * On protocols where groups behave like tags, this is an API short-cut for
+     * adding all of the group's members to a group with the new name, then removing
+     * the old group.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param old_name the group to rename
+     * @param new_name the new name for the group
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    rename_group_async(old_name: string | null, new_name: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_rename_group_async()
      * @param result a #GAsyncResult
@@ -11978,6 +13022,23 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     request_subscription_async(contacts: Contact[], message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_subscription_async
+
+    /**
+     * Promisified version of {@link request_subscription_async}
+     * 
+     * Request that the given `contacts` allow the local user to subscribe to their
+     * presence, i.e. that their #TpContact:subscribe-state property becomes
+     * %TP_SUBSCRIPTION_STATE_YES.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to whom  requests are to be sent.
+     * @param message an optional plain-text message from the user, to send to those  `contacts` with the subscription request.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    request_subscription_async(contacts: Contact[], message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_request_subscription_async()
      * @param result a #GAsyncResult
@@ -11996,6 +13057,23 @@ interface Connection {
      * @param callback a callback to call when the request is satisfied
      */
     set_contact_info_async(info: ContactInfoField[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_contact_info_async
+
+    /**
+     * Promisified version of {@link set_contact_info_async}
+     * 
+     * Requests an asynchronous set of the contact info of `self`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_connection_set_contact_info_finish() to get the result of the operation.
+     * 
+     * This method should not be expected to succeed if the result of
+     * tp_connection_get_contact_info_flags() does not include
+     * %TP_CONTACT_INFO_FLAG_CAN_SET.
+     * @param info a #GList of  #TpContactInfoField
+     * @returns A Promise of: %TRUE if the request call was successful, otherwise %FALSE
+     */
+    set_contact_info_async(info: ContactInfoField[]): globalThis.Promise<boolean>
     /**
      * Finishes an async set of `self` info.
      * @param result a #GAsyncResult
@@ -12013,6 +13091,22 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     set_group_members_async(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_group_members_async
+
+    /**
+     * Promisified version of {@link set_group_members_async}
+     * 
+     * Add the given `contacts` to the given `group` (creating it if necessary), and
+     * remove all other members.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+     * @param group the group to alter.
+     * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    set_group_members_async(group: string | null, contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_set_group_members_async()
      * @param result a #GAsyncResult
@@ -12025,6 +13119,17 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     unblock_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unblock_contacts_async
+
+    /**
+     * Promisified version of {@link unblock_contacts_async}
+     * 
+     * Direct the server to unblock `contacts`.
+     * @param contacts An array of #TpContact objects to  block
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unblock_contacts_async(contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_unblock_contacts_async()
      * @param result a #GAsyncResult
@@ -12041,6 +13146,21 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     unpublish_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unpublish_async
+
+    /**
+     * Promisified version of {@link unpublish_async}
+     * 
+     * Attempt to set the given `contacts'` #TpContact:publish-state property to
+     * %TP_SUBSCRIPTION_STATE_NO, i.e. stop sending presence to them.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unpublish_async(contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_unpublish_async()
      * @param result a #GAsyncResult
@@ -12064,6 +13184,21 @@ interface Connection {
      * @param callback a callback to call when the operation finishes
      */
     unsubscribe_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unsubscribe_async
+
+    /**
+     * Promisified version of {@link unsubscribe_async}
+     * 
+     * Attempt to set the given `contacts'` #TpContact:subscribe-state property to
+     * %TP_SUBSCRIPTION_STATE_NO, i.e. stop receiving their presence.
+     * 
+     * For this to work properly `self` must have interface
+     * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+     * @param contacts An array of #TpContact objects to  remove
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unsubscribe_async(contacts: Contact[]): globalThis.Promise<boolean>
     /**
      * Finishes tp_connection_unsubscribe_async()
      * @param result a #GAsyncResult
@@ -12099,6 +13234,25 @@ interface Connection {
      * @param callback A user callback to call when the contacts are ready
      */
     upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of upgrade_contacts_async
+
+    /**
+     * Promisified version of {@link upgrade_contacts_async}
+     * 
+     * Given several #TpContact objects, make asynchronous method calls
+     * ensure that all the features specified in `features` are ready for use
+     * (if they are supported at all).
+     * 
+     * It is not an error to put features in `features` even if the connection
+     * manager doesn't support them - users of this method should have a static
+     * list of features they would like to use if possible, and use it for all
+     * connection managers.
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @param features An array of features that must be  ready for use (if supported) before the callback is called
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    upgrade_contacts_async(contacts: Contact[], features: ContactFeature[]): globalThis.Promise</* contacts */ Contact[]>
     /**
      * Finishes tp_connection_upgrade_contacts_async().
      * @param result a #GAsyncResult
@@ -12839,6 +13993,18 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     add_to_group_async(group: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of add_to_group_async
+
+    /**
+     * Promisified version of {@link add_to_group_async}
+     * 
+     * Convenience wrapper for tp_connection_add_to_group_async()
+     * on a single contact.
+     * @param group the group to alter.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    add_to_group_async(group: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_add_to_group_async()
      * @param result a #GAsyncResult
@@ -12851,6 +14017,17 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     authorize_publication_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of authorize_publication_async
+
+    /**
+     * Promisified version of {@link authorize_publication_async}
+     * 
+     * Convenience wrapper for tp_connection_authorize_publication_async()
+     * on a single contact.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    authorize_publication_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_authorize_publication_async()
      * @param result a #GAsyncResult
@@ -12865,6 +14042,19 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     block_async(report_abusive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of block_async
+
+    /**
+     * Promisified version of {@link block_async}
+     * 
+     * Block communications with a contact, optionally reporting the contact as
+     * abusive to the server administrators. To block more than one contact at once,
+     * see tp_connection_block_contacts_async().
+     * @param report_abusive If %TRUE, report this contact as abusive to the server administrators as well as blocking him. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    block_async(report_abusive: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_block_async()
      * @param result a #GAsyncResult
@@ -13055,6 +14245,17 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     remove_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_async
+
+    /**
+     * Promisified version of {@link remove_async}
+     * 
+     * Convenience wrapper for tp_connection_remove_contacts_async()
+     * on a single contact.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    remove_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_remove_async()
      * @param result a #GAsyncResult
@@ -13068,6 +14269,18 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     remove_from_group_async(group: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of remove_from_group_async
+
+    /**
+     * Promisified version of {@link remove_from_group_async}
+     * 
+     * Convenience wrapper for tp_connection_remove_from_group_async()
+     * on a single contact.
+     * @param group the group to alter.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    remove_from_group_async(group: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_remove_from_group_async()
      * @param result a #GAsyncResult
@@ -13095,6 +14308,32 @@ interface Contact {
      * @param callback a callback to call when the request is satisfied
      */
     request_contact_info_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_contact_info_async
+
+    /**
+     * Promisified version of {@link request_contact_info_async}
+     * 
+     * Requests an asynchronous request of the contact info of `self`. When
+     * the operation is finished, `callback` will be called. You can then call
+     * tp_contact_request_contact_info_finish() to get the result of the operation.
+     * 
+     * If the operation is successful, the #TpContact:contact-info property will be
+     * updated (emitting "notify::contact-info" signal) before `callback` is called.
+     * That means you can call tp_contact_get_contact_info() to get the new vCard
+     * inside `callback`.
+     * 
+     * Note that requesting the vCard from the network can take significant time, so
+     * a bigger timeout is set on the underlying D-Bus call. `cancellable` can be
+     * cancelled to free resources used in the D-Bus call if the caller is no longer
+     * interested in the vCard.
+     * 
+     * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on `self,` it will be
+     * set before its property gets updated and `callback` is called.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if the request call was successful, otherwise %FALSE
+     */
+    request_contact_info_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async request of `self` info. If the operation was successful,
      * the contact's vCard can be accessed using tp_contact_get_contact_info().
@@ -13109,6 +14348,18 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     request_subscription_async(message: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_subscription_async
+
+    /**
+     * Promisified version of {@link request_subscription_async}
+     * 
+     * Convenience wrapper for tp_connection_request_subscription_async()
+     * on a single contact.
+     * @param message an optional message
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    request_subscription_async(message: string | null): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_request_subscription_async()
      * @param result a #GAsyncResult
@@ -13132,6 +14383,28 @@ interface Contact {
      * @param callback a callback to call when the request is satisfied
      */
     set_contact_groups_async(groups: string[] | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_contact_groups_async
+
+    /**
+     * Promisified version of {@link set_contact_groups_async}
+     * 
+     * Add `self` to the given groups (creating new groups if necessary), and remove
+     * it from all other groups. If the user is removed from a group of which they
+     * were the only member, the group MAY be removed automatically. You can then
+     * call tp_contact_set_contact_groups_finish() to get the result of the
+     * operation.
+     * 
+     * If the operation is successful and %TP_CONTACT_FEATURE_CONTACT_GROUPS is
+     * prepared, the #TpContact:contact-groups property will be
+     * updated (emitting "notify::contact-groups" signal) and
+     * #TpContact::contact-groups-changed signal will be emitted before `callback`
+     * is called. That means you can call tp_contact_get_contact_groups() to get the
+     * new contact groups inside `callback`.
+     * @param groups the set of  groups which the contact should be in (may be %NULL if `n_groups` is 0)
+     * @returns A Promise of: %TRUE if the request call was successful, otherwise %FALSE
+     */
+    set_contact_groups_async(groups: string[] | null): globalThis.Promise<boolean>
     /**
      * Finishes an async set of `self` contact groups.
      * @param result a #GAsyncResult
@@ -13144,6 +14417,17 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     unblock_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unblock_async
+
+    /**
+     * Promisified version of {@link unblock_async}
+     * 
+     * Unblock communications with a contact. To unblock more than one contact
+     * at once, see tp_connection_unblock_contacts_async().
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unblock_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_unblock_async()
      * @param result a #GAsyncResult
@@ -13156,6 +14440,17 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     unpublish_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unpublish_async
+
+    /**
+     * Promisified version of {@link unpublish_async}
+     * 
+     * Convenience wrapper for tp_connection_unpublish_async()
+     * on a single contact.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unpublish_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_unpublish_async()
      * @param result a #GAsyncResult
@@ -13168,6 +14463,17 @@ interface Contact {
      * @param callback a callback to call when the operation finishes
      */
     unsubscribe_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unsubscribe_async
+
+    /**
+     * Promisified version of {@link unsubscribe_async}
+     * 
+     * Convenience wrapper for tp_connection_unsubscribe_async()
+     * on a single contact.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    unsubscribe_async(): globalThis.Promise<boolean>
     /**
      * Finishes tp_contact_unsubscribe_async()
      * @param result a #GAsyncResult
@@ -13404,6 +14710,21 @@ interface ContactSearch extends Gio.AsyncInitable {
      * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
     reset_async(server: string | null, limit: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of reset_async
+
+    /**
+     * Promisified version of {@link reset_async}
+     * 
+     * Resets the contact search object so a new search can be performed.
+     * If another tp_contact_search_reset_async() call is in progress,
+     * it will be cancelled and tp_contact_search_reset_finish() will
+     * return an appropriate error.
+     * @param server the server on which to search for contacts, or %NULL
+     * @param limit The maximum number of results the server should return, or 0 for the server default.
+     * @returns A Promise of: the new search keys, or %NULL in case of error.
+     */
+    reset_async(server: string | null, limit: number): globalThis.Promise<string[]>
     /**
      * <!-- -->
      * @param result the #GAsyncResult from the callback
@@ -13736,6 +15057,19 @@ interface DBusTubeChannel {
      * @param callback a callback to call when the tube has been offered
      */
     accept_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_async
+
+    /**
+     * Promisified version of {@link accept_async}
+     * 
+     * Accept an incoming D-Bus tube. When the tube has been accepted
+     * `callback` will be called. You can then call
+     * tp_dbus_tube_channel_accept_finish() to get the #GDBusConnection that will
+     * be used to communicate through the tube.
+     * @returns A Promise of: a reference on a #GDBusConnection if the tube has been successfully accepted and opened; %NULL otherwise.
+     */
+    accept_async(): globalThis.Promise<Gio.DBusConnection>
     /**
      * Finishes to accept an incoming D-Bus tube. The returned #GDBusConnection
      * is ready to be used to exchange data through the tube.
@@ -13771,6 +15105,20 @@ interface DBusTubeChannel {
      * @param callback a callback to call when the tube has been offered
      */
     offer_async(params: GLib.HashTable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of offer_async
+
+    /**
+     * Promisified version of {@link offer_async}
+     * 
+     * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
+     * `callback` will be called. You can then call
+     * tp_dbus_tube_channel_offer_finish() to get the #GDBusConnection that will
+     * be used to communicate through the tube.
+     * @param params parameters of the tube, or %NULL
+     * @returns A Promise of: a reference on a #GDBusConnection if the tube has been successfully offered and opened; %NULL otherwise.
+     */
+    offer_async(params: GLib.HashTable | null): globalThis.Promise<Gio.DBusConnection>
     /**
      * Finishes offering an outgoing D-Bus tube. The returned #GDBusConnection
      * is ready to be used to exchange data through the tube.
@@ -13902,6 +15250,18 @@ interface DebugClient {
      * @param callback callback to call when the messages have been retrieved
      */
     get_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_messages_async
+
+    /**
+     * Promisified version of {@link get_messages_async}
+     * 
+     * Retrieve buffered messages from `self`. Once `callback` is called,
+     * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
+     * objects.
+     * @returns A Promise of:  a #GPtrArray of #TpDebugMessage, free with g_ptr_array_unref()
+     */
+    get_messages_async(): globalThis.Promise<DebugMessage[]>
     /**
      * Finishes tp_debug_client_set_enabled_async().
      * @param result a #GAsyncResult
@@ -13920,6 +15280,18 @@ interface DebugClient {
      * @param callback a callback to call when the request is satisfied
      */
     set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_enabled_async
+
+    /**
+     * Promisified version of {@link set_enabled_async}
+     * 
+     * Enable or disable publishing of debug messages on the bus by the component
+     * owning `self'`s bus name.
+     * @param enabled %TRUE if debug messages should be published on the bus, %FALSE otherwise
+     * @returns A Promise of: %TRUE, if the operation suceeded, %FALSE otherwise
+     */
+    set_enabled_async(enabled: boolean): globalThis.Promise<boolean>
     /**
      * Finishes tp_debug_client_set_enabled_async().
      * @param result a #GAsyncResult
@@ -14232,6 +15604,22 @@ interface FileTransferChannel {
      * @param callback a callback to call when the transfer has been accepted
      */
     accept_file_async(file: Gio.File, offset: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_file_async
+
+    /**
+     * Promisified version of {@link accept_file_async}
+     * 
+     * Accept an incoming file transfer in the
+     * %TP_FILE_TRANSFER_STATE_PENDING state. Once the accept has been
+     * processed, `callback` will be called. You can then call
+     * tp_file_transfer_channel_accept_file_finish() to get the result of
+     * the operation.
+     * @param file a #GFile where the file should be saved
+     * @param offset Offset from the start of `file` where transfer begins
+     * @returns A Promise of: %TRUE if the accept operation was a success, or %FALSE
+     */
+    accept_file_async(file: Gio.File, offset: number): globalThis.Promise<boolean>
     /**
      * Finishes a call to tp_file_transfer_channel_accept_file_async().
      * @param result a #GAsyncResult
@@ -14302,6 +15690,27 @@ interface FileTransferChannel {
      * @param callback a callback to call when the transfer has been accepted
      */
     provide_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of provide_file_async
+
+    /**
+     * Promisified version of {@link provide_file_async}
+     * 
+     * Provide a file transfer. This should be called when the file
+     * transfer state changes (tp_file_transfer_channel_get_state() and
+     * the "notify::state" signal) to
+     * %TP_FILE_TRANSFER_STATE_ACCEPTED or
+     * %TP_FILE_TRANSFER_STATE_PENDING. Once the file has been provided,
+     * the channel #TpFileTransferChannel:state will change to
+     * %TP_FILE_TRANSFER_STATE_OPEN.
+     * 
+     * Once the file has been provided, `callback` will be called. You
+     * should then call tp_file_transfer_channel_provide_file_finish() to
+     * get the result of the operation.
+     * @param file a #GFile to send to the remote contact
+     * @returns A Promise of: %TRUE if the file has been successfully provided, or %FALSE.
+     */
+    provide_file_async(file: Gio.File): globalThis.Promise<boolean>
     /**
      * Finishes a call to tp_file_transfer_channel_provide_file_async().
      * 
@@ -15346,6 +16755,22 @@ interface Protocol {
      * @param callback a callback to call when  the request is satisfied
      */
     identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of identify_account_async
+
+    /**
+     * Promisified version of {@link identify_account_async}
+     * 
+     * Return a string that could identify the account with the given
+     * parameters. In most protocols that string is a normalized 'account'
+     * parameter, but some protocols have more complex requirements;
+     * for instance, on IRC, the 'account' (nickname) is insufficient,
+     * and must be combined with a server or network name.
+     * @param vardict the account parameters as a #GVariant of  type %G_VARIANT_TYPE_VARDICT. If it is floating, ownership will  be taken, as if via g_variant_ref_sink().
+     * @param cancellable may be used to cancel the async request
+     * @returns A Promise of: a string identifying the account,  or %NULL on error
+     */
+    identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Interpret the result of tp_protocol_identify_account_async().
      * @param result a #GAsyncResult
@@ -15361,6 +16786,20 @@ interface Protocol {
      * @param callback a callback to call when  the request is satisfied
      */
     normalize_contact_async(contact: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of normalize_contact_async
+
+    /**
+     * Promisified version of {@link normalize_contact_async}
+     * 
+     * Perform best-effort offline contact normalization. This does syntactic
+     * normalization (e.g. transforming case-insensitive text to lower-case),
+     * but does not query servers or anything similar.
+     * @param contact a contact identifier, possibly invalid
+     * @param cancellable may be used to cancel the async request
+     * @returns A Promise of: the normalized form of @contact,  or %NULL on error
+     */
+    normalize_contact_async(contact: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Interpret the result of tp_protocol_normalize_contact_async().
      * @param result a #GAsyncResult
@@ -15376,6 +16815,20 @@ interface Protocol {
      * @param callback a callback to call when the request is satisfied
      */
     normalize_contact_uri_async(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of normalize_contact_uri_async
+
+    /**
+     * Promisified version of {@link normalize_contact_uri_async}
+     * 
+     * Perform best-effort offline contact normalization, for a contact in
+     * the form of a URI. This method will fail if the URI is not in a
+     * scheme supported by this protocol or connection manager.
+     * @param uri a contact URI, possibly invalid
+     * @param cancellable may be used to cancel the async request
+     * @returns A Promise of: the normalized form of @uri,  or %NULL on error
+     */
+    normalize_contact_uri_async(uri: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Interpret the result of tp_protocol_normalize_contact_uri_async().
      * @param result a #GAsyncResult
@@ -15392,6 +16845,21 @@ interface Protocol {
      * @param callback a callback to call when the request is satisfied
      */
     normalize_vcard_address_async(field: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of normalize_vcard_address_async
+
+    /**
+     * Promisified version of {@link normalize_vcard_address_async}
+     * 
+     * Perform best-effort offline contact normalization, for a contact in
+     * the form of a vCard field. This method will fail if the vCard field
+     * is not supported by this protocol or connection manager.
+     * @param field a vCard field
+     * @param value an address that is a value of `field`
+     * @param cancellable may be used to cancel the async request
+     * @returns A Promise of: the normalized form of @value,  or %NULL on error
+     */
+    normalize_vcard_address_async(field: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Interpret the result of tp_protocol_normalize_vcard_address_async().
      * @param result a #GAsyncResult
@@ -15717,6 +17185,65 @@ interface Proxy {
      * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
      */
     prepare_async(features: GLib.Quark[] | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of prepare_async
+
+    /**
+     * Promisified version of {@link prepare_async}
+     * 
+     * #TpProxy itself does not support any features, but subclasses like
+     * #TpChannel can support features, which can either be core functionality like
+     * %TP_CHANNEL_FEATURE_CORE, or extended functionality like
+     * %TP_CHANNEL_FEATURE_CHAT_STATES.
+     * 
+     * Proxy instances start with no features prepared. When features are
+     * requested via tp_proxy_prepare_async(), the proxy starts to do the
+     * necessary setup to use those features.
+     * 
+     * tp_proxy_prepare_async() always waits for core functionality of the proxy's
+     * class to be prepared, even if it is not specifically requested: for
+     * instance, because %TP_CHANNEL_FEATURE_CORE is core functionality of a
+     * #TpChannel,
+     * 
+     * 
+     * ```
+     * TpChannel *channel = ...;
+     * 
+     * tp_proxy_prepare_async (channel, NULL, callback, user_data);
+     * ```
+     * 
+     * 
+     * is equivalent to
+     * 
+     * 
+     * ```
+     * TpChannel *channel = ...;
+     * GQuark features[] = { TP_CHANNEL_FEATURE_CORE, 0 };
+     * 
+     * tp_proxy_prepare_async (channel, features, callback, user_data);
+     * ```
+     * 
+     * 
+     * If a feature represents core functionality (like %TP_CHANNEL_FEATURE_CORE),
+     * failure to prepare it will result in tp_proxy_prepare_async() finishing
+     * unsuccessfully: if failure to prepare the feature indicates that the proxy
+     * is no longer useful, it will also emit #TpProxy::invalidated.
+     * 
+     * If a feature represents non-essential functionality
+     * (like %TP_CHANNEL_FEATURE_CHAT_STATES), or is not supported by the object
+     * at all, then failure to prepare it is not fatal:
+     * tp_proxy_prepare_async() will complete successfully, but
+     * tp_proxy_is_prepared() will still return %FALSE for the feature, and
+     * accessor methods for the feature will typically return a dummy value.
+     * 
+     * Some #TpProxy subclasses automatically start to prepare their core
+     * features when instantiated, and features will sometimes become prepared as
+     * a side-effect of other actions, but to ensure that a feature is present you
+     * must generally call tp_proxy_prepare_async() and wait for the result.
+     * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+     * @returns A Promise of: %FALSE (setting @error) if tp_proxy_prepare_async() failed  or was cancelled
+     */
+    prepare_async(features: GLib.Quark[] | null): globalThis.Promise<boolean>
     /**
      * Check for error in a call to tp_proxy_prepare_async(). An error here
      * generally indicates that either the asynchronous call was cancelled,
@@ -16413,6 +17940,20 @@ interface SimpleClientFactory {
      * @param callback a callback to call when the operation finishes
      */
     ensure_contact_by_id_async(connection: Connection, identifier: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ensure_contact_by_id_async
+
+    /**
+     * Promisified version of {@link ensure_contact_by_id_async}
+     * 
+     * Same as tp_connection_dup_contact_by_id_async(), but prepare the
+     * contact with all features previously passed to
+     * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection
+     * @param identifier a string representing the contact's identifier
+     * @returns A Promise of: a #TpContact or %NULL on error.
+     */
+    ensure_contact_by_id_async(connection: Connection, identifier: string | null): globalThis.Promise<Contact>
     /**
      * Finishes tp_simple_client_factory_ensure_contact_by_id_async()
      * @param result a #GAsyncResult
@@ -16433,6 +17974,20 @@ interface SimpleClientFactory {
      * @param callback a callback to call when the operation finishes
      */
     upgrade_contacts_async(connection: Connection, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of upgrade_contacts_async
+
+    /**
+     * Promisified version of {@link upgrade_contacts_async}
+     * 
+     * Same as tp_connection_upgrade_contacts_async(), but prepare contacts with all
+     * features previously passed to
+     * tp_simple_client_factory_add_contact_features().
+     * @param connection a #TpConnection whose #TpProxy:factory is this object
+     * @param contacts An array of #TpContact objects  associated with `self`
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    upgrade_contacts_async(connection: Connection, contacts: Contact[]): globalThis.Promise</* contacts */ Contact[]>
     /**
      * Finishes tp_simple_client_factory_upgrade_contacts_async()
      * @param result a #GAsyncResult
@@ -16917,6 +18472,18 @@ interface StreamTubeChannel {
      * @param callback a callback to call when the tube has been accepted
      */
     accept_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_async
+
+    /**
+     * Promisified version of {@link accept_async}
+     * 
+     * Accept an incoming stream tube. When the tube has been accepted, `callback`
+     * will be called. You can then call tp_stream_tube_channel_accept_finish()
+     * to get a #TpStreamTubeConnection connected to the tube.
+     * @returns A Promise of: a newly created #TpStreamTubeConnection
+     */
+    accept_async(): globalThis.Promise<StreamTubeConnection>
     /**
      * Finishes accepting an incoming stream tube. The returned
      * #TpStreamTubeConnection can then be used to exchange data through the tube.
@@ -16955,6 +18522,23 @@ interface StreamTubeChannel {
      * @param callback a callback to call when the tube has been offered
      */
     offer_async(params: GLib.HashTable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of offer_async
+
+    /**
+     * Promisified version of {@link offer_async}
+     * 
+     * Offer an outgoing stream tube. When the tube has been offered, `callback`
+     * will be called. You can then call tp_stream_tube_channel_offer_finish()
+     * to get the result of the operation.
+     * 
+     * You have to connect to the #TpStreamTubeChannel::incoming signal to get a
+     * #TpStreamTubeConnection each time a contact establishes a connection to
+     * the tube.
+     * @param params parameters of the tube, or %NULL
+     * @returns A Promise of: %TRUE when a Tube has been successfully offered; %FALSE otherwise
+     */
+    offer_async(params: GLib.HashTable | null): globalThis.Promise<boolean>
     /**
      * Finishes offering an outgoing stream tube.
      * @param result a #GAsyncResult
@@ -17282,6 +18866,20 @@ interface TLSCertificate {
      * @param callback called on success or failure
      */
     accept_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_async
+
+    /**
+     * Promisified version of {@link accept_async}
+     * 
+     * Accept this certificate, asynchronously. In or after `callback,`
+     * you may call tp_tls_certificate_accept_finish() to check the result.
+     * 
+     * #GObject::notify::state will also be emitted when the connection manager
+     * signals that the certificate has been accepted.
+     * @returns A Promise of: %TRUE if acceptance was successful
+     */
+    accept_async(): globalThis.Promise<boolean>
     /**
      * Check the result of tp_tls_certificate_accept_async().
      * @param result the result passed to the callback by  tp_tls_certificate_accept_async()
@@ -17356,6 +18954,27 @@ interface TLSCertificate {
      * @param callback called on success or failure
      */
     reject_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of reject_async
+
+    /**
+     * Promisified version of {@link reject_async}
+     * 
+     * Reject this certificate, asynchronously.
+     * 
+     * Before calling this method, you must call
+     * tp_tls_certificate_add_rejection() at least once, to set the reason(s)
+     * for rejection (for instance, a certificate might be both self-signed and
+     * expired).
+     * 
+     * In or after `callback,`
+     * you may call tp_tls_certificate_reject_finish() to check the result.
+     * 
+     * #GObject::notify::state will also be emitted when the connection manager
+     * signals that the certificate has been rejected.
+     * @returns A Promise of: %TRUE if rejection was successful
+     */
+    reject_async(): globalThis.Promise<boolean>
     /**
      * Check the result of tp_tls_certificate_reject_async().
      * @param result the result passed to the callback by  tp_tls_certificate_reject_async()
@@ -17649,6 +19268,24 @@ interface TextChannel {
      * @param callback a callback to call when the messages have been acked
      */
     ack_all_pending_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ack_all_pending_messages_async
+
+    /**
+     * Promisified version of {@link ack_all_pending_messages_async}
+     * 
+     * Acknowledge all the pending messages. This is equivalent of calling
+     * tp_text_channel_ack_messages_async() with the list of #TpSignalledMessage
+     * returned by tp_text_channel_dup_pending_messages().
+     * 
+     * Once the messages have been acked, `callback` will be called.
+     * You can then call tp_text_channel_ack_all_pending_messages_finish() to get
+     * the result of the operation.
+     * 
+     * See tp_text_channel_ack_message_async() about acknowledging messages.
+     * @returns A Promise of: %TRUE if the messages have been acked, %FALSE otherwise.
+     */
+    ack_all_pending_messages_async(): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous acknowledgement operation of all messages.
      * @param result a #GAsyncResult
@@ -17674,6 +19311,30 @@ interface TextChannel {
      * @param callback a callback to call when the message have been acked
      */
     ack_message_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ack_message_async
+
+    /**
+     * Promisified version of {@link ack_message_async}
+     * 
+     * Acknowledge `message`. Once the message has been acked, `callback` will be
+     * called. You can then call tp_text_channel_ack_message_finish() to get the
+     * result of the operation.
+     * 
+     * A message should be acknowledged once it has been shown to the user by the
+     * Handler of the channel. So Observers and Approvers should NOT acknowledge
+     * messages themselves.
+     * Once a message has been acknowledged, it is removed from the
+     * pending-message queue and so the #TpTextChannel::pending-message-removed
+     * signal is fired.
+     * 
+     * You should use the #TpSignalledMessage received from
+     * tp_text_channel_dup_pending_messages() or the
+     * #TpTextChannel::message-received signal.
+     * @param message a #TpSignalledMessage
+     * @returns A Promise of: %TRUE if the message has been acked, %FALSE otherwise.
+     */
+    ack_message_async(message: Message): globalThis.Promise<boolean>
     /**
      * Finishes acknowledging a message.
      * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_message_async()
@@ -17695,6 +19356,26 @@ interface TextChannel {
      * @param callback a callback to call when the message have been acked
      */
     ack_messages_async(messages: SignalledMessage[], callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ack_messages_async
+
+    /**
+     * Promisified version of {@link ack_messages_async}
+     * 
+     * Acknowledge all the messages in `messages`.
+     * Once the messages have been acked, `callback` will be called.
+     * You can then call tp_text_channel_ack_messages_finish() to get the
+     * result of the operation.
+     * 
+     * You should use the #TpSignalledMessage received from
+     * tp_text_channel_dup_pending_messages() or the
+     * #TpTextChannel::message-received signal.
+     * 
+     * See tp_text_channel_ack_message_async() about acknowledging messages.
+     * @param messages a #GList of #TpSignalledMessage
+     * @returns A Promise of: %TRUE if the messages have been acked, %FALSE otherwise.
+     */
+    ack_messages_async(messages: SignalledMessage[]): globalThis.Promise<boolean>
     /**
      * Finishes acknowledging a list of messages.
      * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_messages_async()
@@ -17773,6 +19454,24 @@ interface TextChannel {
      * @param callback a callback to call when the request has been satisfied
      */
     get_sms_length_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_sms_length_async
+
+    /**
+     * Promisified version of {@link get_sms_length_async}
+     * 
+     * Starts an async call to get the number of 140 octet chunks required to
+     * send a #message via SMS on #self, as well as the number of remaining
+     * characters available in the final chunk and, if possible,
+     * an estimate of the cost.
+     * 
+     * Once the request has been satisfied, `callback` will be called.
+     * You can then call tp_text_channel_get_sms_length_finish() to get the
+     * result of the operation.
+     * @param message a #TpClientMessage
+     * @returns A Promise of: %TRUE if the number of 140 octet chunks required to send the message has been retrieved, %FALSE otherwise.
+     */
+    get_sms_length_async(message: Message): globalThis.Promise<[ /* chunks_required */ number, /* remaining_characters */ number, /* estimated_cost */ number ]>
     /**
      * Finishes an async SMS length request.
      * @param result a #GAsyncResult
@@ -17793,6 +19492,20 @@ interface TextChannel {
      * @param callback a callback to call when the message has been submitted to the server
      */
     send_message_async(message: Message, flags: MessageSendingFlags, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_message_async
+
+    /**
+     * Promisified version of {@link send_message_async}
+     * 
+     * Submit a message to the server for sending. Once the message has been
+     * submitted to the sever, `callback` will be called. You can then call
+     * tp_text_channel_send_message_finish() to get the result of the operation.
+     * @param message a #TpClientMessage
+     * @param flags flags affecting how the message is sent
+     * @returns A Promise of: %TRUE if the message has been submitted to the server, %FALSE otherwise.
+     */
+    send_message_async(message: Message, flags: MessageSendingFlags): globalThis.Promise</* token */ string | null>
     /**
      * Completes a call to tp_text_channel_send_message_async().
      * 
@@ -17813,6 +19526,20 @@ interface TextChannel {
      * @param callback a callback to call when the chat state has been set
      */
     set_chat_state_async(state: ChannelChatState, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_chat_state_async
+
+    /**
+     * Promisified version of {@link set_chat_state_async}
+     * 
+     * Set the local state on channel `self` to `state`.
+     * Once the state has been set, `callback` will be called.
+     * You can then call tp_text_channel_set_chat_state_finish() to get the
+     * result of the operation.
+     * @param state a #TpChannelChatState to set
+     * @returns A Promise of: %TRUE if the chat state has been changed, %FALSE otherwise.
+     */
+    set_chat_state_async(state: ChannelChatState): globalThis.Promise<boolean>
     /**
      * Completes a call to tp_text_channel_set_chat_state_async().
      * @param result a #GAsyncResult passed to the callback for tp_text_channel_set_chat_state_async()

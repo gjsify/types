@@ -1,0 +1,77 @@
+{
+    "name": "@girs/node-metatest-12",
+    "version": "12.0.0-3.0.0-beta.13",
+    "description": "Node.js TypeScript type definitions for MetaTest-12, generated from library version 12.0.0",
+    "type": "module",
+    "module": "node-metatest-12.js",
+    "main": "node-metatest-12.js",
+    "typedoc": {
+        "entryPoint": "./node-metatest-12.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "MetaTest-12",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./node-metatest-12.d.ts",
+                "default": "./node-metatest-12.js"
+            },
+            "require": {
+                "types": "./node-metatest-12.d.cts",
+                "default": "./node-metatest-12.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-metatest-12.d.ts",
+        "test:cjs": "tsc --noEmit node-metatest-12.d.cts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-12": "workspace:^",
+        "@girs/cogl-12": "workspace:^",
+        "@girs/coglpango-12": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/meta-12": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "MetaTest-12"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-metatest-12#readme"
+}

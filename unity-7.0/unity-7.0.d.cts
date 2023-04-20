@@ -184,6 +184,18 @@ export interface AppInfoManager {
     get_keywords(id: string | null): string[] | null
     get_path(id: string | null): string | null
     lookup_async(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_async
+
+    /**
+     * Promisified version of {@link lookup_async}
+     * 
+     * 
+     * @param id 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link lookup_async}
+     */
+    lookup_async(id: string | null): globalThis.Promise<Gio.AppInfo | null>
     lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null
     clear(): void
 

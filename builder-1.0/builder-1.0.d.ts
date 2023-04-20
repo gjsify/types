@@ -147,8 +147,32 @@ interface Document {
     get_title(): string | null
     is_untitled(): boolean
     save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_as_async
+
+    /**
+     * Promisified version of {@link save_as_async}
+     * 
+     * 
+     * @param toplevel 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_as_async}
+     */
+    save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_as_finish(result: Gio.AsyncResult): boolean
     save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * 
+     * @param toplevel 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_async}
+     */
+    save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Builder-1.0.Builder.Document
@@ -269,6 +293,26 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
     get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_worker_async
+
+    /**
+     * Promisified version of {@link get_worker_async}
+     * 
+     * Asynchronously requests a #GDBusProxy to a service provided in a worker
+     * process. The worker should be an #IdeWorker implemented by the plugin named
+     * `plugin_name`. The #IdeWorker is responsible for created both the service
+     * registered on the bus and the proxy to it.
+     * 
+     * The #GbApplication is responsible for spawning a subprocess for the worker.
+     * 
+     * `callback` should call gb_application_get_worker_finish() with the result
+     * provided to retrieve the result.
+     * @param plugin_name The name of the plugin.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns A Promise of: A #GDBusProxy or %NULL.
+     */
+    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -276,6 +320,19 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      */
     get_worker_finish(result: Gio.AsyncResult): Gio.DBusProxy
     open_project_async(file: Gio.File, additional_files: Gio.File[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_project_async
+
+    /**
+     * Promisified version of {@link open_project_async}
+     * 
+     * 
+     * @param file A #GFile.
+     * @param additional_files A #GPtrArray of #GFile or %NULL.
+     * @param cancellable 
+     * @returns A Promise of the result of {@link open_project_async}
+     */
+    open_project_async(file: Gio.File, additional_files: Gio.File[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_project_finish(result: Gio.AsyncResult): boolean
     show_projects_window(): void
 
@@ -2253,6 +2310,18 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
 
     add_temporary_buffer(): void
     build_async(force_rebuild: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of build_async
+
+    /**
+     * Promisified version of {@link build_async}
+     * 
+     * 
+     * @param force_rebuild 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link build_async}
+     */
+    build_async(force_rebuild: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     build_finish(result: Gio.AsyncResult): boolean
     get_active_view(): Gtk.Widget
     get_closing(): boolean

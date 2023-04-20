@@ -1,7 +1,7 @@
 
 # GData-0.0
 
-Node.js TypeScript type definitions for GData-0.0, generated from library version 0.19.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GData-0.0, generated from library version 0.19.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GData (Google data) is a set of Application Programming Interfaces (APIs) for the Common Language Infrastructure (CLI) which provide a simple protocol for reading and writing data on the web.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gdata-0.0
 
 You can import this package into your project like this:
 ```ts
-import GData from '@girs/node-gdata-0.0';
+import GData from '@girs/gdata-0.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GData = require('@girs/node-gdata-0.0');
+const GData = require('@girs/gdata-0.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

@@ -1,7 +1,7 @@
 
 # Gdl-3
 
-Node.js TypeScript type definitions for Gdl-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Gdl-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 The GNOME Devtools Library package provides a docking system and several utilities useful to GNOME development tools and GNOME applications in general.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gdl-3
 
 You can import this package into your project like this:
 ```ts
-import Gdl from '@girs/node-gdl-3';
+import Gdl from '@girs/gdl-3';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gdl = require('@girs/node-gdl-3');
+const Gdl = require('@girs/gdl-3');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

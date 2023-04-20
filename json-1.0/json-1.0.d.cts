@@ -1368,6 +1368,25 @@ export interface Parser {
      * @param callback the function to call when the request is satisfied
      */
     load_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_from_stream_async
+
+    /**
+     * Promisified version of {@link load_from_stream_async}
+     * 
+     * Asynchronously reads the contents of a stream.
+     * 
+     * For more details, see [method`Json`.Parser.load_from_stream], which is the
+     * synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You should
+     * then call [method`Json`.Parser.load_from_stream_finish] to get the result
+     * of the operation.
+     * @param stream the input stream with the JSON data
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: `TRUE` if the content of the stream was successfully retrieved   and parsed, and `FALSE` otherwise
+     */
+    load_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous stream loading started with
      * [method`Json`.Parser.load_from_stream_async].

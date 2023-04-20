@@ -4815,6 +4815,20 @@ interface MultipartInputStream extends Gio.PollableInputStream {
      * @param callback callback to call when request is satisfied.
      */
     next_part_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_part_async
+
+    /**
+     * Promisified version of {@link next_part_async}
+     * 
+     * Obtains a [class`Gio`.InputStream] for the next request.
+     * 
+     * See [method`MultipartInputStream`.next_part] for details on the workflow.
+     * @param io_priority the I/O priority for the request.
+     * @param cancellable a #GCancellable.
+     * @returns A Promise of: a newly created   [class@Gio.InputStream] for reading the next part or %NULL if there are no   more parts.
+     */
+    next_part_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream | null>
     /**
      * Finishes an asynchronous request for the next part.
      * @param result a #GAsyncResult.
@@ -6287,6 +6301,29 @@ interface Session {
      * @param callback the callback to invoke when the operation finishes
      */
     preconnect_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of preconnect_async
+
+    /**
+     * Promisified version of {@link preconnect_async}
+     * 
+     * Start a preconnection to `msg`.
+     * 
+     * Once the connection is done, it will remain in idle state so that it can be
+     * reused by future requests. If there's already an idle connection for the
+     * given `msg` host, the operation finishes successfully without creating a new
+     * connection. If a new request for the given `msg` host is made while the
+     * preconnect is still ongoing, the request will take the ownership of the
+     * connection and the preconnect operation will finish successfully (if there's
+     * a connection error it will be handled by the request).
+     * 
+     * The operation finishes when the connection is done or an error occurred.
+     * @param msg a #SoupMessage
+     * @param io_priority the I/O priority of the request
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: %TRUE if the preconnect succeeded, or %FALSE in case of error.
+     */
+    preconnect_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete a preconnect async operation started with [method`Session`.preconnect_async].
      * @param result the #GAsyncResult passed to your callback
@@ -6357,6 +6394,27 @@ interface Session {
      * @param callback the callback to invoke
      */
     send_and_read_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_and_read_async
+
+    /**
+     * Promisified version of {@link send_and_read_async}
+     * 
+     * Asynchronously sends `msg` and reads the response body.
+     * 
+     * When `callback` is called, then either `msg` has been sent, and its response
+     * body read, or else an error has occurred. This function should only be used
+     * when the resource to be retrieved is not too long and can be stored in
+     * memory. Call [method`Session`.send_and_read_finish] to get a
+     * [struct`GLib`.Bytes] with the response body.
+     * 
+     * See [method`Session`.send] for more details on the general semantics.
+     * @param msg a #SoupMessage
+     * @param io_priority the I/O priority of the request
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #GBytes, or %NULL on error.
+     */
+    send_and_read_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Gets the response to a [method`Session`.send_and_read_async].
      * 
@@ -6390,6 +6448,25 @@ interface Session {
      * @param callback the callback to invoke
      */
     send_and_splice_async(msg: Message, out_stream: Gio.OutputStream, flags: Gio.OutputStreamSpliceFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_and_splice_async
+
+    /**
+     * Promisified version of {@link send_and_splice_async}
+     * 
+     * Asynchronously sends `msg` and splices the response body stream into `out_stream`.
+     * When `callback` is called, then either `msg` has been sent and its response body
+     * spliced, or else an error has occurred.
+     * 
+     * See [method`Session`.send] for more details on the general semantics.
+     * @param msg a #SoupMessage
+     * @param out_stream a #GOutputStream
+     * @param flags a set of #GOutputStreamSpliceFlags
+     * @param io_priority the I/O priority of the request
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #gssize containing the size of the data spliced, or -1 if an error occurred.
+     */
+    send_and_splice_async(msg: Message, out_stream: Gio.OutputStream, flags: Gio.OutputStreamSpliceFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Gets the response to a [method`Session`.send_and_splice_async].
      * @param result the #GAsyncResult passed to your callback
@@ -6411,6 +6488,26 @@ interface Session {
      * @param callback the callback to invoke
      */
     send_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_async
+
+    /**
+     * Promisified version of {@link send_async}
+     * 
+     * Asynchronously sends `msg` and waits for the beginning of a response.
+     * 
+     * When `callback` is called, then either `msg` has been sent, and its response
+     * headers received, or else an error has occurred. Call
+     * [method`Session`.send_finish] to get a [class`Gio`.InputStream] for reading the
+     * response body.
+     * 
+     * See [method`Session`.send] for more details on the general semantics.
+     * @param msg a #SoupMessage
+     * @param io_priority the I/O priority of the request
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #GInputStream for reading the   response body, or %NULL on error.
+     */
+    send_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     /**
      * Gets the response to a [method`Session`.send_async] call.
      * 
@@ -6517,6 +6614,37 @@ interface Session {
      * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of websocket_connect_async
+
+    /**
+     * Promisified version of {@link websocket_connect_async}
+     * 
+     * Asynchronously creates a [class`WebsocketConnection]` to communicate with a
+     * remote server.
+     * 
+     * All necessary WebSocket-related headers will be added to `msg,` and
+     * it will then be sent and asynchronously processed normally
+     * (including handling of redirection and HTTP authentication).
+     * 
+     * If the server returns "101 Switching Protocols", then `msg'`s status
+     * code and response headers will be updated, and then the WebSocket
+     * handshake will be completed. On success,
+     * [method`Session`.websocket_connect_finish] will return a new
+     * [class`WebsocketConnection]`. On failure it will return a #GError.
+     * 
+     * If the server returns a status other than "101 Switching Protocols", then
+     * `msg` will contain the complete response headers and body from the server's
+     * response, and [method`Session`.websocket_connect_finish] will return
+     * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param io_priority the I/O priority of the request
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a new #SoupWebsocketConnection, or   %NULL on error.
+     */
+    websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<WebsocketConnection>
     /**
      * Gets the [class`WebsocketConnection]` response to a
      * [method`Session`.websocket_connect_async] call.

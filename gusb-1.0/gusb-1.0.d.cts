@@ -466,6 +466,20 @@ export interface Device extends Gio.Initable {
      * @param callback the function to run on completion
      */
     bulk_transfer_async(endpoint: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of bulk_transfer_async
+
+    /**
+     * Promisified version of {@link bulk_transfer_async}
+     * 
+     * Do an async bulk transfer
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the actual number of bytes sent, or -1 on error.
+     */
+    bulk_transfer_async(endpoint: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -518,6 +532,25 @@ export interface Device extends Gio.Initable {
      * @param callback the function to run on completion
      */
     control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of control_transfer_async
+
+    /**
+     * Promisified version of {@link control_transfer_async}
+     * 
+     * Do an async control transfer
+     * @param direction 
+     * @param request_type 
+     * @param recipient 
+     * @param request 
+     * @param value 
+     * @param idx 
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the actual number of bytes sent, or -1 on error.
+     */
+    control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -750,6 +783,20 @@ export interface Device extends Gio.Initable {
      * @param callback the function to run on completion
      */
     interrupt_transfer_async(endpoint: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of interrupt_transfer_async
+
+    /**
+     * Promisified version of {@link interrupt_transfer_async}
+     * 
+     * Do an async interrupt transfer
+     * @param endpoint the address of a valid endpoint to communicate with
+     * @param data a suitably-sized data buffer for either input or output
+     * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the actual number of bytes sent, or -1 on error.
+     */
+    interrupt_transfer_async(endpoint: number, data: Uint8Array, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult

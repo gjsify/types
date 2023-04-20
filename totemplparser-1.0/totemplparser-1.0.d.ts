@@ -366,6 +366,25 @@ interface Parser {
      * @param callback a #GAsyncReadyCallback to call when parsing is finished
      */
     parse_async(uri: string | null, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of parse_async
+
+    /**
+     * Promisified version of {@link parse_async}
+     * 
+     * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
+     * when this function is called, so can safely be freed after this function returns.
+     * 
+     * For more details, see totem_pl_parser_parse(), which is the synchronous version of this function.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call totem_pl_parser_parse_finish()
+     * to get the results of the operation.
+     * @param uri the URI of the playlist to parse
+     * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns A Promise of: a #TotemPlParserResult
+     */
+    parse_async(uri: string | null, fallback: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<ParserResult>
     /**
      * Finishes an asynchronous playlist parsing operation started with totem_pl_parser_parse_async()
      * or totem_pl_parser_parse_with_base_async().
@@ -439,6 +458,25 @@ interface Parser {
      * @param callback a #GAsyncReadyCallback to call when saving has finished
      */
     save_async(playlist: Playlist, dest: Gio.File, title: string | null, type: ParserType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Starts asynchronous version of totem_pl_parser_save(). For more details
+     * see totem_pl_parser_save().
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * totem_pl_parser_save_finish() to get the results of the operation.
+     * @param playlist a #TotemPlPlaylist
+     * @param dest output #GFile
+     * @param title the playlist title
+     * @param type a #TotemPlParserType for the outputted playlist
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE on failure.
+     */
+    save_async(playlist: Playlist, dest: Gio.File, title: string | null, type: ParserType, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous playlist saving operation started with totem_pl_parser_save_async().
      * 

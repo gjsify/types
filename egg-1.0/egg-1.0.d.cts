@@ -6252,6 +6252,19 @@ export interface TaskCache {
     evict(key: any | null): boolean
     evict_all(): void
     get_async(key: any | null, force_update: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_async
+
+    /**
+     * Promisified version of {@link get_async}
+     * 
+     * 
+     * @param key 
+     * @param force_update 
+     * @param cancellable 
+     * @returns A Promise of: The result from the cache.
+     */
+    get_async(key: any | null, force_update: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<any | null>
     /**
      * Finish a call to egg_task_cache_get_async().
      * @param result 

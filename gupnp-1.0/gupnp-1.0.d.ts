@@ -210,6 +210,28 @@ interface Acl {
      * @param callback Callback to call after the function is done.
      */
     is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of is_allowed_async
+
+    /**
+     * Promisified version of {@link is_allowed_async}
+     * 
+     * Optional. Check asynchronously whether an IP address is allowed to access
+     * this resource. Use this function if the process of verifying the access right
+     * is expected to take some time, for example when using D-Bus etc.
+     * 
+     * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
+     * 
+     * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+     * @param device The #GUPnPDevice associated with `path` or %NULL if unknown.
+     * @param service The #GUPnPService associated with `path` or %NULL if unknown.
+     * @param path The path being served.
+     * @param address IP address of the peer
+     * @param agent The User-Agent header of the peer or %NULL if not unknown.
+     * @param cancellable A #GCancellable which can be used to cancel the operation.
+     * @returns A Promise of the result of {@link is_allowed_async}
+     */
+    is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     is_allowed_finish(res: Gio.AsyncResult): boolean
 
     // Own virtual methods of GUPnP-1.0.GUPnP.Acl

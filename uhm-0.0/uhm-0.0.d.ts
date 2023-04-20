@@ -319,6 +319,18 @@ interface Server {
      * @param callback function to call once the async operation is complete
      */
     load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_trace_async
+
+    /**
+     * Promisified version of {@link load_trace_async}
+     * 
+     * Asynchronous version of uhm_server_load_trace(). In `callback,` call uhm_server_load_trace_finish() to complete the operation.
+     * @param trace_file trace file to load
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of the result of {@link load_trace_async}
+     */
+    load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     /**
      * Finishes an asynchronous operation started by uhm_server_load_trace_async().
      * 

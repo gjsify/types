@@ -4895,27 +4895,127 @@ interface Parser extends GObject.Object {
 
     write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_file_async
+
+    /**
+     * Promisified version of {@link write_file_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_file_async}
+     */
+    write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     write_file_finish(_res_: Gio.AsyncResult): void
     write_string(): string | null
     write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_string_async
+
+    /**
+     * Promisified version of {@link write_string_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_string_async}
+     */
+    write_string_async(): globalThis.Promise<string | null>
     write_string_finish(_res_: Gio.AsyncResult): string | null
     write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void
     write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_stream_async
+
+    /**
+     * Promisified version of {@link write_stream_async}
+     * 
+     * 
+     * @param stream 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_stream_async}
+     */
+    write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     write_stream_finish(_res_: Gio.AsyncResult): void
     read_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     read_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_file_async
+
+    /**
+     * Promisified version of {@link read_file_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_file_async}
+     */
+    read_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_file_finish(_res_: Gio.AsyncResult): void
     read_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
     read_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_stream_async
+
+    /**
+     * Promisified version of {@link read_stream_async}
+     * 
+     * 
+     * @param stream 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_stream_async}
+     */
+    read_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_stream_finish(_res_: Gio.AsyncResult): void
     read_string(str: string | null, cancellable?: Gio.Cancellable | null): void
     read_string_async(str: string | null, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_string_async
+
+    /**
+     * Promisified version of {@link read_string_async}
+     * 
+     * 
+     * @param str 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_string_async}
+     */
+    read_string_async(str: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_string_finish(_res_: Gio.AsyncResult): void
     create_stream(cancellable?: Gio.Cancellable | null): Gio.InputStream
     create_stream_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_stream_async
+
+    /**
+     * Promisified version of {@link create_stream_async}
+     * 
+     * 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link create_stream_async}
+     */
+    create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream
     read_child_nodes(parent: DomNode): void
     read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_child_nodes_async
+
+    /**
+     * Promisified version of {@link read_child_nodes_async}
+     * 
+     * 
+     * @param parent 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_child_nodes_async}
+     */
+    read_child_nodes_async(parent: DomNode): globalThis.Promise<void>
     read_child_nodes_finish(_res_: Gio.AsyncResult): void
     read_child_node(parent: DomNode): boolean
     read_child_element(parent: DomNode): boolean
@@ -10005,21 +10105,91 @@ interface GomDocument extends DomParentNode, DomNonElementParentNode, DomDocumen
 
     write_file(file: Gio.File): void
     write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_file_async
+
+    /**
+     * Promisified version of {@link write_file_async}
+     * 
+     * 
+     * @param file 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_file_async}
+     */
+    write_file_async(file: Gio.File): globalThis.Promise<void>
     write_file_finish(_res_: Gio.AsyncResult): void
     write_stream(stream: Gio.OutputStream): void
     write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_stream_async
+
+    /**
+     * Promisified version of {@link write_stream_async}
+     * 
+     * 
+     * @param stream 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_stream_async}
+     */
+    write_stream_async(stream: Gio.OutputStream): globalThis.Promise<void>
     write_stream_finish(_res_: Gio.AsyncResult): void
     create_stream(): Gio.InputStream
     create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_stream_async
+
+    /**
+     * Promisified version of {@link create_stream_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link create_stream_async}
+     */
+    create_stream_async(): globalThis.Promise<Gio.InputStream>
     create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream
     write_string(): string | null
     write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_string_async
+
+    /**
+     * Promisified version of {@link write_string_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_string_async}
+     */
+    write_string_async(): globalThis.Promise<string | null>
     write_string_finish(_res_: Gio.AsyncResult): string | null
     read_from_file(file: Gio.File): void
     read_from_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_file_async
+
+    /**
+     * Promisified version of {@link read_from_file_async}
+     * 
+     * 
+     * @param file 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_file_async}
+     */
+    read_from_file_async(file: Gio.File): globalThis.Promise<void>
     read_from_file_finish(_res_: Gio.AsyncResult): void
     read_from_string(str: string | null): void
     read_from_string_async(str: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_string_async
+
+    /**
+     * Promisified version of {@link read_from_string_async}
+     * 
+     * 
+     * @param str 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_string_async}
+     */
+    read_from_string_async(str: string | null): globalThis.Promise<void>
     read_from_string_finish(_res_: Gio.AsyncResult): void
 
     // Class property signals of GXml-0.16.GXml.GomDocument
@@ -10393,27 +10563,123 @@ interface GomElement extends DomChildNode, DomNonDocumentTypeChildNode, DomParen
 
     read_from_uri(uri: string | null): void
     read_from_uri_async(uri: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_uri_async
+
+    /**
+     * Promisified version of {@link read_from_uri_async}
+     * 
+     * 
+     * @param uri 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_uri_async}
+     */
+    read_from_uri_async(uri: string | null): globalThis.Promise<void>
     read_from_uri_finish(_res_: Gio.AsyncResult): void
     read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void
     read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_file_async
+
+    /**
+     * Promisified version of {@link read_from_file_async}
+     * 
+     * 
+     * @param f 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_file_async}
+     */
+    read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_file_finish(_res_: Gio.AsyncResult): void
     read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
     read_from_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_stream_async
+
+    /**
+     * Promisified version of {@link read_from_stream_async}
+     * 
+     * 
+     * @param istream 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_stream_async}
+     */
+    read_from_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_stream_finish(_res_: Gio.AsyncResult): void
     read_from_string(str: string | null): void
     read_from_string_async(str: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_from_string_async
+
+    /**
+     * Promisified version of {@link read_from_string_async}
+     * 
+     * 
+     * @param str 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_from_string_async}
+     */
+    read_from_string_async(str: string | null): globalThis.Promise<void>
     read_from_string_finish(_res_: Gio.AsyncResult): void
     write_string(): string | null
     write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_string_async
+
+    /**
+     * Promisified version of {@link write_string_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_string_async}
+     */
+    write_string_async(): globalThis.Promise<string | null>
     write_string_finish(_res_: Gio.AsyncResult): string | null
     write_file(f: Gio.File): void
     write_file_async(f: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_file_async
+
+    /**
+     * Promisified version of {@link write_file_async}
+     * 
+     * 
+     * @param f 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_file_async}
+     */
+    write_file_async(f: Gio.File): globalThis.Promise<void>
     write_file_finish(_res_: Gio.AsyncResult): void
     write_stream(stream: Gio.OutputStream): void
     write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_stream_async
+
+    /**
+     * Promisified version of {@link write_stream_async}
+     * 
+     * 
+     * @param stream 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link write_stream_async}
+     */
+    write_stream_async(stream: Gio.OutputStream): globalThis.Promise<void>
     write_stream_finish(_res_: Gio.AsyncResult): void
     create_stream(): Gio.InputStream
     create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_stream_async
+
+    /**
+     * Promisified version of {@link create_stream_async}
+     * 
+     * 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link create_stream_async}
+     */
+    create_stream_async(): globalThis.Promise<Gio.InputStream>
     create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream
     lookup_prefix(nspace?: string | null): string | null
     lookup_namespace_uri(prefix?: string | null): string | null
@@ -21068,6 +21334,19 @@ interface XParser extends Parser {
 
     read_node(node: DomNode): void
     read_child_nodes_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_child_nodes_stream_async
+
+    /**
+     * Promisified version of {@link read_child_nodes_stream_async}
+     * 
+     * 
+     * @param istream 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link read_child_nodes_stream_async}
+     */
+    read_child_nodes_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     read_child_nodes_stream_finish(_res_: Gio.AsyncResult): void
 
     // Class property signals of GXml-0.16.GXml.XParser

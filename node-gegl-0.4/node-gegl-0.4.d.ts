@@ -9,9 +9,9 @@
  * Gegl-0.4
  */
 
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type Babl from '@girs/node-babl-0.1';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Babl from '@girs/babl-0.1';
 
 export namespace Gegl {
 

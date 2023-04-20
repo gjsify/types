@@ -9,7 +9,7 @@
  * xrandr-1.3
  */
 
-import type GObject from '@girs/node-gobject-2.0';
+import type GObject from '@girs/gobject-2.0';
 
 export interface ScreenSize {
 }

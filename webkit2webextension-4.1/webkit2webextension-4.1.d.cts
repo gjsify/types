@@ -640,6 +640,11 @@ export module ContextMenu {
 
 export interface ContextMenu {
 
+    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.ContextMenu
+
+    parent: GObject.Object
+    priv: ContextMenuPrivate
+
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.ContextMenu
 
     /**
@@ -652,6 +657,26 @@ export interface ContextMenu {
      * @returns the first #WebKitContextMenuItem of @menu,    or %NULL if the #WebKitContextMenu is empty.
      */
     first(): ContextMenuItem
+    /**
+     * Gets the #GdkEvent that triggered the context menu. This function only returns a valid
+     * #GdkEvent when called for a #WebKitContextMenu passed to #WebKitWebView::context-menu
+     * signal; in all other cases, %NULL is returned.
+     * 
+     * The returned #GdkEvent is expected to be one of the following types:
+     * <itemizedlist>
+     * <listitem><para>
+     * a #GdkEventButton of type %GDK_BUTTON_PRESS when the context menu was triggered with mouse.
+     * </para></listitem>
+     * <listitem><para>
+     * a #GdkEventKey of type %GDK_KEY_PRESS if the keyboard was used to show the menu.
+     * </para></listitem>
+     * <listitem><para>
+     * a generic #GdkEvent of type %GDK_NOTHING when the #GtkWidget::popup-menu signal was used to show the context menu.
+     * </para></listitem>
+     * </itemizedlist>
+     * @returns the menu event or %NULL.
+     */
+    get_event(): Gdk.Event
     /**
      * Gets the item at the given position in the `menu`.
      * @param position the position of the item, counting from 0
@@ -814,6 +839,11 @@ export module ContextMenuItem {
 }
 
 export interface ContextMenuItem {
+
+    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.ContextMenuItem
+
+    parent: GObject.InitiallyUnowned
+    priv: ContextMenuItemPrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.ContextMenuItem
 
@@ -3247,6 +3277,10 @@ export interface DOMElement extends DOMEventTarget {
     has_attribute(name: string | null): boolean
     has_attribute_ns(namespaceURI: string | null, localName: string | null): boolean
     has_attributes(): boolean
+    /**
+     * Get whether the element is an HTML input element that has been filled automatically.
+     * @returns whether @element has been filled automatically.
+     */
     html_input_element_get_auto_filled(): boolean
     /**
      * Get whether `element` is an HTML text input element that has been edited by a user action.
@@ -20363,6 +20397,7 @@ export interface Frame {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.Frame
 
     parent: GObject.Object
+    priv: FramePrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.Frame
 
@@ -20519,6 +20554,7 @@ export interface HitTestResult {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.HitTestResult
 
     parent: GObject.Object
+    priv: HitTestResultPrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.HitTestResult
 
@@ -20785,6 +20821,7 @@ export interface URIRequest {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.URIRequest
 
     parent: GObject.Object
+    priv: URIRequestPrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.URIRequest
 
@@ -20896,6 +20933,7 @@ export interface URIResponse {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.URIResponse
 
     parent: GObject.Object
+    priv: URIResponsePrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.URIResponse
 
@@ -21036,6 +21074,7 @@ export interface UserMessage {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.UserMessage
 
     parent: GObject.InitiallyUnowned
+    priv: UserMessagePrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.UserMessage
 
@@ -21082,12 +21121,12 @@ export interface UserMessage {
 }
 
 /**
- * Message that can be sent between the UI process and web extensions.
+ * Message that can be sent between the UI process and web process extensions.
  * 
  * A WebKitUserMessage is a message that can be used for the communication between the UI process
- * and web extensions. A WebKitUserMessage always has a name, and it can also include parameters and
- * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all #WebKitWebExtension<!-- -->s,
- * from a #WebKitWebExtension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
+ * and web process extensions. A WebKitUserMessage always has a name, and it can also include parameters and
+ * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all web process extensions,
+ * from a web process extension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
  * corresponding #WebKitWebPage (and vice versa). One to one messages can be replied to directly with
  * webkit_user_message_send_reply().
  * @class 
@@ -21164,8 +21203,7 @@ export interface WebEditor {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.WebEditor
 
     /**
-     * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor that can
-     * be used to access the #WebKitDOMDocument currently loaded into it.
+     * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor.
      * @returns the associated #WebKitWebPage
      */
     get_page(): WebPage
@@ -21368,6 +21406,102 @@ export class WebExtension extends GObject.Object {
     _init(config?: WebExtension.ConstructorProperties): void
 }
 
+export module WebFormManager {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `form-controls-associated`
+     */
+    export interface FormControlsAssociatedSignalCallback {
+        ($obj: WebFormManager, frame: Frame, elements: JavaScriptCore.Value[]): void
+    }
+
+    /**
+     * Signal callback interface for `will-send-submit-event`
+     */
+    export interface WillSendSubmitEventSignalCallback {
+        ($obj: WebFormManager, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void
+    }
+
+    /**
+     * Signal callback interface for `will-submit-form`
+     */
+    export interface WillSubmitFormSignalCallback {
+        ($obj: WebFormManager, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void
+    }
+
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+export interface WebFormManager {
+
+    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManager
+
+    parent: GObject.Object
+
+    // Own signals of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManager
+
+    connect(sigName: "form-controls-associated", callback: WebFormManager.FormControlsAssociatedSignalCallback): number
+    connect_after(sigName: "form-controls-associated", callback: WebFormManager.FormControlsAssociatedSignalCallback): number
+    emit(sigName: "form-controls-associated", frame: Frame, elements: JavaScriptCore.Value[], ...args: any[]): void
+    connect(sigName: "will-send-submit-event", callback: WebFormManager.WillSendSubmitEventSignalCallback): number
+    connect_after(sigName: "will-send-submit-event", callback: WebFormManager.WillSendSubmitEventSignalCallback): number
+    emit(sigName: "will-send-submit-event", form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame, ...args: any[]): void
+    connect(sigName: "will-submit-form", callback: WebFormManager.WillSubmitFormSignalCallback): number
+    connect_after(sigName: "will-submit-form", callback: WebFormManager.WillSubmitFormSignalCallback): number
+    emit(sigName: "will-submit-form", form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame, ...args: any[]): void
+
+    // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * Form manager of a #WebKitWebPage in a #WebKitScriptWorld
+ * @class 
+ */
+export class WebFormManager extends GObject.Object {
+
+    // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManager
+
+    static name: string
+    static $gtype: GObject.GType<WebFormManager>
+
+    // Constructors of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManager
+
+    constructor(config?: WebFormManager.ConstructorProperties) 
+    _init(config?: WebFormManager.ConstructorProperties): void
+    /**
+     * Set the value of an HTML input element as if it had been edited by
+     * the user, triggering a change event, and set it as filled automatically.
+     * If `element` is not an HTML input element this function does nothing.
+     * @param element a #JSCValue
+     * @param value the text to set
+     */
+    static input_element_auto_fill(element: JavaScriptCore.Value, value: string | null): void
+    /**
+     * Get whether `element` is an HTML input element that has been filled automatically.
+     * @param element a #JSCValue
+     * @returns %TRUE if @element is an HTML input element that has been filled automatically,    or %FALSE otherwise
+     */
+    static input_element_is_auto_filled(element: JavaScriptCore.Value): boolean
+    /**
+     * Get whether `element` is an HTML text input element that has been edited by a user action.
+     * @param element a #JSCValue
+     * @returns %TRUE if @element is an HTML text input element that has been edited by a user action,    or %FALSE otherwise
+     */
+    static input_element_is_user_edited(element: JavaScriptCore.Value): boolean
+}
+
 export module WebHitTestResult {
 
     // Constructor properties interface
@@ -21396,10 +21530,16 @@ export interface WebHitTestResult {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.WebHitTestResult
 
     parent: HitTestResult & GObject.Object
-    priv: WebHitTestResultPrivate
+    priv: any
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.WebHitTestResult
 
+    /**
+     * Get the #JSCValue for the DOM node in `world` at the coordinates of the Hit Test.
+     * @param world a #WebKitScriptWorld, or %NULL to use the default
+     * @returns a #JSCValue for the DOM node, or %NULL
+     */
+    get_js_node(world: ScriptWorld | null): JavaScriptCore.Value | null
     /**
      * Get the #WebKitDOMNode in the coordinates of the Hit Test.
      * @returns a #WebKitDOMNode
@@ -21535,6 +21675,7 @@ export interface WebPage {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.WebPage
 
     parent: GObject.Object
+    priv: WebPagePrivate
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.WebPage
 
@@ -21548,6 +21689,12 @@ export interface WebPage {
      * @returns the #WebKitWebEditor
      */
     get_editor(): WebEditor
+    /**
+     * Get the #WebKitWebFormManager of `web_page` in `world`.
+     * @param world a #WebKitScriptWorld
+     * @returns a #WebKitWebFormManager
+     */
+    get_form_manager(world: ScriptWorld | null): WebFormManager
     /**
      * Get the identifier of the #WebKitWebPage
      * @returns the identifier of @web_page
@@ -23373,6 +23520,20 @@ export class WebExtensionPrivate {
     static name: string
 }
 
+export interface WebFormManagerClass {
+
+    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManagerClass
+
+    parent_class: GObject.ObjectClass
+}
+
+export abstract class WebFormManagerClass {
+
+    // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.WebFormManagerClass
+
+    static name: string
+}
+
 export interface WebHitTestResultClass {
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.WebHitTestResultClass
@@ -23417,35 +23578,6 @@ export interface WebPagePrivate {
 export class WebPagePrivate {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.WebPagePrivate
-
-    static name: string
-}
-
-export interface _ContextMenu {
-
-    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension._ContextMenu
-
-    parent: GObject.Object
-}
-
-export class _ContextMenu {
-
-    // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension._ContextMenu
-
-    static name: string
-}
-
-export interface _ContextMenuItem {
-
-    // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension._ContextMenuItem
-
-    parent: GObject.InitiallyUnowned
-    priv: ContextMenuItemPrivate
-}
-
-export class _ContextMenuItem {
-
-    // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension._ContextMenuItem
 
     static name: string
 }

@@ -170,20 +170,100 @@ export interface SparqlConnection {
 
     query(sparql: string | null, cancellable?: Gio.Cancellable | null): SparqlCursor
     query_async(sparql: string | null, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_async
+
+    /**
+     * Promisified version of {@link query_async}
+     * 
+     * 
+     * @param sparql 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link query_async}
+     */
+    query_async(sparql: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>
     query_finish(_res_: Gio.AsyncResult): SparqlCursor
     update(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): void
     update_async(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_async
+
+    /**
+     * Promisified version of {@link update_async}
+     * 
+     * 
+     * @param sparql 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link update_async}
+     */
+    update_async(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     update_finish(_res_: Gio.AsyncResult): void
     update_array_async(sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_array_async
+
+    /**
+     * Promisified version of {@link update_array_async}
+     * 
+     * 
+     * @param sparql 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link update_array_async}
+     */
+    update_array_async(sparql: string[], priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any[] | null>
     update_array_finish(_res_: Gio.AsyncResult): any[] | null
     update_blank(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null
     update_blank_async(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_blank_async
+
+    /**
+     * Promisified version of {@link update_blank_async}
+     * 
+     * 
+     * @param sparql 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link update_blank_async}
+     */
+    update_blank_async(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>
     update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant | null
     load(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     load_async(file: Gio.File, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link load_async}
+     */
+    load_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     load_finish(_res_: Gio.AsyncResult): void
     statistics(cancellable?: Gio.Cancellable | null): SparqlCursor | null
     statistics_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of statistics_async
+
+    /**
+     * Promisified version of {@link statistics_async}
+     * 
+     * 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link statistics_async}
+     */
+    statistics_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor | null>
     statistics_finish(_res_: Gio.AsyncResult): SparqlCursor | null
 
     // Own virtual methods of Tracker-1.0.Tracker.SparqlConnection
@@ -266,6 +346,18 @@ export interface SparqlCursor {
     get_string(column: number): [ /* returnType */ string | null, /* length */ number ]
     next(cancellable?: Gio.Cancellable | null): boolean
     next_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_async
+
+    /**
+     * Promisified version of {@link next_async}
+     * 
+     * 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link next_async}
+     */
+    next_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>
     next_finish(_res_: Gio.AsyncResult): boolean
     rewind(): void
     close(): void

@@ -6706,7 +6706,7 @@ export interface Value {
      * %NULL will be returned.
      * @returns object content of @value,          should be unreferenced when no longer needed.
      */
-    dup_object(): Object
+    dup_object(): Object | null
     /**
      * Get a copy the contents of a %G_TYPE_STRING #GValue.
      * @returns a newly allocated copy of the string content of @value
@@ -6786,7 +6786,7 @@ export interface Value {
      * Get the contents of a %G_TYPE_OBJECT derived #GValue.
      * @returns object contents of @value
      */
-    get_object(): Object
+    get_object(): Object | null
     /**
      * Get the contents of a %G_TYPE_PARAM #GValue.
      * @returns #GParamSpec content of @value

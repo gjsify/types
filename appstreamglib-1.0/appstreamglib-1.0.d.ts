@@ -5780,6 +5780,18 @@ interface Store {
      * @param callback A #GAsyncReadyCallback
      */
     load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Asynchronously loads the store from the default locations.
+     * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
+     * @param cancellable a #GCancellable.
+     * @returns A Promise of: %TRUE for success
+     */
+    load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Retrieve the result of as_store_load_async().
      * @param result A #GAsyncResult
@@ -5800,6 +5812,18 @@ interface Store {
      * @param callback A #GAsyncReadyCallback
      */
     load_path_async(path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_path_async
+
+    /**
+     * Promisified version of {@link load_path_async}
+     * 
+     * Asynchronously loads the store from a specific path.
+     * @param path A path to load
+     * @param cancellable a #GCancellable.
+     * @returns A Promise of: %TRUE for success
+     */
+    load_path_async(path: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Retrieve the result of as_store_load_path_async().
      * @param result A #GAsyncResult

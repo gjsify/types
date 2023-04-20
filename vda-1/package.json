@@ -1,6 +1,6 @@
 {
     "name": "@girs/vda-1",
-    "version": "1.0.0-3.0.0-beta.12",
+    "version": "1.0.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Vda-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vda-1.js",
@@ -39,15 +39,18 @@
         "@girs/libxml2-2.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "Vda-1"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -55,5 +58,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/vda-1#readme"
 }

@@ -1,7 +1,7 @@
 
 # GcrUi-3
 
-Node.js TypeScript type definitions for GcrUi-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GcrUi-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GCR widgets
 
@@ -16,12 +16,12 @@ npm install @girs/node-gcrui-3
 
 You can import this package into your project like this:
 ```ts
-import GcrUi from '@girs/node-gcrui-3';
+import GcrUi from '@girs/gcrui-3';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GcrUi = require('@girs/node-gcrui-3');
+const GcrUi = require('@girs/gcrui-3');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

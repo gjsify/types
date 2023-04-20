@@ -1,7 +1,7 @@
 
 # Gio-2.0
 
-GJS TypeScript type definitions for Gio-2.0, generated from library version 2.75.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for Gio-2.0, generated from library version 2.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GIO provides a modern and easy-to-use VFS API. It provides a file system abstraction which allows applications to access local and remote files with a single consistent API.
 

@@ -638,6 +638,22 @@ interface UserManager {
      * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     cache_user_async(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of cache_user_async
+
+    /**
+     * Promisified version of {@link cache_user_async}
+     * 
+     * Asynchronously caches a user account so it shows up via
+     * act_user_manager_list_users().
+     * 
+     * For more details, see act_user_manager_cache_user(), which
+     * is the synchronous version of this call.
+     * @param username a unix user name
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns A Promise of: user object
+     */
+    cache_user_async(username: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<User>
     /**
      * Finishes an asynchronous user caching.
      * 
@@ -671,6 +687,23 @@ interface UserManager {
      * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     create_user_async(username: string | null, fullname: string | null, accounttype: UserAccountType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_user_async
+
+    /**
+     * Promisified version of {@link create_user_async}
+     * 
+     * Asynchronously creates a user account on the system.
+     * 
+     * For more details, see act_user_manager_create_user(), which
+     * is the synchronous version of this call.
+     * @param username a unix user name
+     * @param fullname a unix GECOS value
+     * @param accounttype a #ActUserAccountType
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns A Promise of: user object
+     */
+    create_user_async(username: string | null, fullname: string | null, accounttype: UserAccountType, cancellable: Gio.Cancellable | null): globalThis.Promise<User>
     /**
      * Finishes an asynchronous user creation.
      * 
@@ -697,6 +730,22 @@ interface UserManager {
      * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
     delete_user_async(user: User, remove_files: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_user_async
+
+    /**
+     * Promisified version of {@link delete_user_async}
+     * 
+     * Asynchronously deletes a user account from the system.
+     * 
+     * For more details, see act_user_manager_delete_user(), which
+     * is the synchronous version of this call.
+     * @param user a #ActUser object
+     * @param remove_files %TRUE to delete the users home directory
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns A Promise of: %TRUE if the user account was successfully deleted
+     */
+    delete_user_async(user: User, remove_files: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous user account deletion.
      * 
@@ -748,6 +797,18 @@ interface UserManager {
      */
     uncache_user(username: string | null): boolean
     uncache_user_async(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of uncache_user_async
+
+    /**
+     * Promisified version of {@link uncache_user_async}
+     * 
+     * 
+     * @param username 
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if the user account was successfully uncached
+     */
+    uncache_user_async(username: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous user uncaching.
      * 

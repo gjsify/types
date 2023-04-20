@@ -1,7 +1,7 @@
 
 # GUPnPIgd-1.0
 
-Node.js TypeScript type definitions for GUPnPIgd-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GUPnPIgd-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gupnpigd-1.0
 
 You can import this package into your project like this:
 ```ts
-import GUPnPIgd from '@girs/node-gupnpigd-1.0';
+import GUPnPIgd from '@girs/gupnpigd-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GUPnPIgd = require('@girs/node-gupnpigd-1.0');
+const GUPnPIgd = require('@girs/gupnpigd-1.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

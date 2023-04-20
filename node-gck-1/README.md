@@ -1,7 +1,7 @@
 
 # Gck-1
 
-Node.js TypeScript type definitions for Gck-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Gck-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GLib wrapper library for PKCS#11
 
@@ -16,12 +16,12 @@ npm install @girs/node-gck-1
 
 You can import this package into your project like this:
 ```ts
-import Gck from '@girs/node-gck-1';
+import Gck from '@girs/gck-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gck = require('@girs/node-gck-1');
+const Gck = require('@girs/gck-1');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

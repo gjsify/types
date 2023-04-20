@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-pangoxft-1.0",
-    "version": "1.0.0-3.0.0-beta.12",
+    "version": "1.0.0-3.0.0-beta.13",
     "description": "Node.js TypeScript type definitions for PangoXft-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "node-pangoxft-1.0.js",
@@ -29,33 +29,37 @@
         "test:cjs": "tsc --noEmit node-pangoxft-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/node-cairo-1.0": "workspace:^",
-        "@girs/node-fontconfig-2.0": "workspace:^",
-        "@girs/node-freetype2-2.0": "workspace:^",
-        "@girs/node-gio-2.0": "workspace:^",
-        "@girs/node-glib-2.0": "workspace:^",
-        "@girs/node-gobject-2.0": "workspace:^",
-        "@girs/node-harfbuzz-0.0": "workspace:^",
-        "@girs/node-pango-1.0": "workspace:^",
-        "@girs/node-pangofc-1.0": "workspace:^",
-        "@girs/node-pangoft2-1.0": "workspace:^",
-        "@girs/node-pangoot-1.0": "workspace:^",
-        "@girs/node-xft-2.0": "workspace:^",
-        "@girs/node-xlib-2.0": "workspace:^"
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/fontconfig-2.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangofc-1.0": "workspace:^",
+        "@girs/pangoft2-1.0": "workspace:^",
+        "@girs/pangoot-1.0": "workspace:^",
+        "@girs/xft-2.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
     },
     "peerDependencies": {
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "PangoXft-1.0"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -63,5 +67,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-pangoxft-1.0#readme"
 }

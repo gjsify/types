@@ -371,6 +371,21 @@ function main_clipboard_selection_request(channel: MainChannel, selection: numbe
  * @param callback a #GAsyncReadyCallback to call when the request is satisfied
  */
 function main_file_copy_async<Z = unknown>(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of main_file_copy_async
+
+/**
+ * Promisified version of {@link main_file_copy_async}
+ * 
+ * See: spice_main_channel_file_copy_async()
+ * @param channel a #SpiceMainChannel
+ * @param sources a %NULL-terminated array of #GFile objects to be transferred
+ * @param flags set of #GFileCopyFlags
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+ * @returns A Promise of: a %TRUE on success, %FALSE on error.
+ */
+function main_file_copy_async<Z = unknown>(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
 /**
  * Finishes copying the file started with
  * spice_main_file_copy_async().
@@ -467,6 +482,22 @@ function port_event(port: PortChannel, event: number): void
  * @param callback callback to call when the request is satisfied
  */
 function port_write_async<Z = unknown>(port: PortChannel, buffer: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of port_write_async
+
+/**
+ * Promisified version of {@link port_write_async}
+ * 
+ * Request an asynchronous write of count bytes from `buffer` into the
+ * `port`. When the operation is finished `callback` will be called. You
+ * can then call spice_port_write_finish() to get the result of
+ * the operation.
+ * @param port A #SpicePortChannel
+ * @param buffer the buffer containing the data to write
+ * @param cancellable optional GCancellable object, NULL to ignore
+ * @returns A Promise of: a #gssize containing the number of bytes written to the stream.
+ */
+function port_write_async<Z = unknown>(port: PortChannel, buffer: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
 /**
  * Finishes a port write operation.
  * @param port a #SpicePortChannel
@@ -694,6 +725,22 @@ interface Channel {
      * @param callback callback to call when the request is satisfied
      */
     flush_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of flush_async
+
+    /**
+     * Promisified version of {@link flush_async}
+     * 
+     * Forces an asynchronous write of all user-space buffered data for
+     * the given channel.
+     * 
+     * When the operation is finished callback will be called. You can
+     * then call spice_channel_flush_finish() to get the result of the
+     * operation.
+     * @param cancellable optional GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE if flush operation succeeded, %FALSE otherwise.
+     */
+    flush_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes flushing a channel.
      * @param result a #GAsyncResult
@@ -1907,6 +1954,42 @@ interface MainChannel {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of file_copy_async
+
+    /**
+     * Promisified version of {@link file_copy_async}
+     * 
+     * Copies the file `sources` to guest
+     * 
+     * If `cancellable` is not %NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * 
+     * If `progress_callback` is not %NULL, then the operation can be monitored by
+     * setting this to a #GFileProgressCallback function. `progress_callback_data`
+     * will be passed to this function. It is guaranteed that this callback will
+     * be called after all data has been transferred with the total number of bytes
+     * copied during the operation. Note that before release 0.31, progress_callback
+     * was broken since it only provided status for a single file transfer, but did
+     * not provide a way to determine which file it referred to. In release 0.31,
+     * this behavior was changed so that progress_callback provides the status of
+     * all ongoing file transfers. If you need to monitor the status of individual
+     * files, please connect to the #SpiceMainChannel::new-file-transfer signal.
+     * 
+     * When the operation is finished, callback will be called. You can then call
+     * spice_main_file_copy_finish() to get the result of the operation. Note that
+     * before release 0.33 the callback was called for each file in multiple file
+     * transfer. This behavior was changed for the same reason as the
+     * progress_callback (above). If you need to monitor the ending of individual
+     * files, you can connect to "finished" signal from each SpiceFileTransferTask.
+     * @param sources a %NULL-terminated array of #GFile objects to be transferred
+     * @param flags set of #GFileCopyFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+     * @returns A Promise of: a %TRUE on success, %FALSE on error.
+     */
+    file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes copying the file started with
      * spice_main_file_copy_async().
@@ -2621,6 +2704,21 @@ interface PortChannel {
      * @param callback callback to call when the request is satisfied
      */
     write_async(buffer: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_async
+
+    /**
+     * Promisified version of {@link write_async}
+     * 
+     * Request an asynchronous write of count bytes from `buffer` into the
+     * `port`. When the operation is finished `callback` will be called. You
+     * can then call spice_port_write_finish() to get the result of
+     * the operation.
+     * @param buffer the buffer containing the data to write
+     * @param cancellable optional GCancellable object, NULL to ignore
+     * @returns A Promise of: a #gssize containing the number of bytes written to the stream.
+     */
+    write_async(buffer: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Finishes a port write operation.
      * @param result a #GAsyncResult
@@ -2811,6 +2909,17 @@ interface QmpPort {
      * @param callback The async callback.
      */
     query_status_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_status_async
+
+    /**
+     * Promisified version of {@link query_status_async}
+     * 
+     * Query the run status of all VCPUs.
+     * @param cancellable A #GCancellable
+     * @returns A Promise of: The #SpiceQmpStatus result or %NULL, in which case @error will be set.
+     */
+    query_status_async(cancellable: Gio.Cancellable | null): globalThis.Promise<QmpStatus>
     /**
      * Finish the asynchronous status query.
      * @param result The async #GAsyncResult result
@@ -2824,6 +2933,18 @@ interface QmpPort {
      * @param callback callback to call when the action is complete
      */
     vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of vm_action_async
+
+    /**
+     * Promisified version of {@link vm_action_async}
+     * 
+     * Request the VM to perform an action.
+     * @param action a VM action
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of the result of {@link vm_action_async}
+     */
+    vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes asynchronous VM action and returns the result.
      * @param result The async #GAsyncResult result
@@ -4113,6 +4234,20 @@ interface UsbDeviceManager extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     connect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_device_async
+
+    /**
+     * Promisified version of {@link connect_device_async}
+     * 
+     * Asynchronously connects the `device`. When completed, `callback` will be called.
+     * Then it is possible to call spice_usb_device_manager_connect_device_finish()
+     * to get the result of the operation.
+     * @param device a #SpiceUsbDevice to redirect
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE if connection is successful
+     */
+    connect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async operation. See spice_usb_device_manager_connect_device_async().
      * @param res a #GAsyncResult
@@ -4133,6 +4268,20 @@ interface UsbDeviceManager extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of disconnect_device_async
+
+    /**
+     * Promisified version of {@link disconnect_device_async}
+     * 
+     * Asynchronously disconnects the `device`. When completed, `callback` will be called.
+     * Then it is possible to call spice_usb_device_manager_disconnect_device_finish()
+     * to get the result of the operation.
+     * @param device a connected #SpiceUsbDevice to disconnect.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if disconnection is successful
+     */
+    disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async operation. See spice_usb_device_manager_disconnect_device_async().
      * @param res a #GAsyncResult

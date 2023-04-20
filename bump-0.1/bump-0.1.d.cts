@@ -304,6 +304,16 @@ export interface Claim extends Gio.Initable, Gio.AsyncInitable {
     // Overloads of init_async
 
     /**
+     * Promisified version of {@link init_async}
+     * 
+     * 
+     * @param io_priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link init_async}
+     */
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>
+    /**
      * Starts asynchronous initialization of the object implementing the
      * interface. This must be done before any real use of the object after
      * initial construction. If the object also implements #GInitable you can
@@ -522,6 +532,23 @@ export interface Event {
     add(func: any, priority: number, cancellable?: Gio.Cancellable | null): void
     execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null): any | null
     execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param r_type 
+     * @param r_dup_func 
+     * @param r_destroy_func 
+     * @param func 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>
     execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null
     execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null
@@ -597,11 +624,37 @@ export interface Factory {
 
     create(priority: number, cancellable?: Gio.Cancellable | null): any | null
     create_async(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_async
+
+    /**
+     * Promisified version of {@link create_async}
+     * 
+     * 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link create_async}
+     */
+    create_async(priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>
     create_finish(_res_: Gio.AsyncResult): any | null
     create_background(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     create_background_finish(_res_: Gio.AsyncResult): any | null
     acquire(priority: number, cancellable?: Gio.Cancellable | null): any | null
     acquire_async(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of acquire_async
+
+    /**
+     * Promisified version of {@link acquire_async}
+     * 
+     * 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link acquire_async}
+     */
+    acquire_async(priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>
     acquire_finish(_res_: Gio.AsyncResult): any | null
     acquire_background(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     acquire_background_finish(_res_: Gio.AsyncResult): any | null
@@ -862,6 +915,16 @@ export interface ResourceClaim {
     // Overloads of init_async
 
     /**
+     * Promisified version of {@link init_async}
+     * 
+     * 
+     * @param io_priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link init_async}
+     */
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>
+    /**
      * Starts asynchronous initialization of the object implementing the
      * interface. This must be done before any real use of the object after
      * initial construction. If the object also implements #GInitable you can
@@ -945,6 +1008,53 @@ export interface ResourceClaim {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of init_async
+
+    /**
+     * Promisified version of {@link init_async}
+     * 
+     * Starts asynchronous initialization of the object implementing the
+     * interface. This must be done before any real use of the object after
+     * initial construction. If the object also implements #GInitable you can
+     * optionally call g_initable_init() instead.
+     * 
+     * This method is intended for language bindings. If writing in C,
+     * g_async_initable_new_async() should typically be used instead.
+     * 
+     * When the initialization is finished, `callback` will be called. You can
+     * then call g_async_initable_init_finish() to get the result of the
+     * initialization.
+     * 
+     * Implementations may also support cancellation. If `cancellable` is not
+     * %NULL, then initialization can be cancelled by triggering the cancellable
+     * object from another thread. If the operation was cancelled, the error
+     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+     * the object doesn't support cancellable initialization, the error
+     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+     * 
+     * As with #GInitable, if the object is not initialized, or initialization
+     * returns with an error, then all operations on the object except
+     * g_object_ref() and g_object_unref() are considered to be invalid, and
+     * have undefined behaviour. They will often fail with g_critical() or
+     * g_warning(), but this must not be relied on.
+     * 
+     * Callers should not assume that a class which implements #GAsyncInitable can
+     * be initialized multiple times; for more information, see g_initable_init().
+     * If a class explicitly supports being initialized multiple times,
+     * implementation requires yielding all subsequent calls to init_async() on the
+     * results of the first call.
+     * 
+     * For classes that also support the #GInitable interface, the default
+     * implementation of this method will run the g_initable_init() function
+     * in a thread, so if you want to support asynchronous initialization via
+     * threads, just implement the #GAsyncInitable interface without overriding
+     * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+     */
+    init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
 
     // Overloads of vfunc_init
@@ -1220,11 +1330,41 @@ export interface ResourcePool {
     release(resource?: any | null): void
     execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null): any | null
     execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param r_type 
+     * @param r_dup_func 
+     * @param r_destroy_func 
+     * @param func 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>
     execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null
     execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, func: any, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, r_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null
     claim(priority: number, cancellable?: Gio.Cancellable | null): ResourceClaim
     claim_async(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of claim_async
+
+    /**
+     * Promisified version of {@link claim_async}
+     * 
+     * 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link claim_async}
+     */
+    claim_async(priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<ResourceClaim>
     claim_finish(_res_: Gio.AsyncResult): ResourceClaim
     get_max_resources(): number
     get_max_idle_time(): GLib.TimeSpan
@@ -1325,9 +1465,35 @@ export interface Semaphore {
     unlock(): void
     lock(priority: number, cancellable?: Gio.Cancellable | null): void
     lock_async(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of lock_async
+
+    /**
+     * Promisified version of {@link lock_async}
+     * 
+     * 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link lock_async}
+     */
+    lock_async(priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>
     lock_finish(_res_: Gio.AsyncResult): void
     claim(priority: number, cancellable?: Gio.Cancellable | null): SemaphoreClaim
     claim_async(priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of claim_async
+
+    /**
+     * Promisified version of {@link claim_async}
+     * 
+     * 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link claim_async}
+     */
+    claim_async(priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<SemaphoreClaim>
     claim_finish(_res_: Gio.AsyncResult): SemaphoreClaim
     get_max_claims(): number
     get_claims(): number
@@ -1495,6 +1661,16 @@ export interface SemaphoreClaim {
     // Overloads of init_async
 
     /**
+     * Promisified version of {@link init_async}
+     * 
+     * 
+     * @param io_priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link init_async}
+     */
+    init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>
+    /**
      * Starts asynchronous initialization of the object implementing the
      * interface. This must be done before any real use of the object after
      * initial construction. If the object also implements #GInitable you can
@@ -1578,6 +1754,53 @@ export interface SemaphoreClaim {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of init_async
+
+    /**
+     * Promisified version of {@link init_async}
+     * 
+     * Starts asynchronous initialization of the object implementing the
+     * interface. This must be done before any real use of the object after
+     * initial construction. If the object also implements #GInitable you can
+     * optionally call g_initable_init() instead.
+     * 
+     * This method is intended for language bindings. If writing in C,
+     * g_async_initable_new_async() should typically be used instead.
+     * 
+     * When the initialization is finished, `callback` will be called. You can
+     * then call g_async_initable_init_finish() to get the result of the
+     * initialization.
+     * 
+     * Implementations may also support cancellation. If `cancellable` is not
+     * %NULL, then initialization can be cancelled by triggering the cancellable
+     * object from another thread. If the operation was cancelled, the error
+     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+     * the object doesn't support cancellable initialization, the error
+     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+     * 
+     * As with #GInitable, if the object is not initialized, or initialization
+     * returns with an error, then all operations on the object except
+     * g_object_ref() and g_object_unref() are considered to be invalid, and
+     * have undefined behaviour. They will often fail with g_critical() or
+     * g_warning(), but this must not be relied on.
+     * 
+     * Callers should not assume that a class which implements #GAsyncInitable can
+     * be initialized multiple times; for more information, see g_initable_init().
+     * If a class explicitly supports being initialized multiple times,
+     * implementation requires yielding all subsequent calls to init_async() on the
+     * results of the first call.
+     * 
+     * For classes that also support the #GInitable interface, the default
+     * implementation of this method will run the g_initable_init() function
+     * in a thread, so if you want to support asynchronous initialization via
+     * threads, just implement the #GAsyncInitable interface without overriding
+     * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+     */
+    init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
 
     // Overloads of vfunc_init
@@ -1815,6 +2038,23 @@ export interface TaskQueue extends Queue, Threading {
     process(wait: GLib.TimeSpan): boolean
     execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: Callback, priority: number, cancellable?: Gio.Cancellable | null): any | null
     execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: Callback, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param g_type 
+     * @param g_dup_func 
+     * @param g_destroy_func 
+     * @param func 
+     * @param priority 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: Callback, priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>
     execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null
     execute_background(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: Callback, priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, _res_: Gio.AsyncResult): any | null

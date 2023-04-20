@@ -1,7 +1,7 @@
 
 # GLib-2.0
 
-Node.js TypeScript type definitions for GLib-2.0, generated from library version 2.75.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GLib-2.0, generated from library version 2.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.
 
@@ -16,12 +16,12 @@ npm install @girs/node-glib-2.0
 
 You can import this package into your project like this:
 ```ts
-import GLib from '@girs/node-glib-2.0';
+import GLib from '@girs/glib-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GLib = require('@girs/node-glib-2.0');
+const GLib = require('@girs/glib-2.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

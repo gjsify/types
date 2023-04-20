@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-soupgnome-2.4",
-    "version": "2.4.0-3.0.0-beta.12",
+    "version": "2.4.0-3.0.0-beta.13",
     "description": "Node.js TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0",
     "type": "module",
     "module": "node-soupgnome-2.4.js",
@@ -29,24 +29,28 @@
         "test:cjs": "tsc --noEmit node-soupgnome-2.4.d.cts"
     },
     "dependencies": {
-        "@girs/node-gio-2.0": "workspace:^",
-        "@girs/node-glib-2.0": "workspace:^",
-        "@girs/node-gobject-2.0": "workspace:^",
-        "@girs/node-soup-2.4": "workspace:^"
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/soup-2.4": "workspace:^"
     },
     "peerDependencies": {
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "SoupGNOME-2.4"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -54,5 +58,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-soupgnome-2.4#readme"
 }

@@ -1,7 +1,7 @@
 
 # Anthy-9000
 
-GJS TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 

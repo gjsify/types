@@ -1,7 +1,7 @@
 
 # GrlPls-0.3
 
-GJS TypeScript type definitions for GrlPls-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for GrlPls-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 

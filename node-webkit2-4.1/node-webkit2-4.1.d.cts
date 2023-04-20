@@ -9,21 +9,21 @@
  * WebKit2-4.1
  */
 
-import type Soup from '@girs/node-soup-3.0';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type JavaScriptCore from '@girs/node-javascriptcore-4.1';
-import type Gtk from '@girs/node-gtk-3.0';
-import type xlib from '@girs/node-xlib-2.0';
-import type Gdk from '@girs/node-gdk-3.0';
-import type cairo from '@girs/node-cairo-1.0';
-import type Pango from '@girs/node-pango-1.0';
-import type HarfBuzz from '@girs/node-harfbuzz-0.0';
-import type freetype2 from '@girs/node-freetype2-2.0';
-import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
-import type GModule from '@girs/node-gmodule-2.0';
-import type Atk from '@girs/node-atk-1.0';
+import type Soup from '@girs/soup-3.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type JavaScriptCore from '@girs/javascriptcore-4.1';
+import type Gtk from '@girs/gtk-3.0';
+import type xlib from '@girs/xlib-2.0';
+import type Gdk from '@girs/gdk-3.0';
+import type cairo from '@girs/cairo-1.0';
+import type Pango from '@girs/pango-1.0';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type Atk from '@girs/atk-1.0';
 
 /**
  * Enum values representing the authentication scheme.
@@ -389,7 +389,7 @@ export enum DownloadError {
  */
 export enum FaviconDatabaseError {
     /**
-     * The #WebKitFaviconDatabase has not been initialized yet
+     * The #WebKitFaviconDatabase is closed
      */
     NOT_INITIALIZED,
     /**
@@ -476,7 +476,15 @@ export enum JavascriptError {
     /**
      * An exception was raised in JavaScript execution
      */
-    FAILED,
+    SCRIPT_FAILED,
+    /**
+     * An unsupported parameter has been used to call and async function from API. Since 2.40
+     */
+    INVALID_PARAMETER,
+    /**
+     * The result of JavaScript execution could not be returned. Since 2.40
+     */
+    INVALID_RESULT,
 }
 /**
  * Enum values used to denote the different events that happen during a
@@ -597,7 +605,24 @@ export enum NetworkProxyMode {
     CUSTOM,
 }
 /**
- * Enum values used to denote the various plugin and multimedia errors.
+ * Enum values representing query permission results.
+ */
+export enum PermissionState {
+    /**
+     * Access to the feature is granted.
+     */
+    GRANTED,
+    /**
+     * Access to the feature is denied.
+     */
+    DENIED,
+    /**
+     * Access to the feature has to be requested via user prompt.
+     */
+    PROMPT,
+}
+/**
+ * Enum values used to denote the various plugin and media errors.
  */
 export enum PluginError {
     /**
@@ -1462,6 +1487,7 @@ export interface AuthenticationRequest {
     // Own fields of WebKit2-4.1.WebKit2.AuthenticationRequest
 
     parent: GObject.Object
+    priv: AuthenticationRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.AuthenticationRequest
 
@@ -1665,6 +1691,7 @@ export interface AutomationSession {
     // Own fields of WebKit2-4.1.WebKit2.AutomationSession
 
     parent: GObject.Object
+    priv: AutomationSessionPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.AutomationSession
 
@@ -1771,6 +1798,7 @@ export interface BackForwardList {
     // Own fields of WebKit2-4.1.WebKit2.BackForwardList
 
     parent: GObject.Object
+    priv: BackForwardListPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.BackForwardList
 
@@ -1893,6 +1921,7 @@ export interface BackForwardListItem {
     // Own fields of WebKit2-4.1.WebKit2.BackForwardListItem
 
     parent: GObject.InitiallyUnowned
+    priv: BackForwardListItemPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.BackForwardListItem
 
@@ -1990,6 +2019,7 @@ export interface ColorChooserRequest {
     // Own fields of WebKit2-4.1.WebKit2.ColorChooserRequest
 
     parent: GObject.Object
+    priv: ColorChooserRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.ColorChooserRequest
 
@@ -2101,6 +2131,7 @@ export interface ContextMenu {
     // Own fields of WebKit2-4.1.WebKit2.ContextMenu
 
     parent: GObject.Object
+    priv: ContextMenuPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.ContextMenu
 
@@ -2114,6 +2145,26 @@ export interface ContextMenu {
      * @returns the first #WebKitContextMenuItem of @menu,    or %NULL if the #WebKitContextMenu is empty.
      */
     first(): ContextMenuItem
+    /**
+     * Gets the #GdkEvent that triggered the context menu. This function only returns a valid
+     * #GdkEvent when called for a #WebKitContextMenu passed to #WebKitWebView::context-menu
+     * signal; in all other cases, %NULL is returned.
+     * 
+     * The returned #GdkEvent is expected to be one of the following types:
+     * <itemizedlist>
+     * <listitem><para>
+     * a #GdkEventButton of type %GDK_BUTTON_PRESS when the context menu was triggered with mouse.
+     * </para></listitem>
+     * <listitem><para>
+     * a #GdkEventKey of type %GDK_KEY_PRESS if the keyboard was used to show the menu.
+     * </para></listitem>
+     * <listitem><para>
+     * a generic #GdkEvent of type %GDK_NOTHING when the #GtkWidget::popup-menu signal was used to show the context menu.
+     * </para></listitem>
+     * </itemizedlist>
+     * @returns the menu event or %NULL.
+     */
+    getEvent(): Gdk.Event
     /**
      * Gets the item at the given position in the `menu`.
      * @param position the position of the item, counting from 0
@@ -2463,6 +2514,7 @@ export interface CookieManager {
     // Own fields of WebKit2-4.1.WebKit2.CookieManager
 
     parent: GObject.Object
+    priv: CookieManagerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.CookieManager
 
@@ -2655,6 +2707,7 @@ export interface DeviceInfoPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.DeviceInfoPermissionRequest
 
     parent: GObject.Object
+    priv: DeviceInfoPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.DeviceInfoPermissionRequest
 
@@ -2760,7 +2813,7 @@ export interface Download {
      */
     allowOverwrite: boolean
     /**
-     * The local URI to where the download will be saved.
+     * The local path to where the download will be saved.
      */
     readonly destination: string | null
     /**
@@ -2781,6 +2834,7 @@ export interface Download {
     // Own fields of WebKit2-4.1.WebKit2.Download
 
     parent: GObject.Object
+    priv: DownloadPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.Download
 
@@ -2803,12 +2857,11 @@ export interface Download {
      */
     getAllowOverwrite(): boolean
     /**
-     * Obtains the URI to which the downloaded file will be written.
+     * Obtains the destination to which the downloaded file will be written.
      * 
-     * You
-     * can connect to #WebKitDownload::created-destination to make
+     * You can connect to #WebKitDownload::created-destination to make
      * sure this method returns a valid destination.
-     * @returns the destination URI or %NULL
+     * @returns the destination or %NULL
      */
     getDestination(): string | null
     /**
@@ -2866,23 +2919,24 @@ export interface Download {
      */
     setAllowOverwrite(allowed: boolean): void
     /**
-     * Sets the URI to which the downloaded file will be written.
+     * Sets the destination to which the downloaded file will be written.
      * 
      * This method should be called before the download transfer
      * starts or it will not have any effect on the ongoing download
      * operation. To set the destination using the filename suggested
      * by the server connect to #WebKitDownload::decide-destination
      * signal and call webkit_download_set_destination(). If you want to
-     * set a fixed destination URI that doesn't depend on the suggested
+     * set a fixed destination that doesn't depend on the suggested
      * filename you can connect to notify::response signal and call
      * webkit_download_set_destination().
+     * 
      * If #WebKitDownload::decide-destination signal is not handled
-     * and destination URI is not set when the download transfer starts,
+     * and destination is not set when the download transfer starts,
      * the file will be saved with the filename suggested by the server in
      * %G_USER_DIRECTORY_DOWNLOAD directory.
-     * @param uri the destination URI
+     * @param destination the destination
      */
-    setDestination(uri: string | null): void
+    setDestination(destination: string | null): void
 
     // Own virtual methods of WebKit2-4.1.WebKit2.Download
 
@@ -2995,6 +3049,7 @@ export interface EditorState {
     // Own fields of WebKit2-4.1.WebKit2.EditorState
 
     parent: GObject.Object
+    priv: EditorStatePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.EditorState
 
@@ -3101,6 +3156,7 @@ export interface FaviconDatabase {
     // Own fields of WebKit2-4.1.WebKit2.FaviconDatabase
 
     parent: GObject.Object
+    priv: FaviconDatabasePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.FaviconDatabase
 
@@ -3109,21 +3165,15 @@ export interface FaviconDatabase {
      */
     clear(): void
     /**
-     * Asynchronously obtains a #cairo_surface_t of the favicon.
+     * Asynchronously obtains a favicon image.
      * 
-     * Asynchronously obtains a #cairo_surface_t of the favicon for the
+     * Asynchronously obtains an image of the favicon for the
      * given page URI. It returns the cached icon if it's in the database
      * asynchronously waiting for the icon to be read from the database.
      * 
      * This is an asynchronous method. When the operation is finished, callback will
      * be invoked. You can then call webkit_favicon_database_get_favicon_finish()
      * to get the result of the operation.
-     * 
-     * You must call webkit_web_context_set_favicon_database_directory() for
-     * the #WebKitWebContext associated with this #WebKitFaviconDatabase
-     * before attempting to use this function; otherwise,
-     * webkit_favicon_database_get_favicon_finish() will return
-     * %WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
      * @param pageUri URI of the page for which we want to retrieve the favicon
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is            satisfied or %NULL if you don't care about the result.
@@ -3132,7 +3182,7 @@ export interface FaviconDatabase {
     /**
      * Finishes an operation started with webkit_favicon_database_get_favicon().
      * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to webkit_favicon_database_get_favicon()
-     * @returns a new reference to a #cairo_surface_t, or %NULL in case of error.
+     * @returns a new favicon image, or %NULL in case of error.
      */
     getFaviconFinish(result: Gio.AsyncResult): cairo.Surface
     /**
@@ -3233,6 +3283,7 @@ export interface FileChooserRequest {
     // Own fields of WebKit2-4.1.WebKit2.FileChooserRequest
 
     parent: GObject.Object
+    priv: FileChooserRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.FileChooserRequest
 
@@ -3340,8 +3391,8 @@ export interface FileChooserRequest {
 /**
  * A request to open a file chooser.
  * 
- * Whenever the user interacts with an <input type='file' />
- * HTML element, WebKit will need to show a dialog to choose one or
+ * Whenever the user interacts with an HTML input element with
+ * file type, WebKit will need to show a dialog to choose one or
  * more files to be uploaded to the server along with the rest of the
  * form data. For that to happen in a general way, instead of just
  * opening a #GtkFileChooserDialog (which might be not desirable in
@@ -3435,6 +3486,7 @@ export interface FindController {
     // Own fields of WebKit2-4.1.WebKit2.FindController
 
     parent: GObject.Object
+    priv: FindControllerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.FindController
 
@@ -3636,6 +3688,7 @@ export interface FormSubmissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.FormSubmissionRequest
 
     parent: GObject.Object
+    priv: FormSubmissionRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.FormSubmissionRequest
 
@@ -3744,6 +3797,7 @@ export interface GeolocationManager {
     // Own fields of WebKit2-4.1.WebKit2.GeolocationManager
 
     parent: GObject.Object
+    priv: GeolocationManagerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.GeolocationManager
 
@@ -3836,6 +3890,7 @@ export interface GeolocationPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.GeolocationPermissionRequest
 
     parent: GObject.Object
+    priv: GeolocationPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.GeolocationPermissionRequest
 
@@ -3971,6 +4026,7 @@ export interface HitTestResult {
     // Own fields of WebKit2-4.1.WebKit2.HitTestResult
 
     parent: GObject.Object
+    priv: HitTestResultPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.HitTestResult
 
@@ -4195,6 +4251,7 @@ export interface InputMethodContext {
     // Own fields of WebKit2-4.1.WebKit2.InputMethodContext
 
     parent: GObject.Object
+    priv: InputMethodContextPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.InputMethodContext
 
@@ -4395,10 +4452,8 @@ export interface InstallMissingMediaPluginsPermissionRequest extends PermissionR
     // Owm methods of WebKit2-4.1.WebKit2.InstallMissingMediaPluginsPermissionRequest
 
     /**
-     * Gets the description about the missing plugins.
-     * 
-     * Gets the description about the missing plugins provided by the media backend when a media couldn't be played.
-     * @returns a string with the description provided by the media backend.
+     * This function returns an empty string.
+     * @returns an empty string
      */
     getDescription(): string | null
 
@@ -4417,15 +4472,10 @@ export interface InstallMissingMediaPluginsPermissionRequest extends PermissionR
 }
 
 /**
- * A permission request for installing missing media plugins.
+ * Previously, a permission request for installing missing media plugins.
  * 
- * WebKitInstallMissingMediaPluginsPermissionRequest represents a request for
- * permission to decide whether WebKit should try to start a helper application to
- * install missing media plugins when the media backend couldn't play a media because
- * the required plugins were not available.
- * 
- * When a WebKitInstallMissingMediaPluginsPermissionRequest is not handled by the user,
- * it is allowed by default.
+ * WebKitInstallMissingMediaPluginsPermissionRequest will no longer ever be created, so
+ * you can remove any code that attempts to handle it.
  * @class 
  */
 export class InstallMissingMediaPluginsPermissionRequest extends GObject.Object {
@@ -4458,6 +4508,7 @@ export interface MediaKeySystemPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.MediaKeySystemPermissionRequest
 
     parent: GObject.Object
+    priv: MediaKeySystemPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.MediaKeySystemPermissionRequest
 
@@ -4555,6 +4606,7 @@ export interface NavigationPolicyDecision {
     // Own fields of WebKit2-4.1.WebKit2.NavigationPolicyDecision
 
     parent: PolicyDecision & GObject.Object
+    priv: any
 
     // Owm methods of WebKit2-4.1.WebKit2.NavigationPolicyDecision
 
@@ -4704,6 +4756,7 @@ export interface Notification {
     // Own fields of WebKit2-4.1.WebKit2.Notification
 
     parent: GObject.Object
+    priv: NotificationPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.Notification
 
@@ -4820,6 +4873,7 @@ export interface NotificationPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.NotificationPermissionRequest
 
     parent: GObject.Object
+    priv: NotificationPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.NotificationPermissionRequest
 
@@ -4886,6 +4940,7 @@ export interface OptionMenu {
     // Own fields of WebKit2-4.1.WebKit2.OptionMenu
 
     parent: GObject.Object
+    priv: OptionMenuPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.OptionMenu
 
@@ -4909,6 +4964,13 @@ export interface OptionMenu {
      * unchanged.
      */
     close(): void
+    /**
+     * Gets the #GdkEvent that triggered the dropdown menu.
+     * If `menu` was not triggered by a user interaction, like a mouse click,
+     * %NULL is returned.
+     * @returns the menu event or %NULL.
+     */
+    getEvent(): Gdk.Event
     /**
      * Returns the #WebKitOptionMenuItem at `index` in `menu`.
      * @param index the index of the item
@@ -5073,6 +5135,7 @@ export interface PointerLockPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.PointerLockPermissionRequest
 
     parent: GObject.Object
+    priv: PointerLockPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.PointerLockPermissionRequest
 
@@ -5129,6 +5192,7 @@ export interface PolicyDecision {
     // Own fields of WebKit2-4.1.WebKit2.PolicyDecision
 
     parent: GObject.Object
+    priv: PolicyDecisionPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.PolicyDecision
 
@@ -5328,6 +5392,13 @@ export interface PrintCustomWidget {
  * signal, creating a new WebKitPrintCustomWidget with
  * webkit_print_custom_widget_new() and returning it from there. You can later
  * use webkit_print_operation_run_dialog() to display the dialog.
+ * 
+ * Unfortunately, use of custom widgets is incompatible with modern
+ * containerized application frameworks like Flatpak. A print dialog
+ * constructed in the application process will not have access to host
+ * printers, so instead it must be constructed by a desktop portal service
+ * running on the host system. Because this print dialog runs in a separate
+ * process, it's not possible to attach a custom widget.
  * @class 
  */
 export class PrintCustomWidget extends GObject.Object {
@@ -5437,6 +5508,7 @@ export interface PrintOperation {
     // Own fields of WebKit2-4.1.WebKit2.PrintOperation
 
     parent: GObject.Object
+    priv: PrintOperationPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.PrintOperation
 
@@ -5617,6 +5689,7 @@ export interface ResponsePolicyDecision {
     // Own fields of WebKit2-4.1.WebKit2.ResponsePolicyDecision
 
     parent: PolicyDecision & GObject.Object
+    priv: any
 
     // Owm methods of WebKit2-4.1.WebKit2.ResponsePolicyDecision
 
@@ -5636,6 +5709,11 @@ export interface ResponsePolicyDecision {
      * @returns The URI response that is associated with this policy decision.
      */
     getResponse(): URIResponse
+    /**
+     * Gets whether the request is the main frame main resource
+     * @returns %TRUE if the request is the main frame main resouce or %FALSE otherwise
+     */
+    isMainFrameMainResource(): boolean
     /**
      * Gets whether the MIME type of the response can be displayed in the #WebKitWebView.
      * 
@@ -5709,6 +5787,7 @@ export interface SecurityManager {
     // Own fields of WebKit2-4.1.WebKit2.SecurityManager
 
     parent: GObject.Object
+    priv: SecurityManagerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.SecurityManager
 
@@ -5916,6 +5995,15 @@ export module Settings {
          */
         defaultMonospaceFontSize?: number | null
         /**
+         * Enable or disable support for Web Security on pages.
+         * 
+         * This setting disables the same-origin policy, allowing every website full control over
+         * all other websites. This is for use in special environments where you wish to disable
+         * all security and allow websites to hack each other. It is impossible to use this setting
+         * securely.
+         */
+        disableWebSecurity?: boolean | null
+        /**
          * Whether to draw compositing borders and repaint counters on layers drawn
          * with accelerated compositing. This is useful for debugging issues related
          * to web content that is composited with the GPU.
@@ -5955,9 +6043,7 @@ export module Settings {
          */
         enableEncryptedMedia?: boolean | null
         /**
-         * Whether to enable the frame flattening. With this setting each subframe is expanded
-         * to its contents, which will flatten all the frames to become one scrollable page.
-         * On touch devices scrollable subframes on a page can result in a confusing user experience.
+         * Frame flattening is no longer supported. This property does nothing.
          */
         enableFrameFlattening?: boolean | null
         /**
@@ -6139,15 +6225,11 @@ export module Settings {
         fantasyFontFamily?: string | null
         /**
          * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
-         * hardware acceleration. The default value %WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
-         * enables the hardware acceleration when the web contents request it.
-         * It's possible to enforce hardware acceleration to be always enabled
-         * by using %WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS. And it's also possible to disable it
-         * completely using %WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER. Note that disabling hardware
-         * acceleration might cause some websites to not render correctly or consume more CPU.
+         * hardware acceleration. Disabling hardware acceleration might
+         * cause some websites to not render correctly or consume more CPU.
          * 
          * Note that changing this setting might not be possible if hardware acceleration is not
-         * supported by the hardware or the system. In that case you can get the value to know the
+         * supported by the hardware or the system. In that case, you can get the value to know the
          * actual policy being used, but changing the setting will not have any effect.
          */
         hardwareAccelerationPolicy?: HardwareAccelerationPolicy | null
@@ -6299,6 +6381,15 @@ export interface Settings {
      */
     defaultMonospaceFontSize: number
     /**
+     * Enable or disable support for Web Security on pages.
+     * 
+     * This setting disables the same-origin policy, allowing every website full control over
+     * all other websites. This is for use in special environments where you wish to disable
+     * all security and allow websites to hack each other. It is impossible to use this setting
+     * securely.
+     */
+    disableWebSecurity: boolean
+    /**
      * Whether to draw compositing borders and repaint counters on layers drawn
      * with accelerated compositing. This is useful for debugging issues related
      * to web content that is composited with the GPU.
@@ -6338,9 +6429,7 @@ export interface Settings {
      */
     enableEncryptedMedia: boolean
     /**
-     * Whether to enable the frame flattening. With this setting each subframe is expanded
-     * to its contents, which will flatten all the frames to become one scrollable page.
-     * On touch devices scrollable subframes on a page can result in a confusing user experience.
+     * Frame flattening is no longer supported. This property does nothing.
      */
     enableFrameFlattening: boolean
     /**
@@ -6522,15 +6611,11 @@ export interface Settings {
     fantasyFontFamily: string | null
     /**
      * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
-     * hardware acceleration. The default value %WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
-     * enables the hardware acceleration when the web contents request it.
-     * It's possible to enforce hardware acceleration to be always enabled
-     * by using %WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS. And it's also possible to disable it
-     * completely using %WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER. Note that disabling hardware
-     * acceleration might cause some websites to not render correctly or consume more CPU.
+     * hardware acceleration. Disabling hardware acceleration might
+     * cause some websites to not render correctly or consume more CPU.
      * 
      * Note that changing this setting might not be possible if hardware acceleration is not
-     * supported by the hardware or the system. In that case you can get the value to know the
+     * supported by the hardware or the system. In that case, you can get the value to know the
      * actual policy being used, but changing the setting will not have any effect.
      */
     hardwareAccelerationPolicy: HardwareAccelerationPolicy
@@ -6616,7 +6701,8 @@ export interface Settings {
 
     // Own fields of WebKit2-4.1.WebKit2.Settings
 
-    parentInstance: GObject.Object
+    parent: GObject.Object
+    priv: SettingsPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.Settings
 
@@ -6671,6 +6757,11 @@ export interface Settings {
      */
     getDefaultMonospaceFontSize(): number
     /**
+     * Get the #WebKitSettings:disable-web-security property.
+     * @returns %TRUE If web security support is disabled or %FALSE otherwise.
+     */
+    getDisableWebSecurity(): boolean
+    /**
      * Get the #WebKitSettings:draw-compositing-indicators property.
      * @returns %TRUE If compositing borders are drawn or %FALSE otherwise.
      */
@@ -6706,8 +6797,8 @@ export interface Settings {
      */
     getEnableEncryptedMedia(): boolean
     /**
-     * Get the #WebKitSettings:enable-frame-flattening property.
-     * @returns %TRUE If frame flattening is enabled or %FALSE otherwise.
+     * Frame flattening is no longer supported. This function returns %FALSE.
+     * @returns %FALSE
      */
     getEnableFrameFlattening(): boolean
     /**
@@ -6971,6 +7062,11 @@ export interface Settings {
      */
     setDefaultMonospaceFontSize(fontSize: number): void
     /**
+     * Set the #WebKitSettings:disable-web-security property.
+     * @param disabled Value to be set
+     */
+    setDisableWebSecurity(disabled: boolean): void
+    /**
      * Set the #WebKitSettings:draw-compositing-indicators property.
      * @param enabled Value to be set
      */
@@ -7006,7 +7102,7 @@ export interface Settings {
      */
     setEnableEncryptedMedia(enabled: boolean): void
     /**
-     * Set the #WebKitSettings:enable-frame-flattening property.
+     * Frame flattening is no longer supported. This function does nothing.
      * @param enabled Value to be set
      */
     setEnableFrameFlattening(enabled: boolean): void
@@ -7287,6 +7383,11 @@ export interface Settings {
     once(sigName: "notify::default-monospace-font-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::default-monospace-font-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::default-monospace-font-size", ...args: any[]): void
+    connect(sigName: "notify::disable-web-security", callback: (...args: any[]) => void): number
+    on(sigName: "notify::disable-web-security", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::disable-web-security", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::disable-web-security", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::disable-web-security", ...args: any[]): void
     connect(sigName: "notify::draw-compositing-indicators", callback: (...args: any[]) => void): number
     on(sigName: "notify::draw-compositing-indicators", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::draw-compositing-indicators", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -7645,6 +7746,7 @@ export interface URIRequest {
     // Own fields of WebKit2-4.1.WebKit2.URIRequest
 
     parent: GObject.Object
+    priv: URIRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.URIRequest
 
@@ -7764,6 +7866,7 @@ export interface URIResponse {
     // Own fields of WebKit2-4.1.WebKit2.URIResponse
 
     parent: GObject.Object
+    priv: URIResponsePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.URIResponse
 
@@ -7891,6 +7994,7 @@ export interface URISchemeRequest {
     // Own fields of WebKit2-4.1.WebKit2.URISchemeRequest
 
     parent: GObject.Object
+    priv: URISchemeRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.URISchemeRequest
 
@@ -7911,6 +8015,11 @@ export interface URISchemeRequest {
      * @param response a #WebKitURISchemeResponse
      */
     finishWithResponse(response: URISchemeResponse): void
+    /**
+     * Get the request body.
+     * @returns (nullable): the body of the @request.
+     */
+    getHttpBody(): Gio.InputStream
     /**
      * Get the #SoupMessageHeaders of the request.
      * @returns the #SoupMessageHeaders of the @request.
@@ -8018,6 +8127,7 @@ export interface URISchemeResponse {
     // Own fields of WebKit2-4.1.WebKit2.URISchemeResponse
 
     parent: GObject.Object
+    priv: URISchemeResponsePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.URISchemeResponse
 
@@ -8141,6 +8251,7 @@ export interface UserContentFilterStore {
     // Own fields of WebKit2-4.1.WebKit2.UserContentFilterStore
 
     parent: GObject.Object
+    priv: UserContentFilterStorePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.UserContentFilterStore
 
@@ -8329,7 +8440,14 @@ export module UserContentManager {
      * Signal callback interface for `script-message-received`
      */
     export interface ScriptMessageReceivedSignalCallback {
-        (jsResult: JavascriptResult): void
+        (value: JavascriptResult): void
+    }
+
+    /**
+     * Signal callback interface for `script-message-with-reply-received`
+     */
+    export interface ScriptMessageWithReplyReceivedSignalCallback {
+        (value: JavaScriptCore.Value, reply: ScriptMessageReply): boolean
     }
 
 
@@ -8349,6 +8467,7 @@ export interface UserContentManager {
     // Own fields of WebKit2-4.1.WebKit2.UserContentManager
 
     parent: GObject.Object
+    priv: UserContentManagerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.UserContentManager
 
@@ -8417,6 +8536,27 @@ export interface UserContentManager {
      * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
      */
     registerScriptMessageHandlerInWorld(name: string | null, worldName: string | null): boolean
+    /**
+     * Registers a new user script message handler in script world with name `world_name`.
+     * 
+     * Different from webkit_user_content_manager_register_script_message_handler(),
+     * when using this function to register the handler, the connected signal is
+     * script-message-with-reply-received, and a reply provided by the user is expected.
+     * Otherwise, the user will receive a default undefined value.
+     * 
+     * If %NULL is passed as the `world_name,` the default world will be used.
+     * See webkit_user_content_manager_register_script_message_handler() for full description.
+     * 
+     * Registering a script message handler will fail if the requested
+     * name has been already registered before.
+     * 
+     * The registered handler can be unregistered by using
+     * webkit_user_content_manager_unregister_script_message_handler().
+     * @param name Name of the script message channel `world_name` (nullable): the name of a #WebKitScriptWorld
+     * @param worldName 
+     * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
+     */
+    registerScriptMessageHandlerWithReply(name: string | null, worldName: string | null): boolean
     /**
      * Removes all content filters from the given #WebKitUserContentManager.
      */
@@ -8494,6 +8634,11 @@ export interface UserContentManager {
     once(sigName: "script-message-received", callback: UserContentManager.ScriptMessageReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "script-message-received", callback: UserContentManager.ScriptMessageReceivedSignalCallback): NodeJS.EventEmitter
     emit(sigName: "script-message-received", ...args: any[]): void
+    connect(sigName: "script-message-with-reply-received", callback: UserContentManager.ScriptMessageWithReplyReceivedSignalCallback): number
+    on(sigName: "script-message-with-reply-received", callback: UserContentManager.ScriptMessageWithReplyReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "script-message-with-reply-received", callback: UserContentManager.ScriptMessageWithReplyReceivedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "script-message-with-reply-received", callback: UserContentManager.ScriptMessageWithReplyReceivedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "script-message-with-reply-received", reply: ScriptMessageReply, ...args: any[]): void
 
     // Class property signals of WebKit2-4.1.WebKit2.UserContentManager
 
@@ -8517,9 +8662,9 @@ export interface UserContentManager {
  * webkit_user_content_manager_add_style_sheet().
  * 
  * To use a #WebKitUserContentManager, it must be created using
- * webkit_user_content_manager_new(), and then passed to
- * webkit_web_view_new_with_user_content_manager(). User style
- * sheets can be created with webkit_user_style_sheet_new().
+ * webkit_user_content_manager_new(), and then used to construct
+ * a #WebKitWebView. User style sheets can be created with
+ * webkit_user_style_sheet_new().
  * 
  * User style sheets can be added and removed at any time, but
  * they will affect the web pages loaded afterwards.
@@ -8575,6 +8720,7 @@ export interface UserMediaPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.UserMediaPermissionRequest
 
     parent: GObject.Object
+    priv: UserMediaPermissionRequestPrivate
 
     // Class property signals of WebKit2-4.1.WebKit2.UserMediaPermissionRequest
 
@@ -8672,6 +8818,7 @@ export interface UserMessage {
     // Own fields of WebKit2-4.1.WebKit2.UserMessage
 
     parent: GObject.InitiallyUnowned
+    priv: UserMessagePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.UserMessage
 
@@ -8730,12 +8877,12 @@ export interface UserMessage {
 }
 
 /**
- * Message that can be sent between the UI process and web extensions.
+ * Message that can be sent between the UI process and web process extensions.
  * 
  * A WebKitUserMessage is a message that can be used for the communication between the UI process
- * and web extensions. A WebKitUserMessage always has a name, and it can also include parameters and
- * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all #WebKitWebExtension<!-- -->s,
- * from a #WebKitWebExtension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
+ * and web process extensions. A WebKitUserMessage always has a name, and it can also include parameters and
+ * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all web process extensions,
+ * from a web process extension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
  * corresponding #WebKitWebPage (and vice versa). One to one messages can be replied to directly with
  * webkit_user_message_send_reply().
  * @class 
@@ -8918,18 +9065,20 @@ export interface WebContext {
     // Own fields of WebKit2-4.1.WebKit2.WebContext
 
     parent: GObject.Object
+    priv: WebContextPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebContext
 
     /**
      * Adds a path to be mounted in the sandbox.
      * 
-     * `path` must exist before any web process
-     * has been created otherwise it will be silently ignored. It is a fatal error to
-     * add paths after a web process has been spawned.
+     * `path` must exist before any web process has been created; otherwise,
+     * it will be silently ignored. It is a fatal error to add paths after
+     * a web process has been spawned.
      * 
-     * Paths in directories such as `/sys`, `/proc`, and `/dev` or all of `/`
-     * are not valid.
+     * Paths under `/sys`, `/proc`, and `/dev` are invalid. Attempting to
+     * add all of `/` is not valid. Since 2.40, adding the user's entire
+     * home directory or /home is also not valid.
      * 
      * See also webkit_web_context_set_sandbox_enabled()
      * @param path an absolute path to mount in the sandbox
@@ -9015,11 +9164,11 @@ export interface WebContext {
      */
     getPluginsFinish(result: Gio.AsyncResult): Plugin[]
     /**
-     * Returns the current process model.
+     * Returns %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES.
      * 
-     * For more information about this value
+     * For more information about why this function is deprecated,
      * see webkit_web_context_set_process_model().
-     * @returns the current #WebKitProcessModel
+     * @returns %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES
      */
     getProcessModel(): ProcessModel
     /**
@@ -9138,7 +9287,7 @@ export interface WebContext {
      */
     registerUriScheme(scheme: string | null, callback: URISchemeRequestCallback): void
     /**
-     * Send `message` to all #WebKitWebExtension<!-- -->s associated to `context`.
+     * Send `message` to all web process extensions associated to `context`.
      * 
      * If `message` is floating, it's consumed.
      * @param message a #WebKitUserMessage
@@ -9242,25 +9391,10 @@ export interface WebContext {
      */
     setPreferredLanguages(languages: string[] | null): void
     /**
-     * Specifies a process model for WebViews.
-     * 
-     * Specifies a process model for WebViews, which WebKit will use to
-     * determine how auxiliary processes are handled.
-     * 
-     * %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES will use
-     * one process per view most of the time, while still allowing for web
-     * views to share a process when needed (for example when different
-     * views interact with each other). Using this model, when a process
-     * hangs or crashes, only the WebViews using it stop working, while
-     * the rest of the WebViews in the application will still function
-     * normally.
-     * 
-     * %WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS is deprecated since 2.26,
-     * using it has no effect for security reasons.
-     * 
-     * This method **must be called before any web process has been created**,
-     * as early as possible in your application. Calling it later will make
-     * your application crash.
+     * This function previously allowed specifying the process model to use.
+     * However, since 2.26, the only allowed process model is
+     * %WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES, so this function
+     * does nothing.
      * @param processModel a #WebKitProcessModel
      */
     setProcessModel(processModel: ProcessModel): void
@@ -9306,7 +9440,7 @@ export interface WebContext {
      */
     setUseSystemAppearanceForScrollbars(enabled: boolean): void
     /**
-     * Set the directory where WebKit will look for Web Extensions.
+     * Set the directory where WebKit will look for web process extensions.
      * 
      * This method must be called before loading anything in this context,
      * otherwise it will not have any effect. You can connect to
@@ -9316,7 +9450,7 @@ export interface WebContext {
      */
     setWebExtensionsDirectory(directory: string | null): void
     /**
-     * Set user data to be passed to Web Extensions on initialization.
+     * Set user data to be passed to web process extensions on initialization.
      * 
      * The data will be passed to the
      * #WebKitWebExtensionInitializeWithUserDataFunction.
@@ -9424,9 +9558,8 @@ export interface WebContext {
  * The #WebKitWebContext manages all aspects common to all
  * #WebKitWebView<!-- -->s.
  * 
- * You can define the #WebKitCacheModel and #WebKitProcessModel with
- * webkit_web_context_set_cache_model() and
- * webkit_web_context_set_process_model(), depending on the needs of
+ * You can define the #WebKitCacheModel with
+ * webkit_web_context_set_cache_model(), depending on the needs of
  * your application. You can access the #WebKitSecurityManager to specify
  * the behaviour of your application regarding security using
  * webkit_web_context_get_security_manager().
@@ -9565,6 +9698,7 @@ export interface WebInspector {
     // Own fields of WebKit2-4.1.WebKit2.WebInspector
 
     parent: GObject.Object
+    priv: WebInspectorPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebInspector
 
@@ -9790,6 +9924,7 @@ export interface WebResource {
     // Own fields of WebKit2-4.1.WebKit2.WebResource
 
     parent: GObject.Object
+    priv: WebResourcePrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebResource
 
@@ -10046,6 +10181,13 @@ export module WebView {
     }
 
     /**
+     * Signal callback interface for `query-permission-state`
+     */
+    export interface QueryPermissionStateSignalCallback {
+        (query: PermissionStateQuery): boolean
+    }
+
+    /**
      * Signal callback interface for `ready-to-show`
      */
     export interface ReadyToShowSignalCallback {
@@ -10231,8 +10373,8 @@ export module WebView {
         microphoneCaptureState?: MediaCaptureState | null
         /**
          * The related #WebKitWebView used when creating the view to share the
-         * same web process. This property is not readable because the related
-         * web view is only valid during the object construction.
+         * same web process and network session. This property is not readable
+         * because the related web view is only valid during the object construction.
          */
         relatedView?: WebView | null
         /**
@@ -10408,8 +10550,8 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     readonly pageId: number
     /**
      * The related #WebKitWebView used when creating the view to share the
-     * same web process. This property is not readable because the related
-     * web view is only valid during the object construction.
+     * same web process and network session. This property is not readable
+     * because the related web view is only valid during the object construction.
      */
     readonly relatedView: WebView
     /**
@@ -10455,16 +10597,87 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     zoomLevel: number
     __gtype__: number
 
-    // Conflicting properties
-
-    parentInstance: any
-
     // Own fields of WebKit2-4.1.WebKit2.WebView
 
-    parent: WebViewBase & Gtk.Container
+    parent: WebViewBase & Gtk.Container & Gtk.Container
+    priv: any
 
     // Owm methods of WebKit2-4.1.WebKit2.WebView
 
+    /**
+     * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
+     * The `arguments` values must be one of the following types, or contain only the following GVariant types: number, string and dictionary.
+     * The result of the operation can be a Promise that will be properly passed to the callback.
+     * If `world_name` is %NULL, the default world is used. Any value that is not %NULL is a distin ct world.
+     * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
+     * When not provided, the document URL is used.
+     * 
+     * Note that if #WebKitSettings:enable-javascript is %FALSE, this method will do nothing.
+     * If you want to use this method but still prevent web content from executing its own
+     * JavaScript, then use #WebKitSettings:enable-javascript-markup.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * webkit_web_view_call_async_javascript_function_finish() to get the result of the operation.
+     * 
+     * This is an example that shows how to pass arguments to a JS function that returns a Promise
+     * that resolves with the passed argument:
+     * 
+     * ```c
+     * static void
+     * web_view_javascript_finished (GObject      *object,
+     *                               GAsyncResult *result,
+     *                               gpointer      user_data)
+     * {
+     *     JSCValue               *value;
+     *     GError                 *error = NULL;
+     * 
+     *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
+     *     if (!value) {
+     *         g_warning ("Error running javascript: %s", error->message);
+     *         g_error_free (error);
+     *         return;
+     *     }
+     * 
+     *     if (jsc_value_is_number (value)) {
+     *         gint32        int_value = jsc_value_to_string (value);
+     *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
+     *         if (exception)
+     *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
+     *         else
+     *             g_print ("Script result: %d\n", int_value);
+     *         g_free (str_value);
+     *     } else {
+     *         g_warning ("Error running javascript: unexpected return value");
+     *     }
+     *     webkit_javascript_result_unref (js_result);
+     * }
+     * 
+     * static void
+     * web_view_evaluate_promise (WebKitWebView *web_view)
+     * {
+     *     GVariantDict dict;
+     *     g_variant_dict_init (&dict, NULL);
+     *     g_variant_dict_insert (&dict, "count", "u", 42);
+     *     GVariant *args = g_variant_dict_end (&dict);
+     *     const gchar *body = "return new Promise((resolve) => { resolve(count); });";
+     *     webkit_web_view_call_async_javascript_function (web_view, body, -1, arguments, NULL, NULL, NULL, web_view_javascript_finished, NULL);
+     * }
+     * ```
+     * @param body the function body
+     * @param length length of `body,` or -1 if `body` is a nul-terminated string
+     * @param arguments_ a #GVariant with format `a{sv}` storing the function arguments, or %NULL
+     * @param worldName the name of a #WebKitScriptWorld or %NULL to use the default
+     * @param sourceUri the source URI
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
+     */
+    callAsyncJavascriptFunction(body: string | null, length: number, arguments_: GLib.Variant | null, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    /**
+     * Finish an asynchronous operation started with webkit_web_view_call_async_javascript_function().
+     * @param result a #GAsyncResult
+     * @returns a #JSCValue with the return value of the async function    or %NULL in case of error
+     */
+    callAsyncJavascriptFunctionFinish(result: Gio.AsyncResult): JavaScriptCore.Value
     /**
      * Asynchronously check if it is possible to execute the given editing command.
      * 
@@ -10503,6 +10716,75 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @returns a new #WebKitDownload representing    the download operation.
      */
     downloadUri(uri: string | null): Download
+    /**
+     * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
+     * If `world_name` is %NULL, the default world is used. Any value that is not %NULL is a distinct world.
+     * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
+     * When not provided, the document URL is used.
+     * 
+     * Note that if #WebKitSettings:enable-javascript is %FALSE, this method will do nothing.
+     * If you want to use this method but still prevent web content from executing its own
+     * JavaScript, then use #WebKitSettings:enable-javascript-markup.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * webkit_web_view_evaluate_javascript_finish() to get the result of the operation.
+     * 
+     * This is an example of using webkit_web_view_evaluate_javascript() with a script returning
+     * a string:
+     * 
+     * ```c
+     * static void
+     * web_view_javascript_finished (GObject      *object,
+     *                               GAsyncResult *result,
+     *                               gpointer      user_data)
+     * {
+     *     JSCValue               *value;
+     *     GError                 *error = NULL;
+     * 
+     *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
+     *     if (!value) {
+     *         g_warning ("Error running javascript: %s", error->message);
+     *         g_error_free (error);
+     *         return;
+     *     }
+     * 
+     *     if (jsc_value_is_string (value)) {
+     *         gchar        *str_value = jsc_value_to_string (value);
+     *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
+     *         if (exception)
+     *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
+     *         else
+     *             g_print ("Script result: %s\n", str_value);
+     *         g_free (str_value);
+     *     } else {
+     *         g_warning ("Error running javascript: unexpected return value");
+     *     }
+     *     webkit_javascript_result_unref (js_result);
+     * }
+     * 
+     * static void
+     * web_view_get_link_url (WebKitWebView *web_view,
+     *                        const gchar   *link_id)
+     * {
+     *     gchar *script = g_strdup_printf ("window.document.getElementById('%s').href;", link_id);
+     *     webkit_web_view_evaluate_javascript (web_view, script, -1, NULL, NULL, NULL, web_view_javascript_finished, NULL);
+     *     g_free (script);
+     * }
+     * ```
+     * @param script the script to evaluate
+     * @param length length of `script,` or -1 if `script` is a nul-terminated string
+     * @param worldName the name of a #WebKitScriptWorld or %NULL to use the default
+     * @param sourceUri the source URI
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
+     */
+    evaluateJavascript(script: string | null, length: number, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    /**
+     * Finish an asynchronous operation started with webkit_web_view_evaluate_javascript().
+     * @param result a #GAsyncResult
+     * @returns a #JSCValue with the result of the last executed statement in script    or %NULL in case of error
+     */
+    evaluateJavascriptFinish(result: Gio.AsyncResult): JavaScriptCore.Value
     /**
      * Request to execute the given `command` for `web_view`.
      * 
@@ -10585,7 +10867,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * Returns favicon currently associated to `web_view,` if any. You can
      * connect to notify::favicon signal of `web_view` to be notified when
      * the favicon is available.
-     * @returns a pointer to a #cairo_surface_t with the    favicon or %NULL if there's no icon associated with @web_view.
+     * @returns the favicon image or %NULL if there's no    icon associated with @web_view.
      */
     getFavicon(): cairo.Surface
     /**
@@ -10686,7 +10968,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
      * @param result a #GAsyncResult
-     * @returns a #cairo_surface_t with the retrieved snapshot or %NULL in error.
+     * @returns an image with the retrieved snapshot, or %NULL in case of error.
      */
     getSnapshotFinish(result: Gio.AsyncResult): cairo.Surface
     /**
@@ -10930,12 +11212,72 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param state a #WebKitWebViewSessionState
      */
     restoreSessionState(state: WebViewSessionState): void
+    /**
+     * Asynchronously run `body` in the script world with name `world_name` of the current page context in
+     * `web_view`. If WebKitSettings:enable-javascript is FALSE, this method will do nothing. This API
+     * differs from webkit_web_view_run_javascript_in_world() in that the JavaScript function can return a
+     * Promise and its result will be properly passed to the callback.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+     * 
+     * For instance here is a dummy example that shows how to pass arguments to a JS function that
+     * returns a Promise that resolves with the passed argument:
+     * 
+     * ```c
+     * static void
+     * web_view_javascript_finished (GObject      *object,
+     *                               GAsyncResult *result,
+     *                               gpointer      user_data)
+     * {
+     *     WebKitJavascriptResult *js_result;
+     *     JSCValue               *value;
+     *     GError                 *error = NULL;
+     * 
+     *     js_result = webkit_web_view_run_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
+     *     if (!js_result) {
+     *         g_warning ("Error running javascript: %s", error->message);
+     *         g_error_free (error);
+     *         return;
+     *     }
+     * 
+     *     value = webkit_javascript_result_get_js_value (js_result);
+     *     if (jsc_value_is_number (value)) {
+     *         gint32        int_value = jsc_value_to_string (value);
+     *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
+     *         if (exception)
+     *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
+     *         else
+     *             g_print ("Script result: %d\n", int_value);
+     *         g_free (str_value);
+     *     } else {
+     *         g_warning ("Error running javascript: unexpected return value");
+     *     }
+     *     webkit_javascript_result_unref (js_result);
+     * }
+     * 
+     * static void
+     * web_view_evaluate_promise (WebKitWebView *web_view)
+     * {
+     *     GVariantDict dict;
+     *     g_variant_dict_init (&dict, NULL);
+     *     g_variant_dict_insert (&dict, "count", "u", 42);
+     *     GVariant *args = g_variant_dict_end (&dict);
+     *     const gchar *body = "return new Promise((resolve) => { resolve(count); });";
+     *     webkit_web_view_run_async_javascript_function_in_world (web_view, body, arguments, NULL, NULL, web_view_javascript_finished, NULL);
+     * }
+     * ```
+     * @param body the JavaScript function body
+     * @param arguments_ a #GVariant with format `{&sv}` storing the function arguments. Function argument values must be one of the following types, or contain only the following GVariant types: number, string, array, and dictionary. `world_name` (nullable): the name of a #WebKitScriptWorld, if no name (i.e. %NULL) is provided, the default world is used. Any value that is not %NULL is a distinct world.
+     * @param worldName 
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the script finished
+     */
     runAsyncJavascriptFunctionInWorld(body: string | null, arguments_: GLib.Variant, worldName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Asynchronously run `script` in the context of the current page in `web_view`.
      * 
-     * If
-     * WebKitSettings:enable-javascript is FALSE, this method will do nothing.
+     * If WebKitSettings:enable-javascript is FALSE, this method will do nothing.
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * webkit_web_view_run_javascript_finish() to get the result of the operation.
@@ -11374,6 +11716,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     mouseTargetChanged(hitTestResult: HitTestResult, modifiers: number): void
     permissionRequest(permissionRequest: PermissionRequest): boolean
     print(printOperation: PrintOperation): boolean
+    queryPermissionState(query: PermissionStateQuery): boolean
     readyToShow(): void
     resourceLoadStarted(resource: WebResource, request: URIRequest): void
     runAsModal(): void
@@ -11381,7 +11724,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     runFileChooser(request: FileChooserRequest): boolean
     scriptDialog(dialog: ScriptDialog): boolean
     showNotification(notification: Notification): boolean
-    showOptionMenu(rectangle: Gdk.Rectangle, menu: OptionMenu): boolean
+    showOptionMenu(menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean
     submitForm(request: FormSubmissionRequest): void
     userMessageReceived(message: UserMessage): boolean
     webProcessCrashed(): boolean
@@ -11464,6 +11807,11 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: "print", callback: WebView.PrintSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "print", callback: WebView.PrintSignalCallback): NodeJS.EventEmitter
     emit(sigName: "print", ...args: any[]): void
+    connect(sigName: "query-permission-state", callback: WebView.QueryPermissionStateSignalCallback): number
+    on(sigName: "query-permission-state", callback: WebView.QueryPermissionStateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "query-permission-state", callback: WebView.QueryPermissionStateSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "query-permission-state", callback: WebView.QueryPermissionStateSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "query-permission-state", ...args: any[]): void
     connect(sigName: "ready-to-show", callback: WebView.ReadyToShowSignalCallback): number
     on(sigName: "ready-to-show", callback: WebView.ReadyToShowSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "ready-to-show", callback: WebView.ReadyToShowSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -11984,7 +12332,8 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own fields of WebKit2-4.1.WebKit2.WebViewBase
 
-    parentInstance: any
+    parent: Gtk.Container
+    priv: WebViewBasePrivate
 
     // Conflicting methods
 
@@ -12309,10 +12658,6 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
     emit(sigName: string, ...args: any[]): void
 }
 
-/**
- * Internal base class.
- * @class 
- */
 export class WebViewBase extends Gtk.Container {
 
     // Own properties of WebKit2-4.1.WebKit2.WebViewBase
@@ -12343,6 +12688,7 @@ export interface WebsiteDataAccessPermissionRequest extends PermissionRequest {
     // Own fields of WebKit2-4.1.WebKit2.WebsiteDataAccessPermissionRequest
 
     parent: GObject.Object
+    priv: WebsiteDataAccessPermissionRequestPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebsiteDataAccessPermissionRequest
 
@@ -12402,13 +12748,11 @@ export module WebsiteDataManager {
         // Own constructor properties of WebKit2-4.1.WebKit2.WebsiteDataManager
 
         /**
-         * The base directory for Website cache. This is used as a base directory
-         * for any Website cache when no specific cache directory has been provided.
+         * The base directory for caches. If %NULL, a default location will be used.
          */
         baseCacheDirectory?: string | null
         /**
-         * The base directory for Website data. This is used as a base directory
-         * for any Website data when no specific data directory has been provided.
+         * The base directory for website data. If %NULL, a default location will be used.
          */
         baseDataDirectory?: string | null
         /**
@@ -12463,13 +12807,11 @@ export interface WebsiteDataManager {
     // Own properties of WebKit2-4.1.WebKit2.WebsiteDataManager
 
     /**
-     * The base directory for Website cache. This is used as a base directory
-     * for any Website cache when no specific cache directory has been provided.
+     * The base directory for caches. If %NULL, a default location will be used.
      */
     readonly baseCacheDirectory: string | null
     /**
-     * The base directory for Website data. This is used as a base directory
-     * for any Website data when no specific data directory has been provided.
+     * The base directory for website data. If %NULL, a default location will be used.
      */
     readonly baseDataDirectory: string | null
     /**
@@ -12520,6 +12862,7 @@ export interface WebsiteDataManager {
     // Own fields of WebKit2-4.1.WebKit2.WebsiteDataManager
 
     parent: GObject.Object
+    priv: WebsiteDataManagerPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebsiteDataManager
 
@@ -12564,12 +12907,12 @@ export interface WebsiteDataManager {
     fetchFinish(result: Gio.AsyncResult): WebsiteData[]
     /**
      * Get the #WebKitWebsiteDataManager:base-cache-directory property.
-     * @returns the base directory for Website cache, or %NULL if    #WebKitWebsiteDataManager:base-cache-directory was not provided or @manager is ephemeral.
+     * @returns the base directory for caches, or %NULL if    #WebKitWebsiteDataManager:base-cache-directory was not provided or @manager is ephemeral.
      */
     getBaseCacheDirectory(): string | null
     /**
      * Get the #WebKitWebsiteDataManager:base-data-directory property.
-     * @returns the base directory for Website data, or %NULL if    #WebKitWebsiteDataManager:base-data-directory was not provided or @manager is ephemeral.
+     * @returns the base directory for website data, or %NULL if    #WebKitWebsiteDataManager:base-data-directory was not provided or @manager is ephemeral.
      */
     getBaseDataDirectory(): string | null
     /**
@@ -12793,33 +13136,23 @@ export interface WebsiteDataManager {
 /**
  * Manages data stored locally by web sites.
  * 
- * WebKitWebsiteDataManager allows you to manage the data that websites
- * can store in the client file system like databases or caches.
  * You can use WebKitWebsiteDataManager to configure the local directories
- * where the Website data will be stored, by creating a new manager with
- * webkit_website_data_manager_new() passing the values you want to set.
- * You can set all the possible configuration values or only some of them,
- * a default value will be used automatically for the configuration options
- * not provided. #WebKitWebsiteDataManager:base-data-directory and
- * #WebKitWebsiteDataManager:base-cache-directory are two special properties
- * that can be used to set a common base directory for all Website data and
- * caches. It's possible to provide both, a base directory and a specific value,
- * but in that case, the specific value takes precedence over the base directory.
- * The newly created WebKitWebsiteDataManager must be passed as a construct property
- * to a #WebKitWebContext, you can use webkit_web_context_new_with_website_data_manager()
+ * where website data will be stored. Use #WebKitWebsiteDataManager:base-data-directory
+ * and #WebKitWebsiteDataManager:base-cache-directory set a common base directory for all
+ * website data and caches. The newly created WebKitWebsiteDataManager must be passed as
+ * a construct property to a #WebKitWebContext; you can use webkit_web_context_new_with_website_data_manager()
  * to create a new #WebKitWebContext with a WebKitWebsiteDataManager.
- * In case you don't want to set any specific configuration, you don't need to create
- * a WebKitWebsiteDataManager, the #WebKitWebContext will create a WebKitWebsiteDataManager
- * with the default configuration. To get the WebKitWebsiteDataManager of a #WebKitWebContext
+ * If you don't want to set any specific configuration, you don't need to create
+ * a WebKitWebsiteDataManager: the #WebKitWebContext will create a WebKitWebsiteDataManager
+ * with the default configuration. To get the WebKitWebsiteDataManager of a #WebKitWebContext,
  * you can use webkit_web_context_get_website_data_manager().
  * 
- * A WebKitWebsiteDataManager can also be ephemeral and then all the directories configuration
+ * A WebKitWebsiteDataManager can also be ephemeral, in which case all the directory configuration
  * is not needed because website data will never persist. You can create an ephemeral WebKitWebsiteDataManager
- * with webkit_website_data_manager_new_ephemeral(). Then you can pass an ephemeral WebKitWebsiteDataManager to
- * a #WebKitWebContext to make it ephemeral or use webkit_web_context_new_ephemeral() and the WebKitWebsiteDataManager
- * will be automatically created by the #WebKitWebContext.
+ * with webkit_website_data_manager_new_ephemeral() and pass the ephemeral WebKitWebsiteDataManager to
+ * a #WebKitWebContext, or simply use webkit_web_context_new_ephemeral().
  * 
- * WebKitWebsiteDataManager can also be used to fetch websites data, remove data
+ * WebKitWebsiteDataManager can also be used to fetch website data, remove data
  * stored by particular websites, or clear data for all websites modified since a given
  * period of time.
  * @class 
@@ -12890,6 +13223,7 @@ export interface WebsitePolicies {
     // Own fields of WebKit2-4.1.WebKit2.WebsitePolicies
 
     parent: GObject.Object
+    priv: WebsitePoliciesPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WebsitePolicies
 
@@ -13034,6 +13368,7 @@ export interface WindowProperties {
     // Own fields of WebKit2-4.1.WebKit2.WindowProperties
 
     parent: GObject.Object
+    priv: WindowPropertiesPrivate
 
     // Owm methods of WebKit2-4.1.WebKit2.WindowProperties
 
@@ -14352,6 +14687,13 @@ export interface NavigationAction {
      */
     free(): void
     /**
+     * Gets the `navigation` target frame name. For example if navigation was triggered by clicking a
+     * link with a target attribute equal to "_blank", this will return the value of that attribute.
+     * In all other cases this function will return %NULL.
+     * @returns The name of the new frame this navigation action targets or %NULL
+     */
+    getFrameName(): string | null
+    /**
      * Return the modifier keys.
      * 
      * Return a bitmask of #GdkModifierType values describing the modifier keys that were in effect
@@ -14698,6 +15040,62 @@ export abstract class PermissionRequestIface {
     static name: string
 }
 
+export interface PermissionStateQuery {
+
+    // Owm methods of WebKit2-4.1.WebKit2.PermissionStateQuery
+
+    /**
+     * Notify the web-engine of the selected permission state for the given query. This function should
+     * only be called as a response to the `WebKitWebView::query-permission-state` signal.
+     * @param state a #WebKitPermissionState
+     */
+    finish(state: PermissionState): void
+    /**
+     * Get the permission name for which access is being queried.
+     * @returns the permission name for @query
+     */
+    getName(): string | null
+    /**
+     * Get the permission origin for which access is being queried.
+     * @returns A #WebKitSecurityOrigin representing the origin from which the @query was emitted.
+     */
+    getSecurityOrigin(): SecurityOrigin
+    /**
+     * Atomically increments the reference count of `query` by one.
+     * 
+     * This function is MT-safe and may be called from any thread.
+     * @returns The passed #WebKitPermissionStateQuery
+     */
+    ref(): PermissionStateQuery
+    /**
+     * Atomically decrements the reference count of `query` by one.
+     * 
+     * If the reference count drops to 0, all memory allocated by #WebKitPermissionStateQuery is
+     * released. This function is MT-safe and may be called from any thread.
+     */
+    unref(): void
+}
+
+/**
+ * This query represents a user's choice to allow or deny access to "powerful features" of the
+ * platform, as specified in the [Permissions W3C
+ * Specification](https://w3c.github.io/permissions/).
+ * 
+ * When signalled by the #WebKitWebView through the `query-permission-state` signal, the application
+ * has to eventually respond, via `webkit_permission_state_query_finish()`, whether it grants,
+ * denies or requests a dedicated permission prompt for the given query.
+ * 
+ * When a #WebKitPermissionStateQuery is not handled by the user, the user-agent is instructed to
+ * `prompt` the user for the given permission.
+ * @record 
+ */
+export class PermissionStateQuery {
+
+    // Own properties of WebKit2-4.1.WebKit2.PermissionStateQuery
+
+    static name: string
+}
+
 export interface PluginClass {
 
     // Own fields of WebKit2-4.1.WebKit2.PluginClass
@@ -14925,6 +15323,50 @@ export interface ScriptDialog {
 export class ScriptDialog {
 
     // Own properties of WebKit2-4.1.WebKit2.ScriptDialog
+
+    static name: string
+}
+
+export interface ScriptMessageReply {
+
+    // Owm methods of WebKit2-4.1.WebKit2.ScriptMessageReply
+
+    /**
+     * Atomically increments the reference count of `script_message_reply` by one.
+     * @returns the @script_message_reply passed in.
+     */
+    ref(): ScriptMessageReply
+    /**
+     * Reply to a script message with an error message.
+     * @param errorMessage An error message to return as specified by the user's script message
+     */
+    returnErrorMessage(errorMessage: string | null): void
+    /**
+     * Reply to a script message with a value.
+     * 
+     * This function can be called twice for passing the reply value in.
+     * @param replyValue Reply value of the provided script message
+     */
+    returnValue(replyValue: JavaScriptCore.Value): void
+    /**
+     * Atomically decrements the reference count of `script_message_reply` by one.
+     * 
+     * If the reference count drops to 0, all the memory allocated by the
+     * #WebKitScriptMessageReply is released. This function is MT-safe and may
+     * be called from any thread.
+     */
+    unref(): void
+}
+
+/**
+ * A reply for a script message received.
+ * If no reply has been sent by the user, an automatically generated reply with
+ * undefined value with be sent.
+ * @record 
+ */
+export class ScriptMessageReply {
+
+    // Own properties of WebKit2-4.1.WebKit2.ScriptMessageReply
 
     static name: string
 }
@@ -15630,9 +16072,10 @@ export interface WebViewClass {
     loadFailedWithTlsErrors: (webView: WebView, failingUri: string | null, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
     showNotification: (webView: WebView, notification: Notification) => boolean
     runColorChooser: (webView: WebView, request: ColorChooserRequest) => boolean
-    showOptionMenu: (webView: WebView, rectangle: Gdk.Rectangle, menu: OptionMenu) => boolean
+    showOptionMenu: (webView: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean
     webProcessTerminated: (webView: WebView, reason: WebProcessTerminationReason) => void
     userMessageReceived: (webView: WebView, message: UserMessage) => boolean
+    queryPermissionState: (webView: WebView, query: PermissionStateQuery) => boolean
 }
 
 export abstract class WebViewClass {

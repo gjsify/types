@@ -630,6 +630,21 @@ interface DesktopThumbnailFactory {
      * @param callback a function that will be called when the task has ended
      */
     create_failed_thumbnail_async(uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_failed_thumbnail_async
+
+    /**
+     * Promisified version of {@link create_failed_thumbnail_async}
+     * 
+     * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
+     * 
+     * Since 43.0
+     * @param uri the uri of a file
+     * @param original_mtime the modification time of the original file
+     * @param cancellable a Cancellable object
+     * @returns A Promise of: TRUE if the operation was correct; FALSE if there was an error Since 43.0
+     */
+    create_failed_thumbnail_async(uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     create_failed_thumbnail_finish(result: Gio.AsyncResult): boolean
     /**
      * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -652,6 +667,21 @@ interface DesktopThumbnailFactory {
      * @param callback a function that will be called when the task has ended
      */
     generate_thumbnail_async(uri: string | null, mime_type: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_thumbnail_async
+
+    /**
+     * Promisified version of {@link generate_thumbnail_async}
+     * 
+     * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
+     * 
+     * Since 43.0
+     * @param uri the URI of a file
+     * @param mime_type the MIME type of the file
+     * @param cancellable a Cancellable object
+     * @returns A Promise of: thumbnail pixbuf if thumbnailing succeeded, %NULL otherwise. Since 43.0
+     */
+    generate_thumbnail_async(uri: string | null, mime_type: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>
     generate_thumbnail_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf
     /**
      * Tries to locate an failed thumbnail for the file specified. Writing
@@ -696,6 +726,22 @@ interface DesktopThumbnailFactory {
      * @param callback a function that will be called when the task has ended
      */
     save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_thumbnail_async
+
+    /**
+     * Promisified version of {@link save_thumbnail_async}
+     * 
+     * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
+     * 
+     * Since 43.0
+     * @param thumbnail the thumbnail as a pixbuf
+     * @param uri the uri of a file
+     * @param original_mtime the modification time of the original file
+     * @param cancellable a Cancellable object
+     * @returns A Promise of: TRUE if the operation was correct; FALSE if there was an error Since 43.0
+     */
+    save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_thumbnail_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of GnomeDesktop-3.0.GnomeDesktop.DesktopThumbnailFactory

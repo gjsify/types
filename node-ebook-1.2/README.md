@@ -1,7 +1,7 @@
 
 # EBook-1.2
 
-Node.js TypeScript type definitions for EBook-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for EBook-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 This package is a client library for evolution addressbooks.
 
@@ -16,12 +16,12 @@ npm install @girs/node-ebook-1.2
 
 You can import this package into your project like this:
 ```ts
-import EBook from '@girs/node-ebook-1.2';
+import EBook from '@girs/ebook-1.2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const EBook = require('@girs/node-ebook-1.2');
+const EBook = require('@girs/ebook-1.2');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

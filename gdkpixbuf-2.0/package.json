@@ -1,6 +1,6 @@
 {
     "name": "@girs/gdkpixbuf-2.0",
-    "version": "2.0.0-3.0.0-beta.12",
+    "version": "2.0.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "gdkpixbuf-2.0.js",
@@ -35,15 +35,18 @@
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "GdkPixbuf-2.0"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -51,5 +54,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/gdkpixbuf-2.0#readme"
 }

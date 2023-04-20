@@ -1,7 +1,7 @@
 
 # Peas-1.0
 
-Node.js TypeScript type definitions for Peas-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Peas-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 libpeas is a gobject-based plugins engine, and is targetted at giving every application the chance to assume its own extensibility.
 
@@ -16,12 +16,12 @@ npm install @girs/node-peas-1.0
 
 You can import this package into your project like this:
 ```ts
-import Peas from '@girs/node-peas-1.0';
+import Peas from '@girs/peas-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Peas = require('@girs/node-peas-1.0');
+const Peas = require('@girs/peas-1.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

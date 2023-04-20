@@ -9,9 +9,9 @@
  * LibvirtGConfig-1.0
  */
 
-import type libxml2 from '@girs/node-libxml2-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
+import type libxml2 from '@girs/libxml2-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 export enum DomainChannelTargetType {
     GUESTFWD,

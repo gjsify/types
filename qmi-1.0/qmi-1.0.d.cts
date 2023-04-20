@@ -22912,6 +22912,27 @@ export interface Device extends Gio.AsyncInitable {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     close_async(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Asynchronously closes a #QmiDevice, preventing any further I/O.
+     * 
+     * If this device was opened with `QMI_DEVICE_OPEN_FLAGS_MBIM,` this
+     * operation will wait for the response of the underlying MBIM close
+     * sequence.
+     * 
+     * Closing a #QmiDevice multiple times will not return an error.
+     * 
+     * When the operation is finished `callback` will be called. You can then call
+     * qmi_device_close_finish() to get the result of the operation.
+     * @param timeout maximum time, in seconds, to wait for the device to be closed.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @returns A Promise of: %TRUE if successful, %FALSE if @error is set.
+     */
+    close_async(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an operation started with qmi_device_close_async().
      * @param res a #GAsyncResult.

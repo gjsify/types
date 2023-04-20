@@ -66,9 +66,31 @@ interface Proxy {
 
     fetch_ca_certificate(): boolean
     fetch_ca_certificate_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_ca_certificate_async
+
+    /**
+     * Promisified version of {@link fetch_ca_certificate_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link fetch_ca_certificate_async}
+     */
+    fetch_ca_certificate_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>
     fetch_ca_certificate_finish(result: Gio.AsyncResult): Uint8Array
     fetch_vms(): boolean
     fetch_vms_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_vms_async
+
+    /**
+     * Promisified version of {@link fetch_vms_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: the list of #OvirtVm associated with #OvirtProxy. The returned list should not be freed nor modified, and can become invalid any time a #OvirtProxy call completes.
+     */
+    fetch_vms_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Vm[]>
     fetch_vms_finish(result: Gio.AsyncResult): Vm[]
     /**
      * Gets the list of remote VMs from the proxy object.
@@ -193,12 +215,48 @@ interface Vm {
 
     get_ticket(proxy: Proxy): boolean
     get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_ticket_async
+
+    /**
+     * Promisified version of {@link get_ticket_async}
+     * 
+     * 
+     * @param proxy 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link get_ticket_async}
+     */
+    get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     get_ticket_finish(result: Gio.AsyncResult): boolean
     start(proxy: Proxy): boolean
     start_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of start_async
+
+    /**
+     * Promisified version of {@link start_async}
+     * 
+     * 
+     * @param proxy 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link start_async}
+     */
+    start_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     start_finish(result: Gio.AsyncResult): boolean
     stop(proxy: Proxy): boolean
     stop_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of stop_async
+
+    /**
+     * Promisified version of {@link stop_async}
+     * 
+     * 
+     * @param proxy 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link stop_async}
+     */
+    stop_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     stop_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of GoVirt-1.0.GoVirt.Vm

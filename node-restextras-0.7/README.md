@@ -1,7 +1,7 @@
 
 # RestExtras-0.7
 
-Node.js TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 This extra package provides Facebook and Flickr support.
 
@@ -16,12 +16,12 @@ npm install @girs/node-restextras-0.7
 
 You can import this package into your project like this:
 ```ts
-import RestExtras from '@girs/node-restextras-0.7';
+import RestExtras from '@girs/restextras-0.7';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const RestExtras = require('@girs/node-restextras-0.7');
+const RestExtras = require('@girs/restextras-0.7');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

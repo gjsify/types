@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-folkstelepathy-0.6",
-    "version": "0.6.0-3.0.0-beta.12",
+    "version": "0.6.0-3.0.0-beta.13",
     "description": "Node.js TypeScript type definitions for FolksTelepathy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "node-folkstelepathy-0.6.js",
@@ -29,26 +29,30 @@
         "test:cjs": "tsc --noEmit node-folkstelepathy-0.6.d.cts"
     },
     "dependencies": {
-        "@girs/node-folks-0.6": "workspace:^",
-        "@girs/node-gee-0.8": "workspace:^",
-        "@girs/node-gio-2.0": "workspace:^",
-        "@girs/node-glib-2.0": "workspace:^",
-        "@girs/node-gobject-2.0": "workspace:^",
-        "@girs/node-telepathyglib-0.12": "workspace:^"
+        "@girs/folks-0.6": "workspace:^",
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/telepathyglib-0.12": "workspace:^"
     },
     "peerDependencies": {
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "FolksTelepathy-0.6"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -56,5 +60,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-folkstelepathy-0.6#readme"
 }

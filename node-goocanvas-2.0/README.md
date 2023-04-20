@@ -1,7 +1,7 @@
 
 # GooCanvas-2.0
 
-Node.js TypeScript type definitions for GooCanvas-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GooCanvas-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GooCanvas is a canvas widget for GTK+ that uses the cairo 2D library for drawing.
 
@@ -16,12 +16,12 @@ npm install @girs/node-goocanvas-2.0
 
 You can import this package into your project like this:
 ```ts
-import GooCanvas from '@girs/node-goocanvas-2.0';
+import GooCanvas from '@girs/goocanvas-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GooCanvas = require('@girs/node-goocanvas-2.0');
+const GooCanvas = require('@girs/goocanvas-2.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

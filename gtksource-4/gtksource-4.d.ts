@@ -3002,6 +3002,21 @@ interface FileLoader {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads asynchronously the file or input stream contents into the
+     * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
+     * function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the contents has been loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file loading started with gtk_source_file_loader_load_async().
      * 
@@ -3196,6 +3211,20 @@ interface FileSaver {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the buffer into the file. See the #GAsyncResult
+     * documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the file was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file saving started with gtk_source_file_saver_save_async().
      * 
@@ -6039,6 +6068,27 @@ interface SearchContext {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of backward_async
+
+    /**
+     * Promisified version of {@link backward_async}
+     * 
+     * The asynchronous version of gtk_source_search_context_backward().
+     * 
+     * See the documentation of gtk_source_search_context_backward() for more
+     * details.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * 
+     * If the operation is cancelled, the `callback` will only be called if
+     * `cancellable` was not %NULL. gtk_source_search_context_backward_async() takes
+     * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @returns A Promise of: whether a match was found.
+     */
+    backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* match_start */ Gtk.TextIter, /* match_end */ Gtk.TextIter, /* has_wrapped_around */ boolean ]>
     /**
      * Finishes a backward search started with
      * gtk_source_search_context_backward_async().
@@ -6080,6 +6130,27 @@ interface SearchContext {
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of forward_async
+
+    /**
+     * Promisified version of {@link forward_async}
+     * 
+     * The asynchronous version of gtk_source_search_context_forward().
+     * 
+     * See the documentation of gtk_source_search_context_forward() for more
+     * details.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * 
+     * If the operation is cancelled, the `callback` will only be called if
+     * `cancellable` was not %NULL. gtk_source_search_context_forward_async() takes
+     * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @returns A Promise of: whether a match was found.
+     */
+    forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* match_start */ Gtk.TextIter, /* match_end */ Gtk.TextIter, /* has_wrapped_around */ boolean ]>
     /**
      * Finishes a forward search started with
      * gtk_source_search_context_forward_async().

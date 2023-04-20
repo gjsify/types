@@ -1,7 +1,7 @@
 
 # Secret-1
 
-Node.js TypeScript type definitions for Secret-1, generated from library version 0.20.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Secret-1, generated from library version 0.20.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 libsecret is a library for storing and retrieving passwords and other secrets. It communicates with the "Secret Service" using DBus. gnome-keyring and ksecretservice are both implementations of a Secret Service.
 
@@ -16,12 +16,12 @@ npm install @girs/node-secret-1
 
 You can import this package into your project like this:
 ```ts
-import Secret from '@girs/node-secret-1';
+import Secret from '@girs/secret-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Secret = require('@girs/node-secret-1');
+const Secret = require('@girs/secret-1');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

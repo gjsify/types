@@ -278,6 +278,20 @@ export function utils_decode_uri(uri: string | null): [ /* returnType */ boolean
  * @param callback the callback to call when the operation is finished.
  */
 export function utils_file_query_exists_async<Z = unknown>(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of utils_file_query_exists_async
+
+/**
+ * Promisified version of {@link utils_file_query_exists_async}
+ * 
+ * The asynchronous version of g_file_query_exists(). When the operation is
+ * finished, `callback` will be called. You can then call
+ * tepl_utils_file_query_exists_finish() to get the result of the operation.
+ * @param file a #GFile.
+ * @param cancellable a #GCancellable.
+ * @returns A Promise of: %TRUE if the file exists and the operation hasn't been cancelled, %FALSE otherwise.
+ */
+export function utils_file_query_exists_async<Z = unknown>(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes the operation started with tepl_utils_file_query_exists_async().
  * There is no output #GError parameter, so you should check if the operation
@@ -1438,6 +1452,20 @@ export interface FileLoader {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads asynchronously the file content into the #TeplBuffer.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the content has been loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes a file loading started with tepl_file_loader_load_async().
      * @param result a #GAsyncResult.
@@ -1588,6 +1616,19 @@ export interface FileSaver {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the buffer into the file. See the #GAsyncResult
+     * documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the file was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes a file saving started with tepl_file_saver_save_async().
      * 
@@ -4954,6 +4995,19 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_as_async
+
+    /**
+     * Promisified version of {@link save_as_async}
+     * 
+     * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
+     * appropriate #TeplFileSaver and asynchronously runs it.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @returns A Promise of: whether the tab was saved successfully.
+     */
+    save_as_async(): globalThis.Promise<boolean>
     /**
      * The same as tepl_tab_save_as_async(), but without callback.
      * 
@@ -4976,6 +5030,19 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
+     * be %NULL.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @returns A Promise of: whether the tab was saved successfully.
+     */
+    save_async(): globalThis.Promise<boolean>
     /**
      * The same as tepl_tab_save_async(), but without callback.
      * 

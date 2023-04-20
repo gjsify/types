@@ -9,7 +9,7 @@
  * xlib-2.0
  */
 
-import type GObject from '@girs/node-gobject-2.0';
+import type GObject from '@girs/gobject-2.0';
 
 export function openDisplay(): void
 export interface Display {

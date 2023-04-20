@@ -148,6 +148,7 @@ export interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
     // Conflicting properties
 
     parent: WebKit2.WebViewBase & Gtk.Container & Gtk.Container
+    priv: any & WebKit2.WebViewBasePrivate
 
     // Owm methods of Gepub-0.5.Gepub.Widget
 

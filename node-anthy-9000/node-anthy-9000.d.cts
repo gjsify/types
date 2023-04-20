@@ -9,8 +9,8 @@
  * Anthy-9000
  */
 
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 export const COMPILED_ENCODING: number
 export const EUC_JP_ENCODING: number

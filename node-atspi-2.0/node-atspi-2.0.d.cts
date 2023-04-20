@@ -9,9 +9,9 @@
  * Atspi-2.0
  */
 
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type DBus from '@girs/node-dbus-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type DBus from '@girs/dbus-1.0';
 
 /**
  * Enumeration used by #AtspiMatchRule to specify

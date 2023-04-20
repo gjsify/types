@@ -1,7 +1,7 @@
 
 # GeglGtk3-0.1
 
-Node.js TypeScript type definitions for GeglGtk3-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GeglGtk3-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 Utility library for using GEGL in GTK+ 3 based applications
 
@@ -16,12 +16,12 @@ npm install @girs/node-geglgtk3-0.1
 
 You can import this package into your project like this:
 ```ts
-import GeglGtk3 from '@girs/node-geglgtk3-0.1';
+import GeglGtk3 from '@girs/geglgtk3-0.1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GeglGtk3 = require('@girs/node-geglgtk3-0.1');
+const GeglGtk3 = require('@girs/geglgtk3-0.1');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

@@ -9,7 +9,7 @@
  * GObject-2.0
  */
 
-import type GLib from '@girs/node-glib-2.0';
+import type GLib from '@girs/glib-2.0';
 
 export namespace GObject {
 
@@ -6573,7 +6573,7 @@ interface Value {
      * %NULL will be returned.
      * @returns object content of @value,          should be unreferenced when no longer needed.
      */
-    dupObject(): Object
+    dupObject(): Object | null
     /**
      * Get a copy the contents of a %G_TYPE_STRING #GValue.
      * @returns a newly allocated copy of the string content of @value
@@ -6649,7 +6649,7 @@ interface Value {
      * Get the contents of a %G_TYPE_OBJECT derived #GValue.
      * @returns object contents of @value
      */
-    getObject(): Object
+    getObject(): Object | null
     /**
      * Get the contents of a %G_TYPE_PARAM #GValue.
      * @returns #GParamSpec content of @value

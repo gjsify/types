@@ -9,10 +9,10 @@
  * UnityExtras-7.0
  */
 
-import type GLib from '@girs/node-glib-2.0';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type Unity from '@girs/node-unity-7.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type Unity from '@girs/unity-7.0';
 
 export function showInFolder(uri: string | null, callback?: Gio.AsyncReadyCallback | null): void
 export function showInFolderFinish(res: Gio.AsyncResult): void

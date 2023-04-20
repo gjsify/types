@@ -1059,6 +1059,19 @@ export interface Client {
      * @param callback the function to run on completion
      */
     activate_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of activate_async
+
+    /**
+     * Promisified version of {@link activate_async}
+     * 
+     * Activates up a device, which normally means the device switches to a new
+     * firmware version. This should only be called when data loss cannot occur.
+     * @param device_id a device
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    activate_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_activate_async().
      * @param res the #GAsyncResult
@@ -1079,6 +1092,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     clear_results_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of clear_results_async
+
+    /**
+     * Promisified version of {@link clear_results_async}
+     * 
+     * Clears the results for a specific device.
+     * @param device_id a device
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    clear_results_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_clear_results_async().
      * @param res the #GAsyncResult
@@ -1103,6 +1128,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     connect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_async
+
+    /**
+     * Promisified version of {@link connect_async}
+     * 
+     * Sets up the client ready for use. This is probably the first method you call
+     * when wanting to use libfwupd in an asynchronous manner.
+     * 
+     * Other methods such as fwupd_client_get_devices_async() should only be called
+     * after fwupd_client_connect_finish() has been called without an error.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    connect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_connect_async().
      * @param res the #GAsyncResult
@@ -1134,6 +1174,27 @@ export interface Client {
      * @param callback the function to run on completion
      */
     download_bytes_async(url: string | null, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of download_bytes_async
+
+    /**
+     * Promisified version of {@link download_bytes_async}
+     * 
+     * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+     * should be called before this method is used.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param url the remote URL
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: downloaded data, or %NULL for error
+     */
+    download_bytes_async(url: string | null, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Gets the result of fwupd_client_download_bytes_async().
      * @param res the #GAsyncResult
@@ -1172,6 +1233,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_approved_firmware_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_approved_firmware_async
+
+    /**
+     * Promisified version of {@link get_approved_firmware_async}
+     * 
+     * Gets the list of approved firmware.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: checksums, or %NULL for error
+     */
+    get_approved_firmware_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
     /**
      * Gets the result of fwupd_client_get_approved_firmware_async().
      * @param res the #GAsyncResult
@@ -1193,6 +1268,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_blocked_firmware_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_blocked_firmware_async
+
+    /**
+     * Promisified version of {@link get_blocked_firmware_async}
+     * 
+     * Gets the list of blocked firmware.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: checksums, or %NULL for error
+     */
+    get_blocked_firmware_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
     /**
      * Gets the result of fwupd_client_get_blocked_firmware_async().
      * @param res the #GAsyncResult
@@ -1230,6 +1319,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_details_bytes_async(bytes: GLib.Bytes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_details_bytes_async
+
+    /**
+     * Promisified version of {@link get_details_bytes_async}
+     * 
+     * Gets details about a specific firmware file.
+     * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: an array of results
+     */
+    get_details_bytes_async(bytes: GLib.Bytes, cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>
     /**
      * Gets the result of fwupd_client_get_details_bytes_async().
      * @param res the #GAsyncResult
@@ -1253,6 +1354,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_device_by_id_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_device_by_id_async
+
+    /**
+     * Promisified version of {@link get_device_by_id_async}
+     * 
+     * Gets a device by it's device ID.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: a #FwupdDevice, or %NULL for failure
+     */
+    get_device_by_id_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
     /**
      * Gets the result of fwupd_client_get_device_by_id_async().
      * @param res the #GAsyncResult
@@ -1274,6 +1390,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_devices_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_devices_async
+
+    /**
+     * Promisified version of {@link get_devices_async}
+     * 
+     * Gets all the devices registered with the daemon.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_devices_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>
     /**
      * Gets any devices that provide a specific GUID. An error is returned if no
      * devices contains this GUID.
@@ -1293,6 +1423,22 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_devices_by_guid_async(guid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_devices_by_guid_async
+
+    /**
+     * Promisified version of {@link get_devices_by_guid_async}
+     * 
+     * Gets any devices that provide a specific GUID. An error is returned if no
+     * devices contains this GUID.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_devices_by_guid_async(guid: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_devices_by_guid_async().
      * @param res the #GAsyncResult
@@ -1322,6 +1468,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_downgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_downgrades_async
+
+    /**
+     * Promisified version of {@link get_downgrades_async}
+     * 
+     * Gets all the downgrades for a specific device.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_downgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_downgrades_async().
      * @param res the #GAsyncResult
@@ -1343,6 +1504,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_history_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_history_async
+
+    /**
+     * Promisified version of {@link get_history_async}
+     * 
+     * Gets all the history.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_history_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>
     /**
      * Gets the result of fwupd_client_get_history_async().
      * @param res the #GAsyncResult
@@ -1374,6 +1549,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_host_security_attrs_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_host_security_attrs_async
+
+    /**
+     * Promisified version of {@link get_host_security_attrs_async}
+     * 
+     * Gets all the host security attributes from the daemon.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: attributes
+     */
+    get_host_security_attrs_async(cancellable: Gio.Cancellable | null): globalThis.Promise<SecurityAttr[]>
     /**
      * Gets the result of fwupd_client_get_host_security_attrs_async().
      * @param res the #GAsyncResult
@@ -1411,6 +1600,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_plugins_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_plugins_async
+
+    /**
+     * Promisified version of {@link get_plugins_async}
+     * 
+     * Gets all the plugins being used by the daemon.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_plugins_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>
     /**
      * Gets the result of fwupd_client_get_plugins_async().
      * @param res the #GAsyncResult
@@ -1434,6 +1637,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_releases_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_releases_async
+
+    /**
+     * Promisified version of {@link get_releases_async}
+     * 
+     * Gets all the releases for a specific device
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_releases_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_releases_async().
      * @param res the #GAsyncResult
@@ -1454,6 +1672,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_remote_by_id_async(remote_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_remote_by_id_async
+
+    /**
+     * Promisified version of {@link get_remote_by_id_async}
+     * 
+     * Gets a specific remote that has been configured for the system.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: a #FwupdRemote, or %NULL if not found
+     */
+    get_remote_by_id_async(remote_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Remote>
     /**
      * Gets the result of fwupd_client_get_remote_by_id_async().
      * @param res the #GAsyncResult
@@ -1475,6 +1705,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_remotes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_remotes_async
+
+    /**
+     * Promisified version of {@link get_remotes_async}
+     * 
+     * Gets the list of remotes that have been configured for the system.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_remotes_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Remote[]>
     /**
      * Gets the result of fwupd_client_get_remotes_async().
      * @param res the #GAsyncResult
@@ -1496,6 +1740,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_report_metadata_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_report_metadata_async
+
+    /**
+     * Promisified version of {@link get_report_metadata_async}
+     * 
+     * Gets all the report metadata from the daemon.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: attributes
+     */
+    get_report_metadata_async(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>
     /**
      * Gets the result of fwupd_client_get_report_metadata_async().
      * @param res the #GAsyncResult
@@ -1519,6 +1777,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_results_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_results_async
+
+    /**
+     * Promisified version of {@link get_results_async}
+     * 
+     * Gets the results of a previous firmware update for a specific device.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: a #FwupdDevice, or %NULL for failure
+     */
+    get_results_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
     /**
      * Gets the result of fwupd_client_get_results_async().
      * @param res the #GAsyncResult
@@ -1552,6 +1825,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     get_upgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_upgrades_async
+
+    /**
+     * Promisified version of {@link get_upgrades_async}
+     * 
+     * Gets all the upgrades for a specific device.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: results
+     */
+    get_upgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_upgrades_async().
      * @param res the #GAsyncResult
@@ -1587,6 +1875,24 @@ export interface Client {
      * @param callback the function to run on completion
      */
     install_async(device_id: string | null, filename: string | null, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of install_async
+
+    /**
+     * Promisified version of {@link install_async}
+     * 
+     * Install firmware onto a specific device.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param device_id the device ID
+     * @param filename the filename to install
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    install_async(device_id: string | null, filename: string | null, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Install firmware onto a specific device.
      * @param device_id the device ID
@@ -1609,6 +1915,24 @@ export interface Client {
      * @param callback the function to run on completion
      */
     install_bytes_async(device_id: string | null, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of install_bytes_async
+
+    /**
+     * Promisified version of {@link install_bytes_async}
+     * 
+     * Install firmware onto a specific device.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param device_id the device ID
+     * @param bytes #GBytes
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    install_bytes_async(device_id: string | null, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_install_bytes_async().
      * @param res the #GAsyncResult
@@ -1667,6 +1991,24 @@ export interface Client {
      * @param callback the function to run on completion
      */
     install_release_async(device: Device, release: Release, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of install_release_async
+
+    /**
+     * Promisified version of {@link install_release_async}
+     * 
+     * Installs a new release on a device, downloading the firmware if required.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param device A #FwupdDevice
+     * @param release A #FwupdRelease
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    install_release_async(device: Device, release: Release, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_install_release_async().
      * @param res the #GAsyncResult
@@ -1691,6 +2033,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     modify_config_async(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of modify_config_async
+
+    /**
+     * Promisified version of {@link modify_config_async}
+     * 
+     * Modifies a daemon config option.
+     * The daemon will only respond to this request with proper permissions
+     * @param key key, e.g. `DisabledPlugins`
+     * @param value value, e.g. `*`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    modify_config_async(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_config_async().
      * @param res the #GAsyncResult
@@ -1719,6 +2075,21 @@ export interface Client {
      * @param callback the function to run on completion
      */
     modify_device_async(device_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of modify_device_async
+
+    /**
+     * Promisified version of {@link modify_device_async}
+     * 
+     * Modifies a device in a specific way. Not all properties on the #FwupdDevice
+     * are settable by the client, and some may have other restrictions on `value`.
+     * @param device_id the device ID
+     * @param key the key, e.g. `Flags`
+     * @param value the key, e.g. `reported`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    modify_device_async(device_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_device_async().
      * @param res the #GAsyncResult
@@ -1745,6 +2116,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     modify_remote_async(remote_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of modify_remote_async
+
+    /**
+     * Promisified version of {@link modify_remote_async}
+     * 
+     * Modifies a system remote in a specific way.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param key the key, e.g. `Enabled`
+     * @param value the key, e.g. `true`
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    modify_remote_async(remote_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_remote_async().
      * @param res the #GAsyncResult
@@ -1769,6 +2154,22 @@ export interface Client {
      * @param callback the function to run on completion
      */
     refresh_remote_async(remote: Remote, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of refresh_remote_async
+
+    /**
+     * Promisified version of {@link refresh_remote_async}
+     * 
+     * Refreshes a remote by downloading new metadata.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param remote A #FwupdRemote
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    refresh_remote_async(remote: Remote, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_refresh_remote_async().
      * @param res the #GAsyncResult
@@ -1794,6 +2195,22 @@ export interface Client {
      * @param callback the function to run on completion
      */
     self_sign_async(value: string | null, flags: SelfSignFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of self_sign_async
+
+    /**
+     * Promisified version of {@link self_sign_async}
+     * 
+     * Signs the data using the client self-signed certificate.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * @param value A string to sign, typically a JSON blob
+     * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: a signature, or %NULL for failure
+     */
+    self_sign_async(value: string | null, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Gets the result of fwupd_client_self_sign_async().
      * @param res the #GAsyncResult
@@ -1814,6 +2231,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     set_approved_firmware_async(checksums: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_approved_firmware_async
+
+    /**
+     * Promisified version of {@link set_approved_firmware_async}
+     * 
+     * Sets the list of approved firmware.
+     * @param checksums firmware checksums
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    set_approved_firmware_async(checksums: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_set_approved_firmware_async().
      * @param res the #GAsyncResult
@@ -1834,6 +2263,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     set_blocked_firmware_async(checksums: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_blocked_firmware_async
+
+    /**
+     * Promisified version of {@link set_blocked_firmware_async}
+     * 
+     * Sets the list of blocked firmware.
+     * @param checksums firmware checksums
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    set_blocked_firmware_async(checksums: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_set_blocked_firmware_async().
      * @param res the #GAsyncResult
@@ -1860,6 +2301,20 @@ export interface Client {
      * @param callback the function to run on completion
      */
     set_feature_flags_async(feature_flags: FeatureFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_feature_flags_async
+
+    /**
+     * Promisified version of {@link set_feature_flags_async}
+     * 
+     * Sets the features the client supports. This allows firmware to depend on
+     * specific front-end features, for instance showing the user an image on
+     * how to detach the hardware.
+     * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    set_feature_flags_async(feature_flags: FeatureFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_set_feature_flags_async().
      * @param res the #GAsyncResult
@@ -1905,6 +2360,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     unlock_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unlock_async
+
+    /**
+     * Promisified version of {@link unlock_async}
+     * 
+     * Unlocks a specific device so firmware can be read or wrote.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    unlock_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_unlock_async().
      * @param res the #GAsyncResult
@@ -1957,6 +2424,29 @@ export interface Client {
      * @param callback the function to run on completion
      */
     update_metadata_bytes_async(remote_id: string | null, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of update_metadata_bytes_async
+
+    /**
+     * Promisified version of {@link update_metadata_bytes_async}
+     * 
+     * Updates the metadata. This allows a session process to download the metadata
+     * and metadata signing file to be passed into the daemon to be checked and
+     * parsed.
+     * 
+     * The `remote_id` allows the firmware to be tagged so that the remote can be
+     * matched when the firmware is downloaded.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param remote_id remote ID, e.g. `lvfs-testing`
+     * @param metadata XML metadata data
+     * @param signature signature data
+     * @param cancellable #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    update_metadata_bytes_async(remote_id: string | null, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_update_metadata_bytes_async().
      * @param res the #GAsyncResult
@@ -1992,6 +2482,29 @@ export interface Client {
      * @param callback the function to run on completion
      */
     upload_bytes_async(url: string | null, payload: string | null, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of upload_bytes_async
+
+    /**
+     * Promisified version of {@link upload_bytes_async}
+     * 
+     * Uploads data to a remote server. The fwupd_client_set_user_agent() function
+     * should be called before this method is used.
+     * 
+     * You must have called fwupd_client_connect_async() on `self` before using
+     * this method.
+     * 
+     * NOTE: This method is thread-safe, but progress signals will be
+     * emitted in the global default main context, if not explicitly set with
+     * fwupd_client_set_main_context().
+     * @param url the remote URL
+     * @param payload payload string
+     * @param signature signature string
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: response data, or %NULL for error
+     */
+    upload_bytes_async(url: string | null, payload: string | null, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Gets the result of fwupd_client_upload_bytes_async().
      * @param res the #GAsyncResult
@@ -2012,6 +2525,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     verify_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of verify_async
+
+    /**
+     * Promisified version of {@link verify_async}
+     * 
+     * Verify a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    verify_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_verify_async().
      * @param res the #GAsyncResult
@@ -2032,6 +2557,18 @@ export interface Client {
      * @param callback the function to run on completion
      */
     verify_update_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of verify_update_async
+
+    /**
+     * Promisified version of {@link verify_update_async}
+     * 
+     * Update the verification record for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE for success
+     */
+    verify_update_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_verify_update_async().
      * @param res the #GAsyncResult

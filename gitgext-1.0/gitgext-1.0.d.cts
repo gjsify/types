@@ -204,6 +204,18 @@ export interface Application extends GObject.Object {
     set_activity_by_id(id: string | null): Activity | null
     user_query(query: UserQuery): void
     user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of user_query_async
+
+    /**
+     * Promisified version of {@link user_query_async}
+     * 
+     * 
+     * @param query 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link user_query_async}
+     */
+    user_query_async(query: UserQuery): globalThis.Promise<Gtk.ResponseType>
     user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType
     show_infobar(primary_msg: string | null, secondary_msg: string | null, type: Gtk.MessageType): void
     open_new(repository: Ggit.Repository, hint: string | null): Application

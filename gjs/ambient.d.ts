@@ -167,9 +167,9 @@
             import Cally10 from '@girs/cally-1.0';
         export default Cally10;
       }
-      declare module 'gi://Cally?version=11' {
-            import Cally11 from '@girs/cally-11';
-        export default Cally11;
+      declare module 'gi://Cally?version=12' {
+            import Cally12 from '@girs/cally-12';
+        export default Cally12;
       }
       declare module 'gi://Camel?version=1.2' {
             import Camel12 from '@girs/camel-1.2';
@@ -211,9 +211,9 @@
             import Clutter10 from '@girs/clutter-1.0';
         export default Clutter10;
       }
-      declare module 'gi://Clutter?version=11' {
-            import Clutter11 from '@girs/clutter-11';
-        export default Clutter11;
+      declare module 'gi://Clutter?version=12' {
+            import Clutter12 from '@girs/clutter-12';
+        export default Clutter12;
       }
       declare module 'gi://ClutterGdk?version=1.0' {
             import ClutterGdk10 from '@girs/cluttergdk-1.0';
@@ -253,9 +253,9 @@
             import Cogl20 from '@girs/cogl-2.0';
         export default Cogl20;
       }
-      declare module 'gi://Cogl?version=11' {
-            import Cogl11 from '@girs/cogl-11';
-        export default Cogl11;
+      declare module 'gi://Cogl?version=12' {
+            import Cogl12 from '@girs/cogl-12';
+        export default Cogl12;
       }
       declare module 'gi://CoglGst?version=2.0' {
             import CoglGst20 from '@girs/coglgst-2.0';
@@ -274,9 +274,9 @@
             import CoglPango20 from '@girs/coglpango-2.0';
         export default CoglPango20;
       }
-      declare module 'gi://CoglPango?version=11' {
-            import CoglPango11 from '@girs/coglpango-11';
-        export default CoglPango11;
+      declare module 'gi://CoglPango?version=12' {
+            import CoglPango12 from '@girs/coglpango-12';
+        export default CoglPango12;
       }
       declare module 'gi://ColorHug?version=1.0' {
             import ColorHug10 from '@girs/colorhug-1.0';
@@ -2099,10 +2099,9 @@
             import Peas10 from '@girs/peas-1.0';
         export default Peas10;
       }
-      // Add support for ESM imports without version prefix only if there is no version conflict
-      declare module 'gi://Peas' {
-            import Peas10 from '@girs/peas-1.0';
-        export default Peas10;
+      declare module 'gi://Peas?version=2' {
+            import Peas2 from '@girs/peas-2';
+        export default Peas2;
       }
       declare module 'gi://PeasGtk?version=1.0' {
             import PeasGtk10 from '@girs/peasgtk-1.0';
@@ -2612,6 +2611,15 @@
             import WebKitWebExtension60 from '@girs/webkitwebextension-6.0';
         export default WebKitWebExtension60;
       }
+      declare module 'gi://WebKitWebProcessExtension?version=6.0' {
+            import WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
+        export default WebKitWebProcessExtension60;
+      }
+      // Add support for ESM imports without version prefix only if there is no version conflict
+      declare module 'gi://WebKitWebProcessExtension' {
+            import WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
+        export default WebKitWebProcessExtension60;
+      }
       declare module 'gi://Wnck?version=3.0' {
             import Wnck30 from '@girs/wnck-3.0';
         export default Wnck30;
@@ -2792,24 +2800,6 @@
             import SocialWebClient025 from '@girs/socialwebclient-0.25';
         export default SocialWebClient025;
       }
-      declare module 'gi://AppIndicator3?version=0.1' {
-            import AppIndicator301 from '@girs/appindicator3-0.1';
-        export default AppIndicator301;
-      }
-      // Add support for ESM imports without version prefix only if there is no version conflict
-      declare module 'gi://AppIndicator3' {
-            import AppIndicator301 from '@girs/appindicator3-0.1';
-        export default AppIndicator301;
-      }
-      declare module 'gi://CloudProviders?version=0.3' {
-            import CloudProviders03 from '@girs/cloudproviders-0.3';
-        export default CloudProviders03;
-      }
-      // Add support for ESM imports without version prefix only if there is no version conflict
-      declare module 'gi://CloudProviders' {
-            import CloudProviders03 from '@girs/cloudproviders-0.3';
-        export default CloudProviders03;
-      }
       declare module 'gi://Gvc?version=1.0' {
             import Gvc10 from '@girs/gvc-1.0';
         export default Gvc10;
@@ -2819,23 +2809,23 @@
             import Gvc10 from '@girs/gvc-1.0';
         export default Gvc10;
       }
-      declare module 'gi://Shell?version=0.1' {
-            import Shell01 from '@girs/shell-0.1';
-        export default Shell01;
+      declare module 'gi://Shell?version=12' {
+            import Shell12 from '@girs/shell-12';
+        export default Shell12;
       }
       // Add support for ESM imports without version prefix only if there is no version conflict
       declare module 'gi://Shell' {
-            import Shell01 from '@girs/shell-0.1';
-        export default Shell01;
+            import Shell12 from '@girs/shell-12';
+        export default Shell12;
       }
-      declare module 'gi://St?version=1.0' {
-            import St10 from '@girs/st-1.0';
-        export default St10;
+      declare module 'gi://St?version=12' {
+            import St12 from '@girs/st-12';
+        export default St12;
       }
       // Add support for ESM imports without version prefix only if there is no version conflict
       declare module 'gi://St' {
-            import St10 from '@girs/st-1.0';
-        export default St10;
+            import St12 from '@girs/st-12';
+        export default St12;
       }
       declare module 'gi://Shew?version=0' {
             import Shew0 from '@girs/shew-0';
@@ -2846,12 +2836,38 @@
             import Shew0 from '@girs/shew-0';
         export default Shew0;
       }
-      declare module 'gi://Meta?version=11' {
-            import Meta11 from '@girs/meta-11';
-        export default Meta11;
+      declare module 'gi://Meta?version=12' {
+            import Meta12 from '@girs/meta-12';
+        export default Meta12;
       }
       // Add support for ESM imports without version prefix only if there is no version conflict
       declare module 'gi://Meta' {
-            import Meta11 from '@girs/meta-11';
-        export default Meta11;
+            import Meta12 from '@girs/meta-12';
+        export default Meta12;
       }
+      declare module 'gi://MetaTest?version=12' {
+            import MetaTest12 from '@girs/metatest-12';
+        export default MetaTest12;
+      }
+      // Add support for ESM imports without version prefix only if there is no version conflict
+      declare module 'gi://MetaTest' {
+            import MetaTest12 from '@girs/metatest-12';
+        export default MetaTest12;
+      }
+
+declare module 'gettext' {
+  export * from '@girs/gjs/gettext';
+  import Gettext from '@girs/gjs/gettext';
+  export default Gettext;
+}
+
+declare module 'system' {
+  export * from '@girs/gjs/system';
+  import System from '@girs/gjs/system';
+  export default System;
+}
+
+declare module 'cairo' {
+  import Cairo from '@girs/gjs/cairo';
+  export default Cairo;
+}

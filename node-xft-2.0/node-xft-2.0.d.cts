@@ -9,8 +9,8 @@
  * xft-2.0
  */
 
-import type xlib from '@girs/node-xlib-2.0';
-import type GObject from '@girs/node-gobject-2.0';
+import type xlib from '@girs/xlib-2.0';
+import type GObject from '@girs/gobject-2.0';
 
 export function init(): void
 export interface Color {

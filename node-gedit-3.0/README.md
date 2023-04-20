@@ -1,7 +1,7 @@
 
 # Gedit-3.0
 
-Node.js TypeScript type definitions for Gedit-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Gedit-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 Official text editor of the GNOME desktop environment.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gedit-3.0
 
 You can import this package into your project like this:
 ```ts
-import Gedit from '@girs/node-gedit-3.0';
+import Gedit from '@girs/gedit-3.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gedit = require('@girs/node-gedit-3.0');
+const Gedit = require('@girs/gedit-3.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

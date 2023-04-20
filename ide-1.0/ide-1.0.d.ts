@@ -533,6 +533,25 @@ const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string | null
  * @param callback A callback to execute upon completion
  */
 function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of build_system_new_async
+
+/**
+ * Promisified version of {@link build_system_new_async}
+ * 
+ * Asynchronously creates a new #IdeBuildSystem instance using the registered
+ * #GIOExtensionPoint system. Each extension point will be tried asynchronously
+ * by priority until one has been found that supports `project_file`.
+ * 
+ * If no build system could be found, then ide_build_system_new_finish() will
+ * return %NULL.
+ * @param context #IdeBuildSystem
+ * @param project_file A #GFile containing the directory or project file.
+ * @param build_system_hint A hint for the build system to use
+ * @param cancellable A #GCancellable
+ * @returns A Promise of: An #IdeBuildSystem if successful; otherwise   %NULL and @error is set.
+ */
+function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<BuildSystem>
 /**
  * Complete an asynchronous call to ide_build_system_new_async().
  * @param result 
@@ -692,6 +711,19 @@ function uri_parse_params(params: string | null, length: number, separator: numb
  */
 function uri_split(uri_string: string | null, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
 function vcs_new_async<Z = unknown>(context: Context, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of vcs_new_async
+
+/**
+ * Promisified version of {@link vcs_new_async}
+ * 
+ * 
+ * @param context 
+ * @param io_priority 
+ * @param cancellable 
+ * @returns A Promise of: An #IdeVcs.
+ */
+function vcs_new_async<Z = unknown>(context: Context, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Vcs>
 /**
  * Completes a call to ide_vcs_new_async().
  * @param result 
@@ -827,6 +859,19 @@ interface ApplicationTool {
      * @param callback A callback to execute upon completion
      */
     run_async(arguments_: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of run_async
+
+    /**
+     * Promisified version of {@link run_async}
+     * 
+     * Asynchronously runs an application tool. This is typically done on the
+     * command line using the `ide` command.
+     * @param arguments_ argv for the command
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of the result of {@link run_async}
+     */
+    run_async(arguments_: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     run_finish(result: Gio.AsyncResult): number
 
     // Own virtual methods of Ide-1.0.Ide.ApplicationTool
@@ -945,8 +990,31 @@ interface BuildSystem extends Object {
     // Owm methods of Ide-1.0.Ide.BuildSystem
 
     get_build_flags_async(file: File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_build_flags_async
+
+    /**
+     * Promisified version of {@link get_build_flags_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link get_build_flags_async}
+     */
+    get_build_flags_async(file: File, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
     get_build_flags_finish(result: Gio.AsyncResult): string[]
     get_build_targets_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_build_targets_async
+
+    /**
+     * Promisified version of {@link get_build_targets_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: An array   of #IdeBuildTarget or %NULL and @error is set.
+     */
+    get_build_targets_async(cancellable: Gio.Cancellable | null): globalThis.Promise<BuildTarget[]>
     get_build_targets_finish(result: Gio.AsyncResult): BuildTarget[]
     get_builddir(configuration: Configuration): string | null
     get_display_name(): string | null
@@ -1171,8 +1239,31 @@ interface ConfigurationProvider {
     // Owm methods of Ide-1.0.Ide.ConfigurationProvider
 
     load_async(manager: ConfigurationManager, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * 
+     * @param manager 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link load_async}
+     */
+    load_async(manager: ConfigurationManager, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     load_finish(result: Gio.AsyncResult): boolean
     save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_async}
+     */
+    save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_finish(result: Gio.AsyncResult): boolean
     unload(manager: ConfigurationManager): void
 
@@ -1323,6 +1414,19 @@ interface DiagnosticProvider extends Object {
     // Owm methods of Ide-1.0.Ide.DiagnosticProvider
 
     diagnose_async(file: File, buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of diagnose_async
+
+    /**
+     * Promisified version of {@link diagnose_async}
+     * 
+     * 
+     * @param file 
+     * @param buffer 
+     * @param cancellable 
+     * @returns A Promise of: #IdeDiagnostics or %NULL and @error is set.
+     */
+    diagnose_async(file: File, buffer: Buffer, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics | null>
     /**
      * Completes an asynchronous call to ide_diagnostic_provider_diagnose_async().
      * @param result 
@@ -1428,8 +1532,36 @@ interface Formatter {
     // Owm methods of Ide-1.0.Ide.Formatter
 
     format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of format_async
+
+    /**
+     * Promisified version of {@link format_async}
+     * 
+     * 
+     * @param buffer 
+     * @param options 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link format_async}
+     */
+    format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     format_finish(result: Gio.AsyncResult): boolean
     format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of format_range_async
+
+    /**
+     * Promisified version of {@link format_range_async}
+     * 
+     * 
+     * @param buffer 
+     * @param options 
+     * @param begin 
+     * @param end 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link format_range_async}
+     */
+    format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     format_range_finish(result: Gio.AsyncResult): boolean
     load(): void
 
@@ -1486,6 +1618,17 @@ interface GenesisAddin {
     get_title(): string | null
     get_widget(): Gtk.Widget
     run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of run_async
+
+    /**
+     * Promisified version of {@link run_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link run_async}
+     */
+    run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     run_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Ide-1.0.Ide.GenesisAddin
@@ -2096,6 +2239,17 @@ interface ProjectMiner {
 
     emit_discovered(project_info: ProjectInfo): void
     mine_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of mine_async
+
+    /**
+     * Promisified version of {@link mine_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link mine_async}
+     */
+    mine_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     mine_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Ide-1.0.Ide.ProjectMiner
@@ -2156,6 +2310,23 @@ interface ProjectTemplate {
      * @param callback the callback for the asynchronous operation.
      */
     expand_async(params: GLib.HashTable, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of expand_async
+
+    /**
+     * Promisified version of {@link expand_async}
+     * 
+     * Asynchronously requests expansion of the template.
+     * 
+     * This may involve creating files and directories on disk as well as
+     * expanding files based on the contents of `params`.
+     * 
+     * It is expected that this method is only called once on an #IdeProjectTemplate.
+     * @param params A hashtable of template parameters.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns A Promise of the result of {@link expand_async}
+     */
+    expand_async(params: GLib.HashTable, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     expand_finish(result: Gio.AsyncResult): boolean
     get_description(): string | null
     get_icon_name(): string | null
@@ -2261,6 +2432,22 @@ interface RenameProvider extends Object {
      * @param callback a callback to complete the request
      */
     rename_async(location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rename_async
+
+    /**
+     * Promisified version of {@link rename_async}
+     * 
+     * This requests the provider to determine the edits that must be made to the
+     * project to perform the renaming of a symbol found at `location`.
+     * 
+     * Use ide_rename_provider_rename_finish() to get the results.
+     * @param location An #IdeSourceLocation
+     * @param new_name The replacement name for the symbol
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if successful and @edits is set. Otherwise %FALSE and @error is set.
+     */
+    rename_async(location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* edits */ ProjectEdit[] | null>
     /**
      * Completes a request to ide_rename_provider_rename_async().
      * 
@@ -2339,8 +2526,30 @@ interface RunnerAddin {
 
     load(runner: Runner): void
     posthook_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of posthook_async
+
+    /**
+     * Promisified version of {@link posthook_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link posthook_async}
+     */
+    posthook_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     posthook_finish(result: Gio.AsyncResult): boolean
     prehook_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of prehook_async
+
+    /**
+     * Promisified version of {@link prehook_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link prehook_async}
+     */
+    prehook_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     prehook_finish(result: Gio.AsyncResult): boolean
     unload(runner: Runner): void
 
@@ -2389,6 +2598,18 @@ interface RuntimeProvider {
 
     can_install(runtime_id: string | null): boolean
     install_async(runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of install_async
+
+    /**
+     * Promisified version of {@link install_async}
+     * 
+     * 
+     * @param runtime_id 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link install_async}
+     */
+    install_async(runtime_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     install_finish(result: Gio.AsyncResult): boolean
     load(manager: RuntimeManager): void
     unload(manager: RuntimeManager): void
@@ -2579,6 +2800,25 @@ interface Subprocess {
      * @param callback A callback to complete the request
      */
     communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of communicate_async
+
+    /**
+     * Promisified version of {@link communicate_async}
+     * 
+     * Asynchronously communicates with the the child process.
+     * 
+     * There is no need to call ide_subprocess_wait() on the process if using
+     * this asynchronous operation as it will internally wait for the child
+     * to exit or be signaled.
+     * 
+     * Ensure you've set the proper flags to ensure that you can write to stdin
+     * or read from stderr/stdout as necessary.
+     * @param stdin_buf A #GBytes to send to stdin or %NULL
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
+     */
+    communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_buf */ GLib.Bytes, /* stderr_buf */ GLib.Bytes ]>
     /**
      * Finishes a request to ide_subprocess_communicate_async().
      * @param result A #GAsyncResult
@@ -2593,6 +2833,18 @@ interface Subprocess {
      */
     communicate_utf8(stdin_buf: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
     communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of communicate_utf8_async
+
+    /**
+     * Promisified version of {@link communicate_utf8_async}
+     * 
+     * 
+     * @param stdin_buf The data to send to stdin or %NULL
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
+     */
+    communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_buf */ string | null, /* stderr_buf */ string | null ]>
     communicate_utf8_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
     force_exit(): void
     get_exit_status(): number
@@ -2608,8 +2860,30 @@ interface Subprocess {
     send_signal(signal_num: number): void
     wait(cancellable: Gio.Cancellable | null): boolean
     wait_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of wait_async
+
+    /**
+     * Promisified version of {@link wait_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link wait_async}
+     */
+    wait_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     wait_check(cancellable: Gio.Cancellable | null): boolean
     wait_check_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of wait_check_async
+
+    /**
+     * Promisified version of {@link wait_check_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link wait_check_async}
+     */
+    wait_check_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     wait_check_finish(result: Gio.AsyncResult): boolean
     wait_finish(result: Gio.AsyncResult): boolean
 
@@ -2699,6 +2973,18 @@ interface SymbolResolver extends Object {
     // Owm methods of Ide-1.0.Ide.SymbolResolver
 
     find_references_async(location: SourceLocation, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of find_references_async
+
+    /**
+     * Promisified version of {@link find_references_async}
+     * 
+     * 
+     * @param location 
+     * @param cancellable 
+     * @returns A Promise of: A #GPtrArray   of #IdeSourceRange if successful; otherwise %NULL and @error is set.
+     */
+    find_references_async(location: SourceLocation, cancellable: Gio.Cancellable | null): globalThis.Promise<SourceRange[]>
     /**
      * Completes an asynchronous request to ide_symbol_resolver_find_references_async().
      * @param result a #GAsyncResult
@@ -2713,6 +2999,19 @@ interface SymbolResolver extends Object {
      * @param callback a callback to execute upon completion
      */
     get_symbol_tree_async(file: Gio.File, buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_symbol_tree_async
+
+    /**
+     * Promisified version of {@link get_symbol_tree_async}
+     * 
+     * Asynchronously fetch an up to date symbol tree for `file`.
+     * @param file A #GFile
+     * @param buffer A #IdeBuffer or %NULL
+     * @param cancellable a #GCancellable or %NULL.
+     * @returns A Promise of: An #IdeSymbolTree; otherwise %NULL and @error is set.
+     */
+    get_symbol_tree_async(file: Gio.File, buffer: Buffer, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>
     /**
      * Completes an asynchronous request to get the symbol tree for the requested file.
      * @param result 
@@ -2729,6 +3028,20 @@ interface SymbolResolver extends Object {
      * @param callback A callback to execute upon completion.
      */
     lookup_symbol_async(location: SourceLocation, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_symbol_async
+
+    /**
+     * Promisified version of {@link lookup_symbol_async}
+     * 
+     * Asynchronously requests that `self` determine the symbol existing at the source location
+     * denoted by `self`. `callback` should call ide_symbol_resolver_lookup_symbol_finish() to
+     * retrieve the result.
+     * @param location An #IdeSourceLocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns A Promise of: An #IdeSymbol if successful; otherwise %NULL.
+     */
+    lookup_symbol_async(location: SourceLocation, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol | null>
     /**
      * Completes an asynchronous call to lookup a symbol using
      * ide_symbol_resolver_lookup_symbol_async().
@@ -2889,6 +3202,19 @@ interface TagsBuilder {
     // Owm methods of Ide-1.0.Ide.TagsBuilder
 
     build_async(directory_or_file: Gio.File, recursive: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of build_async
+
+    /**
+     * Promisified version of {@link build_async}
+     * 
+     * 
+     * @param directory_or_file 
+     * @param recursive 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link build_async}
+     */
+    build_async(directory_or_file: Gio.File, recursive: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     build_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Ide-1.0.Ide.TagsBuilder
@@ -3167,6 +3493,18 @@ interface VcsInitializer {
 
     get_title(): string | null
     initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of initialize_async
+
+    /**
+     * Promisified version of {@link initialize_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link initialize_async}
+     */
+    initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     initialize_finish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Ide-1.0.Ide.VcsInitializer
@@ -3239,6 +3577,20 @@ interface WorkbenchAddin {
      */
     load(workbench: Workbench): void
     open_async(uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_async
+
+    /**
+     * Promisified version of {@link open_async}
+     * 
+     * 
+     * @param uri 
+     * @param content_type 
+     * @param flags 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link open_async}
+     */
+    open_async(uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_finish(result: Gio.AsyncResult): boolean
     /**
      * This function is called when the workbench changes the perspective.
@@ -3437,6 +3789,26 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
     get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_worker_async
+
+    /**
+     * Promisified version of {@link get_worker_async}
+     * 
+     * Asynchronously requests a #GDBusProxy to a service provided in a worker
+     * process. The worker should be an #IdeWorker implemented by the plugin named
+     * `plugin_name`. The #IdeWorker is responsible for created both the service
+     * registered on the bus and the proxy to it.
+     * 
+     * The #IdeApplication is responsible for spawning a subprocess for the worker.
+     * 
+     * `callback` should call ide_application_get_worker_finish() with the result
+     * provided to retrieve the result.
+     * @param plugin_name The name of the plugin.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns A Promise of: A #GDBusProxy or %NULL.
+     */
+    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -3840,6 +4212,18 @@ interface Buffer {
      */
     check_for_volume_change(): void
     format_selection_async(options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of format_selection_async
+
+    /**
+     * Promisified version of {@link format_selection_async}
+     * 
+     * 
+     * @param options 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link format_selection_async}
+     */
+    format_selection_async(options: FormatterOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     format_selection_finish(result: Gio.AsyncResult): boolean
     /**
      * Gets the #IdeBuffer:busy property.
@@ -3957,6 +4341,18 @@ interface Buffer {
      * @param callback A #GAsyncReadyCallback.
      */
     get_symbol_at_location_async(location: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_symbol_at_location_async
+
+    /**
+     * Promisified version of {@link get_symbol_at_location_async}
+     * 
+     * Asynchronously get a possible symbol at `location`.
+     * @param location a #GtkTextIter indicating a position to search for a symbol.
+     * @param cancellable A #GCancellable.
+     * @returns A Promise of: An #IdeSymbol or %NULL.
+     */
+    get_symbol_at_location_async(location: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol>
     /**
      * Completes an asynchronous request to locate a symbol at a location.
      * @param result A #GAsyncResult.
@@ -4306,6 +4702,20 @@ interface BufferManager extends Gio.ListModel {
      * @param callback the callback to complete the request
      */
     apply_edits_async(edits: ProjectEdit[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of apply_edits_async
+
+    /**
+     * Promisified version of {@link apply_edits_async}
+     * 
+     * Asynchronously requests that all of `edits` are applied to the buffers
+     * in the project. If the buffer has not been loaded for a particular edit,
+     * it will be loaded.
+     * @param edits An #GPtrArray of #IdeProjectEdit
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of the result of {@link apply_edits_async}
+     */
+    apply_edits_async(edits: ProjectEdit[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     apply_edits_finish(result: Gio.AsyncResult): boolean
     /**
      * Creates a new #IdeBuffer that does not yet have a backing file attached to it. Interfaces
@@ -4373,6 +4783,27 @@ interface BufferManager extends Gio.ListModel {
      * @param callback 
      */
     load_file_async(file: File, force_reload: boolean, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): /* progress */ Progress | null
+
+    // Overloads of load_file_async
+
+    /**
+     * Promisified version of {@link load_file_async}
+     * 
+     * Asynchronously requests that the file represented by `file` is loaded. If the file is already
+     * loaded, the previously loaded version of the file will be returned, asynchronously.
+     * 
+     * Before loading the file, #IdeBufferManager will check the file size to help protect itself
+     * from the user accidentally loading very large files. You can change the maximum size of file
+     * that will be loaded with the #IdeBufferManager:max-file-size property.
+     * 
+     * See ide_buffer_manager_load_file_finish() for how to complete this asynchronous request.
+     * @param file 
+     * @param force_reload 
+     * @param flags 
+     * @param cancellable 
+     * @returns A Promise of: An #IdeBuffer if successful; otherwise %NULL and @error is set.
+     */
+    load_file_async(file: File, force_reload: boolean, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<Buffer>
     /**
      * Completes an asynchronous request to load a file via ide_buffer_manager_load_file_async().
      * If the buffer was already loaded, this function will return a reference to the previous buffer
@@ -4382,6 +4813,17 @@ interface BufferManager extends Gio.ListModel {
      */
     load_file_finish(result: Gio.AsyncResult): Buffer
     save_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_all_async
+
+    /**
+     * Promisified version of {@link save_all_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_all_async}
+     */
+    save_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_all_finish(result: Gio.AsyncResult): boolean
     /**
      * This function asynchronously requests that a buffer be saved to the storage represented by
@@ -4396,6 +4838,24 @@ interface BufferManager extends Gio.ListModel {
      * @param callback 
      */
     save_file_async(buffer: Buffer, file: File, progress: Progress, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_file_async
+
+    /**
+     * Promisified version of {@link save_file_async}
+     * 
+     * This function asynchronously requests that a buffer be saved to the storage represented by
+     * `file`. `buffer` should be a previously loaded buffer owned by `self,` such as one loaded with
+     * ide_buffer_manager_load_file_async().
+     * 
+     * Call ide_buffer_manager_save_file_finish() to complete this asynchronous request.
+     * @param buffer 
+     * @param file 
+     * @param progress 
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if successful %FALSE upon failure and @error is set.
+     */
+    save_file_async(buffer: Buffer, file: File, progress: Progress, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * This function completes an asynchronous request to save a buffer to storage using
      * ide_buffer_manager_save_file_async(). Upon failure, %FALSE is returned and `error` is set.
@@ -4563,6 +5023,18 @@ interface BuildManager extends Gio.ActionGroup, Gio.Initable {
      */
     cancel(): void
     clean_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of clean_async
+
+    /**
+     * Promisified version of {@link clean_async}
+     * 
+     * 
+     * @param phase 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link clean_async}
+     */
+    clean_async(phase: BuildPhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     clean_finish(result: Gio.AsyncResult): boolean
     /**
      * This function will request that `phase` is completed in the underlying
@@ -4574,6 +5046,21 @@ interface BuildManager extends Gio.ActionGroup, Gio.Initable {
      * @param callback A callback to execute upon completion
      */
     execute_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * This function will request that `phase` is completed in the underlying
+     * build pipeline and execute a build. Upon completion, `callback` will be
+     * executed and it can determine the success or failure of the operation
+     * using ide_build_manager_execute_finish().
+     * @param phase An #IdeBuildPhase or 0
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if successful, otherwise %FALSE and @error is set.
+     */
+    execute_async(phase: BuildPhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Completes a request to ide_build_manager_execute_async().
      * @param result A #GAsyncResult
@@ -4616,6 +5103,18 @@ interface BuildManager extends Gio.ActionGroup, Gio.Initable {
      */
     get_running_time(): GLib.TimeSpan
     rebuild_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rebuild_async
+
+    /**
+     * Promisified version of {@link rebuild_async}
+     * 
+     * 
+     * @param phase 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link rebuild_async}
+     */
+    rebuild_async(phase: BuildPhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     rebuild_finish(result: Gio.AsyncResult): boolean
 
     // Own signals of Ide-1.0.Ide.BuildManager
@@ -4775,6 +5274,18 @@ interface BuildPipeline extends Gio.Initable {
     add_error_format(regex: string | null, flags: GLib.RegexCompileFlags): number
     add_log_observer(observer: BuildLogObserver): number
     clean_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of clean_async
+
+    /**
+     * Promisified version of {@link clean_async}
+     * 
+     * 
+     * @param phase 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link clean_async}
+     */
+    clean_async(phase: BuildPhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     clean_finish(result: Gio.AsyncResult): boolean
     /**
      * Insert `stage` into the pipeline as part of the phase denoted by `phase`.
@@ -4829,6 +5340,24 @@ interface BuildPipeline extends Gio.Initable {
      * @param callback a callback to execute upon completion
      */
     execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * Asynchronously starts the build pipeline.
+     * 
+     * Any phase that has been invalidated up to the requested phase
+     * will be executed until a stage has failed.
+     * 
+     * Upon completion, `callback` will be executed and should call
+     * ide_build_pipeline_execute_finish() to get the status of the
+     * operation.
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
+     */
+    execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
     /**
      * This function will call `stage_callback` for every #IdeBuildStage registered
@@ -4882,6 +5411,18 @@ interface BuildPipeline extends Gio.Initable {
      */
     invalidate_phase(phases: BuildPhase): void
     rebuild_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rebuild_async
+
+    /**
+     * Promisified version of {@link rebuild_async}
+     * 
+     * 
+     * @param phase 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link rebuild_async}
+     */
+    rebuild_async(phase: BuildPhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     rebuild_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes an error format that was registered with
@@ -5129,9 +5670,33 @@ interface BuildStage {
 
     chain(next: BuildStage): boolean
     clean_async(pipeline: BuildPipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of clean_async
+
+    /**
+     * Promisified version of {@link clean_async}
+     * 
+     * 
+     * @param pipeline 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link clean_async}
+     */
+    clean_async(pipeline: BuildPipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     clean_finish(result: Gio.AsyncResult): boolean
     emit_reap(reaper: Dazzle.DirectoryReaper): void
     execute_async(pipeline: BuildPipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param pipeline 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(pipeline: BuildPipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
     get_check_stdout(): boolean
     get_completed(): boolean
@@ -6128,6 +6693,17 @@ interface ConfigurationManager extends Gio.AsyncInitable, Gio.ListModel {
     get_current(): Configuration
     remove(configuration: Configuration): void
     save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_async}
+     */
+    save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_finish(result: Gio.AsyncResult): boolean
     set_current(configuration: Configuration): void
 
@@ -6366,6 +6942,17 @@ interface Context extends Gio.AsyncInitable {
      */
     release(): void
     restore_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of restore_async
+
+    /**
+     * Promisified version of {@link restore_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link restore_async}
+     */
+    restore_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     restore_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets the "root-build-dir" property. This is the root directory that will
@@ -6387,6 +6974,24 @@ interface Context extends Gio.AsyncInitable {
      * @param callback 
      */
     unload_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of unload_async
+
+    /**
+     * Promisified version of {@link unload_async}
+     * 
+     * This function attempts to unload various components in the #IdeContext. This
+     * should be called before you dispose the context. Unsaved buffers will be
+     * persisted to the drafts directory.  More operations may be added in the
+     * future.
+     * 
+     * If there is a hold on the #IdeContext, created by ide_context_hold(), then
+     * the unload request will be delayed until the appropriate number of calls to
+     * ide_context_release() have been called.
+     * @param cancellable 
+     * @returns A Promise of the result of {@link unload_async}
+     */
+    unload_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     unload_finish(result: Gio.AsyncResult): boolean
 
     // Own signals of Ide-1.0.Ide.Context
@@ -8020,6 +8625,17 @@ interface File {
     compare(b: File): number
     equal(other: File): boolean
     find_other_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of find_other_async
+
+    /**
+     * Promisified version of {@link find_other_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: An #IdeFIle or %NULL.
+     */
+    find_other_async(cancellable: Gio.Cancellable | null): globalThis.Promise<File | null>
     /**
      * Completes an asynchronous call to ide_file_find_other_async(). This function
      * will try to find a matching file for languages where this exists. Such cases
@@ -8057,6 +8673,17 @@ interface File {
     get_temporary_id(): number
     hash(): number
     load_settings_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_settings_async
+
+    /**
+     * Promisified version of {@link load_settings_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: An #IdeFileSettings or %NULL upon failure and   @error is set.
+     */
+    load_settings_async(cancellable: Gio.Cancellable | null): globalThis.Promise<FileSettings>
     load_settings_finish(result: Gio.AsyncResult): FileSettings
 
     // Class property signals of Ide-1.0.Ide.File
@@ -8503,8 +9130,33 @@ interface LangservClient {
      * @param callback the callback to receive the result, or %NULL
      */
     call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of call_async
+
+    /**
+     * Promisified version of {@link call_async}
+     * 
+     * Asynchronously queries the Language Server using the JSON-RPC protocol.
+     * @param method the method to call
+     * @param params An #GVariant or %NULL
+     * @param cancellable A cancellable or %NULL
+     * @returns A Promise of the result of {@link call_async}
+     */
+    call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     call_finish(result: Gio.AsyncResult, return_value: GLib.Variant): boolean
     get_diagnostics_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_diagnostics_async
+
+    /**
+     * Promisified version of {@link get_diagnostics_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @returns A Promise of: %TRUE if successful and @diagnostics is set, otherwise %FALSE   and @error is set.
+     */
+    get_diagnostics_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise</* diagnostics */ Diagnostics | null>
     /**
      * Completes a request to ide_langserv_client_get_diagnostics_async().
      * @param result A #GAsyncResult
@@ -8519,6 +9171,20 @@ interface LangservClient {
      * @param notificationback the notificationback to receive the result, or %NULL
      */
     send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_notification_async
+
+    /**
+     * Promisified version of {@link send_notification_async}
+     * 
+     * Asynchronously sends a notification to the Language Server.
+     * @param method the method to notification
+     * @param params An #GVariant or %NULL
+     * @param cancellable A cancellable or %NULL
+     * @param notificationback the notificationback to receive the result, or %NULL
+     * @returns A Promise of the result of {@link send_notification_async}
+     */
+    send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     send_notification_finish(result: Gio.AsyncResult): boolean
     start(): void
     stop(): void
@@ -12349,8 +13015,33 @@ interface Project {
     reader_lock(): void
     reader_unlock(): void
     rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rename_file_async
+
+    /**
+     * Promisified version of {@link rename_file_async}
+     * 
+     * 
+     * @param orig_file 
+     * @param new_file 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link rename_file_async}
+     */
+    rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     rename_file_finish(result: Gio.AsyncResult): boolean
     trash_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of trash_file_async
+
+    /**
+     * Promisified version of {@link trash_file_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link trash_file_async}
+     */
+    trash_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     trash_file_finish(result: Gio.AsyncResult): boolean
     writer_lock(): void
     writer_unlock(): void
@@ -12815,6 +13506,18 @@ interface RecentProjects extends Gio.ListModel {
     // Owm methods of Ide-1.0.Ide.RecentProjects
 
     discover_async(recent_only: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of discover_async
+
+    /**
+     * Promisified version of {@link discover_async}
+     * 
+     * 
+     * @param recent_only 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link discover_async}
+     */
+    discover_async(recent_only: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     discover_finish(result: Gio.AsyncResult): boolean
     get_busy(): boolean
     /**
@@ -13117,6 +13820,17 @@ interface RunManager extends Gio.ActionGroup, Gio.Initable {
     add_handler(id: string | null, title: string | null, icon_name: string | null, accel: string | null, run_handler: RunHandler): void
     cancel(): void
     discover_default_target_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of discover_default_target_async
+
+    /**
+     * Promisified version of {@link discover_default_target_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: An #IdeBuildTarget if successful; otherwise %NULL   and @error is set.
+     */
+    discover_default_target_async(cancellable: Gio.Cancellable | null): globalThis.Promise<BuildTarget>
     discover_default_target_finish(result: Gio.AsyncResult): BuildTarget
     /**
      * Gets the build target that will be executed by the run manager which
@@ -13129,6 +13843,18 @@ interface RunManager extends Gio.ActionGroup, Gio.Initable {
     get_handler(): string | null
     remove_handler(id: string | null): void
     run_async(build_target: BuildTarget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of run_async
+
+    /**
+     * Promisified version of {@link run_async}
+     * 
+     * 
+     * @param build_target 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link run_async}
+     */
+    run_async(build_target: BuildTarget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     run_finish(result: Gio.AsyncResult): boolean
     set_build_target(build_target: BuildTarget): void
     set_handler(id: string | null): void
@@ -13268,6 +13994,17 @@ interface Runner {
     get_stdout(): Gio.InputStream | null
     prepend_argv(param: string | null): void
     run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of run_async
+
+    /**
+     * Promisified version of {@link run_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link run_async}
+     */
+    run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     run_finish(result: Gio.AsyncResult): boolean
     set_argv(argv: string | null): void
     set_clear_env(clear_env: boolean): void
@@ -13507,6 +14244,25 @@ interface RuntimeManager extends Gio.Initable, Gio.ListModel {
      * @param callback a callback to call after execution
      */
     ensure_async(runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of ensure_async
+
+    /**
+     * Promisified version of {@link ensure_async}
+     * 
+     * This function will asynchronously check if a runtime is installed.
+     * 
+     * If it is not installed, it will check to see if any runtime provider
+     * can provide the runtime by installing it. If so, the runtime will be
+     * installed.
+     * 
+     * Call ide_runtime_manager_ensure_finish() to get the resulting runtime
+     * or a #GError in case of failure.
+     * @param runtime_id the id for an expected runtime
+     * @param cancellable A #GCancellable or %NULL
+     * @returns A Promise of: An #IdeRuntime or %NULL.
+     */
+    ensure_async(runtime_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Runtime>
     ensure_finish(result: Gio.AsyncResult): Runtime
     /**
      * Gets the runtime by its internal identifier.
@@ -14593,6 +15349,17 @@ interface SourceSnippetsManager {
      */
     get_for_language_id(language_id: string | null): SourceSnippets | null
     load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link load_async}
+     */
+    load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     load_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of Ide-1.0.Ide.SourceSnippetsManager
@@ -17022,6 +17789,17 @@ interface SymbolNode {
     get_flags(): SymbolFlags
     get_kind(): SymbolKind
     get_location_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_location_async
+
+    /**
+     * Promisified version of {@link get_location_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of: An #IdeSourceLocation or %NULL.
+     */
+    get_location_async(cancellable: Gio.Cancellable | null): globalThis.Promise<SourceLocation | null>
     /**
      * Completes the request to gets the location for the symbol node.
      * @param result 
@@ -17118,6 +17896,17 @@ interface TemplateBase {
     add_path(path: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
     add_resource(resource_path: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
     expand_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of expand_all_async
+
+    /**
+     * Promisified version of {@link expand_all_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link expand_all_async}
+     */
+    expand_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     expand_all_finish(result: Gio.AsyncResult): boolean
     /**
      * Fetches the #TmplTemplateLocator used for resolving templates.
@@ -17186,6 +17975,17 @@ interface Transfer {
 
     cancel(): void
     execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
     get_active(): boolean
     get_completed(): boolean
@@ -17571,6 +18371,21 @@ interface TransferManager extends Gio.ListModel {
      * @param callback A callback or %NULL
      */
     execute_async(transfer: Transfer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * This is a convenience function that will queue `transfer` into the transfer
+     * manager and execute callback upon completion of the transfer. The success
+     * or failure #GError will be propagated to the caller via
+     * ide_transfer_manager_execute_finish().
+     * @param transfer 
+     * @param cancellable A #GCancellable
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(transfer: Transfer, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
     /**
      * Gets if there are active transfers.
@@ -18395,8 +19210,30 @@ interface UnsavedFiles {
     get_unsaved_file(file: Gio.File): UnsavedFile | null
     remove(file: Gio.File): void
     restore_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of restore_async
+
+    /**
+     * Promisified version of {@link restore_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link restore_async}
+     */
+    restore_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     restore_finish(result: Gio.AsyncResult): boolean
     save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_async}
+     */
+    save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_finish(result: Gio.AsyncResult): boolean
     /**
      * This retrieves all of the unsaved file buffers known to the context.
@@ -18574,15 +19411,68 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @param callback A #GASyncReadyCallback.
      */
     open_files_async(files: Gio.File, n_files: number, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_files_async
+
+    /**
+     * Promisified version of {@link open_files_async}
+     * 
+     * Starts the process of loading the buffers for the given `files,` possibly
+     * creating an #IdeEditorView for each depending on `flags`.
+     * @param files An array of #GFile objects to be opened.
+     * @param n_files The number of files given.
+     * @param hint The id of an #IdeWorkbenchAddin that should be preferred as a loader.
+     * @param flags A #IdeWorkbenchOpenFlags (if WORKBENCH_OPEN_FLAGS_BG is set, the buffer is loaded but not made visible in the UI).
+     * @param cancellable A #GCancellable.
+     * @returns A Promise of the result of {@link open_files_async}
+     */
+    open_files_async(files: Gio.File, n_files: number, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_files_finish(result: Gio.AsyncResult): boolean
     open_project_async(file_or_directory: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_project_async
+
+    /**
+     * Promisified version of {@link open_project_async}
+     * 
+     * 
+     * @param file_or_directory 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link open_project_async}
+     */
+    open_project_async(file_or_directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_project_finish(result: Gio.AsyncResult): boolean
     open_uri_async(uri: Uri, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_uri_async
+
+    /**
+     * Promisified version of {@link open_uri_async}
+     * 
+     * 
+     * @param uri 
+     * @param hint 
+     * @param flags 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link open_uri_async}
+     */
+    open_uri_async(uri: Uri, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_uri_finish(result: Gio.AsyncResult): boolean
     pop_message(message_id: string | null): boolean
     push_message(message: WorkbenchMessage): void
     remove_perspective(perspective: Perspective): void
     save_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_all_async
+
+    /**
+     * Promisified version of {@link save_all_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link save_all_async}
+     */
+    save_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_all_finish(result: Gio.AsyncResult): boolean
     set_fullscreen(fullscreen: boolean): void
     set_visible_perspective(perspective: Perspective): void

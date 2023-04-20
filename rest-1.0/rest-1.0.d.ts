@@ -269,6 +269,19 @@ interface OAuth2Proxy {
 
     build_authorization_url(code_challenge: string | null, scope: string | null): [ /* returnType */ string | null, /* state */ string | null ]
     fetch_access_token_async(authorization_code: string | null, code_verifier: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_access_token_async
+
+    /**
+     * Promisified version of {@link fetch_access_token_async}
+     * 
+     * 
+     * @param authorization_code 
+     * @param code_verifier 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link fetch_access_token_async}
+     */
+    fetch_access_token_async(authorization_code: string | null, code_verifier: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     fetch_access_token_finish(result: Gio.AsyncResult): boolean
     get_access_token(): string | null
     get_auth_url(): string | null
@@ -280,6 +293,17 @@ interface OAuth2Proxy {
     get_token_url(): string | null
     refresh_access_token(): boolean
     refresh_access_token_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of refresh_access_token_async
+
+    /**
+     * Promisified version of {@link refresh_access_token_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link refresh_access_token_async}
+     */
+    refresh_access_token_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     refresh_access_token_finish(result: Gio.AsyncResult): boolean
     set_access_token(access_token: string | null): void
     set_auth_url(tokenurl: string | null): void
@@ -756,6 +780,17 @@ interface ProxyCall {
      */
     get_status_message(): string | null
     invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of invoke_async
+
+    /**
+     * Promisified version of {@link invoke_async}
+     * 
+     * 
+     * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+     * @returns A Promise of: %TRUE on success
+     */
+    invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     invoke_finish(result: Gio.AsyncResult): boolean
     /**
      * Get the value of the header called `header`.

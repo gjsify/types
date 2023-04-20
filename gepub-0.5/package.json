@@ -1,6 +1,6 @@
 {
     "name": "@girs/gepub-0.5",
-    "version": "0.5.0-3.0.0-beta.12",
+    "version": "0.5.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0",
     "type": "module",
     "module": "gepub-0.5.js",
@@ -48,15 +48,18 @@
         "@girs/xlib-2.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "Gepub-0.5"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -64,5 +67,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/gepub-0.5#readme"
 }

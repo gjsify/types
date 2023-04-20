@@ -654,6 +654,25 @@ interface DataSource {
      * @param callback a #GAsyncReadyCallback to execute upon completion
      */
     get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_tile_data_async
+
+    /**
+     * Promisified version of {@link get_tile_data_async}
+     * 
+     * Gets the data for the tile at the given coordinates.
+     * 
+     * Some data sources may return data multiple times. For example,
+     * [class`TileDownloader]` may return data from a cache, then return updated
+     * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+     * each time data is received, then `callback` is called after the last update.
+     * @param x the X coordinate to fetch
+     * @param y the Y coordinate to fetch
+     * @param zoom_level the Z coordinate to fetch
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: The requested data, or %NULL if an error occurred
+     */
+    get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes | null>
     /**
      * Gets the final result of a request started with
      * shumate_data_source_get_tile_data_async().
@@ -809,6 +828,20 @@ interface FileCache {
      * @param callback a #GAsyncReadyCallback to execute upon completion
      */
     get_tile_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_tile_async
+
+    /**
+     * Promisified version of {@link get_tile_async}
+     * 
+     * Gets tile data from the cache, if it is available.
+     * @param x the X coordinate of the tile
+     * @param y the Y coordinate of the tile
+     * @param zoom_level the zoom level of the tile
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #GBytes containing the tile data, or %NULL if the tile was not in the cache or an error occurred
+     */
+    get_tile_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* etag */ string | null, /* modtime */ GLib.DateTime | null ]>
     /**
      * Gets the tile data from a completed shumate_file_cache_get_tile_async()
      * operation.
@@ -838,6 +871,18 @@ interface FileCache {
      * @param callback a #GAsyncReadyCallback to execute upon completion
      */
     purge_cache_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of purge_cache_async
+
+    /**
+     * Promisified version of {@link purge_cache_async}
+     * 
+     * Removes less used tiles from the cache, if necessary, until it fits in
+     * the size limit.
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: %TRUE if any tiles were removed, otherwise %FALSE
+     */
+    purge_cache_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of an async operation started using
      * shumate_file_cache_purge_cache_async().
@@ -861,6 +906,22 @@ interface FileCache {
      * @param callback a #GAsyncReadyCallback to execute upon completion
      */
     store_tile_async(x: number, y: number, zoom_level: number, bytes: GLib.Bytes, etag: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of store_tile_async
+
+    /**
+     * Promisified version of {@link store_tile_async}
+     * 
+     * Stores a tile in the cache.
+     * @param x the X coordinate of the tile
+     * @param y the Y coordinate of the tile
+     * @param zoom_level the zoom level of the tile
+     * @param bytes a #GBytes
+     * @param etag an ETag string, or %NULL
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE
+     */
+    store_tile_async(x: number, y: number, zoom_level: number, bytes: GLib.Bytes, etag: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the success value of a completed shumate_file_cache_store_tile_async()
      * operation.
@@ -1942,6 +2003,18 @@ interface MapSource {
      * @param callback a #GAsyncReadyCallback to execute upon completion
      */
     fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fill_tile_async
+
+    /**
+     * Promisified version of {@link fill_tile_async}
+     * 
+     * Asynchronous version of shumate_map_source_fill_tile().
+     * @param tile a #ShumateTile
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: %TRUE if the tile was filled with valid data, otherwise %FALSE
+     */
+    fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the success value of a completed shumate_map_source_fill_tile_async()
      * operation.

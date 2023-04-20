@@ -1,7 +1,7 @@
 
 # GtkSource-4
 
-Node.js TypeScript type definitions for GtkSource-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GtkSource-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GtkSourceView is a GNOME library that extends GtkTextView, the standard GTK+ widget for multiline text editing. GtkSourceView adds support for syntax highlighting, undo/redo, file loading and saving, search and replace, a completion system, printing, displaying line numbers, and other features typical of a source code editor.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gtksource-4
 
 You can import this package into your project like this:
 ```ts
-import GtkSource from '@girs/node-gtksource-4';
+import GtkSource from '@girs/gtksource-4';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GtkSource = require('@girs/node-gtksource-4');
+const GtkSource = require('@girs/gtksource-4');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

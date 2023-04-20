@@ -1,7 +1,7 @@
 
 # GObject-2.0
 
-Node.js TypeScript type definitions for GObject-2.0, generated from library version 2.75.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GObject-2.0, generated from library version 2.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GObject provides the object system used for Pango and GTK+.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gobject-2.0
 
 You can import this package into your project like this:
 ```ts
-import GObject from '@girs/node-gobject-2.0';
+import GObject from '@girs/gobject-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GObject = require('@girs/node-gobject-2.0');
+const GObject = require('@girs/gobject-2.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

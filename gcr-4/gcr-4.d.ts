@@ -513,6 +513,17 @@ function pkcs11_initialize(cancellable: Gio.Cancellable | null): boolean
  * @param callback callback which will be called when the operation completes
  */
 function pkcs11_initialize_async<Z = unknown>(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of pkcs11_initialize_async
+
+/**
+ * Promisified version of {@link pkcs11_initialize_async}
+ * 
+ * Asynchronously initialize the registered PKCS#11 modules.
+ * @param cancellable optional cancellable used to cancel the operation
+ * @returns A Promise of: whether the operation was successful or not.
+ */
+function pkcs11_initialize_async<Z = unknown>(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Complete the asynchronous operation to initialize the registered PKCS#11
  * modules.
@@ -583,6 +594,29 @@ function trust_add_pinned_certificate(certificate: Certificate, purpose: string 
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
 function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of trust_add_pinned_certificate_async
+
+/**
+ * Promisified version of {@link trust_add_pinned_certificate_async}
+ * 
+ * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
+ * certificate overrides all other certificate verification and should be used
+ * with care.
+ * 
+ * If the same pinned certificate already exists, then this operation
+ * does not add another, and succeeds without error.
+ * 
+ * When the operation is finished, callback will be called. You can then call
+ * [func`Gcr`.trust_add_pinned_certificate_finish] to get the result of the
+ * operation.
+ * @param certificate a #GcrCertificate
+ * @param purpose the purpose string
+ * @param peer the peer for this pinned certificate
+ * @param cancellable a #GCancellable
+ * @returns A Promise of: %TRUE if the pinned certificate is recorded successfully
+ */
+function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_add_pinned_certificate_async().
@@ -619,6 +653,24 @@ function trust_is_certificate_anchored(certificate: Certificate, purpose: string
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
 function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of trust_is_certificate_anchored_async
+
+/**
+ * Promisified version of {@link trust_is_certificate_anchored_async}
+ * 
+ * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
+ * anchor is used to verify the signatures on other certificates when verifying
+ * a certificate chain. Also known as a trusted certificate authority.
+ * 
+ * When the operation is finished, callback will be called. You can then call
+ * gcr_trust_is_certificate_anchored_finish() to get the result of the operation.
+ * @param certificate a #GcrCertificate to check
+ * @param purpose the purpose string
+ * @param cancellable a #GCancellable
+ * @returns A Promise of: %TRUE if the certificate is a trust anchor
+ */
+function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_is_certificate_anchored_async().
@@ -661,6 +713,29 @@ function trust_is_certificate_distrusted(serial_nr: Uint8Array, issuer: Uint8Arr
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
 function trust_is_certificate_distrusted_async<Z = unknown>(serial_nr: Uint8Array, issuer: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of trust_is_certificate_distrusted_async
+
+/**
+ * Promisified version of {@link trust_is_certificate_distrusted_async}
+ * 
+ * Asynchronously checks whether the certificate that can be uniquely
+ * identified with the given `serial_nr` and `issuer` is marked as distrusted
+ * (for example by the user, or because it's part of a CRL).
+ * 
+ * Since we can't directly use [iface`Certificate]` to fetch these values, you
+ * need to call these with the raw serial number and issuer as provided by the
+ * PKCS#11 fields `CKA_SERIAL_NR` and `CKA_ISSUER`.
+ * 
+ * When the operation is finished, `callback` will be called. You can then call
+ * [func`trust_is_certificate_distrusted_finish]` to get the result of the
+ * operation.
+ * @param serial_nr The serial number of the certificate
+ * @param issuer The raw issuer
+ * @param cancellable a #GCancellable or %NULL
+ * @returns A Promise of: %TRUE if the certificate is a trust anchor
+ */
+function trust_is_certificate_distrusted_async<Z = unknown>(serial_nr: Uint8Array, issuer: Uint8Array, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * [func`trust_is_certificate_distrusted_async]`.
@@ -701,6 +776,25 @@ function trust_is_certificate_pinned(certificate: Certificate, purpose: string |
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
 function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of trust_is_certificate_pinned_async
+
+/**
+ * Promisified version of {@link trust_is_certificate_pinned_async}
+ * 
+ * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
+ * pinned certificate overrides all other certificate verification.
+ * 
+ * When the operation is finished, callback will be called. You can then call
+ * [func`Gcr`.trust_is_certificate_pinned_finish] to get the result of the
+ * operation.
+ * @param certificate a #GcrCertificate to check
+ * @param purpose the purpose string
+ * @param peer the peer for this pinned
+ * @param cancellable a #GCancellable
+ * @returns A Promise of: %TRUE if the certificate is pinned.
+ */
+function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_is_certificate_pinned_async().
@@ -742,6 +836,27 @@ function trust_remove_pinned_certificate(certificate: Certificate, purpose: stri
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
 function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of trust_remove_pinned_certificate_async
+
+/**
+ * Promisified version of {@link trust_remove_pinned_certificate_async}
+ * 
+ * Remove a pinned certificate for communication with `peer` for `purpose`.
+ * 
+ * If the same pinned certificate does not exist, or was already removed,
+ * then this operation succeeds without error.
+ * 
+ * When the operation is finished, callback will be called. You can then call
+ * gcr_trust_remove_pinned_certificate_finish() to get the result of the
+ * operation.
+ * @param certificate a #GcrCertificate
+ * @param purpose the purpose string
+ * @param peer the peer for this pinned certificate
+ * @param cancellable a #GCancellable
+ * @returns A Promise of: %TRUE if the pinned certificate no longer exists
+ */
+function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_remove_pinned_certificate_async().
@@ -1057,6 +1172,22 @@ interface ImportInteraction extends Gio.TlsInteraction {
      * @param callback called when the operation completes
      */
     supplement_async(builder: Gck.Builder, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of supplement_async
+
+    /**
+     * Promisified version of {@link supplement_async}
+     * 
+     * Asynchronously supplement attributes before import. This means prompting the
+     * user for things like labels and the like. The needed attributes will have
+     * been passed to gcr_import_interaction_supplement_prep().
+     * 
+     * This method prompts the user and fills in the attributes.
+     * @param builder supplemented attributes
+     * @param cancellable optional cancellable object
+     * @returns A Promise of: %G_TLS_INTERACTION_HANDLED if successful or %G_TLS_INTERACTION_FAILED
+     */
+    supplement_async(builder: Gck.Builder, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.TlsInteractionResult>
     /**
      * Complete operation to asynchronously supplement attributes before import.
      * 
@@ -1204,6 +1335,18 @@ interface Importer {
      * @param callback called when the operation completes
      */
     import_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of import_async
+
+    /**
+     * Promisified version of {@link import_async}
+     * 
+     * Import the queued items in the importer. This function returns immediately
+     * and completes asynchronously.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: whether the import succeeded or failed
+     */
+    import_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete an asynchronous operation to import queued items.
      * @param result an asynchronous result
@@ -1549,6 +1692,21 @@ interface Prompt {
      * @param callback called when the operation completes
      */
     confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of confirm_async
+
+    /**
+     * Promisified version of {@link confirm_async}
+     * 
+     * Prompts for confirmation asking a cancel/continue style question.
+     * Set the various properties on the prompt before calling this method to
+     * represent the question correctly.
+     * 
+     * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @returns A Promise of: the reply from the prompt
+     */
+    confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<PromptReply>
     /**
      * Complete an operation to prompt for confirmation.
      * 
@@ -1692,6 +1850,20 @@ interface Prompt {
      * @param callback called when the operation completes
      */
     password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of password_async
+
+    /**
+     * Promisified version of {@link password_async}
+     * 
+     * Prompts for password. Set the various properties on the prompt before calling
+     * this method to explain which password should be entered.
+     * 
+     * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @returns A Promise of: the password owned by the prompt, or %NULL
+     */
+    password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Complete an operation to prompt for a password.
      * 
@@ -2057,6 +2229,48 @@ interface CertificateChain {
      * @param callback this will be called when the operation completes.
      */
     build_async(purpose: string | null, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of build_async
+
+    /**
+     * Promisified version of {@link build_async}
+     * 
+     * Complete a certificate chain. Once a certificate chain has been built
+     * its status can be examined.
+     * 
+     * This will lookup missing certificates in PKCS#11
+     * modules and also that each certificate in the chain is the signer of the
+     * previous one. If a trust anchor, pinned certificate, or self-signed certificate
+     * is found, then the chain is considered built. Any extra certificates are
+     * removed from the chain.
+     * 
+     * It's important to understand that building of a certificate chain does not
+     * constitute verifying that chain. This is merely the first step towards
+     * trust verification.
+     * 
+     * The `purpose` is a string like %GCR_PURPOSE_CLIENT_AUTH and is the purpose
+     * for which the certificate chain will be used. Trust anchors are looked up
+     * for this purpose. This argument is required.
+     * 
+     * The `peer` is usually the host name of the peer whith which this certificate
+     * chain is being used. It is used to look up pinned certificates that have
+     * been stored for this peer. If %NULL then no pinned certificates will
+     * be considered.
+     * 
+     * If the %GCR_CERTIFICATE_CHAIN_NO_LOOKUPS flag is specified then no
+     * lookups for anchors or pinned certificates are done, and the resulting chain
+     * will be neither anchored or pinned. Additionally no missing certificate
+     * authorities are looked up in PKCS#11
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * gcr_certificate_chain_build_finish() to get the result of the operation.
+     * @param purpose the purpose the certificate chain will be used for
+     * @param peer the peer the certificate chain will be used with, or %NULL
+     * @param flags chain completion flags
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: whether the operation succeeded
+     */
+    build_async(purpose: string | null, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous operation started by
      * gcr_certificate_chain_build_async().
@@ -2296,6 +2510,20 @@ interface CertificateRequest {
      * @param callback called when the operation completes
      */
     complete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of complete_async
+
+    /**
+     * Promisified version of {@link complete_async}
+     * 
+     * Asynchronously complete and sign a certificate request, so that it can
+     * be encoded and sent to a certificate authority.
+     * 
+     * This call will return immediately and complete later.
+     * @param cancellable a cancellation object
+     * @returns A Promise of: whether certificate request was successfully completed or not
+     */
+    complete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous operation to complete and sign a certificate
      * request.
@@ -2624,6 +2852,22 @@ interface Parser {
      * @param callback Called when the operation result is ready.
      */
     parse_stream_async(input: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of parse_stream_async
+
+    /**
+     * Promisified version of {@link parse_stream_async}
+     * 
+     * Parse items from the data in a #GInputStream. This function completes
+     * asyncronously and doesn't block.
+     * 
+     * The [signal`Parser:`:parsed] and [signal`Parser:`:authenticate] signals
+     * may fire during the parsing.
+     * @param input The input stream
+     * @param cancellable An optional cancellation object
+     * @returns A Promise of: Whether the parsing completed successfully or not.
+     */
+    parse_stream_async(input: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete an operation to parse a stream.
      * @param result The operation result
@@ -3321,6 +3565,21 @@ interface SystemPrompt extends Prompt, Gio.AsyncInitable, Gio.Initable {
      * @param callback called when the operation completes
      */
     close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Close this prompt asynchronously. After calling this function, no further
+     * methods may be called on this object. The prompt object is not unreferenced
+     * by this function, and you must unreference it once done.
+     * 
+     * This call returns immediately and completes asynchronously.
+     * @param cancellable an optional cancellation object
+     * @returns A Promise of: whether close was cleanly completed
+     */
+    close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete operation to close this prompt.
      * 

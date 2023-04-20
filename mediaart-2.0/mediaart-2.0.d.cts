@@ -199,6 +199,41 @@ export function remove(artist: string | null, album: string | null, cancellable:
  * @param callback a #GAsyncReadyCallback to call when the request is satisfied
  */
 export function remove_async<Z = unknown>(artist: string | null, album: string | null, io_priority: number, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of remove_async
+
+/**
+ * Promisified version of {@link remove_async}
+ * 
+ * Removes media art for given album/artist provided. Precisely the
+ * same operation as media_art_remove() is performing, but
+ * asynchronously.
+ * 
+ * When all i/o for the operation is finished the `callback` will be
+ * called.
+ * 
+ * In case of a partial error the callback will be called with any
+ * succeeding items and no error, and on the next request the error
+ * will be reported. If a request is cancelled the callback will be
+ * called with %G_IO_ERROR_CANCELLED.
+ * 
+ * During an async request no other sync and async calls are allowed,
+ * and will result in %G_IO_ERROR_PENDING errors.
+ * 
+ * Any outstanding i/o request with higher priority (lower numerical
+ * value) will be executed before an outstanding request with lower
+ * priority. Default priority is %G_PRIORITY_DEFAULT.
+ * 
+ * All string inputs must be valid UTF8. Use g_utf8_validate() if the
+ * input has not already been validated.
+ * @param artist artist the media art belongs to
+ * @param album album the media art belongs or %NULL
+ * @param io_priority the [I/O priority][io-priority] of the request
+ * @param source_object the #GObject this task belongs to, can be %NULL.
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @returns A Promise of: %TRUE on success, otherwise %FALSE when @error will be set.
+ */
+export function remove_async<Z = unknown>(artist: string | null, album: string | null, io_priority: number, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes the asynchronous operation started with
  * media_art_remove_async().
@@ -290,6 +325,41 @@ export interface Process extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string | null, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of buffer_async
+
+    /**
+     * Promisified version of {@link buffer_async}
+     * 
+     * Processes media art. Precisely the same operation as
+     * media_art_process_buffer() is performing, but asynchronously.
+     * 
+     * When all i/o for the operation is finished the `callback` will be
+     * called.
+     * 
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     * 
+     * Dbufferng an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param type The type of media
+     * @param flags The options given for how to process the media art
+     * @param related_file File related to the media art
+     * @param buffer a buffer containing `file` data, or %NULL
+     * @param mime MIME type of `buffer,` or %NULL
+     * @param artist The artist name `file` or %NULL
+     * @param title The title for `file` or %NULL
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, otherwise %FALSE when @error will be set.
+     */
+    buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string | null, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the asynchronous operation started with
      * media_art_process_file_async().
@@ -362,6 +432,39 @@ export interface Process extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of file_async
+
+    /**
+     * Promisified version of {@link file_async}
+     * 
+     * Processes media art. Precisely the same operation as
+     * media_art_process_file() is performing, but asynchronously.
+     * 
+     * When all i/o for the operation is finished the `callback` will be
+     * called.
+     * 
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param type The type of media
+     * @param flags The options given for how to process the media art
+     * @param file File to be processed
+     * @param artist The artist name `file` or %NULL
+     * @param title The title for `file` or %NULL
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, otherwise %FALSE when @error will be set.
+     */
+    file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the asynchronous operation started with
      * media_art_process_file_async().
@@ -410,6 +513,39 @@ export interface Process extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     uri_async(type: Type, flags: ProcessFlags, uri: string | null, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of uri_async
+
+    /**
+     * Promisified version of {@link uri_async}
+     * 
+     * Processes media art. Precisely the same operation as
+     * media_art_process_uri() is performing, but asynchronously.
+     * 
+     * When all i/o for the operation is finished the `callback` will be
+     * called.
+     * 
+     * In case of a partial error the callback will be called with any
+     * succeeding items and no error, and on the next request the error
+     * will be reported. If a request is cancelled the callback will be
+     * called with %G_IO_ERROR_CANCELLED.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param type The type of media
+     * @param flags The options given for how to process the media art
+     * @param uri A string representing a URI to be processed
+     * @param artist The artist name `file` or %NULL
+     * @param title The title for `file` or %NULL
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, otherwise %FALSE when @error will be set.
+     */
+    uri_async(type: Type, flags: ProcessFlags, uri: string | null, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the asynchronous operation started with
      * media_art_process_file_async().

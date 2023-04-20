@@ -1,7 +1,7 @@
 
 # DbusmenuGtk3-0.4
 
-Node.js TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 A small little library that was created by pulling out some comon code out of indicator-applet. It passes a menu structure across DBus so that a program can create a menu simply without worrying about how it is displayed on the other side of the bus.
 
@@ -16,12 +16,12 @@ npm install @girs/node-dbusmenugtk3-0.4
 
 You can import this package into your project like this:
 ```ts
-import DbusmenuGtk3 from '@girs/node-dbusmenugtk3-0.4';
+import DbusmenuGtk3 from '@girs/dbusmenugtk3-0.4';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const DbusmenuGtk3 = require('@girs/node-dbusmenugtk3-0.4');
+const DbusmenuGtk3 = require('@girs/dbusmenugtk3-0.4');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

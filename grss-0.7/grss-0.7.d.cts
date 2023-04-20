@@ -101,6 +101,16 @@ export interface FeedChannel {
      * @param callback function to invoke at the end of the download.
      */
     fetch_all_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_all_async
+
+    /**
+     * Promisified version of {@link fetch_all_async}
+     * 
+     * Similar to grss_feed_channel_fetch_all(), but asyncronous.
+     * @returns A Promise of: list of items fetched from the #GrssFeedChannel, or %NULL if @error is set. The list (and contained items) is freed at the end of the callback
+     */
+    fetch_all_async(): globalThis.Promise<FeedItem[]>
     /**
      * Finalizes an asyncronous operation started with
      * grss_feed_channel_fetch_all_async().
@@ -113,6 +123,16 @@ export interface FeedChannel {
      * @param callback function to invoke at the end of the download.
      */
     fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_async
+
+    /**
+     * Promisified version of {@link fetch_async}
+     * 
+     * Similar to grss_feed_channel_fetch(), but asyncronous.
+     * @returns A Promise of: %TRUE if @channel informations have been successfully fetched, %FALSE otherwise.
+     */
+    fetch_async(): globalThis.Promise<boolean>
     /**
      * If a fetch operation was scheduled with grss_feed_channel_fetch_async() or
      * grss_feed_channel_fetch_all_async(), cancel it.
@@ -437,6 +457,16 @@ export interface FeedEnclosure {
      * @param callback function to invoke at the end of the download.
      */
     fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of fetch_async
+
+    /**
+     * Promisified version of {@link fetch_async}
+     * 
+     * Similar to grss_feed_enclosure_fetch(), but asyncronous.
+     * @returns A Promise of: temporary file where the contents have been written, or %NULL if an error occours.
+     */
+    fetch_async(): globalThis.Promise<Gio.File>
     /**
      * Finalizes an asyncronous operation started with
      * grss_feed_enclosure_fetch_async().

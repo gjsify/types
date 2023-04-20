@@ -1,7 +1,7 @@
 
 # Gspell-1
 
-Node.js TypeScript type definitions for Gspell-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Gspell-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gspell-1
 
 You can import this package into your project like this:
 ```ts
-import Gspell from '@girs/node-gspell-1';
+import Gspell from '@girs/gspell-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gspell = require('@girs/node-gspell-1');
+const Gspell = require('@girs/gspell-1');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

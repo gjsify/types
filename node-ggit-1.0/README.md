@@ -1,7 +1,7 @@
 
 # Ggit-1.0
 
-Node.js TypeScript type definitions for Ggit-1.0, generated from library version 1.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Ggit-1.0, generated from library version 1.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GLib wrapper library around the libgit2 git access library.
 
@@ -16,12 +16,12 @@ npm install @girs/node-ggit-1.0
 
 You can import this package into your project like this:
 ```ts
-import Ggit from '@girs/node-ggit-1.0';
+import Ggit from '@girs/ggit-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Ggit = require('@girs/node-ggit-1.0');
+const Ggit = require('@girs/ggit-1.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

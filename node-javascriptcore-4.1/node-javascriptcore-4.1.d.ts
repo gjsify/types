@@ -9,8 +9,8 @@
  * JavaScriptCore-4.1
  */
 
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 export namespace JavaScriptCore {
 
@@ -476,11 +476,12 @@ interface Class {
      * The name of the class.
      */
     readonly name: string | null
-    /**
-     * The parent class or %NULL in case of final classes.
-     */
-    readonly parent: Class
     __gtype__: number
+
+    // Own fields of JavaScriptCore-4.1.JavaScriptCore.Class
+
+    parent: GObject.Object
+    priv: ClassPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Class
 
@@ -590,11 +591,6 @@ interface Class {
     once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parent", callback: (...args: any[]) => void): number
-    on(sigName: "notify::parent", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::parent", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::parent", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::parent", ...args: any[]): void
     connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -656,6 +652,7 @@ interface Context {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Context
 
     parent: GObject.Object
+    priv: ContextPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Context
 
@@ -874,6 +871,7 @@ interface Exception {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Exception
 
     parent: GObject.Object
+    priv: ExceptionPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Exception
 
@@ -1003,6 +1001,7 @@ interface Value {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Value
 
     parent: GObject.Object
+    priv: ValuePrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Value
 
@@ -1543,6 +1542,7 @@ interface VirtualMachine {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.VirtualMachine
 
     parent: GObject.Object
+    priv: VirtualMachinePrivate
 
     // Class property signals of JavaScriptCore-4.1.JavaScriptCore.VirtualMachine
 
@@ -1630,6 +1630,7 @@ interface WeakValue {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.WeakValue
 
     parent: GObject.Object
+    priv: WeakValuePrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.WeakValue
 
@@ -1704,6 +1705,16 @@ interface ClassClass {
 abstract class ClassClass {
 
     // Own properties of JavaScriptCore-4.1.JavaScriptCore.ClassClass
+
+    static name: string
+}
+
+interface ClassPrivate {
+}
+
+class ClassPrivate {
+
+    // Own properties of JavaScriptCore-4.1.JavaScriptCore.ClassPrivate
 
     static name: string
 }

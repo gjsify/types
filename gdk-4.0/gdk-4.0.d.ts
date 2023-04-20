@@ -3611,6 +3611,27 @@ function cairo_set_source_rgba(cr: cairo.Context, rgba: RGBA): void
  * @param callback callback to call when the operation is done
  */
 function content_deserialize_async<Z = unknown>(stream: Gio.InputStream, mime_type: string | null, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of content_deserialize_async
+
+/**
+ * Promisified version of {@link content_deserialize_async}
+ * 
+ * Read content from the given input stream and deserialize it, asynchronously.
+ * 
+ * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+ * indicate a higher priority.
+ * 
+ * When the operation is finished, `callback` will be called. You must then
+ * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
+ * @param stream a `GInputStream` to read the serialized content from
+ * @param mime_type the mime type to deserialize from
+ * @param type the GType to deserialize from
+ * @param io_priority the I/O priority of the operation
+ * @param cancellable optional `GCancellable` object
+ * @returns A Promise of: %TRUE if the operation was successful. In this case,   @value is set. %FALSE if an error occurred. In this case,   @error is set
+ */
+function content_deserialize_async<Z = unknown>(stream: Gio.InputStream, mime_type: string | null, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise</* value */ any>
 /**
  * Finishes a content deserialization operation.
  * @param result the `GAsyncResult`
@@ -3660,6 +3681,27 @@ function content_register_serializer(type: GObject.GType, mime_type: string | nu
  * @param callback callback to call when the operation is done
  */
 function content_serialize_async<Z = unknown>(stream: Gio.OutputStream, mime_type: string | null, value: any, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of content_serialize_async
+
+/**
+ * Promisified version of {@link content_serialize_async}
+ * 
+ * Serialize content and write it to the given output stream, asynchronously.
+ * 
+ * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+ * indicate a higher priority.
+ * 
+ * When the operation is finished, `callback` will be called. You must then
+ * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
+ * @param stream a `GOutputStream` to write the serialized content to
+ * @param mime_type the mime type to serialize to
+ * @param value the content to serialize
+ * @param io_priority the I/O priority of the operation
+ * @param cancellable optional `GCancellable` object
+ * @returns A Promise of: %TRUE if the operation was successful, %FALSE if an   error occurred. In this case, @error is set
+ */
+function content_serialize_async<Z = unknown>(stream: Gio.OutputStream, mime_type: string | null, value: any, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes a content serialization operation.
  * @param result the `GAsyncResult`
@@ -5279,6 +5321,26 @@ interface Clipboard {
      * @param callback callback to call when the request is satisfied
      */
     read_async(mime_types: string[], io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_async
+
+    /**
+     * Promisified version of {@link read_async}
+     * 
+     * Asynchronously requests an input stream to read the `clipboard'`s
+     * contents from.
+     * 
+     * When the operation is finished `callback` will be called. You must then
+     * call [method`Gdk`.Clipboard.read_finish] to get the result of the operation.
+     * 
+     * The clipboard will choose the most suitable mime type from the given list
+     * to fulfill the request, preferring the ones listed first.
+     * @param mime_types a %NULL-terminated array of mime types to choose from
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @returns A Promise of: a `GInputStream`
+     */
+    read_async(mime_types: string[], io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise</* out_mime_type */ string | null>
     /**
      * Finishes an asynchronous clipboard read.
      * 
@@ -5300,6 +5362,24 @@ interface Clipboard {
      * @param callback callback to call when the request is satisfied
      */
     read_text_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_text_async
+
+    /**
+     * Promisified version of {@link read_text_async}
+     * 
+     * Asynchronously request the `clipboard` contents converted to a string.
+     * 
+     * When the operation is finished `callback` will be called. You must then
+     * call [method`Gdk`.Clipboard.read_text_finish] to get the result.
+     * 
+     * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
+     * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+     * need more control over the operation.
+     * @param cancellable optional `GCancellable` object
+     * @returns A Promise of: a new string
+     */
+    read_text_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Finishes an asynchronous clipboard read.
      * 
@@ -5321,6 +5401,24 @@ interface Clipboard {
      * @param callback callback to call when the request is satisfied
      */
     read_texture_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_texture_async
+
+    /**
+     * Promisified version of {@link read_texture_async}
+     * 
+     * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
+     * 
+     * When the operation is finished `callback` will be called. You must then
+     * call [method`Gdk`.Clipboard.read_texture_finish] to get the result.
+     * 
+     * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
+     * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+     * need more control over the operation.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @returns A Promise of: a new `GdkTexture`
+     */
+    read_texture_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Texture | null>
     /**
      * Finishes an asynchronous clipboard read.
      * 
@@ -5345,6 +5443,27 @@ interface Clipboard {
      * @param callback callback to call when the request is satisfied
      */
     read_value_async(type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_value_async
+
+    /**
+     * Promisified version of {@link read_value_async}
+     * 
+     * Asynchronously request the `clipboard` contents converted to the given
+     * `type`.
+     * 
+     * When the operation is finished `callback` will be called. You must then call
+     * [method`Gdk`.Clipboard.read_value_finish] to get the resulting `GValue`.
+     * 
+     * For local clipboard contents that are available in the given `GType`,
+     * the value will be copied directly. Otherwise, GDK will try to use
+     * [func`content_deserialize_async]` to convert the clipboard's data.
+     * @param type a `GType` to read
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @returns A Promise of: a `GValue` containing the result.
+     */
+    read_value_async(type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<any>
     /**
      * Finishes an asynchronous clipboard read.
      * 
@@ -5394,6 +5513,30 @@ interface Clipboard {
      * @param callback callback to call when the request is satisfied
      */
     store_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of store_async
+
+    /**
+     * Promisified version of {@link store_async}
+     * 
+     * Asynchronously instructs the `clipboard` to store its contents remotely.
+     * 
+     * If the clipboard is not local, this function does nothing but report success.
+     * 
+     * The `callback` must call [method`Gdk`.Clipboard.store_finish].
+     * 
+     * The purpose of this call is to preserve clipboard contents beyond the
+     * lifetime of an application, so this function is typically called on
+     * exit. Depending on the platform, the functionality may not be available
+     * unless a "clipboard manager" is running.
+     * 
+     * This function is called automatically when a [class`Gtk`.Application] is
+     * shut down, so you likely don't need to call it.
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional `GCancellable` object
+     * @returns A Promise of: %TRUE if storing was successful.
+     */
+    store_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous clipboard store.
      * 
@@ -5664,6 +5807,31 @@ interface ContentProvider {
      * @param callback callback to call when the request is satisfied
      */
     write_mime_type_async(mime_type: string | null, stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_mime_type_async
+
+    /**
+     * Promisified version of {@link write_mime_type_async}
+     * 
+     * Asynchronously writes the contents of `provider` to `stream` in the given
+     * `mime_type`.
+     * 
+     * When the operation is finished `callback` will be called. You must then call
+     * [method`Gdk`.ContentProvider.write_mime_type_finish] to get the result
+     * of the operation.
+     * 
+     * The given mime type does not need to be listed in the formats returned by
+     * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
+     * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
+     * 
+     * The given `stream` will not be closed.
+     * @param mime_type the mime type to provide the data in
+     * @param stream the `GOutputStream` to write to
+     * @param io_priority I/O priority of the request.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if the operation was completed successfully. Otherwise   @error will be set to describe the failure.
+     */
+    write_mime_type_async(mime_type: string | null, stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous write operation.
      * 
@@ -7817,6 +7985,20 @@ interface Drop {
      * @param callback a `GAsyncReadyCallback` to call when   the request is satisfied
      */
     read_async(mime_types: string[], io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_async
+
+    /**
+     * Promisified version of {@link read_async}
+     * 
+     * Asynchronously read the dropped data from a `GdkDrop`
+     * in a format that complies with one of the mime types.
+     * @param mime_types    pointer to an array of mime types
+     * @param io_priority the I/O priority for the read operation
+     * @param cancellable optional `GCancellable` object
+     * @returns A Promise of: the `GInputStream`
+     */
+    read_async(mime_types: string[], io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise</* out_mime_type */ string | null>
     /**
      * Finishes an async drop read operation.
      * 
@@ -7847,6 +8029,28 @@ interface Drop {
      * @param callback callback to call when the request is satisfied
      */
     read_value_async(type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_value_async
+
+    /**
+     * Promisified version of {@link read_value_async}
+     * 
+     * Asynchronously request the drag operation's contents converted
+     * to the given `type`.
+     * 
+     * When the operation is finished `callback` will be called. You must
+     * then call [method`Gdk`.Drop.read_value_finish] to get the resulting
+     * `GValue`.
+     * 
+     * For local drag-and-drop operations that are available in the given
+     * `GType`, the value will be copied directly. Otherwise, GDK will
+     * try to use [func`Gdk`.content_deserialize_async] to convert the data.
+     * @param type a `GType` to read
+     * @param io_priority the I/O priority of the request.
+     * @param cancellable optional `GCancellable` object, %NULL to ignore.
+     * @returns A Promise of: a `GValue` containing the result.
+     */
+    read_value_async(type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<any>
     /**
      * Finishes an async drop read.
      * 

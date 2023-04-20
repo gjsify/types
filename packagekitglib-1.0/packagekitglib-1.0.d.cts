@@ -2345,6 +2345,19 @@ export interface Client {
      * @param callback_ready the function to run on completion
      */
     get_progress_async(transaction_id: string | null, cancellable: Gio.Cancellable | null, callback_ready: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_progress_async
+
+    /**
+     * Promisified version of {@link get_progress_async}
+     * 
+     * Find the current state of a transaction.
+     * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback_ready the function to run on completion
+     * @returns A Promise of: the #PkProgress, or %NULL. Free with g_object_unref()
+     */
+    get_progress_async(transaction_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Progress>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3081,6 +3094,19 @@ export interface Control {
      * @param callback the function to run on completion
      */
     can_authorize_async(action_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of can_authorize_async
+
+    /**
+     * Promisified version of {@link can_authorize_async}
+     * 
+     * We may want to know before we run a method if we are going to be denied,
+     * accepted or challenged for authentication.
+     * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: the #PkAuthorizeEnum or %PK_AUTHORIZE_ENUM_UNKNOWN if the method failed
+     */
+    can_authorize_async(action_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3093,6 +3119,17 @@ export interface Control {
      * @param callback the function to run on completion
      */
     get_daemon_state_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_daemon_state_async
+
+    /**
+     * Promisified version of {@link get_daemon_state_async}
+     * 
+     * Gets the debugging state from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: the ID, or %NULL if unset, free with g_free()
+     */
+    get_daemon_state_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3113,6 +3150,17 @@ export interface Control {
      * @param callback the function to run on completion
      */
     get_properties_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_properties_async
+
+    /**
+     * Promisified version of {@link get_properties_async}
+     * 
+     * Gets global properties from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if we set the proxy successfully
+     */
+    get_properties_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3125,6 +3173,17 @@ export interface Control {
      * @param callback the function to run on completion
      */
     get_tid_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_tid_async
+
+    /**
+     * Promisified version of {@link get_tid_async}
+     * 
+     * Gets a transacton ID from the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: the ID, or %NULL if unset, free with g_free()
+     */
+    get_tid_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3139,6 +3198,19 @@ export interface Control {
      * @param callback the function to run on completion
      */
     get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_time_since_action_async
+
+    /**
+     * Promisified version of {@link get_time_since_action_async}
+     * 
+     * We may want to know how long it has been since we refreshed the cache or
+     * retrieved the update list.
+     * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if the daemon serviced the request
+     */
+    get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null): globalThis.Promise<number>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3159,6 +3231,17 @@ export interface Control {
      * @param callback the function to run on completion
      */
     get_transaction_list_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_transaction_list_async
+
+    /**
+     * Promisified version of {@link get_transaction_list_async}
+     * 
+     * Gets the transactions currently running in the daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: A GStrv list of transaction ID's, free with g_strfreev()
+     */
+    get_transaction_list_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3212,6 +3295,22 @@ export interface Control {
      * @param callback the function to run on completion
      */
     set_proxy_async(proxy_http: string | null, proxy_ftp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_proxy_async
+
+    /**
+     * Promisified version of {@link set_proxy_async}
+     * 
+     * Set a proxy on the PK daemon
+     * 
+     * NOTE: This is just provided for backwards compatibility.
+     * Clients should really be using pk_control_set_proxy2_async().
+     * @param proxy_http a HTTP proxy string such as "username:password`server`.lan:8080"
+     * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if we set the proxy successfully
+     */
+    set_proxy_async(proxy_http: string | null, proxy_ftp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3232,6 +3331,17 @@ export interface Control {
      * @param callback the function to run on completion
      */
     suggest_daemon_quit_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of suggest_daemon_quit_async
+
+    /**
+     * Promisified version of {@link suggest_daemon_quit_async}
+     * 
+     * Suggests to the daemon that it should quit as soon as possible.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: %TRUE if the suggestion was sent
+     */
+    suggest_daemon_quit_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult

@@ -1,7 +1,7 @@
 
 # Mbim-1.0
 
-GJS TypeScript type definitions for Mbim-1.0, generated from library version 1.29.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for Mbim-1.0, generated from library version 1.29.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 

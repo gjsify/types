@@ -9,10 +9,10 @@
  * Gcr-3
  */
 
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type Gck from '@girs/node-gck-1';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gck from '@girs/gck-1';
 
 export namespace Gcr {
 

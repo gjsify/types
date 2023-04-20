@@ -9,10 +9,10 @@
  * Qmi-1.0
  */
 
-import type Qrtr from '@girs/node-qrtr-1.0';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
+import type Qrtr from '@girs/qrtr-1.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 /**
  * Common errors that may be reported by libqmi-glib.

@@ -400,6 +400,23 @@ export interface LogManager {
      * @param callback a callback to call when the request is satisfied
      */
     get_dates_async(account: TelepathyGLib.Account, target: Entity, type_mask: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_dates_async
+
+    /**
+     * Promisified version of {@link get_dates_async}
+     * 
+     * Retrieves a list of #GDate corresponding to each day where
+     * at least one event exist for `target`.
+     * 
+     * It applies for any registered TplLogStore with the TplLogStore:readable
+     * property %TRUE.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param type_mask event type filter see #TplEventTypeMask
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE
+     */
+    get_dates_async(account: TelepathyGLib.Account, target: Entity, type_mask: number): globalThis.Promise</* dates */ GLib.Date[]>
     get_dates_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* dates */ GLib.Date[] ]
     /**
      * Start a query looking for all entities for which you have logs in the `account`.
@@ -407,6 +424,17 @@ export interface LogManager {
      * @param callback a callback to call when the request is satisfied
      */
     get_entities_async(account: TelepathyGLib.Account, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_entities_async
+
+    /**
+     * Promisified version of {@link get_entities_async}
+     * 
+     * Start a query looking for all entities for which you have logs in the `account`.
+     * @param account a #TpAccount
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE
+     */
+    get_entities_async(account: TelepathyGLib.Account): globalThis.Promise</* entities */ Entity[]>
     get_entities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* entities */ Entity[] ]
     /**
      * Retrieve a list of #TplEvent at `date` with `target`.
@@ -417,6 +445,20 @@ export interface LogManager {
      * @param callback a callback to call when the request is satisfied
      */
     get_events_for_date_async(account: TelepathyGLib.Account, target: Entity, type_mask: number, date: GLib.Date, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_events_for_date_async
+
+    /**
+     * Promisified version of {@link get_events_for_date_async}
+     * 
+     * Retrieve a list of #TplEvent at `date` with `target`.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param type_mask event type filter see #TplEventTypeMask
+     * @param date a #GDate
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE
+     */
+    get_events_for_date_async(account: TelepathyGLib.Account, target: Entity, type_mask: number, date: GLib.Date): globalThis.Promise</* events */ Event[]>
     get_events_for_date_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
     /**
      * Retrieve the most recent `num_event` events exchanged with `target`.
@@ -428,6 +470,21 @@ export interface LogManager {
      * @param callback a callback to call when the request is satisfied
      */
     get_filtered_events_async(account: TelepathyGLib.Account, target: Entity, type_mask: number, num_events: number, filter: LogEventFilter | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_filtered_events_async
+
+    /**
+     * Promisified version of {@link get_filtered_events_async}
+     * 
+     * Retrieve the most recent `num_event` events exchanged with `target`.
+     * @param account a #TpAccount
+     * @param target a non-NULL #TplEntity
+     * @param type_mask event type filter see #TplEventTypeMask
+     * @param num_events number of maximum events to fetch
+     * @param filter an optional filter function
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE.
+     */
+    get_filtered_events_async(account: TelepathyGLib.Account, target: Entity, type_mask: number, num_events: number, filter: LogEventFilter | null): globalThis.Promise</* events */ Event[]>
     get_filtered_events_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
     /**
      * Checks, whether logging is disabled for given entity. By default, logging
@@ -444,6 +501,18 @@ export interface LogManager {
      * @param callback a callback to call when the request is satisfied
      */
     search_async(text: string | null, type_mask: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of search_async
+
+    /**
+     * Promisified version of {@link search_async}
+     * 
+     * Search for all the conversations containing `text`.
+     * @param text the pattern to search
+     * @param type_mask event type filter see #TplEventTypeMask
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE
+     */
+    search_async(text: string | null, type_mask: number): globalThis.Promise</* hits */ LogSearchHit[]>
     search_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* hits */ LogSearchHit[] ]
     /**
      * Create a #TplLogWalker to traverse all the events exchanged with `target`.
@@ -516,6 +585,17 @@ export interface LogWalker {
      * @param callback a callback to call when the request is satisfied
      */
     get_events_async(num_events: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_events_async
+
+    /**
+     * Promisified version of {@link get_events_async}
+     * 
+     * Walk the logs to retrieve the next most recent `num_event` events.
+     * @param num_events number of maximum events to fetch
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE.
+     */
+    get_events_async(num_events: number): globalThis.Promise</* events */ Event[]>
     get_events_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* events */ Event[] ]
     /**
      * Determines whether `walker` has run out of events. This is the case
@@ -537,6 +617,18 @@ export interface LogWalker {
      * @param callback a callback to call when the request is satisfied
      */
     rewind_async(num_events: number, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of rewind_async
+
+    /**
+     * Promisified version of {@link rewind_async}
+     * 
+     * Move the `walker` back by the last `num_event` events that were
+     * returned by tpl_log_walker_get_events_async().
+     * @param num_events number of events to move back
+     * @returns A Promise of: #TRUE if the operation was successful, otherwise #FALSE.
+     */
+    rewind_async(num_events: number): globalThis.Promise<boolean>
     rewind_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of TelepathyLogger-0.2.TelepathyLogger.LogWalker

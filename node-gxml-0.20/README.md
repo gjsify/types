@@ -1,7 +1,7 @@
 
 # GXml-0.20
 
-Node.js TypeScript type definitions for GXml-0.20, generated from library version 0.20.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for GXml-0.20, generated from library version 0.20.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gxml-0.20
 
 You can import this package into your project like this:
 ```ts
-import GXml from '@girs/node-gxml-0.20';
+import GXml from '@girs/gxml-0.20';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GXml = require('@girs/node-gxml-0.20');
+const GXml = require('@girs/gxml-0.20');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

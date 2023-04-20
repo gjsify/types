@@ -4955,6 +4955,18 @@ export interface Pool {
      * @param callback A #GAsyncReadyCallback
      */
     load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Asynchronously loads data from all registered locations.
+     * Equivalent to as_pool_load() (but asynchronous)
+     * @param cancellable a #GCancellable.
+     * @returns A Promise of: %TRUE for success
+     */
+    load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Load AppStream metadata from a cache file.
      * @param fname Filename of the cache file to load into the pool.

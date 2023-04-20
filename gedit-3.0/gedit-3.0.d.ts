@@ -117,6 +117,24 @@ function commands_save_document(window: Window, document: Document): void
  * @param callback a #GAsyncReadyCallback to call when the operation   is finished.
  */
 function commands_save_document_async<Z = unknown>(document: Document, window: Window, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of commands_save_document_async
+
+/**
+ * Promisified version of {@link commands_save_document_async}
+ * 
+ * Asynchronously save the `document`. `document` must belong to `window`. The
+ * source object of the async task is `document` (which will be the first
+ * parameter of the #GAsyncReadyCallback).
+ * 
+ * When the operation is finished, `callback` will be called. You can then call
+ * gedit_commands_save_document_finish() to get the result of the operation.
+ * @param document the #GeditDocument to save.
+ * @param window a #GeditWindow.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @returns A Promise of: %TRUE if the document has been correctly saved, %FALSE otherwise.
+ */
+function commands_save_document_async<Z = unknown>(document: Document, window: Window, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous document saving operation started with
  * gedit_commands_save_document_async().

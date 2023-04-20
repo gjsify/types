@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstglwayland-1.0",
-    "version": "1.0.0-3.0.0-beta.12",
+    "version": "1.0.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for GstGLWayland-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstglwayland-1.0.js",
@@ -38,15 +38,18 @@
         "@girs/gstvideo-1.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "GstGLWayland-1.0"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -54,5 +57,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/gstglwayland-1.0#readme"
 }

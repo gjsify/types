@@ -474,10 +474,11 @@ export interface Class {
      * The name of the class.
      */
     readonly name: string | null
-    /**
-     * The parent class or %NULL in case of final classes.
-     */
-    readonly parent: Class
+
+    // Own fields of JavaScriptCore-4.1.JavaScriptCore.Class
+
+    parent: GObject.Object
+    priv: ClassPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Class
 
@@ -583,9 +584,6 @@ export interface Class {
     connect(sigName: "notify::name", callback: (($obj: Class, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: Class, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parent", callback: (($obj: Class, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parent", callback: (($obj: Class, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parent", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -641,6 +639,7 @@ export interface Context {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Context
 
     parent: GObject.Object
+    priv: ContextPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Context
 
@@ -848,6 +847,7 @@ export interface Exception {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Exception
 
     parent: GObject.Object
+    priv: ExceptionPrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Exception
 
@@ -971,6 +971,7 @@ export interface Value {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.Value
 
     parent: GObject.Object
+    priv: ValuePrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.Value
 
@@ -1500,6 +1501,7 @@ export interface VirtualMachine {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.VirtualMachine
 
     parent: GObject.Object
+    priv: VirtualMachinePrivate
 
     // Class property signals of JavaScriptCore-4.1.JavaScriptCore.VirtualMachine
 
@@ -1581,6 +1583,7 @@ export interface WeakValue {
     // Own fields of JavaScriptCore-4.1.JavaScriptCore.WeakValue
 
     parent: GObject.Object
+    priv: WeakValuePrivate
 
     // Owm methods of JavaScriptCore-4.1.JavaScriptCore.WeakValue
 
@@ -1646,6 +1649,16 @@ export interface ClassClass {
 export abstract class ClassClass {
 
     // Own properties of JavaScriptCore-4.1.JavaScriptCore.ClassClass
+
+    static name: string
+}
+
+export interface ClassPrivate {
+}
+
+export class ClassPrivate {
+
+    // Own properties of JavaScriptCore-4.1.JavaScriptCore.ClassPrivate
 
     static name: string
 }

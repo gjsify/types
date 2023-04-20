@@ -9,19 +9,19 @@
  * PangoXft-1.0
  */
 
-import type xlib from '@girs/node-xlib-2.0';
-import type xft from '@girs/node-xft-2.0';
-import type PangoOT from '@girs/node-pangoot-1.0';
-import type freetype2 from '@girs/node-freetype2-2.0';
-import type PangoFc from '@girs/node-pangofc-1.0';
-import type fontconfig from '@girs/node-fontconfig-2.0';
-import type Pango from '@girs/node-pango-1.0';
-import type cairo from '@girs/node-cairo-1.0';
-import type HarfBuzz from '@girs/node-harfbuzz-0.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type Gio from '@girs/node-gio-2.0';
-import type PangoFT2 from '@girs/node-pangoft2-1.0';
+import type xlib from '@girs/xlib-2.0';
+import type xft from '@girs/xft-2.0';
+import type PangoOT from '@girs/pangoot-1.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type PangoFc from '@girs/pangofc-1.0';
+import type fontconfig from '@girs/fontconfig-2.0';
+import type Pango from '@girs/pango-1.0';
+import type cairo from '@girs/cairo-1.0';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type PangoFT2 from '@girs/pangoft2-1.0';
 
 export namespace PangoXft {
 

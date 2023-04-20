@@ -1087,6 +1087,21 @@ interface FileLoader {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads asynchronously the file content into the #GtefBuffer.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the content has been loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file loading started with gtef_file_loader_load_async().
      * @param result a #GAsyncResult.
@@ -1228,6 +1243,24 @@ interface FileMetadata {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * The asynchronous version of gtef_file_metadata_load().
+     * 
+     * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
+     * this function loads the metadata synchronously. A future version might fix
+     * this.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the metadata was loaded successfully.
+     */
+    load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the metadata loading started with gtef_file_metadata_load_async().
      * @param result a #GAsyncResult.
@@ -1257,6 +1290,23 @@ interface FileMetadata {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * The asynchronous version of gtef_file_metadata_save().
+     * 
+     * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
+     * function saves the metadata synchronously. A future version might fix this.
+     * 
+     * See the #GAsyncResult documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: whether the metadata was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the metadata saving started with gtef_file_metadata_save_async().
      * @param result a #GAsyncResult.
@@ -1402,6 +1452,20 @@ interface FileSaver {
      * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of save_async
+
+    /**
+     * Promisified version of {@link save_async}
+     * 
+     * Saves asynchronously the buffer into the file. See the #GAsyncResult
+     * documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @returns A Promise of: whether the file was saved successfully.
+     */
+    save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes a file saving started with gtef_file_saver_save_async().
      * 

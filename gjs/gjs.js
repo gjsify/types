@@ -1,4 +1,5 @@
-const imports = globalThis.imports || {}
+const imports = globalThis.imports || {};
 
 export { imports }
-export default imports
+export default imports;
+  

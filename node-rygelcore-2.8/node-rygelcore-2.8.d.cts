@@ -9,14 +9,14 @@
  * RygelCore-2.8
  */
 
-import type GLib from '@girs/node-glib-2.0';
-import type Gee from '@girs/node-gee-0.8';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GUPnP from '@girs/node-gupnp-1.6';
-import type libxml2 from '@girs/node-libxml2-2.0';
-import type Soup from '@girs/node-soup-3.0';
-import type GSSDP from '@girs/node-gssdp-1.6';
+import type GLib from '@girs/glib-2.0';
+import type Gee from '@girs/gee-0.8';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GUPnP from '@girs/gupnp-1.6';
+import type libxml2 from '@girs/libxml2-2.0';
+import type Soup from '@girs/soup-3.0';
+import type GSSDP from '@girs/gssdp-1.6';
 
 export enum LogLevel {
     INVALID,

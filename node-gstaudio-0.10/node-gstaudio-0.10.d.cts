@@ -9,13 +9,13 @@
  * GstAudio-0.10
  */
 
-import type libxml2 from '@girs/node-libxml2-2.0';
-import type GstInterfaces from '@girs/node-gstinterfaces-0.10';
-import type Gst from '@girs/node-gst-0.10';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
-import type GModule from '@girs/node-gmodule-2.0';
-import type GstBase from '@girs/node-gstbase-0.10';
+import type libxml2 from '@girs/libxml2-2.0';
+import type GstInterfaces from '@girs/gstinterfaces-0.10';
+import type Gst from '@girs/gst-0.10';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type GstBase from '@girs/gstbase-0.10';
 
 export enum AudioChannelPosition {
     INVALID,

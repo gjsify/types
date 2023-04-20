@@ -107,6 +107,20 @@ export enum MusicPreviewTrackState {
  * @param _callback_ 
  */
 export function io_read_stream_async<Z = unknown>(input: Gio.InputStream, io_priority: number, cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of io_read_stream_async
+
+/**
+ * Promisified version of {@link io_read_stream_async}
+ * 
+ * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
+ * @param input 
+ * @param io_priority 
+ * @param cancellable 
+ * @param _callback_ 
+ * @returns A Promise of the result of {@link io_read_stream_async}
+ */
+export function io_read_stream_async<Z = unknown>(input: Gio.InputStream, io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[ /* data */ Uint8Array, /* size */ number ]>
 export function io_read_stream_finish(_res_: Gio.AsyncResult): [ /* data */ Uint8Array, /* size */ number ]
 /**
  * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input 
@@ -245,6 +259,20 @@ export interface AppInfoManager {
      * @param _callback_ 
      */
     lookup_async(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_async
+
+    /**
+     * Promisified version of {@link lookup_async}
+     * 
+     * <para>Look up an AppInfo given its desktop id or absolute path. The desktop id is the base filename of the .desktop file for the application 
+     * including the .desktop extension.</para>
+     * <para>If the AppInfo is not already cached this method will do asynchronous IO to look it up.</para>
+     * @param id 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link lookup_async}
+     */
+    lookup_async(id: string | null): globalThis.Promise<Gio.AppInfo | null>
     lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null
     clear(): void
 

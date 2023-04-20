@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstvideo-0.10",
-    "version": "0.10.0-3.0.0-beta.12",
+    "version": "0.10.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for GstVideo-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstvideo-0.10.js",
@@ -37,15 +37,18 @@
         "@girs/libxml2-2.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "GstVideo-0.10"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -53,5 +56,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/gstvideo-0.10#readme"
 }

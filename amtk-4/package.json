@@ -1,6 +1,6 @@
 {
     "name": "@girs/amtk-4",
-    "version": "4.0.0-3.0.0-beta.12",
+    "version": "4.0.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Amtk-4, generated from library version 4.0.0",
     "type": "module",
     "module": "amtk-4.js",
@@ -44,15 +44,18 @@
         "@girs/xlib-2.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "Amtk-4"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -60,5 +63,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/amtk-4#readme"
 }

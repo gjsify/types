@@ -142,6 +142,7 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
     // Conflicting properties
 
     parent: WebKit2.WebViewBase & Gtk.Container & Gtk.Container
+    priv: any & WebKit2.WebViewBasePrivate
 
     // Own fields of Devhelp-3.0.Devhelp.AssistantView
 
@@ -3154,7 +3155,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     // Own fields of Devhelp-3.0.Devhelp.WebView
 
     parent: WebKit2.WebView & WebKit2.WebViewBase & Gtk.Container & Gtk.Container
-    priv: WebViewPrivate
+    priv: any
 
     // Owm methods of Devhelp-3.0.Devhelp.WebView
 

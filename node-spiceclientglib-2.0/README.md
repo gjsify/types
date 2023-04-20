@@ -1,7 +1,7 @@
 
 # SpiceClientGLib-2.0
 
-Node.js TypeScript type definitions for SpiceClientGLib-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for SpiceClientGLib-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 GObject for communicating with Spice servers.
 
@@ -16,12 +16,12 @@ npm install @girs/node-spiceclientglib-2.0
 
 You can import this package into your project like this:
 ```ts
-import SpiceClientGLib from '@girs/node-spiceclientglib-2.0';
+import SpiceClientGLib from '@girs/spiceclientglib-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const SpiceClientGLib = require('@girs/node-spiceclientglib-2.0');
+const SpiceClientGLib = require('@girs/spiceclientglib-2.0');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

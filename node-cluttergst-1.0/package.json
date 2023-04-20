@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cluttergst-1.0",
-    "version": "1.6.0-3.0.0-beta.12",
+    "version": "1.6.0-3.0.0-beta.13",
     "description": "Node.js TypeScript type definitions for ClutterGst-1.0, generated from library version 1.6.0",
     "type": "module",
     "module": "node-cluttergst-1.0.js",
@@ -29,41 +29,45 @@
         "test:cjs": "tsc --noEmit node-cluttergst-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/node-atk-1.0": "workspace:^",
-        "@girs/node-cairo-1.0": "workspace:^",
-        "@girs/node-clutter-1.0": "workspace:^",
-        "@girs/node-cogl-1.0": "workspace:^",
-        "@girs/node-coglpango-1.0": "workspace:^",
-        "@girs/node-freetype2-2.0": "workspace:^",
-        "@girs/node-gio-2.0": "workspace:^",
-        "@girs/node-gl-1.0": "workspace:^",
-        "@girs/node-glib-2.0": "workspace:^",
-        "@girs/node-gmodule-2.0": "workspace:^",
-        "@girs/node-gobject-2.0": "workspace:^",
-        "@girs/node-gst-0.10": "workspace:^",
-        "@girs/node-gstaudio-0.10": "workspace:^",
-        "@girs/node-gstbase-0.10": "workspace:^",
-        "@girs/node-gstinterfaces-0.10": "workspace:^",
-        "@girs/node-gstvideo-0.10": "workspace:^",
-        "@girs/node-harfbuzz-0.0": "workspace:^",
-        "@girs/node-json-1.0": "workspace:^",
-        "@girs/node-libxml2-2.0": "workspace:^",
-        "@girs/node-pango-1.0": "workspace:^",
-        "@girs/node-pangocairo-1.0": "workspace:^"
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-1.0": "workspace:^",
+        "@girs/cogl-1.0": "workspace:^",
+        "@girs/coglpango-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/gstaudio-0.10": "workspace:^",
+        "@girs/gstbase-0.10": "workspace:^",
+        "@girs/gstinterfaces-0.10": "workspace:^",
+        "@girs/gstvideo-0.10": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
     },
     "peerDependencies": {
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "ClutterGst-1.0"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -71,5 +75,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-cluttergst-1.0#readme"
 }

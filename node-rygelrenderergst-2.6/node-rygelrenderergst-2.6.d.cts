@@ -9,19 +9,19 @@
  * RygelRendererGst-2.6
  */
 
-import type RygelRenderer from '@girs/node-rygelrenderer-2.6';
-import type RygelCore from '@girs/node-rygelcore-2.6';
-import type GLib from '@girs/node-glib-2.0';
-import type Gee from '@girs/node-gee-0.8';
-import type Gio from '@girs/node-gio-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GUPnP from '@girs/node-gupnp-1.2';
-import type libxml2 from '@girs/node-libxml2-2.0';
-import type Soup from '@girs/node-soup-2.4';
-import type GSSDP from '@girs/node-gssdp-1.2';
-import type GUPnPAV from '@girs/node-gupnpav-1.0';
-import type Gst from '@girs/node-gst-1.0';
-import type GModule from '@girs/node-gmodule-2.0';
+import type RygelRenderer from '@girs/rygelrenderer-2.6';
+import type RygelCore from '@girs/rygelcore-2.6';
+import type GLib from '@girs/glib-2.0';
+import type Gee from '@girs/gee-0.8';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GUPnP from '@girs/gupnp-1.2';
+import type libxml2 from '@girs/libxml2-2.0';
+import type Soup from '@girs/soup-2.4';
+import type GSSDP from '@girs/gssdp-1.2';
+import type GUPnPAV from '@girs/gupnpav-1.0';
+import type Gst from '@girs/gst-1.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export enum PlaybinPlayerError {
     NO_ELEMENT,

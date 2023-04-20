@@ -7197,10 +7197,54 @@ export interface AsyncImage {
     get_gicon_async(): Gio.Icon | null
     get_size_async(): number
     set_from_gicon_async(icon: Gio.Icon, size: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_from_gicon_async
+
+    /**
+     * Promisified version of {@link set_from_gicon_async}
+     * 
+     * 
+     * @param icon 
+     * @param size 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link set_from_gicon_async}
+     */
+    set_from_gicon_async(icon: Gio.Icon, size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     set_from_gicon_finish(_res_: Gio.AsyncResult): void
     set_from_icon_name_async(icon_name: string | null, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_from_icon_name_async
+
+    /**
+     * Promisified version of {@link set_from_icon_name_async}
+     * 
+     * 
+     * @param icon_name 
+     * @param icon_size 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link set_from_icon_name_async}
+     */
+    set_from_icon_name_async(icon_name: string | null, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     set_from_icon_name_finish(_res_: Gio.AsyncResult): void
     set_from_file_async(file: Gio.File, width: number, height: number, preserve_aspect_ratio: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_from_file_async
+
+    /**
+     * Promisified version of {@link set_from_file_async}
+     * 
+     * 
+     * @param file 
+     * @param width 
+     * @param height 
+     * @param preserve_aspect_ratio 
+     * @param cancellable 
+     * @param _callback_ 
+     * @returns A Promise of the result of {@link set_from_file_async}
+     */
+    set_from_file_async(file: Gio.File, width: number, height: number, preserve_aspect_ratio: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     set_from_file_finish(_res_: Gio.AsyncResult): void
 
     // Class property signals of Granite-1.0.Granite.AsyncImage

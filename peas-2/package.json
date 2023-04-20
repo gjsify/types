@@ -1,0 +1,59 @@
+{
+    "name": "@girs/peas-2",
+    "version": "2.0.0-3.0.0-beta.13",
+    "description": "GJS TypeScript type definitions for Peas-2, generated from library version 2.0.0",
+    "type": "module",
+    "module": "peas-2.js",
+    "main": "peas-2.js",
+    "typedoc": {
+        "entryPoint": "./peas-2.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Peas-2",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./peas-2.d.ts",
+                "default": "./peas-2.js"
+            },
+            "require": {
+                "types": "./peas-2.d.cts",
+                "default": "./peas-2.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit peas-2.d.ts",
+        "test:cjs": "tsc --noEmit peas-2.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/girepository-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Peas-2"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/peas-2#readme"
+}

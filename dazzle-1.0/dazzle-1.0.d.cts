@@ -4000,6 +4000,17 @@ export interface DirectoryReaper {
     add_glob(directory: Gio.File, glob: string | null, min_age: GLib.TimeSpan): void
     execute(cancellable: Gio.Cancellable | null): boolean
     execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
 
     // Own signals of Dazzle-1.0.Dazzle.DirectoryReaper
@@ -8191,6 +8202,18 @@ export interface FileTransfer {
     add(src: Gio.File, dest: Gio.File): void
     execute(io_priority: number, cancellable: Gio.Cancellable | null): boolean
     execute_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of execute_async
+
+    /**
+     * Promisified version of {@link execute_async}
+     * 
+     * 
+     * @param io_priority 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link execute_async}
+     */
+    execute_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     execute_finish(result: Gio.AsyncResult): boolean
     get_flags(): FileTransferFlags
     get_progress(): number
@@ -8253,8 +8276,33 @@ export interface FuzzyIndex {
     get_metadata_uint64(key: string | null): number
     load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
     load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_file_async
+
+    /**
+     * Promisified version of {@link load_file_async}
+     * 
+     * 
+     * @param file 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link load_file_async}
+     */
+    load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     load_file_finish(result: Gio.AsyncResult): boolean
     query_async(query: string | null, max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_async
+
+    /**
+     * Promisified version of {@link query_async}
+     * 
+     * 
+     * @param query 
+     * @param max_matches 
+     * @param cancellable 
+     * @returns A Promise of: A #GListModel of results.
+     */
+    query_async(query: string | null, max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>
     /**
      * Completes an asynchronous request to dzl_fuzzy_index_query_async().
      * @param result 
@@ -8346,6 +8394,21 @@ export interface FuzzyIndexBuilder {
      * @param callback A callback for completion or %NULL
      */
     write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_async
+
+    /**
+     * Promisified version of {@link write_async}
+     * 
+     * Builds and writes the index to `file`. The file format is a
+     * GVariant on disk and can be loaded and searched using
+     * #FuzzyIndex.
+     * @param file A #GFile to write the index to
+     * @param io_priority The priority for IO operations
+     * @param cancellable An optional #GCancellable or %NULL
+     * @returns A Promise of the result of {@link write_async}
+     */
+    write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     write_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of Dazzle-1.0.Dazzle.FuzzyIndexBuilder
@@ -14948,6 +15011,17 @@ export interface RecursiveFileMonitor {
      */
     set_ignore_func(ignore_func: RecursiveIgnoreFunc): void
     start_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of start_async
+
+    /**
+     * Promisified version of {@link start_async}
+     * 
+     * 
+     * @param cancellable 
+     * @returns A Promise of the result of {@link start_async}
+     */
+    start_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     start_finish(result: Gio.AsyncResult): boolean
 
     // Own signals of Dazzle-1.0.Dazzle.RecursiveFileMonitor
@@ -22474,6 +22548,19 @@ export interface TaskCache {
     evict(key: any | null): boolean
     evict_all(): void
     get_async(key: any | null, force_update: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of get_async
+
+    /**
+     * Promisified version of {@link get_async}
+     * 
+     * 
+     * @param key 
+     * @param force_update 
+     * @param cancellable 
+     * @returns A Promise of: The result from the cache.
+     */
+    get_async(key: any | null, force_update: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<any | null>
     /**
      * Finish a call to dzl_task_cache_get_async().
      * @param result 

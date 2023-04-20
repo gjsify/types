@@ -9,8 +9,8 @@
  * Gio-2.0
  */
 
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 
 export namespace Gio {
 
@@ -3133,6 +3133,42 @@ const FILE_ATTRIBUTE_STANDARD_TYPE: string | null
  */
 const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
 /**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the normal image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the x-large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the xx-large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE: string | null
+/**
  * A key in the "thumbnail" namespace for checking whether the thumbnail is outdated.
  * 
  * This attribute is %TRUE if the thumbnail is up-to-date with the file it represents,
@@ -3145,12 +3181,100 @@ const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
  */
 const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID: string | null
 /**
+ * A key in the "thumbnail" namespace for checking whether the large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the normal
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the normal thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the x-large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the x-large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the xx-large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the x-large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE: string | null
+/**
  * A key in the "thumbnail" namespace for getting the path to the thumbnail
- * image.
+ * image with the biggest size available.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
 const FILE_ATTRIBUTE_THUMBNAIL_PATH: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the normal
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the x-large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the xx-large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE: string | null
 /**
  * A key in the "time" namespace for getting the time the file was last
  * accessed.
@@ -3418,6 +3542,13 @@ const MENU_ATTRIBUTE_LABEL: string | null
  */
 const MENU_ATTRIBUTE_TARGET: string | null
 /**
+ * The maximum number of entries in a menu section supported by
+ * g_dbus_connection_export_menu_model().
+ * 
+ * The exact value of the limit may change in future GLib versions.
+ */
+const MENU_EXPORTER_MAX_SECTION_SIZE: number
+/**
  * The name of the link that associates a menu item with a section.  The linked
  * menu will usually be shown in place of the menu item, using the item's label
  * as a header.
@@ -3533,27 +3664,33 @@ function actionNameIsValid(actionName: string | null): boolean
  * 
  * The first format is used to represent an action name with no target
  * value and consists of just an action name containing no whitespace
- * nor the characters ':', '(' or ')'.  For example: "app.action".
+ * nor the characters `:`, `(` or `)`.  For example: `app.action`.
  * 
  * The second format is used to represent an action with a target value
- * that is a non-empty string consisting only of alphanumerics, plus '-'
- * and '.'.  In that case, the action name and target value are
- * separated by a double colon ("::").  For example:
- * "app.action::target".
+ * that is a non-empty string consisting only of alphanumerics, plus `-`
+ * and `.`.  In that case, the action name and target value are
+ * separated by a double colon (`::`).  For example:
+ * `app.action::target`.
  * 
  * The third format is used to represent an action with any type of
  * target value, including strings.  The target value follows the action
- * name, surrounded in parens.  For example: "app.action(42)".  The
+ * name, surrounded in parens.  For example: `app.action(42)`.  The
  * target value is parsed using g_variant_parse().  If a tuple-typed
  * value is desired, it must be specified in the same way, resulting in
- * two sets of parens, for example: "app.action((1,2,3))".  A string
- * target can be specified this way as well: "app.action('target')".
- * For strings, this third format must be used if * target value is
- * empty or contains characters other than alphanumerics, '-' and '.'.
+ * two sets of parens, for example: `app.action((1,2,3))`.  A string
+ * target can be specified this way as well: `app.action('target')`.
+ * For strings, this third format must be used if target value is
+ * empty or contains characters other than alphanumerics, `-` and `.`.
+ * 
+ * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+ * in `action_name` (if a pointer is passed in). A %NULL value may still be
+ * returned in `target_value,` as the `detailed_name` may not contain a target.
+ * 
+ * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
  * @param detailedName a detailed action name
  * @returns %TRUE if successful, else %FALSE with @error set
  */
-function actionParseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant ]
+function actionParseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant | null ]
 /**
  * Formats a detailed action name from `action_name` and `target_value`.
  * 
@@ -5214,9 +5351,10 @@ function unixMountsGet(): [ /* returnType */ UnixMountEntry[], /* timeRead */ nu
  * @callback 
  * @param sourceObject the object the asynchronous operation was started with.
  * @param res a #GAsyncResult.
+ * @param data user data passed to the callback.
  */
 interface AsyncReadyCallback {
-    (sourceObject: GObject.Object | null, res: AsyncResult): void
+    (sourceObject: GObject.Object | null, res: AsyncResult, data: any | null): void
 }
 /**
  * Invoked when a connection to a message bus has been obtained.
@@ -5273,10 +5411,11 @@ interface BusNameVanishedCallback {
  * returned by g_cancellable_source_new().
  * @callback 
  * @param cancellable the #GCancellable
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface CancellableSourceFunc {
-    (cancellable: Cancellable | null): boolean
+    (cancellable: Cancellable | null, data: any | null): boolean
 }
 /**
  * The type of the `get_property` function in #GDBusInterfaceVTable.
@@ -5408,10 +5547,11 @@ interface DBusMessageFilterFunction {
  * @param manager A #GDBusObjectManagerClient.
  * @param objectPath The object path of the remote object.
  * @param interfaceName The interface name of the remote object or %NULL if a #GDBusObjectProxy #GType is requested.
+ * @param data data passed in by the user.
  * @returns A #GType to use for the remote object. The returned type   must be a #GDBusProxy or #GDBusObjectProxy -derived   type.
  */
 interface DBusProxyTypeFunc {
-    (manager: DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null): GObject.GType
+    (manager: DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null, data: any | null): GObject.GType
 }
 /**
  * Signature for callback function used in g_dbus_connection_signal_subscribe().
@@ -5499,10 +5639,11 @@ interface DBusSubtreeIntrospectFunc {
  * @callback 
  * @param datagramBased the #GDatagramBased
  * @param condition the current condition at the source fired
+ * @param data data passed in by the user
  * @returns %G_SOURCE_REMOVE if the source should be removed,   %G_SOURCE_CONTINUE otherwise
  */
 interface DatagramBasedSourceFunc {
-    (datagramBased: DatagramBased, condition: GLib.IOCondition): boolean
+    (datagramBased: DatagramBased, condition: GLib.IOCondition, data: any | null): boolean
 }
 /**
  * During invocation, g_desktop_app_info_launch_uris_as_manager() may
@@ -5548,9 +5689,10 @@ interface DesktopAppLaunchCallback {
  * @param currentSize the current cumulative size measurement
  * @param numDirs the number of directories visited so far
  * @param numFiles the number of non-directory files encountered
+ * @param data the data passed to the original request for this callback
  */
 interface FileMeasureProgressCallback {
-    (reporting: boolean, currentSize: number, numDirs: number, numFiles: number): void
+    (reporting: boolean, currentSize: number, numDirs: number, numFiles: number, data: any | null): void
 }
 /**
  * When doing file operations that may take a while, such as moving
@@ -5559,9 +5701,10 @@ interface FileMeasureProgressCallback {
  * @callback 
  * @param currentNumBytes the current number of bytes in the operation.
  * @param totalNumBytes the total number of bytes in the operation.
+ * @param data user data passed to the callback.
  */
 interface FileProgressCallback {
-    (currentNumBytes: number, totalNumBytes: number): void
+    (currentNumBytes: number, totalNumBytes: number, data: any | null): void
 }
 /**
  * When loading the partial contents of a file with g_file_load_partial_contents_async(),
@@ -5571,10 +5714,11 @@ interface FileProgressCallback {
  * @callback 
  * @param fileContents the data as currently read.
  * @param fileSize the size of the data currently read.
+ * @param callbackData data passed to the callback.
  * @returns %TRUE if more data should be read back. %FALSE otherwise.
  */
 interface FileReadMoreCallback {
-    (fileContents: string | null, fileSize: number): boolean
+    (fileContents: string | null, fileSize: number, callbackData: any | null): boolean
 }
 /**
  * I/O Job function.
@@ -5584,10 +5728,11 @@ interface FileReadMoreCallback {
  * @callback 
  * @param job a #GIOSchedulerJob.
  * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @param data data passed to the callback function
  * @returns %TRUE if this function should be called again to    complete the job, %FALSE if the job is complete (or cancelled)
  */
 interface IOSchedulerJobFunc {
-    (job: IOSchedulerJob, cancellable: Cancellable | null): boolean
+    (job: IOSchedulerJob, cancellable: Cancellable | null, data: any | null): boolean
 }
 /**
  * This is the function type of the callback used for the #GSource
@@ -5595,10 +5740,11 @@ interface IOSchedulerJobFunc {
  * g_pollable_output_stream_create_source().
  * @callback 
  * @param pollableStream the #GPollableInputStream or #GPollableOutputStream
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface PollableSourceFunc {
-    (pollableStream: GObject.Object): boolean
+    (pollableStream: GObject.Object, data: any | null): boolean
 }
 /**
  * Changes the size of the memory block pointed to by `data` to
@@ -5671,10 +5817,11 @@ interface SimpleAsyncThreadFunc {
  * @callback 
  * @param socket the #GSocket
  * @param condition the current condition at the source fired.
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface SocketSourceFunc {
-    (socket: Socket, condition: GLib.IOCondition): boolean
+    (socket: Socket, condition: GLib.IOCondition, data: any | null): boolean
 }
 /**
  * The prototype for a task function to be run in a thread via
@@ -5981,27 +6128,33 @@ class Action extends GObject.Object {
      * 
      * The first format is used to represent an action name with no target
      * value and consists of just an action name containing no whitespace
-     * nor the characters ':', '(' or ')'.  For example: "app.action".
+     * nor the characters `:`, `(` or `)`.  For example: `app.action`.
      * 
      * The second format is used to represent an action with a target value
-     * that is a non-empty string consisting only of alphanumerics, plus '-'
-     * and '.'.  In that case, the action name and target value are
-     * separated by a double colon ("::").  For example:
-     * "app.action::target".
+     * that is a non-empty string consisting only of alphanumerics, plus `-`
+     * and `.`.  In that case, the action name and target value are
+     * separated by a double colon (`::`).  For example:
+     * `app.action::target`.
      * 
      * The third format is used to represent an action with any type of
      * target value, including strings.  The target value follows the action
-     * name, surrounded in parens.  For example: "app.action(42)".  The
+     * name, surrounded in parens.  For example: `app.action(42)`.  The
      * target value is parsed using g_variant_parse().  If a tuple-typed
      * value is desired, it must be specified in the same way, resulting in
-     * two sets of parens, for example: "app.action((1,2,3))".  A string
-     * target can be specified this way as well: "app.action('target')".
-     * For strings, this third format must be used if * target value is
-     * empty or contains characters other than alphanumerics, '-' and '.'.
+     * two sets of parens, for example: `app.action((1,2,3))`.  A string
+     * target can be specified this way as well: `app.action('target')`.
+     * For strings, this third format must be used if target value is
+     * empty or contains characters other than alphanumerics, `-` and `.`.
+     * 
+     * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+     * in `action_name` (if a pointer is passed in). A %NULL value may still be
+     * returned in `target_value,` as the `detailed_name` may not contain a target.
+     * 
+     * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
      * @param detailedName a detailed action name
      * @returns %TRUE if successful, else %FALSE with @error set
      */
-    static parseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant ]
+    static parseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant | null ]
     /**
      * Formats a detailed action name from `action_name` and `target_value`.
      * 
@@ -6670,6 +6823,10 @@ interface AppInfo {
     getDisplayName(): string | null
     /**
      * Gets the executable's name for the installed application.
+     * 
+     * This is intended to be used for debugging or labelling what program is going
+     * to be run. To launch the executable, use g_app_info_launch() and related
+     * functions, rather than spawning the return value from this function.
      * @virtual 
      * @returns a string containing the @appinfo's application binaries name
      */
@@ -6734,9 +6891,9 @@ interface AppInfo {
      * environment variable with the path of the launched desktop file and
      * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
      * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-     * should it be inherited by further processes. The `DISPLAY` and
-     * `DESKTOP_STARTUP_ID` environment variables are also set, based
-     * on information provided in `context`.
+     * should it be inherited by further processes. The `DISPLAY`,
+     * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
+     * variables are also set, based on information provided in `context`.
      * @virtual 
      * @param files a #GList of #GFile objects
      * @param context a #GAppLaunchContext or %NULL
@@ -7571,11 +7728,11 @@ interface Converter {
      * (typically %G_IO_ERROR_PARTIAL_INPUT).
      * @virtual 
      * @param inbuf the buffer         containing the data to convert.
-     * @param outbuf a buffer to write    converted data in.
+     * @param outbuf a    buffer to write converted data in.
      * @param flags a #GConverterFlags controlling the conversion details
      * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
      */
-    convert(inbuf: Uint8Array | null, outbuf: Uint8Array | null, flags: ConverterFlags): [ /* returnType */ ConverterResult, /* bytesRead */ number, /* bytesWritten */ number ]
+    convert(inbuf: Uint8Array | null, outbuf: Uint8Array, flags: ConverterFlags): [ /* returnType */ ConverterResult, /* bytesRead */ number, /* bytesWritten */ number ]
     /**
      * Resets all internal state in the converter, making it behave
      * as if it was just created. If the converter has any internal
@@ -14011,7 +14168,7 @@ interface ProxyResolver {
     /**
      * Looks into the system proxy configuration to determine what proxy,
      * if any, to use to connect to `uri`. The returned proxy URIs are of
-     * the form `<protocol>://[user[:password]`]`host:port` or
+     * the form `<protocol>://[user[:password]`]`host[:port]` or
      * `direct://`, where <protocol> could be http, rtsp, socks
      * or other proxying protocol.
      * 
@@ -15672,10 +15829,18 @@ interface AppLaunchContext {
     getDisplay(info: AppInfo, files: File[]): string | null
     /**
      * Initiates startup notification for the application and returns the
-     * `DESKTOP_STARTUP_ID` for the launched operation, if supported.
+     * `XDG_ACTIVATION_TOKEN` or `DESKTOP_STARTUP_ID` for the launched operation,
+     * if supported.
      * 
-     * Startup notification IDs are defined in the
-     * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * The returned token may be referred to equivalently as an ‘activation token’
+     * (using Wayland terminology) or a ‘startup sequence ID’ (using X11 terminology).
+     * The two [are interoperable](https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/xdg-activation/x11-interoperation.rst).
+     * 
+     * Activation tokens are defined in the [XDG Activation Protocol](https://wayland.app/protocols/xdg-activation-v1),
+     * and startup notification IDs are defined in the
+     * [freedesktop.org Startup Notification Protocol](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * 
+     * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @virtual 
      * @param info a #GAppInfo
      * @param files a #GList of of #GFile objects
@@ -15885,6 +16050,8 @@ interface Application extends ActionGroup, ActionMap {
      * inspected and modified.  If %G_APPLICATION_HANDLES_COMMAND_LINE is
      * set, then the resulting dictionary is sent to the primary instance,
      * where g_application_command_line_get_options_dict() will return it.
+     * As it has been passed outside the process at this point, the types of all
+     * values in the options dict must be checked before being used.
      * This "packing" is done according to the type of the argument --
      * booleans for normal flags, strings for strings, bytestrings for
      * filenames, etc.  The packing only occurs if the flag is given (ie: we
@@ -16865,7 +17032,7 @@ interface ApplicationCommandLine {
      */
     getIsRemote(): boolean
     /**
-     * Gets the options there were passed to g_application_command_line().
+     * Gets the options that were passed to g_application_command_line().
      * 
      * If you did not override local_command_line() then these are the same
      * options that were parsed according to the #GOptionEntrys added to the
@@ -16874,6 +17041,9 @@ interface ApplicationCommandLine {
      * 
      * If no options were sent then an empty dictionary is returned so that
      * you don't need to check for %NULL.
+     * 
+     * The data has been passed via an untrusted external process, so the types of
+     * all values must be checked before being used.
      * @returns a #GVariantDict with the options
      */
     getOptionsDict(): GLib.VariantDict
@@ -16884,6 +17054,9 @@ interface ApplicationCommandLine {
      * context in which the invocation occurred.  It typically contains
      * information like the current working directory and the startup
      * notification ID.
+     * 
+     * It comes from an untrusted external process and hence the types of all
+     * values must be validated before being used.
      * 
      * For local invocation, it will be %NULL.
      * @returns the platform data, or %NULL
@@ -19027,6 +19200,10 @@ interface DBusConnection extends AsyncInitable, Initable {
      * constraint is violated, the export will fail and 0 will be
      * returned (with `error` set accordingly).
      * 
+     * Exporting menus with sections containing more than
+     * %G_MENU_EXPORTER_MAX_SECTION_SIZE items is not supported and results in
+     * undefined behavior.
+     * 
      * You can unexport the menu model using
      * g_dbus_connection_unexport_menu_model() with the return value of
      * this function.
@@ -19333,7 +19510,7 @@ interface DBusConnection extends AsyncInitable, Initable {
      */
     setExitOnClose(exitOnClose: boolean): void
     /**
-     * Subscribes to signals on `connection` and invokes `callback` with a whenever
+     * Subscribes to signals on `connection` and invokes `callback` whenever
      * the signal is received. Note that `callback` will be invoked in the
      * [thread-default main context][g-main-context-push-thread-default]
      * of the thread you are calling this method from.
@@ -23247,12 +23424,14 @@ interface DesktopAppInfo extends AppInfo {
      * @param uris List of URIs
      * @param launchContext a #GAppLaunchContext
      * @param spawnFlags #GSpawnFlags, used for each process
+     * @param userSetup a #GSpawnChildSetupFunc, used once     for each process.
+     * @param pidCallback Callback for child processes
      * @param stdinFd file descriptor to use for child's stdin, or -1
      * @param stdoutFd file descriptor to use for child's stdout, or -1
      * @param stderrFd file descriptor to use for child's stderr, or -1
      * @returns %TRUE on successful launch, %FALSE otherwise.
      */
-    launchUrisAsManagerWithFds(uris: string[], launchContext: AppLaunchContext | null, spawnFlags: GLib.SpawnFlags, stdinFd: number, stdoutFd: number, stderrFd: number): boolean
+    launchUrisAsManagerWithFds(uris: string[], launchContext: AppLaunchContext | null, spawnFlags: GLib.SpawnFlags, userSetup: GLib.SpawnChildSetupFunc | null, pidCallback: DesktopAppLaunchCallback | null, stdinFd: number, stdoutFd: number, stderrFd: number): boolean
     /**
      * Returns the list of "additional application actions" supported on the
      * desktop file, as per the desktop file specification.
@@ -24191,9 +24370,10 @@ interface FileInfo {
      * Gets the access time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_ACCESS attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_ACCESS. If %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_ACCESS_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -24201,7 +24381,7 @@ interface FileInfo {
      */
     getAccessDateTime(): GLib.DateTime | null
     /**
-     * Gets the value of a attribute, formatted as a string.
+     * Gets the value of an attribute, formatted as a string.
      * This escapes things as needed to make the string valid
      * UTF-8.
      * @param attribute a file attribute key.
@@ -24295,6 +24475,9 @@ interface FileInfo {
     getAttributeUint64(attribute: string | null): number
     /**
      * Gets the file's content type.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
      * @returns a string containing the file's content type, or %NULL if unknown.
      */
     getContentType(): string | null
@@ -24302,9 +24485,10 @@ interface FileInfo {
      * Gets the creation time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_CREATED attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_CREATED_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_CREATED. If %G_FILE_ATTRIBUTE_TIME_CREATED_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_CREATED_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -24313,50 +24497,74 @@ interface FileInfo {
     getCreationDateTime(): GLib.DateTime | null
     /**
      * Returns the #GDateTime representing the deletion date of the file, as
-     * available in G_FILE_ATTRIBUTE_TRASH_DELETION_DATE. If the
-     * G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, %NULL is returned.
+     * available in %G_FILE_ATTRIBUTE_TRASH_DELETION_DATE. If the
+     * %G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, %NULL is returned.
      * @returns a #GDateTime, or %NULL.
      */
     getDeletionDate(): GLib.DateTime | null
     /**
      * Gets a display name for a file. This is guaranteed to always be set.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
      * @returns a string containing the display name.
      */
     getDisplayName(): string | null
     /**
      * Gets the edit name for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
      * @returns a string containing the edit name.
      */
     getEditName(): string | null
     /**
      * Gets the [entity tag][gfile-etag] for a given
      * #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_ETAG_VALUE.
      * @returns a string containing the value of the "etag:value" attribute.
      */
     getEtag(): string | null
     /**
      * Gets a file's type (whether it is a regular file, symlink, etc).
      * This is different from the file's content type, see g_file_info_get_content_type().
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_TYPE.
      * @returns a #GFileType for the given file.
      */
     getFileType(): FileType
     /**
      * Gets the icon for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_ICON.
      * @returns #GIcon for the given @info.
      */
     getIcon(): Icon | null
     /**
      * Checks if a file is a backup file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP.
      * @returns %TRUE if file is a backup file, %FALSE otherwise.
      */
     getIsBackup(): boolean
     /**
      * Checks if a file is hidden.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN.
      * @returns %TRUE if the file is a hidden file, %FALSE otherwise.
      */
     getIsHidden(): boolean
     /**
      * Checks if a file is a symlink.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK.
      * @returns %TRUE if the given @info is a symlink.
      */
     getIsSymlink(): boolean
@@ -24364,9 +24572,10 @@ interface FileInfo {
      * Gets the modification time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_MODIFIED attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_MODIFIED. If %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_MODIFIED_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -24376,10 +24585,17 @@ interface FileInfo {
     /**
      * Gets the modification time of the current `info` and sets it
      * in `result`.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_MODIFIED. If %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is
+     * provided it will be used too.
      */
     getModificationTime(): /* result */ GLib.TimeVal
     /**
      * Gets the name for a file. This is guaranteed to always be set.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME.
      * @returns a string containing the file name.
      */
     getName(): string
@@ -24387,22 +24603,34 @@ interface FileInfo {
      * Gets the file's size (in bytes). The size is retrieved through the value of
      * the %G_FILE_ATTRIBUTE_STANDARD_SIZE attribute and is converted
      * from #guint64 to #goffset before returning the result.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SIZE.
      * @returns a #goffset containing the file's size (in bytes).
      */
     getSize(): number
     /**
      * Gets the value of the sort_order attribute from the #GFileInfo.
      * See %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
      * @returns a #gint32 containing the value of the "standard::sort_order" attribute.
      */
     getSortOrder(): number
     /**
      * Gets the symbolic icon for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON.
      * @returns #GIcon for the given @info.
      */
     getSymbolicIcon(): Icon | null
     /**
      * Gets the symlink target for a given #GFileInfo.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET.
      * @returns a string containing the symlink target.
      */
     getSymlinkTarget(): string | null
@@ -24675,6 +24903,11 @@ interface FileInfo {
  * optimized than the generic attribute accessors, such as
  * g_file_info_get_attribute_byte_string().This optimization will matter
  * only if calling the API in a tight loop.
+ * 
+ * It is an error to call these accessors without specifying their required file
+ * attributes when creating the #GFileInfo. Use g_file_info_has_attribute() or
+ * g_file_info_list_attributes() to check what attributes are specified for a
+ * #GFileInfo.
  * 
  * #GFileAttributeMatcher allows for searching through a #GFileInfo for
  * attributes.
@@ -26824,19 +27057,27 @@ interface ListStore<A extends GObject.Object = GObject.Object> extends ListModel
      * comparing them with `equal_func` until the first occurrence of `item` which
      * matches. If `item` was not found, then `position` will not be set, and this
      * method will return %FALSE.
+     * 
+     * `item` is always passed as second parameter to `equal_func`.
+     * 
+     * Since GLib 2.76 it is possible to pass `NULL` for `item`.
      * @param item an item
      * @param equalFunc A custom equality check function
      * @returns Whether @store contains @item. If it was found, @position will be set to the position where @item occurred for the first time.
      */
-    findWithEqualFunc(item: GObject.Object, equalFunc: GLib.EqualFunc): [ /* returnType */ boolean, /* position */ number ]
+    findWithEqualFunc(item: GObject.Object | null, equalFunc: GLib.EqualFunc): [ /* returnType */ boolean, /* position */ number ]
     /**
      * Like g_list_store_find_with_equal_func() but with an additional `user_data`
      * that is passed to `equal_func`.
+     * 
+     * `item` is always passed as second parameter to `equal_func`.
+     * 
+     * Since GLib 2.76 it is possible to pass `NULL` for `item`.
      * @param item an item
      * @param equalFunc A custom equality check function
      * @returns Whether @store contains @item. If it was found, @position will be set to the position where @item occurred for the first time.
      */
-    findWithEqualFuncFull(item: GObject.Object, equalFunc: GLib.EqualFuncFull): [ /* returnType */ boolean, /* position */ number ]
+    findWithEqualFuncFull(item: GObject.Object | null, equalFunc: GLib.EqualFuncFull): [ /* returnType */ boolean, /* position */ number ]
     /**
      * Inserts `item` into `store` at `position`. `item` must be of type
      * #GListStore:item-type or derived from it. `position` must be smaller
@@ -29209,7 +29450,7 @@ interface Notification {
      * application-wide action (start with "app.").
      * 
      * If `target` is non-%NULL, `action` will be activated with `target` as
-     * its parameter.
+     * its parameter. If `target` is floating, it will be consumed.
      * 
      * When no default action is set, the application that the notification
      * was sent on is activated.
@@ -35989,7 +36230,7 @@ class SocketControlMessage extends GObject.Object {
      * @param data pointer to the message data
      * @returns the deserialized message or %NULL
      */
-    static deserialize(level: number, type: number, data: Uint8Array): SocketControlMessage
+    static deserialize(level: number, type: number, data: Uint8Array): SocketControlMessage | null
 }
 
 module SocketListener {
@@ -38067,6 +38308,24 @@ interface Task extends AsyncResult {
  *   having come from the `_async()` wrapper
  *   function (for "short-circuit" results, such as when passing
  *   0 to g_input_stream_read_async()).
+ * 
+ * ## Thread-safety considerations
+ * 
+ * Due to some infelicities in the API design, there is a
+ * thread-safety concern that users of GTask have to be aware of:
+ * 
+ * If the `main` thread drops its last reference to the source object
+ * or the task data before the task is finalized, then the finalizers
+ * of these objects may be called on the worker thread.
+ * 
+ * This is a problem if the finalizers use non-threadsafe API, and
+ * can lead to hard-to-debug crashes. Possible workarounds include:
+ * 
+ * - Clear task data in a signal handler for `notify::completed`
+ * 
+ * - Keep iterating a main context in the main thread and defer
+ *   dropping the reference to the source object to that main
+ *   context when the task is finalized
  * @class 
  */
 class Task extends GObject.Object {
@@ -43361,7 +43620,7 @@ interface ConverterIface {
      * @field 
      */
     gIface: GObject.TypeInterface
-    convert: (converter: Converter, inbuf: Uint8Array | null, outbuf: Uint8Array | null, flags: ConverterFlags) => [ /* returnType */ ConverterResult, /* bytesRead */ number, /* bytesWritten */ number ]
+    convert: (converter: Converter, inbuf: Uint8Array | null, outbuf: Uint8Array, flags: ConverterFlags) => [ /* returnType */ ConverterResult, /* bytesRead */ number, /* bytesWritten */ number ]
     reset: (converter: Converter) => void
 }
 
@@ -44793,7 +45052,7 @@ interface FileAttributeMatcher {
      */
     matches(attribute: string | null): boolean
     /**
-     * Checks if a attribute matcher only matches a given attribute. Always
+     * Checks if an attribute matcher only matches a given attribute. Always
      * returns %FALSE if "*" was used when creating the matcher.
      * @param attribute a file attribute key.
      * @returns %TRUE if the matcher only matches @attribute. %FALSE otherwise.

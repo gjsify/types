@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-retro-2",
-    "version": "2.0.0-3.0.0-beta.12",
+    "version": "2.0.0-3.0.0-beta.13",
     "description": "Node.js TypeScript type definitions for Retro-2, generated from library version 2.0.0",
     "type": "module",
     "module": "node-retro-2.js",
@@ -29,34 +29,38 @@
         "test:cjs": "tsc --noEmit node-retro-2.d.cts"
     },
     "dependencies": {
-        "@girs/node-cairo-1.0": "workspace:^",
-        "@girs/node-freetype2-2.0": "workspace:^",
-        "@girs/node-gdk-4.0": "workspace:^",
-        "@girs/node-gdkpixbuf-2.0": "workspace:^",
-        "@girs/node-gio-2.0": "workspace:^",
-        "@girs/node-glib-2.0": "workspace:^",
-        "@girs/node-gmodule-2.0": "workspace:^",
-        "@girs/node-gobject-2.0": "workspace:^",
-        "@girs/node-graphene-1.0": "workspace:^",
-        "@girs/node-gsk-4.0": "workspace:^",
-        "@girs/node-gtk-4.0": "workspace:^",
-        "@girs/node-harfbuzz-0.0": "workspace:^",
-        "@girs/node-pango-1.0": "workspace:^",
-        "@girs/node-pangocairo-1.0": "workspace:^"
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-4.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gsk-4.0": "workspace:^",
+        "@girs/gtk-4.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
     },
     "peerDependencies": {
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "Retro-2"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -64,5 +68,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-retro-2#readme"
 }

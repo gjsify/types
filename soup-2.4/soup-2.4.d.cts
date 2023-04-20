@@ -5848,6 +5848,20 @@ export interface MultipartInputStream extends Gio.PollableInputStream {
      * @param callback callback to call when request is satisfied.
      */
     next_part_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_part_async
+
+    /**
+     * Promisified version of {@link next_part_async}
+     * 
+     * Obtains a #GInputStream for the next request. See
+     * soup_multipart_input_stream_next_part() for details on the
+     * workflow.
+     * @param io_priority the I/O priority for the request.
+     * @param cancellable a #GCancellable.
+     * @returns A Promise of: a newly created #GInputStream for reading the next part or %NULL if there are no more parts.
+     */
+    next_part_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream | null>
     /**
      * Finishes an asynchronous request for the next part.
      * @param result a #GAsyncResult.
@@ -6040,6 +6054,21 @@ export interface Request extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback
      */
     send_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_async
+
+    /**
+     * Promisified version of {@link send_async}
+     * 
+     * Begins an asynchronously request for the URI pointed to by
+     * `request`.
+     * 
+     * Note that you cannot use this method with #SoupRequests attached to
+     * a #SoupSessionSync.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: a #GInputStream that can be used to   read from the URI pointed to by @request.
+     */
+    send_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     /**
      * Gets the result of a soup_request_send_async().
      * @param result the #GAsyncResult
@@ -7685,6 +7714,22 @@ export interface Session {
      * @param callback the callback to invoke when the operation finishes
      */
     connect_async(uri: URI, cancellable: Gio.Cancellable | null, progress_callback: SessionConnectProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_async
+
+    /**
+     * Promisified version of {@link connect_async}
+     * 
+     * Start a connection to `uri`. The operation can be monitored by providing a `progress_callback`
+     * and finishes when the connection is done or an error ocurred.
+     * 
+     * Call soup_session_connect_finish() to get the #GIOStream to communicate with the server.
+     * @param uri a #SoupURI to connect to
+     * @param cancellable a #GCancellable
+     * @param progress_callback a #SoupSessionConnectProgressCallback which will be called for every network event that occurs during the connection.
+     * @returns A Promise of: a new #GIOStream, or %NULL on error.
+     */
+    connect_async(uri: URI, cancellable: Gio.Cancellable | null, progress_callback: SessionConnectProgressCallback | null): globalThis.Promise<Gio.IOStream>
     /**
      * Gets the #GIOStream created for the connection to communicate with the server.
      * @param result the #GAsyncResult passed to your callback
@@ -7914,6 +7959,33 @@ export interface Session {
      * @param callback the callback to invoke
      */
     send_async(msg: Message, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_async
+
+    /**
+     * Promisified version of {@link send_async}
+     * 
+     * Asynchronously sends `msg` and waits for the beginning of a
+     * response. When `callback` is called, then either `msg` has been sent,
+     * and its response headers received, or else an error has occurred.
+     * Call soup_session_send_finish() to get a #GInputStream for reading
+     * the response body.
+     * 
+     * See soup_session_send() for more details on the general semantics.
+     * 
+     * Contrast this method with soup_session_queue_message(), which also
+     * asynchronously sends a #SoupMessage, but doesn't invoke its
+     * callback until the response has been completely read.
+     * 
+     * (Note that this method cannot be called on the deprecated
+     * #SoupSessionSync subclass, and can only be called on
+     * #SoupSessionAsync if you have set the
+     * #SoupSession:use-thread-context property.)
+     * @param msg a #SoupMessage
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #GInputStream for reading the   response body, or %NULL on error.
+     */
+    send_async(msg: Message, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
@@ -7995,6 +8067,37 @@ export interface Session {
      * @param callback the callback to invoke
      */
     websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of websocket_connect_async
+
+    /**
+     * Promisified version of {@link websocket_connect_async}
+     * 
+     * Asynchronously creates a #SoupWebsocketConnection to communicate
+     * with a remote server.
+     * 
+     * All necessary WebSocket-related headers will be added to `msg,` and
+     * it will then be sent and asynchronously processed normally
+     * (including handling of redirection and HTTP authentication).
+     * 
+     * If the server returns "101 Switching Protocols", then `msg'`s status
+     * code and response headers will be updated, and then the WebSocket
+     * handshake will be completed. On success,
+     * soup_session_websocket_connect_finish() will return a new
+     * #SoupWebsocketConnection. On failure it will return a #GError.
+     * 
+     * If the server returns a status other than "101 Switching
+     * Protocols", then `msg` will contain the complete response headers
+     * and body from the server's response, and
+     * soup_session_websocket_connect_finish() will return
+     * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
+     * @param msg #SoupMessage indicating the WebSocket server to connect to
+     * @param origin origin of the connection
+     * @param protocols a   %NULL-terminated array of protocols supported
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a new #SoupWebsocketConnection, or   %NULL on error.
+     */
+    websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<WebsocketConnection>
     /**
      * Gets the #SoupWebsocketConnection response to a
      * soup_session_websocket_connect_async() call and (if successful),

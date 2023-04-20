@@ -1,6 +1,6 @@
 {
     "name": "@girs/folkseds-0.7",
-    "version": "0.7.0-3.0.0-beta.12",
+    "version": "0.7.0-3.0.0-beta.13",
     "description": "GJS TypeScript type definitions for FolksEds-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "folkseds-0.7.js",
@@ -42,15 +42,18 @@
         "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "FolksEds-0.7"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gjsify/ts-for-gir.git"
@@ -58,5 +61,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/folkseds-0.7#readme"
 }

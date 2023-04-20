@@ -557,6 +557,31 @@ export interface AuthSession {
      * @param callback a callback which will be called when the authentication reply is available.
      */
     process_async(session_data: GLib.Variant, mechanism: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of process_async
+
+    /**
+     * Promisified version of {@link process_async}
+     * 
+     * Performs one step of the authentication process.
+     * `session_data` should be used to add additional authentication parameters to the
+     * session.
+     * 
+     * What specific parameters should be used can be found from authentication plugins'
+     * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
+     * for the first step, and parameters that are expected in gsignond_plugin_request() for
+     * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+     * 
+     * If the #SignonIdentity that this session belongs to contains a username and a password,
+     * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+     * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
+     * and they cannot be overriden.
+     * @param session_data a dictionary of parameters.
+     * @param mechanism the authentication mechanism to be used.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #GVariant of type %G_VARIANT_TYPE_VARDICT containing the authentication reply. As with signon_auth_session_process_async(), specific parameters contained in the #GVariant can be found from plugins' documentation: #GSignondPlugin::response-final for the final response, and #GSignondPlugin::response for the intermediate responses. See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+     */
+    process_async(session_data: GLib.Variant, mechanism: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>
     /**
      * Collect the result of the signon_auth_session_process_async() operation.
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process_async().

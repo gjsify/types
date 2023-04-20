@@ -1,7 +1,7 @@
 
 # Tepl-6
 
-Node.js TypeScript type definitions for Tepl-6, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+Node.js TypeScript type definitions for Tepl-6, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-tepl-6
 
 You can import this package into your project like this:
 ```ts
-import Tepl from '@girs/node-tepl-6';
+import Tepl from '@girs/tepl-6';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Tepl = require('@girs/node-tepl-6');
+const Tepl = require('@girs/tepl-6');
 ```
 
 If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:

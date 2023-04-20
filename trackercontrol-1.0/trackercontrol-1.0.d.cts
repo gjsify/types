@@ -152,6 +152,20 @@ export interface MinerManager extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of index_file_async
+
+    /**
+     * Promisified version of {@link index_file_async}
+     * 
+     * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
+     * `callback` will be called. You can then call tracker_miner_manager_index_file_finish()
+     * to get the result.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, otherwise %FALSE.
+     */
+    index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes a request to index a file. See tracker_miner_manager_index_file_async()
      * 
@@ -188,6 +202,26 @@ export interface MinerManager extends Gio.Initable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of index_file_for_process_async
+
+    /**
+     * Promisified version of {@link index_file_for_process_async}
+     * 
+     * This function operates exactly the same way as
+     * tracker_miner_manager_index_file() with the exception that if the
+     * calling process dies, the indexing is cancelled. This API is useful
+     * for cases where the calling process wants to tie the indexing
+     * operation closely to its own lifetime.
+     * 
+     * When the operation is finished, `callback` will be called. You can
+     * then call tracker_miner_manager_index_file_for_process_finish() to
+     * get the result of the operation.
+     * @param file a URL valid in GIO of a file to give to the miner for processing
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, otherwise %FALSE.
+     */
+    index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes a request to index a file. See tracker_miner_manager_index_file_for_process_async()
      * 

@@ -1,0 +1,83 @@
+{
+    "name": "@girs/shell-12",
+    "version": "12.0.0-3.0.0-beta.13",
+    "description": "GJS TypeScript type definitions for Shell-12, generated from library version 12.0.0",
+    "type": "module",
+    "module": "shell-12.js",
+    "main": "shell-12.js",
+    "typedoc": {
+        "entryPoint": "./shell-12.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Shell-12",
+        "tsconfig": "./tsconfig.doc.json"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./shell-12.d.ts",
+                "default": "./shell-12.js"
+            },
+            "require": {
+                "types": "./shell-12.d.cts",
+                "default": "./shell-12.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit shell-12.d.ts",
+        "test:cjs": "tsc --noEmit shell-12.d.cts"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/cally-12": "workspace:^",
+        "@girs/clutter-12": "workspace:^",
+        "@girs/cogl-12": "workspace:^",
+        "@girs/coglpango-12": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gck-2": "workspace:^",
+        "@girs/gcr-4": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gvc-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/meta-12": "workspace:^",
+        "@girs/nm-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/polkit-1.0": "workspace:^",
+        "@girs/polkitagent-1.0": "workspace:^",
+        "@girs/st-12": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Shell-12"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/shell-12#readme"
+}

@@ -1777,6 +1777,21 @@ export interface Repo {
      * @param callback Invoked when content is writed
      */
     write_content_async(expected_checksum: string | null, object: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_content_async
+
+    /**
+     * Promisified version of {@link write_content_async}
+     * 
+     * Asynchronously store the content object `object`.  If provided, the
+     * checksum `expected_checksum` will be verified.
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object Input
+     * @param length Length of `object`
+     * @param cancellable Cancellable
+     * @returns A Promise of the result of {@link write_content_async}
+     */
+    write_content_async(expected_checksum: string | null, object: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null): globalThis.Promise</* out_csum */ number>
     /**
      * Completes an invocation of ostree_repo_write_content_async().
      * @param result a #GAsyncResult
@@ -1836,6 +1851,21 @@ export interface Repo {
      * @param callback Invoked when metadata is writed
      */
     write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_metadata_async
+
+    /**
+     * Promisified version of {@link write_metadata_async}
+     * 
+     * Asynchronously store the metadata object `variant`.  If provided,
+     * the checksum `expected_checksum` will be verified.
+     * @param objtype Object type
+     * @param expected_checksum If provided, validate content against this checksum
+     * @param object Metadata
+     * @param cancellable Cancellable
+     * @returns A Promise of the result of {@link write_metadata_async}
+     */
+    write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     write_metadata_finish(result: Gio.AsyncResult, out_csum: number): boolean
     /**
      * Store the metadata object `variant;` the provided `checksum` is
@@ -2204,6 +2234,17 @@ export interface Sysroot {
      * @param callback Callback
      */
     lock_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of lock_async
+
+    /**
+     * Promisified version of {@link lock_async}
+     * 
+     * An asynchronous version of ostree_sysroot_lock().
+     * @param cancellable Cancellable
+     * @returns A Promise of the result of {@link lock_async}
+     */
+    lock_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Call when ostree_sysroot_lock_async() is ready.
      * @param result Result

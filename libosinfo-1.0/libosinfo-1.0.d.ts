@@ -2698,6 +2698,24 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_async
+
+    /**
+     * Promisified version of {@link generate_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate(). From the callback,
+     * call #osinfo_install_script_generate_finish() to conclude this call and get
+     * the generated script.
+     * 
+     * If you are generating the script for a specific media, it is recommended that
+     * you use #osinfo_install_script_generate_for_media_async() instead.
+     * @param os the os
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the generated script, or NULL on error
+     */
+    generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Some install scripts need to pass a command line to the kernel, Such install
      * scripts belong to OSs that provide paths to the kernel and initrd files that
@@ -2765,6 +2783,21 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_for_media_async
+
+    /**
+     * Promisified version of {@link generate_for_media_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate_for_media(). From the
+     * callback, call #osinfo_install_script_generate_for_media_finish() to
+     * conclude this call and get the generated script.
+     * @param media the media
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the generated script, or NULL on error
+     */
+    generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     generate_for_media_finish(res: Gio.AsyncResult): string | null
     /**
      * Creates an install script. The tree `tree` must have been identified
@@ -2785,6 +2818,21 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_for_tree_async
+
+    /**
+     * Promisified version of {@link generate_for_tree_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate_for_tree(). From the
+     * callback, call #osinfo_install_script_generate_for_tree_finish() to
+     * conclude this call and get the generated script.
+     * @param tree the tree
+     * @param config the install script config
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the generated script, or NULL or error
+     */
+    generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     generate_for_tree_finish(res: Gio.AsyncResult): string | null
     /**
      * Creates an install script that is written to the returned file.
@@ -2809,6 +2857,25 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_output_async
+
+    /**
+     * Promisified version of {@link generate_output_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate_output(). From the
+     * callback, call #osinfo_install_script_generate_output_finish() to conclude
+     * this call and get the generated script.
+     * 
+     * If you are generating the script for a specific media, it is recommended that
+     * you use #osinfo_install_script_generate_output_for_media_async() instead.
+     * @param os the os
+     * @param config the install script config
+     * @param output_dir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a file containing the script, or NULL on error
+     */
+    generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>
     generate_output_finish(res: Gio.AsyncResult): Gio.File
     /**
      * Creates an install script that is written to the returned file.
@@ -2831,6 +2898,23 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_output_for_media_async
+
+    /**
+     * Promisified version of {@link generate_output_for_media_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate_output_for_media().
+     * From the callback, call
+     * #osinfo_install_script_generate_output_for_media_finish() to conclude this
+     * call and get the generated file.
+     * @param media the media
+     * @param config the install script config
+     * @param output_dir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a file containing the script, or NULL on error.
+     */
+    generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>
     generate_output_for_media_finish(res: Gio.AsyncResult): Gio.File
     /**
      * Creates an install script that is written to the returned file.
@@ -2853,6 +2937,23 @@ interface InstallScript {
      * @param callback Function to call when result of this call is ready
      */
     generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of generate_output_for_tree_async
+
+    /**
+     * Promisified version of {@link generate_output_for_tree_async}
+     * 
+     * Asynchronous variant of #osinfo_install_script_generate_output_for_tree().
+     * From the callback, call
+     * #osinfo_install_script_generate_output_for_tree_finish() to conclude this
+     * call and get the generated file.
+     * @param tree the tree
+     * @param config the install script config
+     * @param output_dir the directory where the file containing the output script              will be written
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a file containing the script, or NULL on error.
+     */
+    generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>
     generate_output_for_tree_finish(res: Gio.AsyncResult): Gio.File
     /**
      * Some install scripts have restrictions on the format of the user avatar. Use

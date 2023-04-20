@@ -332,6 +332,18 @@ export interface Account extends Gio.Initable {
      * @param callback function to be called when the settings have been written.
      */
     store_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of store_async
+
+    /**
+     * Promisified version of {@link store_async}
+     * 
+     * Commit the changed account settings to the account database, and invoke
+     * `callback` when the operation has been completed.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE on success, %FALSE otherwise.
+     */
+    store_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Commit the changed account settings to the account database, and invoke
      * `callback` when the operation has been completed.

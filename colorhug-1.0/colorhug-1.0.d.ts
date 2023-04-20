@@ -1573,6 +1573,23 @@ function device_write_command(device: GUsb.Device, cmd: number, buffer_in: numbe
  * @param callback A #GAsyncReadyCallback that will be called when finished.
  */
 function device_write_command_async<Z = unknown>(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of device_write_command_async
+
+/**
+ * Promisified version of {@link device_write_command_async}
+ * 
+ * Sends a message to the device and waits for a reply.
+ * @param device A #GUsbDevice
+ * @param cmd The command to use, e.g. %CH_CMD_GET_COLOR_SELECT
+ * @param buffer_in The input buffer of data, or %NULL
+ * @param buffer_in_len The input buffer length
+ * @param buffer_out The output buffer of data, or %NULL
+ * @param buffer_out_len The output buffer length
+ * @param cancellable A #GCancellable, or %NULL
+ * @returns A Promise of: %TRUE if the request was fulfilled.
+ */
+function device_write_command_async<Z = unknown>(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Gets the result from the asynchronous function.
  * @param device a #GUsbDevice instance.
@@ -1864,6 +1881,18 @@ interface DeviceQueue {
      * @param callback A #GAsyncReadyCallback that will be called when finished.
      */
     process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of process_async
+
+    /**
+     * Promisified version of {@link process_async}
+     * 
+     * Processes all commands in the command queue.
+     * @param process_flags 
+     * @param cancellable A #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if the request was fulfilled.
+     */
+    process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult

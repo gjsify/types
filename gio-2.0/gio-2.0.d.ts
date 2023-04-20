@@ -3133,6 +3133,42 @@ const FILE_ATTRIBUTE_STANDARD_TYPE: string | null
  */
 const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
 /**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the normal image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the x-large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking if thumbnailing failed
+ * for the xx-large image.
+ * 
+ * This attribute is %TRUE if thumbnailing failed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE: string | null
+/**
  * A key in the "thumbnail" namespace for checking whether the thumbnail is outdated.
  * 
  * This attribute is %TRUE if the thumbnail is up-to-date with the file it represents,
@@ -3145,12 +3181,100 @@ const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
  */
 const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID: string | null
 /**
+ * A key in the "thumbnail" namespace for checking whether the large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the normal
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the normal thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the x-large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the x-large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for checking whether the xx-large
+ * thumbnail is outdated.
+ * 
+ * This attribute is %TRUE if the x-large thumbnail is up-to-date with the file
+ * it represents, and %FALSE if the file has been modified since the thumbnail
+ * was generated.
+ * 
+ * If %G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE is %TRUE and this attribute
+ * is %FALSE, it indicates that thumbnailing may be attempted again and may
+ * succeed.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE: string | null
+/**
  * A key in the "thumbnail" namespace for getting the path to the thumbnail
- * image.
+ * image with the biggest size available.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
 const FILE_ATTRIBUTE_THUMBNAIL_PATH: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the normal
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the x-large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE: string | null
+/**
+ * A key in the "thumbnail" namespace for getting the path to the xx-large
+ * thumbnail image.
+ * 
+ * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
+ */
+const FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE: string | null
 /**
  * A key in the "time" namespace for getting the time the file was last
  * accessed.
@@ -3418,6 +3542,13 @@ const MENU_ATTRIBUTE_LABEL: string | null
  */
 const MENU_ATTRIBUTE_TARGET: string | null
 /**
+ * The maximum number of entries in a menu section supported by
+ * g_dbus_connection_export_menu_model().
+ * 
+ * The exact value of the limit may change in future GLib versions.
+ */
+const MENU_EXPORTER_MAX_SECTION_SIZE: number
+/**
  * The name of the link that associates a menu item with a section.  The linked
  * menu will usually be shown in place of the menu item, using the item's label
  * as a header.
@@ -3533,27 +3664,33 @@ function action_name_is_valid(action_name: string | null): boolean
  * 
  * The first format is used to represent an action name with no target
  * value and consists of just an action name containing no whitespace
- * nor the characters ':', '(' or ')'.  For example: "app.action".
+ * nor the characters `:`, `(` or `)`.  For example: `app.action`.
  * 
  * The second format is used to represent an action with a target value
- * that is a non-empty string consisting only of alphanumerics, plus '-'
- * and '.'.  In that case, the action name and target value are
- * separated by a double colon ("::").  For example:
- * "app.action::target".
+ * that is a non-empty string consisting only of alphanumerics, plus `-`
+ * and `.`.  In that case, the action name and target value are
+ * separated by a double colon (`::`).  For example:
+ * `app.action::target`.
  * 
  * The third format is used to represent an action with any type of
  * target value, including strings.  The target value follows the action
- * name, surrounded in parens.  For example: "app.action(42)".  The
+ * name, surrounded in parens.  For example: `app.action(42)`.  The
  * target value is parsed using g_variant_parse().  If a tuple-typed
  * value is desired, it must be specified in the same way, resulting in
- * two sets of parens, for example: "app.action((1,2,3))".  A string
- * target can be specified this way as well: "app.action('target')".
- * For strings, this third format must be used if * target value is
- * empty or contains characters other than alphanumerics, '-' and '.'.
+ * two sets of parens, for example: `app.action((1,2,3))`.  A string
+ * target can be specified this way as well: `app.action('target')`.
+ * For strings, this third format must be used if target value is
+ * empty or contains characters other than alphanumerics, `-` and `.`.
+ * 
+ * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+ * in `action_name` (if a pointer is passed in). A %NULL value may still be
+ * returned in `target_value,` as the `detailed_name` may not contain a target.
+ * 
+ * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
  * @param detailed_name a detailed action name
  * @returns %TRUE if successful, else %FALSE with @error set
  */
-function action_parse_detailed_name(detailed_name: string | null): [ /* returnType */ boolean, /* action_name */ string | null, /* target_value */ GLib.Variant ]
+function action_parse_detailed_name(detailed_name: string | null): [ /* returnType */ boolean, /* action_name */ string | null, /* target_value */ GLib.Variant | null ]
 /**
  * Formats a detailed action name from `action_name` and `target_value`.
  * 
@@ -3620,6 +3757,19 @@ function app_info_get_default_for_type(content_type: string | null, must_support
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
 function app_info_get_default_for_type_async<Z = unknown>(content_type: string | null, must_support_uris: boolean, cancellable: Cancellable | null, callback: AsyncReadyCallback<Z> | null): void
+
+// Overloads of app_info_get_default_for_type_async
+
+/**
+ * Promisified version of {@link app_info_get_default_for_type_async}
+ * 
+ * Asynchronously gets the default #GAppInfo for a given content type.
+ * @param content_type the content type to find a #GAppInfo for
+ * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @returns A Promise of: #GAppInfo for given @content_type or     %NULL on error.
+ */
+function app_info_get_default_for_type_async<Z = unknown>(content_type: string | null, must_support_uris: boolean, cancellable: Cancellable | null): globalThis.Promise<AppInfo>
 /**
  * Finishes a default #GAppInfo lookup started by
  * g_app_info_get_default_for_type_async().
@@ -3648,6 +3798,21 @@ function app_info_get_default_for_uri_scheme(uri_scheme: string | null): AppInfo
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
 function app_info_get_default_for_uri_scheme_async<Z = unknown>(uri_scheme: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<Z> | null): void
+
+// Overloads of app_info_get_default_for_uri_scheme_async
+
+/**
+ * Promisified version of {@link app_info_get_default_for_uri_scheme_async}
+ * 
+ * Asynchronously gets the default application for handling URIs with
+ * the given URI scheme. A URI scheme is the initial part
+ * of the URI, up to but not including the ':', e.g. "http",
+ * "ftp" or "sip".
+ * @param uri_scheme a string containing a URI scheme.
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @returns A Promise of: #GAppInfo for given @uri_scheme or     %NULL on error.
+ */
+function app_info_get_default_for_uri_scheme_async<Z = unknown>(uri_scheme: string | null, cancellable: Cancellable | null): globalThis.Promise<AppInfo>
 /**
  * Finishes a default #GAppInfo lookup started by
  * g_app_info_get_default_for_uri_scheme_async().
@@ -3707,6 +3872,28 @@ function app_info_launch_default_for_uri(uri: string | null, context: AppLaunchC
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
 function app_info_launch_default_for_uri_async<Z = unknown>(uri: string | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<Z> | null): void
+
+// Overloads of app_info_launch_default_for_uri_async
+
+/**
+ * Promisified version of {@link app_info_launch_default_for_uri_async}
+ * 
+ * Async version of g_app_info_launch_default_for_uri().
+ * 
+ * This version is useful if you are interested in receiving
+ * error information in the case where the application is
+ * sandboxed and the portal may present an application chooser
+ * dialog to the user.
+ * 
+ * This is also useful if you want to be sure that the D-Bus–activated
+ * applications are really started before termination and if you are interested
+ * in receiving error information from their activation.
+ * @param uri the uri to show
+ * @param context an optional #GAppLaunchContext
+ * @param cancellable a #GCancellable
+ * @returns A Promise of: %TRUE if the launch was successful, %FALSE if @error is set
+ */
+function app_info_launch_default_for_uri_async<Z = unknown>(uri: string | null, context: AppLaunchContext | null, cancellable: Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous launch-default-for-uri operation.
  * @param result a #GAsyncResult
@@ -4453,6 +4640,24 @@ function file_new_tmp(tmpl: string | null): [ /* returnType */ File, /* iostream
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
 function file_new_tmp_async<Z = unknown>(tmpl: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<Z> | null): void
+
+// Overloads of file_new_tmp_async
+
+/**
+ * Promisified version of {@link file_new_tmp_async}
+ * 
+ * Asynchronously opens a file in the preferred directory for temporary files
+ *  (as returned by g_get_tmp_dir()) as g_file_new_tmp().
+ * 
+ * `tmpl` should be a string in the GLib file name encoding
+ * containing a sequence of six 'X' characters, and containing no
+ * directory components. If it is %NULL, a default template is used.
+ * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
+ * @param io_priority the [I/O priority][io-priority] of the request
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @returns A Promise of: a new #GFile.   Free the returned object with g_object_unref().
+ */
+function file_new_tmp_async<Z = unknown>(tmpl: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* iostream */ FileIOStream>
 /**
  * Asynchronously creates a directory in the preferred directory for
  * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
@@ -4466,6 +4671,24 @@ function file_new_tmp_async<Z = unknown>(tmpl: string | null, io_priority: numbe
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
 function file_new_tmp_dir_async<Z = unknown>(tmpl: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<Z> | null): void
+
+// Overloads of file_new_tmp_dir_async
+
+/**
+ * Promisified version of {@link file_new_tmp_dir_async}
+ * 
+ * Asynchronously creates a directory in the preferred directory for
+ * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
+ * 
+ * `tmpl` should be a string in the GLib file name encoding
+ * containing a sequence of six 'X' characters, and containing no
+ * directory components. If it is %NULL, a default template is used.
+ * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
+ * @param io_priority the [I/O priority][io-priority] of the request
+ * @param cancellable optional #GCancellable object, %NULL to ignore
+ * @returns A Promise of: a new #GFile.   Free the returned object with g_object_unref().
+ */
+function file_new_tmp_dir_async<Z = unknown>(tmpl: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<File>
 /**
  * Finishes a temporary directory creation started by
  * g_file_new_tmp_dir_async().
@@ -5214,9 +5437,10 @@ function unix_mounts_get(): [ /* returnType */ UnixMountEntry[], /* time_read */
  * @callback 
  * @param source_object the object the asynchronous operation was started with.
  * @param res a #GAsyncResult.
+ * @param data user data passed to the callback.
  */
 interface AsyncReadyCallback<T = GObject.Object> {
-    (source_object: T, res: AsyncResult): void
+    (source_object: T, res: AsyncResult, data: any | null): void
 }
 /**
  * Invoked when a connection to a message bus has been obtained.
@@ -5273,10 +5497,11 @@ interface BusNameVanishedCallback {
  * returned by g_cancellable_source_new().
  * @callback 
  * @param cancellable the #GCancellable
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface CancellableSourceFunc {
-    (cancellable: Cancellable | null): boolean
+    (cancellable: Cancellable | null, data: any | null): boolean
 }
 /**
  * The type of the `get_property` function in #GDBusInterfaceVTable.
@@ -5408,10 +5633,11 @@ interface DBusMessageFilterFunction {
  * @param manager A #GDBusObjectManagerClient.
  * @param object_path The object path of the remote object.
  * @param interface_name The interface name of the remote object or %NULL if a #GDBusObjectProxy #GType is requested.
+ * @param data data passed in by the user.
  * @returns A #GType to use for the remote object. The returned type   must be a #GDBusProxy or #GDBusObjectProxy -derived   type.
  */
 interface DBusProxyTypeFunc {
-    (manager: DBusObjectManagerClient, object_path: string | null, interface_name: string | null): GObject.GType
+    (manager: DBusObjectManagerClient, object_path: string | null, interface_name: string | null, data: any | null): GObject.GType
 }
 /**
  * Signature for callback function used in g_dbus_connection_signal_subscribe().
@@ -5499,10 +5725,11 @@ interface DBusSubtreeIntrospectFunc {
  * @callback 
  * @param datagram_based the #GDatagramBased
  * @param condition the current condition at the source fired
+ * @param data data passed in by the user
  * @returns %G_SOURCE_REMOVE if the source should be removed,   %G_SOURCE_CONTINUE otherwise
  */
 interface DatagramBasedSourceFunc {
-    (datagram_based: DatagramBased, condition: GLib.IOCondition): boolean
+    (datagram_based: DatagramBased, condition: GLib.IOCondition, data: any | null): boolean
 }
 /**
  * During invocation, g_desktop_app_info_launch_uris_as_manager() may
@@ -5548,9 +5775,10 @@ interface DesktopAppLaunchCallback {
  * @param current_size the current cumulative size measurement
  * @param num_dirs the number of directories visited so far
  * @param num_files the number of non-directory files encountered
+ * @param data the data passed to the original request for this callback
  */
 interface FileMeasureProgressCallback {
-    (reporting: boolean, current_size: number, num_dirs: number, num_files: number): void
+    (reporting: boolean, current_size: number, num_dirs: number, num_files: number, data: any | null): void
 }
 /**
  * When doing file operations that may take a while, such as moving
@@ -5559,9 +5787,10 @@ interface FileMeasureProgressCallback {
  * @callback 
  * @param current_num_bytes the current number of bytes in the operation.
  * @param total_num_bytes the total number of bytes in the operation.
+ * @param data user data passed to the callback.
  */
 interface FileProgressCallback {
-    (current_num_bytes: number, total_num_bytes: number): void
+    (current_num_bytes: number, total_num_bytes: number, data: any | null): void
 }
 /**
  * When loading the partial contents of a file with g_file_load_partial_contents_async(),
@@ -5571,10 +5800,11 @@ interface FileProgressCallback {
  * @callback 
  * @param file_contents the data as currently read.
  * @param file_size the size of the data currently read.
+ * @param callback_data data passed to the callback.
  * @returns %TRUE if more data should be read back. %FALSE otherwise.
  */
 interface FileReadMoreCallback {
-    (file_contents: string | null, file_size: number): boolean
+    (file_contents: string | null, file_size: number, callback_data: any | null): boolean
 }
 /**
  * I/O Job function.
@@ -5584,10 +5814,11 @@ interface FileReadMoreCallback {
  * @callback 
  * @param job a #GIOSchedulerJob.
  * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @param data data passed to the callback function
  * @returns %TRUE if this function should be called again to    complete the job, %FALSE if the job is complete (or cancelled)
  */
 interface IOSchedulerJobFunc {
-    (job: IOSchedulerJob, cancellable: Cancellable | null): boolean
+    (job: IOSchedulerJob, cancellable: Cancellable | null, data: any | null): boolean
 }
 /**
  * This is the function type of the callback used for the #GSource
@@ -5595,10 +5826,11 @@ interface IOSchedulerJobFunc {
  * g_pollable_output_stream_create_source().
  * @callback 
  * @param pollable_stream the #GPollableInputStream or #GPollableOutputStream
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface PollableSourceFunc {
-    (pollable_stream: GObject.Object): boolean
+    (pollable_stream: GObject.Object, data: any | null): boolean
 }
 /**
  * Changes the size of the memory block pointed to by `data` to
@@ -5671,10 +5903,11 @@ interface SimpleAsyncThreadFunc {
  * @callback 
  * @param socket the #GSocket
  * @param condition the current condition at the source fired.
+ * @param data data passed in by the user.
  * @returns it should return %FALSE if the source should be removed.
  */
 interface SocketSourceFunc {
-    (socket: Socket, condition: GLib.IOCondition): boolean
+    (socket: Socket, condition: GLib.IOCondition, data: any | null): boolean
 }
 /**
  * The prototype for a task function to be run in a thread via
@@ -6057,27 +6290,33 @@ class Action extends GObject.Object {
      * 
      * The first format is used to represent an action name with no target
      * value and consists of just an action name containing no whitespace
-     * nor the characters ':', '(' or ')'.  For example: "app.action".
+     * nor the characters `:`, `(` or `)`.  For example: `app.action`.
      * 
      * The second format is used to represent an action with a target value
-     * that is a non-empty string consisting only of alphanumerics, plus '-'
-     * and '.'.  In that case, the action name and target value are
-     * separated by a double colon ("::").  For example:
-     * "app.action::target".
+     * that is a non-empty string consisting only of alphanumerics, plus `-`
+     * and `.`.  In that case, the action name and target value are
+     * separated by a double colon (`::`).  For example:
+     * `app.action::target`.
      * 
      * The third format is used to represent an action with any type of
      * target value, including strings.  The target value follows the action
-     * name, surrounded in parens.  For example: "app.action(42)".  The
+     * name, surrounded in parens.  For example: `app.action(42)`.  The
      * target value is parsed using g_variant_parse().  If a tuple-typed
      * value is desired, it must be specified in the same way, resulting in
-     * two sets of parens, for example: "app.action((1,2,3))".  A string
-     * target can be specified this way as well: "app.action('target')".
-     * For strings, this third format must be used if * target value is
-     * empty or contains characters other than alphanumerics, '-' and '.'.
+     * two sets of parens, for example: `app.action((1,2,3))`.  A string
+     * target can be specified this way as well: `app.action('target')`.
+     * For strings, this third format must be used if target value is
+     * empty or contains characters other than alphanumerics, `-` and `.`.
+     * 
+     * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+     * in `action_name` (if a pointer is passed in). A %NULL value may still be
+     * returned in `target_value,` as the `detailed_name` may not contain a target.
+     * 
+     * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
      * @param detailed_name a detailed action name
      * @returns %TRUE if successful, else %FALSE with @error set
      */
-    static parse_detailed_name(detailed_name: string | null): [ /* returnType */ boolean, /* action_name */ string | null, /* target_value */ GLib.Variant ]
+    static parse_detailed_name(detailed_name: string | null): [ /* returnType */ boolean, /* action_name */ string | null, /* target_value */ GLib.Variant | null ]
     /**
      * Formats a detailed action name from `action_name` and `target_value`.
      * 
@@ -6895,6 +7134,10 @@ interface AppInfo {
     get_display_name(): string | null
     /**
      * Gets the executable's name for the installed application.
+     * 
+     * This is intended to be used for debugging or labelling what program is going
+     * to be run. To launch the executable, use g_app_info_launch() and related
+     * functions, rather than spawning the return value from this function.
      * @returns a string containing the @appinfo's application binaries name
      */
     get_executable(): string
@@ -6954,9 +7197,9 @@ interface AppInfo {
      * environment variable with the path of the launched desktop file and
      * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
      * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-     * should it be inherited by further processes. The `DISPLAY` and
-     * `DESKTOP_STARTUP_ID` environment variables are also set, based
-     * on information provided in `context`.
+     * should it be inherited by further processes. The `DISPLAY`,
+     * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
+     * variables are also set, based on information provided in `context`.
      * @param files a #GList of #GFile objects
      * @param context a #GAppLaunchContext or %NULL
      * @returns %TRUE on successful launch, %FALSE otherwise.
@@ -6993,6 +7236,24 @@ interface AppInfo {
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     launch_uris_async(uris: string[] | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of launch_uris_async
+
+    /**
+     * Promisified version of {@link launch_uris_async}
+     * 
+     * Async version of g_app_info_launch_uris().
+     * 
+     * The `callback` is invoked immediately after the application launch, but it
+     * waits for activation in case of D-Bus–activated applications and also provides
+     * extended error information for sandboxed applications, see notes for
+     * g_app_info_launch_default_for_uri_async().
+     * @param uris a #GList containing URIs to launch.
+     * @param context a #GAppLaunchContext or %NULL
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: %TRUE on successful launch, %FALSE otherwise.
+     */
+    launch_uris_async(uris: string[] | null, context: AppLaunchContext | null, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes a g_app_info_launch_uris_async() operation.
      * @param result a #GAsyncResult
@@ -7115,6 +7376,10 @@ interface AppInfo {
     vfunc_get_display_name(): string | null
     /**
      * Gets the executable's name for the installed application.
+     * 
+     * This is intended to be used for debugging or labelling what program is going
+     * to be run. To launch the executable, use g_app_info_launch() and related
+     * functions, rather than spawning the return value from this function.
      * @virtual 
      * @returns a string containing the @appinfo's application binaries name
      */
@@ -7179,9 +7444,9 @@ interface AppInfo {
      * environment variable with the path of the launched desktop file and
      * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
      * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-     * should it be inherited by further processes. The `DISPLAY` and
-     * `DESKTOP_STARTUP_ID` environment variables are also set, based
-     * on information provided in `context`.
+     * should it be inherited by further processes. The `DISPLAY`,
+     * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
+     * variables are also set, based on information provided in `context`.
      * @virtual 
      * @param files a #GList of #GFile objects
      * @param context a #GAppLaunchContext or %NULL
@@ -7560,6 +7825,53 @@ interface AsyncInitable {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of init_async
+
+    /**
+     * Promisified version of {@link init_async}
+     * 
+     * Starts asynchronous initialization of the object implementing the
+     * interface. This must be done before any real use of the object after
+     * initial construction. If the object also implements #GInitable you can
+     * optionally call g_initable_init() instead.
+     * 
+     * This method is intended for language bindings. If writing in C,
+     * g_async_initable_new_async() should typically be used instead.
+     * 
+     * When the initialization is finished, `callback` will be called. You can
+     * then call g_async_initable_init_finish() to get the result of the
+     * initialization.
+     * 
+     * Implementations may also support cancellation. If `cancellable` is not
+     * %NULL, then initialization can be cancelled by triggering the cancellable
+     * object from another thread. If the operation was cancelled, the error
+     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+     * the object doesn't support cancellable initialization, the error
+     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+     * 
+     * As with #GInitable, if the object is not initialized, or initialization
+     * returns with an error, then all operations on the object except
+     * g_object_ref() and g_object_unref() are considered to be invalid, and
+     * have undefined behaviour. They will often fail with g_critical() or
+     * g_warning(), but this must not be relied on.
+     * 
+     * Callers should not assume that a class which implements #GAsyncInitable can
+     * be initialized multiple times; for more information, see g_initable_init().
+     * If a class explicitly supports being initialized multiple times,
+     * implementation requires yielding all subsequent calls to init_async() on the
+     * results of the first call.
+     * 
+     * For classes that also support the #GInitable interface, the default
+     * implementation of this method will run the g_initable_init() function
+     * in a thread, so if you want to support asynchronous initialization via
+     * threads, just implement the #GAsyncInitable interface without overriding
+     * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+     */
+    init_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
@@ -8044,7 +8356,7 @@ interface Converter {
      * to produce as much output as possible and then return an error
      * (typically %G_IO_ERROR_PARTIAL_INPUT).
      * @param inbuf the buffer         containing the data to convert.
-     * @param outbuf a buffer to write    converted data in.
+     * @param outbuf a    buffer to write converted data in.
      * @param flags a #GConverterFlags controlling the conversion details
      * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
      */
@@ -8143,11 +8455,11 @@ interface Converter {
      * (typically %G_IO_ERROR_PARTIAL_INPUT).
      * @virtual 
      * @param inbuf the buffer         containing the data to convert.
-     * @param outbuf a buffer to write    converted data in.
+     * @param outbuf a    buffer to write converted data in.
      * @param flags a #GConverterFlags controlling the conversion details
      * @returns a #GConverterResult, %G_CONVERTER_ERROR on error.
      */
-    vfunc_convert(inbuf: Uint8Array | null, outbuf: Uint8Array | null, flags: ConverterFlags): [ /* returnType */ ConverterResult, /* bytes_read */ number, /* bytes_written */ number ]
+    vfunc_convert(inbuf: Uint8Array | null, outbuf: Uint8Array, flags: ConverterFlags): [ /* returnType */ ConverterResult, /* bytes_read */ number, /* bytes_written */ number ]
     /**
      * Resets all internal state in the converter, making it behave
      * as if it was just created. If the converter has any internal
@@ -10083,6 +10395,19 @@ interface DtlsConnection extends DatagramBased {
      * @param callback callback to call when the close operation is complete
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
+     * more information.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE on failure, in which case @error will be set
+     */
+    close_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous TLS close operation. See g_dtls_connection_close()
      * for more information.
@@ -10232,6 +10557,19 @@ interface DtlsConnection extends DatagramBased {
      * @param callback callback to call when the handshake is complete
      */
     handshake_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of handshake_async
+
+    /**
+     * Promisified version of {@link handshake_async}
+     * 
+     * Asynchronously performs a TLS handshake on `conn`. See
+     * g_dtls_connection_handshake() for more information.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE on failure, in which case @error will be set.
+     */
+    handshake_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous TLS handshake operation. See
      * g_dtls_connection_handshake() for more information.
@@ -10370,6 +10708,21 @@ interface DtlsConnection extends DatagramBased {
      * @param callback callback to call when the shutdown operation is complete
      */
     shutdown_async(shutdown_read: boolean, shutdown_write: boolean, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of shutdown_async
+
+    /**
+     * Promisified version of {@link shutdown_async}
+     * 
+     * Asynchronously shut down part or all of the DTLS connection. See
+     * g_dtls_connection_shutdown() for more information.
+     * @param shutdown_read %TRUE to stop reception of incoming datagrams
+     * @param shutdown_write %TRUE to stop sending outgoing datagrams
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE on failure, in which case @error will be set
+     */
+    shutdown_async(shutdown_read: boolean, shutdown_write: boolean, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous TLS shutdown operation. See
      * g_dtls_connection_shutdown() for more information.
@@ -10739,6 +11092,26 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of append_to_async
+
+    /**
+     * Promisified version of {@link append_to_async}
+     * 
+     * Asynchronously opens `file` for appending.
+     * 
+     * For more details, see g_file_append_to() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_append_to_finish() to get the result
+     * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a valid #GFileOutputStream   or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileOutputStream>
     /**
      * Finishes an asynchronous file append operation started with
      * g_file_append_to_async().
@@ -10888,6 +11261,27 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_async
+
+    /**
+     * Promisified version of {@link create_async}
+     * 
+     * Asynchronously creates a new file and returns an output stream
+     * for writing to it. The file must not already exist.
+     * 
+     * For more details, see g_file_create() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_create_finish() to get the result
+     * of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileOutputStream or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileOutputStream>
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_async().
@@ -10940,6 +11334,27 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of create_readwrite_async
+
+    /**
+     * Promisified version of {@link create_readwrite_async}
+     * 
+     * Asynchronously creates a new file and returns a stream
+     * for reading and writing to it. The file must not already exist.
+     * 
+     * For more details, see g_file_create_readwrite() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_create_readwrite_finish() to get
+     * the result of the operation.
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileIOStream or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileIOStream>
     /**
      * Finishes an asynchronous file create operation started with
      * g_file_create_readwrite_async().
@@ -10984,6 +11399,20 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     delete_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of delete_async
+
+    /**
+     * Promisified version of {@link delete_async}
+     * 
+     * Asynchronously delete a file. If the `file` is a directory, it will
+     * only be deleted if it is empty.  This has the same semantics as
+     * g_unlink().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: %TRUE if the file was deleted. %FALSE otherwise.
+     */
+    delete_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes deleting a file started with g_file_delete_async().
      * @param result a #GAsyncResult
@@ -11097,6 +11526,29 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     enumerate_children_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of enumerate_children_async
+
+    /**
+     * Promisified version of {@link enumerate_children_async}
+     * 
+     * Asynchronously gets the requested information about the files
+     * in a directory. The result is a #GFileEnumerator object that will
+     * give out #GFileInfo objects for all the files in the directory.
+     * 
+     * For more details, see g_file_enumerate_children() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You can
+     * then call g_file_enumerate_children_finish() to get the result of
+     * the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileEnumerator or %NULL   if an error occurred.   Free the returned object with g_object_unref().
+     */
+    enumerate_children_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileEnumerator>
     /**
      * Finishes an async enumerate children operation.
      * See g_file_enumerate_children_async().
@@ -11144,6 +11596,25 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of find_enclosing_mount_async
+
+    /**
+     * Promisified version of {@link find_enclosing_mount_async}
+     * 
+     * Asynchronously gets the mount for the file.
+     * 
+     * For more details, see g_file_find_enclosing_mount() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_find_enclosing_mount_finish() to
+     * get the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: #GMount for given @file or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<Mount>
     /**
      * Finishes an asynchronous find mount request.
      * See g_file_find_enclosing_mount_async().
@@ -11350,6 +11821,26 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     load_bytes_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_bytes_async
+
+    /**
+     * Promisified version of {@link load_bytes_async}
+     * 
+     * Asynchronously loads the contents of `file` as #GBytes.
+     * 
+     * If `file` is a resource:// based URI, the resulting bytes will reference the
+     * embedded resource instead of a copy. Otherwise, this is equivalent to calling
+     * g_file_load_contents_async() and g_bytes_new_take().
+     * 
+     * `callback` should call g_file_load_bytes_finish() to get the result of this
+     * asynchronous operation.
+     * 
+     * See g_file_load_bytes() for more information.
+     * @param cancellable a #GCancellable or %NULL
+     * @returns A Promise of: a #GBytes or %NULL and @error is set
+     */
+    load_bytes_async(cancellable: Cancellable | null): globalThis.Promise</* etag_out */ string | null>
     /**
      * Completes an asynchronous request to g_file_load_bytes_async().
      * 
@@ -11395,6 +11886,29 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     load_contents_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_contents_async
+
+    /**
+     * Promisified version of {@link load_contents_async}
+     * 
+     * Starts an asynchronous load of the `file'`s contents.
+     * 
+     * For more details, see g_file_load_contents() which is
+     * the synchronous version of this call.
+     * 
+     * When the load operation has completed, `callback` will be called
+     * with `user` data. To finish the operation, call
+     * g_file_load_contents_finish() with the #GAsyncResult returned by
+     * the `callback`.
+     * 
+     * If `cancellable` is not %NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE if the load was successful. If %FALSE and @error is   present, it will be set appropriately.
+     */
+    load_contents_async(cancellable: Cancellable | null): globalThis.Promise<[ /* contents */ Uint8Array, /* etag_out */ string | null ]>
     /**
      * Finishes an asynchronous load of the `file'`s contents.
      * The contents are placed in `contents,` and `length` is set to the
@@ -11441,6 +11955,18 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     make_directory_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of make_directory_async
+
+    /**
+     * Promisified version of {@link make_directory_async}
+     * 
+     * Asynchronously creates a directory.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: %TRUE on successful directory creation, %FALSE otherwise.
+     */
+    make_directory_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous directory creation, started with
      * g_file_make_directory_async().
@@ -11487,6 +12013,20 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of make_symbolic_link_async
+
+    /**
+     * Promisified version of {@link make_symbolic_link_async}
+     * 
+     * Asynchronously creates a symbolic link named `file` which contains the
+     * string `symlink_value`.
+     * @param symlink_value a string with the path for the target   of the new symlink
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: %TRUE on successful directory creation, %FALSE otherwise.
+     */
+    make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous symbolic link creation, started with
      * g_file_make_symbolic_link_async().
@@ -11661,6 +12201,29 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of move_async
+
+    /**
+     * Promisified version of {@link move_async}
+     * 
+     * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
+     * 
+     * If `progress_callback` is not %NULL, then that function that will be called
+     * just like in g_file_move(). The callback will run in the default main context
+     * of the thread calling g_file_move_async() — the same context as `callback` is
+     * run in.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * g_file_move_finish() to get the result of the operation.
+     * @param destination #GFile pointing to the destination location
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback #GFileProgressCallback   function for updates
+     * @returns A Promise of: %TRUE on successful file move, %FALSE otherwise.
+     */
+    move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous file movement, started with
      * g_file_move_async().
@@ -11703,6 +12266,25 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     open_readwrite_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of open_readwrite_async
+
+    /**
+     * Promisified version of {@link open_readwrite_async}
+     * 
+     * Asynchronously opens `file` for reading and writing.
+     * 
+     * For more details, see g_file_open_readwrite() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_open_readwrite_finish() to get
+     * the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileIOStream or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    open_readwrite_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileIOStream>
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_open_readwrite_async().
@@ -11762,6 +12344,18 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     query_default_handler_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_default_handler_async
+
+    /**
+     * Promisified version of {@link query_default_handler_async}
+     * 
+     * Async version of g_file_query_default_handler().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a #GAppInfo if the handle was found,   %NULL if there were errors.   When you are done with it, release it with g_object_unref()
+     */
+    query_default_handler_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<AppInfo>
     /**
      * Finishes a g_file_query_default_handler_async() operation.
      * @param result a #GAsyncResult
@@ -11855,6 +12449,29 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     query_filesystem_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_filesystem_info_async
+
+    /**
+     * Promisified version of {@link query_filesystem_info_async}
+     * 
+     * Asynchronously gets the requested information about the filesystem
+     * that the specified `file` is on. The result is a #GFileInfo object
+     * that contains key-value attributes (such as type or size for the
+     * file).
+     * 
+     * For more details, see g_file_query_filesystem_info() which is the
+     * synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You can
+     * then call g_file_query_info_finish() to get the result of the
+     * operation.
+     * @param attributes an attribute query string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: #GFileInfo for given @file   or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    query_filesystem_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo>
     /**
      * Finishes an asynchronous filesystem info query.
      * See g_file_query_filesystem_info_async().
@@ -11916,6 +12533,28 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     query_info_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_info_async
+
+    /**
+     * Promisified version of {@link query_info_async}
+     * 
+     * Asynchronously gets the requested information about specified `file`.
+     * The result is a #GFileInfo object that contains key-value attributes
+     * (such as type or size for the file).
+     * 
+     * For more details, see g_file_query_info() which is the synchronous
+     * version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You can
+     * then call g_file_query_info_finish() to get the result of the operation.
+     * @param attributes an attribute query string
+     * @param flags a set of #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: #GFileInfo for given @file   or %NULL on error. Free the returned object with   g_object_unref().
+     */
+    query_info_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo>
     /**
      * Finishes an asynchronous file info query.
      * See g_file_query_info_async().
@@ -11980,6 +12619,25 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_async
+
+    /**
+     * Promisified version of {@link read_async}
+     * 
+     * Asynchronously opens `file` for reading.
+     * 
+     * For more details, see g_file_read() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_read_finish() to get the result
+     * of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileInputStream or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    read_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInputStream>
     /**
      * Finishes an asynchronous file read operation started with
      * g_file_read_async().
@@ -12054,6 +12712,29 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of replace_async
+
+    /**
+     * Promisified version of {@link replace_async}
+     * 
+     * Asynchronously overwrites the file, replacing the contents,
+     * possibly creating a backup copy of the file first.
+     * 
+     * For more details, see g_file_replace() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_replace_finish() to get the result
+     * of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileOutputStream, or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileOutputStream>
     /**
      * Replaces the contents of `file` with `contents` of `length` bytes.
      * 
@@ -12080,6 +12761,39 @@ interface File {
      */
     replace_contents(contents: Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null): [ /* returnType */ boolean, /* new_etag */ string | null ]
     // Has conflict: replace_contents_async(contents: Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of replace_contents_async
+
+    /**
+     * Promisified version of {@link replace_contents_async}
+     * 
+     * Starts an asynchronous replacement of `file` with the given
+     * `contents` of `length` bytes. `etag` will replace the document's
+     * current entity tag.
+     * 
+     * When this operation has completed, `callback` will be called with
+     * `user_user` data, and the operation can be finalized with
+     * g_file_replace_contents_finish().
+     * 
+     * If `cancellable` is not %NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+     * 
+     * If `make_backup` is %TRUE, this function will attempt to
+     * make a backup of `file`.
+     * 
+     * Note that no copy of `contents` will be made, so it must stay valid
+     * until `callback` is called. See g_file_replace_contents_bytes_async()
+     * for a #GBytes version that will automatically hold a reference to the
+     * contents (without copying) for the duration of the call.
+     * @param contents string of contents to replace the file with
+     * @param etag a new [entity tag][gfile-etag] for the `file,` or %NULL
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE on failure.
+     */
+    replace_contents_async(contents: Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null): globalThis.Promise</* new_etag */ string | null>
     /**
      * Same as g_file_replace_contents_async() but takes a #GBytes input instead.
      * This function will keep a ref on `contents` until the operation is done.
@@ -12149,6 +12863,30 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of replace_readwrite_async
+
+    /**
+     * Promisified version of {@link replace_readwrite_async}
+     * 
+     * Asynchronously overwrites the file in read-write mode,
+     * replacing the contents, possibly creating a backup copy
+     * of the file first.
+     * 
+     * For more details, see g_file_replace_readwrite() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_replace_readwrite_finish() to get
+     * the result of the operation.
+     * @param etag an [entity tag][gfile-etag] for the current #GFile,   or %NULL to ignore
+     * @param make_backup %TRUE if a backup should be created
+     * @param flags a set of #GFileCreateFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFileIOStream, or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileIOStream>
     /**
      * Finishes an asynchronous file replace operation started with
      * g_file_replace_readwrite_async().
@@ -12285,6 +13023,27 @@ interface File {
      * @param callback a #GAsyncReadyCallback
      */
     set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_attributes_async
+
+    /**
+     * Promisified version of {@link set_attributes_async}
+     * 
+     * Asynchronously sets the attributes of `file` with `info`.
+     * 
+     * For more details, see g_file_set_attributes_from_info(),
+     * which is the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_set_attributes_finish() to get
+     * the result of the operation.
+     * @param info a #GFileInfo
+     * @param flags a #GFileQueryInfoFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: %TRUE if the attributes were set correctly, %FALSE otherwise.
+     */
+    set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* info */ FileInfo>
     /**
      * Finishes setting an attribute started in g_file_set_attributes_async().
      * @param result a #GAsyncResult
@@ -12346,6 +13105,26 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     set_display_name_async(display_name: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of set_display_name_async
+
+    /**
+     * Promisified version of {@link set_display_name_async}
+     * 
+     * Asynchronously sets the display name for a given #GFile.
+     * 
+     * For more details, see g_file_set_display_name() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_file_set_display_name_finish() to get
+     * the result of the operation.
+     * @param display_name a string
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: a #GFile or %NULL on error.   Free the returned object with g_object_unref().
+     */
+    set_display_name_async(display_name: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<File>
     /**
      * Finishes setting a display name started with
      * g_file_set_display_name_async().
@@ -12435,6 +13214,18 @@ interface File {
      * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     trash_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of trash_async
+
+    /**
+     * Promisified version of {@link trash_async}
+     * 
+     * Asynchronously sends `file` to the Trash location, if possible.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @returns A Promise of: %TRUE on successful trash, %FALSE otherwise.
+     */
+    trash_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous file trashing operation, started with
      * g_file_trash_async().
@@ -14869,6 +15660,20 @@ interface LoadableIcon extends Icon {
      * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of load_async
+
+    /**
+     * Promisified version of {@link load_async}
+     * 
+     * Loads an icon asynchronously. To finish this function, see
+     * g_loadable_icon_load_finish(). For the synchronous, blocking
+     * version of this function, see g_loadable_icon_load().
+     * @param size an integer.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #GInputStream to read the icon from.
+     */
+    load_async(size: number, cancellable: Cancellable | null): globalThis.Promise</* type */ string | null>
     /**
      * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
      * @param res a #GAsyncResult.
@@ -15701,6 +16506,26 @@ interface NetworkMonitor extends Initable {
      * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
      */
     can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of can_reach_async
+
+    /**
+     * Promisified version of {@link can_reach_async}
+     * 
+     * Asynchronously attempts to determine whether or not the host
+     * pointed to by `connectable` can be reached, without actually
+     * trying to connect to it.
+     * 
+     * For more details, see g_network_monitor_can_reach().
+     * 
+     * When the operation is finished, `callback` will be called.
+     * You can then call g_network_monitor_can_reach_finish()
+     * to get the result of the operation.
+     * @param connectable a #GSocketConnectable
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if network is reachable, %FALSE if not.
+     */
+    can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an async network connectivity test.
      * See g_network_monitor_can_reach_async().
@@ -16322,6 +17147,19 @@ interface Proxy {
      * @param callback a #GAsyncReadyCallback
      */
     connect_async(connection: IOStream, proxy_address: ProxyAddress, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_async
+
+    /**
+     * Promisified version of {@link connect_async}
+     * 
+     * Asynchronous version of g_proxy_connect().
+     * @param connection a #GIOStream
+     * @param proxy_address a #GProxyAddress
+     * @param cancellable a #GCancellable
+     * @returns A Promise of: a #GIOStream.
+     */
+    connect_async(connection: IOStream, proxy_address: ProxyAddress, cancellable: Cancellable | null): globalThis.Promise<IOStream>
     /**
      * See g_proxy_connect().
      * @param result a #GAsyncResult
@@ -16443,7 +17281,7 @@ interface ProxyResolver {
     /**
      * Looks into the system proxy configuration to determine what proxy,
      * if any, to use to connect to `uri`. The returned proxy URIs are of
-     * the form `<protocol>://[user[:password]`]`host:port` or
+     * the form `<protocol>://[user[:password]`]`host[:port]` or
      * `direct://`, where <protocol> could be http, rtsp, socks
      * or other proxying protocol.
      * 
@@ -16469,6 +17307,19 @@ interface ProxyResolver {
      * @param callback callback to call after resolution completes
      */
     lookup_async(uri: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_async
+
+    /**
+     * Promisified version of {@link lookup_async}
+     * 
+     * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+     * details.
+     * @param uri a URI representing the destination to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: A               NULL-terminated array of proxy URIs. Must be freed               with g_strfreev().
+     */
+    lookup_async(uri: string | null, cancellable: Cancellable | null): globalThis.Promise<string[]>
     /**
      * Call this function to obtain the array of proxy URIs when
      * g_proxy_resolver_lookup_async() is complete. See
@@ -16491,7 +17342,7 @@ interface ProxyResolver {
     /**
      * Looks into the system proxy configuration to determine what proxy,
      * if any, to use to connect to `uri`. The returned proxy URIs are of
-     * the form `<protocol>://[user[:password]`]`host:port` or
+     * the form `<protocol>://[user[:password]`]`host[:port]` or
      * `direct://`, where <protocol> could be http, rtsp, socks
      * or other proxying protocol.
      * 
@@ -18341,10 +19192,18 @@ interface AppLaunchContext {
     get_environment(): string[]
     /**
      * Initiates startup notification for the application and returns the
-     * `DESKTOP_STARTUP_ID` for the launched operation, if supported.
+     * `XDG_ACTIVATION_TOKEN` or `DESKTOP_STARTUP_ID` for the launched operation,
+     * if supported.
      * 
-     * Startup notification IDs are defined in the
-     * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * The returned token may be referred to equivalently as an ‘activation token’
+     * (using Wayland terminology) or a ‘startup sequence ID’ (using X11 terminology).
+     * The two [are interoperable](https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/xdg-activation/x11-interoperation.rst).
+     * 
+     * Activation tokens are defined in the [XDG Activation Protocol](https://wayland.app/protocols/xdg-activation-v1),
+     * and startup notification IDs are defined in the
+     * [freedesktop.org Startup Notification Protocol](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * 
+     * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @param info a #GAppInfo
      * @param files a #GList of of #GFile objects
      * @returns a startup notification ID for the application, or %NULL if     not supported.
@@ -18384,10 +19243,18 @@ interface AppLaunchContext {
     vfunc_get_display(info: AppInfo, files: File[]): string | null
     /**
      * Initiates startup notification for the application and returns the
-     * `DESKTOP_STARTUP_ID` for the launched operation, if supported.
+     * `XDG_ACTIVATION_TOKEN` or `DESKTOP_STARTUP_ID` for the launched operation,
+     * if supported.
      * 
-     * Startup notification IDs are defined in the
-     * [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * The returned token may be referred to equivalently as an ‘activation token’
+     * (using Wayland terminology) or a ‘startup sequence ID’ (using X11 terminology).
+     * The two [are interoperable](https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/xdg-activation/x11-interoperation.rst).
+     * 
+     * Activation tokens are defined in the [XDG Activation Protocol](https://wayland.app/protocols/xdg-activation-v1),
+     * and startup notification IDs are defined in the
+     * [freedesktop.org Startup Notification Protocol](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
+     * 
+     * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @virtual 
      * @param info a #GAppInfo
      * @param files a #GList of of #GFile objects
@@ -18593,6 +19460,8 @@ interface Application extends ActionGroup, ActionMap {
      * inspected and modified.  If %G_APPLICATION_HANDLES_COMMAND_LINE is
      * set, then the resulting dictionary is sent to the primary instance,
      * where g_application_command_line_get_options_dict() will return it.
+     * As it has been passed outside the process at this point, the types of all
+     * values in the options dict must be checked before being used.
      * This "packing" is done according to the type of the argument --
      * booleans for normal flags, strings for strings, bytestrings for
      * filenames, etc.  The packing only occurs if the flag is given (ie: we
@@ -19555,7 +20424,7 @@ interface ApplicationCommandLine {
      */
     get_is_remote(): boolean
     /**
-     * Gets the options there were passed to g_application_command_line().
+     * Gets the options that were passed to g_application_command_line().
      * 
      * If you did not override local_command_line() then these are the same
      * options that were parsed according to the #GOptionEntrys added to the
@@ -19564,6 +20433,9 @@ interface ApplicationCommandLine {
      * 
      * If no options were sent then an empty dictionary is returned so that
      * you don't need to check for %NULL.
+     * 
+     * The data has been passed via an untrusted external process, so the types of
+     * all values must be checked before being used.
      * @returns a #GVariantDict with the options
      */
     get_options_dict(): GLib.VariantDict
@@ -19574,6 +20446,9 @@ interface ApplicationCommandLine {
      * context in which the invocation occurred.  It typically contains
      * information like the current working directory and the startup
      * notification ID.
+     * 
+     * It comes from an untrusted external process and hence the types of all
+     * values must be validated before being used.
      * 
      * For local invocation, it will be %NULL.
      * @returns the platform data, or %NULL
@@ -19925,6 +20800,24 @@ interface BufferedInputStream extends Seekable {
      * @param callback a #GAsyncReadyCallback
      */
     fill_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of fill_async
+
+    /**
+     * Promisified version of {@link fill_async}
+     * 
+     * Reads data into `stream'`s buffer asynchronously, up to `count` size.
+     * `io_priority` can be used to prioritize reads. For the synchronous
+     * version of this function, see g_buffered_input_stream_fill().
+     * 
+     * If `count` is -1 then the attempted read size is equal to the number
+     * of bytes that are required to fill the buffer.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object
+     * @returns A Promise of: a #gssize of the read stream, or `-1` on an error.
+     */
+    fill_async(count: number, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * Finishes an asynchronous read.
      * @param result a #GAsyncResult
@@ -21658,6 +22551,10 @@ interface DBusConnection extends AsyncInitable, Initable {
      * constraint is violated, the export will fail and 0 will be
      * returned (with `error` set accordingly).
      * 
+     * Exporting menus with sections containing more than
+     * %G_MENU_EXPORTER_MAX_SECTION_SIZE items is not supported and results in
+     * undefined behavior.
+     * 
      * You can unexport the menu model using
      * g_dbus_connection_unexport_menu_model() with the return value of
      * this function.
@@ -21964,7 +22861,7 @@ interface DBusConnection extends AsyncInitable, Initable {
      */
     set_exit_on_close(exit_on_close: boolean): void
     /**
-     * Subscribes to signals on `connection` and invokes `callback` with a whenever
+     * Subscribes to signals on `connection` and invokes `callback` whenever
      * the signal is received. Note that `callback` will be invoked in the
      * [thread-default main context][g-main-context-push-thread-default]
      * of the thread you are calling this method from.
@@ -24870,6 +25767,23 @@ interface DataInputStream extends Seekable {
      * @param callback callback to call when the request is satisfied.
      */
     read_line_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_line_async
+
+    /**
+     * Promisified version of {@link read_line_async}
+     * 
+     * The asynchronous version of g_data_input_stream_read_line().  It is
+     * an error to have two outstanding calls to this function.
+     * 
+     * When the operation is finished, `callback` will be called. You
+     * can then call g_data_input_stream_read_line_finish() to get
+     * the result of the operation.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of:   a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     */
+    read_line_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* length */ number>
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_line_async().  Note the warning about
@@ -24970,6 +25884,33 @@ interface DataInputStream extends Seekable {
      * @param callback callback to call when the request is satisfied.
      */
     read_until_async(stop_chars: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_until_async
+
+    /**
+     * Promisified version of {@link read_until_async}
+     * 
+     * The asynchronous version of g_data_input_stream_read_until().
+     * It is an error to have two outstanding calls to this function.
+     * 
+     * Note that, in contrast to g_data_input_stream_read_until(),
+     * this function does not consume the stop character that it finds.  You
+     * must read it for yourself.
+     * 
+     * When the operation is finished, `callback` will be called. You
+     * can then call g_data_input_stream_read_until_finish() to get
+     * the result of the operation.
+     * 
+     * Don't use this function in new code.  Its functionality is
+     * inconsistent with g_data_input_stream_read_until().  Both functions
+     * will be marked as deprecated in a future release.  Use
+     * g_data_input_stream_read_upto_async() instead.
+     * @param stop_chars characters to terminate the read.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a string with the data that was read     before encountering any of the stop characters. Set @length to     a #gsize to get the length of the string. This function will     return %NULL on an error.
+     */
+    read_until_async(stop_chars: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* length */ number>
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_until_async().
@@ -25018,6 +25959,33 @@ interface DataInputStream extends Seekable {
      * @param callback callback to call when the request is satisfied
      */
     read_upto_async(stop_chars: string | null, stop_chars_len: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_upto_async
+
+    /**
+     * Promisified version of {@link read_upto_async}
+     * 
+     * The asynchronous version of g_data_input_stream_read_upto().
+     * It is an error to have two outstanding calls to this function.
+     * 
+     * In contrast to g_data_input_stream_read_until(), this function
+     * does not consume the stop character. You have to use
+     * g_data_input_stream_read_byte() to get it before calling
+     * g_data_input_stream_read_upto() again.
+     * 
+     * Note that `stop_chars` may contain '\0' if `stop_chars_len` is
+     * specified.
+     * 
+     * When the operation is finished, `callback` will be called. You
+     * can then call g_data_input_stream_read_upto_finish() to get
+     * the result of the operation.
+     * @param stop_chars characters to terminate the read
+     * @param stop_chars_len length of `stop_chars`. May be -1 if `stop_chars` is     nul-terminated
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: a string with the data that was read     before encountering any of the stop characters. Set @length to     a #gsize to get the length of the string. This function will     return %NULL on an error.
+     */
+    read_upto_async(stop_chars: string | null, stop_chars_len: number, io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* length */ number>
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_upto_async().
@@ -25690,12 +26658,14 @@ interface DesktopAppInfo extends AppInfo {
      * @param uris List of URIs
      * @param launch_context a #GAppLaunchContext
      * @param spawn_flags #GSpawnFlags, used for each process
+     * @param user_setup a #GSpawnChildSetupFunc, used once     for each process.
+     * @param pid_callback Callback for child processes
      * @param stdin_fd file descriptor to use for child's stdin, or -1
      * @param stdout_fd file descriptor to use for child's stdout, or -1
      * @param stderr_fd file descriptor to use for child's stderr, or -1
      * @returns %TRUE on successful launch, %FALSE otherwise.
      */
-    launch_uris_as_manager_with_fds(uris: string[], launch_context: AppLaunchContext | null, spawn_flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number): boolean
+    launch_uris_as_manager_with_fds(uris: string[], launch_context: AppLaunchContext | null, spawn_flags: GLib.SpawnFlags, user_setup: GLib.SpawnChildSetupFunc | null, pid_callback: DesktopAppLaunchCallback | null, stdin_fd: number, stdout_fd: number, stderr_fd: number): boolean
     /**
      * Returns the list of "additional application actions" supported on the
      * desktop file, as per the desktop file specification.
@@ -26061,6 +27031,23 @@ interface FileEnumerator {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Asynchronously closes the file enumerator.
+     * 
+     * If `cancellable` is not %NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
+     * g_file_enumerator_close_finish().
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if the close operation has finished successfully.
+     */
+    close_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes closing a file enumerator, started from g_file_enumerator_close_async().
      * 
@@ -26197,6 +27184,37 @@ interface FileEnumerator {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_files_async
+
+    /**
+     * Promisified version of {@link next_files_async}
+     * 
+     * Request information for a number of files from the enumerator asynchronously.
+     * When all i/o for the operation is finished the `callback` will be called with
+     * the requested information.
+     * 
+     * See the documentation of #GFileEnumerator for information about the
+     * order of returned files.
+     * 
+     * The callback can be called with less than `num_files` files in case of error
+     * or at the end of the enumerator. In case of a partial error the callback will
+     * be called with any succeeding items and no error, and on the next request the
+     * error will be reported. If a request is cancelled the callback will be called
+     * with %G_IO_ERROR_CANCELLED.
+     * 
+     * During an async request no other sync and async calls are allowed, and will
+     * result in %G_IO_ERROR_PENDING errors.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical value) will
+     * be executed before an outstanding request with lower priority. Default
+     * priority is %G_PRIORITY_DEFAULT.
+     * @param num_files the number of file info objects to request
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #GList of #GFileInfos. You must free the list with     g_list_free() and unref the infos with g_object_unref() when you're     done with them.
+     */
+    next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo[]>
     /**
      * Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
      * @param result a #GAsyncResult.
@@ -26406,6 +27424,24 @@ interface FileIOStream extends Seekable {
      * @param callback callback to call when the request is satisfied
      */
     query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_info_async
+
+    /**
+     * Promisified version of {@link query_info_async}
+     * 
+     * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+     * `callback` will be called with a #GAsyncResult which can be used to
+     * finish the operation with g_file_io_stream_query_info_finish().
+     * 
+     * For the synchronous version of this function, see
+     * g_file_io_stream_query_info().
+     * @param attributes a file attribute query string.
+     * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: A #GFileInfo for the finished query.
+     */
+    query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo>
     /**
      * Finalizes the asynchronous query started
      * by g_file_io_stream_query_info_async().
@@ -26637,9 +27673,10 @@ interface FileInfo {
      * Gets the access time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_ACCESS attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_ACCESS. If %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_ACCESS_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -26647,7 +27684,7 @@ interface FileInfo {
      */
     get_access_date_time(): GLib.DateTime | null
     /**
-     * Gets the value of a attribute, formatted as a string.
+     * Gets the value of an attribute, formatted as a string.
      * This escapes things as needed to make the string valid
      * UTF-8.
      * @param attribute a file attribute key.
@@ -26741,6 +27778,9 @@ interface FileInfo {
     get_attribute_uint64(attribute: string | null): number
     /**
      * Gets the file's content type.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
      * @returns a string containing the file's content type, or %NULL if unknown.
      */
     get_content_type(): string | null
@@ -26748,9 +27788,10 @@ interface FileInfo {
      * Gets the creation time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_CREATED attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_CREATED_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_CREATED. If %G_FILE_ATTRIBUTE_TIME_CREATED_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_CREATED_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -26759,50 +27800,74 @@ interface FileInfo {
     get_creation_date_time(): GLib.DateTime | null
     /**
      * Returns the #GDateTime representing the deletion date of the file, as
-     * available in G_FILE_ATTRIBUTE_TRASH_DELETION_DATE. If the
-     * G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, %NULL is returned.
+     * available in %G_FILE_ATTRIBUTE_TRASH_DELETION_DATE. If the
+     * %G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, %NULL is returned.
      * @returns a #GDateTime, or %NULL.
      */
     get_deletion_date(): GLib.DateTime | null
     /**
      * Gets a display name for a file. This is guaranteed to always be set.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
      * @returns a string containing the display name.
      */
     get_display_name(): string | null
     /**
      * Gets the edit name for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
      * @returns a string containing the edit name.
      */
     get_edit_name(): string | null
     /**
      * Gets the [entity tag][gfile-etag] for a given
      * #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_ETAG_VALUE.
      * @returns a string containing the value of the "etag:value" attribute.
      */
     get_etag(): string | null
     /**
      * Gets a file's type (whether it is a regular file, symlink, etc).
      * This is different from the file's content type, see g_file_info_get_content_type().
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_TYPE.
      * @returns a #GFileType for the given file.
      */
     get_file_type(): FileType
     /**
      * Gets the icon for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_ICON.
      * @returns #GIcon for the given @info.
      */
     get_icon(): Icon | null
     /**
      * Checks if a file is a backup file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP.
      * @returns %TRUE if file is a backup file, %FALSE otherwise.
      */
     get_is_backup(): boolean
     /**
      * Checks if a file is hidden.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN.
      * @returns %TRUE if the file is a hidden file, %FALSE otherwise.
      */
     get_is_hidden(): boolean
     /**
      * Checks if a file is a symlink.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK.
      * @returns %TRUE if the given @info is a symlink.
      */
     get_is_symlink(): boolean
@@ -26810,9 +27875,10 @@ interface FileInfo {
      * Gets the modification time of the current `info` and returns it as a
      * #GDateTime.
      * 
-     * This requires the %G_FILE_ATTRIBUTE_TIME_MODIFIED attribute. If
-     * %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is provided, the resulting #GDateTime
-     * will have microsecond precision.
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_MODIFIED. If %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is
+     * provided, the resulting #GDateTime will additionally have microsecond
+     * precision.
      * 
      * If nanosecond precision is needed, %G_FILE_ATTRIBUTE_TIME_MODIFIED_NSEC must
      * be queried separately using g_file_info_get_attribute_uint32().
@@ -26822,10 +27888,17 @@ interface FileInfo {
     /**
      * Gets the modification time of the current `info` and sets it
      * in `result`.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_TIME_MODIFIED. If %G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC is
+     * provided it will be used too.
      */
     get_modification_time(): /* result */ GLib.TimeVal
     /**
      * Gets the name for a file. This is guaranteed to always be set.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_NAME.
      * @returns a string containing the file name.
      */
     get_name(): string
@@ -26833,22 +27906,34 @@ interface FileInfo {
      * Gets the file's size (in bytes). The size is retrieved through the value of
      * the %G_FILE_ATTRIBUTE_STANDARD_SIZE attribute and is converted
      * from #guint64 to #goffset before returning the result.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SIZE.
      * @returns a #goffset containing the file's size (in bytes).
      */
     get_size(): number
     /**
      * Gets the value of the sort_order attribute from the #GFileInfo.
      * See %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
      * @returns a #gint32 containing the value of the "standard::sort_order" attribute.
      */
     get_sort_order(): number
     /**
      * Gets the symbolic icon for a file.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON.
      * @returns #GIcon for the given @info.
      */
     get_symbolic_icon(): Icon | null
     /**
      * Gets the symlink target for a given #GFileInfo.
+     * 
+     * It is an error to call this if the #GFileInfo does not contain
+     * %G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET.
      * @returns a string containing the symlink target.
      */
     get_symlink_target(): string | null
@@ -27116,6 +28201,11 @@ interface FileInfo {
  * g_file_info_get_attribute_byte_string().This optimization will matter
  * only if calling the API in a tight loop.
  * 
+ * It is an error to call these accessors without specifying their required file
+ * attributes when creating the #GFileInfo. Use g_file_info_has_attribute() or
+ * g_file_info_list_attributes() to check what attributes are specified for a
+ * #GFileInfo.
+ * 
  * #GFileAttributeMatcher allows for searching through a #GFileInfo for
  * attributes.
  * @class 
@@ -27191,6 +28281,29 @@ interface FileInputStream extends Seekable {
      * @param callback callback to call when the request is satisfied
      */
     query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_info_async
+
+    /**
+     * Promisified version of {@link query_info_async}
+     * 
+     * Queries the stream information asynchronously.
+     * When the operation is finished `callback` will be called.
+     * You can then call g_file_input_stream_query_info_finish()
+     * to get the result of the operation.
+     * 
+     * For the synchronous version of this function,
+     * see g_file_input_stream_query_info().
+     * 
+     * If `cancellable` is not %NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
+     * @param attributes a file attribute query string.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: #GFileInfo.
+     */
+    query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo>
     /**
      * Finishes an asynchronous info query operation.
      * @param result a #GAsyncResult.
@@ -27461,6 +28574,24 @@ interface FileOutputStream extends Seekable {
      * @param callback callback to call when the request is satisfied
      */
     query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of query_info_async
+
+    /**
+     * Promisified version of {@link query_info_async}
+     * 
+     * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+     * `callback` will be called with a #GAsyncResult which can be used to
+     * finish the operation with g_file_output_stream_query_info_finish().
+     * 
+     * For the synchronous version of this function, see
+     * g_file_output_stream_query_info().
+     * @param attributes a file attribute query string.
+     * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: A #GFileInfo for the finished query.
+     */
+    query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<FileInfo>
     /**
      * Finalizes the asynchronous query started
      * by g_file_output_stream_query_info_async().
@@ -28006,6 +29137,27 @@ interface IOStream {
      * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Requests an asynchronous close of the stream, releasing resources
+     * related to it. When the operation is finished `callback` will be
+     * called. You can then call g_io_stream_close_finish() to get
+     * the result of the operation.
+     * 
+     * For behaviour details see g_io_stream_close().
+     * 
+     * The asynchronous methods have a default fallback that uses threads
+     * to implement asynchronicity, so they are optional for inheriting
+     * classes. However, if you override one you must override all.
+     * @param io_priority the io priority of the request
+     * @param cancellable optional cancellable object
+     * @returns A Promise of: %TRUE if stream was successfully closed, %FALSE otherwise.
+     */
+    close_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Closes a stream.
      * @param result a #GAsyncResult
@@ -28769,6 +29921,27 @@ interface InputStream {
      * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Requests an asynchronous closes of the stream, releasing resources related to it.
+     * When the operation is finished `callback` will be called.
+     * You can then call g_input_stream_close_finish() to get the result of the
+     * operation.
+     * 
+     * For behaviour details see g_input_stream_close().
+     * 
+     * The asynchronous methods have a default fallback that uses threads to implement
+     * asynchronicity, so they are optional for inheriting classes. However, if you
+     * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional cancellable object
+     * @returns A Promise of: %TRUE if the stream was closed successfully.
+     */
+    close_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
      * @param result a #GAsyncResult.
@@ -28851,6 +30024,27 @@ interface InputStream {
      * @param callback callback to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
+
+    // Overloads of read_all_async
+
+    /**
+     * Promisified version of {@link read_all_async}
+     * 
+     * Request an asynchronous read of `count` bytes from the stream into the
+     * buffer starting at `buffer`.
+     * 
+     * This is the asynchronous equivalent of g_input_stream_read_all().
+     * 
+     * Call g_input_stream_read_all_finish() to collect the result.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE if there was an error
+     */
+    read_all_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* bytes_read */ number>
     /**
      * Finishes an asynchronous stream read operation started with
      * g_input_stream_read_all_async().
@@ -28894,6 +30088,40 @@ interface InputStream {
      * @param callback callback to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
+
+    // Overloads of read_async
+
+    /**
+     * Promisified version of {@link read_async}
+     * 
+     * Request an asynchronous read of `count` bytes from the stream into the buffer
+     * starting at `buffer`. When the operation is finished `callback` will be called.
+     * You can then call g_input_stream_read_finish() to get the result of the
+     * operation.
+     * 
+     * During an async request no other sync and async calls are allowed on `stream,` and will
+     * result in %G_IO_ERROR_PENDING errors.
+     * 
+     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+     * 
+     * On success, the number of bytes read into the buffer will be passed to the
+     * callback. It is not an error if this is not the same as the requested size, as it
+     * can happen e.g. near the end of a file, but generally we try to read
+     * as many bytes as requested. Zero is returned on end of file
+     * (or if `count` is zero),  but never otherwise.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical value) will
+     * be executed before an outstanding request with lower priority. Default
+     * priority is %G_PRIORITY_DEFAULT.
+     * 
+     * The asynchronous methods have a default fallback that uses threads to implement
+     * asynchronicity, so they are optional for inheriting classes. However, if you
+     * override one you must override all.
+     * @param io_priority the [I/O priority][io-priority] of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: number of bytes read in, or -1 on error, or 0 on end of file.
+     */
+    read_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * Like g_input_stream_read(), this tries to read `count` bytes from
      * the stream in a blocking fashion. However, rather than reading into
@@ -28950,6 +30178,38 @@ interface InputStream {
      * @param callback callback to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_bytes_async
+
+    /**
+     * Promisified version of {@link read_bytes_async}
+     * 
+     * Request an asynchronous read of `count` bytes from the stream into a
+     * new #GBytes. When the operation is finished `callback` will be
+     * called. You can then call g_input_stream_read_bytes_finish() to get the
+     * result of the operation.
+     * 
+     * During an async request no other sync and async calls are allowed
+     * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * A value of `count` larger than %G_MAXSSIZE will cause a
+     * %G_IO_ERROR_INVALID_ARGUMENT error.
+     * 
+     * On success, the new #GBytes will be passed to the callback. It is
+     * not an error if this is smaller than the requested size, as it can
+     * happen e.g. near the end of a file, but generally we try to read as
+     * many bytes as requested. Zero is returned on end of file (or if
+     * `count` is zero), but never otherwise.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * @param count the number of bytes that will be read from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: the newly-allocated #GBytes, or %NULL on error
+     */
+    read_bytes_async(count: number, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Finishes an asynchronous stream read-into-#GBytes operation.
      * @param result a #GAsyncResult.
@@ -29019,6 +30279,41 @@ interface InputStream {
      * @param callback callback to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of skip_async
+
+    /**
+     * Promisified version of {@link skip_async}
+     * 
+     * Request an asynchronous skip of `count` bytes from the stream.
+     * When the operation is finished `callback` will be called.
+     * You can then call g_input_stream_skip_finish() to get the result
+     * of the operation.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+     * 
+     * On success, the number of bytes skipped will be passed to the callback.
+     * It is not an error if this is not the same as the requested size, as it
+     * can happen e.g. near the end of a file, but generally we try to skip
+     * as many bytes as requested. Zero is returned on end of file
+     * (or if `count` is zero), but never otherwise.
+     * 
+     * Any outstanding i/o request with higher priority (lower numerical value)
+     * will be executed before an outstanding request with lower priority.
+     * Default priority is %G_PRIORITY_DEFAULT.
+     * 
+     * The asynchronous methods have a default fallback that uses threads to
+     * implement asynchronicity, so they are optional for inheriting classes.
+     * However, if you override one, you must override all.
+     * @param count the number of bytes that will be skipped from the stream
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: the size of the bytes skipped, or `-1` on error.
+     */
+    skip_async(count: number, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * Finishes a stream skip operation.
      * @param result a #GAsyncResult.
@@ -29245,19 +30540,27 @@ interface ListStore<A extends GObject.Object = GObject.Object> extends ListModel
      * comparing them with `equal_func` until the first occurrence of `item` which
      * matches. If `item` was not found, then `position` will not be set, and this
      * method will return %FALSE.
+     * 
+     * `item` is always passed as second parameter to `equal_func`.
+     * 
+     * Since GLib 2.76 it is possible to pass `NULL` for `item`.
      * @param item an item
      * @param equal_func A custom equality check function
      * @returns Whether @store contains @item. If it was found, @position will be set to the position where @item occurred for the first time.
      */
-    find_with_equal_func(item: GObject.Object, equal_func: GLib.EqualFunc): [ /* returnType */ boolean, /* position */ number ]
+    find_with_equal_func(item: GObject.Object | null, equal_func: GLib.EqualFunc): [ /* returnType */ boolean, /* position */ number ]
     /**
      * Like g_list_store_find_with_equal_func() but with an additional `user_data`
      * that is passed to `equal_func`.
+     * 
+     * `item` is always passed as second parameter to `equal_func`.
+     * 
+     * Since GLib 2.76 it is possible to pass `NULL` for `item`.
      * @param item an item
      * @param equal_func A custom equality check function
      * @returns Whether @store contains @item. If it was found, @position will be set to the position where @item occurred for the first time.
      */
-    find_with_equal_func_full(item: GObject.Object, equal_func: GLib.EqualFuncFull): [ /* returnType */ boolean, /* position */ number ]
+    find_with_equal_func_full(item: GObject.Object | null, equal_func: GLib.EqualFuncFull): [ /* returnType */ boolean, /* position */ number ]
     /**
      * Inserts `item` into `store` at `position`. `item` must be of type
      * #GListStore:item-type or derived from it. `position` must be smaller
@@ -31562,7 +32865,7 @@ interface Notification {
      * application-wide action (start with "app.").
      * 
      * If `target` is non-%NULL, `action` will be activated with `target` as
-     * its parameter.
+     * its parameter. If `target` is floating, it will be consumed.
      * 
      * When no default action is set, the application that the notification
      * was sent on is activated.
@@ -31757,6 +33060,27 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of close_async
+
+    /**
+     * Promisified version of {@link close_async}
+     * 
+     * Requests an asynchronous close of the stream, releasing resources
+     * related to it. When the operation is finished `callback` will be
+     * called. You can then call g_output_stream_close_finish() to get
+     * the result of the operation.
+     * 
+     * For behaviour details see g_output_stream_close().
+     * 
+     * The asynchronous methods have a default fallback that uses threads
+     * to implement asynchronicity, so they are optional for inheriting
+     * classes. However, if you override one you must override all.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional cancellable object
+     * @returns A Promise of: %TRUE if stream was successfully closed, %FALSE otherwise.
+     */
+    close_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Closes an output stream.
      * @param result a #GAsyncResult.
@@ -31790,6 +33114,24 @@ interface OutputStream {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     flush_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of flush_async
+
+    /**
+     * Promisified version of {@link flush_async}
+     * 
+     * Forces an asynchronous write of all user-space buffered data for
+     * the given `stream`.
+     * For behaviour details see g_output_stream_flush().
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_output_stream_flush_finish() to get the
+     * result of the operation.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if flush operation succeeded, %FALSE otherwise.
+     */
+    flush_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes flushing an output stream.
      * @param result a GAsyncResult.
@@ -31844,6 +33186,26 @@ interface OutputStream {
      * @param callback a #GAsyncReadyCallback.
      */
     splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of splice_async
+
+    /**
+     * Promisified version of {@link splice_async}
+     * 
+     * Splices a stream asynchronously.
+     * When the operation is finished `callback` will be called.
+     * You can then call g_output_stream_splice_finish() to get the
+     * result of the operation.
+     * 
+     * For the synchronous, blocking version of this function, see
+     * g_output_stream_splice().
+     * @param source a #GInputStream.
+     * @param flags a set of #GOutputStreamSpliceFlags.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #gssize of the number of bytes spliced. Note that if the     number of bytes spliced is greater than %G_MAXSSIZE, then that     will be returned, and there is no way to determine the actual     number of bytes spliced.
+     */
+    splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * Finishes an asynchronous stream splice operation.
      * @param result a #GAsyncResult.
@@ -31923,6 +33285,33 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     write_all_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_all_async
+
+    /**
+     * Promisified version of {@link write_all_async}
+     * 
+     * Request an asynchronous write of `count` bytes from `buffer` into
+     * the stream. When the operation is finished `callback` will be called.
+     * You can then call g_output_stream_write_all_finish() to get the result of the
+     * operation.
+     * 
+     * This is the asynchronous version of g_output_stream_write_all().
+     * 
+     * Call g_output_stream_write_all_finish() to collect the result.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * 
+     * Note that no copy of `buffer` will be made, so it must stay valid
+     * until `callback` is called.
+     * @param buffer the buffer containing the data to write
+     * @param io_priority the io priority of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE if there was an error
+     */
+    write_all_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* bytes_written */ number>
     /**
      * Finishes an asynchronous stream write operation started with
      * g_output_stream_write_all_async().
@@ -31980,6 +33369,53 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     write_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_async
+
+    /**
+     * Promisified version of {@link write_async}
+     * 
+     * Request an asynchronous write of `count` bytes from `buffer` into
+     * the stream. When the operation is finished `callback` will be called.
+     * You can then call g_output_stream_write_finish() to get the result of the
+     * operation.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * A value of `count` larger than %G_MAXSSIZE will cause a
+     * %G_IO_ERROR_INVALID_ARGUMENT error.
+     * 
+     * On success, the number of bytes written will be passed to the
+     * `callback`. It is not an error if this is not the same as the
+     * requested size, as it can happen e.g. on a partial I/O error,
+     * but generally we try to write as many bytes as requested.
+     * 
+     * You are guaranteed that this method will never fail with
+     * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+     * method will just wait until this changes.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * 
+     * The asynchronous methods have a default fallback that uses threads
+     * to implement asynchronicity, so they are optional for inheriting
+     * classes. However, if you override one you must override all.
+     * 
+     * For the synchronous, blocking version of this function, see
+     * g_output_stream_write().
+     * 
+     * Note that no copy of `buffer` will be made, so it must stay valid
+     * until `callback` is called. See g_output_stream_write_bytes_async()
+     * for a #GBytes version that will automatically hold a reference to
+     * the contents (without copying) for the duration of the call.
+     * @param buffer the buffer containing the data to write.
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #gssize containing the number of bytes written to the stream.
+     */
+    write_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * A wrapper function for g_output_stream_write() which takes a
      * #GBytes as input.  This can be more convenient for use by language
@@ -32017,6 +33453,31 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     write_bytes_async(bytes: GLib.Bytes, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of write_bytes_async
+
+    /**
+     * Promisified version of {@link write_bytes_async}
+     * 
+     * This function is similar to g_output_stream_write_async(), but
+     * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+     * this allows the stream to avoid taking a copy of the data.
+     * 
+     * However, note that this function may still perform partial writes,
+     * just like g_output_stream_write_async(). If that occurs, to continue
+     * writing, you will need to create a new #GBytes containing just the
+     * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+     * #GBytes instance multiple times potentially can result in duplicated
+     * data in the output stream.
+     * 
+     * For the synchronous, blocking version of this function, see
+     * g_output_stream_write_bytes().
+     * @param bytes The bytes to write
+     * @param io_priority the io priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #gssize containing the number of bytes written to the stream.
+     */
+    write_bytes_async(bytes: GLib.Bytes, io_priority: number, cancellable: Cancellable | null): globalThis.Promise<number>
     /**
      * Finishes a stream write-from-#GBytes operation.
      * @param result a #GAsyncResult.
@@ -32109,6 +33570,34 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     writev_all_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of writev_all_async
+
+    /**
+     * Promisified version of {@link writev_all_async}
+     * 
+     * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+     * the stream. When the operation is finished `callback` will be called.
+     * You can then call g_output_stream_writev_all_finish() to get the result of the
+     * operation.
+     * 
+     * This is the asynchronous version of g_output_stream_writev_all().
+     * 
+     * Call g_output_stream_writev_all_finish() to collect the result.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * 
+     * Note that no copy of `vectors` will be made, so it must stay valid
+     * until `callback` is called. The content of the individual elements
+     * of `vectors` might be changed by this function.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param io_priority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @returns A Promise of: %TRUE on success, %FALSE if there was an error
+     */
+    writev_all_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* bytes_written */ number>
     /**
      * Finishes an asynchronous stream write operation started with
      * g_output_stream_writev_all_async().
@@ -32161,6 +33650,48 @@ interface OutputStream {
      * @param callback callback to call when the request is satisfied
      */
     writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of writev_async
+
+    /**
+     * Promisified version of {@link writev_async}
+     * 
+     * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+     * the stream. When the operation is finished `callback` will be called.
+     * You can then call g_output_stream_writev_finish() to get the result of the
+     * operation.
+     * 
+     * During an async request no other sync and async calls are allowed,
+     * and will result in %G_IO_ERROR_PENDING errors.
+     * 
+     * On success, the number of bytes written will be passed to the
+     * `callback`. It is not an error if this is not the same as the
+     * requested size, as it can happen e.g. on a partial I/O error,
+     * but generally we try to write as many bytes as requested.
+     * 
+     * You are guaranteed that this method will never fail with
+     * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+     * method will just wait until this changes.
+     * 
+     * Any outstanding I/O request with higher priority (lower numerical
+     * value) will be executed before an outstanding request with lower
+     * priority. Default priority is %G_PRIORITY_DEFAULT.
+     * 
+     * The asynchronous methods have a default fallback that uses threads
+     * to implement asynchronicity, so they are optional for inheriting
+     * classes. However, if you override one you must override all.
+     * 
+     * For the synchronous, blocking version of this function, see
+     * g_output_stream_writev().
+     * 
+     * Note that no copy of `vectors` will be made, so it must stay valid
+     * until `callback` is called.
+     * @param vectors the buffer containing the #GOutputVectors to write.
+     * @param io_priority the I/O priority of the request.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE on success, %FALSE if there was an error
+     */
+    writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* bytes_written */ number>
     /**
      * Finishes a stream writev operation.
      * @param result a #GAsyncResult.
@@ -32515,6 +34046,20 @@ interface Permission {
      * @param callback the #GAsyncReadyCallback to call when done
      */
     acquire_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of acquire_async
+
+    /**
+     * Promisified version of {@link acquire_async}
+     * 
+     * Attempts to acquire the permission represented by `permission`.
+     * 
+     * This is the first half of the asynchronous version of
+     * g_permission_acquire().
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if the permission was successfully acquired
+     */
+    acquire_async(cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Collects the result of attempting to acquire the permission
      * represented by `permission`.
@@ -32586,6 +34131,20 @@ interface Permission {
      * @param callback the #GAsyncReadyCallback to call when done
      */
     release_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of release_async
+
+    /**
+     * Promisified version of {@link release_async}
+     * 
+     * Attempts to release the permission represented by `permission`.
+     * 
+     * This is the first half of the asynchronous version of
+     * g_permission_release().
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if the permission was successfully released
+     */
+    release_async(cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Collects the result of attempting to release the permission
      * represented by `permission`.
@@ -33285,6 +34844,20 @@ interface Resolver {
      * @param callback callback to call after resolution completes
      */
     lookup_by_address_async(address: InetAddress, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_by_address_async
+
+    /**
+     * Promisified version of {@link lookup_by_address_async}
+     * 
+     * Begins asynchronously reverse-resolving `address` to determine its
+     * associated hostname, and eventually calls `callback,` which must
+     * call g_resolver_lookup_by_address_finish() to get the final result.
+     * @param address the address to reverse-resolve
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a hostname (either ASCII-only, or in ASCII-encoded form), or %NULL on error.
+     */
+    lookup_by_address_async(address: InetAddress, cancellable: Cancellable | null): globalThis.Promise<string | null>
     /**
      * Retrieves the result of a previous call to
      * g_resolver_lookup_by_address_async().
@@ -33335,6 +34908,21 @@ interface Resolver {
      * @param callback callback to call after resolution completes
      */
     lookup_by_name_async(hostname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_by_name_async
+
+    /**
+     * Promisified version of {@link lookup_by_name_async}
+     * 
+     * Begins asynchronously resolving `hostname` to determine its
+     * associated IP address(es), and eventually calls `callback,` which
+     * must call g_resolver_lookup_by_name_finish() to get the result.
+     * See g_resolver_lookup_by_name() for more details.
+     * @param hostname the hostname to look up the address of
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GList of #GInetAddress, or %NULL on error. See g_resolver_lookup_by_name() for more details.
+     */
+    lookup_by_name_async(hostname: string | null, cancellable: Cancellable | null): globalThis.Promise<InetAddress[]>
     /**
      * Retrieves the result of a call to
      * g_resolver_lookup_by_name_async().
@@ -33367,6 +34955,22 @@ interface Resolver {
      * @param callback callback to call after resolution completes
      */
     lookup_by_name_with_flags_async(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_by_name_with_flags_async
+
+    /**
+     * Promisified version of {@link lookup_by_name_with_flags_async}
+     * 
+     * Begins asynchronously resolving `hostname` to determine its
+     * associated IP address(es), and eventually calls `callback,` which
+     * must call g_resolver_lookup_by_name_with_flags_finish() to get the result.
+     * See g_resolver_lookup_by_name() for more details.
+     * @param hostname the hostname to look up the address of
+     * @param flags extra #GResolverNameLookupFlags for the lookup
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GList of #GInetAddress, or %NULL on error. See g_resolver_lookup_by_name() for more details.
+     */
+    lookup_by_name_with_flags_async(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null): globalThis.Promise<InetAddress[]>
     /**
      * Retrieves the result of a call to
      * g_resolver_lookup_by_name_with_flags_async().
@@ -33406,6 +35010,22 @@ interface Resolver {
      * @param callback callback to call after resolution completes
      */
     lookup_records_async(rrname: string | null, record_type: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_records_async
+
+    /**
+     * Promisified version of {@link lookup_records_async}
+     * 
+     * Begins asynchronously performing a DNS lookup for the given
+     * `rrname,` and eventually calls `callback,` which must call
+     * g_resolver_lookup_records_finish() to get the final result. See
+     * g_resolver_lookup_records() for more details.
+     * @param rrname the DNS name to look up the record for
+     * @param record_type the type of DNS record to look up
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a non-empty #GList of #GVariant, or %NULL on error. You must free each of the records and the list when you are done with it. (You can use g_list_free_full() with g_variant_unref() to do this.)
+     */
+    lookup_records_async(rrname: string | null, record_type: ResolverRecordType, cancellable: Cancellable | null): globalThis.Promise<GLib.Variant[]>
     /**
      * Retrieves the result of a previous call to
      * g_resolver_lookup_records_async(). Returns a non-empty list of records as
@@ -33461,6 +35081,24 @@ interface Resolver {
      * @param callback callback to call after resolution completes
      */
     lookup_service_async(service: string | null, protocol: string | null, domain: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_service_async
+
+    /**
+     * Promisified version of {@link lookup_service_async}
+     * 
+     * Begins asynchronously performing a DNS SRV lookup for the given
+     * `service` and `protocol` in the given `domain,` and eventually calls
+     * `callback,` which must call g_resolver_lookup_service_finish() to
+     * get the final result. See g_resolver_lookup_service() for more
+     * details.
+     * @param service the service type to look up (eg, "ldap")
+     * @param protocol the networking protocol to use for `service` (eg, "tcp")
+     * @param domain the DNS domain to look up the service in
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a non-empty #GList of #GSrvTarget, or %NULL on error. See g_resolver_lookup_service() for more details.
+     */
+    lookup_service_async(service: string | null, protocol: string | null, domain: string | null, cancellable: Cancellable | null): globalThis.Promise<SrvTarget[]>
     /**
      * Retrieves the result of a previous call to
      * g_resolver_lookup_service_async().
@@ -37518,6 +39156,21 @@ interface SocketAddressEnumerator {
      * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
      */
     next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of next_async
+
+    /**
+     * Promisified version of {@link next_async}
+     * 
+     * Asynchronously retrieves the next #GSocketAddress from `enumerator`
+     * and then calls `callback,` which must call
+     * g_socket_address_enumerator_next_finish() to get the result.
+     * 
+     * It is an error to call this multiple times before the previous callback has finished.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #GSocketAddress (owned by the caller), or %NULL on     error (in which case *@error will be set) or if there are no     more addresses.
+     */
+    next_async(cancellable: Cancellable | null): globalThis.Promise<SocketAddress | null>
     /**
      * Retrieves the result of a completed call to
      * g_socket_address_enumerator_next_async(). See
@@ -37770,6 +39423,31 @@ interface SocketClient {
      * @param callback a #GAsyncReadyCallback
      */
     connect_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_async
+
+    /**
+     * Promisified version of {@link connect_async}
+     * 
+     * This is the asynchronous version of g_socket_client_connect().
+     * 
+     * You may wish to prefer the asynchronous version even in synchronous
+     * command line programs because, since 2.60, it implements
+     * [RFC 8305](https://tools.ietf.org/html/rfc8305) "Happy Eyeballs"
+     * recommendations to work around long connection timeouts in networks
+     * where IPv6 is broken by performing an IPv4 connection simultaneously
+     * without waiting for IPv6 to time out, which is not supported by the
+     * synchronous call. (This is not an API guarantee, and may change in
+     * the future.)
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_socket_client_connect_finish() to get
+     * the result of the operation.
+     * @param connectable a #GSocketConnectable specifying the remote address.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocketConnection on success, %NULL on error.
+     */
+    connect_async(connectable: SocketConnectable, cancellable: Cancellable | null): globalThis.Promise<SocketConnection>
     /**
      * Finishes an async connect operation. See g_socket_client_connect_async()
      * @param result a #GAsyncResult.
@@ -37825,6 +39503,23 @@ interface SocketClient {
      * @param callback a #GAsyncReadyCallback
      */
     connect_to_host_async(host_and_port: string | null, default_port: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_to_host_async
+
+    /**
+     * Promisified version of {@link connect_to_host_async}
+     * 
+     * This is the asynchronous version of g_socket_client_connect_to_host().
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_socket_client_connect_to_host_finish() to get
+     * the result of the operation.
+     * @param host_and_port the name and optionally the port of the host to connect to
+     * @param default_port the default port to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocketConnection on success, %NULL on error.
+     */
+    connect_to_host_async(host_and_port: string | null, default_port: number, cancellable: Cancellable | null): globalThis.Promise<SocketConnection>
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_host_async()
      * @param result a #GAsyncResult.
@@ -37861,6 +39556,20 @@ interface SocketClient {
      * @param callback a #GAsyncReadyCallback
      */
     connect_to_service_async(domain: string | null, service: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_to_service_async
+
+    /**
+     * Promisified version of {@link connect_to_service_async}
+     * 
+     * This is the asynchronous version of
+     * g_socket_client_connect_to_service().
+     * @param domain a domain name
+     * @param service the name of the service to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocketConnection on success, %NULL on error.
+     */
+    connect_to_service_async(domain: string | null, service: string | null, cancellable: Cancellable | null): globalThis.Promise<SocketConnection>
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_service_async()
      * @param result a #GAsyncResult.
@@ -37907,6 +39616,23 @@ interface SocketClient {
      * @param callback a #GAsyncReadyCallback
      */
     connect_to_uri_async(uri: string | null, default_port: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_to_uri_async
+
+    /**
+     * Promisified version of {@link connect_to_uri_async}
+     * 
+     * This is the asynchronous version of g_socket_client_connect_to_uri().
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_socket_client_connect_to_uri_finish() to get
+     * the result of the operation.
+     * @param uri a network uri
+     * @param default_port the default port to connect to
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocketConnection on success, %NULL on error.
+     */
+    connect_to_uri_async(uri: string | null, default_port: number, cancellable: Cancellable | null): globalThis.Promise<SocketConnection>
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
      * @param result a #GAsyncResult.
@@ -38214,6 +39940,23 @@ interface SocketConnection {
      * @param callback a #GAsyncReadyCallback
      */
     connect_async(address: SocketAddress, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of connect_async
+
+    /**
+     * Promisified version of {@link connect_async}
+     * 
+     * Asynchronously connect `connection` to the specified remote address.
+     * 
+     * This clears the #GSocket:blocking flag on `connection'`s underlying
+     * socket if it is currently set.
+     * 
+     * Use g_socket_connection_connect_finish() to retrieve the result.
+     * @param address a #GSocketAddress specifying the remote address.
+     * @param cancellable a %GCancellable or %NULL
+     * @returns A Promise of: %TRUE if the connection succeeded, %FALSE on error
+     */
+    connect_async(address: SocketAddress, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of a g_socket_connection_connect_async() call.
      * @param result the #GAsyncResult
@@ -38456,7 +40199,7 @@ class SocketControlMessage extends GObject.Object {
      * @param data pointer to the message data
      * @returns the deserialized message or %NULL
      */
-    static deserialize(level: number, type: number, data: Uint8Array): SocketControlMessage
+    static deserialize(level: number, type: number, data: Uint8Array): SocketControlMessage | null
 }
 
 module SocketListener {
@@ -38521,6 +40264,21 @@ interface SocketListener {
      * @param callback a #GAsyncReadyCallback
      */
     accept_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_async
+
+    /**
+     * Promisified version of {@link accept_async}
+     * 
+     * This is the asynchronous version of g_socket_listener_accept().
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_socket_listener_accept_finish()
+     * to get the result of the operation.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocketConnection on success, %NULL on error.
+     */
+    accept_async(cancellable: Cancellable | null): globalThis.Promise</* source_object */ GObject.Object | null>
     /**
      * Finishes an async accept operation. See g_socket_listener_accept_async()
      * @param result a #GAsyncResult.
@@ -38556,6 +40314,21 @@ interface SocketListener {
      * @param callback a #GAsyncReadyCallback
      */
     accept_socket_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of accept_socket_async
+
+    /**
+     * Promisified version of {@link accept_socket_async}
+     * 
+     * This is the asynchronous version of g_socket_listener_accept_socket().
+     * 
+     * When the operation is finished `callback` will be
+     * called. You can then call g_socket_listener_accept_socket_finish()
+     * to get the result of the operation.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a #GSocket on success, %NULL on error.
+     */
+    accept_socket_async(cancellable: Cancellable | null): globalThis.Promise</* source_object */ GObject.Object | null>
     /**
      * Finishes an async accept operation. See g_socket_listener_accept_socket_async()
      * @param result a #GAsyncResult.
@@ -38985,6 +40758,19 @@ interface Subprocess extends Initable {
      * @param callback Callback
      */
     communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of communicate_async
+
+    /**
+     * Promisified version of {@link communicate_async}
+     * 
+     * Asynchronous version of g_subprocess_communicate().  Complete
+     * invocation with g_subprocess_communicate_finish().
+     * @param stdin_buf Input data, or %NULL
+     * @param cancellable Cancellable
+     * @returns A Promise of the result of {@link communicate_async}
+     */
+    communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Cancellable | null): globalThis.Promise<[ /* stdout_buf */ GLib.Bytes | null, /* stderr_buf */ GLib.Bytes | null ]>
     /**
      * Complete an invocation of g_subprocess_communicate_async().
      * @param result Result
@@ -39008,6 +40794,19 @@ interface Subprocess extends Initable {
      * @param callback Callback
      */
     communicate_utf8_async(stdin_buf: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of communicate_utf8_async
+
+    /**
+     * Promisified version of {@link communicate_utf8_async}
+     * 
+     * Asynchronous version of g_subprocess_communicate_utf8().  Complete
+     * invocation with g_subprocess_communicate_utf8_finish().
+     * @param stdin_buf Input data, or %NULL
+     * @param cancellable Cancellable
+     * @returns A Promise of the result of {@link communicate_utf8_async}
+     */
+    communicate_utf8_async(stdin_buf: string | null, cancellable: Cancellable | null): globalThis.Promise<[ /* stdout_buf */ string | null, /* stderr_buf */ string | null ]>
     /**
      * Complete an invocation of g_subprocess_communicate_utf8_async().
      * @param result Result
@@ -39161,6 +40960,19 @@ interface Subprocess extends Initable {
      * @param callback a #GAsyncReadyCallback to call when the operation is complete
      */
     wait_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of wait_async
+
+    /**
+     * Promisified version of {@link wait_async}
+     * 
+     * Wait for the subprocess to terminate.
+     * 
+     * This is the asynchronous version of g_subprocess_wait().
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if successful, or %FALSE with @error set
+     */
+    wait_async(cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Combines g_subprocess_wait() with g_spawn_check_wait_status().
      * @param cancellable a #GCancellable
@@ -39175,6 +40987,19 @@ interface Subprocess extends Initable {
      * @param callback a #GAsyncReadyCallback to call when the operation is complete
      */
     wait_check_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of wait_check_async
+
+    /**
+     * Promisified version of {@link wait_check_async}
+     * 
+     * Combines g_subprocess_wait_async() with g_spawn_check_wait_status().
+     * 
+     * This is the asynchronous version of g_subprocess_wait_check().
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE if successful, or %FALSE with @error set
+     */
+    wait_check_async(cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Collects the result of a previous call to
      * g_subprocess_wait_check_async().
@@ -40476,6 +42301,24 @@ interface Task extends AsyncResult {
  *   having come from the `_async()` wrapper
  *   function (for "short-circuit" results, such as when passing
  *   0 to g_input_stream_read_async()).
+ * 
+ * ## Thread-safety considerations
+ * 
+ * Due to some infelicities in the API design, there is a
+ * thread-safety concern that users of GTask have to be aware of:
+ * 
+ * If the `main` thread drops its last reference to the source object
+ * or the task data before the task is finalized, then the finalizers
+ * of these objects may be called on the worker thread.
+ * 
+ * This is a problem if the finalizers use non-threadsafe API, and
+ * can lead to hard-to-debug crashes. Possible workarounds include:
+ * 
+ * - Clear task data in a signal handler for `notify::completed`
+ * 
+ * - Keep iterating a main context in the main thread and defer
+ *   dropping the reference to the source object to that main
+ *   context when the task is finalized
  * @class 
  */
 class Task extends GObject.Object {
@@ -42322,6 +44165,19 @@ interface TlsConnection {
      * @param callback callback to call when the handshake is complete
      */
     handshake_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of handshake_async
+
+    /**
+     * Promisified version of {@link handshake_async}
+     * 
+     * Asynchronously performs a TLS handshake on `conn`. See
+     * g_tls_connection_handshake() for more information.
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: %TRUE on success, %FALSE on failure, in which case @error will be set.
+     */
+    handshake_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finish an asynchronous TLS handshake operation. See
      * g_tls_connection_handshake() for more information.
@@ -42657,6 +44513,21 @@ interface TlsDatabase {
      * @param callback callback to call when the operation completes
      */
     lookup_certificate_for_handle_async(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_certificate_for_handle_async
+
+    /**
+     * Promisified version of {@link lookup_certificate_for_handle_async}
+     * 
+     * Asynchronously look up a certificate by its handle in the database. See
+     * g_tls_database_lookup_certificate_for_handle() for more information.
+     * @param handle a certificate handle
+     * @param interaction used to interact with the user if necessary
+     * @param flags Flags which affect the lookup.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a newly allocated #GTlsCertificate object. Use g_object_unref() to release the certificate.
+     */
+    lookup_certificate_for_handle_async(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): globalThis.Promise<TlsCertificate>
     /**
      * Finish an asynchronous lookup of a certificate by its handle. See
      * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -42705,6 +44576,21 @@ interface TlsDatabase {
      * @param callback callback to call when the operation completes
      */
     lookup_certificate_issuer_async(certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_certificate_issuer_async
+
+    /**
+     * Promisified version of {@link lookup_certificate_issuer_async}
+     * 
+     * Asynchronously look up the issuer of `certificate` in the database. See
+     * g_tls_database_lookup_certificate_issuer() for more information.
+     * @param certificate a #GTlsCertificate
+     * @param interaction used to interact with the user if necessary
+     * @param flags flags which affect the lookup operation
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a newly allocated issuer #GTlsCertificate, or %NULL. Use g_object_unref() to release the certificate.
+     */
+    lookup_certificate_issuer_async(certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): globalThis.Promise<TlsCertificate>
     /**
      * Finish an asynchronous lookup issuer operation. See
      * g_tls_database_lookup_certificate_issuer() for more information.
@@ -42738,6 +44624,25 @@ interface TlsDatabase {
      * @param callback callback to call when the operation completes
      */
     lookup_certificates_issued_by_async(issuer_raw_dn: Uint8Array, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of lookup_certificates_issued_by_async
+
+    /**
+     * Promisified version of {@link lookup_certificates_issued_by_async}
+     * 
+     * Asynchronously look up certificates issued by this issuer in the database. See
+     * g_tls_database_lookup_certificates_issued_by() for more information.
+     * 
+     * The database may choose to hold a reference to the issuer byte array for the duration
+     * of of this asynchronous operation. The byte array should not be modified during
+     * this time.
+     * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
+     * @param interaction used to interact with the user if necessary
+     * @param flags Flags which affect the lookup operation.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: a newly allocated list of #GTlsCertificate objects. Use g_object_unref() on each certificate, and g_list_free() on the release the list.
+     */
+    lookup_certificates_issued_by_async(issuer_raw_dn: Uint8Array, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): globalThis.Promise<TlsCertificate[]>
     /**
      * Finish an asynchronous lookup of certificates. See
      * g_tls_database_lookup_certificates_issued_by() for more information.
@@ -42828,6 +44733,24 @@ interface TlsDatabase {
      * @param callback callback to call when the operation completes
      */
     verify_chain_async(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of verify_chain_async
+
+    /**
+     * Promisified version of {@link verify_chain_async}
+     * 
+     * Asynchronously determines the validity of a certificate chain after
+     * looking up and adding any missing certificates to the chain. See
+     * g_tls_database_verify_chain() for more information.
+     * @param chain a #GTlsCertificate chain
+     * @param purpose the purpose that this certificate chain will be used for.
+     * @param identity the expected peer identity
+     * @param interaction used to interact with the user if necessary
+     * @param flags additional verify flags
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns A Promise of: the appropriate #GTlsCertificateFlags which represents the result of verification.
+     */
+    verify_chain_async(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null): globalThis.Promise<TlsCertificateFlags>
     /**
      * Finish an asynchronous verify chain operation. See
      * g_tls_database_verify_chain() for more information.
@@ -43177,6 +45100,32 @@ interface TlsInteraction {
      * @param callback will be called when the interaction completes
      */
     ask_password_async(password: TlsPassword, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of ask_password_async
+
+    /**
+     * Promisified version of {@link ask_password_async}
+     * 
+     * Run asynchronous interaction to ask the user for a password. In general,
+     * g_tls_interaction_invoke_ask_password() should be used instead of this
+     * function.
+     * 
+     * Derived subclasses usually implement a password prompt, although they may
+     * also choose to provide a password from elsewhere. The `password` value will
+     * be filled in and then `callback` will be called. Alternatively the user may
+     * abort this password request, which will usually abort the TLS connection.
+     * 
+     * If the interaction is cancelled by the cancellation object, or by the
+     * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+     * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
+     * not support immediate cancellation.
+     * 
+     * Certain implementations may not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
+     * @returns A Promise of: The status of the ask password interaction.
+     */
+    ask_password_async(password: TlsPassword, cancellable: Cancellable | null): globalThis.Promise<TlsInteractionResult>
     /**
      * Complete an ask password user interaction request. This should be once
      * the g_tls_interaction_ask_password_async() completion callback is called.
@@ -43281,6 +45230,26 @@ interface TlsInteraction {
      * @param callback will be called when the interaction completes
      */
     request_certificate_async(connection: TlsConnection, flags: TlsCertificateRequestFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of request_certificate_async
+
+    /**
+     * Promisified version of {@link request_certificate_async}
+     * 
+     * Run asynchronous interaction to ask the user for a certificate to use with
+     * the connection. In general, g_tls_interaction_invoke_request_certificate() should
+     * be used instead of this function.
+     * 
+     * Derived subclasses usually implement a certificate selector, although they may
+     * also choose to provide a certificate from elsewhere. `callback` will be called
+     * when the operation completes. Alternatively the user may abort this certificate
+     * request, which will usually abort the TLS connection.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
+     * @returns A Promise of: The status of the request certificate interaction.
+     */
+    request_certificate_async(connection: TlsConnection, flags: TlsCertificateRequestFlags, cancellable: Cancellable | null): globalThis.Promise<TlsInteractionResult>
     /**
      * Complete a request certificate user interaction request. This should be once
      * the g_tls_interaction_request_certificate_async() completion callback is called.
@@ -43688,6 +45657,23 @@ interface UnixConnection {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     receive_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of receive_credentials_async
+
+    /**
+     * Promisified version of {@link receive_credentials_async}
+     * 
+     * Asynchronously receive credentials.
+     * 
+     * For more details, see g_unix_connection_receive_credentials() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * g_unix_connection_receive_credentials_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: a #GCredentials, or %NULL on error.     Free the returned object with g_object_unref().
+     */
+    receive_credentials_async(cancellable: Cancellable | null): globalThis.Promise<Credentials>
     /**
      * Finishes an asynchronous receive credentials operation started with
      * g_unix_connection_receive_credentials_async().
@@ -43743,6 +45729,23 @@ interface UnixConnection {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     send_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of send_credentials_async
+
+    /**
+     * Promisified version of {@link send_credentials_async}
+     * 
+     * Asynchronously send credentials.
+     * 
+     * For more details, see g_unix_connection_send_credentials() which is
+     * the synchronous version of this call.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * g_unix_connection_send_credentials_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @returns A Promise of: %TRUE if the operation was successful, otherwise %FALSE.
+     */
+    send_credentials_async(cancellable: Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous send credentials operation started with
      * g_unix_connection_send_credentials_async().
@@ -45886,7 +47889,7 @@ interface ConverterIface {
      * @field 
      */
     g_iface: GObject.TypeInterface
-    convert: (converter: Converter, inbuf: Uint8Array | null, outbuf: Uint8Array | null, flags: ConverterFlags) => [ /* returnType */ ConverterResult, /* bytes_read */ number, /* bytes_written */ number ]
+    convert: (converter: Converter, inbuf: Uint8Array | null, outbuf: Uint8Array, flags: ConverterFlags) => [ /* returnType */ ConverterResult, /* bytes_read */ number, /* bytes_written */ number ]
     reset: (converter: Converter) => void
 }
 
@@ -47318,7 +49321,7 @@ interface FileAttributeMatcher {
      */
     matches(attribute: string | null): boolean
     /**
-     * Checks if a attribute matcher only matches a given attribute. Always
+     * Checks if an attribute matcher only matches a given attribute. Always
      * returns %FALSE if "*" was used when creating the matcher.
      * @param attribute a file attribute key.
      * @returns %TRUE if the matcher only matches @attribute. %FALSE otherwise.

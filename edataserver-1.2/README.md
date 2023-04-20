@@ -1,7 +1,7 @@
 
 # EDataServer-1.2
 
-GJS TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.12.
+GJS TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
 
 The data server, called "Evolution Data Server" is responsible for managing calendar and addressbook information.
 
