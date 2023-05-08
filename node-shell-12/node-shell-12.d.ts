@@ -3,7 +3,7 @@
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Shell-12
@@ -913,6 +913,16 @@ interface Global {
      * opportunity.
      */
     endWork(): void
+    /**
+     * Gets app system.
+     * @returns the app system
+     */
+    getAppSystem(): AppSystem
+    /**
+     * Gets app usage.
+     * @returns the app usage
+     */
+    getAppUsage(): AppUsage
     getContext(): Meta.Context
     getCurrentTime(): number
     getDisplay(): Meta.Display
@@ -954,6 +964,11 @@ interface Global {
      * @returns the list of windows
      */
     getWindowActors(): Meta.WindowActor[]
+    /**
+     * Gets window tracker.
+     * @returns the window tracker
+     */
+    getWindowTracker(): WindowTracker
     getWorkspaceManager(): Meta.WorkspaceManager
     /**
      * Show a system error notification.  Use this function

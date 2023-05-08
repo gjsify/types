@@ -3,7 +3,7 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Shell-12
@@ -846,6 +846,16 @@ export interface Global {
      * opportunity.
      */
     end_work(): void
+    /**
+     * Gets app system.
+     * @returns the app system
+     */
+    get_app_system(): AppSystem
+    /**
+     * Gets app usage.
+     * @returns the app usage
+     */
+    get_app_usage(): AppUsage
     get_context(): Meta.Context
     get_current_time(): number
     get_display(): Meta.Display
@@ -887,6 +897,11 @@ export interface Global {
      * @returns the list of windows
      */
     get_window_actors(): Meta.WindowActor[]
+    /**
+     * Gets window tracker.
+     * @returns the window tracker
+     */
+    get_window_tracker(): WindowTracker
     get_workspace_manager(): Meta.WorkspaceManager
     /**
      * Show a system error notification.  Use this function

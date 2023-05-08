@@ -1,7 +1,7 @@
 
 # GUPnP-1.6
 
-Node.js TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+Node.js TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 ## Install
 
@@ -30,3 +30,7 @@ const GUPnP = gi.require('GUPnP', '1.6')
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

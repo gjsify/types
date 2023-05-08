@@ -3,7 +3,7 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Meta-12
@@ -3172,14 +3172,25 @@ export interface CursorTracker {
 
     // Owm methods of Meta-12.Meta.CursorTracker
 
+    /**
+     * Get the hotspot of the current cursor sprite.
+     */
     get_hot(): [ /* x */ number, /* y */ number ]
     /**
      * Get the current pointer position and state.
      */
     get_pointer(): [ /* coords */ Graphene.Point, /* mods */ Clutter.ModifierType ]
     get_pointer_visible(): boolean
+    /**
+     * Get the scale factor of the cursor sprite
+     * @returns The scale factor of the cursor sprite
+     */
     get_scale(): number
-    get_sprite(): Cogl.Texture
+    /**
+     * Get the #CoglTexture of the cursor sprite
+     * @returns the #CoglTexture of the cursor sprite
+     */
+    get_sprite(): Cogl.Texture | null
     set_pointer_visible(visible: boolean): void
 
     // Own signals of Meta-12.Meta.CursorTracker
@@ -3219,6 +3230,7 @@ export class CursorTracker extends GObject.Object {
     /**
      * Retrieves the cursor tracker object for `display`.
      * @param display the #MetaDisplay
+     * @returns the cursor tracker object for @display.
      */
     static get_for_display(display: Display): CursorTracker
 }
@@ -5760,6 +5772,7 @@ export interface Window extends Gio.Initable {
      */
     has_attached_dialogs(): boolean
     has_focus(): boolean
+    has_pointer(): boolean
     is_above(): boolean
     is_always_on_all_workspaces(): boolean
     /**

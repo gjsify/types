@@ -1,7 +1,7 @@
 
 # Template-1.0
 
-Node.js TypeScript type definitions for Template-1.0, generated from library version 3.36.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+Node.js TypeScript type definitions for Template-1.0, generated from library version 3.36.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 Template-GLib is a library to generate text from a template and user defined state. Template-GLib allows you to access properties on GObjects as well as call simple methods via GObject-Introspection Template-GLib does not use a language runtime, so it is safe to use from any GObject-Introspectable language.
 
@@ -32,3 +32,7 @@ const Template = gi.require('Template', '1.0')
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

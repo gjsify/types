@@ -1,6 +1,6 @@
 {
     "name": "@girs/gjs",
-    "version": "3.0.0-beta.13",
+    "version": "3.0.0-beta.14",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
@@ -67,6 +67,7 @@
         "@girs/amtk-5": "workspace:^",
         "@girs/anjuta-3.0": "workspace:^",
         "@girs/anthy-9000": "workspace:^",
+        "@girs/appindicator3-0.1": "workspace:^",
         "@girs/appstream-1.0": "workspace:^",
         "@girs/appstreambuilder-1.0": "workspace:^",
         "@girs/appstreamglib-1.0": "workspace:^",
@@ -87,6 +88,7 @@
         "@girs/caribou-1.0": "workspace:^",
         "@girs/champlain-0.12": "workspace:^",
         "@girs/cheese-3.0": "workspace:^",
+        "@girs/cloudproviders-0.3": "workspace:^",
         "@girs/clutter-1.0": "workspace:^",
         "@girs/clutter-12": "workspace:^",
         "@girs/cluttergdk-1.0": "workspace:^",

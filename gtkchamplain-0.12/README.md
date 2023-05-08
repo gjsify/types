@@ -1,7 +1,7 @@
 
 # GtkChamplain-0.12
 
-GJS TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+GJS TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 Libchamplain-gtk is a C library on top of libchamplain providing a Gtk+ widget to display maps in GTK+ applications.
 
@@ -31,3 +31,7 @@ import GtkChamplain from 'gi://GtkChamplain?version=0.12';
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

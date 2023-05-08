@@ -1,4 +1,4 @@
-
-    import * as gi from 'node-gtk';
-    export { gi };
-    export default gi;
+  
+    const gi = require('node-gtk');
+    module.exports = gi;
+    exports.default = gi;

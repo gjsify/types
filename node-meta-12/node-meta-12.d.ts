@@ -3,7 +3,7 @@
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Meta-12
@@ -3608,14 +3608,25 @@ interface CursorTracker {
 
     // Owm methods of Meta-12.Meta.CursorTracker
 
+    /**
+     * Get the hotspot of the current cursor sprite.
+     */
     getHot(): [ /* x */ number, /* y */ number ]
     /**
      * Get the current pointer position and state.
      */
     getPointer(): [ /* coords */ Graphene.Point, /* mods */ Clutter.ModifierType ]
     getPointerVisible(): boolean
+    /**
+     * Get the scale factor of the cursor sprite
+     * @returns The scale factor of the cursor sprite
+     */
     getScale(): number
-    getSprite(): Cogl.Texture
+    /**
+     * Get the #CoglTexture of the cursor sprite
+     * @returns the #CoglTexture of the cursor sprite
+     */
+    getSprite(): Cogl.Texture | null
     setPointerVisible(visible: boolean): void
 
     // Own signals of Meta-12.Meta.CursorTracker
@@ -3668,6 +3679,7 @@ class CursorTracker extends GObject.Object {
     /**
      * Retrieves the cursor tracker object for `display`.
      * @param display the #MetaDisplay
+     * @returns the cursor tracker object for @display.
      */
     static getForDisplay(display: Display): CursorTracker
 }
@@ -6606,6 +6618,7 @@ interface Window extends Gio.Initable {
      */
     hasAttachedDialogs(): boolean
     hasFocus(): boolean
+    hasPointer(): boolean
     isAbove(): boolean
     isAlwaysOnAllWorkspaces(): boolean
     /**

@@ -1,7 +1,7 @@
 
 # Atk-1.0
 
-GJS TypeScript type definitions for Atk-1.0, generated from library version 2.45.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+GJS TypeScript type definitions for Atk-1.0, generated from library version 2.45.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications. Using the ATK interfaces, accessibility tools have full access to view and control running applications.
 
@@ -31,3 +31,7 @@ import Atk from 'gi://Atk?version=1.0';
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

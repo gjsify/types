@@ -3,7 +3,7 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * St-12
@@ -8329,7 +8329,6 @@ export interface IconColors {
 
     // Own fields of St-12.St.IconColors
 
-    ref_count: number
     /**
      * foreground color
      * @field 
@@ -8613,7 +8612,6 @@ export interface Shadow {
      */
     spread: number
     inset: boolean
-    ref_count: number
 
     // Owm methods of St-12.St.Shadow
 

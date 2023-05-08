@@ -3,7 +3,7 @@
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Clutter-12
@@ -10403,7 +10403,7 @@ interface Backend {
      * Sets the input method to be used by Clutter
      * @param method the input method
      */
-    setInputMethod(method: InputMethod): void
+    setInputMethod(method: InputMethod | null): void
 
     // Own signals of Clutter-12.Clutter.Backend
 
@@ -18727,7 +18727,7 @@ interface Seat {
      * @returns A list   of #ClutterInputDevice. The elements of the returned list are owned by   Clutter and may not be freed, the returned list should be freed using   g_list_free() when done.
      */
     listDevices(): InputDevice[]
-    // Has conflict: queryState(device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType): boolean
+    // Has conflict: queryState(device: InputDevice, sequence: EventSequence | null): [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     /**
      * Sets the dwell click type
      * @param clickType type of click as #ClutterPointerA11yDwellClickType
@@ -18779,7 +18779,7 @@ interface Seat {
     getPointer(): InputDevice
     grab(time: number): GrabState
     handleEventPost(event: Event): boolean
-    queryState(device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType): boolean
+    queryState(device: InputDevice, sequence: EventSequence | null): [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     ungrab(time: number): void
     warpPointer(x: number, y: number): void
 
@@ -20412,6 +20412,16 @@ class StageManager extends GObject.Object {
 
 module StageView {
 
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `destroy`
+     */
+    interface DestroySignalCallback {
+        (): void
+    }
+
+
     // Constructor properties interface
 
     interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -20478,6 +20488,14 @@ interface StageView {
     newFrame(): Frame
     setupOffscreenBlitPipeline(pipeline: Cogl.Pipeline): void
     transformRectToOnscreen(srcRect: cairo.RectangleInt, dstWidth: number, dstHeight: number, dstRect: cairo.RectangleInt): void
+
+    // Own signals of Clutter-12.Clutter.StageView
+
+    connect(sigName: "destroy", callback: StageView.DestroySignalCallback): number
+    on(sigName: "destroy", callback: StageView.DestroySignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "destroy", callback: StageView.DestroySignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "destroy", callback: StageView.DestroySignalCallback): NodeJS.EventEmitter
+    emit(sigName: "destroy", ...args: any[]): void
 
     // Class property signals of Clutter-12.Clutter.StageView
 
@@ -25421,6 +25439,7 @@ interface Frame {
     // Owm methods of Clutter-12.Clutter.Frame
 
     getCount(): number
+    getMinRenderTimeAllowed(minRenderTimeAllowedUs: number): boolean
     getTargetPresentationTime(targetPresentationTimeUs: number): boolean
     hasResult(): boolean
     ref(): Frame
@@ -26932,7 +26951,7 @@ interface SeatClass {
     getKeymap: (seat: Seat) => Keymap
     handleEventPost: (seat: Seat, event: Event) => boolean
     warpPointer: (seat: Seat, x: number, y: number) => void
-    queryState: (seat: Seat, device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType) => boolean
+    queryState: (seat: Seat, device: InputDevice, sequence: EventSequence | null) => [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     grab: (seat: Seat, time: number) => GrabState
     ungrab: (seat: Seat, time: number) => void
     createVirtualDevice: (seat: Seat, deviceType: InputDeviceType) => VirtualInputDevice

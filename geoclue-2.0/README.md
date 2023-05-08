@@ -1,7 +1,7 @@
 
 # Geoclue-2.0
 
-GJS TypeScript type definitions for Geoclue-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+GJS TypeScript type definitions for Geoclue-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 GeoClue is a D-Bus geoinformation service. The goal of the Geoclue project is to make creating location-aware applications as simple as possible.
 
@@ -31,3 +31,7 @@ import Geoclue from 'gi://Geoclue?version=2.0';
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

@@ -1,7 +1,7 @@
 
 # GExiv2-0.10
 
-Node.js TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gjs) v3.0.0-beta.13.
+Node.js TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
 
 gexiv2 is a GObject wrapper around the Exiv2 photo metadata library. It allows for GNOME applications to easily inspect and update EXIF, IPTC, and XMP metadata in photo and video files of various formats
 
@@ -32,3 +32,7 @@ const GExiv2 = gi.require('GExiv2', '0.10')
 ```
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).

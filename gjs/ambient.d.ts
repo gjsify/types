@@ -2800,6 +2800,24 @@
             import SocialWebClient025 from '@girs/socialwebclient-0.25';
         export default SocialWebClient025;
       }
+      declare module 'gi://AppIndicator3?version=0.1' {
+            import AppIndicator301 from '@girs/appindicator3-0.1';
+        export default AppIndicator301;
+      }
+      // Add support for ESM imports without version prefix only if there is no version conflict
+      declare module 'gi://AppIndicator3' {
+            import AppIndicator301 from '@girs/appindicator3-0.1';
+        export default AppIndicator301;
+      }
+      declare module 'gi://CloudProviders?version=0.3' {
+            import CloudProviders03 from '@girs/cloudproviders-0.3';
+        export default CloudProviders03;
+      }
+      // Add support for ESM imports without version prefix only if there is no version conflict
+      declare module 'gi://CloudProviders' {
+            import CloudProviders03 from '@girs/cloudproviders-0.3';
+        export default CloudProviders03;
+      }
       declare module 'gi://Gvc?version=1.0' {
             import Gvc10 from '@girs/gvc-1.0';
         export default Gvc10;

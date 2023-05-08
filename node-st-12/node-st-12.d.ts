@@ -3,7 +3,7 @@
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * St-12
@@ -10580,7 +10580,6 @@ interface IconColors {
 
     // Own fields of St-12.St.IconColors
 
-    refCount: number
     /**
      * foreground color
      * @field 
@@ -10864,7 +10863,6 @@ interface Shadow {
      */
     spread: number
     inset: boolean
-    refCount: number
 
     // Owm methods of St-12.St.Shadow
 

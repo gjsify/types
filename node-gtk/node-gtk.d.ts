@@ -4,7 +4,7 @@
  * Type Definitions for node-gtk (https://github.com/romgrk/node-gtk)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
 import type Accounts10 from "@girs/accounts-1.0";
@@ -395,6 +395,8 @@ import type GstPbutils010 from "@girs/gstpbutils-0.10";
 import type GstTag010 from "@girs/gsttag-0.10";
 import type GstVideo010 from "@girs/gstvideo-0.10";
 import type SocialWebClient025 from "@girs/socialwebclient-0.25";
+import type AppIndicator301 from "@girs/appindicator3-0.1";
+import type CloudProviders03 from "@girs/cloudproviders-0.3";
 import type Gvc10 from "@girs/gvc-1.0";
 import type Shell12 from "@girs/shell-12";
 import type St12 from "@girs/st-12";
@@ -796,6 +798,8 @@ export function require(ns: 'GstPbutils', ver: '0.10'): typeof GstPbutils010;
 export function require(ns: 'GstTag', ver: '0.10'): typeof GstTag010;
 export function require(ns: 'GstVideo', ver: '0.10'): typeof GstVideo010;
 export function require(ns: 'SocialWebClient', ver: '0.25'): typeof SocialWebClient025;
+export function require(ns: 'AppIndicator3', ver: '0.1'): typeof AppIndicator301;
+export function require(ns: 'CloudProviders', ver: '0.3'): typeof CloudProviders03;
 export function require(ns: 'Gvc', ver: '1.0'): typeof Gvc10;
 export function require(ns: 'Shell', ver: '12'): typeof Shell12;
 export function require(ns: 'St', ver: '12'): typeof St12;

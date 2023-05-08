@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-camel-1.2",
-    "version": "1.2.0-3.0.0-beta.13",
+    "version": "1.2.0-3.0.0-beta.14",
     "description": "Node.js TypeScript type definitions for Camel-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "node-camel-1.2.js",

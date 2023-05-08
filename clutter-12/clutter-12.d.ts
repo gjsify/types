@@ -3,7 +3,7 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 /**
  * Clutter-12
@@ -10461,7 +10461,7 @@ interface Backend {
      * Sets the input method to be used by Clutter
      * @param method the input method
      */
-    set_input_method(method: InputMethod): void
+    set_input_method(method: InputMethod | null): void
 
     // Own signals of Clutter-12.Clutter.Backend
 
@@ -17941,7 +17941,7 @@ interface Seat {
      * @returns A list   of #ClutterInputDevice. The elements of the returned list are owned by   Clutter and may not be freed, the returned list should be freed using   g_list_free() when done.
      */
     list_devices(): InputDevice[]
-    query_state(device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType): boolean
+    query_state(device: InputDevice, sequence: EventSequence | null): [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     /**
      * Sets the dwell click type
      * @param click_type type of click as #ClutterPointerA11yDwellClickType
@@ -17993,7 +17993,7 @@ interface Seat {
     vfunc_get_pointer(): InputDevice
     vfunc_grab(time: number): GrabState
     vfunc_handle_event_post(event: Event): boolean
-    vfunc_query_state(device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType): boolean
+    vfunc_query_state(device: InputDevice, sequence: EventSequence | null): [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     vfunc_ungrab(time: number): void
     vfunc_warp_pointer(x: number, y: number): void
 
@@ -19349,6 +19349,16 @@ class StageManager extends GObject.Object {
 
 module StageView {
 
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `destroy`
+     */
+    interface DestroySignalCallback {
+        ($obj: StageView): void
+    }
+
+
     // Constructor properties interface
 
     interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -19414,6 +19424,12 @@ interface StageView {
     vfunc_new_frame(): Frame
     vfunc_setup_offscreen_blit_pipeline(pipeline: Cogl.Pipeline): void
     vfunc_transform_rect_to_onscreen(src_rect: cairo.RectangleInt, dst_width: number, dst_height: number, dst_rect: cairo.RectangleInt): void
+
+    // Own signals of Clutter-12.Clutter.StageView
+
+    connect(sigName: "destroy", callback: StageView.DestroySignalCallback): number
+    connect_after(sigName: "destroy", callback: StageView.DestroySignalCallback): number
+    emit(sigName: "destroy", ...args: any[]): void
 
     // Class property signals of Clutter-12.Clutter.StageView
 
@@ -23958,6 +23974,7 @@ interface Frame {
     // Owm methods of Clutter-12.Clutter.Frame
 
     get_count(): number
+    get_min_render_time_allowed(min_render_time_allowed_us: number): boolean
     get_target_presentation_time(target_presentation_time_us: number): boolean
     has_result(): boolean
     ref(): Frame
@@ -25469,7 +25486,7 @@ interface SeatClass {
     get_keymap: (seat: Seat) => Keymap
     handle_event_post: (seat: Seat, event: Event) => boolean
     warp_pointer: (seat: Seat, x: number, y: number) => void
-    query_state: (seat: Seat, device: InputDevice, sequence: EventSequence, coords: Graphene.Point, modifiers: ModifierType) => boolean
+    query_state: (seat: Seat, device: InputDevice, sequence: EventSequence | null) => [ /* returnType */ boolean, /* coords */ Graphene.Point, /* modifiers */ ModifierType ]
     grab: (seat: Seat, time: number) => GrabState
     ungrab: (seat: Seat, time: number) => void
     create_virtual_device: (seat: Seat, device_type: InputDeviceType) => VirtualInputDevice

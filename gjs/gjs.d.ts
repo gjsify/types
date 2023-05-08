@@ -2,7 +2,7 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
- * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gjs
+ * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
 
 import type GObject from '@girs/gobject-2.0';
@@ -399,6 +399,8 @@ import cairo from './cairo.js';
         import type GstTag010 from "@girs/gsttag-0.10";
         import type GstVideo010 from "@girs/gstvideo-0.10";
         import type SocialWebClient025 from "@girs/socialwebclient-0.25";
+        import type AppIndicator301 from "@girs/appindicator3-0.1";
+        import type CloudProviders03 from "@girs/cloudproviders-0.3";
         import type Gvc10 from "@girs/gvc-1.0";
         import type Shell12 from "@girs/shell-12";
         import type St12 from "@girs/st-12";
@@ -1602,6 +1604,8 @@ declare global {
               ArrowCUDA:                typeof ArrowCUDA10
               GstInterfaces:                typeof GstInterfaces010
               SocialWebClient:                typeof SocialWebClient025
+              AppIndicator3:                typeof AppIndicator301
+              CloudProviders:                typeof CloudProviders03
               Gvc:                typeof Gvc10
               Shell:                typeof Shell12
               St:                typeof St12
@@ -2084,6 +2088,8 @@ declare global {
                   ArrowCUDA:                    '1.0'
                   GstInterfaces:                    '0.10'
                   SocialWebClient:                    '0.25'
+                  AppIndicator3:                    '0.1'
+                  CloudProviders:                    '0.3'
                   Gvc:                    '1.0'
                   Shell:                    '12'
                   St:                    '12'
@@ -2092,7 +2098,6 @@ declare global {
                   MetaTest:                    '12'
             }
         }
-
 
         lang: typeof lang
         system: typeof system
