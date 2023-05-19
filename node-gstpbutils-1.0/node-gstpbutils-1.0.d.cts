@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gstpbutils-1.0-import.d.ts';
+    
 /**
  * GstPbutils-1.0
  */
@@ -2468,3 +2471,4 @@ export class InstallPluginsContext {
     export type DiscovererSubtitleInfoClass = GObject.ObjectClass
     export type DiscovererVideoInfoClass = GObject.ObjectClass
     export type EncodingTargetClass = GObject.ObjectClass
+// END

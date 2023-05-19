@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-telepathyglib-0.12-import.d.ts';
+    
 /**
  * TelepathyGLib-0.12
  */
@@ -22075,3 +22078,4 @@ class WeakRef {
 }
 
 export default TelepathyGLib;
+// END

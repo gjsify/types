@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gstriff-1.0-import.d.ts';
+    
 /**
  * GstRiff-1.0
  */
@@ -228,3 +231,4 @@ function riffReadChunk(element: Gst.Element, pad: Gst.Pad, offset: number, tag: 
 }
 
 export default GstRiff;
+// END

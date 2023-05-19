@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gstpbutils-0.10-import.d.ts';
+    
 /**
  * GstPbutils-0.10
  */
@@ -101,3 +104,4 @@ class GstInstallPluginsContext {
 }
 
 export default GstPbutils;
+// END

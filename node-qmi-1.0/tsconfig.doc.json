@@ -17,3 +17,5 @@
   },
   "include": ["./node-qmi-1.0.d.ts"]
 }
+
+

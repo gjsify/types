@@ -1,62 +1,61 @@
+
 {
     "name": "@girs/rygelcore-2.6",
-    "version": "2.6.0-3.0.0-beta.14",
+    "version": "2.6.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for RygelCore-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "rygelcore-2.6.js",
     "main": "rygelcore-2.6.js",
     "typedoc": {
-        "entryPoint": "./rygelcore-2.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelCore-2.6",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./rygelcore-2.6.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "RygelCore-2.6",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./rygelcore-2.6.d.ts",
-                "default": "./rygelcore-2.6.js"
-            },
-            "require": {
-                "types": "./rygelcore-2.6.d.cts",
-                "default": "./rygelcore-2.6.cjs"
-            }
+      "./ambient": "./rygelcore-2.6-ambient.d.ts",
+      "./import": "./rygelcore-2.6-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./rygelcore-2.6.d.ts",
+          "default": "./rygelcore-2.6.js"
+        },
+        "require": {
+          "types": "./rygelcore-2.6.d.cts",
+          "default": "./rygelcore-2.6.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit rygelcore-2.6.d.ts",
-        "test:cjs": "tsc --noEmit rygelcore-2.6.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit rygelcore-2.6.d.ts",
+      "test:cjs": "tsc --noEmit rygelcore-2.6.d.cts"
     },
     "dependencies": {
-        "@girs/gee-0.8": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gssdp-1.2": "workspace:^",
-        "@girs/gupnp-1.2": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/soup-2.4": "workspace:^"
+      
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gee-0.8": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/gupnp-1.2": "workspace:^",            
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/soup-2.4": "workspace:^",            
+      "@girs/gssdp-1.2": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "RygelCore-2.6"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "RygelCore-2.6"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/rygelcore-2.6#readme"
 }
+
+

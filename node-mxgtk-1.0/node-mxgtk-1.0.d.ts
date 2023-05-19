@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-mxgtk-1.0-import.d.ts';
+    
 /**
  * MxGtk-1.0
  */
@@ -608,3 +611,4 @@ abstract class LightSwitchClass {
 }
 
 export default MxGtk;
+// END

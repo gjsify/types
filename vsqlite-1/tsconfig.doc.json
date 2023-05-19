@@ -17,3 +17,5 @@
   },
   "include": ["./vsqlite-1.d.ts"]
 }
+
+

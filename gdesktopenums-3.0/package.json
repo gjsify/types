@@ -1,55 +1,54 @@
+
 {
     "name": "@girs/gdesktopenums-3.0",
-    "version": "3.0.0-3.0.0-beta.14",
+    "version": "3.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GDesktopEnums-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gdesktopenums-3.0.js",
     "main": "gdesktopenums-3.0.js",
     "typedoc": {
-        "entryPoint": "./gdesktopenums-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GDesktopEnums-3.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gdesktopenums-3.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GDesktopEnums-3.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gdesktopenums-3.0.d.ts",
-                "default": "./gdesktopenums-3.0.js"
-            },
-            "require": {
-                "types": "./gdesktopenums-3.0.d.cts",
-                "default": "./gdesktopenums-3.0.cjs"
-            }
+      "./ambient": "./gdesktopenums-3.0-ambient.d.ts",
+      "./import": "./gdesktopenums-3.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gdesktopenums-3.0.d.ts",
+          "default": "./gdesktopenums-3.0.js"
+        },
+        "require": {
+          "types": "./gdesktopenums-3.0.d.cts",
+          "default": "./gdesktopenums-3.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gdesktopenums-3.0.d.ts",
-        "test:cjs": "tsc --noEmit gdesktopenums-3.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gdesktopenums-3.0.d.ts",
+      "test:cjs": "tsc --noEmit gdesktopenums-3.0.d.cts"
     },
     "dependencies": {
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GDesktopEnums-3.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GDesktopEnums-3.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gdesktopenums-3.0#readme"
 }
+
+

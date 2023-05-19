@@ -1,56 +1,55 @@
+
 {
     "name": "@girs/gupnpigd-1.0",
-    "version": "1.0.0-3.0.0-beta.14",
+    "version": "1.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GUPnPIgd-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gupnpigd-1.0.js",
     "main": "gupnpigd-1.0.js",
     "typedoc": {
-        "entryPoint": "./gupnpigd-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUPnPIgd-1.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gupnpigd-1.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GUPnPIgd-1.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gupnpigd-1.0.d.ts",
-                "default": "./gupnpigd-1.0.js"
-            },
-            "require": {
-                "types": "./gupnpigd-1.0.d.cts",
-                "default": "./gupnpigd-1.0.cjs"
-            }
+      "./ambient": "./gupnpigd-1.0-ambient.d.ts",
+      "./import": "./gupnpigd-1.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gupnpigd-1.0.d.ts",
+          "default": "./gupnpigd-1.0.js"
+        },
+        "require": {
+          "types": "./gupnpigd-1.0.d.cts",
+          "default": "./gupnpigd-1.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gupnpigd-1.0.d.ts",
-        "test:cjs": "tsc --noEmit gupnpigd-1.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gupnpigd-1.0.d.ts",
+      "test:cjs": "tsc --noEmit gupnpigd-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GUPnPIgd-1.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GUPnPIgd-1.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gupnpigd-1.0#readme"
 }
+
+

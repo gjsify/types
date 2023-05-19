@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-folks-0.6-import.d.ts';
+    
 /**
  * Folks-0.6
  */
@@ -5390,3 +5393,5 @@ export abstract class WebServiceDetailsIface {
 
     static name: string
 }
+
+// END

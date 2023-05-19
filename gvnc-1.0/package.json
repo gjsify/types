@@ -1,57 +1,56 @@
+
 {
     "name": "@girs/gvnc-1.0",
-    "version": "1.3.1-3.0.0-beta.14",
+    "version": "1.3.1-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GVnc-1.0, generated from library version 1.3.1",
     "type": "module",
     "module": "gvnc-1.0.js",
     "main": "gvnc-1.0.js",
     "typedoc": {
-        "entryPoint": "./gvnc-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GVnc-1.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gvnc-1.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GVnc-1.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gvnc-1.0.d.ts",
-                "default": "./gvnc-1.0.js"
-            },
-            "require": {
-                "types": "./gvnc-1.0.d.cts",
-                "default": "./gvnc-1.0.cjs"
-            }
+      "./ambient": "./gvnc-1.0-ambient.d.ts",
+      "./import": "./gvnc-1.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gvnc-1.0.d.ts",
+          "default": "./gvnc-1.0.js"
+        },
+        "require": {
+          "types": "./gvnc-1.0.d.cts",
+          "default": "./gvnc-1.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gvnc-1.0.d.ts",
-        "test:cjs": "tsc --noEmit gvnc-1.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gvnc-1.0.d.ts",
+      "test:cjs": "tsc --noEmit gvnc-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GVnc-1.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GVnc-1.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gvnc-1.0#readme"
 }
+
+

@@ -1,68 +1,67 @@
+
 {
     "name": "@girs/adw-1",
-    "version": "1.3.0-3.0.0-beta.14",
+    "version": "1.3.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.3.0",
     "type": "module",
     "module": "adw-1.js",
     "main": "adw-1.js",
     "typedoc": {
-        "entryPoint": "./adw-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Adw-1",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./adw-1.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Adw-1",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./adw-1.d.ts",
-                "default": "./adw-1.js"
-            },
-            "require": {
-                "types": "./adw-1.d.cts",
-                "default": "./adw-1.cjs"
-            }
+      "./ambient": "./adw-1-ambient.d.ts",
+      "./import": "./adw-1-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./adw-1.d.ts",
+          "default": "./adw-1.js"
+        },
+        "require": {
+          "types": "./adw-1.d.cts",
+          "default": "./adw-1.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit adw-1.d.ts",
-        "test:cjs": "tsc --noEmit adw-1.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit adw-1.d.ts",
+      "test:cjs": "tsc --noEmit adw-1.d.cts"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gdk-4.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/gsk-4.0": "workspace:^",
-        "@girs/gtk-4.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/pangocairo-1.0": "workspace:^"
+      
+      "@girs/gtk-4.0": "workspace:^",            
+      "@girs/gsk-4.0": "workspace:^",            
+      "@girs/graphene-1.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gdk-4.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/pangocairo-1.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gdkpixbuf-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Adw-1"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Adw-1"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/adw-1#readme"
 }
+
+

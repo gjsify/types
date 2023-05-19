@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-meta-12-import.d.ts';
+    
 /**
  * Meta-12
  */
@@ -9198,3 +9201,4 @@ abstract class X11DisplayClass {
 }
 
 export default Meta;
+// END

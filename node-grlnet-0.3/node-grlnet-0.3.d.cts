@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-grlnet-0.3-import.d.ts';
+    
 /**
  * GrlNet-0.3
  */
@@ -250,3 +253,5 @@ export class WcPrivate {
 
     static name: string
 }
+
+// END

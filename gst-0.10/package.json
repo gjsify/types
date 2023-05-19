@@ -1,58 +1,57 @@
+
 {
     "name": "@girs/gst-0.10",
-    "version": "0.10.29-3.0.0-beta.14",
+    "version": "0.10.29-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29",
     "type": "module",
     "module": "gst-0.10.js",
     "main": "gst-0.10.js",
     "typedoc": {
-        "entryPoint": "./gst-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gst-0.10",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gst-0.10.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Gst-0.10",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gst-0.10.d.ts",
-                "default": "./gst-0.10.js"
-            },
-            "require": {
-                "types": "./gst-0.10.d.cts",
-                "default": "./gst-0.10.cjs"
-            }
+      "./ambient": "./gst-0.10-ambient.d.ts",
+      "./import": "./gst-0.10-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gst-0.10.d.ts",
+          "default": "./gst-0.10.js"
+        },
+        "require": {
+          "types": "./gst-0.10.d.cts",
+          "default": "./gst-0.10.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gst-0.10.d.ts",
-        "test:cjs": "tsc --noEmit gst-0.10.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gst-0.10.d.ts",
+      "test:cjs": "tsc --noEmit gst-0.10.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^"
+      
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gst-0.10"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gst-0.10"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gst-0.10#readme"
 }
+
+

@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gsk-4.0-import.d.ts';
+    
 /**
  * Gsk-4.0
  */
@@ -3572,3 +3575,5 @@ export class Transform {
      */
     static parse(string: string | null): [ /* returnType */ boolean, /* outTransform */ Transform ]
 }
+
+// END

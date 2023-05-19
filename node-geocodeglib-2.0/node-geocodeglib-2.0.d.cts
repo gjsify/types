@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-geocodeglib-2.0-import.d.ts';
+    
 /**
  * GeocodeGlib-2.0
  */
@@ -2100,3 +2103,5 @@ export class ReversePrivate {
 
     static name: string
 }
+
+// END

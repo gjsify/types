@@ -1,69 +1,68 @@
+
 {
     "name": "@girs/gcrui-3",
-    "version": "3.0.0-3.0.0-beta.14",
+    "version": "3.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GcrUi-3, generated from library version 3.0.0",
     "type": "module",
     "module": "gcrui-3.js",
     "main": "gcrui-3.js",
     "typedoc": {
-        "entryPoint": "./gcrui-3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GcrUi-3",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gcrui-3.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GcrUi-3",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gcrui-3.d.ts",
-                "default": "./gcrui-3.js"
-            },
-            "require": {
-                "types": "./gcrui-3.d.cts",
-                "default": "./gcrui-3.cjs"
-            }
+      "./ambient": "./gcrui-3-ambient.d.ts",
+      "./import": "./gcrui-3-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gcrui-3.d.ts",
+          "default": "./gcrui-3.js"
+        },
+        "require": {
+          "types": "./gcrui-3.d.cts",
+          "default": "./gcrui-3.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gcrui-3.d.ts",
-        "test:cjs": "tsc --noEmit gcrui-3.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gcrui-3.d.ts",
+      "test:cjs": "tsc --noEmit gcrui-3.d.cts"
     },
     "dependencies": {
-        "@girs/atk-1.0": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gck-1": "workspace:^",
-        "@girs/gcr-3": "workspace:^",
-        "@girs/gdk-3.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gtk-3.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/xlib-2.0": "workspace:^"
+      
+      "@girs/gtk-3.0": "workspace:^",            
+      "@girs/xlib-2.0": "workspace:^",            
+      "@girs/gdk-3.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gdkpixbuf-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^",            
+      "@girs/atk-1.0": "workspace:^",            
+      "@girs/gcr-3": "workspace:^",            
+      "@girs/gck-1": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GcrUi-3"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GcrUi-3"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gcrui-3#readme"
 }
+
+

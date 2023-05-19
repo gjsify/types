@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-fwupd-2.0-import.d.ts';
+    
 /**
  * Fwupd-2.0
  */
@@ -3994,3 +3997,4 @@ export abstract class SecurityAttrClass {
     export type DeviceFlags = number
     export type PluginFlags = number
     export type ReleaseFlags = number
+// END

@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './cheese-3.0-ambient.d.ts';
+import './cheese-3.0-import.d.ts';
 /**
  * Cheese-3.0
  */

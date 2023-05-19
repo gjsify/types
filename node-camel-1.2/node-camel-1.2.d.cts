@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-camel-1.2-import.d.ts';
+    
 /**
  * Camel-1.2
  */
@@ -23425,3 +23428,4 @@ export class _sign {
     export type _block_t = number
     export type _hash_t = number
     export type _key_t = number
+// END

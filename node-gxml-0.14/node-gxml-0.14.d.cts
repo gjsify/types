@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gxml-0.14-import.d.ts';
+    
 /**
  * GXml-0.14
  */
@@ -36515,3 +36518,5 @@ export abstract class IXsdListTypeRestrictionWhiteSpacesIface {
 
     static name: string
 }
+
+// END

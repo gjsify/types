@@ -1,64 +1,62 @@
+
 {
     "name": "@girs/node-gstvideo-0.10",
-    "version": "0.10.0-3.0.0-beta.14",
+    "version": "0.10.0-3.0.0-beta.15",
     "description": "Node.js TypeScript type definitions for GstVideo-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "node-gstvideo-0.10.js",
     "main": "node-gstvideo-0.10.js",
     "typedoc": {
-        "entryPoint": "./node-gstvideo-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstVideo-0.10",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./node-gstvideo-0.10.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GstVideo-0.10",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./node-gstvideo-0.10.d.ts",
-                "default": "./node-gstvideo-0.10.js"
-            },
-            "require": {
-                "types": "./node-gstvideo-0.10.d.cts",
-                "default": "./node-gstvideo-0.10.cjs"
-            }
+      "./ambient": "./node-gstvideo-0.10-ambient.d.ts",
+      "./import": "./node-gstvideo-0.10-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./node-gstvideo-0.10.d.ts",
+          "default": "./node-gstvideo-0.10.js"
+        },
+        "require": {
+          "types": "./node-gstvideo-0.10.d.cts",
+          "default": "./node-gstvideo-0.10.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-gstvideo-0.10.d.ts",
-        "test:cjs": "tsc --noEmit node-gstvideo-0.10.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit node-gstvideo-0.10.d.ts",
+      "test:cjs": "tsc --noEmit node-gstvideo-0.10.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gst-0.10": "workspace:^",
-        "@girs/gstbase-0.10": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^"
+      
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/gstbase-0.10": "workspace:^",            
+      "@girs/gst-0.10": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^"      
     },
     "peerDependencies": {
-        "node-gtk": "*"
+      "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "node",
-        "node-gtk",
-        "GstVideo-0.10"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "GstVideo-0.10"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-gstvideo-0.10#readme"
 }
+
+

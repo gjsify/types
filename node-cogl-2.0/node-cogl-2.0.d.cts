@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-cogl-2.0-import.d.ts';
+    
 /**
  * Cogl-2.0
  */
@@ -11488,3 +11491,4 @@ export class _TextureVertexSizeCheck {
     export type MetaTexture = void
     export type PrimitiveTexture = void
     export type UserDataDestroyCallback = GLib.DestroyNotify
+// END

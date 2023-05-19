@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-secretunstable-0-import.d.ts';
+    
 /**
  * SecretUnstable-0
  */
@@ -2718,3 +2721,5 @@ export class Value {
      */
     static newFull(secret: string | null, length: number, contentType: string | null, destroy: GLib.DestroyNotify): Value
 }
+
+// END

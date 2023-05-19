@@ -17,3 +17,5 @@
   },
   "include": ["./node-gst-0.10.d.ts"]
 }
+
+

@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gdkx11-2.0-import.d.ts';
+    
 /**
  * GdkX11-2.0
  */
@@ -251,3 +254,4 @@ export function xidTableLookup(xid: xlib.XID): any | null
  * @returns the associated Gdk object, which may be a #GdkPixmap,     a #GdkWindow or a #GdkFont or %NULL if no object is associated     with the X id.
  */
 export function xidTableLookupForDisplay(display: Gdk.Display, xid: xlib.XID): any | null
+// END

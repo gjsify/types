@@ -1,13 +1,13 @@
 
 # Babl-0.1
 
-GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.99 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
+GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.99 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
 
 babl is pixel encoding and color space conversion engine in C. It allows converting between different methods of storing pixels known as pixel formats that have with different bitdepths and other data representations, color models, color spaces and component permutations. A vocabulary to formulate new pixel formats from existing primitives is provided as well as the framework to add new color models, spaces and data types.
 
 ## Install
 
-To use this type definitions, install them with NPM like this:
+To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/babl-0.1
 ```
@@ -24,14 +24,66 @@ Or if you prefer CommonJS, you can also use this:
 const Babl = require('@girs/babl-0.1');
 ```
 
-If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:
+### Ambient Modules
+
+You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
+For this you need to include `@girs/babl-0.1` or `@girs/babl-0.1/ambient` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/babl-0.1'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/babl-0.1"],
+  ...
+}
+```
+
+Now you can import the ambient module with TypeScript support: 
 
 ```ts
 import Babl from 'gi://Babl?version=0.1';
 ```
+
+
+### Global import
+
+You can also import the module with Typescript support using the global `imports.gi` object of GJS.
+For this you need to include `@girs/babl-0.1` or `@girs/babl-0.1/import` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/babl-0.1'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/babl-0.1"],
+  ...
+}
+```
+
+Now you have also type support for this, too:
+
+```ts
+const Babl = imports.gi.Babl;
+```
+
+### Bundle
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
 
 ## Other packages
 
 All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+

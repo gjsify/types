@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gsf-1-import.d.ts';
+    
 /**
  * Gsf-1
  */
@@ -4507,3 +4510,4 @@ abstract class XMLOutClass {
 }
 
 export default Gsf;
+// END

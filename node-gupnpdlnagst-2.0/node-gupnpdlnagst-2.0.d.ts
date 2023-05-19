@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gupnpdlnagst-2.0-import.d.ts';
+    
 /**
  * GUPnPDLNAGst-2.0
  */
@@ -34,3 +37,4 @@ function utilsInformationFromDiscovererInfo(info: GstPbutils.DiscovererInfo): GU
 }
 
 export default GUPnPDLNAGst;
+// END

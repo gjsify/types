@@ -1,11 +1,11 @@
 
 # node-gtk
 
-Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
+Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
 
 ## Install
 
-To use this type definitions, install them with NPM like this:
+To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/node-gtk
 ```
@@ -22,13 +22,42 @@ Or if you prefer CommonJS, you can also use this:
 const NodeGtk = require('@girs/node-gtk');
 ```
 
-If you want to use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can import all ambient module types like this:
+### Ambient Modules
+
+You can import core [ambient module](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) types.
+For this you need to include the `@girs/node-gtk` or `@girs/node-gtk/ambient` in your `tsconfig` or entry point Typescript file:
+    
+`index.ts`:
 ```ts
-import '@girs/node-gtk/node-ambient'
+import '@girs/node-gtk'
 ```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/node-gtk"],
+  ...
+}
+```
+    
+
+Now you can import `node-gtk` with Typescript support:
+```ts
+const gi = require('node-gtk');
+gi.startLoop();
+```
+
+If you want to have more types for GIR modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [Gtk-4.0](https://www.npmjs.com/package/@girs/node-gtk-4.0).
+
+
+### Bundle
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
 
 ## Other packages
 
 All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+

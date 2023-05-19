@@ -1,69 +1,68 @@
+
 {
     "name": "@girs/gdaui-5.0",
-    "version": "5.0.0-3.0.0-beta.14",
+    "version": "5.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Gdaui-5.0, generated from library version 5.0.0",
     "type": "module",
     "module": "gdaui-5.0.js",
     "main": "gdaui-5.0.js",
     "typedoc": {
-        "entryPoint": "./gdaui-5.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gdaui-5.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gdaui-5.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Gdaui-5.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gdaui-5.0.d.ts",
-                "default": "./gdaui-5.0.js"
-            },
-            "require": {
-                "types": "./gdaui-5.0.d.cts",
-                "default": "./gdaui-5.0.cjs"
-            }
+      "./ambient": "./gdaui-5.0-ambient.d.ts",
+      "./import": "./gdaui-5.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gdaui-5.0.d.ts",
+          "default": "./gdaui-5.0.js"
+        },
+        "require": {
+          "types": "./gdaui-5.0.d.cts",
+          "default": "./gdaui-5.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gdaui-5.0.d.ts",
-        "test:cjs": "tsc --noEmit gdaui-5.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gdaui-5.0.d.ts",
+      "test:cjs": "tsc --noEmit gdaui-5.0.d.cts"
     },
     "dependencies": {
-        "@girs/atk-1.0": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gda-5.0": "workspace:^",
-        "@girs/gdk-3.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gtk-3.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/xlib-2.0": "workspace:^"
+      
+      "@girs/gtk-3.0": "workspace:^",            
+      "@girs/xlib-2.0": "workspace:^",            
+      "@girs/gdk-3.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gdkpixbuf-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^",            
+      "@girs/atk-1.0": "workspace:^",            
+      "@girs/gda-5.0": "workspace:^",            
+      "@girs/libxml2-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gdaui-5.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gdaui-5.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gdaui-5.0#readme"
 }
+
+

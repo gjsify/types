@@ -17,3 +17,5 @@
   },
   "include": ["./node-polkit-1.0.d.ts"]
 }
+
+

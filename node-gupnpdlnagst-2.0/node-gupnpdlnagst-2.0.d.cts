@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gupnpdlnagst-2.0-import.d.ts';
+    
 /**
  * GUPnPDLNAGst-2.0
  */
@@ -29,3 +32,4 @@ import type GUPnPDLNA from '@girs/gupnpdlna-2.0';
  * @returns A #GUPnPDLNAInformation. Unref it when done with it.
  */
 export function utilsInformationFromDiscovererInfo(info: GstPbutils.DiscovererInfo): GUPnPDLNA.Information
+// END

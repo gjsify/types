@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-unityextras-7.0-import.d.ts';
+    
 /**
  * UnityExtras-7.0
  */
@@ -118,3 +121,5 @@ export class PreviewPlayerPrivate {
 
     static name: string
 }
+
+// END

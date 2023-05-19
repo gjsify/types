@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-harfbuzz-0.0-import.d.ts';
+    
 /**
  * HarfBuzz-0.0
  */
@@ -8998,3 +9001,4 @@ export class var_num_t {
     export type ot_name_id_t = number
     export type position_t = number
     export type tag_t = number
+// END

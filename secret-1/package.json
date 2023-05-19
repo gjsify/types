@@ -1,57 +1,56 @@
+
 {
     "name": "@girs/secret-1",
-    "version": "0.20.5-3.0.0-beta.14",
+    "version": "0.20.5-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Secret-1, generated from library version 0.20.5",
     "type": "module",
     "module": "secret-1.js",
     "main": "secret-1.js",
     "typedoc": {
-        "entryPoint": "./secret-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Secret-1",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./secret-1.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Secret-1",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./secret-1.d.ts",
-                "default": "./secret-1.js"
-            },
-            "require": {
-                "types": "./secret-1.d.cts",
-                "default": "./secret-1.cjs"
-            }
+      "./ambient": "./secret-1-ambient.d.ts",
+      "./import": "./secret-1-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./secret-1.d.ts",
+          "default": "./secret-1.js"
+        },
+        "require": {
+          "types": "./secret-1.d.cts",
+          "default": "./secret-1.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit secret-1.d.ts",
-        "test:cjs": "tsc --noEmit secret-1.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit secret-1.d.ts",
+      "test:cjs": "tsc --noEmit secret-1.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Secret-1"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Secret-1"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/secret-1#readme"
 }
+
+

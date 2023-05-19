@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-grss-0.7-import.d.ts';
+    
 /**
  * Grss-0.7
  */
@@ -1928,3 +1931,4 @@ class Person {
 }
 
 export default Grss;
+// END

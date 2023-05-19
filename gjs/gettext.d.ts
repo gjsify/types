@@ -39,3 +39,4 @@ declare const Gettext: {
 }
 
 export default Gettext
+

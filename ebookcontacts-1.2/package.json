@@ -1,62 +1,61 @@
+
 {
     "name": "@girs/ebookcontacts-1.2",
-    "version": "1.2.0-3.0.0-beta.14",
+    "version": "1.2.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for EBookContacts-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "ebookcontacts-1.2.js",
     "main": "ebookcontacts-1.2.js",
     "typedoc": {
-        "entryPoint": "./ebookcontacts-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EBookContacts-1.2",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./ebookcontacts-1.2.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "EBookContacts-1.2",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./ebookcontacts-1.2.d.ts",
-                "default": "./ebookcontacts-1.2.js"
-            },
-            "require": {
-                "types": "./ebookcontacts-1.2.d.cts",
-                "default": "./ebookcontacts-1.2.cjs"
-            }
+      "./ambient": "./ebookcontacts-1.2-ambient.d.ts",
+      "./import": "./ebookcontacts-1.2-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./ebookcontacts-1.2.d.ts",
+          "default": "./ebookcontacts-1.2.js"
+        },
+        "require": {
+          "types": "./ebookcontacts-1.2.d.cts",
+          "default": "./ebookcontacts-1.2.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit ebookcontacts-1.2.d.ts",
-        "test:cjs": "tsc --noEmit ebookcontacts-1.2.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit ebookcontacts-1.2.d.ts",
+      "test:cjs": "tsc --noEmit ebookcontacts-1.2.d.cts"
     },
     "dependencies": {
-        "@girs/camel-1.2": "workspace:^",
-        "@girs/edataserver-1.2": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/json-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/soup-3.0": "workspace:^"
+      
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/edataserver-1.2": "workspace:^",            
+      "@girs/soup-3.0": "workspace:^",            
+      "@girs/json-1.0": "workspace:^",            
+      "@girs/camel-1.2": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "EBookContacts-1.2"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "EBookContacts-1.2"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/ebookcontacts-1.2#readme"
 }
+
+

@@ -1,61 +1,59 @@
+
 {
     "name": "@girs/node-soup-2.4",
-    "version": "2.74.3-3.0.0-beta.14",
+    "version": "2.74.3-3.0.0-beta.15",
     "description": "Node.js TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
     "type": "module",
     "module": "node-soup-2.4.js",
     "main": "node-soup-2.4.js",
     "typedoc": {
-        "entryPoint": "./node-soup-2.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Soup-2.4",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./node-soup-2.4.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Soup-2.4",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./node-soup-2.4.d.ts",
-                "default": "./node-soup-2.4.js"
-            },
-            "require": {
-                "types": "./node-soup-2.4.d.cts",
-                "default": "./node-soup-2.4.cjs"
-            }
+      "./ambient": "./node-soup-2.4-ambient.d.ts",
+      "./import": "./node-soup-2.4-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./node-soup-2.4.d.ts",
+          "default": "./node-soup-2.4.js"
+        },
+        "require": {
+          "types": "./node-soup-2.4.d.cts",
+          "default": "./node-soup-2.4.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-soup-2.4.d.ts",
-        "test:cjs": "tsc --noEmit node-soup-2.4.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit node-soup-2.4.d.ts",
+      "test:cjs": "tsc --noEmit node-soup-2.4.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "peerDependencies": {
-        "node-gtk": "*"
+      "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "node",
-        "node-gtk",
-        "Soup-2.4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Soup-2.4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-soup-2.4#readme"
 }
+
+

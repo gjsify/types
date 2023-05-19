@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gstvideo-0.10-import.d.ts';
+    
 /**
  * GstVideo-0.10
  */
@@ -342,3 +345,4 @@ class SinkPrivate {
 }
 
 export default GstVideo;
+// END

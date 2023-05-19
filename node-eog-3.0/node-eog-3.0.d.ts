@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-eog-3.0-import.d.ts';
+    
 /**
  * Eog-3.0
  */
@@ -7429,3 +7432,4 @@ class WindowPrivate {
 }
 
 export default Eog;
+// END

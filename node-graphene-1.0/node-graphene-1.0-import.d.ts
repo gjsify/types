@@ -1,0 +1,11 @@
+
+import Graphene10 from '@girs/graphene-1.0';
+
+declare global {
+    interface NodeGtkGi {
+        require(ns: 'Graphene', ver?: '1.0'): typeof Graphene10;
+    }
+}
+
+export default NodeGtkGi;
+

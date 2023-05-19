@@ -1,63 +1,62 @@
+
 {
     "name": "@girs/gupnpdlnagst-2.0",
-    "version": "2.0.0-3.0.0-beta.14",
+    "version": "2.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GUPnPDLNAGst-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "gupnpdlnagst-2.0.js",
     "main": "gupnpdlnagst-2.0.js",
     "typedoc": {
-        "entryPoint": "./gupnpdlnagst-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUPnPDLNAGst-2.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gupnpdlnagst-2.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GUPnPDLNAGst-2.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gupnpdlnagst-2.0.d.ts",
-                "default": "./gupnpdlnagst-2.0.js"
-            },
-            "require": {
-                "types": "./gupnpdlnagst-2.0.d.cts",
-                "default": "./gupnpdlnagst-2.0.cjs"
-            }
+      "./ambient": "./gupnpdlnagst-2.0-ambient.d.ts",
+      "./import": "./gupnpdlnagst-2.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gupnpdlnagst-2.0.d.ts",
+          "default": "./gupnpdlnagst-2.0.js"
+        },
+        "require": {
+          "types": "./gupnpdlnagst-2.0.d.cts",
+          "default": "./gupnpdlnagst-2.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gupnpdlnagst-2.0.d.ts",
-        "test:cjs": "tsc --noEmit gupnpdlnagst-2.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gupnpdlnagst-2.0.d.ts",
+      "test:cjs": "tsc --noEmit gupnpdlnagst-2.0.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gst-1.0": "workspace:^",
-        "@girs/gstaudio-1.0": "workspace:^",
-        "@girs/gstbase-1.0": "workspace:^",
-        "@girs/gstpbutils-1.0": "workspace:^",
-        "@girs/gstvideo-1.0": "workspace:^",
-        "@girs/gupnpdlna-2.0": "workspace:^"
+      
+      "@girs/gstpbutils-1.0": "workspace:^",            
+      "@girs/gstvideo-1.0": "workspace:^",            
+      "@girs/gstbase-1.0": "workspace:^",            
+      "@girs/gst-1.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^",            
+      "@girs/gstaudio-1.0": "workspace:^",            
+      "@girs/gupnpdlna-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GUPnPDLNAGst-2.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GUPnPDLNAGst-2.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gupnpdlnagst-2.0#readme"
 }
+
+

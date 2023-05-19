@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-pango-1.0-import.d.ts';
+    
 /**
  * Pango-1.0
  */
@@ -8388,3 +8391,4 @@ export class TabArray {
     export type Glyph = number
     export type GlyphUnit = number
     export type LayoutRun = GlyphItem
+// END

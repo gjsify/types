@@ -1,13 +1,13 @@
 
 # Grss-0.7
 
-GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.14.
+GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
 
 LibGRSS is a library for easy management of RSS/Atom/Pie feeds. Includes methods to fetch, parse and handle XML documents, an implementation of PubSubHubBub client, an OPML parser and some more utility.
 
 ## Install
 
-To use this type definitions, install them with NPM like this:
+To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/grss-0.7
 ```
@@ -24,14 +24,66 @@ Or if you prefer CommonJS, you can also use this:
 const Grss = require('@girs/grss-0.7');
 ```
 
-If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:
+### Ambient Modules
+
+You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
+For this you need to include `@girs/grss-0.7` or `@girs/grss-0.7/ambient` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/grss-0.7'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/grss-0.7"],
+  ...
+}
+```
+
+Now you can import the ambient module with TypeScript support: 
 
 ```ts
 import Grss from 'gi://Grss?version=0.7';
 ```
+
+
+### Global import
+
+You can also import the module with Typescript support using the global `imports.gi` object of GJS.
+For this you need to include `@girs/grss-0.7` or `@girs/grss-0.7/import` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/grss-0.7'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/grss-0.7"],
+  ...
+}
+```
+
+Now you have also type support for this, too:
+
+```ts
+const Grss = imports.gi.Grss;
+```
+
+### Bundle
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
 
 ## Other packages
 
 All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+

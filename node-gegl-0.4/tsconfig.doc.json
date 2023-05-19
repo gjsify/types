@@ -17,3 +17,5 @@
   },
   "include": ["./node-gegl-0.4.d.ts"]
 }
+
+

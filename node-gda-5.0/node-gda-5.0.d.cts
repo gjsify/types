@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gda-5.0-import.d.ts';
+    
 /**
  * Gda-5.0
  */
@@ -14458,3 +14461,4 @@ export class XaTransactionPrivate {
     export type Mutex = GLib.RecMutex
     export type SqlBuilderId = number
     export type SqlErrorType = SqlError
+// END

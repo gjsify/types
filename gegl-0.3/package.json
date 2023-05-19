@@ -1,56 +1,55 @@
+
 {
     "name": "@girs/gegl-0.3",
-    "version": "0.3.35-3.0.0-beta.14",
+    "version": "0.3.35-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35",
     "type": "module",
     "module": "gegl-0.3.js",
     "main": "gegl-0.3.js",
     "typedoc": {
-        "entryPoint": "./gegl-0.3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gegl-0.3",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gegl-0.3.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Gegl-0.3",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gegl-0.3.d.ts",
-                "default": "./gegl-0.3.js"
-            },
-            "require": {
-                "types": "./gegl-0.3.d.cts",
-                "default": "./gegl-0.3.cjs"
-            }
+      "./ambient": "./gegl-0.3-ambient.d.ts",
+      "./import": "./gegl-0.3-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gegl-0.3.d.ts",
+          "default": "./gegl-0.3.js"
+        },
+        "require": {
+          "types": "./gegl-0.3.d.cts",
+          "default": "./gegl-0.3.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gegl-0.3.d.ts",
-        "test:cjs": "tsc --noEmit gegl-0.3.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gegl-0.3.d.ts",
+      "test:cjs": "tsc --noEmit gegl-0.3.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gegl-0.3"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gegl-0.3"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gegl-0.3#readme"
 }
+
+

@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gspell-1-import.d.ts';
+    
 /**
  * Gspell-1
  */
@@ -2867,3 +2870,4 @@ abstract class TextViewClass {
 }
 
 export default Gspell;
+// END

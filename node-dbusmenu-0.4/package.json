@@ -1,60 +1,58 @@
+
 {
     "name": "@girs/node-dbusmenu-0.4",
-    "version": "0.4.0-3.0.0-beta.14",
+    "version": "0.4.0-3.0.0-beta.15",
     "description": "Node.js TypeScript type definitions for Dbusmenu-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "node-dbusmenu-0.4.js",
     "main": "node-dbusmenu-0.4.js",
     "typedoc": {
-        "entryPoint": "./node-dbusmenu-0.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Dbusmenu-0.4",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./node-dbusmenu-0.4.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Dbusmenu-0.4",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./node-dbusmenu-0.4.d.ts",
-                "default": "./node-dbusmenu-0.4.js"
-            },
-            "require": {
-                "types": "./node-dbusmenu-0.4.d.cts",
-                "default": "./node-dbusmenu-0.4.cjs"
-            }
+      "./ambient": "./node-dbusmenu-0.4-ambient.d.ts",
+      "./import": "./node-dbusmenu-0.4-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./node-dbusmenu-0.4.d.ts",
+          "default": "./node-dbusmenu-0.4.js"
+        },
+        "require": {
+          "types": "./node-dbusmenu-0.4.d.cts",
+          "default": "./node-dbusmenu-0.4.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-dbusmenu-0.4.d.ts",
-        "test:cjs": "tsc --noEmit node-dbusmenu-0.4.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit node-dbusmenu-0.4.d.ts",
+      "test:cjs": "tsc --noEmit node-dbusmenu-0.4.d.cts"
     },
     "dependencies": {
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "peerDependencies": {
-        "node-gtk": "*"
+      "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "node",
-        "node-gtk",
-        "Dbusmenu-0.4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Dbusmenu-0.4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-dbusmenu-0.4#readme"
 }
+
+

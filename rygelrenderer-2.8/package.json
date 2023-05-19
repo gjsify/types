@@ -1,64 +1,63 @@
+
 {
     "name": "@girs/rygelrenderer-2.8",
-    "version": "2.8.0-3.0.0-beta.14",
+    "version": "2.8.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for RygelRenderer-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "rygelrenderer-2.8.js",
     "main": "rygelrenderer-2.8.js",
     "typedoc": {
-        "entryPoint": "./rygelrenderer-2.8.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelRenderer-2.8",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./rygelrenderer-2.8.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "RygelRenderer-2.8",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./rygelrenderer-2.8.d.ts",
-                "default": "./rygelrenderer-2.8.js"
-            },
-            "require": {
-                "types": "./rygelrenderer-2.8.d.cts",
-                "default": "./rygelrenderer-2.8.cjs"
-            }
+      "./ambient": "./rygelrenderer-2.8-ambient.d.ts",
+      "./import": "./rygelrenderer-2.8-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./rygelrenderer-2.8.d.ts",
+          "default": "./rygelrenderer-2.8.js"
+        },
+        "require": {
+          "types": "./rygelrenderer-2.8.d.cts",
+          "default": "./rygelrenderer-2.8.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit rygelrenderer-2.8.d.ts",
-        "test:cjs": "tsc --noEmit rygelrenderer-2.8.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit rygelrenderer-2.8.d.ts",
+      "test:cjs": "tsc --noEmit rygelrenderer-2.8.d.cts"
     },
     "dependencies": {
-        "@girs/gee-0.8": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gssdp-1.6": "workspace:^",
-        "@girs/gupnp-1.6": "workspace:^",
-        "@girs/gupnpav-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/rygelcore-2.8": "workspace:^",
-        "@girs/soup-3.0": "workspace:^"
+      
+      "@girs/rygelcore-2.8": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gee-0.8": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/gupnp-1.6": "workspace:^",            
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/soup-3.0": "workspace:^",            
+      "@girs/gssdp-1.6": "workspace:^",            
+      "@girs/gupnpav-1.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "RygelRenderer-2.8"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "RygelRenderer-2.8"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/rygelrenderer-2.8#readme"
 }
+
+

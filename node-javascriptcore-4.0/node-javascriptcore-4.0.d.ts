@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-javascriptcore-4.0-import.d.ts';
+    
 /**
  * JavaScriptCore-4.0
  */
@@ -1886,3 +1889,4 @@ class WeakValuePrivate {
 }
 
 export default JavaScriptCore;
+// END

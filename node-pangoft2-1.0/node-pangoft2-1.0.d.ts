@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-pangoft2-1.0-import.d.ts';
+    
 /**
  * PangoFT2-1.0
  */
@@ -257,3 +260,4 @@ class FontMap extends PangoFc.FontMap {
 }
 
 export default PangoFT2;
+// END

@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gladeui-2.0-import.d.ts';
+    
 /**
  * Gladeui-2.0
  */
@@ -17347,3 +17350,5 @@ export class XmlNode {
     static new(context: XmlContext, name: string | null): XmlNode
     static newComment(context: XmlContext, comment: string | null): XmlNode
 }
+
+// END

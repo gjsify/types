@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-anthy-9000-import.d.ts';
+    
 /**
  * Anthy-9000
  */
@@ -262,3 +265,4 @@ class anthy_segment_stat {
 }
 
 export default Anthy;
+// END

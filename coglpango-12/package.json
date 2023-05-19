@@ -1,65 +1,64 @@
+
 {
     "name": "@girs/coglpango-12",
-    "version": "12.0.0-3.0.0-beta.14",
+    "version": "12.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for CoglPango-12, generated from library version 12.0.0",
     "type": "module",
     "module": "coglpango-12.js",
     "main": "coglpango-12.js",
     "typedoc": {
-        "entryPoint": "./coglpango-12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "CoglPango-12",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./coglpango-12.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "CoglPango-12",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./coglpango-12.d.ts",
-                "default": "./coglpango-12.js"
-            },
-            "require": {
-                "types": "./coglpango-12.d.cts",
-                "default": "./coglpango-12.cjs"
-            }
+      "./ambient": "./coglpango-12-ambient.d.ts",
+      "./import": "./coglpango-12-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./coglpango-12.d.ts",
+          "default": "./coglpango-12.js"
+        },
+        "require": {
+          "types": "./coglpango-12.d.cts",
+          "default": "./coglpango-12.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit coglpango-12.d.ts",
-        "test:cjs": "tsc --noEmit coglpango-12.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit coglpango-12.d.ts",
+      "test:cjs": "tsc --noEmit coglpango-12.d.cts"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/cogl-12": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gl-1.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/pangocairo-1.0": "workspace:^"
+      
+      "@girs/pangocairo-1.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/cogl-12": "workspace:^",            
+      "@girs/graphene-1.0": "workspace:^",            
+      "@girs/gl-1.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "CoglPango-12"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "CoglPango-12"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/coglpango-12#readme"
 }
+
+

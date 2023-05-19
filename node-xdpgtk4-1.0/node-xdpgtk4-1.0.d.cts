@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-xdpgtk4-1.0-import.d.ts';
+    
 /**
  * XdpGtk4-1.0
  */
@@ -31,3 +34,4 @@ import type GModule from '@girs/gmodule-2.0';
  * @returns a [struct@Parent]
  */
 export function parentNewGtk(window: Gtk.Window): Xdp.Parent
+// END

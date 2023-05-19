@@ -1,55 +1,54 @@
+
 {
     "name": "@girs/p11kit-1.0",
-    "version": "1.0.0-3.0.0-beta.14",
+    "version": "1.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for P11Kit-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "p11kit-1.0.js",
     "main": "p11kit-1.0.js",
     "typedoc": {
-        "entryPoint": "./p11kit-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "P11Kit-1.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./p11kit-1.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "P11Kit-1.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./p11kit-1.0.d.ts",
-                "default": "./p11kit-1.0.js"
-            },
-            "require": {
-                "types": "./p11kit-1.0.d.cts",
-                "default": "./p11kit-1.0.cjs"
-            }
+      "./ambient": "./p11kit-1.0-ambient.d.ts",
+      "./import": "./p11kit-1.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./p11kit-1.0.d.ts",
+          "default": "./p11kit-1.0.js"
+        },
+        "require": {
+          "types": "./p11kit-1.0.d.cts",
+          "default": "./p11kit-1.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit p11kit-1.0.d.ts",
-        "test:cjs": "tsc --noEmit p11kit-1.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit p11kit-1.0.d.ts",
+      "test:cjs": "tsc --noEmit p11kit-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "P11Kit-1.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "P11Kit-1.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/p11kit-1.0#readme"
 }
+
+

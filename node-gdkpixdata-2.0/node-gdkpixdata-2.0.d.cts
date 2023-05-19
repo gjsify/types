@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gdkpixdata-2.0-import.d.ts';
+    
 /**
  * GdkPixdata-2.0
  */
@@ -233,3 +236,5 @@ export class Pixdata {
 
     static name: string
 }
+
+// END

@@ -1,59 +1,58 @@
+
 {
     "name": "@girs/gxml-0.18",
-    "version": "0.18.0-3.0.0-beta.14",
+    "version": "0.18.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GXml-0.18, generated from library version 0.18.0",
     "type": "module",
     "module": "gxml-0.18.js",
     "main": "gxml-0.18.js",
     "typedoc": {
-        "entryPoint": "./gxml-0.18.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GXml-0.18",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gxml-0.18.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GXml-0.18",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gxml-0.18.d.ts",
-                "default": "./gxml-0.18.js"
-            },
-            "require": {
-                "types": "./gxml-0.18.d.cts",
-                "default": "./gxml-0.18.cjs"
-            }
+      "./ambient": "./gxml-0.18-ambient.d.ts",
+      "./import": "./gxml-0.18-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gxml-0.18.d.ts",
+          "default": "./gxml-0.18.js"
+        },
+        "require": {
+          "types": "./gxml-0.18.d.cts",
+          "default": "./gxml-0.18.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gxml-0.18.d.ts",
-        "test:cjs": "tsc --noEmit gxml-0.18.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gxml-0.18.d.ts",
+      "test:cjs": "tsc --noEmit gxml-0.18.d.cts"
     },
     "dependencies": {
-        "@girs/gee-0.8": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^"
+      
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gee-0.8": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GXml-0.18"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GXml-0.18"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gxml-0.18#readme"
 }
+
+

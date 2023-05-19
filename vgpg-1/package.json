@@ -1,64 +1,63 @@
+
 {
     "name": "@girs/vgpg-1",
-    "version": "1.0.0-3.0.0-beta.14",
+    "version": "1.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgpg-1.js",
     "main": "vgpg-1.js",
     "typedoc": {
-        "entryPoint": "./vgpg-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vgpg-1",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./vgpg-1.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Vgpg-1",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./vgpg-1.d.ts",
-                "default": "./vgpg-1.js"
-            },
-            "require": {
-                "types": "./vgpg-1.d.cts",
-                "default": "./vgpg-1.cjs"
-            }
+      "./ambient": "./vgpg-1-ambient.d.ts",
+      "./import": "./vgpg-1-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./vgpg-1.d.ts",
+          "default": "./vgpg-1.js"
+        },
+        "require": {
+          "types": "./vgpg-1.d.cts",
+          "default": "./vgpg-1.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit vgpg-1.d.ts",
-        "test:cjs": "tsc --noEmit vgpg-1.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit vgpg-1.d.ts",
+      "test:cjs": "tsc --noEmit vgpg-1.d.cts"
     },
     "dependencies": {
-        "@girs/gcalc-2": "workspace:^",
-        "@girs/gee-0.8": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gxml-0.20": "workspace:^",
-        "@girs/json-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/vda-1": "workspace:^",
-        "@girs/vgda-1": "workspace:^"
+      
+      "@girs/vda-1": "workspace:^",            
+      "@girs/gcalc-2": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gee-0.8": "workspace:^",            
+      "@girs/json-1.0": "workspace:^",            
+      "@girs/gxml-0.20": "workspace:^",            
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/vgda-1": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Vgpg-1"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Vgpg-1"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/vgpg-1#readme"
 }
+
+

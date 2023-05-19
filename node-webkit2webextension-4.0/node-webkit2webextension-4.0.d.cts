@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-webkit2webextension-4.0-import.d.ts';
+    
 /**
  * WebKit2WebExtension-4.0
  */
@@ -32235,3 +32238,5 @@ export class WebPagePrivate {
 
     static name: string
 }
+
+// END

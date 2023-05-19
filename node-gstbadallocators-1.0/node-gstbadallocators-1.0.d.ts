@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gstbadallocators-1.0-import.d.ts';
+    
 /**
  * GstBadAllocators-1.0
  */
@@ -126,3 +129,4 @@ abstract class PhysMemoryAllocatorInterface {
 }
 
 export default GstBadAllocators;
+// END

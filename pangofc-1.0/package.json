@@ -1,62 +1,61 @@
+
 {
     "name": "@girs/pangofc-1.0",
-    "version": "1.0.0-3.0.0-beta.14",
+    "version": "1.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for PangoFc-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "pangofc-1.0.js",
     "main": "pangofc-1.0.js",
     "typedoc": {
-        "entryPoint": "./pangofc-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "PangoFc-1.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./pangofc-1.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "PangoFc-1.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./pangofc-1.0.d.ts",
-                "default": "./pangofc-1.0.js"
-            },
-            "require": {
-                "types": "./pangofc-1.0.d.cts",
-                "default": "./pangofc-1.0.cjs"
-            }
+      "./ambient": "./pangofc-1.0-ambient.d.ts",
+      "./import": "./pangofc-1.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./pangofc-1.0.d.ts",
+          "default": "./pangofc-1.0.js"
+        },
+        "require": {
+          "types": "./pangofc-1.0.d.cts",
+          "default": "./pangofc-1.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit pangofc-1.0.d.ts",
-        "test:cjs": "tsc --noEmit pangofc-1.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit pangofc-1.0.d.ts",
+      "test:cjs": "tsc --noEmit pangofc-1.0.d.cts"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/fontconfig-2.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^"
+      
+      "@girs/fontconfig-2.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "PangoFc-1.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "PangoFc-1.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/pangofc-1.0#readme"
 }
+
+

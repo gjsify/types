@@ -1,61 +1,59 @@
+
 {
     "name": "@girs/node-gegl-0.4",
-    "version": "0.4.41-3.0.0-beta.14",
+    "version": "0.4.41-3.0.0-beta.15",
     "description": "Node.js TypeScript type definitions for Gegl-0.4, generated from library version 0.4.41",
     "type": "module",
     "module": "node-gegl-0.4.js",
     "main": "node-gegl-0.4.js",
     "typedoc": {
-        "entryPoint": "./node-gegl-0.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gegl-0.4",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./node-gegl-0.4.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Gegl-0.4",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./node-gegl-0.4.d.ts",
-                "default": "./node-gegl-0.4.js"
-            },
-            "require": {
-                "types": "./node-gegl-0.4.d.cts",
-                "default": "./node-gegl-0.4.cjs"
-            }
+      "./ambient": "./node-gegl-0.4-ambient.d.ts",
+      "./import": "./node-gegl-0.4-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./node-gegl-0.4.d.ts",
+          "default": "./node-gegl-0.4.js"
+        },
+        "require": {
+          "types": "./node-gegl-0.4.d.cts",
+          "default": "./node-gegl-0.4.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-gegl-0.4.d.ts",
-        "test:cjs": "tsc --noEmit node-gegl-0.4.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit node-gegl-0.4.d.ts",
+      "test:cjs": "tsc --noEmit node-gegl-0.4.d.cts"
     },
     "dependencies": {
-        "@girs/babl-0.1": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/babl-0.1": "workspace:^"      
     },
     "peerDependencies": {
-        "node-gtk": "*"
+      "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "node",
-        "node-gtk",
-        "Gegl-0.4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Gegl-0.4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-gegl-0.4#readme"
 }
+
+

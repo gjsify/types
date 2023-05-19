@@ -1,69 +1,68 @@
+
 {
     "name": "@girs/tepl-6",
-    "version": "6.0.0-3.0.0-beta.14",
+    "version": "6.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Tepl-6, generated from library version 6.0.0",
     "type": "module",
     "module": "tepl-6.js",
     "main": "tepl-6.js",
     "typedoc": {
-        "entryPoint": "./tepl-6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Tepl-6",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./tepl-6.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Tepl-6",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./tepl-6.d.ts",
-                "default": "./tepl-6.js"
-            },
-            "require": {
-                "types": "./tepl-6.d.cts",
-                "default": "./tepl-6.cjs"
-            }
+      "./ambient": "./tepl-6-ambient.d.ts",
+      "./import": "./tepl-6-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./tepl-6.d.ts",
+          "default": "./tepl-6.js"
+        },
+        "require": {
+          "types": "./tepl-6.d.cts",
+          "default": "./tepl-6.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit tepl-6.d.ts",
-        "test:cjs": "tsc --noEmit tepl-6.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit tepl-6.d.ts",
+      "test:cjs": "tsc --noEmit tepl-6.d.cts"
     },
     "dependencies": {
-        "@girs/amtk-5": "workspace:^",
-        "@girs/atk-1.0": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gdk-3.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gtk-3.0": "workspace:^",
-        "@girs/gtksource-4": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/xlib-2.0": "workspace:^"
+      
+      "@girs/gtksource-4": "workspace:^",            
+      "@girs/gtk-3.0": "workspace:^",            
+      "@girs/xlib-2.0": "workspace:^",            
+      "@girs/gdk-3.0": "workspace:^",            
+      "@girs/cairo-1.0": "workspace:^",            
+      "@girs/pango-1.0": "workspace:^",            
+      "@girs/harfbuzz-0.0": "workspace:^",            
+      "@girs/freetype2-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gdkpixbuf-2.0": "workspace:^",            
+      "@girs/gmodule-2.0": "workspace:^",            
+      "@girs/atk-1.0": "workspace:^",            
+      "@girs/amtk-5": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Tepl-6"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Tepl-6"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/tepl-6#readme"
 }
+
+

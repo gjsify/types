@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gconf-2.0-import.d.ts';
+    
 /**
  * GConf-2.0
  */
@@ -613,3 +616,5 @@ export class Value {
     static newFromString(type: ValueType, str: string | null): Value
     static decode(encoded: string | null): Value
 }
+
+// END

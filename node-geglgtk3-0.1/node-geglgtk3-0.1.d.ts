@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-geglgtk3-0.1-import.d.ts';
+    
 /**
  * GeglGtk3-0.1
  */
@@ -526,3 +529,4 @@ class ViewPrivate {
 }
 
 export default GeglGtk3;
+// END

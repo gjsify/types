@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-libvirtglib-1.0-import.d.ts';
+    
 /**
  * LibvirtGLib-1.0
  */
@@ -84,3 +87,4 @@ export function initCheck(argv: string[] | null): [ /* returnType */ boolean, /*
  * @param message error message
  */
 export function setErrorLiteral(error: GLib.Error, domain: GLib.Quark, code: number, message: string | null): void
+// END

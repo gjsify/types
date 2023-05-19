@@ -1,60 +1,59 @@
+
 {
     "name": "@girs/gupnp-1.6",
-    "version": "1.6.0-3.0.0-beta.14",
+    "version": "1.6.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "gupnp-1.6.js",
     "main": "gupnp-1.6.js",
     "typedoc": {
-        "entryPoint": "./gupnp-1.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUPnP-1.6",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./gupnp-1.6.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "GUPnP-1.6",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./gupnp-1.6.d.ts",
-                "default": "./gupnp-1.6.js"
-            },
-            "require": {
-                "types": "./gupnp-1.6.d.cts",
-                "default": "./gupnp-1.6.cjs"
-            }
+      "./ambient": "./gupnp-1.6-ambient.d.ts",
+      "./import": "./gupnp-1.6-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./gupnp-1.6.d.ts",
+          "default": "./gupnp-1.6.js"
+        },
+        "require": {
+          "types": "./gupnp-1.6.d.cts",
+          "default": "./gupnp-1.6.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gupnp-1.6.d.ts",
-        "test:cjs": "tsc --noEmit gupnp-1.6.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit gupnp-1.6.d.ts",
+      "test:cjs": "tsc --noEmit gupnp-1.6.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gssdp-1.6": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/soup-3.0": "workspace:^"
+      
+      "@girs/libxml2-2.0": "workspace:^",            
+      "@girs/soup-3.0": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/gssdp-1.6": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GUPnP-1.6"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GUPnP-1.6"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gupnp-1.6#readme"
 }
+
+

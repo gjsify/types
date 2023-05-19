@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gweather-3.0-import.d.ts';
+    
 /**
  * GWeather-3.0
  */
@@ -2499,3 +2502,4 @@ export abstract class TimezoneMenuClass {
 
     export type MoonLatitude = number
     export type MoonPhase = number
+// END

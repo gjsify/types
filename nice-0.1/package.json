@@ -1,57 +1,56 @@
+
 {
     "name": "@girs/nice-0.1",
-    "version": "0.1.0-3.0.0-beta.14",
+    "version": "0.1.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Nice-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "nice-0.1.js",
     "main": "nice-0.1.js",
     "typedoc": {
-        "entryPoint": "./nice-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Nice-0.1",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./nice-0.1.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Nice-0.1",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./nice-0.1.d.ts",
-                "default": "./nice-0.1.js"
-            },
-            "require": {
-                "types": "./nice-0.1.d.cts",
-                "default": "./nice-0.1.cjs"
-            }
+      "./ambient": "./nice-0.1-ambient.d.ts",
+      "./import": "./nice-0.1-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./nice-0.1.d.ts",
+          "default": "./nice-0.1.js"
+        },
+        "require": {
+          "types": "./nice-0.1.d.cts",
+          "default": "./nice-0.1.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit nice-0.1.d.ts",
-        "test:cjs": "tsc --noEmit nice-0.1.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit nice-0.1.d.ts",
+      "test:cjs": "tsc --noEmit nice-0.1.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Nice-0.1"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Nice-0.1"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/nice-0.1#readme"
 }
+
+

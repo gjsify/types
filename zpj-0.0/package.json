@@ -1,60 +1,59 @@
+
 {
     "name": "@girs/zpj-0.0",
-    "version": "0.0.0-3.0.0-beta.14",
+    "version": "0.0.0-3.0.0-beta.15",
     "description": "GJS TypeScript type definitions for Zpj-0.0, generated from library version 0.0.0",
     "type": "module",
     "module": "zpj-0.0.js",
     "main": "zpj-0.0.js",
     "typedoc": {
-        "entryPoint": "./zpj-0.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Zpj-0.0",
-        "tsconfig": "./tsconfig.doc.json"
+      "entryPoint": "./zpj-0.0.d.ts",
+      "readmeFile": "./README.md",
+      "displayName": "Zpj-0.0",
+      "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-        ".": {
-            "import": {
-                "types": "./zpj-0.0.d.ts",
-                "default": "./zpj-0.0.js"
-            },
-            "require": {
-                "types": "./zpj-0.0.d.cts",
-                "default": "./zpj-0.0.cjs"
-            }
+      "./ambient": "./zpj-0.0-ambient.d.ts",
+      "./import": "./zpj-0.0-import.d.ts",
+      ".": {
+        "import": {
+          "types": "./zpj-0.0.d.ts",
+          "default": "./zpj-0.0.js"
+        },
+        "require": {
+          "types": "./zpj-0.0.d.cts",
+          "default": "./zpj-0.0.cjs"
         }
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit zpj-0.0.d.ts",
-        "test:cjs": "tsc --noEmit zpj-0.0.d.cts"
+      "test": "yarn test:esm && yarn test:cjs",
+      "test:esm": "tsc --noEmit zpj-0.0.d.ts",
+      "test:cjs": "tsc --noEmit zpj-0.0.d.cts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/json-1.0": "workspace:^",
-        "@girs/rest-0.7": "workspace:^",
-        "@girs/soup-2.4": "workspace:^"
+      
+      "@girs/soup-2.4": "workspace:^",            
+      "@girs/gio-2.0": "workspace:^",            
+      "@girs/gobject-2.0": "workspace:^",            
+      "@girs/glib-2.0": "workspace:^",            
+      "@girs/rest-0.7": "workspace:^",            
+      "@girs/json-1.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+      "typescript": "^5.0.4"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Zpj-0.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Zpj-0.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/zpj-0.0#readme"
 }
+
+

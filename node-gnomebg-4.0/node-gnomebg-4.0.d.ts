@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-gnomebg-4.0-import.d.ts';
+    
 /**
  * GnomeBG-4.0
  */
@@ -309,3 +312,4 @@ class BGSlideShowPrivate {
 }
 
 export default GnomeBG;
+// END

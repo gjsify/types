@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-rygelserver-2.8-import.d.ts';
+    
 /**
  * RygelServer-2.8
  */
@@ -6290,3 +6293,5 @@ export abstract class UpdatableObjectIface {
 
     static name: string
 }
+
+// END
