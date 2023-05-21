@@ -12,10 +12,10 @@ import './node-telepathylogger-0.2-import.d.ts';
  * TelepathyLogger-0.2
  */
 
-import type TelepathyGLib from '@girs/telepathyglib-0.12';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type TelepathyGLib from '@girs/node-telepathyglib-0.12';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 export enum EntityType {
     /**

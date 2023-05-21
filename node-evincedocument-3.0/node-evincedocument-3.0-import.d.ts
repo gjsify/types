@@ -1,5 +1,5 @@
 
-import EvinceDocument30 from '@girs/evincedocument-3.0';
+import EvinceDocument30 from '@girs/node-evincedocument-3.0';
 
 declare global {
     interface NodeGtkGi {

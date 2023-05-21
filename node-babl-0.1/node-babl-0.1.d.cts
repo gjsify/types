@@ -12,7 +12,7 @@ import './node-babl-0.1-import.d.ts';
  * Babl-0.1
  */
 
-import type GObject from '@girs/gobject-2.0';
+import type GObject from '@girs/node-gobject-2.0';
 
 export enum IccIntent {
     PERCEPTUAL,

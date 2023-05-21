@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/gcrgtk4-4",
-    "version": "4.0.0-3.0.0-beta.15",
+    "version": "4.0.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gcrgtk4-4.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit gcrgtk4-4.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/gtk-4.0": "workspace:^",            
       "@girs/gsk-4.0": "workspace:^",            
       "@girs/graphene-1.0": "workspace:^",            
@@ -58,7 +58,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

@@ -1,5 +1,5 @@
 
-import Cally10 from '@girs/cally-1.0';
+import Cally10 from '@girs/node-cally-1.0';
 
 declare global {
     interface NodeGtkGi {

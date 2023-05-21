@@ -1,5 +1,5 @@
 
-import JavaScriptCore60 from '@girs/javascriptcore-6.0';
+import JavaScriptCore60 from '@girs/node-javascriptcore-6.0';
 
 declare global {
     interface NodeGtkGi {

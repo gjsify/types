@@ -1,7 +1,7 @@
 
 # GstRtspServer-1.0
 
-Node.js TypeScript type definitions for GstRtspServer-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GstRtspServer-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GStreamer RTSP Server-Library
 
@@ -16,12 +16,12 @@ npm install @girs/node-gstrtspserver-1.0
 
 You can import this package into your project like this:
 ```ts
-import GstRtspServer from '@girs/gstrtspserver-1.0';
+import GstRtspServer from '@girs/node-gstrtspserver-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GstRtspServer = require('@girs/gstrtspserver-1.0');
+const GstRtspServer = require('@girs/node-gstrtspserver-1.0');
 ```
 
 ### Ambient Modules

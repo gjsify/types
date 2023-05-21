@@ -1,7 +1,7 @@
 
 # LibvirtGConfig-1.0
 
-Node.js TypeScript type definitions for LibvirtGConfig-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for LibvirtGConfig-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 libvirt object APIs for processing object configuration.
 
@@ -16,12 +16,12 @@ npm install @girs/node-libvirtgconfig-1.0
 
 You can import this package into your project like this:
 ```ts
-import LibvirtGConfig from '@girs/libvirtgconfig-1.0';
+import LibvirtGConfig from '@girs/node-libvirtgconfig-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const LibvirtGConfig = require('@girs/libvirtgconfig-1.0');
+const LibvirtGConfig = require('@girs/node-libvirtgconfig-1.0');
 ```
 
 ### Ambient Modules

@@ -1,5 +1,5 @@
 
-import GstGLWayland10 from '@girs/gstglwayland-1.0';
+import GstGLWayland10 from '@girs/node-gstglwayland-1.0';
 
 declare global {
     interface NodeGtkGi {

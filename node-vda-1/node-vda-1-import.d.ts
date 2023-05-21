@@ -1,5 +1,5 @@
 
-import Vda1 from '@girs/vda-1';
+import Vda1 from '@girs/node-vda-1';
 
 declare global {
     interface NodeGtkGi {

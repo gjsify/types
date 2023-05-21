@@ -1,5 +1,5 @@
 
-import GnomeBG40 from '@girs/gnomebg-4.0';
+import GnomeBG40 from '@girs/node-gnomebg-4.0';
 
 declare global {
     interface NodeGtkGi {

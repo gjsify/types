@@ -1,5 +1,5 @@
 
-import PolkitAgent10 from '@girs/polkitagent-1.0';
+import PolkitAgent10 from '@girs/node-polkitagent-1.0';
 
 declare global {
     interface NodeGtkGi {

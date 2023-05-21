@@ -1,5 +1,5 @@
 
-import GstBadAudio10 from '@girs/gstbadaudio-1.0';
+import GstBadAudio10 from '@girs/node-gstbadaudio-1.0';
 
 declare global {
     interface NodeGtkGi {

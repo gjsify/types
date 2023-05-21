@@ -1,5 +1,5 @@
 
-import WebKit60 from '@girs/webkit-6.0';
+import WebKit60 from '@girs/node-webkit-6.0';
 
 declare global {
     interface NodeGtkGi {

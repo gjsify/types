@@ -1,5 +1,5 @@
 
-import SoupGNOME24 from '@girs/soupgnome-2.4';
+import SoupGNOME24 from '@girs/node-soupgnome-2.4';
 
 declare global {
     interface NodeGtkGi {

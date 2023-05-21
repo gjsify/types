@@ -1,5 +1,5 @@
 
-import GMime30 from '@girs/gmime-3.0';
+import GMime30 from '@girs/node-gmime-3.0';
 
 declare global {
     interface NodeGtkGi {

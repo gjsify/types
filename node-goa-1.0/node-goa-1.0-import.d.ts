@@ -1,5 +1,5 @@
 
-import Goa10 from '@girs/goa-1.0';
+import Goa10 from '@girs/node-goa-1.0';
 
 declare global {
     interface NodeGtkGi {

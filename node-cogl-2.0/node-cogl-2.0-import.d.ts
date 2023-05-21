@@ -1,5 +1,5 @@
 
-import Cogl20 from '@girs/cogl-2.0';
+import Cogl20 from '@girs/node-cogl-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import PanelApplet40 from '@girs/panelapplet-4.0';
+import PanelApplet40 from '@girs/node-panelapplet-4.0';
 
 declare global {
     interface NodeGtkGi {

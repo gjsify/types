@@ -1,5 +1,5 @@
 
-import SpiceClientGtk30 from '@girs/spiceclientgtk-3.0';
+import SpiceClientGtk30 from '@girs/node-spiceclientgtk-3.0';
 
 declare global {
     interface NodeGtkGi {

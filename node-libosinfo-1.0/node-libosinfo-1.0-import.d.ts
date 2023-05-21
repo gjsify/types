@@ -1,5 +1,5 @@
 
-import Libosinfo10 from '@girs/libosinfo-1.0';
+import Libosinfo10 from '@girs/node-libosinfo-1.0';
 
 declare global {
     interface NodeGtkGi {

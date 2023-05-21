@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/telepathyfarstream-0.6",
-    "version": "0.6.0-3.0.0-beta.15",
+    "version": "0.6.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for TelepathyFarstream-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "telepathyfarstream-0.6.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit telepathyfarstream-0.6.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/telepathyglib-0.12": "workspace:^",            
       "@girs/gio-2.0": "workspace:^",            
       "@girs/gobject-2.0": "workspace:^",            
@@ -49,7 +49,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

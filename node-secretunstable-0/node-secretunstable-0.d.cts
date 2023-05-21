@@ -12,10 +12,10 @@ import './node-secretunstable-0-import.d.ts';
  * SecretUnstable-0
  */
 
-import type Secret from '@girs/secret-1';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type Secret from '@girs/node-secret-1';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 /**
  * Flags for secret_collection_create().

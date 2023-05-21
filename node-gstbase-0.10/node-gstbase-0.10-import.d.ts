@@ -1,5 +1,5 @@
 
-import GstBase010 from '@girs/gstbase-0.10';
+import GstBase010 from '@girs/node-gstbase-0.10';
 
 declare global {
     interface NodeGtkGi {

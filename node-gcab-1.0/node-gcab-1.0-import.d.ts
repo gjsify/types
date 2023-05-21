@@ -1,5 +1,5 @@
 
-import GCab10 from '@girs/gcab-1.0';
+import GCab10 from '@girs/node-gcab-1.0';
 
 declare global {
     interface NodeGtkGi {

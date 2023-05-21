@@ -12,35 +12,35 @@ import './node-sushi-1.0-import.d.ts';
  * Sushi-1.0
  */
 
-import type xlib from '@girs/xlib-2.0';
-import type libxml2 from '@girs/libxml2-2.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type fontconfig from '@girs/fontconfig-2.0';
-import type cairo from '@girs/cairo-1.0';
-import type PangoFT2 from '@girs/pangoft2-1.0';
-import type PangoFc from '@girs/pangofc-1.0';
-import type Pango from '@girs/pango-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gio from '@girs/gio-2.0';
-import type PangoCairo from '@girs/pangocairo-1.0';
-import type Json from '@girs/json-1.0';
-import type GtkSource from '@girs/gtksource-3.0';
-import type Gtk from '@girs/gtk-3.0';
-import type Gdk from '@girs/gdk-3.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Atk from '@girs/atk-1.0';
-import type GstTag from '@girs/gsttag-0.10';
-import type Gst from '@girs/gst-0.10';
-import type GstPbutils from '@girs/gstpbutils-0.10';
-import type GstBase from '@girs/gstbase-0.10';
-import type GL from '@girs/gl-1.0';
-import type EvinceDocument from '@girs/evincedocument-3.0';
-import type CoglPango from '@girs/coglpango-1.0';
-import type Cogl from '@girs/cogl-1.0';
-import type Clutter from '@girs/clutter-1.0';
+import type xlib from '@girs/node-xlib-2.0';
+import type libxml2 from '@girs/node-libxml2-2.0';
+import type freetype2 from '@girs/node-freetype2-2.0';
+import type fontconfig from '@girs/node-fontconfig-2.0';
+import type cairo from '@girs/node-cairo-1.0';
+import type PangoFT2 from '@girs/node-pangoft2-1.0';
+import type PangoFc from '@girs/node-pangofc-1.0';
+import type Pango from '@girs/node-pango-1.0';
+import type HarfBuzz from '@girs/node-harfbuzz-0.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Gio from '@girs/node-gio-2.0';
+import type PangoCairo from '@girs/node-pangocairo-1.0';
+import type Json from '@girs/node-json-1.0';
+import type GtkSource from '@girs/node-gtksource-3.0';
+import type Gtk from '@girs/node-gtk-3.0';
+import type Gdk from '@girs/node-gdk-3.0';
+import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
+import type Atk from '@girs/node-atk-1.0';
+import type GstTag from '@girs/node-gsttag-0.10';
+import type Gst from '@girs/node-gst-0.10';
+import type GstPbutils from '@girs/node-gstpbutils-0.10';
+import type GstBase from '@girs/node-gstbase-0.10';
+import type GL from '@girs/node-gl-1.0';
+import type EvinceDocument from '@girs/node-evincedocument-3.0';
+import type CoglPango from '@girs/node-coglpango-1.0';
+import type Cogl from '@girs/node-cogl-1.0';
+import type Clutter from '@girs/node-clutter-1.0';
 
 export namespace Sushi {
 

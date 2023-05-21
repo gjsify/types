@@ -1,5 +1,5 @@
 
-import Json10 from '@girs/json-1.0';
+import Json10 from '@girs/node-json-1.0';
 
 declare global {
     interface NodeGtkGi {

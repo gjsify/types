@@ -12,11 +12,11 @@ import './node-farstream-0.1-import.d.ts';
  * Farstream-0.1
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Gst from '@girs/gst-0.10';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
+import type libxml2 from '@girs/node-libxml2-2.0';
+import type Gst from '@girs/node-gst-0.10';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
 
 /**
  * An enum for the type of candidate used/reported

@@ -1,7 +1,7 @@
 
 # Epc-1.0
 
-Node.js TypeScript type definitions for Epc-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Epc-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 The Easy Publish and Consume library (libepc) provides an easy method to publish data using HTTPS, announce that information via DNS-SD, find that information and finally consume it.
 
@@ -16,12 +16,12 @@ npm install @girs/node-epc-1.0
 
 You can import this package into your project like this:
 ```ts
-import Epc from '@girs/epc-1.0';
+import Epc from '@girs/node-epc-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Epc = require('@girs/epc-1.0');
+const Epc = require('@girs/node-epc-1.0');
 ```
 
 ### Ambient Modules

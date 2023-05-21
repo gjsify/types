@@ -1,5 +1,5 @@
 
-import GdkX1140 from '@girs/gdkx11-4.0';
+import GdkX1140 from '@girs/node-gdkx11-4.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import PangoCairo10 from '@girs/pangocairo-1.0';
+import PangoCairo10 from '@girs/node-pangocairo-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Bamf3 from '@girs/bamf-3';
+import Bamf3 from '@girs/node-bamf-3';
 
 declare global {
     interface NodeGtkGi {

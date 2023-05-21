@@ -1,5 +1,5 @@
 
-import Xrandr13 from '@girs/xrandr-1.3';
+import Xrandr13 from '@girs/node-xrandr-1.3';
 
 declare global {
     interface NodeGtkGi {

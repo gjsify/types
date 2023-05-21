@@ -1,5 +1,5 @@
 
-import Camel12 from '@girs/camel-1.2';
+import Camel12 from '@girs/node-camel-1.2';
 
 declare global {
     interface NodeGtkGi {

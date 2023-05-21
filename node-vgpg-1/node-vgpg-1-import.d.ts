@@ -1,5 +1,5 @@
 
-import Vgpg1 from '@girs/vgpg-1';
+import Vgpg1 from '@girs/node-vgpg-1';
 
 declare global {
     interface NodeGtkGi {

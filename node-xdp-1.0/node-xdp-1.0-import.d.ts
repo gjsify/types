@@ -1,5 +1,5 @@
 
-import Xdp10 from '@girs/xdp-1.0';
+import Xdp10 from '@girs/node-xdp-1.0';
 
 declare global {
     interface NodeGtkGi {

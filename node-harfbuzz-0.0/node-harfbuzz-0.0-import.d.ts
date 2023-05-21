@@ -1,5 +1,5 @@
 
-import HarfBuzz00 from '@girs/harfbuzz-0.0';
+import HarfBuzz00 from '@girs/node-harfbuzz-0.0';
 
 declare global {
     interface NodeGtkGi {

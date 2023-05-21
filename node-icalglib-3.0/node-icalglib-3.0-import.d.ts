@@ -1,5 +1,5 @@
 
-import ICalGLib30 from '@girs/icalglib-3.0';
+import ICalGLib30 from '@girs/node-icalglib-3.0';
 
 declare global {
     interface NodeGtkGi {

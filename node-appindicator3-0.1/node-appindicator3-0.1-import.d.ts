@@ -1,5 +1,5 @@
 
-import AppIndicator301 from '@girs/appindicator3-0.1';
+import AppIndicator301 from '@girs/node-appindicator3-0.1';
 
 declare global {
     interface NodeGtkGi {

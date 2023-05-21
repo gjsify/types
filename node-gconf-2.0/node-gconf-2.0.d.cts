@@ -12,8 +12,8 @@ import './node-gconf-2.0-import.d.ts';
  * GConf-2.0
  */
 
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 export enum ClientErrorHandlingMode {
     HANDLE_NONE,

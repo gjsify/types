@@ -1,7 +1,7 @@
 
 # GnomeRR-4.0
 
-Node.js TypeScript type definitions for GnomeRR-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GnomeRR-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gnomerr-4.0
 
 You can import this package into your project like this:
 ```ts
-import GnomeRR from '@girs/gnomerr-4.0';
+import GnomeRR from '@girs/node-gnomerr-4.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GnomeRR = require('@girs/gnomerr-4.0');
+const GnomeRR = require('@girs/node-gnomerr-4.0');
 ```
 
 ### Ambient Modules

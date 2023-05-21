@@ -1,5 +1,5 @@
 
-import GWeather40 from '@girs/gweather-4.0';
+import GWeather40 from '@girs/node-gweather-4.0';
 
 declare global {
     interface NodeGtkGi {

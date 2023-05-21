@@ -1,5 +1,5 @@
 
-import AppStream10 from '@girs/appstream-1.0';
+import AppStream10 from '@girs/node-appstream-1.0';
 
 declare global {
     interface NodeGtkGi {

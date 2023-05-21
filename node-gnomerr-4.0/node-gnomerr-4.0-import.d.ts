@@ -1,5 +1,5 @@
 
-import GnomeRR40 from '@girs/gnomerr-4.0';
+import GnomeRR40 from '@girs/node-gnomerr-4.0';
 
 declare global {
     interface NodeGtkGi {

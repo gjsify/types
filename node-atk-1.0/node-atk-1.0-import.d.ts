@@ -1,5 +1,5 @@
 
-import Atk10 from '@girs/atk-1.0';
+import Atk10 from '@girs/node-atk-1.0';
 
 declare global {
     interface NodeGtkGi {

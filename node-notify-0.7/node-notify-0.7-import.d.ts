@@ -1,5 +1,5 @@
 
-import Notify07 from '@girs/notify-0.7';
+import Notify07 from '@girs/node-notify-0.7';
 
 declare global {
     interface NodeGtkGi {

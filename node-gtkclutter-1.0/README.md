@@ -1,7 +1,7 @@
 
 # GtkClutter-1.0
 
-Node.js TypeScript type definitions for GtkClutter-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GtkClutter-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GTK clutter widget.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gtkclutter-1.0
 
 You can import this package into your project like this:
 ```ts
-import GtkClutter from '@girs/gtkclutter-1.0';
+import GtkClutter from '@girs/node-gtkclutter-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GtkClutter = require('@girs/gtkclutter-1.0');
+const GtkClutter = require('@girs/node-gtkclutter-1.0');
 ```
 
 ### Ambient Modules

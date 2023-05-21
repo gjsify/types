@@ -1,5 +1,5 @@
 
-import GLib20 from '@girs/glib-2.0';
+import GLib20 from '@girs/node-glib-2.0';
 
 declare global {
     interface NodeGtkGi {

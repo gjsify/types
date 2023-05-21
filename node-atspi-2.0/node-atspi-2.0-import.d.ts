@@ -1,5 +1,5 @@
 
-import Atspi20 from '@girs/atspi-2.0';
+import Atspi20 from '@girs/node-atspi-2.0';
 
 declare global {
     interface NodeGtkGi {

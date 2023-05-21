@@ -12,10 +12,10 @@ import './node-gcalc-2-import.d.ts';
  * GCalc-2
  */
 
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gee from '@girs/gee-0.8';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Gee from '@girs/node-gee-0.8';
 
 export namespace GCalc {
 

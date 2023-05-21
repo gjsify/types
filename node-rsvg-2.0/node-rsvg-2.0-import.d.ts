@@ -1,5 +1,5 @@
 
-import Rsvg20 from '@girs/rsvg-2.0';
+import Rsvg20 from '@girs/node-rsvg-2.0';
 
 declare global {
     interface NodeGtkGi {

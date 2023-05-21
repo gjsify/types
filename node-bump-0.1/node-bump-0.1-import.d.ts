@@ -1,5 +1,5 @@
 
-import Bump01 from '@girs/bump-0.1';
+import Bump01 from '@girs/node-bump-0.1';
 
 declare global {
     interface NodeGtkGi {

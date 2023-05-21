@@ -12,11 +12,11 @@ import './node-geocodeglib-2.0-import.d.ts';
  * GeocodeGlib-2.0
  */
 
-import type Soup from '@girs/soup-3.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Json from '@girs/json-1.0';
+import type Soup from '@girs/node-soup-3.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Json from '@girs/node-json-1.0';
 
 /**
  * Error codes returned by geocode-glib functions.

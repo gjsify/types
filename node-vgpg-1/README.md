@@ -1,7 +1,7 @@
 
 # Vgpg-1
 
-Node.js TypeScript type definitions for Vgpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Vgpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 VDA implementation using GDA as backend to connect to PostgreSQL databases
 
@@ -16,12 +16,12 @@ npm install @girs/node-vgpg-1
 
 You can import this package into your project like this:
 ```ts
-import Vgpg from '@girs/vgpg-1';
+import Vgpg from '@girs/node-vgpg-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Vgpg = require('@girs/vgpg-1');
+const Vgpg = require('@girs/node-vgpg-1');
 ```
 
 ### Ambient Modules

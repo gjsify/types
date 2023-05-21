@@ -1,5 +1,5 @@
 
-import EDataServerUI410 from '@girs/edataserverui4-1.0';
+import EDataServerUI410 from '@girs/node-edataserverui4-1.0';
 
 declare global {
     interface NodeGtkGi {

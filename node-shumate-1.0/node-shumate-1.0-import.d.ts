@@ -1,5 +1,5 @@
 
-import Shumate10 from '@girs/shumate-1.0';
+import Shumate10 from '@girs/node-shumate-1.0';
 
 declare global {
     interface NodeGtkGi {

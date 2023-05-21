@@ -1,5 +1,5 @@
 
-import EBackend12 from '@girs/ebackend-1.2';
+import EBackend12 from '@girs/node-ebackend-1.2';
 
 declare global {
     interface NodeGtkGi {

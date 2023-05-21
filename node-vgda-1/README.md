@@ -1,7 +1,7 @@
 
 # Vgda-1
 
-Node.js TypeScript type definitions for Vgda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Vgda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 VDA implementation using GDA as backend, suitable to implement new GDA supported implementations
 
@@ -16,12 +16,12 @@ npm install @girs/node-vgda-1
 
 You can import this package into your project like this:
 ```ts
-import Vgda from '@girs/vgda-1';
+import Vgda from '@girs/node-vgda-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Vgda = require('@girs/vgda-1');
+const Vgda = require('@girs/node-vgda-1');
 ```
 
 ### Ambient Modules

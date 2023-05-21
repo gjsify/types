@@ -1,5 +1,5 @@
 
-import Vulkan10 from '@girs/vulkan-1.0';
+import Vulkan10 from '@girs/node-vulkan-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Grl-0.3
 
-Node.js TypeScript type definitions for Grl-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Grl-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Framework that provides access to various sources of multimedia content
 
@@ -16,12 +16,12 @@ npm install @girs/node-grl-0.3
 
 You can import this package into your project like this:
 ```ts
-import Grl from '@girs/grl-0.3';
+import Grl from '@girs/node-grl-0.3';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Grl = require('@girs/grl-0.3');
+const Grl = require('@girs/node-grl-0.3');
 ```
 
 ### Ambient Modules

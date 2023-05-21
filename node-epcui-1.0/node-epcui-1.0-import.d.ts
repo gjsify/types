@@ -1,5 +1,5 @@
 
-import EpcUi10 from '@girs/epcui-1.0';
+import EpcUi10 from '@girs/node-epcui-1.0';
 
 declare global {
     interface NodeGtkGi {

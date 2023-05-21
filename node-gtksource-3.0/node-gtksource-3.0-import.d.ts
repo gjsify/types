@@ -1,5 +1,5 @@
 
-import GtkSource30 from '@girs/gtksource-3.0';
+import GtkSource30 from '@girs/node-gtksource-3.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Gedit30 from '@girs/gedit-3.0';
+import Gedit30 from '@girs/node-gedit-3.0';
 
 declare global {
     interface NodeGtkGi {

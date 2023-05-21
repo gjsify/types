@@ -1,5 +1,5 @@
 
-import Parquet10 from '@girs/parquet-1.0';
+import Parquet10 from '@girs/node-parquet-1.0';
 
 declare global {
     interface NodeGtkGi {

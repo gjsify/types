@@ -1,5 +1,5 @@
 
-import CloudProviders03 from '@girs/cloudproviders-0.3';
+import CloudProviders03 from '@girs/node-cloudproviders-0.3';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import GstMpegts10 from '@girs/gstmpegts-1.0';
+import GstMpegts10 from '@girs/node-gstmpegts-1.0';
 
 declare global {
     interface NodeGtkGi {

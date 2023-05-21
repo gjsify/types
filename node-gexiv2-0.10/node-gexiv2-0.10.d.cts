@@ -12,9 +12,9 @@ import './node-gexiv2-0.10-import.d.ts';
  * GExiv2-0.10
  */
 
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 /**
  * Options to control the byte order of binary EXIF data exports

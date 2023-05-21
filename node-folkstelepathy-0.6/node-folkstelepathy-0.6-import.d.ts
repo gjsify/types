@@ -1,5 +1,5 @@
 
-import FolksTelepathy06 from '@girs/folkstelepathy-0.6';
+import FolksTelepathy06 from '@girs/node-folkstelepathy-0.6';
 
 declare global {
     interface NodeGtkGi {

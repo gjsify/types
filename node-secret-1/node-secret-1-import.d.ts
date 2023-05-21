@@ -1,5 +1,5 @@
 
-import Secret1 from '@girs/secret-1';
+import Secret1 from '@girs/node-secret-1';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Retro2 from '@girs/retro-2';
+import Retro2 from '@girs/node-retro-2';
 
 declare global {
     interface NodeGtkGi {

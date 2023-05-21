@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/gst-0.10",
-    "version": "0.10.29-3.0.0-beta.15",
+    "version": "0.10.29-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29",
     "type": "module",
     "module": "gst-0.10.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit gst-0.10.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/libxml2-2.0": "workspace:^",            
       "@girs/gobject-2.0": "workspace:^",            
       "@girs/glib-2.0": "workspace:^",            
@@ -46,7 +46,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

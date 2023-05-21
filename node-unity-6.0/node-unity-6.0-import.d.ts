@@ -1,5 +1,5 @@
 
-import Unity60 from '@girs/unity-6.0';
+import Unity60 from '@girs/node-unity-6.0';
 
 declare global {
     interface NodeGtkGi {

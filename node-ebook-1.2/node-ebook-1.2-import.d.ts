@@ -1,5 +1,5 @@
 
-import EBook12 from '@girs/ebook-1.2';
+import EBook12 from '@girs/node-ebook-1.2';
 
 declare global {
     interface NodeGtkGi {

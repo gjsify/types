@@ -12,11 +12,11 @@ import './node-cogl-12-import.d.ts';
  * Cogl-12
  */
 
-import type cairo from '@girs/cairo-1.0';
-import type Graphene from '@girs/graphene-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GL from '@girs/gl-1.0';
+import type cairo from '@girs/node-cairo-1.0';
+import type Graphene from '@girs/node-graphene-1.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GL from '@girs/node-gl-1.0';
 
 export namespace Cogl {
 

@@ -1,5 +1,5 @@
 
-import GstCheck10 from '@girs/gstcheck-1.0';
+import GstCheck10 from '@girs/node-gstcheck-1.0';
 
 declare global {
     interface NodeGtkGi {

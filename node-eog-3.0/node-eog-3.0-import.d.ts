@@ -1,5 +1,5 @@
 
-import Eog30 from '@girs/eog-3.0';
+import Eog30 from '@girs/node-eog-3.0';
 
 declare global {
     interface NodeGtkGi {

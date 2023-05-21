@@ -1,5 +1,5 @@
 
-import LibvirtGObject10 from '@girs/libvirtgobject-1.0';
+import LibvirtGObject10 from '@girs/node-libvirtgobject-1.0';
 
 declare global {
     interface NodeGtkGi {

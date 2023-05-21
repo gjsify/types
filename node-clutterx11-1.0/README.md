@@ -1,7 +1,7 @@
 
 # ClutterX11-1.0
 
-Node.js TypeScript type definitions for ClutterX11-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for ClutterX11-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-clutterx11-1.0
 
 You can import this package into your project like this:
 ```ts
-import ClutterX11 from '@girs/clutterx11-1.0';
+import ClutterX11 from '@girs/node-clutterx11-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const ClutterX11 = require('@girs/clutterx11-1.0');
+const ClutterX11 = require('@girs/node-clutterx11-1.0');
 ```
 
 ### Ambient Modules

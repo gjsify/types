@@ -12,7 +12,7 @@ import './node-gobject-2.0-import.d.ts';
  * GObject-2.0
  */
 
-import type GLib from '@girs/glib-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 export namespace GObject {
 

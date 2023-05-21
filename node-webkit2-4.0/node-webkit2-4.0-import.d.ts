@@ -1,5 +1,5 @@
 
-import WebKit240 from '@girs/webkit2-4.0';
+import WebKit240 from '@girs/node-webkit2-4.0';
 
 declare global {
     interface NodeGtkGi {

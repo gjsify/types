@@ -1,5 +1,5 @@
 
-import Gck1 from '@girs/gck-1';
+import Gck1 from '@girs/node-gck-1';
 
 declare global {
     interface NodeGtkGi {

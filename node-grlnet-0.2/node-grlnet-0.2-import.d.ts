@@ -1,5 +1,5 @@
 
-import GrlNet02 from '@girs/grlnet-0.2';
+import GrlNet02 from '@girs/node-grlnet-0.2';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Unity70 from '@girs/unity-7.0';
+import Unity70 from '@girs/node-unity-7.0';
 
 declare global {
     interface NodeGtkGi {

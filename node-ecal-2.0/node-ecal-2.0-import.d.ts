@@ -1,5 +1,5 @@
 
-import ECal20 from '@girs/ecal-2.0';
+import ECal20 from '@girs/node-ecal-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import GModule20 from '@girs/gmodule-2.0';
+import GModule20 from '@girs/node-gmodule-2.0';
 
 declare global {
     interface NodeGtkGi {

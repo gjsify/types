@@ -1,7 +1,7 @@
 
 # xrandr-1.3
 
-Node.js TypeScript type definitions for xrandr-1.3, generated from library version 1.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for xrandr-1.3, generated from library version 1.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-xrandr-1.3
 
 You can import this package into your project like this:
 ```ts
-import xrandr from '@girs/xrandr-1.3';
+import xrandr from '@girs/node-xrandr-1.3';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const xrandr = require('@girs/xrandr-1.3');
+const xrandr = require('@girs/node-xrandr-1.3');
 ```
 
 ### Ambient Modules

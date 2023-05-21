@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/gjs",
-    "version": "3.0.0-beta.15",
+    "version": "3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
@@ -74,7 +74,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

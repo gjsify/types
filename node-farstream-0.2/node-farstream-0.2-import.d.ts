@@ -1,5 +1,5 @@
 
-import Farstream02 from '@girs/farstream-0.2';
+import Farstream02 from '@girs/node-farstream-0.2';
 
 declare global {
     interface NodeGtkGi {

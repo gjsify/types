@@ -1,5 +1,5 @@
 
-import OSTree10 from '@girs/ostree-1.0';
+import OSTree10 from '@girs/node-ostree-1.0';
 
 declare global {
     interface NodeGtkGi {

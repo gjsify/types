@@ -1,5 +1,5 @@
 
-import JavaScriptCore50 from '@girs/javascriptcore-5.0';
+import JavaScriptCore50 from '@girs/node-javascriptcore-5.0';
 
 declare global {
     interface NodeGtkGi {

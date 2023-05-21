@@ -1,5 +1,5 @@
 
-import GUsb10 from '@girs/gusb-1.0';
+import GUsb10 from '@girs/node-gusb-1.0';
 
 declare global {
     interface NodeGtkGi {

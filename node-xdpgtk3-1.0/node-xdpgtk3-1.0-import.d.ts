@@ -1,5 +1,5 @@
 
-import XdpGtk310 from '@girs/xdpgtk3-1.0';
+import XdpGtk310 from '@girs/node-xdpgtk3-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import GstPlayer10 from '@girs/gstplayer-1.0';
+import GstPlayer10 from '@girs/node-gstplayer-1.0';
 
 declare global {
     interface NodeGtkGi {

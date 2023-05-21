@@ -12,16 +12,16 @@ import './node-edatabook-1.2-import.d.ts';
  * EDataBook-1.2
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type EDataServer from '@girs/edataserver-1.2';
-import type Soup from '@girs/soup-3.0';
-import type Json from '@girs/json-1.0';
-import type Camel from '@girs/camel-1.2';
-import type EBookContacts from '@girs/ebookcontacts-1.2';
-import type EBackend from '@girs/ebackend-1.2';
+import type libxml2 from '@girs/node-libxml2-2.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type EDataServer from '@girs/node-edataserver-1.2';
+import type Soup from '@girs/node-soup-3.0';
+import type Json from '@girs/node-json-1.0';
+import type Camel from '@girs/node-camel-1.2';
+import type EBookContacts from '@girs/node-ebookcontacts-1.2';
+import type EBackend from '@girs/node-ebackend-1.2';
 
 export namespace EDataBook {
 

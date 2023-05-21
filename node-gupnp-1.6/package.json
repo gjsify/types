@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-gupnp-1.6",
-    "version": "1.6.0-3.0.0-beta.15",
+    "version": "1.6.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "node-gupnp-1.6.js",
@@ -32,13 +32,13 @@
       "test:cjs": "tsc --noEmit node-gupnp-1.6.d.cts"
     },
     "dependencies": {
-      
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-3.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gssdp-1.6": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-libxml2-2.0": "workspace:^",            
+      "@girs/node-soup-3.0": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gssdp-1.6": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -51,7 +51,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

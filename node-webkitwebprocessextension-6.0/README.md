@@ -1,7 +1,7 @@
 
 # WebKitWebProcessExtension-6.0
 
-Node.js TypeScript type definitions for WebKitWebProcessExtension-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for WebKitWebProcessExtension-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-webkitwebprocessextension-6.0
 
 You can import this package into your project like this:
 ```ts
-import WebKitWebProcessExtension from '@girs/webkitwebprocessextension-6.0';
+import WebKitWebProcessExtension from '@girs/node-webkitwebprocessextension-6.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const WebKitWebProcessExtension = require('@girs/webkitwebprocessextension-6.0');
+const WebKitWebProcessExtension = require('@girs/node-webkitwebprocessextension-6.0');
 ```
 
 ### Ambient Modules

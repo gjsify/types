@@ -1,5 +1,5 @@
 
-import GstFft10 from '@girs/gstfft-1.0';
+import GstFft10 from '@girs/node-gstfft-1.0';
 
 declare global {
     interface NodeGtkGi {

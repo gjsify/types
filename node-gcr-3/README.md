@@ -1,7 +1,7 @@
 
 # Gcr-3
 
-Node.js TypeScript type definitions for Gcr-3, generated from library version 3.41.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Gcr-3, generated from library version 3.41.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 A library for bits of crypto UI and parsing
 
@@ -16,12 +16,12 @@ npm install @girs/node-gcr-3
 
 You can import this package into your project like this:
 ```ts
-import Gcr from '@girs/gcr-3';
+import Gcr from '@girs/node-gcr-3';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gcr = require('@girs/gcr-3');
+const Gcr = require('@girs/node-gcr-3');
 ```
 
 ### Ambient Modules

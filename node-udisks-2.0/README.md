@@ -1,7 +1,7 @@
 
 # UDisks-2.0
 
-Node.js TypeScript type definitions for UDisks-2.0, generated from library version 2.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for UDisks-2.0, generated from library version 2.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Disk Management Service.
 
@@ -16,12 +16,12 @@ npm install @girs/node-udisks-2.0
 
 You can import this package into your project like this:
 ```ts
-import UDisks from '@girs/udisks-2.0';
+import UDisks from '@girs/node-udisks-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const UDisks = require('@girs/udisks-2.0');
+const UDisks = require('@girs/node-udisks-2.0');
 ```
 
 ### Ambient Modules

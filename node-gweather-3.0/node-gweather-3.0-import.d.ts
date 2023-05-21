@@ -1,5 +1,5 @@
 
-import GWeather30 from '@girs/gweather-3.0';
+import GWeather30 from '@girs/node-gweather-3.0';
 
 declare global {
     interface NodeGtkGi {

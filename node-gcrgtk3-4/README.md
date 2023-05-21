@@ -1,7 +1,7 @@
 
 # GcrGtk3-4
 
-Node.js TypeScript type definitions for GcrGtk3-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GcrGtk3-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gcrgtk3-4
 
 You can import this package into your project like this:
 ```ts
-import GcrGtk3 from '@girs/gcrgtk3-4';
+import GcrGtk3 from '@girs/node-gcrgtk3-4';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GcrGtk3 = require('@girs/gcrgtk3-4');
+const GcrGtk3 = require('@girs/node-gcrgtk3-4');
 ```
 
 ### Ambient Modules

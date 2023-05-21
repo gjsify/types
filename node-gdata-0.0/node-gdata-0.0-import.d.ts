@@ -1,5 +1,5 @@
 
-import GData00 from '@girs/gdata-0.0';
+import GData00 from '@girs/node-gdata-0.0';
 
 declare global {
     interface NodeGtkGi {

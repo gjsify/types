@@ -1,5 +1,5 @@
 
-import GeocodeGlib20 from '@girs/geocodeglib-2.0';
+import GeocodeGlib20 from '@girs/node-geocodeglib-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Handy-0.0
 
-Node.js TypeScript type definitions for Handy-0.0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Handy-0.0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 A library full of GTK+ widgets for mobile phones
 
@@ -16,12 +16,12 @@ npm install @girs/node-handy-0.0
 
 You can import this package into your project like this:
 ```ts
-import Handy from '@girs/handy-0.0';
+import Handy from '@girs/node-handy-0.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Handy = require('@girs/handy-0.0');
+const Handy = require('@girs/node-handy-0.0');
 ```
 
 ### Ambient Modules

@@ -1,5 +1,5 @@
 
-import GnomeBluetooth10 from '@girs/gnomebluetooth-1.0';
+import GnomeBluetooth10 from '@girs/node-gnomebluetooth-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import TotemPlParser10 from '@girs/totemplparser-1.0';
+import TotemPlParser10 from '@girs/node-totemplparser-1.0';
 
 declare global {
     interface NodeGtkGi {

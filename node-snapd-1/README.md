@@ -1,7 +1,7 @@
 
 # Snapd-1
 
-Node.js TypeScript type definitions for Snapd-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Snapd-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Library providing a GLib interface to snapd
 
@@ -16,12 +16,12 @@ npm install @girs/node-snapd-1
 
 You can import this package into your project like this:
 ```ts
-import Snapd from '@girs/snapd-1';
+import Snapd from '@girs/node-snapd-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Snapd = require('@girs/snapd-1');
+const Snapd = require('@girs/node-snapd-1');
 ```
 
 ### Ambient Modules

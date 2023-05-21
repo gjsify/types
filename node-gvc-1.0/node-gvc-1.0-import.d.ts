@@ -1,5 +1,5 @@
 
-import Gvc10 from '@girs/gvc-1.0';
+import Gvc10 from '@girs/node-gvc-1.0';
 
 declare global {
     interface NodeGtkGi {

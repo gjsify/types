@@ -1,5 +1,5 @@
 
-import AppStreamBuilder10 from '@girs/appstreambuilder-1.0';
+import AppStreamBuilder10 from '@girs/node-appstreambuilder-1.0';
 
 declare global {
     interface NodeGtkGi {

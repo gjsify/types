@@ -1,5 +1,5 @@
 
-import Cairo10 from '@girs/cairo-1.0';
+import Cairo10 from '@girs/node-cairo-1.0';
 
 declare global {
     interface NodeGtkGi {

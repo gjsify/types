@@ -1,5 +1,5 @@
 
-import Champlain012 from '@girs/champlain-0.12';
+import Champlain012 from '@girs/node-champlain-0.12';
 
 declare global {
     interface NodeGtkGi {

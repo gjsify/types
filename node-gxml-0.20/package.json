@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-gxml-0.20",
-    "version": "0.20.0-3.0.0-beta.15",
+    "version": "0.20.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for GXml-0.20, generated from library version 0.20.0",
     "type": "module",
     "module": "node-gxml-0.20.js",
@@ -32,12 +32,12 @@
       "test:cjs": "tsc --noEmit node-gxml-0.20.d.cts"
     },
     "dependencies": {
-      
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-libxml2-2.0": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gee-0.8": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -50,7 +50,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

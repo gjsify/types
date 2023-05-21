@@ -1,5 +1,5 @@
 
-import FolksDummy06 from '@girs/folksdummy-0.6';
+import FolksDummy06 from '@girs/node-folksdummy-0.6';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # IBus-1.0
 
-Node.js TypeScript type definitions for IBus-1.0, generated from library version 1.5.11 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for IBus-1.0, generated from library version 1.5.11 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Next Generation Input Bus for Linux.
 
@@ -16,12 +16,12 @@ npm install @girs/node-ibus-1.0
 
 You can import this package into your project like this:
 ```ts
-import IBus from '@girs/ibus-1.0';
+import IBus from '@girs/node-ibus-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const IBus = require('@girs/ibus-1.0');
+const IBus = require('@girs/node-ibus-1.0');
 ```
 
 ### Ambient Modules

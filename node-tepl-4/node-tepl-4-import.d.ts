@@ -1,5 +1,5 @@
 
-import Tepl4 from '@girs/tepl-4';
+import Tepl4 from '@girs/node-tepl-4';
 
 declare global {
     interface NodeGtkGi {

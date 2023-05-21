@@ -1,7 +1,7 @@
 
 # Atk-1.0
 
-Node.js TypeScript type definitions for Atk-1.0, generated from library version 2.45.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Atk-1.0, generated from library version 2.45.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications. Using the ATK interfaces, accessibility tools have full access to view and control running applications.
 
@@ -16,12 +16,12 @@ npm install @girs/node-atk-1.0
 
 You can import this package into your project like this:
 ```ts
-import Atk from '@girs/atk-1.0';
+import Atk from '@girs/node-atk-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Atk = require('@girs/atk-1.0');
+const Atk = require('@girs/node-atk-1.0');
 ```
 
 ### Ambient Modules

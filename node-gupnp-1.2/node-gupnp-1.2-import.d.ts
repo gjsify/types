@@ -1,5 +1,5 @@
 
-import GUPnP12 from '@girs/gupnp-1.2';
+import GUPnP12 from '@girs/node-gupnp-1.2';
 
 declare global {
     interface NodeGtkGi {

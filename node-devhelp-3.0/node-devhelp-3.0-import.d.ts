@@ -1,5 +1,5 @@
 
-import Devhelp30 from '@girs/devhelp-3.0';
+import Devhelp30 from '@girs/node-devhelp-3.0';
 
 declare global {
     interface NodeGtkGi {

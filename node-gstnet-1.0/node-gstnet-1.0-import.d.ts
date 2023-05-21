@@ -1,5 +1,5 @@
 
-import GstNet10 from '@girs/gstnet-1.0';
+import GstNet10 from '@girs/node-gstnet-1.0';
 
 declare global {
     interface NodeGtkGi {

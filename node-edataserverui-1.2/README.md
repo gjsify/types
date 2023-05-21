@@ -1,7 +1,7 @@
 
 # EDataServerUI-1.2
 
-Node.js TypeScript type definitions for EDataServerUI-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for EDataServerUI-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-edataserverui-1.2
 
 You can import this package into your project like this:
 ```ts
-import EDataServerUI from '@girs/edataserverui-1.2';
+import EDataServerUI from '@girs/node-edataserverui-1.2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const EDataServerUI = require('@girs/edataserverui-1.2');
+const EDataServerUI = require('@girs/node-edataserverui-1.2');
 ```
 
 ### Ambient Modules

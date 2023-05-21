@@ -1,5 +1,5 @@
 
-import GExiv2010 from '@girs/gexiv2-0.10';
+import GExiv2010 from '@girs/node-gexiv2-0.10';
 
 declare global {
     interface NodeGtkGi {

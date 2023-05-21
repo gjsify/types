@@ -1,5 +1,5 @@
 
-import Vips80 from '@girs/vips-8.0';
+import Vips80 from '@girs/node-vips-8.0';
 
 declare global {
     interface NodeGtkGi {

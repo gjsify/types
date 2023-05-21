@@ -1,7 +1,7 @@
 
 # ClutterGst-3.0
 
-Node.js TypeScript type definitions for ClutterGst-3.0, generated from library version 3.0.28 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for ClutterGst-3.0, generated from library version 3.0.28 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GStreamer bindings for clutter.
 
@@ -16,12 +16,12 @@ npm install @girs/node-cluttergst-3.0
 
 You can import this package into your project like this:
 ```ts
-import ClutterGst from '@girs/cluttergst-3.0';
+import ClutterGst from '@girs/node-cluttergst-3.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const ClutterGst = require('@girs/cluttergst-3.0');
+const ClutterGst = require('@girs/node-cluttergst-3.0');
 ```
 
 ### Ambient Modules

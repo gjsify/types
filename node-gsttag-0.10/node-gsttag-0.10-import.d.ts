@@ -1,5 +1,5 @@
 
-import GstTag010 from '@girs/gsttag-0.10';
+import GstTag010 from '@girs/node-gsttag-0.10';
 
 declare global {
     interface NodeGtkGi {

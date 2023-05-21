@@ -1,5 +1,5 @@
 
-import EDataServer12 from '@girs/edataserver-1.2';
+import EDataServer12 from '@girs/node-edataserver-1.2';
 
 declare global {
     interface NodeGtkGi {

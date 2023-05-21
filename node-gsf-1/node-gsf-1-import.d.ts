@@ -1,5 +1,5 @@
 
-import Gsf1 from '@girs/gsf-1';
+import Gsf1 from '@girs/node-gsf-1';
 
 declare global {
     interface NodeGtkGi {

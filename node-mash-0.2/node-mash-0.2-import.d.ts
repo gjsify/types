@@ -1,5 +1,5 @@
 
-import Mash02 from '@girs/mash-0.2';
+import Mash02 from '@girs/node-mash-0.2';
 
 declare global {
     interface NodeGtkGi {

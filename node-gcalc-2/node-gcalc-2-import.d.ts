@@ -1,5 +1,5 @@
 
-import GCalc2 from '@girs/gcalc-2';
+import GCalc2 from '@girs/node-gcalc-2';
 
 declare global {
     interface NodeGtkGi {

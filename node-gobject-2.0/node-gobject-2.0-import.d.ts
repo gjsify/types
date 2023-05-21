@@ -1,5 +1,5 @@
 
-import GObject20 from '@girs/gobject-2.0';
+import GObject20 from '@girs/node-gobject-2.0';
 
 declare global {
     interface NodeGtkGi {

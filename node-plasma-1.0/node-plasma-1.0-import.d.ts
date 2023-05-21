@@ -1,5 +1,5 @@
 
-import Plasma10 from '@girs/plasma-1.0';
+import Plasma10 from '@girs/node-plasma-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Adw1 from '@girs/adw-1';
+import Adw1 from '@girs/node-adw-1';
 
 declare global {
     interface NodeGtkGi {

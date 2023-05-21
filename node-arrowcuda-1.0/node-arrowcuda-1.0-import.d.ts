@@ -1,5 +1,5 @@
 
-import ArrowCUDA10 from '@girs/arrowcuda-1.0';
+import ArrowCUDA10 from '@girs/node-arrowcuda-1.0';
 
 declare global {
     interface NodeGtkGi {

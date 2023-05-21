@@ -1,7 +1,7 @@
 
 # AccountsService-1.0
 
-Node.js TypeScript type definitions for AccountsService-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for AccountsService-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Query and manipulate user account information
 
@@ -16,12 +16,12 @@ npm install @girs/node-accountsservice-1.0
 
 You can import this package into your project like this:
 ```ts
-import AccountsService from '@girs/accountsservice-1.0';
+import AccountsService from '@girs/node-accountsservice-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const AccountsService = require('@girs/accountsservice-1.0');
+const AccountsService = require('@girs/node-accountsservice-1.0');
 ```
 
 ### Ambient Modules

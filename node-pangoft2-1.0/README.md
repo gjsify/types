@@ -1,7 +1,7 @@
 
 # PangoFT2-1.0
 
-Node.js TypeScript type definitions for PangoFT2-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for PangoFT2-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-pangoft2-1.0
 
 You can import this package into your project like this:
 ```ts
-import PangoFT2 from '@girs/pangoft2-1.0';
+import PangoFT2 from '@girs/node-pangoft2-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const PangoFT2 = require('@girs/pangoft2-1.0');
+const PangoFT2 = require('@girs/node-pangoft2-1.0');
 ```
 
 ### Ambient Modules

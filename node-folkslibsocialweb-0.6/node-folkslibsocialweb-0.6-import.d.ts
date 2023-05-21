@@ -1,5 +1,5 @@
 
-import FolksLibsocialweb06 from '@girs/folkslibsocialweb-0.6';
+import FolksLibsocialweb06 from '@girs/node-folkslibsocialweb-0.6';
 
 declare global {
     interface NodeGtkGi {

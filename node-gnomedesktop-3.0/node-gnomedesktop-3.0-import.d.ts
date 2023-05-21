@@ -1,5 +1,5 @@
 
-import GnomeDesktop30 from '@girs/gnomedesktop-3.0';
+import GnomeDesktop30 from '@girs/node-gnomedesktop-3.0';
 
 declare global {
     interface NodeGtkGi {

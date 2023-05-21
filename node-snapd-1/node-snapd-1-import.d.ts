@@ -1,5 +1,5 @@
 
-import Snapd1 from '@girs/snapd-1';
+import Snapd1 from '@girs/node-snapd-1';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Amtk4 from '@girs/amtk-4';
+import Amtk4 from '@girs/node-amtk-4';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import DMAP30 from '@girs/dmap-3.0';
+import DMAP30 from '@girs/node-dmap-3.0';
 
 declare global {
     interface NodeGtkGi {

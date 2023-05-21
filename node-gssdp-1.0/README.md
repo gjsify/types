@@ -1,7 +1,7 @@
 
 # GSSDP-1.0
 
-Node.js TypeScript type definitions for GSSDP-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GSSDP-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GObject-based API for handling resource discovery and announcement over SSDP.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gssdp-1.0
 
 You can import this package into your project like this:
 ```ts
-import GSSDP from '@girs/gssdp-1.0';
+import GSSDP from '@girs/node-gssdp-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GSSDP = require('@girs/gssdp-1.0');
+const GSSDP = require('@girs/node-gssdp-1.0');
 ```
 
 ### Ambient Modules

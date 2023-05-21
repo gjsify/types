@@ -1,7 +1,7 @@
 
 # Json-1.0
 
-Node.js TypeScript type definitions for Json-1.0, generated from library version 1.7.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Json-1.0, generated from library version 1.7.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 JSON-GLib is a library for reading and parsing JSON using GLib and GObject data types and API.
 
@@ -16,12 +16,12 @@ npm install @girs/node-json-1.0
 
 You can import this package into your project like this:
 ```ts
-import Json from '@girs/json-1.0';
+import Json from '@girs/node-json-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Json = require('@girs/json-1.0');
+const Json = require('@girs/node-json-1.0');
 ```
 
 ### Ambient Modules

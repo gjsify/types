@@ -12,9 +12,9 @@ import './node-gst-1.0-import.d.ts';
  * Gst-1.0
  */
 
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
 
 /**
  * The different types of buffering methods.

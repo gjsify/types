@@ -1,7 +1,7 @@
 
 # GstPlayer-1.0
 
-Node.js TypeScript type definitions for GstPlayer-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GstPlayer-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GStreamer Player Library
 
@@ -16,12 +16,12 @@ npm install @girs/node-gstplayer-1.0
 
 You can import this package into your project like this:
 ```ts
-import GstPlayer from '@girs/gstplayer-1.0';
+import GstPlayer from '@girs/node-gstplayer-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GstPlayer = require('@girs/gstplayer-1.0');
+const GstPlayer = require('@girs/node-gstplayer-1.0');
 ```
 
 ### Ambient Modules

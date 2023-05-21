@@ -1,7 +1,7 @@
 
 # GUsb-1.0
 
-Node.js TypeScript type definitions for GUsb-1.0, generated from library version 0.4.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GUsb-1.0, generated from library version 0.4.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GLib wrapper around libusb-1.0
 
@@ -16,12 +16,12 @@ npm install @girs/node-gusb-1.0
 
 You can import this package into your project like this:
 ```ts
-import GUsb from '@girs/gusb-1.0';
+import GUsb from '@girs/node-gusb-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GUsb = require('@girs/gusb-1.0');
+const GUsb = require('@girs/node-gusb-1.0');
 ```
 
 ### Ambient Modules

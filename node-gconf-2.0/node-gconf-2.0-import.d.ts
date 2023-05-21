@@ -1,5 +1,5 @@
 
-import GConf20 from '@girs/gconf-2.0';
+import GConf20 from '@girs/node-gconf-2.0';
 
 declare global {
     interface NodeGtkGi {

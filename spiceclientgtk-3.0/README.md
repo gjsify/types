@@ -1,7 +1,7 @@
 
 # SpiceClientGtk-3.0
 
-GJS TypeScript type definitions for SpiceClientGtk-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+GJS TypeScript type definitions for SpiceClientGtk-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 A Gtk client and libraries for SPICE remote desktop servers.
 

@@ -1,5 +1,5 @@
 
-import Meta12 from '@girs/meta-12';
+import Meta12 from '@girs/node-meta-12';
 
 declare global {
     interface NodeGtkGi {

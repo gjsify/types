@@ -1,5 +1,5 @@
 
-import ModemManager10 from '@girs/modemmanager-1.0';
+import ModemManager10 from '@girs/node-modemmanager-1.0';
 
 declare global {
     interface NodeGtkGi {

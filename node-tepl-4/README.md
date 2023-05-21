@@ -1,7 +1,7 @@
 
 # Tepl-4
 
-Node.js TypeScript type definitions for Tepl-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Tepl-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-tepl-4
 
 You can import this package into your project like this:
 ```ts
-import Tepl from '@girs/tepl-4';
+import Tepl from '@girs/node-tepl-4';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Tepl = require('@girs/tepl-4');
+const Tepl = require('@girs/node-tepl-4');
 ```
 
 ### Ambient Modules

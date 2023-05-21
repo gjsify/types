@@ -1,7 +1,7 @@
 
 # GrlNet-0.2
 
-Node.js TypeScript type definitions for GrlNet-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GrlNet-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-grlnet-0.2
 
 You can import this package into your project like this:
 ```ts
-import GrlNet from '@girs/grlnet-0.2';
+import GrlNet from '@girs/node-grlnet-0.2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GrlNet = require('@girs/grlnet-0.2');
+const GrlNet = require('@girs/node-grlnet-0.2');
 ```
 
 ### Ambient Modules

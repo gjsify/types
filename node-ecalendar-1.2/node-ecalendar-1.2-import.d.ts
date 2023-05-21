@@ -1,5 +1,5 @@
 
-import ECalendar12 from '@girs/ecalendar-1.2';
+import ECalendar12 from '@girs/node-ecalendar-1.2';
 
 declare global {
     interface NodeGtkGi {

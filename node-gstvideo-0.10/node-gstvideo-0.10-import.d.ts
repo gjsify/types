@@ -1,5 +1,5 @@
 
-import GstVideo010 from '@girs/gstvideo-0.10';
+import GstVideo010 from '@girs/node-gstvideo-0.10';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import St12 from '@girs/st-12';
+import St12 from '@girs/node-st-12';
 
 declare global {
     interface NodeGtkGi {

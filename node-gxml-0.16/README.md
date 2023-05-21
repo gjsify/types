@@ -1,7 +1,7 @@
 
 # GXml-0.16
 
-Node.js TypeScript type definitions for GXml-0.16, generated from library version 0.16.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GXml-0.16, generated from library version 0.16.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gxml-0.16
 
 You can import this package into your project like this:
 ```ts
-import GXml from '@girs/gxml-0.16';
+import GXml from '@girs/node-gxml-0.16';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GXml = require('@girs/gxml-0.16');
+const GXml = require('@girs/node-gxml-0.16');
 ```
 
 ### Ambient Modules

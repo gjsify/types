@@ -12,13 +12,13 @@ import './node-gstrtsp-1.0-import.d.ts';
  * GstRtsp-1.0
  */
 
-import type GstSdp from '@girs/gstsdp-1.0';
-import type Gst from '@girs/gst-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GstBase from '@girs/gstbase-1.0';
-import type Gio from '@girs/gio-2.0';
+import type GstSdp from '@girs/node-gstsdp-1.0';
+import type Gst from '@girs/node-gst-1.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
+import type GstBase from '@girs/node-gstbase-1.0';
+import type Gio from '@girs/node-gio-2.0';
 
 export namespace GstRtsp {
 

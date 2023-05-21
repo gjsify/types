@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/vgsl-1",
-    "version": "1.0.0-3.0.0-beta.15",
+    "version": "1.0.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Vgsl-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgsl-1.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit vgsl-1.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/vgda-1": "workspace:^",            
       "@girs/vda-1": "workspace:^",            
       "@girs/gcalc-2": "workspace:^",            
@@ -52,7 +52,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

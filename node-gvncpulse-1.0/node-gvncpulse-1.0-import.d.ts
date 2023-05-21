@@ -1,5 +1,5 @@
 
-import GVncPulse10 from '@girs/gvncpulse-1.0';
+import GVncPulse10 from '@girs/node-gvncpulse-1.0';
 
 declare global {
     interface NodeGtkGi {

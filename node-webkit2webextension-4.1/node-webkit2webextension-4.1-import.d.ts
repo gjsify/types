@@ -1,5 +1,5 @@
 
-import WebKit2WebExtension41 from '@girs/webkit2webextension-4.1';
+import WebKit2WebExtension41 from '@girs/node-webkit2webextension-4.1';
 
 declare global {
     interface NodeGtkGi {

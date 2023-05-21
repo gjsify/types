@@ -1,5 +1,5 @@
 
-import NMClient10 from '@girs/nmclient-1.0';
+import NMClient10 from '@girs/node-nmclient-1.0';
 
 declare global {
     interface NodeGtkGi {

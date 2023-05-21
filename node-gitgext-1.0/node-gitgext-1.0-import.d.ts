@@ -1,5 +1,5 @@
 
-import GitgExt10 from '@girs/gitgext-1.0';
+import GitgExt10 from '@girs/node-gitgext-1.0';
 
 declare global {
     interface NodeGtkGi {

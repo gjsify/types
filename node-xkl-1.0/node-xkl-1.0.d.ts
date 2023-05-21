@@ -12,9 +12,9 @@ import './node-xkl-1.0-import.d.ts';
  * Xkl-1.0
  */
 
-import type xlib from '@girs/xlib-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type xlib from '@girs/node-xlib-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 export namespace Xkl {
 

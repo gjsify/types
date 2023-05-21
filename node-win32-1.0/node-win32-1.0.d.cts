@@ -12,7 +12,7 @@ import './node-win32-1.0-import.d.ts';
  * win32-1.0
  */
 
-import type GObject from '@girs/gobject-2.0';
+import type GObject from '@girs/node-gobject-2.0';
 
 export interface MSG {
 }

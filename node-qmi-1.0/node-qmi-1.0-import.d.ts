@@ -1,5 +1,5 @@
 
-import Qmi10 from '@girs/qmi-1.0';
+import Qmi10 from '@girs/node-qmi-1.0';
 
 declare global {
     interface NodeGtkGi {

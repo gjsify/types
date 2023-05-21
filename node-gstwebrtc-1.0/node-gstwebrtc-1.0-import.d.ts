@@ -1,5 +1,5 @@
 
-import GstWebRTC10 from '@girs/gstwebrtc-1.0';
+import GstWebRTC10 from '@girs/node-gstwebrtc-1.0';
 
 declare global {
     interface NodeGtkGi {

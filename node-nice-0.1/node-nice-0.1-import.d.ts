@@ -1,5 +1,5 @@
 
-import Nice01 from '@girs/nice-0.1';
+import Nice01 from '@girs/node-nice-0.1';
 
 declare global {
     interface NodeGtkGi {

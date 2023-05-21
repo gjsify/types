@@ -1,7 +1,7 @@
 
 # Adw-1
 
-Node.js TypeScript type definitions for Adw-1, generated from library version 1.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Adw-1, generated from library version 1.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Building blocks for modern GNOME applications
 
@@ -16,12 +16,12 @@ npm install @girs/node-adw-1
 
 You can import this package into your project like this:
 ```ts
-import Adw from '@girs/adw-1';
+import Adw from '@girs/node-adw-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Adw = require('@girs/adw-1');
+const Adw = require('@girs/node-adw-1');
 ```
 
 ### Ambient Modules

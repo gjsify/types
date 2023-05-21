@@ -1,5 +1,5 @@
 
-import SpiceClientGLib20 from '@girs/spiceclientglib-2.0';
+import SpiceClientGLib20 from '@girs/node-spiceclientglib-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Gucharmap290 from '@girs/gucharmap-2.90';
+import Gucharmap290 from '@girs/node-gucharmap-2.90';
 
 declare global {
     interface NodeGtkGi {

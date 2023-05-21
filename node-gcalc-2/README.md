@@ -1,7 +1,7 @@
 
 # GCalc-2
 
-Node.js TypeScript type definitions for GCalc-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GCalc-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-gcalc-2
 
 You can import this package into your project like this:
 ```ts
-import GCalc from '@girs/gcalc-2';
+import GCalc from '@girs/node-gcalc-2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GCalc = require('@girs/gcalc-2');
+const GCalc = require('@girs/node-gcalc-2');
 ```
 
 ### Ambient Modules

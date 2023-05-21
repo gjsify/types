@@ -1,5 +1,5 @@
 
-import GtkSource4 from '@girs/gtksource-4';
+import GtkSource4 from '@girs/node-gtksource-4';
 
 declare global {
     interface NodeGtkGi {

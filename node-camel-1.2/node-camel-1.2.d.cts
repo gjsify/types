@@ -12,10 +12,10 @@ import './node-camel-1.2-import.d.ts';
  * Camel-1.2
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type libxml2 from '@girs/node-libxml2-2.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 /**
  * Authentication result codes used by #CamelService.

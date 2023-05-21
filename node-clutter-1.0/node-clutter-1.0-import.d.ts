@@ -1,5 +1,5 @@
 
-import Clutter10 from '@girs/clutter-1.0';
+import Clutter10 from '@girs/node-clutter-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import GstBadAllocators10 from '@girs/gstbadallocators-1.0';
+import GstBadAllocators10 from '@girs/node-gstbadallocators-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Dee-1.0
 
-Node.js TypeScript type definitions for Dee-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Dee-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Library to provide objects allowing to create Model-View-Controller type programs across DBus.
 
@@ -16,12 +16,12 @@ npm install @girs/node-dee-1.0
 
 You can import this package into your project like this:
 ```ts
-import Dee from '@girs/dee-1.0';
+import Dee from '@girs/node-dee-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Dee = require('@girs/dee-1.0');
+const Dee = require('@girs/node-dee-1.0');
 ```
 
 ### Ambient Modules

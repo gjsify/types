@@ -1,7 +1,7 @@
 
 # FolksEds-0.6
 
-Node.js TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-folkseds-0.6
 
 You can import this package into your project like this:
 ```ts
-import FolksEds from '@girs/folkseds-0.6';
+import FolksEds from '@girs/node-folkseds-0.6';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const FolksEds = require('@girs/folkseds-0.6');
+const FolksEds = require('@girs/node-folkseds-0.6');
 ```
 
 ### Ambient Modules

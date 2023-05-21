@@ -1,5 +1,5 @@
 
-import GnomeKeyring10 from '@girs/gnomekeyring-1.0';
+import GnomeKeyring10 from '@girs/node-gnomekeyring-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Zeitgeist20 from '@girs/zeitgeist-2.0';
+import Zeitgeist20 from '@girs/node-zeitgeist-2.0';
 
 declare global {
     interface NodeGtkGi {

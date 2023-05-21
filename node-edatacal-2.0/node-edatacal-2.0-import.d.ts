@@ -1,5 +1,5 @@
 
-import EDataCal20 from '@girs/edatacal-2.0';
+import EDataCal20 from '@girs/node-edatacal-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Gjs
 
-GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 

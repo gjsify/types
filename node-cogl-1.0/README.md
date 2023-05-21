@@ -1,7 +1,7 @@
 
 # Cogl-1.0
 
-Node.js TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 COGL is a low level OpenGL abstraction library developed for (and part of) Clutter. It is used primarily by Clutter to provide a common rendering API that works transparently across OpenGL >=1.4, OpenGL ES 1.1 and OpenGL ES 2.0.
 
@@ -16,12 +16,12 @@ npm install @girs/node-cogl-1.0
 
 You can import this package into your project like this:
 ```ts
-import Cogl from '@girs/cogl-1.0';
+import Cogl from '@girs/node-cogl-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Cogl = require('@girs/cogl-1.0');
+const Cogl = require('@girs/node-cogl-1.0');
 ```
 
 ### Ambient Modules

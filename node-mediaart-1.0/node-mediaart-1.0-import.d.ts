@@ -1,5 +1,5 @@
 
-import MediaArt10 from '@girs/mediaart-1.0';
+import MediaArt10 from '@girs/node-mediaart-1.0';
 
 declare global {
     interface NodeGtkGi {

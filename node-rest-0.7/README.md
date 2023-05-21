@@ -1,7 +1,7 @@
 
 # Rest-0.7
 
-Node.js TypeScript type definitions for Rest-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Rest-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 A helper library for RESTful services.
 
@@ -16,12 +16,12 @@ npm install @girs/node-rest-0.7
 
 You can import this package into your project like this:
 ```ts
-import Rest from '@girs/rest-0.7';
+import Rest from '@girs/node-rest-0.7';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Rest = require('@girs/rest-0.7');
+const Rest = require('@girs/node-rest-0.7');
 ```
 
 ### Ambient Modules

@@ -1,5 +1,5 @@
 
-import Soup30 from '@girs/soup-3.0';
+import Soup30 from '@girs/node-soup-3.0';
 
 declare global {
     interface NodeGtkGi {

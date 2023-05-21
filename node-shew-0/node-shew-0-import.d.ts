@@ -1,5 +1,5 @@
 
-import Shew0 from '@girs/shew-0';
+import Shew0 from '@girs/node-shew-0';
 
 declare global {
     interface NodeGtkGi {

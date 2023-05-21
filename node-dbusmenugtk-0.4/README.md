@@ -1,7 +1,7 @@
 
 # DbusmenuGtk-0.4
 
-Node.js TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-dbusmenugtk-0.4
 
 You can import this package into your project like this:
 ```ts
-import DbusmenuGtk from '@girs/dbusmenugtk-0.4';
+import DbusmenuGtk from '@girs/node-dbusmenugtk-0.4';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const DbusmenuGtk = require('@girs/dbusmenugtk-0.4');
+const DbusmenuGtk = require('@girs/node-dbusmenugtk-0.4');
 ```
 
 ### Ambient Modules

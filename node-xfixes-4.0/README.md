@@ -1,7 +1,7 @@
 
 # xfixes-4.0
 
-Node.js TypeScript type definitions for xfixes-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for xfixes-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-xfixes-4.0
 
 You can import this package into your project like this:
 ```ts
-import xfixes from '@girs/xfixes-4.0';
+import xfixes from '@girs/node-xfixes-4.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const xfixes = require('@girs/xfixes-4.0');
+const xfixes = require('@girs/node-xfixes-4.0');
 ```
 
 ### Ambient Modules

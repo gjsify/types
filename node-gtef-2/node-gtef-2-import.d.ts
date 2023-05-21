@@ -1,5 +1,5 @@
 
-import Gtef2 from '@girs/gtef-2';
+import Gtef2 from '@girs/node-gtef-2';
 
 declare global {
     interface NodeGtkGi {

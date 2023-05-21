@@ -1,7 +1,7 @@
 
 # GtkChamplain-0.12
 
-Node.js TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Libchamplain-gtk is a C library on top of libchamplain providing a Gtk+ widget to display maps in GTK+ applications.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gtkchamplain-0.12
 
 You can import this package into your project like this:
 ```ts
-import GtkChamplain from '@girs/gtkchamplain-0.12';
+import GtkChamplain from '@girs/node-gtkchamplain-0.12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GtkChamplain = require('@girs/gtkchamplain-0.12');
+const GtkChamplain = require('@girs/node-gtkchamplain-0.12');
 ```
 
 ### Ambient Modules

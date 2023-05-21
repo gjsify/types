@@ -1,5 +1,5 @@
 
-import GstInsertBin10 from '@girs/gstinsertbin-1.0';
+import GstInsertBin10 from '@girs/node-gstinsertbin-1.0';
 
 declare global {
     interface NodeGtkGi {

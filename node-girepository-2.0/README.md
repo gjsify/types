@@ -1,7 +1,7 @@
 
 # GIRepository-2.0
 
-Node.js TypeScript type definitions for GIRepository-2.0, generated from library version 1.75.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GIRepository-2.0, generated from library version 1.75.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.
 
@@ -16,12 +16,12 @@ npm install @girs/node-girepository-2.0
 
 You can import this package into your project like this:
 ```ts
-import GIRepository from '@girs/girepository-2.0';
+import GIRepository from '@girs/node-girepository-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GIRepository = require('@girs/girepository-2.0');
+const GIRepository = require('@girs/node-girepository-2.0');
 ```
 
 ### Ambient Modules

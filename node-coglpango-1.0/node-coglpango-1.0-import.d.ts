@@ -1,5 +1,5 @@
 
-import CoglPango10 from '@girs/coglpango-1.0';
+import CoglPango10 from '@girs/node-coglpango-1.0';
 
 declare global {
     interface NodeGtkGi {

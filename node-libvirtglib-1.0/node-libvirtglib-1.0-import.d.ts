@@ -1,5 +1,5 @@
 
-import LibvirtGLib10 from '@girs/libvirtglib-1.0';
+import LibvirtGLib10 from '@girs/node-libvirtglib-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import RygelRenderer28 from '@girs/rygelrenderer-2.8';
+import RygelRenderer28 from '@girs/node-rygelrenderer-2.8';
 
 declare global {
     interface NodeGtkGi {

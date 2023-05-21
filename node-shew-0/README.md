@@ -1,7 +1,7 @@
 
 # Shew-0
 
-Node.js TypeScript type definitions for Shew-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Shew-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-shew-0
 
 You can import this package into your project like this:
 ```ts
-import Shew from '@girs/shew-0';
+import Shew from '@girs/node-shew-0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Shew = require('@girs/shew-0');
+const Shew = require('@girs/node-shew-0');
 ```
 
 ### Ambient Modules

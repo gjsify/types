@@ -1,7 +1,7 @@
 
 # GdkPixbuf-2.0
 
-Node.js TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GdkPixbuf is a library for image loading and manipulation. The GdkPixbuf documentation contains both the programmer's guide and the API reference.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gdkpixbuf-2.0
 
 You can import this package into your project like this:
 ```ts
-import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GdkPixbuf = require('@girs/gdkpixbuf-2.0');
+const GdkPixbuf = require('@girs/node-gdkpixbuf-2.0');
 ```
 
 ### Ambient Modules

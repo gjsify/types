@@ -1,5 +1,5 @@
 
-import Ggit10 from '@girs/ggit-1.0';
+import Ggit10 from '@girs/node-ggit-1.0';
 
 declare global {
     interface NodeGtkGi {

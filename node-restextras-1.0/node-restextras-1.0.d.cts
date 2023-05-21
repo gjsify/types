@@ -12,11 +12,11 @@ import './node-restextras-1.0-import.d.ts';
  * RestExtras-1.0
  */
 
-import type Soup from '@girs/soup-3.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Rest from '@girs/rest-1.0';
+import type Soup from '@girs/node-soup-3.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Rest from '@girs/node-rest-1.0';
 
 export interface YoutubeProxyUploadCallback {
     (proxy: YoutubeProxy, payload: string | null, total: number, uploaded: number, error: GLib.Error, weakObject: GObject.Object): void

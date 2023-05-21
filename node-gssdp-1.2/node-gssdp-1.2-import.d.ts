@@ -1,5 +1,5 @@
 
-import GSSDP12 from '@girs/gssdp-1.2';
+import GSSDP12 from '@girs/node-gssdp-1.2';
 
 declare global {
     interface NodeGtkGi {

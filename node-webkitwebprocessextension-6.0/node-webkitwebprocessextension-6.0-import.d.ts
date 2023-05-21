@@ -1,5 +1,5 @@
 
-import WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
+import WebKitWebProcessExtension60 from '@girs/node-webkitwebprocessextension-6.0';
 
 declare global {
     interface NodeGtkGi {

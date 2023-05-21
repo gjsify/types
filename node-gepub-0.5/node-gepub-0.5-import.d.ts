@@ -1,5 +1,5 @@
 
-import Gepub05 from '@girs/gepub-0.5';
+import Gepub05 from '@girs/node-gepub-0.5';
 
 declare global {
     interface NodeGtkGi {

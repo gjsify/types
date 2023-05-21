@@ -1,5 +1,5 @@
 
-import TrackerControl10 from '@girs/trackercontrol-1.0';
+import TrackerControl10 from '@girs/node-trackercontrol-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # CoglPango-1.0
 
-Node.js TypeScript type definitions for CoglPango-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for CoglPango-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Binding for the CoglPango 1.0 library.
 
@@ -16,12 +16,12 @@ npm install @girs/node-coglpango-1.0
 
 You can import this package into your project like this:
 ```ts
-import CoglPango from '@girs/coglpango-1.0';
+import CoglPango from '@girs/node-coglpango-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const CoglPango = require('@girs/coglpango-1.0');
+const CoglPango = require('@girs/node-coglpango-1.0');
 ```
 
 ### Ambient Modules

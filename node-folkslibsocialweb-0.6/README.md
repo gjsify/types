@@ -1,7 +1,7 @@
 
 # FolksLibsocialweb-0.6
 
-Node.js TypeScript type definitions for FolksLibsocialweb-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for FolksLibsocialweb-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-folkslibsocialweb-0.6
 
 You can import this package into your project like this:
 ```ts
-import FolksLibsocialweb from '@girs/folkslibsocialweb-0.6';
+import FolksLibsocialweb from '@girs/node-folkslibsocialweb-0.6';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const FolksLibsocialweb = require('@girs/folkslibsocialweb-0.6');
+const FolksLibsocialweb = require('@girs/node-folkslibsocialweb-0.6');
 ```
 
 ### Ambient Modules

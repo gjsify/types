@@ -1,5 +1,5 @@
 
-import Dbusmenu04 from '@girs/dbusmenu-0.4';
+import Dbusmenu04 from '@girs/node-dbusmenu-0.4';
 
 declare global {
     interface NodeGtkGi {

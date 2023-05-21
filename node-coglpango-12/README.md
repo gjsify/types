@@ -1,7 +1,7 @@
 
 # CoglPango-12
 
-Node.js TypeScript type definitions for CoglPango-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for CoglPango-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-coglpango-12
 
 You can import this package into your project like this:
 ```ts
-import CoglPango from '@girs/coglpango-12';
+import CoglPango from '@girs/node-coglpango-12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const CoglPango = require('@girs/coglpango-12');
+const CoglPango = require('@girs/node-coglpango-12');
 ```
 
 ### Ambient Modules

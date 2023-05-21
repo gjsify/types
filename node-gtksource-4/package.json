@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-gtksource-4",
-    "version": "4.0.0-3.0.0-beta.15",
+    "version": "4.0.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for GtkSource-4, generated from library version 4.0.0",
     "type": "module",
     "module": "node-gtksource-4.js",
@@ -32,20 +32,20 @@
       "test:cjs": "tsc --noEmit node-gtksource-4.d.cts"
     },
     "dependencies": {
-      
-      "@girs/gtk-3.0": "workspace:^",            
-      "@girs/xlib-2.0": "workspace:^",            
-      "@girs/gdk-3.0": "workspace:^",            
-      "@girs/cairo-1.0": "workspace:^",            
-      "@girs/pango-1.0": "workspace:^",            
-      "@girs/harfbuzz-0.0": "workspace:^",            
-      "@girs/freetype2-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gdkpixbuf-2.0": "workspace:^",            
-      "@girs/gmodule-2.0": "workspace:^",            
-      "@girs/atk-1.0": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-gtk-3.0": "workspace:^",            
+      "@girs/node-xlib-2.0": "workspace:^",            
+      "@girs/node-gdk-3.0": "workspace:^",            
+      "@girs/node-cairo-1.0": "workspace:^",            
+      "@girs/node-pango-1.0": "workspace:^",            
+      "@girs/node-harfbuzz-0.0": "workspace:^",            
+      "@girs/node-freetype2-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gdkpixbuf-2.0": "workspace:^",            
+      "@girs/node-gmodule-2.0": "workspace:^",            
+      "@girs/node-atk-1.0": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -58,7 +58,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

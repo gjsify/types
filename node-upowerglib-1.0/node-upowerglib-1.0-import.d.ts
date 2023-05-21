@@ -1,5 +1,5 @@
 
-import UPowerGlib10 from '@girs/upowerglib-1.0';
+import UPowerGlib10 from '@girs/node-upowerglib-1.0';
 
 declare global {
     interface NodeGtkGi {

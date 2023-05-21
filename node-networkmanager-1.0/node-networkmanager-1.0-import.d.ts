@@ -1,5 +1,5 @@
 
-import NetworkManager10 from '@girs/networkmanager-1.0';
+import NetworkManager10 from '@girs/node-networkmanager-1.0';
 
 declare global {
     interface NodeGtkGi {

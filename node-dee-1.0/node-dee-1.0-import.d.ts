@@ -1,5 +1,5 @@
 
-import Dee10 from '@girs/dee-1.0';
+import Dee10 from '@girs/node-dee-1.0';
 
 declare global {
     interface NodeGtkGi {

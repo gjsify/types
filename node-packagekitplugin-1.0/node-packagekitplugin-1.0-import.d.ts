@@ -1,5 +1,5 @@
 
-import PackageKitPlugin10 from '@girs/packagekitplugin-1.0';
+import PackageKitPlugin10 from '@girs/node-packagekitplugin-1.0';
 
 declare global {
     interface NodeGtkGi {

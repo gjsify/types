@@ -1,7 +1,7 @@
 
 # Gdaui-5.0
 
-Node.js TypeScript type definitions for Gdaui-5.0, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Gdaui-5.0, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Libgda is a (relatively small) database access library. This package provides GTK+ widgets to database access.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gdaui-5.0
 
 You can import this package into your project like this:
 ```ts
-import Gdaui from '@girs/gdaui-5.0';
+import Gdaui from '@girs/node-gdaui-5.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Gdaui = require('@girs/gdaui-5.0');
+const Gdaui = require('@girs/node-gdaui-5.0');
 ```
 
 ### Ambient Modules

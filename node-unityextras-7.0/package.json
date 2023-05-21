@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-unityextras-7.0",
-    "version": "7.0.0-3.0.0-beta.15",
+    "version": "7.0.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for UnityExtras-7.0, generated from library version 7.0.0",
     "type": "module",
     "module": "node-unityextras-7.0.js",
@@ -32,11 +32,11 @@
       "test:cjs": "tsc --noEmit node-unityextras-7.0.d.cts"
     },
     "dependencies": {
-      
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/unity-7.0": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-unity-7.0": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -49,7 +49,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

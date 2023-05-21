@@ -1,7 +1,7 @@
 
 # GUPnPDLNA-2.0
 
-Node.js TypeScript type definitions for GUPnPDLNA-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GUPnPDLNA-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GUPnP DLNA is a set of utility APIs to simplify DLNA-specific bits of MediaServer implementations, such as DLNA media profile guessing.
 
@@ -16,12 +16,12 @@ npm install @girs/node-gupnpdlna-2.0
 
 You can import this package into your project like this:
 ```ts
-import GUPnPDLNA from '@girs/gupnpdlna-2.0';
+import GUPnPDLNA from '@girs/node-gupnpdlna-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GUPnPDLNA = require('@girs/gupnpdlna-2.0');
+const GUPnPDLNA = require('@girs/node-gupnpdlna-2.0');
 ```
 
 ### Ambient Modules

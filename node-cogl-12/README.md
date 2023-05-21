@@ -1,7 +1,7 @@
 
 # Cogl-12
 
-Node.js TypeScript type definitions for Cogl-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Cogl-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-cogl-12
 
 You can import this package into your project like this:
 ```ts
-import Cogl from '@girs/cogl-12';
+import Cogl from '@girs/node-cogl-12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Cogl = require('@girs/cogl-12');
+const Cogl = require('@girs/node-cogl-12');
 ```
 
 ### Ambient Modules

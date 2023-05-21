@@ -1,5 +1,5 @@
 
-import Mbim10 from '@girs/mbim-1.0';
+import Mbim10 from '@girs/node-mbim-1.0';
 
 declare global {
     interface NodeGtkGi {

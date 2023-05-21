@@ -1,5 +1,5 @@
 
-import GstTranscoder10 from '@girs/gsttranscoder-1.0';
+import GstTranscoder10 from '@girs/node-gsttranscoder-1.0';
 
 declare global {
     interface NodeGtkGi {

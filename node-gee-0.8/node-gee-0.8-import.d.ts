@@ -1,5 +1,5 @@
 
-import Gee08 from '@girs/gee-0.8';
+import Gee08 from '@girs/node-gee-0.8';
 
 declare global {
     interface NodeGtkGi {

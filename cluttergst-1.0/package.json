@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/cluttergst-1.0",
-    "version": "1.6.0-3.0.0-beta.15",
+    "version": "1.6.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for ClutterGst-1.0, generated from library version 1.6.0",
     "type": "module",
     "module": "cluttergst-1.0.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit cluttergst-1.0.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/gstvideo-0.10": "workspace:^",            
       "@girs/libxml2-2.0": "workspace:^",            
       "@girs/gstbase-0.10": "workspace:^",            
@@ -63,7 +63,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

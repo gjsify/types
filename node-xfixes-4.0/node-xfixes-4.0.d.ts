@@ -12,7 +12,7 @@ import './node-xfixes-4.0-import.d.ts';
  * xfixes-4.0
  */
 
-import type GObject from '@girs/gobject-2.0';
+import type GObject from '@girs/node-gobject-2.0';
 
 export namespace xfixes {
 

@@ -1,5 +1,5 @@
 
-import Xft20 from '@girs/xft-2.0';
+import Xft20 from '@girs/node-xft-2.0';
 
 declare global {
     interface NodeGtkGi {

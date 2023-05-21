@@ -1,5 +1,5 @@
 
-import GrlPls02 from '@girs/grlpls-0.2';
+import GrlPls02 from '@girs/node-grlpls-0.2';
 
 declare global {
     interface NodeGtkGi {

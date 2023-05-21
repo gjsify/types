@@ -1,5 +1,5 @@
 
-import Gdaui60 from '@girs/gdaui-6.0';
+import Gdaui60 from '@girs/node-gdaui-6.0';
 
 declare global {
     interface NodeGtkGi {

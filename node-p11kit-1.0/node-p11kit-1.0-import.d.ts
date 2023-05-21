@@ -1,5 +1,5 @@
 
-import P11Kit10 from '@girs/p11kit-1.0';
+import P11Kit10 from '@girs/node-p11kit-1.0';
 
 declare global {
     interface NodeGtkGi {

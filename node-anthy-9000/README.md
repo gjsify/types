@@ -1,7 +1,7 @@
 
 # Anthy-9000
 
-Node.js TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-anthy-9000
 
 You can import this package into your project like this:
 ```ts
-import Anthy from '@girs/anthy-9000';
+import Anthy from '@girs/node-anthy-9000';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Anthy = require('@girs/anthy-9000');
+const Anthy = require('@girs/node-anthy-9000');
 ```
 
 ### Ambient Modules

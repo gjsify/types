@@ -1,5 +1,5 @@
 
-import Mx20 from '@girs/mx-2.0';
+import Mx20 from '@girs/node-mx-2.0';
 
 declare global {
     interface NodeGtkGi {

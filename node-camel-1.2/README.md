@@ -1,7 +1,7 @@
 
 # Camel-1.2
 
-Node.js TypeScript type definitions for Camel-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Camel-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Camel is a generic messaging library. It supports the standard messaging system for receiving and sending messages. It is the messaging backend for Evolution.
 
@@ -16,12 +16,12 @@ npm install @girs/node-camel-1.2
 
 You can import this package into your project like this:
 ```ts
-import Camel from '@girs/camel-1.2';
+import Camel from '@girs/node-camel-1.2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Camel = require('@girs/camel-1.2');
+const Camel = require('@girs/node-camel-1.2');
 ```
 
 ### Ambient Modules

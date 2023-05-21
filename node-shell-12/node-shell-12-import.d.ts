@@ -1,5 +1,5 @@
 
-import Shell12 from '@girs/shell-12';
+import Shell12 from '@girs/node-shell-12';
 
 declare global {
     interface NodeGtkGi {

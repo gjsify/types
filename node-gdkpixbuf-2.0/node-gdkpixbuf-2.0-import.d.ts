@@ -1,5 +1,5 @@
 
-import GdkPixbuf20 from '@girs/gdkpixbuf-2.0';
+import GdkPixbuf20 from '@girs/node-gdkpixbuf-2.0';
 
 declare global {
     interface NodeGtkGi {

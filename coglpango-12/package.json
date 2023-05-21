@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/coglpango-12",
-    "version": "12.0.0-3.0.0-beta.15",
+    "version": "12.0.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for CoglPango-12, generated from library version 12.0.0",
     "type": "module",
     "module": "coglpango-12.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit coglpango-12.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/pangocairo-1.0": "workspace:^",            
       "@girs/cairo-1.0": "workspace:^",            
       "@girs/pango-1.0": "workspace:^",            
@@ -53,7 +53,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

@@ -1,5 +1,5 @@
 
-import GXPS01 from '@girs/gxps-0.1';
+import GXPS01 from '@girs/node-gxps-0.1';
 
 declare global {
     interface NodeGtkGi {

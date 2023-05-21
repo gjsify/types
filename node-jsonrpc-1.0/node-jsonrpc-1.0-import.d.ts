@@ -1,5 +1,5 @@
 
-import Jsonrpc10 from '@girs/jsonrpc-1.0';
+import Jsonrpc10 from '@girs/node-jsonrpc-1.0';
 
 declare global {
     interface NodeGtkGi {

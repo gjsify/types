@@ -1,5 +1,5 @@
 
-import Gitg10 from '@girs/gitg-1.0';
+import Gitg10 from '@girs/node-gitg-1.0';
 
 declare global {
     interface NodeGtkGi {

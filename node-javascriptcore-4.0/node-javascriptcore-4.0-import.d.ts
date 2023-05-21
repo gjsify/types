@@ -1,5 +1,5 @@
 
-import JavaScriptCore40 from '@girs/javascriptcore-4.0';
+import JavaScriptCore40 from '@girs/node-javascriptcore-4.0';
 
 declare global {
     interface NodeGtkGi {

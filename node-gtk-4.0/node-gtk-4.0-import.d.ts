@@ -1,5 +1,5 @@
 
-import Gtk40 from '@girs/gtk-4.0';
+import Gtk40 from '@girs/node-gtk-4.0';
 
 declare global {
     interface NodeGtkGi {

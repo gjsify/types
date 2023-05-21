@@ -1,5 +1,5 @@
 
-import Handy1 from '@girs/handy-1';
+import Handy1 from '@girs/node-handy-1';
 
 declare global {
     interface NodeGtkGi {

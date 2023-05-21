@@ -1,7 +1,7 @@
 
 # EDataServer-1.2
 
-Node.js TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 The data server, called "Evolution Data Server" is responsible for managing calendar and addressbook information.
 
@@ -16,12 +16,12 @@ npm install @girs/node-edataserver-1.2
 
 You can import this package into your project like this:
 ```ts
-import EDataServer from '@girs/edataserver-1.2';
+import EDataServer from '@girs/node-edataserver-1.2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const EDataServer = require('@girs/edataserver-1.2');
+const EDataServer = require('@girs/node-edataserver-1.2');
 ```
 
 ### Ambient Modules

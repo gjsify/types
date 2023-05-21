@@ -1,5 +1,5 @@
 
-import GstGL10 from '@girs/gstgl-1.0';
+import GstGL10 from '@girs/node-gstgl-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import GnomeDesktop40 from '@girs/gnomedesktop-4.0';
+import GnomeDesktop40 from '@girs/node-gnomedesktop-4.0';
 
 declare global {
     interface NodeGtkGi {

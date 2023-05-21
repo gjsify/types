@@ -1,5 +1,5 @@
 
-import GooCanvas20 from '@girs/goocanvas-2.0';
+import GooCanvas20 from '@girs/node-goocanvas-2.0';
 
 declare global {
     interface NodeGtkGi {

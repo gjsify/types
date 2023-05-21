@@ -1,5 +1,5 @@
 
-import Rest10 from '@girs/rest-1.0';
+import Rest10 from '@girs/node-rest-1.0';
 
 declare global {
     interface NodeGtkGi {

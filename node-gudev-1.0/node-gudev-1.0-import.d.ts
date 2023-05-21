@@ -1,5 +1,5 @@
 
-import GUdev10 from '@girs/gudev-1.0';
+import GUdev10 from '@girs/node-gudev-1.0';
 
 declare global {
     interface NodeGtkGi {

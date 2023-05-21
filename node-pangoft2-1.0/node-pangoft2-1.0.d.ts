@@ -12,15 +12,15 @@ import './node-pangoft2-1.0-import.d.ts';
  * PangoFT2-1.0
  */
 
-import type freetype2 from '@girs/freetype2-2.0';
-import type PangoFc from '@girs/pangofc-1.0';
-import type fontconfig from '@girs/fontconfig-2.0';
-import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gio from '@girs/gio-2.0';
+import type freetype2 from '@girs/node-freetype2-2.0';
+import type PangoFc from '@girs/node-pangofc-1.0';
+import type fontconfig from '@girs/node-fontconfig-2.0';
+import type Pango from '@girs/node-pango-1.0';
+import type cairo from '@girs/node-cairo-1.0';
+import type HarfBuzz from '@girs/node-harfbuzz-0.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Gio from '@girs/node-gio-2.0';
 
 export namespace PangoFT2 {
 

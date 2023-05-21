@@ -1,5 +1,5 @@
 
-import Babl01 from '@girs/babl-0.1';
+import Babl01 from '@girs/node-babl-0.1';
 
 declare global {
     interface NodeGtkGi {

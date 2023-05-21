@@ -1,5 +1,5 @@
 
-import Zpj00 from '@girs/zpj-0.0';
+import Zpj00 from '@girs/node-zpj-0.0';
 
 declare global {
     interface NodeGtkGi {

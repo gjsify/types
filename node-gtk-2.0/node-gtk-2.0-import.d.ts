@@ -1,5 +1,5 @@
 
-import Gtk20 from '@girs/gtk-2.0';
+import Gtk20 from '@girs/node-gtk-2.0';
 
 declare global {
     interface NodeGtkGi {

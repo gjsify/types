@@ -1,5 +1,5 @@
 
-import Colord10 from '@girs/colord-1.0';
+import Colord10 from '@girs/node-colord-1.0';
 
 declare global {
     interface NodeGtkGi {

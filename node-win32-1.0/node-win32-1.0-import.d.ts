@@ -1,5 +1,5 @@
 
-import Win3210 from '@girs/win32-1.0';
+import Win3210 from '@girs/node-win32-1.0';
 
 declare global {
     interface NodeGtkGi {

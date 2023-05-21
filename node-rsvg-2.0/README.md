@@ -1,7 +1,7 @@
 
 # Rsvg-2.0
 
-Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.55.90 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.55.90 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Library for rendering of SVG vector graphics.
 
@@ -16,12 +16,12 @@ npm install @girs/node-rsvg-2.0
 
 You can import this package into your project like this:
 ```ts
-import Rsvg from '@girs/rsvg-2.0';
+import Rsvg from '@girs/node-rsvg-2.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Rsvg = require('@girs/rsvg-2.0');
+const Rsvg = require('@girs/node-rsvg-2.0');
 ```
 
 ### Ambient Modules

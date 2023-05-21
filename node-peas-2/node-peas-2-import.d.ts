@@ -1,5 +1,5 @@
 
-import Peas2 from '@girs/peas-2';
+import Peas2 from '@girs/node-peas-2';
 
 declare global {
     interface NodeGtkGi {

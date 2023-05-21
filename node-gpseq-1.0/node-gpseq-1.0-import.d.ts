@@ -1,5 +1,5 @@
 
-import Gpseq10 from '@girs/gpseq-1.0';
+import Gpseq10 from '@girs/node-gpseq-1.0';
 
 declare global {
     interface NodeGtkGi {

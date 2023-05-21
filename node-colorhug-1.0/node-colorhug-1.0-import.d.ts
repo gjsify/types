@@ -1,5 +1,5 @@
 
-import ColorHug10 from '@girs/colorhug-1.0';
+import ColorHug10 from '@girs/node-colorhug-1.0';
 
 declare global {
     interface NodeGtkGi {

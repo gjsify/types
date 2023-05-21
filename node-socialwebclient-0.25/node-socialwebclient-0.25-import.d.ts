@@ -1,5 +1,5 @@
 
-import SocialWebClient025 from '@girs/socialwebclient-0.25';
+import SocialWebClient025 from '@girs/node-socialwebclient-0.25';
 
 declare global {
     interface NodeGtkGi {

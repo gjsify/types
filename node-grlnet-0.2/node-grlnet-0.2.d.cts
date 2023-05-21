@@ -12,10 +12,10 @@ import './node-grlnet-0.2-import.d.ts';
  * GrlNet-0.2
  */
 
-import type Soup from '@girs/soup-2.4';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type Soup from '@girs/node-soup-2.4';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 /**
  * These constants identify all the available errors managed by

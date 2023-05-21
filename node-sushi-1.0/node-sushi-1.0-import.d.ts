@@ -1,5 +1,5 @@
 
-import Sushi10 from '@girs/sushi-1.0';
+import Sushi10 from '@girs/node-sushi-1.0';
 
 declare global {
     interface NodeGtkGi {

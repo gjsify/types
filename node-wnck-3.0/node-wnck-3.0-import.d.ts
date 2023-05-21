@@ -1,5 +1,5 @@
 
-import Wnck30 from '@girs/wnck-3.0';
+import Wnck30 from '@girs/node-wnck-3.0';
 
 declare global {
     interface NodeGtkGi {

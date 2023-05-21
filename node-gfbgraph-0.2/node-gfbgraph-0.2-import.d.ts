@@ -1,5 +1,5 @@
 
-import GFBGraph02 from '@girs/gfbgraph-0.2';
+import GFBGraph02 from '@girs/node-gfbgraph-0.2';
 
 declare global {
     interface NodeGtkGi {

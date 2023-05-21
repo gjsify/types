@@ -1,5 +1,5 @@
 
-import Vsqlite1 from '@girs/vsqlite-1';
+import Vsqlite1 from '@girs/node-vsqlite-1';
 
 declare global {
     interface NodeGtkGi {

@@ -12,13 +12,13 @@ import './node-telepathyfarstream-0.6-import.d.ts';
  * TelepathyFarstream-0.6
  */
 
-import type TelepathyGLib from '@girs/telepathyglib-0.12';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gst from '@girs/gst-1.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Farstream from '@girs/farstream-0.2';
+import type TelepathyGLib from '@girs/node-telepathyglib-0.12';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Gst from '@girs/node-gst-1.0';
+import type GModule from '@girs/node-gmodule-2.0';
+import type Farstream from '@girs/node-farstream-0.2';
 
 export module Channel {
 

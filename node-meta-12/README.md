@@ -1,7 +1,7 @@
 
 # Meta-12
 
-Node.js TypeScript type definitions for Meta-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Meta-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-meta-12
 
 You can import this package into your project like this:
 ```ts
-import Meta from '@girs/meta-12';
+import Meta from '@girs/node-meta-12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Meta = require('@girs/meta-12');
+const Meta = require('@girs/node-meta-12');
 ```
 
 ### Ambient Modules

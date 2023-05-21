@@ -1,5 +1,5 @@
 
-import Template10 from '@girs/template-1.0';
+import Template10 from '@girs/node-template-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Gkbd30 from '@girs/gkbd-3.0';
+import Gkbd30 from '@girs/node-gkbd-3.0';
 
 declare global {
     interface NodeGtkGi {

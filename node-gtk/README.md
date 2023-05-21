@@ -1,7 +1,7 @@
 
 # node-gtk
 
-Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 

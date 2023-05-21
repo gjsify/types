@@ -1,5 +1,5 @@
 
-import GL10 from '@girs/gl-1.0';
+import GL10 from '@girs/node-gl-1.0';
 
 declare global {
     interface NodeGtkGi {

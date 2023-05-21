@@ -12,20 +12,20 @@ import './node-clutter-12-import.d.ts';
  * Clutter-12
  */
 
-import type cairo from '@girs/cairo-1.0';
-import type Json from '@girs/json-1.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GL from '@girs/gl-1.0';
-import type CoglPango from '@girs/coglpango-12';
-import type PangoCairo from '@girs/pangocairo-1.0';
-import type Pango from '@girs/pango-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Cogl from '@girs/cogl-12';
-import type Graphene from '@girs/graphene-1.0';
-import type Atk from '@girs/atk-1.0';
+import type cairo from '@girs/node-cairo-1.0';
+import type Json from '@girs/node-json-1.0';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GL from '@girs/node-gl-1.0';
+import type CoglPango from '@girs/node-coglpango-12';
+import type PangoCairo from '@girs/node-pangocairo-1.0';
+import type Pango from '@girs/node-pango-1.0';
+import type HarfBuzz from '@girs/node-harfbuzz-0.0';
+import type freetype2 from '@girs/node-freetype2-2.0';
+import type Cogl from '@girs/node-cogl-12';
+import type Graphene from '@girs/node-graphene-1.0';
+import type Atk from '@girs/node-atk-1.0';
 
 /**
  * Controls how a #ClutterActor should align itself inside the extra space

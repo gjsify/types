@@ -1,5 +1,5 @@
 
-import Vte4291 from '@girs/vte-4-2.91';
+import Vte4291 from '@girs/node-vte-4-2.91';
 
 declare global {
     interface NodeGtkGi {

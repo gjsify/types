@@ -1,5 +1,5 @@
 
-import GMenu30 from '@girs/gmenu-3.0';
+import GMenu30 from '@girs/node-gmenu-3.0';
 
 declare global {
     interface NodeGtkGi {

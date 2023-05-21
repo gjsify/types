@@ -1,7 +1,7 @@
 
 # Clutter-12
 
-Node.js TypeScript type definitions for Clutter-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Clutter-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-clutter-12
 
 You can import this package into your project like this:
 ```ts
-import Clutter from '@girs/clutter-12';
+import Clutter from '@girs/node-clutter-12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Clutter = require('@girs/clutter-12');
+const Clutter = require('@girs/node-clutter-12');
 ```
 
 ### Ambient Modules

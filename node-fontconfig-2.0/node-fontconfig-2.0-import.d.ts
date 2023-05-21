@@ -1,5 +1,5 @@
 
-import Fontconfig20 from '@girs/fontconfig-2.0';
+import Fontconfig20 from '@girs/node-fontconfig-2.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Xfixes40 from '@girs/xfixes-4.0';
+import Xfixes40 from '@girs/node-xfixes-4.0';
 
 declare global {
     interface NodeGtkGi {

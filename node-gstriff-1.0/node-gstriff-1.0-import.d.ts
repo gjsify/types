@@ -1,5 +1,5 @@
 
-import GstRiff10 from '@girs/gstriff-1.0';
+import GstRiff10 from '@girs/node-gstriff-1.0';
 
 declare global {
     interface NodeGtkGi {

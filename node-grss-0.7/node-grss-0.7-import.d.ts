@@ -1,5 +1,5 @@
 
-import Grss07 from '@girs/grss-0.7';
+import Grss07 from '@girs/node-grss-0.7';
 
 declare global {
     interface NodeGtkGi {

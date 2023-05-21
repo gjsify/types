@@ -12,9 +12,9 @@ import './node-networkmanager-1.0-import.d.ts';
  * NetworkManager-1.0
  */
 
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type DBusGLib from '@girs/dbusglib-1.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type DBusGLib from '@girs/node-dbusglib-1.0';
 
 export namespace NetworkManager {
 

@@ -1,5 +1,5 @@
 
-import GstRtsp10 from '@girs/gstrtsp-1.0';
+import GstRtsp10 from '@girs/node-gstrtsp-1.0';
 
 declare global {
     interface NodeGtkGi {

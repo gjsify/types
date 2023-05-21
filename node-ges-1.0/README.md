@@ -1,7 +1,7 @@
 
 # GES-1.0
 
-Node.js TypeScript type definitions for GES-1.0, generated from library version 1.23.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GES-1.0, generated from library version 1.23.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 The GStreamer Editing Services (GES) aims to fill the gap between GStreamer/NLE and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
 
@@ -16,12 +16,12 @@ npm install @girs/node-ges-1.0
 
 You can import this package into your project like this:
 ```ts
-import GES from '@girs/ges-1.0';
+import GES from '@girs/node-ges-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GES = require('@girs/ges-1.0');
+const GES = require('@girs/node-ges-1.0');
 ```
 
 ### Ambient Modules

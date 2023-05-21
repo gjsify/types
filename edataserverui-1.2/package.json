@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/edataserverui-1.2",
-    "version": "1.2.0-3.0.0-beta.15",
+    "version": "1.2.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for EDataServerUI-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edataserverui-1.2.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit edataserverui-1.2.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/soup-3.0": "workspace:^",            
       "@girs/gio-2.0": "workspace:^",            
       "@girs/gobject-2.0": "workspace:^",            
@@ -62,7 +62,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

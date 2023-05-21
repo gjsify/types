@@ -1,5 +1,5 @@
 
-import PangoXft10 from '@girs/pangoxft-1.0';
+import PangoXft10 from '@girs/node-pangoxft-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,5 +1,5 @@
 
-import Freetype220 from '@girs/freetype2-2.0';
+import Freetype220 from '@girs/node-freetype2-2.0';
 
 declare global {
     interface NodeGtkGi {

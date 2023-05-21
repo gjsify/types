@@ -1,5 +1,5 @@
 
-import NM10 from '@girs/nm-1.0';
+import NM10 from '@girs/node-nm-1.0';
 
 declare global {
     interface NodeGtkGi {

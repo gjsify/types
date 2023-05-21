@@ -1,7 +1,7 @@
 
 # AppStream-1.0
 
-Node.js TypeScript type definitions for AppStream-1.0, generated from library version 0.16.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for AppStream-1.0, generated from library version 0.16.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 AppStream is a cross-distro effort for enhancing the way we interact with the software repositories provided by the distribution by standardizing sets of additional metadata.
 
@@ -16,12 +16,12 @@ npm install @girs/node-appstream-1.0
 
 You can import this package into your project like this:
 ```ts
-import AppStream from '@girs/appstream-1.0';
+import AppStream from '@girs/node-appstream-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const AppStream = require('@girs/appstream-1.0');
+const AppStream = require('@girs/node-appstream-1.0');
 ```
 
 ### Ambient Modules

@@ -1,7 +1,7 @@
 
 # Vips-8.0
 
-Node.js TypeScript type definitions for Vips-8.0, generated from library version 8.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Vips-8.0, generated from library version 8.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-vips-8.0
 
 You can import this package into your project like this:
 ```ts
-import Vips from '@girs/vips-8.0';
+import Vips from '@girs/node-vips-8.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Vips = require('@girs/vips-8.0');
+const Vips = require('@girs/node-vips-8.0');
 ```
 
 ### Ambient Modules

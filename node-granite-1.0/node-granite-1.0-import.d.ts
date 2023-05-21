@@ -1,5 +1,5 @@
 
-import Granite10 from '@girs/granite-1.0';
+import Granite10 from '@girs/node-granite-1.0';
 
 declare global {
     interface NodeGtkGi {

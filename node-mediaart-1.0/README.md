@@ -1,7 +1,7 @@
 
 # MediaArt-1.0
 
-Node.js TypeScript type definitions for MediaArt-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for MediaArt-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 The libmediaart library is the foundation for media art caching, extraction and lookup for applications on the desktop.
 
@@ -16,12 +16,12 @@ npm install @girs/node-mediaart-1.0
 
 You can import this package into your project like this:
 ```ts
-import MediaArt from '@girs/mediaart-1.0';
+import MediaArt from '@girs/node-mediaart-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const MediaArt = require('@girs/mediaart-1.0');
+const MediaArt = require('@girs/node-mediaart-1.0');
 ```
 
 ### Ambient Modules

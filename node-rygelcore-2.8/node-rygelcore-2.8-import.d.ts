@@ -1,5 +1,5 @@
 
-import RygelCore28 from '@girs/rygelcore-2.8';
+import RygelCore28 from '@girs/node-rygelcore-2.8';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Goa-1.0
 
-Node.js TypeScript type definitions for Goa-1.0, generated from library version 3.47.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Goa-1.0, generated from library version 3.47.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 A centralized service that allows a set of online accounts to be configured for use with core GNOME applications. In UX terms, GOA provides a static list of online accounts that can be setup by users (through the Online Accounts panel in System Settings). These accounts can then be used by core GNOME applications.
 
@@ -16,12 +16,12 @@ npm install @girs/node-goa-1.0
 
 You can import this package into your project like this:
 ```ts
-import Goa from '@girs/goa-1.0';
+import Goa from '@girs/node-goa-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Goa = require('@girs/goa-1.0');
+const Goa = require('@girs/node-goa-1.0');
 ```
 
 ### Ambient Modules

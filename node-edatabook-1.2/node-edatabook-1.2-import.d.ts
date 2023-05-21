@@ -1,5 +1,5 @@
 
-import EDataBook12 from '@girs/edatabook-1.2';
+import EDataBook12 from '@girs/node-edatabook-1.2';
 
 declare global {
     interface NodeGtkGi {

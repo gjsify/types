@@ -1,7 +1,7 @@
 
 # GCalc-1
 
-Node.js TypeScript type definitions for GCalc-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GCalc-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GNOME Calculator's library to parse and evaluate math expressions
 
@@ -16,12 +16,12 @@ npm install @girs/node-gcalc-1
 
 You can import this package into your project like this:
 ```ts
-import GCalc from '@girs/gcalc-1';
+import GCalc from '@girs/node-gcalc-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GCalc = require('@girs/gcalc-1');
+const GCalc = require('@girs/node-gcalc-1');
 ```
 
 ### Ambient Modules

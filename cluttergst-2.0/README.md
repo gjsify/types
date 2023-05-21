@@ -1,7 +1,7 @@
 
 # ClutterGst-2.0
 
-GJS TypeScript type definitions for ClutterGst-2.0, generated from library version 2.0.19 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+GJS TypeScript type definitions for ClutterGst-2.0, generated from library version 2.0.19 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 

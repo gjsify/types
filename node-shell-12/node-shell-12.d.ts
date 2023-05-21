@@ -12,35 +12,35 @@ import './node-shell-12-import.d.ts';
  * Shell-12
  */
 
-import type St from '@girs/st-12';
-import type Meta from '@girs/meta-12';
-import type xlib from '@girs/xlib-2.0';
-import type xfixes from '@girs/xfixes-4.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type CoglPango from '@girs/coglpango-12';
-import type PangoCairo from '@girs/pangocairo-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type Pango from '@girs/pango-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type Cogl from '@girs/cogl-12';
-import type Graphene from '@girs/graphene-1.0';
-import type GL from '@girs/gl-1.0';
-import type Clutter from '@girs/clutter-12';
-import type Json from '@girs/json-1.0';
-import type Atk from '@girs/atk-1.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Cally from '@girs/cally-12';
-import type PolkitAgent from '@girs/polkitagent-1.0';
-import type Polkit from '@girs/polkit-1.0';
-import type NM from '@girs/nm-1.0';
-import type Gvc from '@girs/gvc-1.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
+import type St from '@girs/node-st-12';
+import type Meta from '@girs/node-meta-12';
+import type xlib from '@girs/node-xlib-2.0';
+import type xfixes from '@girs/node-xfixes-4.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GDesktopEnums from '@girs/node-gdesktopenums-3.0';
+import type CoglPango from '@girs/node-coglpango-12';
+import type PangoCairo from '@girs/node-pangocairo-1.0';
+import type cairo from '@girs/node-cairo-1.0';
+import type Pango from '@girs/node-pango-1.0';
+import type HarfBuzz from '@girs/node-harfbuzz-0.0';
+import type freetype2 from '@girs/node-freetype2-2.0';
+import type Gio from '@girs/node-gio-2.0';
+import type Cogl from '@girs/node-cogl-12';
+import type Graphene from '@girs/node-graphene-1.0';
+import type GL from '@girs/node-gl-1.0';
+import type Clutter from '@girs/node-clutter-12';
+import type Json from '@girs/node-json-1.0';
+import type Atk from '@girs/node-atk-1.0';
+import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
+import type Cally from '@girs/node-cally-12';
+import type PolkitAgent from '@girs/node-polkitagent-1.0';
+import type Polkit from '@girs/node-polkit-1.0';
+import type NM from '@girs/node-nm-1.0';
+import type Gvc from '@girs/node-gvc-1.0';
+import type Gcr from '@girs/node-gcr-4';
+import type Gck from '@girs/node-gck-2';
 
 export namespace Shell {
 

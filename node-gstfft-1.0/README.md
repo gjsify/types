@@ -1,7 +1,7 @@
 
 # GstFft-1.0
 
-Node.js TypeScript type definitions for GstFft-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GstFft-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GStreamer FFT Library
 
@@ -16,12 +16,12 @@ npm install @girs/node-gstfft-1.0
 
 You can import this package into your project like this:
 ```ts
-import GstFft from '@girs/gstfft-1.0';
+import GstFft from '@girs/node-gstfft-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GstFft = require('@girs/gstfft-1.0');
+const GstFft = require('@girs/node-gstfft-1.0');
 ```
 
 ### Ambient Modules

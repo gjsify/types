@@ -1,5 +1,5 @@
 
-import Gda50 from '@girs/gda-5.0';
+import Gda50 from '@girs/node-gda-5.0';
 
 declare global {
     interface NodeGtkGi {

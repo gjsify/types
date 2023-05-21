@@ -1,5 +1,5 @@
 
-import Ide10 from '@girs/ide-1.0';
+import Ide10 from '@girs/node-ide-1.0';
 
 declare global {
     interface NodeGtkGi {

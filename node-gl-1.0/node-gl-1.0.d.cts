@@ -12,7 +12,7 @@ import './node-gl-1.0-import.d.ts';
  * GL-1.0
  */
 
-import type GObject from '@girs/gobject-2.0';
+import type GObject from '@girs/node-gobject-2.0';
 
 export function initNames(): void
 export interface bitfield {

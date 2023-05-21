@@ -1,5 +1,5 @@
 
-import MetaTest12 from '@girs/metatest-12';
+import MetaTest12 from '@girs/node-metatest-12';
 
 declare global {
     interface NodeGtkGi {

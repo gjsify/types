@@ -1,5 +1,5 @@
 
-import Libmsi10 from '@girs/libmsi-1.0';
+import Libmsi10 from '@girs/node-libmsi-1.0';
 
 declare global {
     interface NodeGtkGi {

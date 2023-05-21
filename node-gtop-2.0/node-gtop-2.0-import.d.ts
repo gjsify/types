@@ -1,5 +1,5 @@
 
-import GTop20 from '@girs/gtop-2.0';
+import GTop20 from '@girs/node-gtop-2.0';
 
 declare global {
     interface NodeGtkGi {

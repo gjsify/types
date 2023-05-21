@@ -1,5 +1,5 @@
 
-import SecretUnstable0 from '@girs/secretunstable-0';
+import SecretUnstable0 from '@girs/node-secretunstable-0';
 
 declare global {
     interface NodeGtkGi {

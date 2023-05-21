@@ -1,5 +1,5 @@
 
-import GnomeAutoar01 from '@girs/gnomeautoar-0.1';
+import GnomeAutoar01 from '@girs/node-gnomeautoar-0.1';
 
 declare global {
     interface NodeGtkGi {

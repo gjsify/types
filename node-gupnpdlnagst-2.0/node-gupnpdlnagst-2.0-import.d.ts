@@ -1,5 +1,5 @@
 
-import GUPnPDLNAGst20 from '@girs/gupnpdlnagst-2.0';
+import GUPnPDLNAGst20 from '@girs/node-gupnpdlnagst-2.0';
 
 declare global {
     interface NodeGtkGi {

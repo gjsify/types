@@ -1,5 +1,5 @@
 
-import TelepathyFarstream06 from '@girs/telepathyfarstream-0.6';
+import TelepathyFarstream06 from '@girs/node-telepathyfarstream-0.6';
 
 declare global {
     interface NodeGtkGi {

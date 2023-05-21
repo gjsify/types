@@ -1,7 +1,7 @@
 
 # Unity-6.0
 
-Node.js TypeScript type definitions for Unity-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Unity-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-unity-6.0
 
 You can import this package into your project like this:
 ```ts
-import Unity from '@girs/unity-6.0';
+import Unity from '@girs/node-unity-6.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Unity = require('@girs/unity-6.0');
+const Unity = require('@girs/node-unity-6.0');
 ```
 
 ### Ambient Modules

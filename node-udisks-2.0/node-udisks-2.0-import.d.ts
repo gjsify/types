@@ -1,5 +1,5 @@
 
-import UDisks20 from '@girs/udisks-2.0';
+import UDisks20 from '@girs/node-udisks-2.0';
 
 declare global {
     interface NodeGtkGi {

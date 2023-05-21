@@ -1,5 +1,5 @@
 
-import GXml018 from '@girs/gxml-0.18';
+import GXml018 from '@girs/node-gxml-0.18';
 
 declare global {
     interface NodeGtkGi {

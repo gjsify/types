@@ -1,5 +1,5 @@
 
-import Xkl10 from '@girs/xkl-1.0';
+import Xkl10 from '@girs/node-xkl-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Vda-1
 
-Node.js TypeScript type definitions for Vda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Vda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Vala Data Access library, a set of interfaces to connect to databases and execute queries
 
@@ -16,12 +16,12 @@ npm install @girs/node-vda-1
 
 You can import this package into your project like this:
 ```ts
-import Vda from '@girs/vda-1';
+import Vda from '@girs/node-vda-1';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Vda = require('@girs/vda-1');
+const Vda = require('@girs/node-vda-1');
 ```
 
 ### Ambient Modules

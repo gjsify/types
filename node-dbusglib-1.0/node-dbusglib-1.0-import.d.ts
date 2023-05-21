@@ -1,5 +1,5 @@
 
-import DBusGLib10 from '@girs/dbusglib-1.0';
+import DBusGLib10 from '@girs/node-dbusglib-1.0';
 
 declare global {
     interface NodeGtkGi {

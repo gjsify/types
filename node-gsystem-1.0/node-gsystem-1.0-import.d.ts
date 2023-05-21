@@ -1,5 +1,5 @@
 
-import GSystem10 from '@girs/gsystem-1.0';
+import GSystem10 from '@girs/node-gsystem-1.0';
 
 declare global {
     interface NodeGtkGi {

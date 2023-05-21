@@ -1,5 +1,5 @@
 
-import ColordGtk10 from '@girs/colordgtk-1.0';
+import ColordGtk10 from '@girs/node-colordgtk-1.0';
 
 declare global {
     interface NodeGtkGi {

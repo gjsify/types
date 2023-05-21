@@ -1,5 +1,5 @@
 
-import Signon20 from '@girs/signon-2.0';
+import Signon20 from '@girs/node-signon-2.0';
 
 declare global {
     interface NodeGtkGi {

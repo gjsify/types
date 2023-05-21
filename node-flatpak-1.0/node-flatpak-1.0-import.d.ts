@@ -1,5 +1,5 @@
 
-import Flatpak10 from '@girs/flatpak-1.0';
+import Flatpak10 from '@girs/node-flatpak-1.0';
 
 declare global {
     interface NodeGtkGi {

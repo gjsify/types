@@ -12,10 +12,10 @@ import './node-gstcheck-1.0-import.d.ts';
  * GstCheck-1.0
  */
 
-import type Gst from '@girs/gst-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
+import type Gst from '@girs/node-gst-1.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type GModule from '@girs/node-gmodule-2.0';
 
 /**
  * Get one buffer from `pad`. Implemented via buffer probes. This function will

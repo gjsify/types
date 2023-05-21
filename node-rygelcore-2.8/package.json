@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-rygelcore-2.8",
-    "version": "2.8.0-3.0.0-beta.15",
+    "version": "2.8.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for RygelCore-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "node-rygelcore-2.8.js",
@@ -32,15 +32,15 @@
       "test:cjs": "tsc --noEmit node-rygelcore-2.8.d.cts"
     },
     "dependencies": {
-      
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/gupnp-1.6": "workspace:^",            
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-3.0": "workspace:^",            
-      "@girs/gssdp-1.6": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gee-0.8": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-gupnp-1.6": "workspace:^",            
+      "@girs/node-libxml2-2.0": "workspace:^",            
+      "@girs/node-soup-3.0": "workspace:^",            
+      "@girs/node-gssdp-1.6": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -53,7 +53,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

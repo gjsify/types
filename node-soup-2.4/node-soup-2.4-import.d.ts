@@ -1,5 +1,5 @@
 
-import Soup24 from '@girs/soup-2.4';
+import Soup24 from '@girs/node-soup-2.4';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/gcalc-2",
-    "version": "2.0.0-3.0.0-beta.15",
+    "version": "2.0.0-3.0.0-beta.16",
     "description": "GJS TypeScript type definitions for GCalc-2, generated from library version 2.0.0",
     "type": "module",
     "module": "gcalc-2.js",
@@ -32,7 +32,7 @@
       "test:cjs": "tsc --noEmit gcalc-2.d.cts"
     },
     "dependencies": {
-      
+      "@girs/gjs": "workspace:^",      
       "@girs/gio-2.0": "workspace:^",            
       "@girs/gobject-2.0": "workspace:^",            
       "@girs/glib-2.0": "workspace:^",            
@@ -46,7 +46,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

@@ -1,5 +1,5 @@
 
-import PackageKitGlib10 from '@girs/packagekitglib-1.0';
+import PackageKitGlib10 from '@girs/node-packagekitglib-1.0';
 
 declare global {
     interface NodeGtkGi {

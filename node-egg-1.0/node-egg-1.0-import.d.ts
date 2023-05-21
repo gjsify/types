@@ -1,5 +1,5 @@
 
-import Egg10 from '@girs/egg-1.0';
+import Egg10 from '@girs/node-egg-1.0';
 
 declare global {
     interface NodeGtkGi {

@@ -12,8 +12,8 @@ import './node-gegl-0.3-import.d.ts';
  * Gegl-0.3
  */
 
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 
 export enum AbyssPolicy {
     NONE,

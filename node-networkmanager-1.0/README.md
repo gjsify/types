@@ -1,7 +1,7 @@
 
 # NetworkManager-1.0
 
-Node.js TypeScript type definitions for NetworkManager-1.0, generated from library version 1.17.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for NetworkManager-1.0, generated from library version 1.17.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Network management framework, utils.
 
@@ -16,12 +16,12 @@ npm install @girs/node-networkmanager-1.0
 
 You can import this package into your project like this:
 ```ts
-import NetworkManager from '@girs/networkmanager-1.0';
+import NetworkManager from '@girs/node-networkmanager-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const NetworkManager = require('@girs/networkmanager-1.0');
+const NetworkManager = require('@girs/node-networkmanager-1.0');
 ```
 
 ### Ambient Modules

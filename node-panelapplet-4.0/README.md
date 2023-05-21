@@ -1,7 +1,7 @@
 
 # PanelApplet-4.0
 
-Node.js TypeScript type definitions for PanelApplet-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for PanelApplet-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-panelapplet-4.0
 
 You can import this package into your project like this:
 ```ts
-import PanelApplet from '@girs/panelapplet-4.0';
+import PanelApplet from '@girs/node-panelapplet-4.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const PanelApplet = require('@girs/panelapplet-4.0');
+const PanelApplet = require('@girs/node-panelapplet-4.0');
 ```
 
 ### Ambient Modules

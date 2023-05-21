@@ -1,5 +1,5 @@
 
-import GtkClutter10 from '@girs/gtkclutter-1.0';
+import GtkClutter10 from '@girs/node-gtkclutter-1.0';
 
 declare global {
     interface NodeGtkGi {

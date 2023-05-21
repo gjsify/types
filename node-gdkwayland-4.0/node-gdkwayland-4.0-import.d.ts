@@ -1,5 +1,5 @@
 
-import GdkWayland40 from '@girs/gdkwayland-4.0';
+import GdkWayland40 from '@girs/node-gdkwayland-4.0';
 
 declare global {
     interface NodeGtkGi {

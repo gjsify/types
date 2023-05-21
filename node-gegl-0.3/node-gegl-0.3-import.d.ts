@@ -1,5 +1,5 @@
 
-import Gegl03 from '@girs/gegl-0.3';
+import Gegl03 from '@girs/node-gegl-0.3';
 
 declare global {
     interface NodeGtkGi {

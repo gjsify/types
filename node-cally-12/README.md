@@ -1,7 +1,7 @@
 
 # Cally-12
 
-Node.js TypeScript type definitions for Cally-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Cally-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-cally-12
 
 You can import this package into your project like this:
 ```ts
-import Cally from '@girs/cally-12';
+import Cally from '@girs/node-cally-12';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Cally = require('@girs/cally-12');
+const Cally = require('@girs/node-cally-12');
 ```
 
 ### Ambient Modules

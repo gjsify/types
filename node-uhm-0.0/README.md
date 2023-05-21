@@ -1,7 +1,7 @@
 
 # Uhm-0.0
 
-Node.js TypeScript type definitions for Uhm-0.0, generated from library version 0.5.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Uhm-0.0, generated from library version 0.5.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-uhm-0.0
 
 You can import this package into your project like this:
 ```ts
-import Uhm from '@girs/uhm-0.0';
+import Uhm from '@girs/node-uhm-0.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Uhm = require('@girs/uhm-0.0');
+const Uhm = require('@girs/node-uhm-0.0');
 ```
 
 ### Ambient Modules

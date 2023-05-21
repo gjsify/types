@@ -1,5 +1,5 @@
 
-import Arrow10 from '@girs/arrow-1.0';
+import Arrow10 from '@girs/node-arrow-1.0';
 
 declare global {
     interface NodeGtkGi {

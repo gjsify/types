@@ -1,5 +1,5 @@
 
-import GcrGtk34 from '@girs/gcrgtk3-4';
+import GcrGtk34 from '@girs/node-gcrgtk3-4';
 
 declare global {
     interface NodeGtkGi {

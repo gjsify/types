@@ -1,5 +1,5 @@
 
-import GSignon10 from '@girs/gsignon-1.0';
+import GSignon10 from '@girs/node-gsignon-1.0';
 
 declare global {
     interface NodeGtkGi {

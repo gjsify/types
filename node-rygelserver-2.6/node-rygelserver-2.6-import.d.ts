@@ -1,5 +1,5 @@
 
-import RygelServer26 from '@girs/rygelserver-2.6';
+import RygelServer26 from '@girs/node-rygelserver-2.6';
 
 declare global {
     interface NodeGtkGi {

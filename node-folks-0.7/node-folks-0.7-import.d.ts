@@ -1,5 +1,5 @@
 
-import Folks07 from '@girs/folks-0.7';
+import Folks07 from '@girs/node-folks-0.7';
 
 declare global {
     interface NodeGtkGi {

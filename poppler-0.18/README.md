@@ -1,7 +1,7 @@
 
 # Poppler-0.18
 
-GJS TypeScript type definitions for Poppler-0.18, generated from library version 22.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+GJS TypeScript type definitions for Poppler-0.18, generated from library version 22.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 PDF rendering library.
 

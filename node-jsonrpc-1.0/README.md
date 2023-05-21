@@ -1,7 +1,7 @@
 
 # Jsonrpc-1.0
 
-Node.js TypeScript type definitions for Jsonrpc-1.0, generated from library version 3.43.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Jsonrpc-1.0, generated from library version 3.43.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 Jsonrpc-GLib is a library to communicate with JSON-RPC based peers in either a synchronous or asynchronous fashion. It also allows communicating using the GVariant serialization format instead of JSON when both peers support it. You might want that when communicating on a single host to avoid parser overhead and memory-allocator fragmentation
 
@@ -16,12 +16,12 @@ npm install @girs/node-jsonrpc-1.0
 
 You can import this package into your project like this:
 ```ts
-import Jsonrpc from '@girs/jsonrpc-1.0';
+import Jsonrpc from '@girs/node-jsonrpc-1.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Jsonrpc = require('@girs/jsonrpc-1.0');
+const Jsonrpc = require('@girs/node-jsonrpc-1.0');
 ```
 
 ### Ambient Modules

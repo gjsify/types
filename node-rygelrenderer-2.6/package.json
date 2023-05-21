@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-rygelrenderer-2.6",
-    "version": "2.6.0-3.0.0-beta.15",
+    "version": "2.6.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for RygelRenderer-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "node-rygelrenderer-2.6.js",
@@ -32,17 +32,17 @@
       "test:cjs": "tsc --noEmit node-rygelrenderer-2.6.d.cts"
     },
     "dependencies": {
-      
-      "@girs/rygelcore-2.6": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/gupnp-1.2": "workspace:^",            
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-2.4": "workspace:^",            
-      "@girs/gssdp-1.2": "workspace:^",            
-      "@girs/gupnpav-1.0": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-rygelcore-2.6": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gee-0.8": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-gupnp-1.2": "workspace:^",            
+      "@girs/node-libxml2-2.0": "workspace:^",            
+      "@girs/node-soup-2.4": "workspace:^",            
+      "@girs/node-gssdp-1.2": "workspace:^",            
+      "@girs/node-gupnpav-1.0": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -55,7 +55,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

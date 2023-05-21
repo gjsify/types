@@ -1,5 +1,5 @@
 
-import EBookContacts12 from '@girs/ebookcontacts-1.2';
+import EBookContacts12 from '@girs/node-ebookcontacts-1.2';
 
 declare global {
     interface NodeGtkGi {

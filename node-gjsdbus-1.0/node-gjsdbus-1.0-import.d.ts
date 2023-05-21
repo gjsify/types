@@ -1,5 +1,5 @@
 
-import GjsDBus10 from '@girs/gjsdbus-1.0';
+import GjsDBus10 from '@girs/node-gjsdbus-1.0';
 
 declare global {
     interface NodeGtkGi {

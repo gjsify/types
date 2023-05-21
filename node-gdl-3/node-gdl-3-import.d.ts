@@ -1,5 +1,5 @@
 
-import Gdl3 from '@girs/gdl-3';
+import Gdl3 from '@girs/node-gdl-3';
 
 declare global {
     interface NodeGtkGi {

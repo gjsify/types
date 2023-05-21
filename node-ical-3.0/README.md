@@ -1,7 +1,7 @@
 
 # ICal-3.0
 
-Node.js TypeScript type definitions for ICal-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for ICal-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-ical-3.0
 
 You can import this package into your project like this:
 ```ts
-import ICal from '@girs/ical-3.0';
+import ICal from '@girs/node-ical-3.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const ICal = require('@girs/ical-3.0');
+const ICal = require('@girs/node-ical-3.0');
 ```
 
 ### Ambient Modules

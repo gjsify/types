@@ -1,5 +1,5 @@
 
-import GtkVnc20 from '@girs/gtkvnc-2.0';
+import GtkVnc20 from '@girs/node-gtkvnc-2.0';
 
 declare global {
     interface NodeGtkGi {

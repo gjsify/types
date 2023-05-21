@@ -1,5 +1,5 @@
 
-import Gdm10 from '@girs/gdm-1.0';
+import Gdm10 from '@girs/node-gdm-1.0';
 
 declare global {
     interface NodeGtkGi {

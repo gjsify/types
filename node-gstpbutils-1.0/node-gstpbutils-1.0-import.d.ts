@@ -1,5 +1,5 @@
 
-import GstPbutils10 from '@girs/gstpbutils-1.0';
+import GstPbutils10 from '@girs/node-gstpbutils-1.0';
 
 declare global {
     interface NodeGtkGi {

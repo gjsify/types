@@ -1,5 +1,5 @@
 
-import GUPnPAV10 from '@girs/gupnpav-1.0';
+import GUPnPAV10 from '@girs/node-gupnpav-1.0';
 
 declare global {
     interface NodeGtkGi {

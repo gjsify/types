@@ -1,5 +1,5 @@
 
-import IBus10 from '@girs/ibus-1.0';
+import IBus10 from '@girs/node-ibus-1.0';
 
 declare global {
     interface NodeGtkGi {

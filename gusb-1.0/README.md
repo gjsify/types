@@ -1,7 +1,7 @@
 
 # GUsb-1.0
 
-GJS TypeScript type definitions for GUsb-1.0, generated from library version 0.4.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+GJS TypeScript type definitions for GUsb-1.0, generated from library version 0.4.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 GLib wrapper around libusb-1.0
 

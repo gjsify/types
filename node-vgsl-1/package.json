@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-vgsl-1",
-    "version": "1.0.0-3.0.0-beta.15",
+    "version": "1.0.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for Vgsl-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-vgsl-1.js",
@@ -32,17 +32,17 @@
       "test:cjs": "tsc --noEmit node-vgsl-1.d.cts"
     },
     "dependencies": {
-      
-      "@girs/vgda-1": "workspace:^",            
-      "@girs/vda-1": "workspace:^",            
-      "@girs/gcalc-2": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^",            
-      "@girs/json-1.0": "workspace:^",            
-      "@girs/gxml-0.20": "workspace:^",            
-      "@girs/libxml2-2.0": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-vgda-1": "workspace:^",            
+      "@girs/node-vda-1": "workspace:^",            
+      "@girs/node-gcalc-2": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gee-0.8": "workspace:^",            
+      "@girs/node-json-1.0": "workspace:^",            
+      "@girs/node-gxml-0.20": "workspace:^",            
+      "@girs/node-libxml2-2.0": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -55,7 +55,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

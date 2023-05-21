@@ -12,13 +12,13 @@ import './node-gdata-0.0-import.d.ts';
  * GData-0.0
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Soup from '@girs/soup-2.4';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Json from '@girs/json-1.0';
-import type Goa from '@girs/goa-1.0';
+import type libxml2 from '@girs/node-libxml2-2.0';
+import type Soup from '@girs/node-soup-2.4';
+import type Gio from '@girs/node-gio-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
+import type Json from '@girs/node-json-1.0';
+import type Goa from '@girs/node-goa-1.0';
 
 /**
  * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.

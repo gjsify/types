@@ -1,7 +1,7 @@
 
 # Amtk-5
 
-Node.js TypeScript type definitions for Amtk-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Amtk-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-amtk-5
 
 You can import this package into your project like this:
 ```ts
-import Amtk from '@girs/amtk-5';
+import Amtk from '@girs/node-amtk-5';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Amtk = require('@girs/amtk-5');
+const Amtk = require('@girs/node-amtk-5');
 ```
 
 ### Ambient Modules

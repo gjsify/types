@@ -1,5 +1,5 @@
 
-import Graphene10 from '@girs/graphene-1.0';
+import Graphene10 from '@girs/node-graphene-1.0';
 
 declare global {
     interface NodeGtkGi {

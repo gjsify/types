@@ -1,5 +1,5 @@
 
-import GstCodecs10 from '@girs/gstcodecs-1.0';
+import GstCodecs10 from '@girs/node-gstcodecs-1.0';
 
 declare global {
     interface NodeGtkGi {

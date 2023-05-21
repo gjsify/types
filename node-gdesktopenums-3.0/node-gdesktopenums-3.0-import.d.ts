@@ -1,5 +1,5 @@
 
-import GDesktopEnums30 from '@girs/gdesktopenums-3.0';
+import GDesktopEnums30 from '@girs/node-gdesktopenums-3.0';
 
 declare global {
     interface NodeGtkGi {

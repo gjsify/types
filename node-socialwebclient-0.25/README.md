@@ -1,7 +1,7 @@
 
 # SocialWebClient-0.25
 
-Node.js TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-socialwebclient-0.25
 
 You can import this package into your project like this:
 ```ts
-import SocialWebClient from '@girs/socialwebclient-0.25';
+import SocialWebClient from '@girs/node-socialwebclient-0.25';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const SocialWebClient = require('@girs/socialwebclient-0.25');
+const SocialWebClient = require('@girs/node-socialwebclient-0.25');
 ```
 
 ### Ambient Modules

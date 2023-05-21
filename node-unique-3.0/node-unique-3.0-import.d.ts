@@ -1,5 +1,5 @@
 
-import Unique30 from '@girs/unique-3.0';
+import Unique30 from '@girs/node-unique-3.0';
 
 declare global {
     interface NodeGtkGi {

@@ -1,7 +1,7 @@
 
 # Peas-2
 
-Node.js TypeScript type definitions for Peas-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for Peas-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 ## Install
 
@@ -14,12 +14,12 @@ npm install @girs/node-peas-2
 
 You can import this package into your project like this:
 ```ts
-import Peas from '@girs/peas-2';
+import Peas from '@girs/node-peas-2';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const Peas = require('@girs/peas-2');
+const Peas = require('@girs/node-peas-2');
 ```
 
 ### Ambient Modules

@@ -1,5 +1,5 @@
 
-import Builder10 from '@girs/builder-1.0';
+import Builder10 from '@girs/node-builder-1.0';
 
 declare global {
     interface NodeGtkGi {

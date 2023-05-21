@@ -1,7 +1,7 @@
 
 # GMime-3.0
 
-Node.js TypeScript type definitions for GMime-3.0, generated from library version 3.2.8 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.15.
+Node.js TypeScript type definitions for GMime-3.0, generated from library version 3.2.8 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
 MIME message parser and creator library
 
@@ -16,12 +16,12 @@ npm install @girs/node-gmime-3.0
 
 You can import this package into your project like this:
 ```ts
-import GMime from '@girs/gmime-3.0';
+import GMime from '@girs/node-gmime-3.0';
 ```
 
 Or if you prefer CommonJS, you can also use this:
 ```ts
-const GMime = require('@girs/gmime-3.0');
+const GMime = require('@girs/node-gmime-3.0');
 ```
 
 ### Ambient Modules

@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-st-12",
-    "version": "12.0.0-3.0.0-beta.15",
+    "version": "12.0.0-3.0.0-beta.16",
     "description": "Node.js TypeScript type definitions for St-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-st-12.js",
@@ -32,29 +32,29 @@
       "test:cjs": "tsc --noEmit node-st-12.d.cts"
     },
     "dependencies": {
-      
-      "@girs/meta-12": "workspace:^",            
-      "@girs/xlib-2.0": "workspace:^",            
-      "@girs/xfixes-4.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gdesktopenums-3.0": "workspace:^",            
-      "@girs/coglpango-12": "workspace:^",            
-      "@girs/pangocairo-1.0": "workspace:^",            
-      "@girs/cairo-1.0": "workspace:^",            
-      "@girs/pango-1.0": "workspace:^",            
-      "@girs/harfbuzz-0.0": "workspace:^",            
-      "@girs/freetype2-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/cogl-12": "workspace:^",            
-      "@girs/graphene-1.0": "workspace:^",            
-      "@girs/gl-1.0": "workspace:^",            
-      "@girs/clutter-12": "workspace:^",            
-      "@girs/json-1.0": "workspace:^",            
-      "@girs/atk-1.0": "workspace:^",            
-      "@girs/gdkpixbuf-2.0": "workspace:^",            
-      "@girs/gmodule-2.0": "workspace:^",            
-      "@girs/cally-12": "workspace:^"      
+      "@girs/node-gtk": "workspace:^",      
+      "@girs/node-meta-12": "workspace:^",            
+      "@girs/node-xlib-2.0": "workspace:^",            
+      "@girs/node-xfixes-4.0": "workspace:^",            
+      "@girs/node-gobject-2.0": "workspace:^",            
+      "@girs/node-glib-2.0": "workspace:^",            
+      "@girs/node-gdesktopenums-3.0": "workspace:^",            
+      "@girs/node-coglpango-12": "workspace:^",            
+      "@girs/node-pangocairo-1.0": "workspace:^",            
+      "@girs/node-cairo-1.0": "workspace:^",            
+      "@girs/node-pango-1.0": "workspace:^",            
+      "@girs/node-harfbuzz-0.0": "workspace:^",            
+      "@girs/node-freetype2-2.0": "workspace:^",            
+      "@girs/node-gio-2.0": "workspace:^",            
+      "@girs/node-cogl-12": "workspace:^",            
+      "@girs/node-graphene-1.0": "workspace:^",            
+      "@girs/node-gl-1.0": "workspace:^",            
+      "@girs/node-clutter-12": "workspace:^",            
+      "@girs/node-json-1.0": "workspace:^",            
+      "@girs/node-atk-1.0": "workspace:^",            
+      "@girs/node-gdkpixbuf-2.0": "workspace:^",            
+      "@girs/node-gmodule-2.0": "workspace:^",            
+      "@girs/node-cally-12": "workspace:^"      
     },
     "peerDependencies": {
       "node-gtk": "*"
@@ -67,7 +67,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
       "url": "https://github.com/gjsify/ts-for-gir/issues"

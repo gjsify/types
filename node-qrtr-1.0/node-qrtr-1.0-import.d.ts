@@ -1,5 +1,5 @@
 
-import Qrtr10 from '@girs/qrtr-1.0';
+import Qrtr10 from '@girs/node-qrtr-1.0';
 
 declare global {
     interface NodeGtkGi {

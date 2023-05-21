@@ -1,5 +1,5 @@
 
-import IAnjuta30 from '@girs/ianjuta-3.0';
+import IAnjuta30 from '@girs/node-ianjuta-3.0';
 
 declare global {
     interface NodeGtkGi {
