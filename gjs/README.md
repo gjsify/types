@@ -3,12 +3,15 @@
 
 GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
+[GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in TypeScript or JavaScript with type checking, better autocompletion and inline documentations.
+
 ## Install
 
 To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/gjs
 ```
+
 
 ## Usage
 
@@ -22,9 +25,25 @@ Or if you prefer CommonJS, you can also use this:
 const Gjs = require('@girs/gjs');
 ```
 
+### Global types
+
+After the import, the global types of GJS are also available:
+
+```ts
+console.log('Hello World from console');
+print('Hello World from print');
+
+const ByteArray = imports.byteArray;
+
+const encoder = new TextEncoder();
+const encoded = encoder.encode('𝓽𝓮𝔁𝓽');
+
+// And so on...
+```
+
 ### Ambient Modules
 
-You can import core [ambient module](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) types.
+You can import the built in [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) of GJS.
 For this you need to include the `@girs/gjs` or `@girs/gjs/ambient` in your `tsconfig` or entry point Typescript file:
     
 `index.ts`:
@@ -42,18 +61,36 @@ import '@girs/gjs'
   ...
 }
 ```
-    
 
-Now you can import `gettext` and `system` in ESM style with Typescript support:
+Now you can import `gettext`, `system` and `cairo` in ESM style with Typescript support:
 
 ```ts
 import gettext from 'gettext';
 import system from 'system';
+import cairo from 'cairo';
 ```
 
+### GIR modules
 
-If you want to have more types for GIR modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [Gtk-4.0](https://www.npmjs.com/package/@girs/gtk-4.0).
+If you want to have types for [GObject Introspection](https://gi.readthedocs.io/en/latest/) modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [gtk-4.0](https://www.npmjs.com/package/@girs/gtk-4.0), [gio-2.0](https://www.npmjs.com/package/@girs/gio-2.0), [adw-1](https://www.npmjs.com/package/@girs/adw-1) and [much more](https://github.com/gjsify/types).
 
+These types will then be available to you:
+
+```ts
+import '@girs/gjs'
+import '@girs/gio-2.0'
+import '@girs/gtk-4.0'
+import '@girs/adw-1'
+
+import Gio from 'gi://Gio?version=2.0';
+import Gtk from 'gi://Gtk?version=4.0';
+import Adwaita from 'gi://adw?version=1';
+
+const button = new Gtk.Button();
+
+// ...
+
+```
 
 ### Bundle
 

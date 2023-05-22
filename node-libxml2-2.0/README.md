@@ -53,7 +53,6 @@ const libxml2 = gi.require('libxml2', '2.0')
 ```
 
 
-
 ### Bundle
 
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).

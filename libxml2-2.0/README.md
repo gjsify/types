@@ -51,7 +51,6 @@ Now you can import the ambient module with TypeScript support:
 import libxml2 from 'gi://libxml2?version=2.0';
 ```
 
-
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.

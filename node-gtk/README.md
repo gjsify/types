@@ -3,12 +3,15 @@
 
 Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
+[node-gtk](https://github.com/romgrk/node-gtk) is a [GObject Introspection](https://gi.readthedocs.io/en/latest/) import library for Node.js. Using node-gtk with the type definitions in this NPM package, you can build GTK applications in TypeScript or JavaScript with type checking, better autocompletion and inline documentations.
+
 ## Install
 
 To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/node-gtk
 ```
+
 
 ## Usage
 
@@ -42,7 +45,6 @@ import '@girs/node-gtk'
   ...
 }
 ```
-    
 
 Now you can import `node-gtk` with Typescript support:
 ```ts
@@ -50,8 +52,7 @@ const gi = require('node-gtk');
 gi.startLoop();
 ```
 
-If you want to have more types for GIR modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [Gtk-4.0](https://www.npmjs.com/package/@girs/node-gtk-4.0).
-
+If you want to have types for [GObject Introspection](https://gi.readthedocs.io/en/latest/) modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [node-gtk-4.0](https://www.npmjs.com/package/@girs/node-gtk-4.0), [node-gio-2.0](https://www.npmjs.com/package/@girs/node-gio-2.0), [node-adw-1](https://www.npmjs.com/package/@girs/node-adw-1) and [much more](https://github.com/gjsify/types).
 
 ### Bundle
 

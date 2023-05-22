@@ -51,7 +51,6 @@ Now you can import the ambient module with TypeScript support:
 import GeglGtk3 from 'gi://GeglGtk3?version=0.1';
 ```
 
-
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.

@@ -3,6 +3,7 @@
 
 GJS TypeScript type definitions for WebKit2-5.0, generated from library version 2.38.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
+
 ## Install
 
 To use this type definitions, install them with NPM:
@@ -48,7 +49,6 @@ Now you can import the ambient module with TypeScript support:
 ```ts
 import WebKit2 from 'gi://WebKit2?version=5.0';
 ```
-
 
 ### Global import
 

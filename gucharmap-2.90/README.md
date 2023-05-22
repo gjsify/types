@@ -3,6 +3,7 @@
 
 GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 2.90.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
+
 ## Install
 
 To use this type definitions, install them with NPM:
@@ -48,7 +49,6 @@ Now you can import the ambient module with TypeScript support:
 ```ts
 import Gucharmap from 'gi://Gucharmap?version=2.90';
 ```
-
 
 ### Global import
 

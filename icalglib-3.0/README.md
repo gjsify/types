@@ -51,7 +51,6 @@ Now you can import the ambient module with TypeScript support:
 import ICalGLib from 'gi://ICalGLib?version=3.0';
 ```
 
-
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.

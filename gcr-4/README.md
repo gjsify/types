@@ -51,7 +51,6 @@ Now you can import the ambient module with TypeScript support:
 import Gcr from 'gi://Gcr?version=4';
 ```
 
-
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.

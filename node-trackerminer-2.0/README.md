@@ -3,6 +3,7 @@
 
 Node.js TypeScript type definitions for TrackerMiner-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
 
+
 ## Install
 
 To use this type definitions, install them with NPM:
@@ -49,7 +50,6 @@ Now you can import the ambient module with TypeScript support:
 const gi = require('node-gtk')
 const TrackerMiner = gi.require('TrackerMiner', '2.0')
 ```
-
 
 
 ### Bundle

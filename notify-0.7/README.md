@@ -51,7 +51,6 @@ Now you can import the ambient module with TypeScript support:
 import Notify from 'gi://Notify?version=0.7';
 ```
 
-
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.
