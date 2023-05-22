@@ -1,7 +1,7 @@
 
 # Gxps-1.0
 
-Node.js TypeScript type definitions for Gxps-1.0, generated from library version 0.2.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for Gxps-1.0, generated from library version 0.2.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

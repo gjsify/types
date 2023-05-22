@@ -1,7 +1,7 @@
 
 # Vips-8.0
 
-Node.js TypeScript type definitions for Vips-8.0, generated from library version 8.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for Vips-8.0, generated from library version 8.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

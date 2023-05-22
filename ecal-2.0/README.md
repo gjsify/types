@@ -1,7 +1,7 @@
 
 # ECal-2.0
 
-GJS TypeScript type definitions for ECal-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for ECal-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 This package is a client library for evolution calendars.
 

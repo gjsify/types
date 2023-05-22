@@ -1,7 +1,7 @@
 
 # Babl-0.1
 
-GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.99 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.99 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 babl is pixel encoding and color space conversion engine in C. It allows converting between different methods of storing pixels known as pixel formats that have with different bitdepths and other data representations, color models, color spaces and component permutations. A vocabulary to formulate new pixel formats from existing primitives is provided as well as the framework to add new color models, spaces and data types.
 

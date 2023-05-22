@@ -1,7 +1,7 @@
 
 # AppStream-1.0
 
-Node.js TypeScript type definitions for AppStream-1.0, generated from library version 0.16.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for AppStream-1.0, generated from library version 0.16.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 AppStream is a cross-distro effort for enhancing the way we interact with the software repositories provided by the distribution by standardizing sets of additional metadata.
 

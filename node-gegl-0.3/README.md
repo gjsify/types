@@ -1,7 +1,7 @@
 
 # Gegl-0.3
 
-Node.js TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects (imgflo, GNOME Photos, gcut, iconographer, …)
 

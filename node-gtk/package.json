@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-gtk",
-    "version": "3.0.0-beta.16",
+    "version": "3.0.0",
     "description": "Node.js TypeScript type definitions for node-gtk",
     "type": "module",
     "module": "node-gtk.js",

@@ -1,7 +1,7 @@
 
 # GVnc-1.0
 
-Node.js TypeScript type definitions for GVnc-1.0, generated from library version 1.3.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for GVnc-1.0, generated from library version 1.3.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 VNC gobject wrapper.
 

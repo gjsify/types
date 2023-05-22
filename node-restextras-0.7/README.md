@@ -1,7 +1,7 @@
 
 # RestExtras-0.7
 
-Node.js TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 This extra package provides Facebook and Flickr support.
 

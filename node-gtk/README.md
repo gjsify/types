@@ -1,9 +1,9 @@
 
 # node-gtk
 
-Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for node-gtk using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
-[node-gtk](https://github.com/romgrk/node-gtk) is a [GObject Introspection](https://gi.readthedocs.io/en/latest/) import library for Node.js. Using node-gtk with the type definitions in this NPM package, you can build GTK applications in TypeScript or JavaScript with type checking, better autocompletion and inline documentations.
+[node-gtk](https://github.com/romgrk/node-gtk) is a [GObject Introspection](https://gi.readthedocs.io/en/latest/) import library for Node.js. Using node-gtk with the type definitions in this NPM package, you can build GTK applications in JavaScript or TypeScript with type checking, better autocompletion and inline documentations.
 
 ## Install
 

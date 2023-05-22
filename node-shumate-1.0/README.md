@@ -1,7 +1,7 @@
 
 # Shumate-1.0
 
-Node.js TypeScript type definitions for Shumate-1.0, generated from library version 1.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for Shumate-1.0, generated from library version 1.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 Shumate is a library providing a widget to display maps in applications.
 

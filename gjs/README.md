@@ -1,9 +1,9 @@
 
 # Gjs
 
-GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
-[GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in TypeScript or JavaScript with type checking, better autocompletion and inline documentations.
+[GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in JavaScript or TypeScript with type checking, better autocompletion and inline documentations.
 
 ## Install
 

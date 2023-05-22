@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-socialwebclient-0.25",
-    "version": "0.25.0-3.0.0-beta.16",
+    "version": "0.25.0-3.0.0",
     "description": "Node.js TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0",
     "type": "module",
     "module": "node-socialwebclient-0.25.js",

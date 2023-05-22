@@ -1,7 +1,7 @@
 
 # Manette-0.2
 
-GJS TypeScript type definitions for Manette-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for Manette-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

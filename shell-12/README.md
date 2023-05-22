@@ -1,7 +1,7 @@
 
 # Shell-12
 
-GJS TypeScript type definitions for Shell-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for Shell-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

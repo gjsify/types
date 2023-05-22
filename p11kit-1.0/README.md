@@ -1,7 +1,7 @@
 
 # P11Kit-1.0
 
-GJS TypeScript type definitions for P11Kit-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for P11Kit-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 Provides a way to load and enumerate PKCS#11 modules. Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable.
 

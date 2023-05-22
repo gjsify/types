@@ -1,7 +1,7 @@
 
 # GnomeRR-4.0
 
-GJS TypeScript type definitions for GnomeRR-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for GnomeRR-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

@@ -1,7 +1,7 @@
 
 # GXml-0.14
 
-GJS TypeScript type definitions for GXml-0.14, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+GJS TypeScript type definitions for GXml-0.14, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 
 ## Install

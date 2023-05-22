@@ -1,7 +1,7 @@
 
 # NetworkManager-1.0
 
-Node.js TypeScript type definitions for NetworkManager-1.0, generated from library version 1.17.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.16.
+Node.js TypeScript type definitions for NetworkManager-1.0, generated from library version 1.17.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
 
 Network management framework, utils.
 

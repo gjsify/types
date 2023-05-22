@@ -1,7 +1,7 @@
 
 {
     "name": "@girs/node-champlain-0.12",
-    "version": "0.12.22-3.0.0-beta.16",
+    "version": "0.12.22-3.0.0",
     "description": "Node.js TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22",
     "type": "module",
     "module": "node-champlain-0.12.js",
