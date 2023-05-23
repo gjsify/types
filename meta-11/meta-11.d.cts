@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './meta-11-ambient.d.ts';
+import './meta-11-import.d.ts';
 /**
  * Meta-11
  */
@@ -3058,23 +3061,6 @@ export class Compositor extends GObject.Object {
 
 export module Context {
 
-    // Signal callback interfaces
-
-    /**
-     * Signal callback interface for `prepare-shutdown`
-     */
-    export interface PrepareShutdownSignalCallback {
-        ($obj: Context): void
-    }
-
-    /**
-     * Signal callback interface for `started`
-     */
-    export interface StartedSignalCallback {
-        ($obj: Context): void
-    }
-
-
     // Constructor properties interface
 
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -3134,15 +3120,6 @@ export interface Context {
     start(): boolean
     terminate(): void
     terminate_with_error(error: GLib.Error): void
-
-    // Own signals of Meta-11.Meta.Context
-
-    connect(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback): number
-    connect_after(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback): number
-    emit(sigName: "prepare-shutdown", ...args: any[]): void
-    connect(sigName: "started", callback: Context.StartedSignalCallback): number
-    connect_after(sigName: "started", callback: Context.StartedSignalCallback): number
-    emit(sigName: "started", ...args: any[]): void
 
     // Class property signals of Meta-11.Meta.Context
 
@@ -4442,6 +4419,22 @@ export interface Selection {
      * @param callback User callback
      */
     transfer_async(selection_type: SelectionType, mimetype: string | null, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of transfer_async
+
+    /**
+     * Promisified version of {@link transfer_async}
+     * 
+     * Requests a transfer of `mimetype` on the selection given by
+     * `selection_type`.
+     * @param selection_type Selection type
+     * @param mimetype Mimetype to transfer
+     * @param size Maximum size to transfer, -1 for unlimited
+     * @param output Output stream to write contents to
+     * @param cancellable Cancellable
+     * @returns A Promise of: #TRUE if the transfer was successful.
+     */
+    transfer_async(selection_type: SelectionType, mimetype: string | null, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the transfer of a queried mimetype.
      * @param result The async result
@@ -4530,6 +4523,18 @@ export interface SelectionSource {
      */
     is_active(): boolean
     read_async(mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+
+    // Overloads of read_async
+
+    /**
+     * Promisified version of {@link read_async}
+     * 
+     * 
+     * @param mimetype 
+     * @param cancellable 
+     * @returns A Promise of: The resulting #GInputStream
+     */
+    read_async(mimetype: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     /**
      * Finishes a read from the selection source.
      * @param result The async result
@@ -5375,6 +5380,13 @@ export module Window {
     }
 
     /**
+     * Signal callback interface for `monitor-changed`
+     */
+    export interface MonitorChangedSignalCallback {
+        ($obj: Window, old_monitor: number): void
+    }
+
+    /**
      * Signal callback interface for `position-changed`
      */
     export interface PositionChangedSignalCallback {
@@ -5806,6 +5818,9 @@ export interface Window {
     connect(sigName: "focus", callback: Window.FocusSignalCallback): number
     connect_after(sigName: "focus", callback: Window.FocusSignalCallback): number
     emit(sigName: "focus", ...args: any[]): void
+    connect(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback): number
+    connect_after(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback): number
+    emit(sigName: "monitor-changed", old_monitor: number, ...args: any[]): void
     connect(sigName: "position-changed", callback: Window.PositionChangedSignalCallback): number
     connect_after(sigName: "position-changed", callback: Window.PositionChangedSignalCallback): number
     emit(sigName: "position-changed", ...args: any[]): void

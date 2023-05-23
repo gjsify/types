@@ -3,9 +3,9 @@
     "private": true,
     "module": "module",
     "scripts": {
-        "publish": "yarn workspaces foreach -v npm publish --tolerate-republish --access public",
-        "publish:latest": "yarn workspaces foreach -v npm publish --tolerate-republish --tag latest --access public",
-        "publish:next": "yarn workspaces foreach -v npm publish --tolerate-republish --tag next --access public"
+        "publish": "yarn install && yarn workspaces foreach -v npm publish --tolerate-republish --access public",
+        "publish:latest": "yarn install && yarn workspaces foreach -v npm publish --tolerate-republish --tag latest --access public",
+        "publish:next": "yarn install && yarn workspaces foreach -v npm publish --tolerate-republish --tag next --access public"
     },
     "workspaces": [
         "./*"

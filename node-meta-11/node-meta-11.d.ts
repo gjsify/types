@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-meta-11-import.d.ts';
+    
 /**
  * Meta-11
  */
@@ -3479,23 +3482,6 @@ class Compositor extends GObject.Object {
 
 module Context {
 
-    // Signal callback interfaces
-
-    /**
-     * Signal callback interface for `prepare-shutdown`
-     */
-    interface PrepareShutdownSignalCallback {
-        (): void
-    }
-
-    /**
-     * Signal callback interface for `started`
-     */
-    interface StartedSignalCallback {
-        (): void
-    }
-
-
     // Constructor properties interface
 
     interface ConstructorProperties extends GObject.Object.ConstructorProperties {
@@ -3556,19 +3542,6 @@ interface Context {
     start(): boolean
     terminate(): void
     terminateWithError(error: GLib.Error): void
-
-    // Own signals of Meta-11.Meta.Context
-
-    connect(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback): number
-    on(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "prepare-shutdown", callback: Context.PrepareShutdownSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "prepare-shutdown", ...args: any[]): void
-    connect(sigName: "started", callback: Context.StartedSignalCallback): number
-    on(sigName: "started", callback: Context.StartedSignalCallback, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "started", callback: Context.StartedSignalCallback, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "started", callback: Context.StartedSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "started", ...args: any[]): void
 
     // Class property signals of Meta-11.Meta.Context
 
@@ -6233,6 +6206,13 @@ module Window {
     }
 
     /**
+     * Signal callback interface for `monitor-changed`
+     */
+    interface MonitorChangedSignalCallback {
+        (oldMonitor: number): void
+    }
+
+    /**
      * Signal callback interface for `position-changed`
      */
     interface PositionChangedSignalCallback {
@@ -6667,6 +6647,11 @@ interface Window {
     once(sigName: "focus", callback: Window.FocusSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "focus", callback: Window.FocusSignalCallback): NodeJS.EventEmitter
     emit(sigName: "focus", ...args: any[]): void
+    connect(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback): number
+    on(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "monitor-changed", callback: Window.MonitorChangedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "monitor-changed", ...args: any[]): void
     connect(sigName: "position-changed", callback: Window.PositionChangedSignalCallback): number
     on(sigName: "position-changed", callback: Window.PositionChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "position-changed", callback: Window.PositionChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -9136,3 +9121,4 @@ abstract class X11DisplayClass {
 }
 
 export default Meta;
+// END

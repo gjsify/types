@@ -1,85 +1,90 @@
-
 {
     "name": "@girs/node-shell-12",
-    "version": "12.0.0-3.0.0",
+    "version": "12.0.0-3.0.1",
     "description": "Node.js TypeScript type definitions for Shell-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-shell-12.js",
     "main": "node-shell-12.js",
     "typedoc": {
-      "entryPoint": "./node-shell-12.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Shell-12",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./node-shell-12.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Shell-12",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./node-shell-12-ambient.d.ts",
-      "./import": "./node-shell-12-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./node-shell-12.d.ts",
-          "default": "./node-shell-12.js"
-        },
-        "require": {
-          "types": "./node-shell-12.d.cts",
-          "default": "./node-shell-12.cjs"
+        "./ambient": "./node-shell-12-ambient.d.ts",
+        "./import": "./node-shell-12-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-shell-12.d.ts",
+                "default": "./node-shell-12.js"
+            },
+            "require": {
+                "types": "./node-shell-12.d.cts",
+                "default": "./node-shell-12.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit node-shell-12.d.ts",
-      "test:cjs": "tsc --noEmit node-shell-12.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-shell-12.d.ts",
+        "test:cjs": "tsc --noEmit node-shell-12.d.cts"
     },
     "dependencies": {
-      "@girs/node-gtk": "workspace:^",      
-      "@girs/node-st-12": "workspace:^",            
-      "@girs/node-meta-12": "workspace:^",            
-      "@girs/node-xlib-2.0": "workspace:^",            
-      "@girs/node-xfixes-4.0": "workspace:^",            
-      "@girs/node-gobject-2.0": "workspace:^",            
-      "@girs/node-glib-2.0": "workspace:^",            
-      "@girs/node-gdesktopenums-3.0": "workspace:^",            
-      "@girs/node-coglpango-12": "workspace:^",            
-      "@girs/node-pangocairo-1.0": "workspace:^",            
-      "@girs/node-cairo-1.0": "workspace:^",            
-      "@girs/node-pango-1.0": "workspace:^",            
-      "@girs/node-harfbuzz-0.0": "workspace:^",            
-      "@girs/node-freetype2-2.0": "workspace:^",            
-      "@girs/node-gio-2.0": "workspace:^",            
-      "@girs/node-cogl-12": "workspace:^",            
-      "@girs/node-graphene-1.0": "workspace:^",            
-      "@girs/node-gl-1.0": "workspace:^",            
-      "@girs/node-clutter-12": "workspace:^",            
-      "@girs/node-json-1.0": "workspace:^",            
-      "@girs/node-atk-1.0": "workspace:^",            
-      "@girs/node-gdkpixbuf-2.0": "workspace:^",            
-      "@girs/node-gmodule-2.0": "workspace:^",            
-      "@girs/node-cally-12": "workspace:^",            
-      "@girs/node-polkitagent-1.0": "workspace:^",            
-      "@girs/node-polkit-1.0": "workspace:^",            
-      "@girs/node-nm-1.0": "workspace:^",            
-      "@girs/node-gvc-1.0": "workspace:^",            
-      "@girs/node-gcr-4": "workspace:^",            
-      "@girs/node-gck-2": "workspace:^"      
+        "@girs/node-atk-1.0": "workspace:^",
+        "@girs/node-cairo-1.0": "workspace:^",
+        "@girs/node-cally-12": "workspace:^",
+        "@girs/node-clutter-12": "workspace:^",
+        "@girs/node-cogl-12": "workspace:^",
+        "@girs/node-coglpango-12": "workspace:^",
+        "@girs/node-freetype2-2.0": "workspace:^",
+        "@girs/node-gck-2": "workspace:^",
+        "@girs/node-gcr-4": "workspace:^",
+        "@girs/node-gdesktopenums-3.0": "workspace:^",
+        "@girs/node-gdkpixbuf-2.0": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-gl-1.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gmodule-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-graphene-1.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
+        "@girs/node-gvc-1.0": "workspace:^",
+        "@girs/node-harfbuzz-0.0": "workspace:^",
+        "@girs/node-json-1.0": "workspace:^",
+        "@girs/node-meta-12": "workspace:^",
+        "@girs/node-nm-1.0": "workspace:^",
+        "@girs/node-pango-1.0": "workspace:^",
+        "@girs/node-pangocairo-1.0": "workspace:^",
+        "@girs/node-polkit-1.0": "workspace:^",
+        "@girs/node-polkitagent-1.0": "workspace:^",
+        "@girs/node-st-12": "workspace:^",
+        "@girs/node-xfixes-4.0": "workspace:^",
+        "@girs/node-xlib-2.0": "workspace:^"
     },
     "peerDependencies": {
-      "node-gtk": "*"
+        "node-gtk": "*"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Shell-12"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Shell-12"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-shell-12#readme"
 }
-
-

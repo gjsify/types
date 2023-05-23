@@ -1,7 +1,7 @@
 
 # Gedit-3.0
 
-GJS TypeScript type definitions for Gedit-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for Gedit-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 Official text editor of the GNOME desktop environment.
 

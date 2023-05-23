@@ -1,62 +1,66 @@
-
 {
     "name": "@girs/ecal-2.0",
-    "version": "2.0.0-3.0.0",
+    "version": "2.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for ECal-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "ecal-2.0.js",
     "main": "ecal-2.0.js",
     "typedoc": {
-      "entryPoint": "./ecal-2.0.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "ECal-2.0",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./ecal-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "ECal-2.0",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./ecal-2.0-ambient.d.ts",
-      "./import": "./ecal-2.0-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./ecal-2.0.d.ts",
-          "default": "./ecal-2.0.js"
-        },
-        "require": {
-          "types": "./ecal-2.0.d.cts",
-          "default": "./ecal-2.0.cjs"
+        "./ambient": "./ecal-2.0-ambient.d.ts",
+        "./import": "./ecal-2.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./ecal-2.0.d.ts",
+                "default": "./ecal-2.0.js"
+            },
+            "require": {
+                "types": "./ecal-2.0.d.cts",
+                "default": "./ecal-2.0.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit ecal-2.0.d.ts",
-      "test:cjs": "tsc --noEmit ecal-2.0.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit ecal-2.0.d.ts",
+        "test:cjs": "tsc --noEmit ecal-2.0.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-3.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/icalglib-3.0": "workspace:^",            
-      "@girs/edataserver-1.2": "workspace:^",            
-      "@girs/json-1.0": "workspace:^",            
-      "@girs/camel-1.2": "workspace:^"      
+        "@girs/camel-1.2": "workspace:^",
+        "@girs/edataserver-1.2": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/icalglib-3.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "ECal-2.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "ECal-2.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/ecal-2.0#readme"
 }
-
-

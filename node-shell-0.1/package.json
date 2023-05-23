@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-shell-0.1",
-    "version": "0.1.0-3.0.0-beta.13",
+    "version": "0.1.0-3.0.1",
     "description": "Node.js TypeScript type definitions for Shell-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "node-shell-0.1.js",
@@ -12,6 +12,8 @@
         "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
+        "./ambient": "./node-shell-0.1-ambient.d.ts",
+        "./import": "./node-shell-0.1-import.d.ts",
         ".": {
             "import": {
                 "types": "./node-shell-0.1.d.ts",
@@ -36,8 +38,8 @@
         "@girs/node-cogl-11": "workspace:^",
         "@girs/node-coglpango-11": "workspace:^",
         "@girs/node-freetype2-2.0": "workspace:^",
-        "@girs/node-gck-2": "workspace:^",
-        "@girs/node-gcr-4": "workspace:^",
+        "@girs/node-gck-1": "workspace:^",
+        "@girs/node-gcr-3": "workspace:^",
         "@girs/node-gdesktopenums-3.0": "workspace:^",
         "@girs/node-gdk-3.0": "workspace:^",
         "@girs/node-gdkpixbuf-2.0": "workspace:^",
@@ -47,6 +49,7 @@
         "@girs/node-gmodule-2.0": "workspace:^",
         "@girs/node-gobject-2.0": "workspace:^",
         "@girs/node-graphene-1.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
         "@girs/node-gtk-3.0": "workspace:^",
         "@girs/node-gvc-1.0": "workspace:^",
         "@girs/node-harfbuzz-0.0": "workspace:^",
@@ -65,21 +68,25 @@
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
         "Shell-0.1"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/node-shell-0.1#readme"
 }

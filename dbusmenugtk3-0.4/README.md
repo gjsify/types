@@ -1,7 +1,7 @@
 
 # DbusmenuGtk3-0.4
 
-GJS TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 A small little library that was created by pulling out some comon code out of indicator-applet. It passes a menu structure across DBus so that a program can create a menu simply without worrying about how it is displayed on the other side of the bus.
 

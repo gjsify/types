@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-shell-0.1-import.d.ts';
+    
 /**
  * Shell-0.1
  */
@@ -38,8 +41,8 @@ import type PolkitAgent from '@girs/node-polkitagent-1.0';
 import type Polkit from '@girs/node-polkit-1.0';
 import type NM from '@girs/node-nm-1.0';
 import type Gvc from '@girs/node-gvc-1.0';
-import type Gcr from '@girs/node-gcr-4';
-import type Gck from '@girs/node-gck-2';
+import type Gcr from '@girs/node-gcr-3';
+import type Gck from '@girs/node-gck-1';
 
 export namespace Shell {
 
@@ -1423,6 +1426,7 @@ module Global {
 
         // Own constructor properties of Shell-0.1.Shell.Global
 
+        debugFlags?: string | null
         frameFinishTimestamp?: boolean | null
         frameTimestamps?: boolean | null
         sessionMode?: string | null
@@ -1437,6 +1441,7 @@ interface Global {
     readonly backend: Meta.Backend
     readonly context: Meta.Context
     readonly datadir: string | null
+    debugFlags: string | null
     readonly display: Meta.Display
     readonly focusManager: St.FocusManager
     frameFinishTimestamp: boolean
@@ -1480,6 +1485,7 @@ interface Global {
      */
     endWork(): void
     getCurrentTime(): number
+    getDebugFlags(): string | null
     getDisplay(): Meta.Display
     /**
      * The shell maintains "persistent" state which will persist after
@@ -1550,6 +1556,19 @@ interface Global {
      */
     runAtLeisure(func: LeisureFunction): void
     /**
+     * Updates the debugging flags at runtime as the one set using the SHELL_DEBUG
+     * environment variables. Currently we support these keys:
+     *  - 'backtrace-warnings'
+     *  - 'backtrace-segfaults'
+     *  - 'backtrace-aborts'
+     *  - 'backtrace-math-errors'
+     *  - 'backtrace-crashes-all'
+     *  - 'backtrace-all'
+     *  - 'all'
+     * @param debugFlags A comma-separated string of debugging flags
+     */
+    setDebugFlags(debugFlags: string | null): void
+    /**
      * Change the value of serialized persistent state.
      * @param propertyName Name of the property
      * @param variant A #GVariant, or %NULL to unset
@@ -1598,6 +1617,11 @@ interface Global {
     once(sigName: "notify::datadir", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::datadir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::datadir", ...args: any[]): void
+    connect(sigName: "notify::debug-flags", callback: (...args: any[]) => void): number
+    on(sigName: "notify::debug-flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::debug-flags", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::debug-flags", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::debug-flags", ...args: any[]): void
     connect(sigName: "notify::display", callback: (...args: any[]) => void): number
     on(sigName: "notify::display", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::display", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -5352,7 +5376,7 @@ interface WindowPreviewLayout {
      * @param window the #MetaWindow
      * @returns The newly created actor drawing @window
      */
-    addWindow(window: Meta.Window): Clutter.Actor | null
+    addWindow(window: Meta.Window): Clutter.Actor
     /**
      * Gets an array of all MetaWindows that were added to the layout
      * using shell_window_preview_layout_add_window(), ordered by the
@@ -6333,3 +6357,4 @@ abstract class WorkspaceBackgroundClass {
 }
 
 export default Shell;
+// END

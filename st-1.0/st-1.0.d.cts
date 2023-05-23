@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './st-1.0-ambient.d.ts';
+import './st-1.0-import.d.ts';
 /**
  * St-1.0
  */
@@ -5431,6 +5434,14 @@ export interface Settings {
      */
     readonly gtk_icon_theme: string | null
     /**
+     * The current GTK theme
+     */
+    readonly gtk_theme: string | null
+    /**
+     * The current GTK theme
+     */
+    readonly gtk_theme_variant: string | null
+    /**
      * Whether the accessibility high contrast mode is enabled.
      */
     readonly high_contrast: boolean
@@ -5443,6 +5454,10 @@ export interface Settings {
      * paste).
      */
     readonly primary_paste: boolean
+    /**
+     * The current GTK theme
+     */
+    readonly shell_color_scheme: string | null
     /**
      * The slow-down factor applied to all animation durations.
      */
@@ -5470,6 +5485,12 @@ export interface Settings {
     connect(sigName: "notify::gtk-icon-theme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::gtk-icon-theme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::gtk-icon-theme", ...args: any[]): void
+    connect(sigName: "notify::gtk-theme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::gtk-theme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::gtk-theme", ...args: any[]): void
+    connect(sigName: "notify::gtk-theme-variant", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::gtk-theme-variant", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::gtk-theme-variant", ...args: any[]): void
     connect(sigName: "notify::high-contrast", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::high-contrast", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::high-contrast", ...args: any[]): void
@@ -5479,6 +5500,9 @@ export interface Settings {
     connect(sigName: "notify::primary-paste", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::primary-paste", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::primary-paste", ...args: any[]): void
+    connect(sigName: "notify::shell-color-scheme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shell-color-scheme", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shell-color-scheme", ...args: any[]): void
     connect(sigName: "notify::slow-down-factor", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::slow-down-factor", callback: (($obj: Settings, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::slow-down-factor", ...args: any[]): void

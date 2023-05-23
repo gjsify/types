@@ -1,60 +1,65 @@
-
 {
     "name": "@girs/node-gsf-1",
-    "version": "1.0.0-3.0.0",
+    "version": "1.0.0-3.0.1",
     "description": "Node.js TypeScript type definitions for Gsf-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gsf-1.js",
     "main": "node-gsf-1.js",
     "typedoc": {
-      "entryPoint": "./node-gsf-1.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Gsf-1",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./node-gsf-1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gsf-1",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./node-gsf-1-ambient.d.ts",
-      "./import": "./node-gsf-1-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./node-gsf-1.d.ts",
-          "default": "./node-gsf-1.js"
-        },
-        "require": {
-          "types": "./node-gsf-1.d.cts",
-          "default": "./node-gsf-1.cjs"
+        "./ambient": "./node-gsf-1-ambient.d.ts",
+        "./import": "./node-gsf-1-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-gsf-1.d.ts",
+                "default": "./node-gsf-1.js"
+            },
+            "require": {
+                "types": "./node-gsf-1.d.cts",
+                "default": "./node-gsf-1.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit node-gsf-1.d.ts",
-      "test:cjs": "tsc --noEmit node-gsf-1.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-gsf-1.d.ts",
+        "test:cjs": "tsc --noEmit node-gsf-1.d.cts"
     },
     "dependencies": {
-      "@girs/node-gtk": "workspace:^",      
-      "@girs/node-libxml2-2.0": "workspace:^",            
-      "@girs/node-gio-2.0": "workspace:^",            
-      "@girs/node-gobject-2.0": "workspace:^",            
-      "@girs/node-glib-2.0": "workspace:^"      
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
+        "@girs/node-libxml2-2.0": "workspace:^"
     },
     "peerDependencies": {
-      "node-gtk": "*"
+        "node-gtk": "*"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Gsf-1"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Gsf-1"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-gsf-1#readme"
 }
-
-

@@ -603,7 +603,7 @@ export enum Role {
      */
     DATE_EDITOR,
     /**
-     * An inconifed internal frame within a DESKTOP_PANE.
+     * An inconifed internal frame within a DESKTOP_FRAME.
      */
     DESKTOP_ICON,
     /**
@@ -626,14 +626,14 @@ export enum Role {
      */
     DIRECTORY_PANE,
     /**
-     * A specialized dialog that displays the files in
-     * the directory and lets the user select a file, browse a different
-     * directory, or specify a filename.
+     * An object used for drawing custom user interface
+     * elements.
      */
     DRAWING_AREA,
     /**
-     * An object used for drawing custom user interface
-     * elements.
+     * A specialized dialog that displays the files in
+     * the directory and lets the user select a file, browse a different
+     * directory, or specify a filename.
      */
     FILE_CHOOSER,
     /**
@@ -793,14 +793,13 @@ export enum Role {
     SEPARATOR,
     /**
      * An object that allows the user to select from a bounded
-     * range.
+     * range.  Unlike `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
+     * 'viewport'-like objects.
      */
     SLIDER,
     /**
      * An object which allows one of a set of choices to
-     * be selected, and which displays the current choice.  Unlike
-     * `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
-     * 'viewport'-like objects.
+     * be selected, and which displays the current choice.
      */
     SPIN_BUTTON,
     /**
@@ -923,7 +922,7 @@ export enum Role {
     /**
      * An object corresponding to the toplevel accessible
      * of an application, which may contain `ATSPI_ROLE_FRAME` objects or other
-     * accessible objects. Children of #AccessibleDesktop objects  are generally
+     * accessible objects. Children of objects with the #ATSPI_ROLE_DESKTOP_FRAME role are generally
      * `ATSPI_ROLE_APPLICATION` objects.
      */
     APPLICATION,
@@ -1259,14 +1258,18 @@ export enum Role {
     /**
      * A container for content that is called out as a proposed
      * change from the current version of the document, such as by a reviewer of the
-     * content. This role should include either %ATSPI_ROLE_CONTENT_DELETION and/or
-     * %ATSPI_ROLE_CONTENT_INSERTION children, in any order, to indicate what the
+     * content. An object with this role should include children with %ATSPI_ROLE_CONTENT_DELETION and/or
+     * %ATSPI_ROLE_CONTENT_INSERTION, in any order, to indicate what the
      * actual change is. `Since:` 2.36
      */
     SUGGESTION,
     /**
+     * A specialized push button to open a menu. `Since` 2.46
+     */
+    PUSH_BUTTON_MENU,
+    /**
      * Not a valid role, used for finding end of
-     *  enumeration.
+     * enumeration.
      */
     LAST_DEFINED,
 }
@@ -1769,7 +1772,7 @@ export enum KeyListenerSyncType {
     NOSYNC,
     /**
      * Events are delivered synchronously, before the
-     * currently focussed application sees them.
+     * currently focused application sees them.
      */
     SYNCHRONOUS,
     /**
@@ -1977,11 +1980,11 @@ export function init(): number
  */
 export function isInitialized(): boolean
 /**
- * Registers a listener for device events, for instance button events.
- * @param listener a pointer to the #AtspiDeviceListener which requests             the events.
- * @param eventTypes an #AtspiDeviceEventMask mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED, etc.).
- * @param filter Unused parameter.
- * @returns %TRUE if successful, otherwise %FALSE.
+ * This function does nothing and should not be called.
+ * @param listener 
+ * @param eventTypes 
+ * @param filter 
+ * @returns Always returns %FALSE.
  */
 export function registerDeviceEventListener(listener: DeviceListener, eventTypes: DeviceEventMask, filter: any | null): boolean
 /**
@@ -2027,7 +2030,7 @@ export function setMainContext(cnx: GLib.MainContext): void
 export function setReferenceWindow(accessible: Accessible): void
 /**
  * Set the timeout used for method calls. If this is not set explicitly,
- * a default of 0.8 ms is used.
+ * a default of 800 ms is used.
  * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
  * sending a keyboard event notification. This means that, if an AT makes
  * a call in response to the keyboard notification and the application
@@ -2265,6 +2268,15 @@ export interface Collection {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface designed to allow accessibles which satisfy a set of
+ * criteria to be returned.
+ * 
+ * An interface designed to allow accessibles which satisfy a set of
+ * criteria to be returned. This interface can be used to avoid iteration
+ * or client-side search of the object tree.
+ * @interface 
+ */
 export class Collection extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Collection
@@ -2374,8 +2386,8 @@ export interface Component {
     scrollToPoint(coords: CoordType, x: number, y: number): boolean
     /**
      * Moves and resizes the specified component.
-     * @param x the new vertical position to which the component should be moved.
-     * @param y the new horizontal position to which the component should be moved.
+     * @param x the new horizontal position to which the component should be moved.
+     * @param y the new vertical position to which the component should be moved.
      * @param width the width to which the component should be resized.
      * @param height the height to which the component should be resized.
      * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -2384,14 +2396,14 @@ export interface Component {
     setExtents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean
     /**
      * Moves the component to the specified position.
-     * @param x the new vertical position to which the component should be moved.
-     * @param y the new horizontal position to which the component should be moved.
+     * @param x the new horizontal position to which the component should be moved.
+     * @param y the new vertical position to which the component should be moved.
      * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      * @returns #TRUE if successful; #FALSE otherwise.
      */
     setPosition(x: number, y: number, ctype: CoordType): boolean
     /**
-     * Resizes the specified component to the given coordinates.
+     * Resizes the specified component to the given pixel dimensions.
      * @param width the width to which the component should be resized.
      * @param height the height to which the component should be resized.
      * @returns #TRUE if successful; #FALSE otherwise.
@@ -2412,6 +2424,20 @@ export interface Component {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface implemented by objects which have onscreen visual
+ * representations.
+ * 
+ * The Component interface is implemented by objects which occupy on-screen
+ * space, e.g. objects which have onscreen visual representations. The methods
+ * in Component allow clients to identify where the objects lie in the onscreen
+ * coordinate system, their relative size, stacking order, and position. It
+ * also provides a mechanism whereby keyboard focus may be transferred to
+ * specific user interface elements programmatically.  This is a 2D API.
+ * Coordinates of 3D objects are projected into the 2-dimensional screen view
+ * for purposes of this interface.
+ * @interface 
+ */
 export class Component extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Component
@@ -2646,6 +2672,17 @@ export interface Hypertext {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface used for objects which implement linking between
+ * multiple resource locations.
+ * 
+ * An interface used for objects which implement linking between
+ * multiple resource or content locations, or multiple 'markers'
+ * within a single document. A hypertext instance is associated
+ * with one or more hyperlinks which are associated with particular
+ * offsets within the hypertext's content.
+ * @interface 
+ */
 export class Hypertext extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Hypertext
@@ -2837,6 +2874,17 @@ export interface Selection {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface which indicates that an object exposes a 'selection' model,
+ * allowing the selection of one or more of its children.
+ * 
+ * An interface which indicates that an object exposes a 'selection'
+ * model, allowing the selection of one or more of its children.
+ * Read-only Selection instances are possible, in which case the
+ * interface is used to programmatically determine the selected-ness
+ * of its children.
+ * @interface 
+ */
 export class Selection extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Selection
@@ -3093,6 +3141,20 @@ export interface Table {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface used by containers whose data is arranged in a tabular form.
+ * 
+ * An interface used by containers whose contained data is arranged
+ * in a tabular (i.e. row-column) form. Tables may resemble
+ * a two-dimensional grid, as in a spreadsheet, or may feature objects
+ * which span multiple rows and/or columns, but whose bounds are
+ * aligned on a row/column matrix. Objects within tables are children
+ * of the table object, and they may be referenced either via a child
+ * index or via a row/column pair. Table 'cells' may implement other
+ * interfaces, such as Text, Action, Image, and Component, and should do
+ * so as appropriate to their onscreen presentation and/or behavior.
+ * @interface 
+ */
 export class Table extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Table
@@ -3440,6 +3502,18 @@ export interface Text {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface implemented by objects which place textual
+ * information onscreen.
+ * 
+ * The text interface should be implemented by objects which place textual
+ * information onscreen as character strings or glyphs. The text interface
+ * allows access to textual content including display attributes and
+ * semantic hints associated with runs of text, and to bounding
+ * information for glyphs and substrings. It also allows portions of text to
+ * be selected, if the objects StateSet includes STATE_SELECTABLE_TEXT.
+ * @interface 
+ */
 export class Text extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Text
@@ -3516,6 +3590,16 @@ export interface Value {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface supporting a one-dimensional scalar
+ * to be modified, or which reflects its value.
+ * 
+ * An interface supporting a one-dimensional scalar
+ * to be modified, or which reflects its value. If
+ * STATE_EDITABLE is not present, the value is
+ * treated as "read only".
+ * @interface 
+ */
 export class Value extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Value
@@ -3851,6 +3935,14 @@ export interface Accessible extends Action, Collection, Component, Document, Edi
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * The base interface which is implemented by all accessible objects.
+ * 
+ * All objects support interfaces for querying their contained 'children'
+ * and position in the accessible-object hierarchy, whether or not they
+ * actually have children.
+ * @class 
+ */
 export class Accessible extends Object {
 
     // Own properties of Atspi-2.0.Atspi.Accessible
@@ -3905,6 +3997,14 @@ export interface Application {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface identifying the root object associated
+ * with a running application.
+ * 
+ * An interface identifying an object which is the root of the
+ * hierarchy associated with a running application.
+ * @class 
+ */
 export class Application extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Application
@@ -3965,7 +4065,7 @@ export interface Device {
      */
     getLockedModifiers(): number
     /**
-     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
+     * Gets the modifier for a given keycode, if one exists. Does not create a new
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
@@ -4331,6 +4431,7 @@ export interface EventListener {
      *            object:column-deleted
      *            object:model-changed
      *            object:active-descendant-changed
+     *            object:announcement
      * 
      *  (screen reader events)
      *             screen-reader:region-changed
@@ -4411,6 +4512,16 @@ export interface EventListener {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * A generic interface implemented by objects for the receipt of event
+ * notifications.
+ * 
+ * A generic interface implemented by objects for the receipt of event
+ * notifications. atspi-event-listener is the interface via which clients of
+ * the atspi-registry receive notification of changes to an application's user
+ * interface and content.
+ * @class 
+ */
 export class EventListener extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.EventListener
@@ -4534,6 +4645,19 @@ export interface Hyperlink {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * Instances of atspi-hyperlink are the means by which end users
+ * and clients interact with linked content.
+ * 
+ *  Instances of atspi-hyperlink are returned by
+ * atspi-hypertext objects, and are the means by
+ * which end users and clients interact with linked,
+ * and in some cases embedded, content. These instances
+ * may have multiple "anchors", where an anchor corresponds to a
+ * reference to a particular resource with a corresponding resource
+ * identified (URI).
+ * @class 
+ */
 export class Hyperlink extends Object {
 
     // Own properties of Atspi-2.0.Atspi.Hyperlink
@@ -4588,6 +4712,11 @@ export interface MatchRule {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface that allows the definition of match rules
+ * for accessible objects.
+ * @class 
+ */
 export class MatchRule extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.MatchRule
@@ -4735,6 +4864,15 @@ export interface Relation {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * An interface via which non-hierarchical relationships
+ * are indicated.
+ * 
+ * An interface via which non-hierarchical relationships
+ * are indicated. An instance of this interface represents
+ * a "one-to-many" correspondence.
+ * @class 
+ */
 export class Relation extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Relation
@@ -4834,6 +4972,11 @@ export interface StateSet {
     emit(sigName: string, ...args: any[]): void
 }
 
+/**
+ * The atspi-stateset objects implement wrappers around a
+ * bitmap of accessible states.
+ * @class 
+ */
 export class StateSet extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.StateSet

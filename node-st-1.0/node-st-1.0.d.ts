@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-st-1.0-import.d.ts';
+    
 /**
  * St-1.0
  */
@@ -7309,6 +7312,14 @@ interface Settings {
      */
     readonly gtkIconTheme: string | null
     /**
+     * The current GTK theme
+     */
+    readonly gtkTheme: string | null
+    /**
+     * The current GTK theme
+     */
+    readonly gtkThemeVariant: string | null
+    /**
      * Whether the accessibility high contrast mode is enabled.
      */
     readonly highContrast: boolean
@@ -7321,6 +7332,10 @@ interface Settings {
      * paste).
      */
     readonly primaryPaste: boolean
+    /**
+     * The current GTK theme
+     */
+    readonly shellColorScheme: string | null
     /**
      * The slow-down factor applied to all animation durations.
      */
@@ -7359,6 +7374,16 @@ interface Settings {
     once(sigName: "notify::gtk-icon-theme", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::gtk-icon-theme", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::gtk-icon-theme", ...args: any[]): void
+    connect(sigName: "notify::gtk-theme", callback: (...args: any[]) => void): number
+    on(sigName: "notify::gtk-theme", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::gtk-theme", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::gtk-theme", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::gtk-theme", ...args: any[]): void
+    connect(sigName: "notify::gtk-theme-variant", callback: (...args: any[]) => void): number
+    on(sigName: "notify::gtk-theme-variant", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::gtk-theme-variant", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::gtk-theme-variant", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::gtk-theme-variant", ...args: any[]): void
     connect(sigName: "notify::high-contrast", callback: (...args: any[]) => void): number
     on(sigName: "notify::high-contrast", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::high-contrast", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -7374,6 +7399,11 @@ interface Settings {
     once(sigName: "notify::primary-paste", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::primary-paste", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::primary-paste", ...args: any[]): void
+    connect(sigName: "notify::shell-color-scheme", callback: (...args: any[]) => void): number
+    on(sigName: "notify::shell-color-scheme", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::shell-color-scheme", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::shell-color-scheme", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::shell-color-scheme", ...args: any[]): void
     connect(sigName: "notify::slow-down-factor", callback: (...args: any[]) => void): number
     on(sigName: "notify::slow-down-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::slow-down-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -10582,3 +10612,4 @@ abstract class WidgetClass {
 }
 
 export default St;
+// END

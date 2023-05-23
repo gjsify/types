@@ -1,7 +1,7 @@
 
 # Cogl-1.0
 
-Node.js TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+Node.js TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 COGL is a low level OpenGL abstraction library developed for (and part of) Clutter. It is used primarily by Clutter to provide a common rendering API that works transparently across OpenGL >=1.4, OpenGL ES 1.1 and OpenGL ES 2.0.
 

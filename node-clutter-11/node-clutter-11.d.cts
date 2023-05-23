@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-clutter-11-import.d.ts';
+    
 /**
  * Clutter-11
  */
@@ -1661,6 +1664,10 @@ export enum EventFlags {
     FLAG_RELATIVE_MOTION,
     FLAG_GRAB_NOTIFY,
 }
+export enum FrameHint {
+    NONE,
+    DIRECT_SCANOUT_ATTEMPTED,
+}
 export enum FrameInfoFlag {
     NONE,
     HW_CLOCK,
@@ -1975,7 +1982,6 @@ export const BUTTON_SECONDARY: number
  * "gles" currently
  */
 export const COGL: string | null
-export const COORDINATE_EPSILON: number
 /**
  * Default value for "now".
  */
@@ -13946,7 +13952,7 @@ export interface FrameClock {
     getRefreshRate(): number
     inhibit(): void
     notifyReady(): void
-    recordFlipTime(flipTimeUs: number): void
+    recordFlip(flipTimeUs: number, hints: FrameHint): void
     removeTimeline(timeline: Timeline): void
     scheduleUpdate(): void
     scheduleUpdateNow(): void
@@ -25448,7 +25454,9 @@ export interface Frame {
 
     // Owm methods of Clutter-11.Clutter.Frame
 
+    getHints(): FrameHint
     hasResult(): boolean
+    setHint(hint: FrameHint): void
     setResult(result: FrameResult): void
 }
 
@@ -28261,3 +28269,5 @@ export class Event {
      */
     static removeFilter(id: number): void
 }
+
+// END

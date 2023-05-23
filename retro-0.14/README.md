@@ -1,7 +1,7 @@
 
 # Retro-0.14
 
-GJS TypeScript type definitions for Retro-0.14, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for Retro-0.14, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 
 ## Install

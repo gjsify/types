@@ -1,56 +1,60 @@
-
 {
     "name": "@girs/gnomeautoar-0.1",
-    "version": "0.1.0-3.0.0",
+    "version": "0.1.0-3.0.1",
     "description": "GJS TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "gnomeautoar-0.1.js",
     "main": "gnomeautoar-0.1.js",
     "typedoc": {
-      "entryPoint": "./gnomeautoar-0.1.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "GnomeAutoar-0.1",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./gnomeautoar-0.1.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GnomeAutoar-0.1",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./gnomeautoar-0.1-ambient.d.ts",
-      "./import": "./gnomeautoar-0.1-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./gnomeautoar-0.1.d.ts",
-          "default": "./gnomeautoar-0.1.js"
-        },
-        "require": {
-          "types": "./gnomeautoar-0.1.d.cts",
-          "default": "./gnomeautoar-0.1.cjs"
+        "./ambient": "./gnomeautoar-0.1-ambient.d.ts",
+        "./import": "./gnomeautoar-0.1-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./gnomeautoar-0.1.d.ts",
+                "default": "./gnomeautoar-0.1.js"
+            },
+            "require": {
+                "types": "./gnomeautoar-0.1.d.cts",
+                "default": "./gnomeautoar-0.1.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit gnomeautoar-0.1.d.ts",
-      "test:cjs": "tsc --noEmit gnomeautoar-0.1.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gnomeautoar-0.1.d.ts",
+        "test:cjs": "tsc --noEmit gnomeautoar-0.1.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GnomeAutoar-0.1"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GnomeAutoar-0.1"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gnomeautoar-0.1#readme"
 }
-
-

@@ -1,7 +1,7 @@
 
 # RygelCore-2.8
 
-GJS TypeScript type definitions for RygelCore-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for RygelCore-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 
 ## Install

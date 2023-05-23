@@ -1,7 +1,7 @@
 
 # Tepl-5
 
-Node.js TypeScript type definitions for Tepl-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+Node.js TypeScript type definitions for Tepl-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 
 ## Install

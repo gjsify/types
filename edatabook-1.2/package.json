@@ -1,63 +1,67 @@
-
 {
     "name": "@girs/edatabook-1.2",
-    "version": "1.2.0-3.0.0",
+    "version": "1.2.0-3.0.1",
     "description": "GJS TypeScript type definitions for EDataBook-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edatabook-1.2.js",
     "main": "edatabook-1.2.js",
     "typedoc": {
-      "entryPoint": "./edatabook-1.2.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "EDataBook-1.2",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./edatabook-1.2.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "EDataBook-1.2",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./edatabook-1.2-ambient.d.ts",
-      "./import": "./edatabook-1.2-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./edatabook-1.2.d.ts",
-          "default": "./edatabook-1.2.js"
-        },
-        "require": {
-          "types": "./edatabook-1.2.d.cts",
-          "default": "./edatabook-1.2.cjs"
+        "./ambient": "./edatabook-1.2-ambient.d.ts",
+        "./import": "./edatabook-1.2-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./edatabook-1.2.d.ts",
+                "default": "./edatabook-1.2.js"
+            },
+            "require": {
+                "types": "./edatabook-1.2.d.cts",
+                "default": "./edatabook-1.2.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit edatabook-1.2.d.ts",
-      "test:cjs": "tsc --noEmit edatabook-1.2.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit edatabook-1.2.d.ts",
+        "test:cjs": "tsc --noEmit edatabook-1.2.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/edataserver-1.2": "workspace:^",            
-      "@girs/soup-3.0": "workspace:^",            
-      "@girs/json-1.0": "workspace:^",            
-      "@girs/camel-1.2": "workspace:^",            
-      "@girs/ebookcontacts-1.2": "workspace:^",            
-      "@girs/ebackend-1.2": "workspace:^"      
+        "@girs/camel-1.2": "workspace:^",
+        "@girs/ebackend-1.2": "workspace:^",
+        "@girs/ebookcontacts-1.2": "workspace:^",
+        "@girs/edataserver-1.2": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "EDataBook-1.2"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "EDataBook-1.2"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/edatabook-1.2#readme"
 }
-
-

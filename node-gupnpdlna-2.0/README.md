@@ -1,7 +1,7 @@
 
 # GUPnPDLNA-2.0
 
-Node.js TypeScript type definitions for GUPnPDLNA-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+Node.js TypeScript type definitions for GUPnPDLNA-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 GUPnP DLNA is a set of utility APIs to simplify DLNA-specific bits of MediaServer implementations, such as DLNA media profile guessing.
 

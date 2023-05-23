@@ -1,64 +1,68 @@
-
 {
     "name": "@girs/edatacal-2.0",
-    "version": "2.0.0-3.0.0",
+    "version": "2.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for EDataCal-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "edatacal-2.0.js",
     "main": "edatacal-2.0.js",
     "typedoc": {
-      "entryPoint": "./edatacal-2.0.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "EDataCal-2.0",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./edatacal-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "EDataCal-2.0",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./edatacal-2.0-ambient.d.ts",
-      "./import": "./edatacal-2.0-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./edatacal-2.0.d.ts",
-          "default": "./edatacal-2.0.js"
-        },
-        "require": {
-          "types": "./edatacal-2.0.d.cts",
-          "default": "./edatacal-2.0.cjs"
+        "./ambient": "./edatacal-2.0-ambient.d.ts",
+        "./import": "./edatacal-2.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./edatacal-2.0.d.ts",
+                "default": "./edatacal-2.0.js"
+            },
+            "require": {
+                "types": "./edatacal-2.0.d.cts",
+                "default": "./edatacal-2.0.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit edatacal-2.0.d.ts",
-      "test:cjs": "tsc --noEmit edatacal-2.0.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit edatacal-2.0.d.ts",
+        "test:cjs": "tsc --noEmit edatacal-2.0.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-3.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/icalglib-3.0": "workspace:^",            
-      "@girs/edataserver-1.2": "workspace:^",            
-      "@girs/json-1.0": "workspace:^",            
-      "@girs/camel-1.2": "workspace:^",            
-      "@girs/ecal-2.0": "workspace:^",            
-      "@girs/ebackend-1.2": "workspace:^"      
+        "@girs/camel-1.2": "workspace:^",
+        "@girs/ebackend-1.2": "workspace:^",
+        "@girs/ecal-2.0": "workspace:^",
+        "@girs/edataserver-1.2": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/icalglib-3.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "EDataCal-2.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "EDataCal-2.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/edatacal-2.0#readme"
 }
-
-

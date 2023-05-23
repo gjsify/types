@@ -1,59 +1,63 @@
-
 {
     "name": "@girs/folkstelepathy-0.7",
-    "version": "0.7.0-3.0.0",
+    "version": "0.7.0-3.0.1",
     "description": "GJS TypeScript type definitions for FolksTelepathy-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "folkstelepathy-0.7.js",
     "main": "folkstelepathy-0.7.js",
     "typedoc": {
-      "entryPoint": "./folkstelepathy-0.7.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "FolksTelepathy-0.7",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./folkstelepathy-0.7.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "FolksTelepathy-0.7",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./folkstelepathy-0.7-ambient.d.ts",
-      "./import": "./folkstelepathy-0.7-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./folkstelepathy-0.7.d.ts",
-          "default": "./folkstelepathy-0.7.js"
-        },
-        "require": {
-          "types": "./folkstelepathy-0.7.d.cts",
-          "default": "./folkstelepathy-0.7.cjs"
+        "./ambient": "./folkstelepathy-0.7-ambient.d.ts",
+        "./import": "./folkstelepathy-0.7-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./folkstelepathy-0.7.d.ts",
+                "default": "./folkstelepathy-0.7.js"
+            },
+            "require": {
+                "types": "./folkstelepathy-0.7.d.cts",
+                "default": "./folkstelepathy-0.7.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit folkstelepathy-0.7.d.ts",
-      "test:cjs": "tsc --noEmit folkstelepathy-0.7.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit folkstelepathy-0.7.d.ts",
+        "test:cjs": "tsc --noEmit folkstelepathy-0.7.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/telepathyglib-0.12": "workspace:^",            
-      "@girs/folks-0.7": "workspace:^"      
+        "@girs/folks-0.7": "workspace:^",
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/telepathyglib-0.12": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "FolksTelepathy-0.7"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "FolksTelepathy-0.7"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/folkstelepathy-0.7#readme"
 }
-
-

@@ -1313,7 +1313,7 @@ enum direction_t {
  *   HarfBuzz and doing that just once (no reuse!),
  * 
  * - If the font is mmap()ed, it's okay to use
- *   `HB_MEMORY_READONLY_MAY_MAKE_WRITABLE,` however, using that mode
+ *   `HB_MEMORY_MODE_READONLY_MAY_MAKE_WRITABLE,` however, using that mode
  *   correctly is very tricky.  Use `HB_MEMORY_MODE_READONLY` instead.
  */
 enum memory_mode_t {
@@ -1802,33 +1802,116 @@ enum ot_metrics_tag_t {
 }
 /**
  * An enum type representing the pre-defined name IDs.
+ * 
+ * For more information on these fields, see the
+ * [OpenType spec](https://docs.microsoft.com/en-us/typography/opentype/spec/name#name-ids).
  */
 enum ot_name_id_predefined_t {
+    /**
+     * Copyright notice
+     */
     COPYRIGHT,
+    /**
+     * Font Family name
+     */
     FONT_FAMILY,
+    /**
+     * Font Subfamily name
+     */
     FONT_SUBFAMILY,
+    /**
+     * Unique font identifier
+     */
     UNIQUE_ID,
+    /**
+     * Full font name that reflects
+     * all family and relevant subfamily descriptors
+     */
     FULL_NAME,
+    /**
+     * Version string
+     */
     VERSION_STRING,
+    /**
+     * PostScript name for the font
+     */
     POSTSCRIPT_NAME,
+    /**
+     * Trademark
+     */
     TRADEMARK,
+    /**
+     * Manufacturer Name
+     */
     MANUFACTURER,
+    /**
+     * Designer
+     */
     DESIGNER,
+    /**
+     * Description
+     */
     DESCRIPTION,
+    /**
+     * URL of font vendor
+     */
     VENDOR_URL,
+    /**
+     * URL of typeface designer
+     */
     DESIGNER_URL,
+    /**
+     * License Description
+     */
     LICENSE,
+    /**
+     * URL where additional licensing
+     * information can be found
+     */
     LICENSE_URL,
+    /**
+     * Typographic Family name
+     */
     TYPOGRAPHIC_FAMILY,
+    /**
+     * Typographic Subfamily name
+     */
     TYPOGRAPHIC_SUBFAMILY,
+    /**
+     * Compatible Full Name for MacOS
+     */
     MAC_FULL_NAME,
+    /**
+     * Sample text
+     */
     SAMPLE_TEXT,
+    /**
+     * PostScript CID findfont name
+     */
     CID_FINDFONT_NAME,
+    /**
+     * WWS Family Name
+     */
     WWS_FAMILY,
+    /**
+     * WWS Subfamily Name
+     */
     WWS_SUBFAMILY,
+    /**
+     * Light Background Palette
+     */
     LIGHT_BACKGROUND,
+    /**
+     * Dark Background Palette
+     */
     DARK_BACKGROUND,
+    /**
+     * Variations PostScript Name Prefix
+     */
     VARIATIONS_PS_PREFIX,
+    /**
+     * Value to represent a nonexistent name ID.
+     */
     INVALID,
 }
 /**
@@ -3461,9 +3544,21 @@ const UNICODE_MAX: number
  * See Unicode 6.1 for details on the maximum decomposition length.
  */
 const UNICODE_MAX_DECOMPOSITION_LEN: number
+/**
+ * The major component of the library version available at compile-time.
+ */
 const VERSION_MAJOR: number
+/**
+ * The micro component of the library version available at compile-time.
+ */
 const VERSION_MICRO: number
+/**
+ * The minor component of the library version available at compile-time.
+ */
 const VERSION_MINOR: number
+/**
+ * A string literal containing the library version available at compile-time.
+ */
 const VERSION_STRING: string | null
 /**
  * Fetches the name identifier of the specified feature type in the face's `name` table.
@@ -5047,6 +5142,11 @@ function font_get_scale(font: font_t): [ /* x_scale */ number, /* y_scale */ num
  */
 function font_get_serial(font: font_t): number
 /**
+ * Fetches the "synthetic boldness" parameters of a font.
+ * @param font #hb_font_t to work upon
+ */
+function font_get_synthetic_bold(font: font_t): [ /* x_embolden */ number, /* y_embolden */ number, /* in_place */ bool_t ]
+/**
  * Fetches the "synthetic slant" of a font.
  * @param font #hb_font_t to work upon
  * @returns Synthetic slant.  By default is zero.
@@ -5233,6 +5333,28 @@ function font_set_ptem(font: font_t, ptem: number): void
  */
 function font_set_scale(font: font_t, x_scale: number, y_scale: number): void
 /**
+ * Sets the "synthetic boldness" of a font.
+ * 
+ * Positive values for `x_embolden` / `y_embolden` make a font
+ * bolder, negative values thinner. Typical values are in the
+ * 0.01 to 0.05 range. The default value is zero.
+ * 
+ * Synthetic boldness is applied by offsetting the contour
+ * points of the glyph shape.
+ * 
+ * Synthetic boldness is applied when rendering a glyph via
+ * hb_font_draw_glyph().
+ * 
+ * If `in_place` is `false`, then glyph advance-widths are also
+ * adjusted, otherwise they are not.  The in-place mode is
+ * useful for simulating [font grading](https://fonts.google.com/knowledge/glossary/grade).
+ * @param font #hb_font_t to work upon
+ * @param x_embolden the amount to embolden horizontally
+ * @param y_embolden the amount to embolden vertically
+ * @param in_place whether to embolden glyphs in-place
+ */
+function font_set_synthetic_bold(font: font_t, x_embolden: number, y_embolden: number, in_place: bool_t): void
+/**
  * Sets the "synthetic slant" of a font.  By default is zero.
  * Synthetic slant is the graphical skew applied to the font
  * at rendering time.
@@ -5279,6 +5401,17 @@ function font_set_var_coords_normalized(font: font_t, coords: number[]): void
  * @param instance_index named instance index.
  */
 function font_set_var_named_instance(font: font_t, instance_index: number): void
+/**
+ * Change the value of one variation axis on the font.
+ * 
+ * Note: This function is expensive to be called repeatedly.
+ *   If you want to set multiple variation axes at the same time,
+ *   use hb_font_set_variations() instead.
+ * @param font #hb_font_t to work upon
+ * @param tag The #hb_tag_t tag of the variation-axis name
+ * @param value The value of the variation axis
+ */
+function font_set_variation(font: font_t, tag: tag_t, value: number): void
 /**
  * Applies a list of font-variation settings to a font.
  * 
@@ -7051,6 +7184,28 @@ function shape(font: font_t, buffer: buffer_t, features: feature_t[] | null): vo
  */
 function shape_full(font: font_t, buffer: buffer_t, features: feature_t[] | null, shaper_list: string[] | null): bool_t
 /**
+ * See hb_shape_full() for basic details. If `shaper_list` is not `NULL`, the specified
+ * shapers will be used in the given order, otherwise the default shapers list
+ * will be used.
+ * 
+ * In addition, justify the shaping results such that the shaping results reach
+ * the target advance width/height, depending on the buffer direction.
+ * 
+ * If the advance of the buffer shaped with hb_shape_full() is already known,
+ * put that in *advance. Otherwise set *advance to zero.
+ * 
+ * This API is currently experimental and will probably change in the future.
+ * @param font a mutable #hb_font_t to use for shaping
+ * @param buffer an #hb_buffer_t to shape
+ * @param features an array of user    specified #hb_feature_t or `NULL`
+ * @param shaper_list a `NULL`-terminated    array of shapers to use or `NULL`
+ * @param min_target_advance Minimum advance width/height to aim for.
+ * @param max_target_advance Maximum advance width/height to aim for.
+ * @param advance Input/output advance width/height of the buffer.
+ * @returns false if all shapers failed, true otherwise XSince: EXPERIMENTAL
+ */
+function shape_justify(font: font_t, buffer: buffer_t, features: feature_t[] | null, shaper_list: string[] | null, min_target_advance: number, max_target_advance: number, advance: number): [ /* returnType */ bool_t, /* advance */ number, /* var_tag */ tag_t, /* var_value */ number ]
+/**
  * Retrieves the list of shapers supported by HarfBuzz.
  * @returns an array of    constant strings
  */
@@ -7318,6 +7473,24 @@ function variation_from_string(str: Uint8Array): [ /* returnType */ bool_t, /* v
  * @param variation an #hb_variation_t to convert
  */
 function variation_to_string(variation: variation_t): /* buf */ string[]
+/**
+ * Returns library version as three integer components.
+ */
+function version(): [ /* major */ number, /* minor */ number, /* micro */ number ]
+/**
+ * Tests the library version against a minimum value,
+ * as three integer components.
+ * @param major Library major version component
+ * @param minor Library minor version component
+ * @param micro Library micro version component
+ * @returns `true` if the library is equal to or greater than the test value, `false` otherwise
+ */
+function version_atleast(major: number, minor: number, micro: number): bool_t
+/**
+ * Returns library version as a string with three components.
+ * @returns Library version string
+ */
+function version_string(): string | null
 /**
  * A callback method for #hb_buffer_t. The method gets called with the
  * #hb_buffer_t it was set on, the #hb_font_t the buffer is shaped with and a

@@ -30469,7 +30469,7 @@ interface InputStream {
  * streaming APIs.
  * 
  * All of these functions have async variants too.
- * @class 
+ * @interface 
  */
 class InputStream extends GObject.Object {
 
@@ -33970,7 +33970,7 @@ interface OutputStream {
  * streaming APIs.
  * 
  * All of these functions have async variants too.
- * @class 
+ * @interface 
  */
 class OutputStream extends GObject.Object {
 
@@ -45414,7 +45414,7 @@ interface TlsInteraction {
  * initialization function. Any interactions not implemented will return
  * %G_TLS_INTERACTION_UNHANDLED. If a derived class implements an async method,
  * it must also implement the corresponding finish method.
- * @interface 
+ * @class 
  */
 class TlsInteraction extends GObject.Object {
 

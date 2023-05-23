@@ -1,71 +1,76 @@
-
 {
     "name": "@girs/node-tepl-5",
-    "version": "5.0.0-3.0.0",
+    "version": "5.0.0-3.0.1",
     "description": "Node.js TypeScript type definitions for Tepl-5, generated from library version 5.0.0",
     "type": "module",
     "module": "node-tepl-5.js",
     "main": "node-tepl-5.js",
     "typedoc": {
-      "entryPoint": "./node-tepl-5.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Tepl-5",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./node-tepl-5.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Tepl-5",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./node-tepl-5-ambient.d.ts",
-      "./import": "./node-tepl-5-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./node-tepl-5.d.ts",
-          "default": "./node-tepl-5.js"
-        },
-        "require": {
-          "types": "./node-tepl-5.d.cts",
-          "default": "./node-tepl-5.cjs"
+        "./ambient": "./node-tepl-5-ambient.d.ts",
+        "./import": "./node-tepl-5-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-tepl-5.d.ts",
+                "default": "./node-tepl-5.js"
+            },
+            "require": {
+                "types": "./node-tepl-5.d.cts",
+                "default": "./node-tepl-5.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit node-tepl-5.d.ts",
-      "test:cjs": "tsc --noEmit node-tepl-5.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-tepl-5.d.ts",
+        "test:cjs": "tsc --noEmit node-tepl-5.d.cts"
     },
     "dependencies": {
-      "@girs/node-gtk": "workspace:^",      
-      "@girs/node-gtksource-4": "workspace:^",            
-      "@girs/node-gtk-3.0": "workspace:^",            
-      "@girs/node-xlib-2.0": "workspace:^",            
-      "@girs/node-gdk-3.0": "workspace:^",            
-      "@girs/node-cairo-1.0": "workspace:^",            
-      "@girs/node-pango-1.0": "workspace:^",            
-      "@girs/node-harfbuzz-0.0": "workspace:^",            
-      "@girs/node-freetype2-2.0": "workspace:^",            
-      "@girs/node-gobject-2.0": "workspace:^",            
-      "@girs/node-glib-2.0": "workspace:^",            
-      "@girs/node-gio-2.0": "workspace:^",            
-      "@girs/node-gdkpixbuf-2.0": "workspace:^",            
-      "@girs/node-gmodule-2.0": "workspace:^",            
-      "@girs/node-atk-1.0": "workspace:^",            
-      "@girs/node-amtk-5": "workspace:^"      
+        "@girs/node-amtk-5": "workspace:^",
+        "@girs/node-atk-1.0": "workspace:^",
+        "@girs/node-cairo-1.0": "workspace:^",
+        "@girs/node-freetype2-2.0": "workspace:^",
+        "@girs/node-gdk-3.0": "workspace:^",
+        "@girs/node-gdkpixbuf-2.0": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gmodule-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
+        "@girs/node-gtk-3.0": "workspace:^",
+        "@girs/node-gtksource-4": "workspace:^",
+        "@girs/node-harfbuzz-0.0": "workspace:^",
+        "@girs/node-pango-1.0": "workspace:^",
+        "@girs/node-xlib-2.0": "workspace:^"
     },
     "peerDependencies": {
-      "node-gtk": "*"
+        "node-gtk": "*"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "Tepl-5"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Tepl-5"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-tepl-5#readme"
 }
-
-

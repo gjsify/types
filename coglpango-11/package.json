@@ -1,6 +1,6 @@
 {
     "name": "@girs/coglpango-11",
-    "version": "11.0.0-3.0.0-beta.13",
+    "version": "11.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for CoglPango-11, generated from library version 11.0.0",
     "type": "module",
     "module": "coglpango-11.js",
@@ -12,6 +12,8 @@
         "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
+        "./ambient": "./coglpango-11-ambient.d.ts",
+        "./import": "./coglpango-11-import.d.ts",
         ".": {
             "import": {
                 "types": "./coglpango-11.d.ts",
@@ -33,6 +35,7 @@
         "@girs/cogl-11": "workspace:^",
         "@girs/freetype2-2.0": "workspace:^",
         "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
         "@girs/gl-1.0": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
@@ -42,21 +45,24 @@
         "@girs/pangocairo-1.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "CoglPango-11"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/coglpango-11#readme"
 }

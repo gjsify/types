@@ -1,62 +1,66 @@
-
 {
     "name": "@girs/gdk-2.0",
-    "version": "2.0.0-3.0.0",
+    "version": "2.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for Gdk-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "gdk-2.0.js",
     "main": "gdk-2.0.js",
     "typedoc": {
-      "entryPoint": "./gdk-2.0.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Gdk-2.0",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./gdk-2.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gdk-2.0",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./gdk-2.0-ambient.d.ts",
-      "./import": "./gdk-2.0-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./gdk-2.0.d.ts",
-          "default": "./gdk-2.0.js"
-        },
-        "require": {
-          "types": "./gdk-2.0.d.cts",
-          "default": "./gdk-2.0.cjs"
+        "./ambient": "./gdk-2.0-ambient.d.ts",
+        "./import": "./gdk-2.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./gdk-2.0.d.ts",
+                "default": "./gdk-2.0.js"
+            },
+            "require": {
+                "types": "./gdk-2.0.d.cts",
+                "default": "./gdk-2.0.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit gdk-2.0.d.ts",
-      "test:cjs": "tsc --noEmit gdk-2.0.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gdk-2.0.d.ts",
+        "test:cjs": "tsc --noEmit gdk-2.0.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/cairo-1.0": "workspace:^",            
-      "@girs/pango-1.0": "workspace:^",            
-      "@girs/harfbuzz-0.0": "workspace:^",            
-      "@girs/freetype2-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gdkpixbuf-2.0": "workspace:^",            
-      "@girs/gmodule-2.0": "workspace:^"      
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gdk-2.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gdk-2.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gdk-2.0#readme"
 }
-
-

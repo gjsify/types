@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './shell-0.1-ambient.d.ts';
+import './shell-0.1-import.d.ts';
 /**
  * Shell-0.1
  */
@@ -38,8 +41,8 @@ import type PolkitAgent from '@girs/polkitagent-1.0';
 import type Polkit from '@girs/polkit-1.0';
 import type NM from '@girs/nm-1.0';
 import type Gvc from '@girs/gvc-1.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
+import type Gcr from '@girs/gcr-3';
+import type Gck from '@girs/gck-1';
 
 export enum AppLaunchGpu {
     APP_PREF,
@@ -214,6 +217,17 @@ export function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean
 export function util_systemd_unit_exists<Z = unknown>(unit: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 export function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean
 export function util_touch_file_async<Z = unknown>(file: Gio.File, callback: Gio.AsyncReadyCallback<Z> | null): void
+
+// Overloads of util_touch_file_async
+
+/**
+ * Promisified version of {@link util_touch_file_async}
+ * 
+ * 
+ * @param file 
+ * @returns A Promise of the result of {@link util_touch_file_async}
+ */
+export function util_touch_file_async<Z = unknown>(file: Gio.File): globalThis.Promise<boolean>
 export function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean
 /**
  * Translate `str` according to the locale defined by LC_TIME; unlike
@@ -1126,6 +1140,7 @@ export module Global {
 
         // Own constructor properties of Shell-0.1.Shell.Global
 
+        debug_flags?: string | null
         frame_finish_timestamp?: boolean | null
         frame_timestamps?: boolean | null
         session_mode?: string | null
@@ -1140,6 +1155,7 @@ export interface Global {
     readonly backend: Meta.Backend
     readonly context: Meta.Context
     readonly datadir: string | null
+    debug_flags: string | null
     readonly display: Meta.Display
     readonly focus_manager: St.FocusManager
     frame_finish_timestamp: boolean
@@ -1182,6 +1198,7 @@ export interface Global {
      */
     end_work(): void
     get_current_time(): number
+    get_debug_flags(): string | null
     get_display(): Meta.Display
     /**
      * The shell maintains "persistent" state which will persist after
@@ -1252,6 +1269,19 @@ export interface Global {
      */
     run_at_leisure(func: LeisureFunction): void
     /**
+     * Updates the debugging flags at runtime as the one set using the SHELL_DEBUG
+     * environment variables. Currently we support these keys:
+     *  - 'backtrace-warnings'
+     *  - 'backtrace-segfaults'
+     *  - 'backtrace-aborts'
+     *  - 'backtrace-math-errors'
+     *  - 'backtrace-crashes-all'
+     *  - 'backtrace-all'
+     *  - 'all'
+     * @param debug_flags A comma-separated string of debugging flags
+     */
+    set_debug_flags(debug_flags: string | null): void
+    /**
      * Change the value of serialized persistent state.
      * @param property_name Name of the property
      * @param variant A #GVariant, or %NULL to unset
@@ -1290,6 +1320,9 @@ export interface Global {
     connect(sigName: "notify::datadir", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::datadir", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::datadir", ...args: any[]): void
+    connect(sigName: "notify::debug-flags", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::debug-flags", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::debug-flags", ...args: any[]): void
     connect(sigName: "notify::display", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::display", callback: (($obj: Global, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::display", ...args: any[]): void
@@ -3976,7 +4009,7 @@ export interface WindowPreviewLayout {
      * @param window the #MetaWindow
      * @returns The newly created actor drawing @window
      */
-    add_window(window: Meta.Window): Clutter.Actor | null
+    add_window(window: Meta.Window): Clutter.Actor
     /**
      * Gets an array of all MetaWindows that were added to the layout
      * using shell_window_preview_layout_add_window(), ordered by the

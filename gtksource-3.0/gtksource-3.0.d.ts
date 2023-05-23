@@ -1304,7 +1304,7 @@ interface Buffer {
      * @param category category to search for, or %NULL
      * @returns whether @iter was moved.
      */
-    backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean
     /**
      * Marks the beginning of a not undoable action on the buffer,
      * disabling the undo manager.  Typically you would call this function
@@ -1371,7 +1371,7 @@ interface Buffer {
      * @param category category to search for, or %NULL
      * @returns whether @iter was moved.
      */
-    forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean
     /**
      * Get all defined context classes at `iter`.
      * 
@@ -1447,7 +1447,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle before @iter
      */
-    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): boolean
     /**
      * Moves forward to the next toggle (on or off) of the context class. If no
      * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
@@ -1460,7 +1460,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle after @iter
      */
-    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): boolean
     /**
      * Check if the class `context_class` is set on `iter`.
      * 

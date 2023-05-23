@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-cogl-11-import.d.ts';
+    
 /**
  * Cogl-11
  */
@@ -5025,3 +5028,4 @@ class _TextureVertexSizeCheck {
 }
 
 export default Cogl;
+// END

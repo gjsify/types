@@ -36,7 +36,7 @@ export enum ClosedReason {
     DISMISSED,
     /**
      * It has been closed by a call to
-     *   [method`Notify`.close].
+     *   [method`NotifyNotification`.close].
      */
     API_REQUEST,
     /**
@@ -424,6 +424,13 @@ export interface Notification {
 
 /**
  * A passive pop-up notification.
+ * 
+ * #NotifyNotification represents a passive pop-up notification. It can
+ * contain summary text, body text, and an icon, as well as hints specifying
+ * how the notification should be presented. The notification is rendered
+ * by a notification daemon, and may present the notification in any number
+ * of ways. As such, there is a clear separation of content and presentation,
+ * and this API enforces that.
  * @class 
  */
 export class Notification extends GObject.Object {

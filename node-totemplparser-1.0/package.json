@@ -1,59 +1,64 @@
-
 {
     "name": "@girs/node-totemplparser-1.0",
-    "version": "1.0.0-3.0.0",
+    "version": "1.0.0-3.0.1",
     "description": "Node.js TypeScript type definitions for TotemPlParser-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "node-totemplparser-1.0.js",
     "main": "node-totemplparser-1.0.js",
     "typedoc": {
-      "entryPoint": "./node-totemplparser-1.0.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "TotemPlParser-1.0",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./node-totemplparser-1.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "TotemPlParser-1.0",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./node-totemplparser-1.0-ambient.d.ts",
-      "./import": "./node-totemplparser-1.0-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./node-totemplparser-1.0.d.ts",
-          "default": "./node-totemplparser-1.0.js"
-        },
-        "require": {
-          "types": "./node-totemplparser-1.0.d.cts",
-          "default": "./node-totemplparser-1.0.cjs"
+        "./ambient": "./node-totemplparser-1.0-ambient.d.ts",
+        "./import": "./node-totemplparser-1.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-totemplparser-1.0.d.ts",
+                "default": "./node-totemplparser-1.0.js"
+            },
+            "require": {
+                "types": "./node-totemplparser-1.0.d.cts",
+                "default": "./node-totemplparser-1.0.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit node-totemplparser-1.0.d.ts",
-      "test:cjs": "tsc --noEmit node-totemplparser-1.0.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit node-totemplparser-1.0.d.ts",
+        "test:cjs": "tsc --noEmit node-totemplparser-1.0.d.cts"
     },
     "dependencies": {
-      "@girs/node-gtk": "workspace:^",      
-      "@girs/node-gio-2.0": "workspace:^",            
-      "@girs/node-gobject-2.0": "workspace:^",            
-      "@girs/node-glib-2.0": "workspace:^"      
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^"
     },
     "peerDependencies": {
-      "node-gtk": "*"
+        "node-gtk": "*"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "node", "node-gtk", "TotemPlParser-1.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "TotemPlParser-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/node-totemplparser-1.0#readme"
 }
-
-

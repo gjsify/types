@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-11",
-    "version": "11.0.0-3.0.0-beta.13",
+    "version": "11.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for Cogl-11, generated from library version 11.0.0",
     "type": "module",
     "module": "cogl-11.js",
@@ -12,6 +12,8 @@
         "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
+        "./ambient": "./cogl-11-ambient.d.ts",
+        "./import": "./cogl-11-import.d.ts",
         ".": {
             "import": {
                 "types": "./cogl-11.d.ts",
@@ -30,27 +32,31 @@
     },
     "dependencies": {
         "@girs/cairo-1.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
         "@girs/gl-1.0": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
         "@girs/graphene-1.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^*"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "Gir",
         "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
         "Cogl-11"
     ],
     "author": "ts-for-gir",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/ts-for-gir#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/cogl-11#readme"
 }

@@ -1,7 +1,7 @@
 
 # Mash-0.2
 
-Node.js TypeScript type definitions for Mash-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+Node.js TypeScript type definitions for Mash-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 
 ## Install

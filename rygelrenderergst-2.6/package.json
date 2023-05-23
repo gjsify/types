@@ -1,66 +1,70 @@
-
 {
     "name": "@girs/rygelrenderergst-2.6",
-    "version": "2.6.0-3.0.0",
+    "version": "2.6.0-3.0.1",
     "description": "GJS TypeScript type definitions for RygelRendererGst-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "rygelrenderergst-2.6.js",
     "main": "rygelrenderergst-2.6.js",
     "typedoc": {
-      "entryPoint": "./rygelrenderergst-2.6.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "RygelRendererGst-2.6",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./rygelrenderergst-2.6.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "RygelRendererGst-2.6",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./rygelrenderergst-2.6-ambient.d.ts",
-      "./import": "./rygelrenderergst-2.6-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./rygelrenderergst-2.6.d.ts",
-          "default": "./rygelrenderergst-2.6.js"
-        },
-        "require": {
-          "types": "./rygelrenderergst-2.6.d.cts",
-          "default": "./rygelrenderergst-2.6.cjs"
+        "./ambient": "./rygelrenderergst-2.6-ambient.d.ts",
+        "./import": "./rygelrenderergst-2.6-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./rygelrenderergst-2.6.d.ts",
+                "default": "./rygelrenderergst-2.6.js"
+            },
+            "require": {
+                "types": "./rygelrenderergst-2.6.d.cts",
+                "default": "./rygelrenderergst-2.6.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit rygelrenderergst-2.6.d.ts",
-      "test:cjs": "tsc --noEmit rygelrenderergst-2.6.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit rygelrenderergst-2.6.d.ts",
+        "test:cjs": "tsc --noEmit rygelrenderergst-2.6.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/rygelrenderer-2.6": "workspace:^",            
-      "@girs/rygelcore-2.6": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gee-0.8": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/gupnp-1.2": "workspace:^",            
-      "@girs/libxml2-2.0": "workspace:^",            
-      "@girs/soup-2.4": "workspace:^",            
-      "@girs/gssdp-1.2": "workspace:^",            
-      "@girs/gupnpav-1.0": "workspace:^",            
-      "@girs/gst-1.0": "workspace:^",            
-      "@girs/gmodule-2.0": "workspace:^"      
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gssdp-1.2": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gupnp-1.2": "workspace:^",
+        "@girs/gupnpav-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/rygelcore-2.6": "workspace:^",
+        "@girs/rygelrenderer-2.6": "workspace:^",
+        "@girs/soup-2.4": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "RygelRendererGst-2.6"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "RygelRendererGst-2.6"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/rygelrenderergst-2.6#readme"
 }
-
-

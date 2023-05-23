@@ -1,7 +1,7 @@
 
 # Gck-1
 
-Node.js TypeScript type definitions for Gck-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+Node.js TypeScript type definitions for Gck-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 GLib wrapper library for PKCS#11
 

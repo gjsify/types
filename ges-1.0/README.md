@@ -1,7 +1,7 @@
 
 # GES-1.0
 
-GJS TypeScript type definitions for GES-1.0, generated from library version 1.23.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for GES-1.0, generated from library version 1.23.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 The GStreamer Editing Services (GES) aims to fill the gap between GStreamer/NLE and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
 

@@ -241,6 +241,47 @@ interface PixbufModuleFillVtableFunc {
     (module: PixbufModule): void
 }
 /**
+ * Incrementally loads a buffer into the image data.
+ * @callback 
+ * @param context the state object created by [callback`GdkPixbuf`.PixbufModuleBeginLoadFunc]
+ * @param buf the data to load
+ * @returns `TRUE` if the incremental load was successful
+ */
+interface PixbufModuleIncrementLoadFunc {
+    (context: any | null, buf: Uint8Array): boolean
+}
+/**
+ * Loads a file from a standard C file stream into a new `GdkPixbufAnimation`.
+ * 
+ * In case of error, this function should return `NULL` and set the `error` argument.
+ * @callback 
+ * @param f the file stream from which the image should be loaded
+ * @returns a newly created `GdkPixbufAnimation` for the contents of the file
+ */
+interface PixbufModuleLoadAnimationFunc {
+    (f: any | null): PixbufAnimation
+}
+/**
+ * Loads a file from a standard C file stream into a new `GdkPixbuf`.
+ * 
+ * In case of error, this function should return `NULL` and set the `error` argument.
+ * @callback 
+ * @param f the file stream from which the image should be loaded
+ * @returns a newly created `GdkPixbuf` for the contents of the file
+ */
+interface PixbufModuleLoadFunc {
+    (f: any | null): Pixbuf
+}
+/**
+ * Loads XPM data into a new `GdkPixbuf`.
+ * @callback 
+ * @param data the XPM data
+ * @returns a newly created `GdkPixbuf` for the XPM data
+ */
+interface PixbufModuleLoadXpmDataFunc {
+    (data: string[]): Pixbuf
+}
+/**
  * Defines the type of the function that gets called once the initial
  * setup of `pixbuf` is done.
  * 
@@ -253,6 +294,31 @@ interface PixbufModuleFillVtableFunc {
  */
 interface PixbufModulePreparedFunc {
     (pixbuf: Pixbuf, anim: PixbufAnimation): void
+}
+/**
+ * Saves a `GdkPixbuf` into a standard C file stream.
+ * 
+ * The optional `param_keys` and `param_values` arrays contain the keys and
+ * values (in the same order) for attributes to be saved alongside the image
+ * data.
+ * @callback 
+ * @param f the file stream into which the image should be saved
+ * @param pixbuf the image to save
+ * @param paramKeys parameter keys to save
+ * @param paramValues parameter values to save
+ * @returns `TRUE` on success; in case of failure, `FALSE` is returned and   the `error` is set
+ */
+interface PixbufModuleSaveFunc {
+    (f: any | null, pixbuf: Pixbuf, paramKeys: string[] | null, paramValues: string[] | null): boolean
+}
+/**
+ * Checks whether the given `option_key` is supported when saving.
+ * @callback 
+ * @param optionKey the option key to check
+ * @returns `TRUE` if the option is supported
+ */
+interface PixbufModuleSaveOptionSupportedFunc {
+    (optionKey: string | null): boolean
 }
 /**
  * Defines the type of the function that gets called once the size
@@ -274,6 +340,17 @@ interface PixbufModulePreparedFunc {
  */
 interface PixbufModuleSizeFunc {
     (width: number, height: number): void
+}
+/**
+ * Finalizes the image loading state.
+ * 
+ * This function is called on success and error states.
+ * @callback 
+ * @param context the state object created by [callback`GdkPixbuf`.PixbufModuleBeginLoadFunc]
+ * @returns `TRUE` if the loading operation was successful
+ */
+interface PixbufModuleStopLoadFunc {
+    (context: any | null): boolean
 }
 /**
  * Defines the type of the function that gets called every time a region
@@ -2526,10 +2603,41 @@ interface PixbufModule {
      * @field 
      */
     info: PixbufFormat
-    stopLoad: (context: any) => boolean
-    loadIncrement: (context: any, buf: number, size: number) => boolean
-    save: (f: any, pixbuf: Pixbuf, paramKeys: string | null, paramValues: string | null) => boolean
-    isSaveOptionSupported: (optionKey: string | null) => boolean
+    /**
+     * loads an image from a file.
+     * @field 
+     */
+    load: PixbufModuleLoadFunc
+    /**
+     * loads an image from data in memory.
+     * @field 
+     */
+    loadXpmData: PixbufModuleLoadXpmDataFunc
+    /**
+     * stops an incremental load.
+     * @field 
+     */
+    stopLoad: PixbufModuleStopLoadFunc
+    /**
+     * continues an incremental load.
+     * @field 
+     */
+    loadIncrement: PixbufModuleIncrementLoadFunc
+    /**
+     * loads an animation from a file.
+     * @field 
+     */
+    loadAnimation: PixbufModuleLoadAnimationFunc
+    /**
+     * saves a `GdkPixbuf` to a file.
+     * @field 
+     */
+    save: PixbufModuleSaveFunc
+    /**
+     * returns whether a save option key is supported by the module
+     * @field 
+     */
+    isSaveOptionSupported: PixbufModuleSaveOptionSupportedFunc
 }
 
 /**

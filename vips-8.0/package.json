@@ -1,55 +1,59 @@
-
 {
     "name": "@girs/vips-8.0",
-    "version": "8.14.0-3.0.0",
+    "version": "8.14.0-3.0.1",
     "description": "GJS TypeScript type definitions for Vips-8.0, generated from library version 8.14.0",
     "type": "module",
     "module": "vips-8.0.js",
     "main": "vips-8.0.js",
     "typedoc": {
-      "entryPoint": "./vips-8.0.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Vips-8.0",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./vips-8.0.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Vips-8.0",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./vips-8.0-ambient.d.ts",
-      "./import": "./vips-8.0-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./vips-8.0.d.ts",
-          "default": "./vips-8.0.js"
-        },
-        "require": {
-          "types": "./vips-8.0.d.cts",
-          "default": "./vips-8.0.cjs"
+        "./ambient": "./vips-8.0-ambient.d.ts",
+        "./import": "./vips-8.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./vips-8.0.d.ts",
+                "default": "./vips-8.0.js"
+            },
+            "require": {
+                "types": "./vips-8.0.d.cts",
+                "default": "./vips-8.0.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit vips-8.0.d.ts",
-      "test:cjs": "tsc --noEmit vips-8.0.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit vips-8.0.d.ts",
+        "test:cjs": "tsc --noEmit vips-8.0.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^"      
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Vips-8.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Vips-8.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/vips-8.0#readme"
 }
-
-

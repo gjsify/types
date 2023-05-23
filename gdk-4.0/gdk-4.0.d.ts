@@ -1082,13 +1082,13 @@ enum ModifierType {
 enum PaintableFlags {
     /**
      * The size is immutable.
-     *   The [signal`GdkPaintable:`:invalidate-size] signal will never be
+     *   The [signal`Gdk`.Paintable::invalidate-size] signal will never be
      *   emitted.
      */
     SIZE,
     /**
      * The content is immutable.
-     *   The [signal`GdkPaintable:`:invalidate-contents] signal will never be
+     *   The [signal`Gdk`.Paintable::invalidate-contents] signal will never be
      *   emitted.
      */
     CONTENTS,
@@ -4411,7 +4411,7 @@ interface Paintable {
  * to do, it is suggested that you scale your paintable ignoring any potential
  * aspect ratio.
  * 
- * The contents that a `GdkPaintable` produces may depend on the [class`GdkSnapshot]`
+ * The contents that a `GdkPaintable` produces may depend on the [class`Gdk`.Snapshot]
  * passed to it. For example, paintables may decide to use more detailed images
  * on higher resolution screens or when OpenGL is available. A `GdkPaintable`
  * will however always produce the same output for the same snapshot.
@@ -4419,7 +4419,7 @@ interface Paintable {
  * A `GdkPaintable` may change its contents, meaning that it will now produce
  * a different output with the same snapshot. Once that happens, it will call
  * [method`Gdk`.Paintable.invalidate_contents] which will emit the
- * [signal`GdkPaintable:`:invalidate-contents] signal. If a paintable is known
+ * [signal`Gdk`.Paintable::invalidate-contents] signal. If a paintable is known
  * to never change its contents, it will set the %GDK_PAINTABLE_STATIC_CONTENTS
  * flag. If a consumer cannot deal with changing contents, it may call
  * [method`Gdk`.Paintable.get_current_image] which will return a static
@@ -4430,7 +4430,7 @@ interface Paintable {
  * can use this information to layout thepaintable appropriately. Just like the
  * contents, the size of a paintable can change. A paintable will indicate this
  * by calling [method`Gdk`.Paintable.invalidate_size] which will emit the
- * [signal`GdkPaintable:`:invalidate-size] signal. And just like for contents,
+ * [signal`Gdk`.Paintable::invalidate-size] signal. And just like for contents,
  * if a paintable is known to never change its size, it will set the
  * %GDK_PAINTABLE_STATIC_SIZE flag.
  * 
@@ -4544,7 +4544,7 @@ interface Popup extends Surface {
      * otherwise it will change position according to `layout`.
      * 
      * After calling this function, the result should be handled in response
-     * to the [signal`GdkSurface:`:layout] signal being emitted. The resulting
+     * to the [signal`Gdk`.Surface::layout] signal being emitted. The resulting
      * popup position can be queried using [method`Gdk`.Popup.get_position_x],
      * [method`Gdk`.Popup.get_position_y], and the resulting size will be sent as
      * parameters in the layout signal. Use [method`Gdk`.Popup.get_rect_anchor]
@@ -4601,7 +4601,7 @@ interface Popup extends Surface {
  * The `GdkPopup` is positioned relative to its parent surface.
  * 
  * `GdkPopup`s are typically used to implement menus and similar popups.
- * They can be modal, which is indicated by the [property`GdkPopup:`autohide]
+ * They can be modal, which is indicated by the [property`Gdk`.Popup:autohide]
  * property.
  * @interface 
  */
@@ -4626,7 +4626,7 @@ module Toplevel {
      * Signal callback interface for `compute-size`
      */
     interface ComputeSizeSignalCallback {
-        ($obj: Toplevel): void
+        ($obj: Toplevel, size: ToplevelSize): void
     }
 
 
@@ -4919,7 +4919,7 @@ interface Toplevel extends Surface {
 
     connect(sigName: "compute-size", callback: Toplevel.ComputeSizeSignalCallback): number
     connect_after(sigName: "compute-size", callback: Toplevel.ComputeSizeSignalCallback): number
-    emit(sigName: "compute-size", ...args: any[]): void
+    emit(sigName: "compute-size", size: ToplevelSize, ...args: any[]): void
 
     // Class property signals of Gdk-4.0.Gdk.Toplevel
 
@@ -8548,7 +8548,7 @@ interface FrameClock {
  * for the synchronization being implemented, the clock will process a frame and
  * emit signals for each phase that has been requested. (See the signals of the
  * `GdkFrameClock` class for documentation of the phases.
- * %GDK_FRAME_CLOCK_PHASE_UPDATE and the [signal`GdkFrameClock:`:update] signal
+ * %GDK_FRAME_CLOCK_PHASE_UPDATE and the [signal`Gdk`.FrameClock::update] signal
  * are most interesting for application writers, and are used to update the
  * animations, using the frame time given by [method`Gdk`.FrameClock.get_frame_time].
  * 
@@ -8560,7 +8560,7 @@ interface FrameClock {
  * are called at a “similar” time get the same value. This means that
  * if different animations are timed by looking at the difference in
  * time between an initial value from [method`Gdk`.FrameClock.get_frame_time]
- * and the value inside the [signal`GdkFrameClock:`:update] signal of the clock,
+ * and the value inside the [signal`Gdk`.FrameClock::update] signal of the clock,
  * they will stay exactly synchronized.
  * @class 
  */

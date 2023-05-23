@@ -1,11 +1,12 @@
 
 # Meta-11
 
-GJS TypeScript type definitions for Meta-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0-beta.13.
+GJS TypeScript type definitions for Meta-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+
 
 ## Install
 
-To use this type definitions, install them with NPM like this:
+To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/meta-11
 ```
@@ -22,10 +23,65 @@ Or if you prefer CommonJS, you can also use this:
 const Meta = require('@girs/meta-11');
 ```
 
-If you use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules), you can also import this module like you would do this in JavaScript:
+### Ambient Modules
+
+You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
+For this you need to include `@girs/meta-11` or `@girs/meta-11/ambient` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/meta-11'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/meta-11"],
+  ...
+}
+```
+
+Now you can import the ambient module with TypeScript support: 
 
 ```ts
 import Meta from 'gi://Meta?version=11';
 ```
 
+### Global import
+
+You can also import the module with Typescript support using the global `imports.gi` object of GJS.
+For this you need to include `@girs/meta-11` or `@girs/meta-11/import` in your `tsconfig` or entry point Typescript file:
+
+`index.ts`:
+```ts
+import '@girs/meta-11'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/meta-11"],
+  ...
+}
+```
+
+Now you have also type support for this, too:
+
+```ts
+const Meta = imports.gi.Meta;
+```
+
+### Bundle
+
 Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+
+## Other packages
+
+All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+

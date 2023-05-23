@@ -1,56 +1,60 @@
-
 {
     "name": "@girs/gck-2",
-    "version": "4.0.0-3.0.0",
+    "version": "4.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for Gck-2, generated from library version 4.0.0",
     "type": "module",
     "module": "gck-2.js",
     "main": "gck-2.js",
     "typedoc": {
-      "entryPoint": "./gck-2.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "Gck-2",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./gck-2.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "Gck-2",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./gck-2-ambient.d.ts",
-      "./import": "./gck-2-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./gck-2.d.ts",
-          "default": "./gck-2.js"
-        },
-        "require": {
-          "types": "./gck-2.d.cts",
-          "default": "./gck-2.cjs"
+        "./ambient": "./gck-2-ambient.d.ts",
+        "./import": "./gck-2-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./gck-2.d.ts",
+                "default": "./gck-2.js"
+            },
+            "require": {
+                "types": "./gck-2.d.cts",
+                "default": "./gck-2.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit gck-2.d.ts",
-      "test:cjs": "tsc --noEmit gck-2.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gck-2.d.ts",
+        "test:cjs": "tsc --noEmit gck-2.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gck-2"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gck-2"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gck-2#readme"
 }
-
-

@@ -2682,7 +2682,7 @@ module ActionRow {
          * The widget to activate when the row is activated.
          * 
          * The row can be activated either by clicking on it, calling
-         * [method`ActionRow`.activate], or via mnemonics in the title or the subtitle.
+         * [method`ActionRow`.activate], or via mnemonics in the title.
          * See the [property`PreferencesRow:`use-underline] property to enable
          * mnemonics.
          * 
@@ -2732,7 +2732,7 @@ interface ActionRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.C
      * The widget to activate when the row is activated.
      * 
      * The row can be activated either by clicking on it, calling
-     * [method`ActionRow`.activate], or via mnemonics in the title or the subtitle.
+     * [method`ActionRow`.activate], or via mnemonics in the title.
      * See the [property`PreferencesRow:`use-underline] property to enable
      * mnemonics.
      * 
@@ -2830,7 +2830,7 @@ interface ActionRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.C
      * Sets the widget to activate when `self` is activated.
      * 
      * The row can be activated either by clicking on it, calling
-     * [method`ActionRow`.activate], or via mnemonics in the title or the subtitle.
+     * [method`ActionRow`.activate], or via mnemonics in the title.
      * See the [property`PreferencesRow:`use-underline] property to enable mnemonics.
      * 
      * The target widget will be activated by emitting the
@@ -5243,7 +5243,8 @@ interface Banner extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.Cons
  * Banners have a title, set with [property`Banner:`title]. Titles can be marked
  * up with Pango markup, use [property`Banner:`use-markup] to enable it.
  * 
- * Title can be shown centered or left-aligned depending on available space.
+ * The title will be shown centered or left-aligned depending on available
+ * space.
  * 
  * Banners can optionally have a button with text on it, set through
  * [property`Banner:`button-label]. The button can be used with a `GAction`,
@@ -13301,7 +13302,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
  * {
  *   const char *response = adw_message_dialog_choose_finish (dialog, result);
  * 
- *   ...
+ *   // ...
  * }
  * 
  * static void
@@ -20016,8 +20017,12 @@ interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
  * for the overview. Use it to add extra actions, e.g. to open a new window or
  * undo closed tab.
  * 
- * `AdwTabOverview` is intended to be cover the whole window and shows window
- * buttons by default. They can be disabled by setting
+ * `AdwTabOverview` is intended to be used as the direct child of the window,
+ * with the rest of the window contents set as the [property`TabOverview:`child].
+ * The child is expected to contain an [class`TabView]`.
+ * 
+ * `AdwTabOverview` shows window buttons by default. They can be disabled by
+ * setting [property`TabOverview:`show-start-title-buttons] and/or
  * [property`TabOverview:`show-start-title-buttons] and/or
  * [property`TabOverview:`show-end-title-buttons] to `FALSE`.
  * 

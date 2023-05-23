@@ -1,68 +1,72 @@
-
 {
     "name": "@girs/gcrgtk3-4",
-    "version": "4.0.0-3.0.0",
+    "version": "4.0.0-3.0.1",
     "description": "GJS TypeScript type definitions for GcrGtk3-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gcrgtk3-4.js",
     "main": "gcrgtk3-4.js",
     "typedoc": {
-      "entryPoint": "./gcrgtk3-4.d.ts",
-      "readmeFile": "./README.md",
-      "displayName": "GcrGtk3-4",
-      "tsconfig": "./tsconfig.doc.json"
+        "entryPoint": "./gcrgtk3-4.d.ts",
+        "readmeFile": "./README.md",
+        "displayName": "GcrGtk3-4",
+        "tsconfig": "./tsconfig.doc.json"
     },
     "exports": {
-      "./ambient": "./gcrgtk3-4-ambient.d.ts",
-      "./import": "./gcrgtk3-4-import.d.ts",
-      ".": {
-        "import": {
-          "types": "./gcrgtk3-4.d.ts",
-          "default": "./gcrgtk3-4.js"
-        },
-        "require": {
-          "types": "./gcrgtk3-4.d.cts",
-          "default": "./gcrgtk3-4.cjs"
+        "./ambient": "./gcrgtk3-4-ambient.d.ts",
+        "./import": "./gcrgtk3-4-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./gcrgtk3-4.d.ts",
+                "default": "./gcrgtk3-4.js"
+            },
+            "require": {
+                "types": "./gcrgtk3-4.d.cts",
+                "default": "./gcrgtk3-4.cjs"
+            }
         }
-      }
     },
     "scripts": {
-      "test": "yarn test:esm && yarn test:cjs",
-      "test:esm": "tsc --noEmit gcrgtk3-4.d.ts",
-      "test:cjs": "tsc --noEmit gcrgtk3-4.d.cts"
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "tsc --noEmit gcrgtk3-4.d.ts",
+        "test:cjs": "tsc --noEmit gcrgtk3-4.d.cts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      
-      "@girs/gtk-3.0": "workspace:^",            
-      "@girs/xlib-2.0": "workspace:^",            
-      "@girs/gdk-3.0": "workspace:^",            
-      "@girs/cairo-1.0": "workspace:^",            
-      "@girs/pango-1.0": "workspace:^",            
-      "@girs/harfbuzz-0.0": "workspace:^",            
-      "@girs/freetype2-2.0": "workspace:^",            
-      "@girs/gobject-2.0": "workspace:^",            
-      "@girs/glib-2.0": "workspace:^",            
-      "@girs/gio-2.0": "workspace:^",            
-      "@girs/gdkpixbuf-2.0": "workspace:^",            
-      "@girs/gmodule-2.0": "workspace:^",            
-      "@girs/atk-1.0": "workspace:^",            
-      "@girs/gcr-4": "workspace:^",            
-      "@girs/gck-2": "workspace:^"      
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gck-2": "workspace:^",
+        "@girs/gcr-4": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "^5.0.4"
+        "typescript": "^5.0.4"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GcrGtk3-4"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GcrGtk3-4"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gcrgtk3-4#readme"
 }
-
-

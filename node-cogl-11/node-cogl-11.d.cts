@@ -5,6 +5,9 @@
  * These type definitions are automatically generated, do not edit them by hand.
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/gjsify/ts-for-gir
  */
+
+import './node-cogl-11-import.d.ts';
+    
 /**
  * Cogl-11
  */
@@ -5020,3 +5023,4 @@ export class _TextureVertexSizeCheck {
     export type Handle = any
     export type PipelineKey = string
     export type UserDataDestroyCallback = GLib.DestroyNotify
+// END

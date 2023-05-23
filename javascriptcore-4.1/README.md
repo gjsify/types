@@ -1,7 +1,7 @@
 
 # JavaScriptCore-4.1
 
-GJS TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.40.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.0.
+GJS TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.40.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
 
 WebKitGTK+ is a full-featured port of the WebKit rendering engine, suitable for projects requiring any kind of web integration, from hybrid HTML/CSS applications to full-fledged web browsers. This is the library to use to acces JavaScript from WebKitGTK.
 
