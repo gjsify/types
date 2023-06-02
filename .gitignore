@@ -1,8 +1,0 @@
-node_modules
-
-yarn.lock
-.pnp.loader.mjs
-.pnp.cjs
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
