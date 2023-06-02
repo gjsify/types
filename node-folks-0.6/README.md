@@ -1,6 +1,10 @@
 
 # Folks-0.6
 
+![version](https://img.shields.io/npm/v/@girs/node-folks-0.6)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-folks-0.6)
+
+
 Node.js TypeScript type definitions for Folks-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

@@ -1,6 +1,10 @@
 
 # TelepathyFarstream-0.6
 
+![version](https://img.shields.io/npm/v/@girs/telepathyfarstream-0.6)
+![downloads/week](https://img.shields.io/npm/dw/@girs/telepathyfarstream-0.6)
+
+
 GJS TypeScript type definitions for TelepathyFarstream-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

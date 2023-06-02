@@ -1,6 +1,10 @@
 
 # GeglGtk3-0.1
 
+![version](https://img.shields.io/npm/v/@girs/geglgtk3-0.1)
+![downloads/week](https://img.shields.io/npm/dw/@girs/geglgtk3-0.1)
+
+
 GJS TypeScript type definitions for GeglGtk3-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Utility library for using GEGL in GTK+ 3 based applications

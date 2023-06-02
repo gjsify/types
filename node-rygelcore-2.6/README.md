@@ -1,6 +1,10 @@
 
 # RygelCore-2.6
 
+![version](https://img.shields.io/npm/v/@girs/node-rygelcore-2.6)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-rygelcore-2.6)
+
+
 Node.js TypeScript type definitions for RygelCore-2.6, generated from library version 2.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

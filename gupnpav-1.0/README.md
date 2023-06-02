@@ -1,6 +1,10 @@
 
 # GUPnPAV-1.0
 
+![version](https://img.shields.io/npm/v/@girs/gupnpav-1.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/gupnpav-1.0)
+
+
 GJS TypeScript type definitions for GUPnPAV-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Small utility library that aims to ease the handling and implementation of UPnP audio/video profiles

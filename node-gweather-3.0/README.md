@@ -1,6 +1,10 @@
 
 # GWeather-3.0
 
+![version](https://img.shields.io/npm/v/@girs/node-gweather-3.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gweather-3.0)
+
+
 Node.js TypeScript type definitions for GWeather-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Location and timezone database and weather-lookup library.

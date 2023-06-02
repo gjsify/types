@@ -1,6 +1,10 @@
 
 # Geoclue-2.0
 
+![version](https://img.shields.io/npm/v/@girs/geoclue-2.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/geoclue-2.0)
+
+
 GJS TypeScript type definitions for Geoclue-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 GeoClue is a D-Bus geoinformation service. The goal of the Geoclue project is to make creating location-aware applications as simple as possible.

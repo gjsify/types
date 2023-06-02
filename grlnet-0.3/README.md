@@ -1,6 +1,10 @@
 
 # GrlNet-0.3
 
+![version](https://img.shields.io/npm/v/@girs/grlnet-0.3)
+![downloads/week](https://img.shields.io/npm/dw/@girs/grlnet-0.3)
+
+
 GJS TypeScript type definitions for GrlNet-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Network classes for Grilo

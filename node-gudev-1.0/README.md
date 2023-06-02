@@ -1,6 +1,10 @@
 
 # GUdev-1.0
 
+![version](https://img.shields.io/npm/v/@girs/node-gudev-1.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gudev-1.0)
+
+
 Node.js TypeScript type definitions for GUdev-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 GUdev (libgudev) is a library with GObject bindings to libudev, now made independent, after being part of udev itself, and later systemd.

@@ -1,6 +1,10 @@
 
 # GstAudio-0.10
 
+![version](https://img.shields.io/npm/v/@girs/gstaudio-0.10)
+![downloads/week](https://img.shields.io/npm/dw/@girs/gstaudio-0.10)
+
+
 GJS TypeScript type definitions for GstAudio-0.10, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

@@ -1,6 +1,10 @@
 
 # MetaTest-12
 
+![version](https://img.shields.io/npm/v/@girs/node-metatest-12)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-metatest-12)
+
+
 Node.js TypeScript type definitions for MetaTest-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

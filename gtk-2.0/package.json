@@ -45,7 +45,7 @@
         "@girs/pango-1.0": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "*"
     },
     "keywords": [
         "Gir",

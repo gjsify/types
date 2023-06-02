@@ -1,6 +1,10 @@
 
 # Handy-0.0
 
+![version](https://img.shields.io/npm/v/@girs/handy-0.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/handy-0.0)
+
+
 GJS TypeScript type definitions for Handy-0.0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 A library full of GTK+ widgets for mobile phones

@@ -44,7 +44,7 @@
         "@girs/soup-2.4": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "*"
     },
     "keywords": [
         "Gir",

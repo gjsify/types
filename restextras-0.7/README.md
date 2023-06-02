@@ -1,6 +1,10 @@
 
 # RestExtras-0.7
 
+![version](https://img.shields.io/npm/v/@girs/restextras-0.7)
+![downloads/week](https://img.shields.io/npm/dw/@girs/restextras-0.7)
+
+
 GJS TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 This extra package provides Facebook and Flickr support.

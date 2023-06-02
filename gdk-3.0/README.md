@@ -1,6 +1,10 @@
 
 # Gdk-3.0
 
+![version](https://img.shields.io/npm/v/@girs/gdk-3.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/gdk-3.0)
+
+
 GJS TypeScript type definitions for Gdk-3.0, generated from library version 3.24.38 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 An intermediate layer which isolates GTK+ from the details of the windowing system.

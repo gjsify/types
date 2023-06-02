@@ -1,6 +1,10 @@
 
 # GUPnPIgd-1.0
 
+![version](https://img.shields.io/npm/v/@girs/node-gupnpigd-1.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gupnpigd-1.0)
+
+
 Node.js TypeScript type definitions for GUPnPIgd-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

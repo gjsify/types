@@ -1,6 +1,10 @@
 
 # Qmi-1.0
 
+![version](https://img.shields.io/npm/v/@girs/qmi-1.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/qmi-1.0)
+
+
 GJS TypeScript type definitions for Qmi-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

@@ -1,6 +1,10 @@
 
 # Gitg-1.0
 
+![version](https://img.shields.io/npm/v/@girs/gitg-1.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/gitg-1.0)
+
+
 GJS TypeScript type definitions for Gitg-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Small, fast and convenient set of widgets to visualize the history of git repositories.

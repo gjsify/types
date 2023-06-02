@@ -42,7 +42,7 @@
         "node-gtk": "*"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "*"
     },
     "keywords": [
         "Gir",

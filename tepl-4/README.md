@@ -1,6 +1,10 @@
 
 # Tepl-4
 
+![version](https://img.shields.io/npm/v/@girs/tepl-4)
+![downloads/week](https://img.shields.io/npm/dw/@girs/tepl-4)
+
+
 GJS TypeScript type definitions for Tepl-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

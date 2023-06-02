@@ -1,6 +1,10 @@
 
 # AppIndicator3-0.1
 
+![version](https://img.shields.io/npm/v/@girs/appindicator3-0.1)
+![downloads/week](https://img.shields.io/npm/dw/@girs/appindicator3-0.1)
+
+
 GJS TypeScript type definitions for AppIndicator3-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

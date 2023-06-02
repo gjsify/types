@@ -1,6 +1,10 @@
 
 # Granite-7.0
 
+![version](https://img.shields.io/npm/v/@girs/node-granite-7.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-granite-7.0)
+
+
 Node.js TypeScript type definitions for Granite-7.0, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

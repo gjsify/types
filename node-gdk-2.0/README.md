@@ -1,6 +1,10 @@
 
 # Gdk-2.0
 
+![version](https://img.shields.io/npm/v/@girs/node-gdk-2.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gdk-2.0)
+
+
 Node.js TypeScript type definitions for Gdk-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

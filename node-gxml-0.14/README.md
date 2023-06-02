@@ -1,6 +1,10 @@
 
 # GXml-0.14
 
+![version](https://img.shields.io/npm/v/@girs/node-gxml-0.14)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gxml-0.14)
+
+
 Node.js TypeScript type definitions for GXml-0.14, generated from library version 0.14.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

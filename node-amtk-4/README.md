@@ -1,6 +1,10 @@
 
 # Amtk-4
 
+![version](https://img.shields.io/npm/v/@girs/node-amtk-4)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-amtk-4)
+
+
 Node.js TypeScript type definitions for Amtk-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

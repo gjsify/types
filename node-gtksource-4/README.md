@@ -1,6 +1,10 @@
 
 # GtkSource-4
 
+![version](https://img.shields.io/npm/v/@girs/node-gtksource-4)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gtksource-4)
+
+
 Node.js TypeScript type definitions for GtkSource-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 GtkSourceView is a GNOME library that extends GtkTextView, the standard GTK+ widget for multiline text editing. GtkSourceView adds support for syntax highlighting, undo/redo, file loading and saving, search and replace, a completion system, printing, displaying line numbers, and other features typical of a source code editor.

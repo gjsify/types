@@ -39,7 +39,7 @@
         "@girs/grl-0.3": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "*"
     },
     "keywords": [
         "Gir",

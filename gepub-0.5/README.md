@@ -1,6 +1,10 @@
 
 # Gepub-0.5
 
+![version](https://img.shields.io/npm/v/@girs/gepub-0.5)
+![downloads/week](https://img.shields.io/npm/dw/@girs/gepub-0.5)
+
+
 GJS TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

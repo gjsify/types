@@ -1,6 +1,10 @@
 
 # FolksLibsocialweb-0.6
 
+![version](https://img.shields.io/npm/v/@girs/folkslibsocialweb-0.6)
+![downloads/week](https://img.shields.io/npm/dw/@girs/folkslibsocialweb-0.6)
+
+
 GJS TypeScript type definitions for FolksLibsocialweb-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

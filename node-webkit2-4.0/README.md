@@ -1,6 +1,10 @@
 
 # WebKit2-4.0
 
+![version](https://img.shields.io/npm/v/@girs/node-webkit2-4.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-webkit2-4.0)
+
+
 Node.js TypeScript type definitions for WebKit2-4.0, generated from library version 2.40.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 WebKitGTK+ is a full-featured port of the WebKit rendering engine, suitable for projects requiring any kind of web integration, from hybrid HTML/CSS applications to full-fledged web browsers.

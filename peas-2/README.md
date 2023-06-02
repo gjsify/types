@@ -1,6 +1,10 @@
 
 # Peas-2
 
+![version](https://img.shields.io/npm/v/@girs/peas-2)
+![downloads/week](https://img.shields.io/npm/dw/@girs/peas-2)
+
+
 GJS TypeScript type definitions for Peas-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 

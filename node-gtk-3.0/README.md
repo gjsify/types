@@ -1,6 +1,10 @@
 
 # Gtk-3.0
 
+![version](https://img.shields.io/npm/v/@girs/node-gtk-3.0)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-gtk-3.0)
+
+
 Node.js TypeScript type definitions for Gtk-3.0, generated from library version 3.24.38 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 GTK+ is the primary library used to construct user interfaces in GNOME applications. It provides user interface controls and signal callbacks to control user interfaces.

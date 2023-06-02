@@ -44,7 +44,7 @@
         "@girs/vgda-1": "workspace:^"
     },
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "*"
     },
     "keywords": [
         "Gir",

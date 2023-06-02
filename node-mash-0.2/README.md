@@ -1,6 +1,10 @@
 
 # Mash-0.2
 
+![version](https://img.shields.io/npm/v/@girs/node-mash-0.2)
+![downloads/week](https://img.shields.io/npm/dw/@girs/node-mash-0.2)
+
+
 Node.js TypeScript type definitions for Mash-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
