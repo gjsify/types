@@ -1,7 +1,7 @@
 
 # SoupGNOME-2.4
 
-Node.js TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

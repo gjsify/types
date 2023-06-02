@@ -1,7 +1,7 @@
 
 # MetaTest-12
 
-Node.js TypeScript type definitions for MetaTest-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for MetaTest-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

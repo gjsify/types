@@ -1,7 +1,7 @@
 
 # DbusmenuGtk-0.4
 
-Node.js TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

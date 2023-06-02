@@ -1,7 +1,7 @@
 
 # TelepathyGLib-0.12
 
-Node.js TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 Telepathy is a D-Bus framework for unifying real time communication, including instant messaging, voice calls and video calls. It abstracts differences between protocols to provide a unified interface for applications.
 

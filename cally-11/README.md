@@ -1,7 +1,7 @@
 
 # Cally-11
 
-GJS TypeScript type definitions for Cally-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for Cally-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

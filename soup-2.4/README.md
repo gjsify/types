@@ -1,7 +1,7 @@
 
 # Soup-2.4
 
-GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 libsoup is an HTTP client/server library for GNOME. It uses GObjects and the glib main loop, to integrate well with GNOME applications.
 

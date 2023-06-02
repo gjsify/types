@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-shell-12",
-    "version": "12.0.0-3.0.2",
+    "version": "12.0.0-3.0.3",
     "description": "Node.js TypeScript type definitions for Shell-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-shell-12.js",

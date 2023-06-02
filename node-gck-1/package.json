@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gck-1",
-    "version": "1.0.0-3.0.2",
+    "version": "1.0.0-3.0.3",
     "description": "Node.js TypeScript type definitions for Gck-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gck-1.js",

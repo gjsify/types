@@ -1,7 +1,7 @@
 
 # GObject-2.0
 
-GJS TypeScript type definitions for GObject-2.0, generated from library version 2.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for GObject-2.0, generated from library version 2.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 GObject provides the object system used for Pango and GTK+.
 

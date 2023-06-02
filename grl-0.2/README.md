@@ -1,7 +1,7 @@
 
 # Grl-0.2
 
-GJS TypeScript type definitions for Grl-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for Grl-0.2, generated from library version 0.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

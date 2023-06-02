@@ -1,7 +1,7 @@
 
 # GstPbutils-0.10
 
-Node.js TypeScript type definitions for GstPbutils-0.10, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for GstPbutils-0.10, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

@@ -1,7 +1,7 @@
 
 # RygelRenderer-2.8
 
-Node.js TypeScript type definitions for RygelRenderer-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for RygelRenderer-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

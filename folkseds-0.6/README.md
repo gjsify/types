@@ -1,7 +1,7 @@
 
 # FolksEds-0.6
 
-GJS TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

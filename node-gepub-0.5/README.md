@@ -1,7 +1,7 @@
 
 # Gepub-0.5
 
-Node.js TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

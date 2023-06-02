@@ -1,7 +1,7 @@
 
 # Mx-1.0
 
-GJS TypeScript type definitions for Mx-1.0, generated from library version 1.4.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for Mx-1.0, generated from library version 1.4.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

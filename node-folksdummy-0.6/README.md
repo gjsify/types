@@ -1,7 +1,7 @@
 
 # FolksDummy-0.6
 
-Node.js TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

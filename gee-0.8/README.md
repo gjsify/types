@@ -1,7 +1,7 @@
 
 # Gee-0.8
 
-GJS TypeScript type definitions for Gee-0.8, generated from library version 0.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for Gee-0.8, generated from library version 0.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 
 ## Install

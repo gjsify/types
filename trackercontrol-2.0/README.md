@@ -1,7 +1,7 @@
 
 # TrackerControl-2.0
 
-GJS TypeScript type definitions for TrackerControl-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+GJS TypeScript type definitions for TrackerControl-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 External control and monitoring of miners
 

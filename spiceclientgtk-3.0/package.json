@@ -1,6 +1,6 @@
 {
     "name": "@girs/spiceclientgtk-3.0",
-    "version": "3.0.0-3.0.2",
+    "version": "3.0.0-3.0.3",
     "description": "GJS TypeScript type definitions for SpiceClientGtk-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "spiceclientgtk-3.0.js",

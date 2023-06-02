@@ -1,7 +1,7 @@
 
 # Rest-0.7
 
-Node.js TypeScript type definitions for Rest-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
+Node.js TypeScript type definitions for Rest-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
 
 A helper library for RESTful services.
 
