@@ -1,7 +1,7 @@
 
 # Tracker-2.0
 
-Node.js TypeScript type definitions for Tracker-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for Tracker-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 The libtracker-miner library is the foundation for Tracker data miners, these miners will extract metadata and insert it in SPARQL form to a TrackerSparqlConnection.
 

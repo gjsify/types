@@ -1,7 +1,7 @@
 
 # Vda-1
 
-Node.js TypeScript type definitions for Vda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for Vda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 Vala Data Access library, a set of interfaces to connect to databases and execute queries
 

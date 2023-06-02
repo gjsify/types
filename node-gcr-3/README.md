@@ -1,7 +1,7 @@
 
 # Gcr-3
 
-Node.js TypeScript type definitions for Gcr-3, generated from library version 3.41.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for Gcr-3, generated from library version 3.41.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 A library for bits of crypto UI and parsing
 

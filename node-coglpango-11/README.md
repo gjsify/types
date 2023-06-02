@@ -1,7 +1,7 @@
 
 # CoglPango-11
 
-Node.js TypeScript type definitions for CoglPango-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for CoglPango-11, generated from library version 11.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 
 ## Install

@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gsf-1",
-    "version": "1.0.0-3.0.1",
+    "version": "1.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for Gsf-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gsf-1.js",

@@ -1,7 +1,7 @@
 
 # Gdaui-5.0
 
-Node.js TypeScript type definitions for Gdaui-5.0, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for Gdaui-5.0, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 Libgda is a (relatively small) database access library. This package provides GTK+ widgets to database access.
 

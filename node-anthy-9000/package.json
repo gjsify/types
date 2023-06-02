@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-anthy-9000",
-    "version": "9000.0.0-3.0.1",
+    "version": "9000.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0",
     "type": "module",
     "module": "node-anthy-9000.js",

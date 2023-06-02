@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-webkitwebextension-6.0",
-    "version": "6.0.0-3.0.1",
+    "version": "6.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for WebKitWebExtension-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "node-webkitwebextension-6.0.js",

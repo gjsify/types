@@ -1,7 +1,7 @@
 
 # Handy-1
 
-GJS TypeScript type definitions for Handy-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+GJS TypeScript type definitions for Handy-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 Building blocks for modern adaptive GNOME apps
 

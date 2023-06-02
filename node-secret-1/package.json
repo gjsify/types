@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-secret-1",
-    "version": "0.20.5-3.0.1",
+    "version": "0.20.5-3.0.2",
     "description": "Node.js TypeScript type definitions for Secret-1, generated from library version 0.20.5",
     "type": "module",
     "module": "node-secret-1.js",

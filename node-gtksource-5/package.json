@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gtksource-5",
-    "version": "5.7.1-3.0.1",
+    "version": "5.7.1-3.0.2",
     "description": "Node.js TypeScript type definitions for GtkSource-5, generated from library version 5.7.1",
     "type": "module",
     "module": "node-gtksource-5.js",

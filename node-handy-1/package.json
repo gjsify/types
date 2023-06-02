@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-handy-1",
-    "version": "1.0.0-3.0.1",
+    "version": "1.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for Handy-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-handy-1.js",

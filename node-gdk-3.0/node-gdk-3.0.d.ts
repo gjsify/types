@@ -5357,9 +5357,11 @@ function parseArgs(argv: string[]): /* argv */ string[]
 function pixbufGetFromSurface(surface: cairo.Surface, srcX: number, srcY: number, width: number, height: number): GdkPixbuf.Pixbuf | null
 /**
  * Transfers image data from a #GdkWindow and converts it to an RGB(A)
- * representation inside a #GdkPixbuf. In other words, copies
- * image data from a server-side drawable to a client-side RGB(A) buffer.
- * This allows you to efficiently read individual pixels on the client side.
+ * representation inside a #GdkPixbuf.
+ * 
+ * In other words, copies image data from a server-side drawable to a
+ * client-side RGB(A) buffer. This allows you to efficiently read
+ * individual pixels on the client side.
  * 
  * This function will create an RGB pixbuf with 8 bits per channel with
  * the size specified by the `width` and `height` arguments scaled by the
@@ -5368,7 +5370,8 @@ function pixbufGetFromSurface(surface: cairo.Surface, srcX: number, srcY: number
  * 
  * If the window is off the screen, then there is no image data in the
  * obscured/offscreen regions to be placed in the pixbuf. The contents of
- * portions of the pixbuf corresponding to the offscreen region are undefined.
+ * portions of the pixbuf corresponding to the offscreen region are
+ * undefined.
  * 
  * If the window you’re obtaining data from is partially obscured by
  * other windows, then the contents of the pixbuf areas corresponding
@@ -5380,14 +5383,16 @@ function pixbufGetFromSurface(surface: cairo.Surface, srcX: number, srcY: number
  * If memory can’t be allocated for the return value, %NULL will be returned
  * instead.
  * 
- * (In short, there are several ways this function can fail, and if it fails
- *  it returns %NULL; so check the return value.)
+ * In short, there are several ways this function can fail, and if it fails
+ * it returns %NULL; so check the return value.
+ * 
+ * You should rarely, if ever, need to call this function.
  * @param window Source window
  * @param srcX Source X coordinate within `window`
  * @param srcY Source Y coordinate within `window`
  * @param width Width in pixels of region to get
  * @param height Height in pixels of region to get
- * @returns A newly-created pixbuf with a     reference count of 1, or %NULL on error
+ * @returns A newly-created pixbuf with a   reference count of 1, or %NULL on error
  */
 function pixbufGetFromWindow(window: Window, srcX: number, srcY: number, width: number, height: number): GdkPixbuf.Pixbuf | null
 /**

@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-rygelserver-2.8",
-    "version": "2.8.0-3.0.1",
+    "version": "2.8.0-3.0.2",
     "description": "Node.js TypeScript type definitions for RygelServer-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "node-rygelserver-2.8.js",

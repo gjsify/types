@@ -1,7 +1,7 @@
 
 # ModemManager-1.0
 
-GJS TypeScript type definitions for ModemManager-1.0, generated from library version 1.21.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+GJS TypeScript type definitions for ModemManager-1.0, generated from library version 1.21.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 ModemManager provides a unified high level API for communicating with (mobile broadband) modems.
 

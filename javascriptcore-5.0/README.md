@@ -1,7 +1,7 @@
 
 # JavaScriptCore-5.0
 
-GJS TypeScript type definitions for JavaScriptCore-5.0, generated from library version 2.38.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+GJS TypeScript type definitions for JavaScriptCore-5.0, generated from library version 2.38.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 
 ## Install

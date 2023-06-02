@@ -1,7 +1,7 @@
 
 # WebKitWebExtension-6.0
 
-Node.js TypeScript type definitions for WebKitWebExtension-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for WebKitWebExtension-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 WebKitGTK+ is a full-featured port of the WebKit rendering engine, suitable for projects requiring any kind of web integration, from hybrid HTML/CSS applications to full-fledged web browsers. This is the library to use to build extensions running in the separated webprocess.
 

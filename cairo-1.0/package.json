@@ -1,6 +1,6 @@
 {
     "name": "@girs/cairo-1.0",
-    "version": "1.0.0-3.0.1",
+    "version": "1.0.0-3.0.2",
     "description": "GJS TypeScript type definitions for cairo-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "cairo-1.0.js",

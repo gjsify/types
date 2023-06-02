@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-amtk-5",
-    "version": "5.0.0-3.0.1",
+    "version": "5.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for Amtk-5, generated from library version 5.0.0",
     "type": "module",
     "module": "node-amtk-5.js",

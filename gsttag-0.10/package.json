@@ -1,6 +1,6 @@
 {
     "name": "@girs/gsttag-0.10",
-    "version": "0.10.0-3.0.1",
+    "version": "0.10.0-3.0.2",
     "description": "GJS TypeScript type definitions for GstTag-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gsttag-0.10.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/rest-0.7",
-    "version": "0.7.0-3.0.1",
+    "version": "0.7.0-3.0.2",
     "description": "GJS TypeScript type definitions for Rest-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "rest-0.7.js",

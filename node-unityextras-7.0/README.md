@@ -1,7 +1,7 @@
 
 # UnityExtras-7.0
 
-Node.js TypeScript type definitions for UnityExtras-7.0, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.1.
+Node.js TypeScript type definitions for UnityExtras-7.0, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.2.
 
 
 ## Install

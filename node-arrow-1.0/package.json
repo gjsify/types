@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-arrow-1.0",
-    "version": "7.0.0-3.0.1",
+    "version": "7.0.0-3.0.2",
     "description": "Node.js TypeScript type definitions for Arrow-1.0, generated from library version 7.0.0",
     "type": "module",
     "module": "node-arrow-1.0.js",

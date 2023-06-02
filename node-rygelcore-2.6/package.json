@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-rygelcore-2.6",
-    "version": "2.6.0-3.0.1",
+    "version": "2.6.0-3.0.2",
     "description": "Node.js TypeScript type definitions for RygelCore-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "node-rygelcore-2.6.js",
