@@ -1082,6 +1082,7 @@ interface GLBaseFilter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1200,6 +1201,7 @@ interface GLBaseMemoryAllocator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1424,6 +1426,7 @@ interface GLBaseSrc {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1565,6 +1568,7 @@ interface GLBufferAllocator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1667,6 +1671,7 @@ interface GLBufferPool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1789,6 +1794,7 @@ interface GLColorConvert {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2126,6 +2132,7 @@ interface GLContext {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2375,6 +2382,7 @@ interface GLDisplay {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2604,6 +2612,7 @@ interface GLFilter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2728,6 +2737,7 @@ interface GLFramebuffer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2897,6 +2907,7 @@ interface GLMemoryAllocator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3036,6 +3047,7 @@ interface GLMemoryPBOAllocator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3134,6 +3146,7 @@ interface GLOverlayCompositor {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3275,6 +3288,7 @@ interface GLRenderbufferAllocator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3372,6 +3386,7 @@ interface GLSLStage {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3742,6 +3757,7 @@ interface GLShader {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class GLShader extends Gst.Object {
@@ -3888,6 +3904,7 @@ interface GLUpload {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4056,6 +4073,7 @@ interface GLViewConvert {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4340,6 +4358,7 @@ interface GLWindow {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**

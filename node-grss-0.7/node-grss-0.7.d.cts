@@ -49,6 +49,7 @@ export interface FeedAtomFormatter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedAtomFormatter extends FeedFormatter {
@@ -371,6 +372,7 @@ export interface FeedChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedChannel extends GObject.Object {
@@ -507,6 +509,7 @@ export interface FeedEnclosure {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedEnclosure extends GObject.Object {
@@ -614,6 +617,7 @@ export interface FeedFormatter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedFormatter extends GObject.Object {
@@ -827,6 +831,7 @@ export interface FeedItem {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedItem extends GObject.Object {
@@ -907,6 +912,7 @@ export interface FeedParser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedParser extends GObject.Object {
@@ -964,6 +970,7 @@ export interface FeedRssFormatter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedRssFormatter extends FeedFormatter {
@@ -1035,6 +1042,7 @@ export interface FeedsGroup {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedsGroup extends GObject.Object {
@@ -1178,6 +1186,7 @@ export interface FeedsPool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedsPool extends GObject.Object {
@@ -1324,6 +1333,7 @@ export interface FeedsPublisher {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedsPublisher extends GObject.Object {
@@ -1429,6 +1439,7 @@ export interface FeedsStore {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedsStore extends GObject.Object {
@@ -1549,6 +1560,7 @@ export interface FeedsSubscriber {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FeedsSubscriber extends GObject.Object {

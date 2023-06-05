@@ -92,6 +92,7 @@ interface Buffer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Buffer extends Arrow.Buffer {
@@ -244,6 +245,7 @@ interface BufferInputStream extends Arrow.File, Arrow.Readable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class BufferInputStream extends Arrow.BufferInputStream {
@@ -306,6 +308,7 @@ interface BufferOutputStream extends Arrow.File, Arrow.Writable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class BufferOutputStream extends Arrow.OutputStream {
@@ -367,6 +370,7 @@ interface Context {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Context extends GObject.Object {
@@ -417,6 +421,7 @@ interface DeviceManager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class DeviceManager extends GObject.Object {
@@ -538,6 +543,7 @@ interface HostBuffer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HostBuffer extends Arrow.MutableBuffer {
@@ -608,6 +614,7 @@ interface IPCMemoryHandle {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class IPCMemoryHandle extends GObject.Object {

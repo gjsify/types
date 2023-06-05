@@ -565,6 +565,7 @@ export interface RTSPAddressPool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -754,6 +755,7 @@ export interface RTSPAuth {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1361,6 +1363,7 @@ export interface RTSPClient {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2090,6 +2093,7 @@ export interface RTSPMedia {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2588,6 +2592,7 @@ export interface RTSPMediaFactory {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2755,6 +2760,7 @@ export interface RTSPMediaFactoryURI {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2865,6 +2871,7 @@ export interface RTSPMountPoints {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -2946,6 +2953,7 @@ export interface RTSPOnvifClient {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RTSPOnvifClient extends RTSPClient {
@@ -3109,6 +3117,7 @@ export interface RTSPOnvifMedia {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RTSPOnvifMedia extends RTSPMedia {
@@ -3287,6 +3296,7 @@ export interface RTSPOnvifMediaFactory {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RTSPOnvifMediaFactory extends RTSPMediaFactory {
@@ -3386,6 +3396,7 @@ export interface RTSPOnvifServer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RTSPOnvifServer extends RTSPServer {
@@ -3687,6 +3698,7 @@ export interface RTSPServer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3899,6 +3911,7 @@ export interface RTSPSession {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4030,6 +4043,7 @@ export interface RTSPSessionMedia {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4203,6 +4217,7 @@ export interface RTSPSessionPool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4839,6 +4854,7 @@ export interface RTSPStream {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -5034,6 +5050,7 @@ export interface RTSPStreamTransport {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -5142,6 +5159,7 @@ export interface RTSPThreadPool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**

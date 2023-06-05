@@ -84,6 +84,7 @@ export interface ArrowFileReader {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ArrowFileReader extends GObject.Object {
@@ -146,6 +147,7 @@ export interface ArrowFileWriter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ArrowFileWriter extends GObject.Object {
@@ -209,6 +211,7 @@ export interface WriterProperties {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WriterProperties extends GObject.Object {

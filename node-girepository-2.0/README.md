@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-girepository-2.0)
 
 
-Node.js TypeScript type definitions for GIRepository-2.0, generated from library version 1.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+Node.js TypeScript type definitions for GIRepository-2.0, generated from library version 1.76.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.
 

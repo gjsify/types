@@ -575,6 +575,7 @@ interface Audio {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -800,6 +801,7 @@ interface Channel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -1070,6 +1072,17 @@ interface CursorChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -1442,6 +1455,17 @@ interface DisplayChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -1585,6 +1609,7 @@ interface FileTransferTask {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FileTransferTask extends GObject.Object {
@@ -1801,6 +1826,17 @@ interface InputsChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -2467,6 +2503,17 @@ interface MainChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -2760,6 +2807,17 @@ interface PlaybackChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -2992,6 +3050,17 @@ interface PortChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -3098,6 +3167,7 @@ interface QmpPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -3345,6 +3415,17 @@ interface RecordChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -3964,6 +4045,7 @@ interface Session {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4106,6 +4188,17 @@ interface SmartcardChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -4241,6 +4334,7 @@ interface SmartcardManager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4345,6 +4439,7 @@ interface URI {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4635,6 +4730,7 @@ interface UsbDeviceManager extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4776,6 +4872,17 @@ interface UsbredirChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**
@@ -4932,6 +5039,17 @@ interface WebdavChannel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Close the socket and reset connection specific data. Finally, emit
+     * `reason` #SpiceChannel::channel-event on main context if not
+     * #SPICE_CHANNEL_NONE.
+     * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
+     */
+    disconnect(reason: ChannelEvent): void
 }
 
 /**

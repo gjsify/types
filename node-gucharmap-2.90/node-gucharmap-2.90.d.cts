@@ -149,6 +149,7 @@ export interface BlockChaptersModel extends Gtk.Buildable, Gtk.TreeDragDest, Gtk
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class BlockChaptersModel extends ChaptersModel {
@@ -223,6 +224,7 @@ export interface BlockCodepointList {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class BlockCodepointList extends CodepointList {
@@ -305,6 +307,7 @@ export interface ChaptersModel extends Gtk.Buildable, Gtk.TreeDragDest, Gtk.Tree
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChaptersModel extends Gtk.ListStore {
@@ -813,6 +816,7 @@ export interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChaptersView extends Gtk.TreeView {
@@ -1362,6 +1366,7 @@ export interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Charmap extends Gtk.Paned {
@@ -1878,6 +1883,7 @@ export interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Chartable extends Gtk.DrawingArea {
@@ -2141,6 +2147,7 @@ export interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Docu
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChartableAccessible extends Atk.NoOpObject {
@@ -2365,6 +2372,7 @@ export interface ChartableCellAccessible extends Atk.Action, Atk.Component {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChartableCellAccessible extends Atk.Object {
@@ -2424,6 +2432,7 @@ export interface CodepointList {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CodepointList extends GObject.Object {
@@ -2469,6 +2478,7 @@ export interface ScriptChaptersModel extends Gtk.Buildable, Gtk.TreeDragDest, Gt
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ScriptChaptersModel extends ChaptersModel {
@@ -2548,6 +2558,7 @@ export interface ScriptCodepointList {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ScriptCodepointList extends CodepointList {

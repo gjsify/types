@@ -529,6 +529,7 @@ interface Pty extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Pty extends GObject.Object {
@@ -2505,6 +2506,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Terminal extends Gtk.Widget {

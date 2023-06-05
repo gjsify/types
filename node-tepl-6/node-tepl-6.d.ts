@@ -499,6 +499,7 @@ interface LanguageChooser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class LanguageChooser extends GObject.Object {
@@ -628,6 +629,7 @@ interface TabGroup {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TabGroup extends GObject.Object {
@@ -720,6 +722,7 @@ interface AbstractFactory {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class AbstractFactory extends GObject.Object {
@@ -850,6 +853,7 @@ interface Application {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Application extends GObject.Object {
@@ -1016,6 +1020,7 @@ interface ApplicationWindow extends TabGroup {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class ApplicationWindow extends GObject.Object {
@@ -1286,6 +1291,7 @@ interface Buffer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Buffer extends GtkSource.Buffer {
@@ -1418,6 +1424,7 @@ interface File {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class File extends GObject.Object {
@@ -1555,6 +1562,7 @@ interface FileLoader {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FileLoader extends GObject.Object {
@@ -1740,6 +1748,7 @@ interface FileSaver {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FileSaver extends GObject.Object {
@@ -1876,6 +1885,7 @@ interface FoldRegion {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FoldRegion extends GObject.Object {
@@ -2278,6 +2288,7 @@ interface GotoLineBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class GotoLineBar extends Gtk.Grid {
@@ -2400,6 +2411,7 @@ interface GutterRendererFolds {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class GutterRendererFolds extends GtkSource.GutterRenderer {
@@ -2911,6 +2923,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class InfoBar extends Gtk.InfoBar {
@@ -3535,6 +3548,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, Gtk.Buildable, Lan
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class LanguageChooserDialog extends Gtk.Dialog {
@@ -3960,6 +3974,7 @@ interface LanguageChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class LanguageChooserWidget extends Gtk.Grid {
@@ -4039,6 +4054,7 @@ interface Metadata {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Metadata extends GObject.Object {
@@ -4150,6 +4166,7 @@ interface MetadataManager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MetadataManager extends GObject.Object {
@@ -4556,6 +4573,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Notebook extends Gtk.Notebook {
@@ -4982,6 +5000,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Panel extends Gtk.Grid {
@@ -5464,6 +5483,7 @@ interface ProgressInfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class ProgressInfoBar extends InfoBar {
@@ -5879,6 +5899,7 @@ interface SpaceDrawerPrefs extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SpaceDrawerPrefs extends Gtk.Grid {
@@ -6334,6 +6355,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Statusbar extends Gtk.Statusbar {
@@ -6750,6 +6772,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StyleSchemeChooserWidget extends Gtk.Bin {
@@ -7272,6 +7295,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Tab extends Gtk.Grid {
@@ -7721,6 +7745,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TabLabel extends Gtk.Grid {
@@ -8379,6 +8404,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class View extends GtkSource.View {

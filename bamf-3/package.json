@@ -1,6 +1,6 @@
 {
     "name": "@girs/bamf-3",
-    "version": "3.0.0-3.0.3",
+    "version": "3.0.0-3.0.4",
     "description": "GJS TypeScript type definitions for Bamf-3, generated from library version 3.0.0",
     "type": "module",
     "module": "bamf-3.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/tepl-6",
-    "version": "6.0.0-3.0.3",
+    "version": "6.0.0-3.0.4",
     "description": "GJS TypeScript type definitions for Tepl-6, generated from library version 6.0.0",
     "type": "module",
     "module": "tepl-6.js",

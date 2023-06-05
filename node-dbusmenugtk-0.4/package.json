@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-dbusmenugtk-0.4",
-    "version": "0.4.0-3.0.3",
+    "version": "0.4.0-3.0.4",
     "description": "Node.js TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "node-dbusmenugtk-0.4.js",

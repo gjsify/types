@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/evincedocument-3.0)
 
 
-GJS TypeScript type definitions for EvinceDocument-3.0, generated from library version 44.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+GJS TypeScript type definitions for EvinceDocument-3.0, generated from library version 44.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 
 ## Install

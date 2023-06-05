@@ -1,6 +1,6 @@
 {
     "name": "@girs/nice-0.1",
-    "version": "0.1.0-3.0.3",
+    "version": "0.1.0-3.0.4",
     "description": "GJS TypeScript type definitions for Nice-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "nice-0.1.js",

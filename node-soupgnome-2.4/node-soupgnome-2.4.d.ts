@@ -67,6 +67,7 @@ interface CookieJarSqlite extends Soup.SessionFeature {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class CookieJarSqlite extends Soup.CookieJarDB {
@@ -135,6 +136,7 @@ interface PasswordManagerGNOME extends Soup.SessionFeature {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class PasswordManagerGNOME extends GObject.Object {
@@ -181,6 +183,7 @@ interface ProxyResolverGNOME extends Soup.ProxyURIResolver, Soup.SessionFeature 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class ProxyResolverGNOME extends Soup.ProxyResolverDefault {

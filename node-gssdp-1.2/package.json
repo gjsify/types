@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gssdp-1.2",
-    "version": "1.2.0-3.0.3",
+    "version": "1.2.0-3.0.4",
     "description": "Node.js TypeScript type definitions for GSSDP-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "node-gssdp-1.2.js",

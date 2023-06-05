@@ -222,6 +222,7 @@ export interface Dock extends Gtk.Container {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Dock extends GObject.Object {
@@ -622,6 +623,7 @@ export interface DockItem extends Gtk.Widget {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockItem extends GObject.Object {
@@ -764,6 +766,7 @@ export interface Animation {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Animation extends GObject.InitiallyUnowned {
@@ -1224,6 +1227,7 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockBin extends Gtk.Container {
@@ -1735,6 +1739,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockBinEdge extends DockRevealer {
@@ -1820,6 +1825,7 @@ export interface DockManager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockManager extends GObject.Object {
@@ -2306,6 +2312,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockOverlay extends Gtk.EventBox {
@@ -2770,6 +2777,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockOverlayEdge extends Gtk.Bin {
@@ -3221,6 +3229,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockPaned extends MultiPaned {
@@ -3636,6 +3645,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -4125,6 +4135,7 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockStack extends Gtk.Box {
@@ -4522,6 +4533,7 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockTabStrip extends TabStrip {
@@ -4599,6 +4611,7 @@ export interface DockTransientGrab {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockTransientGrab extends GObject.Object {
@@ -5065,6 +5078,7 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockWidget extends Gtk.Bin {
@@ -5703,6 +5717,7 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DockWindow extends Gtk.Window {
@@ -6137,6 +6152,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -6628,6 +6644,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Tab extends Gtk.ToggleButton {
@@ -7028,6 +7045,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class TabStrip extends Gtk.Box {

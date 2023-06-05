@@ -119,6 +119,7 @@ export interface Chooser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Chooser extends GObject.Object {
@@ -343,6 +344,7 @@ export interface Greeter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Greeter extends GObject.Object {
@@ -480,6 +482,7 @@ export interface Manager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Manager extends GObject.Object {
@@ -552,6 +555,7 @@ export interface RemoteGreeter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteGreeter extends GObject.Object {
@@ -846,6 +850,7 @@ export interface UserVerifier {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifier extends GObject.Object {
@@ -932,6 +937,7 @@ export interface UserVerifierChoiceList {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifierChoiceList extends GObject.Object {
@@ -1089,6 +1095,7 @@ export interface WorkerManager {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WorkerManager extends GObject.Object {
@@ -1177,6 +1184,7 @@ export interface ChooserProxy extends Chooser, Gio.AsyncInitable, Gio.DBusInterf
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChooserProxy extends Gio.DBusProxy {
@@ -1310,6 +1318,7 @@ export interface ChooserSkeleton extends Chooser, Gio.DBusInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ChooserSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -1478,6 +1487,7 @@ export interface Client {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Client extends GObject.Object {
@@ -1567,6 +1577,7 @@ export interface GreeterProxy extends Greeter, Gio.AsyncInitable, Gio.DBusInterf
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class GreeterProxy extends Gio.DBusProxy {
@@ -1700,6 +1711,7 @@ export interface GreeterSkeleton extends Greeter, Gio.DBusInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class GreeterSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -1791,6 +1803,7 @@ export interface ManagerProxy extends Manager, Gio.AsyncInitable, Gio.DBusInterf
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ManagerProxy extends Gio.DBusProxy {
@@ -1929,6 +1942,7 @@ export interface ManagerSkeleton extends Manager, Gio.DBusInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ManagerSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -2015,6 +2029,7 @@ export interface RemoteGreeterProxy extends RemoteGreeter, Gio.AsyncInitable, Gi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteGreeterProxy extends Gio.DBusProxy {
@@ -2148,6 +2163,7 @@ export interface RemoteGreeterSkeleton extends RemoteGreeter, Gio.DBusInterface 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -2234,6 +2250,7 @@ export interface UserVerifierChoiceListProxy extends UserVerifierChoiceList, Gio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifierChoiceListProxy extends Gio.DBusProxy {
@@ -2367,6 +2384,7 @@ export interface UserVerifierChoiceListSkeleton extends UserVerifierChoiceList, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifierChoiceListSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -2453,6 +2471,7 @@ export interface UserVerifierProxy extends UserVerifier, Gio.AsyncInitable, Gio.
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifierProxy extends Gio.DBusProxy {
@@ -2586,6 +2605,7 @@ export interface UserVerifierSkeleton extends UserVerifier, Gio.DBusInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton {
@@ -2672,6 +2692,7 @@ export interface WorkerManagerProxy extends WorkerManager, Gio.AsyncInitable, Gi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WorkerManagerProxy extends Gio.DBusProxy {
@@ -2805,6 +2826,7 @@ export interface WorkerManagerSkeleton extends WorkerManager, Gio.DBusInterface 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton {

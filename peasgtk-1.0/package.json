@@ -1,6 +1,6 @@
 {
     "name": "@girs/peasgtk-1.0",
-    "version": "1.0.0-3.0.3",
+    "version": "1.0.0-3.0.4",
     "description": "GJS TypeScript type definitions for PeasGtk-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "peasgtk-1.0.js",

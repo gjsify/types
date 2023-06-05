@@ -6091,6 +6091,7 @@ export interface Connection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -6166,6 +6167,7 @@ export interface VpnEditor {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnEditor extends GObject.Object {
@@ -6260,6 +6262,7 @@ export interface VpnEditorPlugin {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnEditorPlugin extends GObject.Object {
@@ -6524,6 +6527,7 @@ export interface AccessPoint {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class AccessPoint extends Object {
@@ -6836,6 +6840,7 @@ export interface ActiveConnection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ActiveConnection extends Object {
@@ -6935,6 +6940,7 @@ export interface Checkpoint {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Checkpoint extends Object {
@@ -8197,6 +8203,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -9045,6 +9052,7 @@ export interface Device {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Device extends Object {
@@ -9276,6 +9284,18 @@ export interface Device6Lowpan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class Device6Lowpan extends Device {
@@ -9504,6 +9524,18 @@ export interface DeviceAdsl {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceAdsl extends Device {
@@ -9746,6 +9778,18 @@ export interface DeviceBond {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceBond extends Device {
@@ -9988,6 +10032,18 @@ export interface DeviceBridge {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceBridge extends Device {
@@ -10238,6 +10294,18 @@ export interface DeviceBt {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceBt extends Device {
@@ -10449,6 +10517,18 @@ export interface DeviceDummy {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceDummy extends Device {
@@ -10720,6 +10800,18 @@ export interface DeviceEthernet {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceEthernet extends Device {
@@ -10941,6 +11033,18 @@ export interface DeviceGeneric {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceGeneric extends Device {
@@ -11280,6 +11384,18 @@ export interface DeviceIPTunnel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceIPTunnel extends Device {
@@ -11508,6 +11624,18 @@ export interface DeviceInfiniband {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceInfiniband extends Device {
@@ -11719,6 +11847,18 @@ export interface DeviceLoopback {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceLoopback extends Device {
@@ -12121,6 +12261,18 @@ export interface DeviceMacsec {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceMacsec extends Device {
@@ -12387,6 +12539,18 @@ export interface DeviceMacvlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceMacvlan extends Device {
@@ -12672,6 +12836,18 @@ export interface DeviceModem {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceModem extends Device {
@@ -12914,6 +13090,18 @@ export interface DeviceOlpcMesh {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceOlpcMesh extends Device {
@@ -13142,6 +13330,18 @@ export interface DeviceOvsBridge {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceOvsBridge extends Device {
@@ -13353,6 +13553,18 @@ export interface DeviceOvsInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceOvsInterface extends Device {
@@ -13581,6 +13793,18 @@ export interface DeviceOvsPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceOvsPort extends Device {
@@ -13792,6 +14016,18 @@ export interface DevicePpp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DevicePpp extends Device {
@@ -14048,6 +14284,18 @@ export interface DeviceTeam {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceTeam extends Device {
@@ -14350,6 +14598,18 @@ export interface DeviceTun {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceTun extends Device {
@@ -14594,6 +14854,18 @@ export interface DeviceVeth {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceVeth extends DeviceEthernet {
@@ -14842,6 +15114,18 @@ export interface DeviceVlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceVlan extends Device {
@@ -15066,6 +15350,18 @@ export interface DeviceVrf {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceVrf extends Device {
@@ -15462,6 +15758,18 @@ export interface DeviceVxlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceVxlan extends Device {
@@ -15875,6 +16183,18 @@ export interface DeviceWifi {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceWifi extends Device {
@@ -16169,6 +16489,18 @@ export interface DeviceWifiP2P {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceWifiP2P extends Device {
@@ -16545,6 +16877,18 @@ export interface DeviceWimax {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceWimax extends Device {
@@ -16806,6 +17150,18 @@ export interface DeviceWireGuard {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceWireGuard extends Device {
@@ -17017,6 +17373,18 @@ export interface DeviceWpan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param cancellable a #GCancellable, or %NULL
+     * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
+     */
+    disconnect(cancellable: Gio.Cancellable | null): boolean
 }
 
 export class DeviceWpan extends Device {
@@ -17106,6 +17474,7 @@ export interface DhcpConfig {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DhcpConfig extends Object {
@@ -17274,6 +17643,7 @@ export interface IPConfig {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class IPConfig extends Object {
@@ -17358,6 +17728,7 @@ export interface Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Object extends GObject.Object {
@@ -17571,6 +17942,7 @@ export interface RemoteConnection extends Connection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteConnection extends Object {
@@ -17887,6 +18259,7 @@ export interface SecretAgentOld extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SecretAgentOld extends GObject.Object {
@@ -18063,6 +18436,7 @@ export interface Setting {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Setting extends GObject.Object {
@@ -18137,6 +18511,7 @@ export interface Setting6Lowpan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -19811,6 +20186,7 @@ export interface Setting8021x {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -19986,6 +20362,7 @@ export interface SettingAdsl {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -20094,6 +20471,7 @@ export interface SettingBluetooth {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -20227,6 +20605,7 @@ export interface SettingBond {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -20319,6 +20698,7 @@ export interface SettingBondPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -20892,6 +21272,7 @@ export interface SettingBridge {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -21067,6 +21448,7 @@ export interface SettingBridgePort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -21219,6 +21601,7 @@ export interface SettingCdma {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -22276,6 +22659,7 @@ export interface SettingConnection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -22660,6 +23044,7 @@ export interface SettingDcb {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -22722,6 +23107,7 @@ export interface SettingDummy {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -22817,6 +23203,7 @@ export interface SettingEthtool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -22879,6 +23266,7 @@ export interface SettingGeneric {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -23203,6 +23591,7 @@ export interface SettingGsm {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -23415,6 +23804,7 @@ export interface SettingHostname {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -23762,6 +24152,7 @@ export interface SettingIP4Config {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -24221,6 +24612,7 @@ export interface SettingIP6Config {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -25272,6 +25664,7 @@ export interface SettingIPConfig {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SettingIPConfig extends Setting {
@@ -25610,6 +26003,7 @@ export interface SettingIPTunnel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -25790,6 +26184,7 @@ export interface SettingInfiniband {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -25874,6 +26269,7 @@ export interface SettingLoopback {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26086,6 +26482,7 @@ export interface SettingMacsec {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26218,6 +26615,7 @@ export interface SettingMacvlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26536,6 +26934,7 @@ export interface SettingMatch {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26654,6 +27053,7 @@ export interface SettingOlpcMesh {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26792,6 +27192,7 @@ export interface SettingOvsBridge {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -26936,6 +27337,7 @@ export interface SettingOvsDpdk {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27047,6 +27449,7 @@ export interface SettingOvsExternalIDs {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27167,6 +27570,7 @@ export interface SettingOvsInterface {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27282,6 +27686,7 @@ export interface SettingOvsOtherConfig {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27366,6 +27771,7 @@ export interface SettingOvsPatch {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27565,6 +27971,7 @@ export interface SettingOvsPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -27927,6 +28334,7 @@ export interface SettingPpp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -28077,6 +28485,7 @@ export interface SettingPppoe {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -28209,6 +28618,7 @@ export interface SettingProxy {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -28353,6 +28763,7 @@ export interface SettingSerial {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -28577,6 +28988,7 @@ export interface SettingSriov {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -28755,6 +29167,7 @@ export interface SettingTCConfig {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29111,6 +29524,7 @@ export interface SettingTeam {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29321,6 +29735,7 @@ export interface SettingTeamPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29493,6 +29908,7 @@ export interface SettingTun {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29608,6 +30024,7 @@ export interface SettingUser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29709,6 +30126,7 @@ export interface SettingVeth {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -29976,6 +30394,7 @@ export interface SettingVlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -30246,6 +30665,7 @@ export interface SettingVpn {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -30328,6 +30748,7 @@ export interface SettingVrf {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -30636,6 +31057,7 @@ export interface SettingVxlan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -30764,6 +31186,7 @@ export interface SettingWifiP2P {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -30876,6 +31299,7 @@ export interface SettingWimax {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -31158,6 +31582,7 @@ export interface SettingWireGuard {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -31745,6 +32170,7 @@ export interface SettingWired {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -32357,6 +32783,7 @@ export interface SettingWireless {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -32924,6 +33351,7 @@ export interface SettingWirelessSecurity {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -33068,6 +33496,7 @@ export interface SettingWpan {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -33125,6 +33554,7 @@ export interface SimpleConnection extends Connection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SimpleConnection extends GObject.Object {
@@ -33324,6 +33754,7 @@ export interface VpnConnection {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnConnection extends ActiveConnection {
@@ -33433,6 +33864,7 @@ export interface VpnPluginInfo extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnPluginInfo extends GObject.Object {
@@ -33709,6 +34141,7 @@ export interface VpnPluginOld extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnPluginOld extends GObject.Object {
@@ -33958,6 +34391,7 @@ export interface VpnServicePlugin extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VpnServicePlugin extends GObject.Object {
@@ -34192,6 +34626,7 @@ export interface WifiP2PPeer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WifiP2PPeer extends Object {
@@ -34304,6 +34739,7 @@ export interface WimaxNsp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WimaxNsp extends Object {
@@ -36704,7 +37140,7 @@ export interface VpnPluginOldClass {
     ip6Config: (plugin: VpnPluginOld, config: GLib.Variant) => void
     // Has conflict: connect: (plugin: VpnPluginOld, connection: Connection) => boolean
     needSecrets: (plugin: VpnPluginOld, connection: Connection, settingName: string | null) => boolean
-    disconnect: (plugin: VpnPluginOld) => boolean
+    // Has conflict: disconnect: (plugin: VpnPluginOld) => boolean
     newSecrets: (plugin: VpnPluginOld, connection: Connection) => boolean
     connectInteractive: (plugin: VpnPluginOld, connection: Connection, details: GLib.Variant) => boolean
 }
@@ -36730,7 +37166,7 @@ export interface VpnServicePluginClass {
     ip6Config: (plugin: VpnServicePlugin, config: GLib.Variant) => void
     // Has conflict: connect: (plugin: VpnServicePlugin, connection: Connection) => boolean
     needSecrets: (plugin: VpnServicePlugin, connection: Connection, settingName: string | null) => boolean
-    disconnect: (plugin: VpnServicePlugin) => boolean
+    // Has conflict: disconnect: (plugin: VpnServicePlugin) => boolean
     newSecrets: (plugin: VpnServicePlugin, connection: Connection) => boolean
     connectInteractive: (plugin: VpnServicePlugin, connection: Connection, details: GLib.Variant) => boolean
 }

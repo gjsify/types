@@ -641,6 +641,7 @@ export interface DataEntry extends Gtk.Widget {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataEntry extends GObject.Object {
@@ -775,6 +776,7 @@ export interface DataProxy {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataProxy extends GObject.Object {
@@ -912,6 +914,7 @@ export interface DataSelector {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataSelector extends GObject.Object {
@@ -1503,6 +1506,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class BasicForm extends Gtk.Box {
@@ -2018,6 +2022,7 @@ export interface Cloud extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Cloud extends Gtk.Box {
@@ -2575,6 +2580,7 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Combo extends Gtk.ComboBox {
@@ -2843,6 +2849,7 @@ export interface DataCellRendererBin {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCellRendererBin extends Gtk.CellRendererPixbuf {
@@ -3097,6 +3104,7 @@ export interface DataCellRendererBoolean {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCellRendererBoolean extends Gtk.CellRendererToggle {
@@ -3576,6 +3584,7 @@ export interface DataCellRendererCombo {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCellRendererCombo extends Gtk.CellRendererText {
@@ -3789,6 +3798,7 @@ export interface DataCellRendererInfo {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCellRendererInfo extends Gtk.CellRenderer {
@@ -4245,6 +4255,7 @@ export interface DataCellRendererTextual {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCellRendererTextual extends Gtk.CellRendererText {
@@ -4675,6 +4686,7 @@ export interface DataFilter extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataFilter extends Gtk.Box {
@@ -5097,6 +5109,7 @@ export interface DataProxyInfo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataProxyInfo extends Gtk.Box {
@@ -5237,6 +5250,7 @@ export interface DataStore extends Gtk.TreeModel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataStore extends GObject.Object {
@@ -5964,6 +5978,7 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Entry extends Gtk.Entry {
@@ -6480,6 +6495,7 @@ export interface EntryBin extends Atk.ImplementorIface, DataEntry, Gtk.Buildable
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryBin extends EntryWrapper {
@@ -6999,6 +7015,7 @@ export interface EntryBoolean extends Atk.ImplementorIface, DataEntry, Gtk.Build
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryBoolean extends EntryWrapper {
@@ -7517,6 +7534,7 @@ export interface EntryCombo extends Atk.ImplementorIface, DataEntry, Gtk.Buildab
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryCombo extends EntryShell {
@@ -8061,6 +8079,7 @@ export interface EntryCommonTime extends Atk.ImplementorIface, DataEntry, Gtk.Bu
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryCommonTime extends EntryWrapper {
@@ -8565,6 +8584,7 @@ export interface EntryDate extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryDate extends EntryCommonTime {
@@ -9082,6 +9102,7 @@ export interface EntryNone extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryNone extends EntryWrapper {
@@ -9616,6 +9637,7 @@ export interface EntryNumber extends Atk.ImplementorIface, DataEntry, Gtk.Builda
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryNumber extends EntryWrapper {
@@ -10078,6 +10100,7 @@ export interface EntryShell extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryShell extends Gtk.Viewport {
@@ -10593,6 +10616,7 @@ export interface EntryString extends Atk.ImplementorIface, DataEntry, Gtk.Builda
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryString extends EntryWrapper {
@@ -11127,6 +11151,7 @@ export interface EntryTime extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryTime extends EntryCommonTime {
@@ -11657,6 +11682,7 @@ export interface EntryTimestamp extends Atk.ImplementorIface, DataEntry, Gtk.Bui
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryTimestamp extends EntryCommonTime {
@@ -12143,6 +12169,7 @@ export interface EntryWrapper extends Atk.ImplementorIface, DataEntry, Gtk.Build
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class EntryWrapper extends EntryShell {
@@ -12540,6 +12567,7 @@ export interface Form extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Form extends Gtk.Box {
@@ -13231,6 +13259,7 @@ export interface FormattedEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class FormattedEntry extends Entry {
@@ -13726,6 +13755,7 @@ export interface Grid extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Grid extends Gtk.Box {
@@ -14202,6 +14232,7 @@ export interface Login extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Login extends Gtk.Box {
@@ -14895,6 +14926,7 @@ export interface NumericEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.C
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class NumericEntry extends Entry {
@@ -15468,6 +15500,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ProviderSelector extends Combo {
@@ -15916,6 +15949,7 @@ export interface RawForm extends Atk.ImplementorIface, DataProxy, DataSelector, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RawForm extends BasicForm {
@@ -16533,6 +16567,7 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RawGrid extends Gtk.TreeView {
@@ -17031,6 +17066,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RtEditor extends Gtk.Box {
@@ -17446,6 +17482,7 @@ export interface ServerOperation extends Atk.ImplementorIface, Gtk.Buildable, Gt
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ServerOperation extends Gtk.Box {
@@ -17597,6 +17634,7 @@ export interface Set {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Set extends GObject.Object {
@@ -17757,6 +17795,7 @@ export interface TreeStore extends Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.Tre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class TreeStore extends GObject.Object {

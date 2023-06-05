@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cloudproviders-0.3",
-    "version": "0.3.0-3.0.3",
+    "version": "0.3.0-3.0.4",
     "description": "Node.js TypeScript type definitions for CloudProviders-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "node-cloudproviders-0.3.js",

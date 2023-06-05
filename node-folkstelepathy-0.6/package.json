@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-folkstelepathy-0.6",
-    "version": "0.6.0-3.0.3",
+    "version": "0.6.0-3.0.4",
     "description": "Node.js TypeScript type definitions for FolksTelepathy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "node-folkstelepathy-0.6.js",

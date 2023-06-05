@@ -142,6 +142,7 @@ interface PersonaStore {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class PersonaStore extends Folks.PersonaStore {
@@ -374,6 +375,7 @@ interface Persona extends Folks.AntiLinkable, Folks.AvatarDetails, Folks.Birthda
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Persona extends Folks.Persona {

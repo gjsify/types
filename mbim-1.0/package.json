@@ -1,6 +1,6 @@
 {
     "name": "@girs/mbim-1.0",
-    "version": "1.29.3-3.0.3",
+    "version": "1.29.3-3.0.4",
     "description": "GJS TypeScript type definitions for Mbim-1.0, generated from library version 1.29.3",
     "type": "module",
     "module": "mbim-1.0.js",

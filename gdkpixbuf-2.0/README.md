@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gdkpixbuf-2.0)
 
 
-GJS TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+GJS TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 GdkPixbuf is a library for image loading and manipulation. The GdkPixbuf documentation contains both the programmer's guide and the API reference.
 

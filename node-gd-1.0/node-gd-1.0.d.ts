@@ -506,6 +506,7 @@ interface HeaderButton extends Gtk.Button {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderButton extends GObject.Object {
@@ -839,6 +840,7 @@ interface MainViewGeneric extends Gtk.Widget {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MainViewGeneric extends GObject.Object {
@@ -1280,6 +1282,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderBar extends Gtk.Container {
@@ -1844,6 +1847,7 @@ interface HeaderMenuButton extends Atk.ImplementorIface, HeaderButton, Gtk.Actio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderMenuButton extends Gtk.MenuButton {
@@ -2311,6 +2315,7 @@ interface HeaderRadioButton extends Atk.ImplementorIface, HeaderButton, Gtk.Acti
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderRadioButton extends Gtk.RadioButton {
@@ -2781,6 +2786,7 @@ interface HeaderSimpleButton extends Atk.ImplementorIface, HeaderButton, Gtk.Act
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderSimpleButton extends Gtk.Button {
@@ -3243,6 +3249,7 @@ interface HeaderToggleButton extends Atk.ImplementorIface, HeaderButton, Gtk.Act
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HeaderToggleButton extends Gtk.ToggleButton {
@@ -3769,6 +3776,7 @@ interface MainIconView extends Atk.ImplementorIface, MainViewGeneric, Gtk.Builda
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MainIconView extends Gtk.IconView {
@@ -4283,6 +4291,7 @@ interface MainListView extends Atk.ImplementorIface, MainViewGeneric, Gtk.Builda
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MainListView extends Gtk.TreeView {
@@ -4797,6 +4806,7 @@ interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MainToolbar extends Gtk.Toolbar {
@@ -5312,6 +5322,7 @@ interface MainView extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MainView extends Gtk.ScrolledWindow {
@@ -5725,6 +5736,7 @@ interface Revealer extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Revealer extends Gtk.Bin {
@@ -6141,6 +6153,7 @@ interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Stack extends Gtk.Container {
@@ -6541,6 +6554,7 @@ interface StackSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StackSwitcher extends Gtk.Box {
@@ -6925,6 +6939,7 @@ interface StyledTextRenderer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StyledTextRenderer extends Gtk.CellRendererText {
@@ -7598,6 +7613,7 @@ interface TaggedEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdita
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TaggedEntry extends Gtk.SearchEntry {
@@ -7690,6 +7706,7 @@ interface TaggedEntryTag {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TaggedEntryTag extends GObject.Object {
@@ -7892,6 +7909,7 @@ interface TogglePixbufRenderer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TogglePixbufRenderer extends Gtk.CellRendererPixbuf {
@@ -8277,6 +8295,7 @@ interface TwoLinesRenderer {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TwoLinesRenderer extends Gtk.CellRendererText {

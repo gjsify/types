@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-uhm-0.0)
 
 
-Node.js TypeScript type definitions for Uhm-0.0, generated from library version 0.5.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+Node.js TypeScript type definitions for Uhm-0.0, generated from library version 0.5.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 
 ## Install

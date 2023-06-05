@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-packagekitglib-1.0)
 
 
-Node.js TypeScript type definitions for PackageKitGlib-1.0, generated from library version 1.2.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+Node.js TypeScript type definitions for PackageKitGlib-1.0, generated from library version 1.2.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 Library for accessing PackageKit using GLib.
 

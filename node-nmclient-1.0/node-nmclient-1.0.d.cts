@@ -1143,6 +1143,7 @@ export interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class AccessPoint extends Object {
@@ -1433,6 +1434,7 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ActiveConnection extends Object {
@@ -1990,6 +1992,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Client extends Object {
@@ -2111,6 +2114,7 @@ export interface DHCP4Config extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DHCP4Config extends Object {
@@ -2200,6 +2204,7 @@ export interface DHCP6Config extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DHCP6Config extends Object {
@@ -2752,6 +2757,7 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Device extends Object {
@@ -2957,6 +2963,17 @@ export interface DeviceAdsl extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceAdsl extends Device {
@@ -3192,6 +3209,17 @@ export interface DeviceBond extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceBond extends Device {
@@ -3427,6 +3455,17 @@ export interface DeviceBridge extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceBridge extends Device {
@@ -3670,6 +3709,17 @@ export interface DeviceBt extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceBt extends Device {
@@ -3919,6 +3969,17 @@ export interface DeviceEthernet extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceEthernet extends Device {
@@ -4136,6 +4197,17 @@ export interface DeviceGeneric extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceGeneric extends Device {
@@ -4357,6 +4429,17 @@ export interface DeviceInfiniband extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceInfiniband extends Device {
@@ -4577,6 +4660,17 @@ export interface DeviceModem extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceModem extends Device {
@@ -4796,6 +4890,17 @@ export interface DeviceOlpcMesh extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceOlpcMesh extends Device {
@@ -5031,6 +5136,17 @@ export interface DeviceTeam extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceTeam extends Device {
@@ -5263,6 +5379,17 @@ export interface DeviceVlan extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceVlan extends Device {
@@ -5610,6 +5737,17 @@ export interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceWifi extends Device {
@@ -5975,6 +6113,17 @@ export interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects the device if currently connected, and prevents the device from
+     * automatically connecting to networks until the next manual network connection
+     * request.
+     * @param callback callback to be called when disconnect operation completes
+     */
+    disconnect(callback: DeviceCallbackFn | null): void
 }
 
 export class DeviceWimax extends Device {
@@ -6142,6 +6291,7 @@ export interface IP4Config extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class IP4Config extends Object {
@@ -6306,6 +6456,7 @@ export interface IP6Config extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class IP6Config extends Object {
@@ -6412,6 +6563,7 @@ export interface Object extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Object extends GObject.Object {
@@ -6564,6 +6716,7 @@ export interface RemoteConnection extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteConnection extends NetworkManager.Connection {
@@ -6775,6 +6928,7 @@ export interface RemoteSettings extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RemoteSettings extends GObject.Object {
@@ -7013,6 +7167,7 @@ export interface SecretAgent {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SecretAgent extends GObject.Object {
@@ -7214,6 +7369,7 @@ export interface VPNConnection extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class VPNConnection extends ActiveConnection {
@@ -7341,6 +7497,7 @@ export interface WimaxNsp extends Gio.AsyncInitable, Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class WimaxNsp extends Object {

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-udisks-2.0)
 
 
-Node.js TypeScript type definitions for UDisks-2.0, generated from library version 2.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.3.
+Node.js TypeScript type definitions for UDisks-2.0, generated from library version 2.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
 
 Disk Management Service.
 

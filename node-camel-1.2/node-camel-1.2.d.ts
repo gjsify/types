@@ -2600,6 +2600,7 @@ interface JunkFilter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class JunkFilter extends GObject.Object {
@@ -3077,6 +3078,26 @@ interface NetworkService extends Service {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class NetworkService extends GObject.Object {
@@ -3251,6 +3272,7 @@ interface NetworkSettings extends Settings {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class NetworkSettings extends GObject.Object {
@@ -3499,6 +3521,26 @@ interface Subscribable extends Store {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class Subscribable extends GObject.Object {
@@ -3616,6 +3658,7 @@ interface Address {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Address extends GObject.Object {
@@ -3742,6 +3785,7 @@ interface BlockFile {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class BlockFile extends GObject.Object {
@@ -3853,6 +3897,7 @@ interface CertDB {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class CertDB extends GObject.Object {
@@ -4053,6 +4098,7 @@ interface CipherContext {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class CipherContext extends GObject.Object {
@@ -4326,6 +4372,7 @@ interface DB {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class DB extends GObject.Object {
@@ -4538,6 +4585,7 @@ interface DataCache {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class DataCache extends GObject.Object {
@@ -4893,6 +4941,7 @@ interface DataWrapper {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class DataWrapper extends GObject.Object {
@@ -5040,6 +5089,7 @@ interface FilterDriver {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FilterDriver extends GObject.Object {
@@ -5115,6 +5165,7 @@ interface FilterInputStream {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FilterInputStream extends Gio.FilterInputStream {
@@ -5204,6 +5255,7 @@ interface FilterOutputStream {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FilterOutputStream extends Gio.FilterOutputStream {
@@ -6003,6 +6055,7 @@ interface Folder {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Folder extends Object {
@@ -6123,6 +6176,7 @@ interface FolderSearch {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FolderSearch extends GObject.Object {
@@ -6577,6 +6631,7 @@ interface FolderSummary {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class FolderSummary extends GObject.Object {
@@ -6700,6 +6755,7 @@ interface GpgContext {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class GpgContext extends CipherContext {
@@ -6793,6 +6849,7 @@ interface HTMLParser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class HTMLParser extends GObject.Object {
@@ -6892,6 +6949,7 @@ interface Index {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Index extends GObject.Object {
@@ -6947,6 +7005,7 @@ interface IndexCursor {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class IndexCursor extends GObject.Object {
@@ -7007,6 +7066,7 @@ interface IndexName {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class IndexName extends GObject.Object {
@@ -7095,6 +7155,7 @@ interface InternetAddress {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class InternetAddress extends Address {
@@ -7201,6 +7262,7 @@ interface KeyFile {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class KeyFile extends GObject.Object {
@@ -7292,6 +7354,7 @@ interface KeyTable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class KeyTable extends GObject.Object {
@@ -7438,6 +7501,7 @@ interface LocalSettings {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -7577,6 +7641,7 @@ interface Medium {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Medium extends DataWrapper {
@@ -8455,6 +8520,7 @@ interface MessageInfo {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MessageInfo extends GObject.Object {
@@ -8634,6 +8700,7 @@ interface MessageInfoBase {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MessageInfoBase extends MessageInfo {
@@ -8736,6 +8803,7 @@ interface MimeFilter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilter extends GObject.Object {
@@ -8794,6 +8862,7 @@ interface MimeFilterBasic {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterBasic extends MimeFilter {
@@ -8883,6 +8952,7 @@ interface MimeFilterBestenc {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterBestenc extends MimeFilter {
@@ -8963,6 +9033,7 @@ interface MimeFilterCRLF {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterCRLF extends MimeFilter {
@@ -9034,6 +9105,7 @@ interface MimeFilterCanon {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterCanon extends MimeFilter {
@@ -9103,6 +9175,7 @@ interface MimeFilterCharset {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterCharset extends MimeFilter {
@@ -9176,6 +9249,7 @@ interface MimeFilterEnriched {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterEnriched extends MimeFilter {
@@ -9247,6 +9321,7 @@ interface MimeFilterFrom {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterFrom extends MimeFilter {
@@ -9305,6 +9380,7 @@ interface MimeFilterGZip {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterGZip extends MimeFilter {
@@ -9376,6 +9452,7 @@ interface MimeFilterHTML {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterHTML extends MimeFilter {
@@ -9447,6 +9524,7 @@ interface MimeFilterIndex {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterIndex extends MimeFilter {
@@ -9516,6 +9594,7 @@ interface MimeFilterLinewrap {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterLinewrap extends MimeFilter {
@@ -9573,6 +9652,7 @@ interface MimeFilterPgp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterPgp extends MimeFilter {
@@ -9616,6 +9696,7 @@ interface MimeFilterProgress {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterProgress extends MimeFilter {
@@ -9693,6 +9774,7 @@ interface MimeFilterToHTML {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterToHTML extends MimeFilter {
@@ -9784,6 +9866,7 @@ interface MimeFilterWindows {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterWindows extends MimeFilter {
@@ -9878,6 +9961,7 @@ interface MimeFilterYenc {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeFilterYenc extends MimeFilter {
@@ -10138,6 +10222,7 @@ interface MimeMessage {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeMessage extends MimePart {
@@ -10454,6 +10539,7 @@ interface MimeParser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimeParser extends GObject.Object {
@@ -10702,6 +10788,7 @@ interface MimePart {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MimePart extends Medium {
@@ -10832,6 +10919,7 @@ interface Multipart {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Multipart extends DataWrapper {
@@ -10899,6 +10987,7 @@ interface MultipartEncrypted {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MultipartEncrypted extends Multipart {
@@ -10998,6 +11087,7 @@ interface MultipartSigned {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class MultipartSigned extends Multipart {
@@ -11129,6 +11219,7 @@ interface NNTPAddress {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class NNTPAddress extends Address {
@@ -11205,6 +11296,7 @@ interface NullOutputStream {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class NullOutputStream extends Gio.OutputStream {
@@ -11305,6 +11397,7 @@ interface Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Object extends GObject.Object {
@@ -11444,6 +11537,7 @@ interface OfflineFolder {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class OfflineFolder extends Folder {
@@ -11577,6 +11671,7 @@ interface OfflineSettings {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -11994,6 +12089,26 @@ interface OfflineStore extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class OfflineStore extends Store {
@@ -12254,6 +12369,28 @@ interface Operation {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * Disconnects a handler from a cancellable instance similar to
+     * g_signal_handler_disconnect().  Additionally, in the event that a
+     * signal handler is currently running, this call will block until the
+     * handler has finished.  Calling this function from a
+     * #GCancellable::cancelled signal handler will therefore result in a
+     * deadlock.
+     * 
+     * This avoids a race condition where a thread cancels at the
+     * same time as the cancellable operation is finished and the
+     * signal handler is removed. See #GCancellable::cancelled for
+     * details on how to use this.
+     * 
+     * If `cancellable` is %NULL or `handler_id` is `0` this function does
+     * nothing.
+     * @param handlerId Handler id of the handler to be disconnected, or `0`.
+     */
+    disconnect(handlerId: number): void
 }
 
 class Operation extends Gio.Cancellable {
@@ -12371,6 +12508,7 @@ interface PartitionTable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class PartitionTable extends GObject.Object {
@@ -12461,6 +12599,7 @@ interface SExp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SExp extends GObject.Object {
@@ -12542,6 +12681,7 @@ interface SMIMEContext {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SMIMEContext extends CipherContext {
@@ -12726,6 +12866,7 @@ interface Sasl {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Sasl extends GObject.Object {
@@ -12804,6 +12945,7 @@ interface SaslAnonymous {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslAnonymous extends Sasl {
@@ -12890,6 +13032,7 @@ interface SaslCramMd5 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslCramMd5 extends Sasl {
@@ -12956,6 +13099,7 @@ interface SaslDigestMd5 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslDigestMd5 extends Sasl {
@@ -13033,6 +13177,7 @@ interface SaslGssapi {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslGssapi extends Sasl {
@@ -13100,6 +13245,7 @@ interface SaslLogin {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslLogin extends Sasl {
@@ -13166,6 +13312,7 @@ interface SaslNTLM {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslNTLM extends Sasl {
@@ -13232,6 +13379,7 @@ interface SaslPOPB4SMTP {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslPOPB4SMTP extends Sasl {
@@ -13298,6 +13446,7 @@ interface SaslPlain {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslPlain extends Sasl {
@@ -13364,6 +13513,7 @@ interface SaslXOAuth2 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslXOAuth2 extends Sasl {
@@ -13430,6 +13580,7 @@ interface SaslXOAuth2Google {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslXOAuth2Google extends SaslXOAuth2 {
@@ -13496,6 +13647,7 @@ interface SaslXOAuth2Outlook {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslXOAuth2Outlook extends SaslXOAuth2 {
@@ -13562,6 +13714,7 @@ interface SaslXOAuth2Yahoo {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class SaslXOAuth2Yahoo extends SaslXOAuth2 {
@@ -13994,6 +14147,7 @@ interface Service extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Service extends Object {
@@ -14541,6 +14695,7 @@ interface Session {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Session extends GObject.Object {
@@ -14612,6 +14767,7 @@ interface Settings {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -15557,6 +15713,26 @@ interface Store extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class Store extends Service {
@@ -15644,6 +15820,7 @@ interface StoreSettings {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -15804,6 +15981,7 @@ interface StoreSummary {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StoreSummary extends GObject.Object {
@@ -15952,6 +16130,7 @@ interface Stream extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class Stream extends GObject.Object {
@@ -16049,6 +16228,7 @@ interface StreamBuffer extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamBuffer extends Stream {
@@ -16185,6 +16365,7 @@ interface StreamFilter extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamFilter extends Stream {
@@ -16266,6 +16447,7 @@ interface StreamFs extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamFs extends Stream {
@@ -16362,6 +16544,7 @@ interface StreamMem extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamMem extends Stream {
@@ -16461,6 +16644,7 @@ interface StreamNull extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamNull extends Stream {
@@ -16540,6 +16724,7 @@ interface StreamProcess extends Gio.Seekable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class StreamProcess extends Stream {
@@ -16614,6 +16799,7 @@ interface TextIndex {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TextIndex extends Index {
@@ -16665,6 +16851,7 @@ interface TextIndexCursor {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TextIndexCursor extends IndexCursor {
@@ -16711,6 +16898,7 @@ interface TextIndexKeyCursor {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TextIndexKeyCursor extends IndexCursor {
@@ -16757,6 +16945,7 @@ interface TextIndexName {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class TextIndexName extends IndexName {
@@ -17119,6 +17308,26 @@ interface Transport extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class Transport extends Service {
@@ -17209,6 +17418,7 @@ interface VTrashFolder {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class VTrashFolder extends VeeFolder {
@@ -17326,6 +17536,7 @@ interface VeeDataCache {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -17544,6 +17755,7 @@ interface VeeFolder {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class VeeFolder extends Folder {
@@ -17707,6 +17919,7 @@ interface VeeMessageInfo {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class VeeMessageInfo extends MessageInfo {
@@ -17790,6 +18003,7 @@ interface VeeMessageInfoData {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -18199,6 +18413,26 @@ interface VeeStore extends Gio.Initable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+
+    // Overloads of disconnect
+
+    /**
+     * If a disconnect operation is already in progress when this function is
+     * called, its results will be reflected in this disconnect operation.
+     * 
+     * If any connect operations are in progress when this function is called,
+     * they will be cancelled.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call camel_service_disconnect_finish() to get the result of the
+     * operation.
+     * @param clean whether or not to try to disconnect cleanly
+     * @param ioPriority the I/O priority of the request
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    disconnect(clean: boolean, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 class VeeStore extends Store {
@@ -18257,6 +18491,7 @@ interface VeeSubfolderData {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 /**
@@ -18422,6 +18657,7 @@ interface VeeSummary {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 class VeeSummary extends FolderSummary {

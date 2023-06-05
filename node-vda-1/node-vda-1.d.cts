@@ -187,6 +187,7 @@ export interface MetaObject extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class MetaObject {
@@ -253,6 +254,7 @@ export interface MetaNamedObject extends GObject.Object, MetaObject {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class MetaNamedObject {
@@ -316,6 +318,7 @@ export interface ColumnModel extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ColumnModel {
@@ -503,6 +506,7 @@ export interface Connection extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Connection {
@@ -554,6 +558,7 @@ export interface ConnectionBlob extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionBlob {
@@ -605,6 +610,7 @@ export interface ConnectionRolebased extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionRolebased {
@@ -664,6 +670,7 @@ export interface ConnectionTransactional extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionTransactional {
@@ -789,6 +796,7 @@ export interface DataObject extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataObject {
@@ -902,6 +910,7 @@ export interface DataCollection extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class DataCollection {
@@ -955,6 +964,7 @@ export interface HashModel extends GObject.Object, Gio.ListModel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class HashModel {
@@ -1018,6 +1028,7 @@ export interface Inserted extends GObject.Object, Result {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Inserted {
@@ -1093,6 +1104,7 @@ export interface ParsedQuery extends GObject.Object, PreparedQuery {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ParsedQuery {
@@ -1166,6 +1178,7 @@ export interface PreparedQuery extends GObject.Object, Query {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class PreparedQuery {
@@ -1239,6 +1252,7 @@ export interface Query extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Query {
@@ -1280,6 +1294,7 @@ export interface Result extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Result {
@@ -1351,6 +1366,7 @@ export interface Role extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Role {
@@ -1418,6 +1434,7 @@ export interface RowModel extends GObject.Object, Gio.ListModel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class RowModel {
@@ -1473,6 +1490,7 @@ export interface SqlAffectedRows extends GObject.Object, Result {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlAffectedRows {
@@ -1528,6 +1546,7 @@ export interface SqlCommand extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommand {
@@ -1583,6 +1602,7 @@ export interface SqlCommandConditional extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandConditional {
@@ -1661,6 +1681,7 @@ export interface SqlCommandDelete extends GObject.Object, SqlCommandTableRelated
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandDelete {
@@ -1744,6 +1765,7 @@ export interface SqlCommandInsert extends GObject.Object, SqlCommandTableRelated
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandInsert {
@@ -1817,6 +1839,7 @@ export interface SqlCommandModification extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandModification {
@@ -1877,6 +1900,7 @@ export interface SqlCommandParametrized extends GObject.Object, SqlCommand {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandParametrized {
@@ -1969,6 +1993,7 @@ export interface SqlCommandSelect extends GObject.Object, SqlCommandConditional,
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandSelect {
@@ -2041,6 +2066,7 @@ export interface SqlCommandTableRelated extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandTableRelated {
@@ -2129,6 +2155,7 @@ export interface SqlCommandUpdate extends GObject.Object, SqlCommandTableRelated
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlCommandUpdate {
@@ -2184,6 +2211,7 @@ export interface SqlExpression extends GObject.Object, Gio.ListModel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpression {
@@ -2268,6 +2296,7 @@ export interface SqlExpressionField extends GObject.Object, SqlExpression {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionField {
@@ -2393,6 +2422,7 @@ export interface SqlExpressionOperator extends GObject.Object, SqlExpression {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperator {
@@ -2439,6 +2469,7 @@ export interface SqlExpressionOperatorGroup extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorGroup {
@@ -2485,6 +2516,7 @@ export interface SqlExpressionOperatorMultiterm extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorMultiterm {
@@ -2531,6 +2563,7 @@ export interface SqlExpressionOperatorAnd extends GObject.Object, SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorAnd {
@@ -2577,6 +2610,7 @@ export interface SqlExpressionOperatorOr extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorOr {
@@ -2623,6 +2657,7 @@ export interface SqlExpressionOperatorBinaryterm extends GObject.Object, SqlExpr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBinaryterm {
@@ -2669,6 +2704,7 @@ export interface SqlExpressionOperatorEq extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorEq {
@@ -2715,6 +2751,7 @@ export interface SqlExpressionOperatorNotEq extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotEq {
@@ -2761,6 +2798,7 @@ export interface SqlExpressionOperatorDiff extends GObject.Object, SqlExpression
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorDiff {
@@ -2807,6 +2845,7 @@ export interface SqlExpressionOperatorGt extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorGt {
@@ -2853,6 +2892,7 @@ export interface SqlExpressionOperatorLt extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorLt {
@@ -2899,6 +2939,7 @@ export interface SqlExpressionOperatorGeq extends GObject.Object, SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorGeq {
@@ -2945,6 +2986,7 @@ export interface SqlExpressionOperatorLeq extends GObject.Object, SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorLeq {
@@ -2991,6 +3033,7 @@ export interface SqlExpressionOperatorRegexp extends GObject.Object, SqlExpressi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorRegexp {
@@ -3037,6 +3080,7 @@ export interface SqlExpressionOperatorStar extends GObject.Object, SqlExpression
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorStar {
@@ -3083,6 +3127,7 @@ export interface SqlExpressionOperatorDiv extends GObject.Object, SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorDiv {
@@ -3129,6 +3174,7 @@ export interface SqlExpressionOperatorIn extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIn {
@@ -3175,6 +3221,7 @@ export interface SqlExpressionOperatorNotIn extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotIn {
@@ -3221,6 +3268,7 @@ export interface SqlExpressionOperatorConcatenate extends GObject.Object, SqlExp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorConcatenate {
@@ -3267,6 +3315,7 @@ export interface SqlExpressionOperatorSimilarTo extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorSimilarTo {
@@ -3313,6 +3362,7 @@ export interface SqlExpressionOperatorLike extends GObject.Object, SqlExpression
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorLike {
@@ -3359,6 +3409,7 @@ export interface SqlExpressionOperatorNotLike extends GObject.Object, SqlExpress
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotLike {
@@ -3405,6 +3456,7 @@ export interface SqlExpressionOperatorIlike extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIlike {
@@ -3451,6 +3503,7 @@ export interface SqlExpressionOperatorNotIlike extends GObject.Object, SqlExpres
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotIlike {
@@ -3497,6 +3550,7 @@ export interface SqlExpressionOperatorBinaryUnaryterm extends GObject.Object, Sq
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBinaryUnaryterm {
@@ -3543,6 +3597,7 @@ export interface SqlExpressionOperatorMinus extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorMinus {
@@ -3589,6 +3644,7 @@ export interface SqlExpressionOperatorPlus extends GObject.Object, SqlExpression
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorPlus {
@@ -3635,6 +3691,7 @@ export interface SqlExpressionOperatorInitialUnaryterm extends GObject.Object, S
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorInitialUnaryterm {
@@ -3681,6 +3738,7 @@ export interface SqlExpressionOperatorNot extends GObject.Object, SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNot {
@@ -3727,6 +3785,7 @@ export interface SqlExpressionOperatorFinalUnaryterm extends GObject.Object, Sql
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorFinalUnaryterm {
@@ -3773,6 +3832,7 @@ export interface SqlExpressionOperatorIs extends GObject.Object, SqlExpressionOp
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIs {
@@ -3819,6 +3879,7 @@ export interface SqlExpressionOperatorIsNot extends GObject.Object, SqlExpressio
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNot {
@@ -3865,6 +3926,7 @@ export interface SqlExpressionOperatorIsNull extends GObject.Object, SqlExpressi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNull {
@@ -3911,6 +3973,7 @@ export interface SqlExpressionOperatorIsNotNull extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotNull {
@@ -3957,6 +4020,7 @@ export interface SqlExpressionOperatorIsTrue extends GObject.Object, SqlExpressi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsTrue {
@@ -4003,6 +4067,7 @@ export interface SqlExpressionOperatorIsNotTrue extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotTrue {
@@ -4049,6 +4114,7 @@ export interface SqlExpressionOperatorIsFalse extends GObject.Object, SqlExpress
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsFalse {
@@ -4095,6 +4161,7 @@ export interface SqlExpressionOperatorIsNotFalse extends GObject.Object, SqlExpr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotFalse {
@@ -4141,6 +4208,7 @@ export interface SqlExpressionOperatorIsUnknown extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsUnknown {
@@ -4187,6 +4255,7 @@ export interface SqlExpressionOperatorIsNotUnknown extends GObject.Object, SqlEx
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotUnknown {
@@ -4233,6 +4302,7 @@ export interface SqlExpressionOperatorIsDistinct extends GObject.Object, SqlExpr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsDistinct {
@@ -4279,6 +4349,7 @@ export interface SqlExpressionOperatorIsNotDistinct extends GObject.Object, SqlE
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotDistinct {
@@ -4325,6 +4396,7 @@ export interface SqlExpressionOperatorIsDistinctFrom extends GObject.Object, Sql
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsDistinctFrom {
@@ -4371,6 +4443,7 @@ export interface SqlExpressionOperatorIsNotDistinctFrom extends GObject.Object, 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorIsNotDistinctFrom {
@@ -4417,6 +4490,7 @@ export interface SqlExpressionOperatorThreeterm extends GObject.Object, SqlExpre
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorThreeterm {
@@ -4463,6 +4537,7 @@ export interface SqlExpressionOperatorBetween extends GObject.Object, SqlExpress
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBetween {
@@ -4509,6 +4584,7 @@ export interface SqlExpressionOperatorBetweenAnd extends GObject.Object, SqlExpr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBetweenAnd {
@@ -4555,6 +4631,7 @@ export interface SqlExpressionOperatorNotBetween extends GObject.Object, SqlExpr
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotBetween {
@@ -4601,6 +4678,7 @@ export interface SqlExpressionOperatorNotBetweenAnd extends GObject.Object, SqlE
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotBetweenAnd {
@@ -4647,6 +4725,7 @@ export interface SqlExpressionOperatorBetweenSymmetric extends GObject.Object, S
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBetweenSymmetric {
@@ -4693,6 +4772,7 @@ export interface SqlExpressionOperatorBetweenSymmetricAnd extends GObject.Object
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorBetweenSymmetricAnd {
@@ -4739,6 +4819,7 @@ export interface SqlExpressionOperatorNotBetweenSymmetric extends GObject.Object
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotBetweenSymmetric {
@@ -4785,6 +4866,7 @@ export interface SqlExpressionOperatorNotBetweenSymmetricAnd extends GObject.Obj
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionOperatorNotBetweenSymmetricAnd {
@@ -4859,6 +4941,7 @@ export interface SqlExpressionValue extends GObject.Object, SqlExpression {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionValue {
@@ -4954,6 +5037,7 @@ export interface SqlExpressionValueParameter extends GObject.Object, SqlExpressi
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlExpressionValueParameter {
@@ -5012,6 +5096,7 @@ export interface SqlParameters extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlParameters {
@@ -5061,6 +5146,7 @@ export interface SqlParser extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlParser {
@@ -5133,6 +5219,7 @@ export interface SqlTableReference extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlTableReference {
@@ -5182,6 +5269,7 @@ export interface Stringifiable extends GObject.Object {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Stringifiable {
@@ -5251,6 +5339,7 @@ export interface SqlValue extends GObject.Object, Stringifiable {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValue {
@@ -5299,6 +5388,7 @@ export interface SqlValueNull extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueNull {
@@ -5345,6 +5435,7 @@ export interface SqlValueBool extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueBool {
@@ -5391,6 +5482,7 @@ export interface SqlValueBit extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueBit {
@@ -5437,6 +5529,7 @@ export interface SqlValueString extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueString {
@@ -5497,6 +5590,7 @@ export interface SqlValueXml extends GObject.Object, SqlValue, SqlValueString {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueXml {
@@ -5557,6 +5651,7 @@ export interface SqlValueJson extends GObject.Object, SqlValue, SqlValueString {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueJson {
@@ -5603,6 +5698,7 @@ export interface SqlValueText extends GObject.Object, SqlValue, SqlValueString {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueText {
@@ -5649,6 +5745,7 @@ export interface SqlValueName extends GObject.Object, SqlValue, SqlValueString {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueName {
@@ -5695,6 +5792,7 @@ export interface SqlValueInteger extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueInteger {
@@ -5741,6 +5839,7 @@ export interface SqlValueByte extends GObject.Object, SqlValue, SqlValueInteger 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueByte {
@@ -5787,6 +5886,7 @@ export interface SqlValueInt2 extends GObject.Object, SqlValue, SqlValueInteger 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueInt2 {
@@ -5833,6 +5933,7 @@ export interface SqlValueInt4 extends GObject.Object, SqlValue, SqlValueInteger 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueInt4 {
@@ -5879,6 +5980,7 @@ export interface SqlValueInt8 extends GObject.Object, SqlValue, SqlValueInteger 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueInt8 {
@@ -5925,6 +6027,7 @@ export interface SqlValueUnsignedInteger extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueUnsignedInteger {
@@ -5971,6 +6074,7 @@ export interface SqlValueUnsignedByte extends GObject.Object, SqlValue, SqlValue
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueUnsignedByte {
@@ -6017,6 +6121,7 @@ export interface SqlValueUnsignedInt2 extends GObject.Object, SqlValue, SqlValue
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueUnsignedInt2 {
@@ -6063,6 +6168,7 @@ export interface SqlValueUnsignedInt4 extends GObject.Object, SqlValue, SqlValue
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueUnsignedInt4 {
@@ -6109,6 +6215,7 @@ export interface SqlValueUnsignedInt8 extends GObject.Object, SqlValue, SqlValue
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueUnsignedInt8 {
@@ -6155,6 +6262,7 @@ export interface SqlValueOid extends GObject.Object, SqlValue, SqlValueInteger {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueOid {
@@ -6225,6 +6333,7 @@ export interface SqlValueNumeric extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueNumeric {
@@ -6279,6 +6388,7 @@ export interface SqlValueFloat extends GObject.Object, SqlValue, SqlValueNumeric
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueFloat {
@@ -6325,6 +6435,7 @@ export interface SqlValueDouble extends GObject.Object, SqlValue, SqlValueNumeri
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueDouble {
@@ -6385,6 +6496,7 @@ export interface SqlValueMoney extends GObject.Object, SqlValue, SqlValueNumeric
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueMoney {
@@ -6441,6 +6553,7 @@ export interface SqlValueDate extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueDate {
@@ -6513,6 +6626,7 @@ export interface SqlValueTimestamp extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueTimestamp {
@@ -6559,6 +6673,7 @@ export interface SqlValueTimestampNtz extends GObject.Object, SqlValue, SqlValue
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueTimestampNtz {
@@ -6605,6 +6720,7 @@ export interface SqlValueTime extends GObject.Object, SqlValue, SqlValueTimestam
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueTime {
@@ -6651,6 +6767,7 @@ export interface SqlValueTimeNtz extends GObject.Object, SqlValue, SqlValueTimes
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueTimeNtz {
@@ -6717,6 +6834,7 @@ export interface SqlValueBinary extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueBinary {
@@ -6790,6 +6908,7 @@ export interface SqlValueBlob extends GObject.Object, SqlValueBinary {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueBlob {
@@ -6860,6 +6979,7 @@ export interface SqlValueBlobOid extends GObject.Object, SqlValueBlob {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueBlobOid {
@@ -6937,6 +7057,7 @@ export interface SqlValueGeometricPoint extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueGeometricPoint {
@@ -7003,6 +7124,7 @@ export interface SqlValueMathExp extends GObject.Object, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class SqlValueMathExp {
@@ -7044,6 +7166,7 @@ export interface TableModel extends GObject.Object, Gio.ListModel, Result {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class TableModel {
@@ -7101,6 +7224,7 @@ export interface TableModelSequential extends GObject.Object, Result {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class TableModelSequential {
@@ -7147,6 +7271,7 @@ export interface AffectedRows extends Result, SqlAffectedRows {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class AffectedRows extends GObject.Object {
@@ -7215,6 +7340,7 @@ export interface CommandDelete extends SqlCommand, SqlCommandTableRelated, SqlCo
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CommandDelete extends GObject.Object {
@@ -7288,6 +7414,7 @@ export interface CommandInsert extends Stringifiable, SqlCommandInsert {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CommandInsert extends CommandModification {
@@ -7365,6 +7492,7 @@ export interface CommandModification extends SqlCommand, SqlCommandTableRelated,
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CommandModification extends GObject.Object {
@@ -7433,6 +7561,7 @@ export interface CommandSelect extends SqlCommand, SqlCommandConditional, String
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CommandSelect extends GObject.Object {
@@ -7511,6 +7640,7 @@ export interface CommandUpdate extends SqlCommandConditional, Stringifiable, Sql
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class CommandUpdate extends CommandModification {
@@ -7582,6 +7712,7 @@ export interface ConnectionParameter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameter extends GObject.Object {
@@ -7635,6 +7766,7 @@ export interface ConnectionParameterDbName {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameterDbName extends ConnectionParameter {
@@ -7692,6 +7824,7 @@ export interface ConnectionParameterHost {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameterHost extends ConnectionParameter {
@@ -7749,6 +7882,7 @@ export interface ConnectionParameterPort {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameterPort extends ConnectionParameter {
@@ -7806,6 +7940,7 @@ export interface ConnectionParameterUserName {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameterUserName extends ConnectionParameter {
@@ -7863,6 +7998,7 @@ export interface ConnectionParameterPassword {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameterPassword extends ConnectionParameter {
@@ -8073,6 +8209,7 @@ export interface ConnectionParameters {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ConnectionParameters extends Gee.HashMap {
@@ -8412,6 +8549,7 @@ export interface Expression extends Gio.ListModel, SqlExpression {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Expression extends Gee.ArrayList {
@@ -8769,6 +8907,7 @@ export interface ExpressionField extends SqlExpressionField {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionField extends Expression {
@@ -9121,6 +9260,7 @@ export interface ExpressionOperator extends SqlExpressionOperator {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperator extends Expression {
@@ -9470,6 +9610,7 @@ export interface ExpressionOperatorGroup extends SqlExpressionOperatorGroup {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorGroup extends ExpressionOperator {
@@ -9824,6 +9965,7 @@ export interface ExpressionOperatorMultiterm extends SqlExpressionOperatorMultit
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorMultiterm extends ExpressionOperator {
@@ -10174,6 +10316,7 @@ export interface ExpressionOperatorAnd extends SqlExpressionOperatorAnd {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorAnd extends ExpressionOperatorMultiterm {
@@ -10525,6 +10668,7 @@ export interface ExpressionOperatorOr extends SqlExpressionOperatorOr {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorOr extends ExpressionOperatorMultiterm {
@@ -10880,6 +11024,7 @@ export interface ExpressionOperatorBinaryterm extends SqlExpressionOperatorBinar
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBinaryterm extends ExpressionOperator {
@@ -11230,6 +11375,7 @@ export interface ExpressionOperatorEq extends SqlExpressionOperatorEq {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorEq extends ExpressionOperatorBinaryterm {
@@ -11581,6 +11727,7 @@ export interface ExpressionOperatorNotEq extends SqlExpressionOperatorNotEq {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotEq extends ExpressionOperatorBinaryterm {
@@ -11932,6 +12079,7 @@ export interface ExpressionOperatorDiff extends SqlExpressionOperatorDiff {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorDiff extends ExpressionOperatorBinaryterm {
@@ -12283,6 +12431,7 @@ export interface ExpressionOperatorGt extends SqlExpressionOperatorGt {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorGt extends ExpressionOperatorBinaryterm {
@@ -12634,6 +12783,7 @@ export interface ExpressionOperatorLt extends SqlExpressionOperatorLt {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorLt extends ExpressionOperatorBinaryterm {
@@ -12985,6 +13135,7 @@ export interface ExpressionOperatorGeq extends SqlExpressionOperatorGeq {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorGeq extends ExpressionOperatorBinaryterm {
@@ -13336,6 +13487,7 @@ export interface ExpressionOperatorLeq extends SqlExpressionOperatorLeq {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorLeq extends ExpressionOperatorBinaryterm {
@@ -13687,6 +13839,7 @@ export interface ExpressionOperatorRegexp extends SqlExpressionOperatorRegexp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorRegexp extends ExpressionOperatorBinaryterm {
@@ -14038,6 +14191,7 @@ export interface ExpressionOperatorStar extends SqlExpressionOperatorStar {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorStar extends ExpressionOperatorBinaryterm {
@@ -14389,6 +14543,7 @@ export interface ExpressionOperatorDiv extends SqlExpressionOperatorDiv {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorDiv extends ExpressionOperatorBinaryterm {
@@ -14740,6 +14895,7 @@ export interface ExpressionOperatorIn extends SqlExpressionOperatorIn {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIn extends ExpressionOperatorBinaryterm {
@@ -15091,6 +15247,7 @@ export interface ExpressionOperatorNotIn extends SqlExpressionOperatorNotIn {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotIn extends ExpressionOperatorBinaryterm {
@@ -15442,6 +15599,7 @@ export interface ExpressionOperatorConcatenate extends SqlExpressionOperatorConc
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorConcatenate extends ExpressionOperatorBinaryterm {
@@ -15793,6 +15951,7 @@ export interface ExpressionOperatorSimilarTo extends SqlExpressionOperatorSimila
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorSimilarTo extends ExpressionOperatorBinaryterm {
@@ -16144,6 +16303,7 @@ export interface ExpressionOperatorLike extends SqlExpressionOperatorLike {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorLike extends ExpressionOperatorBinaryterm {
@@ -16495,6 +16655,7 @@ export interface ExpressionOperatorNotLike extends SqlExpressionOperatorNotLike 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotLike extends ExpressionOperatorBinaryterm {
@@ -16846,6 +17007,7 @@ export interface ExpressionOperatorIlike extends SqlExpressionOperatorIlike {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIlike extends ExpressionOperatorBinaryterm {
@@ -17197,6 +17359,7 @@ export interface ExpressionOperatorNotIlike extends SqlExpressionOperatorNotIlik
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotIlike extends ExpressionOperatorBinaryterm {
@@ -17552,6 +17715,7 @@ export interface ExpressionOperatorBinaryUnaryterm extends SqlExpressionOperator
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBinaryUnaryterm extends ExpressionOperator {
@@ -17902,6 +18066,7 @@ export interface ExpressionOperatorMinus extends SqlExpressionOperatorMinus {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorMinus extends ExpressionOperatorBinaryUnaryterm {
@@ -18253,6 +18418,7 @@ export interface ExpressionOperatorPlus extends SqlExpressionOperatorPlus {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorPlus extends ExpressionOperatorBinaryUnaryterm {
@@ -18608,6 +18774,7 @@ export interface ExpressionOperatorInitialUnaryterm extends SqlExpressionOperato
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorInitialUnaryterm extends ExpressionOperator {
@@ -18958,6 +19125,7 @@ export interface ExpressionOperatorNot extends SqlExpressionOperatorNot {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNot extends ExpressionOperatorInitialUnaryterm {
@@ -19313,6 +19481,7 @@ export interface ExpressionOperatorFinalUnaryterm extends SqlExpressionOperatorF
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorFinalUnaryterm extends ExpressionOperator {
@@ -19663,6 +19832,7 @@ export interface ExpressionOperatorIs extends SqlExpressionOperatorIs {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIs extends ExpressionOperatorFinalUnaryterm {
@@ -20014,6 +20184,7 @@ export interface ExpressionOperatorIsNot extends SqlExpressionOperatorIsNot {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNot extends ExpressionOperatorIs {
@@ -20366,6 +20537,7 @@ export interface ExpressionOperatorIsNull extends SqlExpressionOperatorIsNull {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNull extends ExpressionOperatorIs {
@@ -20718,6 +20890,7 @@ export interface ExpressionOperatorIsNotNull extends SqlExpressionOperatorIsNotN
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotNull extends ExpressionOperatorIsNot {
@@ -21071,6 +21244,7 @@ export interface ExpressionOperatorIsTrue extends SqlExpressionOperatorIsTrue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsTrue extends ExpressionOperatorIs {
@@ -21423,6 +21597,7 @@ export interface ExpressionOperatorIsNotTrue extends SqlExpressionOperatorIsNotT
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotTrue extends ExpressionOperatorIsNot {
@@ -21776,6 +21951,7 @@ export interface ExpressionOperatorIsFalse extends SqlExpressionOperatorIsFalse 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsFalse extends ExpressionOperatorIs {
@@ -22128,6 +22304,7 @@ export interface ExpressionOperatorIsNotFalse extends SqlExpressionOperatorIsNot
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotFalse extends ExpressionOperatorIsNot {
@@ -22481,6 +22658,7 @@ export interface ExpressionOperatorIsNotUnknown extends SqlExpressionOperatorIsN
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotUnknown extends ExpressionOperatorIsNot {
@@ -22834,6 +23012,7 @@ export interface ExpressionOperatorIsUnknown extends SqlExpressionOperatorIsUnkn
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsUnknown extends ExpressionOperatorIs {
@@ -23186,6 +23365,7 @@ export interface ExpressionOperatorIsDistinct extends SqlExpressionOperatorIsDis
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsDistinct extends ExpressionOperatorBinaryterm {
@@ -23537,6 +23717,7 @@ export interface ExpressionOperatorIsNotDistinct extends SqlExpressionOperatorIs
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotDistinct extends ExpressionOperatorIsDistinct {
@@ -23889,6 +24070,7 @@ export interface ExpressionOperatorIsDistinctFrom extends SqlExpressionOperatorI
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsDistinctFrom extends ExpressionOperatorIsDistinct {
@@ -24241,6 +24423,7 @@ export interface ExpressionOperatorIsNotDistinctFrom extends SqlExpressionOperat
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorIsNotDistinctFrom extends ExpressionOperatorIsNotDistinct {
@@ -24599,6 +24782,7 @@ export interface ExpressionOperatorThreeterm extends SqlExpressionOperatorThreet
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorThreeterm extends ExpressionOperator {
@@ -24949,6 +25133,7 @@ export interface ExpressionOperatorBetween extends SqlExpressionOperatorBetween 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBetween extends ExpressionOperatorThreeterm {
@@ -25300,6 +25485,7 @@ export interface ExpressionOperatorBetweenAnd extends SqlExpressionOperatorBetwe
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBetweenAnd extends ExpressionOperatorBetween {
@@ -25652,6 +25838,7 @@ export interface ExpressionOperatorNotBetween extends SqlExpressionOperatorNotBe
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotBetween extends ExpressionOperatorBetween {
@@ -26004,6 +26191,7 @@ export interface ExpressionOperatorNotBetweenAnd extends SqlExpressionOperatorNo
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotBetweenAnd extends ExpressionOperatorNotBetween {
@@ -26357,6 +26545,7 @@ export interface ExpressionOperatorBetweenSymmetric extends SqlExpressionOperato
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBetweenSymmetric extends ExpressionOperatorBetween {
@@ -26709,6 +26898,7 @@ export interface ExpressionOperatorBetweenSymmetricAnd extends SqlExpressionOper
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorBetweenSymmetricAnd extends ExpressionOperatorBetweenSymmetric {
@@ -27062,6 +27252,7 @@ export interface ExpressionOperatorNotBetweenSymmetric extends SqlExpressionOper
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotBetweenSymmetric extends ExpressionOperatorBetweenSymmetric {
@@ -27415,6 +27606,7 @@ export interface ExpressionOperatorNotBetweenSymmetricAnd extends SqlExpressionO
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionOperatorNotBetweenSymmetricAnd extends ExpressionOperatorNotBetweenSymmetric {
@@ -27773,6 +27965,7 @@ export interface ExpressionValue extends SqlExpressionValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionValue extends Expression {
@@ -28141,6 +28334,7 @@ export interface ExpressionValueParameter extends SqlExpressionValueParameter {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ExpressionValueParameter extends ExpressionValue {
@@ -28481,6 +28675,7 @@ export interface HashList extends Gio.ListModel, HashModel {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class HashList extends Gee.ArrayList {
@@ -28562,6 +28757,7 @@ export interface InvalidQuery extends Query {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class InvalidQuery extends GObject.Object {
@@ -28630,6 +28826,7 @@ export interface InvalidPreparedQuery extends PreparedQuery {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class InvalidPreparedQuery extends InvalidQuery {
@@ -28692,6 +28889,7 @@ export interface InvalidResult extends Result {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class InvalidResult extends GObject.Object {
@@ -28888,6 +29086,7 @@ export interface Parameters extends SqlParameters {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Parameters extends Gee.HashMap {
@@ -28935,6 +29134,7 @@ export interface Parser extends SqlParser {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Parser extends GObject.Object {
@@ -28988,6 +29188,7 @@ export interface TableReference extends SqlTableReference {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class TableReference extends GObject.Object {
@@ -29097,6 +29298,7 @@ export interface Value extends Stringifiable, SqlValue {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class Value extends GObject.Object {
@@ -29200,6 +29402,7 @@ export interface ValueNull extends SqlValueNull {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueNull extends Value {
@@ -29307,6 +29510,7 @@ export interface ValueString extends SqlValueString {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueString extends Value {
@@ -29419,6 +29623,7 @@ export interface ValueXml extends SqlValueXml {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueXml extends ValueString {
@@ -29532,6 +29737,7 @@ export interface ValueJson extends SqlValueJson {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueJson extends ValueString {
@@ -29640,6 +29846,7 @@ export interface ValueText extends SqlValueText {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueText extends ValueString {
@@ -29748,6 +29955,7 @@ export interface ValueName extends SqlValueName {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueName extends ValueString {
@@ -29856,6 +30064,7 @@ export interface ValueBool extends SqlValueBool {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueBool extends Value {
@@ -29963,6 +30172,7 @@ export interface ValueBit extends SqlValueBit {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueBit extends ValueBool {
@@ -30071,6 +30281,7 @@ export interface ValueInteger extends SqlValue, SqlValueInteger {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueInteger extends Value {
@@ -30178,6 +30389,7 @@ export interface ValueByte extends SqlValueByte {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueByte extends ValueInteger {
@@ -30286,6 +30498,7 @@ export interface ValueInt2 extends SqlValueInt2 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueInt2 extends ValueInteger {
@@ -30394,6 +30607,7 @@ export interface ValueInt4 extends SqlValueInt4 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueInt4 extends ValueInteger {
@@ -30502,6 +30716,7 @@ export interface ValueInt8 extends SqlValueInt8 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueInt8 extends ValueInteger {
@@ -30610,6 +30825,7 @@ export interface ValueUnsignedInteger extends SqlValue, SqlValueUnsignedInteger 
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueUnsignedInteger extends Value {
@@ -30717,6 +30933,7 @@ export interface ValueUnsignedByte extends SqlValueUnsignedByte {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueUnsignedByte extends ValueUnsignedInteger {
@@ -30825,6 +31042,7 @@ export interface ValueUnsignedInt2 extends SqlValueUnsignedInt2 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueUnsignedInt2 extends ValueUnsignedInteger {
@@ -30933,6 +31151,7 @@ export interface ValueUnsignedInt4 extends SqlValueUnsignedInt4 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueUnsignedInt4 extends ValueUnsignedInteger {
@@ -31041,6 +31260,7 @@ export interface ValueUnsignedInt8 extends SqlValueUnsignedInt8 {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueUnsignedInt8 extends ValueUnsignedInteger {
@@ -31149,6 +31369,7 @@ export interface ValueOid extends SqlValueOid {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueOid extends ValueInteger {
@@ -31269,6 +31490,7 @@ export interface ValueNumeric extends SqlValueNumeric {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueNumeric extends Value {
@@ -31382,6 +31604,7 @@ export interface ValueFloat extends SqlValueFloat {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueFloat extends ValueNumeric {
@@ -31496,6 +31719,7 @@ export interface ValueDouble extends SqlValueDouble {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueDouble extends ValueNumeric {
@@ -31610,6 +31834,7 @@ export interface ValueMoney extends SqlValueMoney {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueMoney extends ValueNumeric {
@@ -31746,6 +31971,7 @@ export interface ValueTimestamp extends SqlValueTimestamp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueTimestamp extends Value {
@@ -31871,6 +32097,7 @@ export interface ValueTimestampNtz extends SqlValueTimestampNtz {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueTimestampNtz extends ValueTimestamp {
@@ -31997,6 +32224,7 @@ export interface ValueTime extends SqlValueTime {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueTime extends ValueTimestamp {
@@ -32123,6 +32351,7 @@ export interface ValueTimeNtz extends SqlValueTimeNtz {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueTimeNtz extends ValueTimestampNtz {
@@ -32236,6 +32465,7 @@ export interface ValueDate extends SqlValueDate {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueDate extends Value {
@@ -32348,6 +32578,7 @@ export interface ValueBinary extends SqlValueBinary {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueBinary extends Value {
@@ -32422,6 +32653,7 @@ export interface ValueMathExp extends Stringifiable, SqlValue, SqlValueMathExp {
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
 
 export class ValueMathExp extends GObject.Object {

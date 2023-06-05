@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gexiv2-0.10",
-    "version": "0.14.0-3.0.3",
+    "version": "0.14.0-3.0.4",
     "description": "Node.js TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.0",
     "type": "module",
     "module": "node-gexiv2-0.10.js",
