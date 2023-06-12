@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-soup-2.4",
-    "version": "2.74.3-3.0.4",
+    "version": "2.74.3-3.1.0",
     "description": "Node.js TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
     "type": "module",
     "module": "node-soup-2.4.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-soup-2.4.d.ts",
-        "test:cjs": "tsc --noEmit node-soup-2.4.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-soup-2.4.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-soup-2.4.d.cts"
     },
     "dependencies": {
         "@girs/node-gio-2.0": "workspace:^",

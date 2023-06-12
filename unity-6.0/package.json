@@ -1,6 +1,6 @@
 {
     "name": "@girs/unity-6.0",
-    "version": "6.0.0-3.0.4",
+    "version": "6.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for Unity-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "unity-6.0.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit unity-6.0.d.ts",
-        "test:cjs": "tsc --noEmit unity-6.0.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit unity-6.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit unity-6.0.d.cts"
     },
     "dependencies": {
         "@girs/dbusmenu-0.4": "workspace:^",

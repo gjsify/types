@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gegl-0.3",
-    "version": "0.3.35-3.0.4",
+    "version": "0.3.35-3.1.0",
     "description": "Node.js TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35",
     "type": "module",
     "module": "node-gegl-0.3.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-gegl-0.3.d.ts",
-        "test:cjs": "tsc --noEmit node-gegl-0.3.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gegl-0.3.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gegl-0.3.d.cts"
     },
     "dependencies": {
         "@girs/node-glib-2.0": "workspace:^",

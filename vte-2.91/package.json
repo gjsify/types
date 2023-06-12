@@ -1,6 +1,6 @@
 {
     "name": "@girs/vte-2.91",
-    "version": "0.69.0-3.0.4",
+    "version": "0.69.0-3.1.0",
     "description": "GJS TypeScript type definitions for Vte-2.91, generated from library version 0.69.0",
     "type": "module",
     "module": "vte-2.91.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit vte-2.91.d.ts",
-        "test:cjs": "tsc --noEmit vte-2.91.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit vte-2.91.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit vte-2.91.d.cts"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

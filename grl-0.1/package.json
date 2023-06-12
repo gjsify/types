@@ -1,6 +1,6 @@
 {
     "name": "@girs/grl-0.1",
-    "version": "0.1.0-3.0.4",
+    "version": "0.1.0-3.1.0",
     "description": "GJS TypeScript type definitions for Grl-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "grl-0.1.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit grl-0.1.d.ts",
-        "test:cjs": "tsc --noEmit grl-0.1.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit grl-0.1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit grl-0.1.d.cts"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",

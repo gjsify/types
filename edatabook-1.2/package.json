@@ -1,6 +1,6 @@
 {
     "name": "@girs/edatabook-1.2",
-    "version": "1.2.0-3.0.4",
+    "version": "1.2.0-3.1.0",
     "description": "GJS TypeScript type definitions for EDataBook-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edatabook-1.2.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit edatabook-1.2.d.ts",
-        "test:cjs": "tsc --noEmit edatabook-1.2.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit edatabook-1.2.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit edatabook-1.2.d.cts"
     },
     "dependencies": {
         "@girs/camel-1.2": "workspace:^",

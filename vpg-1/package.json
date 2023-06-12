@@ -1,6 +1,6 @@
 {
     "name": "@girs/vpg-1",
-    "version": "1.0.0-3.0.4",
+    "version": "1.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for Vpg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vpg-1.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit vpg-1.d.ts",
-        "test:cjs": "tsc --noEmit vpg-1.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit vpg-1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit vpg-1.d.cts"
     },
     "dependencies": {
         "@girs/gcalc-2": "workspace:^",

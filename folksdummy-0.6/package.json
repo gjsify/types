@@ -1,6 +1,6 @@
 {
     "name": "@girs/folksdummy-0.6",
-    "version": "0.6.0-3.0.4",
+    "version": "0.6.0-3.1.0",
     "description": "GJS TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "folksdummy-0.6.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit folksdummy-0.6.d.ts",
-        "test:cjs": "tsc --noEmit folksdummy-0.6.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit folksdummy-0.6.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit folksdummy-0.6.d.cts"
     },
     "dependencies": {
         "@girs/folks-0.6": "workspace:^",

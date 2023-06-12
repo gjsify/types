@@ -1,6 +1,6 @@
 {
     "name": "@girs/gst-0.10",
-    "version": "0.10.29-3.0.4",
+    "version": "0.10.29-3.1.0",
     "description": "GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29",
     "type": "module",
     "module": "gst-0.10.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gst-0.10.d.ts",
-        "test:cjs": "tsc --noEmit gst-0.10.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gst-0.10.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gst-0.10.d.cts"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",

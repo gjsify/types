@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-edataserverui-1.2",
-    "version": "1.2.0-3.0.4",
+    "version": "1.2.0-3.1.0",
     "description": "Node.js TypeScript type definitions for EDataServerUI-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "node-edataserverui-1.2.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-edataserverui-1.2.d.ts",
-        "test:cjs": "tsc --noEmit node-edataserverui-1.2.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-edataserverui-1.2.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-edataserverui-1.2.d.cts"
     },
     "dependencies": {
         "@girs/node-atk-1.0": "workspace:^",

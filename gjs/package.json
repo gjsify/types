@@ -1,6 +1,6 @@
 {
     "name": "@girs/gjs",
-    "version": "3.0.4",
+    "version": "3.1.0",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
@@ -43,6 +43,7 @@
                 "default": "./cairo.cjs"
             }
         },
+        "./dom": "./dom.d.ts",
         ".": {
             "import": {
                 "types": "./gjs.d.ts",
@@ -56,8 +57,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gjs.d.ts",
-        "test:cjs": "tsc --noEmit gjs.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gjs.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gjs.d.cts"
     },
     "dependencies": {
         "@girs/glib-2.0": "workspace:^",

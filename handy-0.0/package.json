@@ -1,6 +1,6 @@
 {
     "name": "@girs/handy-0.0",
-    "version": "0.0.0-3.0.4",
+    "version": "0.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for Handy-0.0, generated from library version 0.0.0",
     "type": "module",
     "module": "handy-0.0.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit handy-0.0.d.ts",
-        "test:cjs": "tsc --noEmit handy-0.0.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit handy-0.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit handy-0.0.d.cts"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

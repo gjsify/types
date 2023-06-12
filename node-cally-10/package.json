@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cally-10",
-    "version": "10.0.0-3.0.4",
+    "version": "10.0.0-3.1.0",
     "description": "Node.js TypeScript type definitions for Cally-10, generated from library version 10.0.0",
     "type": "module",
     "module": "node-cally-10.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-cally-10.d.ts",
-        "test:cjs": "tsc --noEmit node-cally-10.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-cally-10.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-cally-10.d.cts"
     },
     "dependencies": {
         "@girs/node-atk-1.0": "workspace:^",

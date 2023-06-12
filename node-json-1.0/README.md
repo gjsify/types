@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-json-1.0)
 
 
-Node.js TypeScript type definitions for Json-1.0, generated from library version 1.7.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
+Node.js TypeScript type definitions for Json-1.0, generated from library version 1.7.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
 
 JSON-GLib is a library for reading and parsing JSON using GLib and GObject data types and API.
 

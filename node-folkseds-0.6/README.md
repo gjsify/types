@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-folkseds-0.6)
 
 
-Node.js TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
+Node.js TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
 
 
 ## Install

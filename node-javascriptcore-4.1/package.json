@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-javascriptcore-4.1",
-    "version": "2.40.0-3.0.4",
+    "version": "2.40.0-3.1.0",
     "description": "Node.js TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.40.0",
     "type": "module",
     "module": "node-javascriptcore-4.1.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-javascriptcore-4.1.d.ts",
-        "test:cjs": "tsc --noEmit node-javascriptcore-4.1.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-javascriptcore-4.1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-javascriptcore-4.1.d.cts"
     },
     "dependencies": {
         "@girs/node-glib-2.0": "workspace:^",

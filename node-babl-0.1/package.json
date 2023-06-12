@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-babl-0.1",
-    "version": "0.1.99-3.0.4",
+    "version": "0.1.99-3.1.0",
     "description": "Node.js TypeScript type definitions for Babl-0.1, generated from library version 0.1.99",
     "type": "module",
     "module": "node-babl-0.1.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-babl-0.1.d.ts",
-        "test:cjs": "tsc --noEmit node-babl-0.1.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-babl-0.1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-babl-0.1.d.cts"
     },
     "dependencies": {
         "@girs/node-gobject-2.0": "workspace:^",

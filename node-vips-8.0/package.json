@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-vips-8.0",
-    "version": "8.14.0-3.0.4",
+    "version": "8.14.0-3.1.0",
     "description": "Node.js TypeScript type definitions for Vips-8.0, generated from library version 8.14.0",
     "type": "module",
     "module": "node-vips-8.0.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-vips-8.0.d.ts",
-        "test:cjs": "tsc --noEmit node-vips-8.0.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-vips-8.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-vips-8.0.d.cts"
     },
     "dependencies": {
         "@girs/node-glib-2.0": "workspace:^",

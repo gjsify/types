@@ -1,6 +1,6 @@
 {
     "name": "@girs/amtk-5",
-    "version": "5.0.0-3.0.4",
+    "version": "5.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for Amtk-5, generated from library version 5.0.0",
     "type": "module",
     "module": "amtk-5.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit amtk-5.d.ts",
-        "test:cjs": "tsc --noEmit amtk-5.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit amtk-5.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit amtk-5.d.cts"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

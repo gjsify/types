@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gepub-0.5",
-    "version": "0.5.0-3.0.4",
+    "version": "0.5.0-3.1.0",
     "description": "Node.js TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0",
     "type": "module",
     "module": "node-gepub-0.5.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-gepub-0.5.d.ts",
-        "test:cjs": "tsc --noEmit node-gepub-0.5.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gepub-0.5.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gepub-0.5.d.cts"
     },
     "dependencies": {
         "@girs/node-atk-1.0": "workspace:^",

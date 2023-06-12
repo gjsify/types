@@ -14444,9 +14444,9 @@ export interface StyleManager {
      * 
      * The display will be `NULL` for the style manager returned by
      * [func`StyleManager`.get_default].
-     * @returns (nullable): the display
+     * @returns the display
      */
-    get_display(): Gdk.Display
+    get_display(): Gdk.Display | null
     /**
      * Gets whether the application is using high contrast appearance.
      * 

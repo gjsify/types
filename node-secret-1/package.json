@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-secret-1",
-    "version": "0.20.5-3.0.4",
+    "version": "0.20.5-3.1.0",
     "description": "Node.js TypeScript type definitions for Secret-1, generated from library version 0.20.5",
     "type": "module",
     "module": "node-secret-1.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-secret-1.d.ts",
-        "test:cjs": "tsc --noEmit node-secret-1.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-secret-1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-secret-1.d.cts"
     },
     "dependencies": {
         "@girs/node-gio-2.0": "workspace:^",

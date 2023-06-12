@@ -1,6 +1,6 @@
 {
     "name": "@girs/dbusmenugtk3-0.4",
-    "version": "0.4.0-3.0.4",
+    "version": "0.4.0-3.1.0",
     "description": "GJS TypeScript type definitions for DbusmenuGtk3-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "dbusmenugtk3-0.4.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit dbusmenugtk3-0.4.d.ts",
-        "test:cjs": "tsc --noEmit dbusmenugtk3-0.4.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbusmenugtk3-0.4.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbusmenugtk3-0.4.d.cts"
     },
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",

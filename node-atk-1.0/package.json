@@ -1,7 +1,7 @@
 {
     "name": "@girs/node-atk-1.0",
-    "version": "2.48.2-3.0.4",
-    "description": "Node.js TypeScript type definitions for Atk-1.0, generated from library version 2.48.2",
+    "version": "2.48.3-3.1.0",
+    "description": "Node.js TypeScript type definitions for Atk-1.0, generated from library version 2.48.3",
     "type": "module",
     "module": "node-atk-1.0.js",
     "main": "node-atk-1.0.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-atk-1.0.d.ts",
-        "test:cjs": "tsc --noEmit node-atk-1.0.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-atk-1.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-atk-1.0.d.cts"
     },
     "dependencies": {
         "@girs/node-glib-2.0": "workspace:^",

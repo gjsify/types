@@ -1,6 +1,6 @@
 {
     "name": "@girs/gcrgtk4-4",
-    "version": "4.0.0-3.0.4",
+    "version": "4.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gcrgtk4-4.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit gcrgtk4-4.d.ts",
-        "test:cjs": "tsc --noEmit gcrgtk4-4.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gcrgtk4-4.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gcrgtk4-4.d.cts"
     },
     "dependencies": {
         "@girs/cairo-1.0": "workspace:^",

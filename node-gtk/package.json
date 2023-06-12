@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gtk",
-    "version": "3.0.4",
+    "version": "3.1.0",
     "description": "Node.js TypeScript type definitions for node-gtk",
     "type": "module",
     "module": "node-gtk.js",
@@ -26,8 +26,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit node-gtk.d.ts",
-        "test:cjs": "tsc --noEmit node-gtk.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gtk.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gtk.d.cts"
     },
     "dependencies": {
         "@girs/node-glib-2.0": "workspace:^",

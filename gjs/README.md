@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/gjs)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gjs)
 
-GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
+GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
 
 [GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in JavaScript or TypeScript with type checking, better autocompletion and inline documentations.
 
@@ -33,16 +33,36 @@ const Gjs = require('@girs/gjs');
 After the import, the global types of GJS are also available:
 
 ```ts
-console.log('Hello World from console');
+import '@girs/gjs';
+
 print('Hello World from print');
 
 const ByteArray = imports.byteArray;
 
+// And so on...
+```
+
+### Global DOM types
+
+Some types that conflict with the DOM are outsourced to allow frameworks like Gjsify to rebuild the DOM API without causing type conflicts.
+But you can easily import them:
+
+```ts
+import '@girs/gjs/dom';
+
+console.log('Hello World from console');
+
 const encoder = new TextEncoder();
 const encoded = encoder.encode('𝓽𝓮𝔁𝓽');
 
+setTimeout(() => {
+  // ...
+}, 1000);
+
 // And so on...
 ```
+
+To avoid a type conflict with the DOM types it is recommended to either modify your `tsconfig.json` or `jsconfig.json` file to exclude the DOM lib, or to enable the `noLib` property.
 
 ### Ambient Modules
 
@@ -81,6 +101,7 @@ These types will then be available to you:
 
 ```ts
 import '@girs/gjs'
+import '@girs/gjs/dom'
 import '@girs/gio-2.0'
 import '@girs/gtk-4.0'
 import '@girs/adw-1'

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/dbusglib-1.0)
 
 
-GJS TypeScript type definitions for DBusGLib-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.0.4.
+GJS TypeScript type definitions for DBusGLib-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
 
 Initial D-Bus Support (Do not use in new projects, use DBus support included in GLib instead)
 

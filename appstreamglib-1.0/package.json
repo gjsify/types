@@ -1,6 +1,6 @@
 {
     "name": "@girs/appstreamglib-1.0",
-    "version": "1.0.0-3.0.4",
+    "version": "1.0.0-3.1.0",
     "description": "GJS TypeScript type definitions for AppStreamGlib-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "appstreamglib-1.0.js",
@@ -27,8 +27,8 @@
     },
     "scripts": {
         "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "tsc --noEmit appstreamglib-1.0.d.ts",
-        "test:cjs": "tsc --noEmit appstreamglib-1.0.d.cts"
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit appstreamglib-1.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit appstreamglib-1.0.d.cts"
     },
     "dependencies": {
         "@girs/gdkpixbuf-2.0": "workspace:^",
