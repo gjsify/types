@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-icalglib-3.0.d.ts"],
+    "entryPoints": ["./node-icalglib-3.0.d.ts","./node-icalglib-3.0-ambient.d.ts","./node-icalglib-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "ICalGLib-3.0",
     "tsconfig": "./tsconfig.json"

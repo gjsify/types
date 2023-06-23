@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./panelapplet-4.0.d.ts"],
+    "entryPoints": ["./panelapplet-4.0.d.ts","./panelapplet-4.0-ambient.d.ts","./panelapplet-4.0-import.d.ts"],
     "readme": "./README.md",
     "name": "PanelApplet-4.0",
     "tsconfig": "./tsconfig.json"

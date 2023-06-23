@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gxml-0.18.d.ts"],
+    "entryPoints": ["./gxml-0.18.d.ts","./gxml-0.18-ambient.d.ts","./gxml-0.18-import.d.ts"],
     "readme": "./README.md",
     "name": "GXml-0.18",
     "tsconfig": "./tsconfig.json"

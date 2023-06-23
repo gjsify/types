@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gstmpegts-1.0.d.ts"],
+    "entryPoints": ["./node-gstmpegts-1.0.d.ts","./node-gstmpegts-1.0-ambient.d.ts","./node-gstmpegts-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstMpegts-1.0",
     "tsconfig": "./tsconfig.json"

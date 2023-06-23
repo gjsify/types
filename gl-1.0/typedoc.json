@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gl-1.0.d.ts"],
+    "entryPoints": ["./gl-1.0.d.ts","./gl-1.0-ambient.d.ts","./gl-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GL-1.0",
     "tsconfig": "./tsconfig.json"

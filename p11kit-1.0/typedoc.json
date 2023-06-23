@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./p11kit-1.0.d.ts"],
+    "entryPoints": ["./p11kit-1.0.d.ts","./p11kit-1.0-ambient.d.ts","./p11kit-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "P11Kit-1.0",
     "tsconfig": "./tsconfig.json"

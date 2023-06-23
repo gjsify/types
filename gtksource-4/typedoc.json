@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gtksource-4.d.ts"],
+    "entryPoints": ["./gtksource-4.d.ts","./gtksource-4-ambient.d.ts","./gtksource-4-import.d.ts"],
     "readme": "./README.md",
     "name": "GtkSource-4",
     "tsconfig": "./tsconfig.json"

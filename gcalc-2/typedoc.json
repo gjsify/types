@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gcalc-2.d.ts"],
+    "entryPoints": ["./gcalc-2.d.ts","./gcalc-2-ambient.d.ts","./gcalc-2-import.d.ts"],
     "readme": "./README.md",
     "name": "GCalc-2",
     "tsconfig": "./tsconfig.json"

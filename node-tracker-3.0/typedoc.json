@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-tracker-3.0.d.ts"],
+    "entryPoints": ["./node-tracker-3.0.d.ts","./node-tracker-3.0-ambient.d.ts","./node-tracker-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Tracker-3.0",
     "tsconfig": "./tsconfig.json"

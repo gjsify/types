@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gdk-3.0.d.ts"],
+    "entryPoints": ["./node-gdk-3.0.d.ts","./node-gdk-3.0-ambient.d.ts","./node-gdk-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Gdk-3.0",
     "tsconfig": "./tsconfig.json"

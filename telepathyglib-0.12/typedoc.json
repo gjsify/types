@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./telepathyglib-0.12.d.ts"],
+    "entryPoints": ["./telepathyglib-0.12.d.ts","./telepathyglib-0.12-ambient.d.ts","./telepathyglib-0.12-import.d.ts"],
     "readme": "./README.md",
     "name": "TelepathyGLib-0.12",
     "tsconfig": "./tsconfig.json"

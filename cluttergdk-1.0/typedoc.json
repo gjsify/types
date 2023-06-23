@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./cluttergdk-1.0.d.ts"],
+    "entryPoints": ["./cluttergdk-1.0.d.ts","./cluttergdk-1.0-ambient.d.ts","./cluttergdk-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "ClutterGdk-1.0",
     "tsconfig": "./tsconfig.json"

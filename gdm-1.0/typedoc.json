@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdm-1.0.d.ts"],
+    "entryPoints": ["./gdm-1.0.d.ts","./gdm-1.0-ambient.d.ts","./gdm-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Gdm-1.0",
     "tsconfig": "./tsconfig.json"

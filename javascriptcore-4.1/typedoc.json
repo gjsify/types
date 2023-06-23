@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./javascriptcore-4.1.d.ts"],
+    "entryPoints": ["./javascriptcore-4.1.d.ts","./javascriptcore-4.1-ambient.d.ts","./javascriptcore-4.1-import.d.ts"],
     "readme": "./README.md",
     "name": "JavaScriptCore-4.1",
     "tsconfig": "./tsconfig.json"

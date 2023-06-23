@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./champlain-0.12.d.ts"],
+    "entryPoints": ["./champlain-0.12.d.ts","./champlain-0.12-ambient.d.ts","./champlain-0.12-import.d.ts"],
     "readme": "./README.md",
     "name": "Champlain-0.12",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gcrui-3.d.ts"],
+    "entryPoints": ["./node-gcrui-3.d.ts","./node-gcrui-3-ambient.d.ts","./node-gcrui-3-import.d.ts"],
     "readme": "./README.md",
     "name": "GcrUi-3",
     "tsconfig": "./tsconfig.json"

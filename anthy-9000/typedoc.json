@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./anthy-9000.d.ts"],
+    "entryPoints": ["./anthy-9000.d.ts","./anthy-9000-ambient.d.ts","./anthy-9000-import.d.ts"],
     "readme": "./README.md",
     "name": "Anthy-9000",
     "tsconfig": "./tsconfig.json"

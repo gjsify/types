@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./cluttergst-3.0.d.ts"],
+    "entryPoints": ["./cluttergst-3.0.d.ts","./cluttergst-3.0-ambient.d.ts","./cluttergst-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "ClutterGst-3.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gl-1.0.d.ts"],
+    "entryPoints": ["./node-gl-1.0.d.ts","./node-gl-1.0-ambient.d.ts","./node-gl-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GL-1.0",
     "tsconfig": "./tsconfig.json"

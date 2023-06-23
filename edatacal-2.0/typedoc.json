@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./edatacal-2.0.d.ts"],
+    "entryPoints": ["./edatacal-2.0.d.ts","./edatacal-2.0-ambient.d.ts","./edatacal-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "EDataCal-2.0",
     "tsconfig": "./tsconfig.json"

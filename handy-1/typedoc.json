@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./handy-1.d.ts"],
+    "entryPoints": ["./handy-1.d.ts","./handy-1-ambient.d.ts","./handy-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Handy-1",
     "tsconfig": "./tsconfig.json"

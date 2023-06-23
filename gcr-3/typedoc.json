@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gcr-3.d.ts"],
+    "entryPoints": ["./gcr-3.d.ts","./gcr-3-ambient.d.ts","./gcr-3-import.d.ts"],
     "readme": "./README.md",
     "name": "Gcr-3",
     "tsconfig": "./tsconfig.json"

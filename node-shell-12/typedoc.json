@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-shell-12.d.ts"],
+    "entryPoints": ["./node-shell-12.d.ts","./node-shell-12-ambient.d.ts","./node-shell-12-import.d.ts"],
     "readme": "./README.md",
     "name": "Shell-12",
     "tsconfig": "./tsconfig.json"

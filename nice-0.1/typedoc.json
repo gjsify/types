@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./nice-0.1.d.ts"],
+    "entryPoints": ["./nice-0.1.d.ts","./nice-0.1-ambient.d.ts","./nice-0.1-import.d.ts"],
     "readme": "./README.md",
     "name": "Nice-0.1",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./vpg-1.d.ts"],
+    "entryPoints": ["./vpg-1.d.ts","./vpg-1-ambient.d.ts","./vpg-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Vpg-1",
     "tsconfig": "./tsconfig.json"

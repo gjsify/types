@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./pangoot-1.0.d.ts"],
+    "entryPoints": ["./pangoot-1.0.d.ts","./pangoot-1.0-ambient.d.ts","./pangoot-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "PangoOT-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdl-3.d.ts"],
+    "entryPoints": ["./gdl-3.d.ts","./gdl-3-ambient.d.ts","./gdl-3-import.d.ts"],
     "readme": "./README.md",
     "name": "Gdl-3",
     "tsconfig": "./tsconfig.json"

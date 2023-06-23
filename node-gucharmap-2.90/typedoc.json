@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gucharmap-2.90.d.ts"],
+    "entryPoints": ["./node-gucharmap-2.90.d.ts","./node-gucharmap-2.90-ambient.d.ts","./node-gucharmap-2.90-import.d.ts"],
     "readme": "./README.md",
     "name": "Gucharmap-2.90",
     "tsconfig": "./tsconfig.json"

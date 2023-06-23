@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gspell-1.d.ts"],
+    "entryPoints": ["./gspell-1.d.ts","./gspell-1-ambient.d.ts","./gspell-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Gspell-1",
     "tsconfig": "./tsconfig.json"

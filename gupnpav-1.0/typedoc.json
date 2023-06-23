@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gupnpav-1.0.d.ts"],
+    "entryPoints": ["./gupnpav-1.0.d.ts","./gupnpav-1.0-ambient.d.ts","./gupnpav-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GUPnPAV-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./plasma-1.0.d.ts"],
+    "entryPoints": ["./plasma-1.0.d.ts","./plasma-1.0-ambient.d.ts","./plasma-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Plasma-1.0",
     "tsconfig": "./tsconfig.json"

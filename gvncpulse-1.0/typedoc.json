@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gvncpulse-1.0.d.ts"],
+    "entryPoints": ["./gvncpulse-1.0.d.ts","./gvncpulse-1.0-ambient.d.ts","./gvncpulse-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GVncPulse-1.0",
     "tsconfig": "./tsconfig.json"

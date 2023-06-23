@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./arrowdataset-1.0.d.ts"],
+    "entryPoints": ["./arrowdataset-1.0.d.ts","./arrowdataset-1.0-ambient.d.ts","./arrowdataset-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "ArrowDataset-1.0",
     "tsconfig": "./tsconfig.json"

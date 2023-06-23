@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./libmsi-1.0.d.ts"],
+    "entryPoints": ["./libmsi-1.0.d.ts","./libmsi-1.0-ambient.d.ts","./libmsi-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Libmsi-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstallocators-1.0.d.ts"],
+    "entryPoints": ["./gstallocators-1.0.d.ts","./gstallocators-1.0-ambient.d.ts","./gstallocators-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstAllocators-1.0",
     "tsconfig": "./tsconfig.json"

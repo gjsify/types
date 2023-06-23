@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./wnck-3.0.d.ts"],
+    "entryPoints": ["./wnck-3.0.d.ts","./wnck-3.0-ambient.d.ts","./wnck-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Wnck-3.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gedit-3.0.d.ts"],
+    "entryPoints": ["./gedit-3.0.d.ts","./gedit-3.0-ambient.d.ts","./gedit-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Gedit-3.0",
     "tsconfig": "./tsconfig.json"

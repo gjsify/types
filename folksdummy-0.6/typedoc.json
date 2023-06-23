@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./folksdummy-0.6.d.ts"],
+    "entryPoints": ["./folksdummy-0.6.d.ts","./folksdummy-0.6-ambient.d.ts","./folksdummy-0.6-import.d.ts"],
     "readme": "./README.md",
     "name": "FolksDummy-0.6",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-bamf-3.d.ts"],
+    "entryPoints": ["./node-bamf-3.d.ts","./node-bamf-3-ambient.d.ts","./node-bamf-3-import.d.ts"],
     "readme": "./README.md",
     "name": "Bamf-3",
     "tsconfig": "./tsconfig.json"

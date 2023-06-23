@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./polkit-1.0.d.ts"],
+    "entryPoints": ["./polkit-1.0.d.ts","./polkit-1.0-ambient.d.ts","./polkit-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Polkit-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-appindicator3-0.1.d.ts"],
+    "entryPoints": ["./node-appindicator3-0.1.d.ts","./node-appindicator3-0.1-ambient.d.ts","./node-appindicator3-0.1-import.d.ts"],
     "readme": "./README.md",
     "name": "AppIndicator3-0.1",
     "tsconfig": "./tsconfig.json"

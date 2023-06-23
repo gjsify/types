@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ianjuta-3.0.d.ts"],
+    "entryPoints": ["./ianjuta-3.0.d.ts","./ianjuta-3.0-ambient.d.ts","./ianjuta-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "IAnjuta-3.0",
     "tsconfig": "./tsconfig.json"

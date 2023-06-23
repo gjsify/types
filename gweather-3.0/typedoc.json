@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gweather-3.0.d.ts"],
+    "entryPoints": ["./gweather-3.0.d.ts","./gweather-3.0-ambient.d.ts","./gweather-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GWeather-3.0",
     "tsconfig": "./tsconfig.json"

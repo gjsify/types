@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gupnpdlnagst-2.0.d.ts"],
+    "entryPoints": ["./node-gupnpdlnagst-2.0.d.ts","./node-gupnpdlnagst-2.0-ambient.d.ts","./node-gupnpdlnagst-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GUPnPDLNAGst-2.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-socialwebclient-0.25.d.ts"],
+    "entryPoints": ["./node-socialwebclient-0.25.d.ts","./node-socialwebclient-0.25-ambient.d.ts","./node-socialwebclient-0.25-import.d.ts"],
     "readme": "./README.md",
     "name": "SocialWebClient-0.25",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-graphene-1.0.d.ts"],
+    "entryPoints": ["./node-graphene-1.0.d.ts","./node-graphene-1.0-ambient.d.ts","./node-graphene-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Graphene-1.0",
     "tsconfig": "./tsconfig.json"

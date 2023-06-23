@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./bump-0.1.d.ts"],
+    "entryPoints": ["./bump-0.1.d.ts","./bump-0.1-ambient.d.ts","./bump-0.1-import.d.ts"],
     "readme": "./README.md",
     "name": "Bump-0.1",
     "tsconfig": "./tsconfig.json"

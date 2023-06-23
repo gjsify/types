@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./shew-0.d.ts"],
+    "entryPoints": ["./shew-0.d.ts","./shew-0-ambient.d.ts","./shew-0-import.d.ts"],
     "readme": "./README.md",
     "name": "Shew-0",
     "tsconfig": "./tsconfig.json"

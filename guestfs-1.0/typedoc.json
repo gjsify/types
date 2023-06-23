@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./guestfs-1.0.d.ts"],
+    "entryPoints": ["./guestfs-1.0.d.ts","./guestfs-1.0-ambient.d.ts","./guestfs-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Guestfs-1.0",
     "tsconfig": "./tsconfig.json"

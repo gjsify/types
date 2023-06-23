@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./webkit2-5.0.d.ts"],
+    "entryPoints": ["./webkit2-5.0.d.ts","./webkit2-5.0-ambient.d.ts","./webkit2-5.0-import.d.ts"],
     "readme": "./README.md",
     "name": "WebKit2-5.0",
     "tsconfig": "./tsconfig.json"

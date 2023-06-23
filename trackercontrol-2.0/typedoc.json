@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./trackercontrol-2.0.d.ts"],
+    "entryPoints": ["./trackercontrol-2.0.d.ts","./trackercontrol-2.0-ambient.d.ts","./trackercontrol-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "TrackerControl-2.0",
     "tsconfig": "./tsconfig.json"

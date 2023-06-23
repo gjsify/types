@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstbadallocators-1.0.d.ts"],
+    "entryPoints": ["./gstbadallocators-1.0.d.ts","./gstbadallocators-1.0-ambient.d.ts","./gstbadallocators-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstBadAllocators-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gsttag-0.10.d.ts"],
+    "entryPoints": ["./node-gsttag-0.10.d.ts","./node-gsttag-0.10-ambient.d.ts","./node-gsttag-0.10-import.d.ts"],
     "readme": "./README.md",
     "name": "GstTag-0.10",
     "tsconfig": "./tsconfig.json"

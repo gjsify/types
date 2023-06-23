@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gstsdp-1.0.d.ts"],
+    "entryPoints": ["./node-gstsdp-1.0.d.ts","./node-gstsdp-1.0-ambient.d.ts","./node-gstsdp-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstSdp-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./xkl-1.0.d.ts"],
+    "entryPoints": ["./xkl-1.0.d.ts","./xkl-1.0-ambient.d.ts","./xkl-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Xkl-1.0",
     "tsconfig": "./tsconfig.json"

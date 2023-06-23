@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gnomedesktop-3.0.d.ts"],
+    "entryPoints": ["./gnomedesktop-3.0.d.ts","./gnomedesktop-3.0-ambient.d.ts","./gnomedesktop-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GnomeDesktop-3.0",
     "tsconfig": "./tsconfig.json"

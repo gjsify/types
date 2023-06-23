@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-folkslibsocialweb-0.6.d.ts"],
+    "entryPoints": ["./node-folkslibsocialweb-0.6.d.ts","./node-folkslibsocialweb-0.6-ambient.d.ts","./node-folkslibsocialweb-0.6-import.d.ts"],
     "readme": "./README.md",
     "name": "FolksLibsocialweb-0.6",
     "tsconfig": "./tsconfig.json"

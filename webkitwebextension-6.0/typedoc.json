@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./webkitwebextension-6.0.d.ts"],
+    "entryPoints": ["./webkitwebextension-6.0.d.ts","./webkitwebextension-6.0-ambient.d.ts","./webkitwebextension-6.0-import.d.ts"],
     "readme": "./README.md",
     "name": "WebKitWebExtension-6.0",
     "tsconfig": "./tsconfig.json"

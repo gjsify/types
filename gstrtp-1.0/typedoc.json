@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstrtp-1.0.d.ts"],
+    "entryPoints": ["./gstrtp-1.0.d.ts","./gstrtp-1.0-ambient.d.ts","./gstrtp-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstRtp-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./zeitgeist-2.0.d.ts"],
+    "entryPoints": ["./zeitgeist-2.0.d.ts","./zeitgeist-2.0-ambient.d.ts","./zeitgeist-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Zeitgeist-2.0",
     "tsconfig": "./tsconfig.json"

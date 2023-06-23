@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gsound-1.0.d.ts"],
+    "entryPoints": ["./node-gsound-1.0.d.ts","./node-gsound-1.0-ambient.d.ts","./node-gsound-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GSound-1.0",
     "tsconfig": "./tsconfig.json"

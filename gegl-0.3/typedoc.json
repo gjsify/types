@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gegl-0.3.d.ts"],
+    "entryPoints": ["./gegl-0.3.d.ts","./gegl-0.3-ambient.d.ts","./gegl-0.3-import.d.ts"],
     "readme": "./README.md",
     "name": "Gegl-0.3",
     "tsconfig": "./tsconfig.json"

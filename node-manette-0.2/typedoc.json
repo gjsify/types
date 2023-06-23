@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-manette-0.2.d.ts"],
+    "entryPoints": ["./node-manette-0.2.d.ts","./node-manette-0.2-ambient.d.ts","./node-manette-0.2-import.d.ts"],
     "readme": "./README.md",
     "name": "Manette-0.2",
     "tsconfig": "./tsconfig.json"

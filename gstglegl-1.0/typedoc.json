@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstglegl-1.0.d.ts"],
+    "entryPoints": ["./gstglegl-1.0.d.ts","./gstglegl-1.0-ambient.d.ts","./gstglegl-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstGLEGL-1.0",
     "tsconfig": "./tsconfig.json"

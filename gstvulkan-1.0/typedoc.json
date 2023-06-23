@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstvulkan-1.0.d.ts"],
+    "entryPoints": ["./gstvulkan-1.0.d.ts","./gstvulkan-1.0-ambient.d.ts","./gstvulkan-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstVulkan-1.0",
     "tsconfig": "./tsconfig.json"

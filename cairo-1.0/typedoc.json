@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./cairo-1.0.d.ts"],
+    "entryPoints": ["./cairo-1.0.d.ts","./cairo-1.0-ambient.d.ts","./cairo-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "cairo-1.0",
     "tsconfig": "./tsconfig.json"

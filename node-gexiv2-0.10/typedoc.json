@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gexiv2-0.10.d.ts"],
+    "entryPoints": ["./node-gexiv2-0.10.d.ts","./node-gexiv2-0.10-ambient.d.ts","./node-gexiv2-0.10-import.d.ts"],
     "readme": "./README.md",
     "name": "GExiv2-0.10",
     "tsconfig": "./tsconfig.json"

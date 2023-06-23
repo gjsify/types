@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-javascriptcore-5.0.d.ts"],
+    "entryPoints": ["./node-javascriptcore-5.0.d.ts","./node-javascriptcore-5.0-ambient.d.ts","./node-javascriptcore-5.0-import.d.ts"],
     "readme": "./README.md",
     "name": "JavaScriptCore-5.0",
     "tsconfig": "./tsconfig.json"

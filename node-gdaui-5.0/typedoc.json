@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gdaui-5.0.d.ts"],
+    "entryPoints": ["./node-gdaui-5.0.d.ts","./node-gdaui-5.0-ambient.d.ts","./node-gdaui-5.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Gdaui-5.0",
     "tsconfig": "./tsconfig.json"

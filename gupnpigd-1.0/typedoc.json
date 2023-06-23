@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gupnpigd-1.0.d.ts"],
+    "entryPoints": ["./gupnpigd-1.0.d.ts","./gupnpigd-1.0-ambient.d.ts","./gupnpigd-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GUPnPIgd-1.0",
     "tsconfig": "./tsconfig.json"

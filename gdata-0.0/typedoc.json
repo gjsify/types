@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdata-0.0.d.ts"],
+    "entryPoints": ["./gdata-0.0.d.ts","./gdata-0.0-ambient.d.ts","./gdata-0.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GData-0.0",
     "tsconfig": "./tsconfig.json"

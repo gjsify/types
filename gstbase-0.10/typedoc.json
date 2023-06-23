@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstbase-0.10.d.ts"],
+    "entryPoints": ["./gstbase-0.10.d.ts","./gstbase-0.10-ambient.d.ts","./gstbase-0.10-import.d.ts"],
     "readme": "./README.md",
     "name": "GstBase-0.10",
     "tsconfig": "./tsconfig.json"

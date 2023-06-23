@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-telepathylogger-0.2.d.ts"],
+    "entryPoints": ["./node-telepathylogger-0.2.d.ts","./node-telepathylogger-0.2-ambient.d.ts","./node-telepathylogger-0.2-import.d.ts"],
     "readme": "./README.md",
     "name": "TelepathyLogger-0.2",
     "tsconfig": "./tsconfig.json"

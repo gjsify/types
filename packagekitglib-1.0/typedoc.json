@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./packagekitglib-1.0.d.ts"],
+    "entryPoints": ["./packagekitglib-1.0.d.ts","./packagekitglib-1.0-ambient.d.ts","./packagekitglib-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "PackageKitGlib-1.0",
     "tsconfig": "./tsconfig.json"

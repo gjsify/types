@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gjsdbus-1.0.d.ts"],
+    "entryPoints": ["./node-gjsdbus-1.0.d.ts","./node-gjsdbus-1.0-ambient.d.ts","./node-gjsdbus-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GjsDBus-1.0",
     "tsconfig": "./tsconfig.json"

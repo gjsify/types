@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-vsqlite-1.d.ts"],
+    "entryPoints": ["./node-vsqlite-1.d.ts","./node-vsqlite-1-ambient.d.ts","./node-vsqlite-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Vsqlite-1",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gstwebrtc-1.0.d.ts"],
+    "entryPoints": ["./node-gstwebrtc-1.0.d.ts","./node-gstwebrtc-1.0-ambient.d.ts","./node-gstwebrtc-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstWebRTC-1.0",
     "tsconfig": "./tsconfig.json"

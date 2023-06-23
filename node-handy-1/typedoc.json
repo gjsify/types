@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-handy-1.d.ts"],
+    "entryPoints": ["./node-handy-1.d.ts","./node-handy-1-ambient.d.ts","./node-handy-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Handy-1",
     "tsconfig": "./tsconfig.json"

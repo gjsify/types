@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gxps-0.1.d.ts"],
+    "entryPoints": ["./node-gxps-0.1.d.ts","./node-gxps-0.1-ambient.d.ts","./node-gxps-0.1-import.d.ts"],
     "readme": "./README.md",
     "name": "GXPS-0.1",
     "tsconfig": "./tsconfig.json"

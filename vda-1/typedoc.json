@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./vda-1.d.ts"],
+    "entryPoints": ["./vda-1.d.ts","./vda-1-ambient.d.ts","./vda-1-import.d.ts"],
     "readme": "./README.md",
     "name": "Vda-1",
     "tsconfig": "./tsconfig.json"

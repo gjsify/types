@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gjs.d.ts"],
+    "entryPoints": ["./gjs.d.ts","./ambient.d.ts","./cairo.d.ts","./gettext.d.ts","./system.d.ts","./dom.d.ts"],
     "readme": "./README.md",
     "name": "Gjs",
     "tsconfig": "./tsconfig.json"

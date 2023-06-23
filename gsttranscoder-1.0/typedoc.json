@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gsttranscoder-1.0.d.ts"],
+    "entryPoints": ["./gsttranscoder-1.0.d.ts","./gsttranscoder-1.0-ambient.d.ts","./gsttranscoder-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstTranscoder-1.0",
     "tsconfig": "./tsconfig.json"

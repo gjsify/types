@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./poppler-0.18.d.ts"],
+    "entryPoints": ["./poppler-0.18.d.ts","./poppler-0.18-ambient.d.ts","./poppler-0.18-import.d.ts"],
     "readme": "./README.md",
     "name": "Poppler-0.18",
     "tsconfig": "./tsconfig.json"

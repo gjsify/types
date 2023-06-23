@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./babl-0.1.d.ts"],
+    "entryPoints": ["./babl-0.1.d.ts","./babl-0.1-ambient.d.ts","./babl-0.1-import.d.ts"],
     "readme": "./README.md",
     "name": "Babl-0.1",
     "tsconfig": "./tsconfig.json"

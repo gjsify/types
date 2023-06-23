@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./uhm-0.0.d.ts"],
+    "entryPoints": ["./uhm-0.0.d.ts","./uhm-0.0-ambient.d.ts","./uhm-0.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Uhm-0.0",
     "tsconfig": "./tsconfig.json"

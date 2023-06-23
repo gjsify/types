@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdkpixbuf-2.0.d.ts"],
+    "entryPoints": ["./gdkpixbuf-2.0.d.ts","./gdkpixbuf-2.0-ambient.d.ts","./gdkpixbuf-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GdkPixbuf-2.0",
     "tsconfig": "./tsconfig.json"

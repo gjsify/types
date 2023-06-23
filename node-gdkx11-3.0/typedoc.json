@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gdkx11-3.0.d.ts"],
+    "entryPoints": ["./node-gdkx11-3.0.d.ts","./node-gdkx11-3.0-ambient.d.ts","./node-gdkx11-3.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GdkX11-3.0",
     "tsconfig": "./tsconfig.json"

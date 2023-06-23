@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./mbim-1.0.d.ts"],
+    "entryPoints": ["./mbim-1.0.d.ts","./mbim-1.0-ambient.d.ts","./mbim-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Mbim-1.0",
     "tsconfig": "./tsconfig.json"

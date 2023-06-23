@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./pangoxft-1.0.d.ts"],
+    "entryPoints": ["./pangoxft-1.0.d.ts","./pangoxft-1.0-ambient.d.ts","./pangoxft-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "PangoXft-1.0",
     "tsconfig": "./tsconfig.json"

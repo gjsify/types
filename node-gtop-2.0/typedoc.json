@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gtop-2.0.d.ts"],
+    "entryPoints": ["./node-gtop-2.0.d.ts","./node-gtop-2.0-ambient.d.ts","./node-gtop-2.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GTop-2.0",
     "tsconfig": "./tsconfig.json"

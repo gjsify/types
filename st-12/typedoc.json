@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./st-12.d.ts"],
+    "entryPoints": ["./st-12.d.ts","./st-12-ambient.d.ts","./st-12-import.d.ts"],
     "readme": "./README.md",
     "name": "St-12",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./webkit2-4.1.d.ts"],
+    "entryPoints": ["./webkit2-4.1.d.ts","./webkit2-4.1-ambient.d.ts","./webkit2-4.1-import.d.ts"],
     "readme": "./README.md",
     "name": "WebKit2-4.1",
     "tsconfig": "./tsconfig.json"

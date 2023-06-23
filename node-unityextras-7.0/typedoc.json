@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-unityextras-7.0.d.ts"],
+    "entryPoints": ["./node-unityextras-7.0.d.ts","./node-unityextras-7.0-ambient.d.ts","./node-unityextras-7.0-import.d.ts"],
     "readme": "./README.md",
     "name": "UnityExtras-7.0",
     "tsconfig": "./tsconfig.json"

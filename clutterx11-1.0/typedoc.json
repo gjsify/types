@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./clutterx11-1.0.d.ts"],
+    "entryPoints": ["./clutterx11-1.0.d.ts","./clutterx11-1.0-ambient.d.ts","./clutterx11-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "ClutterX11-1.0",
     "tsconfig": "./tsconfig.json"

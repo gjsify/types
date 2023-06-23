@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-libvirtgconfig-1.0.d.ts"],
+    "entryPoints": ["./node-libvirtgconfig-1.0.d.ts","./node-libvirtgconfig-1.0-ambient.d.ts","./node-libvirtgconfig-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "LibvirtGConfig-1.0",
     "tsconfig": "./tsconfig.json"

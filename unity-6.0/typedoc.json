@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./unity-6.0.d.ts"],
+    "entryPoints": ["./unity-6.0.d.ts","./unity-6.0-ambient.d.ts","./unity-6.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Unity-6.0",
     "tsconfig": "./tsconfig.json"

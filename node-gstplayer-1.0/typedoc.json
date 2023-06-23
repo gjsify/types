@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gstplayer-1.0.d.ts"],
+    "entryPoints": ["./node-gstplayer-1.0.d.ts","./node-gstplayer-1.0-ambient.d.ts","./node-gstplayer-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "GstPlayer-1.0",
     "tsconfig": "./tsconfig.json"

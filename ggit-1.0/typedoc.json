@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ggit-1.0.d.ts"],
+    "entryPoints": ["./ggit-1.0.d.ts","./ggit-1.0-ambient.d.ts","./ggit-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Ggit-1.0",
     "tsconfig": "./tsconfig.json"

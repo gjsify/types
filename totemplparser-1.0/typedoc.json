@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./totemplparser-1.0.d.ts"],
+    "entryPoints": ["./totemplparser-1.0.d.ts","./totemplparser-1.0-ambient.d.ts","./totemplparser-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "TotemPlParser-1.0",
     "tsconfig": "./tsconfig.json"

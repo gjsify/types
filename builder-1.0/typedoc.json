@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./builder-1.0.d.ts"],
+    "entryPoints": ["./builder-1.0.d.ts","./builder-1.0-ambient.d.ts","./builder-1.0-import.d.ts"],
     "readme": "./README.md",
     "name": "Builder-1.0",
     "tsconfig": "./tsconfig.json"

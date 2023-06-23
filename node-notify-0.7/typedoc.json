@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-notify-0.7.d.ts"],
+    "entryPoints": ["./node-notify-0.7.d.ts","./node-notify-0.7-ambient.d.ts","./node-notify-0.7-import.d.ts"],
     "readme": "./README.md",
     "name": "Notify-0.7",
     "tsconfig": "./tsconfig.json"
