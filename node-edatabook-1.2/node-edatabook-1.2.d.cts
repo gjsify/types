@@ -2366,6 +2366,11 @@ export interface BookMetaBackend {
      */
     setEverConnected(value: boolean): void
     /**
+     * Sets the `sync_tag` for the `meta_backend`.
+     * @param syncTag a sync tag to set, or %NULL to unset the old one
+     */
+    setSyncTag(syncTag: string | null): void
+    /**
      * Splits `objects` into created/modified/removed lists according to current local
      * cache content. Only the `out_removed_objects` can be %NULL, others cannot.
      * The function modifies `objects` by moving its 'data' to corresponding out

@@ -1230,17 +1230,17 @@ export interface ExpressionContainer extends Gio.ListModel {
 
     // Overloads of add
 
-    add(item: any | null): boolean
+    add(item: any): boolean
     remove_at(index: number): Expression
 
     // Overloads of remove_at
 
-    remove_at(index: number): any | null
+    remove_at(index: number): any
     remove(exp: Expression): Expression
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
+    remove(item: any): boolean
     get_object(position: number): GObject.Object | null
     find(exp: Expression): Expression | null
     find_named(name: string | null): Expression | null
@@ -1390,7 +1390,7 @@ export interface ExpressionHashMap {
 
     // Overloads of remove
 
-    remove(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    remove(key: any): [ /* returnType */ boolean, /* value */ any ]
     find_named(name: string | null): Expression
     get_parent(): Expression
     set_parent(value: Expression): void

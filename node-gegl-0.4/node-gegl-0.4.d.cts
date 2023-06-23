@@ -2299,6 +2299,16 @@ export interface Node {
      */
     blitBuffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyssPolicy: AbyssPolicy): void
     /**
+     * Makes a connection between the pads of two nodes, one pad should
+     * be a source pad the other a sink pad, order does not matter.
+     * 
+     * Returns TRUE if the connection was successfully made.
+     * @param aPadName and the pad of the node we want connected.
+     * @param b another node
+     * @param bPadName and its pad to be connected.
+     */
+    connect(aPadName: string | null, b: Node, bPadName: string | null): boolean
+    /**
      * Makes a connection between the pads of two nodes.
      * 
      * Returns TRUE if the connection was successfully made.
@@ -2415,8 +2425,7 @@ export interface Node {
     getProperty<T = unknown>(propertyName: string): T
     isGraph(): boolean
     /**
-     * Synthetic sugar for linking the "output" pad of `source` to the "input"
-     * pad of `sink`.
+     * This is equivalent to gegl_node_connect (source, "output", sink, "input");
      * @param sink the consumer of data.
      */
     link(sink: Node): void
@@ -2477,6 +2486,7 @@ export interface Node {
      * @returns the child.
      */
     removeChild(child: Node): Node
+    setEnumAsString(key: string | null, value: string | null): void
     setPassthrough(passthrough: boolean): void
     /**
      * This is mainly included for language bindings. Using #gegl_node_set is

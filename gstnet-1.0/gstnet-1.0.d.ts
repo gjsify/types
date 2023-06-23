@@ -185,8 +185,8 @@ interface NetClientClock {
 
     address: string | null
     readonly base_time: number
-    bus: Gst.Bus | null
-    readonly internal_clock: Gst.Clock | null
+    bus: Gst.Bus
+    readonly internal_clock: Gst.Clock
     minimum_update_interval: number
     port: number
     qos_dscp: number
@@ -366,7 +366,7 @@ interface NetTimeProvider extends Gio.Initable {
 
     active: boolean
     readonly address: string | null
-    readonly clock: Gst.Clock | null
+    readonly clock: Gst.Clock
     readonly port: number
     qos_dscp: number
 
@@ -631,7 +631,7 @@ interface PtpClock {
 
     readonly domain: number
     readonly grandmaster_clock_id: number
-    readonly internal_clock: Gst.Clock | null
+    readonly internal_clock: Gst.Clock
     readonly master_clock_id: number
 
     // Conflicting properties

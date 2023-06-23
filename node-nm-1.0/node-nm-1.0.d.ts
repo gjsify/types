@@ -2700,7 +2700,7 @@ enum DeviceModemCapabilities {
      */
     LTE,
     /**
-     * modem has 5GNR data capability (Since: 1.36)
+     * modem has 5GNR data capability. Since: 1.36.
      */
     TODO_5GNR,
 }
@@ -3531,6 +3531,7 @@ const ACCESS_POINT_SSID: string | null
 const ACCESS_POINT_STRENGTH: string | null
 const ACCESS_POINT_WPA_FLAGS: string | null
 const ACTIVE_CONNECTION_CONNECTION: string | null
+const ACTIVE_CONNECTION_CONTROLLER: string | null
 const ACTIVE_CONNECTION_DEFAULT: string | null
 const ACTIVE_CONNECTION_DEFAULT6: string | null
 const ACTIVE_CONNECTION_DEVICES: string | null
@@ -4055,15 +4056,18 @@ const SETTING_BOND_OPTION_ALL_SLAVES_ACTIVE: string | null
 const SETTING_BOND_OPTION_ARP_ALL_TARGETS: string | null
 const SETTING_BOND_OPTION_ARP_INTERVAL: string | null
 const SETTING_BOND_OPTION_ARP_IP_TARGET: string | null
+const SETTING_BOND_OPTION_ARP_MISSED_MAX: string | null
 const SETTING_BOND_OPTION_ARP_VALIDATE: string | null
 const SETTING_BOND_OPTION_BALANCE_SLB: string | null
 const SETTING_BOND_OPTION_DOWNDELAY: string | null
 const SETTING_BOND_OPTION_FAIL_OVER_MAC: string | null
+const SETTING_BOND_OPTION_LACP_ACTIVE: string | null
 const SETTING_BOND_OPTION_LACP_RATE: string | null
 const SETTING_BOND_OPTION_LP_INTERVAL: string | null
 const SETTING_BOND_OPTION_MIIMON: string | null
 const SETTING_BOND_OPTION_MIN_LINKS: string | null
 const SETTING_BOND_OPTION_MODE: string | null
+const SETTING_BOND_OPTION_NS_IP6_TARGET: string | null
 const SETTING_BOND_OPTION_NUM_GRAT_ARP: string | null
 const SETTING_BOND_OPTION_NUM_UNSOL_NA: string | null
 const SETTING_BOND_OPTION_PACKETS_PER_SLAVE: string | null
@@ -4075,6 +4079,7 @@ const SETTING_BOND_OPTION_TLB_DYNAMIC_LB: string | null
 const SETTING_BOND_OPTION_UPDELAY: string | null
 const SETTING_BOND_OPTION_USE_CARRIER: string | null
 const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string | null
+const SETTING_BOND_PORT_PRIO: string | null
 const SETTING_BOND_PORT_QUEUE_ID: string | null
 const SETTING_BOND_PORT_SETTING_NAME: string | null
 const SETTING_BOND_SETTING_NAME: string | null
@@ -4180,6 +4185,7 @@ const SETTING_DNS_OPTION_INET6: string | null
 const SETTING_DNS_OPTION_IP6_BYTESTRING: string | null
 const SETTING_DNS_OPTION_IP6_DOTINT: string | null
 const SETTING_DNS_OPTION_NDOTS: string | null
+const SETTING_DNS_OPTION_NO_AAAA: string | null
 const SETTING_DNS_OPTION_NO_CHECK_NAMES: string | null
 const SETTING_DNS_OPTION_NO_IP6_DOTINT: string | null
 const SETTING_DNS_OPTION_NO_RELOAD: string | null
@@ -4197,6 +4203,8 @@ const SETTING_GSM_APN: string | null
 const SETTING_GSM_AUTO_CONFIG: string | null
 const SETTING_GSM_DEVICE_ID: string | null
 const SETTING_GSM_HOME_ONLY: string | null
+const SETTING_GSM_INITIAL_EPS_BEARER_APN: string | null
+const SETTING_GSM_INITIAL_EPS_BEARER_CONFIGURE: string | null
 const SETTING_GSM_MTU: string | null
 const SETTING_GSM_NETWORK_ID: string | null
 const SETTING_GSM_NUMBER: string | null
@@ -4255,6 +4263,7 @@ const SETTING_IP4_CONFIG_METHOD_SHARED: string | null
 const SETTING_IP4_CONFIG_SETTING_NAME: string | null
 const SETTING_IP6_CONFIG_ADDR_GEN_MODE: string | null
 const SETTING_IP6_CONFIG_DHCP_DUID: string | null
+const SETTING_IP6_CONFIG_DHCP_PD_HINT: string | null
 const SETTING_IP6_CONFIG_IP6_PRIVACY: string | null
 /**
  * IPv6 configuration should be automatically determined via a method appropriate
@@ -4320,6 +4329,7 @@ const SETTING_IP_CONFIG_IGNORE_AUTO_ROUTES: string | null
 const SETTING_IP_CONFIG_MAY_FAIL: string | null
 const SETTING_IP_CONFIG_METHOD: string | null
 const SETTING_IP_CONFIG_NEVER_DEFAULT: string | null
+const SETTING_IP_CONFIG_REPLACE_LOCAL_RULE: string | null
 const SETTING_IP_CONFIG_REQUIRED_TIMEOUT: string | null
 const SETTING_IP_CONFIG_ROUTES: string | null
 const SETTING_IP_CONFIG_ROUTE_METRIC: string | null
@@ -4340,6 +4350,11 @@ const SETTING_IP_TUNNEL_REMOTE: string | null
 const SETTING_IP_TUNNEL_SETTING_NAME: string | null
 const SETTING_IP_TUNNEL_TOS: string | null
 const SETTING_IP_TUNNEL_TTL: string | null
+const SETTING_LINK_GRO_MAX_SIZE: string | null
+const SETTING_LINK_GSO_MAX_SEGMENTS: string | null
+const SETTING_LINK_GSO_MAX_SIZE: string | null
+const SETTING_LINK_SETTING_NAME: string | null
+const SETTING_LINK_TX_QUEUE_LENGTH: string | null
 const SETTING_LOOPBACK_MTU: string | null
 const SETTING_LOOPBACK_SETTING_NAME: string | null
 const SETTING_MACSEC_ENCRYPT: string | null
@@ -4818,7 +4833,7 @@ function sriovVfAttributeValidate(name: string | null, value: GLib.Variant): [ /
  * @returns %TRUE if the device capabilities are compatible with the desired @type, %FALSE if they are not.
  */
 function utilsApModeSecurityValid(type: UtilsSecurityType, wifiCaps: DeviceWifiCapabilities): boolean
-function utilsBase64secretDecode(base64Key: string | null, requiredKeyLen: number, outKey: number | null): boolean
+function utilsBase64secretDecode(base64Key: string | null, requiredKeyLen: number): [ /* returnType */ boolean, /* outKey */ number ]
 /**
  * Converts the byte array `src` into a hexadecimal string. If `final_len` is
  * greater than -1, the returned string is terminated at that index
@@ -5599,9 +5614,6 @@ interface UtilsPredicateStr {
 interface VpnIterFunc {
     (key: string | null, value: string | null): void
 }
-interface _ConnectionForEachSecretFunc {
-    (flags: SettingSecretFlags): boolean
-}
 module Connection {
 
     // Signal callback interfaces
@@ -5674,18 +5686,6 @@ interface Connection {
      * @returns %TRUE if the comparison succeeds, %FALSE if it does not
      */
     compare(b: Connection, flags: SettingCompareFlags): boolean
-    /**
-     * Compares two #NMConnection objects for similarity, with comparison behavior
-     * modified by a set of flags.  See nm_setting_compare() for a description of
-     * each flag's behavior.  If the connections differ, settings and keys within
-     * each setting that differ are added to the returned `out_settings` hash table.
-     * No values are returned, only key names.
-     * @param b a second #NMConnection to compare with the first
-     * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
-     * @param outSettings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
-     * @returns %TRUE if the connections contain the same values, %FALSE if they do not
-     */
-    diff(b: Connection, flags: SettingCompareFlags, outSettings: GLib.HashTable): boolean
     /**
      * Print the connection (including secrets!) to stdout. For debugging
      * purposes ONLY, should NOT be used for serialization of the setting,
@@ -5940,9 +5940,9 @@ interface Connection {
      * Retrieves the settings in `connection`.
      * 
      * The returned array is %NULL-terminated.
-     * @returns a   %NULL-terminated array containing every setting of   @connection.   If the connection has no settings, %NULL is returned.
+     * @returns a   %NULL-terminated array containing every setting of @connection.   If the connection has no settings, %NULL is returned.
      */
-    getSettings(): Setting[]
+    getSettings(): Setting[] | null
     /**
      * A shortcut to return the UUID from the connection's #NMSettingConnection.
      * @returns the UUID from the connection's 'connection' setting
@@ -5975,9 +5975,9 @@ interface Connection {
      * intended as a guide to what secrets may be required, because in some
      * circumstances, there is no way to conclusively determine exactly which
      * secrets are needed.
-     * @returns the setting name of the #NMSetting object which has invalid or   missing secrets
+     * @returns the setting name of the #NMSetting object which has   invalid or missing secrets
      */
-    needSecrets(): [ /* returnType */ string | null, /* hints */ string[] ]
+    needSecrets(): [ /* returnType */ string | null, /* hints */ string[] | null ]
     /**
      * Does some basic normalization and fixup of well known inconsistencies
      * and deprecated fields. If the connection was modified in any way,
@@ -6572,6 +6572,11 @@ interface ActiveConnection {
      */
     readonly connection: RemoteConnection
     /**
+     * The controller device if one exists. This replaces the deprecated
+     * "master" property.
+     */
+    readonly controller: Device
+    /**
      * Whether the active connection is the default IPv4 one.
      */
     readonly "default": boolean
@@ -6604,7 +6609,7 @@ interface ActiveConnection {
      */
     readonly ip6Config: IPConfig
     /**
-     * The master device if one exists.
+     * The master device if one exists. Replaced by the "controller" property.
      */
     readonly master: Device
     /**
@@ -6646,6 +6651,12 @@ interface ActiveConnection {
      * @returns the type of the #NMConnection that backs the #NMActiveConnection. This is the internal string used by the connection, and must not be modified.
      */
     getConnectionType(): string | null
+    /**
+     * Gets the controller #NMDevice of the connection. This replaces the
+     * deprecated nm_active_connection_get_master() method.
+     * @returns the controller #NMDevice of the #NMActiveConnection.
+     */
+    getController(): any | null
     /**
      * Whether the active connection is the default IPv4 one (that is, is used for
      * the default IPv4 route and DNS information).
@@ -6747,6 +6758,11 @@ interface ActiveConnection {
     once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::controller", callback: (...args: any[]) => void): number
+    on(sigName: "notify::controller", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::controller", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::controller", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::controller", ...args: any[]): void
     connect(sigName: "notify::default", callback: (...args: any[]) => void): number
     on(sigName: "notify::default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -7333,7 +7349,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param result the result passed to the #GAsyncReadyCallback
      * @returns the new #NMActiveConnection on success, %NULL on   failure, in which case @error will be set.
      */
-    addAndActivateConnection2Finish(result: Gio.AsyncResult): [ /* returnType */ ActiveConnection, /* outResult */ GLib.Variant ]
+    addAndActivateConnection2Finish(result: Gio.AsyncResult): [ /* returnType */ ActiveConnection, /* outResult */ GLib.Variant | null ]
     /**
      * Adds a new connection using the given details (if any) as a template,
      * automatically filling in missing settings with the capabilities of the given
@@ -7371,7 +7387,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param callback callback to be called when the add operation completes
      */
     addConnection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignoreOutResult: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    addConnection2Finish(result: Gio.AsyncResult): [ /* returnType */ RemoteConnection, /* outResult */ GLib.Variant ]
+    addConnection2Finish(result: Gio.AsyncResult): [ /* returnType */ RemoteConnection, /* outResult */ GLib.Variant | null ]
     /**
      * Requests that the remote settings service add the given settings to a new
      * connection.  If `save_to_disk` is %TRUE, the connection is immediately written
@@ -7678,11 +7694,9 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
     getInstanceFlags(): ClientInstanceFlags
     /**
      * Gets NetworkManager current logging level and domains.
-     * @param level return location for logging level string
-     * @param domains return location for log domains string. The string is   a list of domains separated by ","
      * @returns %TRUE on success, %FALSE otherwise
      */
-    getLogging(level: string | null, domains: string | null): boolean
+    getLogging(): [ /* returnType */ boolean, /* level */ string | null, /* domains */ string | null ]
     /**
      * The #NMClient instance is permanently associated with the current
      * thread default #GMainContext, referenced the time when the instance
@@ -18358,9 +18372,9 @@ interface Setting {
      * Gives the name of all set options.
      * @returns    A %NULL terminated array of key names. If no names are present, this returns   %NULL. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
      */
-    optionGetAllNames(): string[]
-    optionGetBoolean(optName: string | null): [ /* returnType */ boolean, /* outValue */ boolean ]
-    optionGetUint32(optName: string | null): [ /* returnType */ boolean, /* outValue */ number ]
+    optionGetAllNames(): string[] | null
+    optionGetBoolean(optName: string | null): [ /* returnType */ boolean, /* outValue */ boolean | null ]
+    optionGetUint32(optName: string | null): [ /* returnType */ boolean, /* outValue */ number | null ]
     /**
      * If `variant` is %NULL, this clears the option if it is set.
      * Otherwise, `variant` is set as the option. If `variant` is
@@ -20576,7 +20590,7 @@ interface SettingBond {
      * The `setting` argument is unused and may be passed as %NULL.
      * @returns a %NULL-terminated array of strings of valid bond options.
      */
-    getValidOptions(): string[]
+    getValidOptions(): string[] | null
     /**
      * Remove the bonding option referenced by `name` from the internal option
      * list.
@@ -20655,6 +20669,13 @@ module SettingBondPort {
         // Own constructor properties of NM-1.0.NM.SettingBondPort
 
         /**
+         * The port priority for bond active port re-selection during failover. A
+         * higher number means a higher priority in selection. The primary port has
+         * the highest priority. This option is only compatible with active-backup,
+         * balance-tlb and balance-alb modes.
+         */
+        prio?: number | null
+        /**
          * The queue ID of this bond port. The maximum value of queue ID is
          * the number of TX queues currently active in device.
          */
@@ -20668,6 +20689,13 @@ interface SettingBondPort {
     // Own properties of NM-1.0.NM.SettingBondPort
 
     /**
+     * The port priority for bond active port re-selection during failover. A
+     * higher number means a higher priority in selection. The primary port has
+     * the highest priority. This option is only compatible with active-backup,
+     * balance-tlb and balance-alb modes.
+     */
+    prio: number
+    /**
      * The queue ID of this bond port. The maximum value of queue ID is
      * the number of TX queues currently active in device.
      */
@@ -20676,10 +20704,16 @@ interface SettingBondPort {
 
     // Owm methods of NM-1.0.NM.SettingBondPort
 
+    getPrio(): number
     getQueueId(): number
 
     // Class property signals of NM-1.0.NM.SettingBondPort
 
+    connect(sigName: "notify::prio", callback: (...args: any[]) => void): number
+    on(sigName: "notify::prio", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::prio", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::prio", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::prio", ...args: any[]): void
     connect(sigName: "notify::queue-id", callback: (...args: any[]) => void): number
     on(sigName: "notify::queue-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::queue-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -21866,9 +21900,7 @@ module SettingConnection {
          */
         permissions?: string[] | null
         /**
-         * %FALSE if the connection can be modified using the provided settings
-         * service's D-Bus interface with the right privileges, or %TRUE if the
-         * connection is read-only and cannot be modified.
+         * This property is deprecated and has no meaning.
          */
         readOnly?: boolean | null
         /**
@@ -21889,12 +21921,13 @@ module SettingConnection {
          * the stable-id can contain placeholders that are substituted dynamically and
          * deterministically depending on the context.
          * 
-         * The stable-id is used for generating IPv6 stable private addresses
-         * with ipv6.addr-gen-mode=stable-privacy. It is also used to seed the
-         * generated cloned MAC address for ethernet.cloned-mac-address=stable
-         * and wifi.cloned-mac-address=stable. It is also used as DHCP client
-         * identifier with ipv4.dhcp-client-id=stable and to derive the DHCP
-         * DUID with ipv6.dhcp-duid=stable-[llt,ll,uuid].
+         * The stable-id is used for generating IPv6 stable private addresses with
+         * ipv6.addr-gen-mode=stable-privacy. It is also used to seed the generated
+         * cloned MAC address for ethernet.cloned-mac-address=stable and
+         * wifi.cloned-mac-address=stable. It is also used to derive the DHCP
+         * client identifier with ipv4.dhcp-client-id=stable, the DHCPv6 DUID with
+         * ipv6.dhcp-duid=stable-[llt,ll,uuid] and the DHCP IAID with
+         * ipv4.iaid=stable and ipv6.iaid=stable.
          * 
          * Note that depending on the context where it is used, other parameters are
          * also seeded into the generation algorithm. For example, a per-host key
@@ -21904,22 +21937,21 @@ module SettingConnection {
          * The per-host key is the identity of your machine and stored in /var/lib/NetworkManager/secret_key.
          * See NetworkManager(8) manual about the secret-key and the host identity.
          * 
-         * The '$' character is treated special to perform dynamic substitutions
-         * at runtime. Currently, supported are "${CONNECTION}", "${DEVICE}", "${MAC}",
-         * "${BOOT}", "${RANDOM}".
-         * These effectively create unique IDs per-connection, per-device, per-boot,
-         * or every time. Note that "${DEVICE}" corresponds to the interface name of the
-         * device and "${MAC}" is the permanent MAC address of the device.
+         * The '$' character is treated special to perform dynamic substitutions at
+         * activation time. Currently, supported are "${CONNECTION}", "${DEVICE}",
+         * "${MAC}", "${BOOT}", "${RANDOM}".  These effectively create unique IDs
+         * per-connection, per-device, per-boot, or every time. The "${CONNECTION}"
+         * uses the profile's connection.uuid, the "${DEVICE}" uses the interface
+         * name of the device and "${MAC}" the permanent MAC address of the device.
          * Any unrecognized patterns following '$' are treated verbatim, however
-         * are reserved for future use. You are thus advised to avoid '$' or
-         * escape it as "$$".
-         * For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to create a unique id for
-         * this connection that changes with every reboot and differs depending on the
-         * interface where the profile activates.
+         * are reserved for future use. You are thus advised to avoid '$' or escape
+         * it as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
+         * create a unique id for this connection that changes with every reboot
+         * and differs depending on the interface where the profile activates.
          * 
          * If the value is unset, a global connection default is consulted. If the
-         * value is still unset, the default is similar to "${CONNECTION}" and uses
-         * a unique, fixed ID for the connection.
+         * value is still unset, the default is "default${CONNECTION}" go generate
+         * an ID unique per connection profile.
          */
         stableId?: string | null
         /**
@@ -22217,9 +22249,7 @@ interface SettingConnection {
      */
     permissions: string[]
     /**
-     * %FALSE if the connection can be modified using the provided settings
-     * service's D-Bus interface with the right privileges, or %TRUE if the
-     * connection is read-only and cannot be modified.
+     * This property is deprecated and has no meaning.
      */
     readOnly: boolean
     /**
@@ -22240,12 +22270,13 @@ interface SettingConnection {
      * the stable-id can contain placeholders that are substituted dynamically and
      * deterministically depending on the context.
      * 
-     * The stable-id is used for generating IPv6 stable private addresses
-     * with ipv6.addr-gen-mode=stable-privacy. It is also used to seed the
-     * generated cloned MAC address for ethernet.cloned-mac-address=stable
-     * and wifi.cloned-mac-address=stable. It is also used as DHCP client
-     * identifier with ipv4.dhcp-client-id=stable and to derive the DHCP
-     * DUID with ipv6.dhcp-duid=stable-[llt,ll,uuid].
+     * The stable-id is used for generating IPv6 stable private addresses with
+     * ipv6.addr-gen-mode=stable-privacy. It is also used to seed the generated
+     * cloned MAC address for ethernet.cloned-mac-address=stable and
+     * wifi.cloned-mac-address=stable. It is also used to derive the DHCP
+     * client identifier with ipv4.dhcp-client-id=stable, the DHCPv6 DUID with
+     * ipv6.dhcp-duid=stable-[llt,ll,uuid] and the DHCP IAID with
+     * ipv4.iaid=stable and ipv6.iaid=stable.
      * 
      * Note that depending on the context where it is used, other parameters are
      * also seeded into the generation algorithm. For example, a per-host key
@@ -22255,22 +22286,21 @@ interface SettingConnection {
      * The per-host key is the identity of your machine and stored in /var/lib/NetworkManager/secret_key.
      * See NetworkManager(8) manual about the secret-key and the host identity.
      * 
-     * The '$' character is treated special to perform dynamic substitutions
-     * at runtime. Currently, supported are "${CONNECTION}", "${DEVICE}", "${MAC}",
-     * "${BOOT}", "${RANDOM}".
-     * These effectively create unique IDs per-connection, per-device, per-boot,
-     * or every time. Note that "${DEVICE}" corresponds to the interface name of the
-     * device and "${MAC}" is the permanent MAC address of the device.
+     * The '$' character is treated special to perform dynamic substitutions at
+     * activation time. Currently, supported are "${CONNECTION}", "${DEVICE}",
+     * "${MAC}", "${BOOT}", "${RANDOM}".  These effectively create unique IDs
+     * per-connection, per-device, per-boot, or every time. The "${CONNECTION}"
+     * uses the profile's connection.uuid, the "${DEVICE}" uses the interface
+     * name of the device and "${MAC}" the permanent MAC address of the device.
      * Any unrecognized patterns following '$' are treated verbatim, however
-     * are reserved for future use. You are thus advised to avoid '$' or
-     * escape it as "$$".
-     * For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to create a unique id for
-     * this connection that changes with every reboot and differs depending on the
-     * interface where the profile activates.
+     * are reserved for future use. You are thus advised to avoid '$' or escape
+     * it as "$$".  For example, set it to "${CONNECTION}-${BOOT}-${DEVICE}" to
+     * create a unique id for this connection that changes with every reboot
+     * and differs depending on the interface where the profile activates.
      * 
      * If the value is unset, a global connection default is consulted. If the
-     * value is still unset, the default is similar to "${CONNECTION}" and uses
-     * a unique, fixed ID for the connection.
+     * value is still unset, the default is "default${CONNECTION}" go generate
+     * an ID unique per connection profile.
      */
     stableId: string | null
     /**
@@ -23335,6 +23365,18 @@ module SettingGsm {
          */
         homeOnly?: boolean | null
         /**
+         * For LTE modems, this sets the APN for the initial EPS bearer that is set
+         * up when attaching to the network.  Setting this parameter implies
+         * initial-eps-bearer-configure to be TRUE.
+         */
+        initialEpsBearerApn?: string | null
+        /**
+         * For LTE modems, this setting determines whether the initial EPS bearer
+         * shall be configured when bringing up the connection.  It is inferred TRUE
+         * if initial-eps-bearer-apn is set.
+         */
+        initialEpsBearerConfigure?: boolean | null
+        /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
          */
@@ -23429,6 +23471,18 @@ interface SettingGsm {
      */
     homeOnly: boolean
     /**
+     * For LTE modems, this sets the APN for the initial EPS bearer that is set
+     * up when attaching to the network.  Setting this parameter implies
+     * initial-eps-bearer-configure to be TRUE.
+     */
+    initialEpsBearerApn: string | null
+    /**
+     * For LTE modems, this setting determines whether the initial EPS bearer
+     * shall be configured when bringing up the connection.  It is inferred TRUE
+     * if initial-eps-bearer-apn is set.
+     */
+    initialEpsBearerConfigure: boolean
+    /**
      * If non-zero, only transmit packets of the specified size or smaller,
      * breaking larger packets up into multiple frames.
      */
@@ -23495,6 +23549,8 @@ interface SettingGsm {
     getAutoConfig(): boolean
     getDeviceId(): string | null
     getHomeOnly(): boolean
+    getInitialEpsApn(): string | null
+    getInitialEpsConfig(): boolean
     getMtu(): number
     getNetworkId(): string | null
     getNumber(): string | null
@@ -23528,6 +23584,16 @@ interface SettingGsm {
     once(sigName: "notify::home-only", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::home-only", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::home-only", ...args: any[]): void
+    connect(sigName: "notify::initial-eps-bearer-apn", callback: (...args: any[]) => void): number
+    on(sigName: "notify::initial-eps-bearer-apn", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::initial-eps-bearer-apn", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::initial-eps-bearer-apn", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::initial-eps-bearer-apn", ...args: any[]): void
+    connect(sigName: "notify::initial-eps-bearer-configure", callback: (...args: any[]) => void): number
+    on(sigName: "notify::initial-eps-bearer-configure", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::initial-eps-bearer-configure", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::initial-eps-bearer-configure", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::initial-eps-bearer-configure", ...args: any[]): void
     connect(sigName: "notify::mtu", callback: (...args: any[]) => void): number
     on(sigName: "notify::mtu", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::mtu", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -24124,6 +24190,11 @@ interface SettingIP4Config {
     once(sigName: "notify::never-default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::never-default", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::never-default", ...args: any[]): void
+    connect(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): number
+    on(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::replace-local-rule", ...args: any[]): void
     connect(sigName: "notify::required-timeout", callback: (...args: any[]) => void): number
     on(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -24194,37 +24265,42 @@ module SettingIP6Config {
         // Own constructor properties of NM-1.0.NM.SettingIP6Config
 
         /**
-         * Configure method for creating the address for use with RFC4862 IPv6
-         * Stateless Address Autoconfiguration. The permitted values are:
-         * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_EUI64,
+         * Configure the method for creating the IPv6 interface identifier of
+         * addresses for RFC4862 IPv6 Stateless Address Autoconfiguration and IPv6
+         * Link Local.
+         * 
+         * The permitted values are: %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_EUI64,
          * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_STABLE_PRIVACY.
-         * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT_OR_EUI64
-         * or %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT.
+         * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT_OR_EUI64 or
+         * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT.
          * 
-         * If the property is set to EUI64, the addresses will be generated
-         * using the interface tokens derived from hardware address. This makes
-         * the host part of the address to stay constant, making it possible
-         * to track host's presence when it changes networks. The address changes
-         * when the interface hardware is replaced.
+         * If the property is set to "eui64", the addresses will be generated using
+         * the interface token derived from the hardware address. This makes the
+         * host part of the address constant, making it possible to track the
+         * host's presence when it changes networks. The address changes when the
+         * interface hardware is replaced. If a duplicate address is detected,
+         * there is no fallback to generate another address. When configured, the
+         * "ipv6.token" is used instead of the MAC address to generate addresses
+         * for stateless autoconfiguration.
          * 
-         * The value of stable-privacy enables use of cryptographically
-         * secure hash of a secret host-specific key along with the connection's
-         * stable-id and the network address as specified by RFC7217.
-         * This makes it impossible to use the address track host's presence,
-         * and makes the address stable when the network interface hardware is
-         * replaced.
+         * If the property is set to "stable-privacy", the interface identifier is
+         * generated as specified by RFC7217. This works by hashing a host specific
+         * key (see NetworkManager(8) manual), the interface name, the connection's
+         * "connection.stable-id" property and the address prefix.  This improves
+         * privacy by making it harder to use the address to track the host's
+         * presence as every prefix and network has a different identifier. Also,
+         * the address is stable when the network interface hardware is replaced.
          * 
-         * The special values "default" and "default-or-eui64" will fallback to the global
-         * connection default in as documented in NetworkManager.conf(5) manual. If the
-         * global default is not specified, the fallback value is "stable-privacy"
-         * or "eui64", respectively.
+         * The special values "default" and "default-or-eui64" will fallback to the
+         * global connection default as documented in the NetworkManager.conf(5)
+         * manual. If the global default is not specified, the fallback value is
+         * "stable-privacy" or "eui64", respectively.
          * 
-         * For libnm, the property defaults to "default" since 1.40.
-         * Previously it defaulted to "stable-privacy".
-         * On D-Bus, the absence of an addr-gen-mode setting equals
-         * "default". For keyfile plugin, the absence of the setting
-         * on disk means "default-or-eui64" so that the property doesn't change on upgrade
-         * from older versions.
+         * For libnm, the property defaults to "default" since 1.40.  Previously it
+         * used to default to "stable-privacy".  On D-Bus, the absence of an
+         * addr-gen-mode setting equals "default". For keyfile plugin, the absence
+         * of the setting on disk means "default-or-eui64" so that the property
+         * doesn't change on upgrade from older versions.
          * 
          * Note that this setting is distinct from the Privacy Extensions as
          * configured by "ip6-privacy" property and it does not affect the
@@ -24264,6 +24340,14 @@ module SettingIP6Config {
          */
         dhcpDuid?: string | null
         /**
+         * A IPv6 address followed by a slash and a prefix length. If set, the value is
+         * sent to the DHCPv6 server as hint indicating the prefix delegation (IA_PD) we
+         * want to receive.
+         * To only hint a prefix length without prefix, set the address part to the
+         * zero address (for example "::/60").
+         */
+        dhcpPdHint?: string | null
+        /**
          * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
          * enabled, it makes the kernel generate a temporary IPv6 address in
          * addition to the public one generated from MAC address via modified
@@ -24301,6 +24385,10 @@ module SettingIP6Config {
         /**
          * Configure the token for draft-chown-6man-tokenised-ipv6-identifiers-02
          * IPv6 tokenized interface identifiers. Useful with eui64 addr-gen-mode.
+         * 
+         * When set, the token is used as IPv6 interface identifier instead of the
+         * hardware address. This only applies to addresses from stateless
+         * autoconfiguration, not to IPv6 link local addresses.
          */
         token?: string | null
     }
@@ -24312,37 +24400,42 @@ interface SettingIP6Config {
     // Own properties of NM-1.0.NM.SettingIP6Config
 
     /**
-     * Configure method for creating the address for use with RFC4862 IPv6
-     * Stateless Address Autoconfiguration. The permitted values are:
-     * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_EUI64,
+     * Configure the method for creating the IPv6 interface identifier of
+     * addresses for RFC4862 IPv6 Stateless Address Autoconfiguration and IPv6
+     * Link Local.
+     * 
+     * The permitted values are: %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_EUI64,
      * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_STABLE_PRIVACY.
-     * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT_OR_EUI64
-     * or %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT.
+     * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT_OR_EUI64 or
+     * %NM_SETTING_IP6_CONFIG_ADDR_GEN_MODE_DEFAULT.
      * 
-     * If the property is set to EUI64, the addresses will be generated
-     * using the interface tokens derived from hardware address. This makes
-     * the host part of the address to stay constant, making it possible
-     * to track host's presence when it changes networks. The address changes
-     * when the interface hardware is replaced.
+     * If the property is set to "eui64", the addresses will be generated using
+     * the interface token derived from the hardware address. This makes the
+     * host part of the address constant, making it possible to track the
+     * host's presence when it changes networks. The address changes when the
+     * interface hardware is replaced. If a duplicate address is detected,
+     * there is no fallback to generate another address. When configured, the
+     * "ipv6.token" is used instead of the MAC address to generate addresses
+     * for stateless autoconfiguration.
      * 
-     * The value of stable-privacy enables use of cryptographically
-     * secure hash of a secret host-specific key along with the connection's
-     * stable-id and the network address as specified by RFC7217.
-     * This makes it impossible to use the address track host's presence,
-     * and makes the address stable when the network interface hardware is
-     * replaced.
+     * If the property is set to "stable-privacy", the interface identifier is
+     * generated as specified by RFC7217. This works by hashing a host specific
+     * key (see NetworkManager(8) manual), the interface name, the connection's
+     * "connection.stable-id" property and the address prefix.  This improves
+     * privacy by making it harder to use the address to track the host's
+     * presence as every prefix and network has a different identifier. Also,
+     * the address is stable when the network interface hardware is replaced.
      * 
-     * The special values "default" and "default-or-eui64" will fallback to the global
-     * connection default in as documented in NetworkManager.conf(5) manual. If the
-     * global default is not specified, the fallback value is "stable-privacy"
-     * or "eui64", respectively.
+     * The special values "default" and "default-or-eui64" will fallback to the
+     * global connection default as documented in the NetworkManager.conf(5)
+     * manual. If the global default is not specified, the fallback value is
+     * "stable-privacy" or "eui64", respectively.
      * 
-     * For libnm, the property defaults to "default" since 1.40.
-     * Previously it defaulted to "stable-privacy".
-     * On D-Bus, the absence of an addr-gen-mode setting equals
-     * "default". For keyfile plugin, the absence of the setting
-     * on disk means "default-or-eui64" so that the property doesn't change on upgrade
-     * from older versions.
+     * For libnm, the property defaults to "default" since 1.40.  Previously it
+     * used to default to "stable-privacy".  On D-Bus, the absence of an
+     * addr-gen-mode setting equals "default". For keyfile plugin, the absence
+     * of the setting on disk means "default-or-eui64" so that the property
+     * doesn't change on upgrade from older versions.
      * 
      * Note that this setting is distinct from the Privacy Extensions as
      * configured by "ip6-privacy" property and it does not affect the
@@ -24382,6 +24475,14 @@ interface SettingIP6Config {
      */
     dhcpDuid: string | null
     /**
+     * A IPv6 address followed by a slash and a prefix length. If set, the value is
+     * sent to the DHCPv6 server as hint indicating the prefix delegation (IA_PD) we
+     * want to receive.
+     * To only hint a prefix length without prefix, set the address part to the
+     * zero address (for example "::/60").
+     */
+    dhcpPdHint: string | null
+    /**
      * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
      * enabled, it makes the kernel generate a temporary IPv6 address in
      * addition to the public one generated from MAC address via modified
@@ -24419,6 +24520,10 @@ interface SettingIP6Config {
     /**
      * Configure the token for draft-chown-6man-tokenised-ipv6-identifiers-02
      * IPv6 tokenized interface identifiers. Useful with eui64 addr-gen-mode.
+     * 
+     * When set, the token is used as IPv6 interface identifier instead of the
+     * hardware address. This only applies to addresses from stateless
+     * autoconfiguration, not to IPv6 link local addresses.
      */
     token: string | null
     __gtype__: number
@@ -24437,6 +24542,12 @@ interface SettingIP6Config {
      * @returns The configured DUID value to be included in the DHCPv6 requests sent to the DHCPv6 servers.
      */
     getDhcpDuid(): string | null
+    /**
+     * Returns the value contained in the #NMSettingIP6Config:dhcp-pd-hint
+     * property.
+     * @returns a string containing an address and prefix length to be used as hint for DHCPv6 prefix delegation.
+     */
+    getDhcpPdHint(): string | null
     /**
      * Returns the value contained in the #NMSettingIP6Config:ip6-privacy
      * property.
@@ -24464,6 +24575,11 @@ interface SettingIP6Config {
     once(sigName: "notify::dhcp-duid", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::dhcp-duid", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::dhcp-duid", ...args: any[]): void
+    connect(sigName: "notify::dhcp-pd-hint", callback: (...args: any[]) => void): number
+    on(sigName: "notify::dhcp-pd-hint", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::dhcp-pd-hint", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::dhcp-pd-hint", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::dhcp-pd-hint", ...args: any[]): void
     connect(sigName: "notify::ip6-privacy", callback: (...args: any[]) => void): number
     on(sigName: "notify::ip6-privacy", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::ip6-privacy", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -24584,6 +24700,11 @@ interface SettingIP6Config {
     once(sigName: "notify::never-default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::never-default", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::never-default", ...args: any[]): void
+    connect(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): number
+    on(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::replace-local-rule", ...args: any[]): void
     connect(sigName: "notify::required-timeout", callback: (...args: any[]) => void): number
     on(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -24706,18 +24827,28 @@ module SettingIPConfig {
          */
         dhcpHostnameFlags?: number | null
         /**
-         * A string containing the "Identity Association Identifier" (IAID) used
-         * by the DHCP client. The property is a 32-bit decimal value or a
-         * special value among "mac", "perm-mac", "ifname" and "stable". When
-         * set to "mac" (or "perm-mac"), the last 4 bytes of the current (or
-         * permanent) MAC address are used as IAID. When set to "ifname", the
-         * IAID is computed by hashing the interface name. The special value
-         * "stable" can be used to generate an IAID based on the stable-id (see
-         * connection.stable-id), a per-host key and the interface name. When
-         * the property is unset, the value from global configuration is used;
-         * if no global default is set then the IAID is assumed to be
-         * "ifname". Note that at the moment this property is ignored for IPv6
-         * by dhclient, which always derives the IAID from the MAC address.
+         * A string containing the "Identity Association Identifier" (IAID) used by
+         * the DHCP client. The string can be a 32-bit number (either decimal,
+         * hexadecimal or as colon separated hexadecimal numbers). Alternatively
+         * it can be set to the special values "mac", "perm-mac", "ifname" or
+         * "stable". When set to "mac" (or "perm-mac"), the last 4 bytes of the
+         * current (or permanent) MAC address are used as IAID. When set to
+         * "ifname", the IAID is computed by hashing the interface name. The
+         * special value "stable" can be used to generate an IAID based on the
+         * stable-id (see connection.stable-id), a per-host key and the interface
+         * name. When the property is unset, the value from global configuration is
+         * used; if no global default is set then the IAID is assumed to be
+         * "ifname".
+         * 
+         * For DHCPv4, the IAID is only used with "ipv4.dhcp-client-id"
+         * values "duid" and "ipv6-duid" to generate the client-id.
+         * 
+         * For DHCPv6, note that at the moment this property is
+         * only supported by the "internal" DHCPv6 plugin. The "dhclient" DHCPv6
+         * plugin always derives the IAID from the MAC address.
+         * 
+         * The actually used DHCPv6 IAID for a currently activated interface is
+         * exposed in the lease information of the device.
          */
         dhcpIaid?: string | null
         /**
@@ -24762,9 +24893,10 @@ module SettingIPConfig {
          * distinct from an empty list of properties.
          * 
          * The currently supported options are "attempts", "debug", "edns0",
-         * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-check-names",
-         * "no-ip6-dotint", "no-reload", "no-tld-query", "rotate", "single-request",
-         * "single-request-reopen", "timeout", "trust-ad", "use-vc".
+         * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-aaaa",
+         * "no-check-names", "no-ip6-dotint", "no-reload", "no-tld-query",
+         * "rotate", "single-request", "single-request-reopen", "timeout",
+         * "trust-ad", "use-vc".
          * 
          * The "trust-ad" setting is only honored if the profile contributes
          * name servers to resolv.conf, and if all contributing profiles have
@@ -24910,6 +25042,11 @@ module SettingIPConfig {
          */
         neverDefault?: boolean | null
         /**
+         * Connections will default to keep the autogenerated priority 0 local rule
+         * unless this setting is set to %TRUE.
+         */
+        replaceLocalRule?: Ternary | null
+        /**
          * The minimum time interval in milliseconds for which dynamic IP configuration
          * should be tried before the connection succeeds.
          * 
@@ -25025,18 +25162,28 @@ interface SettingIPConfig {
      */
     dhcpHostnameFlags: number
     /**
-     * A string containing the "Identity Association Identifier" (IAID) used
-     * by the DHCP client. The property is a 32-bit decimal value or a
-     * special value among "mac", "perm-mac", "ifname" and "stable". When
-     * set to "mac" (or "perm-mac"), the last 4 bytes of the current (or
-     * permanent) MAC address are used as IAID. When set to "ifname", the
-     * IAID is computed by hashing the interface name. The special value
-     * "stable" can be used to generate an IAID based on the stable-id (see
-     * connection.stable-id), a per-host key and the interface name. When
-     * the property is unset, the value from global configuration is used;
-     * if no global default is set then the IAID is assumed to be
-     * "ifname". Note that at the moment this property is ignored for IPv6
-     * by dhclient, which always derives the IAID from the MAC address.
+     * A string containing the "Identity Association Identifier" (IAID) used by
+     * the DHCP client. The string can be a 32-bit number (either decimal,
+     * hexadecimal or as colon separated hexadecimal numbers). Alternatively
+     * it can be set to the special values "mac", "perm-mac", "ifname" or
+     * "stable". When set to "mac" (or "perm-mac"), the last 4 bytes of the
+     * current (or permanent) MAC address are used as IAID. When set to
+     * "ifname", the IAID is computed by hashing the interface name. The
+     * special value "stable" can be used to generate an IAID based on the
+     * stable-id (see connection.stable-id), a per-host key and the interface
+     * name. When the property is unset, the value from global configuration is
+     * used; if no global default is set then the IAID is assumed to be
+     * "ifname".
+     * 
+     * For DHCPv4, the IAID is only used with "ipv4.dhcp-client-id"
+     * values "duid" and "ipv6-duid" to generate the client-id.
+     * 
+     * For DHCPv6, note that at the moment this property is
+     * only supported by the "internal" DHCPv6 plugin. The "dhclient" DHCPv6
+     * plugin always derives the IAID from the MAC address.
+     * 
+     * The actually used DHCPv6 IAID for a currently activated interface is
+     * exposed in the lease information of the device.
      */
     dhcpIaid: string | null
     /**
@@ -25081,9 +25228,10 @@ interface SettingIPConfig {
      * distinct from an empty list of properties.
      * 
      * The currently supported options are "attempts", "debug", "edns0",
-     * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-check-names",
-     * "no-ip6-dotint", "no-reload", "no-tld-query", "rotate", "single-request",
-     * "single-request-reopen", "timeout", "trust-ad", "use-vc".
+     * "inet6", "ip6-bytestring", "ip6-dotint", "ndots", "no-aaaa",
+     * "no-check-names", "no-ip6-dotint", "no-reload", "no-tld-query",
+     * "rotate", "single-request", "single-request-reopen", "timeout",
+     * "trust-ad", "use-vc".
      * 
      * The "trust-ad" setting is only honored if the profile contributes
      * name servers to resolv.conf, and if all contributing profiles have
@@ -25228,6 +25376,11 @@ interface SettingIPConfig {
      * NetworkManager.
      */
     neverDefault: boolean
+    /**
+     * Connections will default to keep the autogenerated priority 0 local rule
+     * unless this setting is set to %TRUE.
+     */
+    replaceLocalRule: Ternary
     /**
      * The minimum time interval in milliseconds for which dynamic IP configuration
      * should be tried before the connection succeeds.
@@ -25437,6 +25590,7 @@ interface SettingIPConfig {
     getNumDnsSearches(): number
     getNumRoutes(): number
     getNumRoutingRules(): number
+    getReplaceLocalRule(): Ternary
     /**
      * Returns the value contained in the #NMSettingIPConfig:required-timeout
      * property.
@@ -25631,6 +25785,11 @@ interface SettingIPConfig {
     once(sigName: "notify::never-default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::never-default", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::never-default", ...args: any[]): void
+    connect(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): number
+    on(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::replace-local-rule", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::replace-local-rule", ...args: any[]): void
     connect(sigName: "notify::required-timeout", callback: (...args: any[]) => void): number
     on(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::required-timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -25691,7 +25850,7 @@ module SettingIPTunnel {
 
         /**
          * How many additional levels of encapsulation are permitted to be prepended
-         * to packets. This property applies only to IPv6 tunnels.
+         * to packets. This property applies only to IPv6 tunnels. To disable this option, add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
          */
         encapsulationLimit?: number | null
         /**
@@ -25772,7 +25931,7 @@ interface SettingIPTunnel {
 
     /**
      * How many additional levels of encapsulation are permitted to be prepended
-     * to packets. This property applies only to IPv6 tunnels.
+     * to packets. This property applies only to IPv6 tunnels. To disable this option, add %NM_IP_TUNNEL_FLAG_IP6_IGN_ENCAP_LIMIT to ip-tunnel flags.
      */
     encapsulationLimit: number
     /**
@@ -26056,10 +26215,17 @@ module SettingInfiniband {
          */
         mtu?: number | null
         /**
-         * The InfiniBand P_Key to use for this device. A value of -1 means to use
-         * the default P_Key (aka "the P_Key at index 0"). Otherwise, it is a 16-bit
-         * unsigned integer, whose high bit is set if it is a "full membership"
-         * P_Key.
+         * The InfiniBand p-key to use for this device. A value of -1 means to use
+         * the default p-key (aka "the p-key at index 0"). Otherwise, it is a
+         * 16-bit unsigned integer, whose high bit 0x8000 is set if it is a "full
+         * membership" p-key. The values 0 and 0x8000 are not allowed.
+         * 
+         * With the p-key set, the interface name is always "$parent.$p_key".
+         * Setting "connection.interface-name" to another name is not supported.
+         * 
+         * Note that kernel will internally always set the full membership bit,
+         * although the interface name does not reflect that. Usually the user
+         * would want to configure a full membership p-key with 0x8000 flag set.
          */
         pKey?: number | null
         /**
@@ -26094,10 +26260,17 @@ interface SettingInfiniband {
      */
     mtu: number
     /**
-     * The InfiniBand P_Key to use for this device. A value of -1 means to use
-     * the default P_Key (aka "the P_Key at index 0"). Otherwise, it is a 16-bit
-     * unsigned integer, whose high bit is set if it is a "full membership"
-     * P_Key.
+     * The InfiniBand p-key to use for this device. A value of -1 means to use
+     * the default p-key (aka "the p-key at index 0"). Otherwise, it is a
+     * 16-bit unsigned integer, whose high bit 0x8000 is set if it is a "full
+     * membership" p-key. The values 0 and 0x8000 are not allowed.
+     * 
+     * With the p-key set, the interface name is always "$parent.$p_key".
+     * Setting "connection.interface-name" to another name is not supported.
+     * 
+     * Note that kernel will internally always set the full membership bit,
+     * although the interface name does not reflect that. Usually the user
+     * would want to configure a full membership p-key with 0x8000 flag set.
      */
     pKey: number
     /**
@@ -26215,6 +26388,165 @@ class SettingInfiniband extends Setting {
      */
     static new(): SettingInfiniband
     _init(config?: SettingInfiniband.ConstructorProperties): void
+}
+
+module SettingLink {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Setting.ConstructorProperties {
+
+        // Own constructor properties of NM-1.0.NM.SettingLink
+
+        /**
+         * The maximum size of a packet built by the Generic Receive Offload stack for
+         * this device. The value must be between 0 and 4294967295. When set to -1, the
+         * existing value is preserved.
+         */
+        groMaxSize?: number | null
+        /**
+         * The maximum segments of a Generic Segment Offload packet the device should accept.
+         * The value must be between 0 and 4294967295. When set to -1, the existing value
+         * is preserved.
+         */
+        gsoMaxSegments?: number | null
+        /**
+         * The maximum size of a Generic Segment Offload packet the device should accept.
+         * The value must be between 0 and 4294967295. When set to -1, the existing value
+         * is preserved.
+         */
+        gsoMaxSize?: number | null
+        /**
+         * The size of the transmit queue for the device, in number of packets. The value
+         * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
+         */
+        txQueueLength?: number | null
+    }
+
+}
+
+interface SettingLink {
+
+    // Own properties of NM-1.0.NM.SettingLink
+
+    /**
+     * The maximum size of a packet built by the Generic Receive Offload stack for
+     * this device. The value must be between 0 and 4294967295. When set to -1, the
+     * existing value is preserved.
+     */
+    groMaxSize: number
+    /**
+     * The maximum segments of a Generic Segment Offload packet the device should accept.
+     * The value must be between 0 and 4294967295. When set to -1, the existing value
+     * is preserved.
+     */
+    gsoMaxSegments: number
+    /**
+     * The maximum size of a Generic Segment Offload packet the device should accept.
+     * The value must be between 0 and 4294967295. When set to -1, the existing value
+     * is preserved.
+     */
+    gsoMaxSize: number
+    /**
+     * The size of the transmit queue for the device, in number of packets. The value
+     * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
+     */
+    txQueueLength: number
+    __gtype__: number
+
+    // Owm methods of NM-1.0.NM.SettingLink
+
+    /**
+     * Returns the value contained in the #NMSettingLink:gro-max-size
+     * property.
+     * @returns the 'gro-max-size' property value
+     */
+    getGroMaxSize(): number
+    /**
+     * Returns the value contained in the #NMSettingLink:gso-max-segments
+     * property.
+     * @returns the 'gso-max-segments' property value
+     */
+    getGsoMaxSegments(): number
+    /**
+     * Returns the value contained in the #NMSettingLink:gso-max-size
+     * property.
+     * @returns the 'gso-max-size' property value
+     */
+    getGsoMaxSize(): number
+    /**
+     * Returns the value contained in the #NMSettingLink:tx-queue-length
+     * property.
+     * @returns the 'tx-queue-length' property value
+     */
+    getTxQueueLength(): number
+
+    // Class property signals of NM-1.0.NM.SettingLink
+
+    connect(sigName: "notify::gro-max-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::gro-max-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::gro-max-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::gro-max-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::gro-max-size", ...args: any[]): void
+    connect(sigName: "notify::gso-max-segments", callback: (...args: any[]) => void): number
+    on(sigName: "notify::gso-max-segments", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::gso-max-segments", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::gso-max-segments", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::gso-max-segments", ...args: any[]): void
+    connect(sigName: "notify::gso-max-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::gso-max-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::gso-max-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::gso-max-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::gso-max-size", ...args: any[]): void
+    connect(sigName: "notify::tx-queue-length", callback: (...args: any[]) => void): number
+    on(sigName: "notify::tx-queue-length", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::tx-queue-length", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::tx-queue-length", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::tx-queue-length", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * Link settings
+ * @class 
+ */
+class SettingLink extends Setting {
+
+    // Own properties of NM-1.0.NM.SettingLink
+
+    static name: string
+
+    // Constructors of NM-1.0.NM.SettingLink
+
+    constructor(config?: SettingLink.ConstructorProperties) 
+    /**
+     * Creates a new #NMSettingLink object with default values.
+     * @constructor 
+     * @returns the new empty #NMSettingLink object
+     */
+    constructor() 
+    /**
+     * Creates a new #NMSettingLink object with default values.
+     * @constructor 
+     * @returns the new empty #NMSettingLink object
+     */
+    static new(): SettingLink
+    _init(config?: SettingLink.ConstructorProperties): void
 }
 
 module SettingLoopback {
@@ -30573,7 +30905,7 @@ interface SettingVpn {
      * Retrieves every data key inside `setting,` as an array.
      * @returns a   %NULL-terminated array containing each data key or %NULL if   there are no data items.
      */
-    getDataKeys(): string[]
+    getDataKeys(): string[] | null
     /**
      * Gets number of key/value pairs of VPN configuration data.
      * @returns the number of VPN plugin specific configuration data items
@@ -30596,7 +30928,7 @@ interface SettingVpn {
      * Retrieves every secret key inside `setting,` as an array.
      * @returns a   %NULL-terminated array containing each secret key or %NULL if   there are no secrets.
      */
-    getSecretKeys(): string[]
+    getSecretKeys(): string[] | null
     /**
      * Returns the service name of the VPN, which identifies the specific VPN
      * plugin that should be used to connect to this VPN.
@@ -31505,7 +31837,7 @@ interface SettingWireGuard {
     getListenPort(): number
     getMtu(): number
     getPeer(idx: number): WireGuardPeer
-    getPeerByPublicKey(publicKey: string | null): [ /* returnType */ WireGuardPeer, /* outIdx */ number ]
+    getPeerByPublicKey(publicKey: string | null): [ /* returnType */ WireGuardPeer | null, /* outIdx */ number ]
     getPeerRoutes(): boolean
     getPeersLen(): number
     getPrivateKey(): string | null
@@ -32363,10 +32695,7 @@ module SettingWireless {
          */
         powersave?: number | null
         /**
-         * If non-zero, directs the device to only use the specified bitrate for
-         * communication with the access point.  Units are in Kb/s, ie 5500 = 5.5
-         * Mbit/s.  This property is highly driver dependent and not all devices
-         * support setting a static bitrate.
+         * This property is not implemented and has no effect.
          */
         rate?: number | null
         /**
@@ -32376,6 +32705,10 @@ module SettingWireless {
          * property is only meant for reading and reflects the BSSID list of
          * NetworkManager. The changes you make to this property will not be
          * preserved.
+         * 
+         * This is not a regular property that the user would configure. Instead,
+         * NetworkManager automatically sets the seen BSSIDs and tracks them internally
+         * in "/var/lib/NetworkManager/seen-bssids" file.
          */
         seenBssids?: string[] | null
         /**
@@ -32383,9 +32716,7 @@ module SettingWireless {
          */
         ssid?: any | null
         /**
-         * If non-zero, directs the device to use the specified transmit power.
-         * Units are dBm.  This property is highly driver dependent and not all
-         * devices support setting a static transmit power.
+         * This property is not implemented and has no effect.
          */
         txPower?: number | null
         /**
@@ -32563,10 +32894,7 @@ interface SettingWireless {
      */
     powersave: number
     /**
-     * If non-zero, directs the device to only use the specified bitrate for
-     * communication with the access point.  Units are in Kb/s, ie 5500 = 5.5
-     * Mbit/s.  This property is highly driver dependent and not all devices
-     * support setting a static bitrate.
+     * This property is not implemented and has no effect.
      */
     rate: number
     /**
@@ -32576,6 +32904,10 @@ interface SettingWireless {
      * property is only meant for reading and reflects the BSSID list of
      * NetworkManager. The changes you make to this property will not be
      * preserved.
+     * 
+     * This is not a regular property that the user would configure. Instead,
+     * NetworkManager automatically sets the seen BSSIDs and tracks them internally
+     * in "/var/lib/NetworkManager/seen-bssids" file.
      */
     seenBssids: string[]
     /**
@@ -32583,9 +32915,7 @@ interface SettingWireless {
      */
     ssid: any
     /**
-     * If non-zero, directs the device to use the specified transmit power.
-     * Units are dBm.  This property is highly driver dependent and not all
-     * devices support setting a static transmit power.
+     * This property is not implemented and has no effect.
      */
     txPower: number
     /**
@@ -33666,6 +33996,11 @@ interface VpnConnection {
     once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::controller", callback: (...args: any[]) => void): number
+    on(sigName: "notify::controller", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::controller", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::controller", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::controller", ...args: any[]): void
     connect(sigName: "notify::default", callback: (...args: any[]) => void): number
     on(sigName: "notify::default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::default", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -35728,7 +36063,7 @@ interface KeyfileHandlerData {
      * Get context information of the current event. This function can be called
      * on all events, but the context information may be unset.
      */
-    getContext(): [ /* outKfGroupName */ string | null, /* outKfKeyName */ string | null, /* outCurSetting */ Setting, /* outCurPropertyName */ string | null ]
+    getContext(): [ /* outKfGroupName */ string | null, /* outKfKeyName */ string | null, /* outCurSetting */ Setting | null, /* outCurPropertyName */ string | null ]
     warnGet(): [ /* outMessage */ string | null, /* outSeverity */ KeyfileWarnSeverity ]
 }
 
@@ -36214,6 +36549,16 @@ interface SettingInfinibandClass {
 abstract class SettingInfinibandClass {
 
     // Own properties of NM-1.0.NM.SettingInfinibandClass
+
+    static name: string
+}
+
+interface SettingLinkClass {
+}
+
+abstract class SettingLinkClass {
+
+    // Own properties of NM-1.0.NM.SettingLinkClass
 
     static name: string
 }

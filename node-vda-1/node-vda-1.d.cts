@@ -8042,36 +8042,36 @@ export interface ConnectionParameters {
 
     // Conflicting methods
 
-    hasKey(key: any | null): boolean
+    hasKey(key: any): boolean
 
     // Overloads of hasKey
 
-    hasKey(key: any | null): boolean
-    hasKey(key: any | null): boolean
-    has(key: any | null, value: any | null): boolean
+    hasKey(key: any): boolean
+    hasKey(key: any): boolean
+    has(key: any, value: any): boolean
 
     // Overloads of has
 
-    has(key: any | null, value: any | null): boolean
-    has(key: any | null, value: any | null): boolean
-    get(key: any | null): any | null
+    has(key: any, value: any): boolean
+    has(key: any, value: any): boolean
+    get(key: any): any | null
 
     // Overloads of get
 
-    get(key: any | null): any | null
-    get(key: any | null): any | null
-    set(key: any | null, value: any | null): void
+    get(key: any): any | null
+    get(key: any): any | null
+    set(key: any, value: any): void
 
     // Overloads of set
 
-    set(key: any | null, value: any | null): void
-    set(key: any | null, value: any | null): void
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    set(key: any, value: any): void
+    set(key: any, value: any): void
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
 
     // Overloads of unset
 
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     mapIterator(): Gee.MapIterator
 
     // Overloads of mapIterator
@@ -8414,60 +8414,60 @@ export interface Expression extends Gio.ListModel, SqlExpression {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -8765,60 +8765,60 @@ export interface ExpressionField extends SqlExpressionField {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -9128,60 +9128,60 @@ export interface ExpressionOperator extends SqlExpressionOperator {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -9478,60 +9478,60 @@ export interface ExpressionOperatorGroup extends SqlExpressionOperatorGroup {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -9833,60 +9833,60 @@ export interface ExpressionOperatorMultiterm extends SqlExpressionOperatorMultit
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -10184,60 +10184,60 @@ export interface ExpressionOperatorAnd extends SqlExpressionOperatorAnd {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -10536,60 +10536,60 @@ export interface ExpressionOperatorOr extends SqlExpressionOperatorOr {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -10892,60 +10892,60 @@ export interface ExpressionOperatorBinaryterm extends SqlExpressionOperatorBinar
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -11243,60 +11243,60 @@ export interface ExpressionOperatorEq extends SqlExpressionOperatorEq {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -11595,60 +11595,60 @@ export interface ExpressionOperatorNotEq extends SqlExpressionOperatorNotEq {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -11947,60 +11947,60 @@ export interface ExpressionOperatorDiff extends SqlExpressionOperatorDiff {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -12299,60 +12299,60 @@ export interface ExpressionOperatorGt extends SqlExpressionOperatorGt {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -12651,60 +12651,60 @@ export interface ExpressionOperatorLt extends SqlExpressionOperatorLt {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -13003,60 +13003,60 @@ export interface ExpressionOperatorGeq extends SqlExpressionOperatorGeq {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -13355,60 +13355,60 @@ export interface ExpressionOperatorLeq extends SqlExpressionOperatorLeq {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -13707,60 +13707,60 @@ export interface ExpressionOperatorRegexp extends SqlExpressionOperatorRegexp {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -14059,60 +14059,60 @@ export interface ExpressionOperatorStar extends SqlExpressionOperatorStar {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -14411,60 +14411,60 @@ export interface ExpressionOperatorDiv extends SqlExpressionOperatorDiv {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -14763,60 +14763,60 @@ export interface ExpressionOperatorIn extends SqlExpressionOperatorIn {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -15115,60 +15115,60 @@ export interface ExpressionOperatorNotIn extends SqlExpressionOperatorNotIn {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -15467,60 +15467,60 @@ export interface ExpressionOperatorConcatenate extends SqlExpressionOperatorConc
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -15819,60 +15819,60 @@ export interface ExpressionOperatorSimilarTo extends SqlExpressionOperatorSimila
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -16171,60 +16171,60 @@ export interface ExpressionOperatorLike extends SqlExpressionOperatorLike {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -16523,60 +16523,60 @@ export interface ExpressionOperatorNotLike extends SqlExpressionOperatorNotLike 
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -16875,60 +16875,60 @@ export interface ExpressionOperatorIlike extends SqlExpressionOperatorIlike {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -17227,60 +17227,60 @@ export interface ExpressionOperatorNotIlike extends SqlExpressionOperatorNotIlik
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -17583,60 +17583,60 @@ export interface ExpressionOperatorBinaryUnaryterm extends SqlExpressionOperator
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -17934,60 +17934,60 @@ export interface ExpressionOperatorMinus extends SqlExpressionOperatorMinus {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -18286,60 +18286,60 @@ export interface ExpressionOperatorPlus extends SqlExpressionOperatorPlus {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -18642,60 +18642,60 @@ export interface ExpressionOperatorInitialUnaryterm extends SqlExpressionOperato
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -18993,60 +18993,60 @@ export interface ExpressionOperatorNot extends SqlExpressionOperatorNot {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -19349,60 +19349,60 @@ export interface ExpressionOperatorFinalUnaryterm extends SqlExpressionOperatorF
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -19700,60 +19700,60 @@ export interface ExpressionOperatorIs extends SqlExpressionOperatorIs {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -20052,60 +20052,60 @@ export interface ExpressionOperatorIsNot extends SqlExpressionOperatorIsNot {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -20405,60 +20405,60 @@ export interface ExpressionOperatorIsNull extends SqlExpressionOperatorIsNull {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -20758,60 +20758,60 @@ export interface ExpressionOperatorIsNotNull extends SqlExpressionOperatorIsNotN
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -21112,60 +21112,60 @@ export interface ExpressionOperatorIsTrue extends SqlExpressionOperatorIsTrue {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -21465,60 +21465,60 @@ export interface ExpressionOperatorIsNotTrue extends SqlExpressionOperatorIsNotT
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -21819,60 +21819,60 @@ export interface ExpressionOperatorIsFalse extends SqlExpressionOperatorIsFalse 
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -22172,60 +22172,60 @@ export interface ExpressionOperatorIsNotFalse extends SqlExpressionOperatorIsNot
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -22526,60 +22526,60 @@ export interface ExpressionOperatorIsNotUnknown extends SqlExpressionOperatorIsN
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -22880,60 +22880,60 @@ export interface ExpressionOperatorIsUnknown extends SqlExpressionOperatorIsUnkn
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -23233,60 +23233,60 @@ export interface ExpressionOperatorIsDistinct extends SqlExpressionOperatorIsDis
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -23585,60 +23585,60 @@ export interface ExpressionOperatorIsNotDistinct extends SqlExpressionOperatorIs
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -23938,60 +23938,60 @@ export interface ExpressionOperatorIsDistinctFrom extends SqlExpressionOperatorI
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -24291,60 +24291,60 @@ export interface ExpressionOperatorIsNotDistinctFrom extends SqlExpressionOperat
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -24650,60 +24650,60 @@ export interface ExpressionOperatorThreeterm extends SqlExpressionOperatorThreet
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -25001,60 +25001,60 @@ export interface ExpressionOperatorBetween extends SqlExpressionOperatorBetween 
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -25353,60 +25353,60 @@ export interface ExpressionOperatorBetweenAnd extends SqlExpressionOperatorBetwe
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -25706,60 +25706,60 @@ export interface ExpressionOperatorNotBetween extends SqlExpressionOperatorNotBe
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -26059,60 +26059,60 @@ export interface ExpressionOperatorNotBetweenAnd extends SqlExpressionOperatorNo
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -26413,60 +26413,60 @@ export interface ExpressionOperatorBetweenSymmetric extends SqlExpressionOperato
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -26766,60 +26766,60 @@ export interface ExpressionOperatorBetweenSymmetricAnd extends SqlExpressionOper
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -27120,60 +27120,60 @@ export interface ExpressionOperatorNotBetweenSymmetric extends SqlExpressionOper
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -27474,60 +27474,60 @@ export interface ExpressionOperatorNotBetweenSymmetricAnd extends SqlExpressionO
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -27828,60 +27828,60 @@ export interface ExpressionValue extends SqlExpressionValue {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -28182,60 +28182,60 @@ export interface ExpressionValueParameter extends SqlExpressionValueParameter {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -28389,19 +28389,19 @@ export interface HashList extends Gio.ListModel, HashModel {
     // Conflicting methods
 
     add(object: GObject.Object): void
-    add(item: any | null): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
     remove(object: GObject.Object): void
-    remove(item: any | null): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     addAll(collection: Gee.Collection): boolean
 
     // Overloads of addAll
@@ -28560,48 +28560,48 @@ export interface HashList extends Gio.ListModel, HashModel {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -28923,36 +28923,36 @@ export interface Parameters extends SqlParameters {
 
     // Conflicting methods
 
-    hasKey(key: any | null): boolean
+    hasKey(key: any): boolean
 
     // Overloads of hasKey
 
-    hasKey(key: any | null): boolean
-    hasKey(key: any | null): boolean
-    has(key: any | null, value: any | null): boolean
+    hasKey(key: any): boolean
+    hasKey(key: any): boolean
+    has(key: any, value: any): boolean
 
     // Overloads of has
 
-    has(key: any | null, value: any | null): boolean
-    has(key: any | null, value: any | null): boolean
-    get(key: any | null): any | null
+    has(key: any, value: any): boolean
+    has(key: any, value: any): boolean
+    get(key: any): any | null
 
     // Overloads of get
 
-    get(key: any | null): any | null
-    get(key: any | null): any | null
-    set(key: any | null, value: any | null): void
+    get(key: any): any | null
+    get(key: any): any | null
+    set(key: any, value: any): void
 
     // Overloads of set
 
-    set(key: any | null, value: any | null): void
-    set(key: any | null, value: any | null): void
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    set(key: any, value: any): void
+    set(key: any, value: any): void
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
 
     // Overloads of unset
 
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     mapIterator(): Gee.MapIterator
 
     // Overloads of mapIterator

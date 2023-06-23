@@ -1055,6 +1055,7 @@ module MusicItem {
         // Own constructor properties of RygelServer-2.8.RygelServer.MusicItem
 
         track_number?: number | null
+        disc_number?: number | null
         album_art?: Thumbnail | null
     }
 
@@ -1065,6 +1066,7 @@ interface MusicItem {
     // Own properties of RygelServer-2.8.RygelServer.MusicItem
 
     track_number: number
+    disc_number: number
     album_art: Thumbnail
 
     // Owm methods of RygelServer-2.8.RygelServer.MusicItem
@@ -1072,6 +1074,8 @@ interface MusicItem {
     lookup_album_art(): void
     get_track_number(): number
     set_track_number(value: number): void
+    get_disc_number(): number
+    set_disc_number(value: number): void
     get_album_art(): Thumbnail
     set_album_art(value: Thumbnail): void
 
@@ -1080,6 +1084,9 @@ interface MusicItem {
     connect(sigName: "notify::track-number", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::track-number", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::track-number", ...args: any[]): void
+    connect(sigName: "notify::disc-number", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::disc-number", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::disc-number", ...args: any[]): void
     connect(sigName: "notify::album-art", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::album-art", callback: (($obj: MusicItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::album-art", ...args: any[]): void
@@ -2463,9 +2470,9 @@ interface SearchExpression {
     // Own fields of RygelServer-2.8.RygelServer.SearchExpression
 
     ref_count: number
-    op: any | null
-    operand1: any | null
-    operand2: any | null
+    op: any
+    operand1: any
+    operand2: any
 
     // Owm methods of RygelServer-2.8.RygelServer.SearchExpression
 

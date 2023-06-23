@@ -4224,8 +4224,8 @@ function debugSetDefaultThreshold(level: DebugLevel): void
 function debugSetThresholdForName(name: string | null, level: DebugLevel): void
 /**
  * Sets the debug logging wanted in the same form as with the GST_DEBUG
- * environment variable. You can use wildcards such as '*', but note that
- * the order matters when you use wild cards, e.g. "foosrc:6,*src:3,*:2" sets
+ * environment variable. You can use wildcards such as `*`, but note that
+ * the order matters when you use wild cards, e.g. `foosrc:6,*src:3,*:2` sets
  * everything to log level 2.
  * @param list comma-separated list of "category:level" pairs to be used     as debug logging levels
  * @param reset %TRUE to clear all previously-set debug levels before setting     new thresholds %FALSE if adding the threshold described by `list` to the one already set.
@@ -5162,6 +5162,22 @@ function utilSetObjectArray(object: GObject.Object, name: string | null, array: 
  * @param valueStr the string to get the value from
  */
 function utilSetValueFromString(valueStr: string | null): /* value */ any
+/**
+ * Calculates the simpler representation of `numerator` and `denominator` and
+ * update both values with the resulting simplified fraction.
+ * 
+ * Simplify a fraction using a simple continued fraction decomposition.
+ * The idea here is to convert fractions such as 333333/10000000 to 1/30
+ * using 32 bit arithmetic only. The algorithm is not perfect and relies
+ * upon two arbitrary parameters to remove non-significative terms from
+ * the simple continued fraction decomposition. Using 8 and 333 for
+ * `n_terms` and `threshold` respectively seems to give nice results.
+ * @param numerator First value as #gint
+ * @param denominator Second value as #gint
+ * @param nTerms non-significative terms (typical value: 8)
+ * @param threshold threshold (typical value: 333)
+ */
+function utilSimplifyFraction(numerator: number, denominator: number, nTerms: number, threshold: number): void
 /**
  * Scale `val` by the rational number `num` / `denom,` avoiding overflows and
  * underflows and without loss of precision.
@@ -7976,7 +7992,7 @@ interface Bin extends ChildProxy {
  *   sink is in the bin, the query fails.
  * 
  * A #GstBin will by default forward any event sent to it to all sink
- * ( %GST_EVENT_TYPE_DOWNSTREAM ) or source ( %GST_EVENT_TYPE_UPSTREAM ) elements
+ * ( %GST_EVENT_TYPE_UPSTREAM ) or source ( %GST_EVENT_TYPE_DOWNSTREAM ) elements
  * depending on the event type.
  * 
  * If all the elements return %TRUE, the bin will also return %TRUE, else %FALSE
@@ -9805,7 +9821,7 @@ interface Device {
 
     // Own properties of Gst-1.0.Gst.Device
 
-    readonly caps: Caps | null
+    readonly caps: Caps
     readonly deviceClass: string | null
     readonly displayName: string | null
     readonly properties: Structure
@@ -12930,12 +12946,12 @@ interface Pad {
 
     // Own properties of Gst-1.0.Gst.Pad
 
-    readonly caps: Caps | null
+    readonly caps: Caps
     /**
      * The offset that will be applied to the running time of the pad.
      */
     offset: number
-    template: PadTemplate | null
+    template: PadTemplate
     __gtype__: number
 
     // Own fields of Gst-1.0.Gst.Pad
@@ -14970,8 +14986,13 @@ interface PluginFeature {
     // Owm methods of Gst-1.0.Gst.PluginFeature
 
     /**
-     * Checks whether the given plugin feature is at least
-     *  the required version
+     * Checks whether the given plugin feature is at least the required version.
+     * 
+     * Note: Since version 1.24 this function no longer returns %TRUE if the
+     * version is a git development version (e.g. 1.23.0.1) and the check is
+     * for the "next" micro version, that is it will no longer return %TRUE for
+     * e.g. 1.23.0.1 if the check is for 1.23.1. It is still possible to parse
+     * the nano version from the string and do this check that way if needed.
      * @param minMajor minimum required major version
      * @param minMinor minimum required minor version
      * @param minMicro minimum required micro version
@@ -15742,7 +15763,7 @@ interface Stream {
     /**
      * The #GstCaps of the #GstStream.
      */
-    caps: Caps | null
+    caps: Caps
     streamFlags: StreamFlags
     /**
      * The #GstStreamType of the #GstStream. Can only be set at construction time.
@@ -19368,7 +19389,7 @@ interface DateTime {
      * by `datetime` represents. Timezones ahead (to the east) of UTC have positive
      * values, timezones before (to the west) of UTC have negative values.
      * If `datetime` represents UTC time, then the offset is zero.
-     * @returns the offset from UTC in hours, or %G_MAXDOUBLE if none is set.
+     * @returns the offset from UTC in hours, or %G_MAXFLOAT if none is set.
      */
     getTimeZoneOffset(): number
     /**

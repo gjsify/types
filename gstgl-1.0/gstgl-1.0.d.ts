@@ -1198,6 +1198,242 @@ class GLBaseMemoryAllocator extends Gst.Allocator {
     _init(config?: GLBaseMemoryAllocator.ConstructorProperties): void
 }
 
+module GLBaseMixer {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GstVideo.VideoAggregator.ConstructorProperties {
+    }
+
+}
+
+interface GLBaseMixer {
+
+    // Conflicting properties
+
+    start_time: any
+    object: any
+
+    // Own fields of GstGL-1.0.GstGL.GLBaseMixer
+
+    /**
+     * parent #GstVideoAggregator
+     * @field 
+     */
+    parent: GstVideo.VideoAggregator & Gst.Element & Gst.Object & Gst.Object
+    /**
+     * the currently configured #GstGLDisplay
+     * @field 
+     */
+    display: GLDisplay
+    /**
+     * the currently configured #GstGLContext
+     * @field 
+     */
+    context: GLContext
+
+    // Owm methods of GstGL-1.0.GstGL.GLBaseMixer
+
+    get_gl_context(): GLContext | null
+
+    // Conflicting methods
+
+    /**
+     * Increments the reference count on `object`. This function
+     * does not take the lock on `object` because it relies on
+     * atomic refcounting.
+     * 
+     * This object returns the input parameter to ease writing
+     * constructs like :
+     *  result = gst_object_ref (object->parent);
+     * @returns A pointer to @object
+     */
+    ref(): Gst.Object
+
+    // Overloads of ref
+
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+
+    // Own virtual methods of GstGL-1.0.GstGL.GLBaseMixer
+
+    /**
+     * called in the GL thread to setup the element GL state.
+     * @virtual 
+     * @returns whether the start was successful
+     */
+    vfunc_gl_start(): boolean
+    /**
+     * called in the GL thread to setup the element GL state.
+     * @virtual 
+     */
+    vfunc_gl_stop(): void
+
+    // Class property signals of GstGL-1.0.GstGL.GLBaseMixer
+
+    connect(sigName: "notify::force-live", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::force-live", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::force-live", ...args: any[]): void
+    connect(sigName: "notify::emit-signals", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::emit-signals", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::emit-signals", ...args: any[]): void
+    connect(sigName: "notify::latency", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency", ...args: any[]): void
+    connect(sigName: "notify::min-upstream-latency", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-upstream-latency", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-upstream-latency", ...args: any[]): void
+    connect(sigName: "notify::start-time", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::start-time", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::start-time", ...args: any[]): void
+    connect(sigName: "notify::start-time-selection", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::start-time-selection", callback: (($obj: GLBaseMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::start-time-selection", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * #GstGLBaseMixer handles the nitty gritty details of retrieving an OpenGL
+ * context.  It provides some virtual methods to know when the OpenGL context
+ * is available and is not available within this element.
+ * @class 
+ */
+class GLBaseMixer extends GstVideo.VideoAggregator {
+
+    // Own properties of GstGL-1.0.GstGL.GLBaseMixer
+
+    static name: string
+    static $gtype: GObject.GType<GLBaseMixer>
+
+    // Constructors of GstGL-1.0.GstGL.GLBaseMixer
+
+    constructor(config?: GLBaseMixer.ConstructorProperties) 
+    _init(config?: GLBaseMixer.ConstructorProperties): void
+}
+
+module GLBaseMixerPad {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GstVideo.VideoAggregatorPad.ConstructorProperties {
+    }
+
+}
+
+interface GLBaseMixerPad {
+
+    // Conflicting properties
+
+    object: any
+
+    // Own fields of GstGL-1.0.GstGL.GLBaseMixerPad
+
+    /**
+     * parent #GstVideoAggregatorPad
+     * @field 
+     */
+    parent: GstVideo.VideoAggregatorPad & GstBase.AggregatorPad & Gst.Pad & Gst.Object & Gst.Object
+
+    // Conflicting methods
+
+    /**
+     * Increments the reference count on `object`. This function
+     * does not take the lock on `object` because it relies on
+     * atomic refcounting.
+     * 
+     * This object returns the input parameter to ease writing
+     * constructs like :
+     *  result = gst_object_ref (object->parent);
+     * @returns A pointer to @object
+     */
+    ref(): Gst.Object
+
+    // Overloads of ref
+
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+
+    // Class property signals of GstGL-1.0.GstGL.GLBaseMixerPad
+
+    connect(sigName: "notify::max-last-buffer-repeat", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-last-buffer-repeat", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-last-buffer-repeat", ...args: any[]): void
+    connect(sigName: "notify::repeat-after-eos", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::repeat-after-eos", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::repeat-after-eos", ...args: any[]): void
+    connect(sigName: "notify::zorder", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::zorder", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::zorder", ...args: any[]): void
+    connect(sigName: "notify::emit-signals", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::emit-signals", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::emit-signals", ...args: any[]): void
+    connect(sigName: "notify::caps", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::caps", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::caps", ...args: any[]): void
+    connect(sigName: "notify::offset", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::offset", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::offset", ...args: any[]): void
+    connect(sigName: "notify::template", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::template", callback: (($obj: GLBaseMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::template", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
+
+    // Own properties of GstGL-1.0.GstGL.GLBaseMixerPad
+
+    static name: string
+    static $gtype: GObject.GType<GLBaseMixerPad>
+
+    // Constructors of GstGL-1.0.GstGL.GLBaseMixerPad
+
+    constructor(config?: GLBaseMixerPad.ConstructorProperties) 
+    _init(config?: GLBaseMixerPad.ConstructorProperties): void
+}
+
 module GLBaseSrc {
 
     // Constructor properties interface
@@ -2979,6 +3215,256 @@ class GLMemoryPBOAllocator extends GLMemoryAllocator {
     _init(config?: GLMemoryPBOAllocator.ConstructorProperties): void
 }
 
+module GLMixer {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GLBaseMixer.ConstructorProperties {
+    }
+
+}
+
+interface GLMixer {
+
+    // Conflicting properties
+
+    start_time: any
+    object: any
+
+    // Own fields of GstGL-1.0.GstGL.GLMixer
+
+    parent: GLBaseMixer & GstVideo.VideoAggregator & Gst.Element & Gst.Object & Gst.Object
+    /**
+     * the configured output #GstCaps
+     * @field 
+     */
+    out_caps: Gst.Caps
+
+    // Owm methods of GstGL-1.0.GstGL.GLMixer
+
+    get_framebuffer(): GLFramebuffer
+    /**
+     * Perform processing required and call #GstGLMixerClass::process_textures().
+     * Intended for use within implementations of
+     * #GstGLMixerClass::process_buffers().
+     * @param outbuf output `GstBuffer`
+     * @returns whether processing of textures succeeded
+     */
+    process_textures(outbuf: Gst.Buffer): boolean
+
+    // Conflicting methods
+
+    /**
+     * Increments the reference count on `object`. This function
+     * does not take the lock on `object` because it relies on
+     * atomic refcounting.
+     * 
+     * This object returns the input parameter to ease writing
+     * constructs like :
+     *  result = gst_object_ref (object->parent);
+     * @returns A pointer to @object
+     */
+    ref(): Gst.Object
+
+    // Overloads of ref
+
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+
+    // Own virtual methods of GstGL-1.0.GstGL.GLMixer
+
+    /**
+     * Perform operations on the input buffers to produce an
+     * output buffer.
+     * @virtual 
+     * @param outbuf 
+     */
+    vfunc_process_buffers(outbuf: Gst.Buffer): boolean
+    /**
+     * Perform processing required and call #GstGLMixerClass::process_textures().
+     * Intended for use within implementations of
+     * #GstGLMixerClass::process_buffers().
+     * @virtual 
+     * @param out_tex 
+     * @returns whether processing of textures succeeded
+     */
+    vfunc_process_textures(out_tex: GLMemory): boolean
+
+    // Class property signals of GstGL-1.0.GstGL.GLMixer
+
+    connect(sigName: "notify::force-live", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::force-live", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::force-live", ...args: any[]): void
+    connect(sigName: "notify::emit-signals", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::emit-signals", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::emit-signals", ...args: any[]): void
+    connect(sigName: "notify::latency", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency", ...args: any[]): void
+    connect(sigName: "notify::min-upstream-latency", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-upstream-latency", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-upstream-latency", ...args: any[]): void
+    connect(sigName: "notify::start-time", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::start-time", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::start-time", ...args: any[]): void
+    connect(sigName: "notify::start-time-selection", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::start-time-selection", callback: (($obj: GLMixer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::start-time-selection", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * #GstGLMixer helps implement an element that operates on RGBA textures.
+ * @class 
+ */
+class GLMixer extends GLBaseMixer {
+
+    // Own properties of GstGL-1.0.GstGL.GLMixer
+
+    static name: string
+    static $gtype: GObject.GType<GLMixer>
+
+    // Constructors of GstGL-1.0.GstGL.GLMixer
+
+    constructor(config?: GLMixer.ConstructorProperties) 
+    _init(config?: GLMixer.ConstructorProperties): void
+    /**
+     * Adds the default RGBA pad templates to this class.  If you have any special
+     * template requirements like a different pad subclass or different supported
+     * caps, you should not call this function and add the pad templates yourself
+     * manually.
+     */
+    static add_rgba_pad_templates(klass: GLMixer | Function | GObject.GType): void
+}
+
+module GLMixerPad {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GLBaseMixerPad.ConstructorProperties {
+    }
+
+}
+
+interface GLMixerPad {
+
+    // Conflicting properties
+
+    object: any
+
+    // Own fields of GstGL-1.0.GstGL.GLMixerPad
+
+    /**
+     * parent #GstGLBaseMixerPad
+     * @field 
+     */
+    parent: GLBaseMixerPad & GstVideo.VideoAggregatorPad & GstBase.AggregatorPad & Gst.Pad & Gst.Object & Gst.Object
+    /**
+     * the current input texture for this pad
+     * @field 
+     */
+    current_texture: number
+
+    // Conflicting methods
+
+    /**
+     * Increments the reference count on `object`. This function
+     * does not take the lock on `object` because it relies on
+     * atomic refcounting.
+     * 
+     * This object returns the input parameter to ease writing
+     * constructs like :
+     *  result = gst_object_ref (object->parent);
+     * @returns A pointer to @object
+     */
+    ref(): Gst.Object
+
+    // Overloads of ref
+
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     * @returns the same @object
+     */
+    ref(): GObject.Object
+
+    // Class property signals of GstGL-1.0.GstGL.GLMixerPad
+
+    connect(sigName: "notify::max-last-buffer-repeat", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-last-buffer-repeat", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-last-buffer-repeat", ...args: any[]): void
+    connect(sigName: "notify::repeat-after-eos", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::repeat-after-eos", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::repeat-after-eos", ...args: any[]): void
+    connect(sigName: "notify::zorder", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::zorder", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::zorder", ...args: any[]): void
+    connect(sigName: "notify::emit-signals", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::emit-signals", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::emit-signals", ...args: any[]): void
+    connect(sigName: "notify::caps", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::caps", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::caps", ...args: any[]): void
+    connect(sigName: "notify::offset", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::offset", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::offset", ...args: any[]): void
+    connect(sigName: "notify::template", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::template", callback: (($obj: GLMixerPad, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::template", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class GLMixerPad extends GLBaseMixerPad {
+
+    // Own properties of GstGL-1.0.GstGL.GLMixerPad
+
+    static name: string
+    static $gtype: GObject.GType<GLMixerPad>
+
+    // Constructors of GstGL-1.0.GstGL.GLMixerPad
+
+    constructor(config?: GLMixerPad.ConstructorProperties) 
+    _init(config?: GLMixerPad.ConstructorProperties): void
+}
+
 module GLOverlayCompositor {
 
     // Constructor properties interface
@@ -4558,6 +5044,59 @@ abstract class GLBaseMemoryAllocatorClass {
     static name: string
 }
 
+interface GLBaseMixerClass {
+
+    // Own fields of GstGL-1.0.GstGL.GLBaseMixerClass
+
+    /**
+     * the parent #GstVideoAggregatorClass
+     * @field 
+     */
+    parent_class: GstVideo.VideoAggregatorClass
+    /**
+     * the logical-OR of #GstGLAPI's supported by this element
+     * @field 
+     */
+    supported_gl_api: GLAPI
+    gl_start: (mix: GLBaseMixer) => boolean
+    gl_stop: (mix: GLBaseMixer) => void
+}
+
+abstract class GLBaseMixerClass {
+
+    // Own properties of GstGL-1.0.GstGL.GLBaseMixerClass
+
+    static name: string
+}
+
+interface GLBaseMixerPadClass {
+
+    // Own fields of GstGL-1.0.GstGL.GLBaseMixerPadClass
+
+    /**
+     * parent #GstVideoAggregatorPadClass
+     * @field 
+     */
+    parent_class: GstVideo.VideoAggregatorPadClass
+}
+
+abstract class GLBaseMixerPadClass {
+
+    // Own properties of GstGL-1.0.GstGL.GLBaseMixerPadClass
+
+    static name: string
+}
+
+interface GLBaseMixerPrivate {
+}
+
+class GLBaseMixerPrivate {
+
+    // Own properties of GstGL-1.0.GstGL.GLBaseMixerPrivate
+
+    static name: string
+}
+
 interface GLBaseSrcClass {
 
     // Own fields of GstGL-1.0.GstGL.GLBaseSrcClass
@@ -5110,6 +5649,60 @@ interface GLMemoryPBOAllocatorClass {
 abstract class GLMemoryPBOAllocatorClass {
 
     // Own properties of GstGL-1.0.GstGL.GLMemoryPBOAllocatorClass
+
+    static name: string
+}
+
+interface GLMixerClass {
+
+    // Own fields of GstGL-1.0.GstGL.GLMixerClass
+
+    parent_class: GLBaseMixerClass
+    process_buffers: (mix: GLMixer, outbuf: Gst.Buffer) => boolean
+    process_textures: (mix: GLMixer, out_tex: GLMemory) => boolean
+}
+
+abstract class GLMixerClass {
+
+    // Own properties of GstGL-1.0.GstGL.GLMixerClass
+
+    static name: string
+
+    // Owm static methods of GstGL-1.0.GstGL.GLMixerClass
+
+    /**
+     * Adds the default RGBA pad templates to this class.  If you have any special
+     * template requirements like a different pad subclass or different supported
+     * caps, you should not call this function and add the pad templates yourself
+     * manually.
+     */
+    static add_rgba_pad_templates(klass: GLMixer | Function | GObject.GType): void
+}
+
+interface GLMixerPadClass {
+
+    // Own fields of GstGL-1.0.GstGL.GLMixerPadClass
+
+    /**
+     * parent #GstGLBaseMixerPadClass
+     * @field 
+     */
+    parent_class: GLBaseMixerPadClass
+}
+
+abstract class GLMixerPadClass {
+
+    // Own properties of GstGL-1.0.GstGL.GLMixerPadClass
+
+    static name: string
+}
+
+interface GLMixerPrivate {
+}
+
+class GLMixerPrivate {
+
+    // Own properties of GstGL-1.0.GstGL.GLMixerPrivate
 
     static name: string
 }

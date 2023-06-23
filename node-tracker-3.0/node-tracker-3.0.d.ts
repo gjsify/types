@@ -19,13 +19,13 @@ import type GLib from '@girs/node-glib-2.0';
 export namespace Tracker {
 
 /**
- * Flags affecting deserialization of RDF.
+ * Flags affecting deserialization from a RDF data format.
  */
 enum DeserializeFlags {
     /**
      * No flags.
      */
-    DESERIALIZE_FLAGS_NONE,
+    NONE,
 }
 /**
  * Notifier event types.
@@ -69,12 +69,18 @@ enum RdfFormat {
      */
     LAST,
 }
+/**
+ * Flags affecting serialization into a RDF data format.
+ */
 enum SerializeFlags {
-    SERIALIZE_FLAGS_NONE,
+    /**
+     * No flags.
+     */
+    NONE,
 }
 /**
  * Error domain for Tracker Sparql. Errors in this domain will be from the
- * #TrackerSparqlError enumeration. See #GError for more information on error
+ * [error`Tracker`.SparqlError] enumeration. See [struct`GLib`.Error] for more information on error
  * domains.
  */
 enum SparqlError {
@@ -218,6 +224,24 @@ enum SparqlConnectionFlags {
     ANONYMOUS_BNODES,
 }
 /**
+ * The major version of the Tracker library.
+ * 
+ * Like #tracker_major_version, but intended to be used at application compile time.
+ */
+const MAJOR_VERSION: number
+/**
+ * The micro version of the Tracker library.
+ * 
+ * Like #tracker_micro_version, but intended to be used at application compile time.
+ */
+const MICRO_VERSION: number
+/**
+ * The minor version of the Tracker library.
+ * 
+ * Like #tracker_minor_version, but intended to be used at application compile time.
+ */
+const MINOR_VERSION: number
+/**
  * The Prefix of the DC (Dublin Core) namespace
  */
 const PREFIX_DC: string | null
@@ -274,9 +298,10 @@ const PREFIX_TRACKER: string | null
  */
 const PREFIX_XSD: string | null
 /**
- * Checks that the Tracker library in use is compatible with the
- * given version. Generally you would pass in the constants
- * #TRACKER_MAJOR_VERSION, #TRACKER_MINOR_VERSION, #TRACKER_MICRO_VERSION
+ * Checks that the Tracker library in use is compatible with the given version.
+ * 
+ * Generally you would pass in the constants
+ * [const`Tracker`.MAJOR_VERSION], [const`Tracker`.MINOR_VERSION], [const`Tracker`.MICRO_VERSION]
  * as the three arguments to this function; that produces
  * a check that the library in use is compatible with
  * the version of Tracker the application or module was compiled
@@ -284,31 +309,32 @@ const PREFIX_XSD: string | null
  * 
  * Compatibility is defined by two things: first the version
  * of the running library is newer than the version
- * `required_major`.required_minor.`required_micro`. Second
+ * `required_major`.`required_minor`.`required_micro`. Second
  * the running library must be binary compatible with the
- * version `required_major`.required_minor.`required_micro`
+ * version `required_major`.`required_minor`.`required_micro`
  * (same major version.)
  * @param requiredMajor the required major version.
  * @param requiredMinor the required minor version.
  * @param requiredMicro the required micro version.
- * @returns %NULL if the Tracker library is compatible with the   given version, or a string describing the version mismatch.   The returned string is owned by Tracker and must not be modified   or freed.
+ * @returns %NULL if the Tracker library is compatible with the   given version, or a string describing the version mismatch.
  */
 function checkVersion(requiredMajor: number, requiredMinor: number, requiredMicro: number): string | null
 function sparqlErrorQuark(): GLib.Quark
 /**
  * Escapes `literal` so it is suitable for insertion in
- * SPARQL queries as string literals. Manual construction
- * of query strings based user input is best avoided at
- * all cost, use of #TrackerSparqlStatement is recommended
+ * SPARQL queries as string literals.
+ * 
+ * Manual construction of query strings based user input is best
+ * avoided at all cost, use of #TrackerSparqlStatement is recommended
  * instead.
  * @param literal a string to escape
  * @returns the escaped string
  */
 function sparqlEscapeString(literal: string | null): string | null
 /**
- * Calls tracker_sparql_escape_uri_printf().
+ * Escapes a string for use as a URI.
  * @param uri a string to be escaped, following the tracker sparql rules
- * @returns a newly-allocated string holding the result. The returned string should be freed with g_free() when no longer needed.
+ * @returns a newly-allocated string holding the result.
  */
 function sparqlEscapeUri(uri: string | null): string | null
 /**
@@ -330,7 +356,7 @@ module Batch {
         // Own constructor properties of Tracker-3.0.Tracker.Batch
 
         /**
-         * The #TrackerSparqlConnection the batch belongs to.
+         * The [class`Tracker`.SparqlConnection] the batch belongs to.
          */
         connection?: SparqlConnection | null
     }
@@ -342,7 +368,7 @@ interface Batch {
     // Own properties of Tracker-3.0.Tracker.Batch
 
     /**
-     * The #TrackerSparqlConnection the batch belongs to.
+     * The [class`Tracker`.SparqlConnection] the batch belongs to.
      */
     readonly connection: SparqlConnection
     __gtype__: number
@@ -356,25 +382,23 @@ interface Batch {
     /**
      * Adds the RDF represented by `resource` to `batch`.
      * @param graph RDF graph to insert the resource to
-     * @param resource a #TrackerResource
+     * @param resource A [class`Tracker`.Resource]
      */
     addResource(graph: string | null, resource: Resource): void
     /**
      * Adds an SPARQL update string to `batch`.
-     * @param sparql a SPARQL update string
+     * @param sparql A SPARQL update string
      */
     addSparql(sparql: string | null): void
     /**
-     * Adds a #TrackerSparqlStatement containing an SPARQL update. The statement will
+     * Adds a [class`Tracker`.SparqlStatement] containing an SPARQL update. The statement will
      * be executed once in the batch, with the values bound as specified by `variable_names`
      * and `values`.
      * 
      * For example, for a statement that has a single `~name` parameter,
      * it could be given a value for execution with the given code:
      * 
-     * <div class="gi-lang-c"><pre><code class="language-c">
-     * 
-     * ```
+     * ```c
      * const char *names = { "name" };
      * const GValue values[G_N_ELEMENTS (names)] = { 0, };
      * 
@@ -384,55 +408,47 @@ interface Batch {
      *                               G_N_ELEMENTS (names),
      *                               names, values);
      * ```
-     * </code></pre></div>
-     * 
-     * <div class="gi-lang-python"><pre><code class="language-python">
-     * 
-     * ```
+     * ```python
      * batch.add_statement(stmt, ['name'], ['John Smith']);
      * ```
-     * </code></pre></div>
-     * 
-     * <div class="gi-lang-javascript"><pre><code class="language-javascript">
-     * 
-     * ```
+     * ```js
      * batch.add_statement(stmt, ['name'], ['John Smith']);
      * ```
-     * </code></pre></div>
      * 
-     * The #TrackerSparqlStatement may be used on multiple tracker_batch_add_statement()
-     * calls with the same or different values, on the same or different #TrackerBatch
+     * A [class`Tracker`.SparqlStatement] may be used on multiple [method`Tracker`.Batch.add_statement]
+     * calls with the same or different values, on the same or different `TrackerBatch`
      * objects.
      * 
-     * This function should only be called on #TrackerSparqlStatement objects
-     * obtained through tracker_sparql_connection_update_statement() or
-     * update statements loaded through tracker_sparql_connection_load_statement_from_gresource().
-     * @param stmt a #TrackerSparqlStatement containing a SPARQL update
-     * @param variableNames the names of each bound parameter
-     * @param values the values of each bound parameter
+     * This function should only be called on [class`Tracker`.SparqlStatement] objects
+     * obtained through [method`Tracker`.SparqlConnection.update_statement] or
+     * update statements loaded through [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+     * @param stmt A [class`Tracker`.SparqlStatement] containing a SPARQL update
+     * @param variableNames The names of each bound parameter
+     * @param values The values of each bound parameter
      */
     addStatement(stmt: SparqlStatement, variableNames: string[], values: any[]): void
     /**
      * Executes the batch. This operations happens synchronously.
-     * @param cancellable a #GCancellable, or %NULL
+     * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns %TRUE of there were no errors, %FALSE otherwise
      */
     execute(cancellable: Gio.Cancellable | null): boolean
     /**
      * Executes the batch. This operation happens asynchronously, when
      * finished `callback` will be executed.
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     executeAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the operation started with tracker_batch_execute_async().
-     * @param res a #GAsyncResult with the result of the operation
+     * Finishes the operation started with [method`Tracker`.Batch.execute_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
      * @returns %TRUE of there were no errors, %FALSE otherwise
      */
     executeFinish(res: Gio.AsyncResult): boolean
     /**
-     * Returns the #TrackerSparqlConnection that this batch was created from.
+     * Returns the [class`Tracker`.SparqlConnection] that this batch was created
+     * from.
      * @returns The SPARQL connection of this batch.
      */
     getConnection(): SparqlConnection
@@ -457,6 +473,26 @@ interface Batch {
     disconnect(id: number): void
 }
 
+/**
+ * `TrackerBatch` executes a series of SPARQL updates and RDF data
+ * insertions within a transaction.
+ * 
+ * A batch is created with [method`Tracker`.SparqlConnection.create_batch].
+ * To add resources use [method`Tracker`.Batch.add_resource],
+ * [method`Tracker`.Batch.add_sparql] or [method`Batch`.add_statement].
+ * 
+ * When a batch is ready for execution, use [method`Tracker`.Batch.execute]
+ * or [method`Tracker`.Batch.execute_async]. The batch is executed as a single
+ * transaction, it will succeed or fail entirely.
+ * 
+ * This object has a single use, after the batch is executed it can
+ * only be finished and freed.
+ * 
+ * The mapping of blank node labels is global in a `TrackerBatch`,
+ * referencing the same blank node label in different operations in
+ * a batch will resolve to the same resource.
+ * @class 
+ */
 class Batch extends GObject.Object {
 
     // Own properties of Tracker-3.0.Tracker.Batch
@@ -477,6 +513,9 @@ module Endpoint {
 
         // Own constructor properties of Tracker-3.0.Tracker.Endpoint
 
+        /**
+         * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
+         */
         sparqlConnection?: SparqlConnection | null
     }
 
@@ -486,6 +525,9 @@ interface Endpoint {
 
     // Own properties of Tracker-3.0.Tracker.Endpoint
 
+    /**
+     * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
+     */
     readonly sparqlConnection: SparqlConnection
     __gtype__: number
 
@@ -496,7 +538,8 @@ interface Endpoint {
     // Owm methods of Tracker-3.0.Tracker.Endpoint
 
     /**
-     * Returns the #TrackerSparqlConnection that this endpoint proxies.
+     * Returns the [class`Tracker`.SparqlConnection] that this endpoint proxies
+     * to a wider audience.
      * @returns The proxied SPARQL connection
      */
     getSparqlConnection(): SparqlConnection
@@ -522,8 +565,19 @@ interface Endpoint {
 }
 
 /**
- * The <structname>TrackerEndpoint</structname> object represents a public
- * connection to a #TrackerSparqlConnection.
+ * `TrackerEndpoint` is a helper object to make RDF triple stores represented
+ * by a [class`Tracker`.SparqlConnection] publicly available to other processes/hosts.
+ * 
+ * This is a base abstract object, see [class`Tracker`.EndpointDBus] to make
+ * RDF triple stores available to other processes in the same machine, and
+ * [class`Tracker`.EndpointHttp] to make it available to other hosts in the
+ * network.
+ * 
+ * When the RDF triple store represented by a [class`Tracker`.SparqlConnection]
+ * is made public this way, other peers may connect to the database using
+ * [ctor`Tracker`.SparqlConnection.bus_new] or [ctor`Tracker`.SparqlConnection.remote_new]
+ * to access this endpoint exclusively, or they may use the `SERVICE <uri> { ... }` SPARQL
+ * syntax from their own [class`Tracker`.SparqlConnection]s to expand their data set.
  * @class 
  */
 class Endpoint extends GObject.Object {
@@ -546,7 +600,13 @@ module EndpointDBus {
 
         // Own constructor properties of Tracker-3.0.Tracker.EndpointDBus
 
+        /**
+         * The [class`Gio`.DBusConnection] where the connection is proxied through.
+         */
         dbusConnection?: Gio.DBusConnection | null
+        /**
+         * The DBus object path that this endpoint manages.
+         */
         objectPath?: string | null
     }
 
@@ -556,7 +616,13 @@ interface EndpointDBus extends Gio.Initable {
 
     // Own properties of Tracker-3.0.Tracker.EndpointDBus
 
+    /**
+     * The [class`Gio`.DBusConnection] where the connection is proxied through.
+     */
     readonly dbusConnection: Gio.DBusConnection
+    /**
+     * The DBus object path that this endpoint manages.
+     */
     readonly objectPath: string | null
     __gtype__: number
 
@@ -591,8 +657,40 @@ interface EndpointDBus extends Gio.Initable {
 }
 
 /**
- * The <structname>TrackerEndpointDBus</structname> object represents a public
- * connection to a #TrackerSparqlConnection on a DBus object path.
+ * `TrackerEndpointDBus` makes the RDF data in a [class`Tracker`.SparqlConnection]
+ * accessible to other processes via DBus.
+ * 
+ * This object is a [class`Tracker`.Endpoint] subclass that exports
+ * a [class`Tracker`.SparqlConnection] so its RDF data is accessible to other
+ * processes through the given [class`Gio`.DBusConnection].
+ * 
+ * ```c
+ * // This process already has org.example.Endpoint bus name
+ * endpoint = tracker_endpoint_dbus_new (sparql_connection,
+ *                                       dbus_connection,
+ *                                       NULL,
+ *                                       NULL,
+ *                                       &error);
+ * 
+ * // From another process
+ * connection = tracker_sparql_connection_bus_new ("org.example.Endpoint",
+ *                                                 NULL,
+ *                                                 dbus_connection,
+ *                                                 &error);
+ * ```
+ * 
+ * The `TrackerEndpointDBus` will manage a DBus object at the given path
+ * with the `org.freedesktop.Tracker3.Endpoint` interface, if no path is
+ * given the object will be at the default `/org/freedesktop/Tracker3/Endpoint`
+ * location.
+ * 
+ * Access to these endpoints may be transparently managed through
+ * the Tracker portal service for applications sandboxed via Flatpak, and
+ * access to data constrained to the graphs defined in the applications
+ * manifest.
+ * 
+ * A `TrackerEndpointDBus` may be created on a different thread/main
+ * context from the one that created [class`Tracker`.SparqlConnection].
  * @class 
  */
 class EndpointDBus extends Endpoint {
@@ -606,24 +704,24 @@ class EndpointDBus extends Endpoint {
     constructor(config?: EndpointDBus.ConstructorProperties) 
     /**
      * Registers a Tracker endpoint object at `object_path` on `dbus_connection`.
-     * The default object path is "/org/freedesktop/Tracker3/Endpoint".
+     * The default object path is `/org/freedesktop/Tracker3/Endpoint`.
      * @constructor 
-     * @param sparqlConnection a #TrackerSparqlConnection
-     * @param dbusConnection a #GDBusConnection
-     * @param objectPath the object path to use, or %NULL for the default
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a #TrackerEndpointDBus object.
+     * @param sparqlConnection The [class`Tracker`.SparqlConnection] being made public
+     * @param dbusConnection #GDBusConnection to expose the DBus object over
+     * @param objectPath The object path to use, or %NULL to use the default
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a `TrackerEndpointDBus` object.
      */
     constructor(sparqlConnection: SparqlConnection, dbusConnection: Gio.DBusConnection, objectPath: string | null, cancellable: Gio.Cancellable | null) 
     /**
      * Registers a Tracker endpoint object at `object_path` on `dbus_connection`.
-     * The default object path is "/org/freedesktop/Tracker3/Endpoint".
+     * The default object path is `/org/freedesktop/Tracker3/Endpoint`.
      * @constructor 
-     * @param sparqlConnection a #TrackerSparqlConnection
-     * @param dbusConnection a #GDBusConnection
-     * @param objectPath the object path to use, or %NULL for the default
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a #TrackerEndpointDBus object.
+     * @param sparqlConnection The [class`Tracker`.SparqlConnection] being made public
+     * @param dbusConnection #GDBusConnection to expose the DBus object over
+     * @param objectPath The object path to use, or %NULL to use the default
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a `TrackerEndpointDBus` object.
      */
     static new(sparqlConnection: SparqlConnection, dbusConnection: Gio.DBusConnection, objectPath: string | null, cancellable: Gio.Cancellable | null): EndpointDBus
     _init(config?: EndpointDBus.ConstructorProperties): void
@@ -647,7 +745,13 @@ module EndpointHttp {
 
         // Own constructor properties of Tracker-3.0.Tracker.EndpointHttp
 
+        /**
+         * [class`Gio`.TlsCertificate] to encrypt the communication.
+         */
         httpCertificate?: Gio.TlsCertificate | null
+        /**
+         * HTTP port used to listen requests.
+         */
         httpPort?: number | null
     }
 
@@ -657,7 +761,13 @@ interface EndpointHttp extends Gio.Initable {
 
     // Own properties of Tracker-3.0.Tracker.EndpointHttp
 
+    /**
+     * [class`Gio`.TlsCertificate] to encrypt the communication.
+     */
     readonly httpCertificate: Gio.TlsCertificate
+    /**
+     * HTTP port used to listen requests.
+     */
     readonly httpPort: number
     __gtype__: number
 
@@ -700,8 +810,45 @@ interface EndpointHttp extends Gio.Initable {
 }
 
 /**
- * The <structname>TrackerEndpointHttp</structname> object represents a public
- * connection to a #TrackerSparqlConnection on a HTTP port.
+ * `TrackerEndpointHttp` makes the RDF data in a [class`Tracker`.SparqlConnection]
+ * accessible to other hosts via HTTP.
+ * 
+ * This object is a [class`Tracker`.Endpoint] subclass that exports
+ * a [class`Tracker`.SparqlConnection] so its RDF data is accessible via HTTP
+ * requests on the given port. This endpoint implementation is compliant
+ * with the [SPARQL protocol specifications](https://www.w3.org/TR/2013/REC-sparql11-protocol-20130321/)
+ * and may interoperate with other implementations.
+ * 
+ * ```c
+ * // This host has "example.local" hostname
+ * endpoint = tracker_endpoint_http_new (sparql_connection,
+ *                                       8080,
+ *                                       tls_certificate,
+ *                                       NULL,
+ *                                       &error);
+ * 
+ * // From another host
+ * connection = tracker_sparql_connection_remote_new ("http://example.local:8080/sparql");
+ * ```
+ * 
+ * Access to HTTP endpoints may be managed via the
+ * [signal`Tracker`.EndpointHttp::block-remote-address] signal, the boolean
+ * return value expressing whether the connection is blocked or not.
+ * Inspection of the requester address is left up to the user. The
+ * default value allows all requests independently of their provenance,
+ * users are encouraged to add a handler.
+ * 
+ * If the provided [class`Gio`.TlsCertificate] is %NULL, the endpoint will allow
+ * plain HTTP connections. Users are encouraged to provide a certificate
+ * in order to use HTTPS.
+ * 
+ * As a security measure, and in compliance specifications,
+ * the HTTP endpoint does not handle database updates or modifications in any
+ * way. The database content is considered to be entirely managed by the
+ * process that creates the HTTP endpoint and owns the [class`Tracker`.SparqlConnection].
+ * 
+ * A `TrackerEndpointHttp` may be created on a different thread/main
+ * context from the one that created [class`Tracker`.SparqlConnection].
  * @class 
  */
 class EndpointHttp extends Endpoint {
@@ -718,11 +865,11 @@ class EndpointHttp extends Endpoint {
      * If `certificate` is not %NULL, HTTPS may be used to connect to the
      * endpoint.
      * @constructor 
-     * @param sparqlConnection a #TrackerSparqlConnection
-     * @param port HTTP port to listen to
-     * @param certificate certificate to use for encription, or %NULL
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a #TrackerEndpointDBus object.
+     * @param sparqlConnection The [class`Tracker`.SparqlConnection] being made public
+     * @param port HTTP port to handle incoming requests
+     * @param certificate Optional [type`Gio`.TlsCertificate] to use for encription
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a `TrackerEndpointHttp` object.
      */
     constructor(sparqlConnection: SparqlConnection, port: number, certificate: Gio.TlsCertificate | null, cancellable: Gio.Cancellable | null) 
     /**
@@ -730,11 +877,11 @@ class EndpointHttp extends Endpoint {
      * If `certificate` is not %NULL, HTTPS may be used to connect to the
      * endpoint.
      * @constructor 
-     * @param sparqlConnection a #TrackerSparqlConnection
-     * @param port HTTP port to listen to
-     * @param certificate certificate to use for encription, or %NULL
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a #TrackerEndpointDBus object.
+     * @param sparqlConnection The [class`Tracker`.SparqlConnection] being made public
+     * @param port HTTP port to handle incoming requests
+     * @param certificate Optional [type`Gio`.TlsCertificate] to use for encription
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a `TrackerEndpointHttp` object.
      */
     static new(sparqlConnection: SparqlConnection, port: number, certificate: Gio.TlsCertificate | null, cancellable: Gio.Cancellable | null): EndpointHttp
     _init(config?: EndpointHttp.ConstructorProperties): void
@@ -763,16 +910,16 @@ interface NamespaceManager {
      * Only one prefix is allowed for a given namespace, and all prefixes must
      * be unique.
      * 
-     * Since 3.3, This function may not be used on #TrackerNamespaceManager
-     * instances that were obtained through
-     * tracker_sparql_connection_get_namespace_manager().
+     * Since 3.3, The `TrackerNamespaceManager` instances obtained through
+     * [method`Tracker`.SparqlConnection.get_namespace_manager] are "sealed",
+     * this API call should not performed on those.
      * @param prefix a short, unique prefix to identify `namespace`
      * @param ns the URL of the given namespace
      */
     addPrefix(prefix: string | null, ns: string | null): void
     /**
      * If `uri` begins with one of the namespaces known to this
-     * #TrackerNamespaceManager, then the return value will be the
+     * `TrackerNamespaceManager`, then the return value will be the
      * compressed URI. Otherwise, %NULL will be returned.
      * @param uri a URI or compact URI
      * @returns (nullable): the compressed URI
@@ -780,10 +927,10 @@ interface NamespaceManager {
     compressUri(uri: string | null): string | null
     /**
      * If `compact_uri` begins with one of the prefixes known to this
-     * #TrackerNamespaceManager, then the return value will be the
+     * `TrackerNamespaceManager`, then the return value will be the
      * expanded URI. Otherwise, a copy of `compact_uri` will be returned.
      * @param compactUri a URI or compact URI
-     * @returns a newly-allocated string
+     * @returns The possibly expanded URI in a newly-allocated string.
      */
     expandUri(compactUri: string | null): string | null
     /**
@@ -794,18 +941,19 @@ interface NamespaceManager {
     /**
      * Returns whether `prefix` is known.
      * @param prefix a string
-     * @returns %TRUE if the #TrackerNamespaceManager knows about @prefix, %FALSE otherwise
+     * @returns %TRUE if the `TrackerNamespaceManager` knows about @prefix, %FALSE otherwise
      */
     hasPrefix(prefix: string | null): boolean
     /**
      * Looks up the namespace URI corresponding to `prefix,` or %NULL if the prefix
      * is not known.
      * @param prefix a string
-     * @returns a string owned by the #TrackerNamespaceManager, or %NULL
+     * @returns a string owned by the `TrackerNamespaceManager`, or %NULL
      */
     lookupPrefix(prefix: string | null): string | null
     /**
-     * Writes out all namespaces as Turtle `prefix` statements.
+     * Writes out all namespaces as ``prefix`` statements in
+     * the [Turtle](https://www.w3.org/TR/turtle/) RDF format.
      * @returns a newly-allocated string
      */
     printTurtle(): string | null
@@ -826,8 +974,17 @@ interface NamespaceManager {
 }
 
 /**
- * The <structname>TrackerNamespaceManager</structname> object represents a
- * mapping of prefixes and namespaces.
+ * `TrackerNamespaceManager` object represents a mapping between namespaces and
+ * their shortened prefixes.
+ * 
+ * This object keeps track of namespaces, and allows you to assign
+ * short prefixes for them to avoid frequent use of full namespace IRIs. The syntax
+ * used is that of [Compact URIs (CURIEs)](https://www.w3.org/TR/2010/NOTE-curie-20101216).
+ * 
+ * Usually you will want to use a namespace manager obtained through
+ * [method`Tracker`.SparqlConnection.get_namespace_manager] from the
+ * [class`Tracker`.SparqlConnection] that manages the RDF data, as that will
+ * contain all prefixes and namespaces that are pre-defined by its ontology.
  * @class 
  */
 class NamespaceManager extends GObject.Object {
@@ -840,26 +997,26 @@ class NamespaceManager extends GObject.Object {
 
     constructor(config?: NamespaceManager.ConstructorProperties) 
     /**
-     * Creates a new #TrackerNamespaceManager instance.
+     * Creates a new, empty `TrackerNamespaceManager` instance.
      * @constructor 
-     * @returns a new #TrackerNamespaceManager instance
+     * @returns a new `TrackerNamespaceManager` instance
      */
     constructor() 
     /**
-     * Creates a new #TrackerNamespaceManager instance.
+     * Creates a new, empty `TrackerNamespaceManager` instance.
      * @constructor 
-     * @returns a new #TrackerNamespaceManager instance
+     * @returns a new `TrackerNamespaceManager` instance
      */
     static new(): NamespaceManager
     _init(config?: NamespaceManager.ConstructorProperties): void
     /**
-     * Returns the global #TrackerNamespaceManager that contains a set of well-known
-     * namespaces and prefixes, such as rdf:, rdfs:, nie:, tracker:, etc.
+     * Returns the global `TrackerNamespaceManager` that contains a set of well-known
+     * namespaces and prefixes, such as `rdf:`, `rdfs:`, `nie:`, `tracker:`, etc.
      * 
      * Note that the list of prefixes and namespaces is hardcoded in
      * libtracker-sparql. It may not correspond with the installed set of
      * ontologies, if they have been modified since they were installed.
-     * @returns a global, shared #TrackerNamespaceManager instance
+     * @returns a global, shared `TrackerNamespaceManager` instance
      */
     static getDefault(): NamespaceManager
 }
@@ -907,24 +1064,30 @@ interface Notifier {
     // Owm methods of Tracker-3.0.Tracker.Notifier
 
     /**
-     * Listens to notification events from a remote SPARQL endpoint as a DBus
-     * service (see #TrackerEndpointDBus). If the `object_path` argument is
-     * %NULL, the default "/org/freedesktop/Tracker3/Endpoint" path will be
+     * Listens to notification events from a remote DBus SPARQL endpoint.
+     * 
+     * If the `object_path` argument is %NULL, the default
+     * `/org/freedesktop/Tracker3/Endpoint` path will be
      * used. If `graph` is %NULL, all graphs will be listened for.
      * 
      * The signal subscription can be removed with
-     * tracker_notifier_signal_unsubscribe().
-     * @param connection a #GDBusConnection
+     * [method`Tracker`.Notifier.signal_unsubscribe].
+     * 
+     * Note that this call is not necessary to receive notifications on
+     * a connection obtained through [ctor`Tracker`.SparqlConnection.bus_new],
+     * only to listen to update notifications from additional DBus endpoints.
+     * @param connection A [class`Gio`.DBusConnection]
      * @param service DBus service name to subscribe to events for
      * @param objectPath DBus object path to subscribe to events for, or %NULL
-     * @param graph graph to listen events for, or %NULL
+     * @param graph Graph to listen events for, or %NULL
      * @returns An ID for this subscription
      */
     signalSubscribe(connection: Gio.DBusConnection, service: string | null, objectPath: string | null, graph: string | null): number
     /**
-     * Undoes a DBus signal subscription, the `handler_id` argument was previously
-     * obtained with a tracker_notifier_signal_subscribe() call.
-     * @param handlerId a handler ID obtained with tracker_notifier_signal_subscribe()
+     * Undoes a signal subscription done through [method`Tracker`.Notifier.signal_subscribe].
+     * 
+     * The `handler_id` argument was previously obtained during signal subscription creation.
+     * @param handlerId A signal subscription handler ID
      */
     signalUnsubscribe(handlerId: number): void
 
@@ -957,8 +1120,37 @@ interface Notifier {
 }
 
 /**
- * The <structname>TrackerNotifier</structname> object allows subscribing
- * to changes in the stored data.
+ * `TrackerNotifier` allows receiving notification on changes
+ * in the data stored by a [class`Tracker`.SparqlConnection].
+ * 
+ * This object may be created through [method`Tracker`.SparqlConnection.create_notifier],
+ * events can then be listened for by connecting to the
+ * [signal`Tracker`.Notifier::events] signal.
+ * 
+ * Not every change is notified, only RDF resources with a
+ * class that has the [nrl:notify](nrl-ontology.html#nrl:notify)
+ * property defined by the ontology will be notified upon changes.
+ * 
+ * Database changes are communicated through [struct`Tracker`.NotifierEvent] events on
+ * individual graph/resource pairs. The event type obtained through
+ * [method`Tracker`.NotifierEvent.get_event_type] will determine the type of event.
+ * Insertion of new resources is notified through
+ * %TRACKER_NOTIFIER_EVENT_CREATE events, deletion of
+ * resources is notified through %TRACKER_NOTIFIER_EVENT_DELETE
+ * events, and changes on any property of the resource is notified
+ * through %TRACKER_NOTIFIER_EVENT_UPDATE events.
+ * 
+ * The events happen in reaction to database changes, after a `TrackerNotifier`
+ * received an event of type %TRACKER_NOTIFIER_EVENT_DELETE, the resource will
+ * not exist anymore and only the information in the [struct`Tracker`.NotifierEvent]
+ * will remain.
+ * 
+ * Similarly, when receiving an event of type %TRACKER_NOTIFIER_EVENT_UPDATE,
+ * the resource will have already changed, so the data previous to the update is
+ * no longer available.
+ * 
+ * The [signal`Tracker`.Notifier::events] signal is emitted in the thread-default
+ * main context of the thread where the `TrackerNotifier` instance was created.
  * @class 
  */
 class Notifier extends GObject.Object {
@@ -1008,48 +1200,83 @@ interface Resource {
     // Owm methods of Tracker-3.0.Tracker.Resource
 
     /**
-     * Adds a boolean object to a multi-valued property.
-     * @param propertyUri a string identifying the property to modify
-     * @param value the property object
+     * Adds a boolean property. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:boolean](xsd-ontology.html#xsd:boolean).
+     * @param propertyUri A string identifying the property to modify
+     * @param value The property boolean value
      */
     addBoolean(propertyUri: string | null, value: boolean): void
     /**
-     * Adds GDateTime object to the multi-valued property.
+     * Adds a date property as a [type`GLib`.DateTime]. Previous values for the
+     * same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:date](xsd-ontology.html#xsd:date) and
+     * [xsd:dateTime](xsd-ontology.html#xsd:dateTime).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     addDatetime(propertyUri: string | null, value: GLib.DateTime): void
     /**
-     * Adds a double object to a multi-valued property.
+     * Adds a numeric property with double precision. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:double](xsd-ontology.html#xsd:double).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     addDouble(propertyUri: string | null, value: number): void
     /**
-     * Add 'value' to the list of values for given property.
+     * Add `value` to the list of values for given property.
      * 
-     * You can pass any kind of GValue for `value,` but serialization functions will
+     * You can pass any kind of [struct`GObject`.Value] for `value,` but serialization functions will
      * normally only be able to serialize URIs/relationships and fundamental value
      * types (string, int, etc.).
      * @param propertyUri a string identifying the property to set
-     * @param value an initialised #GValue
+     * @param value an initialised [struct`GObject`.Value]
      */
     addGvalue(propertyUri: string | null, value: any): void
     /**
-     * Adds an integer object to a multi-valued property.
+     * Adds a numeric property with integer precision. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:integer](xsd-ontology.html#xsd:integer).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     addInt(propertyUri: string | null, value: number): void
     /**
-     * Adds an integer object to a multi-valued property.
+     * Adds a numeric property with 64-bit integer precision. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:integer](xsd-ontology.html#xsd:integer).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     addInt64(propertyUri: string | null, value: number): void
     /**
-     * Adds a resource object to a multi-valued property. This
-     * function produces similar RDF to tracker_resource_add_uri(),
+     * Adds a resource property as a `TrackerResource`. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This method produces similar RDF to [method`Tracker`.Resource.add_uri],
      * although in this function the URI will depend on the identifier
      * set on `resource`.
      * @param propertyUri a string identifying the property to modify
@@ -1057,14 +1284,28 @@ interface Resource {
      */
     addRelation(propertyUri: string | null, resource: Resource): void
     /**
-     * Adds a string object to a multi-valued property.
+     * Adds a string property. Previous values for the same property are kept.
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method corresponds to [xsd:string](xsd-ontology.html#xsd:string).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     addString(propertyUri: string | null, value: string | null): void
     /**
-     * Adds a resource object to a multi-valued property. This
-     * function produces similar RDF to tracker_resource_add_uri(),
+     * Adds a resource property as a `TrackerResource`. Previous values for the same property are kept.
+     * Takes ownership on the given `resource`.
+     * 
+     * This method is meant to RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This function produces similar RDF to [method`Tracker`.Resource.add_uri],
      * although in this function the URI will depend on the identifier
      * set on `resource`. This function takes ownership of `resource`.
      * @param propertyUri a string identifying the property to modify
@@ -1072,8 +1313,16 @@ interface Resource {
      */
     addTakeRelation(propertyUri: string | null, resource: Resource): void
     /**
-     * Adds a resource object to a multi-valued property. This function
-     * produces similar RDF to tracker_resource_add_relation(), although
+     * Adds a resource property as an URI string. Previous values for the same property are kept.
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This method is meant for RDF properties allowing multiple values, see
+     * [nrl:maxCardinality](nrl-ontology.html#nrl:maxCardinality).
+     * 
+     * This function produces similar RDF to [method`Tracker`.Resource.add_relation], although
      * it requires that the URI is previously known.
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
@@ -1086,7 +1335,7 @@ interface Resource {
      */
     getFirstBoolean(propertyUri: string | null): boolean
     /**
-     * Returns the first resource object previously assigned to a property.
+     * Returns the first [type`GLib`.DateTime] previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first GDateTime object
      */
@@ -1130,14 +1379,14 @@ interface Resource {
     /**
      * Returns the identifier of a resource.
      * 
-     * If the identifier was set to NULL, the identifier returned will be a unique
-     * SPARQL blank node identifier, such as "_:123".
+     * If the identifier was set to NULL, the identifier returned will be a locally
+     * unique SPARQL blank node identifier, such as `_:123`.
      * @returns a string owned by the resource
      */
     getIdentifier(): string | null
     /**
      * Gets the list of properties defined in `resource`
-     * @returns The list of properties.          The list should be freed with g_list_free().
+     * @returns The list of properties.
      */
     getProperties(): string[]
     /**
@@ -1150,11 +1399,11 @@ interface Resource {
     /**
      * Returns the list of all known values of the given property.
      * @param propertyUri a string identifying the property to look up
-     * @returns a #GList of #GValue instances. The list should be freed with g_list_free()
+     * @returns a [struct@GLib.List] of   [struct@GObject.Value] instances. The list should be freed with [func@GLib.List.free]
      */
     getValues(propertyUri: string | null): any[] | null
     /**
-     * A helper function that compares a #TrackerResource by its identifier
+     * A helper function that compares a `TrackerResource` by its identifier
      * string.
      * @param identifier a string identifying the resource
      * @returns an integer less than, equal to, or greater than zero, if the          resource identifier is <, == or > than @identifier
@@ -1167,7 +1416,7 @@ interface Resource {
      * serialization format.
      * 
      * The `namespaces` object is used to expand any compact URI values. In most
-     * cases you should pass the one returned by tracker_sparql_connection_get_namespace_manager()
+     * cases you should pass the one returned by [method`Tracker`.SparqlConnection.get_namespace_manager]
      * from the connection that is the intended recipient of this data.
      * @param namespaces a set of prefixed URLs, or %NULL to use the     Nepomuk set
      * @returns a newly-allocated string containing JSON-LD data.
@@ -1177,7 +1426,7 @@ interface Resource {
      * Serialize all the information in `resource` into the selected RDF format.
      * 
      * The `namespaces` object is used to expand any compact URI values. In most
-     * cases you should pass the one returned by tracker_sparql_connection_get_namespace_manager()
+     * cases you should pass the one returned by [method`Tracker`.SparqlConnection.get_namespace_manager]
      * from the connection that is the intended recipient of this data.
      * @param namespaces a set of prefixed URLs
      * @param format RDF format of the printed string
@@ -1190,7 +1439,7 @@ interface Resource {
      * stored in `resource`.
      * 
      * The `namespaces` object is used to expand any compact URI values. In most
-     * cases you should pass the one returned by tracker_sparql_connection_get_namespace_manager()
+     * cases you should pass the one returned by [method`Tracker`.SparqlConnection.get_namespace_manager]
      * from the connection that is the intended recipient of this data.
      * @param namespaces a set of prefixed URLs, or %NULL to use the     Nepomuk set
      * @param graphId the URN of the graph the data should be added to,     or %NULL
@@ -1204,78 +1453,93 @@ interface Resource {
      * <https://www.w3.org/TR/2014/REC-turtle-20140225/>
      * 
      * The `namespaces` object is used to expand any compact URI values. In most
-     * cases you should pass the one returned by tracker_sparql_connection_get_namespace_manager()
+     * cases you should pass the one returned by [method`Tracker`.SparqlConnection.get_namespace_manager]
      * from the connection that is the intended recipient of this data.
      * @param namespaces a set of prefixed URLs, or %NULL to use the     Nepomuk set
      * @returns a newly-allocated string
      */
     printTurtle(namespaces: NamespaceManager | null): string | null
     /**
-     * Serializes a #TrackerResource to a #GVariant in a lossless way.
+     * Serializes a `TrackerResource` to a [type`GLib`.Variant] in a lossless way.
      * All child resources are subsequently serialized. It is implied
-     * that both ends use a common #TrackerNamespaceManager.
+     * that both ends use a common [class`Tracker`.NamespaceManager].
      * @returns A variant describing the resource,          the reference is floating.
      */
     serialize(): GLib.Variant | null
     /**
-     * Sets a single-valued boolean object.
-     * @param propertyUri a string identifying the property to modify
-     * @param value the property object
+     * Sets a boolean property. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:boolean](xsd-ontology.html#xsd:boolean).
+     * @param propertyUri A string identifying the property to modify
+     * @param value The property boolean value
      */
     setBoolean(propertyUri: string | null, value: boolean): void
     /**
-     * Sets a single-valued GDateTime as a #TrackerResource
+     * Sets a date property as a [type`GLib`.DateTime]. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:date](xsd-ontology.html#xsd:date) and
+     * [xsd:dateTime](xsd-ontology.html#xsd:dateTime).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     setDatetime(propertyUri: string | null, value: GLib.DateTime): void
     /**
-     * Sets a single-valued double object.
-     * @param propertyUri a string identifying the property to modify
-     * @param value the property object
+     * Sets a numeric property with double precision. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:double](xsd-ontology.html#xsd:double).
+     * @param propertyUri A string identifying the property to modify
+     * @param value The property object
      */
     setDouble(propertyUri: string | null, value: number): void
     /**
-     * State that the only value for the given property is 'value'. Any existing
-     * values for 'property' will be removed.
+     * Replace any previously existing value for `property_uri` with `value`.
      * 
      * When serialising to SPARQL, any properties that were set with this function
      * will get a corresponding DELETE statement to remove any existing values in
      * the database.
      * 
-     * You can pass any kind of GValue for `value,` but serialization functions will
+     * You can pass any kind of [struct`GObject`.Value] for `value,` but serialization functions will
      * normally only be able to serialize URIs/relationships and fundamental value
      * types (string, int, etc.).
      * @param propertyUri a string identifying the property to set
-     * @param value an initialised #GValue
+     * @param value an initialised [struct`GObject`.Value]
      */
     setGvalue(propertyUri: string | null, value: any): void
     /**
-     * Changes the identifier of a #TrackerResource. The identifier should be a
+     * Changes the identifier of a `TrackerResource`. The identifier should be a
      * URI or compact URI, but this is not necessarily enforced. Invalid
      * identifiers may cause errors when serializing the resource or trying to
      * insert the results in a database.
      * 
      * If the identifier is set to %NULL, a SPARQL blank node identifier such as
-     * "_:123" is assigned to the resource.
+     * `_:123` is assigned to the resource.
      * @param identifier a string identifying the resource
      */
     setIdentifier(identifier: string | null): void
     /**
-     * Sets a single-valued integer object.
-     * @param propertyUri a string identifying the property to modify
-     * @param value the property object
+     * Sets a numeric property with integer precision. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:integer](xsd-ontology.html#xsd:integer).
+     * @param propertyUri A string identifying the property to modify
+     * @param value The property object
      */
     setInt(propertyUri: string | null, value: number): void
     /**
-     * Sets a single-valued integer object.
+     * Sets a numeric property with 64-bit integer precision. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:integer](xsd-ontology.html#xsd:integer).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     setInt64(propertyUri: string | null, value: number): void
     /**
-     * Sets a single-valued resource object as a #TrackerResource. This
-     * function produces similar RDF to tracker_resource_set_uri(),
+     * Sets a resource property as a `TrackerResource`. Replaces any previous value.
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This function produces similar RDF to [method`Tracker`.Resource.set_uri],
      * although in this function the URI will depend on the identifier
      * set on `resource`.
      * @param propertyUri a string identifying the property to modify
@@ -1283,23 +1547,36 @@ interface Resource {
      */
     setRelation(propertyUri: string | null, resource: Resource): void
     /**
-     * Sets a single-valued string object.
+     * Sets a string property. Replaces any previous value.
+     * 
+     * This method corresponds to [xsd:string](xsd-ontology.html#xsd:string).
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
     setString(propertyUri: string | null, value: string | null): void
     /**
-     * Sets a single-valued resource object as a #TrackerResource. This
-     * function produces similar RDF to tracker_resource_set_uri(),
+     * Sets a resource property as a `TrackerResource`. Replaces any previous value.
+     * Takes ownership on the given `resource`.
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This function produces similar RDF to [method`Tracker`.Resource.set_uri],
      * although in this function the URI will depend on the identifier
-     * set on `resource`. This function takes ownership of `resource`.
+     * set on `resource`.
      * @param propertyUri a string identifying the property to modify
      * @param resource the property object
      */
     setTakeRelation(propertyUri: string | null, resource: Resource): void
     /**
-     * Sets a single-valued resource object as a string URI. This function
-     * produces similar RDF to tracker_resource_set_relation(), although
+     * Sets a resource property as an URI string. Replaces any previous value.
+     * 
+     * This method applies to properties with a [rdfs:range](rdf-ontology.html#rdfs:range)
+     * that points to a non-literal class (i.e. a subclass of
+     * [rdfs:Resource](rdf-ontology.html#rdfs:Resource)).
+     * 
+     * This function produces similar RDF to [method`Tracker`.Resource.set_relation], although
      * it requires that the URI is previously known.
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
@@ -1327,8 +1604,35 @@ interface Resource {
 }
 
 /**
- * The <structname>TrackerResource</structname> object represents information
- * about a given resource.
+ * `TrackerResource` is an in-memory representation of RDF data about a given resource.
+ * 
+ * This object keeps track of a set of properties for a given resource, and can
+ * also link to other `TrackerResource` objects to form trees or graphs of RDF
+ * data. See [method`Tracker`.Resource.set_relation] and [method`Tracker`.Resource.set_uri]
+ * on how to link a `TrackerResource` to other RDF data.
+ * 
+ * `TrackerResource` may also hold data about literal values, added through
+ * the specialized [method`Tracker`.Resource.set_int64], [method`Tracker`.Resource.set_string],
+ * etc family of functions, or the generic [method`Tracker`.Resource.set_gvalue] method.
+ * 
+ * Since RDF properties may be multi-valued, for every `set` call there exists
+ * another `add` call (e.g. [method`Tracker`.Resource.add_int64], [method`Tracker`.Resource.add_string]
+ * and so on). The `set` methods do also reset any previously value the
+ * property might hold for the given resource.
+ * 
+ * Resources may have an IRI set at creation through [ctor`Tracker`.Resource.new],
+ * or set afterwards through [method`Tracker`.Resource.set_identifier]. Resources
+ * without a name will represent a blank node, and will be dealt with as such
+ * during database insertions.
+ * 
+ * `TrackerResource` performs no validation on the data being coherent as per
+ * any ontology. Errors will be found out at the time of using the TrackerResource
+ * for e.g. database updates.
+ * 
+ * Once the RDF data is built in memory, the (tree of) `TrackerResource` may be
+ * converted to a RDF format through [method`Tracker`.Resource.print_rdf], or
+ * directly inserted into a database through [method`Tracker`.Batch.add_resource]
+ * or [method`Tracker`.SparqlConnection.update_resource].
  * @class 
  */
 class Resource extends GObject.Object {
@@ -1344,22 +1648,22 @@ class Resource extends GObject.Object {
      * Creates a TrackerResource instance.
      * @constructor 
      * @param identifier A string containing a URI, or %NULL.
-     * @returns a newly created #TrackerResource. Free with g_object_unref() when done
+     * @returns a newly created `TrackerResource`.
      */
     constructor(identifier: string | null) 
     /**
      * Creates a TrackerResource instance.
      * @constructor 
      * @param identifier A string containing a URI, or %NULL.
-     * @returns a newly created #TrackerResource. Free with g_object_unref() when done
+     * @returns a newly created `TrackerResource`.
      */
     static new(identifier: string | null): Resource
     _init(config?: Resource.ConstructorProperties): void
     /**
-     * Deserializes a #TrackerResource previously serialized with
-     * tracker_resource_serialize(). It is implied that both ends
-     * use a common #TrackerNamespaceManager.
-     * @param variant a #GVariant
+     * Deserializes a `TrackerResource` previously serialized with
+     * [method`Tracker`.Resource.serialize]. It is implied that both ends
+     * use a common [class`Tracker`.NamespaceManager].
+     * @param variant a [type`GLib`.Variant]
      * @returns A TrackerResource, or %NULL if          deserialization fails.
      */
     static deserialize(variant: GLib.Variant): Resource | null
@@ -1387,8 +1691,9 @@ interface SparqlConnection {
     // Owm methods of Tracker-3.0.Tracker.SparqlConnection
 
     /**
-     * Closes a SPARQL connection. No other API calls than g_object_unref()
-     * should happen after this call.
+     * Closes a SPARQL connection.
+     * 
+     * No other API calls than g_object_unref() should happen after this call.
      * 
      * This call is blocking. All pending updates will be flushed, and the
      * store databases will be closed orderly. All ongoing SELECT queries
@@ -1396,78 +1701,92 @@ interface SparqlConnection {
      */
     close(): void
     /**
-     * Closes a connection asynchronously. No other API calls than g_object_unref()
-     * should happen after this call. See tracker_sparql_connection_close() for more
-     * information.
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * Closes a SPARQL connection asynchronously.
+     * 
+     * No other API calls than g_object_unref() should happen after this call.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     closeAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the asynchronous connection close.
-     * @param res the #GAsyncResult
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.close_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
      * @returns %FALSE if some error occurred, %TRUE otherwise
      */
     closeFinish(res: Gio.AsyncResult): boolean
     /**
-     * Creates a new batch to store and execute update commands. If the connection
-     * is readonly or cannot issue SPARQL updates, %NULL will be returned.
-     * @returns (nullable): A new #TrackerBatch
+     * Creates a new [class`Tracker`.Batch] to store and execute SPARQL updates.
+     * 
+     * If the connection is readonly or cannot issue SPARQL updates, %NULL will be returned.
+     * @returns (nullable): A new [class@Tracker.Batch]
      */
     createBatch(): Batch
     /**
-     * Creates a new #TrackerNotifier to notify about changes in `connection`.
-     * See #TrackerNotifier documentation for information about how to use this
-     * object.
-     * @returns a newly created notifier. Free with g_object_unref()          when no longer needed.
-     */
-    createNotifier(): Notifier
-    /**
-     * Incorporates the contents of the RDF data contained in `stream` into the
-     * data stored by `connection`. This is an asynchronous operation,
-     * `callback` will be invoked when the data has been fully inserted to
-     * `connection`.
+     * Creates a new [class`Tracker`.Notifier] to receive notifications about changes in `connection`.
      * 
-     * RDF data will be inserted in the given `default_graph` if one is provided,
-     * or the default graph if `default_graph` is %NULL. Any RDF data that has a
+     * See [class`Tracker`.Notifier] documentation for information about how to use this
+     * object.
+     * 
+     * Connections to HTTP endpoints will return %NULL.
+     * @returns A newly created notifier.
+     */
+    createNotifier(): Notifier | null
+    /**
+     * Loads the RDF data contained in `stream` into the given `connection`.
+     * 
+     * This is an asynchronous operation, `callback` will be invoked when the
+     * data has been fully inserted to `connection`.
+     * 
+     * The RDF data will be inserted in the given `default_graph` if one is provided,
+     * or the anonymous graph if `default_graph` is %NULL. Any RDF data that has a
      * graph specified (e.g. using the `GRAPH` clause in the Trig format) will
      * be inserted in the specified graph instead of `default_graph`.
      * 
      * The `flags` argument is reserved for future expansions, currently
      * %TRACKER_DESERIALIZE_FLAGS_NONE must be passed.
-     * @param flags deserialization flags
+     * @param flags Deserialization flags
      * @param format RDF format of data in stream
-     * @param defaultGraph default graph that will receive the RDF data
-     * @param stream input stream with RDF data
-     * @param cancellable a #GCancellable
-     * @param callback the #GAsyncReadyCallback called when the operation completes
+     * @param defaultGraph Default graph that will receive the RDF data
+     * @param stream Input stream with RDF data
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     deserializeAsync(flags: DeserializeFlags, format: RdfFormat, defaultGraph: string | null, stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes a tracker_sparql_connection_deserialize_async() operation.
-     * In case of error, %NULL will be returned and `error` will be set.
-     * @param result the #GAsyncResult
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.deserialize_async].
+     * @param result A [type`Gio`.AsyncResult] with the result of the operation
      * @returns %TRUE if all data was inserted successfully.
      */
     deserializeFinish(result: Gio.AsyncResult): boolean
     /**
-     * Retrieves a #TrackerNamespaceManager that contains all
+     * Returns a [class`Tracker`.NamespaceManager] that contains all
      * prefixes in the ontology of `connection`.
-     * @returns a #TrackerNamespaceManager for this connection. This object is owned by @connection and must not be freed.
+     * @returns a [class@Tracker.NamespaceManager] with the prefixes of @connection.
      */
     getNamespaceManager(): NamespaceManager
     /**
-     * Prepares a #TrackerSparqlStatement for the SPARQL query contained as a resource
-     * file at `resource_path`. SPARQL Query files typically have the .rq extension.
-     * @param resourcePath the resource path of the file to parse.
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a prepared statement
+     * Prepares a [class`Tracker`.SparqlStatement] for the SPARQL contained as a [struct`Gio`.Resource]
+     * file at `resource_path`.
+     * 
+     * SPARQL Query files typically have the .rq extension. This will use
+     * [method`Tracker`.SparqlConnection.query_statement] or [method`Tracker`.SparqlConnection.update_statement]
+     * underneath to indistinctly return SPARQL query or update statements.
+     * @param resourcePath The resource path of the file to parse.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns A prepared statement
      */
     loadStatementFromGresource(resourcePath: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
     /**
-     * Maps `service_connection` so it is available as a "private:`handle_name"` URI
-     * in `connection`. This can be accessed via the SERVICE SPARQL syntax in
+     * Maps a `TrackerSparqlConnection` onto another through a `private:`handle_name`` URI.
+     * 
+     * This can be accessed via the SERVICE SPARQL syntax in
      * queries from `connection`. E.g.:
+     * 
+     * ```c
+     * tracker_sparql_connection_map_connection (connection,
+     *                                           "other-connection",
+     *                                           other_connection);
+     * ```
      * 
      * ```sparql
      * SELECT ?u {
@@ -1478,112 +1797,161 @@ interface SparqlConnection {
      * ```
      * 
      * This is useful to interrelate data from multiple
-     * #TrackerSparqlConnection instances maintained by the same process,
+     * `TrackerSparqlConnection` instances maintained by the same process,
      * without creating a public endpoint for `service_connection`.
      * 
-     * `connection` may only be a #TrackerSparqlConnection created via
-     * tracker_sparql_connection_new() and tracker_sparql_connection_new_async().
-     * @param handleName handle name for `service_connection`
-     * @param serviceConnection a #TrackerSparqlConnection to use from `connection`
+     * `connection` may only be a `TrackerSparqlConnection` created via
+     * [ctor`Tracker`.SparqlConnection.new] and [func`Tracker`.SparqlConnection.new_async].
+     * @param handleName Handle name for `service_connection`
+     * @param serviceConnection a `TrackerSparqlConnection` to use from `connection`
      */
     mapConnection(handleName: string | null, serviceConnection: SparqlConnection): void
     /**
-     * Executes a SPARQL query on. The API call is completely synchronous, so
-     * it may block.
+     * Executes a SPARQL query on `connection`.
      * 
-     * The `sparql` query should be built with #TrackerResource, or
-     * its parts correctly escaped using tracker_sparql_escape_string(),
-     * otherwise SPARQL injection is possible.
-     * @param sparql string containing the SPARQL query
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @returns a #TrackerSparqlCursor if results were found. On error, #NULL is returned and the @error is set accordingly. Call g_object_unref() on the returned cursor when no longer needed.
+     * This method is synchronous and will block until the query
+     * is executed. See [method`Tracker`.SparqlConnection.query_async]
+     * for an asynchronous variant.
+     * 
+     * If the query is partially built from user input or other
+     * untrusted sources, special care is required about possible
+     * SPARQL injection. In order to avoid it entirely, it is recommended
+     * to use [class`Tracker`.SparqlStatement]. The function
+     * [func`Tracker`.sparql_escape_string] exists as a last resort,
+     * but its use is not recommended.
+     * @param sparql String containing the SPARQL query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a [class@Tracker.SparqlCursor] with the results.
      */
     query(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlCursor
     /**
-     * Executes asynchronously a SPARQL query.
-     * @param sparql string containing the SPARQL query
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * Executes asynchronously a SPARQL query on `connection`
+     * 
+     * If the query is partially built from user input or other
+     * untrusted sources, special care is required about possible
+     * SPARQL injection. In order to avoid it entirely, it is recommended
+     * to use [class`Tracker`.SparqlStatement]. The function
+     * [func`Tracker`.sparql_escape_string] exists as a last resort,
+     * but its use is not recommended.
+     * @param sparql String containing the SPARQL query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     queryAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the asynchronous SPARQL query operation.
-     * @param res a #GAsyncResult with the result of the operation
-     * @returns a #TrackerSparqlCursor if results were found. On error, #NULL is returned and the @error is set accordingly. Call g_object_unref() on the returned cursor when no longer needed.
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.query_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
+     * @returns a [class@Tracker.SparqlCursor] with the results.
      */
     queryFinish(res: Gio.AsyncResult): SparqlCursor
     /**
-     * Prepares the given SELECT/DESCRIBE/CONSTRUCT `sparql` as a #TrackerSparqlStatement.
-     * This prepared statement can be executed through tracker_sparql_statement_execute()
-     * or tracker_sparql_statement_serialize_async() families of functions.
-     * @param sparql the SPARQL query
-     * @param cancellable a #GCancellable used to cancel the operation, or %NULL
-     * @returns a prepared statement
+     * Prepares the given `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL query as a
+     * [class`Tracker`.SparqlStatement].
+     * 
+     * This prepared statement can be executed through [method`Tracker`.SparqlStatement.execute]
+     * or [method`Tracker`.SparqlStatement.serialize_async] families of functions.
+     * @param sparql The SPARQL query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns A prepared statement
      */
     queryStatement(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
     /**
-     * Serializes data into the specified RDF format. `query` must be either a
-     * `DESCRIBE` or `CONSTRUCT` query. This is an asynchronous operation,
-     * `callback` will be invoked when the data is available for reading.
+     * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
+     * 
+     * This is an asynchronous operation, `callback` will be invoked when
+     * the data is available for reading.
      * 
      * The SPARQL endpoint may not support the specified format, in that case
      * an error will be raised.
      * 
      * The `flags` argument is reserved for future expansions, currently
      * %TRACKER_SERIALIZE_FLAGS_NONE must be passed.
-     * @param flags serialization flags
-     * @param format output RDF format
+     * @param flags Serialization flags
+     * @param format Output RDF format
      * @param query SPARQL query
-     * @param cancellable a #GCancellable
-     * @param callback the #GAsyncReadyCallback called when the operation completes
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     serializeAsync(flags: SerializeFlags, format: RdfFormat, query: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes a tracker_sparql_connection_serialize_async() operation.
-     * In case of error, %NULL will be returned and `error` will be set.
-     * @param result the #GAsyncResult
-     * @returns a #GInputStream to read RDF content.
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.serialize_async].
+     * @param result A [type`Gio`.AsyncResult] with the result of the operation
+     * @returns A [class@Gio.InputStream] to read RDF content.
      */
     serializeFinish(result: Gio.AsyncResult): Gio.InputStream
     /**
-     * Executes a SPARQL update. The API call is completely
-     * synchronous, so it may block.
+     * Executes a SPARQL update on `connection`.
      * 
-     * The `sparql` query should be built with #TrackerResource, or
-     * its parts correctly escaped using tracker_sparql_escape_string(),
-     * otherwise SPARQL injection is possible.
-     * @param sparql string containing the SPARQL update query
-     * @param cancellable a #GCancellable used to cancel the operation
+     * This method is synchronous and will block until the update
+     * is finished. See [method`Tracker`.SparqlConnection.update_async]
+     * for an asynchronous variant.
+     * 
+     * It is recommented to consider the usage of [class`Tracker`.Batch]
+     * to cluster database updates. Frequent isolated SPARQL updates
+     * through this method will have a degraded performance in comparison.
+     * 
+     * If the query is partially built from user input or other
+     * untrusted sources, special care is required about possible
+     * SPARQL injection. In order to avoid it entirely, it is recommended
+     * to use [class`Tracker`.SparqlStatement], or to build the SPARQL
+     * input through [class`Tracker`.Resource]. The function
+     * [func`Tracker`.sparql_escape_string] exists as a last resort,
+     * but its use is not recommended.
+     * @param sparql String containing the SPARQL update query
+     * @param cancellable Optional [type`Gio`.Cancellable]
      */
     update(sparql: string | null, cancellable: Gio.Cancellable | null): void
     /**
      * Executes asynchronously an array of SPARQL updates. All updates in the
      * array are handled within a single transaction.
-     * @param sparql an array of strings containing the SPARQL update queries
-     * @param sparqlLength the amount of strings you pass as `sparql`
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * 
+     * If the query is partially built from user input or other
+     * untrusted sources, special care is required about possible
+     * SPARQL injection. In order to avoid it entirely, it is recommended
+     * to use [class`Tracker`.SparqlStatement], or to build the SPARQL
+     * input through [class`Tracker`.Resource]. The function
+     * [func`Tracker`.sparql_escape_string] exists as a last resort,
+     * but its use is not recommended.
+     * @param sparql An array of strings containing the SPARQL update queries
+     * @param sparqlLength The amount of strings you pass as `sparql`
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     updateArrayAsync(sparql: string | null, sparqlLength: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the asynchronous SPARQL update_array operation.
-     * @param res a #GAsyncResult with the result of the operation
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.update_array_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
      * @returns #TRUE if there were no errors.
      */
     updateArrayFinish(res: Gio.AsyncResult): boolean
     /**
      * Executes asynchronously a SPARQL update.
-     * @param sparql string containing the SPARQL update query
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * 
+     * It is recommented to consider the usage of [class`Tracker`.Batch]
+     * to cluster database updates. Frequent isolated SPARQL updates
+     * through this method will have a degraded performance in comparison.
+     * 
+     * If the query is partially built from user input or other
+     * untrusted sources, special care is required about possible
+     * SPARQL injection. In order to avoid it entirely, it is recommended
+     * to use [class`Tracker`.SparqlStatement], or to build the SPARQL
+     * input through [class`Tracker`.Resource]. The function
+     * [func`Tracker`.sparql_escape_string] exists as a last resort,
+     * but its use is not recommended.
+     * @param sparql String containing the SPARQL update query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     updateAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Executes a SPARQL update and returns the URNs of the generated nodes,
-     * if any. The API call is completely synchronous, so it may block.
+     * Executes a SPARQL update and returns the names of the generated blank nodes.
      * 
-     * The `sparql` query should be built with #TrackerResource, or
-     * its parts correctly escaped using tracker_sparql_escape_string(),
+     * This method is synchronous and will block until the update
+     * is finished. See [method`Tracker`.SparqlConnection.update_blank_async]
+     * for an asynchronous variant.
+     * 
+     * The `sparql` query should be built with [class`Tracker`.Resource], or
+     * its parts correctly escaped using [func`Tracker`.sparql_escape_string],
      * otherwise SPARQL injection is possible.
      * 
      * The format string of the `GVariant` is `aaa{ss}` (an array of an array
@@ -1592,66 +1960,78 @@ interface SparqlConnection {
      * WHERE clause. The last array holds a string pair with the blank node name
      * (e.g. `foo` for the blank node `_:foo`) and the URN that was generated for
      * it. For most updates the first two outer arrays will only contain one item.
-     * @param sparql string containing the SPARQL update query
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @returns a #GVariant with the generated URNs, which should be freed with g_variant_unref() when no longer used.
+     * @param sparql String containing the SPARQL update query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a [type@GLib.Variant] with the generated URNs.
      */
     updateBlank(sparql: string | null, cancellable: Gio.Cancellable | null): GLib.Variant
     /**
-     * Executes asynchronously a SPARQL update with blank nodes. See
-     * the tracker_sparql_connection_update_blank() documentation to
-     * see the differences with tracker_sparql_connection_update().
-     * @param sparql string containing the SPARQL update query
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
+     * 
+     * See the [method`Tracker`.SparqlConnection.update_blank] documentation to
+     * learn the differences with [method`Tracker`.SparqlConnection.update].
+     * @param sparql String containing the SPARQL update query
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     updateBlankAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the asynchronous SPARQL update operation, and returns
-     * the URNs of the generated nodes, if any. See the
-     * tracker_sparql_connection_update_blank() documentation for the interpretation
-     * of the returned #GVariant.
-     * @param res a #GAsyncResult with the result of the operation
-     * @returns a #GVariant with the generated URNs, which should be freed with g_variant_unref() when no longer used.
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.update_blank_async].
+     * 
+     * This method returns the URNs of the generated nodes, if any. See the
+     * [method`Tracker`.SparqlConnection.update_blank] documentation for the interpretation
+     * of the returned [type`GLib`.Variant].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
+     * @returns a [type@GLib.Variant] with the generated URNs.
      */
     updateBlankFinish(res: Gio.AsyncResult): GLib.Variant
     /**
-     * Finishes the asynchronous SPARQL update operation.
-     * @param res a #GAsyncResult with the result of the operation
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.update_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
      */
     updateFinish(res: Gio.AsyncResult): void
     /**
-     * Inserts a resource as described by `resource,` on the graph described by `graph`.
-     * This operation blocks until done.
+     * Inserts a resource as described by `resource` on the given `graph`.
+     * 
+     * This method is synchronous and will block until the update
+     * is finished. See [method`Tracker`.SparqlConnection.update_resource_async]
+     * for an asynchronous variant.
+     * 
+     * It is recommented to consider the usage of [class`Tracker`.Batch]
+     * to cluster database updates. Frequent isolated SPARQL updates
+     * through this method will have a degraded performance in comparison.
      * @param graph RDF graph where the resource should be inserted/updated, or %NULL for the default graph
-     * @param resource a #TrackerResource
-     * @param cancellable a #GCancellable, or %NULL
+     * @param resource A [class`Tracker`.Resource]
+     * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns #TRUE if there were no errors.
      */
     updateResource(graph: string | null, resource: Resource, cancellable: Gio.Cancellable | null): boolean
     /**
-     * Inserts a resource as described by `resource,` on the graph described by `graph`.
-     * This operation is executed asynchronously, when finished `callback` will be
-     * executed.
+     * Inserts asynchronously a resource as described by `resource` on the given `graph`.
+     * 
+     * It is recommented to consider the usage of [class`Tracker`.Batch]
+     * to cluster database updates. Frequent isolated SPARQL updates
+     * through this method will have a degraded performance in comparison.
      * @param graph RDF graph where the resource should be inserted/updated, or %NULL for the default graph
-     * @param resource a #TrackerResource
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback the #GAsyncReadyCallback called when the operation completes
+     * @param resource A [class`Tracker`.Resource]
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     updateResourceAsync(graph: string | null, resource: Resource, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes a tracker_sparql_connection_update_resource_async() operation.
-     * @param res a #GAsyncResult with the result of the operation
+     * Finishes the operation started with [method`Tracker`.SparqlConnection.update_resource_async].
+     * @param res A [type`Gio`.AsyncResult] with the result of the operation
      * @returns #TRUE if there were no errors.
      */
     updateResourceFinish(res: Gio.AsyncResult): boolean
     /**
-     * Prepares the given INSERT/DELETE/LOAD/CLEAR/DROP/ADD/MOVE/COPY/CREATE `sparql`
-     * as a #TrackerSparqlStatement. This prepared statement can be executed through
-     * the tracker_sparql_statement_update() family of functions.
-     * @param sparql the SPARQL update
-     * @param cancellable a #GCancellable used to cancel the operation, or %NULL
-     * @returns a prepared statement
+     * Prepares the given `INSERT`/`DELETE` SPARQL as a [class`Tracker`.SparqlStatement].
+     * 
+     * This prepared statement can be executed through
+     * the [method`Tracker`.SparqlStatement.update] family of functions.
+     * @param sparql The SPARQL update
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns A prepared statement
      */
     updateStatement(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
 
@@ -1671,8 +2051,65 @@ interface SparqlConnection {
 }
 
 /**
- * The <structname>TrackerSparqlConnection</structname> object represents a
- * SPARQL connection.
+ * `TrackerSparqlConnection` holds a connection to a RDF triple store.
+ * 
+ * This triple store may be of three types:
+ * 
+ *  - Local to the process, created through [ctor`Tracker`.SparqlConnection.new].
+ *  - A HTTP SPARQL endpoint over the network, created through
+ *    [ctor`Tracker`.SparqlConnection.remote_new]
+ *  - A DBus SPARQL endpoint owned by another process in the same machine, created
+ *    through [ctor`Tracker`.SparqlConnection.bus_new]
+ * 
+ * When creating a local triple store, it is required to give details about its
+ * structure. This is done by passing a location to an ontology, see more
+ * on how are [ontologies defined](ontologies.html). A local database may be
+ * stored in a filesystem location, or it may reside in memory.
+ * 
+ * A `TrackerSparqlConnection` is private to the calling process, it can be
+ * exposed to other hosts/processes via a [class`Tracker`.Endpoint], see
+ * [ctor`Tracker`.EndpointDBus.new] and [ctor`Tracker`.EndpointHttp.new].
+ * 
+ * When issuing SPARQL queries and updates, it is recommended that these are
+ * created through [class`Tracker`.SparqlStatement] to avoid the SPARQL
+ * injection class of bugs, see [method`Tracker`.SparqlConnection.query_statement]
+ * and [method`Tracker`.SparqlConnection.update_statement]. For SPARQL updates
+ * it is also possible to use a "builder" approach to generate RDF data, see
+ * [class`Tracker`.Resource]. It is also possible to create [class`Tracker`.SparqlStatement]
+ * objects for SPARQL queries and updates from SPARQL strings embedded in a
+ * [struct`Gio`.Resource], see [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+ * 
+ * To get the best performance, it is recommended that SPARQL updates are clustered
+ * through [class`Tracker`.Batch].
+ * 
+ * `TrackerSparqlConnection` also offers a number of methods for the simple cases,
+ * [method`Tracker`.SparqlConnection.query] may be used when there is a SPARQL
+ * query string directly available, and the [method`Tracker`.SparqlConnection.update]
+ * family of functions may be used for one-off updates. All functions have asynchronous
+ * variants.
+ * 
+ * When a SPARQL query is executed, a [class`Tracker`.SparqlCursor] will be obtained
+ * to iterate over the query results.
+ * 
+ * Depending on the ontology definition, `TrackerSparqlConnection` may emit
+ * notifications whenever resources of certain types get insert, modified or
+ * deleted from the triple store (see [nrl:notify](nrl-ontology.html#nrl:notify).
+ * These notifications can be handled via a [class`Tracker`.Notifier] obtained with
+ * [method`Tracker`.SparqlConnection.create_notifier].
+ * 
+ * After done with a connection, it is recommended to call [method`Tracker`.SparqlConnection.close]
+ * or [method`Tracker`.SparqlConnection.close_async] explicitly to cleanly close the
+ * connection and prevent consistency checks on future runs. The triple store
+ * connection will be implicitly closed when the `TrackerSparqlConnection` object
+ * is disposed.
+ * 
+ * A `TrackerSparqlConnection` may be used from multiple threads, asynchronous
+ * updates are executed sequentially on arrival order, asynchronous
+ * queries are dispatched in a thread pool.
+ * 
+ * If you ever have the need to procedurally compose SPARQL query strings, consider
+ * the use of [func`Tracker`.sparql_escape_string] for literal strings and
+ * the [func`Tracker`.sparql_escape_uri] family of functions for URIs.
  * @class 
  */
 class SparqlConnection extends GObject.Object {
@@ -1686,115 +2123,141 @@ class SparqlConnection extends GObject.Object {
     constructor(config?: SparqlConnection.ConstructorProperties) 
     /**
      * Connects to a database owned by another process on the
-     * local machine.
+     * local machine via DBus.
      * @constructor 
      * @param serviceName The name of the D-Bus service to connect to.
      * @param objectPath The path to the object, or %NULL to use the default.
-     * @param dbusConnection The #GDBusConnection to use, or %NULL to use the session bus
-     * @returns a new #TrackerSparqlConnection. Call g_object_unref() on the object when no longer used.
+     * @param dbusConnection The [type`Gio`.DBusConnection] to use, or %NULL to use the session bus
+     * @returns a new `TrackerSparqlConnection`.
      */
     static busNew(serviceName: string | null, objectPath: string | null, dbusConnection: Gio.DBusConnection | null): SparqlConnection
     /**
-     * Completion function for tracker_sparql_connection_bus_new_async().
+     * Finishes the operation started with [func`Tracker`.SparqlConnection.bus_new_async].
      * @constructor 
-     * @param result the #GAsyncResult
-     * @returns a new #TrackerSparqlConnection. Call g_object_unref() on the object when no longer used.
+     * @param result A [type`Gio`.AsyncResult] with the result of the operation
+     * @returns a new `TrackerSparqlConnection`.
      */
     static busNewFinish(result: Gio.AsyncResult): SparqlConnection
     /**
-     * Creates or opens a database.
+     * Creates or opens a process-local database.
      * 
      * This method should only be used for databases owned by the current process.
      * To connect to databases managed by other processes, use
-     * tracker_sparql_connection_bus_new().
+     * [ctor`Tracker`.SparqlConnection.bus_new].
      * 
      * If `store` is %NULL, the database will be created in memory.
      * 
-     * The `ontologies` parameter must point to a location containing suitable
-     * `.ontology` files in Turtle format. These control the database schema that
-     * is used. You can use the default Nepomuk ontologies by calling
-     * tracker_sparql_get_ontology_nepomuk ().
+     * If defined, the `ontology` argument must point to a location containing
+     * suitable `.ontology` files in Turtle format. These define the structure of
+     * the triple store. You can learn more about [ontologies](ontologies.html),
+     * or you can use the stock Nepomuk ontologies by calling
+     * [func`Tracker`.sparql_get_ontology_nepomuk].
      * 
-     * If you open an existing database using a different `ontology` to the one it
-     * was created with, Tracker will attempt to migrate the existing data to the
-     * new schema. This may raise an error. In particular, not all migrations are
-     * possible without causing data loss and Tracker will refuse to delete data
-     * during a migration.
+     * If opening an existing database, it is possible to pass %NULL as the
+     * `ontology` location, the ontology will be introspected from the database.
+     * Passing a %NULL `ontology` will raise an error if the database does not exist.
      * 
-     * You can also pass %NULL for `ontologies` to mean "use the ontologies that the
-     * database was created with". This will fail if the database doesn't already
-     * exist.
+     * If a database is opened without the #TRACKER_SPARQL_CONNECTION_FLAG_READONLY
+     * flag enabled, and the given `ontology` holds differences with the current
+     * data layout, migration to the new structure will be attempted. This operation
+     * may raise an error. In particular, not all migrations are possible without
+     * causing data loss and Tracker will refuse to delete data during a migration.
+     * The database is always left in a consistent state, either prior or posterior
+     * to migration.
+     * 
+     * It is considered a developer error to ship ontologies that contain format
+     * errors, or that fail at migrations.
+     * 
+     * It is encouraged to use `resource:///` URI locations for `ontology` wherever
+     * possible, so the triple store structure is tied to the executable binary,
+     * and in order to minimize disk seeks during `TrackerSparqlConnection`
+     * initialization.
      * @constructor 
-     * @param flags values from #TrackerSparqlConnectionFlags
-     * @param store the directory that contains the database as a #GFile, or %NULL
-     * @param ontology the directory that contains the database schemas as a #GFile, or %NULL
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a new #TrackerSparqlConnection. Call g_object_unref() on the object when no longer used.
+     * @param flags Connection flags to define the SPARQL connection behavior
+     * @param store The directory that contains the database as a [iface`Gio`.File], or %NULL
+     * @param ontology The directory that contains the database schemas as a [iface`Gio`.File], or %NULL
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a new `TrackerSparqlConnection`.
      */
     constructor(flags: SparqlConnectionFlags, store: Gio.File | null, ontology: Gio.File | null, cancellable: Gio.Cancellable | null) 
     /**
-     * Creates or opens a database.
+     * Creates or opens a process-local database.
      * 
      * This method should only be used for databases owned by the current process.
      * To connect to databases managed by other processes, use
-     * tracker_sparql_connection_bus_new().
+     * [ctor`Tracker`.SparqlConnection.bus_new].
      * 
      * If `store` is %NULL, the database will be created in memory.
      * 
-     * The `ontologies` parameter must point to a location containing suitable
-     * `.ontology` files in Turtle format. These control the database schema that
-     * is used. You can use the default Nepomuk ontologies by calling
-     * tracker_sparql_get_ontology_nepomuk ().
+     * If defined, the `ontology` argument must point to a location containing
+     * suitable `.ontology` files in Turtle format. These define the structure of
+     * the triple store. You can learn more about [ontologies](ontologies.html),
+     * or you can use the stock Nepomuk ontologies by calling
+     * [func`Tracker`.sparql_get_ontology_nepomuk].
      * 
-     * If you open an existing database using a different `ontology` to the one it
-     * was created with, Tracker will attempt to migrate the existing data to the
-     * new schema. This may raise an error. In particular, not all migrations are
-     * possible without causing data loss and Tracker will refuse to delete data
-     * during a migration.
+     * If opening an existing database, it is possible to pass %NULL as the
+     * `ontology` location, the ontology will be introspected from the database.
+     * Passing a %NULL `ontology` will raise an error if the database does not exist.
      * 
-     * You can also pass %NULL for `ontologies` to mean "use the ontologies that the
-     * database was created with". This will fail if the database doesn't already
-     * exist.
+     * If a database is opened without the #TRACKER_SPARQL_CONNECTION_FLAG_READONLY
+     * flag enabled, and the given `ontology` holds differences with the current
+     * data layout, migration to the new structure will be attempted. This operation
+     * may raise an error. In particular, not all migrations are possible without
+     * causing data loss and Tracker will refuse to delete data during a migration.
+     * The database is always left in a consistent state, either prior or posterior
+     * to migration.
+     * 
+     * It is considered a developer error to ship ontologies that contain format
+     * errors, or that fail at migrations.
+     * 
+     * It is encouraged to use `resource:///` URI locations for `ontology` wherever
+     * possible, so the triple store structure is tied to the executable binary,
+     * and in order to minimize disk seeks during `TrackerSparqlConnection`
+     * initialization.
      * @constructor 
-     * @param flags values from #TrackerSparqlConnectionFlags
-     * @param store the directory that contains the database as a #GFile, or %NULL
-     * @param ontology the directory that contains the database schemas as a #GFile, or %NULL
-     * @param cancellable a #GCancellable, or %NULL
-     * @returns a new #TrackerSparqlConnection. Call g_object_unref() on the object when no longer used.
+     * @param flags Connection flags to define the SPARQL connection behavior
+     * @param store The directory that contains the database as a [iface`Gio`.File], or %NULL
+     * @param ontology The directory that contains the database schemas as a [iface`Gio`.File], or %NULL
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns a new `TrackerSparqlConnection`.
      */
     static new(flags: SparqlConnectionFlags, store: Gio.File | null, ontology: Gio.File | null, cancellable: Gio.Cancellable | null): SparqlConnection
     /**
-     * Completion function for tracker_sparql_connection_new_async().
+     * Finishes the operation started with [func`Tracker`.SparqlConnection.new_async].
      * @constructor 
-     * @param result the #GAsyncResult
+     * @param result A [type`Gio`.AsyncResult] with the result of the operation
      */
     static newFinish(result: Gio.AsyncResult): SparqlConnection
     /**
-     * Connects to a remote SPARQL endpoint. The connection is made using the libsoup
-     * HTTP library. The connection will normally use the http:// or https:// protocol.
+     * Creates a connection to a remote HTTP SPARQL endpoint.
+     * 
+     * The connection is made using the libsoup HTTP library. The connection will
+     * normally use the `https://` or `http://` protocols.
      * @constructor 
      * @param uriBase Base URI of the remote connection
-     * @returns a new remote #TrackerSparqlConnection. Call g_object_unref() on the object when no longer used.
+     * @returns a new remote `TrackerSparqlConnection`.
      */
     static remoteNew(uriBase: string | null): SparqlConnection
     _init(config?: SparqlConnection.ConstructorProperties): void
     /**
-     * Asynchronous version of tracker_sparql_connection_new().
-     * @param flags values from #TrackerSparqlConnectionFlags
-     * @param store the directory that contains the database as a #GFile, or %NULL
-     * @param ontology the directory that contains the database schemas as a #GFile, or %NULL
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback the #GAsyncReadyCallback called when the operation completes
+     * Creates or opens a process-local database asynchronously.
+     * 
+     * See [ctor`Tracker`.SparqlConnection.new] for more information.
+     * @param flags Connection flags to define the SPARQL connection behavior
+     * @param store The directory that contains the database as a [iface`Gio`.File], or %NULL
+     * @param ontology The directory that contains the database schemas as a [iface`Gio`.File], or %NULL
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     static newAsync(flags: SparqlConnectionFlags, store: Gio.File | null, ontology: Gio.File | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Connects to a database owned by another process on the
-     * local machine. This is an asynchronous operation.
+     * Connects asynchronously to a database owned by another process on the
+     * local machine via DBus.
      * @param serviceName The name of the D-Bus service to connect to.
      * @param objectPath The path to the object, or %NULL to use the default.
-     * @param dbusConnection The #GDBusConnection to use, or %NULL to use the session bus
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback the #GAsyncReadyCallback called when the operation completes
+     * @param dbusConnection The [class`Gio`.DBusConnection] to use, or %NULL to use the session bus
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     static busNewAsync(serviceName: string | null, objectPath: string | null, dbusConnection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
@@ -1808,7 +2271,7 @@ module SparqlCursor {
         // Own constructor properties of Tracker-3.0.Tracker.SparqlCursor
 
         /**
-         * The #TrackerSparqlConnection used to retrieve the results.
+         * The [class`Tracker`.SparqlConnection] used to retrieve the results.
          */
         connection?: SparqlConnection | null
     }
@@ -1820,9 +2283,12 @@ interface SparqlCursor {
     // Own properties of Tracker-3.0.Tracker.SparqlCursor
 
     /**
-     * The #TrackerSparqlConnection used to retrieve the results.
+     * The [class`Tracker`.SparqlConnection] used to retrieve the results.
      */
     readonly connection: SparqlConnection
+    /**
+     * Number of columns available in the result set.
+     */
     readonly nColumns: number
     __gtype__: number
 
@@ -1833,88 +2299,131 @@ interface SparqlCursor {
     // Owm methods of Tracker-3.0.Tracker.SparqlCursor
 
     /**
-     * Closes the iterator, making it invalid.
+     * Closes the cursor. The object can only be freed after this call.
      */
     close(): void
     /**
      * Retrieve a boolean for the current row in `column`.
+     * 
+     * If the row/column do not have a boolean value, the result is
+     * undefined, see [method`Tracker`.SparqlCursor.get_value_type].
      * @param column column number to retrieve (first one is 0)
-     * @returns a #gboolean.
+     * @returns a boolean value.
      */
     getBoolean(column: number): boolean
     /**
-     * Returns the #TrackerSparqlConnection associated with this
-     * #TrackerSparqlCursor.
-     * @returns the cursor #TrackerSparqlConnection. The returned object must not be unreferenced by the caller.
+     * Returns the [class`Tracker`.SparqlConnection] associated with this
+     * `TrackerSparqlCursor`.
+     * @returns the cursor [class@Tracker.SparqlConnection]. The returned object must not be unreferenced by the caller.
      */
     getConnection(): SparqlConnection
     /**
-     * Retrieve an GDateTime pointer for the current row in `column`.
-     * @param column column number to retrieve (first one is 0)
-     * @returns #GDateTime object, or %NULL if the given column does not contain a xsd:date or xsd:dateTime
+     * Retrieves a [type`GLib`.DateTime] pointer for the current row in `column`.
+     * @param column Column number to retrieve (first one is 0)
+     * @returns [type@GLib.DateTime] object, or %NULL if the given column does not   contain a [xsd:date](xsd-ontology.html#xsd:date) or [xsd:dateTime](xsd-ontology.html#xsd:dateTime).
      */
     getDatetime(column: number): GLib.DateTime | null
     /**
      * Retrieve a double for the current row in `column`.
+     * 
+     * If the row/column do not have a integer or double value, the result is
+     * undefined, see [method`Tracker`.SparqlCursor.get_value_type].
      * @param column column number to retrieve (first one is 0)
-     * @returns a double.
+     * @returns a double value.
      */
     getDouble(column: number): number
     /**
      * Retrieve an integer for the current row in `column`.
+     * 
+     * If the row/column do not have an integer value, the result is
+     * undefined, see [method`Tracker`.SparqlCursor.get_value_type].
      * @param column column number to retrieve (first one is 0)
-     * @returns a #gint64.
+     * @returns a 64-bit integer value.
      */
     getInteger(column: number): number
     /**
+     * Retrieves the number of columns available in the result set.
+     * 
      * This method should only be called after a successful
-     * tracker_sparql_cursor_next(); otherwise its return value
+     * [method`Tracker`.SparqlCursor.next], otherwise its return value
      * will be undefined.
-     * @returns a #gint representing the number of columns available in the results to iterate.
+     * @returns The number of columns returned in the result set.
      */
     getNColumns(): number
     /**
      * Retrieves a string representation of the data in the current
      * row in `column`.
+     * 
+     * Any type may be converted to a string. If the value is not bound
+     * (See [method`Tracker`.SparqlCursor.is_bound]) this method will return %NULL.
      * @param column column number to retrieve (first one is 0)
-     * @returns a string which must not be freed. %NULL is returned if the column is not in the [0,#n_columns] range.
+     * @returns a string which must not be freed. %NULL is returned if the column is not in the `[0, n_columns]` range, or if the row/column refer to a nullable optional value in the result set.
      */
     getString(column: number): [ /* returnType */ string | null, /* length */ number | null ]
     /**
-     * The data type bound to the current row in `column` is returned.
+     * Returns the data type bound to the current row and the given `column`.
+     * 
+     * If the column is unbound, the value will be %TRACKER_SPARQL_VALUE_TYPE_UNBOUND.
+     * See also [method`Tracker`.SparqlCursor.is_bound].
+     * 
+     * Values of type #TRACKER_SPARQL_VALUE_TYPE_RESOURCE and
+     * #TRACKER_SPARQL_VALUE_TYPE_BLANK_NODE can be considered equivalent, the
+     * difference is the resource being referenced as a named IRI or a blank
+     * node.
+     * 
+     * All other [enum`Tracker`.SparqlValueType] value types refer to literal values.
      * @param column column number to retrieve (first one is 0)
-     * @returns a #TrackerSparqlValueType.
+     * @returns a [enum@Tracker.SparqlValueType] expressing the content type of   the given column for the current row.
      */
     getValueType(column: number): SparqlValueType
     /**
-     * Retrieves the variable name for the current row in `column`.
+     * Retrieves the name of the given `column`.
+     * 
+     * This name will be defined at the SPARQL query, either
+     * implicitly from the names of the variables returned in
+     * the resultset, or explicitly through the `AS ?var` SPARQL
+     * syntax.
      * @param column column number to retrieve (first one is 0)
-     * @returns a string which must not be freed.
+     * @returns The name of the given column.
      */
     getVariableName(column: number): string | null
     /**
-     * If the current row and `column` are bound to a value, %TRUE is returned.
+     * Returns whether the given `column` has a bound value in the current row.
+     * 
+     * This may not be the case through e.g. the `OPTIONAL { }` SPARQL syntax.
      * @param column column number to retrieve (first one is 0)
      * @returns a %TRUE or %FALSE.
      */
     isBound(column: number): boolean
     /**
-     * Iterates to the next result. This is completely synchronous and
-     * it may block.
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @returns %FALSE if no more results found, otherwise %TRUE.
+     * Iterates the cursor to the next result.
+     * 
+     * If the cursor was not started, it will point to the first result after
+     * this call. This operation is completely synchronous and it may block,
+     * see [method`Tracker`.SparqlCursor.next_async] for an asynchronous variant.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns %FALSE if there are no more results or if an error is found, otherwise %TRUE.
      */
     next(cancellable: Gio.Cancellable | null): boolean
     /**
-     * Iterates, asynchronously, to the next result.
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * Iterates the cursor asyncronously to the next result.
+     * 
+     * If the cursor was not started, it will point to the first result after
+     * this operation completes.
+     * 
+     * In the period between this call and the corresponding
+     * [method`Tracker`.SparqlCursor.next_finish] call, the other cursor methods
+     * should not be used, nor their results trusted. The cursor should only
+     * be iterated once at a time.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback user-defined [type`Gio`.AsyncReadyCallback] to be called when            asynchronous operation is finished.
      */
     nextAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes the asynchronous iteration to the next result.
-     * @param res a #GAsyncResult with the result of the operation
-     * @returns %FALSE if no more results found, otherwise %TRUE.
+     * Finishes the asynchronous iteration to the next result started with
+     * [method`Tracker`.SparqlCursor.next_async].
+     * @param res a [type`Gio`.AsyncResult] with the result of the operation
+     * @returns %FALSE if there are no more results or if an error is found, otherwise %TRUE.
      */
     nextFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1948,8 +2457,31 @@ interface SparqlCursor {
 }
 
 /**
- * The <structname>TrackerSparqlCursor</structname> object represents an
- * iterator of results.
+ * `TrackerSparqlCursor` provides the methods to iterate the results of a SPARQL query.
+ * 
+ * Cursors are obtained through e.g. [method`Tracker`.SparqlStatement.execute]
+ * or [method`Tracker`.SparqlConnection.query] after the SPARQL query has been
+ * executed.
+ * 
+ * When created, a cursor does not point to any element, [method`Tracker`.SparqlCursor.next]
+ * is necessary to iterate one by one to the first (and following) results.
+ * When the cursor iterated across all rows in the result set, [method`Tracker`.SparqlCursor.next]
+ * will return %FALSE with no error set.
+ * 
+ * On each row, it is possible to extract the result values through the
+ * [method`Tracker`.SparqlCursor.get_integer], [method`Tracker`.SparqlCursor.get_string], etc... family
+ * of methods. The column index of those functions starts at 0. The number of columns is
+ * dependent on the SPARQL query issued, but may be checked at runtime through the
+ * [method`Tracker`.SparqlCursor.get_n_columns] method.
+ * 
+ * After a cursor is iterated, it is recommended to call [method`Tracker`.SparqlCursor.close]
+ * explicitly to free up resources for other users of the same [class`Tracker`.SparqlConnection],
+ * this is especially important in garbage collected languages. These resources
+ * will be also implicitly freed on cursor object finalization.
+ * 
+ * It is possible to use a given `TrackerSparqlCursor` in other threads than
+ * the one it was created from. It must be however used from just one thread
+ * at any given time.
  * @class 
  */
 class SparqlCursor extends GObject.Object {
@@ -1973,7 +2505,7 @@ module SparqlStatement {
         // Own constructor properties of Tracker-3.0.Tracker.SparqlStatement
 
         /**
-         * The #TrackerSparqlConnection used to perform the query.
+         * The [class`Tracker`.SparqlConnection] the statement was created for.
          */
         connection?: SparqlConnection | null
         /**
@@ -1989,7 +2521,7 @@ interface SparqlStatement {
     // Own properties of Tracker-3.0.Tracker.SparqlStatement
 
     /**
-     * The #TrackerSparqlConnection used to perform the query.
+     * The [class`Tracker`.SparqlConnection] the statement was created for.
      */
     readonly connection: SparqlConnection
     /**
@@ -2005,70 +2537,82 @@ interface SparqlStatement {
     // Owm methods of Tracker-3.0.Tracker.SparqlStatement
 
     /**
-     * Binds the boolean `value` to variable `name`.
+     * Binds the boolean `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
     bindBoolean(name: string | null, value: boolean): void
     /**
-     * Binds the GDateTime `value` to variable `name`.
+     * Binds the [type`GLib`.DateTime] `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
     bindDatetime(name: string | null, value: GLib.DateTime): void
     /**
-     * Binds the double `value` to variable `name`.
+     * Binds the double `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
     bindDouble(name: string | null, value: number): void
     /**
-     * Binds the integer `value` to variable `name`.
+     * Binds the integer `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
     bindInt(name: string | null, value: number): void
     /**
-     * Binds the string `value` to variable `name`.
+     * Binds the string `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
     bindString(name: string | null, value: string | null): void
     /**
-     * Clears all boolean/string/integer/double bindings.
+     * Clears all bindings.
      */
     clearBindings(): void
     /**
-     * Executes the SPARQL query with the currently bound values.
+     * Executes the `SELECT` or `ASK` SPARQL query with the currently bound values.
      * 
-     * This function should only be called on #TrackerSparqlStatement objects
-     * obtained through tracker_sparql_connection_query_statement() or
+     * This function also works for `DESCRIBE` and `CONSTRUCT` queries that
+     * retrieve data from the triple store. These query forms that return
+     * RDF data are however more useful together with [method`Tracker`.SparqlStatement.serialize_async].
+     * 
+     * This function should only be called on `TrackerSparqlStatement` objects
+     * obtained through [method`Tracker`.SparqlConnection.query_statement] or
      * SELECT/CONSTRUCT/DESCRIBE statements loaded through
-     * tracker_sparql_connection_load_statement_from_gresource().
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @returns A #TrackerSparqlCursor
+     * [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+     * An error will be raised if this method is called on a `INSERT` or `DELETE`
+     * SPARQL query.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @returns A `TrackerSparqlCursor` with the query results.
      */
     execute(cancellable: Gio.Cancellable | null): SparqlCursor
     /**
-     * Asynchronously executes the SPARQL query with the currently bound values.
+     * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
      * 
-     * This function should only be called on #TrackerSparqlStatement objects
-     * obtained through tracker_sparql_connection_query_statement() or
+     * This function also works for `DESCRIBE` and `CONSTRUCT` queries that
+     * retrieve data from the triple store. These query forms that return
+     * RDF data are however more useful together with [method`Tracker`.SparqlStatement.serialize_async].
+     * 
+     * This function should only be called on `TrackerSparqlStatement` objects
+     * obtained through [method`Tracker`.SparqlConnection.query_statement] or
      * SELECT/CONSTRUCT/DESCRIBE statements loaded through
-     * tracker_sparql_connection_load_statement_from_gresource().
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+     * An error will be raised if this method is called on a `INSERT` or `DELETE`
+     * SPARQL query.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback user-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     executeAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started through
-     * tracker_sparql_statement_execute_async().
-     * @param res The #GAsyncResult from the callback used to return the #TrackerSparqlCursor
-     * @returns A #TrackerSparqlCursor
+     * [method`Tracker`.SparqlStatement.execute_async].
+     * @param res a [type`Gio`.AsyncResult] with the result of the operation
+     * @returns A `TrackerSparqlCursor` with the query results.
      */
     executeFinish(res: Gio.AsyncResult): SparqlCursor
     /**
-     * Returns the #TrackerSparqlConnection that this statement was created from.
+     * Returns the [class`Tracker`.SparqlConnection] that this statement was created for.
      * @returns The SPARQL connection of this statement.
      */
     getConnection(): SparqlConnection
@@ -2078,9 +2622,10 @@ interface SparqlStatement {
      */
     getSparql(): string | null
     /**
-     * Serializes data into the specified RDF format. The query `stmt` was
-     * created from must be either a `DESCRIBE` or `CONSTRUCT` query, an
-     * error will be raised otherwise.
+     * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
+     * 
+     * The query `stmt` was created from must be either a `DESCRIBE` or `CONSTRUCT`
+     * query, an error will be raised otherwise.
      * 
      * This is an asynchronous operation, `callback` will be invoked when the
      * data is available for reading.
@@ -2089,44 +2634,50 @@ interface SparqlStatement {
      * an error will be raised.
      * 
      * The `flags` argument is reserved for future expansions, currently
-     * %TRACKER_SERIALIZE_FLAGS_NONE must be passed.
+     * #TRACKER_SERIALIZE_FLAGS_NONE must be passed.
      * @param flags serialization flags
      * @param format RDF format of the serialized data
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback user-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     serializeAsync(flags: SerializeFlags, format: RdfFormat, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Finishes a tracker_sparql_statement_serialize_async() operation.
-     * In case of error, %NULL will be returned and `error` will be set.
-     * @param result the #GAsyncResult
-     * @returns a #GInputStream to read RDF content.
+     * Finishes the asynchronous operation started through
+     * [method`Tracker`.SparqlStatement.serialize_async].
+     * @param result a [type`Gio`.AsyncResult] with the result of the operation
+     * @returns a [class@Gio.InputStream] to read RDF content.
      */
     serializeFinish(result: Gio.AsyncResult): Gio.InputStream
     /**
-     * Executes the SPARQL update with the currently bound values.
+     * Executes the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
      * 
-     * This function should only be called on #TrackerSparqlStatement objects
-     * obtained through tracker_sparql_connection_update_statement() or
-     * update statements loaded through tracker_sparql_connection_load_statement_from_gresource().
-     * @param cancellable a #GCancellable used to cancel the operation
+     * This function should only be called on `TrackerSparqlStatement` objects
+     * obtained through [method`Tracker`.SparqlConnection.update_statement] or
+     * `INSERT`/`DELETE` statements loaded through
+     * [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+     * An error will be raised if this method is called on
+     * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
+     * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns %TRUE if the update finished with no errors, %FALSE otherwise
      */
     update(cancellable: Gio.Cancellable | null): boolean
     /**
-     * Asynchronously executes the SPARQL update query with the currently bound values.
+     * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
      * 
-     * This function should only be called on #TrackerSparqlStatement objects
-     * obtained through tracker_sparql_connection_update_statement() or
-     * update statements loaded through tracker_sparql_connection_load_statement_from_gresource().
-     * @param cancellable a #GCancellable used to cancel the operation
-     * @param callback user-defined #GAsyncReadyCallback to be called when            asynchronous operation is finished.
+     * This function should only be called on `TrackerSparqlStatement` objects
+     * obtained through [method`Tracker`.SparqlConnection.update_statement] or
+     * `INSERT`/`DELETE` statements loaded through
+     * [method`Tracker`.SparqlConnection.load_statement_from_gresource].
+     * An error will be raised if this method is called on
+     * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
+     * @param cancellable Optional [type`Gio`.Cancellable]
+     * @param callback user-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
     updateAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous update started through
-     * tracker_sparql_statement_update_async().
-     * @param result The #GAsyncResult from the callback used to return the #TrackerSparqlCursor
+     * [method`Tracker`.SparqlStatement.update_async].
+     * @param result a [type`Gio`.AsyncResult] with the result of the operation
      * @returns %TRUE if the update finished with no errors, %FALSE otherwise
      */
     updateFinish(result: Gio.AsyncResult): boolean
@@ -2157,8 +2708,36 @@ interface SparqlStatement {
 }
 
 /**
- * The <structname>TrackerSparqlStatement</structname> object represents
- * a prepared query statement.
+ * `TrackerSparqlStatement` represents a prepared statement for a SPARQL query.
+ * 
+ * The SPARQL query will be internally compiled into the format that is most
+ * optimal to execute the query many times. For connections created
+ * through [ctor`Tracker`.SparqlConnection.new] that will be a
+ * SQLite compiled statement.
+ * 
+ * The SPARQL query may contain parameterized variables expressed via the
+ * `~` prefix in the SPARQL syntax (e.g. `~var`), these may happen anywhere
+ * in the SPARQL where a literal or variable would typically happen. These
+ * parameterized variables may be mapped to arbitrary values prior to
+ * execution. The `TrackerSparqlStatement` may be reused for future
+ * queries with different values.
+ * 
+ * The argument bindings may be changed through the [method`Tracker`.SparqlStatement.bind_int],
+ * [method`Tracker`.SparqlStatement.bind_int], etc... family of functions. Those functions
+ * receive a `name` argument corresponding for the variable name in the SPARQL query
+ * (eg. `"var"` for `~var`) and a value to map the variable to.
+ * 
+ * Once all arguments have a value, the query may be executed through
+ * [method`Tracker`.SparqlStatement.execute_async] or [method`Tracker`.SparqlStatement.execute].
+ * 
+ * It is possible to use any `TrackerSparqlStatement` from other threads than
+ * the one it was created from. However, binding values and executing the
+ * statement must only happen from one thread at a time. It is possible to reuse
+ * the `TrackerSparqlStatement` right after [method`Tracker`.SparqlStatement.execute_async]
+ * was called, there is no need to wait for [method`Tracker`.SparqlStatement.execute_finish].
+ * 
+ * In some circumstances, it is possible that the query needs to be recompiled
+ * from the SPARQL source. This will happen transparently.
  * @class 
  */
 class SparqlStatement extends GObject.Object {
@@ -2237,7 +2816,7 @@ interface NotifierEvent {
      * public identifier for the resource.
      * 
      * This URN is an unique string identifier for the resource being
-     * notified upon, typically of the form "urn:uuid:...".
+     * notified upon, typically of the form `urn:uuid:...`.
      * @returns The element URN
      */
     getUrn(): string | null

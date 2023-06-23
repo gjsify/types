@@ -1013,6 +1013,13 @@ module Discoverer {
     }
 
     /**
+     * Signal callback interface for `load-serialized-info`
+     */
+    interface LoadSerializedInfoSignalCallback {
+        ($obj: Discoverer, uri: string | null): DiscovererInfo | null
+    }
+
+    /**
      * Signal callback interface for `source-setup`
      */
     interface SourceSetupSignalCallback {
@@ -1102,6 +1109,13 @@ interface Discoverer {
 
     vfunc_discovered(info: DiscovererInfo, err: GLib.Error): void
     vfunc_finished(): void
+    /**
+     * Loads the serialized info from the given uri.
+     * @virtual 
+     * @param uri the uri to load the info from
+     * @returns the #GstDiscovererInfo or %NULL if it could not be loaded
+     */
+    vfunc_load_serialize_info(uri: string | null): DiscovererInfo
     vfunc_source_setup(source: Gst.Element): void
     vfunc_starting(): void
 
@@ -1113,6 +1127,9 @@ interface Discoverer {
     connect(sigName: "finished", callback: Discoverer.FinishedSignalCallback): number
     connect_after(sigName: "finished", callback: Discoverer.FinishedSignalCallback): number
     emit(sigName: "finished", ...args: any[]): void
+    connect(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback): number
+    connect_after(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback): number
+    emit(sigName: "load-serialized-info", uri: string | null, ...args: any[]): void
     connect(sigName: "source-setup", callback: Discoverer.SourceSetupSignalCallback): number
     connect_after(sigName: "source-setup", callback: Discoverer.SourceSetupSignalCallback): number
     emit(sigName: "source-setup", source: Gst.Element, ...args: any[]): void
@@ -1714,7 +1731,7 @@ interface EncodingProfile {
      * ```
      */
     element_properties: Gst.Structure
-    restriction_caps: Gst.Caps | null
+    restriction_caps: Gst.Caps
 
     // Owm methods of GstPbutils-1.0.GstPbutils.EncodingProfile
 
@@ -2151,6 +2168,7 @@ interface DiscovererClass {
     starting: (discoverer: Discoverer) => void
     discovered: (discoverer: Discoverer, info: DiscovererInfo, err: GLib.Error) => void
     source_setup: (discoverer: Discoverer, source: Gst.Element) => void
+    load_serialize_info: (dc: Discoverer, uri: string | null) => DiscovererInfo
     _reserved: any[]
 }
 

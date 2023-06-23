@@ -151,7 +151,7 @@ interface Transcoder {
     avoid_reencoding: boolean
     readonly dest_uri: string | null
     readonly duration: number
-    readonly pipeline: Gst.Element | null
+    readonly pipeline: Gst.Element
     readonly position: number
     position_update_interval: number
     readonly profile: GstPbutils.EncodingProfile
@@ -385,7 +385,7 @@ interface TranscoderSignalAdapter {
     /**
      * The #GstTranscoder tracked by the adapter.
      */
-    readonly transcoder: Transcoder | null
+    readonly transcoder: Transcoder
 
     // Owm methods of GstTranscoder-1.0.GstTranscoder.TranscoderSignalAdapter
 

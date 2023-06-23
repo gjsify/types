@@ -825,7 +825,7 @@ interface CameraDevice {
     /**
      * The GstElementFactory for this device.
      */
-    readonly elementFactory: Gst.ElementFactory | null
+    readonly elementFactory: Gst.ElementFactory
     /**
      * The device name.
      */
@@ -1055,7 +1055,7 @@ interface Content extends Clutter.Content {
     paintFrame: boolean
     paintOverlays: boolean
     player: GObject.Object
-    sink: VideoSink | null
+    sink: VideoSink
     __gtype__: number
 
     // Owm methods of ClutterGst-3.0.ClutterGst.Content

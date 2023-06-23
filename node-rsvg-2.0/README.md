@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-rsvg-2.0)
 
 
-Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.55.90 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.56.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
 
 Library for rendering of SVG vector graphics.
 

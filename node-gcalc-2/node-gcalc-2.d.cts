@@ -2454,60 +2454,60 @@ export interface ExpressionContainer extends Gio.ListModel {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -2643,43 +2643,43 @@ export interface ExpressionHashMap {
 
     // Overloads of remove
 
-    remove(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    remove(key: any): [ /* returnType */ boolean, /* value */ any ]
     findNamed(name: string | null): MathExpression | null
     getParent(): MathExpression
     setParent(value: MathExpression): void
 
     // Conflicting methods
 
-    hasKey(key: any | null): boolean
+    hasKey(key: any): boolean
 
     // Overloads of hasKey
 
-    hasKey(key: any | null): boolean
-    hasKey(key: any | null): boolean
-    has(key: any | null, value: any | null): boolean
+    hasKey(key: any): boolean
+    hasKey(key: any): boolean
+    has(key: any, value: any): boolean
 
     // Overloads of has
 
-    has(key: any | null, value: any | null): boolean
-    has(key: any | null, value: any | null): boolean
-    get(key: any | null): any | null
+    has(key: any, value: any): boolean
+    has(key: any, value: any): boolean
+    get(key: any): any | null
 
     // Overloads of get
 
-    get(key: any | null): any | null
-    get(key: any | null): any | null
-    set(key: any | null, value: any | null): void
+    get(key: any): any | null
+    get(key: any): any | null
+    set(key: any, value: any): void
 
     // Overloads of set
 
-    set(key: any | null, value: any | null): void
-    set(key: any | null, value: any | null): void
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    set(key: any, value: any): void
+    set(key: any, value: any): void
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
 
     // Overloads of unset
 
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     mapIterator(): Gee.MapIterator
 
     // Overloads of mapIterator

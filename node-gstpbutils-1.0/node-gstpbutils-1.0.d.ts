@@ -1024,6 +1024,13 @@ module Discoverer {
     }
 
     /**
+     * Signal callback interface for `load-serialized-info`
+     */
+    interface LoadSerializedInfoSignalCallback {
+        (uri: string | null): DiscovererInfo | null
+    }
+
+    /**
      * Signal callback interface for `source-setup`
      */
     interface SourceSetupSignalCallback {
@@ -1114,6 +1121,13 @@ interface Discoverer {
 
     discovered(info: DiscovererInfo, err: GLib.Error): void
     finished(): void
+    /**
+     * Loads the serialized info from the given uri.
+     * @virtual 
+     * @param uri the uri to load the info from
+     * @returns the #GstDiscovererInfo or %NULL if it could not be loaded
+     */
+    loadSerializeInfo(uri: string | null): DiscovererInfo
     sourceSetup(source: Gst.Element): void
     starting(): void
 
@@ -1129,6 +1143,11 @@ interface Discoverer {
     once(sigName: "finished", callback: Discoverer.FinishedSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "finished", callback: Discoverer.FinishedSignalCallback): NodeJS.EventEmitter
     emit(sigName: "finished", ...args: any[]): void
+    connect(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback): number
+    on(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "load-serialized-info", callback: Discoverer.LoadSerializedInfoSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "load-serialized-info", ...args: any[]): void
     connect(sigName: "source-setup", callback: Discoverer.SourceSetupSignalCallback): number
     on(sigName: "source-setup", callback: Discoverer.SourceSetupSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "source-setup", callback: Discoverer.SourceSetupSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -1832,7 +1851,7 @@ interface EncodingProfile {
      * ```
      */
     elementProperties: Gst.Structure
-    restrictionCaps: Gst.Caps | null
+    restrictionCaps: Gst.Caps
     __gtype__: number
 
     // Owm methods of GstPbutils-1.0.GstPbutils.EncodingProfile
@@ -2304,6 +2323,7 @@ interface DiscovererClass {
     starting: (discoverer: Discoverer) => void
     discovered: (discoverer: Discoverer, info: DiscovererInfo, err: GLib.Error) => void
     sourceSetup: (discoverer: Discoverer, source: Gst.Element) => void
+    loadSerializeInfo: (dc: Discoverer, uri: string | null) => DiscovererInfo
     reserved: any[]
 }
 

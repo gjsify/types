@@ -1709,8 +1709,8 @@ export interface AbstractFieldDetails {
     // Has conflict: parametersEqual(that: AbstractFieldDetails): boolean
     // Has conflict: valuesEqual(that: AbstractFieldDetails): boolean
     // Has conflict: hash(): number
-    // Has conflict: getValue(): any | null
-    // Has conflict: setValue(value: any | null): void
+    // Has conflict: getValue(): any
+    // Has conflict: setValue(value: any): void
     getValueType(): GObject.GType
     // Has conflict: getId(): string | null
     // Has conflict: setId(value: string | null): void
@@ -1723,8 +1723,8 @@ export interface AbstractFieldDetails {
     parametersEqual(that: AbstractFieldDetails): boolean
     valuesEqual(that: AbstractFieldDetails): boolean
     hash(): number
-    getValue(): any | null
-    setValue(value: any | null): void
+    getValue(): any
+    setValue(value: any): void
     getId(): string | null
     setId(value: string | null): void
     getParameters(): Gee.MultiMap
@@ -3085,8 +3085,8 @@ export interface ObjectCache {
 
     // Has conflict: getSerialisedObjectType(objectVersion: number): GLib.VariantType | null
     // Has conflict: getSerialisedObjectVersion(): number
-    // Has conflict: serialiseObject(object: any | null): GLib.Variant
-    // Has conflict: deserialiseObject(variant: GLib.Variant, objectVersion: number): any | null
+    // Has conflict: serialiseObject(object: any): GLib.Variant
+    // Has conflict: deserialiseObject(variant: GLib.Variant, objectVersion: number): any
     loadObjects(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     loadObjectsFinish(res: Gio.AsyncResult): Gee.Set | null
     storeObjects(objects: Gee.Set, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
@@ -3100,8 +3100,8 @@ export interface ObjectCache {
 
     getSerialisedObjectType(objectVersion: number): GLib.VariantType | null
     getSerialisedObjectVersion(): number
-    serialiseObject(object: any | null): GLib.Variant
-    deserialiseObject(variant: GLib.Variant, objectVersion: number): any | null
+    serialiseObject(object: any): GLib.Variant
+    deserialiseObject(variant: GLib.Variant, objectVersion: number): any
 
     // Class property signals of Folks-0.7.Folks.ObjectCache
 
@@ -4747,8 +4747,8 @@ export interface ObjectCacheClass {
 
     getSerialisedObjectType: (self: ObjectCache, objectVersion: number) => GLib.VariantType | null
     getSerialisedObjectVersion: (self: ObjectCache) => number
-    serialiseObject: (self: ObjectCache, object: any | null) => GLib.Variant
-    deserialiseObject: (self: ObjectCache, variant: GLib.Variant, objectVersion: number) => any | null
+    serialiseObject: (self: ObjectCache, object: any) => GLib.Variant
+    deserialiseObject: (self: ObjectCache, variant: GLib.Variant, objectVersion: number) => any
 }
 
 export abstract class ObjectCacheClass {

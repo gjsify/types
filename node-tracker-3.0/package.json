@@ -1,7 +1,7 @@
 {
     "name": "@girs/node-tracker-3.0",
-    "version": "3.0.0-3.1.0",
-    "description": "Node.js TypeScript type definitions for Tracker-3.0, generated from library version 3.0.0",
+    "version": "3.5.2-3.1.0",
+    "description": "Node.js TypeScript type definitions for Tracker-3.0, generated from library version 3.5.2",
     "type": "module",
     "module": "node-tracker-3.0.js",
     "main": "node-tracker-3.0.js",

@@ -91,6 +91,13 @@ module AppSink {
     }
 
     /**
+     * Signal callback interface for `propose-allocation`
+     */
+    interface ProposeAllocationSignalCallback {
+        ($obj: AppSink, query: Gst.Query): boolean
+    }
+
+    /**
      * Signal callback interface for `pull-preroll`
      */
     interface PullPrerollSignalCallback {
@@ -147,7 +154,7 @@ interface AppSink extends Gst.URIHandler {
     // Own properties of GstApp-1.0.GstApp.AppSink
 
     buffer_list: boolean
-    caps: Gst.Caps | null
+    caps: Gst.Caps
     drop: boolean
     emit_signals: boolean
     readonly eos: any
@@ -464,6 +471,9 @@ interface AppSink extends Gst.URIHandler {
     connect(sigName: "new-serialized-event", callback: AppSink.NewSerializedEventSignalCallback): number
     connect_after(sigName: "new-serialized-event", callback: AppSink.NewSerializedEventSignalCallback): number
     emit(sigName: "new-serialized-event", ...args: any[]): void
+    connect(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback): number
+    connect_after(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback): number
+    emit(sigName: "propose-allocation", query: Gst.Query, ...args: any[]): void
     connect(sigName: "pull-preroll", callback: AppSink.PullPrerollSignalCallback): number
     connect_after(sigName: "pull-preroll", callback: AppSink.PullPrerollSignalCallback): number
     emit(sigName: "pull-preroll", ...args: any[]): void
@@ -767,7 +777,7 @@ interface AppSrc extends Gst.URIHandler {
      * The GstCaps that will negotiated downstream and will be put
      * on outgoing buffers.
      */
-    caps: Gst.Caps | null
+    caps: Gst.Caps
     /**
      * The number of currently queued buffers inside appsrc.
      */
@@ -1330,6 +1340,7 @@ interface AppSinkCallbacks {
     new_preroll: (appsink: AppSink) => Gst.FlowReturn
     new_sample: (appsink: AppSink) => Gst.FlowReturn
     new_event: (appsink: AppSink) => boolean
+    propose_allocation: (appsink: AppSink, query: Gst.Query) => boolean
 }
 
 /**

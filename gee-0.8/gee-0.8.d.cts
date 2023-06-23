@@ -55,28 +55,28 @@ export function task(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g
 export function async_task<Z = unknown>(_callback_: Gio.AsyncReadyCallback<Z> | null): void
 export function async_task_finish(_res_: Gio.AsyncResult): void
 export interface HashDataFunc {
-    (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, t_destroy_func: GLib.DestroyNotify, v: any | null): number
+    (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, t_destroy_func: GLib.DestroyNotify, v: any): number
 }
 export interface EqualDataFunc {
-    (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, t_destroy_func: GLib.DestroyNotify, a: any | null, b: any | null): boolean
+    (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, t_destroy_func: GLib.DestroyNotify, a: any, b: any): boolean
 }
 export interface LazyFunc {
-    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify): any | null
+    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify): any
 }
 export interface FoldMapFunc {
-    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, k_type: GObject.GType, k_dup_func: GObject.BoxedCopyFunc, k_destroy_func: GLib.DestroyNotify, v_type: GObject.GType, v_dup_func: GObject.BoxedCopyFunc, v_destroy_func: GLib.DestroyNotify, k: any | null, v: any | null, a: any | null): any | null
+    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, k_type: GObject.GType, k_dup_func: GObject.BoxedCopyFunc, k_destroy_func: GLib.DestroyNotify, v_type: GObject.GType, v_dup_func: GObject.BoxedCopyFunc, v_destroy_func: GLib.DestroyNotify, k: any, v: any, a: any): any
 }
 export interface ForallMapFunc {
-    (k_type: GObject.GType, k_dup_func: GObject.BoxedCopyFunc, k_destroy_func: GLib.DestroyNotify, v_type: GObject.GType, v_dup_func: GObject.BoxedCopyFunc, v_destroy_func: GLib.DestroyNotify, k: any | null, v: any | null): boolean
+    (k_type: GObject.GType, k_dup_func: GObject.BoxedCopyFunc, k_destroy_func: GLib.DestroyNotify, v_type: GObject.GType, v_dup_func: GObject.BoxedCopyFunc, v_destroy_func: GLib.DestroyNotify, k: any, v: any): boolean
 }
 export interface Task {
-    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify): any | null
+    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify): any
 }
 export interface FoldFunc {
-    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any | null, a: any | null): any | null
+    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any, a: any): any
 }
 export interface ForallFunc {
-    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any | null): boolean
+    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any): boolean
 }
 export interface UnfoldFunc {
     (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify): Lazy | null
@@ -85,13 +85,13 @@ export interface StreamFunc {
     (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, state: TraversableStream, g: Lazy | null): TraversableStream
 }
 export interface MapFunc {
-    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any | null): any | null
+    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any): any
 }
 export interface Predicate {
-    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any | null): boolean
+    (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any): boolean
 }
 export interface FlatMapFunc {
-    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any | null): Iterator
+    (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, g: any): Iterator
 }
 export module BidirIterator {
 
@@ -232,11 +232,11 @@ export interface BidirListIterator extends BidirIterator, ListIterator {
 
     // Owm methods of Gee-0.8.Gee.BidirListIterator
 
-    insert(item: any | null): void
+    insert(item: any): void
 
     // Own virtual methods of Gee-0.8.Gee.BidirListIterator
 
-    vfunc_insert(item: any | null): void
+    vfunc_insert(item: any): void
 
     // Class property signals of Gee-0.8.Gee.BidirListIterator
 
@@ -498,9 +498,9 @@ export interface Collection extends Iterable {
 
     // Owm methods of Gee-0.8.Gee.Collection
 
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
     clear(): void
     add_all(collection: Collection): boolean
     contains_all(collection: Collection): boolean
@@ -520,9 +520,9 @@ export interface Collection extends Iterable {
 
     // Own virtual methods of Gee-0.8.Gee.Collection
 
-    vfunc_contains(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_add(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_clear(): void
     vfunc_add_all(collection: Collection): boolean
     vfunc_contains_all(collection: Collection): boolean
@@ -584,11 +584,11 @@ export interface Comparable extends GObject.Object {
 
     // Owm methods of Gee-0.8.Gee.Comparable
 
-    compare_to(object: any | null): number
+    compare_to(object: any): number
 
     // Own virtual methods of Gee-0.8.Gee.Comparable
 
-    vfunc_compare_to(object: any | null): number
+    vfunc_compare_to(object: any): number
 
     // Class property signals of Gee-0.8.Gee.Comparable
 
@@ -624,22 +624,22 @@ export interface Deque extends Queue {
 
     // Owm methods of Gee-0.8.Gee.Deque
 
-    offer_head(element: any | null): boolean
+    offer_head(element: any): boolean
     peek_head(): any | null
     poll_head(): any | null
     drain_head(recipient: Collection, amount: number): number
-    offer_tail(element: any | null): boolean
+    offer_tail(element: any): boolean
     peek_tail(): any | null
     poll_tail(): any | null
     drain_tail(recipient: Collection, amount: number): number
 
     // Own virtual methods of Gee-0.8.Gee.Deque
 
-    vfunc_offer_head(element: any | null): boolean
+    vfunc_offer_head(element: any): boolean
     vfunc_peek_head(): any | null
     vfunc_poll_head(): any | null
     vfunc_drain_head(recipient: Collection, amount: number): number
-    vfunc_offer_tail(element: any | null): boolean
+    vfunc_offer_tail(element: any): boolean
     vfunc_peek_tail(): any | null
     vfunc_poll_tail(): any | null
     vfunc_drain_tail(recipient: Collection, amount: number): number
@@ -701,7 +701,7 @@ export interface Future extends GObject.Object {
 
     // Owm methods of Gee-0.8.Gee.Future
 
-    wait(): any | null
+    wait(): any
     wait_until(end_time: number): [ /* returnType */ boolean, /* value */ any ]
     wait_async(_callback_: Gio.AsyncReadyCallback<this> | null): void
 
@@ -714,8 +714,8 @@ export interface Future extends GObject.Object {
      * @param _callback_ 
      * @returns A Promise of the result of {@link wait_async}
      */
-    wait_async(): globalThis.Promise<any | null>
-    wait_finish(_res_: Gio.AsyncResult): any | null
+    wait_async(): globalThis.Promise<any>
+    wait_finish(_res_: Gio.AsyncResult): any
     map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
     light_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
     light_map_broken(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
@@ -727,10 +727,10 @@ export interface Future extends GObject.Object {
 
     // Own virtual methods of Gee-0.8.Gee.Future
 
-    vfunc_wait(): any | null
+    vfunc_wait(): any
     vfunc_wait_until(end_time: number): [ /* returnType */ boolean, /* value */ any ]
     vfunc_wait_async(_callback_: Gio.AsyncReadyCallback<this> | null): void
-    vfunc_wait_finish(_res_: Gio.AsyncResult): any | null
+    vfunc_wait_finish(_res_: Gio.AsyncResult): any
     vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
     vfunc_light_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
     vfunc_light_map_broken(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any): Future
@@ -781,12 +781,12 @@ export interface Hashable extends GObject.Object {
     // Owm methods of Gee-0.8.Gee.Hashable
 
     hash(): number
-    equal_to(object: any | null): boolean
+    equal_to(object: any): boolean
 
     // Own virtual methods of Gee-0.8.Gee.Hashable
 
     vfunc_hash(): number
-    vfunc_equal_to(object: any | null): boolean
+    vfunc_equal_to(object: any): boolean
 
     // Class property signals of Gee-0.8.Gee.Hashable
 
@@ -869,7 +869,7 @@ export interface Iterator extends GObject.Object, Traversable {
 
     next(): boolean
     has_next(): boolean
-    get(): any | null
+    get(): any
     remove(): void
     get_valid(): boolean
     get_read_only(): boolean
@@ -878,7 +878,7 @@ export interface Iterator extends GObject.Object, Traversable {
 
     vfunc_next(): boolean
     vfunc_has_next(): boolean
-    vfunc_get(): any | null
+    vfunc_get(): any
     vfunc_remove(): void
     vfunc_get_valid(): boolean
     vfunc_get_read_only(): boolean
@@ -930,14 +930,14 @@ export interface List extends Collection {
     // Owm methods of Gee-0.8.Gee.List
 
     list_iterator(): ListIterator
-    get(index: number): any | null
-    set(index: number, item: any | null): void
-    index_of(item: any | null): number
-    insert(index: number, item: any | null): void
-    remove_at(index: number): any | null
+    get(index: number): any
+    set(index: number, item: any): void
+    index_of(item: any): number
+    insert(index: number, item: any): void
+    remove_at(index: number): any
     slice(start: number, stop: number): List | null
-    first(): any | null
-    last(): any | null
+    first(): any
+    last(): any
     insert_all(index: number, collection: Collection): void
     sort(compare_func: GLib.CompareDataFunc | null): void
     get_read_only_view(): List
@@ -949,14 +949,14 @@ export interface List extends Collection {
     // Own virtual methods of Gee-0.8.Gee.List
 
     vfunc_list_iterator(): ListIterator
-    vfunc_get(index: number): any | null
-    vfunc_set(index: number, item: any | null): void
-    vfunc_index_of(item: any | null): number
-    vfunc_insert(index: number, item: any | null): void
-    vfunc_remove_at(index: number): any | null
+    vfunc_get(index: number): any
+    vfunc_set(index: number, item: any): void
+    vfunc_index_of(item: any): number
+    vfunc_insert(index: number, item: any): void
+    vfunc_remove_at(index: number): any
     vfunc_slice(start: number, stop: number): List | null
-    vfunc_first(): any | null
-    vfunc_last(): any | null
+    vfunc_first(): any
+    vfunc_last(): any
     vfunc_insert_all(index: number, collection: Collection): void
     vfunc_sort(compare_func: GLib.CompareDataFunc | null): void
     vfunc_get_read_only_view(): List
@@ -1013,14 +1013,14 @@ export interface ListIterator extends Iterator {
 
     // Owm methods of Gee-0.8.Gee.ListIterator
 
-    set(item: any | null): void
-    add(item: any | null): void
+    set(item: any): void
+    add(item: any): void
     index(): number
 
     // Own virtual methods of Gee-0.8.Gee.ListIterator
 
-    vfunc_set(item: any | null): void
-    vfunc_add(item: any | null): void
+    vfunc_set(item: any): void
+    vfunc_add(item: any): void
     vfunc_index(): number
 
     // Class property signals of Gee-0.8.Gee.ListIterator
@@ -1072,13 +1072,13 @@ export interface Map extends GObject.Object, Iterable {
 
     // Owm methods of Gee-0.8.Gee.Map
 
-    has_key(key: any | null): boolean
-    contains(key: any | null): boolean
-    has(key: any | null, value: any | null): boolean
-    get(key: any | null): any | null
-    set(key: any | null, value: any | null): void
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
-    remove(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    has_key(key: any): boolean
+    contains(key: any): boolean
+    has(key: any, value: any): boolean
+    get(key: any): any | null
+    set(key: any, value: any): void
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
+    remove(key: any): [ /* returnType */ boolean, /* value */ any ]
     clear(): void
     map_iterator(): MapIterator
     set_all(map: Map): void
@@ -1098,11 +1098,11 @@ export interface Map extends GObject.Object, Iterable {
 
     // Own virtual methods of Gee-0.8.Gee.Map
 
-    vfunc_has_key(key: any | null): boolean
-    vfunc_has(key: any | null, value: any | null): boolean
-    vfunc_get(key: any | null): any | null
-    vfunc_set(key: any | null, value: any | null): void
-    vfunc_unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    vfunc_has_key(key: any): boolean
+    vfunc_has(key: any, value: any): boolean
+    vfunc_get(key: any): any | null
+    vfunc_set(key: any, value: any): void
+    vfunc_unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     vfunc_clear(): void
     vfunc_map_iterator(): MapIterator
     vfunc_set_all(map: Map): void
@@ -1177,11 +1177,11 @@ export interface MapIterator extends GObject.Object {
 
     next(): boolean
     has_next(): boolean
-    get_key(): any | null
-    get_value(): any | null
-    set_value(value: any | null): void
+    get_key(): any
+    get_value(): any
+    set_value(value: any): void
     unset(): void
-    fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any | null): any | null
+    fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any): any
     foreach(f: ForallMapFunc): boolean
     get_valid(): boolean
     get_mutable(): boolean
@@ -1191,11 +1191,11 @@ export interface MapIterator extends GObject.Object {
 
     vfunc_next(): boolean
     vfunc_has_next(): boolean
-    vfunc_get_key(): any | null
-    vfunc_get_value(): any | null
-    vfunc_set_value(value: any | null): void
+    vfunc_get_key(): any
+    vfunc_get_value(): any
+    vfunc_set_value(value: any): void
     vfunc_unset(): void
-    vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any | null): any | null
+    vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any): any
     vfunc_foreach(f: ForallMapFunc): boolean
     vfunc_get_valid(): boolean
     vfunc_get_mutable(): boolean
@@ -1252,11 +1252,11 @@ export interface MultiMap extends GObject.Object {
     get_keys(): Set
     get_all_keys(): MultiSet
     get_values(): Collection
-    contains(key: any | null): boolean
-    get(key: any | null): Collection
-    set(key: any | null, value: any | null): void
-    remove(key: any | null, value: any | null): boolean
-    remove_all(key: any | null): boolean
+    contains(key: any): boolean
+    get(key: any): Collection
+    set(key: any, value: any): void
+    remove(key: any, value: any): boolean
+    remove_all(key: any): boolean
     clear(): void
     map_iterator(): MapIterator
     get_size(): number
@@ -1270,11 +1270,11 @@ export interface MultiMap extends GObject.Object {
     vfunc_get_keys(): Set
     vfunc_get_all_keys(): MultiSet
     vfunc_get_values(): Collection
-    vfunc_contains(key: any | null): boolean
-    vfunc_get(key: any | null): Collection
-    vfunc_set(key: any | null, value: any | null): void
-    vfunc_remove(key: any | null, value: any | null): boolean
-    vfunc_remove_all(key: any | null): boolean
+    vfunc_contains(key: any): boolean
+    vfunc_get(key: any): Collection
+    vfunc_set(key: any, value: any): void
+    vfunc_remove(key: any, value: any): boolean
+    vfunc_remove_all(key: any): boolean
     vfunc_clear(): void
     vfunc_map_iterator(): MapIterator
     vfunc_get_size(): number
@@ -1321,7 +1321,7 @@ export interface MultiSet extends Collection {
 
     // Owm methods of Gee-0.8.Gee.MultiSet
 
-    count(item: any | null): number
+    count(item: any): number
     get_read_only_view(): MultiSet
 
     // Overloads of get_read_only_view
@@ -1330,7 +1330,7 @@ export interface MultiSet extends Collection {
 
     // Own virtual methods of Gee-0.8.Gee.MultiSet
 
-    vfunc_count(item: any | null): number
+    vfunc_count(item: any): number
     vfunc_get_read_only_view(): MultiSet
 
     // Overloads of vfunc_get_read_only_view
@@ -1391,7 +1391,7 @@ export interface Queue extends Collection {
 
     // Owm methods of Gee-0.8.Gee.Queue
 
-    offer(element: any | null): boolean
+    offer(element: any): boolean
     peek(): any | null
     poll(): any | null
     drain(recipient: Collection, amount: number): number
@@ -1401,7 +1401,7 @@ export interface Queue extends Collection {
 
     // Own virtual methods of Gee-0.8.Gee.Queue
 
-    vfunc_offer(element: any | null): boolean
+    vfunc_offer(element: any): boolean
     vfunc_peek(): any | null
     vfunc_poll(): any | null
     vfunc_drain(recipient: Collection, amount: number): number
@@ -1533,9 +1533,9 @@ export interface SortedMap extends Map {
 
     // Owm methods of Gee-0.8.Gee.SortedMap
 
-    head_map(before: any | null): SortedMap
-    tail_map(after: any | null): SortedMap
-    sub_map(before: any | null, after: any | null): SortedMap
+    head_map(before: any): SortedMap
+    tail_map(after: any): SortedMap
+    sub_map(before: any, after: any): SortedMap
     get_ascending_keys(): SortedSet
     get_ascending_entries(): SortedSet
     get_read_only_view(): SortedMap
@@ -1546,9 +1546,9 @@ export interface SortedMap extends Map {
 
     // Own virtual methods of Gee-0.8.Gee.SortedMap
 
-    vfunc_head_map(before: any | null): SortedMap
-    vfunc_tail_map(after: any | null): SortedMap
-    vfunc_sub_map(before: any | null, after: any | null): SortedMap
+    vfunc_head_map(before: any): SortedMap
+    vfunc_tail_map(after: any): SortedMap
+    vfunc_sub_map(before: any, after: any): SortedMap
     vfunc_get_ascending_keys(): SortedSet
     vfunc_get_ascending_entries(): SortedSet
     vfunc_get_read_only_view(): SortedMap
@@ -1620,16 +1620,16 @@ export interface SortedSet extends Set {
 
     // Owm methods of Gee-0.8.Gee.SortedSet
 
-    first(): any | null
-    last(): any | null
-    iterator_at(element: any | null): Iterator | null
-    lower(element: any | null): any | null
-    higher(element: any | null): any | null
-    floor(element: any | null): any | null
-    ceil(element: any | null): any | null
-    head_set(before: any | null): SortedSet
-    tail_set(after: any | null): SortedSet
-    sub_set(from: any | null, to: any | null): SortedSet
+    first(): any
+    last(): any
+    iterator_at(element: any): Iterator | null
+    lower(element: any): any | null
+    higher(element: any): any | null
+    floor(element: any): any | null
+    ceil(element: any): any | null
+    head_set(before: any): SortedSet
+    tail_set(after: any): SortedSet
+    sub_set(from: any, to: any): SortedSet
     get_read_only_view(): SortedSet
 
     // Overloads of get_read_only_view
@@ -1639,16 +1639,16 @@ export interface SortedSet extends Set {
 
     // Own virtual methods of Gee-0.8.Gee.SortedSet
 
-    vfunc_first(): any | null
-    vfunc_last(): any | null
-    vfunc_iterator_at(element: any | null): Iterator | null
-    vfunc_lower(element: any | null): any | null
-    vfunc_higher(element: any | null): any | null
-    vfunc_floor(element: any | null): any | null
-    vfunc_ceil(element: any | null): any | null
-    vfunc_head_set(before: any | null): SortedSet
-    vfunc_tail_set(after: any | null): SortedSet
-    vfunc_sub_set(from: any | null, to: any | null): SortedSet
+    vfunc_first(): any
+    vfunc_last(): any
+    vfunc_iterator_at(element: any): Iterator | null
+    vfunc_lower(element: any): any | null
+    vfunc_higher(element: any): any | null
+    vfunc_floor(element: any): any | null
+    vfunc_ceil(element: any): any | null
+    vfunc_head_set(before: any): SortedSet
+    vfunc_tail_set(after: any): SortedSet
+    vfunc_sub_set(from: any, to: any): SortedSet
     vfunc_get_read_only_view(): SortedSet
 
     // Overloads of vfunc_get_read_only_view
@@ -1707,9 +1707,9 @@ export interface Traversable extends GObject.Object {
 
     foreach(f: ForallFunc): boolean
     stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc): Iterator
-    fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null): any | null
+    fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any): any
     map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: MapFunc): Iterator
-    scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null): Iterator
+    scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any): Iterator
     filter(pred: Predicate): Iterator
     chop(offset: number, length: number): Iterator
     flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FlatMapFunc): Iterator
@@ -1717,8 +1717,8 @@ export interface Traversable extends GObject.Object {
     first_match(pred: Predicate): any | null
     any_match(pred: Predicate): boolean
     all_match(pred: Predicate): boolean
-    max(compare: GLib.CompareDataFunc): any | null
-    min(compare: GLib.CompareDataFunc): any | null
+    max(compare: GLib.CompareDataFunc): any
+    min(compare: GLib.CompareDataFunc): any
     order_by(compare: GLib.CompareDataFunc | null): Iterator
     get_element_type(): GObject.GType
 
@@ -1726,9 +1726,9 @@ export interface Traversable extends GObject.Object {
 
     vfunc_foreach(f: ForallFunc): boolean
     vfunc_stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc): Iterator
-    vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null): any | null
+    vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any): any
     vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: MapFunc): Iterator
-    vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null): Iterator
+    vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any): Iterator
     vfunc_filter(pred: Predicate): Iterator
     vfunc_chop(offset: number, length: number): Iterator
     vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FlatMapFunc): Iterator
@@ -1736,8 +1736,8 @@ export interface Traversable extends GObject.Object {
     vfunc_first_match(pred: Predicate): any | null
     vfunc_any_match(pred: Predicate): boolean
     vfunc_all_match(pred: Predicate): boolean
-    vfunc_max(compare: GLib.CompareDataFunc): any | null
-    vfunc_min(compare: GLib.CompareDataFunc): any | null
+    vfunc_max(compare: GLib.CompareDataFunc): any
+    vfunc_min(compare: GLib.CompareDataFunc): any
     vfunc_order_by(compare: GLib.CompareDataFunc | null): Iterator
     vfunc_get_element_type(): GObject.GType
 
@@ -2178,9 +2178,9 @@ export interface AbstractCollection extends Traversable, Iterable, Collection {
 
     // Owm methods of Gee-0.8.Gee.AbstractCollection
 
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
     clear(): void
     iterator(): Iterator
     foreach(f: ForallFunc): boolean
@@ -2200,9 +2200,9 @@ export interface AbstractCollection extends Traversable, Iterable, Collection {
 
     // Own virtual methods of Gee-0.8.Gee.AbstractCollection
 
-    vfunc_contains(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_add(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_clear(): void
     vfunc_iterator(): Iterator
     vfunc_foreach(f: ForallFunc): boolean
@@ -2286,11 +2286,11 @@ export interface AbstractList extends List {
     // Owm methods of Gee-0.8.Gee.AbstractList
 
     list_iterator(): ListIterator
-    get(index: number): any | null
-    set(index: number, item: any | null): void
-    index_of(item: any | null): number
-    insert(index: number, item: any | null): void
-    remove_at(index: number): any | null
+    get(index: number): any
+    set(index: number, item: any): void
+    index_of(item: any): number
+    insert(index: number, item: any): void
+    remove_at(index: number): any
     slice(start: number, stop: number): List | null
     reserved0(): void
     reserved1(): void
@@ -2312,11 +2312,11 @@ export interface AbstractList extends List {
     // Own virtual methods of Gee-0.8.Gee.AbstractList
 
     vfunc_list_iterator(): ListIterator
-    vfunc_get(index: number): any | null
-    vfunc_set(index: number, item: any | null): void
-    vfunc_index_of(item: any | null): number
-    vfunc_insert(index: number, item: any | null): void
-    vfunc_remove_at(index: number): any | null
+    vfunc_get(index: number): any
+    vfunc_set(index: number, item: any): void
+    vfunc_index_of(item: any): number
+    vfunc_insert(index: number, item: any): void
+    vfunc_remove_at(index: number): any
     vfunc_slice(start: number, stop: number): List | null
     vfunc_reserved0(): void
     vfunc_reserved1(): void
@@ -2420,11 +2420,11 @@ export interface AbstractMap extends Traversable, Iterable, Map {
 
     // Owm methods of Gee-0.8.Gee.AbstractMap
 
-    has_key(key: any | null): boolean
-    has(key: any | null, value: any | null): boolean
-    get(key: any | null): any | null
-    set(key: any | null, value: any | null): void
-    unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    has_key(key: any): boolean
+    has(key: any, value: any): boolean
+    get(key: any): any | null
+    set(key: any, value: any): void
+    unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     map_iterator(): MapIterator
     clear(): void
     foreach(f: ForallFunc): boolean
@@ -2448,11 +2448,11 @@ export interface AbstractMap extends Traversable, Iterable, Map {
 
     // Own virtual methods of Gee-0.8.Gee.AbstractMap
 
-    vfunc_has_key(key: any | null): boolean
-    vfunc_has(key: any | null, value: any | null): boolean
-    vfunc_get(key: any | null): any | null
-    vfunc_set(key: any | null, value: any | null): void
-    vfunc_unset(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    vfunc_has_key(key: any): boolean
+    vfunc_has(key: any, value: any): boolean
+    vfunc_get(key: any): any | null
+    vfunc_set(key: any, value: any): void
+    vfunc_unset(key: any): [ /* returnType */ boolean, /* value */ any ]
     vfunc_map_iterator(): MapIterator
     vfunc_clear(): void
     vfunc_foreach(f: ForallFunc): boolean
@@ -3009,9 +3009,9 @@ export interface AbstractSortedMap extends SortedMap {
 
     // Owm methods of Gee-0.8.Gee.AbstractSortedMap
 
-    head_map(before: any | null): SortedMap
-    tail_map(after: any | null): SortedMap
-    sub_map(before: any | null, after: any | null): SortedMap
+    head_map(before: any): SortedMap
+    tail_map(after: any): SortedMap
+    sub_map(before: any, after: any): SortedMap
     reserved0(): void
     reserved1(): void
     reserved2(): void
@@ -3044,9 +3044,9 @@ export interface AbstractSortedMap extends SortedMap {
 
     // Own virtual methods of Gee-0.8.Gee.AbstractSortedMap
 
-    vfunc_head_map(before: any | null): SortedMap
-    vfunc_tail_map(after: any | null): SortedMap
-    vfunc_sub_map(before: any | null, after: any | null): SortedMap
+    vfunc_head_map(before: any): SortedMap
+    vfunc_tail_map(after: any): SortedMap
+    vfunc_sub_map(before: any, after: any): SortedMap
     vfunc_reserved0(): void
     vfunc_reserved1(): void
     vfunc_reserved2(): void
@@ -3149,16 +3149,16 @@ export interface AbstractSortedSet extends SortedSet {
 
     // Owm methods of Gee-0.8.Gee.AbstractSortedSet
 
-    first(): any | null
-    last(): any | null
-    iterator_at(element: any | null): Iterator | null
-    lower(element: any | null): any | null
-    higher(element: any | null): any | null
-    floor(element: any | null): any | null
-    ceil(element: any | null): any | null
-    head_set(before: any | null): SortedSet
-    tail_set(after: any | null): SortedSet
-    sub_set(from: any | null, to: any | null): SortedSet
+    first(): any
+    last(): any
+    iterator_at(element: any): Iterator | null
+    lower(element: any): any | null
+    higher(element: any): any | null
+    floor(element: any): any | null
+    ceil(element: any): any | null
+    head_set(before: any): SortedSet
+    tail_set(after: any): SortedSet
+    sub_set(from: any, to: any): SortedSet
     reserved0(): void
     reserved1(): void
     reserved2(): void
@@ -3179,16 +3179,16 @@ export interface AbstractSortedSet extends SortedSet {
 
     // Own virtual methods of Gee-0.8.Gee.AbstractSortedSet
 
-    vfunc_first(): any | null
-    vfunc_last(): any | null
-    vfunc_iterator_at(element: any | null): Iterator | null
-    vfunc_lower(element: any | null): any | null
-    vfunc_higher(element: any | null): any | null
-    vfunc_floor(element: any | null): any | null
-    vfunc_ceil(element: any | null): any | null
-    vfunc_head_set(before: any | null): SortedSet
-    vfunc_tail_set(after: any | null): SortedSet
-    vfunc_sub_set(from: any | null, to: any | null): SortedSet
+    vfunc_first(): any
+    vfunc_last(): any
+    vfunc_iterator_at(element: any): Iterator | null
+    vfunc_lower(element: any): any | null
+    vfunc_higher(element: any): any | null
+    vfunc_floor(element: any): any | null
+    vfunc_ceil(element: any): any | null
+    vfunc_head_set(before: any): SortedSet
+    vfunc_tail_set(after: any): SortedSet
+    vfunc_sub_set(from: any, to: any): SortedSet
     vfunc_reserved0(): void
     vfunc_reserved1(): void
     vfunc_reserved2(): void
@@ -4143,8 +4143,8 @@ export interface Lazy {
     // Owm methods of Gee-0.8.Gee.Lazy
 
     eval(): void
-    get(): any | null
-    get_value(): any | null
+    get(): any
+    get_value(): any
     get_future(): Future | null
 }
 
@@ -4158,7 +4158,7 @@ export class Lazy {
 
     constructor(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: LazyFunc) 
     static new(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, func: LazyFunc): Lazy
-    static from_value(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, item: any | null): Lazy
+    static from_value(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g_destroy_func: GLib.DestroyNotify, item: any): Lazy
 }
 
 export module LinkedList {
@@ -4190,8 +4190,8 @@ export interface LinkedList extends Queue, Deque {
 
     // Owm methods of Gee-0.8.Gee.LinkedList
 
-    first(): any | null
-    last(): any | null
+    first(): any
+    last(): any
     get_equal_func(): [ /* returnType */ EqualDataFunc, /* result_target */ any ]
 
     // Conflicting methods
@@ -4333,7 +4333,7 @@ export interface PriorityQueue {
 
     // Owm methods of Gee-0.8.Gee.PriorityQueue
 
-    offer(element: any | null): boolean
+    offer(element: any): boolean
     drain(recipient: Collection, amount: number): number
     get_compare_func(): [ /* returnType */ GLib.CompareDataFunc, /* result_target */ any ]
 
@@ -4395,7 +4395,7 @@ export interface Promise {
 
     // Owm methods of Gee-0.8.Gee.Promise
 
-    set_value(value: any | null): void
+    set_value(value: any): void
     set_exception(exception: GLib.Error): void
     get_future(): Future
 }
@@ -5108,16 +5108,16 @@ export interface MapEntry {
 
     // Owm methods of Gee-0.8.Gee.MapEntry
 
-    get_key(): any | null
-    get_value(): any | null
-    set_value(value: any | null): void
+    get_key(): any
+    get_value(): any
+    set_value(value: any): void
     get_read_only(): boolean
 
     // Own virtual methods of Gee-0.8.Gee.MapEntry
 
-    vfunc_get_key(): any | null
-    vfunc_get_value(): any | null
-    vfunc_set_value(value: any | null): void
+    vfunc_get_key(): any
+    vfunc_get_value(): any
+    vfunc_set_value(value: any): void
     vfunc_get_read_only(): boolean
 
     // Class property signals of Gee-0.8.Gee.MapEntry
@@ -5274,9 +5274,9 @@ export interface AbstractCollectionClass {
 
     // Own fields of Gee-0.8.Gee.AbstractCollectionClass
 
-    contains: (self: AbstractCollection, item: any | null) => boolean
-    add: (self: AbstractCollection, item: any | null) => boolean
-    remove: (self: AbstractCollection, item: any | null) => boolean
+    contains: (self: AbstractCollection, item: any) => boolean
+    add: (self: AbstractCollection, item: any) => boolean
+    remove: (self: AbstractCollection, item: any) => boolean
     clear: (self: AbstractCollection) => void
     iterator: (self: AbstractCollection) => Iterator
     foreach: (self: AbstractCollection, f: ForallFunc) => boolean
@@ -5314,11 +5314,11 @@ export interface AbstractListClass {
     // Own fields of Gee-0.8.Gee.AbstractListClass
 
     list_iterator: (self: AbstractList) => ListIterator
-    get: (self: AbstractList, index: number) => any | null
-    set: (self: AbstractList, index: number, item: any | null) => void
-    index_of: (self: AbstractList, item: any | null) => number
-    insert: (self: AbstractList, index: number, item: any | null) => void
-    remove_at: (self: AbstractList, index: number) => any | null
+    get: (self: AbstractList, index: number) => any
+    set: (self: AbstractList, index: number, item: any) => void
+    index_of: (self: AbstractList, item: any) => number
+    insert: (self: AbstractList, index: number, item: any) => void
+    remove_at: (self: AbstractList, index: number) => any
     slice: (self: AbstractList, start: number, stop: number) => List | null
     reserved0: (self: AbstractList) => void
     reserved1: (self: AbstractList) => void
@@ -5353,11 +5353,11 @@ export interface AbstractMapClass {
 
     // Own fields of Gee-0.8.Gee.AbstractMapClass
 
-    has_key: (self: AbstractMap, key: any | null) => boolean
-    has: (self: AbstractMap, key: any | null, value: any | null) => boolean
-    get: (self: AbstractMap, key: any | null) => any | null
-    set: (self: AbstractMap, key: any | null, value: any | null) => void
-    unset: (self: AbstractMap, key: any | null) => [ /* returnType */ boolean, /* value */ any ]
+    has_key: (self: AbstractMap, key: any) => boolean
+    has: (self: AbstractMap, key: any, value: any) => boolean
+    get: (self: AbstractMap, key: any) => any | null
+    set: (self: AbstractMap, key: any, value: any) => void
+    unset: (self: AbstractMap, key: any) => [ /* returnType */ boolean, /* value */ any ]
     map_iterator: (self: AbstractMap) => MapIterator
     clear: (self: AbstractMap) => void
     foreach: (self: AbstractMap, f: ForallFunc) => boolean
@@ -5530,9 +5530,9 @@ export interface AbstractSortedMapClass {
 
     // Own fields of Gee-0.8.Gee.AbstractSortedMapClass
 
-    head_map: (self: AbstractSortedMap, before: any | null) => SortedMap
-    tail_map: (self: AbstractSortedMap, after: any | null) => SortedMap
-    sub_map: (self: AbstractSortedMap, before: any | null, after: any | null) => SortedMap
+    head_map: (self: AbstractSortedMap, before: any) => SortedMap
+    tail_map: (self: AbstractSortedMap, after: any) => SortedMap
+    sub_map: (self: AbstractSortedMap, before: any, after: any) => SortedMap
     reserved0: (self: AbstractSortedMap) => void
     reserved1: (self: AbstractSortedMap) => void
     reserved2: (self: AbstractSortedMap) => void
@@ -5566,16 +5566,16 @@ export interface AbstractSortedSetClass {
 
     // Own fields of Gee-0.8.Gee.AbstractSortedSetClass
 
-    first: (self: AbstractSortedSet) => any | null
-    last: (self: AbstractSortedSet) => any | null
-    iterator_at: (self: AbstractSortedSet, element: any | null) => Iterator | null
-    lower: (self: AbstractSortedSet, element: any | null) => any | null
-    higher: (self: AbstractSortedSet, element: any | null) => any | null
-    floor: (self: AbstractSortedSet, element: any | null) => any | null
-    ceil: (self: AbstractSortedSet, element: any | null) => any | null
-    head_set: (self: AbstractSortedSet, before: any | null) => SortedSet
-    tail_set: (self: AbstractSortedSet, after: any | null) => SortedSet
-    sub_set: (self: AbstractSortedSet, from: any | null, to: any | null) => SortedSet
+    first: (self: AbstractSortedSet) => any
+    last: (self: AbstractSortedSet) => any
+    iterator_at: (self: AbstractSortedSet, element: any) => Iterator | null
+    lower: (self: AbstractSortedSet, element: any) => any | null
+    higher: (self: AbstractSortedSet, element: any) => any | null
+    floor: (self: AbstractSortedSet, element: any) => any | null
+    ceil: (self: AbstractSortedSet, element: any) => any | null
+    head_set: (self: AbstractSortedSet, before: any) => SortedSet
+    tail_set: (self: AbstractSortedSet, after: any) => SortedSet
+    sub_set: (self: AbstractSortedSet, from: any, to: any) => SortedSet
     reserved0: (self: AbstractSortedSet) => void
     reserved1: (self: AbstractSortedSet) => void
     reserved2: (self: AbstractSortedSet) => void
@@ -5773,7 +5773,7 @@ export interface HazardPointer {
 
     // Owm methods of Gee-0.8.Gee.HazardPointer
 
-    get(other_thread: boolean): any | null
+    get(other_thread: boolean): any
     release(notify: GLib.DestroyNotify): void
 }
 
@@ -6042,7 +6042,7 @@ export interface BidirListIteratorIface {
 
     // Own fields of Gee-0.8.Gee.BidirListIteratorIface
 
-    insert: (self: BidirListIterator, item: any | null) => void
+    insert: (self: BidirListIterator, item: any) => void
 }
 
 export abstract class BidirListIteratorIface {
@@ -6103,9 +6103,9 @@ export interface CollectionIface {
 
     // Own fields of Gee-0.8.Gee.CollectionIface
 
-    contains: (self: Collection, item: any | null) => boolean
-    add: (self: Collection, item: any | null) => boolean
-    remove: (self: Collection, item: any | null) => boolean
+    contains: (self: Collection, item: any) => boolean
+    add: (self: Collection, item: any) => boolean
+    remove: (self: Collection, item: any) => boolean
     clear: (self: Collection) => void
     add_all: (self: Collection, collection: Collection) => boolean
     contains_all: (self: Collection, collection: Collection) => boolean
@@ -6135,7 +6135,7 @@ export interface ComparableIface {
 
     // Own fields of Gee-0.8.Gee.ComparableIface
 
-    compare_to: (self: Comparable, object: any | null) => number
+    compare_to: (self: Comparable, object: any) => number
 }
 
 export abstract class ComparableIface {
@@ -6149,11 +6149,11 @@ export interface DequeIface {
 
     // Own fields of Gee-0.8.Gee.DequeIface
 
-    offer_head: (self: Deque, element: any | null) => boolean
+    offer_head: (self: Deque, element: any) => boolean
     peek_head: (self: Deque) => any | null
     poll_head: (self: Deque) => any | null
     drain_head: (self: Deque, recipient: Collection, amount: number) => number
-    offer_tail: (self: Deque, element: any | null) => boolean
+    offer_tail: (self: Deque, element: any) => boolean
     peek_tail: (self: Deque) => any | null
     poll_tail: (self: Deque) => any | null
     drain_tail: (self: Deque, recipient: Collection, amount: number) => number
@@ -6170,10 +6170,10 @@ export interface FutureIface {
 
     // Own fields of Gee-0.8.Gee.FutureIface
 
-    wait: (self: Future) => any | null
+    wait: (self: Future) => any
     wait_until: (self: Future, end_time: number) => [ /* returnType */ boolean, /* value */ any ]
     wait_async: (self: Future, _callback_: Gio.AsyncReadyCallback | null) => void
-    wait_finish: (self: Future, _res_: Gio.AsyncResult) => any | null
+    wait_finish: (self: Future, _res_: Gio.AsyncResult) => any
     map: (self: Future, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
     light_map: (self: Future, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
     light_map_broken: (self: Future, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, func: any) => Future
@@ -6196,7 +6196,7 @@ export interface HashableIface {
     // Own fields of Gee-0.8.Gee.HashableIface
 
     hash: (self: Hashable) => number
-    equal_to: (self: Hashable, object: any | null) => boolean
+    equal_to: (self: Hashable, object: any) => boolean
 }
 
 export abstract class HashableIface {
@@ -6226,7 +6226,7 @@ export interface IteratorIface {
 
     next: (self: Iterator) => boolean
     has_next: (self: Iterator) => boolean
-    get: (self: Iterator) => any | null
+    get: (self: Iterator) => any
     remove: (self: Iterator) => void
     get_valid: (self: Iterator) => boolean
     get_read_only: (self: Iterator) => boolean
@@ -6244,14 +6244,14 @@ export interface ListIface {
     // Own fields of Gee-0.8.Gee.ListIface
 
     list_iterator: (self: List) => ListIterator
-    get: (self: List, index: number) => any | null
-    set: (self: List, index: number, item: any | null) => void
-    index_of: (self: List, item: any | null) => number
-    insert: (self: List, index: number, item: any | null) => void
-    remove_at: (self: List, index: number) => any | null
+    get: (self: List, index: number) => any
+    set: (self: List, index: number, item: any) => void
+    index_of: (self: List, item: any) => number
+    insert: (self: List, index: number, item: any) => void
+    remove_at: (self: List, index: number) => any
     slice: (self: List, start: number, stop: number) => List | null
-    first: (self: List) => any | null
-    last: (self: List) => any | null
+    first: (self: List) => any
+    last: (self: List) => any
     insert_all: (self: List, index: number, collection: Collection) => void
     sort: (self: List, compare_func: GLib.CompareDataFunc | null) => void
     get_read_only_view: (self: List) => List
@@ -6268,8 +6268,8 @@ export interface ListIteratorIface {
 
     // Own fields of Gee-0.8.Gee.ListIteratorIface
 
-    set: (self: ListIterator, item: any | null) => void
-    add: (self: ListIterator, item: any | null) => void
+    set: (self: ListIterator, item: any) => void
+    add: (self: ListIterator, item: any) => void
     index: (self: ListIterator) => number
 }
 
@@ -6284,11 +6284,11 @@ export interface MapIface {
 
     // Own fields of Gee-0.8.Gee.MapIface
 
-    has_key: (self: Map, key: any | null) => boolean
-    has: (self: Map, key: any | null, value: any | null) => boolean
-    get: (self: Map, key: any | null) => any | null
-    set: (self: Map, key: any | null, value: any | null) => void
-    unset: (self: Map, key: any | null) => [ /* returnType */ boolean, /* value */ any ]
+    has_key: (self: Map, key: any) => boolean
+    has: (self: Map, key: any, value: any) => boolean
+    get: (self: Map, key: any) => any | null
+    set: (self: Map, key: any, value: any) => void
+    unset: (self: Map, key: any) => [ /* returnType */ boolean, /* value */ any ]
     clear: (self: Map) => void
     map_iterator: (self: Map) => MapIterator
     set_all: (self: Map, map: Map) => void
@@ -6336,11 +6336,11 @@ export interface MapIteratorIface {
 
     next: (self: MapIterator) => boolean
     has_next: (self: MapIterator) => boolean
-    get_key: (self: MapIterator) => any | null
-    get_value: (self: MapIterator) => any | null
-    set_value: (self: MapIterator, value: any | null) => void
+    get_key: (self: MapIterator) => any
+    get_value: (self: MapIterator) => any
+    set_value: (self: MapIterator, value: any) => void
     unset: (self: MapIterator) => void
-    fold: (self: MapIterator, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any | null) => any | null
+    fold: (self: MapIterator, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldMapFunc, seed: any) => any
     foreach: (self: MapIterator, f: ForallMapFunc) => boolean
     get_valid: (self: MapIterator) => boolean
     get_mutable: (self: MapIterator) => boolean
@@ -6361,11 +6361,11 @@ export interface MultiMapIface {
     get_keys: (self: MultiMap) => Set
     get_all_keys: (self: MultiMap) => MultiSet
     get_values: (self: MultiMap) => Collection
-    contains: (self: MultiMap, key: any | null) => boolean
-    get: (self: MultiMap, key: any | null) => Collection
-    set: (self: MultiMap, key: any | null, value: any | null) => void
-    remove: (self: MultiMap, key: any | null, value: any | null) => boolean
-    remove_all: (self: MultiMap, key: any | null) => boolean
+    contains: (self: MultiMap, key: any) => boolean
+    get: (self: MultiMap, key: any) => Collection
+    set: (self: MultiMap, key: any, value: any) => void
+    remove: (self: MultiMap, key: any, value: any) => boolean
+    remove_all: (self: MultiMap, key: any) => boolean
     clear: (self: MultiMap) => void
     map_iterator: (self: MultiMap) => MapIterator
     get_size: (self: MultiMap) => number
@@ -6384,7 +6384,7 @@ export interface MultiSetIface {
 
     // Own fields of Gee-0.8.Gee.MultiSetIface
 
-    count: (self: MultiSet, item: any | null) => number
+    count: (self: MultiSet, item: any) => number
     get_read_only_view: (self: MultiSet) => MultiSet
 }
 
@@ -6399,7 +6399,7 @@ export interface QueueIface {
 
     // Own fields of Gee-0.8.Gee.QueueIface
 
-    offer: (self: Queue, element: any | null) => boolean
+    offer: (self: Queue, element: any) => boolean
     peek: (self: Queue) => any | null
     poll: (self: Queue) => any | null
     drain: (self: Queue, recipient: Collection, amount: number) => number
@@ -6433,9 +6433,9 @@ export interface SortedMapIface {
 
     // Own fields of Gee-0.8.Gee.SortedMapIface
 
-    head_map: (self: SortedMap, before: any | null) => SortedMap
-    tail_map: (self: SortedMap, after: any | null) => SortedMap
-    sub_map: (self: SortedMap, before: any | null, after: any | null) => SortedMap
+    head_map: (self: SortedMap, before: any) => SortedMap
+    tail_map: (self: SortedMap, after: any) => SortedMap
+    sub_map: (self: SortedMap, before: any, after: any) => SortedMap
     get_ascending_keys: (self: SortedMap) => SortedSet
     get_ascending_entries: (self: SortedMap) => SortedSet
     get_read_only_view: (self: SortedMap) => SortedMap
@@ -6452,16 +6452,16 @@ export interface SortedSetIface {
 
     // Own fields of Gee-0.8.Gee.SortedSetIface
 
-    first: (self: SortedSet) => any | null
-    last: (self: SortedSet) => any | null
-    iterator_at: (self: SortedSet, element: any | null) => Iterator | null
-    lower: (self: SortedSet, element: any | null) => any | null
-    higher: (self: SortedSet, element: any | null) => any | null
-    floor: (self: SortedSet, element: any | null) => any | null
-    ceil: (self: SortedSet, element: any | null) => any | null
-    head_set: (self: SortedSet, before: any | null) => SortedSet
-    tail_set: (self: SortedSet, after: any | null) => SortedSet
-    sub_set: (self: SortedSet, from: any | null, to: any | null) => SortedSet
+    first: (self: SortedSet) => any
+    last: (self: SortedSet) => any
+    iterator_at: (self: SortedSet, element: any) => Iterator | null
+    lower: (self: SortedSet, element: any) => any | null
+    higher: (self: SortedSet, element: any) => any | null
+    floor: (self: SortedSet, element: any) => any | null
+    ceil: (self: SortedSet, element: any) => any | null
+    head_set: (self: SortedSet, before: any) => SortedSet
+    tail_set: (self: SortedSet, after: any) => SortedSet
+    sub_set: (self: SortedSet, from: any, to: any) => SortedSet
     get_read_only_view: (self: SortedSet) => SortedSet
 }
 
@@ -6478,9 +6478,9 @@ export interface TraversableIface {
 
     foreach: (self: Traversable, f: ForallFunc) => boolean
     stream: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: StreamFunc) => Iterator
-    fold: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null) => any | null
+    fold: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any) => any
     map: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: MapFunc) => Iterator
-    scan: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any | null) => Iterator
+    scan: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FoldFunc, seed: any) => Iterator
     filter: (self: Traversable, pred: Predicate) => Iterator
     chop: (self: Traversable, offset: number, length: number) => Iterator
     flat_map: (self: Traversable, a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, a_destroy_func: GLib.DestroyNotify, f: FlatMapFunc) => Iterator
@@ -6488,8 +6488,8 @@ export interface TraversableIface {
     first_match: (self: Traversable, pred: Predicate) => any | null
     any_match: (self: Traversable, pred: Predicate) => boolean
     all_match: (self: Traversable, pred: Predicate) => boolean
-    max: (self: Traversable, compare: GLib.CompareDataFunc) => any | null
-    min: (self: Traversable, compare: GLib.CompareDataFunc) => any | null
+    max: (self: Traversable, compare: GLib.CompareDataFunc) => any
+    min: (self: Traversable, compare: GLib.CompareDataFunc) => any
     order_by: (self: Traversable, compare: GLib.CompareDataFunc | null) => Iterator
     get_element_type: (self: Traversable) => GObject.GType
 }

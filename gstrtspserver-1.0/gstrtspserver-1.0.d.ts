@@ -1401,9 +1401,9 @@ interface RTSPMedia {
 
     bind_mcast_address: boolean
     buffer_size: number
-    clock: Gst.Clock | null
+    clock: Gst.Clock
     dscp_qos: number
-    readonly element: Gst.Element | null
+    readonly element: Gst.Element
     eos_shutdown: boolean
     latency: number
     max_mcast_ttl: number
@@ -1422,6 +1422,16 @@ interface RTSPMedia {
 
     // Owm methods of GstRtspServer-1.0.GstRtspServer.RTSPMedia
 
+    /**
+     * Check if the pipeline for `media` can be shared between multiple clients.
+     * 
+     * This checks if the media is shareable and whether it is either reusable or
+     * was never unprepared before.
+     * 
+     * The function must be called with gst_rtsp_media_lock().
+     * @returns %TRUE if the media can be shared between clients.
+     */
+    can_be_shared(): boolean
     /**
      * Find all payloader elements, they should be named pay\%d in the
      * element of `media,` and create #GstRTSPStreams for them.
@@ -1602,7 +1612,12 @@ interface RTSPMedia {
      */
     is_reusable(): boolean
     /**
-     * Check if the pipeline for `media` can be shared between multiple clients.
+     * Check if the pipeline for `media` can be shared between multiple clients in
+     * theory. This simply returns the value set via gst_rtsp_media_set_shared().
+     * 
+     * To know if a media can be shared in practice, i.e. if it's shareable and
+     * either reusable or was never unprepared before, use
+     * gst_rtsp_media_can_be_shared().
      * @returns %TRUE if the media can be shared between clients.
      */
     is_shared(): boolean
@@ -2101,7 +2116,7 @@ interface RTSPMediaFactory {
 
     bind_mcast_address: boolean
     buffer_size: number
-    clock: Gst.Clock | null
+    clock: Gst.Clock
     dscp_qos: number
     /**
      * Whether the created media should send and receive RTCP
@@ -2141,6 +2156,8 @@ interface RTSPMediaFactory {
      * 
      * After the media is constructed, it can be configured and then prepared
      * with gst_rtsp_media_prepare ().
+     * 
+     * The returned media will be locked and must be unlocked afterwards.
      * @param url the url used
      * @returns a new #GstRTSPMedia if the media could be prepared.
      */
@@ -2402,6 +2419,8 @@ interface RTSPMediaFactory {
      * 
      * After the media is constructed, it can be configured and then prepared
      * with gst_rtsp_media_prepare ().
+     * 
+     * The returned media will be locked and must be unlocked afterwards.
      * @virtual 
      * @param url the url used
      * @returns a new #GstRTSPMedia if the media could be prepared.

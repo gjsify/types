@@ -1458,6 +1458,13 @@ export function file_util_decode_fixed_int32(in_: any | null, dest: number): num
  */
 export function file_util_decode_fixed_string(in_: any | null, str: string | null, len: number): number
 /**
+ * Decode a gint64 type.
+ * @param in_ file to read from
+ * @param dest pointer to a variable to put the value in
+ * @returns 0 on success, -1 on failure.
+ */
+export function file_util_decode_gint64(in_: any | null, dest: number): number
+/**
  * Decode an gsize type.
  * @param in_ file to read from
  * @param dest pointer to a variable to put the value in
@@ -1510,6 +1517,13 @@ export function file_util_encode_fixed_int32(out: any | null, value: number): nu
  * @returns 0 on success, -1 on error.
  */
 export function file_util_encode_fixed_string(out: any | null, str: string | null, len: number): number
+/**
+ * Encode a gint64 type.
+ * @param out file to output to
+ * @param value value to output
+ * @returns 0 on success, -1 on error.
+ */
+export function file_util_encode_gint64(out: any | null, value: number): number
 /**
  * Encode an gsize type.
  * @param out file to output to
@@ -3970,13 +3984,15 @@ export interface CipherContext {
      */
     decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity
     /**
-     * Asynchronously encrypts (and optionally signs) the clear-text `ipart` and
+     * Asynchronously encrypts the clear-text `ipart` and
      * writes the resulting cipher-text to `opart`.
      * 
      * When the operation is finished, `callback` will be called.  You can
      * then call camel_cipher_context_encrypt_finish() to get the result of
      * the operation.
-     * @param userid key id (or email address) to use when signing, or %NULL to not sign
+     * 
+     * Note: The `userid` is unused, %NULL should be passed for it.
+     * @param userid unused
      * @param recipients an array of recipient key IDs and/or email addresses
      * @param ipart clear-text #CamelMimePart
      * @param opart cipher-text #CamelMimePart
@@ -3992,9 +4008,10 @@ export interface CipherContext {
      */
     encrypt_finish(result: Gio.AsyncResult): boolean
     /**
-     * Encrypts (and optionally signs) the clear-text `ipart` and writes the
-     * resulting cipher-text to `opart`.
-     * @param userid key ID (or email address) to use when signing, or %NULL to not sign
+     * Encrypts the clear-text `ipart` and writes the resulting cipher-text to `opart`.
+     * 
+     * Note: The `userid` is unused, %NULL should be passed for it.
+     * @param userid unused
      * @param recipients an array of recipient key IDs and/or email addresses
      * @param ipart clear-text #CamelMimePart
      * @param opart cipher-text #CamelMimePart
@@ -4077,10 +4094,11 @@ export interface CipherContext {
      */
     vfunc_decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity
     /**
-     * Encrypts (and optionally signs) the clear-text `ipart` and writes the
-     * resulting cipher-text to `opart`.
+     * Encrypts the clear-text `ipart` and writes the resulting cipher-text to `opart`.
+     * 
+     * Note: The `userid` is unused, %NULL should be passed for it.
      * @virtual 
-     * @param userid key ID (or email address) to use when signing, or %NULL to not sign
+     * @param userid unused
      * @param recipients an array of recipient key IDs and/or email addresses
      * @param ipart clear-text #CamelMimePart
      * @param opart cipher-text #CamelMimePart

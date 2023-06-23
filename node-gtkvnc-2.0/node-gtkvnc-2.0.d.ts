@@ -33,6 +33,7 @@ enum DisplayCredential {
     PASSWORD,
     USERNAME,
     CLIENTNAME,
+    CA_CERT_DATA,
 }
 enum DisplayDepthColor {
     DEFAULT,

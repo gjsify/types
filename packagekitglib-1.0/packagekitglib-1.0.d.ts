@@ -665,6 +665,10 @@ enum GroupEnum {
      * Special group for recently updated packages
      */
     NEWEST,
+    /**
+     * DDE packages
+     */
+    DESKTOP_DDE,
     LAST,
 }
 /**
@@ -2041,6 +2045,7 @@ module Client {
 
         background?: boolean | null
         cache_age?: number | null
+        details_with_deps_size?: boolean | null
         interactive?: boolean | null
         locale?: string | null
     }
@@ -2053,6 +2058,7 @@ interface Client {
 
     background: boolean
     cache_age: number
+    details_with_deps_size: boolean
     readonly idle: boolean
     interactive: boolean
     locale: string | null
@@ -2221,6 +2227,11 @@ interface Client {
      * @param callback_ready the function to run on completion
      */
     get_details_local_async(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Gets the client details-with-deps-size value.
+     * @returns whether the pk_client_get_details_async() should include dependencies    download sizes for packages, which are not installed.
+     */
+    get_details_with_deps_size(): boolean
     /**
      * This method should return a list of distribution upgrades that are available.
      * It should not return updates, only major upgrades.
@@ -2798,6 +2809,12 @@ interface Client {
      */
     set_cache_age(cache_age: number): void
     /**
+     * Sets whether the pk_client_get_details_async() should include dependencies
+     * download sizes for packages, which are not installed.
+     * @param details_with_deps_size the value to set
+     */
+    set_details_with_deps_size(details_with_deps_size: boolean): void
+    /**
      * Sets the interactive value for the client. Interactive transactions
      * are usually allowed to ask the user questions.
      * @param interactive the value to set
@@ -2899,6 +2916,9 @@ interface Client {
     connect(sigName: "notify::cache-age", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-age", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cache-age", ...args: any[]): void
+    connect(sigName: "notify::details-with-deps-size", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::details-with-deps-size", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::details-with-deps-size", ...args: any[]): void
     connect(sigName: "notify::idle", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::idle", ...args: any[]): void
@@ -6445,6 +6465,9 @@ interface Task {
     connect(sigName: "notify::cache-age", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-age", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cache-age", ...args: any[]): void
+    connect(sigName: "notify::details-with-deps-size", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::details-with-deps-size", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::details-with-deps-size", ...args: any[]): void
     connect(sigName: "notify::idle", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle", callback: (($obj: Task, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::idle", ...args: any[]): void

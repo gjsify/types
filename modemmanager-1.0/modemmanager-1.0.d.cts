@@ -119,6 +119,7 @@ export enum CoreError {
     RETRY,
     EXISTS,
     WRONGSIMSTATE,
+    RESETRETRY,
 }
 export enum FirmwareImageType {
     UNKNOWN,
@@ -686,6 +687,14 @@ export enum SerialError {
     PARSEFAILED,
     FRAMENOTFOUND,
 }
+export enum ServingCellType {
+    UNKNOWN,
+    PCELL,
+    SCELL,
+    PSCELL,
+    SSCELL,
+    INVALID,
+}
 export enum SimEsimStatus {
     UNKNOWN,
     NO_PROFILES,
@@ -1142,6 +1151,7 @@ export const MODEM_METHOD_SETPRIMARYSIMSLOT: string | null
 export const MODEM_MODEM3GPP_METHOD_DISABLEFACILITYLOCK: string | null
 export const MODEM_MODEM3GPP_METHOD_REGISTER: string | null
 export const MODEM_MODEM3GPP_METHOD_SCAN: string | null
+export const MODEM_MODEM3GPP_METHOD_SETCARRIERLOCK: string | null
 export const MODEM_MODEM3GPP_METHOD_SETEPSUEMODEOPERATION: string | null
 export const MODEM_MODEM3GPP_METHOD_SETINITIALEPSBEARERSETTINGS: string | null
 export const MODEM_MODEM3GPP_METHOD_SETNR5GREGISTRATIONSETTINGS: string | null
@@ -1839,6 +1849,12 @@ export function oma_session_state_get_string(val: OmaSessionState): string | nul
  */
 export function oma_session_type_get_string(val: OmaSessionType): string | null
 export function serial_error_quark(): GLib.Quark
+/**
+ * Gets the nickname string for the #MMServingCellType specified at `val`.
+ * @param val a MMServingCellType.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+export function serving_cell_type_get_string(val: ServingCellType): string | null
 /**
  * Gets the nickname string for the #MMSimEsimStatus specified at `val`.
  * @param val a MMSimEsimStatus.
@@ -3966,6 +3982,13 @@ export module GdbusModem3gpp {
     }
 
     /**
+     * Signal callback interface for `handle-set-carrier-lock`
+     */
+    export interface HandleSetCarrierLockSignalCallback {
+        ($obj: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean
+    }
+
+    /**
      * Signal callback interface for `handle-set-eps-ue-mode-operation`
      */
     export interface HandleSetEpsUeModeOperationSignalCallback {
@@ -4232,6 +4255,32 @@ export interface GdbusModem3gpp {
      */
     call_scan_sync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_results */ GLib.Variant ]
     /**
+     * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`.
+     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+     * You can then call mm_gdbus_modem3gpp_call_set_carrier_lock_finish() to get the result of the operation.
+     * 
+     * See mm_gdbus_modem3gpp_call_set_carrier_lock_sync() for the synchronous, blocking version of this method.
+     * @param arg_data Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+     */
+    call_set_carrier_lock(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Finishes an operation started with mm_gdbus_modem3gpp_call_set_carrier_lock().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
+     * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+     */
+    call_set_carrier_lock_finish(res: Gio.AsyncResult): boolean
+    /**
+     * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+     * 
+     * See mm_gdbus_modem3gpp_call_set_carrier_lock() for the asynchronous version of this method.
+     * @param arg_data Argument to pass with the method invocation.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+     */
+    call_set_carrier_lock_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
      * You can then call mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation_finish() to get the result of the operation.
@@ -4358,6 +4407,13 @@ export interface GdbusModem3gpp {
      */
     complete_scan(invocation: Gio.DBusMethodInvocation, results: GLib.Variant): void
     /**
+     * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+     * 
+     * This method will free `invocation,` you cannot use it afterwards.
+     * @param invocation A #GDBusMethodInvocation.
+     */
+    complete_set_carrier_lock(invocation: Gio.DBusMethodInvocation): void
+    /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
      * This method will free `invocation,` you cannot use it afterwards.
@@ -4391,6 +4447,7 @@ export interface GdbusModem3gpp {
     vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean
     vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string | null): boolean
     vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean
+    vfunc_handle_set_carrier_lock(invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean
     vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean
     vfunc_handle_set_initial_eps_bearer_settings(invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant): boolean
     vfunc_handle_set_nr5g_registration_settings(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean
@@ -4407,6 +4464,9 @@ export interface GdbusModem3gpp {
     connect(sigName: "handle-scan", callback: GdbusModem3gpp.HandleScanSignalCallback): number
     connect_after(sigName: "handle-scan", callback: GdbusModem3gpp.HandleScanSignalCallback): number
     emit(sigName: "handle-scan", invocation: Gio.DBusMethodInvocation, ...args: any[]): void
+    connect(sigName: "handle-set-carrier-lock", callback: GdbusModem3gpp.HandleSetCarrierLockSignalCallback): number
+    connect_after(sigName: "handle-set-carrier-lock", callback: GdbusModem3gpp.HandleSetCarrierLockSignalCallback): number
+    emit(sigName: "handle-set-carrier-lock", invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant, ...args: any[]): void
     connect(sigName: "handle-set-eps-ue-mode-operation", callback: GdbusModem3gpp.HandleSetEpsUeModeOperationSignalCallback): number
     connect_after(sigName: "handle-set-eps-ue-mode-operation", callback: GdbusModem3gpp.HandleSetEpsUeModeOperationSignalCallback): number
     emit(sigName: "handle-set-eps-ue-mode-operation", invocation: Gio.DBusMethodInvocation, arg_mode: number, ...args: any[]): void
@@ -11302,6 +11362,11 @@ export interface CellInfoLte {
     // Owm methods of ModemManager-1.0.ModemManager.CellInfoLte
 
     /**
+     * Get the bandwidth of the particular carrier in downlink.
+     * @returns the bandwidth, or %G_MAXUINT if not available.
+     */
+    get_bandwidth(): number
+    /**
      * Get the two- or four-byte Cell Identifier.
      * 
      * Encoded in upper-case hexadecimal format without leading zeros,
@@ -11337,6 +11402,11 @@ export interface CellInfoLte {
      * @returns the RSRQ, or -%G_MAXDOUBLE if not available.
      */
     get_rsrq(): number
+    /**
+     * Get the serving cell type.
+     * @returns the serving cell type, or %MM_SERVING_CELL_TYPE_INVALID if not available.
+     */
+    get_serving_cell_type(): ServingCellType
     /**
      * Get the two- or three- byte Tracking Area Code of the base station.
      * 
@@ -11391,6 +11461,11 @@ export interface CellInfoNr5g {
     // Owm methods of ModemManager-1.0.ModemManager.CellInfoNr5g
 
     /**
+     * Get the bandwidth of the particular carrier in downlink.
+     * @returns the bandwidth, or %G_MAXUINT if not available.
+     */
+    get_bandwidth(): number
+    /**
      * Get the two- or four-byte Cell Identifier.
      * 
      * Encoded in upper-case hexadecimal format without leading zeros,
@@ -11426,6 +11501,11 @@ export interface CellInfoNr5g {
      * @returns the RSRQ, or -%G_MAXDOUBLE if not available.
      */
     get_rsrq(): number
+    /**
+     * Get the serving cell type.
+     * @returns the serving cell type, or %MM_SERVING_CELL_TYPE_INVALID if not available.
+     */
+    get_serving_cell_type(): ServingCellType
     /**
      * Get the signal to interference and noise ratio.
      * @returns the SINR, or -%G_MAXDOUBLE if not available.
@@ -21659,6 +21739,38 @@ export interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Ini
      */
     scan_sync(cancellable: Gio.Cancellable | null): Modem3gppNetwork[]
     /**
+     * Asynchronously sends the carrier lock information to the modem.
+     * 
+     * When the operation is finished, `callback` will be invoked in the
+     * <link linkend="g-main-context-push-thread-default">thread-default main loop</link>
+     * of the thread you are calling this method from. You can then call
+     * mm_modem_location_inject_assistance_data_finish() to get the result of the
+     * operation.
+     * 
+     * See mm_modem_3gpp_set_carrier_lock_sync() for the synchronous,
+     * blocking version of this method.
+     * @param data Carrier lock information.
+     * @param cancellable A #GCancellable or %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
+     */
+    set_carrier_lock(data: Uint8Array, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Finishes an operation started with mm_modem_3gpp_set_carrier_lock().
+     * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
+     * @returns %TRUE if the call succeded, %FALSE if @error is set.
+     */
+    set_carrier_lock_finish(res: Gio.AsyncResult): boolean
+    /**
+     * Synchronously sends the carrier lock information to the modem..
+     * 
+     * The calling thread is blocked until a reply is received. See
+     * mm_modem_3gpp_set_carrier_lock() for the asynchronous version of this method.
+     * @param data Carrier lock information.
+     * @param cancellable A #GCancellable or %NULL.
+     * @returns %TRUE if the carrier network info is successfully send, %FALSE if @error is set.
+     */
+    set_carrier_lock_sync(data: Uint8Array, cancellable: Gio.Cancellable | null): boolean
+    /**
      * Asynchronously requests to update the EPS UE mode of operation.
      * 
      * When the operation is finished, `callback` will be invoked in the
@@ -29676,6 +29788,7 @@ export interface GdbusModem3gppIface {
     handle_disable_facility_lock: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean
     handle_register: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_operator_id: string | null) => boolean
     handle_scan: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation) => boolean
+    handle_set_carrier_lock: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant) => boolean
     handle_set_eps_ue_mode_operation: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_mode: number) => boolean
     handle_set_initial_eps_bearer_settings: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant) => boolean
     handle_set_nr5g_registration_settings: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean

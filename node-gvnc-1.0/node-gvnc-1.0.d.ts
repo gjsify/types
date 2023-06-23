@@ -92,6 +92,7 @@ enum ConnectionCredential {
     PASSWORD,
     USERNAME,
     CLIENTNAME,
+    CA_CERT_DATA,
 }
 enum ConnectionEncoding {
     RAW,
@@ -1040,7 +1041,7 @@ interface Connection {
      * Sets the value of the authentication credential
      * `type` to the string `data`.
      * 
-     * `type` is one of the VncConnectionCredential enum vlaues
+     * `type` is one of the VncConnectionCredential enum values
      * @param type the authentication credential type
      * @param data the value associated with the credential
      * @returns TRUE if the connection is ok, FALSE if it has an error

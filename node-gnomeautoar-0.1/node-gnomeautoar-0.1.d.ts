@@ -762,7 +762,7 @@ interface Extractor {
     setOutputIsDest(outputIsDest: boolean): void
     /**
      * Sets a passphrase to use if the file to decompress is passphrase-protected.
-     * @param passphrase 
+     * @param passphrase a string with the passphrase to use
      */
     setPassphrase(passphrase: string | null): void
     /**

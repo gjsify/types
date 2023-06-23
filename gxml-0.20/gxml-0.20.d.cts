@@ -2354,17 +2354,17 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
+    contains(item: any): boolean
     add(tokens: string[]): void
 
     // Overloads of add
 
-    add(item: any | null): boolean
+    add(item: any): boolean
     remove(tokens: string[]): void
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
+    remove(item: any): boolean
     toggle(token: string | null, force: boolean, _auto_: boolean): boolean
     to_string(): string | null
 
@@ -2403,17 +2403,17 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
 
     // Overloads of vfunc_contains
 
-    vfunc_contains(item: any | null): boolean
+    vfunc_contains(item: any): boolean
     vfunc_add(tokens: string[]): void
 
     // Overloads of vfunc_add
 
-    vfunc_add(item: any | null): boolean
+    vfunc_add(item: any): boolean
     vfunc_remove(tokens: string[]): void
 
     // Overloads of vfunc_remove
 
-    vfunc_remove(item: any | null): boolean
+    vfunc_remove(item: any): boolean
     vfunc_toggle(token: string | null, force: boolean, _auto_: boolean): boolean
     vfunc_to_string(): string | null
 
@@ -2493,20 +2493,20 @@ export interface DomSettableTokenList extends GObject.Object, DomTokenList {
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
     add(tokens: string[]): void
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
     remove(tokens: string[]): void
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     get_read_only_view(): Gee.BidirList
 
     // Overloads of get_read_only_view
@@ -2523,20 +2523,20 @@ export interface DomSettableTokenList extends GObject.Object, DomTokenList {
 
     // Overloads of vfunc_contains
 
-    vfunc_contains(item: any | null): boolean
-    vfunc_contains(item: any | null): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_contains(item: any): boolean
     vfunc_add(tokens: string[]): void
 
     // Overloads of vfunc_add
 
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
     vfunc_remove(tokens: string[]): void
 
     // Overloads of vfunc_remove
 
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_get_read_only_view(): Gee.BidirList
 
     // Overloads of vfunc_get_read_only_view
@@ -10900,23 +10900,23 @@ export interface SettableTokenList extends DomSettableTokenList {
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
     add(tokens: string[]): void
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    add(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    add(item: any): boolean
     remove(tokens: string[]): void
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     get_read_only_view(): Gee.BidirList
 
     // Overloads of get_read_only_view
@@ -10947,23 +10947,23 @@ export interface SettableTokenList extends DomSettableTokenList {
 
     // Overloads of vfunc_contains
 
-    vfunc_contains(item: any | null): boolean
-    vfunc_contains(item: any | null): boolean
-    vfunc_contains(item: any | null): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_contains(item: any): boolean
     vfunc_add(tokens: string[]): void
 
     // Overloads of vfunc_add
 
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
     vfunc_remove(tokens: string[]): void
 
     // Overloads of vfunc_remove
 
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_get_read_only_view(): Gee.BidirList
 
     // Overloads of vfunc_get_read_only_view
@@ -11681,23 +11681,23 @@ export interface TokenList extends DomTokenList {
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
     add(tokens: string[]): void
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    add(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    add(item: any): boolean
     remove(tokens: string[]): void
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     get_read_only_view(): Gee.BidirList
 
     // Overloads of get_read_only_view
@@ -11728,23 +11728,23 @@ export interface TokenList extends DomTokenList {
 
     // Overloads of vfunc_contains
 
-    vfunc_contains(item: any | null): boolean
-    vfunc_contains(item: any | null): boolean
-    vfunc_contains(item: any | null): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_contains(item: any): boolean
+    vfunc_contains(item: any): boolean
     vfunc_add(tokens: string[]): void
 
     // Overloads of vfunc_add
 
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
     vfunc_remove(tokens: string[]): void
 
     // Overloads of vfunc_remove
 
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_get_read_only_view(): Gee.BidirList
 
     // Overloads of vfunc_get_read_only_view

@@ -705,7 +705,13 @@ module DataSource {
 
         // Own constructor properties of Shumate-1.0.Shumate.DataSource
 
+        /**
+         * The maximum zoom level
+         */
         maxZoomLevel?: number | null
+        /**
+         * The minimum zoom level
+         */
         minZoomLevel?: number | null
     }
 
@@ -715,7 +721,13 @@ interface DataSource {
 
     // Own properties of Shumate-1.0.Shumate.DataSource
 
+    /**
+     * The maximum zoom level
+     */
     maxZoomLevel: number
+    /**
+     * The minimum zoom level
+     */
     minZoomLevel: number
     __gtype__: number
 
@@ -747,6 +759,7 @@ interface DataSource {
      * @param zoomLevel the minimum zoom level
      */
     setMinZoomLevel(zoomLevel: number): void
+    // Has conflict: startRequest(x: number, y: number, zoomLevel: number, cancellable: Gio.Cancellable | null): DataSourceRequest
 
     // Own virtual methods of Shumate-1.0.Shumate.DataSource
 
@@ -773,6 +786,16 @@ interface DataSource {
      * @returns The requested data, or %NULL if an error occurred
      */
     getTileDataFinish(result: Gio.AsyncResult): any | null
+    /**
+     * Begins a request for a tile.
+     * @virtual 
+     * @param x X coordinate to request
+     * @param y Y coordinate to request
+     * @param zoomLevel zoom level to request
+     * @param cancellable for cancelling the request
+     * @returns a [class@DataSourceRequest] object for tracking the request.
+     */
+    startRequest(x: number, y: number, zoomLevel: number, cancellable: Gio.Cancellable | null): DataSourceRequest
 
     // Own signals of Shumate-1.0.Shumate.DataSource
 
@@ -821,6 +844,239 @@ class DataSource extends GObject.Object {
 
     constructor(config?: DataSource.ConstructorProperties) 
     _init(config?: DataSource.ConstructorProperties): void
+}
+
+module DataSourceRequest {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Shumate-1.0.Shumate.DataSourceRequest
+
+        /**
+         * The X coordinate of the requested tile.
+         */
+        x?: number | null
+        /**
+         * The Y coordinate of the requested tile.
+         */
+        y?: number | null
+        /**
+         * The zoom level of the requested tile.
+         */
+        zoomLevel?: number | null
+    }
+
+}
+
+interface DataSourceRequest {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequest
+
+    /**
+     * %TRUE if the request has been completed, otherwise %FALSE. A completed
+     * request will not receive further updates to either
+     * [property`DataSourceRequest:`data] or [property`DataSourceRequest:`error].
+     */
+    readonly completed: boolean
+    /**
+     * The most recent data for the tile, if available. If an error is emitted,
+     * this will be set to %NULL.
+     */
+    readonly data: any
+    /**
+     * The error that occurred during the request, if any.
+     */
+    readonly error: GLib.Error
+    /**
+     * The X coordinate of the requested tile.
+     */
+    readonly x: number
+    /**
+     * The Y coordinate of the requested tile.
+     */
+    readonly y: number
+    /**
+     * The zoom level of the requested tile.
+     */
+    readonly zoomLevel: number
+    __gtype__: number
+
+    // Own fields of Shumate-1.0.Shumate.DataSourceRequest
+
+    parentInstance: GObject.Object
+
+    // Owm methods of Shumate-1.0.Shumate.DataSourceRequest
+
+    /**
+     * Marks the request as complete. No more data or errors may be emitted.
+     * 
+     * This can only be called if data has been emitted. If there is no data,
+     * use [method`DataSourceRequest`.emit_error] instead, which will automatically
+     * complete the request.
+     */
+    complete(): void
+    /**
+     * Emits tile data as a response to the request. This sets the
+     * [property`DataSourceRequest:`data] property.
+     * 
+     * If `complete` is %TRUE, then [property`DataSourceRequest:`completed] is set to
+     * %TRUE as well.
+     * @param data the data to emit
+     * @param complete %TRUE to also complete the request, %FALSE otherwise
+     */
+    emitData(data: any, complete: boolean): void
+    /**
+     * Emits a fatal error in response to the request. This completes the request,
+     * so no more data or errors can be emitted after this. Non-fatal errors should
+     * not be reported.
+     * 
+     * If [property`DataSourceRequest:`data] was previously set, it will be cleared.
+     * @param error an error
+     */
+    emitError(error: GLib.Error): void
+    /**
+     * Gets the latest data from the request.
+     * @returns The latest data, if any.
+     */
+    getData(): any | null
+
+    // Overloads of getData
+
+    /**
+     * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
+     * @returns the data if found,          or %NULL if no such data exists.
+     */
+    getData(key: string | null): any | null
+    /**
+     * Gets the latest error from the request.
+     * @returns The latest error, if any.
+     */
+    getError(): GLib.Error | null
+    /**
+     * Gets the X coordinate of the requested tile.
+     * @returns the X coordinate
+     */
+    getX(): number
+    /**
+     * Gets the Y coordinate of the requested tile.
+     * @returns the Y coordinate
+     */
+    getY(): number
+    /**
+     * Gets the zoom level of the requested tile.
+     * @returns the zoom level
+     */
+    getZoomLevel(): number
+    /**
+     * Gets whether the request has been completed. Completed requests will not
+     * receive new data or errors.
+     * @returns %TRUE if the request is completed, otherwise %FALSE
+     */
+    isCompleted(): boolean
+
+    // Class property signals of Shumate-1.0.Shumate.DataSourceRequest
+
+    connect(sigName: "notify::completed", callback: (...args: any[]) => void): number
+    on(sigName: "notify::completed", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::completed", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::completed", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::completed", ...args: any[]): void
+    connect(sigName: "notify::data", callback: (...args: any[]) => void): number
+    on(sigName: "notify::data", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::data", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::data", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::data", ...args: any[]): void
+    connect(sigName: "notify::error", callback: (...args: any[]) => void): number
+    on(sigName: "notify::error", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::error", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::error", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::error", ...args: any[]): void
+    connect(sigName: "notify::x", callback: (...args: any[]) => void): number
+    on(sigName: "notify::x", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::x", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::x", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::x", ...args: any[]): void
+    connect(sigName: "notify::y", callback: (...args: any[]) => void): number
+    on(sigName: "notify::y", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::y", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::y", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::y", ...args: any[]): void
+    connect(sigName: "notify::zoom-level", callback: (...args: any[]) => void): number
+    on(sigName: "notify::zoom-level", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::zoom-level", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::zoom-level", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::zoom-level", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * Represents a request to a [class`DataSource]` for a tile.
+ * 
+ * Data sources can return a tile multiple times. For example, a
+ * [class`TileDownloader]` may return cached data first, then later return data
+ * from a network service when it arrives. This allows the map to be rendered
+ * as quickly as possible without waiting for the network unnecessarily.
+ * 
+ * Conventional async/finish method pairs don't support multiple returns.
+ * Instead, [method`DataSource`.start_request] is available, which returns a
+ * [class`DataSourceRequest]` whose properties, [property`DataSourceRequest:`data]
+ * and [property`DataSourceRequest:`error], update as data becomes available.
+ * The [signal`GObject`.Object::notify] signal can be used to watch for these
+ * changes. When the request is done and no more data will be returned,
+ * [property`DataSourceRequest:`completed] is set to %TRUE.
+ * 
+ * [class`DataSource]` implementations can use a subclass of
+ * [class`DataSourceRequest]`, but the base class should be sufficient in most
+ * cases.
+ * @class 
+ */
+class DataSourceRequest extends GObject.Object {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequest
+
+    static name: string
+
+    // Constructors of Shumate-1.0.Shumate.DataSourceRequest
+
+    constructor(config?: DataSourceRequest.ConstructorProperties) 
+    /**
+     * Creates a new [class`DataSourceRequest]`.
+     * 
+     * Only implementations of [vfunc`DataSource`.start_request] should need to
+     * construct a new request object.
+     * @constructor 
+     * @param x X coordinate of the requested tile
+     * @param y Y coordinate of the requested tile
+     * @param zoomLevel Zoom level of the requested tile
+     * @returns a new [class@DataSourceRequest]
+     */
+    constructor(x: number, y: number, zoomLevel: number) 
+    /**
+     * Creates a new [class`DataSourceRequest]`.
+     * 
+     * Only implementations of [vfunc`DataSource`.start_request] should need to
+     * construct a new request object.
+     * @constructor 
+     * @param x X coordinate of the requested tile
+     * @param y Y coordinate of the requested tile
+     * @param zoomLevel Zoom level of the requested tile
+     * @returns a new [class@DataSourceRequest]
+     */
+    static new(x: number, y: number, zoomLevel: number): DataSourceRequest
+    _init(config?: DataSourceRequest.ConstructorProperties): void
 }
 
 module FileCache {
@@ -5105,6 +5361,10 @@ module Tile {
          */
         paintable?: Gdk.Paintable | null
         /**
+         * The scale factor of the widget the tile will be displayed in.
+         */
+        scaleFactor?: number | null
+        /**
          * The size of the tile in pixels
          */
         size?: number | null
@@ -5141,6 +5401,10 @@ interface Tile {
      */
     paintable: Gdk.Paintable
     /**
+     * The scale factor of the widget the tile will be displayed in.
+     */
+    scaleFactor: number
+    /**
      * The size of the tile in pixels
      */
     size: number
@@ -5176,6 +5440,11 @@ interface Tile {
      * @returns A [iface@Gdk.Paintable]
      */
     getPaintable(): Gdk.Paintable | null
+    /**
+     * Gets the scale factor of the tile.
+     * @returns the scale factor
+     */
+    getScaleFactor(): number
     /**
      * Gets the tile's size.
      * @returns the tile's size in pixels
@@ -5214,6 +5483,11 @@ interface Tile {
      */
     setPaintable(paintable: Gdk.Paintable): void
     /**
+     * Sets the scale factor of the tile.
+     * @param scaleFactor the scale factor
+     */
+    setScaleFactor(scaleFactor: number): void
+    /**
      * Sets the tile's size
      * @param size the size in pixels
      */
@@ -5251,6 +5525,11 @@ interface Tile {
     once(sigName: "notify::paintable", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::paintable", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::paintable", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (...args: any[]) => void): number
+    on(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::scale-factor", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
     connect(sigName: "notify::size", callback: (...args: any[]) => void): number
     on(sigName: "notify::size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -5836,11 +6115,26 @@ interface DataSourceClass {
     parentClass: GObject.ObjectClass
     getTileDataAsync: (self: DataSource, x: number, y: number, zoomLevel: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     getTileDataFinish: (self: DataSource, result: Gio.AsyncResult) => any | null
+    startRequest: (self: DataSource, x: number, y: number, zoomLevel: number, cancellable: Gio.Cancellable | null) => DataSourceRequest
 }
 
 abstract class DataSourceClass {
 
     // Own properties of Shumate-1.0.Shumate.DataSourceClass
+
+    static name: string
+}
+
+interface DataSourceRequestClass {
+
+    // Own fields of Shumate-1.0.Shumate.DataSourceRequestClass
+
+    parentClass: GObject.ObjectClass
+}
+
+abstract class DataSourceRequestClass {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequestClass
 
     static name: string
 }

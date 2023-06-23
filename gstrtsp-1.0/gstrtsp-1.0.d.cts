@@ -651,39 +651,6 @@ export function rtsp_header_allow_multiple(field: RTSPHeaderField): boolean
  */
 export function rtsp_header_as_text(field: RTSPHeaderField): string | null
 /**
- * Initialize `msg`. This function is mostly used when `msg` is allocated on the
- * stack. The reverse operation of this is gst_rtsp_message_unset().
- * @returns a #GstRTSPResult.
- */
-export function rtsp_message_init(): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
-/**
- * Initialize a new data #GstRTSPMessage for `channel`.
- * @param channel a channel
- * @returns a #GstRTSPResult.
- */
-export function rtsp_message_init_data(channel: number): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
-/**
- * Initialize `msg` as a request message with `method` and `uri`. To clear `msg`
- * again, use gst_rtsp_message_unset().
- * @param method the request method to use
- * @param uri the uri of the request
- * @returns a #GstRTSPResult.
- */
-export function rtsp_message_init_request(method: RTSPMethod, uri: string | null): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
-/**
- * Initialize `msg` with `code` and `reason`.
- * 
- * When `reason` is %NULL, the default reason for `code` will be used.
- * 
- * When `request` is not %NULL, the relevant headers will be copied to the new
- * response message.
- * @param code the status code
- * @param reason the status reason or %NULL
- * @param request the request that triggered the response or %NULL
- * @returns a #GstRTSPResult.
- */
-export function rtsp_message_init_response(code: RTSPStatusCode, reason: string | null, request: RTSPMessage | null): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
-/**
  * Create a new initialized #GstRTSPMessage. Free with gst_rtsp_message_free().
  * @returns a #GstRTSPResult.
  */
@@ -1215,20 +1182,22 @@ export interface RTSPConnection {
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to read
      * @param timeout a timeout value or %NULL
      * @returns #GST_RTSP_OK on success.
      */
-    receive(timeout: GLib.TimeVal): [ /* returnType */ RTSPResult, /* message */ RTSPMessage ]
+    receive(message: RTSPMessage, timeout: GLib.TimeVal): RTSPResult
     /**
      * Attempt to read into `message` from the connected `conn,` blocking up to
      * the specified `timeout`. `timeout` can be 0, in which case this function
      * might block forever.
      * 
      * This function can be cancelled with gst_rtsp_connection_flush().
+     * @param message the message to read
      * @param timeout a timeout value or 0
      * @returns #GST_RTSP_OK on success.
      */
-    receive_usec(timeout: number): [ /* returnType */ RTSPResult, /* message */ RTSPMessage ]
+    receive_usec(message: RTSPMessage, timeout: number): RTSPResult
     /**
      * Reset the timeout of `conn`.
      * @returns #GST_RTSP_OK.
@@ -1582,6 +1551,39 @@ export interface RTSPMessage {
      * @returns %TRUE if @msg has a body and it's stored as #GstBuffer, %FALSE otherwise.
      */
     has_body_buffer(): boolean
+    /**
+     * Initialize `msg`. This function is mostly used when `msg` is allocated on the
+     * stack. The reverse operation of this is gst_rtsp_message_unset().
+     * @returns a #GstRTSPResult.
+     */
+    init(): RTSPResult
+    /**
+     * Initialize a new data #GstRTSPMessage for `channel`.
+     * @param channel a channel
+     * @returns a #GstRTSPResult.
+     */
+    init_data(channel: number): RTSPResult
+    /**
+     * Initialize `msg` as a request message with `method` and `uri`. To clear `msg`
+     * again, use gst_rtsp_message_unset().
+     * @param method the request method to use
+     * @param uri the uri of the request
+     * @returns a #GstRTSPResult.
+     */
+    init_request(method: RTSPMethod, uri: string | null): RTSPResult
+    /**
+     * Initialize `msg` with `code` and `reason`.
+     * 
+     * When `reason` is %NULL, the default reason for `code` will be used.
+     * 
+     * When `request` is not %NULL, the relevant headers will be copied to the new
+     * response message.
+     * @param code the status code
+     * @param reason the status reason or %NULL
+     * @param request the request that triggered the response or %NULL
+     * @returns a #GstRTSPResult.
+     */
+    init_response(code: RTSPStatusCode, reason: string | null, request: RTSPMessage | null): RTSPResult
     /**
      * Parses the credentials given in a WWW-Authenticate or Authorization header.
      * @param field a #GstRTSPHeaderField

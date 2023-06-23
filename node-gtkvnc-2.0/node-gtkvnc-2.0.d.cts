@@ -31,6 +31,7 @@ export enum DisplayCredential {
     PASSWORD,
     USERNAME,
     CLIENTNAME,
+    CA_CERT_DATA,
 }
 export enum DisplayDepthColor {
     DEFAULT,

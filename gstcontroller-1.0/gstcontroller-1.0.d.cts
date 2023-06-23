@@ -111,10 +111,10 @@ export interface ARGBControlBinding {
 
     // Own properties of GstController-1.0.GstController.ARGBControlBinding
 
-    control_source_a: Gst.ControlSource | null
-    control_source_b: Gst.ControlSource | null
-    control_source_g: Gst.ControlSource | null
-    control_source_r: Gst.ControlSource | null
+    control_source_a: Gst.ControlSource
+    control_source_b: Gst.ControlSource
+    control_source_g: Gst.ControlSource
+    control_source_r: Gst.ControlSource
 
     // Conflicting properties
 
@@ -350,7 +350,7 @@ export interface DirectControlBinding {
     // Own properties of GstController-1.0.GstController.DirectControlBinding
 
     readonly absolute: boolean
-    control_source: Gst.ControlSource | null
+    control_source: Gst.ControlSource
 
     // Conflicting properties
 

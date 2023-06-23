@@ -501,7 +501,7 @@ export interface WebRTCDTLSTransport {
     readonly remoteCertificate: string | null
     readonly sessionId: number
     readonly state: WebRTCDTLSTransportState
-    readonly transport: WebRTCICETransport | null
+    readonly transport: WebRTCICETransport
     __gtype__: number
 
     // Conflicting methods
@@ -910,7 +910,7 @@ export interface WebRTCICE {
 
     // Owm methods of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
-    // Has conflict: addCandidate(stream: WebRTCICEStream, candidate: string | null): void
+    // Has conflict: addCandidate(stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null): void
     // Has conflict: addStream(sessionId: number): WebRTCICEStream | null
     // Has conflict: addTurnServer(uri: string | null): boolean
     // Has conflict: findTransport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null
@@ -971,7 +971,7 @@ export interface WebRTCICE {
 
     // Own virtual methods of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
-    addCandidate(stream: WebRTCICEStream, candidate: string | null): void
+    addCandidate(stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null): void
     addStream(sessionId: number): WebRTCICEStream | null
     addTurnServer(uri: string | null): boolean
     findTransport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null
@@ -1287,7 +1287,7 @@ export interface WebRTCRTPReceiver {
     /**
      * The DTLS transport for this receiver
      */
-    readonly transport: WebRTCDTLSTransport | null
+    readonly transport: WebRTCDTLSTransport
     __gtype__: number
 
     // Conflicting methods
@@ -1392,7 +1392,7 @@ export interface WebRTCRTPSender {
     /**
      * The DTLS transport for this sender
      */
-    readonly transport: WebRTCDTLSTransport | null
+    readonly transport: WebRTCDTLSTransport
     __gtype__: number
 
     // Owm methods of GstWebRTC-1.0.GstWebRTC.WebRTCRTPSender
@@ -1515,7 +1515,7 @@ export interface WebRTCRTPTransceiver {
     /**
      * Caps representing the codec preferences.
      */
-    codecPreferences: Gst.Caps | null
+    codecPreferences: Gst.Caps
     /**
      * The transceiver's current directionality, or none if the
      * transceiver is stopped or has never participated in an exchange
@@ -1541,8 +1541,8 @@ export interface WebRTCRTPTransceiver {
      */
     readonly mid: string | null
     readonly mlineindex: number
-    readonly receiver: WebRTCRTPReceiver | null
-    readonly sender: WebRTCRTPSender | null
+    readonly receiver: WebRTCRTPReceiver
+    readonly sender: WebRTCRTPSender
     __gtype__: number
 
     // Conflicting methods
@@ -1669,7 +1669,7 @@ export interface WebRTCSCTPTransport {
     readonly maxChannels: number
     readonly maxMessageSize: number
     readonly state: WebRTCSCTPTransportState
-    readonly transport: WebRTCDTLSTransport | null
+    readonly transport: WebRTCDTLSTransport
     __gtype__: number
 
     // Conflicting methods
@@ -1814,7 +1814,7 @@ export interface WebRTCICEClass {
     addStream: (ice: WebRTCICE, sessionId: number) => WebRTCICEStream | null
     findTransport: (ice: WebRTCICE, stream: WebRTCICEStream, component: WebRTCICEComponent) => WebRTCICETransport | null
     gatherCandidates: (ice: WebRTCICE, stream: WebRTCICEStream) => boolean
-    addCandidate: (ice: WebRTCICE, stream: WebRTCICEStream, candidate: string | null) => void
+    addCandidate: (ice: WebRTCICE, stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null) => void
     setLocalCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string | null, pwd: string | null) => boolean
     setRemoteCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string | null, pwd: string | null) => boolean
     addTurnServer: (ice: WebRTCICE, uri: string | null) => boolean

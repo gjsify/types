@@ -238,7 +238,7 @@ function backendsManagerGetDocumentModuleName(document: Document): string | null
 function documentErrorQuark(): GLib.Quark
 /**
  * Compresses the file at `uri`.
- *  
+ * 
  * If `type` is %EV_COMPRESSION_NONE, it does nothing and returns %NULL.
  * 
  * Otherwise, it returns the filename of a
@@ -2300,7 +2300,7 @@ class Document extends GObject.Object {
     static docMutexUnlock(): void
     /**
      * Adds some file filters to `chooser`.
-     *  
+     * 
      * Always add a "All documents" format.
      * 
      * If `document` is not %NULL, adds a #GtkFileFilter for `document'`s MIME type.

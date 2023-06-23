@@ -14688,7 +14688,7 @@ interface TabPage {
      */
     setIndicatorIcon(indicatorIcon: Gio.Icon | null): void
     /**
-     * Sets wether `self` is loading.
+     * Sets whether `self` is loading.
      * @param loading whether `self` is loading
      */
     setLoading(loading: boolean): void

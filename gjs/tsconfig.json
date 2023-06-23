@@ -17,7 +17,7 @@
     "inlineSources": false,
     "newLine": "LF"
   },
-  "include": ["./gjs.d.ts"]
+  "include": ["./dom.d.ts","./gjs.d.ts"]
 }
 
 

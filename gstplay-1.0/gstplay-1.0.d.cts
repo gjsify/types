@@ -282,7 +282,7 @@ export interface Play {
     readonly duration: number
     readonly media_info: PlayMediaInfo
     mute: boolean
-    readonly pipeline: Gst.Element | null
+    readonly pipeline: Gst.Element
     readonly position: number
     rate: number
     subtitle_video_offset: number
@@ -910,7 +910,7 @@ export interface PlaySignalAdapter {
 
     // Own properties of GstPlay-1.0.GstPlay.PlaySignalAdapter
 
-    readonly play: Play | null
+    readonly play: Play
 
     // Owm methods of GstPlay-1.0.GstPlay.PlaySignalAdapter
 
@@ -1187,7 +1187,7 @@ export interface PlayVideoOverlayVideoRenderer extends PlayVideoRenderer {
 
     // Own properties of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer
 
-    video_sink: Gst.Element | null
+    video_sink: Gst.Element
     window_handle: any
 
     // Owm methods of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer

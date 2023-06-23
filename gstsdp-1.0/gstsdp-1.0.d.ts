@@ -2089,6 +2089,12 @@ interface SDPMessage {
      */
     remove_email(idx: number): SDPResult
     /**
+     * Remove the media at `idx` from the array of medias in `msg` if found.
+     * @param idx the media index
+     * @returns #GST_SDP_OK when the specified media is found at @idx and removed, #GST_SDP_EINVAL otherwise.
+     */
+    remove_media(idx: number): SDPResult
+    /**
      * Remove the phone number in `msg` at index `idx`.
      * @param idx a phone index
      * @returns a #GstSDPResult.

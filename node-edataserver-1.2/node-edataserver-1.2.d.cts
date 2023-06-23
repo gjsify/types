@@ -1853,7 +1853,7 @@ export function utilSourceCompareForSort(sourceA: any | null, sourceB: any | nul
 /**
  * Compares `str1` and `str2` like g_strcmp0(), except it handles %NULL and
  * empty strings as equal.
- * @param str1 a C string on %NULL
+ * @param str1 a C string or %NULL
  * @param str2 another C string or %NULL
  * @returns an integer less than 0 when @str1 is before @str2; 0 when    the strings are equal and an integer greated than 0 when @str1 is after @str2.
  */

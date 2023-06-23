@@ -1576,6 +1576,7 @@ interface H264Dpb {
      */
     getLowestFrameNumShortRef(): H264Picture | null
     getMaxNumFrames(): number
+    getMaxNumReorderFrames(): number
     getPicture(systemFrameNumber: number): H264Picture | null
     getPicturesAll(): H264Picture[]
     /**
@@ -1637,12 +1638,6 @@ interface H264Picture {
      * @returns The previously set user_data
      */
     getUserData(): any | null
-    /**
-     * Update reference picture type of `picture` with `reference`
-     * @param reference a GstH264PictureReference
-     * @param otherField %TRUE if `reference` needs to be applied to the other field if any
-     */
-    setReference(reference: H264PictureReference, otherField: boolean): void
     /**
      * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
      * the picture is freed.

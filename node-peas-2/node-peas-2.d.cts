@@ -16,7 +16,6 @@ import type Gio from '@girs/node-gio-2.0';
 import type GObject from '@girs/node-gobject-2.0';
 import type GLib from '@girs/node-glib-2.0';
 import type GModule from '@girs/node-gmodule-2.0';
-import type GIRepository from '@girs/node-girepository-2.0';
 
 /**
  * These identify the various errors that can occur while
@@ -200,7 +199,7 @@ export interface Engine extends Gio.ListModel {
      * Enable a loader, enables a loader for plugins.
      * 
      * The C plugin loader is always enabled. The other plugin
-     * loaders are: lua5.1, python and python3.
+     * loaders are: gjs, lua5.1, python and python3.
      * 
      * For instance, the following code will enable Python 2 plugins
      * to be loaded:

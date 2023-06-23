@@ -614,7 +614,13 @@ module DataSource {
 
         // Own constructor properties of Shumate-1.0.Shumate.DataSource
 
+        /**
+         * The maximum zoom level
+         */
         max_zoom_level?: number | null
+        /**
+         * The minimum zoom level
+         */
         min_zoom_level?: number | null
     }
 
@@ -624,7 +630,13 @@ interface DataSource {
 
     // Own properties of Shumate-1.0.Shumate.DataSource
 
+    /**
+     * The maximum zoom level
+     */
     max_zoom_level: number
+    /**
+     * The minimum zoom level
+     */
     min_zoom_level: number
 
     // Own fields of Shumate-1.0.Shumate.DataSource
@@ -693,6 +705,15 @@ interface DataSource {
      * @param zoom_level the minimum zoom level
      */
     set_min_zoom_level(zoom_level: number): void
+    /**
+     * Begins a request for a tile.
+     * @param x X coordinate to request
+     * @param y Y coordinate to request
+     * @param zoom_level zoom level to request
+     * @param cancellable for cancelling the request
+     * @returns a [class@DataSourceRequest] object for tracking the request.
+     */
+    start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest
 
     // Own virtual methods of Shumate-1.0.Shumate.DataSource
 
@@ -719,6 +740,16 @@ interface DataSource {
      * @returns The requested data, or %NULL if an error occurred
      */
     vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null
+    /**
+     * Begins a request for a tile.
+     * @virtual 
+     * @param x X coordinate to request
+     * @param y Y coordinate to request
+     * @param zoom_level zoom level to request
+     * @param cancellable for cancelling the request
+     * @returns a [class@DataSourceRequest] object for tracking the request.
+     */
+    vfunc_start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest
 
     // Own signals of Shumate-1.0.Shumate.DataSource
 
@@ -755,6 +786,220 @@ class DataSource extends GObject.Object {
 
     constructor(config?: DataSource.ConstructorProperties) 
     _init(config?: DataSource.ConstructorProperties): void
+}
+
+module DataSourceRequest {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Shumate-1.0.Shumate.DataSourceRequest
+
+        /**
+         * The X coordinate of the requested tile.
+         */
+        x?: number | null
+        /**
+         * The Y coordinate of the requested tile.
+         */
+        y?: number | null
+        /**
+         * The zoom level of the requested tile.
+         */
+        zoom_level?: number | null
+    }
+
+}
+
+interface DataSourceRequest {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequest
+
+    /**
+     * %TRUE if the request has been completed, otherwise %FALSE. A completed
+     * request will not receive further updates to either
+     * [property`DataSourceRequest:`data] or [property`DataSourceRequest:`error].
+     */
+    readonly completed: boolean
+    /**
+     * The most recent data for the tile, if available. If an error is emitted,
+     * this will be set to %NULL.
+     */
+    readonly data: GLib.Bytes
+    /**
+     * The error that occurred during the request, if any.
+     */
+    readonly error: GLib.Error
+    /**
+     * The X coordinate of the requested tile.
+     */
+    readonly x: number
+    /**
+     * The Y coordinate of the requested tile.
+     */
+    readonly y: number
+    /**
+     * The zoom level of the requested tile.
+     */
+    readonly zoom_level: number
+
+    // Own fields of Shumate-1.0.Shumate.DataSourceRequest
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Shumate-1.0.Shumate.DataSourceRequest
+
+    /**
+     * Marks the request as complete. No more data or errors may be emitted.
+     * 
+     * This can only be called if data has been emitted. If there is no data,
+     * use [method`DataSourceRequest`.emit_error] instead, which will automatically
+     * complete the request.
+     */
+    complete(): void
+    /**
+     * Emits tile data as a response to the request. This sets the
+     * [property`DataSourceRequest:`data] property.
+     * 
+     * If `complete` is %TRUE, then [property`DataSourceRequest:`completed] is set to
+     * %TRUE as well.
+     * @param data the data to emit
+     * @param complete %TRUE to also complete the request, %FALSE otherwise
+     */
+    emit_data(data: GLib.Bytes, complete: boolean): void
+    /**
+     * Emits a fatal error in response to the request. This completes the request,
+     * so no more data or errors can be emitted after this. Non-fatal errors should
+     * not be reported.
+     * 
+     * If [property`DataSourceRequest:`data] was previously set, it will be cleared.
+     * @param error an error
+     */
+    emit_error(error: GLib.Error): void
+    /**
+     * Gets the latest data from the request.
+     * @returns The latest data, if any.
+     */
+    get_data(): GLib.Bytes | null
+
+    // Overloads of get_data
+
+    /**
+     * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
+     * @returns the data if found,          or %NULL if no such data exists.
+     */
+    get_data(key: string | null): any | null
+    /**
+     * Gets the latest error from the request.
+     * @returns The latest error, if any.
+     */
+    get_error(): GLib.Error | null
+    /**
+     * Gets the X coordinate of the requested tile.
+     * @returns the X coordinate
+     */
+    get_x(): number
+    /**
+     * Gets the Y coordinate of the requested tile.
+     * @returns the Y coordinate
+     */
+    get_y(): number
+    /**
+     * Gets the zoom level of the requested tile.
+     * @returns the zoom level
+     */
+    get_zoom_level(): number
+    /**
+     * Gets whether the request has been completed. Completed requests will not
+     * receive new data or errors.
+     * @returns %TRUE if the request is completed, otherwise %FALSE
+     */
+    is_completed(): boolean
+
+    // Class property signals of Shumate-1.0.Shumate.DataSourceRequest
+
+    connect(sigName: "notify::completed", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::completed", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::completed", ...args: any[]): void
+    connect(sigName: "notify::data", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::data", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::data", ...args: any[]): void
+    connect(sigName: "notify::error", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::error", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::error", ...args: any[]): void
+    connect(sigName: "notify::x", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::x", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::x", ...args: any[]): void
+    connect(sigName: "notify::y", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::y", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::y", ...args: any[]): void
+    connect(sigName: "notify::zoom-level", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::zoom-level", callback: (($obj: DataSourceRequest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::zoom-level", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * Represents a request to a [class`DataSource]` for a tile.
+ * 
+ * Data sources can return a tile multiple times. For example, a
+ * [class`TileDownloader]` may return cached data first, then later return data
+ * from a network service when it arrives. This allows the map to be rendered
+ * as quickly as possible without waiting for the network unnecessarily.
+ * 
+ * Conventional async/finish method pairs don't support multiple returns.
+ * Instead, [method`DataSource`.start_request] is available, which returns a
+ * [class`DataSourceRequest]` whose properties, [property`DataSourceRequest:`data]
+ * and [property`DataSourceRequest:`error], update as data becomes available.
+ * The [signal`GObject`.Object::notify] signal can be used to watch for these
+ * changes. When the request is done and no more data will be returned,
+ * [property`DataSourceRequest:`completed] is set to %TRUE.
+ * 
+ * [class`DataSource]` implementations can use a subclass of
+ * [class`DataSourceRequest]`, but the base class should be sufficient in most
+ * cases.
+ * @class 
+ */
+class DataSourceRequest extends GObject.Object {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequest
+
+    static name: string
+    static $gtype: GObject.GType<DataSourceRequest>
+
+    // Constructors of Shumate-1.0.Shumate.DataSourceRequest
+
+    constructor(config?: DataSourceRequest.ConstructorProperties) 
+    /**
+     * Creates a new [class`DataSourceRequest]`.
+     * 
+     * Only implementations of [vfunc`DataSource`.start_request] should need to
+     * construct a new request object.
+     * @constructor 
+     * @param x X coordinate of the requested tile
+     * @param y Y coordinate of the requested tile
+     * @param zoom_level Zoom level of the requested tile
+     * @returns a new [class@DataSourceRequest]
+     */
+    constructor(x: number, y: number, zoom_level: number) 
+    /**
+     * Creates a new [class`DataSourceRequest]`.
+     * 
+     * Only implementations of [vfunc`DataSource`.start_request] should need to
+     * construct a new request object.
+     * @constructor 
+     * @param x X coordinate of the requested tile
+     * @param y Y coordinate of the requested tile
+     * @param zoom_level Zoom level of the requested tile
+     * @returns a new [class@DataSourceRequest]
+     */
+    static new(x: number, y: number, zoom_level: number): DataSourceRequest
+    _init(config?: DataSourceRequest.ConstructorProperties): void
 }
 
 module FileCache {
@@ -4158,6 +4403,10 @@ module Tile {
          */
         paintable?: Gdk.Paintable | null
         /**
+         * The scale factor of the widget the tile will be displayed in.
+         */
+        scale_factor?: number | null
+        /**
          * The size of the tile in pixels
          */
         size?: number | null
@@ -4194,6 +4443,10 @@ interface Tile {
      */
     paintable: Gdk.Paintable
     /**
+     * The scale factor of the widget the tile will be displayed in.
+     */
+    scale_factor: number
+    /**
      * The size of the tile in pixels
      */
     size: number
@@ -4228,6 +4481,11 @@ interface Tile {
      * @returns A [iface@Gdk.Paintable]
      */
     get_paintable(): Gdk.Paintable | null
+    /**
+     * Gets the scale factor of the tile.
+     * @returns the scale factor
+     */
+    get_scale_factor(): number
     /**
      * Gets the tile's size.
      * @returns the tile's size in pixels
@@ -4266,6 +4524,11 @@ interface Tile {
      */
     set_paintable(paintable: Gdk.Paintable): void
     /**
+     * Sets the scale factor of the tile.
+     * @param scale_factor the scale factor
+     */
+    set_scale_factor(scale_factor: number): void
+    /**
      * Sets the tile's size
      * @param size the size in pixels
      */
@@ -4299,6 +4562,9 @@ interface Tile {
     connect(sigName: "notify::paintable", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::paintable", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::paintable", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
     connect(sigName: "notify::size", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: Tile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::size", ...args: any[]): void
@@ -4809,11 +5075,26 @@ interface DataSourceClass {
     parent_class: GObject.ObjectClass
     get_tile_data_async: (self: DataSource, x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     get_tile_data_finish: (self: DataSource, result: Gio.AsyncResult) => GLib.Bytes | null
+    start_request: (self: DataSource, x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null) => DataSourceRequest
 }
 
 abstract class DataSourceClass {
 
     // Own properties of Shumate-1.0.Shumate.DataSourceClass
+
+    static name: string
+}
+
+interface DataSourceRequestClass {
+
+    // Own fields of Shumate-1.0.Shumate.DataSourceRequestClass
+
+    parent_class: GObject.ObjectClass
+}
+
+abstract class DataSourceRequestClass {
+
+    // Own properties of Shumate-1.0.Shumate.DataSourceRequestClass
 
     static name: string
 }

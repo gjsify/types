@@ -1480,6 +1480,7 @@ class XMLUtils {
 
     constructor() 
     static new(): XMLUtils
+    static get_namespace(root: any | null, href: string | null, prefix: string | null): any | null
 }
 
 interface XMLUtilsIterator {

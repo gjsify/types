@@ -1,7 +1,7 @@
 {
     "name": "@girs/node-babl-0.1",
-    "version": "0.1.99-3.1.0",
-    "description": "Node.js TypeScript type definitions for Babl-0.1, generated from library version 0.1.99",
+    "version": "0.1.107-3.1.0",
+    "description": "Node.js TypeScript type definitions for Babl-0.1, generated from library version 0.1.107",
     "type": "module",
     "module": "node-babl-0.1.js",
     "main": "node-babl-0.1.js",

@@ -91,6 +91,13 @@ module AppSink {
     }
 
     /**
+     * Signal callback interface for `propose-allocation`
+     */
+    interface ProposeAllocationSignalCallback {
+        (query: Gst.Query): boolean
+    }
+
+    /**
      * Signal callback interface for `pull-preroll`
      */
     interface PullPrerollSignalCallback {
@@ -147,7 +154,7 @@ interface AppSink extends Gst.URIHandler {
     // Own properties of GstApp-1.0.GstApp.AppSink
 
     bufferList: boolean
-    caps: Gst.Caps | null
+    caps: Gst.Caps
     drop: boolean
     emitSignals: boolean
     // Has conflict: readonly eos: boolean
@@ -442,6 +449,11 @@ interface AppSink extends Gst.URIHandler {
     once(sigName: "new-serialized-event", callback: AppSink.NewSerializedEventSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "new-serialized-event", callback: AppSink.NewSerializedEventSignalCallback): NodeJS.EventEmitter
     emit(sigName: "new-serialized-event", ...args: any[]): void
+    connect(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback): number
+    on(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "propose-allocation", callback: AppSink.ProposeAllocationSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "propose-allocation", ...args: any[]): void
     connect(sigName: "pull-preroll", callback: AppSink.PullPrerollSignalCallback): number
     on(sigName: "pull-preroll", callback: AppSink.PullPrerollSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "pull-preroll", callback: AppSink.PullPrerollSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -801,7 +813,7 @@ interface AppSrc extends Gst.URIHandler {
      * The GstCaps that will negotiated downstream and will be put
      * on outgoing buffers.
      */
-    caps: Gst.Caps | null
+    caps: Gst.Caps
     /**
      * The number of currently queued buffers inside appsrc.
      */
@@ -1437,6 +1449,7 @@ interface AppSinkCallbacks {
     newPreroll: (appsink: AppSink) => Gst.FlowReturn
     newSample: (appsink: AppSink) => Gst.FlowReturn
     newEvent: (appsink: AppSink) => boolean
+    proposeAllocation: (appsink: AppSink, query: Gst.Query) => boolean
 }
 
 /**

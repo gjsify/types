@@ -2740,6 +2740,12 @@ export interface ServiceProxy {
      */
     remove_raw_notify(callback: ServiceProxyNotifyCallback): boolean
     /**
+     * Sets user and password for authentication
+     * @param user user name for authentication
+     * @param password user password for authentication
+     */
+    set_credentials(user: string | null, password: string | null): void
+    /**
      * (Un)subscribes to this service.
      * 
      * <note>The relevant messages are not immediately sent but queued.

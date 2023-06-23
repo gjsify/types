@@ -31,7 +31,7 @@ export function eglGetErrorString(err: number): string | null
  * is passed as RGBA data. Shaders later take this "RGBA" data and
  * convert it from its true format (described by in_info) to actual
  * RGBA output. For example, with I420, three EGL images are created,
- * one for each plane, each EGL image with a single-channel R format.
+ * one for each `plane,` each EGL image with a single-channel R format.
  * With NV12, two EGL images are created, one with R format, one
  * with RG format etc.
  * @param context a #GstGLContext (must be an EGL context)
@@ -61,7 +61,7 @@ export function eglImageFromDmabuf(context: GstGL.GLContext, dmabuf: number, inI
 export function eglImageFromDmabufDirect(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo): EGLImage | null
 /**
  * Creates an EGL image that imports the dmabuf FD. The dmabuf data
- * is passed directly as the format described in in_info. This is
+ * is passed directly as the format described in `in_info`. This is
  * useful if the hardware is capable of performing color space conversions
  * internally. The appropriate DRM format is picked, and the EGL image
  * is created with this DRM format.
@@ -77,6 +77,38 @@ export function eglImageFromDmabufDirect(context: GstGL.GLContext, fd: number, o
  * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
  */
 export function eglImageFromDmabufDirectTarget(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo, target: GstGL.GLTextureTarget): EGLImage | null
+/**
+ * Creates an EGL image that imports the dmabuf FD. The dmabuf data is passed
+ * directly as the format described in `in_info`. This is useful if the hardware
+ * is capable of performing color space conversions internally.
+ * 
+ * Another notable difference to gst_egl_image_from_dmabuf() is that this
+ * function creates one EGL image for all planes, not one for a single plane.
+ * @param context a #GstGLContext (must be an EGL context)
+ * @param fd Array of DMABuf file descriptors
+ * @param offset Array of offsets, relative to the DMABuf
+ * @param inInfoDma the #GstVideoInfoDmaDrm
+ * @param target GL texture target this GstEGLImage is intended for
+ * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
+ */
+export function eglImageFromDmabufDirectTargetWithDmaDrm(context: GstGL.GLContext, fd: number, offset: number, inInfoDma: GstVideo.VideoInfoDmaDrm, target: GstGL.GLTextureTarget): EGLImage | null
+/**
+ * Creates an EGL image that imports the dmabuf FD. The dmabuf data
+ * is passed as RGBA data. Shaders later take this "RGBA" data and
+ * convert it from its true format (described by in_info) to actual
+ * RGBA output. For example, with I420, three EGL images are created,
+ * one for each `plane,` each EGL image with a single-channel R format.
+ * With NV12, two EGL images are created, one with R format, one
+ * with RG format etc. User can specify the modifier in `in_info_dma`
+ * for non-linear dmabuf.
+ * @param context a #GstGLContext (must be an EGL context)
+ * @param dmabuf the DMA-Buf file descriptor
+ * @param inInfoDma the #GstVideoInfoDmaDrm in `dmabuf`
+ * @param plane the plane in `in_info` to create and #GstEGLImage for
+ * @param offset the byte-offset in the data
+ * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
+ */
+export function eglImageFromDmabufWithDmaDrm(context: GstGL.GLContext, dmabuf: number, inInfoDma: GstVideo.VideoInfoDmaDrm, plane: number, offset: number): EGLImage | null
 export function eglImageFromTexture(context: GstGL.GLContext, glMem: GstGL.GLMemory, attribs: never): EGLImage | null
 /**
  * Initializes the GL Memory allocator. It is safe to call this function
@@ -498,7 +530,7 @@ export class EGLImage {
      * is passed as RGBA data. Shaders later take this "RGBA" data and
      * convert it from its true format (described by in_info) to actual
      * RGBA output. For example, with I420, three EGL images are created,
-     * one for each plane, each EGL image with a single-channel R format.
+     * one for each `plane,` each EGL image with a single-channel R format.
      * With NV12, two EGL images are created, one with R format, one
      * with RG format etc.
      * @param context a #GstGLContext (must be an EGL context)
@@ -528,7 +560,7 @@ export class EGLImage {
     static fromDmabufDirect(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo): EGLImage | null
     /**
      * Creates an EGL image that imports the dmabuf FD. The dmabuf data
-     * is passed directly as the format described in in_info. This is
+     * is passed directly as the format described in `in_info`. This is
      * useful if the hardware is capable of performing color space conversions
      * internally. The appropriate DRM format is picked, and the EGL image
      * is created with this DRM format.
@@ -544,6 +576,38 @@ export class EGLImage {
      * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
      */
     static fromDmabufDirectTarget(context: GstGL.GLContext, fd: number, offset: number, inInfo: GstVideo.VideoInfo, target: GstGL.GLTextureTarget): EGLImage | null
+    /**
+     * Creates an EGL image that imports the dmabuf FD. The dmabuf data is passed
+     * directly as the format described in `in_info`. This is useful if the hardware
+     * is capable of performing color space conversions internally.
+     * 
+     * Another notable difference to gst_egl_image_from_dmabuf() is that this
+     * function creates one EGL image for all planes, not one for a single plane.
+     * @param context a #GstGLContext (must be an EGL context)
+     * @param fd Array of DMABuf file descriptors
+     * @param offset Array of offsets, relative to the DMABuf
+     * @param inInfoDma the #GstVideoInfoDmaDrm
+     * @param target GL texture target this GstEGLImage is intended for
+     * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
+     */
+    static fromDmabufDirectTargetWithDmaDrm(context: GstGL.GLContext, fd: number, offset: number, inInfoDma: GstVideo.VideoInfoDmaDrm, target: GstGL.GLTextureTarget): EGLImage | null
+    /**
+     * Creates an EGL image that imports the dmabuf FD. The dmabuf data
+     * is passed as RGBA data. Shaders later take this "RGBA" data and
+     * convert it from its true format (described by in_info) to actual
+     * RGBA output. For example, with I420, three EGL images are created,
+     * one for each `plane,` each EGL image with a single-channel R format.
+     * With NV12, two EGL images are created, one with R format, one
+     * with RG format etc. User can specify the modifier in `in_info_dma`
+     * for non-linear dmabuf.
+     * @param context a #GstGLContext (must be an EGL context)
+     * @param dmabuf the DMA-Buf file descriptor
+     * @param inInfoDma the #GstVideoInfoDmaDrm in `dmabuf`
+     * @param plane the plane in `in_info` to create and #GstEGLImage for
+     * @param offset the byte-offset in the data
+     * @returns a #GstEGLImage wrapping @dmabuf or %NULL on failure
+     */
+    static fromDmabufWithDmaDrm(context: GstGL.GLContext, dmabuf: number, inInfoDma: GstVideo.VideoInfoDmaDrm, plane: number, offset: number): EGLImage | null
     static fromTexture(context: GstGL.GLContext, glMem: GstGL.GLMemory, attribs: never): EGLImage | null
 }
 

@@ -163,7 +163,7 @@ export interface AsyncPriorityQueue {
 
     // Overloads of offer
 
-    offer(element: any | null): boolean
+    offer(element: any): boolean
     get_waiting_threads(): number
 
     // Own signals of Bump-0.1.Bump.AsyncPriorityQueue

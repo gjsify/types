@@ -934,6 +934,8 @@ function util_foreach_category(comp: ICalGLib.Component, func: UtilForeachCatego
  * structure, or %NULL if no alarm instances occurred in the specified time
  * range. Free the returned structure with e_cal_component_alarms_free(),
  * when no longer needed.
+ * 
+ * See e_cal_util_generate_alarms_for_uid_sync()
  * @param comp The #ECalComponent to generate alarms from
  * @param start Start time
  * @param end End time
@@ -948,6 +950,8 @@ function util_generate_alarms_for_comp(comp: Component, start: number, end: numb
  * instances for them; putting them in the `comp_alarms` list. Free the `comp_alarms`
  * with g_slist_free_full (comp_alarms, e_cal_component_alarms_free);, when
  * no longer neeed.
+ * 
+ * See e_cal_util_generate_alarms_for_uid_sync()
  * @param comps List of #ECalComponent<!-- -->s
  * @param start Start time
  * @param end End time
@@ -957,6 +961,25 @@ function util_generate_alarms_for_comp(comp: Component, start: number, end: numb
  * @returns the number of elements it added to the list
  */
 function util_generate_alarms_for_list(comps: Component[], start: number, end: number, omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone): [ /* returnType */ number, /* comp_alarms */ ComponentAlarms[] ]
+/**
+ * Generates alarm instances for a calendar component with UID `uid,`
+ * which is stored within the `client`. In contrast to e_cal_util_generate_alarms_for_comp(),
+ * this function handles detached instances of recurring events properly.
+ * 
+ * Returns the instances structure, or %NULL if no alarm instances occurred in the specified
+ * time range. Free the returned structure with e_cal_component_alarms_free(),
+ * when no longer needed.
+ * @param client an #ECalClient
+ * @param uid a component UID to generate alarms for
+ * @param start start time
+ * @param end end time
+ * @param omit alarm types to omit
+ * @param resolve_tzid Callback for resolving timezones
+ * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
+ * @param cancellable 
+ * @returns a list of all the alarms found    for the given component in the given time range.
+ */
+function util_generate_alarms_for_uid_sync(client: any | null, uid: string | null, start: number, end: number, omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): ComponentAlarms | null
 /**
  * Find out when the component starts and stops, being careful about
  * recurrences.
@@ -978,6 +1001,17 @@ function util_get_system_timezone(): ICalGLib.Timezone | null
  * @returns system timezone location string, %NULL on an error.
  */
 function util_get_system_timezone_location(): string | null
+/**
+ * Checks whether the `comp` has any alarms in the given time interval.
+ * @param comp an #ECalComponent to check alarms for
+ * @param start start time
+ * @param end end time
+ * @param omit alarm types to omit
+ * @param resolve_tzid Callback for resolving timezones
+ * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values.
+ * @returns %TRUE, when the #comp has any alarms in the given time interval
+ */
+function util_has_alarms_in_range(comp: Component, start: number, end: number, omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone): boolean
 /**
  * Converts an #ICalTime into a GLibc's struct tm.
  * @param itt An #ICalTime
@@ -1595,6 +1629,21 @@ interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cb Callback for each generated instance
      */
     generate_instances_for_object_sync(icalcomp: ICalGLib.Component, start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void
+    /**
+     * Does a combination of e_cal_client_get_object_list() and
+     * e_cal_recur_generate_instances_sync(), like
+     * e_cal_client_generate_instances_sync(), but for a single object.
+     * 
+     * The callback function should do a g_object_ref() of the calendar component
+     * it gets passed if it intends to keep it around, since it will be unref'ed
+     * as soon as the callback returns.
+     * @param uid A component UID to generate instances for
+     * @param start Start time for query
+     * @param end End time for query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param cb Callback for each generated instance
+     */
+    generate_instances_for_uid_sync(uid: string | null, start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void
     /**
      * Does a combination of e_cal_client_get_object_list() and
      * e_cal_recur_generate_instances_sync().
@@ -3815,11 +3864,18 @@ interface ComponentAlarmInstance {
      * @returns a newly allocated copy of @instance
      */
     copy(): ComponentAlarmInstance
+    get_component(): any | null
     get_occur_end(): number
     get_occur_start(): number
     get_rid(): string | null
     get_time(): number
     get_uid(): string | null
+    /**
+     * Sets `component` as the component associated with the `instance`.
+     * It can be %NULL to unset it.
+     * @param component an #ECalComponent or %NULL
+     */
+    set_component(component: any | null): void
     /**
      * Set the actual event occurrence end to which this `instance` corresponds.
      * @param occur_end event occurence end to set
@@ -4118,9 +4174,9 @@ interface ComponentAlarms {
     copy(): ComponentAlarms
     /**
      * The returned component is valid until the `alarms` is freed.
-     * @returns an #ECalComponent associated with the @alarms structure
+     * @returns an #ECalComponent associated with the @alarms structure, or %NULL
      */
-    get_component(): Component
+    get_component(): Component | null
     /**
      * The returned #GSList is owned by `alarms` and should not be modified.
      * It's valid until the `alarms` is freed or the list of instances is not
@@ -4171,19 +4227,25 @@ class ComponentAlarms {
     /**
      * Creates a new #ECalComponentAlarms structure, associated with `comp`.
      * Free the alarms with e_cal_component_alarms_free(), when no longer needed.
+     * 
+     * The `comp` can be %NULL since 3.48, in which case the respective instances hold
+     * the component they belong to.
      * @constructor 
-     * @param comp the actual alarm component, as #ECalComponent
+     * @param comp the actual alarm component, as #ECalComponent, or %NULL
      * @returns a newly allocated #ECalComponentAlarms
      */
-    constructor(comp: Component) 
+    constructor(comp: Component | null) 
     /**
      * Creates a new #ECalComponentAlarms structure, associated with `comp`.
      * Free the alarms with e_cal_component_alarms_free(), when no longer needed.
+     * 
+     * The `comp` can be %NULL since 3.48, in which case the respective instances hold
+     * the component they belong to.
      * @constructor 
-     * @param comp the actual alarm component, as #ECalComponent
+     * @param comp the actual alarm component, as #ECalComponent, or %NULL
      * @returns a newly allocated #ECalComponentAlarms
      */
-    static new(comp: Component): ComponentAlarms
+    static new(comp: Component | null): ComponentAlarms
 }
 
 interface ComponentAttendee {

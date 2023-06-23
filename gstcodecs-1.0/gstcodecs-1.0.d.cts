@@ -1443,6 +1443,7 @@ export interface H264Dpb {
      */
     get_lowest_frame_num_short_ref(): H264Picture | null
     get_max_num_frames(): number
+    get_max_num_reorder_frames(): number
     get_picture(system_frame_number: number): H264Picture | null
     get_pictures_all(): H264Picture[]
     /**
@@ -1504,12 +1505,6 @@ export interface H264Picture {
      * @returns The previously set user_data
      */
     get_user_data(): any | null
-    /**
-     * Update reference picture type of `picture` with `reference`
-     * @param reference a GstH264PictureReference
-     * @param other_field %TRUE if `reference` needs to be applied to the other field if any
-     */
-    set_reference(reference: H264PictureReference, other_field: boolean): void
     /**
      * Sets `user_data` on the picture and the #GDestroyNotify that will be called when
      * the picture is freed.

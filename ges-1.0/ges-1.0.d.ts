@@ -4602,6 +4602,102 @@ class Container extends TimelineElement {
     static group(containers: Container[] | null): Container | null
 }
 
+module DiscovererManager {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `discovered`
+     */
+    interface DiscoveredSignalCallback {
+        ($obj: DiscovererManager, info: GstPbutils.DiscovererInfo, error: GLib.Error | null): void
+    }
+
+    /**
+     * Signal callback interface for `load-serialized-info`
+     */
+    interface LoadSerializedInfoSignalCallback {
+        ($obj: DiscovererManager, uri: string | null): GstPbutils.DiscovererInfo | null
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of GES-1.0.GES.DiscovererManager
+
+        /**
+         * The timeout (in milliseconds) for the #GstDiscoverer operations
+         */
+        timeout?: number | null
+        use_cache?: boolean | null
+    }
+
+}
+
+interface DiscovererManager {
+
+    // Own properties of GES-1.0.GES.DiscovererManager
+
+    /**
+     * The timeout (in milliseconds) for the #GstDiscoverer operations
+     */
+    timeout: number
+    use_cache: boolean
+
+    // Owm methods of GES-1.0.GES.DiscovererManager
+
+    get_timeout(): Gst.ClockTime
+    get_use_cache(): boolean
+    /**
+     * Sets the timeout to use for the discoverer
+     * @param timeout The timeout to set
+     */
+    set_timeout(timeout: Gst.ClockTime): void
+    /**
+     * Sets whether to use the cache or not
+     * @param use_cache Whether to use the cache
+     */
+    set_use_cache(use_cache: boolean): void
+
+    // Own signals of GES-1.0.GES.DiscovererManager
+
+    connect(sigName: "discovered", callback: DiscovererManager.DiscoveredSignalCallback): number
+    connect_after(sigName: "discovered", callback: DiscovererManager.DiscoveredSignalCallback): number
+    emit(sigName: "discovered", info: GstPbutils.DiscovererInfo, error: GLib.Error | null, ...args: any[]): void
+    connect(sigName: "load-serialized-info", callback: DiscovererManager.LoadSerializedInfoSignalCallback): number
+    connect_after(sigName: "load-serialized-info", callback: DiscovererManager.LoadSerializedInfoSignalCallback): number
+    emit(sigName: "load-serialized-info", uri: string | null, ...args: any[]): void
+
+    // Class property signals of GES-1.0.GES.DiscovererManager
+
+    connect(sigName: "notify::timeout", callback: (($obj: DiscovererManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timeout", callback: (($obj: DiscovererManager, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::timeout", ...args: any[]): void
+    connect(sigName: "notify::use-cache", callback: (($obj: DiscovererManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-cache", callback: (($obj: DiscovererManager, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-cache", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class DiscovererManager extends GObject.Object {
+
+    // Own properties of GES-1.0.GES.DiscovererManager
+
+    static name: string
+    static $gtype: GObject.GType<DiscovererManager>
+
+    // Constructors of GES-1.0.GES.DiscovererManager
+
+    constructor(config?: DiscovererManager.ConstructorProperties) 
+    _init(config?: DiscovererManager.ConstructorProperties): void
+    static get_default(): DiscovererManager
+}
+
 module Effect {
 
     // Constructor properties interface
@@ -6640,12 +6736,12 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * immediately before the #GESPipeline:audio-sink. This exposes the
      * #playsink:audio-filter property of the internal #playsink.
      */
-    audio_filter: Gst.Element | null
+    audio_filter: Gst.Element
     /**
      * The audio sink used for preview. This exposes the
      * #playsink:audio-sink property of the internal #playsink.
      */
-    audio_sink: Gst.Element | null
+    audio_sink: Gst.Element
     /**
      * The pipeline's mode. In preview mode (for audio or video, or both)
      * the pipeline can display the timeline's content to an end user. In
@@ -6660,18 +6756,18 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * Note that after you set the timeline for the first time, subsequent
      * calls to change the timeline will fail.
      */
-    timeline: Timeline | null
+    timeline: Timeline
     /**
      * The video filter(s) to apply during playback in preview mode,
      * immediately before the #GESPipeline:video-sink. This exposes the
      * #playsink:video-filter property of the internal #playsink.
      */
-    video_filter: Gst.Element | null
+    video_filter: Gst.Element
     /**
      * The video sink used for preview. This exposes the
      * #playsink:video-sink property of the internal #playsink.
      */
-    video_sink: Gst.Element | null
+    video_sink: Gst.Element
 
     // Conflicting properties
 
@@ -10663,7 +10759,7 @@ interface Track extends MetaContainer, Gst.ChildProxy {
      * 
      * Default value: #GST_CAPS_ANY.
      */
-    readonly caps: Gst.Caps | null
+    readonly caps: Gst.Caps
     /**
      * Current duration of the track
      * 
@@ -10693,7 +10789,7 @@ interface Track extends MetaContainer, Gst.ChildProxy {
      * 
      * Default value: #GST_CAPS_ANY.
      */
-    restriction_caps: Gst.Caps | null
+    restriction_caps: Gst.Caps
     /**
      * The track type of the track. This controls the type of
      * #GESTrackElement-s that can be added to the track. This should
@@ -11218,7 +11314,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * The track that this element belongs to, or %NULL if it does not
      * belong to a track.
      */
-    readonly track: Track | null
+    readonly track: Track
     /**
      * The track type of the element, which determines the type of track the
      * element can be added to (see #GESTrack:track-type). This should
@@ -12266,7 +12362,7 @@ class UriClipAsset extends SourceClipAsset {
      */
     static finish(res: Gio.AsyncResult): UriClipAsset
     /**
-     * Creates a #GESUriClipAsset for `uri` syncronously. You should avoid
+     * Creates a #GESUriClipAsset for `uri` synchonously. You should avoid
      * to use it in application, and rather create #GESUriClipAsset asynchronously
      * @param uri The URI of the file for which to create a #GESUriClipAsset. You can also use multi file uris for #GESMultiFileSource.
      * @returns A reference to the requested asset or %NULL if an error happened
@@ -13892,6 +13988,30 @@ interface ContainerPrivate {
 class ContainerPrivate {
 
     // Own properties of GES-1.0.GES.ContainerPrivate
+
+    static name: string
+}
+
+interface DiscovererManagerClass {
+
+    // Own fields of GES-1.0.GES.DiscovererManagerClass
+
+    parent_class: GObject.ObjectClass
+}
+
+abstract class DiscovererManagerClass {
+
+    // Own properties of GES-1.0.GES.DiscovererManagerClass
+
+    static name: string
+}
+
+interface DiscovererManagerPrivate {
+}
+
+class DiscovererManagerPrivate {
+
+    // Own properties of GES-1.0.GES.DiscovererManagerPrivate
 
     static name: string
 }

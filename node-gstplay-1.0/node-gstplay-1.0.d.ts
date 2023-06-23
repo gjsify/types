@@ -294,7 +294,7 @@ interface Play {
     readonly duration: number
     readonly mediaInfo: PlayMediaInfo
     mute: boolean
-    readonly pipeline: Gst.Element | null
+    readonly pipeline: Gst.Element
     readonly position: number
     rate: number
     subtitleVideoOffset: number
@@ -983,7 +983,7 @@ interface PlaySignalAdapter {
 
     // Own properties of GstPlay-1.0.GstPlay.PlaySignalAdapter
 
-    readonly play: Play | null
+    readonly play: Play
     __gtype__: number
 
     // Owm methods of GstPlay-1.0.GstPlay.PlaySignalAdapter
@@ -1325,7 +1325,7 @@ interface PlayVideoOverlayVideoRenderer extends PlayVideoRenderer {
 
     // Own properties of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer
 
-    videoSink: Gst.Element | null
+    videoSink: Gst.Element
     windowHandle: any
     __gtype__: number
 

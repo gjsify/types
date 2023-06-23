@@ -293,7 +293,7 @@ interface Player {
     readonly duration: number
     readonly media_info: PlayerMediaInfo
     mute: boolean
-    readonly pipeline: Gst.Element | null
+    readonly pipeline: Gst.Element
     readonly position: number
     rate: number
     readonly signal_dispatcher: PlayerSignalDispatcher
@@ -1074,7 +1074,7 @@ interface PlayerVideoOverlayVideoRenderer extends PlayerVideoRenderer {
 
     // Own properties of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 
-    video_sink: Gst.Element | null
+    video_sink: Gst.Element
     window_handle: any
 
     // Owm methods of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer

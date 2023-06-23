@@ -185,8 +185,8 @@ export interface AsyncPriorityQueue {
 
     // Overloads of offer
 
-    offer(element: any | null): boolean
-    offer(element: any | null): boolean
+    offer(element: any): boolean
+    offer(element: any): boolean
     getWaitingThreads(): number
 
     // Conflicting methods
@@ -287,24 +287,24 @@ export interface AsyncPriorityQueue {
 
     getIsFull(): boolean
     getIsFull(): boolean
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear

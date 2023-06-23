@@ -491,12 +491,12 @@ export module Portal {
 
     // Constructor properties interface
 
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    export interface ConstructorProperties extends Gio.Initable.ConstructorProperties, GObject.Object.ConstructorProperties {
     }
 
 }
 
-export interface Portal {
+export interface Portal extends Gio.Initable {
 
     // Owm methods of Xdp-1.0.Xdp.Portal
 
@@ -1332,11 +1332,19 @@ export class Portal extends GObject.Object {
     /**
      * Creates a new [class`Portal]` object.
      * @constructor 
+     * @returns a newly created [class@Portal] object or NULL on error
+     */
+    static initable_new(): Portal
+    /**
+     * Creates a new [class`Portal]` object. If D-Bus is unavailable this API will abort.
+     * We recommend using xdp_portal_initable_new() to safely handle this failure.
+     * @constructor 
      * @returns a newly created [class@Portal] object
      */
     constructor() 
     /**
-     * Creates a new [class`Portal]` object.
+     * Creates a new [class`Portal]` object. If D-Bus is unavailable this API will abort.
+     * We recommend using xdp_portal_initable_new() to safely handle this failure.
      * @constructor 
      * @returns a newly created [class@Portal] object
      */

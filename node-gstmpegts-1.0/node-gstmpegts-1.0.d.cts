@@ -458,6 +458,27 @@ export enum Iso639AudioType {
     VISUAL_IMPAIRED_COMMENTARY,
 }
 /**
+ * metadata_descriptor metadata_format valid values. See ISO/IEC 13818-1:2018(E) Table 2-85.
+ */
+export enum MetadataFormat {
+    /**
+     * ISO/IEC 15938-1 TeM.
+     */
+    TEM,
+    /**
+     * ISO/IEC 15938-1 BiM.
+     */
+    BIM,
+    /**
+     * Defined by metadata application format.
+     */
+    APPLICATION_FORMAT,
+    /**
+     * Defined by metadata_format_identifier field.
+     */
+    IDENTIFIER_FIELD,
+}
+/**
  * The type of #GstMpegtsDescriptor
  * 
  * These values correspond to miscellaneous descriptor types that are
@@ -1428,6 +1449,16 @@ export function parseDescriptors(buffer: number, bufLen: number): Descriptor[]
  * @returns A newly allocated #GPtrArray
  */
 export function patNew(): PatProgram[]
+/**
+ * Return the #GType associated with #GstMpegtsPESMetadataMeta
+ * @returns a #GType
+ */
+export function pesMetadataMetaApiGetType(): GObject.GType
+/**
+ * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
+ * @returns The #GstMetaInfo
+ */
+export function pesMetadataMetaGetInfo(): Gst.MetaInfo
 /**
  * Allocates and initializes a new INSERT command #GstMpegtsSCTESIT
  * setup to cancel the specified `event_id`.
@@ -2629,6 +2660,25 @@ export interface Descriptor {
      */
     parseLogicalChannel(): [ /* returnType */ boolean, /* res */ LogicalChannelDescriptor ]
     /**
+     * Parses out the metadata descriptor from the `descriptor`.
+     * 
+     * See ISO/IEC 13818-1:2018 Section 2.6.60 and 2.6.61 for details.
+     * metadata_application_format is provided in Table 2-82. metadata_format is
+     * provided in Table 2-85.
+     * @returns %TRUE if the parsing worked correctly, else %FALSE.
+     */
+    parseMetadata(): [ /* returnType */ boolean, /* res */ MetadataDescriptor ]
+    /**
+     * Extracts the metadata STD descriptor from `descriptor`.
+     * 
+     * See ISO/IEC 13818-1:2018 Section 2.6.62 and 2.6.63 for details.
+     * @param metadataInputLeakRate 
+     * @param metadataBufferSize 
+     * @param metadataOutputLeakRate 
+     * @returns %TRUE if parsing succeeded, else %FALSE.
+     */
+    parseMetadataStd(metadataInputLeakRate: number, metadataBufferSize: number, metadataOutputLeakRate: number): boolean
+    /**
      * Extracts the Registration information from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
@@ -2976,6 +3026,58 @@ export class LogicalChannelDescriptor {
     static name: string
 }
 
+export interface MetadataDescriptor {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.MetadataDescriptor
+
+    /**
+     * specifies the application responsible for defining usage, syntax and semantics
+     * @field 
+     */
+    metadataApplicationFormat: number
+    /**
+     * indicates the format and coding of the metadata
+     * @field 
+     */
+    metadataFormat: MetadataFormat
+    /**
+     * format identifier (equivalent to registration descriptor), for example 0x4B4C4641 ('KLVA') to indicate SMPTE 336 KLV.
+     * @field 
+     */
+    metadataFormatIdentifier: number
+    /**
+     * metadata service to which this metadata descriptor applies, typically 0x00
+     * @field 
+     */
+    metadataServiceId: number
+    /**
+     * decoder flags, see ISO/IEC 13818-1:2018 Table 2-88.
+     * @field 
+     */
+    decoderConfigFlags: number
+    /**
+     * true if stream associated with this descriptor is in an ISO/IEC 13818-6 data or object carousel.
+     * @field 
+     */
+    dsmCcFlag: boolean
+}
+
+/**
+ * The metadata descriptor specifies parameters of a metadata service carried in an MPEG-2 Transport Stream (or Program Stream). The descriptor is included in the PMT in the descriptor loop for the elementary stream that carries the
+ * metadata service. The descriptor specifies the format of the associated metadata, and contains the value of the
+ * metadata_service_id to identify the metadata service to which the metadata descriptor applies.
+ * 
+ * Note that this structure does not include all of the metadata_descriptor items, and will need extension to support DSM-CC and private data.
+ * See ISO/IEC 13818-1:2018 Section 2.6.60 and Section 2.6.61 for more information.
+ * @record 
+ */
+export class MetadataDescriptor {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.MetadataDescriptor
+
+    static name: string
+}
+
 export interface NIT {
 
     // Own fields of GstMpegts-1.0.GstMpegts.NIT
@@ -3057,6 +3159,50 @@ export class NITStream {
      * @returns A newly allocated #GstMpegtsNITStream
      */
     static new(): NITStream
+}
+
+export interface PESMetadataMeta {
+
+    // Own fields of GstMpegts-1.0.GstMpegts.PESMetadataMeta
+
+    /**
+     * parent #GstMeta
+     * @field 
+     */
+    meta: Gst.Meta
+    /**
+     * metadata service identifier
+     * @field 
+     */
+    metadataServiceId: number
+    /**
+     * bit flags, see spec for details
+     * @field 
+     */
+    flags: number
+}
+
+/**
+ * Extra buffer metadata describing the PES Metadata context.
+ * This is based on the Metadata AU cell header in
+ * ISO/IEC 13818-1:2018 Section 2.12.4.
+ * 
+ * AU_cell_data_length is not provided, since it matches the length of the buffer
+ * @record 
+ */
+export class PESMetadataMeta {
+
+    // Own properties of GstMpegts-1.0.GstMpegts.PESMetadataMeta
+
+    static name: string
+
+    // Constructors of GstMpegts-1.0.GstMpegts.PESMetadataMeta
+
+    /**
+     * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
+     * @returns The #GstMetaInfo
+     */
+    static getInfo(): Gst.MetaInfo
 }
 
 export interface PMT {

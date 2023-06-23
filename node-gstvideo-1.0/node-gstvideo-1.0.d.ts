@@ -1146,6 +1146,11 @@ enum VideoFormat {
      * NV12 10bit big endian with 8x128 tiles in linear order.
      */
     NV12_10BE_8L128,
+    /**
+     * `GST_VIDEO_FORMAT_NV1`2_10LE40 with 4x4 pixels tiles (5 bytes
+     *  per tile row). This format is produced by Verisilicon/Hantro decoders.
+     */
+    NV12_10LE40_4L4,
 }
 /**
  * The orientation of the GL texture.
@@ -3207,7 +3212,7 @@ function videoColorTransferEncode(func: VideoTransferFunction, val: number): num
  * @param timeout the maximum amount of time allowed for the processing.
  * @returns The converted #GstSample, or %NULL if an error happened (in which case @err will point to the #GError).
  */
-function videoConvertSample(sample: Gst.Sample, toCaps: Gst.Caps, timeout: Gst.ClockTime): Gst.Sample
+function videoConvertSample(sample: Gst.Sample, toCaps: Gst.Caps, timeout: Gst.ClockTime): Gst.Sample | null
 /**
  * Converts a raw video buffer into the specified output caps.
  * 
@@ -3230,6 +3235,36 @@ function videoConvertSample(sample: Gst.Sample, toCaps: Gst.Caps, timeout: Gst.C
 function videoConvertSampleAsync(sample: Gst.Sample, toCaps: Gst.Caps, timeout: Gst.ClockTime, callback: VideoConvertSampleCallback): void
 function videoCropMetaApiGetType(): GObject.GType
 function videoCropMetaGetInfo(): Gst.MetaInfo
+/**
+ * Converting the video format into dma drm fourcc. If no
+ * matching fourcc found, then DRM_FORMAT_INVALID is returned.
+ * @param format a #GstVideoFormat
+ * @returns the DRM_FORMAT_* corresponding to the @format.
+ */
+function videoDmaDrmFourccFromFormat(format: VideoFormat): number
+/**
+ * Convert the `format_str` string into the drm fourcc value. The `modifier` is
+ * also parsed if we want. Please note that the `format_str` should follow the
+ * fourcc:modifier kind style, such as NV12:0x0100000000000002
+ * @param formatStr a drm format string
+ * @returns The drm fourcc value or DRM_FORMAT_INVALID if @format_str is invalid.
+ */
+function videoDmaDrmFourccFromString(formatStr: string | null): [ /* returnType */ number, /* modifier */ number ]
+/**
+ * Converting a dma drm fourcc into the video format. If no matching
+ * video format found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
+ * @param fourcc the dma drm value.
+ * @returns the GST_VIDEO_FORMAT_* corresponding to the @fourcc.
+ */
+function videoDmaDrmFourccToFormat(fourcc: number): VideoFormat
+/**
+ * Returns a string containing drm kind format, such as
+ * NV12:0x0100000000000002, or NULL otherwise.
+ * @param fourcc a drm fourcc value.
+ * @param modifier the associated modifier value.
+ * @returns the drm kind string composed   of to @fourcc and @modifier.
+ */
+function videoDmaDrmFourccToString(fourcc: number, modifier: number): string | null
 /**
  * Checks if an event is a force key unit event. Returns true for both upstream
  * and downstream force key unit events.
@@ -3471,6 +3506,26 @@ function videoGlTextureUploadMetaGetInfo(): Gst.MetaInfo
  */
 function videoGuessFramerate(duration: Gst.ClockTime): [ /* returnType */ boolean, /* destN */ number, /* destD */ number ]
 /**
+ * Parse `caps` and update `info`. Please note that the `caps` should be
+ * a dma drm caps. The gst_video_is_dma_drm_caps() can be used to verify
+ * it before calling this function.
+ * @param caps a #GstCaps
+ * @returns TRUE if @caps could be parsed
+ */
+function videoInfoDmaDrmFromCaps(caps: Gst.Caps): [ /* returnType */ boolean, /* drmInfo */ VideoInfoDmaDrm ]
+/**
+ * Fills `drm_info` if `info'`s format has a valid drm format and `modifier` is also
+ * valid
+ * @param info a #GstVideoInfo
+ * @param modifier the associated modifier value.
+ * @returns %TRUE if @drm_info is filled correctly.
+ */
+function videoInfoDmaDrmFromVideoInfo(info: VideoInfo, modifier: number): [ /* returnType */ boolean, /* drmInfo */ VideoInfoDmaDrm ]
+/**
+ * Initialize `drm_info` with default values.
+ */
+function videoInfoDmaDrmInit(): /* drmInfo */ VideoInfoDmaDrm
+/**
  * Parse `caps` and update `info`.
  * @param caps a #GstCaps
  * @returns TRUE if @caps could be parsed
@@ -3503,6 +3558,13 @@ function videoInterlaceModeToString(mode: VideoInterlaceMode): string | null
  * @returns %TRUE if a known "standard" aspect ratio was recognised, and %FALSE otherwise.
  */
 function videoIsCommonAspectRatio(width: number, height: number, parN: number, parD: number): boolean
+/**
+ * Check whether the `caps` is a dma drm kind caps. Please note that
+ * the caps should be fixed.
+ * @param caps a #GstCaps
+ * @returns %TRUE if the caps is a dma drm caps.
+ */
+function videoIsDmaDrmCaps(caps: Gst.Caps): boolean
 /**
  * Return a generic raw video caps for formats defined in `formats`.
  * If `formats` is %NULL returns a caps for all the supported raw video formats,
@@ -8945,6 +9007,102 @@ class VideoInfo {
      * Initialize `info` with default values.
      */
     static init(): /* info */ VideoInfo
+}
+
+interface VideoInfoDmaDrm {
+
+    // Own fields of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
+
+    /**
+     * the associated #GstVideoInfo
+     * @field 
+     */
+    vinfo: VideoInfo
+    /**
+     * the fourcc defined by drm
+     * @field 
+     */
+    drmFourcc: number
+    /**
+     * the drm modifier
+     * @field 
+     */
+    drmModifier: number
+
+    // Owm methods of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
+
+    /**
+     * Free a #GstVideoInfoDmaDrm structure previously allocated with
+     * gst_video_info_dma_drm_new()
+     */
+    free(): void
+    /**
+     * Convert the values of `drm_info` into a #GstCaps. Please note that the
+     * `caps` returned will be a dma drm caps which does not contain format field,
+     * but contains a drm-format field instead. The value of drm-format field is
+     * composed of a drm fourcc and a modifier, such as NV12:0x0100000000000002.
+     * @returns a new #GstCaps containing the info in @drm_info.
+     */
+    toCaps(): Gst.Caps | null
+}
+
+/**
+ * Information describing a DMABuf image properties. It wraps #GstVideoInfo and
+ * adds DRM information such as drm-fourcc and drm-modifier, required for
+ * negotiation and mapping.
+ * @record 
+ */
+class VideoInfoDmaDrm {
+
+    // Own properties of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
+
+    static name: string
+
+    // Constructors of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
+
+    /**
+     * Allocate a new #GstVideoInfoDmaDrm that is also initialized with
+     * gst_video_info_dma_drm_init().
+     * @constructor 
+     * @returns a new #GstVideoInfoDmaDrm. Free it with gst_video_info_dma_drm_free().
+     */
+    constructor() 
+    /**
+     * Allocate a new #GstVideoInfoDmaDrm that is also initialized with
+     * gst_video_info_dma_drm_init().
+     * @constructor 
+     * @returns a new #GstVideoInfoDmaDrm. Free it with gst_video_info_dma_drm_free().
+     */
+    static new(): VideoInfoDmaDrm
+    /**
+     * Parse `caps` to generate a #GstVideoInfoDmaDrm. Please note that the
+     * `caps` should be a dma drm caps. The gst_video_is_dma_drm_caps() can
+     * be used to verify it before calling this function.
+     * @constructor 
+     * @param caps a #GstCaps
+     * @returns A #GstVideoInfoDmaDrm,   or %NULL if @caps couldn't be parsed.
+     */
+    static newFromCaps(caps: Gst.Caps): VideoInfoDmaDrm
+    /**
+     * Parse `caps` and update `info`. Please note that the `caps` should be
+     * a dma drm caps. The gst_video_is_dma_drm_caps() can be used to verify
+     * it before calling this function.
+     * @param caps a #GstCaps
+     * @returns TRUE if @caps could be parsed
+     */
+    static fromCaps(caps: Gst.Caps): [ /* returnType */ boolean, /* drmInfo */ VideoInfoDmaDrm ]
+    /**
+     * Fills `drm_info` if `info'`s format has a valid drm format and `modifier` is also
+     * valid
+     * @param info a #GstVideoInfo
+     * @param modifier the associated modifier value.
+     * @returns %TRUE if @drm_info is filled correctly.
+     */
+    static fromVideoInfo(info: VideoInfo, modifier: number): [ /* returnType */ boolean, /* drmInfo */ VideoInfoDmaDrm ]
+    /**
+     * Initialize `drm_info` with default values.
+     */
+    static init(): /* drmInfo */ VideoInfoDmaDrm
 }
 
 interface VideoMasteringDisplayInfo {

@@ -1905,7 +1905,7 @@ interface ExpressionHashMap {
 
     // Overloads of remove
 
-    remove(key: any | null): [ /* returnType */ boolean, /* value */ any ]
+    remove(key: any): [ /* returnType */ boolean, /* value */ any ]
     find_named(name: string | null): MathExpression | null
     get_parent(): MathExpression
     set_parent(value: MathExpression): void

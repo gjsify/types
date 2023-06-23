@@ -2715,6 +2715,25 @@ interface BaseSrc {
      */
     new_segment(segment: Gst.Segment): boolean
     /**
+     * Send a new segment downstream. This function must
+     * only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
+     * as the stream-lock needs to be held.
+     * This method also requires that an out caps has been configured, so
+     * gst_base_src_set_caps() needs to have been called before.
+     * 
+     * The format for the `segment` must be identical with the current format
+     * of the source, as configured with gst_base_src_set_format().
+     * 
+     * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
+     * should be configured via gst_base_src_set_format() before calling this method.
+     * 
+     * This is a variant of gst_base_src_new_segment() sending the segment right away,
+     * which can be useful to ensure events ordering.
+     * @param segment a pointer to a #GstSegment
+     * @returns %TRUE if sending of new segment succeeded.
+     */
+    push_segment(segment: Gst.Segment): boolean
+    /**
      * Query the source for the latency parameters. `live` will be %TRUE when `src` is
      * configured as a live source. `min_latency` and `max_latency` will be set
      * to the difference between the running time and the timestamp of the first

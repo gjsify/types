@@ -10719,7 +10719,7 @@ export interface TabPage {
      */
     set_indicator_icon(indicator_icon: Gio.Icon | null): void
     /**
-     * Sets wether `self` is loading.
+     * Sets whether `self` is loading.
      * @param loading whether `self` is loading
      */
     set_loading(loading: boolean): void

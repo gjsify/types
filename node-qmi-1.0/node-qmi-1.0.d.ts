@@ -4375,7 +4375,7 @@ enum Service {
      */
     LOC,
     /**
-     * Service access proxy service.
+     * Specific absorption rate service.
      */
     SAR,
     /**
@@ -4599,9 +4599,106 @@ enum UimCardApplicationPersonalizationFeature {
      */
     TODO_1X_RUIM,
     /**
+     * GW SPN. Since 1.34.
+     */
+    GW_SERVICE_PROVIDER_NAME,
+    /**
+     * GW SP + EHPLMN. Since 1.34.
+     */
+    GW_SP_EHPLMN,
+    /**
+     * GW ICCID. Since 1.34.
+     */
+    GW_ICCID,
+    /**
+     * GW IMPI. Since 1.34.
+     */
+    GW_IMPI,
+    /**
+     * GW network subset and service provider. Since 1.34.
+     */
+    GW_NETWORK_SUBSET_SERVICE_PROVIDER,
+    /**
+     * GW carrier. Since 1.34.
+     */
+    GW_CARRIER,
+}
+/**
+ * Card application personalization feature status.
+ */
+enum UimCardApplicationPersonalizationFeatureStatus {
+    /**
+     * GW network.
+     */
+    GW_NETWORK,
+    /**
+     * GW network subset.
+     */
+    GW_NETWORK_SUBSET,
+    /**
+     * GW service provider.
+     */
+    GW_SERVICE_PROVIDER,
+    /**
+     * GW corporate.
+     */
+    GW_CORPORATE,
+    /**
+     * UIM.
+     */
+    GW_UIM,
+    /**
+     * 1X network type 1.
+     */
+    TODO_1X_NETWORK_TYPE_1,
+    /**
+     * 1X network type 2.
+     */
+    TODO_1X_NETWORK_TYPE_2,
+    /**
+     * 1X HRPD.
+     */
+    TODO_1X_HRPD,
+    /**
+     * 1X service provider.
+     */
+    TODO_1X_SERVICE_PROVIDER,
+    /**
+     * 1X corporate.
+     */
+    TODO_1X_CORPORATE,
+    /**
+     * 1X R-UIM.
+     */
+    TODO_1X_RUIM,
+    /**
      * Unknown.
      */
     UNKNOWN,
+    /**
+     * GW service provider name.
+     */
+    GW_SERVICE_PROVIDER_NAME,
+    /**
+     * GW SP + EHPLMN.
+     */
+    GW_SP_EHPLMN,
+    /**
+     * GW ICCID.
+     */
+    GW_ICCID,
+    /**
+     * GW IMPI.
+     */
+    GW_IMPI,
+    /**
+     * GW network subset and service provider.
+     */
+    GW_NETWORK_SUBSET_SERVICE_PROVIDER,
+    /**
+     * GW carrier.
+     */
+    GW_CARRIER,
 }
 /**
  * Card application personalization state.
@@ -15602,6 +15699,12 @@ function sioPortGetString(val: SioPort): string | null
  */
 function uimCardApplicationPersonalizationFeatureGetString(val: UimCardApplicationPersonalizationFeature): string | null
 /**
+ * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeatureStatus specified at `val`.
+ * @param val a QmiUimCardApplicationPersonalizationFeatureStatus.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+function uimCardApplicationPersonalizationFeatureStatusGetString(val: UimCardApplicationPersonalizationFeatureStatus): string | null
+/**
  * Gets the nickname string for the #QmiUimCardApplicationPersonalizationState specified at `val`.
  * @param val a QmiUimCardApplicationPersonalizationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
@@ -26580,7 +26683,7 @@ interface IndicationUimCardStatusOutputCardStatusCardsElement {
      */
     errorCode: UimCardError
     /**
-     * a #GArray of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     * a #GArray of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 elements.
      * @field 
      */
     applications: any[]
@@ -26597,9 +26700,9 @@ class IndicationUimCardStatusOutputCardStatusCardsElement {
     static name: string
 }
 
-interface IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement {
+interface IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
 
-    // Own fields of Qmi-1.0.Qmi.IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement
+    // Own fields of Qmi-1.0.Qmi.IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
     /**
      * a #QmiUimCardApplicationType.
@@ -26617,10 +26720,10 @@ interface IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement
      */
     personalizationState: UimCardApplicationPersonalizationState
     /**
-     * a #QmiUimCardApplicationPersonalizationFeature.
+     * a #QmiUimCardApplicationPersonalizationFeatureStatus.
      * @field 
      */
-    personalizationFeature: UimCardApplicationPersonalizationFeature
+    personalizationFeature: UimCardApplicationPersonalizationFeatureStatus
     /**
      * a #guint8.
      * @field 
@@ -26674,12 +26777,12 @@ interface IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement
 }
 
 /**
- * A QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement struct.
+ * A QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 struct.
  * @record 
  */
-class IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement {
+class IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
 
-    // Own properties of Qmi-1.0.Qmi.IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement
+    // Own properties of Qmi-1.0.Qmi.IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
     static name: string
 }
@@ -26714,10 +26817,10 @@ interface IndicationUimCardStatusOutputCardStatusCardsElementGir {
      */
     errorCode: UimCardError
     /**
-     * an array of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     * an array of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 elements.
      * @field 
      */
-    applications: IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement[]
+    applications: IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2[]
 }
 
 /**
@@ -43752,7 +43855,7 @@ interface MessageUimGetCardStatusOutputCardStatusCardsElement {
      */
     errorCode: UimCardError
     /**
-     * a #GArray of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     * a #GArray of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 elements.
      * @field 
      */
     applications: any[]
@@ -43769,9 +43872,9 @@ class MessageUimGetCardStatusOutputCardStatusCardsElement {
     static name: string
 }
 
-interface MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement {
+interface MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
 
-    // Own fields of Qmi-1.0.Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement
+    // Own fields of Qmi-1.0.Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
     /**
      * a #QmiUimCardApplicationType.
@@ -43789,10 +43892,10 @@ interface MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement
      */
     personalizationState: UimCardApplicationPersonalizationState
     /**
-     * a #QmiUimCardApplicationPersonalizationFeature.
+     * a #QmiUimCardApplicationPersonalizationFeatureStatus.
      * @field 
      */
-    personalizationFeature: UimCardApplicationPersonalizationFeature
+    personalizationFeature: UimCardApplicationPersonalizationFeatureStatus
     /**
      * a #guint8.
      * @field 
@@ -43846,12 +43949,12 @@ interface MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement
 }
 
 /**
- * A QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement struct.
+ * A QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 struct.
  * @record 
  */
-class MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement {
+class MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
 
-    // Own properties of Qmi-1.0.Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement
+    // Own properties of Qmi-1.0.Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
     static name: string
 }
@@ -43886,10 +43989,10 @@ interface MessageUimGetCardStatusOutputCardStatusCardsElementGir {
      */
     errorCode: UimCardError
     /**
-     * an array of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     * an array of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 elements.
      * @field 
      */
-    applications: MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement[]
+    applications: MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2[]
 }
 
 /**

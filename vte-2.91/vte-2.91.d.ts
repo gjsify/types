@@ -893,6 +893,15 @@ module Terminal {
          */
         font_desc?: Pango.FontDescription | null
         /**
+         * The terminal's font options, or %NULL to use the default font options.
+         * 
+         * Note that on GTK4, the terminal by default uses font options
+         * with %CAIRO_HINT_METRICS_ON set; to override that, use this
+         * function to set a #cairo_font_options_t that has
+         * %CAIRO_HINT_METRICS_OFF set.
+         */
+        font_options?: cairo.FontOptions | null
+        /**
          * The terminal's font scale.
          */
         font_scale?: number | null
@@ -1064,6 +1073,15 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * and columns.
      */
     font_desc: Pango.FontDescription
+    /**
+     * The terminal's font options, or %NULL to use the default font options.
+     * 
+     * Note that on GTK4, the terminal by default uses font options
+     * with %CAIRO_HINT_METRICS_ON set; to override that, use this
+     * function to set a #cairo_font_options_t that has
+     * %CAIRO_HINT_METRICS_OFF set.
+     */
+    font_options: cairo.FontOptions
     /**
      * The terminal's font scale.
      */
@@ -1314,6 +1332,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @returns a #PangoFontDescription describing the font the terminal uses to render text at the default font scale of 1.0.
      */
     get_font(): Pango.FontDescription
+    get_font_options(): cairo.FontOptions | null
     get_font_scale(): number
     /**
      * Fills in some `hints` from `terminal'`s geometry. The hints
@@ -1363,18 +1382,15 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     get_scroll_unit_is_pixels(): boolean
     get_scrollback_lines(): number
     /**
-     * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-     * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-     * passed the column and row, respectively.  A #VteCharAttributes structure
-     * is added to `attributes` for each byte added to the returned string detailing
-     * the character's position, colors, and other characteristics.
+     * Extracts a view of the visible part of the terminal.
      * 
      * This method is unaware of BiDi. The columns returned in `attributes` are
      * logical columns.
      * 
      * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-     * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
-     * @param is_selected a #VteSelectionFunc callback
+     * 0.72, passing a non-%NULL `array` parameter will make this function itself return %NULL.
+     * Since 0.72, passing a non-%NULL `is_selected` parameter will make this function itself return %NULL.
+     * @param is_selected a #VteSelectionFunc callback. Deprecated: 0.44: Always pass %NULL here.
      * @returns a newly allocated text string, or %NULL.
      */
     get_text(is_selected: SelectionFunc | null): [ /* returnType */ string | null, /* attributes */ CharAttributes[] | null ]
@@ -1384,43 +1400,62 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      */
     get_text_blink_mode(): TextBlinkMode
     /**
-     * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-     * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-     * passed the column and row, respectively.  A #VteCharAttributes structure
-     * is added to `attributes` for each byte added to the returned string detailing
-     * the character's position, colors, and other characteristics.
+     * Extracts a view of the visible part of the terminal.
      * 
      * This method is unaware of BiDi. The columns returned in `attributes` are
      * logical columns.
      * 
      * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-     * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
-     * @param is_selected a #VteSelectionFunc callback
+     * 0.72, passing a non-%NULL `array` parameter will make this function itself return %NULL.
+     * Since 0.72, passing a non-%NULL `is_selected` parameter will make this function itself return %NULL.
+     * @param is_selected a #VteSelectionFunc callback. Deprecated: 0.44: Always pass %NULL here.
      * @returns a newly allocated text string, or %NULL.
      */
-    get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [ /* returnType */ string | null, /* attributes */ CharAttributes[] ]
+    get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [ /* returnType */ string | null, /* attributes */ CharAttributes[] | null ]
     /**
-     * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-     * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-     * passed the column and row, respectively.  A #VteCharAttributes structure
-     * is added to `attributes` for each byte added to the returned string detailing
-     * the character's position, colors, and other characteristics.  The
+     * Extracts a view of the visible part of the terminal. The
      * entire scrollback buffer is scanned, so it is possible to read the entire
      * contents of the buffer using this function.
      * 
      * This method is unaware of BiDi. The columns passed in `start_col` and `end_row,`
      * and returned in `attributes` are logical columns.
      * 
-     * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-     * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
+     * Since 0.68, passing a non-%NULL `array` parameter is deprecated.
+     * Since 0.72, passing a non-%NULL `array` parameter will make this function
+     *   itself return %NULL.
+     * Since 0.72, passing a non-%NULL `is_selected` function will make this function
+     *   itself return %NULL.
      * @param start_row first row to search for data
      * @param start_col first column to search for data
      * @param end_row last row to search for data
      * @param end_col last column to search for data
-     * @param is_selected a #VteSelectionFunc callback
+     * @param is_selected a #VteSelectionFunc callback. Deprecated: 0.44: Always pass %NULL here
      * @returns a newly allocated text string, or %NULL.
      */
     get_text_range(start_row: number, start_col: number, end_row: number, end_col: number, is_selected: SelectionFunc | null): [ /* returnType */ string | null, /* attributes */ CharAttributes[] | null ]
+    /**
+     * Returns the specified range of text in the specified format.
+     * @param format the #VteFormat to use
+     * @param start_row the first row of the range
+     * @param start_col the first column of the range
+     * @param end_row the last row of the range
+     * @param end_col the last column of the range
+     * @returns a newly allocated string, or %NULL.
+     */
+    get_text_range_format(format: Format, start_row: number, start_col: number, end_row: number, end_col: number): [ /* returnType */ string | null, /* length */ number ]
+    /**
+     * Gets the currently selected text in the format specified by `format`.
+     * Since 0.72, this function also supports %VTE_FORMAT_HTML format.xg
+     * @param format the #VteFormat to use
+     * @returns a newly allocated string containing the selected text, or %NULL if there is no selection or the format is not supported
+     */
+    get_text_selected(format: Format): string | null
+    /**
+     * Gets the currently selected text in the format specified by `format`.
+     * @param format the #VteFormat to use
+     * @returns a newly allocated string containing the selected text, or %NULL if there is no selection or the format is not supported
+     */
+    get_text_selected_full(format: Format): [ /* returnType */ string | null, /* length */ number ]
     get_window_title(): string | null
     /**
      * Returns the set of characters which will be considered parts of a word
@@ -1800,6 +1835,16 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param font_desc a #PangoFontDescription for the desired font, or %NULL
      */
     set_font(font_desc: Pango.FontDescription | null): void
+    /**
+     * Sets the terminal's font options to `options`.
+     * 
+     * Note that on GTK4, the terminal by default uses font options
+     * with %CAIRO_HINT_METRICS_ON set; to override that, use this
+     * function to set a #cairo_font_options_t that has
+     * %CAIRO_HINT_METRICS_OFF set.
+     * @param font_options the font options, or %NULL
+     */
+    set_font_options(font_options: cairo.FontOptions | null): void
     /**
      * Sets the terminal's font scale to `scale`.
      * @param scale the font scale
@@ -2267,6 +2312,9 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     connect(sigName: "notify::font-desc", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::font-desc", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::font-desc", ...args: any[]): void
+    connect(sigName: "notify::font-options", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::font-options", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::font-options", ...args: any[]): void
     connect(sigName: "notify::font-scale", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::font-scale", callback: (($obj: Terminal, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::font-scale", ...args: any[]): void

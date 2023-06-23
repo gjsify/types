@@ -1378,60 +1378,60 @@ interface MediaObjects {
 
     listIterator(): Gee.ListIterator
     listIterator(): Gee.ListIterator
-    get(index: number): any | null
+    get(index: number): any
 
     // Overloads of get
 
-    get(index: number): any | null
-    get(index: number): any | null
-    set(index: number, item: any | null): void
+    get(index: number): any
+    get(index: number): any
+    set(index: number, item: any): void
 
     // Overloads of set
 
-    set(index: number, item: any | null): void
-    set(index: number, item: any | null): void
-    indexOf(item: any | null): number
+    set(index: number, item: any): void
+    set(index: number, item: any): void
+    indexOf(item: any): number
 
     // Overloads of indexOf
 
-    indexOf(item: any | null): number
-    indexOf(item: any | null): number
-    insert(index: number, item: any | null): void
+    indexOf(item: any): number
+    indexOf(item: any): number
+    insert(index: number, item: any): void
 
     // Overloads of insert
 
-    insert(index: number, item: any | null): void
-    insert(index: number, item: any | null): void
-    removeAt(index: number): any | null
+    insert(index: number, item: any): void
+    insert(index: number, item: any): void
+    removeAt(index: number): any
 
     // Overloads of removeAt
 
-    removeAt(index: number): any | null
-    removeAt(index: number): any | null
+    removeAt(index: number): any
+    removeAt(index: number): any
     slice(start: number, stop: number): Gee.List | null
 
     // Overloads of slice
 
     slice(start: number, stop: number): Gee.List | null
     slice(start: number, stop: number): Gee.List | null
-    contains(item: any | null): boolean
+    contains(item: any): boolean
 
     // Overloads of contains
 
-    contains(item: any | null): boolean
-    contains(item: any | null): boolean
-    add(item: any | null): boolean
+    contains(item: any): boolean
+    contains(item: any): boolean
+    add(item: any): boolean
 
     // Overloads of add
 
-    add(item: any | null): boolean
-    add(item: any | null): boolean
-    remove(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
+    remove(item: any): boolean
 
     // Overloads of remove
 
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     clear(): void
 
     // Overloads of clear
@@ -1544,6 +1544,7 @@ module MusicItem {
         // Own constructor properties of RygelServer-2.8.RygelServer.MusicItem
 
         trackNumber?: number | null
+        discNumber?: number | null
         albumArt?: Thumbnail | null
     }
 
@@ -1554,6 +1555,7 @@ interface MusicItem {
     // Own properties of RygelServer-2.8.RygelServer.MusicItem
 
     trackNumber: number
+    discNumber: number
     albumArt: Thumbnail
     __gtype__: number
 
@@ -1562,6 +1564,8 @@ interface MusicItem {
     lookupAlbumArt(): void
     getTrackNumber(): number
     setTrackNumber(value: number): void
+    getDiscNumber(): number
+    setDiscNumber(value: number): void
     getAlbumArt(): Thumbnail
     setAlbumArt(value: Thumbnail): void
 
@@ -1572,6 +1576,11 @@ interface MusicItem {
     once(sigName: "notify::track-number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::track-number", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::track-number", ...args: any[]): void
+    connect(sigName: "notify::disc-number", callback: (...args: any[]) => void): number
+    on(sigName: "notify::disc-number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::disc-number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::disc-number", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::disc-number", ...args: any[]): void
     connect(sigName: "notify::album-art", callback: (...args: any[]) => void): number
     on(sigName: "notify::album-art", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::album-art", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -3425,9 +3434,9 @@ interface SearchExpression {
     // Own fields of RygelServer-2.8.RygelServer.SearchExpression
 
     refCount: number
-    op: any | null
-    operand1: any | null
-    operand2: any | null
+    op: any
+    operand1: any
+    operand2: any
 
     // Owm methods of RygelServer-2.8.RygelServer.SearchExpression
 

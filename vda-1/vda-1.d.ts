@@ -13893,11 +13893,11 @@ interface HashList extends Gio.ListModel, HashModel {
     // Conflicting methods
 
     add(object: GObject.Object): void
-    add(item: any | null): boolean
-    add(item: any | null): boolean
+    add(item: any): boolean
+    add(item: any): boolean
     remove(object: GObject.Object): void
-    remove(item: any | null): boolean
-    remove(item: any | null): boolean
+    remove(item: any): boolean
+    remove(item: any): boolean
     get_read_only_view(): Gee.BidirList
 
     // Overloads of get_read_only_view
@@ -13925,11 +13925,11 @@ interface HashList extends Gio.ListModel, HashModel {
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
     vfunc_add(object: GObject.Object): void
-    vfunc_add(item: any | null): boolean
-    vfunc_add(item: any | null): boolean
+    vfunc_add(item: any): boolean
+    vfunc_add(item: any): boolean
     vfunc_remove(object: GObject.Object): void
-    vfunc_remove(item: any | null): boolean
-    vfunc_remove(item: any | null): boolean
+    vfunc_remove(item: any): boolean
+    vfunc_remove(item: any): boolean
     vfunc_get_read_only_view(): Gee.BidirList
 
     // Overloads of vfunc_get_read_only_view

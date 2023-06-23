@@ -1866,6 +1866,7 @@ export class XMLUtils {
 
     constructor() 
     static new(): XMLUtils
+    static getNamespace(root: any | null, href: string | null, prefix: string | null): any | null
 }
 
 export interface XMLUtilsIterator {

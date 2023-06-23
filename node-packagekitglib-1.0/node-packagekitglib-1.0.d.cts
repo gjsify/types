@@ -663,6 +663,10 @@ export enum GroupEnum {
      * Special group for recently updated packages
      */
     NEWEST,
+    /**
+     * DDE packages
+     */
+    DESKTOP_DDE,
     LAST,
 }
 /**
@@ -2060,6 +2064,7 @@ export module Client {
 
         background?: boolean | null
         cacheAge?: number | null
+        detailsWithDepsSize?: boolean | null
         interactive?: boolean | null
         locale?: string | null
     }
@@ -2072,6 +2077,7 @@ export interface Client {
 
     background: boolean
     cacheAge: number
+    detailsWithDepsSize: boolean
     readonly idle: boolean
     interactive: boolean
     locale: string | null
@@ -2241,6 +2247,11 @@ export interface Client {
      * @param callbackReady the function to run on completion
      */
     getDetailsLocalAsync(files: string[], cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    /**
+     * Gets the client details-with-deps-size value.
+     * @returns whether the pk_client_get_details_async() should include dependencies    download sizes for packages, which are not installed.
+     */
+    getDetailsWithDepsSize(): boolean
     /**
      * This method should return a list of distribution upgrades that are available.
      * It should not return updates, only major upgrades.
@@ -2805,6 +2816,12 @@ export interface Client {
      */
     setCacheAge(cacheAge: number): void
     /**
+     * Sets whether the pk_client_get_details_async() should include dependencies
+     * download sizes for packages, which are not installed.
+     * @param detailsWithDepsSize the value to set
+     */
+    setDetailsWithDepsSize(detailsWithDepsSize: boolean): void
+    /**
      * Sets the interactive value for the client. Interactive transactions
      * are usually allowed to ask the user questions.
      * @param interactive the value to set
@@ -2910,6 +2927,11 @@ export interface Client {
     once(sigName: "notify::cache-age", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::cache-age", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::cache-age", ...args: any[]): void
+    connect(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::details-with-deps-size", ...args: any[]): void
     connect(sigName: "notify::idle", callback: (...args: any[]) => void): number
     on(sigName: "notify::idle", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::idle", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -6770,6 +6792,11 @@ export interface Task {
     once(sigName: "notify::cache-age", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::cache-age", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::cache-age", ...args: any[]): void
+    connect(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void): number
+    on(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::details-with-deps-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::details-with-deps-size", ...args: any[]): void
     connect(sigName: "notify::idle", callback: (...args: any[]) => void): number
     on(sigName: "notify::idle", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::idle", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

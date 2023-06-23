@@ -131,6 +131,57 @@ export enum AuthProtocol {
     MSCHAPV2,
 }
 /**
+ * Carrier lock cause.
+ */
+export enum CarrierLockCause {
+    /**
+     * Cause not applicable.
+     */
+    NOT_APPLICABLE,
+    /**
+     * Sim lock policy mismatch.
+     */
+    SIM_LOCK_POLICY_MISMATCH,
+    /**
+     * Sim lock policy matched.
+     */
+    SIM_LOCK_POLICY_MATCHED,
+}
+/**
+ * State of modem after a carrier lock state update.
+ */
+export enum CarrierLockModemState {
+    /**
+     * Modem deregistered.
+     */
+    DEREGISTERED,
+    /**
+     * Modem de-registration in progress.
+     */
+    DEREGISTRATION_IN_PROGRESS,
+    /**
+     * Modem registration state in progress.
+     */
+    REGISTRATION_IN_PROGRESS,
+    /**
+     * Modem registered.
+     */
+    REGISTERED,
+}
+/**
+ * Status of carrier lock.
+ */
+export enum CarrierLockStatus {
+    /**
+     * Carrier lock not applied.
+     */
+    NOT_APPLIED,
+    /**
+     * Carrier lock applied.
+     */
+    APPLIED,
+}
+/**
  * MBIM commands in the %MBIM_SERVICE_ATDS service.
  */
 export enum CidAtds {
@@ -289,6 +340,19 @@ export enum CidDss {
      * Connect.
      */
     CONNECT,
+}
+/**
+ * MBIM commands in the %MBIM_SERVICE_GOOGLE service.
+ */
+export enum CidGoogle {
+    /**
+     * Unknown command.
+     */
+    UNKNOWN,
+    /**
+     * Carrier lock.
+     */
+    CARRIER_LOCK,
 }
 /**
  * MBIM commands in the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
@@ -2123,6 +2187,10 @@ export enum Service {
      * Intel tools service. Since 1.30.
      */
     INTEL_TOOLS,
+    /**
+     * Google specific service. Since 1.30
+     */
+    GOOGLE,
 }
 /**
  * Type of encoding of a CDMA SMS.
@@ -2459,6 +2527,34 @@ export enum StatusError {
      * Format not supported in SMS.
      */
     SMSFORMATNOTSUPPORTED,
+    /**
+     * Invalid signature. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    INVALIDSIGNATURE,
+    /**
+     * Invalid IMEI. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    INVALIDIMEI,
+    /**
+     * Invalid timestamp. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    INVALIDTIMESTAMP,
+    /**
+     * List of networks too large. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    NETWORKLISTTOOLARGE,
+    /**
+     * Signature algorithm not supported. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    SIGNATUREALGORITHMNOTSUPPORTED,
+    /**
+     * Feature not supported. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    FEATURENOTSUPPORTED,
+    /**
+     * Decode or parsing error. Defined by Google for the carrier lock operation. Since 1.30.
+     */
+    DECODEORPARSINGERROR,
 }
 /**
  * Proactive command profile.
@@ -2995,6 +3091,10 @@ export enum WakeType {
  */
 export enum CellularClass {
     /**
+     * None. Since 1.30.
+     */
+    NONE,
+    /**
      * Device is 3GPP.
      */
     GSM,
@@ -3057,6 +3157,10 @@ export enum CtrlCaps {
  * @bitfield 
  */
 export enum DataClass {
+    /**
+     * None. Since 1.30.
+     */
+    NONE,
     /**
      * GPRS.
      */
@@ -3132,6 +3236,10 @@ export enum DataClass {
  * @bitfield 
  */
 export enum DataClassV3 {
+    /**
+     * None. Since 1.30.
+     */
+    NONE,
     /**
      * GPRS.
      */
@@ -3361,6 +3469,10 @@ export enum RegistrationFlag {
  */
 export enum SimClass {
     /**
+     * None. Since 1.30.
+     */
+    NONE,
+    /**
      * No physical SIM.
      */
     LOGICAL,
@@ -3374,6 +3486,10 @@ export enum SimClass {
  * @bitfield 
  */
 export enum SmsCaps {
+    /**
+     * None. Since 1.30.
+     */
+    NONE,
     /**
      * Can receive in PDU mode.
      */
@@ -3537,6 +3653,24 @@ export function atds_rat_mode_get_string(val: AtdsRatMode): string | null
  */
 export function auth_protocol_get_string(val: AuthProtocol): string | null
 /**
+ * Gets the nickname string for the #MbimCarrierLockCause specified at `val`.
+ * @param val a MbimCarrierLockCause.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+export function carrier_lock_cause_get_string(val: CarrierLockCause): string | null
+/**
+ * Gets the nickname string for the #MbimCarrierLockModemState specified at `val`.
+ * @param val a MbimCarrierLockModemState.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+export function carrier_lock_modem_state_get_string(val: CarrierLockModemState): string | null
+/**
+ * Gets the nickname string for the #MbimCarrierLockStatus specified at `val`.
+ * @param val a MbimCarrierLockStatus.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+export function carrier_lock_status_get_string(val: CarrierLockStatus): string | null
+/**
  * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
  * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
  */
@@ -3631,6 +3765,12 @@ export function cid_dss_get_string(val: CidDss): string | null
  * @returns a constant string.
  */
 export function cid_get_printable(service: Service, cid: number): string | null
+/**
+ * Gets the nickname string for the #MbimCidGoogle specified at `val`.
+ * @param val a MbimCidGoogle.
+ * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+ */
+export function cid_google_get_string(val: CidGoogle): string | null
 /**
  * Gets the nickname string for the #MbimCidIntelFirmwareUpdate specified at `val`.
  * @param val a MbimCidIntelFirmwareUpdate.
@@ -4644,6 +4784,9 @@ export interface Device extends Gio.AsyncInitable {
     command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes an operation started with mbim_device_command().
+     * 
+     * The returned #MbimMessage is ensured to be valid and complete (i.e. not a
+     * partial fragment). There is no need to call mbim_message_validate() again.
      * @param res a #GAsyncResult.
      * @returns a #MbimMessage response, or #NULL if @error is set. The returned value should be freed with mbim_message_unref().
      */
@@ -6306,6 +6449,16 @@ export interface Message {
      */
     get_transaction_id(): number
     /**
+     * Parses and returns parameters of the 'Carrier Lock' notification command in the 'Google' service.
+     * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+     */
+    google_carrier_lock_notification_parse(): [ /* returnType */ boolean, /* out_carrier_lock_status */ CarrierLockStatus, /* out_carrier_lock_modem_state */ CarrierLockModemState, /* out_carrier_lock_cause */ CarrierLockCause ]
+    /**
+     * Parses and returns parameters of the 'Carrier Lock' response command in the 'Google' service.
+     * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+     */
+    google_carrier_lock_response_parse(): [ /* returnType */ boolean, /* out_carrier_lock_status */ CarrierLockStatus, /* out_carrier_lock_modem_state */ CarrierLockModemState, /* out_carrier_lock_cause */ CarrierLockCause ]
+    /**
      * Parses and returns parameters of the 'Home Provider' response command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
@@ -6375,6 +6528,11 @@ export interface Message {
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
     ms_basic_connect_extensions_device_caps_response_parse(): [ /* returnType */ boolean, /* out_device_type */ DeviceType, /* out_cellular_class */ CellularClass, /* out_voice_class */ VoiceClass, /* out_sms_class */ SimClass, /* out_data_class */ DataClass, /* out_sms_caps */ SmsCaps, /* out_control_caps */ CtrlCaps, /* out_max_sessions */ number, /* out_custom_data_class */ string | null, /* out_device_id */ string | null, /* out_firmware_info */ string | null, /* out_hardware_info */ string | null, /* out_executor_index */ number ]
+    /**
+     * Parses and returns parameters of the 'Device Reset' response command in the 'Ms Basic Connect Extensions' service.
+     * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+     */
+    ms_basic_connect_extensions_device_reset_response_parse(): boolean
     /**
      * Parses and returns parameters of the 'Device Slot Mappings' response command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6932,8 +7090,11 @@ export interface Message {
     /**
      * Validates the contents of the headers in the MBIM message.
      * 
-     * This operation may be used to ensure that the message is full and of a valid
-     * type.
+     * This operation may be used to ensure that the message contains all bytes
+     * it is expected to contain and that it is of a valid type.
+     * 
+     * This operation also ensures the message is complete and not a partial
+     * MBIM fragment.
      * 
      * This operation does not validate that the specific contents of a given
      * message type are available, that is done by the methods retrieving those
@@ -7148,6 +7309,19 @@ export class Message {
      */
     static function_error_new(transaction_id: number, error_status_code: ProtocolError): Message
     /**
+     * Create a new request for the 'Carrier Lock' query command in the 'Google' service.
+     * @constructor 
+     * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
+     */
+    static google_carrier_lock_query_new(): Message
+    /**
+     * Create a new request for the 'Carrier Lock' set command in the 'Google' service.
+     * @constructor 
+     * @param data the 'Data' field, given as an array of #guint8 values.
+     * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
+     */
+    static google_carrier_lock_set_new(data: Uint8Array): Message
+    /**
      * Create a new request for the 'Home Provider' query command in the 'Basic Connect' service.
      * @constructor 
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
@@ -7272,6 +7446,12 @@ export class Message {
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
     static ms_basic_connect_extensions_device_caps_query_new(): Message
+    /**
+     * Create a new request for the 'Device Reset' set command in the 'Ms Basic Connect Extensions' service.
+     * @constructor 
+     * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
+     */
+    static ms_basic_connect_extensions_device_reset_set_new(): Message
     /**
      * Create a new request for the 'Device Slot Mappings' query command in the 'Ms Basic Connect Extensions' service.
      * @constructor 

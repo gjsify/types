@@ -726,7 +726,7 @@ interface Extractor {
     set_output_is_dest(output_is_dest: boolean): void
     /**
      * Sets a passphrase to use if the file to decompress is passphrase-protected.
-     * @param passphrase 
+     * @param passphrase a string with the passphrase to use
      */
     set_passphrase(passphrase: string | null): void
     /**

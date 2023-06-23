@@ -45,6 +45,13 @@ enum SettingsColorScheme {
     DARK,
     LIGHT,
 }
+const SettingsUriLOCATION: string | null
+const SettingsUriONLINE_ACCOUNTS: string | null
+const SettingsUriNETWORK: string | null
+const SettingsUriPERMISSIONS: string | null
+const SettingsUriNOTIFICATIONS: string | null
+const SettingsUriSOUND_INPUT: string | null
+const SettingsUriSHORTCUTS: string | null
 const STYLE_CLASS_ACCENT: string | null
 const STYLE_CLASS_BACK_BUTTON: string | null
 const STYLE_CLASS_BACKGROUND: string | null
@@ -101,6 +108,7 @@ function services_application_set_progress_finish(_res_: Gio.AsyncResult): boole
 function services_application_set_progress_visible<Z = unknown>(visible: boolean, _callback_: Gio.AsyncReadyCallback<Z> | null): void
 function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean
 function widgets_utils_set_color_primary(window: Gtk.Widget, color: Gdk.RGBA, priority: number): Gtk.CssProvider | null
+function init(): void
 function accel_to_string(accel: string | null): string | null
 function markup_accel_tooltip(accels: string[] | null, description: string | null): string | null
 function contrasting_foreground_color(bg_color: Gdk.RGBA): /* result */ Gdk.RGBA
