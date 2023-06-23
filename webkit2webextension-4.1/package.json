@@ -5,12 +5,6 @@
     "type": "module",
     "module": "webkit2webextension-4.1.js",
     "main": "webkit2webextension-4.1.js",
-    "typedoc": {
-        "entryPoint": "./webkit2webextension-4.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "WebKit2WebExtension-4.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./webkit2webextension-4.1-ambient.d.ts",
         "./import": "./webkit2webextension-4.1-import.d.ts",

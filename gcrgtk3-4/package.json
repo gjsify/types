@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gcrgtk3-4.js",
     "main": "gcrgtk3-4.js",
-    "typedoc": {
-        "entryPoint": "./gcrgtk3-4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GcrGtk3-4",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gcrgtk3-4-ambient.d.ts",
         "./import": "./gcrgtk3-4-import.d.ts",

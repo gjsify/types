@@ -5,12 +5,6 @@
     "type": "module",
     "module": "vsqlite-1.js",
     "main": "vsqlite-1.js",
-    "typedoc": {
-        "entryPoint": "./vsqlite-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vsqlite-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./vsqlite-1-ambient.d.ts",
         "./import": "./vsqlite-1-import.d.ts",

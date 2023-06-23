@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./colorhug-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "ColorHug-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

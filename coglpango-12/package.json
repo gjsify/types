@@ -5,12 +5,6 @@
     "type": "module",
     "module": "coglpango-12.js",
     "main": "coglpango-12.js",
-    "typedoc": {
-        "entryPoint": "./coglpango-12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "CoglPango-12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./coglpango-12-ambient.d.ts",
         "./import": "./coglpango-12-import.d.ts",

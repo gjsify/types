@@ -5,12 +5,6 @@
     "type": "module",
     "module": "pango-1.0.js",
     "main": "pango-1.0.js",
-    "typedoc": {
-        "entryPoint": "./pango-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Pango-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./pango-1.0-ambient.d.ts",
         "./import": "./pango-1.0-import.d.ts",

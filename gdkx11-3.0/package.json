@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdkx11-3.0.js",
     "main": "gdkx11-3.0.js",
-    "typedoc": {
-        "entryPoint": "./gdkx11-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GdkX11-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdkx11-3.0-ambient.d.ts",
         "./import": "./gdkx11-3.0-import.d.ts",

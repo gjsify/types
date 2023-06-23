@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-edataserverui-1.2.js",
     "main": "node-edataserverui-1.2.js",
-    "typedoc": {
-        "entryPoint": "./node-edataserverui-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EDataServerUI-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-edataserverui-1.2-ambient.d.ts",
         "./import": "./node-edataserverui-1.2-import.d.ts",

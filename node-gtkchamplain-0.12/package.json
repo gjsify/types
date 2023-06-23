@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gtkchamplain-0.12.js",
     "main": "node-gtkchamplain-0.12.js",
-    "typedoc": {
-        "entryPoint": "./node-gtkchamplain-0.12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GtkChamplain-0.12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gtkchamplain-0.12-ambient.d.ts",
         "./import": "./node-gtkchamplain-0.12-import.d.ts",

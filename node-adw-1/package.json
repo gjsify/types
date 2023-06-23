@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-adw-1.js",
     "main": "node-adw-1.js",
-    "typedoc": {
-        "entryPoint": "./node-adw-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Adw-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-adw-1-ambient.d.ts",
         "./import": "./node-adw-1-import.d.ts",

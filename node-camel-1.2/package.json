@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-camel-1.2.js",
     "main": "node-camel-1.2.js",
-    "typedoc": {
-        "entryPoint": "./node-camel-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Camel-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-camel-1.2-ambient.d.ts",
         "./import": "./node-camel-1.2-import.d.ts",

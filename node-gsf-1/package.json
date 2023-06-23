@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gsf-1.js",
     "main": "node-gsf-1.js",
-    "typedoc": {
-        "entryPoint": "./node-gsf-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gsf-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gsf-1-ambient.d.ts",
         "./import": "./node-gsf-1-import.d.ts",

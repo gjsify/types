@@ -5,12 +5,6 @@
     "type": "module",
     "module": "dbus-1.0.js",
     "main": "dbus-1.0.js",
-    "typedoc": {
-        "entryPoint": "./dbus-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "DBus-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./dbus-1.0-ambient.d.ts",
         "./import": "./dbus-1.0-import.d.ts",

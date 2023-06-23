@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ebookcontacts-1.2.js",
     "main": "ebookcontacts-1.2.js",
-    "typedoc": {
-        "entryPoint": "./ebookcontacts-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EBookContacts-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ebookcontacts-1.2-ambient.d.ts",
         "./import": "./ebookcontacts-1.2-import.d.ts",

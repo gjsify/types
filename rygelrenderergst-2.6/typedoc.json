@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./rygelrenderergst-2.6.d.ts"],
+    "readme": "./README.md",
+    "name": "RygelRendererGst-2.6",
+    "tsconfig": "./tsconfig.json"
+}
+

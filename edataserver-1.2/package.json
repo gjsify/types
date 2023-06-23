@@ -5,12 +5,6 @@
     "type": "module",
     "module": "edataserver-1.2.js",
     "main": "edataserver-1.2.js",
-    "typedoc": {
-        "entryPoint": "./edataserver-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EDataServer-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./edataserver-1.2-ambient.d.ts",
         "./import": "./edataserver-1.2-import.d.ts",

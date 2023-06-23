@@ -5,12 +5,6 @@
     "type": "module",
     "module": "libvirtglib-1.0.js",
     "main": "libvirtglib-1.0.js",
-    "typedoc": {
-        "entryPoint": "./libvirtglib-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "LibvirtGLib-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./libvirtglib-1.0-ambient.d.ts",
         "./import": "./libvirtglib-1.0-import.d.ts",

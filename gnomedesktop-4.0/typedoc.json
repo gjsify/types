@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gnomedesktop-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GnomeDesktop-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-webkitwebprocessextension-6.0.js",
     "main": "node-webkitwebprocessextension-6.0.js",
-    "typedoc": {
-        "entryPoint": "./node-webkitwebprocessextension-6.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "WebKitWebProcessExtension-6.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-webkitwebprocessextension-6.0-ambient.d.ts",
         "./import": "./node-webkitwebprocessextension-6.0-import.d.ts",

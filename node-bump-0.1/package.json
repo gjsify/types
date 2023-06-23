@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-bump-0.1.js",
     "main": "node-bump-0.1.js",
-    "typedoc": {
-        "entryPoint": "./node-bump-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Bump-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-bump-0.1-ambient.d.ts",
         "./import": "./node-bump-0.1-import.d.ts",

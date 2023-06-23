@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./telepathyglib-0.12.d.ts"],
+    "readme": "./README.md",
+    "name": "TelepathyGLib-0.12",
+    "tsconfig": "./tsconfig.json"
+}
+

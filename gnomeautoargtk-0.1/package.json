@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gnomeautoargtk-0.1.js",
     "main": "gnomeautoargtk-0.1.js",
-    "typedoc": {
-        "entryPoint": "./gnomeautoargtk-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GnomeAutoarGtk-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gnomeautoargtk-0.1-ambient.d.ts",
         "./import": "./gnomeautoargtk-0.1-import.d.ts",

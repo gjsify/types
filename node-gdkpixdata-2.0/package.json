@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gdkpixdata-2.0.js",
     "main": "node-gdkpixdata-2.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gdkpixdata-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GdkPixdata-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gdkpixdata-2.0-ambient.d.ts",
         "./import": "./node-gdkpixdata-2.0-import.d.ts",

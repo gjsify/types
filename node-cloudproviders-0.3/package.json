@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-cloudproviders-0.3.js",
     "main": "node-cloudproviders-0.3.js",
-    "typedoc": {
-        "entryPoint": "./node-cloudproviders-0.3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "CloudProviders-0.3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-cloudproviders-0.3-ambient.d.ts",
         "./import": "./node-cloudproviders-0.3-import.d.ts",

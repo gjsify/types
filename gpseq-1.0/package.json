@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gpseq-1.0.js",
     "main": "gpseq-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gpseq-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gpseq-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gpseq-1.0-ambient.d.ts",
         "./import": "./gpseq-1.0-import.d.ts",

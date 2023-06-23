@@ -5,12 +5,6 @@
     "type": "module",
     "module": "polkitagent-1.0.js",
     "main": "polkitagent-1.0.js",
-    "typedoc": {
-        "entryPoint": "./polkitagent-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "PolkitAgent-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./polkitagent-1.0-ambient.d.ts",
         "./import": "./polkitagent-1.0-import.d.ts",

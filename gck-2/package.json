@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gck-2.js",
     "main": "gck-2.js",
-    "typedoc": {
-        "entryPoint": "./gck-2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gck-2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gck-2-ambient.d.ts",
         "./import": "./gck-2-import.d.ts",

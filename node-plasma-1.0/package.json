@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-plasma-1.0.js",
     "main": "node-plasma-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-plasma-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Plasma-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-plasma-1.0-ambient.d.ts",
         "./import": "./node-plasma-1.0-import.d.ts",

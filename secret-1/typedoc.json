@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./secret-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Secret-1",
+    "tsconfig": "./tsconfig.json"
+}
+

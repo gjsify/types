@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./arrow-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Arrow-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

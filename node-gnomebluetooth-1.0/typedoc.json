@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gnomebluetooth-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GnomeBluetooth-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

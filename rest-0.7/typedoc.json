@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./rest-0.7.d.ts"],
+    "readme": "./README.md",
+    "name": "Rest-0.7",
+    "tsconfig": "./tsconfig.json"
+}
+

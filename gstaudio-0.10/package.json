@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstaudio-0.10.js",
     "main": "gstaudio-0.10.js",
-    "typedoc": {
-        "entryPoint": "./gstaudio-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstAudio-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstaudio-0.10-ambient.d.ts",
         "./import": "./gstaudio-0.10-import.d.ts",

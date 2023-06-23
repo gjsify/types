@@ -5,12 +5,6 @@
     "type": "module",
     "module": "shell-12.js",
     "main": "shell-12.js",
-    "typedoc": {
-        "entryPoint": "./shell-12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Shell-12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./shell-12-ambient.d.ts",
         "./import": "./shell-12-import.d.ts",

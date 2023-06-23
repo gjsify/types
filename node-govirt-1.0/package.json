@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-govirt-1.0.js",
     "main": "node-govirt-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-govirt-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GoVirt-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-govirt-1.0-ambient.d.ts",
         "./import": "./node-govirt-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gnomebg-4.0.js",
     "main": "gnomebg-4.0.js",
-    "typedoc": {
-        "entryPoint": "./gnomebg-4.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GnomeBG-4.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gnomebg-4.0-ambient.d.ts",
         "./import": "./gnomebg-4.0-import.d.ts",

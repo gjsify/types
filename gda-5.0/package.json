@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gda-5.0.js",
     "main": "gda-5.0.js",
-    "typedoc": {
-        "entryPoint": "./gda-5.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gda-5.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gda-5.0-ambient.d.ts",
         "./import": "./gda-5.0-import.d.ts",

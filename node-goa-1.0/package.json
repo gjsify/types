@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-goa-1.0.js",
     "main": "node-goa-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-goa-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Goa-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-goa-1.0-ambient.d.ts",
         "./import": "./node-goa-1.0-import.d.ts",

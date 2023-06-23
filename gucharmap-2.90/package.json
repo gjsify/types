@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gucharmap-2.90.js",
     "main": "gucharmap-2.90.js",
-    "typedoc": {
-        "entryPoint": "./gucharmap-2.90.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gucharmap-2.90",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gucharmap-2.90-ambient.d.ts",
         "./import": "./gucharmap-2.90-import.d.ts",

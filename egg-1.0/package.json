@@ -5,12 +5,6 @@
     "type": "module",
     "module": "egg-1.0.js",
     "main": "egg-1.0.js",
-    "typedoc": {
-        "entryPoint": "./egg-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Egg-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./egg-1.0-ambient.d.ts",
         "./import": "./egg-1.0-import.d.ts",

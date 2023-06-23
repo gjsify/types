@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gcalc-1.js",
     "main": "gcalc-1.js",
-    "typedoc": {
-        "entryPoint": "./gcalc-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GCalc-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gcalc-1-ambient.d.ts",
         "./import": "./gcalc-1-import.d.ts",

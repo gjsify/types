@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gstplayer-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstPlayer-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

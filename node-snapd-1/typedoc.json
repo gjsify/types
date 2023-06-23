@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-snapd-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Snapd-1",
+    "tsconfig": "./tsconfig.json"
+}
+

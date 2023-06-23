@@ -5,12 +5,6 @@
     "type": "module",
     "module": "clutter-10.js",
     "main": "clutter-10.js",
-    "typedoc": {
-        "entryPoint": "./clutter-10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Clutter-10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./clutter-10-ambient.d.ts",
         "./import": "./clutter-10-import.d.ts",

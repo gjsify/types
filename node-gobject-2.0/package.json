@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gobject-2.0.js",
     "main": "node-gobject-2.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gobject-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GObject-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gobject-2.0-ambient.d.ts",
         "./import": "./node-gobject-2.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "xdpgtk3-1.0.js",
     "main": "xdpgtk3-1.0.js",
-    "typedoc": {
-        "entryPoint": "./xdpgtk3-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "XdpGtk3-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./xdpgtk3-1.0-ambient.d.ts",
         "./import": "./xdpgtk3-1.0-import.d.ts",

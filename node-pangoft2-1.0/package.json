@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-pangoft2-1.0.js",
     "main": "node-pangoft2-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-pangoft2-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "PangoFT2-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-pangoft2-1.0-ambient.d.ts",
         "./import": "./node-pangoft2-1.0-import.d.ts",

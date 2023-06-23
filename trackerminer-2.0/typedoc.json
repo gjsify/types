@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./trackerminer-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "TrackerMiner-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

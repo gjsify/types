@@ -5,12 +5,6 @@
     "type": "module",
     "module": "arrowdataset-1.0.js",
     "main": "arrowdataset-1.0.js",
-    "typedoc": {
-        "entryPoint": "./arrowdataset-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ArrowDataset-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./arrowdataset-1.0-ambient.d.ts",
         "./import": "./arrowdataset-1.0-import.d.ts",

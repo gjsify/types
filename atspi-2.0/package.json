@@ -5,12 +5,6 @@
     "type": "module",
     "module": "atspi-2.0.js",
     "main": "atspi-2.0.js",
-    "typedoc": {
-        "entryPoint": "./atspi-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Atspi-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./atspi-2.0-ambient.d.ts",
         "./import": "./atspi-2.0-import.d.ts",

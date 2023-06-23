@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-glib-2.0.js",
     "main": "node-glib-2.0.js",
-    "typedoc": {
-        "entryPoint": "./node-glib-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GLib-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-glib-2.0-ambient.d.ts",
         "./import": "./node-glib-2.0-import.d.ts",

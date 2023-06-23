@@ -5,12 +5,6 @@
     "type": "module",
     "module": "cluttergst-1.0.js",
     "main": "cluttergst-1.0.js",
-    "typedoc": {
-        "entryPoint": "./cluttergst-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ClutterGst-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./cluttergst-1.0-ambient.d.ts",
         "./import": "./cluttergst-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "clutterx11-1.0.js",
     "main": "clutterx11-1.0.js",
-    "typedoc": {
-        "entryPoint": "./clutterx11-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ClutterX11-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./clutterx11-1.0-ambient.d.ts",
         "./import": "./clutterx11-1.0-import.d.ts",

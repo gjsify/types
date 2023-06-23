@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-ibus-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "IBus-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

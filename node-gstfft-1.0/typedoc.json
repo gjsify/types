@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gstfft-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstFft-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

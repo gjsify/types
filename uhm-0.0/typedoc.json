@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./uhm-0.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Uhm-0.0",
+    "tsconfig": "./tsconfig.json"
+}
+

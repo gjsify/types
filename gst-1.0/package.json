@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gst-1.0.js",
     "main": "gst-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gst-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gst-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gst-1.0-ambient.d.ts",
         "./import": "./gst-1.0-import.d.ts",

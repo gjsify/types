@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gcr-3.d.ts"],
+    "readme": "./README.md",
+    "name": "Gcr-3",
+    "tsconfig": "./tsconfig.json"
+}
+

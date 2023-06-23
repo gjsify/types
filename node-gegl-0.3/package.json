@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gegl-0.3.js",
     "main": "node-gegl-0.3.js",
-    "typedoc": {
-        "entryPoint": "./node-gegl-0.3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gegl-0.3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gegl-0.3-ambient.d.ts",
         "./import": "./node-gegl-0.3-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "javascriptcore-6.0.js",
     "main": "javascriptcore-6.0.js",
-    "typedoc": {
-        "entryPoint": "./javascriptcore-6.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "JavaScriptCore-6.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./javascriptcore-6.0-ambient.d.ts",
         "./import": "./javascriptcore-6.0-import.d.ts",

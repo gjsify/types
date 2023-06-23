@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstsdp-1.0.js",
     "main": "gstsdp-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstsdp-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstSdp-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstsdp-1.0-ambient.d.ts",
         "./import": "./gstsdp-1.0-import.d.ts",

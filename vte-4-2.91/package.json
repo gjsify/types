@@ -5,12 +5,6 @@
     "type": "module",
     "module": "vte-4-2.91.js",
     "main": "vte-4-2.91.js",
-    "typedoc": {
-        "entryPoint": "./vte-4-2.91.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vte-4-2.91",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./vte-4-2.91-ambient.d.ts",
         "./import": "./vte-4-2.91-import.d.ts",

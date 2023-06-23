@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdkwayland-4.0.js",
     "main": "gdkwayland-4.0.js",
-    "typedoc": {
-        "entryPoint": "./gdkwayland-4.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GdkWayland-4.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdkwayland-4.0-ambient.d.ts",
         "./import": "./gdkwayland-4.0-import.d.ts",

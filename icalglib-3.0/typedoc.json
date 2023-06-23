@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./icalglib-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "ICalGLib-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

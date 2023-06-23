@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gtksource-5.js",
     "main": "node-gtksource-5.js",
-    "typedoc": {
-        "entryPoint": "./node-gtksource-5.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GtkSource-5",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gtksource-5-ambient.d.ts",
         "./import": "./node-gtksource-5-import.d.ts",

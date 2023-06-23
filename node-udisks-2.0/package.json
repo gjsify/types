@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-udisks-2.0.js",
     "main": "node-udisks-2.0.js",
-    "typedoc": {
-        "entryPoint": "./node-udisks-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "UDisks-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-udisks-2.0-ambient.d.ts",
         "./import": "./node-udisks-2.0-import.d.ts",

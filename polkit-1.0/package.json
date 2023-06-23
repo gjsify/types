@@ -5,12 +5,6 @@
     "type": "module",
     "module": "polkit-1.0.js",
     "main": "polkit-1.0.js",
-    "typedoc": {
-        "entryPoint": "./polkit-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Polkit-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./polkit-1.0-ambient.d.ts",
         "./import": "./polkit-1.0-import.d.ts",

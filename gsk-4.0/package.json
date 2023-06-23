@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gsk-4.0.js",
     "main": "gsk-4.0.js",
-    "typedoc": {
-        "entryPoint": "./gsk-4.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gsk-4.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gsk-4.0-ambient.d.ts",
         "./import": "./gsk-4.0-import.d.ts",

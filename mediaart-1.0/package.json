@@ -5,12 +5,6 @@
     "type": "module",
     "module": "mediaart-1.0.js",
     "main": "mediaart-1.0.js",
-    "typedoc": {
-        "entryPoint": "./mediaart-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "MediaArt-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./mediaart-1.0-ambient.d.ts",
         "./import": "./mediaart-1.0-import.d.ts",

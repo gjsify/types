@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./ebook-1.2.d.ts"],
+    "readme": "./README.md",
+    "name": "EBook-1.2",
+    "tsconfig": "./tsconfig.json"
+}
+

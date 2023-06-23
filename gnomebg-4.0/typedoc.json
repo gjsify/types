@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gnomebg-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GnomeBG-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

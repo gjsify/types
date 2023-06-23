@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ibus-1.0.js",
     "main": "ibus-1.0.js",
-    "typedoc": {
-        "entryPoint": "./ibus-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "IBus-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ibus-1.0-ambient.d.ts",
         "./import": "./ibus-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gkbd-3.0.js",
     "main": "gkbd-3.0.js",
-    "typedoc": {
-        "entryPoint": "./gkbd-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gkbd-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gkbd-3.0-ambient.d.ts",
         "./import": "./gkbd-3.0-import.d.ts",

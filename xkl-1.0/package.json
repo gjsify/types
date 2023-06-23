@@ -5,12 +5,6 @@
     "type": "module",
     "module": "xkl-1.0.js",
     "main": "xkl-1.0.js",
-    "typedoc": {
-        "entryPoint": "./xkl-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Xkl-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./xkl-1.0-ambient.d.ts",
         "./import": "./xkl-1.0-import.d.ts",

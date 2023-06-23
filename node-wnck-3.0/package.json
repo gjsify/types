@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-wnck-3.0.js",
     "main": "node-wnck-3.0.js",
-    "typedoc": {
-        "entryPoint": "./node-wnck-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Wnck-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-wnck-3.0-ambient.d.ts",
         "./import": "./node-wnck-3.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "colord-1.0.js",
     "main": "colord-1.0.js",
-    "typedoc": {
-        "entryPoint": "./colord-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Colord-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./colord-1.0-ambient.d.ts",
         "./import": "./colord-1.0-import.d.ts",

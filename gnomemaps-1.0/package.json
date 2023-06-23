@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gnomemaps-1.0.js",
     "main": "gnomemaps-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gnomemaps-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GnomeMaps-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gnomemaps-1.0-ambient.d.ts",
         "./import": "./gnomemaps-1.0-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./rygelserver-2.8.d.ts"],
+    "readme": "./README.md",
+    "name": "RygelServer-2.8",
+    "tsconfig": "./tsconfig.json"
+}
+

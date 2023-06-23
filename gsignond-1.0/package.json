@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gsignond-1.0.js",
     "main": "gsignond-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gsignond-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GSignond-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gsignond-1.0-ambient.d.ts",
         "./import": "./gsignond-1.0-import.d.ts",

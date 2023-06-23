@@ -5,12 +5,6 @@
     "type": "module",
     "module": "mbim-1.0.js",
     "main": "mbim-1.0.js",
-    "typedoc": {
-        "entryPoint": "./mbim-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Mbim-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./mbim-1.0-ambient.d.ts",
         "./import": "./mbim-1.0-import.d.ts",

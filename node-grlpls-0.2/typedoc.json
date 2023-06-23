@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-grlpls-0.2.d.ts"],
+    "readme": "./README.md",
+    "name": "GrlPls-0.2",
+    "tsconfig": "./tsconfig.json"
+}
+

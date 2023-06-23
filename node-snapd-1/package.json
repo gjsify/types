@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-snapd-1.js",
     "main": "node-snapd-1.js",
-    "typedoc": {
-        "entryPoint": "./node-snapd-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Snapd-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-snapd-1-ambient.d.ts",
         "./import": "./node-snapd-1-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gssdp-1.6.js",
     "main": "gssdp-1.6.js",
-    "typedoc": {
-        "entryPoint": "./gssdp-1.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GSSDP-1.6",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gssdp-1.6-ambient.d.ts",
         "./import": "./gssdp-1.6-import.d.ts",

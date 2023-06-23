@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-tracker-3.0.js",
     "main": "node-tracker-3.0.js",
-    "typedoc": {
-        "entryPoint": "./node-tracker-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Tracker-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-tracker-3.0-ambient.d.ts",
         "./import": "./node-tracker-3.0-import.d.ts",

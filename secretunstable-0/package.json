@@ -5,12 +5,6 @@
     "type": "module",
     "module": "secretunstable-0.js",
     "main": "secretunstable-0.js",
-    "typedoc": {
-        "entryPoint": "./secretunstable-0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "SecretUnstable-0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./secretunstable-0-ambient.d.ts",
         "./import": "./secretunstable-0-import.d.ts",

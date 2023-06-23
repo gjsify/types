@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-atk-1.0.js",
     "main": "node-atk-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-atk-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Atk-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-atk-1.0-ambient.d.ts",
         "./import": "./node-atk-1.0-import.d.ts",

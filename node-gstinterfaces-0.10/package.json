@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstinterfaces-0.10.js",
     "main": "node-gstinterfaces-0.10.js",
-    "typedoc": {
-        "entryPoint": "./node-gstinterfaces-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstInterfaces-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstinterfaces-0.10-ambient.d.ts",
         "./import": "./node-gstinterfaces-0.10-import.d.ts",

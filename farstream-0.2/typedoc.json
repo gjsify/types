@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./farstream-0.2.d.ts"],
+    "readme": "./README.md",
+    "name": "Farstream-0.2",
+    "tsconfig": "./tsconfig.json"
+}
+

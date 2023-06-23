@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./tepl-5.d.ts"],
+    "readme": "./README.md",
+    "name": "Tepl-5",
+    "tsconfig": "./tsconfig.json"
+}
+

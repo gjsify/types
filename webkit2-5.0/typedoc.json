@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./webkit2-5.0.d.ts"],
+    "readme": "./README.md",
+    "name": "WebKit2-5.0",
+    "tsconfig": "./tsconfig.json"
+}
+

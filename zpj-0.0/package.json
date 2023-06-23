@@ -5,12 +5,6 @@
     "type": "module",
     "module": "zpj-0.0.js",
     "main": "zpj-0.0.js",
-    "typedoc": {
-        "entryPoint": "./zpj-0.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Zpj-0.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./zpj-0.0-ambient.d.ts",
         "./import": "./zpj-0.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstbadallocators-1.0.js",
     "main": "gstbadallocators-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstbadallocators-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstBadAllocators-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstbadallocators-1.0-ambient.d.ts",
         "./import": "./gstbadallocators-1.0-import.d.ts",

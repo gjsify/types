@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gweather-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GWeather-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

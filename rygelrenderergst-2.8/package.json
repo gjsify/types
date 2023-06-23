@@ -5,12 +5,6 @@
     "type": "module",
     "module": "rygelrenderergst-2.8.js",
     "main": "rygelrenderergst-2.8.js",
-    "typedoc": {
-        "entryPoint": "./rygelrenderergst-2.8.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelRendererGst-2.8",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./rygelrenderergst-2.8-ambient.d.ts",
         "./import": "./rygelrenderergst-2.8-import.d.ts",

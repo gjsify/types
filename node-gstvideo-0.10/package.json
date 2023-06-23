@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstvideo-0.10.js",
     "main": "node-gstvideo-0.10.js",
-    "typedoc": {
-        "entryPoint": "./node-gstvideo-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstVideo-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstvideo-0.10-ambient.d.ts",
         "./import": "./node-gstvideo-0.10-import.d.ts",

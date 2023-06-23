@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-cogl-11.js",
     "main": "node-cogl-11.js",
-    "typedoc": {
-        "entryPoint": "./node-cogl-11.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Cogl-11",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-cogl-11-ambient.d.ts",
         "./import": "./node-cogl-11-import.d.ts",

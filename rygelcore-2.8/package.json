@@ -5,12 +5,6 @@
     "type": "module",
     "module": "rygelcore-2.8.js",
     "main": "rygelcore-2.8.js",
-    "typedoc": {
-        "entryPoint": "./rygelcore-2.8.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelCore-2.8",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./rygelcore-2.8-ambient.d.ts",
         "./import": "./rygelcore-2.8-import.d.ts",

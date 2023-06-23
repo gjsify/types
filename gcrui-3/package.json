@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gcrui-3.js",
     "main": "gcrui-3.js",
-    "typedoc": {
-        "entryPoint": "./gcrui-3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GcrUi-3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gcrui-3-ambient.d.ts",
         "./import": "./gcrui-3-import.d.ts",

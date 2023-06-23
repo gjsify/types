@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-nm-1.0.js",
     "main": "node-nm-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-nm-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "NM-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-nm-1.0-ambient.d.ts",
         "./import": "./node-nm-1.0-import.d.ts",

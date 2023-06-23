@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gandiva-1.0.js",
     "main": "gandiva-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gandiva-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gandiva-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gandiva-1.0-ambient.d.ts",
         "./import": "./gandiva-1.0-import.d.ts",

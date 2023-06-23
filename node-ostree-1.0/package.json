@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-ostree-1.0.js",
     "main": "node-ostree-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-ostree-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "OSTree-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-ostree-1.0-ambient.d.ts",
         "./import": "./node-ostree-1.0-import.d.ts",

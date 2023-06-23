@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-dbusmenu-0.4.js",
     "main": "node-dbusmenu-0.4.js",
-    "typedoc": {
-        "entryPoint": "./node-dbusmenu-0.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Dbusmenu-0.4",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-dbusmenu-0.4-ambient.d.ts",
         "./import": "./node-dbusmenu-0.4-import.d.ts",

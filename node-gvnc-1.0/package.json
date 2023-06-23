@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gvnc-1.0.js",
     "main": "node-gvnc-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gvnc-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GVnc-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gvnc-1.0-ambient.d.ts",
         "./import": "./node-gvnc-1.0-import.d.ts",

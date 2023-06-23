@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-manette-0.2.js",
     "main": "node-manette-0.2.js",
-    "typedoc": {
-        "entryPoint": "./node-manette-0.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Manette-0.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-manette-0.2-ambient.d.ts",
         "./import": "./node-manette-0.2-import.d.ts",

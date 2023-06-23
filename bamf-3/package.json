@@ -5,12 +5,6 @@
     "type": "module",
     "module": "bamf-3.js",
     "main": "bamf-3.js",
-    "typedoc": {
-        "entryPoint": "./bamf-3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Bamf-3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./bamf-3-ambient.d.ts",
         "./import": "./bamf-3-import.d.ts",

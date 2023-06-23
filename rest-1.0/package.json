@@ -5,12 +5,6 @@
     "type": "module",
     "module": "rest-1.0.js",
     "main": "rest-1.0.js",
-    "typedoc": {
-        "entryPoint": "./rest-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Rest-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./rest-1.0-ambient.d.ts",
         "./import": "./rest-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "appindicator3-0.1.js",
     "main": "appindicator3-0.1.js",
-    "typedoc": {
-        "entryPoint": "./appindicator3-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "AppIndicator3-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./appindicator3-0.1-ambient.d.ts",
         "./import": "./appindicator3-0.1-import.d.ts",

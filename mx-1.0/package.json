@@ -5,12 +5,6 @@
     "type": "module",
     "module": "mx-1.0.js",
     "main": "mx-1.0.js",
-    "typedoc": {
-        "entryPoint": "./mx-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Mx-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./mx-1.0-ambient.d.ts",
         "./import": "./mx-1.0-import.d.ts",

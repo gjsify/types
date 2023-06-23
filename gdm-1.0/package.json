@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdm-1.0.js",
     "main": "gdm-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gdm-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gdm-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdm-1.0-ambient.d.ts",
         "./import": "./gdm-1.0-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-unityextras-7.0.d.ts"],
+    "readme": "./README.md",
+    "name": "UnityExtras-7.0",
+    "tsconfig": "./tsconfig.json"
+}
+

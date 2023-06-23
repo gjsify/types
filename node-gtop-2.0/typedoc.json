@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gtop-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GTop-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

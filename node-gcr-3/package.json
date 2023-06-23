@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gcr-3.js",
     "main": "node-gcr-3.js",
-    "typedoc": {
-        "entryPoint": "./node-gcr-3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gcr-3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gcr-3-ambient.d.ts",
         "./import": "./node-gcr-3-import.d.ts",

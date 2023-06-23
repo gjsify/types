@@ -5,12 +5,6 @@
     "type": "module",
     "module": "upowerglib-1.0.js",
     "main": "upowerglib-1.0.js",
-    "typedoc": {
-        "entryPoint": "./upowerglib-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "UPowerGlib-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./upowerglib-1.0-ambient.d.ts",
         "./import": "./upowerglib-1.0-import.d.ts",

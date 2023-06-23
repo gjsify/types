@@ -5,12 +5,6 @@
     "type": "module",
     "module": "vgda-1.js",
     "main": "vgda-1.js",
-    "typedoc": {
-        "entryPoint": "./vgda-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vgda-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./vgda-1-ambient.d.ts",
         "./import": "./vgda-1-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-soupgnome-2.4.js",
     "main": "node-soupgnome-2.4.js",
-    "typedoc": {
-        "entryPoint": "./node-soupgnome-2.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "SoupGNOME-2.4",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-soupgnome-2.4-ambient.d.ts",
         "./import": "./node-soupgnome-2.4-import.d.ts",

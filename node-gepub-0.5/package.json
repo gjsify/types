@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gepub-0.5.js",
     "main": "node-gepub-0.5.js",
-    "typedoc": {
-        "entryPoint": "./node-gepub-0.5.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gepub-0.5",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gepub-0.5-ambient.d.ts",
         "./import": "./node-gepub-0.5-import.d.ts",

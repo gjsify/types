@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-grlpls-0.3.js",
     "main": "node-grlpls-0.3.js",
-    "typedoc": {
-        "entryPoint": "./node-grlpls-0.3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GrlPls-0.3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-grlpls-0.3-ambient.d.ts",
         "./import": "./node-grlpls-0.3-import.d.ts",

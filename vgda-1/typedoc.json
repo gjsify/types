@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./vgda-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Vgda-1",
+    "tsconfig": "./tsconfig.json"
+}
+

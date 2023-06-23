@@ -5,12 +5,6 @@
     "type": "module",
     "module": "accountsservice-1.0.js",
     "main": "accountsservice-1.0.js",
-    "typedoc": {
-        "entryPoint": "./accountsservice-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "AccountsService-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./accountsservice-1.0-ambient.d.ts",
         "./import": "./accountsservice-1.0-import.d.ts",

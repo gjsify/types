@@ -5,12 +5,6 @@
     "type": "module",
     "module": "folksdummy-0.7.js",
     "main": "folksdummy-0.7.js",
-    "typedoc": {
-        "entryPoint": "./folksdummy-0.7.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "FolksDummy-0.7",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./folksdummy-0.7-ambient.d.ts",
         "./import": "./folksdummy-0.7-import.d.ts",

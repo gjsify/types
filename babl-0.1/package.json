@@ -5,12 +5,6 @@
     "type": "module",
     "module": "babl-0.1.js",
     "main": "babl-0.1.js",
-    "typedoc": {
-        "entryPoint": "./babl-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Babl-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./babl-0.1-ambient.d.ts",
         "./import": "./babl-0.1-import.d.ts",

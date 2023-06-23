@@ -5,12 +5,6 @@
     "type": "module",
     "module": "secret-1.js",
     "main": "secret-1.js",
-    "typedoc": {
-        "entryPoint": "./secret-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Secret-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./secret-1-ambient.d.ts",
         "./import": "./secret-1-import.d.ts",

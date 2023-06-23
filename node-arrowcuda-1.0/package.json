@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-arrowcuda-1.0.js",
     "main": "node-arrowcuda-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-arrowcuda-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ArrowCUDA-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-arrowcuda-1.0-ambient.d.ts",
         "./import": "./node-arrowcuda-1.0-import.d.ts",

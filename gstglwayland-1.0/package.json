@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstglwayland-1.0.js",
     "main": "gstglwayland-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstglwayland-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstGLWayland-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstglwayland-1.0-ambient.d.ts",
         "./import": "./gstglwayland-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-tepl-5.js",
     "main": "node-tepl-5.js",
-    "typedoc": {
-        "entryPoint": "./node-tepl-5.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Tepl-5",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-tepl-5-ambient.d.ts",
         "./import": "./node-tepl-5-import.d.ts",

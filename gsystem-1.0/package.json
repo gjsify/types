@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gsystem-1.0.js",
     "main": "gsystem-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gsystem-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GSystem-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gsystem-1.0-ambient.d.ts",
         "./import": "./gsystem-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstglegl-1.0.js",
     "main": "node-gstglegl-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gstglegl-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstGLEGL-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstglegl-1.0-ambient.d.ts",
         "./import": "./node-gstglegl-1.0-import.d.ts",

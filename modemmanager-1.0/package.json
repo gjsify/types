@@ -5,12 +5,6 @@
     "type": "module",
     "module": "modemmanager-1.0.js",
     "main": "modemmanager-1.0.js",
-    "typedoc": {
-        "entryPoint": "./modemmanager-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ModemManager-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./modemmanager-1.0-ambient.d.ts",
         "./import": "./modemmanager-1.0-import.d.ts",

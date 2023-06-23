@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gfbgraph-0.2.js",
     "main": "node-gfbgraph-0.2.js",
-    "typedoc": {
-        "entryPoint": "./node-gfbgraph-0.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GFBGraph-0.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gfbgraph-0.2-ambient.d.ts",
         "./import": "./node-gfbgraph-0.2-import.d.ts",

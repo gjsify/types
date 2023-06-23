@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-metatest-12.js",
     "main": "node-metatest-12.js",
-    "typedoc": {
-        "entryPoint": "./node-metatest-12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "MetaTest-12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-metatest-12-ambient.d.ts",
         "./import": "./node-metatest-12-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "dbusmenugtk3-0.4.js",
     "main": "dbusmenugtk3-0.4.js",
-    "typedoc": {
-        "entryPoint": "./dbusmenugtk3-0.4.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "DbusmenuGtk3-0.4",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./dbusmenugtk3-0.4-ambient.d.ts",
         "./import": "./dbusmenugtk3-0.4-import.d.ts",

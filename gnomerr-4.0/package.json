@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gnomerr-4.0.js",
     "main": "gnomerr-4.0.js",
-    "typedoc": {
-        "entryPoint": "./gnomerr-4.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GnomeRR-4.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gnomerr-4.0-ambient.d.ts",
         "./import": "./gnomerr-4.0-import.d.ts",

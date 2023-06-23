@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-telepathyfarstream-0.6.js",
     "main": "node-telepathyfarstream-0.6.js",
-    "typedoc": {
-        "entryPoint": "./node-telepathyfarstream-0.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "TelepathyFarstream-0.6",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-telepathyfarstream-0.6-ambient.d.ts",
         "./import": "./node-telepathyfarstream-0.6-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gtef-2.d.ts"],
+    "readme": "./README.md",
+    "name": "Gtef-2",
+    "tsconfig": "./tsconfig.json"
+}
+

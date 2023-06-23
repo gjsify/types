@@ -5,12 +5,6 @@
     "type": "module",
     "module": "cogl-10.js",
     "main": "cogl-10.js",
-    "typedoc": {
-        "entryPoint": "./cogl-10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Cogl-10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./cogl-10-ambient.d.ts",
         "./import": "./cogl-10-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstbase-0.10.js",
     "main": "node-gstbase-0.10.js",
-    "typedoc": {
-        "entryPoint": "./node-gstbase-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstBase-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstbase-0.10-ambient.d.ts",
         "./import": "./node-gstbase-0.10-import.d.ts",

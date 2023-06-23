@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstcheck-1.0.js",
     "main": "gstcheck-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstcheck-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstCheck-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstcheck-1.0-ambient.d.ts",
         "./import": "./gstcheck-1.0-import.d.ts",

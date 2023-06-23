@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./builder-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Builder-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

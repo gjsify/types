@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gtef-2.js",
     "main": "gtef-2.js",
-    "typedoc": {
-        "entryPoint": "./gtef-2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gtef-2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gtef-2-ambient.d.ts",
         "./import": "./gtef-2-import.d.ts",

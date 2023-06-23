@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-geglgtk3-0.1.js",
     "main": "node-geglgtk3-0.1.js",
-    "typedoc": {
-        "entryPoint": "./node-geglgtk3-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GeglGtk3-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-geglgtk3-0.1-ambient.d.ts",
         "./import": "./node-geglgtk3-0.1-import.d.ts",

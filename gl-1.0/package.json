@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gl-1.0.js",
     "main": "gl-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gl-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GL-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gl-1.0-ambient.d.ts",
         "./import": "./gl-1.0-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./libvirtgobject-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "LibvirtGObject-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

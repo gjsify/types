@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gstnet-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstNet-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

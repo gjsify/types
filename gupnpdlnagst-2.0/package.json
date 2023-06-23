@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gupnpdlnagst-2.0.js",
     "main": "gupnpdlnagst-2.0.js",
-    "typedoc": {
-        "entryPoint": "./gupnpdlnagst-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUPnPDLNAGst-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gupnpdlnagst-2.0-ambient.d.ts",
         "./import": "./gupnpdlnagst-2.0-import.d.ts",

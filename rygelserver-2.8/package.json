@@ -5,12 +5,6 @@
     "type": "module",
     "module": "rygelserver-2.8.js",
     "main": "rygelserver-2.8.js",
-    "typedoc": {
-        "entryPoint": "./rygelserver-2.8.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelServer-2.8",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./rygelserver-2.8-ambient.d.ts",
         "./import": "./rygelserver-2.8-import.d.ts",

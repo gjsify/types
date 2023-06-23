@@ -5,12 +5,6 @@
     "type": "module",
     "module": "vgsl-1.js",
     "main": "vgsl-1.js",
-    "typedoc": {
-        "entryPoint": "./vgsl-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vgsl-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./vgsl-1-ambient.d.ts",
         "./import": "./vgsl-1-import.d.ts",

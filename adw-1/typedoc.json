@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./adw-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Adw-1",
+    "tsconfig": "./tsconfig.json"
+}
+

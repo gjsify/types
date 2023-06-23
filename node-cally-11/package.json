@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-cally-11.js",
     "main": "node-cally-11.js",
-    "typedoc": {
-        "entryPoint": "./node-cally-11.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Cally-11",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-cally-11-ambient.d.ts",
         "./import": "./node-cally-11-import.d.ts",

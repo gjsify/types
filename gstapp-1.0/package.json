@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstapp-1.0.js",
     "main": "gstapp-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstapp-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstApp-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstapp-1.0-ambient.d.ts",
         "./import": "./gstapp-1.0-import.d.ts",

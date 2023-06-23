@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./edataserverui-1.2.d.ts"],
+    "readme": "./README.md",
+    "name": "EDataServerUI-1.2",
+    "tsconfig": "./tsconfig.json"
+}
+

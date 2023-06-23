@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-javascriptcore-4.1.js",
     "main": "node-javascriptcore-4.1.js",
-    "typedoc": {
-        "entryPoint": "./node-javascriptcore-4.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "JavaScriptCore-4.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-javascriptcore-4.1-ambient.d.ts",
         "./import": "./node-javascriptcore-4.1-import.d.ts",

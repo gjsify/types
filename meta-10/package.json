@@ -5,12 +5,6 @@
     "type": "module",
     "module": "meta-10.js",
     "main": "meta-10.js",
-    "typedoc": {
-        "entryPoint": "./meta-10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Meta-10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./meta-10-ambient.d.ts",
         "./import": "./meta-10-import.d.ts",

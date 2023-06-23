@@ -5,12 +5,6 @@
     "type": "module",
     "module": "dazzle-1.0.js",
     "main": "dazzle-1.0.js",
-    "typedoc": {
-        "entryPoint": "./dazzle-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Dazzle-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./dazzle-1.0-ambient.d.ts",
         "./import": "./dazzle-1.0-import.d.ts",

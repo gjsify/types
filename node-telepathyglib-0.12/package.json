@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-telepathyglib-0.12.js",
     "main": "node-telepathyglib-0.12.js",
-    "typedoc": {
-        "entryPoint": "./node-telepathyglib-0.12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "TelepathyGLib-0.12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-telepathyglib-0.12-ambient.d.ts",
         "./import": "./node-telepathyglib-0.12-import.d.ts",

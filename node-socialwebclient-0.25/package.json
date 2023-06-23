@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-socialwebclient-0.25.js",
     "main": "node-socialwebclient-0.25.js",
-    "typedoc": {
-        "entryPoint": "./node-socialwebclient-0.25.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "SocialWebClient-0.25",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-socialwebclient-0.25-ambient.d.ts",
         "./import": "./node-socialwebclient-0.25-import.d.ts",

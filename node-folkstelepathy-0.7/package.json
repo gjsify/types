@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-folkstelepathy-0.7.js",
     "main": "node-folkstelepathy-0.7.js",
-    "typedoc": {
-        "entryPoint": "./node-folkstelepathy-0.7.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "FolksTelepathy-0.7",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-folkstelepathy-0.7-ambient.d.ts",
         "./import": "./node-folkstelepathy-0.7-import.d.ts",

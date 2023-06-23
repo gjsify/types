@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-rygelrenderer-2.8.js",
     "main": "node-rygelrenderer-2.8.js",
-    "typedoc": {
-        "entryPoint": "./node-rygelrenderer-2.8.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RygelRenderer-2.8",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-rygelrenderer-2.8-ambient.d.ts",
         "./import": "./node-rygelrenderer-2.8-import.d.ts",

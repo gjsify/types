@@ -5,12 +5,6 @@
     "type": "module",
     "module": "cally-1.0.js",
     "main": "cally-1.0.js",
-    "typedoc": {
-        "entryPoint": "./cally-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Cally-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./cally-1.0-ambient.d.ts",
         "./import": "./cally-1.0-import.d.ts",

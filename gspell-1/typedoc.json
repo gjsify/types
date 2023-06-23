@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gspell-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Gspell-1",
+    "tsconfig": "./tsconfig.json"
+}
+

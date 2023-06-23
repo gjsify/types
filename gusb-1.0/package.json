@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gusb-1.0.js",
     "main": "gusb-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gusb-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUsb-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gusb-1.0-ambient.d.ts",
         "./import": "./gusb-1.0-import.d.ts",

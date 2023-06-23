@@ -5,12 +5,6 @@
     "type": "module",
     "module": "libvirtgobject-1.0.js",
     "main": "libvirtgobject-1.0.js",
-    "typedoc": {
-        "entryPoint": "./libvirtgobject-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "LibvirtGObject-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./libvirtgobject-1.0-ambient.d.ts",
         "./import": "./libvirtgobject-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gepub-0.5.js",
     "main": "gepub-0.5.js",
-    "typedoc": {
-        "entryPoint": "./gepub-0.5.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gepub-0.5",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gepub-0.5-ambient.d.ts",
         "./import": "./gepub-0.5-import.d.ts",

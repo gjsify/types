@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./epcui-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "EpcUi-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

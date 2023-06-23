@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-geocodeglib-1.0.js",
     "main": "node-geocodeglib-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-geocodeglib-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GeocodeGlib-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-geocodeglib-1.0-ambient.d.ts",
         "./import": "./node-geocodeglib-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "webkit2webextension-5.0.js",
     "main": "webkit2webextension-5.0.js",
-    "typedoc": {
-        "entryPoint": "./webkit2webextension-5.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "WebKit2WebExtension-5.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./webkit2webextension-5.0-ambient.d.ts",
         "./import": "./webkit2webextension-5.0-import.d.ts",

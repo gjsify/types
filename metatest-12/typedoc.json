@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./metatest-12.d.ts"],
+    "readme": "./README.md",
+    "name": "MetaTest-12",
+    "tsconfig": "./tsconfig.json"
+}
+

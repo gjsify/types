@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-nmgtk-1.0.js",
     "main": "node-nmgtk-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-nmgtk-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "NMGtk-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-nmgtk-1.0-ambient.d.ts",
         "./import": "./node-nmgtk-1.0-import.d.ts",

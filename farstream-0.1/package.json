@@ -5,12 +5,6 @@
     "type": "module",
     "module": "farstream-0.1.js",
     "main": "farstream-0.1.js",
-    "typedoc": {
-        "entryPoint": "./farstream-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Farstream-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./farstream-0.1-ambient.d.ts",
         "./import": "./farstream-0.1-import.d.ts",

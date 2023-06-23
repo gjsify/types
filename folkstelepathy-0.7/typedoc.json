@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./folkstelepathy-0.7.d.ts"],
+    "readme": "./README.md",
+    "name": "FolksTelepathy-0.7",
+    "tsconfig": "./tsconfig.json"
+}
+

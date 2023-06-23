@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gdaui-5.0.js",
     "main": "node-gdaui-5.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gdaui-5.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gdaui-5.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gdaui-5.0-ambient.d.ts",
         "./import": "./node-gdaui-5.0-import.d.ts",

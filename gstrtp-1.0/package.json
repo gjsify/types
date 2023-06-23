@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstrtp-1.0.js",
     "main": "gstrtp-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstrtp-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstRtp-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstrtp-1.0-ambient.d.ts",
         "./import": "./gstrtp-1.0-import.d.ts",

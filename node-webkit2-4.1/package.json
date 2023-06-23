@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-webkit2-4.1.js",
     "main": "node-webkit2-4.1.js",
-    "typedoc": {
-        "entryPoint": "./node-webkit2-4.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "WebKit2-4.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-webkit2-4.1-ambient.d.ts",
         "./import": "./node-webkit2-4.1-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./goocanvas-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GooCanvas-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

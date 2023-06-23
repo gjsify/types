@@ -5,12 +5,6 @@
     "type": "module",
     "module": "trackerminer-1.0.js",
     "main": "trackerminer-1.0.js",
-    "typedoc": {
-        "entryPoint": "./trackerminer-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "TrackerMiner-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./trackerminer-1.0-ambient.d.ts",
         "./import": "./trackerminer-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "poppler-0.18.js",
     "main": "poppler-0.18.js",
-    "typedoc": {
-        "entryPoint": "./poppler-0.18.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Poppler-0.18",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./poppler-0.18-ambient.d.ts",
         "./import": "./poppler-0.18-import.d.ts",

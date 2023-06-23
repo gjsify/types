@@ -5,12 +5,6 @@
     "type": "module",
     "module": "template-1.0.js",
     "main": "template-1.0.js",
-    "typedoc": {
-        "entryPoint": "./template-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Template-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./template-1.0-ambient.d.ts",
         "./import": "./template-1.0-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gstaudio-0.10.d.ts"],
+    "readme": "./README.md",
+    "name": "GstAudio-0.10",
+    "tsconfig": "./tsconfig.json"
+}
+

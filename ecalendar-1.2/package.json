@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ecalendar-1.2.js",
     "main": "ecalendar-1.2.js",
-    "typedoc": {
-        "entryPoint": "./ecalendar-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ECalendar-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ecalendar-1.2-ambient.d.ts",
         "./import": "./ecalendar-1.2-import.d.ts",

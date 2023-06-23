@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-ggit-1.0.js",
     "main": "node-ggit-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-ggit-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Ggit-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-ggit-1.0-ambient.d.ts",
         "./import": "./node-ggit-1.0-import.d.ts",

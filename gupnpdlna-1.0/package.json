@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gupnpdlna-1.0.js",
     "main": "gupnpdlna-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gupnpdlna-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUPnPDLNA-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gupnpdlna-1.0-ambient.d.ts",
         "./import": "./gupnpdlna-1.0-import.d.ts",

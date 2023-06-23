@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-qmi-1.0.js",
     "main": "node-qmi-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-qmi-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Qmi-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-qmi-1.0-ambient.d.ts",
         "./import": "./node-qmi-1.0-import.d.ts",

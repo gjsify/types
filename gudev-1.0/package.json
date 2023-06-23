@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gudev-1.0.js",
     "main": "gudev-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gudev-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GUdev-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gudev-1.0-ambient.d.ts",
         "./import": "./gudev-1.0-import.d.ts",

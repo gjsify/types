@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstcontroller-1.0.js",
     "main": "gstcontroller-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstcontroller-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstController-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstcontroller-1.0-ambient.d.ts",
         "./import": "./gstcontroller-1.0-import.d.ts",

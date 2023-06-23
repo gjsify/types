@@ -5,12 +5,6 @@
     "type": "module",
     "module": "libxml2-2.0.js",
     "main": "libxml2-2.0.js",
-    "typedoc": {
-        "entryPoint": "./libxml2-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "libxml2-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./libxml2-2.0-ambient.d.ts",
         "./import": "./libxml2-2.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstbadaudio-1.0.js",
     "main": "gstbadaudio-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gstbadaudio-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstBadAudio-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstbadaudio-1.0-ambient.d.ts",
         "./import": "./gstbadaudio-1.0-import.d.ts",

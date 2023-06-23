@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdk-4.0.js",
     "main": "gdk-4.0.js",
-    "typedoc": {
-        "entryPoint": "./gdk-4.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gdk-4.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdk-4.0-ambient.d.ts",
         "./import": "./gdk-4.0-import.d.ts",

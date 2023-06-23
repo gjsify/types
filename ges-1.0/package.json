@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ges-1.0.js",
     "main": "ges-1.0.js",
-    "typedoc": {
-        "entryPoint": "./ges-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GES-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ges-1.0-ambient.d.ts",
         "./import": "./ges-1.0-import.d.ts",

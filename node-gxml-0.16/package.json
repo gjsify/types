@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gxml-0.16.js",
     "main": "node-gxml-0.16.js",
-    "typedoc": {
-        "entryPoint": "./node-gxml-0.16.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GXml-0.16",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gxml-0.16-ambient.d.ts",
         "./import": "./node-gxml-0.16-import.d.ts",

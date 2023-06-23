@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gsttag-1.0.js",
     "main": "gsttag-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gsttag-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstTag-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gsttag-1.0-ambient.d.ts",
         "./import": "./gsttag-1.0-import.d.ts",

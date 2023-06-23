@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gck-2.d.ts"],
+    "readme": "./README.md",
+    "name": "Gck-2",
+    "tsconfig": "./tsconfig.json"
+}
+

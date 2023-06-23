@@ -5,12 +5,6 @@
     "type": "module",
     "module": "libmsi-1.0.js",
     "main": "libmsi-1.0.js",
-    "typedoc": {
-        "entryPoint": "./libmsi-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Libmsi-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./libmsi-1.0-ambient.d.ts",
         "./import": "./libmsi-1.0-import.d.ts",

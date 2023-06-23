@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-grlnet-0.3.js",
     "main": "node-grlnet-0.3.js",
-    "typedoc": {
-        "entryPoint": "./node-grlnet-0.3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GrlNet-0.3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-grlnet-0.3-ambient.d.ts",
         "./import": "./node-grlnet-0.3-import.d.ts",

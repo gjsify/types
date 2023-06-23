@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./libvirtgconfig-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "LibvirtGConfig-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

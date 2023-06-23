@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gspell-1.js",
     "main": "node-gspell-1.js",
-    "typedoc": {
-        "entryPoint": "./node-gspell-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gspell-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gspell-1-ambient.d.ts",
         "./import": "./node-gspell-1-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "nma-1.0.js",
     "main": "nma-1.0.js",
-    "typedoc": {
-        "entryPoint": "./nma-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "NMA-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./nma-1.0-ambient.d.ts",
         "./import": "./nma-1.0-import.d.ts",

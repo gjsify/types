@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-shell-12.js",
     "main": "node-shell-12.js",
-    "typedoc": {
-        "entryPoint": "./node-shell-12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Shell-12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-shell-12-ambient.d.ts",
         "./import": "./node-shell-12-import.d.ts",

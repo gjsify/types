@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./ebackend-1.2.d.ts"],
+    "readme": "./README.md",
+    "name": "EBackend-1.2",
+    "tsconfig": "./tsconfig.json"
+}
+

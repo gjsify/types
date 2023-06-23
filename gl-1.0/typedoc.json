@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gl-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GL-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "pangofc-1.0.js",
     "main": "pangofc-1.0.js",
-    "typedoc": {
-        "entryPoint": "./pangofc-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "PangoFc-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./pangofc-1.0-ambient.d.ts",
         "./import": "./pangofc-1.0-import.d.ts",

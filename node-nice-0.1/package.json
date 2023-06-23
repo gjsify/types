@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-nice-0.1.js",
     "main": "node-nice-0.1.js",
-    "typedoc": {
-        "entryPoint": "./node-nice-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Nice-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-nice-0.1-ambient.d.ts",
         "./import": "./node-nice-0.1-import.d.ts",

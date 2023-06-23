@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-vips-8.0.js",
     "main": "node-vips-8.0.js",
-    "typedoc": {
-        "entryPoint": "./node-vips-8.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vips-8.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-vips-8.0-ambient.d.ts",
         "./import": "./node-vips-8.0-import.d.ts",

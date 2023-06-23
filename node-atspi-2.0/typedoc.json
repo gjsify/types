@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-atspi-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Atspi-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

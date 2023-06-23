@@ -5,12 +5,6 @@
     "type": "module",
     "module": "pangoxft-1.0.js",
     "main": "pangoxft-1.0.js",
-    "typedoc": {
-        "entryPoint": "./pangoxft-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "PangoXft-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./pangoxft-1.0-ambient.d.ts",
         "./import": "./pangoxft-1.0-import.d.ts",

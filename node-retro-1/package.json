@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-retro-1.js",
     "main": "node-retro-1.js",
-    "typedoc": {
-        "entryPoint": "./node-retro-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Retro-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-retro-1-ambient.d.ts",
         "./import": "./node-retro-1-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-shell-0.1.d.ts"],
+    "readme": "./README.md",
+    "name": "Shell-0.1",
+    "tsconfig": "./tsconfig.json"
+}
+

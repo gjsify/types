@@ -5,12 +5,6 @@
     "type": "module",
     "module": "folks-0.6.js",
     "main": "folks-0.6.js",
-    "typedoc": {
-        "entryPoint": "./folks-0.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Folks-0.6",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./folks-0.6-ambient.d.ts",
         "./import": "./folks-0.6-import.d.ts",

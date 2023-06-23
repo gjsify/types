@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gdesktopenums-3.0.js",
     "main": "node-gdesktopenums-3.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gdesktopenums-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GDesktopEnums-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gdesktopenums-3.0-ambient.d.ts",
         "./import": "./node-gdesktopenums-3.0-import.d.ts",

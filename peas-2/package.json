@@ -5,12 +5,6 @@
     "type": "module",
     "module": "peas-2.js",
     "main": "peas-2.js",
-    "typedoc": {
-        "entryPoint": "./peas-2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Peas-2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./peas-2-ambient.d.ts",
         "./import": "./peas-2-import.d.ts",

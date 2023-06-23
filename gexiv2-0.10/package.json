@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gexiv2-0.10.js",
     "main": "gexiv2-0.10.js",
-    "typedoc": {
-        "entryPoint": "./gexiv2-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GExiv2-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gexiv2-0.10-ambient.d.ts",
         "./import": "./gexiv2-0.10-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdata-0.0.js",
     "main": "gdata-0.0.js",
-    "typedoc": {
-        "entryPoint": "./gdata-0.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GData-0.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdata-0.0-ambient.d.ts",
         "./import": "./gdata-0.0-import.d.ts",

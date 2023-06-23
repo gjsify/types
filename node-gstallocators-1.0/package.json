@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstallocators-1.0.js",
     "main": "node-gstallocators-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gstallocators-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstAllocators-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstallocators-1.0-ambient.d.ts",
         "./import": "./node-gstallocators-1.0-import.d.ts",

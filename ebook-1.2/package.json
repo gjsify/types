@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ebook-1.2.js",
     "main": "ebook-1.2.js",
-    "typedoc": {
-        "entryPoint": "./ebook-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EBook-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ebook-1.2-ambient.d.ts",
         "./import": "./ebook-1.2-import.d.ts",

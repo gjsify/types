@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-amtk-5.js",
     "main": "node-amtk-5.js",
-    "typedoc": {
-        "entryPoint": "./node-amtk-5.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Amtk-5",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-amtk-5-ambient.d.ts",
         "./import": "./node-amtk-5-import.d.ts",

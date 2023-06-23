@@ -5,12 +5,6 @@
     "type": "module",
     "module": "appstreambuilder-1.0.js",
     "main": "appstreambuilder-1.0.js",
-    "typedoc": {
-        "entryPoint": "./appstreambuilder-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "AppStreamBuilder-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./appstreambuilder-1.0-ambient.d.ts",
         "./import": "./appstreambuilder-1.0-import.d.ts",

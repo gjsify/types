@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gstpbutils-0.10.js",
     "main": "gstpbutils-0.10.js",
-    "typedoc": {
-        "entryPoint": "./gstpbutils-0.10.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstPbutils-0.10",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gstpbutils-0.10-ambient.d.ts",
         "./import": "./gstpbutils-0.10-import.d.ts",

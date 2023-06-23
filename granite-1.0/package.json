@@ -5,12 +5,6 @@
     "type": "module",
     "module": "granite-1.0.js",
     "main": "granite-1.0.js",
-    "typedoc": {
-        "entryPoint": "./granite-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Granite-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./granite-1.0-ambient.d.ts",
         "./import": "./granite-1.0-import.d.ts",

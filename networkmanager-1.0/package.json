@@ -5,12 +5,6 @@
     "type": "module",
     "module": "networkmanager-1.0.js",
     "main": "networkmanager-1.0.js",
-    "typedoc": {
-        "entryPoint": "./networkmanager-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "NetworkManager-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./networkmanager-1.0-ambient.d.ts",
         "./import": "./networkmanager-1.0-import.d.ts",

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-evinceview-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "EvinceView-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gsk-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Gsk-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ebackend-1.2.js",
     "main": "ebackend-1.2.js",
-    "typedoc": {
-        "entryPoint": "./ebackend-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EBackend-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ebackend-1.2-ambient.d.ts",
         "./import": "./ebackend-1.2-import.d.ts",

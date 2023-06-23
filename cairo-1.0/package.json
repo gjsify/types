@@ -5,12 +5,6 @@
     "type": "module",
     "module": "cairo-1.0.js",
     "main": "cairo-1.0.js",
-    "typedoc": {
-        "entryPoint": "./cairo-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "cairo-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./cairo-1.0-ambient.d.ts",
         "./import": "./cairo-1.0-import.d.ts",

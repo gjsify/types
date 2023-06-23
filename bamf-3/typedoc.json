@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./bamf-3.d.ts"],
+    "readme": "./README.md",
+    "name": "Bamf-3",
+    "tsconfig": "./tsconfig.json"
+}
+

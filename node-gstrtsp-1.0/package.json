@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstrtsp-1.0.js",
     "main": "node-gstrtsp-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gstrtsp-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstRtsp-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstrtsp-1.0-ambient.d.ts",
         "./import": "./node-gstrtsp-1.0-import.d.ts",

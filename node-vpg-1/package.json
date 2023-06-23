@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-vpg-1.js",
     "main": "node-vpg-1.js",
-    "typedoc": {
-        "entryPoint": "./node-vpg-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vpg-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-vpg-1-ambient.d.ts",
         "./import": "./node-vpg-1-import.d.ts",

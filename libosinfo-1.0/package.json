@@ -5,12 +5,6 @@
     "type": "module",
     "module": "libosinfo-1.0.js",
     "main": "libosinfo-1.0.js",
-    "typedoc": {
-        "entryPoint": "./libosinfo-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Libosinfo-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./libosinfo-1.0-ambient.d.ts",
         "./import": "./libosinfo-1.0-import.d.ts",

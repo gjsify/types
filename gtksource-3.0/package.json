@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gtksource-3.0.js",
     "main": "gtksource-3.0.js",
-    "typedoc": {
-        "entryPoint": "./gtksource-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GtkSource-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gtksource-3.0-ambient.d.ts",
         "./import": "./gtksource-3.0-import.d.ts",

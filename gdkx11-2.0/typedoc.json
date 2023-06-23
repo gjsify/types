@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gdkx11-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GdkX11-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

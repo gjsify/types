@@ -5,12 +5,6 @@
     "type": "module",
     "module": "champlain-0.12.js",
     "main": "champlain-0.12.js",
-    "typedoc": {
-        "entryPoint": "./champlain-0.12.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Champlain-0.12",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./champlain-0.12-ambient.d.ts",
         "./import": "./champlain-0.12-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "grlpls-0.2.js",
     "main": "grlpls-0.2.js",
-    "typedoc": {
-        "entryPoint": "./grlpls-0.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GrlPls-0.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./grlpls-0.2-ambient.d.ts",
         "./import": "./grlpls-0.2-import.d.ts",

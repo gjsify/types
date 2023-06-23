@@ -5,12 +5,6 @@
     "type": "module",
     "module": "xlib-2.0.js",
     "main": "xlib-2.0.js",
-    "typedoc": {
-        "entryPoint": "./xlib-2.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "xlib-2.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./xlib-2.0-ambient.d.ts",
         "./import": "./xlib-2.0-import.d.ts",

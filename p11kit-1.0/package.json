@@ -5,12 +5,6 @@
     "type": "module",
     "module": "p11kit-1.0.js",
     "main": "p11kit-1.0.js",
-    "typedoc": {
-        "entryPoint": "./p11kit-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "P11Kit-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./p11kit-1.0-ambient.d.ts",
         "./import": "./p11kit-1.0-import.d.ts",

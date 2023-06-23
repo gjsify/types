@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./champlain-0.12.d.ts"],
+    "readme": "./README.md",
+    "name": "Champlain-0.12",
+    "tsconfig": "./tsconfig.json"
+}
+

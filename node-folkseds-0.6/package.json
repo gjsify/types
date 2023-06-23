@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-folkseds-0.6.js",
     "main": "node-folkseds-0.6.js",
-    "typedoc": {
-        "entryPoint": "./node-folkseds-0.6.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "FolksEds-0.6",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-folkseds-0.6-ambient.d.ts",
         "./import": "./node-folkseds-0.6-import.d.ts",

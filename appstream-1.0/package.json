@@ -5,12 +5,6 @@
     "type": "module",
     "module": "appstream-1.0.js",
     "main": "appstream-1.0.js",
-    "typedoc": {
-        "entryPoint": "./appstream-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "AppStream-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./appstream-1.0-ambient.d.ts",
         "./import": "./appstream-1.0-import.d.ts",

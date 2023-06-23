@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ianjuta-3.0.js",
     "main": "ianjuta-3.0.js",
-    "typedoc": {
-        "entryPoint": "./ianjuta-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "IAnjuta-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ianjuta-3.0-ambient.d.ts",
         "./import": "./ianjuta-3.0-import.d.ts",

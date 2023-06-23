@@ -5,12 +5,6 @@
     "type": "module",
     "module": "anthy-9000.js",
     "main": "anthy-9000.js",
-    "typedoc": {
-        "entryPoint": "./anthy-9000.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Anthy-9000",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./anthy-9000-ambient.d.ts",
         "./import": "./anthy-9000-import.d.ts",

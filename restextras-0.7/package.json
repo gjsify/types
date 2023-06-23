@@ -5,12 +5,6 @@
     "type": "module",
     "module": "restextras-0.7.js",
     "main": "restextras-0.7.js",
-    "typedoc": {
-        "entryPoint": "./restextras-0.7.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "RestExtras-0.7",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./restextras-0.7-ambient.d.ts",
         "./import": "./restextras-0.7-import.d.ts",

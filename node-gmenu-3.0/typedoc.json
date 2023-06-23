@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gmenu-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GMenu-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gitgext-1.0.js",
     "main": "gitgext-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gitgext-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GitgExt-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gitgext-1.0-ambient.d.ts",
         "./import": "./gitgext-1.0-import.d.ts",

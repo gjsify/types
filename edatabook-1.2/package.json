@@ -5,12 +5,6 @@
     "type": "module",
     "module": "edatabook-1.2.js",
     "main": "edatabook-1.2.js",
-    "typedoc": {
-        "entryPoint": "./edatabook-1.2.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "EDataBook-1.2",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./edatabook-1.2-ambient.d.ts",
         "./import": "./edatabook-1.2-import.d.ts",

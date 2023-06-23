@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-vda-1.js",
     "main": "node-vda-1.js",
-    "typedoc": {
-        "entryPoint": "./node-vda-1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Vda-1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-vda-1-ambient.d.ts",
         "./import": "./node-vda-1-import.d.ts",

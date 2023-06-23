@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-grl-0.1.js",
     "main": "node-grl-0.1.js",
-    "typedoc": {
-        "entryPoint": "./node-grl-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Grl-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-grl-0.1-ambient.d.ts",
         "./import": "./node-grl-0.1-import.d.ts",

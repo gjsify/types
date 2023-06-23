@@ -5,12 +5,6 @@
     "type": "module",
     "module": "totem-1.0.js",
     "main": "totem-1.0.js",
-    "typedoc": {
-        "entryPoint": "./totem-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Totem-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./totem-1.0-ambient.d.ts",
         "./import": "./totem-1.0-import.d.ts",

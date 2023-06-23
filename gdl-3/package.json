@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gdl-3.js",
     "main": "gdl-3.js",
-    "typedoc": {
-        "entryPoint": "./gdl-3.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gdl-3",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gdl-3-ambient.d.ts",
         "./import": "./gdl-3-import.d.ts",

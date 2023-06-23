@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstriff-1.0.js",
     "main": "node-gstriff-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gstriff-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstRiff-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstriff-1.0-ambient.d.ts",
         "./import": "./node-gstriff-1.0-import.d.ts",

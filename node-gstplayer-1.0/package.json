@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-gstplayer-1.0.js",
     "main": "node-gstplayer-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-gstplayer-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GstPlayer-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-gstplayer-1.0-ambient.d.ts",
         "./import": "./node-gstplayer-1.0-import.d.ts",

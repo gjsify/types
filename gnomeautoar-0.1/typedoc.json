@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gnomeautoar-0.1.d.ts"],
+    "readme": "./README.md",
+    "name": "GnomeAutoar-0.1",
+    "tsconfig": "./tsconfig.json"
+}
+

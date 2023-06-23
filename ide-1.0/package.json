@@ -5,12 +5,6 @@
     "type": "module",
     "module": "ide-1.0.js",
     "main": "ide-1.0.js",
-    "typedoc": {
-        "entryPoint": "./ide-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Ide-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./ide-1.0-ambient.d.ts",
         "./import": "./ide-1.0-import.d.ts",

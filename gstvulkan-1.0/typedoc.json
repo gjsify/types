@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gstvulkan-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstVulkan-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

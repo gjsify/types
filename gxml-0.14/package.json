@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gxml-0.14.js",
     "main": "gxml-0.14.js",
-    "typedoc": {
-        "entryPoint": "./gxml-0.14.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GXml-0.14",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gxml-0.14-ambient.d.ts",
         "./import": "./gxml-0.14-import.d.ts",

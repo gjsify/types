@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-unityextras-7.0.js",
     "main": "node-unityextras-7.0.js",
-    "typedoc": {
-        "entryPoint": "./node-unityextras-7.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "UnityExtras-7.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-unityextras-7.0-ambient.d.ts",
         "./import": "./node-unityextras-7.0-import.d.ts",

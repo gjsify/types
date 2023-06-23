@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-arrow-1.0.js",
     "main": "node-arrow-1.0.js",
-    "typedoc": {
-        "entryPoint": "./node-arrow-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Arrow-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-arrow-1.0-ambient.d.ts",
         "./import": "./node-arrow-1.0-import.d.ts",

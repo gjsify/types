@@ -5,12 +5,6 @@
     "type": "module",
     "module": "sushi-1.0.js",
     "main": "sushi-1.0.js",
-    "typedoc": {
-        "entryPoint": "./sushi-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Sushi-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./sushi-1.0-ambient.d.ts",
         "./import": "./sushi-1.0-import.d.ts",

@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gmime-3.0.js",
     "main": "gmime-3.0.js",
-    "typedoc": {
-        "entryPoint": "./gmime-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "GMime-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gmime-3.0-ambient.d.ts",
         "./import": "./gmime-3.0-import.d.ts",

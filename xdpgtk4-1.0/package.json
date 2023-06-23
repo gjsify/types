@@ -5,12 +5,6 @@
     "type": "module",
     "module": "xdpgtk4-1.0.js",
     "main": "xdpgtk4-1.0.js",
-    "typedoc": {
-        "entryPoint": "./xdpgtk4-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "XdpGtk4-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./xdpgtk4-1.0-ambient.d.ts",
         "./import": "./xdpgtk4-1.0-import.d.ts",

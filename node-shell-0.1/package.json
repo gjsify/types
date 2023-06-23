@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-shell-0.1.js",
     "main": "node-shell-0.1.js",
-    "typedoc": {
-        "entryPoint": "./node-shell-0.1.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Shell-0.1",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-shell-0.1-ambient.d.ts",
         "./import": "./node-shell-0.1-import.d.ts",

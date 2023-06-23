@@ -5,12 +5,6 @@
     "type": "module",
     "module": "guestfs-1.0.js",
     "main": "guestfs-1.0.js",
-    "typedoc": {
-        "entryPoint": "./guestfs-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Guestfs-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./guestfs-1.0-ambient.d.ts",
         "./import": "./guestfs-1.0-import.d.ts",

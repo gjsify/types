@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-anthy-9000.d.ts"],
+    "readme": "./README.md",
+    "name": "Anthy-9000",
+    "tsconfig": "./tsconfig.json"
+}
+

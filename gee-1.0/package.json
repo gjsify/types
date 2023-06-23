@@ -5,12 +5,6 @@
     "type": "module",
     "module": "gee-1.0.js",
     "main": "gee-1.0.js",
-    "typedoc": {
-        "entryPoint": "./gee-1.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Gee-1.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./gee-1.0-ambient.d.ts",
         "./import": "./gee-1.0-import.d.ts",

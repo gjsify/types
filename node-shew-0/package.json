@@ -5,12 +5,6 @@
     "type": "module",
     "module": "node-shew-0.js",
     "main": "node-shew-0.js",
-    "typedoc": {
-        "entryPoint": "./node-shew-0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "Shew-0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./node-shew-0-ambient.d.ts",
         "./import": "./node-shew-0-import.d.ts",

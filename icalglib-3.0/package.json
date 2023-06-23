@@ -5,12 +5,6 @@
     "type": "module",
     "module": "icalglib-3.0.js",
     "main": "icalglib-3.0.js",
-    "typedoc": {
-        "entryPoint": "./icalglib-3.0.d.ts",
-        "readmeFile": "./README.md",
-        "displayName": "ICalGLib-3.0",
-        "tsconfig": "./tsconfig.doc.json"
-    },
     "exports": {
         "./ambient": "./icalglib-3.0-ambient.d.ts",
         "./import": "./icalglib-3.0-import.d.ts",
