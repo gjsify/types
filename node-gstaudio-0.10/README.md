@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gstaudio-0.10)
 
 
-Node.js TypeScript type definitions for GstAudio-0.10, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+Node.js TypeScript type definitions for GstAudio-0.10, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 
 ## Install

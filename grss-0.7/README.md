@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/grss-0.7)
 
 
-GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 LibGRSS is a library for easy management of RSS/Atom/Pie feeds. Includes methods to fetch, parse and handle XML documents, an implementation of PubSubHubBub client, an OPML parser and some more utility.
 

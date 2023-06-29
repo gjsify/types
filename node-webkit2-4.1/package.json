@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-webkit2-4.1",
-    "version": "2.40.0-3.1.0",
+    "version": "2.40.0-3.2.0",
     "description": "Node.js TypeScript type definitions for WebKit2-4.1, generated from library version 2.40.0",
     "type": "module",
     "module": "node-webkit2-4.1.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-mbim-1.0",
-    "version": "1.29.7-3.1.0",
+    "version": "1.29.7-3.2.0",
     "description": "Node.js TypeScript type definitions for Mbim-1.0, generated from library version 1.29.7",
     "type": "module",
     "module": "node-mbim-1.0.js",

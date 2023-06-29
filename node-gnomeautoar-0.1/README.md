@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gnomeautoar-0.1)
 
 
-Node.js TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+Node.js TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 
 ## Install

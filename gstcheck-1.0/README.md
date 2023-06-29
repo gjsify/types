@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gstcheck-1.0)
 
 
-GJS TypeScript type definitions for GstCheck-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+GJS TypeScript type definitions for GstCheck-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 GStreamer Check Unit Testing
 

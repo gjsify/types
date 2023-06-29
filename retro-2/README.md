@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/retro-2)
 
 
-GJS TypeScript type definitions for Retro-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+GJS TypeScript type definitions for Retro-2, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 
 ## Install

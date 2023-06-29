@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gdl-3)
 
 
-Node.js TypeScript type definitions for Gdl-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+Node.js TypeScript type definitions for Gdl-3, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 The GNOME Devtools Library package provides a docking system and several utilities useful to GNOME development tools and GNOME applications in general.
 

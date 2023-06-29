@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gcrgtk4-4)
 
 
-Node.js TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.1.0.
+Node.js TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
 
 
 ## Install

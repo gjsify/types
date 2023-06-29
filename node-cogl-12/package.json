@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cogl-12",
-    "version": "12.0.0-3.1.0",
+    "version": "12.0.0-3.2.0",
     "description": "Node.js TypeScript type definitions for Cogl-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-cogl-12.js",
