@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-grl-0.3.d.ts","./node-grl-0.3-ambient.d.ts","./node-grl-0.3-import.d.ts"],
+    "entryPoints": ["./node-grl-0.3.d.ts"],
     "readme": "./README.md",
     "name": "Grl-0.3",
     "tsconfig": "./tsconfig.json"

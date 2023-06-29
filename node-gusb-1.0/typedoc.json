@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gusb-1.0.d.ts","./node-gusb-1.0-ambient.d.ts","./node-gusb-1.0-import.d.ts"],
+    "entryPoints": ["./node-gusb-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GUsb-1.0",
     "tsconfig": "./tsconfig.json"

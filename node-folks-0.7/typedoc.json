@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-folks-0.7.d.ts","./node-folks-0.7-ambient.d.ts","./node-folks-0.7-import.d.ts"],
+    "entryPoints": ["./node-folks-0.7.d.ts"],
     "readme": "./README.md",
     "name": "Folks-0.7",
     "tsconfig": "./tsconfig.json"

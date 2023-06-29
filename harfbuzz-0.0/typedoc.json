@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./harfbuzz-0.0.d.ts","./harfbuzz-0.0-ambient.d.ts","./harfbuzz-0.0-import.d.ts"],
+    "entryPoints": ["./harfbuzz-0.0.d.ts"],
     "readme": "./README.md",
     "name": "HarfBuzz-0.0",
     "tsconfig": "./tsconfig.json"

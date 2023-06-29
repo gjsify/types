@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./vips-8.0.d.ts","./vips-8.0-ambient.d.ts","./vips-8.0-import.d.ts"],
+    "entryPoints": ["./vips-8.0.d.ts"],
     "readme": "./README.md",
     "name": "Vips-8.0",
     "tsconfig": "./tsconfig.json"

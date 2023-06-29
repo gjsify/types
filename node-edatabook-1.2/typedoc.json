@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-edatabook-1.2.d.ts","./node-edatabook-1.2-ambient.d.ts","./node-edatabook-1.2-import.d.ts"],
+    "entryPoints": ["./node-edatabook-1.2.d.ts"],
     "readme": "./README.md",
     "name": "EDataBook-1.2",
     "tsconfig": "./tsconfig.json"

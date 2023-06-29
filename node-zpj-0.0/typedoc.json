@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-zpj-0.0.d.ts","./node-zpj-0.0-ambient.d.ts","./node-zpj-0.0-import.d.ts"],
+    "entryPoints": ["./node-zpj-0.0.d.ts"],
     "readme": "./README.md",
     "name": "Zpj-0.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./soupgnome-2.4.d.ts","./soupgnome-2.4-ambient.d.ts","./soupgnome-2.4-import.d.ts"],
+    "entryPoints": ["./soupgnome-2.4.d.ts"],
     "readme": "./README.md",
     "name": "SoupGNOME-2.4",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./rest-0.7.d.ts","./rest-0.7-ambient.d.ts","./rest-0.7-import.d.ts"],
+    "entryPoints": ["./rest-0.7.d.ts"],
     "readme": "./README.md",
     "name": "Rest-0.7",
     "tsconfig": "./tsconfig.json"

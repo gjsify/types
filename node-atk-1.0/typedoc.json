@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-atk-1.0.d.ts","./node-atk-1.0-ambient.d.ts","./node-atk-1.0-import.d.ts"],
+    "entryPoints": ["./node-atk-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Atk-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gvc-1.0.d.ts","./gvc-1.0-ambient.d.ts","./gvc-1.0-import.d.ts"],
+    "entryPoints": ["./gvc-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Gvc-1.0",
     "tsconfig": "./tsconfig.json"

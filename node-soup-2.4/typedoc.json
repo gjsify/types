@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-soup-2.4.d.ts","./node-soup-2.4-ambient.d.ts","./node-soup-2.4-import.d.ts"],
+    "entryPoints": ["./node-soup-2.4.d.ts"],
     "readme": "./README.md",
     "name": "Soup-2.4",
     "tsconfig": "./tsconfig.json"

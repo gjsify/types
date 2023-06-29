@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-peasgtk-1.0.d.ts","./node-peasgtk-1.0-ambient.d.ts","./node-peasgtk-1.0-import.d.ts"],
+    "entryPoints": ["./node-peasgtk-1.0.d.ts"],
     "readme": "./README.md",
     "name": "PeasGtk-1.0",
     "tsconfig": "./tsconfig.json"

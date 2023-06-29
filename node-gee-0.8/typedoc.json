@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gee-0.8.d.ts","./node-gee-0.8-ambient.d.ts","./node-gee-0.8-import.d.ts"],
+    "entryPoints": ["./node-gee-0.8.d.ts"],
     "readme": "./README.md",
     "name": "Gee-0.8",
     "tsconfig": "./tsconfig.json"

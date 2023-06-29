@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./edataserverui4-1.0.d.ts","./edataserverui4-1.0-ambient.d.ts","./edataserverui4-1.0-import.d.ts"],
+    "entryPoints": ["./edataserverui4-1.0.d.ts"],
     "readme": "./README.md",
     "name": "EDataServerUI4-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./folkseds-0.7.d.ts","./folkseds-0.7-ambient.d.ts","./folkseds-0.7-import.d.ts"],
+    "entryPoints": ["./folkseds-0.7.d.ts"],
     "readme": "./README.md",
     "name": "FolksEds-0.7",
     "tsconfig": "./tsconfig.json"

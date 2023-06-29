@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstglwayland-1.0.d.ts","./gstglwayland-1.0-ambient.d.ts","./gstglwayland-1.0-import.d.ts"],
+    "entryPoints": ["./gstglwayland-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GstGLWayland-1.0",
     "tsconfig": "./tsconfig.json"

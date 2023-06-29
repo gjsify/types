@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./webkit2webextension-4.0.d.ts","./webkit2webextension-4.0-ambient.d.ts","./webkit2webextension-4.0-import.d.ts"],
+    "entryPoints": ["./webkit2webextension-4.0.d.ts"],
     "readme": "./README.md",
     "name": "WebKit2WebExtension-4.0",
     "tsconfig": "./tsconfig.json"

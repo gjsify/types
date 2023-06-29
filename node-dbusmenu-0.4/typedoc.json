@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-dbusmenu-0.4.d.ts","./node-dbusmenu-0.4-ambient.d.ts","./node-dbusmenu-0.4-import.d.ts"],
+    "entryPoints": ["./node-dbusmenu-0.4.d.ts"],
     "readme": "./README.md",
     "name": "Dbusmenu-0.4",
     "tsconfig": "./tsconfig.json"

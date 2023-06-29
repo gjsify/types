@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtksource-3.0)
 
 
-GJS TypeScript type definitions for GtkSource-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+GJS TypeScript type definitions for GtkSource-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 GtkSourceView is a portable C library that extends the standard GTK+ framework for multiline text editing with support for configurable syntax highlighting, unlimited undo/redo, search and replace, a completion framework, printing and other features typical of a source code editor.
 

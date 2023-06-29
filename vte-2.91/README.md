@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/vte-2.91)
 
 
-GJS TypeScript type definitions for Vte-2.91, generated from library version 0.73.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+GJS TypeScript type definitions for Vte-2.91, generated from library version 0.73.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 Terminal emulator widget used by GNOME terminal.
 

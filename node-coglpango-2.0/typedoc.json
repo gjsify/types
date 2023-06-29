@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-coglpango-2.0.d.ts","./node-coglpango-2.0-ambient.d.ts","./node-coglpango-2.0-import.d.ts"],
+    "entryPoints": ["./node-coglpango-2.0.d.ts"],
     "readme": "./README.md",
     "name": "CoglPango-2.0",
     "tsconfig": "./tsconfig.json"

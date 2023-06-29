@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-packagekitplugin-1.0.d.ts","./node-packagekitplugin-1.0-ambient.d.ts","./node-packagekitplugin-1.0-import.d.ts"],
+    "entryPoints": ["./node-packagekitplugin-1.0.d.ts"],
     "readme": "./README.md",
     "name": "PackageKitPlugin-1.0",
     "tsconfig": "./tsconfig.json"

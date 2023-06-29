@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/camel-1.2)
 
 
-GJS TypeScript type definitions for Camel-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+GJS TypeScript type definitions for Camel-1.2, generated from library version 1.2.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 Camel is a generic messaging library. It supports the standard messaging system for receiving and sending messages. It is the messaging backend for Evolution.
 

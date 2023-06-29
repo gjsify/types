@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-nmgtk-1.0.d.ts","./node-nmgtk-1.0-ambient.d.ts","./node-nmgtk-1.0-import.d.ts"],
+    "entryPoints": ["./node-nmgtk-1.0.d.ts"],
     "readme": "./README.md",
     "name": "NMGtk-1.0",
     "tsconfig": "./tsconfig.json"

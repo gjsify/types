@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-grlpls-0.3.d.ts","./node-grlpls-0.3-ambient.d.ts","./node-grlpls-0.3-import.d.ts"],
+    "entryPoints": ["./node-grlpls-0.3.d.ts"],
     "readme": "./README.md",
     "name": "GrlPls-0.3",
     "tsconfig": "./tsconfig.json"

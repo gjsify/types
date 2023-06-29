@@ -1,6 +1,6 @@
 {
     "name": "@girs/gtkchamplain-0.12",
-    "version": "0.12.0-3.2.0",
+    "version": "0.12.0-3.2.1",
     "description": "GJS TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0",
     "type": "module",
     "module": "gtkchamplain-0.12.js",

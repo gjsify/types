@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./modemmanager-1.0.d.ts","./modemmanager-1.0-ambient.d.ts","./modemmanager-1.0-import.d.ts"],
+    "entryPoints": ["./modemmanager-1.0.d.ts"],
     "readme": "./README.md",
     "name": "ModemManager-1.0",
     "tsconfig": "./tsconfig.json"

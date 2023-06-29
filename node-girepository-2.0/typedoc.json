@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-girepository-2.0.d.ts","./node-girepository-2.0-ambient.d.ts","./node-girepository-2.0-import.d.ts"],
+    "entryPoints": ["./node-girepository-2.0.d.ts"],
     "readme": "./README.md",
     "name": "GIRepository-2.0",
     "tsconfig": "./tsconfig.json"

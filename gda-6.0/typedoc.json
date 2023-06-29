@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gda-6.0.d.ts","./gda-6.0-ambient.d.ts","./gda-6.0-import.d.ts"],
+    "entryPoints": ["./gda-6.0.d.ts"],
     "readme": "./README.md",
     "name": "Gda-6.0",
     "tsconfig": "./tsconfig.json"

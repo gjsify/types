@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gtkvnc-2.0.d.ts","./gtkvnc-2.0-ambient.d.ts","./gtkvnc-2.0-import.d.ts"],
+    "entryPoints": ["./gtkvnc-2.0.d.ts"],
     "readme": "./README.md",
     "name": "GtkVnc-2.0",
     "tsconfig": "./tsconfig.json"

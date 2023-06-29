@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-eog-3.0.d.ts","./node-eog-3.0-ambient.d.ts","./node-eog-3.0-import.d.ts"],
+    "entryPoints": ["./node-eog-3.0.d.ts"],
     "readme": "./README.md",
     "name": "Eog-3.0",
     "tsconfig": "./tsconfig.json"

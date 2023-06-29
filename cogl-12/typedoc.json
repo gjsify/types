@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./cogl-12.d.ts","./cogl-12-ambient.d.ts","./cogl-12-import.d.ts"],
+    "entryPoints": ["./cogl-12.d.ts"],
     "readme": "./README.md",
     "name": "Cogl-12",
     "tsconfig": "./tsconfig.json"

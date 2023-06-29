@@ -1,6 +1,6 @@
 {
     "name": "@girs/soup-2.4",
-    "version": "2.74.3-3.2.0",
+    "version": "2.74.3-3.2.1",
     "description": "GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
     "type": "module",
     "module": "soup-2.4.js",

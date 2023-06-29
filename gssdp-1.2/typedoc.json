@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gssdp-1.2.d.ts","./gssdp-1.2-ambient.d.ts","./gssdp-1.2-import.d.ts"],
+    "entryPoints": ["./gssdp-1.2.d.ts"],
     "readme": "./README.md",
     "name": "GSSDP-1.2",
     "tsconfig": "./tsconfig.json"

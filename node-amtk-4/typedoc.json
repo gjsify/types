@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-amtk-4.d.ts","./node-amtk-4-ambient.d.ts","./node-amtk-4-import.d.ts"],
+    "entryPoints": ["./node-amtk-4.d.ts"],
     "readme": "./README.md",
     "name": "Amtk-4",
     "tsconfig": "./tsconfig.json"

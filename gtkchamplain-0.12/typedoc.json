@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gtkchamplain-0.12.d.ts","./gtkchamplain-0.12-ambient.d.ts","./gtkchamplain-0.12-import.d.ts"],
+    "entryPoints": ["./gtkchamplain-0.12.d.ts"],
     "readme": "./README.md",
     "name": "GtkChamplain-0.12",
     "tsconfig": "./tsconfig.json"

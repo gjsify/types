@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-rygelcore-2.8.d.ts","./node-rygelcore-2.8-ambient.d.ts","./node-rygelcore-2.8-import.d.ts"],
+    "entryPoints": ["./node-rygelcore-2.8.d.ts"],
     "readme": "./README.md",
     "name": "RygelCore-2.8",
     "tsconfig": "./tsconfig.json"

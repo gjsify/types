@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./geocodeglib-2.0.d.ts","./geocodeglib-2.0-ambient.d.ts","./geocodeglib-2.0-import.d.ts"],
+    "entryPoints": ["./geocodeglib-2.0.d.ts"],
     "readme": "./README.md",
     "name": "GeocodeGlib-2.0",
     "tsconfig": "./tsconfig.json"

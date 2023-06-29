@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-retro-2.d.ts","./node-retro-2-ambient.d.ts","./node-retro-2-import.d.ts"],
+    "entryPoints": ["./node-retro-2.d.ts"],
     "readme": "./README.md",
     "name": "Retro-2",
     "tsconfig": "./tsconfig.json"

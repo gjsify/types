@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gnomeautoargtk-0.1.d.ts","./gnomeautoargtk-0.1-ambient.d.ts","./gnomeautoargtk-0.1-import.d.ts"],
+    "entryPoints": ["./gnomeautoargtk-0.1.d.ts"],
     "readme": "./README.md",
     "name": "GnomeAutoarGtk-0.1",
     "tsconfig": "./tsconfig.json"

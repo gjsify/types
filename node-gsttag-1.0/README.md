@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gsttag-1.0)
 
 
-Node.js TypeScript type definitions for GstTag-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+Node.js TypeScript type definitions for GstTag-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 GStreamer Tag Support Library
 

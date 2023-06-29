@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./nm-1.0.d.ts","./nm-1.0-ambient.d.ts","./nm-1.0-import.d.ts"],
+    "entryPoints": ["./nm-1.0.d.ts"],
     "readme": "./README.md",
     "name": "NM-1.0",
     "tsconfig": "./tsconfig.json"

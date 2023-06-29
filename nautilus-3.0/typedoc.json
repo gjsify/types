@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./nautilus-3.0.d.ts","./nautilus-3.0-ambient.d.ts","./nautilus-3.0-import.d.ts"],
+    "entryPoints": ["./nautilus-3.0.d.ts"],
     "readme": "./README.md",
     "name": "Nautilus-3.0",
     "tsconfig": "./tsconfig.json"

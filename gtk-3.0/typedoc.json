@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gtk-3.0.d.ts","./gtk-3.0-ambient.d.ts","./gtk-3.0-import.d.ts"],
+    "entryPoints": ["./gtk-3.0.d.ts"],
     "readme": "./README.md",
     "name": "Gtk-3.0",
     "tsconfig": "./tsconfig.json"

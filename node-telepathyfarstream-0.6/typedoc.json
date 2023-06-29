@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-telepathyfarstream-0.6.d.ts","./node-telepathyfarstream-0.6-ambient.d.ts","./node-telepathyfarstream-0.6-import.d.ts"],
+    "entryPoints": ["./node-telepathyfarstream-0.6.d.ts"],
     "readme": "./README.md",
     "name": "TelepathyFarstream-0.6",
     "tsconfig": "./tsconfig.json"

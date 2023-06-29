@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gmenu-3.0.d.ts","./node-gmenu-3.0-ambient.d.ts","./node-gmenu-3.0-import.d.ts"],
+    "entryPoints": ["./node-gmenu-3.0.d.ts"],
     "readme": "./README.md",
     "name": "GMenu-3.0",
     "tsconfig": "./tsconfig.json"

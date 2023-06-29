@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ecal-2.0.d.ts","./ecal-2.0-ambient.d.ts","./ecal-2.0-import.d.ts"],
+    "entryPoints": ["./ecal-2.0.d.ts"],
     "readme": "./README.md",
     "name": "ECal-2.0",
     "tsconfig": "./tsconfig.json"

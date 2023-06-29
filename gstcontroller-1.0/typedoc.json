@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gstcontroller-1.0.d.ts","./gstcontroller-1.0-ambient.d.ts","./gstcontroller-1.0-import.d.ts"],
+    "entryPoints": ["./gstcontroller-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GstController-1.0",
     "tsconfig": "./tsconfig.json"

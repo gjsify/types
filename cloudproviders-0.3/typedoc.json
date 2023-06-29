@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./cloudproviders-0.3.d.ts","./cloudproviders-0.3-ambient.d.ts","./cloudproviders-0.3-import.d.ts"],
+    "entryPoints": ["./cloudproviders-0.3.d.ts"],
     "readme": "./README.md",
     "name": "CloudProviders-0.3",
     "tsconfig": "./tsconfig.json"

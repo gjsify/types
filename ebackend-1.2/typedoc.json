@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ebackend-1.2.d.ts","./ebackend-1.2-ambient.d.ts","./ebackend-1.2-import.d.ts"],
+    "entryPoints": ["./ebackend-1.2.d.ts"],
     "readme": "./README.md",
     "name": "EBackend-1.2",
     "tsconfig": "./tsconfig.json"

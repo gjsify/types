@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./dazzle-1.0.d.ts","./dazzle-1.0-ambient.d.ts","./dazzle-1.0-import.d.ts"],
+    "entryPoints": ["./dazzle-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Dazzle-1.0",
     "tsconfig": "./tsconfig.json"

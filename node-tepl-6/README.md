@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-tepl-6)
 
 
-Node.js TypeScript type definitions for Tepl-6, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+Node.js TypeScript type definitions for Tepl-6, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 
 ## Install

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./epc-1.0.d.ts","./epc-1.0-ambient.d.ts","./epc-1.0-import.d.ts"],
+    "entryPoints": ["./epc-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Epc-1.0",
     "tsconfig": "./tsconfig.json"

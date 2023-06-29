@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ges-1.0.d.ts","./ges-1.0-ambient.d.ts","./ges-1.0-import.d.ts"],
+    "entryPoints": ["./ges-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GES-1.0",
     "tsconfig": "./tsconfig.json"

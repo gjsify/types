@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./signon-2.0.d.ts","./signon-2.0-ambient.d.ts","./signon-2.0-import.d.ts"],
+    "entryPoints": ["./signon-2.0.d.ts"],
     "readme": "./README.md",
     "name": "Signon-2.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./vte-3.91.d.ts","./vte-3.91-ambient.d.ts","./vte-3.91-import.d.ts"],
+    "entryPoints": ["./vte-3.91.d.ts"],
     "readme": "./README.md",
     "name": "Vte-3.91",
     "tsconfig": "./tsconfig.json"

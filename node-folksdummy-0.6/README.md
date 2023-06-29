@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-folksdummy-0.6)
 
 
-Node.js TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+Node.js TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 
 ## Install

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-ecalendar-1.2.d.ts","./node-ecalendar-1.2-ambient.d.ts","./node-ecalendar-1.2-import.d.ts"],
+    "entryPoints": ["./node-ecalendar-1.2.d.ts"],
     "readme": "./README.md",
     "name": "ECalendar-1.2",
     "tsconfig": "./tsconfig.json"

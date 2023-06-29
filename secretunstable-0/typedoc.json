@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./secretunstable-0.d.ts","./secretunstable-0-ambient.d.ts","./secretunstable-0-import.d.ts"],
+    "entryPoints": ["./secretunstable-0.d.ts"],
     "readme": "./README.md",
     "name": "SecretUnstable-0",
     "tsconfig": "./tsconfig.json"

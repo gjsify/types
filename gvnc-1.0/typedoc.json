@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gvnc-1.0.d.ts","./gvnc-1.0-ambient.d.ts","./gvnc-1.0-import.d.ts"],
+    "entryPoints": ["./gvnc-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GVnc-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gtk-2.0.d.ts","./node-gtk-2.0-ambient.d.ts","./node-gtk-2.0-import.d.ts"],
+    "entryPoints": ["./node-gtk-2.0.d.ts"],
     "readme": "./README.md",
     "name": "Gtk-2.0",
     "tsconfig": "./tsconfig.json"

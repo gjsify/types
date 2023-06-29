@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./atspi-2.0.d.ts","./atspi-2.0-ambient.d.ts","./atspi-2.0-import.d.ts"],
+    "entryPoints": ["./atspi-2.0.d.ts"],
     "readme": "./README.md",
     "name": "Atspi-2.0",
     "tsconfig": "./tsconfig.json"

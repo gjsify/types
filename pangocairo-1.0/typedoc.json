@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./pangocairo-1.0.d.ts","./pangocairo-1.0-ambient.d.ts","./pangocairo-1.0-import.d.ts"],
+    "entryPoints": ["./pangocairo-1.0.d.ts"],
     "readme": "./README.md",
     "name": "PangoCairo-1.0",
     "tsconfig": "./tsconfig.json"

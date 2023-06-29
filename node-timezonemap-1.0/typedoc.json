@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-timezonemap-1.0.d.ts","./node-timezonemap-1.0-ambient.d.ts","./node-timezonemap-1.0-import.d.ts"],
+    "entryPoints": ["./node-timezonemap-1.0.d.ts"],
     "readme": "./README.md",
     "name": "TimezoneMap-1.0",
     "tsconfig": "./tsconfig.json"

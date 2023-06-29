@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./arrowcuda-1.0.d.ts","./arrowcuda-1.0-ambient.d.ts","./arrowcuda-1.0-import.d.ts"],
+    "entryPoints": ["./arrowcuda-1.0.d.ts"],
     "readme": "./README.md",
     "name": "ArrowCUDA-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gtk.d.ts","./node-ambient.d.ts"],
+    "entryPoints": ["./node-gtk.d.ts"],
     "readme": "./README.md",
     "name": "node-gtk",
     "tsconfig": "./tsconfig.json"

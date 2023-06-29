@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtk-4.0)
 
 
-GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.10.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.10.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 
 ## Install

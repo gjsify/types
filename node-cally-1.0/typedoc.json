@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-cally-1.0.d.ts","./node-cally-1.0-ambient.d.ts","./node-cally-1.0-import.d.ts"],
+    "entryPoints": ["./node-cally-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Cally-1.0",
     "tsconfig": "./tsconfig.json"

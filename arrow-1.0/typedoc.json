@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./arrow-1.0.d.ts","./arrow-1.0-ambient.d.ts","./arrow-1.0-import.d.ts"],
+    "entryPoints": ["./arrow-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Arrow-1.0",
     "tsconfig": "./tsconfig.json"

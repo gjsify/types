@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./rsvg-2.0.d.ts","./rsvg-2.0-ambient.d.ts","./rsvg-2.0-import.d.ts"],
+    "entryPoints": ["./rsvg-2.0.d.ts"],
     "readme": "./README.md",
     "name": "Rsvg-2.0",
     "tsconfig": "./tsconfig.json"

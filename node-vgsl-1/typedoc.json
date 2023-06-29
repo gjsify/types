@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-vgsl-1.d.ts","./node-vgsl-1-ambient.d.ts","./node-vgsl-1-import.d.ts"],
+    "entryPoints": ["./node-vgsl-1.d.ts"],
     "readme": "./README.md",
     "name": "Vgsl-1",
     "tsconfig": "./tsconfig.json"

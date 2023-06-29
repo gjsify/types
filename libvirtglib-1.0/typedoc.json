@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./libvirtglib-1.0.d.ts","./libvirtglib-1.0-ambient.d.ts","./libvirtglib-1.0-import.d.ts"],
+    "entryPoints": ["./libvirtglib-1.0.d.ts"],
     "readme": "./README.md",
     "name": "LibvirtGLib-1.0",
     "tsconfig": "./tsconfig.json"

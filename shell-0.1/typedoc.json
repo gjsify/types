@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./shell-0.1.d.ts","./shell-0.1-ambient.d.ts","./shell-0.1-import.d.ts"],
+    "entryPoints": ["./shell-0.1.d.ts"],
     "readme": "./README.md",
     "name": "Shell-0.1",
     "tsconfig": "./tsconfig.json"

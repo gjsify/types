@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-trackerminer-2.0.d.ts","./node-trackerminer-2.0-ambient.d.ts","./node-trackerminer-2.0-import.d.ts"],
+    "entryPoints": ["./node-trackerminer-2.0.d.ts"],
     "readme": "./README.md",
     "name": "TrackerMiner-2.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-meta-11.d.ts","./node-meta-11-ambient.d.ts","./node-meta-11-import.d.ts"],
+    "entryPoints": ["./node-meta-11.d.ts"],
     "readme": "./README.md",
     "name": "Meta-11",
     "tsconfig": "./tsconfig.json"

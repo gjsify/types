@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./snapd-1.d.ts","./snapd-1-ambient.d.ts","./snapd-1-import.d.ts"],
+    "entryPoints": ["./snapd-1.d.ts"],
     "readme": "./README.md",
     "name": "Snapd-1",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-tepl-4.d.ts","./node-tepl-4-ambient.d.ts","./node-tepl-4-import.d.ts"],
+    "entryPoints": ["./node-tepl-4.d.ts"],
     "readme": "./README.md",
     "name": "Tepl-4",
     "tsconfig": "./tsconfig.json"

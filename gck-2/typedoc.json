@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gck-2.d.ts","./gck-2-ambient.d.ts","./gck-2-import.d.ts"],
+    "entryPoints": ["./gck-2.d.ts"],
     "readme": "./README.md",
     "name": "Gck-2",
     "tsconfig": "./tsconfig.json"

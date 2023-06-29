@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./rygelrenderer-2.6.d.ts","./rygelrenderer-2.6-ambient.d.ts","./rygelrenderer-2.6-import.d.ts"],
+    "entryPoints": ["./rygelrenderer-2.6.d.ts"],
     "readme": "./README.md",
     "name": "RygelRenderer-2.6",
     "tsconfig": "./tsconfig.json"

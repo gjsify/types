@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./coglpango-12.d.ts","./coglpango-12-ambient.d.ts","./coglpango-12-import.d.ts"],
+    "entryPoints": ["./coglpango-12.d.ts"],
     "readme": "./README.md",
     "name": "CoglPango-12",
     "tsconfig": "./tsconfig.json"

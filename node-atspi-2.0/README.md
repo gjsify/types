@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-atspi-2.0)
 
 
-Node.js TypeScript type definitions for Atspi-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+Node.js TypeScript type definitions for Atspi-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 AT-SPI2 is a D-Bus based accessibility framework. It defines a D-Bus protocol for providing and accessing application accessibility information. The project includes a library for bridging the D-Bus protocol to the ATK API, allowing Gtk based applications to be made accessible.
 

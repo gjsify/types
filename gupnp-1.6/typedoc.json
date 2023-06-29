@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gupnp-1.6.d.ts","./gupnp-1.6-ambient.d.ts","./gupnp-1.6-import.d.ts"],
+    "entryPoints": ["./gupnp-1.6.d.ts"],
     "readme": "./README.md",
     "name": "GUPnP-1.6",
     "tsconfig": "./tsconfig.json"

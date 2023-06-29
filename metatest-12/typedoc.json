@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./metatest-12.d.ts","./metatest-12-ambient.d.ts","./metatest-12-import.d.ts"],
+    "entryPoints": ["./metatest-12.d.ts"],
     "readme": "./README.md",
     "name": "MetaTest-12",
     "tsconfig": "./tsconfig.json"

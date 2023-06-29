@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-mash-0.2.d.ts","./node-mash-0.2-ambient.d.ts","./node-mash-0.2-import.d.ts"],
+    "entryPoints": ["./node-mash-0.2.d.ts"],
     "readme": "./README.md",
     "name": "Mash-0.2",
     "tsconfig": "./tsconfig.json"

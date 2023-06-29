@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdk-4.0.d.ts","./gdk-4.0-ambient.d.ts","./gdk-4.0-import.d.ts"],
+    "entryPoints": ["./gdk-4.0.d.ts"],
     "readme": "./README.md",
     "name": "Gdk-4.0",
     "tsconfig": "./tsconfig.json"

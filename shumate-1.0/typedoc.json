@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./shumate-1.0.d.ts","./shumate-1.0-ambient.d.ts","./shumate-1.0-import.d.ts"],
+    "entryPoints": ["./shumate-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Shumate-1.0",
     "tsconfig": "./tsconfig.json"

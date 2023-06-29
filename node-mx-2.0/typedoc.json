@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-mx-2.0.d.ts","./node-mx-2.0-ambient.d.ts","./node-mx-2.0-import.d.ts"],
+    "entryPoints": ["./node-mx-2.0.d.ts"],
     "readme": "./README.md",
     "name": "Mx-2.0",
     "tsconfig": "./tsconfig.json"

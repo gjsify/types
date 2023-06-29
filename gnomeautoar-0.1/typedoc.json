@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gnomeautoar-0.1.d.ts","./gnomeautoar-0.1-ambient.d.ts","./gnomeautoar-0.1-import.d.ts"],
+    "entryPoints": ["./gnomeautoar-0.1.d.ts"],
     "readme": "./README.md",
     "name": "GnomeAutoar-0.1",
     "tsconfig": "./tsconfig.json"

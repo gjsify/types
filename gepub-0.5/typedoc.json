@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gepub-0.5.d.ts","./gepub-0.5-ambient.d.ts","./gepub-0.5-import.d.ts"],
+    "entryPoints": ["./gepub-0.5.d.ts"],
     "readme": "./README.md",
     "name": "Gepub-0.5",
     "tsconfig": "./tsconfig.json"

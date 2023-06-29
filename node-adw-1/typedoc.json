@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-adw-1.d.ts","./node-adw-1-ambient.d.ts","./node-adw-1-import.d.ts"],
+    "entryPoints": ["./node-adw-1.d.ts"],
     "readme": "./README.md",
     "name": "Adw-1",
     "tsconfig": "./tsconfig.json"

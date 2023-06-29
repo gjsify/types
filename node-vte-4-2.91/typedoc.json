@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-vte-4-2.91.d.ts","./node-vte-4-2.91-ambient.d.ts","./node-vte-4-2.91-import.d.ts"],
+    "entryPoints": ["./node-vte-4-2.91.d.ts"],
     "readme": "./README.md",
     "name": "Vte-4-2.91",
     "tsconfig": "./tsconfig.json"

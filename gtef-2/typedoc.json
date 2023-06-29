@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gtef-2.d.ts","./gtef-2-ambient.d.ts","./gtef-2-import.d.ts"],
+    "entryPoints": ["./gtef-2.d.ts"],
     "readme": "./README.md",
     "name": "Gtef-2",
     "tsconfig": "./tsconfig.json"

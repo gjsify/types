@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./peas-2.d.ts","./peas-2-ambient.d.ts","./peas-2-import.d.ts"],
+    "entryPoints": ["./peas-2.d.ts"],
     "readme": "./README.md",
     "name": "Peas-2",
     "tsconfig": "./tsconfig.json"

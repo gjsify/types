@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gpseq-1.0.d.ts","./gpseq-1.0-ambient.d.ts","./gpseq-1.0-import.d.ts"],
+    "entryPoints": ["./gpseq-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Gpseq-1.0",
     "tsconfig": "./tsconfig.json"

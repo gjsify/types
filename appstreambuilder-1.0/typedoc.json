@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./appstreambuilder-1.0.d.ts","./appstreambuilder-1.0-ambient.d.ts","./appstreambuilder-1.0-import.d.ts"],
+    "entryPoints": ["./appstreambuilder-1.0.d.ts"],
     "readme": "./README.md",
     "name": "AppStreamBuilder-1.0",
     "tsconfig": "./tsconfig.json"

@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./spiceclientglib-2.0.d.ts","./spiceclientglib-2.0-ambient.d.ts","./spiceclientglib-2.0-import.d.ts"],
+    "entryPoints": ["./spiceclientglib-2.0.d.ts"],
     "readme": "./README.md",
     "name": "SpiceClientGLib-2.0",
     "tsconfig": "./tsconfig.json"

@@ -1,6 +1,6 @@
 {
     "name": "@girs/gdm-1.0",
-    "version": "1.0.0-3.2.0",
+    "version": "1.0.0-3.2.1",
     "description": "GJS TypeScript type definitions for Gdm-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gdm-1.0.js",

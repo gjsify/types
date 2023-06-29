@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/tracker-3.0)
 
 
-GJS TypeScript type definitions for Tracker-3.0, generated from library version 3.5.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.0.
+GJS TypeScript type definitions for Tracker-3.0, generated from library version 3.5.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
 
 
 ## Install

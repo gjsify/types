@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gnomerr-4.0.d.ts","./gnomerr-4.0-ambient.d.ts","./gnomerr-4.0-import.d.ts"],
+    "entryPoints": ["./gnomerr-4.0.d.ts"],
     "readme": "./README.md",
     "name": "GnomeRR-4.0",
     "tsconfig": "./tsconfig.json"

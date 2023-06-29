@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./colord-1.0.d.ts","./colord-1.0-ambient.d.ts","./colord-1.0-import.d.ts"],
+    "entryPoints": ["./colord-1.0.d.ts"],
     "readme": "./README.md",
     "name": "Colord-1.0",
     "tsconfig": "./tsconfig.json"

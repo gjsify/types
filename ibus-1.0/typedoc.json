@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./ibus-1.0.d.ts","./ibus-1.0-ambient.d.ts","./ibus-1.0-import.d.ts"],
+    "entryPoints": ["./ibus-1.0.d.ts"],
     "readme": "./README.md",
     "name": "IBus-1.0",
     "tsconfig": "./tsconfig.json"

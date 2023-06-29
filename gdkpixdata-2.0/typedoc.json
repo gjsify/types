@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gdkpixdata-2.0.d.ts","./gdkpixdata-2.0-ambient.d.ts","./gdkpixdata-2.0-import.d.ts"],
+    "entryPoints": ["./gdkpixdata-2.0.d.ts"],
     "readme": "./README.md",
     "name": "GdkPixdata-2.0",
     "tsconfig": "./tsconfig.json"

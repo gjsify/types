@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gconf-2.0.d.ts","./gconf-2.0-ambient.d.ts","./gconf-2.0-import.d.ts"],
+    "entryPoints": ["./gconf-2.0.d.ts"],
     "readme": "./README.md",
     "name": "GConf-2.0",
     "tsconfig": "./tsconfig.json"

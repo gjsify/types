@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./node-gsf-1.d.ts","./node-gsf-1-ambient.d.ts","./node-gsf-1-import.d.ts"],
+    "entryPoints": ["./node-gsf-1.d.ts"],
     "readme": "./README.md",
     "name": "Gsf-1",
     "tsconfig": "./tsconfig.json"

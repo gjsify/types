@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gsystem-1.0.d.ts","./gsystem-1.0-ambient.d.ts","./gsystem-1.0-import.d.ts"],
+    "entryPoints": ["./gsystem-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GSystem-1.0",
     "tsconfig": "./tsconfig.json"

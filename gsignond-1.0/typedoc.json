@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./gsignond-1.0.d.ts","./gsignond-1.0-ambient.d.ts","./gsignond-1.0-import.d.ts"],
+    "entryPoints": ["./gsignond-1.0.d.ts"],
     "readme": "./README.md",
     "name": "GSignond-1.0",
     "tsconfig": "./tsconfig.json"

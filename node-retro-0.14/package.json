@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-retro-0.14",
-    "version": "0.14.0-3.2.0",
+    "version": "0.14.0-3.2.1",
     "description": "Node.js TypeScript type definitions for Retro-0.14, generated from library version 0.14.0",
     "type": "module",
     "module": "node-retro-0.14.js",
