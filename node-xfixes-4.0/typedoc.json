@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-xfixes-4.0.d.ts"],
-    "readme": "./README.md",
-    "name": "xfixes-4.0",
-    "tsconfig": "./tsconfig.json"
-}
-

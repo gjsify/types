@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-libvirtglib-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "LibvirtGLib-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

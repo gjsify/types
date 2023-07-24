@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-folksdummy-0.6.d.ts"],
-    "readme": "./README.md",
-    "name": "FolksDummy-0.6",
-    "tsconfig": "./tsconfig.json"
-}
-

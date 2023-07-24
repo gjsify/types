@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-peas-2.d.ts"],
-    "readme": "./README.md",
-    "name": "Peas-2",
-    "tsconfig": "./tsconfig.json"
-}
-

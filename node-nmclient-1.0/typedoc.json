@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-nmclient-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "NMClient-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

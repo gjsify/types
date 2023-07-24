@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-nice-0.1.d.ts"],
-    "readme": "./README.md",
-    "name": "Nice-0.1",
-    "tsconfig": "./tsconfig.json"
-}
-

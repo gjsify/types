@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-vips-8.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Vips-8.0",
-    "tsconfig": "./tsconfig.json"
-}
-

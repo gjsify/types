@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-rsvg-2.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Rsvg-2.0",
-    "tsconfig": "./tsconfig.json"
-}
-

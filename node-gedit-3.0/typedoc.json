@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gedit-3.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Gedit-3.0",
-    "tsconfig": "./tsconfig.json"
-}
-

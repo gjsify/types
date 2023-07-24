@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-pangoxft-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "PangoXft-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

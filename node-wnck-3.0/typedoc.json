@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-wnck-3.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Wnck-3.0",
-    "tsconfig": "./tsconfig.json"
-}
-

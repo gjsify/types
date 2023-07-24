@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-trackercontrol-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "TrackerControl-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

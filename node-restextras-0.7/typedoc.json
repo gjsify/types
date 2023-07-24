@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-restextras-0.7.d.ts"],
-    "readme": "./README.md",
-    "name": "RestExtras-0.7",
-    "tsconfig": "./tsconfig.json"
-}
-

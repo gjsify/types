@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gegl-0.4.d.ts"],
-    "readme": "./README.md",
-    "name": "Gegl-0.4",
-    "tsconfig": "./tsconfig.json"
-}
-

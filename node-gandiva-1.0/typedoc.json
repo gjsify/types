@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gandiva-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Gandiva-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

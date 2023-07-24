@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-vte-2.91.d.ts"],
-    "readme": "./README.md",
-    "name": "Vte-2.91",
-    "tsconfig": "./tsconfig.json"
-}
-

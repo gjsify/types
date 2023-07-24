@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gstvideo-0.10.d.ts"],
-    "readme": "./README.md",
-    "name": "GstVideo-0.10",
-    "tsconfig": "./tsconfig.json"
-}
-

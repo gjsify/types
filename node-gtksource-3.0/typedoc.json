@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gtksource-3.0.d.ts"],
-    "readme": "./README.md",
-    "name": "GtkSource-3.0",
-    "tsconfig": "./tsconfig.json"
-}
-

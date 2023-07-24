@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gcrui-3.d.ts"],
-    "readme": "./README.md",
-    "name": "GcrUi-3",
-    "tsconfig": "./tsconfig.json"
-}
-
