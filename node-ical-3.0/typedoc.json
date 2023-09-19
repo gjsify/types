@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-ical-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "ICal-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

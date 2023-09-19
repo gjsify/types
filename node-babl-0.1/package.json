@@ -1,0 +1,56 @@
+{
+    "name": "@girs/node-babl-0.1",
+    "version": "0.1.107-3.2.2",
+    "description": "Node.js TypeScript type definitions for Babl-0.1, generated from library version 0.1.107",
+    "type": "module",
+    "module": "node-babl-0.1.js",
+    "main": "node-babl-0.1.js",
+    "exports": {
+        "./ambient": "./node-babl-0.1-ambient.d.ts",
+        "./import": "./node-babl-0.1-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-babl-0.1.d.ts",
+                "default": "./node-babl-0.1.js"
+            },
+            "require": {
+                "types": "./node-babl-0.1.d.cts",
+                "default": "./node-babl-0.1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-babl-0.1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-babl-0.1.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Babl-0.1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-babl-0.1#readme"
+}

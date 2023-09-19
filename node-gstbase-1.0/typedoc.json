@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gstbase-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstBase-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

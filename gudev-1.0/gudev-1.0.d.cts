@@ -227,6 +227,13 @@ export interface Device {
      */
     get_action(): string | null
     /**
+     * Gets all current tags for `device`.
+     * 
+     * https://www.freedesktop.org/software/systemd/man/udev_device_has_current_tag.html
+     * @returns A %NULL terminated string array of current tags. This array is owned by @device and should not be freed by the caller.
+     */
+    get_current_tags(): string[]
+    /**
      * Gets the device file for `device`.
      * @returns The device file for @device or %NULL if no device file exists.
      */

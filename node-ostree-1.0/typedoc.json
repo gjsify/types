@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-ostree-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "OSTree-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

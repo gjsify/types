@@ -1404,6 +1404,17 @@ export interface Session {
      */
     close(): void
     /**
+     * Connect this XdpRemoteDesktopSession to an EIS implementation and return the fd.
+     * This fd can be passed into ei_setup_backend_fd(). See the libei
+     * documentation for details.
+     * 
+     * This call must be issued before xdp_session_start(). If successful, all input
+     * event emulation must be handled via the EIS connection and calls to
+     * xdp_session_pointer_motion() etc. are silently ignored.
+     * @returns the file descriptor to the EIS implementation
+     */
+    connect_to_eis(): number
+    /**
      * Obtains the devices that the user selected.
      * 
      * Unless the session is active, this function returns `XDP_DEVICE_NONE`.

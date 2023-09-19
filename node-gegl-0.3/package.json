@@ -1,0 +1,57 @@
+{
+    "name": "@girs/node-gegl-0.3",
+    "version": "0.3.35-3.2.2",
+    "description": "Node.js TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35",
+    "type": "module",
+    "module": "node-gegl-0.3.js",
+    "main": "node-gegl-0.3.js",
+    "exports": {
+        "./ambient": "./node-gegl-0.3-ambient.d.ts",
+        "./import": "./node-gegl-0.3-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-gegl-0.3.d.ts",
+                "default": "./node-gegl-0.3.js"
+            },
+            "require": {
+                "types": "./node-gegl-0.3.d.cts",
+                "default": "./node-gegl-0.3.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gegl-0.3.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-gegl-0.3.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Gegl-0.3"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-gegl-0.3#readme"
+}

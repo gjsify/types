@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/meta-12)
 
 
-GJS TypeScript type definitions for Meta-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for Meta-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 
 ## Install

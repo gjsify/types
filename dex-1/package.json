@@ -1,0 +1,54 @@
+{
+    "name": "@girs/dex-1",
+    "version": "1.0.0-3.2.2",
+    "description": "GJS TypeScript type definitions for Dex-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "dex-1.js",
+    "main": "dex-1.js",
+    "exports": {
+        "./ambient": "./dex-1-ambient.d.ts",
+        "./import": "./dex-1-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./dex-1.d.ts",
+                "default": "./dex-1.js"
+            },
+            "require": {
+                "types": "./dex-1.d.cts",
+                "default": "./dex-1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dex-1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dex-1.d.cts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Dex-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/dex-1#readme"
+}

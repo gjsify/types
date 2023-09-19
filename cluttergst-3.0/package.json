@@ -1,6 +1,6 @@
 {
     "name": "@girs/cluttergst-3.0",
-    "version": "3.0.28-3.2.1",
+    "version": "3.0.28-3.2.2",
     "description": "GJS TypeScript type definitions for ClutterGst-3.0, generated from library version 3.0.28",
     "type": "module",
     "module": "cluttergst-3.0.js",

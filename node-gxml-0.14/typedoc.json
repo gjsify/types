@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gxml-0.14.d.ts"],
+    "readme": "./README.md",
+    "name": "GXml-0.14",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1095,6 +1095,13 @@ module BookClientView {
     }
 
     /**
+     * Signal callback interface for `content-changed`
+     */
+    interface ContentChangedSignalCallback {
+        ($obj: BookClientView): void
+    }
+
+    /**
      * Signal callback interface for `objects-added`
      */
     interface ObjectsAddedSignalCallback {
@@ -1142,10 +1149,63 @@ interface BookClientView extends Gio.Initable {
 
     readonly client: BookClient
     readonly connection: Gio.DBusConnection
+    /**
+     * A list of #EBookIndices holding indices of the contacts in the view.
+     * These are received from the first sort field set by
+     * e_book_client_view_set_sort_fields_sync(). The last item of the returned
+     * array is the one with chr member being %NULL.
+     * 
+     * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     */
+    readonly indices: EBookContacts.BookIndices
+    /**
+     * How many contacts are available in the view.
+     * 
+     * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     */
+    readonly n_total: number
     readonly object_path: string | null
 
     // Owm methods of EBook-1.2.EBook.BookClientView
 
+    /**
+     * Asynchronously reads `range_length` contacts from index `range_start`.
+     * When there are asked more than e_book_client_view_get_n_total()
+     * contacts only those up to the total number of contacts are read.
+     * Asking for out of range contacts results in an error.
+     * 
+     * Finish the call by e_book_client_view_dup_contacts_finish() from the `cb`.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param range_start 0-based range start to retrieve the contacts for
+     * @param range_length how many contacts to retrieve
+     * @param cancellable optional #GCancellable object, or %NULL
+     */
+    dup_contacts(range_start: number, range_length: number, cancellable: Gio.Cancellable | null): void
+    /**
+     * Finishes previous call of e_book_client_view_dup_contacts();
+     * see it for further information.
+     * 
+     * Free the returned #GPtrArray with g_ptr_array_unref(), when
+     * no longer needed.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param result an asynchronous call result
+     * @returns whether succeeded; if not, the @error is set
+     */
+    dup_contacts_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_range_start */ number, /* out_contacts */ EBookContacts.Contact[] ]
+    /**
+     * Returns a list of #EBookIndices holding indices of the contacts
+     * in the view. These are received from the first sort field set by
+     * e_book_client_view_set_sort_fields_sync(). The last item of the returned
+     * array is the one with chr member being %NULL.
+     * 
+     * Free the returned array with e_book_indices_free(), when no longer needed.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns list of indices for the view
+     */
+    dup_indices(): EBookContacts.BookIndices
     /**
      * Returns the #EBookClientView:client associated with `client_view`.
      * @returns an #EBookClient
@@ -1156,6 +1216,21 @@ interface BookClientView extends Gio.Initable {
      * @returns the #GDBusConnection
      */
     get_connection(): Gio.DBusConnection
+    /**
+     * Returns an identifier of the `self`. It does not change
+     * for the whole life time of the `self`.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns an identifier of the view
+     */
+    get_id(): number
+    /**
+     * Returns how many contacts are available in the view.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns how many contacts are available in the view
+     */
+    get_n_total(): number
     /**
      * Returns the object path used to create the D-Bus proxy.
      * @returns the object path
@@ -1190,6 +1265,23 @@ interface BookClientView extends Gio.Initable {
      */
     set_flags(flags: EBookContacts.BookClientViewFlags): void
     /**
+     * Sets `fields` to sort the view by. The default is to sort by the file-as
+     * field in ascending order. Not every field can be used for sorting,
+     * usually available fields are %E_CONTACT_FILE_AS,
+     * %E_CONTACT_GIVEN_NAME and %E_CONTACT_FAMILY_NAME.
+     * 
+     * The array is terminated by an item with an %E_CONTACT_FIELD_LAST field.
+     * 
+     * The first sort field is used to populate indices, as returned
+     * by e_book_client_view_dup_indices().
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param fields an array of #EBookClientViewSortFields, terminated by item with %E_CONTACT_FIELD_LAST field
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    set_sort_fields_sync(fields: EBookContacts.BookClientViewSortFields, cancellable: Gio.Cancellable | null): boolean
+    /**
      * Tells `client_view` to start processing events.
      */
     start(): void
@@ -1208,6 +1300,9 @@ interface BookClientView extends Gio.Initable {
     connect(sigName: "complete", callback: BookClientView.CompleteSignalCallback): number
     connect_after(sigName: "complete", callback: BookClientView.CompleteSignalCallback): number
     emit(sigName: "complete", object: GLib.Error, ...args: any[]): void
+    connect(sigName: "content-changed", callback: BookClientView.ContentChangedSignalCallback): number
+    connect_after(sigName: "content-changed", callback: BookClientView.ContentChangedSignalCallback): number
+    emit(sigName: "content-changed", ...args: any[]): void
     connect(sigName: "objects-added", callback: BookClientView.ObjectsAddedSignalCallback): number
     connect_after(sigName: "objects-added", callback: BookClientView.ObjectsAddedSignalCallback): number
     emit(sigName: "objects-added", objects: EBookContacts.Contact[], ...args: any[]): void
@@ -1229,6 +1324,12 @@ interface BookClientView extends Gio.Initable {
     connect(sigName: "notify::connection", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connection", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::indices", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::indices", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::indices", ...args: any[]): void
+    connect(sigName: "notify::n-total", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::n-total", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::n-total", ...args: any[]): void
     connect(sigName: "notify::object-path", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::object-path", callback: (($obj: BookClientView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::object-path", ...args: any[]): void

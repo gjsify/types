@@ -1733,7 +1733,7 @@ export interface WebPage {
      * webkit_web_page_send_message_to_view_finish() to get the message reply.
      * @param message a #WebKitUserMessage
      * @param cancellable a #GCancellable or %NULL to ignore
-     * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
      */
     send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
@@ -1830,7 +1830,7 @@ export interface WebProcessExtension {
      * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
      * @param message a #WebKitUserMessage
      * @param cancellable a #GCancellable or %NULL to ignore
-     * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+     * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
      */
     send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**

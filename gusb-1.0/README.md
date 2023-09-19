@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gusb-1.0)
 
 
-GJS TypeScript type definitions for GUsb-1.0, generated from library version 0.4.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for GUsb-1.0, generated from library version 0.4.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 GLib wrapper around libusb-1.0
 

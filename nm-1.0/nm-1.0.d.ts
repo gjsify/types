@@ -1881,6 +1881,18 @@ enum SettingsError {
      * invalid arguments
      */
     INVALIDARGUMENTS,
+    /**
+     * The profile's VersionId mismatched
+     *   and the update is rejected. See the "version-id" argument to Update2()
+     *   method. Since 1.44.
+     */
+    VERSIONIDMISMATCH,
+    /**
+     * the requested operation is not
+     *   supported by the settings plugin currently in use for the specified object.
+     *   Since: 1.44.
+     */
+    NOTSUPPORTEDBYPLUGIN,
 }
 /**
  * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
@@ -3519,6 +3531,7 @@ enum VpnEditorPluginCapability {
      */
     IPV6,
 }
+const ACCESS_POINT_BANDWIDTH: string | null
 const ACCESS_POINT_BSSID: string | null
 const ACCESS_POINT_FLAGS: string | null
 const ACCESS_POINT_FREQUENCY: string | null
@@ -3957,6 +3970,7 @@ const REMOTE_CONNECTION_FILENAME: string | null
 const REMOTE_CONNECTION_FLAGS: string | null
 const REMOTE_CONNECTION_PATH: string | null
 const REMOTE_CONNECTION_UNSAVED: string | null
+const REMOTE_CONNECTION_VERSION_ID: string | null
 const REMOTE_CONNECTION_VISIBLE: string | null
 const SECRET_AGENT_OLD_AUTO_REGISTER: string | null
 const SECRET_AGENT_OLD_CAPABILITIES: string | null
@@ -6292,6 +6306,10 @@ interface AccessPoint {
     // Own properties of NM-1.0.NM.AccessPoint
 
     /**
+     * The channel bandwidth announced by the AP in MHz.
+     */
+    readonly bandwidth: number
+    /**
      * The BSSID of the access point.
      */
     readonly bssid: string | null
@@ -6366,6 +6384,11 @@ interface AccessPoint {
      */
     filter_connections(connections: Connection[]): Connection[]
     /**
+     * Gets the bandwidth advertised by the access point in MHz.
+     * @returns the advertised bandwidth (MHz)
+     */
+    get_bandwidth(): number
+    /**
      * Gets the Basic Service Set ID (BSSID) of the Wi-Fi access point.
      * @returns the BSSID of the access point. This is an internal string and must not be modified or freed.
      */
@@ -6421,6 +6444,9 @@ interface AccessPoint {
 
     // Class property signals of NM-1.0.NM.AccessPoint
 
+    connect(sigName: "notify::bandwidth", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bandwidth", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bandwidth", ...args: any[]): void
     connect(sigName: "notify::bssid", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::bssid", callback: (($obj: AccessPoint, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::bssid", ...args: any[]): void
@@ -15157,6 +15183,11 @@ interface RemoteConnection extends Connection {
      */
     readonly unsaved: boolean
     /**
+     * The version ID of the profile that is incremented when the profile gets modified.
+     * This can be used to track concurrent modifications of the profile.
+     */
+    readonly version_id: number
+    /**
      * %TRUE if the remote connection is visible to the current user, %FALSE if
      * not.  If the connection is not visible then it is essentially useless; it
      * will not contain any settings, and operations such as
@@ -15274,6 +15305,7 @@ interface RemoteConnection extends Connection {
      */
     get_secrets_finish(result: Gio.AsyncResult): GLib.Variant
     get_unsaved(): boolean
+    get_version_id(): number
     /**
      * Checks if the connection is visible to the current user.  If the
      * connection is not visible then it is essentially useless; it will
@@ -15345,6 +15377,9 @@ interface RemoteConnection extends Connection {
     connect(sigName: "notify::unsaved", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::unsaved", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::unsaved", ...args: any[]): void
+    connect(sigName: "notify::version-id", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::version-id", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::version-id", ...args: any[]): void
     connect(sigName: "notify::visible", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible", callback: (($obj: RemoteConnection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible", ...args: any[]): void

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-unity-7.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Unity-7.0",
+    "tsconfig": "./tsconfig.json"
+}
+

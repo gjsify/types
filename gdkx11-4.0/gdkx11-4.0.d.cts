@@ -15,12 +15,12 @@ import './gdkx11-4.0-import.d.ts';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-4.0';
 import type cairo from '@girs/cairo-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -996,6 +996,9 @@ export interface X11Surface {
     connect(sigName: "notify::mapped", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mapped", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mapped", ...args: any[]): void
+    connect(sigName: "notify::scale", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale-factor", callback: (($obj: X11Surface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale-factor", ...args: any[]): void

@@ -266,6 +266,9 @@ export interface CertificateWidget extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
 
     // Class property signals of EDataServerUI4-1.0.EDataServerUI4.CertificateWidget
 
+    connect(sigName: "notify::baseline-child", callback: (($obj: CertificateWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::baseline-child", callback: (($obj: CertificateWidget, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (($obj: CertificateWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-position", callback: (($obj: CertificateWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::baseline-position", ...args: any[]): void
@@ -1578,6 +1581,9 @@ export interface WebDAVDiscoverDialog extends Gtk.Accessible, Gtk.Buildable, Gtk
     connect(sigName: "notify::startup-id", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: WebDAVDiscoverDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void

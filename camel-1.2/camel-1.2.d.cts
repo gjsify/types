@@ -42,6 +42,12 @@ export enum CertTrust {
     ULTIMATE,
     TEMPORARY,
 }
+export enum CipherContextError {
+    /**
+     * one or more recipient's public key was not found
+     */
+    CIPHER_CONTEXT_ERROR_KEY_NOT_FOUND,
+}
 export enum CipherHash {
     DEFAULT,
     MD2,
@@ -313,6 +319,35 @@ export enum FolderError {
      * the folder's summary is invalid/broken
      */
     SUMMARY_INVALID,
+}
+/**
+ * GPG key trust levels.
+ */
+export enum GpgTrust {
+    /**
+     * no trust set
+     */
+    NONE,
+    /**
+     * unknown trust level
+     */
+    UNKNOWN,
+    /**
+     * never trust the key
+     */
+    NEVER,
+    /**
+     * marginally trust the key
+     */
+    MARGINAL,
+    /**
+     * fully trust the key
+     */
+    FULL,
+    /**
+     * ultimately trust the key
+     */
+    ULTIMATE,
 }
 export enum HTMLParserState {
     DATA,
@@ -4019,7 +4054,7 @@ export interface CipherContext {
      * @returns %TRUE on success, %FALSE on error
      */
     encrypt_sync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
-    get_session(): Session
+    get_session(): Session | null
     hash_to_id(hash: CipherHash): string | null
     id_to_hash(id: string | null): CipherHash
     /**
@@ -4158,7 +4193,7 @@ export class CipherContext extends GObject.Object {
      * @param session a #CamelSession
      * @returns the new CamelCipherContext
      */
-    constructor(session: Session) 
+    constructor(session: Session | null) 
     /**
      * This creates a new CamelCipherContext object which is used to sign,
      * verify, encrypt and decrypt streams.
@@ -4166,8 +4201,9 @@ export class CipherContext extends GObject.Object {
      * @param session a #CamelSession
      * @returns the new CamelCipherContext
      */
-    static new(session: Session): CipherContext
+    static new(session: Session | null): CipherContext
     _init(config?: CipherContext.ConstructorProperties): void
+    static error_quark(): GLib.Quark
 }
 
 export module DB {
@@ -6913,6 +6949,20 @@ export interface GpgContext {
 
     get_always_trust(): boolean
     /**
+     * Receives information about a key stored in `data` of size `data_size`.
+     * 
+     * The `flags` argument is currently unused and should be set to 0.
+     * 
+     * Free the returned `out_infos` with g_slist_free_full (infos, camel_gpg_key_info_free);
+     * when no longer needed.
+     * @param data the public key data
+     * @param data_size the `data` size
+     * @param flags flags for the operation
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    get_key_data_info_sync(data: number, data_size: number, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_infos */ GpgKeyInfo[] ]
+    /**
      * Returns, whether gpg can locate keys using Web Key Directory (WKD) lookup
      * when encrypting messages. The default is %TRUE.
      * @returns whether gpg can locate keys using Web Key Directory (WKD) lookup    when encrypting messages.
@@ -6920,11 +6970,70 @@ export interface GpgContext {
     get_locate_keys(): boolean
     get_prefer_inline(): boolean
     /**
+     * Receives information about a key `keyid`.
+     * 
+     * The `keyid` can be either key ID or an email address.
+     * 
+     * The `flags` argument is currently unused and should be set to 0.
+     * 
+     * Free the returned `out_infos` with g_slist_free_full (infos, camel_gpg_key_info_free);
+     * when no longer needed.
+     * @param keyid a key ID or an email address
+     * @param flags flags for the operation
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    get_public_key_info_sync(keyid: string | null, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_infos */ GpgKeyInfo[] ]
+    /**
+     * Returns a public key with `keyid`.
+     * 
+     * The `keyid` can be either key ID or an email address.
+     * 
+     * The `flags` argument is currently unused and should be set to 0.
+     * 
+     * The `out_data` content should be freed with g_free(), when
+     * no longer needed.
+     * @param keyid a key ID or an email address
+     * @param flags flags for the operation
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    get_public_key_sync(keyid: string | null, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ number, /* out_data_size */ number ]
+    /**
+     * Checks whether there exists a public key with `keyid`.
+     * 
+     * The `keyid` can be either key ID or an email address.
+     * @param keyid a key ID or an email address
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether the key could be found
+     */
+    has_public_key_sync(keyid: string | null, cancellable: Gio.Cancellable | null): boolean
+    /**
+     * Imports a (public) key provided in a binary form stored in the `data`
+     * of size `data_size`.
+     * @param data the public key data
+     * @param data_size the `data` size
+     * @param flags bit-or of CamelPgpImportFlags, flags for the operation
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    import_key_sync(data: number, data_size: number, flags: number, cancellable: Gio.Cancellable | null): boolean
+    /**
      * Sets the `always_trust` flag on the gpg context which is used for
      * encryption.
      * @param always_trust always trust flag
      */
     set_always_trust(always_trust: boolean): void
+    /**
+     * Sets `trust` level on the key `keyid`.
+     * 
+     * The `keyid` can be either key ID or an email address.
+     * @param keyid a key ID or an email address
+     * @param trust a #CamelGpgTrust to set
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns whether succeeded
+     */
+    set_key_trust_sync(keyid: string | null, trust: GpgTrust, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the `locate_keys` on the gpg context which is used to instruct
      * gpg to locate keys using Web Key Directory (WKD) lookup when encrypting
@@ -6974,14 +7083,14 @@ export class GpgContext extends CipherContext {
      * @param session session
      * @returns a new gpg cipher context object.
      */
-    constructor(session: Session) 
+    constructor(session: Session | null) 
     /**
      * Creates a new gpg cipher context object.
      * @constructor 
      * @param session session
      * @returns a new gpg cipher context object.
      */
-    static new(session: Session): GpgContext
+    static new(session: Session | null): GpgContext
     _init(config?: GpgContext.ConstructorProperties): void
 }
 
@@ -12662,6 +12771,17 @@ export class SMIMEContext extends CipherContext {
      * @returns a new sm cipher context object.
      */
     static new(session: Session): SMIMEContext
+
+    // Overloads of new
+
+    /**
+     * This creates a new CamelCipherContext object which is used to sign,
+     * verify, encrypt and decrypt streams.
+     * @constructor 
+     * @param session a #CamelSession
+     * @returns the new CamelCipherContext
+     */
+    static new(session: Session | null): CipherContext
     _init(config?: SMIMEContext.ConstructorProperties): void
 }
 
@@ -16873,6 +16993,12 @@ export interface Transport extends Gio.Initable {
     // Owm methods of Camel-1.2.Camel.Transport
 
     /**
+     * Returns whether should request Delivery Status Notification
+     * in the "send_to" operation.
+     * @returns whether should request Delivery Status Notification
+     */
+    get_request_dsn(): boolean
+    /**
      * Sends the message asynchronously to the given recipients, regardless of
      * the contents of `message`.  If the message contains a "Bcc" header, the
      * transport is responsible for stripping it.
@@ -16904,6 +17030,12 @@ export interface Transport extends Gio.Initable {
      * @returns %TRUE on success or %FALSE on error
      */
     send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_sent_message_saved */ boolean ]
+    /**
+     * Sets whether should request Delivery Status Notification
+     * during the "send_to" operation.
+     * @param request_dsn a value to set
+     */
+    set_request_dsn(request_dsn: boolean): void
 
     // Own virtual methods of Camel-1.2.Camel.Transport
 
@@ -19546,6 +19678,58 @@ export interface GpgContextPrivate {
 export class GpgContextPrivate {
 
     // Own properties of Camel-1.2.Camel.GpgContextPrivate
+
+    static name: string
+}
+
+export interface GpgKeyInfo {
+
+    // Owm methods of Camel-1.2.Camel.GpgKeyInfo
+
+    /**
+     * Copies the `src` to a new #CamelGpgKeyInfo structure.
+     * @returns a copy of the @src, or %NULL,    when the @src is also %NULL
+     */
+    copy(): GpgKeyInfo | null
+    /**
+     * Frees the `info` previously allocated by camel_gpg_context_get_public_key_info_sync(),
+     * camel_gpg_context_get_key_data_info_sync() or camel_gpg_key_info_copy().
+     */
+    free(): void
+    /**
+     * Gets the key creating date, as seconds since the Unix Epoch.
+     * @returns key creation date
+     */
+    get_creation_date(): number
+    /**
+     * Gets the key fingerprint.
+     * @returns key fingerprint
+     */
+    get_fingerprint(): string | null
+    /**
+     * Gets the key ID.
+     * @returns key ID
+     */
+    get_id(): string | null
+    /**
+     * Gets the key trust level, as one of #CamelGpgTrust.
+     * @returns key trust level
+     */
+    get_trust(): GpgTrust
+    /**
+     * Gets the user IDs associated with the key.
+     * @returns key user IDs
+     */
+    get_user_ids(): string[]
+}
+
+/**
+ * An opaque structure holding information about a user key.
+ * @record 
+ */
+export class GpgKeyInfo {
+
+    // Own properties of Camel-1.2.Camel.GpgKeyInfo
 
     static name: string
 }

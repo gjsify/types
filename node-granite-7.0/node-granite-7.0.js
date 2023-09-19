@@ -1,0 +1,11 @@
+
+    import gi from 'node-gtk';
+    const { require: giRequire } = gi;
+    const Granite = giRequire('Granite', '7.0');
+    export { Granite };
+    export default Granite;
+
+
+
+
+

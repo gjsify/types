@@ -12,17 +12,42 @@ import './edatabook-1.2-import.d.ts';
  * EDataBook-1.2
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
+import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 import type EBookContacts from '@girs/ebookcontacts-1.2';
 import type EBackend from '@girs/ebackend-1.2';
 
+/**
+ * What compare function should be used when comparing two values.
+ */
+export enum BookBackendSexpCompareKind {
+    /**
+     * Unknown compare kind
+     */
+    UNKNOWN,
+    /**
+     * Check whether a value begins with a string
+     */
+    BEGINS_WITH,
+    /**
+     * Check whether a value ends with a string
+     */
+    ENDS_WITH,
+    /**
+     * Check whether a value contains a string
+     */
+    CONTAINS,
+    /**
+     * Check whether a value exactly matches a string
+     */
+    IS,
+}
 /**
  * Specifies the start position to in the list of traversed contacts
  * in calls to e_book_cache_cursor_step().
@@ -643,6 +668,55 @@ export interface BookBackend {
      */
     dup_locale(): string | null
     /**
+     * Returns `range_length` contacts from 0-based index `range_start`
+     * in the view identified by the `view_id`.
+     * When there are asked more than e_book_backend_get_view_n_total()
+     * contacts only those up to the total number of contacts are read.
+     * Asking for out of range contacts results in an error, though
+     * it can return less than `range_length` contacts.
+     * 
+     * The default implementation tracks the view's content in memory
+     * and returns the contacts as needed. The subclasses can do more
+     * efficient implementation.
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @param range_start 0-based range start to retrieve the contacts for
+     * @param range_length how many contacts to retrieve
+     * @returns     an array of the contacts, or %NULL, when the view cannot be found    or when the @range_start is out of bounds.
+     */
+    dup_view_contacts(view_id: number, range_start: number, range_length: number): EBookContacts.Contact[] | null
+    /**
+     * Returns a list of #EBookIndices holding indices of the contacts
+     * in the view identified by `view_id`. The array is terminated by an item
+     * with chr member being %NULL.
+     * 
+     * The default implementation returns an array previously set
+     * by e_book_backend_set_view_indices().
+     * 
+     * Free the returned array with e_book_indices_free(), when no longer needed.
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @returns an array of #EBookIndices, or %NULL
+     */
+    dup_view_indices(view_id: number): EBookContacts.BookIndices | null
+    /**
+     * Returns currently used sort fields for manual query views. The returned
+     * array is NULL only if the view could not be found. The default sort is
+     * by the file-as filed in ascending order.
+     * 
+     * The array is terminated by an item with an %E_CONTACT_FIELD_LAST field.
+     * 
+     * Free the returned array with e_book_client_view_sort_fields_free(),
+     * when no longer needed.
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @returns current sort fields for the @view_id, as an #EBookClientViewSortFields    array, or %NULL, when the view could not be found.
+     */
+    dup_view_sort_fields(view_id: number): EBookContacts.BookClientViewSortFields
+    /**
      * Calls `func` for each existing view (as returned by e_book_backend_list_views()).
      * The `func` can return %FALSE to stop early.
      * @returns whether the call had been stopped by @func
@@ -795,6 +869,18 @@ export interface BookBackend {
      * @returns an #ESourceRegistry
      */
     get_registry(): EDataServer.SourceRegistry
+    /**
+     * Returns how many contacts the view identified by `view_id`
+     * contains.
+     * 
+     * The default implementation of this virtual method returns
+     * the value previously set by e_book_backend_set_view_n_total().
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @returns how many contacts the view identified by @view_id    contains.
+     */
+    get_view_n_total(view_id: number): number
     /**
      * Returns whether `backend` will accept changes to its data content.
      * @returns whether @backend is writable
@@ -970,6 +1056,25 @@ export interface BookBackend {
      */
     ref_proxy_resolver(): Gio.ProxyResolver | null
     /**
+     * References an #EDataBookView by its identifier.
+     * 
+     * Unref the returned non-NULL view with g_object_unref(),
+     * when no longer needed.
+     * @param view_id a view identifier
+     * @returns a referenced #EDataBookView corresponding    to the given @view_id, or %NULL, when it cannot be found
+     */
+    ref_view(view_id: number): DataBookView | null
+    /**
+     * References user data previously set by e_book_backend_take_view_user_data()
+     * for the `view_id`.
+     * 
+     * Free the returned non-NULL object with g_object_unref(),
+     * when no longer needed.
+     * @param view_id a view identifier
+     * @returns previously set user data for the @view_id,   or %NULL when none had been set yet or when the view does not exist.
+     */
+    ref_view_user_data(view_id: number): GObject.Object
+    /**
      * Asynchronously initiates a refresh for `backend,` if the `backend` supports
      * refreshing.  The actual refresh operation completes on its own time.  This
      * function, along with e_book_backend_refresh_finish(), merely initiates the
@@ -1080,6 +1185,44 @@ export interface BookBackend {
      */
     set_locale(locale: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
+     * Stores current `indices` for the view identified by the `view_id` and,
+     * if such exists, notifies about it also the corresponding #EDataBookView.
+     * The array is terminated by an item with chr member being %NULL.
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @param indices an array of #EBookIndices, or %NULL
+     */
+    set_view_indices(view_id: number, indices: EBookContacts.BookIndices | null): void
+    /**
+     * Stores how many contacts the view identified by `view_id`
+     * contains. It also sets the `n_total` to the corresponding
+     * #EDataBookView, if such exists. The function does nothing
+     * when the view cannot be found.
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @param n_total the value to set
+     */
+    set_view_n_total(view_id: number, n_total: number): void
+    /**
+     * Sets the sort fields for the view identified by the `view_id`.
+     * The `fields` array should be terminated by an item, which has
+     * the field member set to %E_CONTACT_FIELD_LAST.
+     * 
+     * When the `fields` is %NULL, the sort by file-as in ascending order
+     * is used instead.
+     * 
+     * The default implementation of this virtual method stores
+     * the `fields` into the internal structure for the `backend,`
+     * to be available by e_book_backend_dup_view_sort_fields().
+     * 
+     * Note: This function should be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` views.
+     * @param view_id a view identifier
+     * @param fields an array of #EBookClientViewSortFields, or %NULL
+     */
+    set_view_sort_fields(view_id: number, fields: EBookContacts.BookClientViewSortFields | null): void
+    /**
      * Sets whether `backend` will accept changes to its data content.
      * @param writable whether `backend` is writable
      */
@@ -1096,6 +1239,17 @@ export interface BookBackend {
      */
     stop_view(view: DataBookView): void
     sync(): void
+    /**
+     * Sets the user data for the `view_id`. The function assumes ownership
+     * of the `user_data`. The `user_data` can be %NULL, which unsets
+     * the current user data for the view.
+     * 
+     * This is primarily aimed as a helper for backend implementations
+     * of the manual query views (%E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY).
+     * @param view_id a view identifier
+     * @param user_data user data to set
+     */
+    take_view_user_data(view_id: number, user_data: GObject.Object | null): void
 
     // Own virtual methods of EDataBook-1.2.EDataBook.BookBackend
 
@@ -1105,16 +1259,19 @@ export interface BookBackend {
     vfunc_impl_create_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, vcards: string | null, opflags: number): void
     vfunc_impl_delete_cursor(cursor: DataBookCursor): boolean
     vfunc_impl_dup_locale(): string | null
+    vfunc_impl_dup_view_indices(view_id: number): EBookContacts.BookIndices
     vfunc_impl_get_backend_property(prop_name: string | null): string | null
     vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, id: string | null): void
     vfunc_impl_get_contact_list(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, query: string | null): void
     vfunc_impl_get_contact_list_uids(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, query: string | null): void
+    vfunc_impl_get_view_n_total(view_id: number): number
     vfunc_impl_modify_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, vcards: string | null, opflags: number): void
     vfunc_impl_notify_update(contact: EBookContacts.Contact): void
     vfunc_impl_open(book: DataBook, opid: number, cancellable: Gio.Cancellable | null): void
     vfunc_impl_refresh(book: DataBook, opid: number, cancellable: Gio.Cancellable | null): void
     vfunc_impl_remove_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, uids: string | null, opflags: number): void
     vfunc_impl_set_locale(locale: string | null, cancellable: Gio.Cancellable | null): boolean
+    vfunc_impl_set_view_sort_fields(view_id: number, fields: EBookContacts.BookClientViewSortFields): void
     vfunc_impl_start_view(view: DataBookView): void
     vfunc_impl_stop_view(view: DataBookView): void
     vfunc_shutdown(): void
@@ -1294,6 +1451,15 @@ export class BookBackendSExp extends GObject.Object {
      */
     static new(text: string | null): BookBackendSExp
     _init(config?: BookBackendSExp.ConstructorProperties): void
+    /**
+     * A utility function, which compares only numbers from the `phone_value` with `lookup_value`
+     * using `compare_kind` method.
+     * @param phone_value a phone number to compare
+     * @param lookup_value a value to lookup for in the phone number
+     * @param compare_kind an #EBookBackendSexpCompareKind
+     * @returns whether numbers from the @phone_value match the @lookup_value using    the given @compare_kind
+     */
+    static util_phone_compare(phone_value: string | null, lookup_value: string | null, compare_kind: BookBackendSexpCompareKind): boolean
 }
 
 export module BookBackendSync {
@@ -1666,6 +1832,13 @@ export interface BookCache extends EDataServer.Extensible {
      */
     contains_email(email_address: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
+     * Counts how many contacts satisfy the `sexp`.
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    count_query(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_n_total */ number ]
+    /**
      * Calculates the `out_total` amount of results for the `cursor'`s query expression,
      * as well as the current `out_position` of `cursor` in the results. The `out_position` is
      * represented as the amount of results which lead up to the current value
@@ -1760,6 +1933,57 @@ export interface BookCache extends EDataServer.Extensible {
      */
     dup_contact_revision(contact: EBookContacts.Contact): string | null
     dup_locale(): string | null
+    /**
+     * Queries the `book_cache` for the contacts in the given range and order.
+     * The `sort_field` should be in the summary, otherwise an error
+     * is returned.
+     * 
+     * Free the `out_contacts` with g_ptr_aray_unref(), when no longer needed.
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param sort_field a field to sort by, which should be in the summary
+     * @param sort_type an #EBookCursorSortType
+     * @param n_offset a 0-based offset in the sorted result to start reading from, or 0 to read from start
+     * @param n_limit how many values to return only; use 0 or G_MAXUINT to read everything from the `n_offset`
+     * @param out_contacts an array of #EContact-s in the requested order
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_query_contacts(sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: Gio.Cancellable | null): boolean
+    /**
+     * Queries the `book_cache` for a `summary_field` value for contacts in the given range and order.
+     * To get complete contacts use e_book_cache_dup_query_contacts(). Note the field value may
+     * not correspond precisely to the value stored in the vCard (it can be in lower case).
+     * 
+     * Both `summary_field` and `sort_field` should be in the summary, otherwise an error
+     * is returned.
+     * 
+     * The `out_uids` and `out_values` will have the same number of elements,
+     * the indexes corresponding to each other. Free the arrays with
+     * g_ptr_aray_unref(), when no longer needed.
+     * @param summary_field a field to query, which should be in the summary
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param sort_field a field to sort by, which should be in the summary
+     * @param sort_type an #EBookCursorSortType
+     * @param n_offset a 0-based offset in the sorted result to start reading from, or 0 to read from start
+     * @param n_limit how many values to return only; use 0 or G_MAXUINT to read everything from the `n_offset`
+     * @param out_uids contact UID-s in the requested order
+     * @param out_values `summary_field` values in the requested order
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_query_field(summary_field: EBookContacts.ContactField, sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: Gio.Cancellable | null): boolean
+    /**
+     * Queries the `book_cache` for a `summary_field` value for contact with UID `uid`.
+     * Note the field value may not correspond precisely to the value stored
+     * in the vCard (it can be in lower case).
+     * 
+     * Free the `out_value` with g_free(), when no longer needed.
+     * @param summary_field a field to query, which should be in the summary
+     * @param uid a contact UID to query the `summary_field` for
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_summary_field(summary_field: EBookContacts.ContactField, uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ string | null ]
     /**
      * Fetch the #EContact specified by `uid` in `book_cache`.
      * 
@@ -3142,6 +3366,64 @@ export interface BookSqlite extends EDataServer.Extensible {
      */
     add_contacts(contacts: EBookContacts.Contact[], extra: string[] | null, replace: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
+     * Counts how many contacts satisfy the `sexp`.
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    count_query(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_n_total */ number ]
+    /**
+     * Queries the `ebsql` for the contacts in the given range and order.
+     * The `sort_field` should be in the summary, otherwise an error
+     * is returned.
+     * 
+     * Free the `out_contacts` with g_ptr_aray_unref(), when no longer needed.
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param sort_field a field to sort by, which should be in the summary
+     * @param sort_type an #EBookCursorSortType
+     * @param n_offset a 0-based offset in the sorted result to start reading from, or 0 to read from start
+     * @param n_limit how many values to return only; use 0 or G_MAXUINT to read everything from the `n_offset`
+     * @param out_contacts an array of #EContact-s in the requested order
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_query_contacts(sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: Gio.Cancellable | null): boolean
+    /**
+     * Queries the `ebsql` for a `summary_field` value for contacts in the given range and order.
+     * To get complete contacts use e_book_sqlite_dup_query_contacts(). Note the field value may
+     * not correspond precisely to the value stored in the vCard (it can be in lower case).
+     * 
+     * Both `summary_field` and `sort_field` should be in the summary, otherwise an error
+     * is returned.
+     * 
+     * The `out_uids` and `out_values` will have the same number of elements,
+     * the indexes corresponding to each other. Free the arrays with
+     * g_ptr_aray_unref(), when no longer needed.
+     * @param summary_field a field to query, which should be in the summary
+     * @param sexp search expression; use %NULL or an empty string to consider all stored contacts
+     * @param sort_field a field to sort by, which should be in the summary
+     * @param sort_type an #EBookCursorSortType
+     * @param n_offset a 0-based offset in the sorted result to start reading from, or 0 to read from start
+     * @param n_limit how many values to return only; use 0 or G_MAXUINT to read everything from the `n_offset`
+     * @param out_uids contact UID-s in the requested order
+     * @param out_values `summary_field` values in the requested order
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_query_field(summary_field: EBookContacts.ContactField, sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: Gio.Cancellable | null): boolean
+    /**
+     * Queries the `ebsql` for a `summary_field` value for contact with UID `uid`.
+     * Note the field value may not correspond precisely to the value stored
+     * in the vCard (it can be in lower case).
+     * 
+     * Free the `out_value` with g_free(), when no longer needed.
+     * @param summary_field a field to query, which should be in the summary
+     * @param uid a contact UID to query the `summary_field` for
+     * @param cancellable A #GCancellable
+     * @returns Whether succeeded.
+     */
+    dup_summary_field(summary_field: EBookContacts.ContactField, uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ string | null ]
+    /**
      * Executes an SQLite statement. Use e_book_sqlite_select() for
      * SELECT statements.
      * @param sql_stmt an SQLite statement to execute
@@ -4177,6 +4459,30 @@ export class DataBookFactory extends EBackend.DataFactory {
 
 export module DataBookView {
 
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `objects-added`
+     */
+    export interface ObjectsAddedSignalCallback {
+        ($obj: DataBookView, vcards: string[]): void
+    }
+
+    /**
+     * Signal callback interface for `objects-modified`
+     */
+    export interface ObjectsModifiedSignalCallback {
+        ($obj: DataBookView, vcards: string[]): void
+    }
+
+    /**
+     * Signal callback interface for `objects-removed`
+     */
+    export interface ObjectsRemovedSignalCallback {
+        ($obj: DataBookView, uids: string[]): void
+    }
+
+
     // Constructor properties interface
 
     export interface ConstructorProperties extends Gio.Initable.ConstructorProperties, GObject.Object.ConstructorProperties {
@@ -4185,6 +4491,8 @@ export module DataBookView {
 
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
+        indices?: any | null
+        n_total?: number | null
         object_path?: string | null
         sexp?: BookBackendSExp | null
     }
@@ -4197,6 +4505,8 @@ export interface DataBookView extends Gio.Initable {
 
     readonly backend: BookBackend
     readonly connection: Gio.DBusConnection
+    indices: any
+    n_total: number
     readonly object_path: string | null
     readonly sexp: BookBackendSExp
 
@@ -4207,6 +4517,41 @@ export interface DataBookView extends Gio.Initable {
 
     // Owm methods of EDataBook-1.2.EDataBook.DataBookView
 
+    /**
+     * Tells the `self,` that it contains a contact with UID `uid`. This is useful
+     * for "manual query" view, which do not do initial notifications. It helps
+     * to not send "objects-added" signal for contacts, which are already part
+     * of the `self,` because for them the "objects-modified" should be emitted
+     * instead.
+     * @param uid a contact UID
+     */
+    claim_contact_uid(uid: string | null): void
+    /**
+     * Reads `range_length` contacts from index `range_start`.
+     * When there are asked more than e_data_book_view_get_n_total()
+     * contacts only those up to the total number of contacts are read.
+     * 
+     * Free the returned #GPtrArray with g_ptr_array_unref(),
+     * when no longer needed.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param range_start 0-based range start to retrieve the contacts for
+     * @param range_length how many contacts to retrieve
+     * @returns array of the read contacts,    or %NULL, when not applicable or when the @range_start it out of bounds.
+     */
+    dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null
+    /**
+     * Returns a list of #EBookIndices holding indices of the contacts
+     * in the view. These are received from the first sort field set by
+     * e_data_book_view_set_sort_fields(). The last item of the returned
+     * array is the one with chr member being %NULL.
+     * 
+     * Free the returned array with e_book_indices_free(), when no longer needed.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns list of indices for the view,    or %NULL when cannot determine
+     */
+    dup_indices(): EBookContacts.BookIndices | null
     /**
      * Returns the #GDBusConnection on which the AddressBookView D-Bus
      * interface is exported.
@@ -4219,6 +4564,28 @@ export interface DataBookView extends Gio.Initable {
      * @returns the flags for @view.
      */
     get_flags(): EBookContacts.BookClientViewFlags
+    /**
+     * Returns whether the `view` should do initial notifications
+     * even when the flags do not contain %E_BOOK_CLIENT_VIEW_FLAGS_NOTIFY_INITIAL.
+     * The default is %FALSE.
+     * @returns value set by e_data_book_view_set_force_initial_notifications()
+     */
+    get_force_initial_notifications(): boolean
+    /**
+     * Returns an identifier of the `self`. It does not change
+     * for the whole life time of the `self`.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns an identifier of the view
+     */
+    get_id(): number
+    /**
+     * Returns how many contacts are available in the view.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @returns how many contacts are available in the view
+     */
+    get_n_total(): number
     /**
      * Returns the object path at which the AddressBookView D-Bus interface
      * is exported.
@@ -4238,6 +4605,13 @@ export interface DataBookView extends Gio.Initable {
      * @param error the error of the query, if any
      */
     notify_complete(error: GLib.Error): void
+    /**
+     * Notifies the client side that the content of the `self` changed,
+     * which it should use to refresh the view data.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     */
+    notify_content_changed(): void
     /**
      * Provides listeners with a human-readable text describing the
      * current backend operation. This can be used for progress
@@ -4298,6 +4672,53 @@ export interface DataBookView extends Gio.Initable {
      * @returns The associated #EBookBackend.
      */
     ref_backend(): BookBackend | null
+    /**
+     * Sets whether the `view` should do initial notifications
+     * even when the flags do not contain %E_BOOK_CLIENT_VIEW_FLAGS_NOTIFY_INITIAL.
+     * @param value value to set
+     */
+    set_force_initial_notifications(value: boolean): void
+    /**
+     * Sets indices used by the `self`. The array is terminated by an item
+     * with chr member being %NULL.
+     * See e_data_book_view_dup_indices() for more information.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param indices an array of #EBookIndices
+     */
+    set_indices(indices: EBookContacts.BookIndices): void
+    /**
+     * Sets how many contacts are available in the view.
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param n_total a value to set
+     */
+    set_n_total(n_total: number): void
+    /**
+     * Sets `fields` to sort the view by. The default is to sort by the file-as
+     * field. The contacts are always sorted in ascending order. Not every field
+     * can be used for sorting, the default available fields are %E_CONTACT_FILE_AS,
+     * %E_CONTACT_GIVEN_NAME and %E_CONTACT_FAMILY_NAME.
+     * 
+     * The first sort field is used to populate indices, as returned
+     * by e_data_book_view_dup_indices().
+     * 
+     * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     * @param fields an array of #EBookClientViewSortFields fields to sort by
+     */
+    set_sort_fields(fields: EBookContacts.BookClientViewSortFields): void
+
+    // Own signals of EDataBook-1.2.EDataBook.DataBookView
+
+    connect(sigName: "objects-added", callback: DataBookView.ObjectsAddedSignalCallback): number
+    connect_after(sigName: "objects-added", callback: DataBookView.ObjectsAddedSignalCallback): number
+    emit(sigName: "objects-added", vcards: string[], ...args: any[]): void
+    connect(sigName: "objects-modified", callback: DataBookView.ObjectsModifiedSignalCallback): number
+    connect_after(sigName: "objects-modified", callback: DataBookView.ObjectsModifiedSignalCallback): number
+    emit(sigName: "objects-modified", vcards: string[], ...args: any[]): void
+    connect(sigName: "objects-removed", callback: DataBookView.ObjectsRemovedSignalCallback): number
+    connect_after(sigName: "objects-removed", callback: DataBookView.ObjectsRemovedSignalCallback): number
+    emit(sigName: "objects-removed", uids: string[], ...args: any[]): void
 
     // Class property signals of EDataBook-1.2.EDataBook.DataBookView
 
@@ -4307,6 +4728,12 @@ export interface DataBookView extends Gio.Initable {
     connect(sigName: "notify::connection", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connection", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::indices", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::indices", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::indices", ...args: any[]): void
+    connect(sigName: "notify::n-total", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::n-total", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::n-total", ...args: any[]): void
     connect(sigName: "notify::object-path", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::object-path", callback: (($obj: DataBookView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::object-path", ...args: any[]): void
@@ -4354,6 +4781,249 @@ export class DataBookView extends GObject.Object {
      */
     static new(backend: BookBackend, sexp: BookBackendSExp, connection: Gio.DBusConnection, object_path: string | null): DataBookView
     _init(config?: DataBookView.ConstructorProperties): void
+}
+
+export module DataBookViewWatcherCache {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends EBookContacts.BookIndicesUpdater.ConstructorProperties {
+    }
+
+}
+
+export interface DataBookViewWatcherCache {
+
+    // Owm methods of EDataBook-1.2.EDataBook.DataBookViewWatcherCache
+
+    /**
+     * Retrieves contacts in the given range. Returns %NULL when the `range_start`
+     * is out of bounds. The function can return less than `range_length` contacts.
+     * 
+     * The returned array should be freed with g_ptr_array_unref(),
+     * when no longer needed.
+     * @param range_start range start, 0-based
+     * @param range_length how many contacts to retrieve
+     * @returns an array of #EContact-s,    or %NULL, when @range_start is out of bounds.
+     */
+    dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null
+    /**
+     * Sets `sort_fields` as fields to sort the contacts by. If %NULL,
+     * sorts by file-as field. The function assumes ownership of the `sort_fields`.
+     * @param sort_fields an #EBookClientViewSortFields, or %NULL
+     */
+    take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void
+
+    // Class property signals of EDataBook-1.2.EDataBook.DataBookViewWatcherCache
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A structure used to handle "manual query" views for #EBookBackend
+ * descendants which use #EBookCache to store the contacts.
+ * @class 
+ */
+export class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherCache
+
+    static name: string
+    static $gtype: GObject.GType<DataBookViewWatcherCache>
+
+    // Constructors of EDataBook-1.2.EDataBook.DataBookViewWatcherCache
+
+    constructor(config?: DataBookViewWatcherCache.ConstructorProperties) 
+    /**
+     * Creates a new #EDataBookViewWatcherCache, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend,` taking the data from the `cache`.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param cache an #EBookCache
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherCache
+     */
+    constructor(backend: BookBackend, cache: BookCache, view: DataBookView) 
+    /**
+     * Creates a new #EDataBookViewWatcherCache, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend,` taking the data from the `cache`.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param cache an #EBookCache
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherCache
+     */
+    static new(backend: BookBackend, cache: BookCache, view: DataBookView): DataBookViewWatcherCache
+    _init(config?: DataBookViewWatcherCache.ConstructorProperties): void
+}
+
+export module DataBookViewWatcherMemory {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends EBookContacts.BookIndicesUpdater.ConstructorProperties {
+    }
+
+}
+
+export interface DataBookViewWatcherMemory {
+
+    // Owm methods of EDataBook-1.2.EDataBook.DataBookViewWatcherMemory
+
+    /**
+     * Retrieves contacts in the given range. Returns %NULL when the `range_start`
+     * is out of bounds. The function can return less than `range_length` contacts.
+     * 
+     * The returned array should be freed with g_ptr_array_unref(),
+     * when no longer needed.
+     * @param range_start range start, 0-based
+     * @param range_length how many contacts to retrieve
+     * @returns an array of #EContact-s,    or %NULL, when @range_start is out of bounds.
+     */
+    dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null
+    /**
+     * Sets a locale to use for sorting. When %NULL, or when cannot
+     * use the provided locale, tries to use the system locale.
+     * @param locale a locale to set, or %NULL
+     */
+    set_locale(locale: string | null): void
+    /**
+     * Sets `sort_fields` as fields to sort the contacts by. If %NULL,
+     * sorts by file-as field. The function assumes ownership of the `sort_fields`.
+     * @param sort_fields an #EBookClientViewSortFields, or %NULL
+     */
+    take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void
+
+    // Class property signals of EDataBook-1.2.EDataBook.DataBookViewWatcherMemory
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A structure used as a default implementation to
+ * handle "manual query" views by the #EBookBackend.
+ * @class 
+ */
+export class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherMemory
+
+    static name: string
+    static $gtype: GObject.GType<DataBookViewWatcherMemory>
+
+    // Constructors of EDataBook-1.2.EDataBook.DataBookViewWatcherMemory
+
+    constructor(config?: DataBookViewWatcherMemory.ConstructorProperties) 
+    /**
+     * Creates a new #EDataBookViewWatcherMemory, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend`. The locale is taken from the `backend` during
+     * the creation process too.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherMemory
+     */
+    constructor(backend: BookBackend, view: DataBookView) 
+    /**
+     * Creates a new #EDataBookViewWatcherMemory, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend`. The locale is taken from the `backend` during
+     * the creation process too.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherMemory
+     */
+    static new(backend: BookBackend, view: DataBookView): DataBookViewWatcherMemory
+    _init(config?: DataBookViewWatcherMemory.ConstructorProperties): void
+}
+
+export module DataBookViewWatcherSqlite {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends EBookContacts.BookIndicesUpdater.ConstructorProperties {
+    }
+
+}
+
+export interface DataBookViewWatcherSqlite {
+
+    // Owm methods of EDataBook-1.2.EDataBook.DataBookViewWatcherSqlite
+
+    /**
+     * Retrieves contacts in the given range. Returns %NULL when the `range_start`
+     * is out of bounds. The function can return less than `range_length` contacts.
+     * 
+     * The returned array should be freed with g_ptr_array_unref(),
+     * when no longer needed.
+     * @param range_start range start, 0-based
+     * @param range_length how many contacts to retrieve
+     * @returns an array of #EContact-s,    or %NULL, when @range_start is out of bounds.
+     */
+    dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null
+    /**
+     * Sets `sort_fields` as fields to sort the contacts by. If %NULL,
+     * sorts by file-as field. The function assumes ownership of the `sort_fields`.
+     * @param sort_fields an #EBookClientViewSortFields, or %NULL
+     */
+    take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void
+
+    // Class property signals of EDataBook-1.2.EDataBook.DataBookViewWatcherSqlite
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A structure used to handle "manual query" views for #EBookBackend
+ * descendants which use #EBookSqlite to store the contacts.
+ * @class 
+ */
+export class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherSqlite
+
+    static name: string
+    static $gtype: GObject.GType<DataBookViewWatcherSqlite>
+
+    // Constructors of EDataBook-1.2.EDataBook.DataBookViewWatcherSqlite
+
+    constructor(config?: DataBookViewWatcherSqlite.ConstructorProperties) 
+    /**
+     * Creates a new #EDataBookViewWatcherSqlite, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend,` taking the data from the `ebsql`.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param ebsql an #EBookSqlite
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherSqlite
+     */
+    constructor(backend: BookBackend, ebsql: BookSqlite, view: DataBookView) 
+    /**
+     * Creates a new #EDataBookViewWatcherSqlite, which will watch the `view`
+     * and will provide the information about indices and total contacts
+     * to the `backend,` taking the data from the `ebsql`.
+     * @constructor 
+     * @param backend an #EBookBackend
+     * @param ebsql an #EBookSqlite
+     * @param view an #EDataBookView
+     * @returns a new #EDataBookViewWatcherSqlite
+     */
+    static new(backend: BookBackend, ebsql: BookSqlite, view: DataBookView): DataBookViewWatcherSqlite
+    _init(config?: DataBookViewWatcherSqlite.ConstructorProperties): void
 }
 
 export module SubprocessBookFactory {
@@ -4505,6 +5175,9 @@ export interface BookBackendClass {
     closed: (backend: BookBackend, sender: string | null) => void
     shutdown: (backend: BookBackend) => void
     impl_contains_email: (backend: BookBackend, book: DataBook, opid: number, cancellable: Gio.Cancellable | null, email_address: string | null) => void
+    impl_set_view_sort_fields: (backend: BookBackend, view_id: number, fields: EBookContacts.BookClientViewSortFields) => void
+    impl_get_view_n_total: (backend: BookBackend, view_id: number) => number
+    impl_dup_view_indices: (backend: BookBackend, view_id: number) => EBookContacts.BookIndices
     reserved_padding: any[]
 }
 
@@ -5082,6 +5755,66 @@ export interface DataBookViewPrivate {
 export class DataBookViewPrivate {
 
     // Own properties of EDataBook-1.2.EDataBook.DataBookViewPrivate
+
+    static name: string
+}
+
+export interface DataBookViewWatcherCacheClass {
+}
+
+export abstract class DataBookViewWatcherCacheClass {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherCacheClass
+
+    static name: string
+}
+
+export interface DataBookViewWatcherCachePrivate {
+}
+
+export class DataBookViewWatcherCachePrivate {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherCachePrivate
+
+    static name: string
+}
+
+export interface DataBookViewWatcherMemoryClass {
+}
+
+export abstract class DataBookViewWatcherMemoryClass {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherMemoryClass
+
+    static name: string
+}
+
+export interface DataBookViewWatcherMemoryPrivate {
+}
+
+export class DataBookViewWatcherMemoryPrivate {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherMemoryPrivate
+
+    static name: string
+}
+
+export interface DataBookViewWatcherSqliteClass {
+}
+
+export abstract class DataBookViewWatcherSqliteClass {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherSqliteClass
+
+    static name: string
+}
+
+export interface DataBookViewWatcherSqlitePrivate {
+}
+
+export class DataBookViewWatcherSqlitePrivate {
+
+    // Own properties of EDataBook-1.2.EDataBook.DataBookViewWatcherSqlitePrivate
 
     static name: string
 }

@@ -4424,29 +4424,31 @@ export interface Metadata {
     get_write_header(): boolean
     /**
      * Parses any AppStream metadata into one or more #AsComponent instances.
-     * @param data Metadata describing one or more software components as null-terminated string.
-     * @param format The format of the data (XML or YAML).
-     * @returns %TRUE on success.
-     */
-    parse(data: string | null, format: FormatKind): boolean
-    /**
-     * Parses any AppStream metadata into one or more #AsComponent instances.
      * @param bytes Metadata describing one or more software components.
      * @param format The format of the data (XML or YAML).
      * @returns %TRUE on success.
      */
     parse_bytes(bytes: GLib.Bytes, format: FormatKind): boolean
     /**
+     * Parses any AppStream metadata into one or more #AsComponent instances.
+     * @param data Metadata describing one or more software components as string.
+     * @param data_len Length of `data,` or -1 if length is unknown and `data` is NULL-terminated.
+     * @param format The format of the data (XML or YAML).
+     * @returns %TRUE on success.
+     */
+    parse_data(data: string | null, data_len: number, format: FormatKind): boolean
+    /**
      * Parses XDG Desktop Entry metadata and adds it to the list of parsed entities.
      * 
      * Please note that not every desktop-entry file will result in a valid component
      * being generated, even if parsing succeeds without error (The desktiop-entry file
      * may be valid but not generate a component on purpose).
-     * @param data Metadata describing one or more software components.
      * @param cid The component-id the new #AsComponent should have.
+     * @param data Metadata describing one or more software components.
+     * @param data_len The data length, or -1 if unknown and null-terminated.
      * @returns %TRUE if the file was parsed without error.
      */
-    parse_desktop_data(data: string | null, cid: string | null): boolean
+    parse_desktop_data(cid: string | null, data: string | null, data_len: number): boolean
     /**
      * Parses an AppStream upstream metadata file.
      * 

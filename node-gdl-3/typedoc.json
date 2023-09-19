@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gdl-3.d.ts"],
+    "readme": "./README.md",
+    "name": "Gdl-3",
+    "tsconfig": "./tsconfig.json"
+}
+

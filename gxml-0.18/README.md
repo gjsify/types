@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gxml-0.18)
 
 
-GJS TypeScript type definitions for GXml-0.18, generated from library version 0.18.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for GXml-0.18, generated from library version 0.18.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 
 ## Install

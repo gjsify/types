@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-xlib-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "xlib-2.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-amtk-4.d.ts"],
+    "readme": "./README.md",
+    "name": "Amtk-4",
+    "tsconfig": "./tsconfig.json"
+}
+

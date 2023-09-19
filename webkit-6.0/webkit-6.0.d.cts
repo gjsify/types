@@ -406,6 +406,61 @@ export enum FaviconDatabaseError {
     FAVICON_UNKNOWN,
 }
 /**
+ * Describes the status of a [struct`WebKitFeature]`.
+ * 
+ * The status for a given feature can be obtained with
+ * [id`webkit_feature_get_status]`.
+ */
+export enum FeatureStatus {
+    /**
+     * Feature that adjust behaviour for
+     *   specific application needs. The feature is not part of a Web platform
+     *   feature, not a mature feature intended to be always on.
+     */
+    EMBEDDER,
+    /**
+     * Feature in development. The feature
+     *   may be unfinished, and there are no guarantees about its safety and
+     *   stability.
+     */
+    UNSTABLE,
+    /**
+     * Feature for debugging the WebKit engine.
+     *   The feature is not generally useful for user or web developers, and
+     *   always disabled by default.
+     */
+    INTERNAL,
+    /**
+     * Feature for web developers. The feature
+     *   is not generally useful for end users, and always disabled by default.
+     */
+    DEVELOPER,
+    /**
+     * Feature in active development and
+     *   complete enough for testing. The feature may not be yet ready to
+     *   ship and is disabled by default.
+     */
+    TESTABLE,
+    /**
+     * Feature ready to be tested by users.
+     *   The feature is disabled by default, but may be enabled by applications
+     *   automatically e.g. in their “technology preview” or “beta” versions.
+     */
+    PREVIEW,
+    /**
+     * Feature ready for general use. The
+     *   feature is enabled by default, but it may still be toggled to support
+     *   debugging and testing.
+     */
+    STABLE,
+    /**
+     * Feature in general use. The feature is
+     *   always enabled and in general there should be no user-facing interface
+     *   to toggle it.
+     */
+    MATURE,
+}
+/**
  * Enum values used for determining the hardware acceleration policy.
  */
 export enum HardwareAccelerationPolicy {
@@ -1865,6 +1920,49 @@ export class BackForwardListItem extends GObject.InitiallyUnowned {
     _init(config?: BackForwardListItem.ConstructorProperties): void
 }
 
+export module ClipboardPermissionRequest {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends PermissionRequest.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+export interface ClipboardPermissionRequest extends PermissionRequest {
+
+    // Class property signals of WebKit-6.0.WebKit.ClipboardPermissionRequest
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A permission request for reading clipboard contents.
+ * 
+ * WebKitClipboardPermissionRequest represents a request for
+ * permission to decide whether WebKit can access the clipboard to read
+ * its contents through the Async Clipboard API.
+ * 
+ * When a WebKitClipboardPermissionRequest is not handled by the user,
+ * it is denied by default.
+ * @class 
+ */
+export class ClipboardPermissionRequest extends GObject.Object {
+
+    // Own properties of WebKit-6.0.WebKit.ClipboardPermissionRequest
+
+    static name: string
+    static $gtype: GObject.GType<ClipboardPermissionRequest>
+
+    // Constructors of WebKit-6.0.WebKit.ClipboardPermissionRequest
+
+    constructor(config?: ClipboardPermissionRequest.ConstructorProperties) 
+    _init(config?: ClipboardPermissionRequest.ConstructorProperties): void
+}
+
 export module ColorChooserRequest {
 
     // Signal callback interfaces
@@ -2386,6 +2484,24 @@ export interface CookieManager {
     /**
      * Asynchronously get a list of #SoupCookie from `cookie_manager`.
      * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * webkit_cookie_manager_get_all_cookies_finish() to get the result of the operation.
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback (closure user_data): a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    get_all_cookies(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Finish an asynchronous operation started with webkit_cookie_manager_get_all_cookies().
+     * 
+     * The return value is a #GSList of #SoupCookie instances which should be released
+     * with g_list_free_full() and soup_cookie_free().
+     * @param result a #GAsyncResult
+     * @returns A #GList of #SoupCookie instances.
+     */
+    get_all_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[]
+    /**
+     * Asynchronously get a list of #SoupCookie from `cookie_manager`.
+     * 
      * Asynchronously get a list of #SoupCookie from `cookie_manager` associated with `uri,` which
      * must be either an HTTP or an HTTPS URL.
      * 
@@ -2405,6 +2521,22 @@ export interface CookieManager {
      * @returns A #GList of #SoupCookie instances.
      */
     get_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[]
+    /**
+     * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * webkit_cookie_manager_replace_cookies_finish() to get the result of the operation.
+     * @param cookies a #GList of #SoupCookie to be added
+     * @param cancellable a #GCancellable or %NULL to ignore
+     * @param callback (closure user_data): a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    replace_cookies(cookies: Soup.Cookie[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Finish an asynchronous operation started with webkit_cookie_manager_replace_cookies().
+     * @param result a #GAsyncResult
+     * @returns %TRUE if the cookies were added or %FALSE in case of error.
+     */
+    replace_cookies_finish(result: Gio.AsyncResult): boolean
     /**
      * Set the cookie acceptance policy of `cookie_manager` as `policy`.
      * 
@@ -5517,8 +5649,7 @@ export module Settings {
          */
         javascript_can_open_windows_automatically?: boolean | null
         /**
-         * Determines whether a site can load favicons irrespective
-         * of the value of #WebKitSettings:auto-load-images.
+         * Unsupported setting. This property does nothing.
          */
         load_icons_ignoring_image_load_setting?: boolean | null
         /**
@@ -5874,8 +6005,7 @@ export interface Settings {
      */
     javascript_can_open_windows_automatically: boolean
     /**
-     * Determines whether a site can load favicons irrespective
-     * of the value of #WebKitSettings:auto-load-images.
+     * Unsupported setting. This property does nothing.
      */
     load_icons_ignoring_image_load_setting: boolean
     /**
@@ -6145,6 +6275,12 @@ export interface Settings {
      */
     get_fantasy_font_family(): string | null
     /**
+     * Gets whether a feature is enabled.
+     * @param feature the feature to toggle.
+     * @returns Whether the feature is enabled.
+     */
+    get_feature_enabled(feature: Feature): boolean
+    /**
      * Get the #WebKitSettings:hardware-acceleration-policy property.
      * @returns a #WebKitHardwareAccelerationPolicy
      */
@@ -6160,8 +6296,8 @@ export interface Settings {
      */
     get_javascript_can_open_windows_automatically(): boolean
     /**
-     * Get the #WebKitSettings:load-icons-ignoring-image-load-setting property.
-     * @returns %TRUE If site icon can be loaded irrespective of image loading preference or %FALSE otherwise.
+     * Setting no longer supported. This function returns %FALSE.
+     * @returns %FALSE
      */
     get_load_icons_ignoring_image_load_setting(): boolean
     /**
@@ -6422,6 +6558,17 @@ export interface Settings {
      */
     set_fantasy_font_family(fantasy_font_family: string | null): void
     /**
+     * Enables or disables a feature.
+     * 
+     * The current status of the feature can be determined with
+     * [id`webkit_settings_get_feature_enabled]`. To reset a feature to its
+     * initial status, pass the value returned by
+     * [id`webkit_feature_get_default_value]` as the `enabled` parameter.
+     * @param feature the feature to toggle.
+     * @param enabled whether the feature will be enabled.
+     */
+    set_feature_enabled(feature: Feature, enabled: boolean): void
+    /**
      * Set the #WebKitSettings:hardware-acceleration-policy property.
      * @param policy a #WebKitHardwareAccelerationPolicy
      */
@@ -6437,7 +6584,7 @@ export interface Settings {
      */
     set_javascript_can_open_windows_automatically(enabled: boolean): void
     /**
-     * Set the #WebKitSettings:load-icons-ignoring-image-load-setting property.
+     * Setting no longer supported. This function does nothing.
      * @param enabled Value to be set
      */
     set_load_icons_ignoring_image_load_setting(enabled: boolean): void
@@ -6746,6 +6893,40 @@ export class Settings extends GObject.Object {
      * @returns the equivalent font size in points.
      */
     static font_size_to_points(pixels: number): number
+    /**
+     * Gets the list of all available WebKit features.
+     * 
+     * Features can be toggled with [method`Settings`.set_feature_enabled],
+     * and their current state determined with
+     * [method`Settings`.get_feature_enabled].
+     * 
+     * Note that most applications should use
+     * [func`Settings`.get_development_features] and
+     * [func`Settings`.get_experimental_features] instead.
+     * @returns List of all features.
+     */
+    static get_all_features(): FeatureList
+    /**
+     * Gets the list of available development WebKit features.
+     * 
+     * The returned features are a subset of those returned by
+     * [func`Settings`.get_all_features], and includes those which
+     * web and WebKit developers might find useful, but in general should
+     * *not* be exposed to end users; see [enum`FeatureStatus]` for
+     * more details.
+     * @returns List of development features.
+     */
+    static get_development_features(): FeatureList
+    /**
+     * Gets the list of available experimental WebKit features.
+     * 
+     * The returned features are a subset of those returned by
+     * [func`Settings`.get_all_features], and includes those which
+     * certain applications may want to expose to end users; see
+     * [enum`FeatureStatus]` for more details.
+     * @returns List of experimental features.
+     */
+    static get_experimental_features(): FeatureList
 }
 
 export module URIRequest {
@@ -7468,8 +7649,8 @@ export interface UserContentManager {
      * 
      * The registered handler can be unregistered by using
      * webkit_user_content_manager_unregister_script_message_handler().
-     * @param name Name of the script message channel `world_name` (nullable): the name of a #WebKitScriptWorld
-     * @param world_name 
+     * @param name Name of the script message channel
+     * @param world_name the name of a #WebKitScriptWorld
      * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
      */
     register_script_message_handler(name: string | null, world_name: string | null): boolean
@@ -10487,6 +10668,20 @@ export module WebsiteDataManager {
          * parameters to configure data directories will be ignored.
          */
         is_ephemeral?: boolean | null
+        /**
+         * The percentage of volume space that can be used for data storage for every domain.
+         * If the maximum storage is reached the storage request will fail with a QuotaExceededError exception.
+         * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
+         * means WebKit will use the default quota (1 GiB).
+         */
+        origin_storage_ratio?: number | null
+        /**
+         * The percentage of volume space that can be used for data storage for all domains.
+         * If the maximum storage is reached the eviction will happen.
+         * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
+         * means there's no limit for the total storage.
+         */
+        total_storage_ratio?: number | null
     }
 
 }
@@ -10510,6 +10705,20 @@ export interface WebsiteDataManager {
      * parameters to configure data directories will be ignored.
      */
     readonly is_ephemeral: boolean
+    /**
+     * The percentage of volume space that can be used for data storage for every domain.
+     * If the maximum storage is reached the storage request will fail with a QuotaExceededError exception.
+     * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
+     * means WebKit will use the default quota (1 GiB).
+     */
+    readonly origin_storage_ratio: number
+    /**
+     * The percentage of volume space that can be used for data storage for all domains.
+     * If the maximum storage is reached the eviction will happen.
+     * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
+     * means there's no limit for the total storage.
+     */
+    readonly total_storage_ratio: number
 
     // Owm methods of WebKit-6.0.WebKit.WebsiteDataManager
 
@@ -10631,6 +10840,12 @@ export interface WebsiteDataManager {
     connect(sigName: "notify::is-ephemeral", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-ephemeral", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::is-ephemeral", ...args: any[]): void
+    connect(sigName: "notify::origin-storage-ratio", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::origin-storage-ratio", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::origin-storage-ratio", ...args: any[]): void
+    connect(sigName: "notify::total-storage-ratio", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::total-storage-ratio", callback: (($obj: WebsiteDataManager, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::total-storage-ratio", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -10643,18 +10858,11 @@ export interface WebsiteDataManager {
  * You can use WebKitWebsiteDataManager to configure the local directories
  * where website data will be stored. Use #WebKitWebsiteDataManager:base-data-directory
  * and #WebKitWebsiteDataManager:base-cache-directory set a common base directory for all
- * website data and caches. The newly created WebKitWebsiteDataManager must be passed as
- * a construct property to a #WebKitWebContext; you can use webkit_web_context_new_with_website_data_manager()
- * to create a new #WebKitWebContext with a WebKitWebsiteDataManager.
- * If you don't want to set any specific configuration, you don't need to create
- * a WebKitWebsiteDataManager: the #WebKitWebContext will create a WebKitWebsiteDataManager
- * with the default configuration. To get the WebKitWebsiteDataManager of a #WebKitWebContext,
- * you can use webkit_web_context_get_website_data_manager().
+ * website data and caches.
  * 
- * A WebKitWebsiteDataManager can also be ephemeral, in which case all the directory configuration
+ * A WebKitWebsiteDataManager can be ephemeral, in which case all the directory configuration
  * is not needed because website data will never persist. You can create an ephemeral WebKitWebsiteDataManager
- * with webkit_website_data_manager_new_ephemeral() and pass the ephemeral WebKitWebsiteDataManager to
- * a #WebKitWebContext, or simply use webkit_web_context_new_ephemeral().
+ * with webkit_website_data_manager_new_ephemeral().
  * 
  * WebKitWebsiteDataManager can also be used to fetch website data, remove data
  * stored by particular websites, or clear data for all websites modified since a given
@@ -11112,6 +11320,20 @@ export abstract class BackForwardListItemClass {
     static name: string
 }
 
+export interface ClipboardPermissionRequestClass {
+
+    // Own fields of WebKit-6.0.WebKit.ClipboardPermissionRequestClass
+
+    parent_class: GObject.ObjectClass
+}
+
+export abstract class ClipboardPermissionRequestClass {
+
+    // Own properties of WebKit-6.0.WebKit.ClipboardPermissionRequestClass
+
+    static name: string
+}
+
 export interface ColorChooserRequestClass {
 
     // Own fields of WebKit-6.0.WebKit.ColorChooserRequestClass
@@ -11312,6 +11534,182 @@ export interface FaviconDatabaseClass {
 export abstract class FaviconDatabaseClass {
 
     // Own properties of WebKit-6.0.WebKit.FaviconDatabaseClass
+
+    static name: string
+}
+
+export interface Feature {
+
+    // Owm methods of WebKit-6.0.WebKit.Feature
+
+    /**
+     * Gets the category of the feature.
+     * 
+     * Applications which include user interface to toggle features may want
+     * to use the category to group related features together.
+     * @returns Feature category.
+     */
+    get_category(): string | null
+    /**
+     * Gets whether the feature is enabled by default.
+     * 
+     * The default value may be used by applications which include user interface
+     * to toggle features to restore its settings to their defaults. Note that
+     * whether a feature is actually enabled must be checked with
+     * [method`Settings`.get_feature_enabled].
+     * @returns Whether the feature is enabled by default.
+     */
+    get_default_value(): boolean
+    /**
+     * Gets a description for the `feature`.
+     * 
+     * The detailed description should be considered an additional clarification
+     * on the purpose of the feature, to be used as complementary aid to be
+     * displayed along the feature name returned by [method`Feature`.get_name].
+     * The returned string is suitable to be displayed to end users, but it
+     * should not be relied upon being localized.
+     * 
+     * Note that some *features may not* have a detailed description, and `NULL`
+     * is returned in this case.
+     * @returns Feature description.
+     */
+    get_details(): string | null
+    /**
+     * Gets a string that uniquely identifies the `feature`.
+     * @returns The identifier string for the feature.
+     */
+    get_identifier(): string | null
+    /**
+     * Gets a short name for the `feature`.
+     * 
+     * The returned string is suitable to be displayed to end users, but it
+     * should not be relied upon being localized.
+     * 
+     * Note that some *features may not* have a short name, and `NULL`
+     * is returned in this case.
+     * @returns Short feature name.
+     */
+    get_name(): string | null
+    /**
+     * Gets the status of the feature.
+     * @returns Feature status.
+     */
+    get_status(): FeatureStatus
+    /**
+     * Atomically acquires a reference on the given `feature`.
+     * 
+     * This function is MT-safe and may be called from any thread.
+     * @returns The same @feature with an additional reference.
+     */
+    ref(): Feature
+    /**
+     * Atomically releases a reference on the given `feature`.
+     * 
+     * If the reference was the last, the resources associated to the
+     * `feature` are freed. This function is MT-safe and may be called from
+     * any thread.
+     */
+    unref(): void
+}
+
+/**
+ * Describes a web engine feature that may be toggled at runtime.
+ * 
+ * The WebKit web engine includes a set of features which may be toggled
+ * programmatically, each one represented by a #WebKitFeature that provides
+ * information about it:
+ * 
+ * - A unique “identifier”: [method`Feature`.get_identifier].
+ * - A “default value”, which indicates whether the option is enabled
+ *   automatically: [method`Feature`.get_default_value].
+ * - Its “status”, which determines whether it should be considered
+ *   user-settable and its development stage (see [enum`FeatureStatus]`
+ *   for details): [method`Feature`.get_status].
+ * - A category, which may be used to group features together:
+ *   [method`Feature`.get_category].
+ * - An optional short “name” which can be presented to an user:
+ *   [method`Feature`.get_name].
+ * - An optional longer “detailed” description:
+ *   [method`Feature`.get_details].
+ * 
+ * The lists of available features can be obtained with
+ * [func`Settings`.get_all_features], [func`Settings`.get_experimental_features],
+ * and [func`Settings`.get_development_features]). As a rule of thumb,
+ * applications which may want to allow users (i.e. web developers) to test
+ * WebKit features should use the list of experimental features. Additionally,
+ * applications might want to expose development features *when targeting
+ * technically inclined users* for early testing of in-development features
+ * (i.e. in “technology preview” or “canary” builds).
+ * 
+ * Applications **must not** expose the list of all features to end users
+ * because they often lack descriptions and control parts of the web engine
+ * which are either intended to be used during development of WebKit itself,
+ * or in specific scenarios to tweak how WebKit integrates with the
+ * application.
+ * @record 
+ */
+export class Feature {
+
+    // Own properties of WebKit-6.0.WebKit.Feature
+
+    static name: string
+}
+
+export interface FeatureList {
+
+    // Owm methods of WebKit-6.0.WebKit.FeatureList
+
+    /**
+     * Gets a feature given its index.
+     * @param index index of the feature
+     * @returns The feature at @index.
+     */
+    get(index: number): Feature
+    /**
+     * Gets the number of elements in the feature list.
+     * @returns number of elements. Since 2.42
+     */
+    get_length(): number
+    /**
+     * Atomically acquires a reference on the given `feature_list`.
+     * 
+     * This function is MT-safe and may be called from any thread.
+     * @returns The same @feature_list with an additional reference.
+     */
+    ref(): FeatureList
+    /**
+     * Atomically releases a reference on the given `feature_list`.
+     * 
+     * If the reference was the last, the resources associated to the
+     * `feature_list` are freed. This function is MT-safe and may be called
+     * from any thread.
+     */
+    unref(): void
+}
+
+/**
+ * Contains a set of toggle-able web engine features.
+ * 
+ * The list supports passing around a set of [struct`Feature]` objects and
+ * iterating over them:
+ * 
+ * ```c
+ * g_autoptr(WebKitFeatureList) list = webkit_settings_get_experimental_features();
+ * for (gsize i = 0; i < webkit_feature_list_get_length(list): i++) {
+ *     WebKitFeature *feature = webkit_feature_list_get(list, i);
+ *     // Do something with "feature".
+ * }
+ * ```
+ * 
+ * Lists of features can be obtained with
+ * [func`Settings`.get_experimental_features],
+ * [func`Settings`.get_development_features], and
+ * [func`Settings`.get_all_features].
+ * @record 
+ */
+export class FeatureList {
+
+    // Own properties of WebKit-6.0.WebKit.FeatureList
 
     static name: string
 }

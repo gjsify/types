@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-cogl-12.d.ts"],
+    "readme": "./README.md",
+    "name": "Cogl-12",
+    "tsconfig": "./tsconfig.json"
+}
+

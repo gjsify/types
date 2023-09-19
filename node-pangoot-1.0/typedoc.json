@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-pangoot-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "PangoOT-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

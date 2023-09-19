@@ -210,7 +210,7 @@ enum SparqlConnectionFlags {
      */
     FTS_ENABLE_UNACCENT,
     /**
-     * FTS Search terms are filtered through a stop word list.
+     * FTS Search terms are filtered through a stop word list. This flag is deprecated since Tracker 3.6, and will do nothing.
      */
     FTS_ENABLE_STOP_WORDS,
     /**
@@ -378,6 +378,22 @@ interface Batch {
 
     // Owm methods of Tracker-3.0.Tracker.Batch
 
+    /**
+     * Inserts the RDF data contained in `stream` as part of `batch`.
+     * 
+     * The RDF data will be inserted in the given `default_graph` if one is provided,
+     * or the anonymous graph if `default_graph` is %NULL. Any RDF data that has a
+     * graph specified (e.g. using the `GRAPH` clause in the Trig format) will
+     * be inserted in the specified graph instead of `default_graph`.
+     * 
+     * The `flags` argument is reserved for future expansions, currently
+     * %TRACKER_DESERIALIZE_FLAGS_NONE must be passed.
+     * @param flags Deserialization flags
+     * @param format RDF format of data in stream
+     * @param default_graph Default graph that will receive the RDF data
+     * @param stream Input stream with RDF data
+     */
+    add_rdf(flags: DeserializeFlags, format: RdfFormat, default_graph: string | null, stream: Gio.InputStream): void
     /**
      * Adds the RDF represented by `resource` to `batch`.
      * @param graph RDF graph to insert the resource to

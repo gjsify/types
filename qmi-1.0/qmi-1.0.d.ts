@@ -4506,6 +4506,10 @@ enum Service {
      * Telit General Application Service. Since: 1.24.
      */
     GAS,
+    /**
+     * Telit AT Relay Service. Since: 1.34.
+     */
+    ATR,
 }
 /**
  * SIO (serial I/O) port numbers. All ports available in the modem have a SIO
@@ -12381,6 +12385,13 @@ function gas_firmware_listing_mode_get_string(val: GasFirmwareListingMode): stri
  */
 function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType): string | null
 /**
+ * Parses a #QmiMessage and builds a #QmiIndicationAtrReceivedOutput out of it.
+ * The operation fails if the message is of the wrong type.
+ * @param message a #QmiMessage.
+ * @returns a #QmiIndicationAtrReceivedOutput, or %NULL if @error is set. The returned value should be freed with qmi_indication_atr_received_output_unref().
+ */
+function indication_atr_received_indication_parse(message: Message): IndicationAtrReceivedOutput
+/**
  * Parses a #QmiMessage and builds a #QmiIndicationDmsEventReportOutput out of it.
  * The operation fails if the message is of the wrong type.
  * @param message a #QmiMessage.
@@ -12913,6 +12924,13 @@ function loc_time_source_get_string(val: LocTimeSource): string | null
  * @returns %TRUE if the TLV is successfully added, otherwise %FALSE is returned and @error is set.
  */
 function message_add_raw_tlv(self: Message, type: number, raw: number, length: number): boolean
+/**
+ * Parses a #QmiMessage and builds a #QmiMessageAtrSendOutput out of it.
+ * The operation fails if the message is of the wrong type.
+ * @param message a #QmiMessage.
+ * @returns a #QmiMessageAtrSendOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_atr_send_output_unref().
+ */
+function message_atr_send_response_parse(message: Message): MessageAtrSendOutput
 /**
  * Parses a #QmiMessage and builds a #QmiMessageDmsActivateAutomaticOutput out of it.
  * The operation fails if the message is of the wrong type.
@@ -16587,6 +16605,98 @@ class Client extends GObject.Object {
 
     constructor(config?: Client.ConstructorProperties) 
     _init(config?: Client.ConstructorProperties): void
+}
+
+module ClientAtr {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `received`
+     */
+    interface ReceivedSignalCallback {
+        ($obj: ClientAtr, output: IndicationAtrReceivedOutput): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Client.ConstructorProperties {
+    }
+
+}
+
+interface ClientAtr {
+
+    // Owm methods of Qmi-1.0.Qmi.ClientAtr
+
+    /**
+     * Asynchronously sends a Send request to the device.
+     * 
+     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+     * 
+     * You can then call qmi_client_atr_send_finish() to get the result of the operation.
+     * @param input a #QmiMessageAtrSendInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+     */
+    send(input: MessageAtrSendInput, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    /**
+     * Finishes an async operation started with qmi_client_atr_send().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_atr_send().
+     * @returns a #QmiMessageAtrSendOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_atr_send_output_unref().
+     */
+    send_finish(res: Gio.AsyncResult): MessageAtrSendOutput
+
+    // Own signals of Qmi-1.0.Qmi.ClientAtr
+
+    connect(sigName: "received", callback: ClientAtr.ReceivedSignalCallback): number
+    connect_after(sigName: "received", callback: ClientAtr.ReceivedSignalCallback): number
+    emit(sigName: "received", output: IndicationAtrReceivedOutput, ...args: any[]): void
+
+    // Class property signals of Qmi-1.0.Qmi.ClientAtr
+
+    connect(sigName: "notify::client-cid", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-cid", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-cid", ...args: any[]): void
+    connect(sigName: "notify::client-device", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-device", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-device", ...args: any[]): void
+    connect(sigName: "notify::client-service", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-service", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-service", ...args: any[]): void
+    connect(sigName: "notify::client-valid", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-valid", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-valid", ...args: any[]): void
+    connect(sigName: "notify::client-version-major", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-version-major", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-version-major", ...args: any[]): void
+    connect(sigName: "notify::client-version-minor", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-version-minor", callback: (($obj: ClientAtr, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::client-version-minor", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * The #QmiClientAtr structure contains private data and should only be accessed
+ * using the provided API.
+ * @class 
+ */
+class ClientAtr extends Client {
+
+    // Own properties of Qmi-1.0.Qmi.ClientAtr
+
+    static name: string
+    static $gtype: GObject.GType<ClientAtr>
+
+    // Constructors of Qmi-1.0.Qmi.ClientAtr
+
+    constructor(config?: ClientAtr.ConstructorProperties) 
+    _init(config?: ClientAtr.ConstructorProperties): void
 }
 
 module ClientDms {
@@ -23466,6 +23576,16 @@ class Proxy extends GObject.Object {
     _init(config?: Proxy.ConstructorProperties): void
 }
 
+interface ClientAtrClass {
+}
+
+abstract class ClientAtrClass {
+
+    // Own properties of Qmi-1.0.Qmi.ClientAtrClass
+
+    static name: string
+}
+
 interface ClientClass {
 
     // Own fields of Qmi-1.0.Qmi.ClientClass
@@ -23728,6 +23848,39 @@ interface DeviceServiceVersionInfo {
 class DeviceServiceVersionInfo {
 
     // Own properties of Qmi-1.0.Qmi.DeviceServiceVersionInfo
+
+    static name: string
+}
+
+interface IndicationAtrReceivedOutput {
+
+    // Owm methods of Qmi-1.0.Qmi.IndicationAtrReceivedOutput
+
+    /**
+     * Get the 'Message' field from `self`.
+     * @returns %TRUE if the field is found, %FALSE otherwise.
+     */
+    get_message(): [ /* returnType */ boolean, /* value_message */ string | null ]
+    /**
+     * Atomically increments the reference count of `self` by one.
+     * @returns the new reference to @self.
+     */
+    ref(): IndicationAtrReceivedOutput
+    /**
+     * Atomically decrements the reference count of `self` by one.
+     * If the reference count drops to 0, `self` is completely disposed.
+     */
+    unref(): void
+}
+
+/**
+ * The #QmiIndicationAtrReceivedOutput structure contains private data and should only be accessed
+ * using the provided API.
+ * @record 
+ */
+class IndicationAtrReceivedOutput {
+
+    // Own properties of Qmi-1.0.Qmi.IndicationAtrReceivedOutput
 
     static name: string
 }
@@ -27082,6 +27235,93 @@ interface IndicationWmsSmscAddressOutput {
 class IndicationWmsSmscAddressOutput {
 
     // Own properties of Qmi-1.0.Qmi.IndicationWmsSmscAddressOutput
+
+    static name: string
+}
+
+interface MessageAtrSendInput {
+
+    // Owm methods of Qmi-1.0.Qmi.MessageAtrSendInput
+
+    /**
+     * Get the 'Message' field from `self`.
+     * @returns %TRUE if the field is found, %FALSE otherwise.
+     */
+    get_message(): [ /* returnType */ boolean, /* value_message */ string | null ]
+    /**
+     * Atomically increments the reference count of `self` by one.
+     * @returns the new reference to @self.
+     */
+    ref(): MessageAtrSendInput
+    /**
+     * Set the 'Message' field in the message.
+     * @param value_message a constant string with a maximum length of 1024 characters.
+     * @returns %TRUE if @value was successfully set, %FALSE otherwise.
+     */
+    set_message(value_message: string | null): boolean
+    /**
+     * Atomically decrements the reference count of `self` by one.
+     * If the reference count drops to 0, `self` is completely disposed.
+     */
+    unref(): void
+}
+
+/**
+ * The #QmiMessageAtrSendInput structure contains private data and should only be accessed
+ * using the provided API.
+ * @record 
+ */
+class MessageAtrSendInput {
+
+    // Own properties of Qmi-1.0.Qmi.MessageAtrSendInput
+
+    static name: string
+
+    // Constructors of Qmi-1.0.Qmi.MessageAtrSendInput
+
+    /**
+     * Allocates a new #QmiMessageAtrSendInput.
+     * @constructor 
+     * @returns the newly created #QmiMessageAtrSendInput. The returned value should be freed with qmi_message_atr_send_input_unref().
+     */
+    constructor() 
+    /**
+     * Allocates a new #QmiMessageAtrSendInput.
+     * @constructor 
+     * @returns the newly created #QmiMessageAtrSendInput. The returned value should be freed with qmi_message_atr_send_input_unref().
+     */
+    static new(): MessageAtrSendInput
+}
+
+interface MessageAtrSendOutput {
+
+    // Owm methods of Qmi-1.0.Qmi.MessageAtrSendOutput
+
+    /**
+     * Get the result of the QMI operation.
+     * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
+     */
+    get_result(): boolean
+    /**
+     * Atomically increments the reference count of `self` by one.
+     * @returns the new reference to @self.
+     */
+    ref(): MessageAtrSendOutput
+    /**
+     * Atomically decrements the reference count of `self` by one.
+     * If the reference count drops to 0, `self` is completely disposed.
+     */
+    unref(): void
+}
+
+/**
+ * The #QmiMessageAtrSendOutput structure contains private data and should only be accessed
+ * using the provided API.
+ * @record 
+ */
+class MessageAtrSendOutput {
+
+    // Own properties of Qmi-1.0.Qmi.MessageAtrSendOutput
 
     static name: string
 }

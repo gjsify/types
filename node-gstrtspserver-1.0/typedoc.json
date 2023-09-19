@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-gstrtspserver-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstRtspServer-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

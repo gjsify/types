@@ -1,7 +1,7 @@
 {
     "name": "@girs/vte-2.91",
-    "version": "0.73.0-3.2.1",
-    "description": "GJS TypeScript type definitions for Vte-2.91, generated from library version 0.73.0",
+    "version": "0.75.0-3.2.2",
+    "description": "GJS TypeScript type definitions for Vte-2.91, generated from library version 0.75.0",
     "type": "module",
     "module": "vte-2.91.js",
     "main": "vte-2.91.js",

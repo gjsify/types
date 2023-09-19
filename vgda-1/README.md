@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/vgda-1)
 
 
-GJS TypeScript type definitions for Vgda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for Vgda-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 VDA implementation using GDA as backend, suitable to implement new GDA supported implementations
 

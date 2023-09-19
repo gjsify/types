@@ -1,7 +1,7 @@
 {
     "name": "@girs/gegl-0.4",
-    "version": "0.4.45-3.2.1",
-    "description": "GJS TypeScript type definitions for Gegl-0.4, generated from library version 0.4.45",
+    "version": "0.4.47-3.2.2",
+    "description": "GJS TypeScript type definitions for Gegl-0.4, generated from library version 0.4.47",
     "type": "module",
     "module": "gegl-0.4.js",
     "main": "gegl-0.4.js",

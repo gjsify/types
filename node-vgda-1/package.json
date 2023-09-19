@@ -1,0 +1,64 @@
+{
+    "name": "@girs/node-vgda-1",
+    "version": "1.0.0-3.2.2",
+    "description": "Node.js TypeScript type definitions for Vgda-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "node-vgda-1.js",
+    "main": "node-vgda-1.js",
+    "exports": {
+        "./ambient": "./node-vgda-1-ambient.d.ts",
+        "./import": "./node-vgda-1-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-vgda-1.d.ts",
+                "default": "./node-vgda-1.js"
+            },
+            "require": {
+                "types": "./node-vgda-1.d.cts",
+                "default": "./node-vgda-1.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-vgda-1.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-vgda-1.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gcalc-2": "workspace:^",
+        "@girs/node-gee-0.8": "workspace:^",
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
+        "@girs/node-gxml-0.20": "workspace:^",
+        "@girs/node-json-1.0": "workspace:^",
+        "@girs/node-libxml2-2.0": "workspace:^",
+        "@girs/node-vda-1": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Vgda-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-vgda-1#readme"
+}

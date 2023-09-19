@@ -1246,6 +1246,14 @@ export interface Buffer {
     implicit_trailing_newline: boolean
     language: Language
     /**
+     * The "loading" property denotes that a `GtkSourceFileLoader` is
+     * currently loading the buffer.
+     * 
+     * Applications may want to use this setting to avoid doing work
+     * while the buffer is loading such as spellchecking.
+     */
+    readonly loading: boolean
+    /**
      * Style scheme. It contains styles for syntax highlighting, optionally
      * foreground, background, cursor color, current line color, and matching
      * brackets style.
@@ -1353,6 +1361,7 @@ export interface Buffer {
      * @returns the [class@Language] associated with the buffer, or %NULL.
      */
     get_language(): Language | null
+    get_loading(): boolean
     /**
      * Returns the list of marks of the given category at `iter`.
      * 
@@ -1541,6 +1550,9 @@ export interface Buffer {
     connect(sigName: "notify::language", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::language", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::language", ...args: any[]): void
+    connect(sigName: "notify::loading", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::loading", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::loading", ...args: any[]): void
     connect(sigName: "notify::style-scheme", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::style-scheme", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::style-scheme", ...args: any[]): void
@@ -8527,6 +8539,9 @@ export interface StyleSchemeChooserButton extends Gtk.Accessible, Gtk.Actionable
 
     // Class property signals of GtkSource-5.GtkSource.StyleSchemeChooserButton
 
+    connect(sigName: "notify::can-shrink", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-shrink", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

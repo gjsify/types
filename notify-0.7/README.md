@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/notify-0.7)
 
 
-GJS TypeScript type definitions for Notify-0.7, generated from library version 0.8.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for Notify-0.7, generated from library version 0.8.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 libnotify is a library that sends desktop notifications to a notification daemon, as defined in the Desktop Notifications spec. These notifications can be used to inform the user about an event or display some form of information without getting in the user's way.
 

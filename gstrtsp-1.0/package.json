@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstrtsp-1.0",
-    "version": "1.0.0-3.2.1",
+    "version": "1.0.0-3.2.2",
     "description": "GJS TypeScript type definitions for GstRtsp-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstrtsp-1.0.js",

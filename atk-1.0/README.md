@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/atk-1.0)
 
 
-GJS TypeScript type definitions for Atk-1.0, generated from library version 2.48.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for Atk-1.0, generated from library version 2.45.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications. Using the ATK interfaces, accessibility tools have full access to view and control running applications.
 

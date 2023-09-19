@@ -4307,6 +4307,10 @@ interface SymbolEvent extends Location {
      * The ID of the style layer of the symbol that this event pertains to.
      */
     readonly layer: string | null
+    /**
+     * The ID of the source layer of the symbol that this event pertains to.
+     */
+    readonly source_layer: string | null
 
     // Owm methods of Shumate-1.0.Shumate.SymbolEvent
 
@@ -4320,6 +4324,11 @@ interface SymbolEvent extends Location {
      */
     get_feature_id(): string | null
     /**
+     * Gets a list of the keys of the source feature's tags.
+     * @returns a list of the tag keys
+     */
+    get_keys(): string[]
+    /**
      * Gets the name of the layer the clicked symbol is in, as named in the vector
      * stylesheet.
      * 
@@ -4329,6 +4338,12 @@ interface SymbolEvent extends Location {
      * @returns the layer name
      */
     get_layer(): string | null
+    /**
+     * Gets the name of the source layer the clicked feature is in,
+     * as named in the vector tile schema.
+     * @returns the layer name
+     */
+    get_source_layer(): string | null
     /**
      * Gets a tag from the source feature.
      * 
@@ -4348,6 +4363,9 @@ interface SymbolEvent extends Location {
     connect(sigName: "notify::layer", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::layer", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::layer", ...args: any[]): void
+    connect(sigName: "notify::source-layer", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source-layer", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-layer", ...args: any[]): void
     connect(sigName: "notify::latitude", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::latitude", callback: (($obj: SymbolEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::latitude", ...args: any[]): void

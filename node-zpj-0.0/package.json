@@ -1,0 +1,61 @@
+{
+    "name": "@girs/node-zpj-0.0",
+    "version": "0.0.0-3.2.2",
+    "description": "Node.js TypeScript type definitions for Zpj-0.0, generated from library version 0.0.0",
+    "type": "module",
+    "module": "node-zpj-0.0.js",
+    "main": "node-zpj-0.0.js",
+    "exports": {
+        "./ambient": "./node-zpj-0.0-ambient.d.ts",
+        "./import": "./node-zpj-0.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-zpj-0.0.d.ts",
+                "default": "./node-zpj-0.0.js"
+            },
+            "require": {
+                "types": "./node-zpj-0.0.d.cts",
+                "default": "./node-zpj-0.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-zpj-0.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-zpj-0.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-gio-2.0": "workspace:^",
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^",
+        "@girs/node-json-1.0": "workspace:^",
+        "@girs/node-rest-0.7": "workspace:^",
+        "@girs/node-soup-2.4": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "Zpj-0.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-zpj-0.0#readme"
+}

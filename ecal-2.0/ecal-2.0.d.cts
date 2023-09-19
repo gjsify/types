@@ -12,13 +12,13 @@ import './ecal-2.0-import.d.ts';
  * ECal-2.0
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Soup from '@girs/soup-3.0';
-import type Gio from '@girs/gio-2.0';
+import type ICalGLib from '@girs/icalglib-3.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type ICalGLib from '@girs/icalglib-3.0';
+import type Gio from '@girs/gio-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
+import type libxml2 from '@girs/libxml2-2.0';
+import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
@@ -387,6 +387,15 @@ export const STATIC_CAPABILITY_DELEGATE_SUPPORTED: string | null
 export const STATIC_CAPABILITY_DELEGATE_TO_MANY: string | null
 export const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string | null
 /**
+ * Set, when the backend supports %E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES and
+ * it can suppress iTip message on component removal. The capability should
+ * be ignored when the %E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES is not present.
+ * 
+ * The backend checks %E_CAL_OPERATION_FLAG_DISABLE_ITIP_MESSAGE flag when these
+ * capabilities are present and sends or does not send iTip message accordingly.
+ */
+export const STATIC_CAPABILITY_ITIP_SUPPRESS_ON_REMOVE_SUPPORTED: string | null
+/**
  * Flag indicating that the backend does not support alarm after start the event
  */
 export const STATIC_CAPABILITY_NO_ALARM_AFTER_START: string | null
@@ -416,6 +425,12 @@ export const STATIC_CAPABILITY_REMOVE_ALARMS: string | null
  */
 export const STATIC_CAPABILITY_REMOVE_ONLY_THIS: string | null
 export const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string | null
+/**
+ * Set, when the backend supports retract. That's a way to ask for a meeting
+ * deletion with a comment, which is stored in a component as
+ * X-EVOLUTION-RETRACT-COMMENT property.
+ */
+export const STATIC_CAPABILITY_RETRACT_SUPPORTED: string | null
 export const STATIC_CAPABILITY_SAVE_SCHEDULES: string | null
 /**
  * When the capability is set, the backend handles only simple memos,
@@ -922,6 +937,16 @@ export function util_copy_timezone(zone: ICalGLib.Timezone): ICalGLib.Timezone
  */
 export function util_diff_categories(old_comp: ICalGLib.Component | null, new_comp: ICalGLib.Component | null): [ /* out_added */ GLib.HashTable, /* out_removed */ GLib.HashTable ]
 /**
+ * Compares two email addresses and returns whether they are equal.
+ * Each address can contain a "mailto:" prefix. The two addresses
+ * match only if they are non-NULL and non-empty. The address itself
+ * is compared case insensitively.
+ * @param email1 the first email
+ * @param email2 the second email
+ * @returns %TRUE, when the @email1 equals to @email2
+ */
+export function util_email_addresses_equal(email1: string | null, email2: string | null): boolean
+/**
  * Calls `func` for each category stored in the `comp`.
  * @param comp an #ICalComponent
  * @param func an #ECalUtilForeachCategoryFunc callback to call for each category
@@ -979,6 +1004,14 @@ export function util_generate_alarms_for_list(comps: Component[], start: number,
  */
 export function util_generate_alarms_for_uid_sync(client: any | null, uid: string | null, start: number, end: number, omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): ComponentAlarms | null
 /**
+ * Returns an attendee email, without the "mailto:" prefix, if
+ * the `attendee` has it set. The email can be read from an "EMAIL"
+ * parameter, if present.
+ * @param attendee an ECalComponentAttendee
+ * @returns email of the @attendee, or %NULL
+ */
+export function util_get_attendee_email(attendee: ComponentAttendee | null): string | null
+/**
  * Find out when the component starts and stops, being careful about
  * recurrences.
  * @param comp an #ECalComponent
@@ -987,6 +1020,33 @@ export function util_generate_alarms_for_uid_sync(client: any | null, uid: strin
  * @param kind the type of component, indicated with an #ICalComponentKind
  */
 export function util_get_component_occur_times(comp: Component, tz_cb: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, kind: ICalGLib.ComponentKind): [ /* out_start */ number, /* out_end */ number ]
+/**
+ * Returns the real name and email address of the default mail identity,
+ * if available.  If no default mail identity is available, `out_name` and
+ * `out_address` are set to %NULL and the function returns %FALSE.
+ * @param registry an #ESourceRegistry
+ * @returns %TRUE if @out_name and/or @out_address were set
+ */
+export function util_get_default_name_and_address(registry: EDataServer.SourceRegistry): [ /* returnType */ boolean, /* out_name */ string | null, /* out_address */ string | null ]
+/**
+ * Returns an organizer email, without the "mailto:" prefix, if
+ * the `organizer` has it set. The email can be read from an "EMAIL"
+ * parameter, if present.
+ * @param organizer an #ECalComponentOrganizer
+ * @returns email of the @organizer, or %NULL
+ */
+export function util_get_organizer_email(organizer: ComponentOrganizer | null): string | null
+/**
+ * Returns an `prop` email, without the "mailto:" prefix, if
+ * the `prop` has it set. The email can be read from an "EMAIL"
+ * parameter, if present. Otherwise the `prop` can be only of
+ * type %I_CAL_ORGANIZER_PROPERTY or %I_CAL_ATTENDEE_PROPERTY.
+ * 
+ * See also: e_cal_util_get_organizer_email(), e_cal_util_get_attendee_email()
+ * @param prop an #ICalProperty
+ * @returns email of the @prop, or %NULL
+ */
+export function util_get_property_email(prop: ICalGLib.Property): string | null
 /**
  * Fetches system timezone ICalTimezone object.
  * 
@@ -1223,6 +1283,13 @@ export function util_split_at_instance(icalcomp: ICalGLib.Component, rid: ICalGL
  * @returns the split @icalcomp, or %NULL.
  */
 export function util_split_at_instance_ex(icalcomp: ICalGLib.Component, rid: ICalGLib.Time, master_dtstart: ICalGLib.Time | null, tz_cb: RecurResolveTimezoneCb): ICalGLib.Component | null
+/**
+ * Strips "mailto:" prefix from the `address,` if present. The returned
+ * pointer is either the `address` or a shifted position within the `address`.
+ * @param address an address with or without "mailto:" prefix
+ * @returns the @address without the "mailto:" prefix
+ */
+export function util_strip_mailto(address: string | null): string | null
 /**
  * Converts a struct tm into an #ICalTime. Free the returned object
  * with g_object_unref(), when no longer needed.

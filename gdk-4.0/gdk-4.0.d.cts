@@ -13,12 +13,12 @@ import './gdk-4.0-import.d.ts';
  */
 
 import type cairo from '@girs/cairo-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -572,6 +572,46 @@ export enum MemoryFormat {
      *   alpha. Since: 4.6
      */
     R32G32B32A32_FLOAT,
+    /**
+     * 2 bytes; for grayscale, alpha. The color
+     *   values are premultiplied with the alpha value. Since: 4.12
+     */
+    G8A8_PREMULTIPLIED,
+    /**
+     * 2 bytes; for grayscale, alpha. Since: 4.12
+     */
+    G8A8,
+    /**
+     * One byte; for grayscale. The data is opaque.
+     *   Since: 4.12
+     */
+    G8,
+    /**
+     * 2 guint16 values; for grayscale, alpha.
+     *  The color values are premultiplied with the alpha value. Since: 4.12
+     */
+    G16A16_PREMULTIPLIED,
+    /**
+     * 2 guint16 values; for grayscale, alpha. Since: 4.12
+     */
+    G16A16,
+    /**
+     * One guint16 value; for grayscale. The data is opaque.
+     *   Since: 4.12
+     */
+    G16,
+    /**
+     * One byte; for alpha.
+     *   Since: 4.12
+     */
+    A8,
+    /**
+     * One guint16 value; for alpha.
+     *   Since: 4.12
+     */
+    A16,
+    A16_FLOAT,
+    A32_FLOAT,
     /**
      * The number of formats. This value will change as
      *   more formats get added, so do not rely on its concrete integer.
@@ -1204,6 +1244,10 @@ export enum ToplevelState {
      * whether the left edge is resizable
      */
     LEFT_RESIZABLE,
+    /**
+     * the surface is not visible to the user
+     */
+    SUSPENDED,
 }
 /**
  * Defines all possible DND actions.
@@ -3719,6 +3763,7 @@ export function content_serialize_finish(result: Gio.AsyncResult): boolean
  * @returns %TRUE if exactly one action was given
  */
 export function drag_action_is_unique(action: DragAction): boolean
+export function drag_surface_size_get_type(): GObject.GType
 /**
  * Returns the relative angle from `event1` to `event2`.
  * 
@@ -4068,6 +4113,16 @@ export class DevicePad extends GObject.Object {
 
 export module DragSurface {
 
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `compute-size`
+     */
+    export interface ComputeSizeSignalCallback {
+        ($obj: DragSurface, size: DragSurfaceSize): void
+    }
+
+
     // Constructor properties interface
 
     export interface ConstructorProperties extends Surface.ConstructorProperties, GObject.Object.ConstructorProperties {
@@ -4087,6 +4142,12 @@ export interface DragSurface extends Surface {
      */
     present(width: number, height: number): boolean
 
+    // Own signals of Gdk-4.0.Gdk.DragSurface
+
+    connect(sigName: "compute-size", callback: DragSurface.ComputeSizeSignalCallback): number
+    connect_after(sigName: "compute-size", callback: DragSurface.ComputeSizeSignalCallback): number
+    emit(sigName: "compute-size", size: DragSurfaceSize, ...args: any[]): void
+
     // Class property signals of Gdk-4.0.Gdk.DragSurface
 
     connect(sigName: "notify::cursor", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
@@ -4104,6 +4165,9 @@ export interface DragSurface extends Surface {
     connect(sigName: "notify::mapped", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mapped", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mapped", ...args: any[]): void
+    connect(sigName: "notify::scale", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale-factor", callback: (($obj: DragSurface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale-factor", ...args: any[]): void
@@ -4581,6 +4645,9 @@ export interface Popup extends Surface {
     connect(sigName: "notify::mapped", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mapped", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mapped", ...args: any[]): void
+    connect(sigName: "notify::scale", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale-factor", callback: (($obj: Popup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale-factor", ...args: any[]): void
@@ -4966,6 +5033,9 @@ export interface Toplevel extends Surface {
     connect(sigName: "notify::mapped", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mapped", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mapped", ...args: any[]): void
+    connect(sigName: "notify::scale", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale-factor", callback: (($obj: Toplevel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale-factor", ...args: any[]): void
@@ -8252,6 +8322,8 @@ export interface Event {
     get_pointer_emulated(): boolean
     /**
      * Extract the event surface relative x/y coordinates from an event.
+     * 
+     * This position is in [surface coordinates](coordinates.html).
      */
     get_position(): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
     /**
@@ -8682,9 +8754,6 @@ export interface GLContext {
      * Retrieves the OpenGL version of the `context`.
      * 
      * The `context` must be realized prior to calling this function.
-     * 
-     * If the `context` has never been made current, the version cannot
-     * be known and it will return 0 for both `major` and `minor`.
      */
     get_version(): [ /* major */ number, /* minor */ number ]
     /**
@@ -8985,6 +9054,337 @@ export class GLTexture extends Texture {
      */
     static new(context: GLContext, id: number, width: number, height: number, destroy: GLib.DestroyNotify, data: any | null): GLTexture
     _init(config?: GLTexture.ConstructorProperties): void
+}
+
+export module GLTextureBuilder {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gdk-4.0.Gdk.GLTextureBuilder
+
+        /**
+         * The context owning the texture.
+         */
+        context?: GLContext | null
+        /**
+         * The format when downloading the texture.
+         */
+        format?: MemoryFormat | null
+        /**
+         * If the texture has a mipmap.
+         */
+        has_mipmap?: boolean | null
+        /**
+         * The height of the texture.
+         */
+        height?: number | null
+        /**
+         * The texture ID to use.
+         */
+        id?: number | null
+        /**
+         * An optional `GLSync` object.
+         * 
+         * If this is set, GTK will wait on it before using the texture.
+         */
+        sync?: any | null
+        /**
+         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         */
+        update_region?: cairo.Region | null
+        /**
+         * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+         */
+        update_texture?: Texture | null
+        /**
+         * The width of the texture.
+         */
+        width?: number | null
+    }
+
+}
+
+export interface GLTextureBuilder {
+
+    // Own properties of Gdk-4.0.Gdk.GLTextureBuilder
+
+    /**
+     * The context owning the texture.
+     */
+    context: GLContext
+    /**
+     * The format when downloading the texture.
+     */
+    format: MemoryFormat
+    /**
+     * If the texture has a mipmap.
+     */
+    has_mipmap: boolean
+    /**
+     * The height of the texture.
+     */
+    height: number
+    /**
+     * The texture ID to use.
+     */
+    id: number
+    /**
+     * An optional `GLSync` object.
+     * 
+     * If this is set, GTK will wait on it before using the texture.
+     */
+    sync: any
+    /**
+     * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+     */
+    update_region: cairo.Region
+    /**
+     * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+     */
+    update_texture: Texture
+    /**
+     * The width of the texture.
+     */
+    width: number
+
+    // Owm methods of Gdk-4.0.Gdk.GLTextureBuilder
+
+    /**
+     * Builds a new `GdkTexture` with the values set up in the builder.
+     * 
+     * The `destroy` function gets called when the returned texture gets released;
+     * either when the texture is finalized or by an explicit call to
+     * [method`Gdk`.GLTexture.release]. It should release all GL resources associated
+     * with the texture, such as the [property`Gdk`.GLTextureBuilder:id] and the
+     * [property`Gdk`.GLTextureBuilder:sync].
+     * 
+     * Note that it is a programming error to call this function if any mandatory
+     * property has not been set.
+     * 
+     * It is possible to call this function multiple times to create multiple textures,
+     * possibly with changing properties in between.
+     * @param destroy destroy function to be called when the texture is   released
+     * @param data user data to pass to the destroy function
+     * @returns a newly built `GdkTexture`
+     */
+    build(destroy: GLib.DestroyNotify | null, data: any | null): Texture
+    /**
+     * Gets the context previously set via gdk_gl_texture_builder_set_context() or
+     * %NULL if none was set.
+     * @returns The context
+     */
+    get_context(): GLContext | null
+    /**
+     * Gets the format previously set via gdk_gl_texture_builder_set_format().
+     * @returns The format
+     */
+    get_format(): MemoryFormat
+    /**
+     * Gets whether the texture has a mipmap.
+     * @returns Whether the texture has a mipmap
+     */
+    get_has_mipmap(): boolean
+    /**
+     * Gets the height previously set via gdk_gl_texture_builder_set_height() or
+     * 0 if the height wasn't set.
+     * @returns The height
+     */
+    get_height(): number
+    /**
+     * Gets the texture id previously set via gdk_gl_texture_builder_set_id() or
+     * 0 if the id wasn't set.
+     * @returns The id
+     */
+    get_id(): number
+    /**
+     * Gets the `GLsync` previously set via gdk_gl_texture_builder_set_sync().
+     * @returns the `GLSync`
+     */
+    get_sync(): any | null
+    /**
+     * Gets the region previously set via gdk_gl_texture_builder_set_update_region() or
+     * %NULL if none was set.
+     * @returns The region
+     */
+    get_update_region(): cairo.Region | null
+    /**
+     * Gets the texture previously set via gdk_gl_texture_builder_set_update_texture() or
+     * %NULL if none was set.
+     * @returns The texture
+     */
+    get_update_texture(): Texture | null
+    /**
+     * Gets the width previously set via gdk_gl_texture_builder_set_width() or
+     * 0 if the width wasn't set.
+     * @returns The width
+     */
+    get_width(): number
+    /**
+     * Sets the context to be used for the texture. This is the context that owns
+     * the texture.
+     * 
+     * The context must be set before calling [method`Gdk`.GLTextureBuilder.build].
+     * @param context The context the texture beongs to or %NULL to unset
+     */
+    set_context(context: GLContext | null): void
+    /**
+     * Sets the format of the texture. The default is `GDK_MEMORY_R8G8B8A8_PREMULTIPLIED`.
+     * 
+     * The format is the preferred format the texture data should be downloaded to. The
+     * format must be supported by the GL version of [property`Gdk`.GLTextureBuilder:context].
+     * 
+     * GDK's texture download code assumes that the format corresponds to the storage
+     * parameters of the GL texture in an obvious way. For example, a format of
+     * `GDK_MEMORY_R16G16B16A16_PREMULTIPLIED` is expected to be stored as `GL_RGBA16`
+     * texture, and `GDK_MEMORY_G8A8` is expected to be stored as `GL_RG8` texture.
+     * 
+     * Setting the right format is particularly useful when using high bit depth textures
+     * to preserve the bit depth, to set the correct value for unpremultiplied textures
+     * and to make sure opaque textures are treated as such.
+     * 
+     * Non-RGBA textures need to have swizzling parameters set up properly to be usable
+     * in GSK's shaders.
+     * @param format The texture's format
+     */
+    set_format(format: MemoryFormat): void
+    /**
+     * Sets whether the texture has a mipmap. This allows the renderer and other users of the
+     * generated texture to use a higher quality downscaling.
+     * 
+     * Typically, the `glGenerateMipmap` function is used to generate a mimap.
+     * @param has_mipmap Whether the texture has a mipmap
+     */
+    set_has_mipmap(has_mipmap: boolean): void
+    /**
+     * Sets the height of the texture.
+     * 
+     * The height must be set before calling [method`Gdk`.GLTextureBuilder.build].
+     * @param height The texture's height or 0 to unset
+     */
+    set_height(height: number): void
+    /**
+     * Sets the texture id of the texture. The texture id must remain unmodified
+     * until the texture was finalized. See [method`Gdk`.GLTextureBuilder.build]
+     * for a longer discussion.
+     * 
+     * The id must be set before calling [method`Gdk`.GLTextureBuilder.build].
+     * @param id The texture id to be used for creating the texture
+     */
+    set_id(id: number): void
+    /**
+     * Sets the GLSync object to use for the texture.
+     * 
+     * GTK will wait on this object before using the created `GdkTexture`.
+     * 
+     * The `destroy` function that is passed to [method`Gdk`.GLTextureBuilder.build]
+     * is responsible for freeing the sync object when it is no longer needed.
+     * The texture builder does not destroy it and it is the callers
+     * responsibility to make sure it doesn't leak.
+     * @param sync the GLSync object
+     */
+    set_sync(sync: any | null): void
+    /**
+     * Sets the region to be updated by this texture. Together with
+     * [property`Gdk`.GLTextureBuilder:update-texture] this describes an
+     * update of a previous texture.
+     * 
+     * When rendering animations of large textures, it is possible that
+     * consecutive textures are only updating contents in parts of the texture.
+     * It is then possible to describe this update via these two properties,
+     * so that GTK can avoid rerendering parts that did not change.
+     * 
+     * An example would be a screen recording where only the mouse pointer moves.
+     * @param region the region to update
+     */
+    set_update_region(region: cairo.Region | null): void
+    /**
+     * Sets the texture to be updated by this texture. See
+     * [method`Gdk`.GLTextureBuilder.set_update_region] for an explanation.
+     * @param texture the texture to update
+     */
+    set_update_texture(texture: Texture | null): void
+    /**
+     * Sets the width of the texture.
+     * 
+     * The width must be set before calling [method`Gdk`.GLTextureBuilder.build].
+     * @param width The texture's width or 0 to unset
+     */
+    set_width(width: number): void
+
+    // Class property signals of Gdk-4.0.Gdk.GLTextureBuilder
+
+    connect(sigName: "notify::context", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::context", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::context", ...args: any[]): void
+    connect(sigName: "notify::format", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::format", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::format", ...args: any[]): void
+    connect(sigName: "notify::has-mipmap", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-mipmap", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-mipmap", ...args: any[]): void
+    connect(sigName: "notify::height", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height", ...args: any[]): void
+    connect(sigName: "notify::id", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::id", ...args: any[]): void
+    connect(sigName: "notify::sync", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sync", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sync", ...args: any[]): void
+    connect(sigName: "notify::update-region", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-region", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-region", ...args: any[]): void
+    connect(sigName: "notify::update-texture", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-texture", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-texture", ...args: any[]): void
+    connect(sigName: "notify::width", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width", callback: (($obj: GLTextureBuilder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * `GdkGLTextureBuilder` is a buider used to construct [class`Gdk`.Texture] objects from
+ * GL textures.
+ * 
+ * The operation is quite simple: Create a texture builder, set all the necessary
+ * properties - keep in mind that the properties [property`Gdk`.GLTextureBuilder:context],
+ * [property`Gdk`.GLTextureBuilder:id], [property`Gdk`.GLTextureBuilder:width], and
+ * [property`Gdk`.GLTextureBuilder:height] are mandatory - and then call
+ * [method`Gdk`.GLTextureBuilder.build] to create the new texture.
+ * 
+ * `GdkGLTextureBuilder` can be used for quick one-shot construction of
+ * textures as well as kept around and reused to construct multiple textures.
+ * @class 
+ */
+export class GLTextureBuilder extends GObject.Object {
+
+    // Own properties of Gdk-4.0.Gdk.GLTextureBuilder
+
+    static name: string
+    static $gtype: GObject.GType<GLTextureBuilder>
+
+    // Constructors of Gdk-4.0.Gdk.GLTextureBuilder
+
+    constructor(config?: GLTextureBuilder.ConstructorProperties) 
+    /**
+     * Creates a new texture builder.
+     * @constructor 
+     * @returns the new `GdkTextureBuilder`
+     */
+    constructor() 
+    /**
+     * Creates a new texture builder.
+     * @constructor 
+     * @returns the new `GdkTextureBuilder`
+     */
+    static new(): GLTextureBuilder
+    _init(config?: GLTextureBuilder.ConstructorProperties): void
 }
 
 export interface GrabBrokenEvent {
@@ -9774,7 +10174,14 @@ export interface Surface {
      */
     readonly mapped: boolean
     /**
+     * The scale of the surface.
+     */
+    readonly scale: number
+    /**
      * The scale factor of the surface.
+     * 
+     * The scale factor is the next larger integer,
+     * compared to [property`Gdk`.Surface:scale].
      */
     readonly scale_factor: number
     /**
@@ -9909,6 +10316,21 @@ export interface Surface {
      */
     get_mapped(): boolean
     /**
+     * Returns the internal scale that maps from surface coordinates
+     * to the actual device pixels.
+     * 
+     * When the scale is bigger than 1, the windowing system prefers to get
+     * buffers with a resolution that is bigger than the surface size (e.g.
+     * to show the surface on a high-resolution display, or in a magnifier).
+     * 
+     * Compare with [method`Gdk`.Surface.get_scale_factor], which returns the
+     * next larger integer.
+     * 
+     * The scale may change during the lifetime of the surface.
+     * @returns the scale
+     */
+    get_scale(): number
+    /**
      * Returns the internal scale factor that maps from surface coordinates
      * to the actual device pixels.
      * 
@@ -9919,7 +10341,7 @@ export interface Surface {
      * pixel-based data the scale value can be used to determine whether to
      * use a pixel resource with higher resolution data.
      * 
-     * The scale of a surface may change during runtime.
+     * The scale factor may change during the lifetime of the surface.
      * @returns the scale factor
      */
     get_scale_factor(): number
@@ -10067,6 +10489,9 @@ export interface Surface {
     connect(sigName: "notify::mapped", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mapped", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mapped", ...args: any[]): void
+    connect(sigName: "notify::scale", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale-factor", callback: (($obj: Surface, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale-factor", ...args: any[]): void
@@ -10283,7 +10708,8 @@ export interface Texture extends Paintable, Gio.Icon, Gio.LoadableIcon {
  * multiple frames, and will be used for a long time.
  * 
  * There are various ways to create `GdkTexture` objects from a
- * [class`GdkPixbuf`.Pixbuf], or a Cairo surface, or other pixel data.
+ * [class`GdkPixbuf`.Pixbuf], or from bytes stored in memory, a file, or a
+ * [struct`Gio`.Resource].
  * 
  * The ownership of the pixel data is transferred to the `GdkTexture`
  * instance; you can only make a copy of it, via [method`Gdk`.Texture.download].
@@ -10851,6 +11277,30 @@ export abstract class DragSurfaceInterface {
     static name: string
 }
 
+export interface DragSurfaceSize {
+
+    // Owm methods of Gdk-4.0.Gdk.DragSurfaceSize
+
+    /**
+     * Sets the size the drag surface prefers to be resized to.
+     * @param width the width
+     * @param height the height
+     */
+    set_size(width: number, height: number): void
+}
+
+/**
+ * The `GdkDragSurfaceSize` struct contains information that is useful
+ * to compute the size of a drag surface.
+ * @record 
+ */
+export class DragSurfaceSize {
+
+    // Own properties of Gdk-4.0.Gdk.DragSurfaceSize
+
+    static name: string
+}
+
 export interface EventSequence {
 }
 
@@ -11026,6 +11476,16 @@ export interface FrameTimings {
 export class FrameTimings {
 
     // Own properties of Gdk-4.0.Gdk.FrameTimings
+
+    static name: string
+}
+
+export interface GLTextureBuilderClass {
+}
+
+export abstract class GLTextureBuilderClass {
+
+    // Own properties of Gdk-4.0.Gdk.GLTextureBuilderClass
 
     static name: string
 }
@@ -11592,10 +12052,10 @@ export interface TextureDownloader {
      * be stored in the stride value.
      * 
      * This function will abort if it tries to download a large texture and
-     * fails to allocate memory. If you think that may happen, you should
-     * handle memory allocation yourself and use
-     * gdk_texture_downloader_download_into() once allocation succeeded.
-     * @returns The downloaded pixels.
+     * fails to allocate memory. If you think that may happen, you should handle
+     * memory allocation yourself and use [method`Gdk`.TextureDownloader.download_into]
+     * once allocation succeeded.
+     * @returns The downloaded pixels
      */
     download_bytes(): [ /* returnType */ GLib.Bytes, /* out_stride */ number ]
     /**

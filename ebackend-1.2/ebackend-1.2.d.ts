@@ -12,12 +12,12 @@ import './ebackend-1.2-import.d.ts';
  * EBackend-1.2
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
-import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
+import type libxml2 from '@girs/libxml2-2.0';
+import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
@@ -519,6 +519,12 @@ interface Backend {
      * @returns %TRUE, when it's a remote backend and provides both   @host and @port; %FALSE otherwise.
      */
     get_destination_address(): [ /* returnType */ boolean, /* host */ string | null, /* port */ number ]
+    /**
+     * Returns a #GNetworkMonitor used to check whether the backend can
+     * access the remote server. The instance is owned by the `backend`.
+     * @returns a #GNetworkMonitor used by the @backend
+     */
+    get_network_monitor(): Gio.NetworkMonitor
     /**
      * Returns the online state of `backend:` %TRUE if `backend` is online,
      * %FALSE if offline.

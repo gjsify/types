@@ -4893,6 +4893,9 @@ interface Stage extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
 
     // Class property signals of Meta-12.Meta.Stage
 
+    connect(sigName: "notify::is-grabbed", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-grabbed", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-grabbed", ...args: any[]): void
     connect(sigName: "notify::key-focus", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::key-focus", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::key-focus", ...args: any[]): void

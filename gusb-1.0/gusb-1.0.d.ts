@@ -648,6 +648,22 @@ interface Device extends Gio.Initable {
      */
     get_events(): DeviceEvent[]
     /**
+     * Gets the default HID descriptors exported by the device.
+     * 
+     * If more than one interface exports a HID descriptor, use g_usb_device_get_hid_descriptors()
+     * instead.
+     * @returns a HID descriptor, or %NULL
+     */
+    get_hid_descriptor_default(): GLib.Bytes
+    /**
+     * Gets all the HID descriptors exported by the device.
+     * 
+     * The first time this method is used the hardware is queried and then after that cached results
+     * are returned. To invalidate the caches use g_usb_device_invalidate().
+     * @returns an array of HID descriptors
+     */
+    get_hid_descriptors(): GLib.Bytes[]
+    /**
      * Gets the first interface that matches the vendor class interface descriptor.
      * If you want to find all the interfaces that match (there may be other
      * 'alternate' interfaces you have to use g_usb_device_get_interfaces() and

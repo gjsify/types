@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstinterfaces-0.10",
-    "version": "0.10.0-3.2.1",
+    "version": "0.10.0-3.2.2",
     "description": "GJS TypeScript type definitions for GstInterfaces-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstinterfaces-0.10.js",

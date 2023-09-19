@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-edataserver-1.2.d.ts"],
+    "readme": "./README.md",
+    "name": "EDataServer-1.2",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -201,6 +201,7 @@ export interface Configuration extends GObject.Object {
     get_title(section: string | null): string | null
     get_string(section: string | null, key: string | null): string | null
     get_string_list(section: string | null, key: string | null): Gee.ArrayList
+    get_string_list_with_default(section: string | null, key: string | null, _default_: Gee.ArrayList): Gee.ArrayList
     get_int(section: string | null, key: string | null, min: number, max: number): number
     get_int_list(section: string | null, key: string | null): Gee.ArrayList
     get_bool(section: string | null, key: string | null): boolean
@@ -1592,6 +1593,48 @@ export class PluginInformation extends GObject.Object {
     static new_from_file(file: Gio.File): PluginInformation
 }
 
+export module Dlna150Hacks {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+export interface Dlna150Hacks {
+
+    // Own fields of RygelCore-2.8.RygelCore.Dlna150Hacks
+
+    description_path: string | null
+
+    // Owm methods of RygelCore-2.8.RygelCore.Dlna150Hacks
+
+    apply_on_device(device: RootDevice, template_path: string | null): void
+
+    // Class property signals of RygelCore-2.8.RygelCore.Dlna150Hacks
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+export class Dlna150Hacks extends GObject.Object {
+
+    // Own properties of RygelCore-2.8.RygelCore.Dlna150Hacks
+
+    static name: string
+    static $gtype: GObject.GType<Dlna150Hacks>
+
+    // Constructors of RygelCore-2.8.RygelCore.Dlna150Hacks
+
+    constructor(config?: Dlna150Hacks.ConstructorProperties) 
+    constructor() 
+    static new(): Dlna150Hacks
+    _init(config?: Dlna150Hacks.ConstructorProperties): void
+}
+
 export interface ConnectionManagerClass {
 
     // Own fields of RygelCore-2.8.RygelCore.ConnectionManagerClass
@@ -2104,6 +2147,26 @@ export interface PluginInformationPrivate {
 export class PluginInformationPrivate {
 
     // Own properties of RygelCore-2.8.RygelCore.PluginInformationPrivate
+
+    static name: string
+}
+
+export interface Dlna150HacksClass {
+}
+
+export abstract class Dlna150HacksClass {
+
+    // Own properties of RygelCore-2.8.RygelCore.Dlna150HacksClass
+
+    static name: string
+}
+
+export interface Dlna150HacksPrivate {
+}
+
+export class Dlna150HacksPrivate {
+
+    // Own properties of RygelCore-2.8.RygelCore.Dlna150HacksPrivate
 
     static name: string
 }

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/upowerglib-1.0)
 
 
-GJS TypeScript type definitions for UPowerGlib-1.0, generated from library version 0.99.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.1.
+GJS TypeScript type definitions for UPowerGlib-1.0, generated from library version 0.99.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
 
 
 ## Install

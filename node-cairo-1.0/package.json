@@ -1,0 +1,57 @@
+{
+    "name": "@girs/node-cairo-1.0",
+    "version": "1.0.0-3.2.2",
+    "description": "Node.js TypeScript type definitions for cairo-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "node-cairo-1.0.js",
+    "main": "node-cairo-1.0.js",
+    "exports": {
+        "./ambient": "./node-cairo-1.0-ambient.d.ts",
+        "./import": "./node-cairo-1.0-import.d.ts",
+        ".": {
+            "import": {
+                "types": "./node-cairo-1.0.d.ts",
+                "default": "./node-cairo-1.0.js"
+            },
+            "require": {
+                "types": "./node-cairo-1.0.d.cts",
+                "default": "./node-cairo-1.0.cjs"
+            }
+        }
+    },
+    "scripts": {
+        "test": "yarn test:esm && yarn test:cjs",
+        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-cairo-1.0.d.ts",
+        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-cairo-1.0.d.cts"
+    },
+    "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
+        "@girs/node-gobject-2.0": "workspace:^",
+        "@girs/node-gtk": "workspace:^"
+    },
+    "peerDependencies": {
+        "node-gtk": "*"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "node",
+        "node-gtk",
+        "cairo-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/node-cairo-1.0#readme"
+}

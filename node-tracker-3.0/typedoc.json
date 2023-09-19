@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-tracker-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Tracker-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

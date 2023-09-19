@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./node-webkit2webextension-4.1.d.ts"],
+    "readme": "./README.md",
+    "name": "WebKit2WebExtension-4.1",
+    "tsconfig": "./tsconfig.json"
+}
+

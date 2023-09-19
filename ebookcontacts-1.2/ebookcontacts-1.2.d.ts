@@ -12,11 +12,11 @@ import './ebookcontacts-1.2-import.d.ts';
  * EBookContacts-1.2
  */
 
-import type libxml2 from '@girs/libxml2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
+import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
@@ -551,6 +551,13 @@ enum BookClientViewFlags {
      *   changes will be reported.  The default for an #EBookClientView is %TRUE.
      */
     NOTIFY_INITIAL,
+    /**
+     * Rather than receiving contact changes one-by-one, be notified only
+     *   by "content-changed" signal and query contacts by ranges. See
+     *   e_book_client_view_set_sort_fields_sync() for more information.
+     *   The default is %FALSE. Since: 3.50
+     */
+    MANUAL_QUERY,
 }
 /**
  * Defines the behaviour of e_book_client_cursor_step().
@@ -734,6 +741,20 @@ function book_client_error_quark(): GLib.Quark
  * @returns Localized human readable description of the given error code
  */
 function book_client_error_to_string(code: BookClientError): string | null
+/**
+ * Returns whether the `self` considers contacts stored in the ascending order.
+ * @param self an #EBookIndicesUpdater
+ * @returns %TRUE, when considers contacts sorted in ascending order,    %FALSE when in the descending order.
+ */
+function book_indices_get_ascending_sort(self: BookIndicesUpdater): boolean
+/**
+ * Sets whether the contacts are sorted in an ascending order; if not,
+ * then they are sorted in the descending order. That influences what
+ * indexes the indices have set.
+ * @param self an #EBookIndicesUpdater
+ * @param ascending_sort the value to set
+ */
+function book_indices_set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void
 /**
  * Create a new #EBookQuery which is the logical AND of the queries in #qs.
  * @param nqs the number of queries to AND
@@ -927,6 +948,84 @@ function phone_number_get_default_region(): string | null
  * @returns %TRUE if phone number support is available.
  */
 function phone_number_is_supported(): boolean
+module BookIndicesUpdater {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface BookIndicesUpdater {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.BookIndicesUpdater
+
+    /**
+     * Notifies the `self` that a new contact with UID `uid` had been added
+     * to the set and it occupies the `indices_index` index in the indices.
+     * In case the `uid` had been added previously its index is modified
+     * instead.
+     * 
+     * This function can be used only after initial call to e_book_indices_updater_take_indices().
+     * @param uid a UID of a contact
+     * @param indices_index index to the indices array the contact belongs to
+     * @returns whether the indices changed
+     */
+    add(uid: string | null, indices_index: number): boolean
+    /**
+     * Sets the initial indices to be updated by the `self`. If %NULL,
+     * then unsets them.
+     * @returns current indices, or %NULL, when none had been set yet
+     */
+    get_indices(): BookIndices | null
+    /**
+     * Notifies the `self` that an existing contact with UID `uid` had been removed
+     * from the set. Calling the function with `uid` unknown to the `self` does nothing
+     * and returns %FALSE.
+     * 
+     * This function can be used only after initial call to e_book_indices_updater_take_indices().
+     * @param uid a UID of a removed contact
+     * @returns whether the indices changed
+     */
+    remove(uid: string | null): boolean
+    /**
+     * Sets the initial indices to be updated by the `self`. If %NULL,
+     * then unsets them. The function always discards data previously
+     * gathered about the involved contacts, regardless whether
+     * the indices changed or not.
+     * 
+     * The function assumes ownership of the `indices`.
+     * @param indices an #EBookIndices, or %NULL
+     * @returns whether the indices changed
+     */
+    take_indices(indices: BookIndices | null): boolean
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.BookIndicesUpdater
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * An abstract object to handle EBookIndices changes.
+ * @class 
+ */
+class BookIndicesUpdater extends GObject.Object {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookIndicesUpdater
+
+    static name: string
+    static $gtype: GObject.GType<BookIndicesUpdater>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.BookIndicesUpdater
+
+    constructor(config?: BookIndicesUpdater.ConstructorProperties) 
+    _init(config?: BookIndicesUpdater.ConstructorProperties): void
+}
+
 module Contact {
 
     // Constructor properties interface
@@ -2220,6 +2319,99 @@ interface BookChange {
 class BookChange {
 
     // Own properties of EBookContacts-1.2.EBookContacts.BookChange
+
+    static name: string
+}
+
+interface BookClientViewSortFields {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.BookClientViewSortFields
+
+    /**
+     * an #EContactField to sort by
+     * @field 
+     */
+    field: ContactField
+    /**
+     * an #EBookCursorSortType
+     * @field 
+     */
+    sort_type: BookCursorSortType
+}
+
+/**
+ * This is a structure describing sort settings in the view.
+ * See e_book_client_view_set_sort_fields_sync() for more information.
+ * @record 
+ */
+class BookClientViewSortFields {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookClientViewSortFields
+
+    static name: string
+}
+
+interface BookIndices {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.BookIndices
+
+    /**
+     * a character for the index
+     * @field 
+     */
+    chr: string | null
+    /**
+     * 0-based index of the first contact with this character
+     * @field 
+     */
+    index: number
+}
+
+/**
+ * This is a structure describing indices of the contacts in the view.
+ * See e_book_client_view_dup_indices() for more information.
+ * @record 
+ */
+class BookIndices {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookIndices
+
+    static name: string
+
+    // Constructors of EBookContacts-1.2.EBookContacts.BookIndices
+
+    /**
+     * Returns whether the `self` considers contacts stored in the ascending order.
+     * @param self an #EBookIndicesUpdater
+     * @returns %TRUE, when considers contacts sorted in ascending order,    %FALSE when in the descending order.
+     */
+    static get_ascending_sort(self: BookIndicesUpdater): boolean
+    /**
+     * Sets whether the contacts are sorted in an ascending order; if not,
+     * then they are sorted in the descending order. That influences what
+     * indexes the indices have set.
+     * @param self an #EBookIndicesUpdater
+     * @param ascending_sort the value to set
+     */
+    static set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void
+}
+
+interface BookIndicesUpdaterClass {
+}
+
+abstract class BookIndicesUpdaterClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookIndicesUpdaterClass
+
+    static name: string
+}
+
+interface BookIndicesUpdaterPrivate {
+}
+
+class BookIndicesUpdaterPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookIndicesUpdaterPrivate
 
     static name: string
 }

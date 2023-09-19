@@ -1611,6 +1611,14 @@ function time_parse_date_and_time_ex(value: string | null, result: any | null, t
  */
 function time_parse_date_ex(value: string | null, result: any | null, two_digit_year: boolean): TimeParseStatus
 /**
+ * Parses `value` using the `format` saving the parsed date into `out_result`.
+ * Optionally sets whether there had been used two-digit year.
+ * @param value a date string
+ * @param format a strftime() format string to use to parse the `value`
+ * @returns An #ETimeParseStatus result code indicating whether    the @value was an empty string, a valid date, or an invalid date.
+ */
+function time_parse_date_format(value: string | null, format: string | null): [ /* returnType */ TimeParseStatus, /* out_result */ any | null, /* out_two_digit_year */ boolean ]
+/**
  * Parses `value,` a string containing a time. `value` is expected to be
  * in a format like "14:20:00". gettext() is used to
  * support the appropriate local formats and slightly
@@ -9116,6 +9124,8 @@ module SourceOpenPGP {
         key_id?: string | null
         locate_keys?: boolean | null
         prefer_inline?: boolean | null
+        send_prefer_encrypt?: boolean | null
+        send_public_key?: boolean | null
         sign_by_default?: boolean | null
         signing_algorithm?: string | null
     }
@@ -9132,6 +9142,8 @@ interface SourceOpenPGP {
     key_id: string | null
     locate_keys: boolean
     prefer_inline: boolean
+    send_prefer_encrypt: boolean
+    send_public_key: boolean
     sign_by_default: boolean
     signing_algorithm: string | null
 
@@ -9187,6 +9199,17 @@ interface SourceOpenPGP {
      */
     get_prefer_inline(): boolean
     /**
+     * Returns, whether should claim the encryption is preferred when sending
+     * public key in messages. The default is %TRUE.
+     * @returns whether should claim the encryption is preferred when sending    public key in messages
+     */
+    get_send_prefer_encrypt(): boolean
+    /**
+     * Returns, whether should send GPG public key in messages. The default is %TRUE.
+     * @returns whether should send GPG public key in messages
+     */
+    get_send_public_key(): boolean
+    /**
      * Returns whether to digitally sign outgoing messages by default using
      * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
      * @returns whether to sign outgoing messages by default
@@ -9237,6 +9260,19 @@ interface SourceOpenPGP {
      */
     set_prefer_inline(prefer_inline: boolean): void
     /**
+     * Sets the `send_prefer_encrypt` on the `extension,` which tells the client to
+     * claim the user prefer encryption when also sending its public key in
+     * the messages (e_source_openpgp_set_send_public_key()).
+     * @param send_prefer_encrypt value to set
+     */
+    set_send_prefer_encrypt(send_prefer_encrypt: boolean): void
+    /**
+     * Sets the `send_public_key` on the `extension,` which tells the client to
+     * include user's public key in the messages in an Autocrypt header.
+     * @param send_public_key value to set
+     */
+    set_send_public_key(send_public_key: boolean): void
+    /**
      * Sets whether to digitally sign outgoing messages by default using
      * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
      * @param sign_by_default whether to sign outgoing messages by default
@@ -9273,6 +9309,12 @@ interface SourceOpenPGP {
     connect(sigName: "notify::prefer-inline", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::prefer-inline", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::prefer-inline", ...args: any[]): void
+    connect(sigName: "notify::send-prefer-encrypt", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::send-prefer-encrypt", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::send-prefer-encrypt", ...args: any[]): void
+    connect(sigName: "notify::send-public-key", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::send-public-key", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::send-public-key", ...args: any[]): void
     connect(sigName: "notify::sign-by-default", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sign-by-default", callback: (($obj: SourceOpenPGP, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sign-by-default", ...args: any[]): void
@@ -9689,6 +9731,7 @@ module SourceRefresh {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceRefresh
 
         enabled?: boolean | null
+        enabled_on_metered_network?: boolean | null
         interval_minutes?: number | null
     }
 
@@ -9699,6 +9742,7 @@ interface SourceRefresh {
     // Own properties of EDataServer-1.2.EDataServer.SourceRefresh
 
     enabled: boolean
+    enabled_on_metered_network: boolean
     interval_minutes: number
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceRefresh
@@ -9711,6 +9755,16 @@ interface SourceRefresh {
      * @returns whether periodic refresh is enabled
      */
     get_enabled(): boolean
+    /**
+     * Returns whether can refresh content on metered network.
+     * 
+     * The `extension` itself doesn't use this option, it's up to
+     * the `extension` user to determine what kind of connection is used
+     * and then decide whether refresh, or other expensive network
+     * operations, can be done.
+     * @returns whether can refresh content on metered network
+     */
+    get_enabled_on_metered_network(): boolean
     /**
      * Returns the interval for fetching updates from a remote server.
      * 
@@ -9728,6 +9782,14 @@ interface SourceRefresh {
      */
     set_enabled(enabled: boolean): void
     /**
+     * Sets whether can refresh content on metered network.
+     * 
+     * See e_source_refresh_get_enabled_on_metered_network() for more information
+     * about what it means.
+     * @param enabled whether can refresh content on metered network
+     */
+    set_enabled_on_metered_network(enabled: boolean): void
+    /**
      * Sets the interval for fetching updates from a remote server.
      * 
      * Note this value is only effective when the #ESourceRefresh:enabled
@@ -9741,6 +9803,9 @@ interface SourceRefresh {
     connect(sigName: "notify::enabled", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::enabled", ...args: any[]): void
+    connect(sigName: "notify::enabled-on-metered-network", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::enabled-on-metered-network", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enabled-on-metered-network", ...args: any[]): void
     connect(sigName: "notify::interval-minutes", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::interval-minutes", callback: (($obj: SourceRefresh, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::interval-minutes", ...args: any[]): void
@@ -11793,6 +11858,30 @@ interface WebDAVSession {
      */
     delete_sync(uri: string | null, depth: string | null, etag: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
+     * Deletes a resource identified by `uri` on the server. The URI can
+     * reference a collection, in which case `depth` should be %E_WEBDAV_DEPTH_INFINITY.
+     * Use `depth` %E_WEBDAV_DEPTH_THIS when deleting a regular resource, or %NULL,
+     * to let the server use default Depth.
+     * 
+     * The `etag` argument is used to avoid clashes when overwriting existing resources.
+     * Use %NULL `etag` when deleting collection resources or to force the deletion,
+     * otherwise provide a valid ETag of a non-collection resource to verify that
+     * the version requested to delete is the same as on the server.
+     * 
+     * The optional `in_headers` can contain additional headers to be added to the request.
+     * These headers replace any existing in the request headers, without support for the list-values headers.
+     * 
+     * Note that the actual usage of `etag` is also influenced by #ESourceWebdav:avoid-ifmatch
+     * property of the associated #ESource.
+     * @param uri URI of the resource to delete
+     * @param depth optional requested depth, can be one of %E_WEBDAV_DEPTH_THIS or %E_WEBDAV_DEPTH_INFINITY, or %NULL
+     * @param etag an optional ETag of the resource, or %NULL
+     * @param in_headers additional #SoupMessageHeaders to be added to the request, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns Whether succeeded.
+     */
+    delete_with_headers_sync(uri: string | null, depth: string | null, etag: string | null, in_headers: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): boolean
+    /**
      * Converts possibly path-only `href` into a full URI under the `request_uri`.
      * When the `request_uri` is %NULL, the URI defined in associated #ESource is
      * used instead, taken from the #ESourceWebdav extension, if defined.
@@ -11832,6 +11921,20 @@ interface WebDAVSession {
      * @returns Whether succeeded.
      */
     get_acl_sync(uri: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_entries */ WebDAVAccessControlEntry[] ]
+    /**
+     * Gets current user privileges for the `uri,` or, in case it's %NULL, for the URI
+     * defined in associated #ESource, with optional read of the capabilities
+     * and what the user is allowed. See e_webdav_session_options_sync() for
+     * more information about the `out_capabilities` and `out_allows` values.
+     * 
+     * Free the returned `out_privileges` with
+     * g_slist_free_full (privileges, e_webdav_privilege_free);
+     * when no longer needed.
+     * @param uri URI to issue the request for, or %NULL to read from #ESource
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @returns Whether succeeded.
+     */
+    get_current_user_privilege_set_full_sync(uri: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_privileges */ WebDAVPrivilege[], /* out_capabilities */ GLib.HashTable, /* out_allows */ GLib.HashTable ]
     /**
      * Gets current user privileges for the `uri,` or, in case it's %NULL, for the URI
      * defined in associated #ESource.
