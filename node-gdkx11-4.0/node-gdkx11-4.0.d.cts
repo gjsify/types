@@ -15,12 +15,12 @@ import './node-gdkx11-4.0-import.d.ts';
 import type xlib from '@girs/node-xlib-2.0';
 import type Gdk from '@girs/node-gdk-4.0';
 import type cairo from '@girs/node-cairo-1.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
 import type PangoCairo from '@girs/node-pangocairo-1.0';
 import type Pango from '@girs/node-pango-1.0';
 import type HarfBuzz from '@girs/node-harfbuzz-0.0';
 import type freetype2 from '@girs/node-freetype2-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 import type Gio from '@girs/node-gio-2.0';
 import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
 import type GModule from '@girs/node-gmodule-2.0';
@@ -1193,11 +1193,6 @@ export interface X11Surface {
     once(sigName: "notify::mapped", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mapped", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::mapped", ...args: any[]): void
-    connect(sigName: "notify::scale", callback: (...args: any[]) => void): number
-    on(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (...args: any[]) => void): number
     on(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

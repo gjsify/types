@@ -450,6 +450,19 @@ enum DiffType {
     REMOVE_ROW,
     MODIFY_ROW,
 }
+enum ForeignKeyMatch {
+    NONE,
+    FULL,
+    PARTIAL,
+}
+enum ForeignKeyRule {
+    NONE,
+    CASCADE,
+    SET_NULL,
+    SET_DEFAULT,
+    RESTRICT,
+    NO_ACTION,
+}
 enum HolderError {
     STRING_CONVERSION_ERROR,
     VALUE_TYPE_ERROR,
@@ -962,6 +975,16 @@ enum XaType {
     ROLLBACK,
     RECOVER,
 }
+enum ColumnAttributes {
+    NONE,
+    PRIMARY_KEY,
+    UNIQUE,
+    FOREIGN_KEY,
+    CHECK,
+    HAVE_DEFAULT,
+    CAN_BE_NULL,
+    AUTO_INCREMENT,
+}
 /**
  * Specifies some aspects of a connection when opening it.
  * 
@@ -1221,6 +1244,9 @@ const TIMEZONE_INVALID: number
  * @returns @text if conversion succeeded or %NULL if an error occurred
  */
 function alphanumToText(text: string | null): string | null
+function columnAttributesFromString(str: string | null): ColumnAttributes
+function columnAttributesItems(resultLength1: number): ColumnAttributes
+function columnAttributesToString(self: ColumnAttributes): string | null
 /**
  * Creates an array of strings (terminated by a %NULL) corresponding to possible completions.
  * If no completion is available, then the returned array contains just one NULL entry, and
@@ -1312,6 +1338,12 @@ function defaultUnescapeString(string: string | null): string | null
  * @param outPassword a place to store the new string containing the &lt;password&gt; part
  */
 function dsnSplit(string: string | null, outDsn: string | null, outUsername: string | null, outPassword: string | null): void
+function foreignKeyMatchFromString(str: string | null): ForeignKeyMatch
+function foreignKeyMatchItems(resultLength1: number): ForeignKeyMatch
+function foreignKeyMatchToString(self: ForeignKeyMatch): string | null
+function foreignKeyRuleFromString(str: string | null): ForeignKeyRule
+function foreignKeyRuleItems(resultLength1: number): ForeignKeyRule
+function foreignKeyRuleToString(self: ForeignKeyRule): string | null
 /**
  * Converts a named type to ts GType type (also see the gda_g_type_to_string() function).
  * 
@@ -2133,6 +2165,468 @@ interface WorkerCallback {
 interface WorkerFunc {
     (): any | null
 }
+module AfectedRows {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Result.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface AfectedRows extends Result {
+
+    // Own properties of Gda-6.0.Gda.AfectedRows
+
+    readonly number: number
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.AfectedRows
+
+    // Has conflict: getNumber(): number
+
+    // Own virtual methods of Gda-6.0.Gda.AfectedRows
+
+    getNumber(): number
+
+    // Class property signals of Gda-6.0.Gda.AfectedRows
+
+    connect(sigName: "notify::number", callback: (...args: any[]) => void): number
+    on(sigName: "notify::number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::number", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::number", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class AfectedRows extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.AfectedRows
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.AfectedRows
+
+    constructor(config?: AfectedRows.ConstructorProperties) 
+    _init(config?: AfectedRows.ConstructorProperties): void
+}
+
+module ColumnModel {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.ColumnModel
+
+        attributes?: ColumnAttributes | null
+        foreignKey?: ForeignKey | null
+        value?: any | null
+    }
+
+}
+
+interface ColumnModel {
+
+    // Own properties of Gda-6.0.Gda.ColumnModel
+
+    attributes: ColumnAttributes
+    readonly dataType: GObject.GType
+    foreignKey: ForeignKey
+    readonly index: number
+    readonly name: string | null
+    value: any
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.ColumnModel
+
+    // Has conflict: getAttributes(): ColumnAttributes
+    // Has conflict: getDataType(): GObject.GType
+    // Has conflict: getIndex(): number
+    // Has conflict: getName(): string | null
+    // Has conflict: getValue(): any
+    // Has conflict: setAttributes(value: ColumnAttributes): void
+    // Has conflict: setForeignKey(value: ForeignKey): void
+    // Has conflict: setValue(value: any): void
+
+    // Own virtual methods of Gda-6.0.Gda.ColumnModel
+
+    getAttributes(): ColumnAttributes
+    getDataType(): GObject.GType
+    getIndex(): number
+    getName(): string | null
+    getValue(): any
+    setAttributes(value: ColumnAttributes): void
+    setForeignKey(value: ForeignKey): void
+    setValue(value: any): void
+
+    // Class property signals of Gda-6.0.Gda.ColumnModel
+
+    connect(sigName: "notify::attributes", callback: (...args: any[]) => void): number
+    on(sigName: "notify::attributes", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::attributes", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::attributes", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::attributes", ...args: any[]): void
+    connect(sigName: "notify::data-type", callback: (...args: any[]) => void): number
+    on(sigName: "notify::data-type", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::data-type", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::data-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::data-type", ...args: any[]): void
+    connect(sigName: "notify::foreign-key", callback: (...args: any[]) => void): number
+    on(sigName: "notify::foreign-key", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::foreign-key", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::foreign-key", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::foreign-key", ...args: any[]): void
+    connect(sigName: "notify::index", callback: (...args: any[]) => void): number
+    on(sigName: "notify::index", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::index", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::index", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::index", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::value", callback: (...args: any[]) => void): number
+    on(sigName: "notify::value", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::value", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::value", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::value", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ColumnModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ColumnModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ColumnModel
+
+    constructor(config?: ColumnModel.ConstructorProperties) 
+    _init(config?: ColumnModel.ConstructorProperties): void
+}
+
+module ConnectionModel {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `closed`
+     */
+    interface ClosedSignalCallback {
+        (): void
+    }
+
+    /**
+     * Signal callback interface for `closing`
+     */
+    interface ClosingSignalCallback {
+        (): void
+    }
+
+    /**
+     * Signal callback interface for `opened`
+     */
+    interface OpenedSignalCallback {
+        (): void
+    }
+
+    /**
+     * Signal callback interface for `opening`
+     */
+    interface OpeningSignalCallback {
+        (): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.ConnectionModel
+
+        cncParams?: ConnectionModelParams | null
+    }
+
+}
+
+interface ConnectionModel {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModel
+
+    cncParams: ConnectionModelParams
+    readonly isOpened: boolean
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.ConnectionModel
+
+    // Has conflict: close(): void
+    // Has conflict: closeNoWarning(): void
+    // Has conflict: getIsOpened(): boolean
+    // Has conflict: open(): boolean
+    // Has conflict: setCncParams(value: ConnectionModelParams): void
+
+    // Own virtual methods of Gda-6.0.Gda.ConnectionModel
+
+    close(): void
+    closeNoWarning(): void
+    getIsOpened(): boolean
+    open(): boolean
+    setCncParams(value: ConnectionModelParams): void
+
+    // Own signals of Gda-6.0.Gda.ConnectionModel
+
+    connect(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback): number
+    on(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "closed", ...args: any[]): void
+    connect(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback): number
+    on(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "closing", ...args: any[]): void
+    connect(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback): number
+    on(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "opened", ...args: any[]): void
+    connect(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback): number
+    on(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback): NodeJS.EventEmitter
+    emit(sigName: "opening", ...args: any[]): void
+
+    // Class property signals of Gda-6.0.Gda.ConnectionModel
+
+    connect(sigName: "notify::cnc-params", callback: (...args: any[]) => void): number
+    on(sigName: "notify::cnc-params", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::cnc-params", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::cnc-params", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::cnc-params", ...args: any[]): void
+    connect(sigName: "notify::is-opened", callback: (...args: any[]) => void): number
+    on(sigName: "notify::is-opened", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::is-opened", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::is-opened", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::is-opened", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ConnectionModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ConnectionModel
+
+    constructor(config?: ConnectionModel.ConstructorProperties) 
+    _init(config?: ConnectionModel.ConstructorProperties): void
+}
+
+module CreateDatabaseBuilder {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.CreateDatabaseBuilder
+
+        databaseName?: string | null
+    }
+
+}
+
+interface CreateDatabaseBuilder extends QueryBuilder {
+
+    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    databaseName: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    // Has conflict: getDatabaseName(): string | null
+    // Has conflict: setDatabaseName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    getDatabaseName(): string | null
+    setDatabaseName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    connect(sigName: "notify::database-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::database-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::database-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::database-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::database-name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class CreateDatabaseBuilder extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.CreateDatabaseBuilder
+
+    constructor(config?: CreateDatabaseBuilder.ConstructorProperties) 
+    _init(config?: CreateDatabaseBuilder.ConstructorProperties): void
+}
+
+module CreateTableBuilder {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.CreateTableBuilder
+
+        columns?: Gio.ListModel | null
+        contraints?: Gio.ListModel | null
+        tableName?: string | null
+    }
+
+}
+
+interface CreateTableBuilder extends QueryBuilder {
+
+    // Own properties of Gda-6.0.Gda.CreateTableBuilder
+
+    columns: Gio.ListModel
+    contraints: Gio.ListModel
+    tableName: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.CreateTableBuilder
+
+    // Has conflict: getTableName(): string | null
+    // Has conflict: setColumns(value: Gio.ListModel): void
+    // Has conflict: setContraints(value: Gio.ListModel): void
+    // Has conflict: setTableName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.CreateTableBuilder
+
+    getTableName(): string | null
+    setColumns(value: Gio.ListModel): void
+    setContraints(value: Gio.ListModel): void
+    setTableName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.CreateTableBuilder
+
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::contraints", callback: (...args: any[]) => void): number
+    on(sigName: "notify::contraints", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::contraints", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::contraints", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::contraints", ...args: any[]): void
+    connect(sigName: "notify::table-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::table-name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class CreateTableBuilder extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.CreateTableBuilder
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.CreateTableBuilder
+
+    constructor(config?: CreateTableBuilder.ConstructorProperties) 
+    _init(config?: CreateTableBuilder.ConstructorProperties): void
+}
+
 module DataHandler {
 
     // Constructor properties interface
@@ -2959,6 +3453,359 @@ class DdlModifiable extends GObject.Object {
     static errorQuark(): GLib.Quark
 }
 
+module DropDatabaseBuilder {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.DropDatabaseBuilder
+
+        databaseName?: string | null
+    }
+
+}
+
+interface DropDatabaseBuilder extends QueryBuilder {
+
+    // Own properties of Gda-6.0.Gda.DropDatabaseBuilder
+
+    databaseName: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.DropDatabaseBuilder
+
+    // Has conflict: getDatabaseName(): string | null
+    // Has conflict: setDatabaseName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.DropDatabaseBuilder
+
+    getDatabaseName(): string | null
+    setDatabaseName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.DropDatabaseBuilder
+
+    connect(sigName: "notify::database-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::database-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::database-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::database-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::database-name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class DropDatabaseBuilder extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.DropDatabaseBuilder
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.DropDatabaseBuilder
+
+    constructor(config?: DropDatabaseBuilder.ConstructorProperties) 
+    _init(config?: DropDatabaseBuilder.ConstructorProperties): void
+}
+
+module DropTableBuilder {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.DropTableBuilder
+
+        cascade?: boolean | null
+        tableName?: string | null
+    }
+
+}
+
+interface DropTableBuilder extends QueryBuilder {
+
+    // Own properties of Gda-6.0.Gda.DropTableBuilder
+
+    cascade: boolean
+    tableName: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.DropTableBuilder
+
+    // Has conflict: getCascade(): boolean
+    // Has conflict: getTableName(): string | null
+    // Has conflict: setCascade(value: boolean): void
+    // Has conflict: setTableName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.DropTableBuilder
+
+    getCascade(): boolean
+    getTableName(): string | null
+    setCascade(value: boolean): void
+    setTableName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.DropTableBuilder
+
+    connect(sigName: "notify::cascade", callback: (...args: any[]) => void): number
+    on(sigName: "notify::cascade", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::cascade", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::cascade", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::cascade", ...args: any[]): void
+    connect(sigName: "notify::table-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::table-name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class DropTableBuilder extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.DropTableBuilder
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.DropTableBuilder
+
+    constructor(config?: DropTableBuilder.ConstructorProperties) 
+    _init(config?: DropTableBuilder.ConstructorProperties): void
+}
+
+module ForeignKey {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.ForeignKey
+
+        deleteRule?: ForeignKeyRule | null
+        match?: ForeignKeyMatch | null
+        name?: string | null
+        refcol?: Gio.ListModel | null
+        refname?: string | null
+        reftable?: TableModel | null
+        updateRule?: ForeignKeyRule | null
+    }
+
+}
+
+interface ForeignKey {
+
+    // Own properties of Gda-6.0.Gda.ForeignKey
+
+    deleteRule: ForeignKeyRule
+    match: ForeignKeyMatch
+    name: string | null
+    refcol: Gio.ListModel
+    refname: string | null
+    reftable: TableModel
+    updateRule: ForeignKeyRule
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.ForeignKey
+
+    equal(fkey: ForeignKey): boolean
+    // Has conflict: getDeleteRule(): ForeignKeyRule
+    // Has conflict: getMatch(): ForeignKeyMatch
+    // Has conflict: getName(): string | null
+    // Has conflict: getRefname(): string | null
+    // Has conflict: getUpdateRule(): ForeignKeyRule
+    // Has conflict: setDeleteRule(value: ForeignKeyRule): void
+    // Has conflict: setMatch(value: ForeignKeyMatch): void
+    // Has conflict: setName(value: string | null): void
+    // Has conflict: setRefcol(value: Gio.ListModel): void
+    // Has conflict: setRefname(value: string | null): void
+    // Has conflict: setReftable(value: TableModel): void
+    // Has conflict: setUpdateRule(value: ForeignKeyRule): void
+    toString(): string | null
+
+    // Own virtual methods of Gda-6.0.Gda.ForeignKey
+
+    getDeleteRule(): ForeignKeyRule
+    getMatch(): ForeignKeyMatch
+    getName(): string | null
+    getRefname(): string | null
+    getUpdateRule(): ForeignKeyRule
+    setDeleteRule(value: ForeignKeyRule): void
+    setMatch(value: ForeignKeyMatch): void
+    setName(value: string | null): void
+    setRefcol(value: Gio.ListModel): void
+    setRefname(value: string | null): void
+    setReftable(value: TableModel): void
+    setUpdateRule(value: ForeignKeyRule): void
+
+    // Class property signals of Gda-6.0.Gda.ForeignKey
+
+    connect(sigName: "notify::delete-rule", callback: (...args: any[]) => void): number
+    on(sigName: "notify::delete-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::delete-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::delete-rule", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::delete-rule", ...args: any[]): void
+    connect(sigName: "notify::match", callback: (...args: any[]) => void): number
+    on(sigName: "notify::match", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::match", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::match", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::match", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::refcol", callback: (...args: any[]) => void): number
+    on(sigName: "notify::refcol", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::refcol", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::refcol", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::refcol", ...args: any[]): void
+    connect(sigName: "notify::refname", callback: (...args: any[]) => void): number
+    on(sigName: "notify::refname", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::refname", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::refname", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::refname", ...args: any[]): void
+    connect(sigName: "notify::reftable", callback: (...args: any[]) => void): number
+    on(sigName: "notify::reftable", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::reftable", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::reftable", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::reftable", ...args: any[]): void
+    connect(sigName: "notify::update-rule", callback: (...args: any[]) => void): number
+    on(sigName: "notify::update-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::update-rule", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::update-rule", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::update-rule", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ForeignKey extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ForeignKey
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ForeignKey
+
+    constructor(config?: ForeignKey.ConstructorProperties) 
+    _init(config?: ForeignKey.ConstructorProperties): void
+}
+
+module Inserted {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Result.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface Inserted extends Result {
+
+    // Own properties of Gda-6.0.Gda.Inserted
+
+    readonly lastInsertd: RowModel
+    readonly number: number
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.Inserted
+
+    // Has conflict: getNumber(): number
+
+    // Own virtual methods of Gda-6.0.Gda.Inserted
+
+    getNumber(): number
+
+    // Class property signals of Gda-6.0.Gda.Inserted
+
+    connect(sigName: "notify::last-insertd", callback: (...args: any[]) => void): number
+    on(sigName: "notify::last-insertd", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::last-insertd", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::last-insertd", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::last-insertd", ...args: any[]): void
+    connect(sigName: "notify::number", callback: (...args: any[]) => void): number
+    on(sigName: "notify::number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::number", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::number", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::number", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class Inserted extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.Inserted
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.Inserted
+
+    constructor(config?: Inserted.ConstructorProperties) 
+    _init(config?: Inserted.ConstructorProperties): void
+}
+
 module Lockable {
 
     // Constructor properties interface
@@ -3033,6 +3880,371 @@ class Lockable extends GObject.Object {
 
     constructor(config?: Lockable.ConstructorProperties) 
     _init(config?: Lockable.ConstructorProperties): void
+}
+
+module MetaCatalog {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.MetaCatalog
+
+        connection?: ConnectionModel | null
+    }
+
+}
+
+interface MetaCatalog {
+
+    // Own properties of Gda-6.0.Gda.MetaCatalog
+
+    connection: ConnectionModel
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.MetaCatalog
+
+    // Has conflict: setConnection(value: ConnectionModel): void
+
+    // Own virtual methods of Gda-6.0.Gda.MetaCatalog
+
+    setConnection(value: ConnectionModel): void
+
+    // Class property signals of Gda-6.0.Gda.MetaCatalog
+
+    connect(sigName: "notify::connection", callback: (...args: any[]) => void): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class MetaCatalog extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.MetaCatalog
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.MetaCatalog
+
+    constructor(config?: MetaCatalog.ConstructorProperties) 
+    _init(config?: MetaCatalog.ConstructorProperties): void
+}
+
+module MetaColumn {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.MetaColumn
+
+        name?: string | null
+    }
+
+}
+
+interface MetaColumn {
+
+    // Own properties of Gda-6.0.Gda.MetaColumn
+
+    readonly columnType: GObject.GType
+    readonly columnTypeName: string | null
+    name: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.MetaColumn
+
+    // Has conflict: getColumnType(): GObject.GType
+    // Has conflict: getColumnTypeName(): string | null
+    // Has conflict: getName(): string | null
+    // Has conflict: setName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.MetaColumn
+
+    getColumnType(): GObject.GType
+    getColumnTypeName(): string | null
+    getName(): string | null
+    setName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.MetaColumn
+
+    connect(sigName: "notify::column-type", callback: (...args: any[]) => void): number
+    on(sigName: "notify::column-type", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::column-type", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::column-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::column-type", ...args: any[]): void
+    connect(sigName: "notify::column-type-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::column-type-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::column-type-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::column-type-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::column-type-name", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class MetaColumn extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.MetaColumn
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.MetaColumn
+
+    constructor(config?: MetaColumn.ConstructorProperties) 
+    _init(config?: MetaColumn.ConstructorProperties): void
+}
+
+module MetaTable {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.MetaTable
+
+        catalog?: string | null
+        name?: string | null
+        schema?: string | null
+    }
+
+}
+
+interface MetaTable {
+
+    // Own properties of Gda-6.0.Gda.MetaTable
+
+    catalog: string | null
+    readonly columns: Gio.ListModel
+    name: string | null
+    schema: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.MetaTable
+
+    // Has conflict: getCatalog(): string | null
+    // Has conflict: getName(): string | null
+    // Has conflict: getSchema(): string | null
+    // Has conflict: setCatalog(value: string | null): void
+    // Has conflict: setName(value: string | null): void
+    // Has conflict: setSchema(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.MetaTable
+
+    getCatalog(): string | null
+    getName(): string | null
+    getSchema(): string | null
+    setCatalog(value: string | null): void
+    setName(value: string | null): void
+    setSchema(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.MetaTable
+
+    connect(sigName: "notify::catalog", callback: (...args: any[]) => void): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::catalog", ...args: any[]): void
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::schema", callback: (...args: any[]) => void): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::schema", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * This structure specifies a #GdaMetaDbObject to represent a table's specific attributes,
+ * its contents must not be modified.
+ * 
+ * Note that in some cases, the columns cannot be determined for views, and in this case the
+ * `columns` will be %NULL (this can be the case for example with SQLite where a view
+ * uses a function which is not natively provided by SQLite.
+ * @interface 
+ */
+class MetaTable extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.MetaTable
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.MetaTable
+
+    constructor(config?: MetaTable.ConstructorProperties) 
+    _init(config?: MetaTable.ConstructorProperties): void
+}
+
+module Parameters {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Gio.ListModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface Parameters extends Gio.ListModel {
+
+    // Own properties of Gda-6.0.Gda.Parameters
+
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.Parameters
+
+    // Has conflict: getValue(name: string | null): any
+    // Has conflict: setValue(name: string | null, val: any): void
+
+    // Own virtual methods of Gda-6.0.Gda.Parameters
+
+    getValue(name: string | null): any
+    setValue(name: string | null, val: any): void
+
+    // Class property signals of Gda-6.0.Gda.Parameters
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class Parameters extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.Parameters
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.Parameters
+
+    constructor(config?: Parameters.ConstructorProperties) 
+    _init(config?: Parameters.ConstructorProperties): void
+}
+
+module PreparedQuery {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Query.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface PreparedQuery extends Query {
+
+    // Own properties of Gda-6.0.Gda.PreparedQuery
+
+    readonly name: string | null
+    readonly parameters: Parameters
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.PreparedQuery
+
+    // Has conflict: getName(): string | null
+
+    // Own virtual methods of Gda-6.0.Gda.PreparedQuery
+
+    getName(): string | null
+
+    // Overloads of getName
+
+    getName(): string | null
+
+    // Class property signals of Gda-6.0.Gda.PreparedQuery
+
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::connection", callback: (...args: any[]) => void): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class PreparedQuery extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.PreparedQuery
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.PreparedQuery
+
+    constructor(config?: PreparedQuery.ConstructorProperties) 
+    _init(config?: PreparedQuery.ConstructorProperties): void
 }
 
 module Provider {
@@ -3327,6 +4539,677 @@ class ProviderMeta extends GObject.Object {
     constructor(config?: ProviderMeta.ConstructorProperties) 
     _init(config?: ProviderMeta.ConstructorProperties): void
     static errorQuark(): GLib.Quark
+}
+
+module Query {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface Query {
+
+    // Own properties of Gda-6.0.Gda.Query
+
+    readonly connection: ConnectionModel
+    readonly name: string | null
+    readonly sql: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.Query
+
+    // Has conflict: cancel(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
+    // Has conflict: cancelFinish(res: Gio.AsyncResult): void
+    // Has conflict: execute(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
+    // Has conflict: getName(): string | null
+    // Has conflict: getSql(): string | null
+
+    // Own virtual methods of Gda-6.0.Gda.Query
+
+    cancel(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
+    cancelFinish(res: Gio.AsyncResult): void
+    execute(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
+    getName(): string | null
+    getSql(): string | null
+
+    // Class property signals of Gda-6.0.Gda.Query
+
+    connect(sigName: "notify::connection", callback: (...args: any[]) => void): number
+    on(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::connection", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::connection", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::connection", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class Query extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.Query
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.Query
+
+    constructor(config?: Query.ConstructorProperties) 
+    _init(config?: Query.ConstructorProperties): void
+}
+
+module QueryBuilder {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.QueryBuilder
+
+        name?: string | null
+        sql?: string | null
+    }
+
+}
+
+interface QueryBuilder {
+
+    // Own properties of Gda-6.0.Gda.QueryBuilder
+
+    name: string | null
+    readonly parameters: Parameters
+    sql: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.QueryBuilder
+
+    // Has conflict: addSavepoint(name: string | null): boolean
+    // Has conflict: beginTransaction(name: string | null): boolean
+    // Has conflict: commitTransaction(name: string | null): boolean
+    // Has conflict: deleteSavepoint(name: string | null): boolean
+    // Has conflict: getName(): string | null
+    // Has conflict: getSql(): string | null
+    // Has conflict: rollbackSavepoint(name: string | null): boolean
+    // Has conflict: rollbackTransaction(name: string | null): boolean
+    // Has conflict: setName(value: string | null): void
+    // Has conflict: setSql(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.QueryBuilder
+
+    addSavepoint(name: string | null): boolean
+    beginTransaction(name: string | null): boolean
+    commitTransaction(name: string | null): boolean
+    deleteSavepoint(name: string | null): boolean
+    getName(): string | null
+    getSql(): string | null
+    rollbackSavepoint(name: string | null): boolean
+    rollbackTransaction(name: string | null): boolean
+    setName(value: string | null): void
+    setSql(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.QueryBuilder
+
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::parameters", callback: (...args: any[]) => void): number
+    on(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::parameters", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::parameters", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::parameters", ...args: any[]): void
+    connect(sigName: "notify::sql", callback: (...args: any[]) => void): number
+    on(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::sql", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::sql", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::sql", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class QueryBuilder extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.QueryBuilder
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.QueryBuilder
+
+    constructor(config?: QueryBuilder.ConstructorProperties) 
+    _init(config?: QueryBuilder.ConstructorProperties): void
+}
+
+module ReadonlyTableModel {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends MetaTable.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface ReadonlyTableModel extends MetaTable, TableModel {
+
+    // Own properties of Gda-6.0.Gda.ReadonlyTableModel
+
+    readonly rows: Gio.ListModel
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.ReadonlyTableModel
+
+    // Has conflict: getValue(row: number, column: string | null, result: any): void
+    // Has conflict: getValueAt(row: number, column: number, result: any): void
+
+    // Own virtual methods of Gda-6.0.Gda.ReadonlyTableModel
+
+    getValue(row: number, column: string | null, result: any): void
+    getValueAt(row: number, column: number, result: any): void
+
+    // Class property signals of Gda-6.0.Gda.ReadonlyTableModel
+
+    connect(sigName: "notify::rows", callback: (...args: any[]) => void): number
+    on(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::rows", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::rows", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::catalog", callback: (...args: any[]) => void): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::catalog", ...args: any[]): void
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::schema", callback: (...args: any[]) => void): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::schema", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ReadonlyTableModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ReadonlyTableModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ReadonlyTableModel
+
+    constructor(config?: ReadonlyTableModel.ConstructorProperties) 
+    _init(config?: ReadonlyTableModel.ConstructorProperties): void
+}
+
+module ReferencedColumn {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.ReferencedColumn
+
+        tableName?: string | null
+    }
+
+}
+
+interface ReferencedColumn {
+
+    // Own properties of Gda-6.0.Gda.ReferencedColumn
+
+    readonly name: string | null
+    tableName: string | null
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.ReferencedColumn
+
+    // Has conflict: getName(): string | null
+    // Has conflict: setTableName(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.ReferencedColumn
+
+    getName(): string | null
+    setTableName(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.ReferencedColumn
+
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::table-name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::table-name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::table-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::table-name", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ReferencedColumn extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ReferencedColumn
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ReferencedColumn
+
+    constructor(config?: ReferencedColumn.ConstructorProperties) 
+    _init(config?: ReferencedColumn.ConstructorProperties): void
+}
+
+module Result {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface Result {
+
+    // Own properties of Gda-6.0.Gda.Result
+
+    __gtype__: number
+
+    // Class property signals of Gda-6.0.Gda.Result
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class Result extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.Result
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.Result
+
+    constructor(config?: Result.ConstructorProperties) 
+    _init(config?: Result.ConstructorProperties): void
+}
+
+module ResultTable {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends MetaTable.ConstructorProperties, ReadonlyTableModel.ConstructorProperties, Result.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface ResultTable extends MetaTable, ReadonlyTableModel, Result, TableModel {
+
+    // Own properties of Gda-6.0.Gda.ResultTable
+
+    __gtype__: number
+
+    // Class property signals of Gda-6.0.Gda.ResultTable
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::catalog", callback: (...args: any[]) => void): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::catalog", ...args: any[]): void
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::schema", callback: (...args: any[]) => void): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::schema", ...args: any[]): void
+    connect(sigName: "notify::rows", callback: (...args: any[]) => void): number
+    on(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::rows", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::rows", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ResultTable extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ResultTable
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ResultTable
+
+    constructor(config?: ResultTable.ConstructorProperties) 
+    _init(config?: ResultTable.ConstructorProperties): void
+}
+
+module RowModel {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends Gio.ListModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface RowModel extends Gio.ListModel {
+
+    // Own properties of Gda-6.0.Gda.RowModel
+
+    readonly nColumns: number
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.RowModel
+
+    // Has conflict: getNColumns(): number
+
+    // Own virtual methods of Gda-6.0.Gda.RowModel
+
+    getNColumns(): number
+
+    // Class property signals of Gda-6.0.Gda.RowModel
+
+    connect(sigName: "notify::n-columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::n-columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::n-columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::n-columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::n-columns", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class RowModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.RowModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.RowModel
+
+    constructor(config?: RowModel.ConstructorProperties) 
+    _init(config?: RowModel.ConstructorProperties): void
+}
+
+module TableConstraint {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface TableConstraint {
+
+    // Own properties of Gda-6.0.Gda.TableConstraint
+
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.TableConstraint
+
+    // Has conflict: getDefinition(): string | null
+    // Has conflict: setDefinition(value: string | null): void
+
+    // Own virtual methods of Gda-6.0.Gda.TableConstraint
+
+    getDefinition(): string | null
+    setDefinition(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.TableConstraint
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class TableConstraint extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.TableConstraint
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.TableConstraint
+
+    constructor(config?: TableConstraint.ConstructorProperties) 
+    _init(config?: TableConstraint.ConstructorProperties): void
+}
+
+module TableModel {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends MetaTable.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface TableModel extends MetaTable {
+
+    // Own properties of Gda-6.0.Gda.TableModel
+
+    __gtype__: number
+
+    // Class property signals of Gda-6.0.Gda.TableModel
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::catalog", callback: (...args: any[]) => void): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::catalog", ...args: any[]): void
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::schema", callback: (...args: any[]) => void): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::schema", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class TableModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.TableModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.TableModel
+
+    constructor(config?: TableModel.ConstructorProperties) 
+    _init(config?: TableModel.ConstructorProperties): void
+}
+
+module WritableTableModel {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends MetaTable.ConstructorProperties, ReadonlyTableModel.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+    }
+
+}
+
+interface WritableTableModel extends MetaTable, ReadonlyTableModel, TableModel {
+
+    // Own properties of Gda-6.0.Gda.WritableTableModel
+
+    __gtype__: number
+
+    // Owm methods of Gda-6.0.Gda.WritableTableModel
+
+    // Has conflict: insertRow(newRow: RowModel): void
+    // Has conflict: setValue(row: number, column: string | null, value: any): void
+    // Has conflict: setValueAt(row: number, column: number, value: any): void
+
+    // Own virtual methods of Gda-6.0.Gda.WritableTableModel
+
+    insertRow(newRow: RowModel): void
+    setValue(row: number, column: string | null, value: any): void
+    setValueAt(row: number, column: number, value: any): void
+
+    // Class property signals of Gda-6.0.Gda.WritableTableModel
+
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::catalog", callback: (...args: any[]) => void): number
+    on(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::catalog", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::catalog", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::catalog", ...args: any[]): void
+    connect(sigName: "notify::columns", callback: (...args: any[]) => void): number
+    on(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::columns", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::columns", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::columns", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::schema", callback: (...args: any[]) => void): number
+    on(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::schema", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::schema", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::schema", ...args: any[]): void
+    connect(sigName: "notify::rows", callback: (...args: any[]) => void): number
+    on(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::rows", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::rows", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::rows", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class WritableTableModel extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.WritableTableModel
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.WritableTableModel
+
+    constructor(config?: WritableTableModel.ConstructorProperties) 
+    _init(config?: WritableTableModel.ConstructorProperties): void
 }
 
 module Batch {
@@ -5223,6 +7106,88 @@ class ConnectionEvent extends GObject.Object {
 
     constructor(config?: ConnectionEvent.ConstructorProperties) 
     _init(config?: ConnectionEvent.ConstructorProperties): void
+}
+
+module ConnectionModelParams {
+
+    // Constructor properties interface
+
+    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gda-6.0.Gda.ConnectionModelParams
+
+        cncString?: string | null
+        pasword?: string | null
+        user?: string | null
+    }
+
+}
+
+interface ConnectionModelParams {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModelParams
+
+    cncString: string | null
+    pasword: string | null
+    user: string | null
+    __gtype__: number
+
+    // Own fields of Gda-6.0.Gda.ConnectionModelParams
+
+    parentInstance: GObject.Object
+    priv: ConnectionModelParamsPrivate
+
+    // Owm methods of Gda-6.0.Gda.ConnectionModelParams
+
+    getCncString(): string | null
+    getPasword(): string | null
+    getUser(): string | null
+    setCncString(value: string | null): void
+    setPasword(value: string | null): void
+    setUser(value: string | null): void
+
+    // Class property signals of Gda-6.0.Gda.ConnectionModelParams
+
+    connect(sigName: "notify::cnc-string", callback: (...args: any[]) => void): number
+    on(sigName: "notify::cnc-string", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::cnc-string", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::cnc-string", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::cnc-string", ...args: any[]): void
+    connect(sigName: "notify::pasword", callback: (...args: any[]) => void): number
+    on(sigName: "notify::pasword", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::pasword", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::pasword", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::pasword", ...args: any[]): void
+    connect(sigName: "notify::user", callback: (...args: any[]) => void): number
+    on(sigName: "notify::user", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::user", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::user", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::user", ...args: any[]): void
+    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
+    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class ConnectionModelParams extends GObject.Object {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModelParams
+
+    static name: string
+
+    // Constructors of Gda-6.0.Gda.ConnectionModelParams
+
+    constructor(config?: ConnectionModelParams.ConstructorProperties) 
+    constructor() 
+    static new(): ConnectionModelParams
+    _init(config?: ConnectionModelParams.ConstructorProperties): void
 }
 
 module DataAccessWrapper {
@@ -7141,11 +9106,9 @@ interface DbBase {
     // Owm methods of Gda-6.0.Gda.DbBase
 
     /**
-     * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
-     * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
-     * null.null.customer and main.main.customer are identical.
+     * Compares two objects similar to g_strcmp().
      * @param b second #GdaDbBase object
-     * @returns 0 if two objects are identical or -1 or 1 otherwise.
+     * @returns 0 if catalog, schema and name are the same
      */
     compare(b: DbBase): number
     /**
@@ -7276,57 +9239,7 @@ interface DbCatalog {
      * @param view view to append
      */
     appendView(view: DbView): void
-    /**
-     * Convenient function to get a table based on `name`. The coller is responsible
-     * for calling gda_db_catalog_parse_cnc() before calling this function.
-     * @param catalog 
-     * @param schema 
-     * @param name table name
-     * @returns table as #GdaDbTable or %NULL if the table is not found. The returned pointer should not be freed and belongs to the @self.
-     */
-    getTable(catalog: string | null, schema: string | null, name: string | null): DbTable
     getTables(): DbTable[]
-    /**
-     * Convenient function to get a view based on name. The coller is responsible
-     * for calling gda_db_catalog_parse_cnc() before calling this function. This
-     * code is equivalent to the following code:
-     * 
-     * 
-     * ```c
-     *  GdaDbBase *iobj;
-     *  GList *it;
-     * 
-     *  GdaDbCatalogPrivate *priv = gda_db_catalog_get_instance_private (self);
-     * 
-     *  if (gda_db_catalog_parse_cnc (self, error))
-     *    return NULL;
-     * 
-     *  iobj = gda_db_base_new ();
-     *  gda_db_base_set_names (iobj, catalog, schema, name);
-     * 
-     *  for (it = priv->mp_views; it; it = it->next)
-     *    {
-     *      if (!gda_db_base_compare (iobj, GDA_DB_BASE (it->data)))
-     *        {
-     *          if (iobj)
-     *            g_object_unref (iobj);
-     * 
-     *          return GDA_DB_VIEW (it->data);
-     *        }
-     *    }
-     * 
-     *  if (iobj)
-     *    g_object_unref (iobj);
-     * 
-     *  return NULL;
-     * ```
-     * 
-     * @param catalog a catalog name or %NULL
-     * @param schema a schema name or %NULL
-     * @param name view name. Can't be %NULL
-     * @returns View as #GdaDbView or %NULL if the view is not found. The returned pointer should not be freed and belongs to @self
-     */
-    getView(catalog: string | null, schema: string | null, name: string | null): DbView
     getViews(): DbView[]
     /**
      * Parse internal cnc to populate `self` object. This method should be called every time after
@@ -11360,7 +13273,6 @@ module SqlParser {
 
         // Own constructor properties of Gda-6.0.Gda.SqlParser
 
-        debug?: boolean | null
         mode?: number | null
         tokenizerFlavour?: number | null
     }
@@ -11372,7 +13284,6 @@ interface SqlParser extends Lockable {
     // Own properties of Gda-6.0.Gda.SqlParser
 
     readonly columnError: number
-    debug: boolean
     readonly lineError: number
     mode: number
     tokenizerFlavour: number
@@ -11433,11 +13344,6 @@ interface SqlParser extends Lockable {
     once(sigName: "notify::column-error", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::column-error", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::column-error", ...args: any[]): void
-    connect(sigName: "notify::debug", callback: (...args: any[]) => void): number
-    on(sigName: "notify::debug", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::debug", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::debug", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::debug", ...args: any[]): void
     connect(sigName: "notify::line-error", callback: (...args: any[]) => void): number
     on(sigName: "notify::line-error", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::line-error", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -13015,6 +14921,21 @@ class XaTransaction extends GObject.Object {
     static stringToId(str: string | null): XaTransactionId
 }
 
+interface AfectedRowsIface {
+
+    // Own fields of Gda-6.0.Gda.AfectedRowsIface
+
+    parentIface: GObject.TypeInterface
+    getNumber: (self: AfectedRows) => number
+}
+
+abstract class AfectedRowsIface {
+
+    // Own properties of Gda-6.0.Gda.AfectedRowsIface
+
+    static name: string
+}
+
 interface BatchClass {
 
     // Own fields of Gda-6.0.Gda.BatchClass
@@ -13206,6 +15127,28 @@ abstract class ColumnClass {
     static name: string
 }
 
+interface ColumnModelIface {
+
+    // Own fields of Gda-6.0.Gda.ColumnModelIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: ColumnModel) => string | null
+    getIndex: (self: ColumnModel) => number
+    getDataType: (self: ColumnModel) => GObject.GType
+    getValue: (self: ColumnModel) => any
+    setValue: (self: ColumnModel, value: any) => void
+    getAttributes: (self: ColumnModel) => ColumnAttributes
+    setAttributes: (self: ColumnModel, value: ColumnAttributes) => void
+    setForeignKey: (self: ColumnModel, value: ForeignKey) => void
+}
+
+abstract class ColumnModelIface {
+
+    // Own properties of Gda-6.0.Gda.ColumnModelIface
+
+    static name: string
+}
+
 interface ConfigClass {
 
     // Own fields of Gda-6.0.Gda.ConfigClass
@@ -13255,6 +15198,83 @@ interface ConnectionEventClass {
 abstract class ConnectionEventClass {
 
     // Own properties of Gda-6.0.Gda.ConnectionEventClass
+
+    static name: string
+}
+
+interface ConnectionModelIface {
+
+    // Own fields of Gda-6.0.Gda.ConnectionModelIface
+
+    parentIface: GObject.TypeInterface
+    setCncParams: (self: ConnectionModel, value: ConnectionModelParams) => void
+    getIsOpened: (self: ConnectionModel) => boolean
+    close: (self: ConnectionModel) => void
+    closeNoWarning: (self: ConnectionModel) => void
+    open: (self: ConnectionModel) => boolean
+}
+
+abstract class ConnectionModelIface {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModelIface
+
+    static name: string
+}
+
+interface ConnectionModelParamsClass {
+
+    // Own fields of Gda-6.0.Gda.ConnectionModelParamsClass
+
+    parentClass: GObject.ObjectClass
+}
+
+abstract class ConnectionModelParamsClass {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModelParamsClass
+
+    static name: string
+}
+
+interface ConnectionModelParamsPrivate {
+}
+
+class ConnectionModelParamsPrivate {
+
+    // Own properties of Gda-6.0.Gda.ConnectionModelParamsPrivate
+
+    static name: string
+}
+
+interface CreateDatabaseBuilderIface {
+
+    // Own fields of Gda-6.0.Gda.CreateDatabaseBuilderIface
+
+    parentIface: GObject.TypeInterface
+    getDatabaseName: (self: CreateDatabaseBuilder) => string | null
+    setDatabaseName: (self: CreateDatabaseBuilder, value: string | null) => void
+}
+
+abstract class CreateDatabaseBuilderIface {
+
+    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilderIface
+
+    static name: string
+}
+
+interface CreateTableBuilderIface {
+
+    // Own fields of Gda-6.0.Gda.CreateTableBuilderIface
+
+    parentIface: GObject.TypeInterface
+    getTableName: (self: CreateTableBuilder) => string | null
+    setTableName: (self: CreateTableBuilder, value: string | null) => void
+    setColumns: (self: CreateTableBuilder, value: Gio.ListModel) => void
+    setContraints: (self: CreateTableBuilder, value: Gio.ListModel) => void
+}
+
+abstract class CreateTableBuilderIface {
+
+    // Own properties of Gda-6.0.Gda.CreateTableBuilderIface
 
     static name: string
 }
@@ -13673,6 +15693,40 @@ class Diff {
     static name: string
 }
 
+interface DropDatabaseBuilderIface {
+
+    // Own fields of Gda-6.0.Gda.DropDatabaseBuilderIface
+
+    parentIface: GObject.TypeInterface
+    getDatabaseName: (self: DropDatabaseBuilder) => string | null
+    setDatabaseName: (self: DropDatabaseBuilder, value: string | null) => void
+}
+
+abstract class DropDatabaseBuilderIface {
+
+    // Own properties of Gda-6.0.Gda.DropDatabaseBuilderIface
+
+    static name: string
+}
+
+interface DropTableBuilderIface {
+
+    // Own fields of Gda-6.0.Gda.DropTableBuilderIface
+
+    parentIface: GObject.TypeInterface
+    getTableName: (self: DropTableBuilder) => string | null
+    setTableName: (self: DropTableBuilder, value: string | null) => void
+    getCascade: (self: DropTableBuilder) => boolean
+    setCascade: (self: DropTableBuilder, value: boolean) => void
+}
+
+abstract class DropTableBuilderIface {
+
+    // Own properties of Gda-6.0.Gda.DropTableBuilderIface
+
+    static name: string
+}
+
 interface DsnInfo {
 
     // Own fields of Gda-6.0.Gda.DsnInfo
@@ -13754,6 +15808,32 @@ class DsnInfo {
      * @returns a new #GdaDsnInfo struct.
      */
     static new(): DsnInfo
+}
+
+interface ForeignKeyIface {
+
+    // Own fields of Gda-6.0.Gda.ForeignKeyIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: ForeignKey) => string | null
+    setName: (self: ForeignKey, value: string | null) => void
+    getRefname: (self: ForeignKey) => string | null
+    setRefname: (self: ForeignKey, value: string | null) => void
+    setReftable: (self: ForeignKey, value: TableModel) => void
+    setRefcol: (self: ForeignKey, value: Gio.ListModel) => void
+    getMatch: (self: ForeignKey) => ForeignKeyMatch
+    setMatch: (self: ForeignKey, value: ForeignKeyMatch) => void
+    getUpdateRule: (self: ForeignKey) => ForeignKeyRule
+    setUpdateRule: (self: ForeignKey, value: ForeignKeyRule) => void
+    getDeleteRule: (self: ForeignKey) => ForeignKeyRule
+    setDeleteRule: (self: ForeignKey, value: ForeignKeyRule) => void
+}
+
+abstract class ForeignKeyIface {
+
+    // Own properties of Gda-6.0.Gda.ForeignKeyIface
+
+    static name: string
 }
 
 interface GeometricPoint {
@@ -13896,6 +15976,21 @@ abstract class HolderClass {
     static name: string
 }
 
+interface InsertedIface {
+
+    // Own fields of Gda-6.0.Gda.InsertedIface
+
+    parentIface: GObject.TypeInterface
+    getNumber: (self: Inserted) => number
+}
+
+abstract class InsertedIface {
+
+    // Own properties of Gda-6.0.Gda.InsertedIface
+
+    static name: string
+}
+
 interface LockableInterface {
 
     // Own fields of Gda-6.0.Gda.LockableInterface
@@ -13909,6 +16004,39 @@ interface LockableInterface {
 abstract class LockableInterface {
 
     // Own properties of Gda-6.0.Gda.LockableInterface
+
+    static name: string
+}
+
+interface MetaCatalogIface {
+
+    // Own fields of Gda-6.0.Gda.MetaCatalogIface
+
+    parentIface: GObject.TypeInterface
+    setConnection: (self: MetaCatalog, value: ConnectionModel) => void
+}
+
+abstract class MetaCatalogIface {
+
+    // Own properties of Gda-6.0.Gda.MetaCatalogIface
+
+    static name: string
+}
+
+interface MetaColumnIface {
+
+    // Own fields of Gda-6.0.Gda.MetaColumnIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: MetaColumn) => string | null
+    setName: (self: MetaColumn, value: string | null) => void
+    getColumnType: (self: MetaColumn) => GObject.GType
+    getColumnTypeName: (self: MetaColumn) => string | null
+}
+
+abstract class MetaColumnIface {
+
+    // Own properties of Gda-6.0.Gda.MetaColumnIface
 
     static name: string
 }
@@ -14165,54 +16293,6 @@ abstract class MetaStructClass {
     static name: string
 }
 
-interface MetaTable {
-
-    // Own fields of Gda-6.0.Gda.MetaTable
-
-    /**
-     * list of #GdaMetaTableColumn structures, one for each column in the table
-     * @field 
-     */
-    columns: MetaTableColumn[]
-    /**
-     * index of the columns part of the primary key for the table (WARNING: columns numbering
-     *                 here start at 0)
-     * @field 
-     */
-    pkColsArray: number
-    /**
-     * size of the `pk_cols_array` array
-     * @field 
-     */
-    pkColsNb: number
-    /**
-     * list of #GdaMetaTableForeignKey where the referenced table is this table
-     * @field 
-     */
-    reverseFkList: MetaTableForeignKey[]
-    /**
-     * list of #GdaMetaTableForeignKey for this table
-     * @field 
-     */
-    fkList: MetaTableForeignKey[]
-}
-
-/**
- * This structure specifies a #GdaMetaDbObject to represent a table's specific attributes,
- * its contents must not be modified.
- * 
- * Note that in some cases, the columns cannot be determined for views, and in this case the
- * `columns` will be %NULL (this can be the case for example with SQLite where a view
- * uses a function which is not natively provided by SQLite.
- * @record 
- */
-class MetaTable {
-
-    // Own properties of Gda-6.0.Gda.MetaTable
-
-    static name: string
-}
-
 interface MetaTableColumn {
 
     // Own fields of Gda-6.0.Gda.MetaTableColumn
@@ -14313,6 +16393,26 @@ interface MetaTableForeignKey {
 class MetaTableForeignKey {
 
     // Own properties of Gda-6.0.Gda.MetaTableForeignKey
+
+    static name: string
+}
+
+interface MetaTableIface {
+
+    // Own fields of Gda-6.0.Gda.MetaTableIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: MetaTable) => string | null
+    setName: (self: MetaTable, value: string | null) => void
+    getSchema: (self: MetaTable) => string | null
+    setSchema: (self: MetaTable, value: string | null) => void
+    getCatalog: (self: MetaTable) => string | null
+    setCatalog: (self: MetaTable, value: string | null) => void
+}
+
+abstract class MetaTableIface {
+
+    // Own properties of Gda-6.0.Gda.MetaTableIface
 
     static name: string
 }
@@ -14440,6 +16540,37 @@ interface PStmtClass {
 abstract class PStmtClass {
 
     // Own properties of Gda-6.0.Gda.PStmtClass
+
+    static name: string
+}
+
+interface ParametersIface {
+
+    // Own fields of Gda-6.0.Gda.ParametersIface
+
+    parentIface: GObject.TypeInterface
+    setValue: (self: Parameters, name: string | null, val: any) => void
+    getValue: (self: Parameters, name: string | null) => any
+}
+
+abstract class ParametersIface {
+
+    // Own properties of Gda-6.0.Gda.ParametersIface
+
+    static name: string
+}
+
+interface PreparedQueryIface {
+
+    // Own fields of Gda-6.0.Gda.PreparedQueryIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: PreparedQuery) => string | null
+}
+
+abstract class PreparedQueryIface {
+
+    // Own properties of Gda-6.0.Gda.PreparedQueryIface
 
     static name: string
 }
@@ -14710,6 +16841,81 @@ class QuarkList {
     static newFromString(string: string | null): QuarkList
 }
 
+interface QueryBuilderIface {
+
+    // Own fields of Gda-6.0.Gda.QueryBuilderIface
+
+    parentIface: GObject.TypeInterface
+    getSql: (self: QueryBuilder) => string | null
+    setSql: (self: QueryBuilder, value: string | null) => void
+    getName: (self: QueryBuilder) => string | null
+    setName: (self: QueryBuilder, value: string | null) => void
+    addSavepoint: (self: QueryBuilder, name: string | null) => boolean
+    deleteSavepoint: (self: QueryBuilder, name: string | null) => boolean
+    rollbackSavepoint: (self: QueryBuilder, name: string | null) => boolean
+    beginTransaction: (self: QueryBuilder, name: string | null) => boolean
+    commitTransaction: (self: QueryBuilder, name: string | null) => boolean
+    rollbackTransaction: (self: QueryBuilder, name: string | null) => boolean
+}
+
+abstract class QueryBuilderIface {
+
+    // Own properties of Gda-6.0.Gda.QueryBuilderIface
+
+    static name: string
+}
+
+interface QueryIface {
+
+    // Own fields of Gda-6.0.Gda.QueryIface
+
+    parentIface: GObject.TypeInterface
+    getName: (self: Query) => string | null
+    getSql: (self: Query) => string | null
+    execute: (self: Query, callback: Gio.AsyncReadyCallback | null, userData: any | null) => void
+    cancel: (self: Query, callback: Gio.AsyncReadyCallback | null, userData: any | null) => void
+    cancelFinish: (self: Query, res: Gio.AsyncResult) => void
+}
+
+abstract class QueryIface {
+
+    // Own properties of Gda-6.0.Gda.QueryIface
+
+    static name: string
+}
+
+interface ReadonlyTableModelIface {
+
+    // Own fields of Gda-6.0.Gda.ReadonlyTableModelIface
+
+    parentIface: GObject.TypeInterface
+    getValue: (self: ReadonlyTableModel, row: number, column: string | null, result: any) => void
+    getValueAt: (self: ReadonlyTableModel, row: number, column: number, result: any) => void
+}
+
+abstract class ReadonlyTableModelIface {
+
+    // Own properties of Gda-6.0.Gda.ReadonlyTableModelIface
+
+    static name: string
+}
+
+interface ReferencedColumnIface {
+
+    // Own fields of Gda-6.0.Gda.ReferencedColumnIface
+
+    parentIface: GObject.TypeInterface
+    setTableName: (self: ReferencedColumn, value: string | null) => void
+    getName: (self: ReferencedColumn) => string | null
+}
+
+abstract class ReferencedColumnIface {
+
+    // Own properties of Gda-6.0.Gda.ReferencedColumnIface
+
+    static name: string
+}
+
 interface RepetitiveStatementClass {
 
     // Own fields of Gda-6.0.Gda.RepetitiveStatementClass
@@ -14724,6 +16930,34 @@ abstract class RepetitiveStatementClass {
     static name: string
 }
 
+interface ResultIface {
+
+    // Own fields of Gda-6.0.Gda.ResultIface
+
+    parentIface: GObject.TypeInterface
+}
+
+abstract class ResultIface {
+
+    // Own properties of Gda-6.0.Gda.ResultIface
+
+    static name: string
+}
+
+interface ResultTableIface {
+
+    // Own fields of Gda-6.0.Gda.ResultTableIface
+
+    parentIface: GObject.TypeInterface
+}
+
+abstract class ResultTableIface {
+
+    // Own properties of Gda-6.0.Gda.ResultTableIface
+
+    static name: string
+}
+
 interface RowClass {
 
     // Own fields of Gda-6.0.Gda.RowClass
@@ -14734,6 +16968,21 @@ interface RowClass {
 abstract class RowClass {
 
     // Own properties of Gda-6.0.Gda.RowClass
+
+    static name: string
+}
+
+interface RowModelIface {
+
+    // Own fields of Gda-6.0.Gda.RowModelIface
+
+    parentIface: GObject.TypeInterface
+    getNColumns: (self: RowModel) => number
+}
+
+abstract class RowModelIface {
+
+    // Own properties of Gda-6.0.Gda.RowModelIface
 
     static name: string
 }
@@ -16895,6 +19144,36 @@ abstract class StatementClass {
     static name: string
 }
 
+interface TableConstraintIface {
+
+    // Own fields of Gda-6.0.Gda.TableConstraintIface
+
+    parentIface: GObject.TypeInterface
+    getDefinition: (self: TableConstraint) => string | null
+    setDefinition: (self: TableConstraint, value: string | null) => void
+}
+
+abstract class TableConstraintIface {
+
+    // Own properties of Gda-6.0.Gda.TableConstraintIface
+
+    static name: string
+}
+
+interface TableModelIface {
+
+    // Own fields of Gda-6.0.Gda.TableModelIface
+
+    parentIface: GObject.TypeInterface
+}
+
+abstract class TableModelIface {
+
+    // Own properties of Gda-6.0.Gda.TableModelIface
+
+    static name: string
+}
+
 interface Text {
 
     // Owm methods of Gda-6.0.Gda.Text
@@ -17427,6 +19706,23 @@ class Worker {
      */
     static newUnique(location: Worker, allowDestroy: boolean): Worker
     static errorQuark(): GLib.Quark
+}
+
+interface WritableTableModelIface {
+
+    // Own fields of Gda-6.0.Gda.WritableTableModelIface
+
+    parentIface: GObject.TypeInterface
+    setValue: (self: WritableTableModel, row: number, column: string | null, value: any) => void
+    setValueAt: (self: WritableTableModel, row: number, column: number, value: any) => void
+    insertRow: (self: WritableTableModel, newRow: RowModel) => void
+}
+
+abstract class WritableTableModelIface {
+
+    // Own properties of Gda-6.0.Gda.WritableTableModelIface
+
+    static name: string
 }
 
 interface XaTransactionClass {

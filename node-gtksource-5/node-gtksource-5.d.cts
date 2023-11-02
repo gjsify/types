@@ -9535,11 +9535,6 @@ export interface StyleSchemeChooserButton extends Gtk.Accessible, Gtk.Actionable
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
-    connect(sigName: "notify::can-shrink", callback: (...args: any[]) => void): number
-    on(sigName: "notify::can-shrink", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::can-shrink", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::can-shrink", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (...args: any[]) => void): number
     on(sigName: "notify::child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

@@ -8539,9 +8539,6 @@ export interface StyleSchemeChooserButton extends Gtk.Accessible, Gtk.Actionable
 
     // Class property signals of GtkSource-5.GtkSource.StyleSchemeChooserButton
 
-    connect(sigName: "notify::can-shrink", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::can-shrink", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

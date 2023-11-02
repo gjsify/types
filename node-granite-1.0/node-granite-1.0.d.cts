@@ -14,10 +14,10 @@ import './node-granite-1.0-import.d.ts';
 
 import type Pango from '@girs/node-pango-1.0';
 import type cairo from '@girs/node-cairo-1.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
 import type HarfBuzz from '@girs/node-harfbuzz-0.0';
 import type freetype2 from '@girs/node-freetype2-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 import type Gio from '@girs/node-gio-2.0';
 import type Gtk from '@girs/node-gtk-3.0';
 import type xlib from '@girs/node-xlib-2.0';

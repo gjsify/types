@@ -14,12 +14,12 @@ import './granite-7.0-import.d.ts';
 
 import type Gdk from '@girs/gdk-4.0';
 import type cairo from '@girs/cairo-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -374,9 +374,6 @@ export interface SettingsPage {
     connect(sigName: "notify::child", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
-    connect(sigName: "notify::baseline-child", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::baseline-child", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-position", callback: (($obj: SettingsPage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::baseline-position", ...args: any[]): void
@@ -585,9 +582,6 @@ export interface SimpleSettingsPage {
     connect(sigName: "notify::child", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
-    connect(sigName: "notify::baseline-child", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::baseline-child", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-position", callback: (($obj: SimpleSettingsPage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::baseline-position", ...args: any[]): void
@@ -765,9 +759,6 @@ export interface AccelLabel {
     connect(sigName: "notify::label", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
-    connect(sigName: "notify::baseline-child", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::baseline-child", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-position", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::baseline-position", ...args: any[]): void
@@ -1280,9 +1271,6 @@ export interface Dialog {
     connect(sigName: "notify::startup-id", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
-    connect(sigName: "notify::suspended", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::suspended", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -1948,9 +1936,6 @@ export interface MessageDialog {
     connect(sigName: "notify::startup-id", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
-    connect(sigName: "notify::suspended", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::suspended", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -2173,9 +2158,6 @@ export interface ModeSwitch {
     connect(sigName: "notify::secondary-icon-tooltip-text", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::secondary-icon-tooltip-text", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::secondary-icon-tooltip-text", ...args: any[]): void
-    connect(sigName: "notify::baseline-child", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::baseline-child", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::baseline-position", callback: (($obj: ModeSwitch, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::baseline-position", ...args: any[]): void
@@ -2900,9 +2882,6 @@ export interface SwitchModelButton {
     connect(sigName: "notify::group", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::group", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::group", ...args: any[]): void
-    connect(sigName: "notify::can-shrink", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::can-shrink", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SwitchModelButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

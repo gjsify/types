@@ -13,7 +13,6 @@ import './cairo-1.0-import.d.ts';
  */
 
 import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 
 export enum Status {
     SUCCESS,

@@ -80,9 +80,6 @@ interface Resolver {
 
     // Class property signals of Uhm-0.0.Uhm.Resolver
 
-    connect(sigName: "notify::timeout", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::timeout", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::timeout", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

@@ -1,7 +1,7 @@
 {
     "name": "@girs/node-pango-1.0",
-    "version": "1.51.0-3.2.2",
-    "description": "Node.js TypeScript type definitions for Pango-1.0, generated from library version 1.51.0",
+    "version": "1.50.14-3.2.2",
+    "description": "Node.js TypeScript type definitions for Pango-1.0, generated from library version 1.50.14",
     "type": "module",
     "module": "node-pango-1.0.js",
     "main": "node-pango-1.0.js",

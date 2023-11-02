@@ -14,12 +14,12 @@ import './node-gdkwayland-4.0-import.d.ts';
 
 import type Gdk from '@girs/node-gdk-4.0';
 import type cairo from '@girs/node-cairo-1.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
 import type PangoCairo from '@girs/node-pangocairo-1.0';
 import type Pango from '@girs/node-pango-1.0';
 import type HarfBuzz from '@girs/node-harfbuzz-0.0';
 import type freetype2 from '@girs/node-freetype2-2.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 import type Gio from '@girs/node-gio-2.0';
 import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
 import type GModule from '@girs/node-gmodule-2.0';
@@ -528,11 +528,6 @@ export interface WaylandPopup extends Gdk.Popup {
     once(sigName: "notify::mapped", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mapped", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::mapped", ...args: any[]): void
-    connect(sigName: "notify::scale", callback: (...args: any[]) => void): number
-    on(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (...args: any[]) => void): number
     on(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -679,11 +674,6 @@ export interface WaylandSurface {
     once(sigName: "notify::mapped", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mapped", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::mapped", ...args: any[]): void
-    connect(sigName: "notify::scale", callback: (...args: any[]) => void): number
-    on(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (...args: any[]) => void): number
     on(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -740,14 +730,6 @@ export interface WaylandToplevel extends Gdk.Toplevel {
     // Owm methods of GdkWayland-4.0.GdkWayland.WaylandToplevel
 
     /**
-     * Destroy a handle that was obtained with gdk_wayland_toplevel_export_handle().
-     * 
-     * Note that this API depends on an unstable Wayland protocol,
-     * and thus may require changes in the future.
-     * @param handle the handle to drop
-     */
-    dropExportedHandle(handle: string | null): void
-    /**
      * Asynchronously obtains a handle for a surface that can be passed
      * to other processes.
      * 
@@ -762,12 +744,6 @@ export interface WaylandToplevel extends Gdk.Toplevel {
      * The main purpose for obtaining a handle is to mark a surface
      * from another surface as transient for this one, see
      * [method`GdkWayland`.WaylandToplevel.set_transient_for_exported].
-     * 
-     * Before 4.12, this API could not safely be used multiple times,
-     * since there was no reference counting for handles. Starting with
-     * 4.12, every call to this function obtains a new handle, and every
-     * call to [method`GdkWayland`.WaylandToplevel.drop_exported_handle] drops
-     * just the handle that it is given.
      * 
      * Note that this API depends on an unstable Wayland protocol,
      * and thus may require changes in the future.
@@ -799,10 +775,6 @@ export interface WaylandToplevel extends Gdk.Toplevel {
      * 
      * It is an error to call this function on a surface that
      * does not have a handle.
-     * 
-     * Since 4.12, this function does nothing. Use
-     * [method`GdkWayland`.WaylandToplevel.drop_exported_handle] instead to drop a
-     * handle that was obtained with [method`GdkWayland`.WaylandToplevel.export_handle].
      * 
      * Note that this API depends on an unstable Wayland protocol,
      * and thus may require changes in the future.
@@ -841,11 +813,6 @@ export interface WaylandToplevel extends Gdk.Toplevel {
     once(sigName: "notify::mapped", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::mapped", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::mapped", ...args: any[]): void
-    connect(sigName: "notify::scale", callback: (...args: any[]) => void): number
-    on(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::scale", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::scale", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::scale", ...args: any[]): void
     connect(sigName: "notify::scale-factor", callback: (...args: any[]) => void): number
     on(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::scale-factor", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

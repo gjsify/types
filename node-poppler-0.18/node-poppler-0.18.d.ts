@@ -13,9 +13,9 @@ import './node-poppler-0.18-import.d.ts';
  */
 
 import type cairo from '@girs/node-cairo-1.0';
+import type Gio from '@girs/node-gio-2.0';
 import type GObject from '@girs/node-gobject-2.0';
 import type GLib from '@girs/node-glib-2.0';
-import type Gio from '@girs/node-gio-2.0';
 
 export namespace Poppler {
 

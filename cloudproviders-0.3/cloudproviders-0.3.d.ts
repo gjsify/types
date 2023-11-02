@@ -493,7 +493,7 @@ interface AccountExporter {
 
     /**
      * In order for a menu exported with cloud_providers_account_exporter_export_menu to receive events
-     * that will eventually call your callbacks, it needs the corresponding GAcionGroup.
+     * that will eventually call your callbacks, it needs the corresponding GActionGroup.
      * Use this function to export it.
      * @param action_group The GActionGroup to be used by the menu exported by cloud_providers_account_exporter_export_menu
      */
@@ -502,7 +502,7 @@ interface AccountExporter {
     /**
      * One of the benefits of the integration is to display a menu with available
      * options for an account. Use this function to export a GMenuModel menu to be
-     * displayed by the choosen integration by the desktop environment or application.
+     * displayed by the chosen integration by the desktop environment or application.
      * @param menu_model The menu model to export
      */
     set_menu_model(menu_model: Gio.MenuModel): void
@@ -1777,7 +1777,7 @@ interface Provider {
 }
 
 /**
- * #CloudProvidersProvider is the basic object object for client implementators
+ * #CloudProvidersProvider is the basic object object for client implementers
  * that contains the properties of the provider such as name, and the accounts
  * associated with it.
  * @class 

@@ -89,11 +89,6 @@ interface Resolver {
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
-    connect(sigName: "notify::timeout", callback: (...args: any[]) => void): number
-    on(sigName: "notify::timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::timeout", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::timeout", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

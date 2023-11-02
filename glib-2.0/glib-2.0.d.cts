@@ -1388,7 +1388,7 @@ export enum TraverseType {
  * Since new unicode versions may add new types here, applications should be ready
  * to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
  * 
- * See [Unicode Line Breaking Algorithm](https://www.unicode.org/reports/tr14/).
+ * See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/).
  */
 export enum UnicodeBreakType {
     /**
@@ -3648,29 +3648,6 @@ export const ANALYZER_ANALYZING: number
  */
 export const ASCII_DTOSTR_BUF_SIZE: number
 /**
- * Evaluates to the initial reference count for `gatomicrefcount`.
- * 
- * This macro is useful for initializing `gatomicrefcount` fields inside
- * structures, for instance:
- * 
- * 
- * ```c
- * typedef struct {
- *   gatomicrefcount ref_count;
- *   char *name;
- *   char *address;
- * } Person;
- * 
- * static const Person default_person = {
- *   .ref_count = G_ATOMIC_REF_COUNT_INIT,
- *   .name = "Default name",
- *   .address = "Default address",
- * };
- * ```
- * 
- */
-export const ATOMIC_REF_COUNT_INIT: number
-/**
  * Specifies one of the possible types of byte order.
  * See %G_BYTE_ORDER.
  */
@@ -4149,7 +4126,7 @@ export const LOG_2_BASE_10: number
  * not advisable, as it cannot be filtered against using the `G_MESSAGES_DEBUG`
  * environment variable.
  * 
- * For example, GTK uses this in its `Makefile.am`:
+ * For example, GTK+ uses this in its `Makefile.am`:
  * 
  * ```
  * AM_CPPFLAGS = -DG_LOG_DOMAIN=\"Gtk\"
@@ -4325,13 +4302,13 @@ export const PRIORITY_DEFAULT_IDLE: number
 /**
  * Use this for high priority event sources.
  * 
- * It is not used within GLib or GTK.
+ * It is not used within GLib or GTK+.
  */
 export const PRIORITY_HIGH: number
 /**
  * Use this for high priority idle functions.
  * 
- * GTK uses %G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
+ * GTK+ uses %G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
  * and %G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
  * done to ensure that any pending resizes are processed before any
  * pending redraws, so that widgets are not redrawn twice unnecessarily.)
@@ -4340,32 +4317,9 @@ export const PRIORITY_HIGH_IDLE: number
 /**
  * Use this for very low priority background tasks.
  * 
- * It is not used within GLib or GTK.
+ * It is not used within GLib or GTK+.
  */
 export const PRIORITY_LOW: number
-/**
- * Evaluates to the initial reference count for `grefcount`.
- * 
- * This macro is useful for initializing `grefcount` fields inside
- * structures, for instance:
- * 
- * 
- * ```c
- * typedef struct {
- *   grefcount ref_count;
- *   char *name;
- *   char *address;
- * } Person;
- * 
- * static const Person default_person = {
- *   .ref_count = G_REF_COUNT_INIT,
- *   .name = "Default name",
- *   .address = "Default address",
- * };
- * ```
- * 
- */
-export const REF_COUNT_INIT: number
 /**
  * The search path separator character.
  * This is ':' on UNIX machines and ';' under Windows.
@@ -4829,7 +4783,6 @@ export function ascii_toupper(c: number): number
 export function ascii_xdigit_value(c: number): number
 export function assert_warning(log_domain: string | null, file: string | null, line: number, pretty_function: string | null, expression: string | null): void
 export function assertion_message(domain: string | null, file: string | null, line: number, func: string | null, message: string | null): void
-export function assertion_message_cmpint(domain: string | null, file: string | null, line: number, func: string | null, expr: string | null, arg1: number, cmp: string | null, arg2: number, numtype: number): void
 export function assertion_message_cmpstr(domain: string | null, file: string | null, line: number, func: string | null, expr: string | null, arg1: string | null, cmp: string | null, arg2: string | null): void
 export function assertion_message_cmpstrv(domain: string | null, file: string | null, line: number, func: string | null, expr: string | null, arg1: string | null, arg2: string | null, first_wrong_idx: number): void
 export function assertion_message_error(domain: string | null, file: string | null, line: number, func: string | null, expr: string | null, error: Error, error_domain: Quark, error_code: number): void
@@ -5481,10 +5434,8 @@ export function byte_array_free_to_bytes(array: Uint8Array): Bytes
  */
 export function byte_array_new(): Uint8Array
 /**
- * Creates a byte array containing the `data`.
- * After this call, `data` belongs to the #GByteArray and may no longer be
- * modified by the caller. The memory of `data` has to be dynamically
- * allocated and will eventually be freed with g_free().
+ * Create byte array containing the data. The data will be owned by the array
+ * and will be freed with g_free(), i.e. it could be allocated using g_strdup().
  * 
  * Do not use it if `len` is greater than %G_MAXUINT. #GByteArray
  * stores the length of its data in #guint, which may be shorter than
@@ -5623,14 +5574,6 @@ export function child_watch_add(priority: number, pid: Pid, function_: ChildWatc
  *   mechanism, including `waitpid(pid, ...)` or a second child-watch
  *   source for the same `pid`
  * * the application must not ignore `SIGCHLD`
- * * Before 2.78, the application could not send a signal (`kill()`) to the
- *   watched `pid` in a race free manner. Since 2.78, you can do that while the
- *   associated #GMainContext is acquired.
- * * Before 2.78, even after destroying the #GSource, you could not
- *   be sure that `pid` wasn't already reaped. Hence, it was also not
- *   safe to `kill()` or `waitpid()` on the process ID after the child watch
- *   source was gone. Destroying the source before it fired made it
- *   impossible to reliably reap the process.
  * 
  * If any of those conditions are not met, this and related APIs will
  * not work correctly. This can often be diagnosed via a GLib warning
@@ -5659,12 +5602,8 @@ export function clear_error(): void
  * 
  * It is a bug to call this function with an invalid file descriptor.
  * 
- * On POSIX platforms since GLib 2.76, this function is async-signal safe
- * if (and only if) `error` is %NULL and `fd` is a valid open file descriptor.
- * This makes it safe to call from a signal handler or a #GSpawnChildSetupFunc
- * under those conditions.
- * See [`signal(7)`](man:signal(7)) and
- * [`signal-safety(7)`](man:signal-safety(7)) for more details.
+ * Since 2.76, this function is guaranteed to be async-signal-safe if (and only
+ * if) `error` is %NULL and `fd` is a valid open file descriptor.
  * @param fd A file descriptor
  * @returns %TRUE on success, %FALSE if there was an error.
  */
@@ -5998,12 +5937,12 @@ export function dcgettext(domain: string | null, msgid: string | null, category:
  * translations for the current locale.
  * 
  * The advantage of using this function over dgettext() proper is that
- * libraries using this function (like GTK) will not use translations
+ * libraries using this function (like GTK+) will not use translations
  * if the application using the library does not have translations for
  * the current locale.  This results in a consistent English-only
  * interface instead of one having partial translations.  For this
  * feature to work, the call to textdomain() and setlocale() should
- * precede any g_dgettext() invocations.  For GTK, it means calling
+ * precede any g_dgettext() invocations.  For GTK+, it means calling
  * textdomain() before gtk_init or its variants.
  * 
  * This function disables translations if and only if upon its first
@@ -6021,7 +5960,7 @@ export function dcgettext(domain: string | null, msgid: string | null, category:
  * 
  * Note that this behavior may not be desired for example if an application
  * has its untranslated messages in a language other than English. In those
- * cases the application should call textdomain() after initializing GTK.
+ * cases the application should call textdomain() after initializing GTK+.
  * 
  * Applications should normally not use this function directly,
  * but use the _() macro for translations.
@@ -6548,12 +6487,6 @@ export function format_size_full(size: number, flags: FormatSizeFlags): string |
  * If you know the allocated size of `mem,` calling g_free_sized() may be faster,
  * depending on the libc implementation in use.
  * 
- * Starting from GLib 2.78, this may happen automatically in case a GCC
- * compatible compiler is used with some optimization level and the allocated
- * size is known at compile time (see [documentation of
- * `__builtin_object_size()`](https://gcc.gnu.org/onlinedocs/gcc/Object-Size-Checking.html)
- * to understand its caveats).
- * 
  * If `mem` is %NULL it simply returns, so there is no need to check `mem`
  * against %NULL before calling this function.
  * @param mem the memory to free
@@ -6567,10 +6500,6 @@ export function free(mem: any | null): void
  * It is an error if `size` doesn’t match the size passed when `mem` was
  * allocated. `size` is passed to this function to allow optimizations in the
  * allocator. If you don’t know the allocation size, use g_free() instead.
- * 
- * In case a GCC compatible compiler is used, this function may be used
- * automatically via g_free() if the allocated size is known at compile time,
- * since GLib 2.78.
  * @param mem the memory to free
  * @param size size of `mem,` in bytes
  */
@@ -6832,7 +6761,7 @@ export function get_os_info(key_name: string | null): string | null
  * in contrast to g_get_application_name().
  * 
  * If you are using #GApplication the program name is set in
- * g_application_run(). In case of GDK or GTK it is set in
+ * g_application_run(). In case of GDK or GTK+ it is set in
  * gdk_init(), which is called by gtk_init() and the
  * #GtkApplication::startup handler. The program name is found by
  * taking the last component of `argv[`0].
@@ -7910,7 +7839,7 @@ export function main_current_source(): Source | null
 /**
  * Returns the depth of the stack of calls to
  * g_main_context_dispatch() on any #GMainContext in the current thread.
- * That is, when called from the toplevel, it gives 0. When
+ *  That is, when called from the toplevel, it gives 0. When
  * called from within a callback from g_main_context_iteration()
  * (or g_main_loop_run(), etc.) it returns 1. When called from within
  * a callback to a recursive call to g_main_context_iteration(),
@@ -8253,7 +8182,7 @@ export function option_error_quark(): Quark
 /**
  * Parses a string containing debugging options
  * into a %guint containing bit flags. This is used
- * within GDK and GTK to parse the debug options passed on the
+ * within GDK and GTK+ to parse the debug options passed on the
  * command line or through environment variables.
  * 
  * If `string` is equal to "all", all flags are set. Any flags
@@ -8447,7 +8376,7 @@ export function propagate_error(src: Error): /* dest */ Error | null
  * with statically allocated strings in the main program, but not with
  * statically allocated memory in dynamically loaded modules, if you
  * expect to ever unload the module again (e.g. do not use this
- * function in GTK theme engines).
+ * function in GTK+ theme engines).
  * 
  * This function must not be used before library constructors have finished
  * running. In particular, this means it cannot be used to initialize global
@@ -8912,7 +8841,7 @@ export function set_error_literal(domain: Quark, code: number, message: string |
  * in contrast to g_set_application_name().
  * 
  * If you are using #GApplication the program name is set in
- * g_application_run(). In case of GDK or GTK it is set in
+ * g_application_run(). In case of GDK or GTK+ it is set in
  * gdk_init(), which is called by gtk_init() and the
  * #GtkApplication::startup handler. The program name is found by
  * taking the last component of `argv[`0].
@@ -10021,7 +9950,7 @@ export function strsignal(signum: number): string | null
 /**
  * Searches the string `haystack` for the first occurrence
  * of the string `needle,` limiting the length of the search
- * to `haystack_len` or a nul terminator byte (whichever is reached first).
+ * to `haystack_len`.
  * @param haystack a nul-terminated string
  * @param haystack_len the maximum length of `haystack` in bytes. A length of -1     can be used to mean "search the entire string", like `strstr()`.
  * @param needle the string to search for
@@ -11257,15 +11186,12 @@ export function unix_error_quark(): Quark
  */
 export function unix_fd_add_full(priority: number, fd: number, condition: IOCondition, function_: UnixFDSourceFunc): number
 /**
- * Creates a #GSource to watch for a particular I/O condition on a file
+ * Creates a #GSource to watch for a particular IO condition on a file
  * descriptor.
  * 
- * The source will never close the `fd` — you must do it yourself.
- * 
- * Any callback attached to the returned #GSource must have type
- * #GUnixFDSourceFunc.
+ * The source will never close the fd -- you must do it yourself.
  * @param fd a file descriptor
- * @param condition I/O conditions to watch for on `fd`
+ * @param condition IO conditions to watch for on `fd`
  * @returns the newly created #GSource
  */
 export function unix_fd_source_new(fd: number, condition: IOCondition): Source
@@ -11288,16 +11214,11 @@ export function unix_get_passwd_entry(user_name: string | null): any | null
 /**
  * Similar to the UNIX pipe() call, but on modern systems like Linux
  * uses the pipe2() system call, which atomically creates a pipe with
- * the configured flags.
+ * the configured flags. The only supported flag currently is
+ * %FD_CLOEXEC. If for example you want to configure %O_NONBLOCK, that
+ * must still be done separately with fcntl().
  * 
- * As of GLib 2.78, the supported flags are `FD_CLOEXEC` and `O_NONBLOCK`. Prior
- * to GLib 2.78, only `FD_CLOEXEC` was supported — if you wanted to configure
- * `O_NONBLOCK` then that had to be done separately with `fcntl()`.
- * 
- * It is a programmer error to call this function with unsupported flags, and a
- * critical warning will be raised.
- * 
- * This function does not take `O_CLOEXEC`, it takes `FD_CLOEXEC` as if
+ * This function does not take %O_CLOEXEC, it takes %FD_CLOEXEC as if
  * for fcntl(); these are different on Linux/glibc.
  * @param fds Array of two integers
  * @param flags Bitfield of file descriptor flags, as for fcntl()
@@ -11477,7 +11398,7 @@ export function uri_is_valid(uri_string: string | null, flags: UriFlags): boolea
  * 
  * When `host` is present, `path` must either be empty or begin with a slash (`/`)
  * character. When `host` is not present, `path` cannot begin with two slash
- * characters (`//`). See
+ *    characters (`//`). See
  * [RFC 3986, section 3](https://tools.ietf.org/html/rfc3986#section-3).
  * 
  * See also g_uri_join_with_user(), which allows specifying the
@@ -12077,17 +11998,6 @@ export function utf8_to_ucs4_fast(str: string | null, len: number): [ /* returnT
  */
 export function utf8_to_utf16(str: string | null, len: number): [ /* returnType */ number, /* items_read */ number, /* items_written */ number ]
 /**
- * Cuts off the middle of the string, preserving half of `truncate_length`
- * characters at the beginning and half at the end.
- * 
- * If `string` is already short enough, this returns a copy of `string`.
- * If `truncate_length` is `0`, an empty string is returned.
- * @param string a nul-terminated UTF-8 encoded string
- * @param truncate_length the new size of `string,` in characters, including the ellipsis character
- * @returns a newly-allocated copy of @string ellipsized in the middle
- */
-export function utf8_truncate_middle(string: string | null, truncate_length: number): string | null
-/**
  * Validates UTF-8 encoded text. `str` is the text to validate;
  * if `str` is nul-terminated, then `max_len` can be -1, otherwise
  * `max_len` should be the number of bytes to validate.
@@ -12099,7 +12009,7 @@ export function utf8_truncate_middle(string: string | null, truncate_length: num
  * Note that g_utf8_validate() returns %FALSE if `max_len` is
  * positive and any of the `max_len` bytes are nul.
  * 
- * Returns %TRUE if all of `str` was valid. Many GLib and GTK
+ * Returns %TRUE if all of `str` was valid. Many GLib and GTK+
  * routines require valid UTF-8 as input; so data read from a file
  * or the network should be checked with g_utf8_validate() before
  * doing anything else with it.
@@ -12446,7 +12356,7 @@ export interface ErrorInitFunc {
 /**
  * Declares a type of function which takes an arbitrary
  * data pointer argument and has no return value. It is
- * not currently used in GLib or GTK.
+ * not currently used in GLib or GTK+.
  * @callback 
  * @param data a data pointer
  */
@@ -13732,44 +13642,7 @@ export interface BookmarkFile {
 }
 
 /**
- * GBookmarkFile lets you parse, edit or create files containing bookmarks
- * to URI, along with some meta-data about the resource pointed by the URI
- * like its MIME type, the application that is registering the bookmark and
- * the icon that should be used to represent the bookmark. The data is stored
- * using the
- * [Desktop Bookmark Specification](http://www.gnome.org/~ebassi/bookmark-spec).
- * 
- * The syntax of the bookmark files is described in detail inside the
- * Desktop Bookmark Specification, here is a quick summary: bookmark
- * files use a sub-class of the XML Bookmark Exchange Language
- * specification, consisting of valid UTF-8 encoded XML, under the
- * <xbel> root element; each bookmark is stored inside a
- * <bookmark> element, using its URI: no relative paths can
- * be used inside a bookmark file. The bookmark may have a user defined
- * title and description, to be used instead of the URI. Under the
- * <metadata> element, with its owner attribute set to
- * `http://freedesktop.org`, is stored the meta-data about a resource
- * pointed by its URI. The meta-data consists of the resource's MIME
- * type; the applications that have registered a bookmark; the groups
- * to which a bookmark belongs to; a visibility flag, used to set the
- * bookmark as "private" to the applications and groups that has it
- * registered; the URI and MIME type of an icon, to be used when
- * displaying the bookmark inside a GUI.
- * 
- * Here is an example of a bookmark file:
- * [bookmarks.xbel](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/glib/tests/bookmarks.xbel)
- * 
- * A bookmark file might contain more than one bookmark; each bookmark
- * is accessed through its URI.
- * 
- * The important caveat of bookmark files is that when you add a new
- * bookmark you must also add the application that is registering it, using
- * g_bookmark_file_add_application() or g_bookmark_file_set_application_info().
- * If a bookmark has no applications then it won't be dumped when creating
- * the on disk representation, using g_bookmark_file_to_data() or
- * g_bookmark_file_to_file().
- * 
- * The #GBookmarkFile parser was added in GLib 2.12.
+ * An opaque data structure representing a set of bookmarks.
  * @record 
  */
 export class BookmarkFile {
@@ -13838,10 +13711,8 @@ export class ByteArray {
      */
     static new(): Uint8Array
     /**
-     * Creates a byte array containing the `data`.
-     * After this call, `data` belongs to the #GByteArray and may no longer be
-     * modified by the caller. The memory of `data` has to be dynamically
-     * allocated and will eventually be freed with g_free().
+     * Create byte array containing the data. The data will be owned by the array
+     * and will be freed with g_free(), i.e. it could be allocated using g_strdup().
      * 
      * Do not use it if `len` is greater than %G_MAXUINT. #GByteArray
      * stores the length of its data in #guint, which may be shorter than
@@ -14088,9 +13959,11 @@ export class Bytes {
     /**
      * Creates a new #GBytes from `data`.
      * 
-     * After this call, `data` belongs to the #GBytes and may no longer be
-     * modified by the caller. The memory of `data` has to be dynamically
-     * allocated and will eventually be freed with g_free().
+     * After this call, `data` belongs to the bytes and may no longer be
+     * modified by the caller.  g_free() will be called on `data` when the
+     * bytes is no longer in use. Because of this `data` must have been created by
+     * a call to g_malloc(), g_malloc0() or g_realloc() or by one of the many
+     * functions that wrap these calls (such as g_new(), g_strdup(), etc).
      * 
      * For creating #GBytes with memory from other allocators, see
      * g_bytes_new_with_free_func().
@@ -14993,103 +14866,103 @@ export interface DateTime {
      * Creates a newly allocated string representing the requested `format`.
      * 
      * The format strings understood by this function are a subset of the
-     * `strftime()` format language as specified by C99.  The `%D`, `%U` and `%W`
-     * conversions are not supported, nor is the `E` modifier.  The GNU
-     * extensions `%k`, `%l`, `%s` and `%P` are supported, however, as are the
-     * `0`, `_` and `-` modifiers. The Python extension `%f` is also supported.
+     * strftime() format language as specified by C99.  The \%D, \%U and \%W
+     * conversions are not supported, nor is the 'E' modifier.  The GNU
+     * extensions \%k, \%l, \%s and \%P are supported, however, as are the
+     * '0', '_' and '-' modifiers. The Python extension \%f is also supported.
      * 
-     * In contrast to `strftime()`, this function always produces a UTF-8
+     * In contrast to strftime(), this function always produces a UTF-8
      * string, regardless of the current locale.  Note that the rendering of
-     * many formats is locale-dependent and may not match the `strftime()`
+     * many formats is locale-dependent and may not match the strftime()
      * output exactly.
      * 
      * The following format specifiers are supported:
      * 
-     * - `%a`: the abbreviated weekday name according to the current locale
-     * - `%A`: the full weekday name according to the current locale
-     * - `%b`: the abbreviated month name according to the current locale
-     * - `%B`: the full month name according to the current locale
-     * - `%c`: the preferred date and time representation for the current locale
-     * - `%C`: the century number (year/100) as a 2-digit integer (00-99)
-     * - `%d`: the day of the month as a decimal number (range 01 to 31)
-     * - `%e`: the day of the month as a decimal number (range 1 to 31);
-     *   single digits are preceded by a figure space (U+2007)
-     * - `%F`: equivalent to `%Y-%m-%d` (the ISO 8601 date format)
-     * - `%g`: the last two digits of the ISO 8601 week-based year as a
-     *   decimal number (00-99). This works well with `%V` and `%u`.
-     * - `%G`: the ISO 8601 week-based year as a decimal number. This works
-     *   well with `%V` and `%u`.
-     * - `%h`: equivalent to `%b`
-     * - `%H`: the hour as a decimal number using a 24-hour clock (range 00 to 23)
-     * - `%I`: the hour as a decimal number using a 12-hour clock (range 01 to 12)
-     * - `%j`: the day of the year as a decimal number (range 001 to 366)
-     * - `%k`: the hour (24-hour clock) as a decimal number (range 0 to 23);
-     *   single digits are preceded by a figure space (U+2007)
-     * - `%l`: the hour (12-hour clock) as a decimal number (range 1 to 12);
-     *   single digits are preceded by a figure space (U+2007)
-     * - `%m`: the month as a decimal number (range 01 to 12)
-     * - `%M`: the minute as a decimal number (range 00 to 59)
-     * - `%f`: the microsecond as a decimal number (range 000000 to 999999)
-     * - `%p`: either ‘AM’ or ‘PM’ according to the given time value, or the
+     * - \%a: the abbreviated weekday name according to the current locale
+     * - \%A: the full weekday name according to the current locale
+     * - \%b: the abbreviated month name according to the current locale
+     * - \%B: the full month name according to the current locale
+     * - \%c: the preferred date and time representation for the current locale
+     * - \%C: the century number (year/100) as a 2-digit integer (00-99)
+     * - \%d: the day of the month as a decimal number (range 01 to 31)
+     * - \%e: the day of the month as a decimal number (range 1 to 31);
+     *   single digits are preceded by a figure space
+     * - \%F: equivalent to `%Y-%m-%d` (the ISO 8601 date format)
+     * - \%g: the last two digits of the ISO 8601 week-based year as a
+     *   decimal number (00-99). This works well with \%V and \%u.
+     * - \%G: the ISO 8601 week-based year as a decimal number. This works
+     *   well with \%V and \%u.
+     * - \%h: equivalent to \%b
+     * - \%H: the hour as a decimal number using a 24-hour clock (range 00 to 23)
+     * - \%I: the hour as a decimal number using a 12-hour clock (range 01 to 12)
+     * - \%j: the day of the year as a decimal number (range 001 to 366)
+     * - \%k: the hour (24-hour clock) as a decimal number (range 0 to 23);
+     *   single digits are preceded by a figure space
+     * - \%l: the hour (12-hour clock) as a decimal number (range 1 to 12);
+     *   single digits are preceded by a figure space
+     * - \%m: the month as a decimal number (range 01 to 12)
+     * - \%M: the minute as a decimal number (range 00 to 59)
+     * - \%f: the microsecond as a decimal number (range 000000 to 999999)
+     * - \%p: either "AM" or "PM" according to the given time value, or the
      *   corresponding  strings for the current locale.  Noon is treated as
-     *   ‘PM’ and midnight as ‘AM’. Use of this format specifier is discouraged, as
-     *   many locales have no concept of AM/PM formatting. Use `%c` or `%X` instead.
-     * - `%P`: like `%p` but lowercase: ‘am’ or ‘pm’ or a corresponding string for
+     *   "PM" and midnight as "AM". Use of this format specifier is discouraged, as
+     *   many locales have no concept of AM/PM formatting. Use \%c or \%X instead.
+     * - \%P: like \%p but lowercase: "am" or "pm" or a corresponding string for
      *   the current locale. Use of this format specifier is discouraged, as
-     *   many locales have no concept of AM/PM formatting. Use `%c` or `%X` instead.
-     * - `%r`: the time in a.m. or p.m. notation. Use of this format specifier is
-     *   discouraged, as many locales have no concept of AM/PM formatting. Use `%c`
-     *   or `%X` instead.
-     * - `%R`: the time in 24-hour notation (`%H:%M`)
-     * - `%s`: the number of seconds since the Epoch, that is, since 1970-01-01
+     *   many locales have no concept of AM/PM formatting. Use \%c or \%X instead.
+     * - \%r: the time in a.m. or p.m. notation. Use of this format specifier is
+     *   discouraged, as many locales have no concept of AM/PM formatting. Use \%c
+     *   or \%X instead.
+     * - \%R: the time in 24-hour notation (\%H:\%M)
+     * - \%s: the number of seconds since the Epoch, that is, since 1970-01-01
      *   00:00:00 UTC
-     * - `%S`: the second as a decimal number (range 00 to 60)
-     * - `%t`: a tab character
-     * - `%T`: the time in 24-hour notation with seconds (`%H:%M:%S`)
-     * - `%u`: the ISO 8601 standard day of the week as a decimal, range 1 to 7,
-     *    Monday being 1. This works well with `%G` and `%V`.
-     * - `%V`: the ISO 8601 standard week number of the current year as a decimal
+     * - \%S: the second as a decimal number (range 00 to 60)
+     * - \%t: a tab character
+     * - \%T: the time in 24-hour notation with seconds (\%H:\%M:\%S)
+     * - \%u: the ISO 8601 standard day of the week as a decimal, range 1 to 7,
+     *    Monday being 1. This works well with \%G and \%V.
+     * - \%V: the ISO 8601 standard week number of the current year as a decimal
      *   number, range 01 to 53, where week 1 is the first week that has at
      *   least 4 days in the new year. See g_date_time_get_week_of_year().
-     *   This works well with `%G` and `%u`.
-     * - `%w`: the day of the week as a decimal, range 0 to 6, Sunday being 0.
-     *   This is not the ISO 8601 standard format — use `%u` instead.
-     * - `%x`: the preferred date representation for the current locale without
+     *   This works well with \%G and \%u.
+     * - \%w: the day of the week as a decimal, range 0 to 6, Sunday being 0.
+     *   This is not the ISO 8601 standard format -- use \%u instead.
+     * - \%x: the preferred date representation for the current locale without
      *   the time
-     * - `%X`: the preferred time representation for the current locale without
+     * - \%X: the preferred time representation for the current locale without
      *   the date
-     * - `%y`: the year as a decimal number without the century
-     * - `%Y`: the year as a decimal number including the century
-     * - `%z`: the time zone as an offset from UTC (`+hhmm`)
-     * - `%:z`: the time zone as an offset from UTC (`+hh:mm`).
-     *   This is a gnulib `strftime()` extension. Since: 2.38
-     * - `%::z`: the time zone as an offset from UTC (`+hh:mm:ss`). This is a
-     *   gnulib `strftime()` extension. Since: 2.38
-     * - `%:::z`: the time zone as an offset from UTC, with `:` to necessary
-     *   precision (e.g., `-04`, `+05:30`). This is a gnulib `strftime()` extension. Since: 2.38
-     * - `%Z`: the time zone or name or abbreviation
-     * - `%%`: a literal `%` character
+     * - \%y: the year as a decimal number without the century
+     * - \%Y: the year as a decimal number including the century
+     * - \%z: the time zone as an offset from UTC (+hhmm)
+     * - \%:z: the time zone as an offset from UTC (+hh:mm).
+     *   This is a gnulib strftime() extension. Since: 2.38
+     * - \%::z: the time zone as an offset from UTC (+hh:mm:ss). This is a
+     *   gnulib strftime() extension. Since: 2.38
+     * - \%:::z: the time zone as an offset from UTC, with : to necessary
+     *   precision (e.g., -04, +05:30). This is a gnulib strftime() extension. Since: 2.38
+     * - \%Z: the time zone or name or abbreviation
+     * - \%\%: a literal \% character
      * 
      * Some conversion specifications can be modified by preceding the
      * conversion specifier by one or more modifier characters. The
      * following modifiers are supported for many of the numeric
      * conversions:
      * 
-     * - `O`: Use alternative numeric symbols, if the current locale supports those.
-     * - `_`: Pad a numeric result with spaces. This overrides the default padding
+     * - O: Use alternative numeric symbols, if the current locale supports those.
+     * - _: Pad a numeric result with spaces. This overrides the default padding
      *   for the specifier.
-     * - `-`: Do not pad a numeric result. This overrides the default padding
+     * - -: Do not pad a numeric result. This overrides the default padding
      *   for the specifier.
-     * - `0`: Pad a numeric result with zeros. This overrides the default padding
+     * - 0: Pad a numeric result with zeros. This overrides the default padding
      *   for the specifier.
      * 
-     * Additionally, when `O` is used with `B`, `b`, or `h`, it produces the alternative
+     * Additionally, when O is used with B, b, or h, it produces the alternative
      * form of a month name. The alternative form should be used when the month
      * name is used without a day number (e.g., standalone). It is required in
      * some languages (Baltic, Slavic, Greek, and more) due to their grammatical
-     * rules. For other languages there is no difference. `%OB` is a GNU and BSD
-     * `strftime()` extension expected to be added to the future POSIX specification,
-     * `%Ob` and `%Oh` are GNU `strftime()` extensions. Since: 2.56
+     * rules. For other languages there is no difference. \%OB is a GNU and BSD
+     * strftime() extension expected to be added to the future POSIX specification,
+     * \%Ob and \%Oh are GNU strftime() extensions. Since: 2.56
      * @param format a valid UTF-8 string, containing the format for the          #GDateTime
      * @returns a newly allocated string formatted to    the requested format or %NULL in the case that there was an error (such    as a format specifier not being supported in the current locale). The    string should be freed with g_free().
      */
@@ -17203,146 +17076,8 @@ export interface KeyFile {
 }
 
 /**
- * #GKeyFile lets you parse, edit or create files containing groups of
- * key-value pairs, which we call "key files" for lack of a better name.
- * Several freedesktop.org specifications use key files now, e.g the
- * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
- * and the
- * [Icon Theme Specification](http://freedesktop.org/Standards/icon-theme-spec).
- * 
- * The syntax of key files is described in detail in the
- * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec),
- * here is a quick summary: Key files
- * consists of groups of key-value pairs, interspersed with comments.
- * 
- * 
- * ```
- * # this is just an example
- * # there can be comments before the first group
- * 
- * [First Group]
- * 
- * Name=Key File Example\tthis value shows\nescaping
- * 
- * # localized strings are stored in multiple key-value pairs
- * Welcome=Hello
- * Welcome[de]=Hallo
- * Welcome[fr_FR]=Bonjour
- * Welcome[it]=Ciao
- * Welcome[be`latin]`=Hello
- * 
- * [Another Group]
- * 
- * Numbers=2;20;-200;0
- * 
- * Booleans=true;false;true;true
- * ```
- * 
- * 
- * Lines beginning with a '#' and blank lines are considered comments.
- * 
- * Groups are started by a header line containing the group name enclosed
- * in '[' and ']', and ended implicitly by the start of the next group or
- * the end of the file. Each key-value pair must be contained in a group.
- * 
- * Key-value pairs generally have the form `key=value`, with the
- * exception of localized strings, which have the form
- * `key[locale]=value`, with a locale identifier of the
- * form `lang_COUNTRY`MODIFIER`` where `COUNTRY` and `MODIFIER`
- * are optional.
- * Space before and after the '=' character are ignored. Newline, tab,
- * carriage return and backslash characters in value are escaped as \n,
- * \t, \r, and \\\\, respectively. To preserve leading spaces in values,
- * these can also be escaped as \s.
- * 
- * Key files can store strings (possibly with localized variants), integers,
- * booleans and lists of these. Lists are separated by a separator character,
- * typically ';' or ','. To use the list separator character in a value in
- * a list, it has to be escaped by prefixing it with a backslash.
- * 
- * This syntax is obviously inspired by the .ini files commonly met
- * on Windows, but there are some important differences:
- * 
- * - .ini files use the ';' character to begin comments,
- *   key files use the '#' character.
- * 
- * - Key files do not allow for ungrouped keys meaning only
- *   comments can precede the first group.
- * 
- * - Key files are always encoded in UTF-8.
- * 
- * - Key and Group names are case-sensitive. For example, a group called
- *   [GROUP] is a different from [group].
- * 
- * - .ini files don't have a strongly typed boolean entry type,
- *    they only have GetProfileInt(). In key files, only
- *    true and false (in lower case) are allowed.
- * 
- * Note that in contrast to the
- * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec),
- * groups in key files may contain the same
- * key multiple times; the last entry wins. Key files may also contain
- * multiple groups with the same name; they are merged together.
- * Another difference is that keys and group names in key files are not
- * restricted to ASCII characters.
- * 
- * Here is an example of loading a key file and reading a value:
- * 
- * 
- * ```c
- * g_autoptr(GError) error = NULL;
- * g_autoptr(GKeyFile) key_file = g_key_file_new ();
- * 
- * if (!g_key_file_load_from_file (key_file, "key-file.ini", flags, &error))
- *   {
- *     if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
- *       g_warning ("Error loading key file: %s", error->message);
- *     return;
- *   }
- * 
- * g_autofree gchar *val = g_key_file_get_string (key_file, "Group Name", "SomeKey", &error);
- * if (val == NULL &&
- *     !g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND))
- *   {
- *     g_warning ("Error finding key in key file: %s", error->message);
- *     return;
- *   }
- * else if (val == NULL)
- *   {
- *     // Fall back to a default value.
- *     val = g_strdup ("default-value");
- *   }
- * ```
- * 
- * 
- * Here is an example of creating and saving a key file:
- * 
- * 
- * ```c
- * g_autoptr(GKeyFile) key_file = g_key_file_new ();
- * const gchar *val = …;
- * g_autoptr(GError) error = NULL;
- * 
- * g_key_file_set_string (key_file, "Group Name", "SomeKey", val);
- * 
- * // Save as a file.
- * if (!g_key_file_save_to_file (key_file, "key-file.ini", &error))
- *   {
- *     g_warning ("Error saving key file: %s", error->message);
- *     return;
- *   }
- * 
- * // Or store to a GBytes for use elsewhere.
- * gsize data_len;
- * g_autofree guint8 *data = (guint8 *) g_key_file_to_data (key_file, &data_len, &error);
- * if (data == NULL)
- *   {
- *     g_warning ("Error saving key file: %s", error->message);
- *     return;
- *   }
- * g_autoptr(GBytes) bytes = g_bytes_new_take (g_steal_pointer (&data), data_len);
- * ```
- * 
+ * The GKeyFile struct contains only private data
+ * and should not be accessed directly.
  * @record 
  */
 export class KeyFile {
@@ -17460,7 +17195,7 @@ export interface MainContext {
      * 
      * You must be the owner of a context before you
      * can call g_main_context_prepare(), g_main_context_query(),
-     * g_main_context_check(), g_main_context_dispatch(), g_main_context_release().
+     * g_main_context_check(), g_main_context_dispatch().
      * 
      * Since 2.76 `context` can be %NULL to use the global-default
      * main context.
@@ -17656,9 +17391,6 @@ export interface MainContext {
      * with g_main_context_acquire(). If the context was acquired multiple
      * times, the ownership will be released only when g_main_context_release()
      * is called as many times as it was acquired.
-     * 
-     * You must have successfully acquired the context with
-     * g_main_context_acquire() before you may call this function.
      */
     release(): void
     /**
@@ -17830,7 +17562,7 @@ export interface MainLoop {
 
 /**
  * The `GMainLoop` struct is an opaque data type
- * representing the main event loop of a GLib or GTK application.
+ * representing the main event loop of a GLib or GTK+ application.
  * @record 
  */
 export class MainLoop {
@@ -18928,165 +18660,9 @@ export interface OptionContext {
 }
 
 /**
- * The GOption commandline parser is intended to be a simpler replacement
- * for the popt library. It supports short and long commandline options,
- * as shown in the following example:
- * 
- * `testtreemodel -r 1 --max-size 20 --rand --display=:1.0 -vb -- file1 file2`
- * 
- * The example demonstrates a number of features of the GOption
- * commandline parser:
- * 
- * - Options can be single letters, prefixed by a single dash.
- * 
- * - Multiple short options can be grouped behind a single dash.
- * 
- * - Long options are prefixed by two consecutive dashes.
- * 
- * - Options can have an extra argument, which can be a number, a string or
- *   a filename. For long options, the extra argument can be appended with
- *   an equals sign after the option name, which is useful if the extra
- *   argument starts with a dash, which would otherwise cause it to be
- *   interpreted as another option.
- * 
- * - Non-option arguments are returned to the application as rest arguments.
- * 
- * - An argument consisting solely of two dashes turns off further parsing,
- *   any remaining arguments (even those starting with a dash) are returned
- *   to the application as rest arguments.
- * 
- * Another important feature of GOption is that it can automatically
- * generate nicely formatted help output. Unless it is explicitly turned
- * off with g_option_context_set_help_enabled(), GOption will recognize
- * the `--help`, `-?`, `--help-all` and `--help-groupname` options
- * (where `groupname` is the name of a #GOptionGroup) and write a text
- * similar to the one shown in the following example to stdout.
- * 
- * 
- * ```
- * Usage:
- *   testtreemodel [OPTION...] - test tree model performance
- *  
- * Help Options:
- *   -h, --help               Show help options
- *   --help-all               Show all help options
- *   --help-gtk               Show GTK Options
- *  
- * Application Options:
- *   -r, --repeats=N          Average over N repetitions
- *   -m, --max-size=M         Test up to 2^M items
- *   --display=DISPLAY        X display to use
- *   -v, --verbose            Be verbose
- *   -b, --beep               Beep when done
- *   --rand                   Randomize the data
- * ```
- * 
- * 
- * GOption groups options in #GOptionGroups, which makes it easy to
- * incorporate options from multiple sources. The intended use for this is
- * to let applications collect option groups from the libraries it uses,
- * add them to their #GOptionContext, and parse all options by a single call
- * to g_option_context_parse(). See gtk_get_option_group() for an example.
- * 
- * If an option is declared to be of type string or filename, GOption takes
- * care of converting it to the right encoding; strings are returned in
- * UTF-8, filenames are returned in the GLib filename encoding. Note that
- * this only works if setlocale() has been called before
- * g_option_context_parse().
- * 
- * Here is a complete example of setting up GOption to parse the example
- * commandline above and produce the example help output.
- * 
- * ```c
- * static gint repeats = 2;
- * static gint max_size = 8;
- * static gboolean verbose = FALSE;
- * static gboolean beep = FALSE;
- * static gboolean randomize = FALSE;
- * 
- * static GOptionEntry entries[] =
- * {
- *   { "repeats", 'r', 0, G_OPTION_ARG_INT, &repeats, "Average over N repetitions", "N" },
- *   { "max-size", 'm', 0, G_OPTION_ARG_INT, &max_size, "Test up to 2^M items", "M" },
- *   { "verbose", 'v', 0, G_OPTION_ARG_NONE, &verbose, "Be verbose", NULL },
- *   { "beep", 'b', 0, G_OPTION_ARG_NONE, &beep, "Beep when done", NULL },
- *   { "rand", 0, 0, G_OPTION_ARG_NONE, &randomize, "Randomize the data", NULL },
- *   G_OPTION_ENTRY_NULL
- * };
- * 
- * int
- * main (int argc, char *argv[])
- * {
- *   GError *error = NULL;
- *   GOptionContext *context;
- * 
- *   context = g_option_context_new ("- test tree model performance");
- *   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
- *   g_option_context_add_group (context, gtk_get_option_group (TRUE));
- *   if (!g_option_context_parse (context, &argc, &argv, &error))
- *     {
- *       g_print ("option parsing failed: %s\n", error->message);
- *       exit (1);
- *     }
- * 
- *   ...
- * 
- * }
- * ```
- * 
- * 
- * On UNIX systems, the argv that is passed to main() has no particular
- * encoding, even to the extent that different parts of it may have
- * different encodings.  In general, normal arguments and flags will be
- * in the current locale and filenames should be considered to be opaque
- * byte strings.  Proper use of %G_OPTION_ARG_FILENAME vs
- * %G_OPTION_ARG_STRING is therefore important.
- * 
- * Note that on Windows, filenames do have an encoding, but using
- * #GOptionContext with the argv as passed to main() will result in a
- * program that can only accept commandline arguments with characters
- * from the system codepage.  This can cause problems when attempting to
- * deal with filenames containing Unicode characters that fall outside
- * of the codepage.
- * 
- * A solution to this is to use g_win32_get_command_line() and
- * g_option_context_parse_strv() which will properly handle full Unicode
- * filenames.  If you are using #GApplication, this is done
- * automatically for you.
- * 
- * The following example shows how you can use #GOptionContext directly
- * in order to correctly deal with Unicode filenames on Windows:
- * 
- * 
- * ```c
- * int
- * main (int argc, char **argv)
- * {
- *   GError *error = NULL;
- *   GOptionContext *context;
- *   gchar **args;
- * 
- * #ifdef G_OS_WIN32
- *   args = g_win32_get_command_line ();
- * #else
- *   args = g_strdupv (argv);
- * #endif
- * 
- *   // set up context
- * 
- *   if (!g_option_context_parse_strv (context, &args, &error))
- *     {
- *       // error happened
- *     }
- * 
- *   ...
- * 
- *   g_strfreev (args);
- * 
- *   ...
- * }
- * ```
- * 
+ * A `GOptionContext` struct defines which options
+ * are accepted by the commandline option parser. The struct has only private
+ * fields and should not be directly accessed.
  * @record 
  */
 export class OptionContext {
@@ -21739,7 +21315,7 @@ export interface Source {
      * 
      * The source name should describe in a human-readable way
      * what the source does. For example, "X11 event queue"
-     * or "GTK repaint idle handler" or whatever it is.
+     * or "GTK+ repaint idle handler" or whatever it is.
      * 
      * It is permitted to call this function multiple times, but is not
      * recommended due to the potential performance impact.  For example,
@@ -22319,17 +21895,6 @@ export class String {
      * @returns a new #GString
      */
     static new_len(init: string | null, len: number): String
-    /**
-     * Creates a new #GString, initialized with the given string.
-     * 
-     * After this call, `init` belongs to the #GString and may no longer be
-     * modified by the caller. The memory of `data` has to be dynamically
-     * allocated and will eventually be freed with g_free().
-     * @constructor 
-     * @param init initial text used as the string.     Ownership of the string is transferred to the #GString.     Passing %NULL creates an empty string.
-     * @returns the new #GString
-     */
-    static new_take(init: string | null): String
     /**
      * Creates a new #GString, with enough space for `dfl_size`
      * bytes. This is useful if you are going to add a lot of
@@ -24014,7 +23579,7 @@ export class Uri {
      * 
      * When `host` is present, `path` must either be empty or begin with a slash (`/`)
      * character. When `host` is not present, `path` cannot begin with two slash
-     * characters (`//`). See
+     *    characters (`//`). See
      * [RFC 3986, section 3](https://tools.ietf.org/html/rfc3986#section-3).
      * 
      * See also g_uri_join_with_user(), which allows specifying the
@@ -25440,8 +25005,8 @@ export class Variant {
      */
     static new_maybe(child_type: VariantType | null, child: Variant | null): Variant
     /**
-     * Creates a D-Bus object path #GVariant with the contents of `object_path`.
-     * `object_path` must be a valid D-Bus object path.  Use
+     * Creates a D-Bus object path #GVariant with the contents of `string`.
+     * `string` must be a valid D-Bus object path.  Use
      * g_variant_is_object_path() if you're not sure.
      * @constructor 
      * @param object_path a normal C nul-terminated string
