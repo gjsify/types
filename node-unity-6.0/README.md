@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-unity-6.0)
 
 
-Node.js TypeScript type definitions for Unity-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for Unity-6.0, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 
 ## Install

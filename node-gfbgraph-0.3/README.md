@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gfbgraph-0.3)
 
 
-Node.js TypeScript type definitions for GFBGraph-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for GFBGraph-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 
 ## Install

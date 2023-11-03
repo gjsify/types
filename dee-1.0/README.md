@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/dee-1.0)
 
 
-GJS TypeScript type definitions for Dee-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+GJS TypeScript type definitions for Dee-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 Library to provide objects allowing to create Model-View-Controller type programs across DBus.
 

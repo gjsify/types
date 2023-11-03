@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gnomerr-4.0",
-    "version": "4.0.0-3.2.2",
+    "version": "4.0.0-3.2.3",
     "description": "Node.js TypeScript type definitions for GnomeRR-4.0, generated from library version 4.0.0",
     "type": "module",
     "module": "node-gnomerr-4.0.js",

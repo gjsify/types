@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-colorhug-1.0)
 
 
-Node.js TypeScript type definitions for ColorHug-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for ColorHug-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 
 ## Install

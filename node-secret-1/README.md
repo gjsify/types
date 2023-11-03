@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-secret-1)
 
 
-Node.js TypeScript type definitions for Secret-1, generated from library version 0.21.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for Secret-1, generated from library version 0.21.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 libsecret is a library for storing and retrieving passwords and other secrets. It communicates with the "Secret Service" using DBus. gnome-keyring and ksecretservice are both implementations of a Secret Service.
 

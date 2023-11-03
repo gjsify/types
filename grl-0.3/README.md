@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/grl-0.3)
 
 
-GJS TypeScript type definitions for Grl-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+GJS TypeScript type definitions for Grl-0.3, generated from library version 0.3.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 Framework that provides access to various sources of multimedia content
 

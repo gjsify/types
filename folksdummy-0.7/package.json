@@ -1,6 +1,6 @@
 {
     "name": "@girs/folksdummy-0.7",
-    "version": "0.7.0-3.2.2",
+    "version": "0.7.0-3.2.3",
     "description": "GJS TypeScript type definitions for FolksDummy-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "folksdummy-0.7.js",

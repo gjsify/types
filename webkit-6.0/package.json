@@ -1,6 +1,6 @@
 {
     "name": "@girs/webkit-6.0",
-    "version": "2.41.90-3.2.2",
+    "version": "2.41.90-3.2.3",
     "description": "GJS TypeScript type definitions for WebKit-6.0, generated from library version 2.41.90",
     "type": "module",
     "module": "webkit-6.0.js",

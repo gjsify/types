@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/champlain-0.12)
 
 
-GJS TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+GJS TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 Libchamplain is a C library providing a ClutterActor to display maps.
 

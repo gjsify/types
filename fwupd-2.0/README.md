@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/fwupd-2.0)
 
 
-GJS TypeScript type definitions for Fwupd-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+GJS TypeScript type definitions for Fwupd-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 This project aims to make updating firmware on Linux automatic, safe and reliable.
 

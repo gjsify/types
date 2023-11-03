@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gvncpulse-1.0)
 
 
-Node.js TypeScript type definitions for GVncPulse-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for GVncPulse-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 A bridge to the Pulse Audio system for VNC. It allows VNC clients to play back audio on the local system
 

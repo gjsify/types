@@ -1,6 +1,6 @@
 {
     "name": "@girs/vgsl-1",
-    "version": "1.0.0-3.2.2",
+    "version": "1.0.0-3.2.3",
     "description": "GJS TypeScript type definitions for Vgsl-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgsl-1.js",

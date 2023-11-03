@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-granite-7.0",
-    "version": "7.0.0-3.2.2",
+    "version": "7.0.0-3.2.3",
     "description": "Node.js TypeScript type definitions for Granite-7.0, generated from library version 7.0.0",
     "type": "module",
     "module": "node-granite-7.0.js",

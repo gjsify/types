@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-peas-1.0)
 
 
-Node.js TypeScript type definitions for Peas-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+Node.js TypeScript type definitions for Peas-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 libpeas is a gobject-based plugins engine, and is targetted at giving every application the chance to assume its own extensibility.
 

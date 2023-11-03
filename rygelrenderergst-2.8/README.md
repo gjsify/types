@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/rygelrenderergst-2.8)
 
 
-GJS TypeScript type definitions for RygelRendererGst-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.2.
+GJS TypeScript type definitions for RygelRendererGst-2.8, generated from library version 2.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
 
 ## Install

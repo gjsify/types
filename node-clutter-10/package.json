@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-clutter-10",
-    "version": "10.0.0-3.2.2",
+    "version": "10.0.0-3.2.3",
     "description": "Node.js TypeScript type definitions for Clutter-10, generated from library version 10.0.0",
     "type": "module",
     "module": "node-clutter-10.js",
