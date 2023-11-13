@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/folkstelepathy-0.7)
 
 
-GJS TypeScript type definitions for FolksTelepathy-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+GJS TypeScript type definitions for FolksTelepathy-0.7, generated from library version 0.7.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 
 ## Install

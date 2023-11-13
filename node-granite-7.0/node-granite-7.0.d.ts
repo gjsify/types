@@ -14,12 +14,12 @@ import './node-granite-7.0-import.d.ts';
 
 import type Gdk from '@girs/node-gdk-4.0';
 import type cairo from '@girs/node-cairo-1.0';
+import type GObject from '@girs/node-gobject-2.0';
+import type GLib from '@girs/node-glib-2.0';
 import type PangoCairo from '@girs/node-pangocairo-1.0';
 import type Pango from '@girs/node-pango-1.0';
 import type HarfBuzz from '@girs/node-harfbuzz-0.0';
 import type freetype2 from '@girs/node-freetype2-2.0';
-import type GObject from '@girs/node-gobject-2.0';
-import type GLib from '@girs/node-glib-2.0';
 import type Gio from '@girs/node-gio-2.0';
 import type GdkPixbuf from '@girs/node-gdkpixbuf-2.0';
 import type GModule from '@girs/node-gmodule-2.0';
@@ -426,6 +426,11 @@ interface SettingsPage {
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::baseline-child", callback: (...args: any[]) => void): number
+    on(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::baseline-child", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (...args: any[]) => void): number
     on(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -729,6 +734,11 @@ interface SimpleSettingsPage {
     once(sigName: "notify::child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::child", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::child", ...args: any[]): void
+    connect(sigName: "notify::baseline-child", callback: (...args: any[]) => void): number
+    on(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::baseline-child", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (...args: any[]) => void): number
     on(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -993,6 +1003,11 @@ interface AccelLabel {
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::baseline-child", callback: (...args: any[]) => void): number
+    on(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::baseline-child", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (...args: any[]) => void): number
     on(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -1967,6 +1982,11 @@ interface Dialog {
     once(sigName: "notify::startup-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::startup-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (...args: any[]) => void): number
+    on(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::suspended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (...args: any[]) => void): number
     on(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -3106,6 +3126,11 @@ interface MessageDialog {
     once(sigName: "notify::startup-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::startup-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (...args: any[]) => void): number
+    on(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::suspended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (...args: any[]) => void): number
     on(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -3423,6 +3448,11 @@ interface ModeSwitch {
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::baseline-child", callback: (...args: any[]) => void): number
+    on(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::baseline-child", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (...args: any[]) => void): number
     on(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -4529,6 +4559,11 @@ interface SwitchModelButton {
     once(sigName: "notify::group", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::group", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::group", ...args: any[]): void
+    connect(sigName: "notify::can-shrink", callback: (...args: any[]) => void): number
+    on(sigName: "notify::can-shrink", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::can-shrink", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::can-shrink", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (...args: any[]) => void): number
     on(sigName: "notify::child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

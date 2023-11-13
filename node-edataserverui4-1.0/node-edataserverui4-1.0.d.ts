@@ -316,6 +316,11 @@ interface CertificateWidget extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
+    connect(sigName: "notify::baseline-child", callback: (...args: any[]) => void): number
+    on(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::baseline-child", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::baseline-child", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::baseline-child", ...args: any[]): void
     connect(sigName: "notify::baseline-position", callback: (...args: any[]) => void): number
     on(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::baseline-position", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -2127,6 +2132,11 @@ interface WebDAVDiscoverDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
     once(sigName: "notify::startup-id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::startup-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (...args: any[]) => void): number
+    on(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    once(sigName: "notify::suspended", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
+    off(sigName: "notify::suspended", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (...args: any[]) => void): number
     on(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::title", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

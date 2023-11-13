@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gxps-0.1)
 
 
-Node.js TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+Node.js TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 
 ## Install

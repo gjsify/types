@@ -5569,11 +5569,6 @@ interface Stage extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
     emit(sigName: "notify::__gtype__", ...args: any[]): void
-    connect(sigName: "notify::is-grabbed", callback: (...args: any[]) => void): number
-    on(sigName: "notify::is-grabbed", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::is-grabbed", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::is-grabbed", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::is-grabbed", ...args: any[]): void
     connect(sigName: "notify::key-focus", callback: (...args: any[]) => void): number
     on(sigName: "notify::key-focus", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::key-focus", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter

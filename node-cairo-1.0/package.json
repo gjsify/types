@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cairo-1.0",
-    "version": "1.0.0-3.2.3",
+    "version": "1.0.0-3.2.4",
     "description": "Node.js TypeScript type definitions for cairo-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "node-cairo-1.0.js",
@@ -25,6 +25,7 @@
         "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit node-cairo-1.0.d.cts"
     },
     "dependencies": {
+        "@girs/node-glib-2.0": "workspace:^",
         "@girs/node-gobject-2.0": "workspace:^",
         "@girs/node-gtk": "workspace:^"
     },

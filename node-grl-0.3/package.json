@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-grl-0.3",
-    "version": "0.3.0-3.2.3",
+    "version": "0.3.0-3.2.4",
     "description": "Node.js TypeScript type definitions for Grl-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "node-grl-0.3.js",

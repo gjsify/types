@@ -13,10 +13,10 @@ import './clutter-12-import.d.ts';
  */
 
 import type cairo from '@girs/cairo-1.0';
-import type Json from '@girs/json-1.0';
-import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type Json from '@girs/json-1.0';
+import type Gio from '@girs/gio-2.0';
 import type GL from '@girs/gl-1.0';
 import type CoglPango from '@girs/coglpango-12';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -4918,19 +4918,6 @@ export interface ProgressFunc {
  */
 export interface ScriptConnectFunc {
     (script: Script, object: GObject.Object, signal_name: string | null, handler_name: string | null, connect_object: GObject.Object, flags: GObject.ConnectFlags): void
-}
-/**
- * Iterator function for active input. Active input counts as any pointing
- * device currently known to have some form of activity on the stage: Pointers
- * leaning on a widget, tablet styli in proximity, active touchpoints...
- * @callback 
- * @param stage the stage
- * @param device Active input device
- * @param sequence Active sequence in `device,` or %NULL
- * @returns %TRUE to keep iterating. %FALSE to stop.
- */
-export interface StageInputForeachFunc {
-    (stage: Stage, device: InputDevice, sequence: EventSequence): boolean
 }
 /**
  * A function for defining a custom progress.
@@ -18802,10 +18789,6 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
     // Own properties of Clutter-12.Clutter.Stage
 
     /**
-     * %TRUE if there is currently an active grab on the stage.
-     */
-    readonly is_grabbed: boolean
-    /**
      * The [class`Clutter`.Actor] that will receive key events from the underlying
      * windowing system.
      * 
@@ -18930,12 +18913,6 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
     paint_to_content(rect: cairo.RectangleInt, scale: number, paint_flags: PaintFlag): Content
     paint_to_framebuffer(framebuffer: Cogl.Framebuffer, rect: cairo.RectangleInt, scale: number, paint_flags: PaintFlag): void
     /**
-     * Iterates over active input.
-     * @param func Iterator function
-     * @returns %TRUE if the foreach function did not stop.
-     */
-    pointing_input_foreach(func: StageInputForeachFunc): boolean
-    /**
      * Makes a screenshot of the stage in RGBA 8bit data, returns a
      * linear buffer with `width` * 4 as rowstride.
      * 
@@ -19010,9 +18987,6 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
 
     // Class property signals of Clutter-12.Clutter.Stage
 
-    connect(sigName: "notify::is-grabbed", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::is-grabbed", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::is-grabbed", ...args: any[]): void
     connect(sigName: "notify::key-focus", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::key-focus", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::key-focus", ...args: any[]): void

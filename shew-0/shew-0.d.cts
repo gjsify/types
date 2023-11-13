@@ -107,7 +107,7 @@ export interface WindowExporter {
 
     export(callback: Gio.AsyncReadyCallback<this> | null): void
     export_finish(result: Gio.AsyncResult): string | null
-    unexport(): void
+    unexport(handle: string | null): void
 
     // Class property signals of Shew-0.Shew.WindowExporter
 

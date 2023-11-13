@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-meta-10)
 
 
-Node.js TypeScript type definitions for Meta-10, generated from library version 10.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+Node.js TypeScript type definitions for Meta-10, generated from library version 10.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 
 ## Install

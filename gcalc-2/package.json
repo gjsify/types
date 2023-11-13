@@ -1,6 +1,6 @@
 {
     "name": "@girs/gcalc-2",
-    "version": "2.0.0-3.2.3",
+    "version": "2.0.0-3.2.4",
     "description": "GJS TypeScript type definitions for GCalc-2, generated from library version 2.0.0",
     "type": "module",
     "module": "gcalc-2.js",

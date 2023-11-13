@@ -2973,9 +2973,9 @@ export enum unicode_combining_class_t {
      */
     CCC130,
     /**
-     * [Tibetan]
+     * [Tibetan] Since: 7.2.0
      */
-    CCC133,
+    CCC132,
     /**
      * Marks attached at the bottom left
      */
@@ -3369,7 +3369,7 @@ export enum glyph_flags_t {
      * 				   layout, by avoiding re-shaping of each line
      * 				   after line-breaking, by limiting the
      * 				   reshaping to a small piece around the
-     * 				   breaking positin only, even if the breaking
+     * 				   breaking position only, even if the breaking
      * 				   position carries the
      * 				   #HB_GLYPH_FLAG_UNSAFE_TO_BREAK or when
      * 				   hyphenation or other text transformation
@@ -3484,6 +3484,10 @@ export const AAT_LAYOUT_NO_SELECTOR_INDEX: number
  */
 export const BUFFER_REPLACEMENT_CODEPOINT_DEFAULT: number
 /**
+ * Unused #hb_codepoint_t value.
+ */
+export const CODEPOINT_INVALID: codepoint_t
+/**
  * Special setting for #hb_feature_t.start to apply the feature from the start
  * of the buffer.
  */
@@ -3498,10 +3502,6 @@ export const FONT_NO_VAR_NAMED_INSTANCE: number
  * An unset #hb_language_t.
  */
 export const LANGUAGE_INVALID: language_t
-/**
- * Unset #hb_map_t value.
- */
-export const MAP_VALUE_INVALID: codepoint_t
 /**
  * Special value for language index indicating default or unsupported language.
  */
@@ -3531,9 +3531,9 @@ export const OT_MAX_TAGS_PER_SCRIPT: number
  */
 export const OT_VAR_NO_AXIS_INDEX: number
 /**
- * Unset #hb_set_t value.
+ * [Tibetan]
  */
-export const SET_VALUE_INVALID: codepoint_t
+export const UNICODE_COMBINING_CLASS_CCC133: number
 /**
  * Maximum valid Unicode code point.
  */
@@ -3819,7 +3819,7 @@ export function bufferDeserializeUnicode(buffer: buffer_t, buf: string[], format
  * callers if just comparing two buffers is needed.
  * @param buffer a buffer.
  * @param reference other buffer to compare to.
- * @param dottedcircleGlyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepont_t) -1.
+ * @param dottedcircleGlyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepoint_t) -1.
  * @param positionFuzz allowed absolute difference in position values.
  */
 export function bufferDiff(buffer: buffer_t, reference: buffer_t, dottedcircleGlyph: codepoint_t, positionFuzz: number): buffer_diff_flags_t
@@ -4223,7 +4223,7 @@ export function bufferSetMessageFunc(buffer: buffer_t, func: buffer_message_func
  * Sets the #hb_codepoint_t that replaces characters not found in
  * the font during shaping.
  * 
- * The not-found glyph defaults to zero, sometimes knows as the
+ * The not-found glyph defaults to zero, sometimes known as the
  * ".notdef" glyph.  This API allows for differentiating the two.
  * @param buffer An #hb_buffer_t
  * @param notFound the not-found #hb_codepoint_t
@@ -4484,7 +4484,7 @@ export function faceCount(blob: blob_t): number
  * a face index into that blob.
  * 
  * The face index is used for blobs of file formats such as TTC and
- * and DFont that can contain more than one face.  Face indices within
+ * DFont that can contain more than one face.  Face indices within
  * such collections are zero-based.
  * 
  * <note>Note: If the blob font format is not a collection, `index`
@@ -4722,8 +4722,7 @@ export function fontFuncsIsImmutable(ffuncs: font_funcs_t): bool_t
  */
 export function fontFuncsMakeImmutable(ffuncs: font_funcs_t): void
 /**
- * Sets the implementation function for #hb_font_draw_glyph_func_t,
- * which is the same as #hb_font_get_glyph_shape_func_t.
+ * Sets the implementation function for #hb_font_draw_glyph_func_t.
  * @param ffuncs A font-function structure
  * @param func The callback function to assign
  */
@@ -5098,7 +5097,7 @@ export function fontGetHExtents(font: font_t): [ /* returnType */ bool_t, /* ext
 export function fontGetNominalGlyph(font: font_t, unicode: codepoint_t): [ /* returnType */ bool_t, /* glyph */ codepoint_t ]
 /**
  * Fetches the nominal glyph IDs for a sequence of Unicode code points. Glyph
- * IDs must be returned in a #hb_codepoint_t output parameter. Stopes at the
+ * IDs must be returned in a #hb_codepoint_t output parameter. Stops at the
  * first unsupported glyph ID.
  * @param font #hb_font_t to work upon
  * @param count number of code points to query
@@ -5741,7 +5740,7 @@ export function mapIsEqual(map: map_t, other: map_t): bool_t
  */
 export function mapKeys(map: map_t, keys: set_t): void
 /**
- * Fetches the next key/value paire in `map`.
+ * Fetches the next key/value pair in `map`.
  * 
  * Set `idx` to -1 to get started.
  * 
@@ -5913,6 +5912,15 @@ export function otFontSetFuncs(font: font_t): void
  */
 export function otLayoutCollectFeatures(face: face_t, tableTag: tag_t, scripts: tag_t[] | null, languages: tag_t[] | null, features: tag_t[] | null): /* featureIndexes */ set_t
 /**
+ * Fetches the mapping from feature tags to feature indexes for
+ * the specified script and language.
+ * @param face #hb_face_t to work upon
+ * @param tableTag #HB_OT_TAG_GSUB or #HB_OT_TAG_GPOS
+ * @param scriptIndex The index of the requested script tag
+ * @param languageIndex The index of the requested language tag
+ */
+export function otLayoutCollectFeaturesMap(face: face_t, tableTag: tag_t, scriptIndex: number, languageIndex: number): /* featureMap */ map_t
+/**
  * Fetches a list of all feature-lookup indexes in the specified face's GSUB
  * table or GPOS table, underneath the specified scripts, languages, and
  * features. If no list of scripts is provided, all scripts will be queried.
@@ -5989,6 +5997,19 @@ export function otLayoutGetAttachPoints(face: face_t, glyph: codepoint_t, startO
  */
 export function otLayoutGetBaseline(font: font_t, baselineTag: ot_layout_baseline_tag_t, direction: direction_t, scriptTag: tag_t, languageTag: tag_t): [ /* returnType */ bool_t, /* coord */ position_t | null ]
 /**
+ * Fetches a baseline value from the face.
+ * 
+ * This function is like hb_ot_layout_get_baseline() but takes
+ * #hb_script_t and #hb_language_t instead of OpenType #hb_tag_t.
+ * @param font a font
+ * @param baselineTag a baseline tag
+ * @param direction text direction.
+ * @param script script.
+ * @param language language, currently unused.
+ * @returns `true` if found baseline value in the font.
+ */
+export function otLayoutGetBaseline2(font: font_t, baselineTag: ot_layout_baseline_tag_t, direction: direction_t, script: script_t, language: language_t | null): [ /* returnType */ bool_t, /* coord */ position_t | null ]
+/**
  * Fetches a baseline value from the face, and synthesizes
  * it if the font does not have it.
  * @param font a font
@@ -5998,6 +6019,54 @@ export function otLayoutGetBaseline(font: font_t, baselineTag: ot_layout_baselin
  * @param languageTag language tag, currently unused.
  */
 export function otLayoutGetBaselineWithFallback(font: font_t, baselineTag: ot_layout_baseline_tag_t, direction: direction_t, scriptTag: tag_t, languageTag: tag_t): /* coord */ position_t
+/**
+ * Fetches a baseline value from the face, and synthesizes
+ * it if the font does not have it.
+ * 
+ * This function is like hb_ot_layout_get_baseline_with_fallback() but takes
+ * #hb_script_t and #hb_language_t instead of OpenType #hb_tag_t.
+ * @param font a font
+ * @param baselineTag a baseline tag
+ * @param direction text direction.
+ * @param script script.
+ * @param language language, currently unused.
+ */
+export function otLayoutGetBaselineWithFallback2(font: font_t, baselineTag: ot_layout_baseline_tag_t, direction: direction_t, script: script_t, language: language_t | null): /* coord */ position_t
+/**
+ * Fetches script/language-specific font extents.  These values are
+ * looked up in the `BASE` table's `MinMax` records.
+ * 
+ * If no such extents are found, the default extents for the font are
+ * fetched. As such, the return value of this function can for the
+ * most part be ignored.  Note that the per-script/language extents
+ * do not have a line-gap value, and the line-gap is set to zero in
+ * that case.
+ * @param font a font
+ * @param direction text direction.
+ * @param scriptTag script tag.
+ * @param languageTag language tag.
+ * @returns `true` if found script/language-specific font extents.
+ */
+export function otLayoutGetFontExtents(font: font_t, direction: direction_t, scriptTag: tag_t, languageTag: tag_t): [ /* returnType */ bool_t, /* extents */ font_extents_t | null ]
+/**
+ * Fetches script/language-specific font extents.  These values are
+ * looked up in the `BASE` table's `MinMax` records.
+ * 
+ * If no such extents are found, the default extents for the font are
+ * fetched. As such, the return value of this function can for the
+ * most part be ignored.  Note that the per-script/language extents
+ * do not have a line-gap value, and the line-gap is set to zero in
+ * that case.
+ * 
+ * This function is like hb_ot_layout_get_font_extents() but takes
+ * #hb_script_t and #hb_language_t instead of OpenType #hb_tag_t.
+ * @param font a font
+ * @param direction text direction.
+ * @param script script.
+ * @param language language.
+ * @returns `true` if found script/language-specific font extents.
+ */
+export function otLayoutGetFontExtents2(font: font_t, direction: direction_t, script: script_t, language: language_t | null): [ /* returnType */ bool_t, /* extents */ font_extents_t | null ]
 /**
  * Fetches the GDEF class of the requested glyph in the specified face.
  * @param face The #hb_face_t to work on
@@ -6298,7 +6367,7 @@ export function otLayoutTableSelectScript(face: face_t, tableTag: tag_t, scriptC
  * 
  * However, if the requested constant is #HB_OT_MATH_CONSTANT_SCRIPT_PERCENT_SCALE_DOWN,
  * #HB_OT_MATH_CONSTANT_SCRIPT_SCRIPT_PERCENT_SCALE_DOWN or
- * #HB_OT_MATH_CONSTANT_SCRIPT_PERCENT_SCALE_DOWN, then the return value is
+ * #HB_OT_MATH_CONSTANT_RADICAL_DEGREE_BOTTOM_RAISE_PERCENT, then the return value is
  * an integer between 0 and 100 representing that percentage.
  * @param font #hb_font_t to work upon
  * @param constant #hb_ot_math_constant_t the constant to retrieve
@@ -6562,7 +6631,7 @@ export function otTagsFromScript(script: script_t): [ /* scriptTag1 */ tag_t, /*
  * @param scriptCount maximum number of script tags to retrieve (IN) and actual number of script tags retrieved (OUT)
  * @param languageCount maximum number of language tags to retrieve (IN) and actual number of language tags retrieved (OUT)
  */
-export function otTagsFromScriptAndLanguage(script: script_t, language: language_t, scriptCount?: number, languageCount?: number): [ /* scriptCount */ number, /* scriptTags */ tag_t, /* languageCount */ number, /* languageTags */ tag_t ]
+export function otTagsFromScriptAndLanguage(script: script_t, language: language_t | null, scriptCount?: number, languageCount?: number): [ /* scriptCount */ number, /* scriptTags */ tag_t, /* languageCount */ number, /* languageTags */ tag_t ]
 /**
  * Converts a script tag and a language tag to an #hb_script_t and an
  * #hb_language_t.
@@ -6674,6 +6743,14 @@ export function otVarNormalizeVariations(face: face_t, variations: variation_t, 
  */
 export function paintColor(funcs: paint_funcs_t, paintData: any | null, isForeground: bool_t, color: color_t): void
 /**
+ * Perform a "color-glyph" paint operation.
+ * @param funcs paint functions
+ * @param paintData associated data passed by the caller
+ * @param glyph the glyph ID
+ * @param font the font
+ */
+export function paintColorGlyph(funcs: paint_funcs_t, paintData: any | null, glyph: codepoint_t, font: font_t): bool_t
+/**
  * Gets the custom palette color for `color_index`.
  * @param funcs paint functions
  * @param paintData associated data passed by the caller
@@ -6716,6 +6793,12 @@ export function paintFuncsMakeImmutable(funcs: paint_funcs_t): void
  * @param func The paint-color callback
  */
 export function paintFuncsSetColorFunc(funcs: paint_funcs_t, func: paint_color_func_t): void
+/**
+ * Sets the color-glyph callback on the paint functions struct.
+ * @param funcs A paint functions struct
+ * @param func The color-glyph callback
+ */
+export function paintFuncsSetColorGlyphFunc(funcs: paint_funcs_t, func: paint_color_glyph_func_t): void
 /**
  * Sets the custom-palette-color callback on the paint functions struct.
  * @param funcs A paint functions struct
@@ -7836,6 +7919,18 @@ export interface font_paint_glyph_func_t {
  */
 export interface paint_color_func_t {
     (funcs: paint_funcs_t, paintData: any | null, isForeground: bool_t, color: color_t): void
+}
+/**
+ * A virtual method for the #hb_paint_funcs_t to render a color glyph by glyph index.
+ * @callback 
+ * @param funcs paint functions object
+ * @param paintData The data accompanying the paint functions in hb_font_paint_glyph()
+ * @param glyph the glyph ID
+ * @param font the font
+ * @returns %true if the glyph was painted, %false otherwise.
+ */
+export interface paint_color_glyph_func_t {
+    (funcs: paint_funcs_t, paintData: any | null, glyph: codepoint_t, font: font_t): bool_t
 }
 /**
  * A virtual method for the #hb_paint_funcs_t to fetch a color from the custom

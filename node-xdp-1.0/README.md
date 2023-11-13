@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-xdp-1.0)
 
 
-Node.js TypeScript type definitions for Xdp-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+Node.js TypeScript type definitions for Xdp-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 libportal provides GIO-style async APIs for most Flatpak portals.
 

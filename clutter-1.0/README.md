@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clutter-1.0)
 
 
-GJS TypeScript type definitions for Clutter-1.0, generated from library version 1.26.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+GJS TypeScript type definitions for Clutter-1.0, generated from library version 1.26.5 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 Clutter is a GObject based library for creating fast, visually rich, graphical user interfaces.
 

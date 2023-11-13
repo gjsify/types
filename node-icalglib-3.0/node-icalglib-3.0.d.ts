@@ -6744,6 +6744,11 @@ class Timezone extends Object {
      */
     static getUtcTimezone(): Timezone
     /**
+     * Gets the directory to look for the zonefiles.
+     * @returns The path to look for the zonefiles
+     */
+    static getZoneDirectory(): string | null
+    /**
      * Frees memory dedicated to the zonefile directory.
      */
     static releaseZoneTab(): void

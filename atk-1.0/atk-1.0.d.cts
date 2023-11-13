@@ -94,6 +94,26 @@ export enum Layer {
     WINDOW,
 }
 /**
+ * Enumeration used to indicate a type of live region and how assertive it
+ * should be in terms of speaking notifications. Currently, this is only used
+ * for "notification" events, but it may be used for additional purposes
+ * in the future.
+ */
+export enum Live {
+    /**
+     * No live region.
+     */
+    NONE,
+    /**
+     * This live region should be considered polite.
+     */
+    POLITE,
+    /**
+     * This live region should be considered assertive.
+     */
+    ASSERTIVE,
+}
+/**
  * Describes the type of the relation
  */
 export enum RelationType {
@@ -5901,6 +5921,13 @@ export module Object {
     }
 
     /**
+     * Signal callback interface for `notification`
+     */
+    export interface NotificationSignalCallback {
+        ($obj: Object, arg1: string | null, arg2: number): void
+    }
+
+    /**
      * Signal callback interface for `property-change`
      */
     export interface PropertyChangeSignalCallback {
@@ -6330,6 +6357,9 @@ export interface Object {
     connect(sigName: "focus-event", callback: Object.FocusEventSignalCallback): number
     connect_after(sigName: "focus-event", callback: Object.FocusEventSignalCallback): number
     emit(sigName: "focus-event", arg1: boolean, ...args: any[]): void
+    connect(sigName: "notification", callback: Object.NotificationSignalCallback): number
+    connect_after(sigName: "notification", callback: Object.NotificationSignalCallback): number
+    emit(sigName: "notification", arg1: string | null, arg2: number, ...args: any[]): void
     connect(sigName: "property-change", callback: Object.PropertyChangeSignalCallback): number
     connect_after(sigName: "property-change", callback: Object.PropertyChangeSignalCallback): number
     emit(sigName: "property-change", arg1: PropertyValues, ...args: any[]): void

@@ -746,6 +746,7 @@ function decodeBase64(dest: string | null, src: string | null, size: number): st
 function decodeQuotedPrintable(dest: string | null, src: string | null, size: number): string | null
 function freeZoneDirectory(): void
 function getUnknownTokenHandlingSetting(): _unknown_token_handling
+function getZoneDirectory(): string | null
 function icalarrayAppend(array: array, element: any | null): void
 function icalarrayElementAt(array: array, position: number): any | null
 /**
@@ -1018,7 +1019,9 @@ function icalparameterStringToEnum(str: string | null): number
 function icalparameterStringToKind(string: string | null): parameter_kind
 function icalparameterValueToValueKind(value: parameter_value): value_kind
 function icalparserFree(parser: parser): void
+function icalparserGetCtrl(): any | null
 function icalparserGetState(parser: parser): parser_state
+function icalparserSetCtrl(ctrl: any | null): void
 function icalparserSetGenData(parser: parser, data: any | null): void
 function icalparserStringLineGenerator(out: string | null, bufSize: number, d: any | null): string | null
 function icalperiodtypeAsIcalString(p: any | null): string | null

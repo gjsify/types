@@ -2175,6 +2175,9 @@ export enum FileMeasureFlags {
      *   sizes.  Normally, the block-size is used, if available, as this is a
      *   more accurate representation of disk space used.
      *   Compare with `du --apparent-size`.
+     *   Since GLib 2.78. and similarly to `du` since GNU Coreutils 9.2, this will
+     *   ignore the sizes of file types other than regular files and links, as the
+     *   sizes of other file types are not specified in a standard way.
      */
     APPARENT_SIZE,
     /**
@@ -4560,6 +4563,16 @@ export function dtls_client_connection_new(base_socket: DatagramBased, server_id
  * @returns the new   #GDtlsServerConnection, or %NULL on error
  */
 export function dtls_server_connection_new(base_socket: DatagramBased, certificate: TlsCertificate | null): DtlsServerConnection
+/**
+ * Constructs a #GFile from a vector of elements using the correct
+ * separator for filenames.
+ * 
+ * Using this function is equivalent to calling g_build_filenamev(),
+ * followed by g_file_new_for_path() on the result.
+ * @param args %NULL-terminated   array of strings containing the path elements.
+ * @returns a new #GFile
+ */
+export function file_new_build_filenamev(args: string[]): File
 /**
  * Creates a #GFile with the given argument from the command line.
  * The value of `arg` can be either a URI, an absolute path or a
@@ -6996,6 +7009,34 @@ export interface ActionMap {
      * @param action_name the name of the action
      */
     remove_action(action_name: string | null): void
+    /**
+     * Remove actions from a #GActionMap. This is meant as the reverse of
+     * g_action_map_add_action_entries().
+     * 
+     * 
+     * 
+     * ```c
+     * static const GActionEntry entries[] = {
+     *     { "quit",         activate_quit              },
+     *     { "print-string", activate_print_string, "s" }
+     * };
+     * 
+     * void
+     * add_actions (GActionMap *map)
+     * {
+     *   g_action_map_add_action_entries (map, entries, G_N_ELEMENTS (entries), NULL);
+     * }
+     * 
+     * void
+     * remove_actions (GActionMap *map)
+     * {
+     *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
+     * }
+     * ```
+     * 
+     * @param entries a pointer to           the first item in an array of #GActionEntry structs
+     */
+    remove_action_entries(entries: ActionEntry[]): void
 
     // Own virtual methods of Gio-2.0.Gio.ActionMap
 
@@ -11090,7 +11131,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11198,8 +11239,34 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null): void
+    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
+
+    // Overloads of copy_async
+
+    /**
+     * Promisified version of {@link copy_async}
+     * 
+     * Copies the file `source` to the location specified by `destination`
+     * asynchronously. For details of the behaviour, see g_file_copy().
+     * 
+     * If `progress_callback` is not %NULL, then that function that will be called
+     * just like in g_file_copy(). The callback will run in the default main context
+     * of the thread calling g_file_copy_async() — the same context as `callback` is
+     * run in.
+     * 
+     * When the operation is finished, `callback` will be called. You can then call
+     * g_file_copy_finish() to get the result of the operation.
+     * @param destination destination #GFile
+     * @param flags set of #GFileCopyFlags
+     * @param io_priority the [I/O priority][io-priority] of the request
+     * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @returns A Promise of: a %TRUE on success, %FALSE on error.
+     */
+    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
     /**
      * Copies the file attributes from `source` to `destination`.
      * 
@@ -11259,7 +11326,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11332,7 +11399,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11445,7 +11512,7 @@ export interface File {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     eject_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -11467,7 +11534,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     eject_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -11524,7 +11591,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     enumerate_children_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11594,7 +11661,7 @@ export interface File {
      * get the result of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11819,7 +11886,7 @@ export interface File {
      * 
      * See g_file_load_bytes() for more information.
      * @param cancellable a #GCancellable or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     load_bytes_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12131,7 +12198,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     mount_mountable(flags: MountMountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -12198,8 +12265,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback #GFileProgressCallback   function for updates
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12221,7 +12288,7 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback #GFileProgressCallback   function for updates
+     * @param progress_callback    #GFileProgressCallback function for updates
      * @returns A Promise of: %TRUE on successful file move, %FALSE otherwise.
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
@@ -12264,7 +12331,7 @@ export interface File {
      * the result of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     open_readwrite_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12447,7 +12514,7 @@ export interface File {
      * @param attributes an attribute query string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     query_filesystem_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12531,7 +12598,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     query_info_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12617,7 +12684,7 @@ export interface File {
      * of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12710,7 +12777,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12861,7 +12928,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13021,7 +13088,7 @@ export interface File {
      * @param flags a #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13103,7 +13170,7 @@ export interface File {
      * @param display_name a string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     set_display_name_async(display_name: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13246,7 +13313,7 @@ export interface File {
      * the result of the operation.
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     unmount_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13271,7 +13338,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     unmount_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13352,7 +13419,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13428,8 +13495,10 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
+     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    vfunc_copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null): void
+    vfunc_copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
     /**
      * Finishes copying the file started with g_file_copy_async().
      * @virtual 
@@ -13477,7 +13546,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13532,7 +13601,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13616,7 +13685,7 @@ export interface File {
      * @virtual 
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_eject_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13640,7 +13709,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_eject_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13700,7 +13769,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_enumerate_children_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13751,7 +13820,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14057,7 +14126,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_mount_mountable(flags: MountMountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14127,8 +14196,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback #GFileProgressCallback   function for updates
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14173,7 +14242,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_open_readwrite_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14277,7 +14346,7 @@ export interface File {
      * @param attributes an attribute query string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_query_filesystem_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14341,7 +14410,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_query_info_async(attributes: string | null, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14393,7 +14462,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14487,7 +14556,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14534,7 +14603,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14589,7 +14658,7 @@ export interface File {
      * @param flags a #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14654,7 +14723,7 @@ export interface File {
      * @param display_name a string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_set_display_name_async(display_name: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14766,7 +14835,7 @@ export interface File {
      * @virtual 
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_unmount_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14793,7 +14862,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_unmount_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14832,7 +14901,7 @@ export interface File {
  * - g_file_new_tmp_async() to asynchronously create a temporary file.
  * - g_file_new_tmp_dir_async() to asynchronously create a temporary directory.
  * - g_file_parse_name() from a UTF-8 string gotten from g_file_get_parse_name().
- * - g_file_new_build_filename() to create a file from path elements.
+ * - g_file_new_build_filename() or g_file_new_build_filenamev() to create a file from path elements.
  * 
  * One way to think of a #GFile is as an abstraction of a pathname. For
  * normal files the system pathname is what is stored internally, but as
@@ -14913,6 +14982,16 @@ export class File extends GObject.Object {
 
     constructor(config?: File.ConstructorProperties) 
     _init(config?: File.ConstructorProperties): void
+    /**
+     * Constructs a #GFile from a vector of elements using the correct
+     * separator for filenames.
+     * 
+     * Using this function is equivalent to calling g_build_filenamev(),
+     * followed by g_file_new_for_path() on the result.
+     * @param args %NULL-terminated   array of strings containing the path elements.
+     * @returns a new #GFile
+     */
+    static new_build_filenamev(args: string[]): File
     /**
      * Creates a #GFile with the given argument from the command line.
      * The value of `arg` can be either a URI, an absolute path or a
@@ -15508,6 +15587,8 @@ export interface ListModel {
      * 
      * %NULL is never returned for an index that is smaller than the length
      * of the list.  See g_list_model_get_n_items().
+     * 
+     * The same #GObject instance may not appear more than once in a #GListModel.
      * @virtual 
      * @param position the position of the item to fetch
      * @returns the object at @position.
@@ -15658,7 +15739,7 @@ export interface LoadableIcon extends Icon {
      * version of this function, see g_loadable_icon_load().
      * @param size an integer.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -15700,7 +15781,7 @@ export interface LoadableIcon extends Icon {
      * @virtual 
      * @param size an integer.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -16447,14 +16528,18 @@ export interface NetworkMonitor extends Initable {
      */
     readonly network_available: boolean
     /**
-     * Whether the network is considered metered. That is, whether the
+     * Whether the network is considered metered.
+     * 
+     * That is, whether the
      * system has traffic flowing through the default connection that is
      * subject to limitations set by service providers. For example, traffic
      * might be billed by the amount of data transmitted, or there might be a
      * quota on the amount of traffic per month. This is typical with tethered
      * connections (3G and 4G) and in such situations, bandwidth intensive
      * applications may wish to avoid network activity where possible if it will
-     * cost the user money or use up their limited quota.
+     * cost the user money or use up their limited quota. Anything more than a
+     * few hundreds of kilobytes of data usage per hour should be avoided without
+     * asking permission from the user.
      * 
      * If more information is required about specific devices then the
      * system network management API should be used instead (for example,
@@ -16504,7 +16589,7 @@ export interface NetworkMonitor extends Initable {
      * to get the result of the operation.
      * @param connectable a #GSocketConnectable
      * @param cancellable a #GCancellable, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -16611,7 +16696,7 @@ export interface NetworkMonitor extends Initable {
      * @virtual 
      * @param connectable a #GSocketConnectable
      * @param cancellable a #GCancellable, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     vfunc_can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -16707,6 +16792,9 @@ export interface PollableInputStream extends InputStream {
      * the stream may not actually be readable even after the source
      * triggers, so you should use g_pollable_input_stream_read_nonblocking()
      * rather than g_input_stream_read() from the callback.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #GSource
      */
@@ -16720,6 +16808,9 @@ export interface PollableInputStream extends InputStream {
      * non-blocking behavior, you should always use
      * g_pollable_input_stream_read_nonblocking(), which will return a
      * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @returns %TRUE if @stream is readable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_input_stream_is_readable() returning %TRUE, and the   next attempt to read will return the error.
      */
     is_readable(): boolean
@@ -16735,6 +16826,9 @@ export interface PollableInputStream extends InputStream {
      * if `cancellable` has already been cancelled when you call, which
      * may happen if you call this method after a source triggers due
      * to having been cancelled.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @param cancellable a #GCancellable, or %NULL
      * @returns the number of bytes read, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
      */
@@ -16763,6 +16857,9 @@ export interface PollableInputStream extends InputStream {
      * the stream may not actually be readable even after the source
      * triggers, so you should use g_pollable_input_stream_read_nonblocking()
      * rather than g_input_stream_read() from the callback.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #GSource
@@ -16777,6 +16874,9 @@ export interface PollableInputStream extends InputStream {
      * non-blocking behavior, you should always use
      * g_pollable_input_stream_read_nonblocking(), which will return a
      * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @returns %TRUE if @stream is readable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_input_stream_is_readable() returning %TRUE, and the   next attempt to read will return the error.
      */
@@ -16793,6 +16893,9 @@ export interface PollableInputStream extends InputStream {
      * if `cancellable` has already been cancelled when you call, which
      * may happen if you call this method after a source triggers due
      * to having been cancelled.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @returns the number of bytes read, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
      */
@@ -16811,6 +16914,11 @@ export interface PollableInputStream extends InputStream {
  * can be polled for readiness to read. This can be used when
  * interfacing with a non-GIO API that expects
  * UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
+ * 
+ * Some classes may implement #GPollableInputStream but have only certain
+ * instances of that class be pollable. If g_pollable_input_stream_can_poll()
+ * returns %FALSE, then the behavior of other #GPollableInputStream methods is
+ * undefined.
  * @interface 
  */
 export class PollableInputStream extends GObject.Object {
@@ -16859,6 +16967,9 @@ export interface PollableOutputStream extends OutputStream {
      * the stream may not actually be writable even after the source
      * triggers, so you should use g_pollable_output_stream_write_nonblocking()
      * rather than g_output_stream_write() from the callback.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #GSource
      */
@@ -16872,6 +16983,9 @@ export interface PollableOutputStream extends OutputStream {
      * non-blocking behavior, you should always use
      * g_pollable_output_stream_write_nonblocking(), which will return a
      * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @returns %TRUE if @stream is writable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_output_stream_is_writable() returning %TRUE, and the   next attempt to write will return the error.
      */
     is_writable(): boolean
@@ -16891,6 +17005,9 @@ export interface PollableOutputStream extends OutputStream {
      * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
      * transports like D/TLS require that you re-send the same `buffer` and
      * `count` in the next write call.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @param buffer a buffer to write     data from
      * @param cancellable a #GCancellable, or %NULL
      * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
@@ -16913,6 +17030,9 @@ export interface PollableOutputStream extends OutputStream {
      * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
      * transports like D/TLS require that you re-send the same `vectors` and
      * `n_vectors` in the next write call.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param cancellable a #GCancellable, or %NULL
      * @returns %@G_POLLABLE_RETURN_OK on success, %G_POLLABLE_RETURN_WOULD_BLOCK if the stream is not currently writable (and @error is *not* set), or %G_POLLABLE_RETURN_FAILED if there was an error in which case @error will be set.
@@ -16942,6 +17062,9 @@ export interface PollableOutputStream extends OutputStream {
      * the stream may not actually be writable even after the source
      * triggers, so you should use g_pollable_output_stream_write_nonblocking()
      * rather than g_output_stream_write() from the callback.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #GSource
@@ -16956,6 +17079,9 @@ export interface PollableOutputStream extends OutputStream {
      * non-blocking behavior, you should always use
      * g_pollable_output_stream_write_nonblocking(), which will return a
      * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @returns %TRUE if @stream is writable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_output_stream_is_writable() returning %TRUE, and the   next attempt to write will return the error.
      */
@@ -16976,6 +17102,9 @@ export interface PollableOutputStream extends OutputStream {
      * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
      * transports like D/TLS require that you re-send the same `buffer` and
      * `count` in the next write call.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @param buffer a buffer to write     data from
      * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
@@ -16998,6 +17127,9 @@ export interface PollableOutputStream extends OutputStream {
      * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
      * transports like D/TLS require that you re-send the same `vectors` and
      * `n_vectors` in the next write call.
+     * 
+     * The behaviour of this method is undefined if
+     * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
      * @virtual 
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @returns %@G_POLLABLE_RETURN_OK on success, %G_POLLABLE_RETURN_WOULD_BLOCK if the stream is not currently writable (and @error is *not* set), or %G_POLLABLE_RETURN_FAILED if there was an error in which case @error will be set.
@@ -17017,6 +17149,11 @@ export interface PollableOutputStream extends OutputStream {
  * can be polled for readiness to write. This can be used when
  * interfacing with a non-GIO API that expects
  * UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
+ * 
+ * Some classes may implement #GPollableOutputStream but have only certain
+ * instances of that class be pollable. If g_pollable_output_stream_can_poll()
+ * returns %FALSE, then the behavior of other #GPollableOutputStream methods is
+ * undefined.
  * @interface 
  */
 export class PollableOutputStream extends GObject.Object {
@@ -19089,19 +19226,34 @@ export interface AppInfoMonitor {
 
 /**
  * #GAppInfoMonitor is a very simple object used for monitoring the app
- * info database for changes (ie: newly installed or removed
- * applications).
+ * info database for changes (newly installed or removed applications).
  * 
  * Call g_app_info_monitor_get() to get a #GAppInfoMonitor and connect
- * to the "changed" signal.
+ * to the #GAppInfoMonitor::changed signal. The signal will be emitted once when
+ * the app info database changes, and will not be emitted again until after the
+ * next call to g_app_info_get_all() or another `g_app_info_*()` function. This
+ * is because monitoring the app info database for changes is expensive.
+ * 
+ * The following functions will re-arm the #GAppInfoMonitor::changed signal so
+ * it can be emitted again:
+ *  - g_app_info_get_all()
+ *  - g_app_info_get_all_for_type()
+ *  - g_app_info_get_default_for_type()
+ *  - g_app_info_get_fallback_for_type()
+ *  - g_app_info_get_recommended_for_type()
+ *  - g_desktop_app_info_get_implementations()
+ *  - g_desktop_app_info_new()
+ *  - g_desktop_app_info_new_from_filename()
+ *  - g_desktop_app_info_new_from_keyfile()
+ *  - g_desktop_app_info_search()
  * 
  * In the usual case, applications should try to make note of the change
  * (doing things like invalidating caches) but not act on it.  In
  * particular, applications should avoid making calls to #GAppInfo APIs
  * in response to the change signal, deferring these until the time that
- * the data is actually required.  The exception to this case is when
+ * the updated data is actually required.  The exception to this case is when
  * application information is actually being displayed on the screen
- * (eg: during a search or when the list of all applications is shown).
+ * (for example, during a search or when the list of all applications is shown).
  * The reason for this is that changes to the list of installed
  * applications often come in groups (like during system updates) and
  * rescanning the list on every change is pointless and expensive.
@@ -19125,6 +19277,10 @@ export class AppInfoMonitor extends GObject.Object {
      * The #GAppInfoMonitor will emit a "changed" signal in the
      * thread-default main context whenever the list of installed
      * applications (as reported by g_app_info_get_all()) may have changed.
+     * 
+     * The #GAppInfoMonitor::changed signal will only be emitted once until
+     * g_app_info_get_all() (or another `g_app_info_*()` function) is called. Doing
+     * so will re-arm the signal ready to notify about the next change.
      * 
      * You must only call g_object_unref() on the return value from under
      * the same main context as you created it.
@@ -19206,7 +19362,7 @@ export interface AppLaunchContext {
      * 
      * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @param info a #GAppInfo
-     * @param files a #GList of of #GFile objects
+     * @param files a #GList of #GFile objects
      * @returns a startup notification ID for the application, or %NULL if     not supported.
      */
     get_startup_notify_id(info: AppInfo, files: File[]): string | null
@@ -19258,7 +19414,7 @@ export interface AppLaunchContext {
      * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @virtual 
      * @param info a #GAppInfo
-     * @param files a #GList of of #GFile objects
+     * @param files a #GList of #GFile objects
      * @returns a startup notification ID for the application, or %NULL if     not supported.
      */
     vfunc_get_startup_notify_id(info: AppInfo, files: File[]): string | null
@@ -19638,7 +19794,7 @@ export interface Application extends ActionGroup, ActionMap {
      * Increases the use count of `application`.
      * 
      * Use this function to indicate that the application has a reason to
-     * continue to run.  For example, g_application_hold() is called by GTK+
+     * continue to run.  For example, g_application_hold() is called by GTK
      * when a toplevel window is on the screen.
      * 
      * To cancel the hold, call g_application_release().
@@ -20150,8 +20306,8 @@ export interface Application extends ActionGroup, ActionMap {
  * instance and g_application_run() promptly returns. See the code
  * examples below.
  * 
- * If used, the expected form of an application identifier is the same as
- * that of of a
+ * If used, the expected form of an application identifier is the
+ * same as that of a
  * [D-Bus well-known bus name](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-names-bus).
  * Examples include: `com.example.MyApp`, `org.example.internal_apps.Calculator`,
  * `org._7_zip.Archiver`.
@@ -20178,6 +20334,10 @@ export interface Application extends ActionGroup, ActionMap {
  * the session bus, and GIO provides the #GDBusActionGroup wrapper to
  * conveniently access them remotely. GIO provides a #GDBusMenuModel wrapper
  * for remote access to exported #GMenuModels.
+ * 
+ * Note: Due to the fact that actions are exported on the session bus,
+ * using `maybe` parameters is not supported, since D-Bus does not support
+ * `maybe` types.
  * 
  * There is a number of different entry points into a GApplication:
  * 
@@ -23305,6 +23465,13 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
      */
     get_properties(): GLib.Variant
     /**
+     * Gets the interface vtable for the D-Bus interface implemented by
+     * `interface_`. The returned function pointers should expect `interface_`
+     * itself to be passed as `user_data`.
+     * @returns the vtable of the D-Bus interface implemented by the skeleton
+     */
+    get_vtable(): DBusInterfaceVTable
+    /**
      * Checks if `interface_` is exported on `connection`.
      * @param connection A #GDBusConnection.
      * @returns %TRUE if @interface_ is exported on @connection, %FALSE otherwise.
@@ -23359,6 +23526,14 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
      * @returns A #GVariant of type ['a{sv}'][G-VARIANT-TYPE-VARDICT:CAPS]. Free with g_variant_unref().
      */
     vfunc_get_properties(): GLib.Variant
+    /**
+     * Gets the interface vtable for the D-Bus interface implemented by
+     * `interface_`. The returned function pointers should expect `interface_`
+     * itself to be passed as `user_data`.
+     * @virtual 
+     * @returns the vtable of the D-Bus interface implemented by the skeleton
+     */
+    vfunc_get_vtable(): DBusInterfaceVTable
 
     // Own signals of Gio-2.0.Gio.DBusInterfaceSkeleton
 
@@ -26333,9 +26508,10 @@ export interface DebugControllerDBus extends DebugController, Initable {
  * #GDebugController:debug-enabled and, by default, g_log_get_debug_enabled().
  * default.
  * 
- * By default, all processes will be able to call `SetDebugEnabled()`. If this
- * process is privileged, or might expose sensitive information in its debug
- * output, you may want to restrict the ability to enable debug output to
+ * By default, no processes are allowed to call `SetDebugEnabled()` unless a
+ * #GDebugControllerDBus::authorize signal handler is installed. This is because
+ * the process may be privileged, or might expose sensitive information in its
+ * debug output. You may want to restrict the ability to enable debug output to
  * privileged users or processes.
  * 
  * One option is to install a D-Bus security policy which restricts access to
@@ -27029,7 +27205,7 @@ export interface FileEnumerator {
      * g_file_enumerator_close_finish().
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -27161,28 +27337,75 @@ export interface FileEnumerator {
     next_file(cancellable: Cancellable | null): FileInfo | null
     /**
      * Request information for a number of files from the enumerator asynchronously.
-     * When all i/o for the operation is finished the `callback` will be called with
+     * When all I/O for the operation is finished the `callback` will be called with
      * the requested information.
      * 
      * See the documentation of #GFileEnumerator for information about the
      * order of returned files.
      * 
-     * The callback can be called with less than `num_files` files in case of error
-     * or at the end of the enumerator. In case of a partial error the callback will
-     * be called with any succeeding items and no error, and on the next request the
-     * error will be reported. If a request is cancelled the callback will be called
-     * with %G_IO_ERROR_CANCELLED.
+     * Once the end of the enumerator is reached, or if an error occurs, the
+     * `callback` will be called with an empty list. In this case, the previous call
+     * to g_file_enumerator_next_files_async() will typically have returned fewer
+     * than `num_files` items.
+     * 
+     * If a request is cancelled the callback will be called with
+     * %G_IO_ERROR_CANCELLED.
+     * 
+     * This leads to the following pseudo-code usage:
+     * 
+     * ```
+     * g_autoptr(GFile) dir = get_directory ();
+     * g_autoptr(GFileEnumerator) enumerator = NULL;
+     * g_autolist(GFileInfo) files = NULL;
+     * g_autoptr(GError) local_error = NULL;
+     * 
+     * enumerator = yield g_file_enumerate_children_async (dir,
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_NAME ","
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_TYPE,
+     *                                                     G_FILE_QUERY_INFO_NONE,
+     *                                                     G_PRIORITY_DEFAULT,
+     *                                                     cancellable,
+     *                                                     …,
+     *                                                     &local_error);
+     * if (enumerator == NULL)
+     *   g_error ("Error enumerating: %s", local_error->message);
+     * 
+     * // Loop until no files are returned, either because the end of the enumerator
+     * // has been reached, or an error was returned.
+     * do
+     *   {
+     *     files = yield g_file_enumerator_next_files_async (enumerator,
+     *                                                       5,  // number of files to request
+     *                                                       G_PRIORITY_DEFAULT,
+     *                                                       cancellable,
+     *                                                       …,
+     *                                                       &local_error);
+     * 
+     *     // Process the returned files, but don’t assume that exactly 5 were returned.
+     *     for (GList *l = files; l != NULL; l = l->next)
+     *       {
+     *         GFileInfo *info = l->data;
+     *         handle_file_info (info);
+     *       }
+     *   }
+     * while (files != NULL);
+     * 
+     * if (local_error != NULL &&
+     *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+     *   g_error ("Error while enumerating: %s", local_error->message);
+     * ```
+     * 
      * 
      * During an async request no other sync and async calls are allowed, and will
      * result in %G_IO_ERROR_PENDING errors.
      * 
-     * Any outstanding i/o request with higher priority (lower numerical value) will
+     * Any outstanding I/O request with higher priority (lower numerical value) will
      * be executed before an outstanding request with lower priority. Default
      * priority is %G_PRIORITY_DEFAULT.
      * @param num_files the number of file info objects to request
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -27192,22 +27415,69 @@ export interface FileEnumerator {
      * Promisified version of {@link next_files_async}
      * 
      * Request information for a number of files from the enumerator asynchronously.
-     * When all i/o for the operation is finished the `callback` will be called with
+     * When all I/O for the operation is finished the `callback` will be called with
      * the requested information.
      * 
      * See the documentation of #GFileEnumerator for information about the
      * order of returned files.
      * 
-     * The callback can be called with less than `num_files` files in case of error
-     * or at the end of the enumerator. In case of a partial error the callback will
-     * be called with any succeeding items and no error, and on the next request the
-     * error will be reported. If a request is cancelled the callback will be called
-     * with %G_IO_ERROR_CANCELLED.
+     * Once the end of the enumerator is reached, or if an error occurs, the
+     * `callback` will be called with an empty list. In this case, the previous call
+     * to g_file_enumerator_next_files_async() will typically have returned fewer
+     * than `num_files` items.
+     * 
+     * If a request is cancelled the callback will be called with
+     * %G_IO_ERROR_CANCELLED.
+     * 
+     * This leads to the following pseudo-code usage:
+     * 
+     * ```
+     * g_autoptr(GFile) dir = get_directory ();
+     * g_autoptr(GFileEnumerator) enumerator = NULL;
+     * g_autolist(GFileInfo) files = NULL;
+     * g_autoptr(GError) local_error = NULL;
+     * 
+     * enumerator = yield g_file_enumerate_children_async (dir,
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_NAME ","
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_TYPE,
+     *                                                     G_FILE_QUERY_INFO_NONE,
+     *                                                     G_PRIORITY_DEFAULT,
+     *                                                     cancellable,
+     *                                                     …,
+     *                                                     &local_error);
+     * if (enumerator == NULL)
+     *   g_error ("Error enumerating: %s", local_error->message);
+     * 
+     * // Loop until no files are returned, either because the end of the enumerator
+     * // has been reached, or an error was returned.
+     * do
+     *   {
+     *     files = yield g_file_enumerator_next_files_async (enumerator,
+     *                                                       5,  // number of files to request
+     *                                                       G_PRIORITY_DEFAULT,
+     *                                                       cancellable,
+     *                                                       …,
+     *                                                       &local_error);
+     * 
+     *     // Process the returned files, but don’t assume that exactly 5 were returned.
+     *     for (GList *l = files; l != NULL; l = l->next)
+     *       {
+     *         GFileInfo *info = l->data;
+     *         handle_file_info (info);
+     *       }
+     *   }
+     * while (files != NULL);
+     * 
+     * if (local_error != NULL &&
+     *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+     *   g_error ("Error while enumerating: %s", local_error->message);
+     * ```
+     * 
      * 
      * During an async request no other sync and async calls are allowed, and will
      * result in %G_IO_ERROR_PENDING errors.
      * 
-     * Any outstanding i/o request with higher priority (lower numerical value) will
+     * Any outstanding I/O request with higher priority (lower numerical value) will
      * be executed before an outstanding request with lower priority. Default
      * priority is %G_PRIORITY_DEFAULT.
      * @param num_files the number of file info objects to request
@@ -27240,7 +27510,7 @@ export interface FileEnumerator {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -27279,29 +27549,76 @@ export interface FileEnumerator {
     vfunc_next_file(cancellable: Cancellable | null): FileInfo | null
     /**
      * Request information for a number of files from the enumerator asynchronously.
-     * When all i/o for the operation is finished the `callback` will be called with
+     * When all I/O for the operation is finished the `callback` will be called with
      * the requested information.
      * 
      * See the documentation of #GFileEnumerator for information about the
      * order of returned files.
      * 
-     * The callback can be called with less than `num_files` files in case of error
-     * or at the end of the enumerator. In case of a partial error the callback will
-     * be called with any succeeding items and no error, and on the next request the
-     * error will be reported. If a request is cancelled the callback will be called
-     * with %G_IO_ERROR_CANCELLED.
+     * Once the end of the enumerator is reached, or if an error occurs, the
+     * `callback` will be called with an empty list. In this case, the previous call
+     * to g_file_enumerator_next_files_async() will typically have returned fewer
+     * than `num_files` items.
+     * 
+     * If a request is cancelled the callback will be called with
+     * %G_IO_ERROR_CANCELLED.
+     * 
+     * This leads to the following pseudo-code usage:
+     * 
+     * ```
+     * g_autoptr(GFile) dir = get_directory ();
+     * g_autoptr(GFileEnumerator) enumerator = NULL;
+     * g_autolist(GFileInfo) files = NULL;
+     * g_autoptr(GError) local_error = NULL;
+     * 
+     * enumerator = yield g_file_enumerate_children_async (dir,
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_NAME ","
+     *                                                     G_FILE_ATTRIBUTE_STANDARD_TYPE,
+     *                                                     G_FILE_QUERY_INFO_NONE,
+     *                                                     G_PRIORITY_DEFAULT,
+     *                                                     cancellable,
+     *                                                     …,
+     *                                                     &local_error);
+     * if (enumerator == NULL)
+     *   g_error ("Error enumerating: %s", local_error->message);
+     * 
+     * // Loop until no files are returned, either because the end of the enumerator
+     * // has been reached, or an error was returned.
+     * do
+     *   {
+     *     files = yield g_file_enumerator_next_files_async (enumerator,
+     *                                                       5,  // number of files to request
+     *                                                       G_PRIORITY_DEFAULT,
+     *                                                       cancellable,
+     *                                                       …,
+     *                                                       &local_error);
+     * 
+     *     // Process the returned files, but don’t assume that exactly 5 were returned.
+     *     for (GList *l = files; l != NULL; l = l->next)
+     *       {
+     *         GFileInfo *info = l->data;
+     *         handle_file_info (info);
+     *       }
+     *   }
+     * while (files != NULL);
+     * 
+     * if (local_error != NULL &&
+     *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+     *   g_error ("Error while enumerating: %s", local_error->message);
+     * ```
+     * 
      * 
      * During an async request no other sync and async calls are allowed, and will
      * result in %G_IO_ERROR_PENDING errors.
      * 
-     * Any outstanding i/o request with higher priority (lower numerical value) will
+     * Any outstanding I/O request with higher priority (lower numerical value) will
      * be executed before an outstanding request with lower priority. Default
      * priority is %G_PRIORITY_DEFAULT.
      * @virtual 
      * @param num_files the number of file info objects to request
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -27422,7 +27739,7 @@ export interface FileIOStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -27498,7 +27815,7 @@ export interface FileIOStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -27712,6 +28029,17 @@ export interface FileInfo {
      * @returns %TRUE if @info has an attribute named @attribute,      %FALSE otherwise.
      */
     get_attribute_data(attribute: string | null): [ /* returnType */ boolean, /* type */ FileAttributeType, /* value_pp */ any, /* status */ FileAttributeStatus ]
+    /**
+     * Gets the value of a byte string attribute as a file path.
+     * 
+     * If the attribute does not contain a byte string, `NULL` will be returned.
+     * 
+     * This function is meant to be used by language bindings that have specific
+     * handling for Unix paths.
+     * @param attribute a file attribute key.
+     * @returns the contents of the @attribute value as a file path, or %NULL otherwise.
+     */
+    get_attribute_file_path(attribute: string | null): string | null
     /**
      * Gets a signed 32-bit integer contained within the attribute. If the
      * attribute does not contain a signed 32-bit integer, or is invalid,
@@ -27996,6 +28324,16 @@ export interface FileInfo {
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
+     * 
+     * This function is meant to be used by language bindings that have specific
+     * handling for Unix paths.
+     * @param attribute a file attribute key.
+     * @param attr_value a file path.
+     */
+    set_attribute_file_path(attribute: string | null, attr_value: string): void
+    /**
+     * Sets the `attribute` to contain the given `attr_value,`
+     * if possible.
      * @param attribute a file attribute key.
      * @param attr_value a signed 32-bit integer
      */
@@ -28159,7 +28497,7 @@ export interface FileInfo {
      * to the given symlink target.
      * @param symlink_target a static string containing a path to a symlink target.
      */
-    set_symlink_target(symlink_target: string | null): void
+    set_symlink_target(symlink_target: string): void
     /**
      * Unsets a mask set by g_file_info_set_attribute_mask(), if one
      * is set.
@@ -28279,7 +28617,7 @@ export interface FileInputStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -28343,7 +28681,7 @@ export interface FileInputStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_query_info_async(attributes: string | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -29135,7 +29473,7 @@ export interface IOStream {
      * classes. However, if you override one you must override all.
      * @param io_priority the io priority of the request
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -29206,7 +29544,7 @@ export interface IOStream {
      * @param flags a set of #GIOStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback.
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     splice_async(stream2: IOStream, flags: IOStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -29226,7 +29564,7 @@ export interface IOStream {
      * @virtual 
      * @param io_priority the io priority of the request
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -29919,7 +30257,7 @@ export interface InputStream {
      * override one you must override all.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -30022,7 +30360,7 @@ export interface InputStream {
      * priority. Default priority is %G_PRIORITY_DEFAULT.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
 
@@ -30086,7 +30424,7 @@ export interface InputStream {
      * override one you must override all.
      * @param io_priority the [I/O priority][io-priority] of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
 
@@ -30176,7 +30514,7 @@ export interface InputStream {
      * @param count the number of bytes that will be read from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -30277,7 +30615,7 @@ export interface InputStream {
      * @param count the number of bytes that will be skipped from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -30338,7 +30676,7 @@ export interface InputStream {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -30376,7 +30714,7 @@ export interface InputStream {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array | null
     /**
@@ -30436,7 +30774,7 @@ export interface InputStream {
      * @param count the number of bytes that will be skipped from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_skip_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -33058,7 +33396,7 @@ export interface OutputStream {
      * classes. However, if you override one you must override all.
      * @param io_priority the io priority of the request.
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33112,7 +33450,7 @@ export interface OutputStream {
      * result of the operation.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     flush_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33184,7 +33522,7 @@ export interface OutputStream {
      * @param flags a set of #GOutputStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback.
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33283,7 +33621,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write
      * @param io_priority the io priority of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     write_all_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33367,7 +33705,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     write_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33451,7 +33789,7 @@ export interface OutputStream {
      * @param bytes The bytes to write
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     write_bytes_async(bytes: GLib.Bytes, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33568,7 +33906,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     writev_all_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33648,7 +33986,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -33716,7 +34054,7 @@ export interface OutputStream {
      * @virtual 
      * @param io_priority the io priority of the request.
      * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -33753,7 +34091,7 @@ export interface OutputStream {
      * @virtual 
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_flush_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -33785,7 +34123,7 @@ export interface OutputStream {
      * @param flags a set of #GOutputStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback.
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -33835,7 +34173,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     vfunc_write_async(buffer: Uint8Array | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -33907,7 +34245,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
      */
     vfunc_writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -34808,11 +35146,43 @@ export module Resolver {
     // Constructor properties interface
 
     export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Gio-2.0.Gio.Resolver
+
+        /**
+         * The timeout applied to all resolver lookups, in milliseconds.
+         * 
+         * This may be changed through the lifetime of the #GResolver. The new value
+         * will apply to any lookups started after the change, but not to any
+         * already-ongoing lookups.
+         * 
+         * If this is `0`, no timeout is applied to lookups.
+         * 
+         * No timeout was applied to lookups before this property was added in
+         * GLib 2.78.
+         */
+        timeout?: number | null
     }
 
 }
 
 export interface Resolver {
+
+    // Own properties of Gio-2.0.Gio.Resolver
+
+    /**
+     * The timeout applied to all resolver lookups, in milliseconds.
+     * 
+     * This may be changed through the lifetime of the #GResolver. The new value
+     * will apply to any lookups started after the change, but not to any
+     * already-ongoing lookups.
+     * 
+     * If this is `0`, no timeout is applied to lookups.
+     * 
+     * No timeout was applied to lookups before this property was added in
+     * GLib 2.78.
+     */
+    timeout: number
 
     // Own fields of Gio-2.0.Gio.Resolver
 
@@ -34821,6 +35191,11 @@ export interface Resolver {
 
     // Owm methods of Gio-2.0.Gio.Resolver
 
+    /**
+     * Get the timeout applied to all resolver lookups. See #GResolver:timeout.
+     * @returns the resolver timeout, in milliseconds, or `0` for no timeout
+     */
+    get_timeout(): number
     /**
      * Synchronously reverse-resolves `address` to determine its
      * associated hostname.
@@ -35123,6 +35498,11 @@ export interface Resolver {
      * itself as the default resolver for all later code to use.
      */
     set_default(): void
+    /**
+     * Set the timeout applied to all resolver lookups. See #GResolver:timeout.
+     * @param timeout_ms timeout in milliseconds, or `0` for no timeouts
+     */
+    set_timeout(timeout_ms: number): void
 
     // Own virtual methods of Gio-2.0.Gio.Resolver
 
@@ -35319,6 +35699,9 @@ export interface Resolver {
 
     // Class property signals of Gio-2.0.Gio.Resolver
 
+    connect(sigName: "notify::timeout", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timeout", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::timeout", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -35334,6 +35717,10 @@ export interface Resolver {
  * #GNetworkAddress and #GNetworkService provide wrappers around
  * #GResolver functionality that also implement #GSocketConnectable,
  * making it easy to connect to a remote host/service.
+ * 
+ * The default resolver (see g_resolver_get_default()) has a timeout of 30s set
+ * on it since GLib 2.78. Earlier versions of GLib did not support resolver
+ * timeouts.
  * @class 
  */
 export class Resolver extends GObject.Object {
@@ -39154,7 +39541,7 @@ export interface SocketAddressEnumerator {
      * 
      * It is an error to call this multiple times before the previous callback has finished.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -39211,7 +39598,7 @@ export interface SocketAddressEnumerator {
      * It is an error to call this multiple times before the previous callback has finished.
      * @virtual 
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -41650,6 +42037,13 @@ export interface Task extends AsyncResult {
      * do this. If you have a very large number of tasks to run (several tens of
      * tasks), but don't want them to all run at once, you should only queue a
      * limited number of them (around ten) at a time.
+     * 
+     * Be aware that if your task depends on other tasks to complete, use of this
+     * function could lead to a livelock if the other tasks also use this function
+     * and enough of them (around 10) execute in a dependency chain, as that will
+     * exhaust the thread pool. If this situation is possible, consider using a
+     * separate worker thread or thread pool explicitly, rather than using
+     * g_task_run_in_thread().
      * @param task_func a #GTaskThreadFunc
      */
     run_in_thread(task_func: TaskThreadFunc): void
@@ -44616,7 +45010,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of of this asynchronous operation. The byte array should not be modified during
+     * of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
      * @param interaction used to interact with the user if necessary
@@ -44635,7 +45029,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of of this asynchronous operation. The byte array should not be modified during
+     * of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
      * @param interaction used to interact with the user if necessary
@@ -44894,7 +45288,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of of this asynchronous operation. The byte array should not be modified during
+     * of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @virtual 
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
@@ -45412,7 +45806,7 @@ export interface TlsInteraction {
  * initialization function. Any interactions not implemented will return
  * %G_TLS_INTERACTION_UNHANDLED. If a derived class implements an async method,
  * it must also implement the corresponding finish method.
- * @class 
+ * @interface 
  */
 export class TlsInteraction extends GObject.Object {
 
@@ -45655,7 +46049,7 @@ export interface UnixConnection {
      * When the operation is finished, `callback` will be called. You can then call
      * g_unix_connection_receive_credentials_finish() to get the result of the operation.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     receive_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -45727,7 +46121,7 @@ export interface UnixConnection {
      * When the operation is finished, `callback` will be called. You can then call
      * g_unix_connection_send_credentials_finish() to get the result of the operation.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     send_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -48267,6 +48661,7 @@ export interface DBusInterfaceSkeletonClass {
      */
     parent_class: GObject.ObjectClass
     get_info: (interface_: DBusInterfaceSkeleton) => DBusInterfaceInfo
+    get_vtable: (interface_: DBusInterfaceSkeleton) => DBusInterfaceVTable
     get_properties: (interface_: DBusInterfaceSkeleton) => GLib.Variant
     flush: (interface_: DBusInterfaceSkeleton) => void
     g_authorize_method: (interface_: DBusInterfaceSkeleton, invocation: DBusMethodInvocation) => boolean
@@ -49591,7 +49986,7 @@ export interface FileIface {
     make_symbolic_link_async: (file: File, symlink_value: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     make_symbolic_link_finish: (file: File, result: AsyncResult) => boolean
     copy: (source: File, destination: File, flags: FileCopyFlags, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null) => boolean
-    copy_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null) => void
+    copy_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback | null) => void
     copy_finish: (file: File, res: AsyncResult) => boolean
     move: (source: File, destination: File, flags: FileCopyFlags, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null) => boolean
     move_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback | null) => void

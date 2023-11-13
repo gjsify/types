@@ -1,6 +1,6 @@
 {
     "name": "@girs/accountsservice-1.0",
-    "version": "1.0.0-3.2.3",
+    "version": "1.0.0-3.2.4",
     "description": "GJS TypeScript type definitions for AccountsService-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "accountsservice-1.0.js",

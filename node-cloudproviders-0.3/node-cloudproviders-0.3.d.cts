@@ -481,7 +481,7 @@ export interface Account {
  * #CloudProvidersAccount is the basic object used to construct the integrator UI
  * and actions that a provider will present to the user, from the client side.
  * Integrators of the cloud providers can use this object to poll the
- * #CloudProvider menus, status and actions.
+ * #CloudProvidersProvider menus, status and actions.
  * @class 
  */
 export class Account extends GObject.Object {
@@ -495,14 +495,14 @@ export class Account extends GObject.Object {
     constructor(config?: Account.ConstructorProperties) 
     /**
      * A #CloudProvidersAccount object are used to fetch details about cloud providers from DBus.
-     * Object are usually fetched from cloud_providers_get_providers() as a list.
+     * Object are usually fetched from cloud_providers_provider_get_accounts() as a list.
      * @constructor 
      * @param proxy DBus proxy
      */
     constructor(proxy: Gio.DBusProxy) 
     /**
      * A #CloudProvidersAccount object are used to fetch details about cloud providers from DBus.
-     * Object are usually fetched from cloud_providers_get_providers() as a list.
+     * Object are usually fetched from cloud_providers_provider_get_accounts() as a list.
      * @constructor 
      * @param proxy DBus proxy
      */

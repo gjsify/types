@@ -53,6 +53,54 @@ export enum AnimationState {
     FINISHED,
 }
 /**
+ * Describes length types for [struct`BreakpointCondition]`.
+ * 
+ * See [ctor`BreakpointCondition`.new_length].
+ * 
+ * New values may be added to this enumeration over time.
+ */
+export enum BreakpointConditionLengthType {
+    /**
+     * true if the width is greater than or
+     *   equal to the condition value
+     */
+    MIN_WIDTH,
+    /**
+     * true if the width is less than or
+     *   equal to the condition value
+     */
+    MAX_WIDTH,
+    /**
+     * true if the height is greater than or
+     *   equal to the condition value
+     */
+    MIN_HEIGHT,
+    /**
+     * true if the height is less than or
+     *   equal to the condition value
+     */
+    MAX_HEIGHT,
+}
+/**
+ * Describes ratio types for [struct`BreakpointCondition]`.
+ * 
+ * See [ctor`BreakpointCondition`.new_ratio].
+ * 
+ * New values may be added to this enumeration over time.
+ */
+export enum BreakpointConditionRatioType {
+    /**
+     * true if the aspect ratio is
+     *   greater than or equal to the condition value
+     */
+    MIN_ASPECT_RATIO,
+    /**
+     * true if the aspect ratio is
+     *   less than or equal to the condition value
+     */
+    MAX_ASPECT_RATIO,
+}
+/**
  * Describes title centering behavior of a [class`HeaderBar]` widget.
  */
 export enum CenteringPolicy {
@@ -266,8 +314,6 @@ export enum FlapFoldPolicy {
  * It determines the type of animation when transitioning between children in a
  * [class`Flap]` widget, as well as which areas can be swiped via
  * [property`Flap:`swipe-to-open] and [property`Flap:`swipe-to-close].
- * 
- * New values may be added to this enum over time.
  */
 export enum FlapTransitionType {
     /**
@@ -318,6 +364,31 @@ export enum LeafletTransitionType {
      * Slide from left, right, up or down according to the orientation, text direction and the children order
      */
     SLIDE,
+}
+/**
+ * Describes length units.
+ * 
+ * | Unit | Regular Text | Large Text |
+ * | ---- | ------------ | ---------- |
+ * | 1px  | 1px          | 1px        |
+ * | 1pt  | 1.333333px   | 1.666667px |
+ * | 1sp  | 1px          | 1.25px     |
+ * 
+ * New values may be added to this enumeration over time.
+ */
+export enum LengthUnit {
+    /**
+     * pixels
+     */
+    PX,
+    /**
+     * points, changes with text scale factor
+     */
+    PT,
+    /**
+     * scale independent pixels, changes with text scale factor
+     */
+    SP,
 }
 /**
  * Describes the direction of a swipe navigation gesture.
@@ -383,6 +454,62 @@ export enum ToastPriority {
     HIGH,
 }
 /**
+ * Describes the possible top or bottom bar styles in an [class`ToolbarView]`
+ * widget.
+ * 
+ * `ADW_TOOLBAR_FLAT` is suitable for simple content, such as
+ * [class`StatusPage]` or [class`PreferencesPage]`, where the background at the
+ * top and bottom parts of the page is uniform. Additionally, windows with
+ * sidebars should always use this style.
+ * 
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-flat-1-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-flat-1.png" alt="toolbar-view-flat-1">
+ * </picture>
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-flat-2-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-flat-2.png" alt="toolbar-view-flat-2">
+ * </picture>
+ * 
+ * `ADW_TOOLBAR_RAISED` style is suitable for content such as
+ * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+ * where some elements are directly adjacent to the top/bottom bars, or
+ * [class`TabView]`, where each page can have a different background.
+ * 
+ * `ADW_TOOLBAR_RAISED_BORDER` style is similar to `ADW_TOOLBAR_RAISED`, but
+ * with the shadow replaced with a more subtle border. It's intended to be used
+ * in applications like image viewers, where a shadow over the content might be
+ * undesired.
+ * 
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-raised-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-raised.png" alt="toolbar-view-raised">
+ * </picture>
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-raised-border-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-raised-border.png" alt="toolbar-view-raised-border">
+ * </picture>
+ * 
+ * See [property`ToolbarView:`top-bar-style] and
+ * [property`ToolbarView:`bottom-bar-style].
+ * 
+ * New values may be added to this enumeration over time.
+ */
+export enum ToolbarStyle {
+    /**
+     * No background, shadow only for scrolled content
+     */
+    FLAT,
+    /**
+     * Opaque background with a persistent shadow
+     */
+    RAISED,
+    /**
+     * Opaque background with a persistent border
+     */
+    RAISED_BORDER,
+}
+/**
  * Describes the adaptive modes of [class`ViewSwitcher]`.
  */
 export enum ViewSwitcherPolicy {
@@ -411,12 +538,12 @@ export enum TabViewShortcuts {
      */
     NONE,
     /**
-     * <kbd>Ctrl</kbd>+<kbd>Tab</kbd> - switch to the next page, with looping
+     * <kbd>Ctrl</kbd>+<kbd>Tab</kbd> - switch to the next page
      */
     CONTROL_TAB,
     /**
      * <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>Tab</kbd> - switch to the previous
-     *   page, with looping
+     *   page
      */
     CONTROL_SHIFT_TAB,
     /**
@@ -492,6 +619,66 @@ export const MINOR_VERSION: number
  */
 export const VERSION_S: string | null
 /**
+ * Parses a condition from a string.
+ * 
+ * Length conditions are specified as `<type>: <value>[<unit>]`, where:
+ * 
+ * - `<type>` can be `min-width`, `max-width`, `min-height` or `max-height`
+ * - `<value>` is a fractional number
+ * - `<unit>` can be `px`, `pt` or `sp`
+ * 
+ * If the unit is omitted, `px` is assumed.
+ * 
+ * See [ctor`BreakpointCondition`.new_length].
+ * 
+ * Examples:
+ * 
+ * - `min-width: 500px`
+ * - `min-height: 400pt`
+ * - `max-width: 100sp`
+ * - `max-height: 500`
+ * 
+ * Ratio conditions are specified as `<type>: <width>[/<height>]`, where:
+ * 
+ * - `<type>` can be `min-aspect-ratio` or `max-aspect-ratio`
+ * - `<width>` and `<height>` are integer numbers
+ * 
+ * See [ctor`BreakpointCondition`.new_ratio].
+ * 
+ * The ratio is represented as `<width>` divided by `<height>`.
+ * 
+ * If `<height>` is omitted, it's assumed to be 1.
+ * 
+ * Examples:
+ * 
+ * - `min-aspect-ratio: 4/3`
+ * - `max-aspect-ratio: 1`
+ * 
+ * The logical operators `and`, `or` can be used to compose a complex condition
+ * as follows:
+ * 
+ * - `<condition> and <condition>`: the condition is true when both
+ *   `<condition>`s are true, same as when using
+ *   [ctor`BreakpointCondition`.new_and]
+ * - `<condition> or <condition>`: the condition is true when either of the
+ *   `<condition>`s is true, same as when using
+ *   [ctor`BreakpointCondition`.new_or]
+ * 
+ * Examples:
+ * 
+ * - `min-width: 400px and max-aspect-ratio: 4/3`
+ * - `max-width: 360sp or max-width: 360px`
+ * 
+ * Conditions can be further nested using parentheses, for example:
+ * 
+ * - `min-width: 400px and (max-aspect-ratio: 4/3 or max-height: 400px)`
+ * 
+ * If parentheses are omitted, the first operator takes priority.
+ * @param str the string specifying the condition
+ * @returns the parsed condition
+ */
+export function breakpoint_condition_parse(str: string | null): BreakpointCondition
+/**
  * Computes easing with `easing` for `value`.
  * 
  * `value` should generally be in the [0, 1] range.
@@ -565,6 +752,22 @@ export function init(): void
  * @returns the initialization status
  */
 export function is_initialized(): boolean
+/**
+ * Converts `value` from pixels to `unit`.
+ * @param unit a length unit
+ * @param value a value in pixels
+ * @param settings settings to use, or `NULL` for default settings
+ * @returns the length in @unit
+ */
+export function length_unit_from_px(unit: LengthUnit, value: number, settings: Gtk.Settings | null): number
+/**
+ * Converts `value` from `unit` to pixels.
+ * @param unit a length unit
+ * @param value a value in `unit`
+ * @param settings settings to use, or `NULL` for default settings
+ * @returns the length in pixels
+ */
+export function length_unit_to_px(unit: LengthUnit, value: number, settings: Gtk.Settings | null): number
 /**
  * Computes the linear interpolation between `a` and `b` for `t`.
  * @param a the start
@@ -1959,6 +2162,9 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
     connect(sigName: "notify::content", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::content", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::current-breakpoint", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-breakpoint", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-breakpoint", ...args: any[]): void
     connect(sigName: "notify::application", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::application", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::application", ...args: any[]): void
@@ -2022,6 +2228,9 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
     connect(sigName: "notify::startup-id", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: AboutWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -2332,6 +2541,33 @@ export class AboutWindow extends Window {
      * @returns the newly created `AdwAboutWindow`
      */
     static new(): AboutWindow
+    /**
+     * Creates a new `AdwAboutWindow` using AppStream metadata.
+     * 
+     * This automatically sets the following properties with the following AppStream
+     * values:
+     * 
+     * * [property`AboutWindow:`application-icon] is set from the `<id>`
+     * * [property`AboutWindow:`application-name] is set from the `<name>`
+     * * [property`AboutWindow:`developer-name] is set from the `<developer_name>`
+     * * [property`AboutWindow:`version] is set from the version of the latest release
+     * * [property`AboutWindow:`website] is set from the `<url type="homepage">`
+     * * [property`AboutWindow:`support-url] is set from the `<url type="help">`
+     * * [property`AboutWindow:`issue-url] is set from the `<url type="bugtracker">`
+     * * [property`AboutWindow:`license-type] is set from the `<project_license>`
+     *   If the license type retrieved from AppStream is not listed in
+     *   [enum`Gtk`.License], it will be set to `GTK_LICENCE_CUSTOM`.
+     * 
+     * If `release_notes_version` is not `NULL`,
+     * [property`AboutWindow:`release-notes-version] is set to match it, while
+     * [property`AboutWindow:`release-notes] is set from the AppStream release
+     * description for that version.
+     * @constructor 
+     * @param resource_path The resource to use
+     * @param release_notes_version The version to retrieve release notes for
+     * @returns the newly created `AdwAboutWindow`
+     */
+    static new_from_appdata(resource_path: string | null, release_notes_version: string | null): AboutWindow
     _init(config?: AboutWindow.ConstructorProperties): void
 }
 
@@ -3359,6 +3595,10 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
      * This property should always be used instead of [property`Gtk`.Window:child].
      */
     content: Gtk.Widget
+    /**
+     * The current breakpoint.
+     */
+    readonly current_breakpoint: Breakpoint
 
     // Own fields of Adw-1.Adw.ApplicationWindow
 
@@ -3367,12 +3607,22 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
     // Owm methods of Adw-1.Adw.ApplicationWindow
 
     /**
+     * Adds `breakpoint` to `self`.
+     * @param breakpoint the breakpoint to add
+     */
+    add_breakpoint(breakpoint: Breakpoint): void
+    /**
      * Gets the content widget of `self`.
      * 
      * This method should always be used instead of [method`Gtk`.Window.get_child].
      * @returns the content widget of @self
      */
     get_content(): Gtk.Widget | null
+    /**
+     * Gets the current breakpoint.
+     * @returns the current breakpoint
+     */
+    get_current_breakpoint(): Breakpoint | null
     /**
      * Sets the content widget of `self`.
      * 
@@ -3445,6 +3695,9 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
     connect(sigName: "notify::content", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::content", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::current-breakpoint", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-breakpoint", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-breakpoint", ...args: any[]): void
     connect(sigName: "notify::show-menubar", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-menubar", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-menubar", ...args: any[]): void
@@ -3511,6 +3764,9 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
     connect(sigName: "notify::startup-id", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: ApplicationWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -3643,6 +3899,23 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
  * the same features as [class`Window]`.
  * 
  * See [class`Window]` for details.
+ * 
+ * Example of an `AdwApplicationWindow` UI definition:
+ * 
+ * ```xml
+ * <object class="AdwApplicationWindow">
+ *   <property name="content">
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar"/>
+ *       </child>
+ *       <property name="content">
+ *         <!-- ... -->
+ *       </property>
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
  * 
  * Using [property`Gtk`.Application:menubar] is not supported and may result in
  * visual glitches.
@@ -3820,6 +4093,9 @@ export interface Avatar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * for %GTK_ORIENTATION_VERTICAL, but can be used when
      * writing orientation-independent code, such as when
      * implementing [iface`Gtk`.Orientable] widgets.
+     * 
+     * To learn more about widget sizes, see the coordinate
+     * system [overview](coordinates.html).
      * @param orientation the orientation to query
      * @returns The size of @widget in @orientation.
      */
@@ -4565,6 +4841,524 @@ export class Bin extends Gtk.Widget {
     _init(config?: Bin.ConstructorProperties): void
 }
 
+export module Breakpoint {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `apply`
+     */
+    export interface ApplySignalCallback {
+        ($obj: Breakpoint): void
+    }
+
+    /**
+     * Signal callback interface for `unapply`
+     */
+    export interface UnapplySignalCallback {
+        ($obj: Breakpoint): void
+    }
+
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Buildable.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.Breakpoint
+
+        /**
+         * The breakpoint's condition.
+         */
+        condition?: BreakpointCondition | null
+    }
+
+}
+
+export interface Breakpoint extends Gtk.Buildable {
+
+    // Own properties of Adw-1.Adw.Breakpoint
+
+    /**
+     * The breakpoint's condition.
+     */
+    condition: BreakpointCondition
+
+    // Owm methods of Adw-1.Adw.Breakpoint
+
+    /**
+     * Adds a setter to `self`.
+     * 
+     * The setter will automatically set `property` on `object` to `value` when
+     * applying the breakpoint, and set it back to its original value upon
+     * unapplying it.
+     * 
+     * Note that setting properties to their original values does not work for
+     * properties that have irreversible side effects. For example, changing
+     * [property`Gtk`.Button:label] while [property`Gtk`.Button:icon-name] is set will
+     * reset the icon. However, resetting the label will not set icon-name to its
+     * original value.
+     * 
+     * Use the [signal`Breakpoint:`:apply] and [signal`Breakpoint:`:unapply] signals
+     * for those properties instead, as follows:
+     * 
+     * ```c
+     * static void
+     * breakpoint_apply_cb (MyWidget *self)
+     * {
+     *   gtk_button_set_icon_name (self->button, "go-previous-symbolic");
+     * }
+     * 
+     * static void
+     * breakpoint_apply_cb (MyWidget *self)
+     * {
+     *   gtk_button_set_label (self->button, _("_Back"));
+     * }
+     * 
+     * // ...
+     * 
+     * g_signal_connect_swapped (breakpoint, "apply",
+     *                           G_CALLBACK (breakpoint_apply_cb), self);
+     * g_signal_connect_swapped (breakpoint, "unapply",
+     *                           G_CALLBACK (breakpoint_unapply_cb), self);
+     * ```
+     * @param object the target object
+     * @param property the target property
+     * @param value the value to set
+     */
+    add_setter(object: GObject.Object, property: string | null, value: any): void
+    /**
+     * Adds `n_setters` setters to `self`.
+     * 
+     * This is a convenience function for adding multiple setters at once.
+     * 
+     * See [method`Breakpoint`.add_setter].
+     * 
+     * This function is meant to be used by language bindings.
+     * @param objects setter target object
+     * @param names setter target properties
+     * @param values setter values
+     */
+    add_setters(objects: GObject.Object[], names: string[], values: any[]): void
+    /**
+     * Gets the condition for `self`.
+     * @returns the condition
+     */
+    get_condition(): BreakpointCondition | null
+    /**
+     * Sets the condition for `self`.
+     * @param condition the new condition
+     */
+    set_condition(condition: BreakpointCondition | null): void
+
+    // Own signals of Adw-1.Adw.Breakpoint
+
+    connect(sigName: "apply", callback: Breakpoint.ApplySignalCallback): number
+    connect_after(sigName: "apply", callback: Breakpoint.ApplySignalCallback): number
+    emit(sigName: "apply", ...args: any[]): void
+    connect(sigName: "unapply", callback: Breakpoint.UnapplySignalCallback): number
+    connect_after(sigName: "unapply", callback: Breakpoint.UnapplySignalCallback): number
+    emit(sigName: "unapply", ...args: any[]): void
+
+    // Class property signals of Adw-1.Adw.Breakpoint
+
+    connect(sigName: "notify::condition", callback: (($obj: Breakpoint, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::condition", callback: (($obj: Breakpoint, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::condition", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * Describes a breakpoint for [class`Window]`.
+ * 
+ * Breakpoints are used to create adaptive UI, allowing to change the layout
+ * depending on available size.
+ * 
+ * Breakpoint is a size threshold, specified by its condition, as well as one or
+ * more setters.
+ * 
+ * Each setter has a target object, a property and a value. When a breakpoint
+ * is applied, each setter sets the target property on their target object to
+ * the specified value, and reset it back to the original value when it's
+ * unapplied.
+ * 
+ * For more complicated scenarios, [signal`Breakpoint:`:apply] and
+ * [signal`Breakpoint:`:unapply] can be used instead.
+ * 
+ * Breakpoints can be used within [class`Window]`, [class`ApplicationWindow]` or
+ * [class`BreakpointBin]`.
+ * 
+ * ## `AdwBreakpoint` as `GtkBuildable`:
+ * 
+ * `AdwBreakpoint` supports specifying its condition via the `<condition>`
+ * element. The contents of the element must be a string in a format accepted by
+ * [func`BreakpointCondition`.parse].
+ * 
+ * It also supports adding setters via the `<setter>` element. Each `<setter>`
+ * element must have the `object` attribute specifying the target object, and
+ * the `property` attribute specifying the property name. The contents of the
+ * element are used as the setter value.
+ * 
+ * For `G_TYPE_OBJECT` and `G_TYPE_BOXED` derived properties, empty contents are
+ * treated as `NULL`.
+ * 
+ * Setter values can be translated with the usual `translatable`, `context` and
+ * `comments` attributes.
+ * 
+ * Example of an `AdwBreakpoint` UI definition:
+ * 
+ * ```xml
+ * <object class="AdwBreakpoint">
+ *   <condition>max-width: 400px</condition>
+ *   <setter object="button" property="visible">True</setter>
+ *   <setter object="box" property="orientation">vertical</setter>
+ *   <setter object="page" property="title" translatable="yes">Example</setter>
+ * </object>
+ * ```
+ * @class 
+ */
+export class Breakpoint extends GObject.Object {
+
+    // Own properties of Adw-1.Adw.Breakpoint
+
+    static name: string
+    static $gtype: GObject.GType<Breakpoint>
+
+    // Constructors of Adw-1.Adw.Breakpoint
+
+    constructor(config?: Breakpoint.ConstructorProperties) 
+    /**
+     * Creates a new `AdwBreakpoint` with `condition`.
+     * @constructor 
+     * @param condition the condition
+     * @returns the newly created `AdwBreakpoint`
+     */
+    constructor(condition: BreakpointCondition) 
+    /**
+     * Creates a new `AdwBreakpoint` with `condition`.
+     * @constructor 
+     * @param condition the condition
+     * @returns the newly created `AdwBreakpoint`
+     */
+    static new(condition: BreakpointCondition): Breakpoint
+    _init(config?: Breakpoint.ConstructorProperties): void
+}
+
+export module BreakpointBin {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.BreakpointBin
+
+        /**
+         * The child widget.
+         */
+        child?: Gtk.Widget | null
+    }
+
+}
+
+export interface BreakpointBin extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.BreakpointBin
+
+    /**
+     * The child widget.
+     */
+    child: Gtk.Widget
+    /**
+     * The current breakpoint.
+     */
+    readonly current_breakpoint: Breakpoint
+
+    // Own fields of Adw-1.Adw.BreakpointBin
+
+    parent_instance: Gtk.Widget & GObject.InitiallyUnowned
+
+    // Owm methods of Adw-1.Adw.BreakpointBin
+
+    /**
+     * Adds `breakpoint` to `self`.
+     * @param breakpoint the breakpoint to add
+     */
+    add_breakpoint(breakpoint: Breakpoint): void
+    /**
+     * Gets the child widget of `self`.
+     * @returns the child widget of @self
+     */
+    get_child(): Gtk.Widget | null
+    /**
+     * Gets the current breakpoint.
+     * @returns the current breakpoint
+     */
+    get_current_breakpoint(): Breakpoint | null
+    /**
+     * Sets the child widget of `self`.
+     * @param child the child widget
+     */
+    set_child(child: Gtk.Widget | null): void
+
+    // Class property signals of Adw-1.Adw.BreakpointBin
+
+    connect(sigName: "notify::child", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::child", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::child", ...args: any[]): void
+    connect(sigName: "notify::current-breakpoint", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-breakpoint", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-breakpoint", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: BreakpointBin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A widget that changes layout based on available size.
+ * 
+ * <picture>
+ *   <source srcset="breakpoint-bin-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="breakpoint-bin.png" alt="breakpoint-bin">
+ * </picture>
+ * 
+ * `AdwBreakpointBin` provides a way to use breakpoints without [class`Window]`
+ * or [class`ApplicationWindow]`. It can be useful for limiting breakpoints to a
+ * single page and similar purposes. Most applications shouldn't need it.
+ * 
+ * `AdwBreakpointBin` is similar to [class`Bin]`. It has one child, set via the
+ * [property`BreakpointBin:`child] property.
+ * 
+ * When `AdwBreakpointBin` is resized, its child widget can rearrange its layout
+ * at specific thresholds.
+ * 
+ * The thresholds and layout changes are defined via [class`Breakpoint]` objects.
+ * They can be added using [method`BreakpointBin`.add_breakpoint].
+ * 
+ * Each breakpoint has a condition, specifying the bin's size and/or aspect
+ * ratio, and setters that automatically set object properties when that
+ * happens. The [signal`Breakpoint:`:apply] and [signal`Breakpoint:`:unapply] can
+ * be used instead for more complex scenarios.
+ * 
+ * Breakpoints are only allowed to modify widgets inside the `AdwBreakpointBin`,
+ * but not on the `AdwBreakpointBin` itself or any other widgets.
+ * 
+ * If multiple breakpoints can be used for the current size, the last one is
+ * always picked. The current breakpoint can be tracked using the
+ * [property`BreakpointBin:`current-breakpoint] property.
+ * 
+ * If none of the breakpoints can be used, that property will be set to `NULL`,
+ * and the original property values will be used instead.
+ * 
+ * ## Minimum Size
+ * 
+ * Adding a breakpoint to `AdwBreakpointBin` will result in it having no minimum
+ * size. The [property`Gtk`.Widget:width-request] and
+ * [property`Gtk`.Widget:height-request] properties must always be set when using
+ * breakpoints, indicating the smallest size you want to support.
+ * 
+ * The minimum size and breakpoint conditions must be carefully selected so that
+ * the child widget completely fits. If it doesn't, it will overflow and a
+ * warning message will be printed.
+ * 
+ * When choosing minimum size, consider translations and text scale factor
+ * changes. Make sure to leave enough space for text labels, and enable
+ * ellipsizing or wrapping if they might not fit.
+ * 
+ * For [class`Gtk`.Label] this can be done via [property`Gtk`.Label:ellipsize], or
+ * via [property`Gtk`.Label:wrap] together with [property`Gtk`.Label:wrap-mode].
+ * 
+ * For buttons, use [property`Gtk`.Button:can-shrink],
+ * [property`Gtk`.MenuButton:can-shrink], [property`Adw`.SplitButton:can-shrink],
+ * or [property`Adw`.ButtonContent:can-shrink].
+ * 
+ * ## Example
+ * 
+ * ```c
+ * GtkWidget *bin, *child;
+ * AdwBreakpoint *breakpoint;
+ * 
+ * bin = adw_breakpoint_bin_new ();
+ * gtk_widget_set_size_request (bin, 150, 150);
+ * 
+ * child = gtk_label_new ("Wide");
+ * gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+ * gtk_widget_add_css_class (child, "title-1");
+ * adw_breakpoint_bin_set_child (ADW_BREAKPOINT_BIN (bin), child);
+ * 
+ * breakpoint = adw_breakpoint_new (adw_breakpoint_condition_parse ("max-width: 200px"));
+ * adw_breakpoint_add_setters (breakpoint,
+ *                             G_OBJECT (child), "label", "Narrow",
+ *                             NULL);
+ * adw_breakpoint_bin_add_breakpoint (ADW_BREAKPOINT_BIN (bin), breakpoint);
+ * ```
+ * 
+ * The bin has a single label inside it, displaying "Wide". When the bin's width
+ * is smaller than or equal to 200px, it changes to "Narrow".
+ * 
+ * ## `AdwBreakpointBin` as `GtkBuildable`
+ * 
+ * `AdwBreakpointBin` allows adding `AdwBreakpoint` objects as children.
+ * 
+ * Example of an `AdwBreakpointBin` UI definition:
+ * 
+ * ```xml
+ * <object class="AdwBreakpointBin">
+ *   <property name="width-request">150</property>
+ *   <property name="height-request">150</property>
+ *   <property name="child">
+ *     <object class="GtkLabel" id="child">
+ *       <property name="label">Wide</property>
+ *       <property name="ellipsize">end</property>
+ *       <style>
+ *         <class name="title-1"/>
+ *       </style>
+ *     </object>
+ *   </property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 200px</condition>
+ *       <setter object="child" property="label">Narrow</setter>
+ *     </object>
+ *   </child>
+ * </object>
+ * ```
+ * 
+ * See [class`Breakpoint]` documentation for details.
+ * @class 
+ */
+export class BreakpointBin extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.BreakpointBin
+
+    static name: string
+    static $gtype: GObject.GType<BreakpointBin>
+
+    // Constructors of Adw-1.Adw.BreakpointBin
+
+    constructor(config?: BreakpointBin.ConstructorProperties) 
+    /**
+     * Creates a new `AdwBreakpointBin`.
+     * @constructor 
+     * @returns the newly created `AdwBreakpointBin`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwBreakpointBin`.
+     * @constructor 
+     * @returns the newly created `AdwBreakpointBin`
+     */
+    static new(): BreakpointBin
+    _init(config?: BreakpointBin.ConstructorProperties): void
+}
+
 export module ButtonContent {
 
     // Constructor properties interface
@@ -4573,6 +5367,14 @@ export module ButtonContent {
 
         // Own constructor properties of Adw-1.Adw.ButtonContent
 
+        /**
+         * Whether the button can be smaller than the natural size of its contents.
+         * 
+         * If set to `TRUE`, the label will ellipsize.
+         * 
+         * See [property`Gtk`.Button:can-shrink].
+         */
+        can_shrink?: boolean | null
         /**
          * The name of the displayed icon.
          * 
@@ -4600,6 +5402,14 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
     // Own properties of Adw-1.Adw.ButtonContent
 
     /**
+     * Whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [property`Gtk`.Button:can-shrink].
+     */
+    can_shrink: boolean
+    /**
      * The name of the displayed icon.
      * 
      * If empty, the icon is not shown.
@@ -4621,6 +5431,11 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
     // Owm methods of Adw-1.Adw.ButtonContent
 
     /**
+     * gets whether the button can be smaller than the natural size of its contents.
+     * @returns whether the button can shrink
+     */
+    get_can_shrink(): boolean
+    /**
      * Gets the name of the displayed icon.
      * @returns the icon name
      */
@@ -4635,6 +5450,15 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      * @returns whether an underline in the text indicates a mnemonic
      */
     get_use_underline(): boolean
+    /**
+     * Sets whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [method`Gtk`.Button.set_can_shrink].
+     * @param can_shrink whether the button can shrink
+     */
+    set_can_shrink(can_shrink: boolean): void
     /**
      * Sets the name of the displayed icon.
      * 
@@ -4659,6 +5483,9 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
 
     // Class property signals of Adw-1.Adw.ButtonContent
 
+    connect(sigName: "notify::can-shrink", callback: (($obj: ButtonContent, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-shrink", callback: (($obj: ButtonContent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: ButtonContent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: ButtonContent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
@@ -5814,6 +6641,12 @@ export module Clamp {
          * size makes transitions to and from the maximum size smoother when resizing.
          */
         tightening_threshold?: number | null
+        /**
+         * The length unit for maximum size and tightening threshold.
+         * 
+         * Allows the sizes to vary depending on the text scale factor.
+         */
+        unit?: LengthUnit | null
     }
 
 }
@@ -5849,6 +6682,12 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     */
+    unit: LengthUnit
 
     // Owm methods of Adw-1.Adw.Clamp
 
@@ -5867,6 +6706,11 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
      * @returns the size above which the child is clamped
      */
     get_tightening_threshold(): number
+    /**
+     * Gets the length unit for maximum size and tightening threshold.
+     * @returns the length unit
+     */
+    get_unit(): LengthUnit
     /**
      * Sets the child widget of `self`.
      * @param child the child widget
@@ -5897,6 +6741,13 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
      * @param tightening_threshold the tightening threshold
      */
     set_tightening_threshold(tightening_threshold: number): void
+    /**
+     * Sets the length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     * @param unit the length unit
+     */
+    set_unit(unit: LengthUnit): void
 
     // Class property signals of Adw-1.Adw.Clamp
 
@@ -5909,6 +6760,9 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
     connect(sigName: "notify::tightening-threshold", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tightening-threshold", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tightening-threshold", ...args: any[]): void
+    connect(sigName: "notify::unit", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::unit", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::unit", ...args: any[]): void
     connect(sigName: "notify::can-focus", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-focus", callback: (($obj: Clamp, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::can-focus", ...args: any[]): void
@@ -6043,13 +6897,12 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
  * If the child requires more than the requested maximum size, it will be
  * allocated the minimum size it can fit in instead.
  * 
+ * `AdwClamp` can scale with the text scale factor, use the
+ * [property`ClampLayout:`unit] property to enable that behavior.
+ * 
  * ## CSS nodes
  * 
  * `AdwClamp` has a single CSS node with name `clamp`.
- * 
- * Its children will receive the style classes `.large` when the child reached
- * its maximum size, `.small` when the clamp allocates its full size to the
- * child, `.medium` in-between, or none if it hasn't computed its size yet.
  * @class 
  */
 export class Clamp extends Gtk.Widget {
@@ -6109,6 +6962,12 @@ export module ClampLayout {
          * size makes transitions to and from the maximum size smoother when resizing.
          */
         tightening_threshold?: number | null
+        /**
+         * The length unit for maximum size and tightening threshold.
+         * 
+         * Allows the sizes to vary depending on the text scale factor.
+         */
+        unit?: LengthUnit | null
     }
 
 }
@@ -6141,6 +7000,12 @@ export interface ClampLayout extends Gtk.Orientable {
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     */
+    unit: LengthUnit
 
     // Owm methods of Adw-1.Adw.ClampLayout
 
@@ -6154,6 +7019,11 @@ export interface ClampLayout extends Gtk.Orientable {
      * @returns the size above which the children are clamped
      */
     get_tightening_threshold(): number
+    /**
+     * Gets the length unit for maximum size and tightening threshold.
+     * @returns the length unit
+     */
+    get_unit(): LengthUnit
     /**
      * Sets the maximum size allocated to the children.
      * 
@@ -6179,6 +7049,13 @@ export interface ClampLayout extends Gtk.Orientable {
      * @param tightening_threshold the tightening threshold
      */
     set_tightening_threshold(tightening_threshold: number): void
+    /**
+     * Sets the length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     * @param unit the length unit
+     */
+    set_unit(unit: LengthUnit): void
 
     // Class property signals of Adw-1.Adw.ClampLayout
 
@@ -6188,6 +7065,9 @@ export interface ClampLayout extends Gtk.Orientable {
     connect(sigName: "notify::tightening-threshold", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tightening-threshold", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tightening-threshold", ...args: any[]): void
+    connect(sigName: "notify::unit", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::unit", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::unit", ...args: any[]): void
     connect(sigName: "notify::orientation", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::orientation", callback: (($obj: ClampLayout, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::orientation", ...args: any[]): void
@@ -6217,9 +7097,8 @@ export interface ClampLayout extends Gtk.Orientable {
  * If a child requires more than the requested maximum size, it will be
  * allocated the minimum size it can fit in instead.
  * 
- * Each child will get the style  classes .large when it reached its maximum
- * size, .small when it's allocated the full size, .medium in-between, or none
- * if it hasn't been allocated yet.
+ * `AdwClampLayout` can scale with the text scale factor, use the
+ * [property`ClampLayout:`unit] property to enable that behavior.
  * @class 
  */
 export class ClampLayout extends Gtk.LayoutManager {
@@ -6282,6 +7161,12 @@ export module ClampScrollable {
          * size makes transitions to and from the maximum size smoother when resizing.
          */
         tightening_threshold?: number | null
+        /**
+         * The length unit for maximum size and tightening threshold.
+         * 
+         * Allows the sizes to vary depending on the text scale factor.
+         */
+        unit?: LengthUnit | null
     }
 
 }
@@ -6317,6 +7202,12 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     */
+    unit: LengthUnit
 
     // Owm methods of Adw-1.Adw.ClampScrollable
 
@@ -6335,6 +7226,11 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * @returns the size above which the child is clamped
      */
     get_tightening_threshold(): number
+    /**
+     * Gets the length unit for maximum size and tightening threshold.
+     * @returns the length unit
+     */
+    get_unit(): LengthUnit
     /**
      * Sets the child widget of `self`.
      * @param child the child widget
@@ -6365,6 +7261,13 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * @param tightening_threshold the tightening threshold
      */
     set_tightening_threshold(tightening_threshold: number): void
+    /**
+     * Sets the length unit for maximum size and tightening threshold.
+     * 
+     * Allows the sizes to vary depending on the text scale factor.
+     * @param unit the length unit
+     */
+    set_unit(unit: LengthUnit): void
 
     // Class property signals of Adw-1.Adw.ClampScrollable
 
@@ -6377,6 +7280,9 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
     connect(sigName: "notify::tightening-threshold", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tightening-threshold", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tightening-threshold", ...args: any[]): void
+    connect(sigName: "notify::unit", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::unit", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::unit", ...args: any[]): void
     connect(sigName: "notify::can-focus", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-focus", callback: (($obj: ClampScrollable, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::can-focus", ...args: any[]): void
@@ -6547,6 +7453,15 @@ export module ComboRow {
         // Own constructor properties of Adw-1.Adw.ComboRow
 
         /**
+         * Whether to show a search entry in the popup.
+         * 
+         * If set to `TRUE`, a search entry will be shown in the popup that
+         * allows to search for items in the list.
+         * 
+         * Search requires [property`ComboRow:`expression] to be set.
+         */
+        enable_search?: boolean | null
+        /**
          * An expression used to obtain strings from items.
          * 
          * The expression must have a value type of `G_TYPE_STRING`.
@@ -6600,6 +7515,15 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
 
     // Own properties of Adw-1.Adw.ComboRow
 
+    /**
+     * Whether to show a search entry in the popup.
+     * 
+     * If set to `TRUE`, a search entry will be shown in the popup that
+     * allows to search for items in the list.
+     * 
+     * Search requires [property`ComboRow:`expression] to be set.
+     */
+    enable_search: boolean
     /**
      * An expression used to obtain strings from items.
      * 
@@ -6658,6 +7582,16 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
     // Owm methods of Adw-1.Adw.ComboRow
 
     /**
+     * Gets whether search is enabled.
+     * 
+     * If set to `TRUE`, a search entry will be shown in the popup that
+     * allows to search for items in the list.
+     * 
+     * Search requires [property`ComboRow:`expression] to be set.
+     * @returns whether the popup includes a search entry
+     */
+    get_enable_search(): boolean
+    /**
      * Gets the expression used to obtain strings from items.
      * @returns the expression used to obtain strings from items
      */
@@ -6692,6 +7626,16 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      * @returns whether to use the current value as the subtitle
      */
     get_use_subtitle(): boolean
+    /**
+     * Sets whether to enable search.
+     * 
+     * If set to `TRUE`, a search entry will be shown in the popup that
+     * allows to search for items in the list.
+     * 
+     * Search requires [property`ComboRow:`expression] to be set.
+     * @param enable_search whether to enable search
+     */
+    set_enable_search(enable_search: boolean): void
     /**
      * Sets the expression used to obtain strings from items.
      * 
@@ -6790,6 +7734,9 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
 
     // Class property signals of Adw-1.Adw.ComboRow
 
+    connect(sigName: "notify::enable-search", callback: (($obj: ComboRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::enable-search", callback: (($obj: ComboRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-search", ...args: any[]): void
     connect(sigName: "notify::expression", callback: (($obj: ComboRow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::expression", callback: (($obj: ComboRow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::expression", ...args: any[]): void
@@ -7630,6 +8577,8 @@ export interface EnumListModel extends Gio.ListModel {
 
     /**
      * Finds the position of a given enum value in `self`.
+     * 
+     * If the value is not found, `GTK_INVALID_LIST_POSITION` is returned.
      * @param value an enum value
      */
     find_position(value: number): number
@@ -7795,6 +8744,11 @@ export interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      * @param child a widget
      */
     add_row(child: Gtk.Widget): void
+    /**
+     * Adds an suffix widget to `self`.
+     * @param widget a widget
+     */
+    add_suffix(widget: Gtk.Widget): void
     /**
      * Gets whether the expansion of `self` is enabled.
      * @returns whether the expansion of @self is enabled.
@@ -8054,7 +9008,7 @@ export interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
  * ## AdwExpanderRow as GtkBuildable
  * 
  * The `AdwExpanderRow` implementation of the [iface`Gtk`.Buildable] interface
- * supports adding a child as an action widget by specifying “action” as the
+ * supports adding a child as an suffix widget by specifying “suffix” as the
  * “type” attribute of a <child> element.
  * 
  * It also supports adding it as a prefix widget by specifying “prefix” as the
@@ -8802,6 +9756,13 @@ export module HeaderBar {
          */
         decoration_layout?: string | null
         /**
+         * Whether the header bar can show the back button.
+         * 
+         * The back button will never be shown unless the header bar is placed inside an
+         * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
+         */
+        show_back_button?: boolean | null
+        /**
          * Whether to show title buttons at the end of the header bar.
          * 
          * See [property`HeaderBar:`show-start-title-buttons] for the other side.
@@ -8823,6 +9784,10 @@ export module HeaderBar {
          * closed).
          */
         show_start_title_buttons?: boolean | null
+        /**
+         * Whether the title widget should be shown.
+         */
+        show_title?: boolean | null
         /**
          * The title widget to display.
          * 
@@ -8870,6 +9835,13 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     decoration_layout: string | null
     /**
+     * Whether the header bar can show the back button.
+     * 
+     * The back button will never be shown unless the header bar is placed inside an
+     * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
+     */
+    show_back_button: boolean
+    /**
      * Whether to show title buttons at the end of the header bar.
      * 
      * See [property`HeaderBar:`show-start-title-buttons] for the other side.
@@ -8891,6 +9863,10 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * closed).
      */
     show_start_title_buttons: boolean
+    /**
+     * Whether the title widget should be shown.
+     */
+    show_title: boolean
     /**
      * The title widget to display.
      * 
@@ -8924,6 +9900,11 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     get_decoration_layout(): string | null
     /**
+     * Gets whether `self` can show the back button.
+     * @returns whether to show the back button
+     */
+    get_show_back_button(): boolean
+    /**
      * Gets whether to show title buttons at the end of `self`.
      * @returns `TRUE` if title buttons at the end are shown
      */
@@ -8933,6 +9914,11 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * @returns `TRUE` if title buttons at the start are shown
      */
     get_show_start_title_buttons(): boolean
+    /**
+     * Gets whether the title widget should be shown.
+     * @returns whether the title widget should be shown.
+     */
+    get_show_title(): boolean
     /**
      * Gets the title widget widget of `self`.
      * @returns the title widget
@@ -8978,6 +9964,14 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     set_decoration_layout(layout: string | null): void
     /**
+     * Sets whether `self` can show the back button.
+     * 
+     * The back button will never be shown unless the header bar is placed inside an
+     * [class`NavigationView]`. Usually, there is no reason to set it to `FALSE`.
+     * @param show_back_button whether to show the back button
+     */
+    set_show_back_button(show_back_button: boolean): void
+    /**
      * Sets whether to show title buttons at the end of `self`.
      * 
      * See [property`HeaderBar:`show-start-title-buttons] for the other side.
@@ -8999,6 +9993,11 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * @param setting `TRUE` to show standard title buttons
      */
     set_show_start_title_buttons(setting: boolean): void
+    /**
+     * Sets whether the title widget should be shown.
+     * @param show_title whether the title widget is visible
+     */
+    set_show_title(show_title: boolean): void
     /**
      * Sets the title widget for `self`.
      * 
@@ -9028,12 +10027,18 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
     connect(sigName: "notify::decoration-layout", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::decoration-layout", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::decoration-layout", ...args: any[]): void
+    connect(sigName: "notify::show-back-button", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-back-button", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-back-button", ...args: any[]): void
     connect(sigName: "notify::show-end-title-buttons", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-end-title-buttons", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-end-title-buttons", ...args: any[]): void
     connect(sigName: "notify::show-start-title-buttons", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-start-title-buttons", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-start-title-buttons", ...args: any[]): void
+    connect(sigName: "notify::show-title", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-title", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-title", ...args: any[]): void
     connect(sigName: "notify::title-widget", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title-widget", callback: (($obj: HeaderBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title-widget", ...args: any[]): void
@@ -9157,52 +10162,38 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
  * </picture>
  * 
  * `AdwHeaderBar` is similar to [class`Gtk`.HeaderBar], but provides additional
- * features compared to it. Refer to `GtkHeaderBar` for details.
+ * features compared to it. Refer to `GtkHeaderBar` for details. It is typically
+ * used as a top bar within [class`ToolbarView]`.
+ * 
+ * ## Navigation View Integration
+ * 
+ * When placed inside an [class`NavigationPage]`, `AdwHeaderBar` will display the
+ * page title instead of window title.
+ * 
+ * When used together with [class`NavigationView]` or [class`NavigationSplitView]`,
+ * it will also display a back button that can be used to go back to the previous
+ * page. The button also has a context menu, allowing to pop multiple pages at
+ * once, potentially across multiple navigation views. In rare scenarios, set
+ * [property`HeaderBar:`show-back-button] to `FALSE` to disable the back button
+ * if it's unwanted (e.g. in an extra header bar on the same page).
+ * 
+ * ## Split View Integration
+ * 
+ * When placed inside `AdwNavigationSplitView` or `AdwOverlaySplitView`,
+ * `AdwHeaderBar` will automatically hide the title buttons other than at the
+ * edges of the window.
+ * 
+ * ## Centering Policy
  * 
  * [property`HeaderBar:`centering-policy] allows to enforce strict centering of
- * the title widget, this is useful for [class`ViewSwitcherTitle]`.
+ * the title widget. This can be useful for entries inside [class`Clamp]`.
  * 
+ * ## Title Buttons
+ * 
+ * Unlike `GtkHeaderBar`, `AdwHeaderBar` allows to toggle title button
+ * visibility for each side individually, using the
  * [property`HeaderBar:`show-start-title-buttons] and
- * [property`HeaderBar:`show-end-title-buttons] allow to easily create split
- * header bar layouts using [class`Leaflet]`, as follows:
- * 
- * ```xml
- * <object class="AdwLeaflet" id="leaflet">
- *   <child>
- *     <object class="GtkBox">
- *       <property name="orientation">vertical</property>
- *       <child>
- *         <object class="AdwHeaderBar">
- *           <binding name="show-end-title-buttons">
- *             <lookup name="folded">leaflet</lookup>
- *           </binding>
- *         </object>
- *       </child>
- *       <!-- ... -->
- *     </object>
- *   </child>
- *   <!-- ... -->
- *   <child>
- *     <object class="GtkBox">
- *       <property name="orientation">vertical</property>
- *       <property name="hexpand">True</property>
- *       <child>
- *         <object class="AdwHeaderBar">
- *           <binding name="show-start-title-buttons">
- *             <lookup name="folded">leaflet</lookup>
- *           </binding>
- *         </object>
- *       </child>
- *       <!-- ... -->
- *     </object>
- *   </child>
- * </object>
- * ```
- * 
- * <picture>
- *   <source srcset="header-bar-split-dark.png" media="(prefers-color-scheme: dark)">
- *   <img src="header-bar-split.png" alt="header-bar-split">
- * </picture>
+ * [property`HeaderBar:`show-end-title-buttons] properties.
  * 
  * ## CSS nodes
  * 
@@ -9213,8 +10204,11 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
  *         ├── widget
  *         │   ╰── box.start
  *         │       ├── windowcontrols.start
+ *         │       ├── widget
+ *         │       │   ╰── [button.back]
  *         │       ╰── [other children]
- *         ├── [Title Widget]
+ *         ├── widget
+ *         │   ╰── [Title Widget]
  *         ╰── widget
  *             ╰── box.end
  *                 ├── [other children]
@@ -9222,13 +10216,17 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
  * ```
  * 
  * `AdwHeaderBar`'s CSS node is called `headerbar`. It contains a `windowhandle`
- * subnode, which contains a `box` subnode, which contains two `widget` subnodes
- * at the start and end of the header bar, each of which contains a `box`
- * subnode with the `.start` and `.end` style classes respectively, as well as a
- * center node that represents the title.
+ * subnode, which contains a `box` subnode, which contains three `widget`
+ * subnodes at the start, center and end of the header bar. The start and end
+ * subnotes contain a `box` subnode with the `.start` and `.end` style classes
+ * respectively, and the center node contains a node that represents the title.
  * 
  * Each of the boxes contains a `windowcontrols` subnode, see
  * [class`Gtk`.WindowControls] for details, as well as other children.
+ * 
+ * When [property`HeaderBar:`show-back-button] is `TRUE`, the start box also
+ * contains a node with the name `widget` that contains a node with the name
+ * `button` and `.back` style class.
  * 
  * ## Accessibility
  * 
@@ -10523,6 +11521,9 @@ export interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
     connect(sigName: "notify::startup-id", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -10851,6 +11852,2252 @@ export class MessageDialog extends Gtk.Window {
      */
     static new(): Gtk.Window
     _init(config?: MessageDialog.ConstructorProperties): void
+}
+
+export module NavigationPage {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `hidden`
+     */
+    export interface HiddenSignalCallback {
+        ($obj: NavigationPage): void
+    }
+
+    /**
+     * Signal callback interface for `hiding`
+     */
+    export interface HidingSignalCallback {
+        ($obj: NavigationPage): void
+    }
+
+    /**
+     * Signal callback interface for `showing`
+     */
+    export interface ShowingSignalCallback {
+        ($obj: NavigationPage): void
+    }
+
+    /**
+     * Signal callback interface for `shown`
+     */
+    export interface ShownSignalCallback {
+        ($obj: NavigationPage): void
+    }
+
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.NavigationPage
+
+        /**
+         * Whether the page can be popped from navigation stack.
+         * 
+         * Set it to `FALSE` to disable shortcuts and gestures, as well as remove the
+         * back button from [class`HeaderBar]`.
+         * 
+         * Manually calling [method`NavigationView`.pop] or using the `navigation.pop`
+         * action will still work.
+         * 
+         * See [property`HeaderBar:`show-back-button] for removing only the back
+         * button, but not shortcuts.
+         */
+        can_pop?: boolean | null
+        /**
+         * The child widget.
+         */
+        child?: Gtk.Widget | null
+        /**
+         * The page tag.
+         * 
+         * The tag can be used to retrieve the page with
+         * [method`NavigationView`.find_page], as well as with
+         * [method`NavigationView`.push_by_tag], [method`NavigationView`.pop_to_tag] or
+         * [method`NavigationView`.replace_with_tags].
+         * 
+         * Tags must be unique within each [class`NavigationView]`.
+         * 
+         * The tag also must be set to use the `navigation.push` action.
+         */
+        tag?: string | null
+        /**
+         * The page title.
+         * 
+         * It's displayed in [class`HeaderBar]` instead of the window title, and used
+         * as the tooltip on the next page's back button, as well as by screen reader.
+         */
+        title?: string | null
+    }
+
+}
+
+export interface NavigationPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.NavigationPage
+
+    /**
+     * Whether the page can be popped from navigation stack.
+     * 
+     * Set it to `FALSE` to disable shortcuts and gestures, as well as remove the
+     * back button from [class`HeaderBar]`.
+     * 
+     * Manually calling [method`NavigationView`.pop] or using the `navigation.pop`
+     * action will still work.
+     * 
+     * See [property`HeaderBar:`show-back-button] for removing only the back
+     * button, but not shortcuts.
+     */
+    can_pop: boolean
+    /**
+     * The child widget.
+     */
+    child: Gtk.Widget
+    /**
+     * The page tag.
+     * 
+     * The tag can be used to retrieve the page with
+     * [method`NavigationView`.find_page], as well as with
+     * [method`NavigationView`.push_by_tag], [method`NavigationView`.pop_to_tag] or
+     * [method`NavigationView`.replace_with_tags].
+     * 
+     * Tags must be unique within each [class`NavigationView]`.
+     * 
+     * The tag also must be set to use the `navigation.push` action.
+     */
+    tag: string | null
+    /**
+     * The page title.
+     * 
+     * It's displayed in [class`HeaderBar]` instead of the window title, and used
+     * as the tooltip on the next page's back button, as well as by screen reader.
+     */
+    title: string | null
+
+    // Own fields of Adw-1.Adw.NavigationPage
+
+    parent_instance: Gtk.Widget & GObject.InitiallyUnowned
+
+    // Owm methods of Adw-1.Adw.NavigationPage
+
+    /**
+     * Gets whether `self` can be popped from navigation stack.
+     * @returns whether the page can be popped from navigation stack
+     */
+    get_can_pop(): boolean
+    /**
+     * Gets the child widget of `self`.
+     * @returns the child widget of @self
+     */
+    get_child(): Gtk.Widget | null
+    /**
+     * Gets the tag of `self`.
+     * @returns the page tag
+     */
+    get_tag(): string | null
+    /**
+     * Gets the title of `self`.
+     * @returns the title of @self
+     */
+    get_title(): string | null
+    /**
+     * Sets whether `self` can be popped from navigation stack.
+     * 
+     * Set it to `FALSE` to disable shortcuts and gestures, as well as remove the
+     * back button from [class`HeaderBar]`.
+     * 
+     * Manually calling [method`NavigationView`.pop] or using the `navigation.pop`
+     * action will still work.
+     * 
+     * See [property`HeaderBar:`show-back-button] for removing only the back button,
+     * but not shortcuts.
+     * @param can_pop whether the page can be popped from navigation stack
+     */
+    set_can_pop(can_pop: boolean): void
+    /**
+     * Sets the child widget of `self`.
+     * @param child the child widget
+     */
+    set_child(child: Gtk.Widget | null): void
+    /**
+     * Sets the tag for `self`.
+     * 
+     * The tag can be used to retrieve the page with
+     * [method`NavigationView`.find_page], as well as with
+     * [method`NavigationView`.push_by_tag], [method`NavigationView`.pop_to_tag] or
+     * [method`NavigationView`.replace_with_tags].
+     * 
+     * Tags must be unique within each [class`NavigationView]`.
+     * 
+     * The tag also must be set to use the `navigation.push` action.
+     * @param tag the page tag
+     */
+    set_tag(tag: string | null): void
+    /**
+     * Sets the title of `self`.
+     * 
+     * It's displayed in [class`HeaderBar]` instead of the window title, and used as
+     * the tooltip on the next page's back button, as well as by screen reader.
+     * @param title the title
+     */
+    set_title(title: string | null): void
+
+    // Own virtual methods of Adw-1.Adw.NavigationPage
+
+    /**
+     * Called when the navigation view transition has been completed and the page
+     * is fully hidden.
+     * @virtual 
+     */
+    vfunc_hidden(): void
+    /**
+     * Called when the page starts hiding at the beginning of the navigation view
+     * transition.
+     * @virtual 
+     */
+    vfunc_hiding(): void
+    /**
+     * Called when the page shows at the beginning of the navigation view
+     * transition.
+     * @virtual 
+     */
+    vfunc_showing(): void
+    /**
+     * Called when the navigation view transition has been completed and the page
+     * is fully shown.
+     * @virtual 
+     */
+    vfunc_shown(): void
+
+    // Own signals of Adw-1.Adw.NavigationPage
+
+    connect(sigName: "hidden", callback: NavigationPage.HiddenSignalCallback): number
+    connect_after(sigName: "hidden", callback: NavigationPage.HiddenSignalCallback): number
+    emit(sigName: "hidden", ...args: any[]): void
+    connect(sigName: "hiding", callback: NavigationPage.HidingSignalCallback): number
+    connect_after(sigName: "hiding", callback: NavigationPage.HidingSignalCallback): number
+    emit(sigName: "hiding", ...args: any[]): void
+    connect(sigName: "showing", callback: NavigationPage.ShowingSignalCallback): number
+    connect_after(sigName: "showing", callback: NavigationPage.ShowingSignalCallback): number
+    emit(sigName: "showing", ...args: any[]): void
+    connect(sigName: "shown", callback: NavigationPage.ShownSignalCallback): number
+    connect_after(sigName: "shown", callback: NavigationPage.ShownSignalCallback): number
+    emit(sigName: "shown", ...args: any[]): void
+
+    // Class property signals of Adw-1.Adw.NavigationPage
+
+    connect(sigName: "notify::can-pop", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-pop", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-pop", ...args: any[]): void
+    connect(sigName: "notify::child", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::child", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::child", ...args: any[]): void
+    connect(sigName: "notify::tag", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tag", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tag", ...args: any[]): void
+    connect(sigName: "notify::title", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: NavigationPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A page within [class`NavigationView]` or [class`NavigationSplitView]`.
+ * 
+ * Each page has a child widget, a title and optionally a tag.
+ * 
+ * The [signal`NavigationPage:`:showing], [signal`NavigationPage:`:shown],
+ * [signal`NavigationPage:`:hiding] and [signal`NavigationPage:`:hidden] signals
+ * can be used to track the page's visibility within its `AdwNavigationView`.
+ * 
+ * ## Header Bar Integration
+ * 
+ * When placed inside `AdwNavigationPage`, [class`HeaderBar]` will display the
+ * page title instead of window title.
+ * 
+ * When used together with [class`NavigationView]`, it will also display a back
+ * button that can be used to go back to the previous page. Set
+ * [property`HeaderBar:`show-back-button] to `FALSE` to disable that behavior if
+ * it's unwanted.
+ * 
+ * ## CSS Nodes
+ * 
+ * `AdwNavigationPage` has a single CSS node with name
+ * `navigation-view-page`.
+ * 
+ * ## Accessibility
+ * 
+ * `AdwNavigationPage` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * @class 
+ */
+export class NavigationPage extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.NavigationPage
+
+    static name: string
+    static $gtype: GObject.GType<NavigationPage>
+
+    // Constructors of Adw-1.Adw.NavigationPage
+
+    constructor(config?: NavigationPage.ConstructorProperties) 
+    /**
+     * Creates a new `AdwNavigationPage`.
+     * @constructor 
+     * @param child the child widget
+     * @param title the page title
+     * @returns the new created `AdwNavigationPage`
+     */
+    constructor(child: Gtk.Widget, title: string | null) 
+    /**
+     * Creates a new `AdwNavigationPage`.
+     * @constructor 
+     * @param child the child widget
+     * @param title the page title
+     * @returns the new created `AdwNavigationPage`
+     */
+    static new(child: Gtk.Widget, title: string | null): NavigationPage
+    /**
+     * Creates a new `AdwNavigationPage` with provided tag.
+     * @constructor 
+     * @param child the child widget
+     * @param title the page title
+     * @param tag the page tag
+     * @returns the new created `AdwNavigationPage`
+     */
+    static new_with_tag(child: Gtk.Widget, title: string | null, tag: string | null): NavigationPage
+    _init(config?: NavigationPage.ConstructorProperties): void
+}
+
+export module NavigationSplitView {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.NavigationSplitView
+
+        /**
+         * Whether the split view is collapsed.
+         * 
+         * When collapsed, the children are put inside an [class`NavigationView]`,
+         * otherwise they are displayed side by side.
+         * 
+         * The [property`NavigationSplitView:`show-content] controls which child is
+         * visible while collapsed.
+         */
+        collapsed?: boolean | null
+        /**
+         * The content widget.
+         */
+        content?: NavigationPage | null
+        /**
+         * The maximum sidebar width.
+         * 
+         * Maximum width is affected by
+         * [property`NavigationSplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        max_sidebar_width?: number | null
+        /**
+         * The minimum sidebar width.
+         * 
+         * Minimum width is affected by
+         * [property`NavigationSplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        min_sidebar_width?: number | null
+        /**
+         * Determines the visible page when collapsed.
+         * 
+         * If set to `TRUE`, the content widget will be the visible page when
+         * [property`NavigationSplitView:`collapsed] is `TRUE`; otherwise the sidebar
+         * widget will be visible.
+         * 
+         * If the split view is already collapsed, the visible page changes
+         * immediately.
+         */
+        show_content?: boolean | null
+        /**
+         * The sidebar widget.
+         */
+        sidebar?: NavigationPage | null
+        /**
+         * The preferred sidebar width as a fraction of the total width.
+         * 
+         * The preferred width is additionally limited by
+         * [property`NavigationSplitView:`min-sidebar-width] and
+         * [property`NavigationSplitView:`max-sidebar-width].
+         * 
+         * The sidebar widget can be allocated with larger width if its own minimum
+         * width exceeds the preferred width.
+         */
+        sidebar_width_fraction?: number | null
+        /**
+         * The length unit for minimum and maximum sidebar widths.
+         * 
+         * See [property`NavigationSplitView:`min-sidebar-width] and
+         * [property`NavigationSplitView:`max-sidebar-width].
+         */
+        sidebar_width_unit?: LengthUnit | null
+    }
+
+}
+
+export interface NavigationSplitView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.NavigationSplitView
+
+    /**
+     * Whether the split view is collapsed.
+     * 
+     * When collapsed, the children are put inside an [class`NavigationView]`,
+     * otherwise they are displayed side by side.
+     * 
+     * The [property`NavigationSplitView:`show-content] controls which child is
+     * visible while collapsed.
+     */
+    collapsed: boolean
+    /**
+     * The content widget.
+     */
+    content: NavigationPage
+    /**
+     * The maximum sidebar width.
+     * 
+     * Maximum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    max_sidebar_width: number
+    /**
+     * The minimum sidebar width.
+     * 
+     * Minimum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    min_sidebar_width: number
+    /**
+     * Determines the visible page when collapsed.
+     * 
+     * If set to `TRUE`, the content widget will be the visible page when
+     * [property`NavigationSplitView:`collapsed] is `TRUE`; otherwise the sidebar
+     * widget will be visible.
+     * 
+     * If the split view is already collapsed, the visible page changes
+     * immediately.
+     */
+    show_content: boolean
+    /**
+     * The sidebar widget.
+     */
+    sidebar: NavigationPage
+    /**
+     * The preferred sidebar width as a fraction of the total width.
+     * 
+     * The preferred width is additionally limited by
+     * [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     */
+    sidebar_width_fraction: number
+    /**
+     * The length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     */
+    sidebar_width_unit: LengthUnit
+
+    // Owm methods of Adw-1.Adw.NavigationSplitView
+
+    /**
+     * Gets whether `self` is collapsed.
+     * @returns whether @self is collapsed
+     */
+    get_collapsed(): boolean
+    /**
+     * Sets the content widget for `self`.
+     * @returns the content widget
+     */
+    get_content(): NavigationPage | null
+    /**
+     * Gets the maximum sidebar width for `self`.
+     * @returns the maximum width
+     */
+    get_max_sidebar_width(): number
+    /**
+     * Gets the minimum sidebar width for `self`.
+     * @returns the minimum width
+     */
+    get_min_sidebar_width(): number
+    /**
+     * Gets which page is visible when `self` is collapsed.
+     * @returns whether to show content when collapsed
+     */
+    get_show_content(): boolean
+    /**
+     * Gets the sidebar widget for `self`.
+     * @returns the sidebar widget
+     */
+    get_sidebar(): NavigationPage | null
+    /**
+     * Gets the preferred sidebar width fraction for `self`.
+     * @returns the preferred width fraction
+     */
+    get_sidebar_width_fraction(): number
+    /**
+     * Gets the length unit for minimum and maximum sidebar widths.
+     * @returns the length unit
+     */
+    get_sidebar_width_unit(): LengthUnit
+    /**
+     * Sets whether `self` is collapsed.
+     * 
+     * When collapsed, the children are put inside an [class`NavigationView]`,
+     * otherwise they are displayed side by side.
+     * 
+     * The [property`NavigationSplitView:`show-content] controls which child is
+     * visible while collapsed.
+     * @param collapsed whether `self` is collapsed
+     */
+    set_collapsed(collapsed: boolean): void
+    /**
+     * Sets the content widget for `self`.
+     * @param content the content widget
+     */
+    set_content(content: NavigationPage | null): void
+    /**
+     * Sets the maximum sidebar width for `self`.
+     * 
+     * Maximum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     * @param width the maximum width
+     */
+    set_max_sidebar_width(width: number): void
+    /**
+     * Sets the minimum sidebar width for `self`.
+     * 
+     * Minimum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     * @param width the minimum width
+     */
+    set_min_sidebar_width(width: number): void
+    /**
+     * Sets which page is visible when `self` is collapsed.
+     * 
+     * If set to `TRUE`, the content widget will be the visible page when
+     * [property`NavigationSplitView:`collapsed] is `TRUE`; otherwise the sidebar
+     * widget will be visible.
+     * 
+     * If the split view is already collapsed, the visible page changes immediately.
+     * @param show_content whether to show content when collapsed
+     */
+    set_show_content(show_content: boolean): void
+    /**
+     * Sets the sidebar widget for `self`.
+     * @param sidebar the sidebar widget
+     */
+    set_sidebar(sidebar: NavigationPage | null): void
+    /**
+     * Sets the preferred sidebar width as a fraction of the total width of `self`.
+     * 
+     * The preferred width is additionally limited by
+     * [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     * @param fraction the preferred width fraction
+     */
+    set_sidebar_width_fraction(fraction: number): void
+    /**
+     * Sets the length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     * @param unit the length unit
+     */
+    set_sidebar_width_unit(unit: LengthUnit): void
+
+    // Class property signals of Adw-1.Adw.NavigationSplitView
+
+    connect(sigName: "notify::collapsed", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collapsed", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::collapsed", ...args: any[]): void
+    connect(sigName: "notify::content", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::max-sidebar-width", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-sidebar-width", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-sidebar-width", ...args: any[]): void
+    connect(sigName: "notify::min-sidebar-width", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-sidebar-width", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-sidebar-width", ...args: any[]): void
+    connect(sigName: "notify::show-content", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-content", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-content", ...args: any[]): void
+    connect(sigName: "notify::sidebar", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar", ...args: any[]): void
+    connect(sigName: "notify::sidebar-width-fraction", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar-width-fraction", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar-width-fraction", ...args: any[]): void
+    connect(sigName: "notify::sidebar-width-unit", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar-width-unit", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar-width-unit", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: NavigationSplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A widget presenting sidebar and content side by side or as a navigation view.
+ * 
+ * <picture>
+ *   <source srcset="navigation-split-view-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="navigation-split-view.png" alt="navigation-split-view">
+ * </picture>
+ * <picture>
+ *   <source srcset="navigation-split-view-collapsed-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="navigation-split-view-collapsed.png" alt="navigation-split-view-collapsed">
+ * </picture>
+ * 
+ * `AdwNavigationSplitView` has two [class`NavigationPage]` children: sidebar and
+ * content, and displays them side by side.
+ * 
+ * When [property`NavigationSplitView:`collapsed] is set to `TRUE`, it instead
+ * puts both children inside an [class`NavigationView]`. The
+ * [property`NavigationSplitView:`show-content] controls which child is visible
+ * while collapsed.
+ * 
+ * See also [class`OverlaySplitView]`.
+ * 
+ * `AdwNavigationSplitView` is typically used together with an [class`Breakpoint]`
+ * setting the `collapsed` property to `TRUE` on small widths, as follows:
+ * 
+ * ```xml
+ * <object class="AdwWindow">
+ *   <property name="width-request">280</property>
+ *   <property name="height-request">200</property>
+ *   <property name="default-width">800</property>
+ *   <property name="default-height">800</property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 400sp</condition>
+ *       <setter object="split_view" property="collapsed">True</setter>
+ *     </object>
+ *   </child>
+ *   <property name="content">
+ *     <object class="AdwNavigationSplitView" id="split_view">
+ *       <property name="sidebar">
+ *         <object class="AdwNavigationPage">
+ *           <property name="title" translatable="yes">Sidebar</property>
+ *           <property name="child">
+ *             <!-- ... -->
+ *           </property>
+ *         </object>
+ *       </property>
+ *       <property name="content">
+ *         <object class="AdwNavigationPage">
+ *           <property name="title" translatable="yes">Content</property>
+ *           <property name="child">
+ *             <!-- ... -->
+ *           </property>
+ *         </object>
+ *       </property>
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
+ * 
+ * ## Sizing
+ * 
+ * When not collapsed, `AdwNavigationSplitView` changes the sidebar width
+ * depending on its own width.
+ * 
+ * If possible, it tries to allocate a fraction of the total width, controlled
+ * with the [property`NavigationSplitView:`sidebar-width-fraction] property.
+ * 
+ * The sidebar also has minimum and maximum sizes, controlled with the
+ * [property`NavigationSplitView:`min-sidebar-width] and
+ * [property`NavigationSplitView:`max-sidebar-width] properties.
+ * 
+ * The minimum and maximum sizes are using the length unit specified with the
+ * [property`NavigationSplitView:`sidebar-width-unit].
+ * 
+ * By default, sidebar is using 25% of the total width, with 180sp as the
+ * minimum size and 280sp as the maximum size.
+ * 
+ * ## Header Bar Integration
+ * 
+ * When used inside `AdwNavigationSplitView`, [class`HeaderBar]` will
+ * automatically hide the window buttons in the middle.
+ * 
+ * When collapsed, it also displays a back button for the content widget, as
+ * well as the page titles. See [class`NavigationView]` documentation for details.
+ * 
+ * ## Actions
+ * 
+ * `AdwNavigationSplitView` defines the same actions as `AdwNavigationView`, but
+ * they can be used even when the split view is not collapsed:
+ * 
+ * - `navigation.push` takes a string parameter specifying the tag of the page
+ * to push. If it matches the tag of the content widget, it sets
+ * [property`NavigationSplitView:`show-content] to `TRUE`.
+ * 
+ * - `navigation.pop` doesn't take any parameters and sets
+ * [property`NavigationSplitView:`show-content] to `FALSE`.
+ * 
+ * ## `AdwNavigationSplitView` as `GtkBuildable`
+ * 
+ * The `AdwNavigationSplitView` implementation of the [iface`Gtk`.Buildable]
+ * interface supports setting the sidebar widget by specifying “sidebar” as the
+ * “type” attribute of a `<child>` element, Specifying “content” child type or
+ * omitting it results in setting the content widget.
+ * 
+ * ## CSS nodes
+ * 
+ * `AdwNavigationSplitView` has a single CSS node with the name
+ * `navigation-split-view`.
+ * 
+ * When collapsed, it contains a child node with the name `navigation-view`
+ * containing both children.
+ * 
+ * ```
+ * navigation-split-view
+ * ╰── navigation-view
+ *     ├── [sidebar child]
+ *     ╰── [content child]
+ * ```
+ * 
+ * When not collapsed, it contains two nodes with the name `widget`, one with
+ * the `.sidebar-pane` style class, the other one with `.content-view` style
+ * class, containing the sidebar and content children respectively.
+ * 
+ * ```
+ * navigation-split-view
+ * ├── widget.sidebar-pane
+ * │   ╰── [sidebar child]
+ * ╰── widget.content-pane
+ *     ╰── [content child]
+ * ```
+ * 
+ * ## Accessibility
+ * 
+ * `AdwNavigationSplitView` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * @class 
+ */
+export class NavigationSplitView extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.NavigationSplitView
+
+    static name: string
+    static $gtype: GObject.GType<NavigationSplitView>
+
+    // Constructors of Adw-1.Adw.NavigationSplitView
+
+    constructor(config?: NavigationSplitView.ConstructorProperties) 
+    /**
+     * Creates a new `AdwNavigationSplitView`.
+     * @constructor 
+     * @returns the newly created `AdwNavigationSplitView`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwNavigationSplitView`.
+     * @constructor 
+     * @returns the newly created `AdwNavigationSplitView`
+     */
+    static new(): NavigationSplitView
+    _init(config?: NavigationSplitView.ConstructorProperties): void
+}
+
+export module NavigationView {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `get-next-page`
+     */
+    export interface GetNextPageSignalCallback {
+        ($obj: NavigationView): NavigationPage | null
+    }
+
+    /**
+     * Signal callback interface for `popped`
+     */
+    export interface PoppedSignalCallback {
+        ($obj: NavigationView, page: NavigationPage): void
+    }
+
+    /**
+     * Signal callback interface for `pushed`
+     */
+    export interface PushedSignalCallback {
+        ($obj: NavigationView): void
+    }
+
+    /**
+     * Signal callback interface for `replaced`
+     */
+    export interface ReplacedSignalCallback {
+        ($obj: NavigationView): void
+    }
+
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Swipeable.ConstructorProperties, Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.NavigationView
+
+        /**
+         * Whether to animate page transitions.
+         * 
+         * Gesture-based transitions are always animated.
+         */
+        animate_transitions?: boolean | null
+        /**
+         * Whether pressing Escape pops the current page.
+         * 
+         * Applications using `AdwNavigationView` to implement a browser may want to
+         * disable it.
+         */
+        pop_on_escape?: boolean | null
+    }
+
+}
+
+export interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.NavigationView
+
+    /**
+     * Whether to animate page transitions.
+     * 
+     * Gesture-based transitions are always animated.
+     */
+    animate_transitions: boolean
+    /**
+     * A list model that contains the pages in navigation stack.
+     * 
+     * The pages are sorted from root page to visible page.
+     * 
+     * This can be used to keep an up-to-date view.
+     */
+    readonly navigation_stack: Gio.ListModel
+    /**
+     * Whether pressing Escape pops the current page.
+     * 
+     * Applications using `AdwNavigationView` to implement a browser may want to
+     * disable it.
+     */
+    pop_on_escape: boolean
+    /**
+     * The currently visible page.
+     */
+    readonly visible_page: NavigationPage
+
+    // Owm methods of Adw-1.Adw.NavigationView
+
+    /**
+     * Permanently adds `page` to `self`.
+     * 
+     * Any page that has been added will stay in `self` even after being popped from
+     * the navigation stack.
+     * 
+     * Adding a page while no page is visible will automatically push it to the
+     * navigation stack.
+     * 
+     * See [method`NavigationView`.remove].
+     * @param page the page to add
+     */
+    add(page: NavigationPage): void
+    /**
+     * Finds a page in `self` by its tag.
+     * 
+     * See [property`NavigationPage:`tag].
+     * @param tag a page tag
+     * @returns the page with the given tag
+     */
+    find_page(tag: string | null): NavigationPage | null
+    /**
+     * Gets whether `self` animates page transitions.
+     * @returns whether to animate page transitions
+     */
+    get_animate_transitions(): boolean
+    /**
+     * Returns a [iface`Gio`.ListModel] that contains the pages in navigation stack.
+     * 
+     * The pages are sorted from root page to visible page.
+     * 
+     * This can be used to keep an up-to-date view.
+     * @returns a list model for the navigation stack
+     */
+    get_navigation_stack(): Gio.ListModel
+    /**
+     * Gets whether pressing Escape pops the current page on `self`.
+     * @returns whether to pop the current page
+     */
+    get_pop_on_escape(): boolean
+    /**
+     * Gets the previous page for `page`.
+     * 
+     * If `page` is in the navigation stack, returns the page popping `page` will
+     * reveal.
+     * 
+     * If `page` is the root page or is not in the navigation stack, returns `NULL`.
+     * @param page a page in `self`
+     * @returns the previous page
+     */
+    get_previous_page(page: NavigationPage): NavigationPage | null
+    /**
+     * Gets the currently visible page in `self`.
+     * @returns the currently visible page
+     */
+    get_visible_page(): NavigationPage | null
+    /**
+     * Pops the visible page from the navigation stack.
+     * 
+     * Does nothing if the navigation stack contains less than two pages.
+     * 
+     * If [method`NavigationView`.add] hasn't been called, the page is automatically
+     * removed.
+     * 
+     * [signal`NavigationView:`:popped] will be emitted for the current visible page.
+     * 
+     * See [method`NavigationView`.pop_to_page] and
+     * [method`NavigationView`.pop_to_tag].
+     * @returns `TRUE` if a page has been popped
+     */
+    pop(): boolean
+    /**
+     * Pops pages from the navigation stack until `page` is visible.
+     * 
+     * `page` must be in the navigation stack.
+     * 
+     * If [method`NavigationView`.add] hasn't been called for any of the popped pages,
+     * they are automatically removed.
+     * 
+     * [signal`NavigationView:`:popped] will be be emitted for each of the popped
+     * pages.
+     * 
+     * See [method`NavigationView`.pop] and [method`NavigationView`.pop_to_tag].
+     * @param page the page to pop to
+     * @returns `TRUE` if any pages have been popped
+     */
+    pop_to_page(page: NavigationPage): boolean
+    /**
+     * Pops pages from the navigation stack until page with the tag `tag` is visible.
+     * 
+     * The page must be in the navigation stack.
+     * 
+     * If [method`NavigationView`.add] hasn't been called for any of the popped pages,
+     * they are automatically removed.
+     * 
+     * [signal`NavigationView:`:popped] will be emitted for each of the popped pages.
+     * 
+     * See [method`NavigationView`.pop_to_page] and [property`NavigationPage:`tag].
+     * @param tag a page tag
+     * @returns `TRUE` if any pages have been popped
+     */
+    pop_to_tag(tag: string | null): boolean
+    /**
+     * Pushes `page` onto the navigation stack.
+     * 
+     * If [method`NavigationView`.add] hasn't been called, the page is automatically
+     * removed once it's popped.
+     * 
+     * [signal`NavigationView:`:popped] will be emitted for `page`.
+     * 
+     * See [method`NavigationView`.push_by_tag].
+     * @param page the page to push
+     */
+    push(page: NavigationPage): void
+    /**
+     * Pushes the page with the tag `tag` onto the navigation stack.
+     * 
+     * If [method`NavigationView`.add] hasn't been called, the page is automatically
+     * removed once it's popped.
+     * 
+     * [signal`NavigationView:`:popped] will be emitted for pushed page.
+     * 
+     * See [method`NavigationView`.push] and [property`NavigationPage:`tag].
+     * @param tag the page tag
+     */
+    push_by_tag(tag: string | null): void
+    /**
+     * Removes `page` from `self`.
+     * 
+     * If `page` is currently in the navigation stack, it will be removed once it's
+     * popped. Otherwise, it's removed immediately.
+     * 
+     * See [method`NavigationView`.add].
+     * @param page the page to remove
+     */
+    remove(page: NavigationPage): void
+    /**
+     * Replaces the current navigation stack with `pages`.
+     * 
+     * The last page becomes the visible page.
+     * 
+     * Replacing the navigation stack has no animation.
+     * 
+     * If [method`NavigationView`.add] hasn't been called for any pages that are no
+     * longer in the navigation stack, they are automatically removed.
+     * 
+     * `n_pages` can be 0, in that case no page will be visible after calling this
+     * method. This can be useful for removing all pages from `self`.
+     * 
+     * The [signal`NavigationView:`:replaced] signal will be emitted.
+     * 
+     * See [method`NavigationView`.replace_with_tags].
+     * @param pages the new navigation stack
+     */
+    replace(pages: NavigationPage[]): void
+    /**
+     * Replaces the current navigation stack with pages with the tags `tags`.
+     * 
+     * The last page becomes the visible page.
+     * 
+     * Replacing the navigation stack has no animation.
+     * 
+     * If [method`NavigationView`.add] hasn't been called for any pages that are no
+     * longer in the navigation stack, they are automatically removed.
+     * 
+     * `n_tags` can be 0, in that case no page will be visible after calling this
+     * method. This can be useful for removing all pages from `self`.
+     * 
+     * The [signal`NavigationView:`:replaced] signal will be emitted.
+     * 
+     * See [method`NavigationView`.replace] and [property`NavigationPage:`tag].
+     * @param tags tags of the pages in the   navigation stack
+     */
+    replace_with_tags(tags: string[]): void
+    /**
+     * Sets whether `self` should animate page transitions.
+     * 
+     * Gesture-based transitions are always animated.
+     * @param animate_transitions whether to animate page transitions
+     */
+    set_animate_transitions(animate_transitions: boolean): void
+    /**
+     * Sets whether pressing Escape pops the current page on `self`.
+     * 
+     * Applications using `AdwNavigationView` to implement a browser may want to
+     * disable it.
+     * @param pop_on_escape whether to pop the current page when pressing Escape
+     */
+    set_pop_on_escape(pop_on_escape: boolean): void
+
+    // Own signals of Adw-1.Adw.NavigationView
+
+    connect(sigName: "get-next-page", callback: NavigationView.GetNextPageSignalCallback): number
+    connect_after(sigName: "get-next-page", callback: NavigationView.GetNextPageSignalCallback): number
+    emit(sigName: "get-next-page", ...args: any[]): void
+    connect(sigName: "popped", callback: NavigationView.PoppedSignalCallback): number
+    connect_after(sigName: "popped", callback: NavigationView.PoppedSignalCallback): number
+    emit(sigName: "popped", page: NavigationPage, ...args: any[]): void
+    connect(sigName: "pushed", callback: NavigationView.PushedSignalCallback): number
+    connect_after(sigName: "pushed", callback: NavigationView.PushedSignalCallback): number
+    emit(sigName: "pushed", ...args: any[]): void
+    connect(sigName: "replaced", callback: NavigationView.ReplacedSignalCallback): number
+    connect_after(sigName: "replaced", callback: NavigationView.ReplacedSignalCallback): number
+    emit(sigName: "replaced", ...args: any[]): void
+
+    // Class property signals of Adw-1.Adw.NavigationView
+
+    connect(sigName: "notify::animate-transitions", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::animate-transitions", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::animate-transitions", ...args: any[]): void
+    connect(sigName: "notify::navigation-stack", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::navigation-stack", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::navigation-stack", ...args: any[]): void
+    connect(sigName: "notify::pop-on-escape", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pop-on-escape", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pop-on-escape", ...args: any[]): void
+    connect(sigName: "notify::visible-page", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible-page", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible-page", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: NavigationView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A page-based navigation container.
+ * 
+ * <picture>
+ *   <source srcset="navigation-view-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="navigation-view.png" alt="navigation-view">
+ * </picture>
+ * 
+ * `AdwNavigationView` presents one child at a time, similar to
+ * [class`Gtk`.Stack].
+ * 
+ * `AdwNavigationView` can only contain [class`NavigationPage]` children.
+ * 
+ * It maintains a navigation stack that can be controlled with
+ * [method`NavigationView`.push] and [method`NavigationView`.pop]. The whole
+ * navigation stack can also be replaced using [method`NavigationView`.replace].
+ * 
+ * `AdwNavigationView` allows to manage pages statically or dynamically.
+ * 
+ * Static pages can be added using the [method`NavigationView`.add] method. The
+ * `AdwNavigationView` will keep a reference to these pages, but they aren't
+ * accessible to the user until [method`NavigationView`.push] is called (except
+ * for the first page, which is pushed automatically). Use the
+ * [method`NavigationView`.remove] method to remove them. This is useful for
+ * applications that have a small number of unique pages and just need
+ * navigation between them.
+ * 
+ * Dynamic pages are automatically destroyed once they are popped off the
+ * navigation stack. To add a page like this, push it using the
+ * [method`NavigationView`.push] method without calling
+ * [method`NavigationView`.add] first.
+ * 
+ * ## Tags
+ * 
+ * Static pages, as well as any pages in the navigation stack, can be accessed
+ * by their [property`NavigationPage:`tag]. For example,
+ * [method`NavigationView`.push_by_tag] can be used to push a static page that's
+ * not in the navigation stack without having to keep a reference to it manually.
+ * 
+ * ## Header Bar Integration
+ * 
+ * When used inside `AdwNavigationView`, [class`HeaderBar]` will automatically
+ * display a back button that can be used to go back to the previous page when
+ * possible. The button also has a context menu, allowing to pop multiple pages
+ * at once, potentially across multiple navigation views.
+ * 
+ * Set [property`HeaderBar:`show-back-button] to `FALSE` to disable this behavior
+ * if it's unwanted.
+ * 
+ * `AdwHeaderBar` will also display the title of the `AdwNavigationPage` it's
+ * placed into, so most applications shouldn't need to customize it at all.
+ * 
+ * ## Shortcuts and Gestures
+ * 
+ * `AdwNavigationView` supports the following shortcuts for going to the
+ * previous page:
+ * 
+ * - <kbd>Escape</kbd> (unless [property`NavigationView:`pop-on-escape] is set to
+ *   `FALSE`)
+ * - <kbd>Alt</kbd>+<kbd>←</kbd>
+ * - Back mouse button
+ * 
+ * Additionally, it supports interactive gestures:
+ * 
+ * - One-finger swipe towards the right on touchscreens
+ * - Scrolling towards the right on touchpads (usually two-finger swipe)
+ * 
+ * These gestures have transitions enabled regardless of the
+ * [property`NavigationView:`animate-transitions] value.
+ * 
+ * Applications can also enable shortcuts for pushing another page onto the
+ * navigation stack via connecting to the [signal`NavigationView:`:get-next-page]
+ * signal, in that case the following shortcuts are supported:
+ * 
+ * - <kbd>Alt</kbd>+<kbd>→</kbd>
+ * - Forward mouse button
+ * - Swipe/scrolling towards the left
+ * 
+ * For right-to-left locales, the gestures and shortcuts are reversed.
+ * 
+ * [property`NavigationPage:`can-pop] can be used to disable them, along with the
+ * header bar back buttons.
+ * 
+ * ## Actions
+ * 
+ * `AdwNavigationView` defines actions for controlling the navigation stack.
+ * actions for controlling the navigation stack:
+ * 
+ * - `navigation.push` takes a string parameter specifying the tag of the page to
+ * push, and is equivalent to calling [method`NavigationView`.push_by_tag].
+ * 
+ * - `navigation.pop` doesn't take any parameters and pops the current page from
+ * the navigation stack, equivalent to calling [method`NavigationView`.pop].
+ * 
+ * ## `AdwNavigationView` as `GtkBuildable`
+ * 
+ * `AdwNavigationView` allows to add pages as children, equivalent to using the
+ * [method`NavigationView`.add] method.
+ * 
+ * Example of an `AdwNavigationView` UI definition:
+ * 
+ * ```xml
+ * <object class="AdwNavigationView">
+ *   <child>
+ *     <object class="AdwNavigationPage">
+ *       <property name="title" translatable="yes">Page 1</property>
+ *       <property name="child">
+ *         <object class="AdwToolbarView">
+ *           <child type="top">
+ *             <object class="AdwHeaderBar"/>
+ *           </child>
+ *           <property name="content">
+ *             <object class="GtkButton">
+ *               <property name="label" translatable="yes">Open Page 2</property>
+ *               <property name="halign">center</property>
+ *               <property name="valign">center</property>
+ *               <property name="action-name">navigation.push</property>
+ *               <property name="action-target">'page-2'</property>
+ *               <style>
+ *                 <class name="pill"/>
+ *                </style>
+ *             </object>
+ *           </property>
+ *         </object>
+ *       </property>
+ *     </object>
+ *   </child>
+ *   <child>
+ *     <object class="AdwNavigationPage">
+ *       <property name="title" translatable="yes">Page 2</property>
+ *       <property name="tag">page-2</property>
+ *       <property name="child">
+ *         <object class="AdwToolbarView">
+ *           <child type="top">
+ *             <object class="AdwHeaderBar"/>
+ *           </child>
+ *           <property name="content">
+ *             <!-- ... -->
+ *           </property>
+ *         </object>
+ *       </property>
+ *     </object>
+ *   </child>
+ * </object>
+ * ```
+ * 
+ * <picture>
+ *   <source srcset="navigation-view-example-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="navigation-view-example.png" alt="navigation-view-example">
+ * </picture>
+ * 
+ * ## CSS nodes
+ * 
+ * `AdwNavigationView` has a single CSS node with the name `navigation-view`.
+ * 
+ * ## Accessibility
+ * 
+ * `AdwNavigationView` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * @class 
+ */
+export class NavigationView extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.NavigationView
+
+    static name: string
+    static $gtype: GObject.GType<NavigationView>
+
+    // Constructors of Adw-1.Adw.NavigationView
+
+    constructor(config?: NavigationView.ConstructorProperties) 
+    /**
+     * Creates a new `AdwNavigationView`.
+     * @constructor 
+     * @returns the new created `AdwNavigationView`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwNavigationView`.
+     * @constructor 
+     * @returns the new created `AdwNavigationView`
+     */
+    static new(): NavigationView
+    _init(config?: NavigationView.ConstructorProperties): void
+}
+
+export module OverlaySplitView {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Swipeable.ConstructorProperties, Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.OverlaySplitView
+
+        /**
+         * Whether the split view is collapsed.
+         * 
+         * When collapsed, the sidebar widget is presented as an overlay above the
+         * content widget, otherwise they are displayed side by side.
+         */
+        collapsed?: boolean | null
+        /**
+         * The content widget.
+         */
+        content?: Gtk.Widget | null
+        /**
+         * Whether the sidebar can be closed with a swipe gesture.
+         * 
+         * Only touchscreen swipes are supported.
+         */
+        enable_hide_gesture?: boolean | null
+        /**
+         * Whether the sidebar can be opened with an edge swipe gesture.
+         * 
+         * Only touchscreen swipes are supported.
+         */
+        enable_show_gesture?: boolean | null
+        /**
+         * The maximum sidebar width.
+         * 
+         * Maximum width is affected by
+         * [property`OverlaySplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        max_sidebar_width?: number | null
+        /**
+         * The minimum sidebar width.
+         * 
+         * Minimum width is affected by
+         * [property`OverlaySplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        min_sidebar_width?: number | null
+        /**
+         * Whether the sidebar widget is pinned.
+         * 
+         * By default, collapsing `self` automatically hides the sidebar widget, and
+         * uncollapsing it shows the sidebar. If set to `TRUE`, sidebar visibility
+         * never changes on its own.
+         */
+        pin_sidebar?: boolean | null
+        /**
+         * Whether the sidebar widget is shown.
+         */
+        show_sidebar?: boolean | null
+        /**
+         * The sidebar widget.
+         */
+        sidebar?: Gtk.Widget | null
+        /**
+         * The sidebar position.
+         * 
+         * If it's set to `GTK_PACK_START`, the sidebar is displayed before the content,
+         * if `GTK_PACK_END`, it's displayed after the content.
+         */
+        sidebar_position?: Gtk.PackType | null
+        /**
+         * The preferred sidebar width as a fraction of the total width.
+         * 
+         * The preferred width is additionally limited by
+         * [property`OverlaySplitView:`min-sidebar-width] and
+         * [property`OverlaySplitView:`max-sidebar-width].
+         * 
+         * The sidebar widget can be allocated with larger width if its own minimum
+         * width exceeds the preferred width.
+         */
+        sidebar_width_fraction?: number | null
+        /**
+         * The length unit for minimum and maximum sidebar widths.
+         * 
+         * See [property`OverlaySplitView:`min-sidebar-width] and
+         * [property`OverlaySplitView:`max-sidebar-width].
+         */
+        sidebar_width_unit?: LengthUnit | null
+    }
+
+}
+
+export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.OverlaySplitView
+
+    /**
+     * Whether the split view is collapsed.
+     * 
+     * When collapsed, the sidebar widget is presented as an overlay above the
+     * content widget, otherwise they are displayed side by side.
+     */
+    collapsed: boolean
+    /**
+     * The content widget.
+     */
+    content: Gtk.Widget
+    /**
+     * Whether the sidebar can be closed with a swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     */
+    enable_hide_gesture: boolean
+    /**
+     * Whether the sidebar can be opened with an edge swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     */
+    enable_show_gesture: boolean
+    /**
+     * The maximum sidebar width.
+     * 
+     * Maximum width is affected by
+     * [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    max_sidebar_width: number
+    /**
+     * The minimum sidebar width.
+     * 
+     * Minimum width is affected by
+     * [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    min_sidebar_width: number
+    /**
+     * Whether the sidebar widget is pinned.
+     * 
+     * By default, collapsing `self` automatically hides the sidebar widget, and
+     * uncollapsing it shows the sidebar. If set to `TRUE`, sidebar visibility
+     * never changes on its own.
+     */
+    pin_sidebar: boolean
+    /**
+     * Whether the sidebar widget is shown.
+     */
+    show_sidebar: boolean
+    /**
+     * The sidebar widget.
+     */
+    sidebar: Gtk.Widget
+    /**
+     * The sidebar position.
+     * 
+     * If it's set to `GTK_PACK_START`, the sidebar is displayed before the content,
+     * if `GTK_PACK_END`, it's displayed after the content.
+     */
+    sidebar_position: Gtk.PackType
+    /**
+     * The preferred sidebar width as a fraction of the total width.
+     * 
+     * The preferred width is additionally limited by
+     * [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     */
+    sidebar_width_fraction: number
+    /**
+     * The length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     */
+    sidebar_width_unit: LengthUnit
+
+    // Owm methods of Adw-1.Adw.OverlaySplitView
+
+    /**
+     * Gets whether `self` is collapsed.
+     * @returns whether @self is collapsed
+     */
+    get_collapsed(): boolean
+    /**
+     * Gets the content widget for `self`.
+     * @returns the content widget for @self
+     */
+    get_content(): Gtk.Widget | null
+    /**
+     * Gets whether `self` can be closed with a swipe gesture.
+     * @returns `TRUE` if @self can be closed with a swipe gesture
+     */
+    get_enable_hide_gesture(): boolean
+    /**
+     * Gets whether `self` can be opened with an edge swipe gesture.
+     * @returns `TRUE` if @self can be opened with a swipe gesture
+     */
+    get_enable_show_gesture(): boolean
+    /**
+     * Gets the maximum sidebar width for `self`.
+     * @returns the maximum width
+     */
+    get_max_sidebar_width(): number
+    /**
+     * Gets the minimum sidebar width for `self`.
+     * @returns the minimum width
+     */
+    get_min_sidebar_width(): number
+    /**
+     * Gets whether the sidebar widget is pinned for `self`.
+     * @returns whether if the sidebar widget is pinned
+     */
+    get_pin_sidebar(): boolean
+    /**
+     * Gets whether the sidebar widget is shown for `self`.
+     * @returns `TRUE` if the sidebar widget is shown
+     */
+    get_show_sidebar(): boolean
+    /**
+     * Gets the sidebar widget for `self`.
+     * @returns the sidebar widget for @self
+     */
+    get_sidebar(): Gtk.Widget | null
+    /**
+     * Gets the sidebar position for `self`.
+     * @returns the sidebar position for @self
+     */
+    get_sidebar_position(): Gtk.PackType
+    /**
+     * Gets the preferred sidebar width fraction for `self`.
+     * @returns the preferred width fraction
+     */
+    get_sidebar_width_fraction(): number
+    /**
+     * Gets the length unit for minimum and maximum sidebar widths.
+     * @returns the length unit
+     */
+    get_sidebar_width_unit(): LengthUnit
+    /**
+     * Sets whether `self` view is collapsed.
+     * 
+     * When collapsed, the sidebar widget is presented as an overlay above the
+     * content widget, otherwise they are displayed side by side.
+     * @param collapsed whether `self` is collapsed
+     */
+    set_collapsed(collapsed: boolean): void
+    /**
+     * Sets the content widget for `self`.
+     * @param content the content widget
+     */
+    set_content(content: Gtk.Widget | null): void
+    /**
+     * Sets whether `self` can be closed with a swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     * @param enable_hide_gesture whether `self` can be closed with a swipe gesture
+     */
+    set_enable_hide_gesture(enable_hide_gesture: boolean): void
+    /**
+     * Sets whether `self` can be opened with an edge swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     * @param enable_show_gesture whether `self` can be opened with a swipe gesture
+     */
+    set_enable_show_gesture(enable_show_gesture: boolean): void
+    /**
+     * Sets the maximum sidebar width for `self`.
+     * 
+     * Maximum width is affected by [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     * @param width the maximum width
+     */
+    set_max_sidebar_width(width: number): void
+    /**
+     * Sets the minimum sidebar width for `self`.
+     * 
+     * Minimum width is affected by [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     * @param width the minimum width
+     */
+    set_min_sidebar_width(width: number): void
+    /**
+     * Sets whether the sidebar widget is pinned for `self`.
+     * 
+     * By default, collapsing `self` automatically hides the sidebar widget, and
+     * uncollapsing it shows the sidebar. If set to `TRUE`, sidebar visibility never
+     * changes on its own.
+     * @param pin_sidebar whether to pin the sidebar widget
+     */
+    set_pin_sidebar(pin_sidebar: boolean): void
+    /**
+     * Sets whether the sidebar widget is shown for `self`.
+     * @param show_sidebar whether to show the sidebar widget
+     */
+    set_show_sidebar(show_sidebar: boolean): void
+    /**
+     * Sets the sidebar widget for `self`.
+     * @param sidebar the sidebar widget
+     */
+    set_sidebar(sidebar: Gtk.Widget | null): void
+    /**
+     * Sets the sidebar position for `self`.
+     * 
+     * If it's set to `GTK_PACK_START`, the sidebar is displayed before the content,
+     * if `GTK_PACK_END`, it's displayed after the content.
+     * @param position the new position
+     */
+    set_sidebar_position(position: Gtk.PackType): void
+    /**
+     * Sets the preferred sidebar width as a fraction of the total width of `self`.
+     * 
+     * The preferred width is additionally limited by
+     * [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     * @param fraction the preferred width fraction
+     */
+    set_sidebar_width_fraction(fraction: number): void
+    /**
+     * Sets the length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     * @param unit the length unit
+     */
+    set_sidebar_width_unit(unit: LengthUnit): void
+
+    // Class property signals of Adw-1.Adw.OverlaySplitView
+
+    connect(sigName: "notify::collapsed", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collapsed", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::collapsed", ...args: any[]): void
+    connect(sigName: "notify::content", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::enable-hide-gesture", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::enable-hide-gesture", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-hide-gesture", ...args: any[]): void
+    connect(sigName: "notify::enable-show-gesture", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::enable-show-gesture", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-show-gesture", ...args: any[]): void
+    connect(sigName: "notify::max-sidebar-width", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-sidebar-width", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-sidebar-width", ...args: any[]): void
+    connect(sigName: "notify::min-sidebar-width", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-sidebar-width", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-sidebar-width", ...args: any[]): void
+    connect(sigName: "notify::pin-sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pin-sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pin-sidebar", ...args: any[]): void
+    connect(sigName: "notify::show-sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-sidebar", ...args: any[]): void
+    connect(sigName: "notify::sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar", ...args: any[]): void
+    connect(sigName: "notify::sidebar-position", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar-position", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar-position", ...args: any[]): void
+    connect(sigName: "notify::sidebar-width-fraction", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar-width-fraction", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar-width-fraction", ...args: any[]): void
+    connect(sigName: "notify::sidebar-width-unit", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sidebar-width-unit", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sidebar-width-unit", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: OverlaySplitView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A widget presenting sidebar and content side by side or as an overlay.
+ * 
+ * <picture>
+ *   <source srcset="overlay-split-view-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="overlay-split-view.png" alt="overlay-split-view">
+ * </picture>
+ * <picture>
+ *   <source srcset="overlay-split-view-collapsed-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="overlay-split-view-collapsed.png" alt="overlay-split-view-collapsed">
+ * </picture>
+ * 
+ * `AdwOverlaySplitView` has two children: sidebar and content, and displays
+ * them side by side.
+ * 
+ * When [property`OverlaySplitView:`collapsed] is set to `TRUE`, the sidebar is
+ * instead shown as an overlay above the content widget.
+ * 
+ * The sidebar can be hidden or shown using the
+ * [property`OverlaySplitView:`show-sidebar] property.
+ * 
+ * Sidebar can be displayed before or after the content, this can be controlled
+ * with the [property`OverlaySplitView:`sidebar-position] property.
+ * 
+ * Collapsing the split view automatically hides the sidebar widget, and
+ * uncollapsing it shows the sidebar. If this behavior is not desired, the
+ * [property`OverlaySplitView:`pin-sidebar] property can be used to override it.
+ * 
+ * `AdwOverlaySplitView` supports an edge swipe gesture for showing the sidebar,
+ * and a swipe from the sidebar for hiding it. Gestures are only supported on
+ * touchscreen, but not touchpad. Gestures can be controlled with the
+ * [property`OverlaySplitView:`enable-show-gesture] and
+ * [property`OverlaySplitView:`enable-hide-gesture] properties.
+ * 
+ * See also [class`NavigationSplitView]`.
+ * 
+ * `AdwOverlaySplitView` is typically used together with an [class`Breakpoint]`
+ * setting the `collapsed` property to `TRUE` on small widths, as follows:
+ * 
+ * ```xml
+ * <object class="AdwWindow">
+ *   <property name="width-request">360</property>
+ *   <property name="height-request">200</property>
+ *   <property name="default-width">800</property>
+ *   <property name="default-height">800</property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 400sp</condition>
+ *       <setter object="split_view" property="collapsed">True</setter>
+ *     </object>
+ *   </child>
+ *   <property name="content">
+ *     <object class="AdwOverlaySplitView" id="split_view">
+ *       <property name="sidebar">
+ *         <!-- ... -->
+ *       </property>
+ *       <property name="content">
+ *         <!-- ... -->
+ *       </property>
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
+ * 
+ * `AdwOverlaySplitView` is often used for implementing the
+ * [utility pane](https://developer.gnome.org/hig/patterns/containers/utility-panes.html)
+ * pattern.
+ * 
+ * ## Sizing
+ * 
+ * When not collapsed, `AdwOverlaySplitView` changes the sidebar width
+ * depending on its own width.
+ * 
+ * If possible, it tries to allocate a fraction of the total width, controlled
+ * with the [property`OverlaySplitView:`sidebar-width-fraction] property.
+ * 
+ * The sidebar also has minimum and maximum sizes, controlled with the
+ * [property`OverlaySplitView:`min-sidebar-width] and
+ * [property`OverlaySplitView:`max-sidebar-width] properties.
+ * 
+ * The minimum and maximum sizes are using the length unit specified with the
+ * [property`OverlaySplitView:`sidebar-width-unit].
+ * 
+ * By default, sidebar is using 25% of the total width, with 180sp as the
+ * minimum size and 280sp as the maximum size.
+ * 
+ * When collapsed, the preferred width fraction is ignored and the sidebar uses
+ * [property`OverlaySplitView:`max-sidebar-width] when possible.
+ * 
+ * ## Header Bar Integration
+ * 
+ * When used inside `AdwOverlaySplitView`, [class`HeaderBar]` will automatically
+ * hide the window buttons in the middle.
+ * 
+ * ## `AdwOverlaySplitView` as `GtkBuildable`
+ * 
+ * The `AdwOverlaySplitView` implementation of the [iface`Gtk`.Buildable]
+ * interface supports setting the sidebar widget by specifying “sidebar” as the
+ * “type” attribute of a `<child>` element, Specifying “content” child type or
+ * omitting it results in setting the content widget.
+ * 
+ * ## CSS nodes
+ * 
+ * `AdwOverlaySplitView` has a single CSS node with the name
+ * `overlay-split-view`.
+ * 
+ * It contains two nodes with the name `widget`, containing the sidebar and
+ * content children.
+ * 
+ * When not collapsed, they have the `.sidebar-view` and `.content-view` style
+ * classes respectively.
+ * 
+ * ```
+ * overlay-split-view
+ * ├── widget.sidebar-pane
+ * │   ╰── [sidebar child]
+ * ╰── widget.content-pane
+ *     ╰── [content child]
+ * ```
+ * 
+ * When collapsed, the one containing the sidebar child has the `.background`
+ * style class and the other one has no style classes.
+ * 
+ * ```
+ * overlay-split-view
+ * ├── widget.background
+ * │   ╰── [sidebar child]
+ * ╰── widget
+ *     ╰── [content child]
+ * ```
+ * 
+ * ## Accessibility
+ * 
+ * `AdwOverlaySplitView` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * @class 
+ */
+export class OverlaySplitView extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.OverlaySplitView
+
+    static name: string
+    static $gtype: GObject.GType<OverlaySplitView>
+
+    // Constructors of Adw-1.Adw.OverlaySplitView
+
+    constructor(config?: OverlaySplitView.ConstructorProperties) 
+    /**
+     * Creates a new `AdwOverlaySplitView`.
+     * @constructor 
+     * @returns the newly created `AdwOverlaySplitView`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwOverlaySplitView`.
+     * @constructor 
+     * @returns the newly created `AdwOverlaySplitView`
+     */
+    static new(): OverlaySplitView
+    _init(config?: OverlaySplitView.ConstructorProperties): void
 }
 
 export module PasswordEntryRow {
@@ -11389,6 +14636,10 @@ export module PreferencesPage {
         // Own constructor properties of Adw-1.Adw.PreferencesPage
 
         /**
+         * The description to be displayed at the top of the page.
+         */
+        description?: string | null
+        /**
          * The icon name for this page.
          */
         icon_name?: string | null
@@ -11412,6 +14663,10 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
 
     // Own properties of Adw-1.Adw.PreferencesPage
 
+    /**
+     * The description to be displayed at the top of the page.
+     */
+    description: string | null
     /**
      * The icon name for this page.
      */
@@ -11440,6 +14695,11 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * @param group the group to add
      */
     add(group: PreferencesGroup): void
+    /**
+     * Gets the description of `self`.
+     * @returns the description of @self.
+     */
+    get_description(): string | null
     /**
      * Gets the icon name for `self`.
      * @returns the icon name for @self
@@ -11470,6 +14730,13 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     scroll_to_top(): void
     /**
+     * Sets the description of `self`.
+     * 
+     * The description is displayed at the top of the page.
+     * @param description the description
+     */
+    set_description(description: string | null): void
+    /**
      * Sets the icon name for `self`.
      * @param icon_name the icon name
      */
@@ -11492,6 +14759,9 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
 
     // Class property signals of Adw-1.Adw.PreferencesPage
 
+    connect(sigName: "notify::description", callback: (($obj: PreferencesPage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::description", callback: (($obj: PreferencesPage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::description", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: PreferencesPage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: PreferencesPage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
@@ -12061,6 +15331,11 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      */
     get_visible_page_name(): string | null
     /**
+     * Pop the visible page from the subpage stack of `self`.
+     * @returns `TRUE` if a page has been popped
+     */
+    pop_subpage(): boolean
+    /**
      * Sets `subpage` as the window's subpage and opens it.
      * 
      * The transition can be cancelled by the user, in which case visible child will
@@ -12068,6 +15343,13 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      * @param subpage the subpage
      */
     present_subpage(subpage: Gtk.Widget): void
+    /**
+     * Pushes `page` onto the subpage stack of `self`.
+     * 
+     * The page will be automatically removed when popped.
+     * @param page the subpage
+     */
+    push_subpage(page: NavigationPage): void
     /**
      * Removes a page from `self`.
      * @param page the page to remove
@@ -12124,6 +15406,9 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
     connect(sigName: "notify::content", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::content", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::current-breakpoint", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-breakpoint", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-breakpoint", ...args: any[]): void
     connect(sigName: "notify::application", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::application", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::application", ...args: any[]): void
@@ -12187,6 +15472,9 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
     connect(sigName: "notify::startup-id", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: PreferencesWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -12466,6 +15754,582 @@ export class PropertyAnimationTarget extends AnimationTarget {
     _init(config?: PropertyAnimationTarget.ConstructorProperties): void
 }
 
+export module SpinRow {
+
+    // Signal callback interfaces
+
+    /**
+     * Signal callback interface for `input`
+     */
+    export interface InputSignalCallback {
+        ($obj: SpinRow): number
+    }
+
+    /**
+     * Signal callback interface for `output`
+     */
+    export interface OutputSignalCallback {
+        ($obj: SpinRow): boolean
+    }
+
+    /**
+     * Signal callback interface for `wrapped`
+     */
+    export interface WrappedSignalCallback {
+        ($obj: SpinRow): void
+    }
+
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Actionable.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Editable.ConstructorProperties, ActionRow.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.SpinRow
+
+        /**
+         * The adjustment that holds the value of the spin row.
+         */
+        adjustment?: Gtk.Adjustment | null
+        /**
+         * The acceleration rate when you hold down a button or key.
+         */
+        climb_rate?: number | null
+        /**
+         * The number of decimal places to display.
+         */
+        digits?: number | null
+        /**
+         * Whether non-numeric characters should be ignored.
+         */
+        numeric?: boolean | null
+        /**
+         * Whether invalid values are snapped to the nearest step increment.
+         */
+        snap_to_ticks?: boolean | null
+        /**
+         * The policy for updating the spin row.
+         * 
+         * The options are always, or only when the value is invalid.
+         */
+        update_policy?: Gtk.SpinButtonUpdatePolicy | null
+        /**
+         * The current value.
+         */
+        value?: number | null
+        /**
+         * Whether the spin row should wrap upon reaching its limits.
+         */
+        wrap?: boolean | null
+    }
+
+}
+
+export interface SpinRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Editable {
+
+    // Own properties of Adw-1.Adw.SpinRow
+
+    /**
+     * The adjustment that holds the value of the spin row.
+     */
+    adjustment: Gtk.Adjustment
+    /**
+     * The acceleration rate when you hold down a button or key.
+     */
+    climb_rate: number
+    /**
+     * The number of decimal places to display.
+     */
+    digits: number
+    /**
+     * Whether non-numeric characters should be ignored.
+     */
+    numeric: boolean
+    /**
+     * Whether invalid values are snapped to the nearest step increment.
+     */
+    snap_to_ticks: boolean
+    /**
+     * The policy for updating the spin row.
+     * 
+     * The options are always, or only when the value is invalid.
+     */
+    update_policy: Gtk.SpinButtonUpdatePolicy
+    /**
+     * The current value.
+     */
+    value: number
+    /**
+     * Whether the spin row should wrap upon reaching its limits.
+     */
+    wrap: boolean
+
+    // Conflicting properties
+
+    parent_instance: PreferencesRow & Gtk.ListBoxRow & Gtk.Widget & GObject.InitiallyUnowned & GObject.InitiallyUnowned
+
+    // Owm methods of Adw-1.Adw.SpinRow
+
+    /**
+     * Changes the properties of an existing spin row.
+     * 
+     * The adjustment, climb rate, and number of decimal places are updated
+     * accordingly.
+     * @param adjustment the adjustment that this spin row should use
+     * @param climb_rate the new climb rate
+     * @param digits the number of decimal places to display
+     */
+    configure(adjustment: Gtk.Adjustment | null, climb_rate: number, digits: number): void
+    /**
+     * Gets the adjustment that holds the value for the spin row.
+     * @returns the adjustment that holds the spin row's value
+     */
+    get_adjustment(): Gtk.Adjustment
+    /**
+     * Gets the acceleration rate when you hold down a button or key.
+     * @returns the acceleration rate when you hold down a button or key
+     */
+    get_climb_rate(): number
+    /**
+     * Gets the number of decimal places to display.
+     * @returns the number of decimal places to display
+     */
+    get_digits(): number
+    /**
+     * Gets whether non-numeric characters should be ignored.
+     * @returns whether non-numeric characters should be ignored.
+     */
+    get_numeric(): boolean
+    /**
+     * Gets whether invalid values are snapped to nearest step increment.
+     * @returns whether invalid values are snapped to the nearest step increment
+     */
+    get_snap_to_ticks(): boolean
+    /**
+     * Gets the policy for updating the spin row.
+     * @returns the policy for updating the spin row
+     */
+    get_update_policy(): Gtk.SpinButtonUpdatePolicy
+    /**
+     * Gets the current value.
+     * @returns the current value
+     */
+    get_value(): number
+    /**
+     * Gets whether the spin row should wrap upon reaching its limits.
+     * @returns whether the spin row should wrap upon reaching its limits
+     */
+    get_wrap(): boolean
+    /**
+     * Sets the adjustment that holds the value for the spin row.
+     * @param adjustment an adjustment
+     */
+    set_adjustment(adjustment: Gtk.Adjustment | null): void
+    /**
+     * Sets the acceleration rate when you hold down a button or key.
+     * @param climb_rate the acceleration rate when you hold down a button or key
+     */
+    set_climb_rate(climb_rate: number): void
+    /**
+     * Sets the number of decimal places to display.
+     * @param digits the number of decimal places to display
+     */
+    set_digits(digits: number): void
+    /**
+     * Sets whether non-numeric characters should be ignored.
+     * @param numeric whether non-numeric characters should be ignored
+     */
+    set_numeric(numeric: boolean): void
+    /**
+     * Sets the minimum and maximum allowable values for `self`.
+     * 
+     * If the current value is outside this range, it will be adjusted
+     * to fit within the range, otherwise it will remain unchanged.
+     * @param min minimum allowable value
+     * @param max maximum allowable value
+     */
+    set_range(min: number, max: number): void
+    /**
+     * Sets whether invalid values are snapped to the nearest step increment.
+     * @param snap_to_ticks whether invalid values are snapped to the nearest step increment
+     */
+    set_snap_to_ticks(snap_to_ticks: boolean): void
+    /**
+     * Sets the policy for updating the spin row.
+     * 
+     * The options are always, or only when the value is invalid.
+     * @param policy the policy for updating the spin row
+     */
+    set_update_policy(policy: Gtk.SpinButtonUpdatePolicy): void
+    /**
+     * Sets the current value.
+     * @param value a new value
+     */
+    set_value(value: number): void
+    /**
+     * Sets whether the spin row should wrap upon reaching its limits.
+     * @param wrap whether the spin row should wrap upon reaching its limits
+     */
+    set_wrap(wrap: boolean): void
+    /**
+     * Manually force an update of the spin row.
+     */
+    update(): void
+
+    // Conflicting methods
+
+    /**
+     * Activates `self`.
+     */
+    activate(): void
+
+    // Overloads of activate
+
+    /**
+     * For widgets that can be “activated” (buttons, menu items, etc.),
+     * this function activates them.
+     * 
+     * The activation will emit the signal set using
+     * [method`Gtk`.WidgetClass.set_activate_signal] during class initialization.
+     * 
+     * Activation is what happens when you press <kbd>Enter</kbd>
+     * on a widget during key navigation.
+     * 
+     * If you wish to handle the activation keybinding yourself, it is
+     * recommended to use [method`Gtk`.WidgetClass.add_shortcut] with an action
+     * created with [ctor`Gtk`.SignalAction.new].
+     * 
+     * If `widget` isn't activatable, the function returns %FALSE.
+     * @returns %TRUE if the widget was activatable
+     */
+    activate(): boolean
+    /**
+     * For widgets that can be “activated” (buttons, menu items, etc.),
+     * this function activates them.
+     * 
+     * The activation will emit the signal set using
+     * [method`Gtk`.WidgetClass.set_activate_signal] during class initialization.
+     * 
+     * Activation is what happens when you press <kbd>Enter</kbd>
+     * on a widget during key navigation.
+     * 
+     * If you wish to handle the activation keybinding yourself, it is
+     * recommended to use [method`Gtk`.WidgetClass.add_shortcut] with an action
+     * created with [ctor`Gtk`.SignalAction.new].
+     * 
+     * If `widget` isn't activatable, the function returns %FALSE.
+     * @returns %TRUE if the widget was activatable
+     */
+    activate(): boolean
+
+    // Own signals of Adw-1.Adw.SpinRow
+
+    connect(sigName: "input", callback: SpinRow.InputSignalCallback): number
+    connect_after(sigName: "input", callback: SpinRow.InputSignalCallback): number
+    emit(sigName: "input", ...args: any[]): void
+    connect(sigName: "output", callback: SpinRow.OutputSignalCallback): number
+    connect_after(sigName: "output", callback: SpinRow.OutputSignalCallback): number
+    emit(sigName: "output", ...args: any[]): void
+    connect(sigName: "wrapped", callback: SpinRow.WrappedSignalCallback): number
+    connect_after(sigName: "wrapped", callback: SpinRow.WrappedSignalCallback): number
+    emit(sigName: "wrapped", ...args: any[]): void
+
+    // Class property signals of Adw-1.Adw.SpinRow
+
+    connect(sigName: "notify::adjustment", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::adjustment", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::adjustment", ...args: any[]): void
+    connect(sigName: "notify::climb-rate", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::climb-rate", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::climb-rate", ...args: any[]): void
+    connect(sigName: "notify::digits", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::digits", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::digits", ...args: any[]): void
+    connect(sigName: "notify::numeric", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::numeric", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::numeric", ...args: any[]): void
+    connect(sigName: "notify::snap-to-ticks", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::snap-to-ticks", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::snap-to-ticks", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
+    connect(sigName: "notify::value", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::value", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::value", ...args: any[]): void
+    connect(sigName: "notify::wrap", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::wrap", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::wrap", ...args: any[]): void
+    connect(sigName: "notify::activatable-widget", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activatable-widget", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activatable-widget", ...args: any[]): void
+    connect(sigName: "notify::icon-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::subtitle", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle", ...args: any[]): void
+    connect(sigName: "notify::subtitle-lines", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle-lines", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle-lines", ...args: any[]): void
+    connect(sigName: "notify::subtitle-selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle-selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle-selectable", ...args: any[]): void
+    connect(sigName: "notify::title-lines", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title-lines", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title-lines", ...args: any[]): void
+    connect(sigName: "notify::title", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::title-selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title-selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title-selectable", ...args: any[]): void
+    connect(sigName: "notify::use-markup", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-markup", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-markup", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::activatable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activatable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activatable", ...args: any[]): void
+    connect(sigName: "notify::child", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::child", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::child", ...args: any[]): void
+    connect(sigName: "notify::selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selectable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selectable", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: "notify::action-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::action-name", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::action-name", ...args: any[]): void
+    connect(sigName: "notify::action-target", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::action-target", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::action-target", ...args: any[]): void
+    connect(sigName: "notify::cursor-position", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor-position", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor-position", ...args: any[]): void
+    connect(sigName: "notify::editable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::editable", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::editable", ...args: any[]): void
+    connect(sigName: "notify::enable-undo", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::enable-undo", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-undo", ...args: any[]): void
+    connect(sigName: "notify::max-width-chars", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-width-chars", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-width-chars", ...args: any[]): void
+    connect(sigName: "notify::selection-bound", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selection-bound", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selection-bound", ...args: any[]): void
+    connect(sigName: "notify::text", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::text", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::text", ...args: any[]): void
+    connect(sigName: "notify::width-chars", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-chars", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-chars", ...args: any[]): void
+    connect(sigName: "notify::xalign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::xalign", callback: (($obj: SpinRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::xalign", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * An [class`ActionRow]` with an embedded spin button.
+ * 
+ * <picture>
+ *   <source srcset="spin-row-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="spin-row.png" alt="spin-row">
+ * </picture>
+ * 
+ * Example of an `AdwSpinRow` UI definition:
+ * 
+ * ```xml
+ * <object class="AdwSpinRow">
+ *   <property name="title" translatable="yes">Spin Row</property>
+ *   <property name="adjustment">
+ *     <object class="GtkAdjustment">
+ *       <property name="lower">0</property>
+ *       <property name="upper">100</property>
+ *       <property name="value">50</property>
+ *       <property name="page-increment">10</property>
+ *       <property name="step-increment">1</property>
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
+ * 
+ * See [class`Gtk`.SpinButton] for details.
+ * 
+ * ## CSS nodes
+ * 
+ * `AdwSpinRow` has the same structure as [class`ActionRow]`, as well as the
+ * `.spin` style class on the main node.
+ * @class 
+ */
+export class SpinRow extends ActionRow {
+
+    // Own properties of Adw-1.Adw.SpinRow
+
+    static name: string
+    static $gtype: GObject.GType<SpinRow>
+
+    // Constructors of Adw-1.Adw.SpinRow
+
+    constructor(config?: SpinRow.ConstructorProperties) 
+    /**
+     * Creates a new `AdwSpinRow`.
+     * @constructor 
+     * @param adjustment the adjustment that this spin row should use
+     * @param climb_rate the rate the value changes when holding a button or key
+     * @param digits the number of decimal places to display
+     * @returns the newly created `AdwSpinRow`
+     */
+    constructor(adjustment: Gtk.Adjustment | null, climb_rate: number, digits: number) 
+    /**
+     * Creates a new `AdwSpinRow`.
+     * @constructor 
+     * @param adjustment the adjustment that this spin row should use
+     * @param climb_rate the rate the value changes when holding a button or key
+     * @param digits the number of decimal places to display
+     * @returns the newly created `AdwSpinRow`
+     */
+    static new(adjustment: Gtk.Adjustment | null, climb_rate: number, digits: number): SpinRow
+
+    // Overloads of new
+
+    /**
+     * Creates a new `AdwActionRow`.
+     * @constructor 
+     * @returns the newly created `AdwActionRow`
+     */
+    static new(): ActionRow
+    /**
+     * Creates a new `AdwSpinRow` with the given properties.
+     * 
+     * This is a convenience constructor that allows creation of a numeric
+     * `AdwSpinRow` without manually creating an adjustment. The value is initially
+     * set to the minimum value and a page increment of 10 * `step` is the default.
+     * The precision of the spin row is equivalent to the precisions of `step`.
+     * 
+     * Note that the way in which the precision is derived works best if `step` is a
+     * power of ten. If the resulting precision is not suitable for your needs,
+     * use [method`SpinRow`.set_digits] to correct it.
+     * @constructor 
+     * @param min minimum allowable value
+     * @param max maximum allowable value
+     * @param step increment added or subtracted by spinning the widget
+     * @returns the new `AdwSpinRow`
+     */
+    static new_with_range(min: number, max: number, step: number): SpinRow
+    _init(config?: SpinRow.ConstructorProperties): void
+}
+
 export module SplitButton {
 
     // Signal callback interfaces
@@ -12491,6 +16355,15 @@ export module SplitButton {
 
         // Own constructor properties of Adw-1.Adw.SplitButton
 
+        /**
+         * Whether the button can be smaller than the natural size of its contents.
+         * 
+         * If set to `TRUE`, the label will ellipsize.
+         * 
+         * See [property`Gtk`.Button:can-shrink] and
+         * [property`Gtk`.MenuButton:can-shrink].
+         */
+        can_shrink?: boolean | null
         /**
          * The child widget.
          * 
@@ -12566,6 +16439,15 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
     // Own properties of Adw-1.Adw.SplitButton
 
     /**
+     * Whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [property`Gtk`.Button:can-shrink] and
+     * [property`Gtk`.MenuButton:can-shrink].
+     */
+    can_shrink: boolean
+    /**
      * The child widget.
      * 
      * Setting the child widget will set [property`SplitButton:`label] and
@@ -12635,6 +16517,11 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
     // Owm methods of Adw-1.Adw.SplitButton
 
     /**
+     * gets whether the button can be smaller than the natural size of its contents.
+     * @returns whether the button can shrink
+     */
+    get_can_shrink(): boolean
+    /**
      * Gets the child widget.
      * @returns the child widget
      */
@@ -12692,6 +16579,16 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      * Pops up the menu.
      */
     popup(): void
+    /**
+     * Sets whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [method`Gtk`.Button.set_can_shrink] and
+     * [method`Gtk`.MenuButton.set_can_shrink].
+     * @param can_shrink whether the button can shrink
+     */
+    set_can_shrink(can_shrink: boolean): void
     /**
      * Sets the child widget.
      * 
@@ -12798,6 +16695,9 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
 
     // Class property signals of Adw-1.Adw.SplitButton
 
+    connect(sigName: "notify::can-shrink", callback: (($obj: SplitButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-shrink", callback: (($obj: SplitButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-shrink", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: SplitButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SplitButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -14016,7 +17916,7 @@ export module StatusPage {
          */
         child?: Gtk.Widget | null
         /**
-         * The description to be displayed below the title.
+         * The description markup to be displayed below the title.
          */
         description?: string | null
         /**
@@ -14033,6 +17933,8 @@ export module StatusPage {
         paintable?: Gdk.Paintable | null
         /**
          * The title to be displayed below the icon.
+         * 
+         * It is not parsed as Pango markup.
          */
         title?: string | null
     }
@@ -14048,7 +17950,7 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      */
     child: Gtk.Widget
     /**
-     * The description to be displayed below the title.
+     * The description markup to be displayed below the title.
      */
     description: string | null
     /**
@@ -14065,6 +17967,8 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
     paintable: Gdk.Paintable
     /**
      * The title to be displayed below the icon.
+     * 
+     * It is not parsed as Pango markup.
      */
     title: string | null
 
@@ -14076,7 +17980,7 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      */
     get_child(): Gtk.Widget | null
     /**
-     * Gets the description for `self`.
+     * Gets the description markup for `self`.
      * @returns the description
      */
     get_description(): string | null
@@ -14101,9 +18005,9 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      */
     set_child(child: Gtk.Widget | null): void
     /**
-     * Sets the description for `self`.
+     * Sets the description markup for `self`.
      * 
-     * The description is displayed below the title.
+     * The description is displayed below the title. It is parsed as Pango markup.
      * @param description the description
      */
     set_description(description: string | null): void
@@ -14124,7 +18028,7 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
     /**
      * Sets the title for `self`.
      * 
-     * The title is displayed below the icon.
+     * The title is displayed below the icon. It is not parsed as Pango markup.
      * @param title the title
      */
     set_title(title: string | null): void
@@ -14625,6 +18529,10 @@ export module SwipeTracker {
          */
         enabled?: boolean | null
         /**
+         * Whether to allow swiping past the first available snap point.
+         */
+        lower_overshoot?: boolean | null
+        /**
          * Whether to reverse the swipe direction.
          * 
          * If the swipe tracker is horizontal, it can be used for supporting RTL text
@@ -14635,6 +18543,10 @@ export module SwipeTracker {
          * The widget the swipe tracker is attached to.
          */
         swipeable?: Swipeable | null
+        /**
+         * Whether to allow swiping past the last available snap point.
+         */
+        upper_overshoot?: boolean | null
     }
 
 }
@@ -14662,6 +18574,10 @@ export interface SwipeTracker extends Gtk.Orientable {
      */
     enabled: boolean
     /**
+     * Whether to allow swiping past the first available snap point.
+     */
+    lower_overshoot: boolean
+    /**
      * Whether to reverse the swipe direction.
      * 
      * If the swipe tracker is horizontal, it can be used for supporting RTL text
@@ -14672,6 +18588,10 @@ export interface SwipeTracker extends Gtk.Orientable {
      * The widget the swipe tracker is attached to.
      */
     readonly swipeable: Swipeable
+    /**
+     * Whether to allow swiping past the last available snap point.
+     */
+    upper_overshoot: boolean
 
     // Owm methods of Adw-1.Adw.SwipeTracker
 
@@ -14691,6 +18611,11 @@ export interface SwipeTracker extends Gtk.Orientable {
      */
     get_enabled(): boolean
     /**
+     * Gets whether to allow swiping past the first available snap point.
+     * @returns whether to allow swiping past the first available snap point
+     */
+    get_lower_overshoot(): boolean
+    /**
      * Gets whether `self` is reversing the swipe direction.
      * @returns whether the direction is reversed
      */
@@ -14700,6 +18625,11 @@ export interface SwipeTracker extends Gtk.Orientable {
      * @returns the swipeable widget
      */
     get_swipeable(): Swipeable
+    /**
+     * Gets whether to allow swiping past the last available snap point.
+     * @returns whether to allow swiping past the last available snap point
+     */
+    get_upper_overshoot(): boolean
     /**
      * Sets whether to allow swiping for more than one snap point at a time.
      * 
@@ -14722,6 +18652,11 @@ export interface SwipeTracker extends Gtk.Orientable {
      */
     set_enabled(enabled: boolean): void
     /**
+     * Sets whether to allow swiping past the first available snap point.
+     * @param overshoot whether to allow swiping past the first available snap point
+     */
+    set_lower_overshoot(overshoot: boolean): void
+    /**
      * Sets whether to reverse the swipe direction.
      * 
      * If the swipe tracker is horizontal, it can be used for supporting RTL text
@@ -14729,6 +18664,11 @@ export interface SwipeTracker extends Gtk.Orientable {
      * @param reversed whether to reverse the swipe direction
      */
     set_reversed(reversed: boolean): void
+    /**
+     * Sets whether to allow swiping past the last available snap point.
+     * @param overshoot whether to allow swiping past the last available snap point
+     */
+    set_upper_overshoot(overshoot: boolean): void
     /**
      * Moves the current progress value by `delta`.
      * 
@@ -14764,12 +18704,18 @@ export interface SwipeTracker extends Gtk.Orientable {
     connect(sigName: "notify::enabled", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enabled", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::enabled", ...args: any[]): void
+    connect(sigName: "notify::lower-overshoot", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::lower-overshoot", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::lower-overshoot", ...args: any[]): void
     connect(sigName: "notify::reversed", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reversed", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::reversed", ...args: any[]): void
     connect(sigName: "notify::swipeable", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swipeable", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::swipeable", ...args: any[]): void
+    connect(sigName: "notify::upper-overshoot", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::upper-overshoot", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::upper-overshoot", ...args: any[]): void
     connect(sigName: "notify::orientation", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::orientation", callback: (($obj: SwipeTracker, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::orientation", ...args: any[]): void
@@ -14780,7 +18726,8 @@ export interface SwipeTracker extends Gtk.Orientable {
 }
 
 /**
- * A swipe tracker used in [class`Carousel]`, [class`Flap]` and [class`Leaflet]`.
+ * A swipe tracker used in [class`Carousel]`, [class`NavigationView]` and
+ * [class`OverlaySplitView]`.
  * 
  * The `AdwSwipeTracker` object can be used for implementing widgets with swipe
  * gestures. It supports touch-based swipes, pointer dragging, and touchpad
@@ -14817,6 +18764,309 @@ export class SwipeTracker extends GObject.Object {
      */
     static new(swipeable: Swipeable): SwipeTracker
     _init(config?: SwipeTracker.ConstructorProperties): void
+}
+
+export module SwitchRow {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Actionable.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, ActionRow.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.SwitchRow
+
+        /**
+         * Whether the switch row is in the "on" or "off" position.
+         */
+        active?: boolean | null
+    }
+
+}
+
+export interface SwitchRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.SwitchRow
+
+    /**
+     * Whether the switch row is in the "on" or "off" position.
+     */
+    active: boolean
+
+    // Conflicting properties
+
+    parent_instance: PreferencesRow & Gtk.ListBoxRow & Gtk.Widget & GObject.InitiallyUnowned & GObject.InitiallyUnowned
+
+    // Owm methods of Adw-1.Adw.SwitchRow
+
+    /**
+     * Gets whether `self` is in its "on" or "off" position.
+     * @returns whether @self is active or not
+     */
+    get_active(): boolean
+    /**
+     * Sets whether `self` is in its "on" or "off" position
+     * @param is_active whether `self` should be active
+     */
+    set_active(is_active: boolean): void
+
+    // Conflicting methods
+
+    /**
+     * Activates `self`.
+     */
+    activate(): void
+
+    // Overloads of activate
+
+    /**
+     * For widgets that can be “activated” (buttons, menu items, etc.),
+     * this function activates them.
+     * 
+     * The activation will emit the signal set using
+     * [method`Gtk`.WidgetClass.set_activate_signal] during class initialization.
+     * 
+     * Activation is what happens when you press <kbd>Enter</kbd>
+     * on a widget during key navigation.
+     * 
+     * If you wish to handle the activation keybinding yourself, it is
+     * recommended to use [method`Gtk`.WidgetClass.add_shortcut] with an action
+     * created with [ctor`Gtk`.SignalAction.new].
+     * 
+     * If `widget` isn't activatable, the function returns %FALSE.
+     * @returns %TRUE if the widget was activatable
+     */
+    activate(): boolean
+    /**
+     * For widgets that can be “activated” (buttons, menu items, etc.),
+     * this function activates them.
+     * 
+     * The activation will emit the signal set using
+     * [method`Gtk`.WidgetClass.set_activate_signal] during class initialization.
+     * 
+     * Activation is what happens when you press <kbd>Enter</kbd>
+     * on a widget during key navigation.
+     * 
+     * If you wish to handle the activation keybinding yourself, it is
+     * recommended to use [method`Gtk`.WidgetClass.add_shortcut] with an action
+     * created with [ctor`Gtk`.SignalAction.new].
+     * 
+     * If `widget` isn't activatable, the function returns %FALSE.
+     * @returns %TRUE if the widget was activatable
+     */
+    activate(): boolean
+
+    // Class property signals of Adw-1.Adw.SwitchRow
+
+    connect(sigName: "notify::active", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::active", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::active", ...args: any[]): void
+    connect(sigName: "notify::activatable-widget", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activatable-widget", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activatable-widget", ...args: any[]): void
+    connect(sigName: "notify::icon-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::subtitle", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle", ...args: any[]): void
+    connect(sigName: "notify::subtitle-lines", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle-lines", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle-lines", ...args: any[]): void
+    connect(sigName: "notify::subtitle-selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subtitle-selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::subtitle-selectable", ...args: any[]): void
+    connect(sigName: "notify::title-lines", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title-lines", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title-lines", ...args: any[]): void
+    connect(sigName: "notify::title", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::title-selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::title-selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title-selectable", ...args: any[]): void
+    connect(sigName: "notify::use-markup", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-markup", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-markup", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::activatable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activatable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activatable", ...args: any[]): void
+    connect(sigName: "notify::child", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::child", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::child", ...args: any[]): void
+    connect(sigName: "notify::selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selectable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selectable", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: "notify::action-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::action-name", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::action-name", ...args: any[]): void
+    connect(sigName: "notify::action-target", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::action-target", callback: (($obj: SwitchRow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::action-target", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A [class`Gtk`.ListBoxRow] used to represent two states.
+ * 
+ * <picture>
+ *   <source srcset="switch-row-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="switch-row.png" alt="switch-row">
+ * </picture>
+ * 
+ * The `AdwSwitchRow` widget contains a [class`Gtk`.Switch] that allows the user
+ * to select between two states: "on" or "off". When activated, the row will
+ * invert its active state.
+ * 
+ * The user can control the switch by activating the row or by dragging on the
+ * switch handle.
+ * 
+ * See [class`Gtk`.Switch] for details.
+ * 
+ * Example of an `AdwSwitchRow` UI definition:
+ * ```xml
+ * <object class="AdwSwitchRow">
+ *   <property name="title" translatable="yes">Switch Row</property>
+ *   <signal name="notify::active" handler="switch_row_notify_active_cb"/>
+ * </object>
+ * ```
+ * 
+ * The [property`SwitchRow:`active] property should be connected to in order to
+ * monitor changes to the active state.
+ * @class 
+ */
+export class SwitchRow extends ActionRow {
+
+    // Own properties of Adw-1.Adw.SwitchRow
+
+    static name: string
+    static $gtype: GObject.GType<SwitchRow>
+
+    // Constructors of Adw-1.Adw.SwitchRow
+
+    constructor(config?: SwitchRow.ConstructorProperties) 
+    /**
+     * Creates a new `AdwSwitchRow`.
+     * @constructor 
+     * @returns the newly created `AdwSwitchRow`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwSwitchRow`.
+     * @constructor 
+     * @returns the newly created `AdwSwitchRow`
+     */
+    static new(): SwitchRow
+    _init(config?: SwitchRow.ConstructorProperties): void
 }
 
 export module TabBar {
@@ -14914,6 +19164,15 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      */
     expand_tabs: boolean
     /**
+     * The unique action on the `current-drop` of the
+     * [signal`TabBar:`:extra-drag-drop].
+     * 
+     * This property should only be used during a [signal`TabBar:`:extra-drag-drop]
+     * and is always a subset of what was originally passed to
+     * [method`TabBar`.setup_extra_drop_target].
+     */
+    readonly extra_drag_preferred_action: Gdk.DragAction
+    /**
      * Whether the drop data should be preloaded on hover.
      * 
      * See [property`Gtk`.DropTarget:preload].
@@ -14964,6 +19223,11 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @returns whether tabs expand to full width.
      */
     get_expand_tabs(): boolean
+    /**
+     * Gets the current action during a drop on the extra_drop_target.
+     * @returns the drag action of the current drop.
+     */
+    get_extra_drag_preferred_action(): Gdk.DragAction
     /**
      * Gets whether drop data should be preloaded on hover.
      * @returns whether drop data should be preloaded on hover
@@ -15083,6 +19347,9 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
     connect(sigName: "notify::expand-tabs", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::expand-tabs", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::expand-tabs", ...args: any[]): void
+    connect(sigName: "notify::extra-drag-preferred-action", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extra-drag-preferred-action", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::extra-drag-preferred-action", ...args: any[]): void
     connect(sigName: "notify::extra-drag-preload", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::extra-drag-preload", callback: (($obj: TabBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::extra-drag-preload", ...args: any[]): void
@@ -15221,7 +19488,7 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
  * </picture>
  * 
  * The `AdwTabBar` widget is a tab bar that can be used with conjunction with
- * `AdwTabView`.
+ * `AdwTabView`. It is typically used as a top bar within [class`ToolbarView]`.
  * 
  * `AdwTabBar` can autohide and can optionally contain action widgets on both
  * sides of the tabs.
@@ -15630,6 +19897,15 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     enable_search: boolean
     /**
+     * The unique action on the `current-drop` of the
+     * [signal`TabOverview:`:extra-drag-drop].
+     * 
+     * This property should only be used during a
+     * [signal`TabOverview:`:extra-drag-drop] and is always a subset of what was
+     * originally passed to [method`TabOverview`.setup_extra_drop_target].
+     */
+    readonly extra_drag_preferred_action: Gdk.DragAction
+    /**
      * Whether the drop data should be preloaded on hover.
      * 
      * See [property`Gtk`.DropTarget:preload].
@@ -15694,6 +19970,11 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * @returns whether search is enabled
      */
     get_enable_search(): boolean
+    /**
+     * Gets the current action during a drop on the extra_drop_target.
+     * @returns the drag action of the current drop.
+     */
+    get_extra_drag_preferred_action(): Gdk.DragAction
     /**
      * Gets whether drop data should be preloaded on hover.
      * @returns whether drop data should be preloaded on hover
@@ -15851,6 +20132,9 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
     connect(sigName: "notify::enable-search", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enable-search", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::enable-search", ...args: any[]): void
+    connect(sigName: "notify::extra-drag-preferred-action", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extra-drag-preferred-action", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::extra-drag-preferred-action", ...args: any[]): void
     connect(sigName: "notify::extra-drag-preload", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::extra-drag-preload", callback: (($obj: TabOverview, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::extra-drag-preload", ...args: any[]): void
@@ -17860,6 +22144,12 @@ export module Toast {
          * If [property`Toast:`custom-title] is set, it will be used instead.
          */
         title?: string | null
+        /**
+         * Whether to use Pango markup for the toast title.
+         * 
+         * See also [func`Pango`.parse_markup].
+         */
+        use_markup?: boolean | null
     }
 
 }
@@ -17931,6 +22221,12 @@ export interface Toast {
      * If [property`Toast:`custom-title] is set, it will be used instead.
      */
     title: string | null
+    /**
+     * Whether to use Pango markup for the toast title.
+     * 
+     * See also [func`Pango`.parse_markup].
+     */
+    use_markup: boolean
 
     // Owm methods of Adw-1.Adw.Toast
 
@@ -17979,6 +22275,11 @@ export interface Toast {
      * @returns the title
      */
     get_title(): string | null
+    /**
+     * Gets whether to use Pango markup for the toast title.
+     * @returns whether the toast uses markup
+     */
+    get_use_markup(): boolean
     /**
      * Sets the name of the associated action.
      * 
@@ -18060,6 +22361,13 @@ export interface Toast {
      * @param title a title
      */
     set_title(title: string | null): void
+    /**
+     * Whether to use Pango markup for the toast title.
+     * 
+     * See also [func`Pango`.parse_markup].
+     * @param use_markup whether to use markup
+     */
+    set_use_markup(use_markup: boolean): void
 
     // Own signals of Adw-1.Adw.Toast
 
@@ -18093,6 +22401,9 @@ export interface Toast {
     connect(sigName: "notify::title", callback: (($obj: Toast, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: Toast, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
+    connect(sigName: "notify::use-markup", callback: (($obj: Toast, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-markup", callback: (($obj: Toast, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-markup", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -18120,6 +22431,9 @@ export interface Toast {
  * [property`Toast:`timeout] determines how long the toast stays on screen, while
  * [property`Toast:`priority] determines how it behaves if another toast is
  * already being displayed.
+ * 
+ * Toast titles use Pango markup by default, set [property`Toast:`use-markup] to
+ * `FALSE` if this is unwanted.
  * 
  * [property`Toast:`custom-title] can be used to replace the title label with a
  * custom widget.
@@ -18488,6 +22802,689 @@ export class ToastOverlay extends Gtk.Widget {
      */
     static new(): ToastOverlay
     _init(config?: ToastOverlay.ConstructorProperties): void
+}
+
+export module ToolbarView {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gtk.Accessible.ConstructorProperties, Gtk.Buildable.ConstructorProperties, Gtk.ConstraintTarget.ConstructorProperties, Gtk.Widget.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.ToolbarView
+
+        /**
+         * Appearance of the bottom bars.
+         * 
+         * If set to `ADW_TOOLBAR_FLAT`, bottom bars are flat and scrolling content
+         * has a subtle undershoot shadow when touching them, same as the
+         * [`.undershoot-bottom`](style-classes.html#undershot-indicators)
+         * style class. This works well for simple content, e.g. [class`StatusPage]` or
+         * [class`PreferencesPage]`, where the background at the bottom of the page is
+         * uniform. Additionally, windows with sidebars should always use this style.
+         * 
+         * Undershoot shadow is only present if a bottom bar is actually present and
+         * visible. It is also never present if
+         * [property`ToolbarView:`extend-content-to-bottom-edge] is set to `TRUE`.
+         * 
+         * If set to `ADW_TOOLBAR_RAISED`, bottom bars have an opaque background and a
+         * persistent shadow, this is suitable for content such as
+         * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+         * where some elements are directly adjacent to the bottom bars, or
+         * [class`TabView]`, where each page can have a different background.
+         * 
+         * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+         * shadow is replaced with a more subtle border. This can be useful for
+         * applications like image viewers.
+         * 
+         * See also [property`ToolbarView:`top-bar-style].
+         */
+        bottom_bar_style?: ToolbarStyle | null
+        /**
+         * The content widget.
+         */
+        content?: Gtk.Widget | null
+        /**
+         * Whether the content widget can extend behind bottom bars.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`reveal-bottom-bars] to show and hide toolbars in
+         * fullscreen.
+         * 
+         * See [property`ToolbarView:`extend-content-to-top-edge].
+         */
+        extend_content_to_bottom_edge?: boolean | null
+        /**
+         * Whether the content widget can extend behind top bars.
+         * 
+         * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
+         * to show and hide toolbars in fullscreen.
+         * 
+         * See [property`ToolbarView:`extend-content-to-bottom-edge].
+         */
+        extend_content_to_top_edge?: boolean | null
+        /**
+         * Whether bottom bars are visible.
+         * 
+         * The transition will be animated.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`extend-content-to-bottom-edge] to show and hide
+         * toolbars in fullscreen.
+         * 
+         * See [property`ToolbarView:`reveal-top-bars].
+         */
+        reveal_bottom_bars?: boolean | null
+        /**
+         * Whether top bars are revealed.
+         * 
+         * The transition will be animated.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`extend-content-to-top-edge] to show and hide toolbars
+         * in fullscreen.
+         * 
+         * See [property`ToolbarView:`reveal-bottom-bars].
+         */
+        reveal_top_bars?: boolean | null
+        /**
+         * Appearance of the top bars.
+         * 
+         * If set to `ADW_TOOLBAR_FLAT`, top bars are flat and scrolling content has a
+         * subtle undershoot shadow when touching them, same as the
+         * [`.undershoot-top`](style-classes.html#undershot-indicators)
+         * style class. This works well for simple content, e.g. [class`StatusPage]` or
+         * [class`PreferencesPage]`, where the background at the top of the page is
+         * uniform. Additionally, windows with sidebars should always use this style.
+         * 
+         * Undershoot shadow is only present if a top bar is actually present and
+         * visible. It is also never present if
+         * [property`ToolbarView:`extend-content-to-top-edge] is set to `TRUE`.
+         * 
+         * If set to `ADW_TOOLBAR_RAISED`, top bars have an opaque background and a
+         * persistent shadow, this is suitable for content such as
+         * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+         * where some elements are directly adjacent to the top bars, or
+         * [class`TabView]`, where each page can have a different background.
+         * 
+         * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+         * shadow is replaced with a more subtle border. This can be useful for
+         * applications like image viewers.
+         * 
+         * See also [property`ToolbarView:`bottom-bar-style].
+         */
+        top_bar_style?: ToolbarStyle | null
+    }
+
+}
+
+export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+
+    // Own properties of Adw-1.Adw.ToolbarView
+
+    /**
+     * The current bottom bar height.
+     * 
+     * Bottom bar height does change depending on
+     * [property`ToolbarView:`reveal-bottom-bars], including during the transition.
+     * 
+     * See [property`ToolbarView:`top-bar-height].
+     */
+    readonly bottom_bar_height: number
+    /**
+     * Appearance of the bottom bars.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, bottom bars are flat and scrolling content
+     * has a subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-bottom`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the bottom of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a bottom bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-bottom-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, bottom bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the bottom bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [property`ToolbarView:`top-bar-style].
+     */
+    bottom_bar_style: ToolbarStyle
+    /**
+     * The content widget.
+     */
+    content: Gtk.Widget
+    /**
+     * Whether the content widget can extend behind bottom bars.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`reveal-bottom-bars] to show and hide toolbars in
+     * fullscreen.
+     * 
+     * See [property`ToolbarView:`extend-content-to-top-edge].
+     */
+    extend_content_to_bottom_edge: boolean
+    /**
+     * Whether the content widget can extend behind top bars.
+     * 
+     * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
+     * to show and hide toolbars in fullscreen.
+     * 
+     * See [property`ToolbarView:`extend-content-to-bottom-edge].
+     */
+    extend_content_to_top_edge: boolean
+    /**
+     * Whether bottom bars are visible.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-bottom-edge] to show and hide
+     * toolbars in fullscreen.
+     * 
+     * See [property`ToolbarView:`reveal-top-bars].
+     */
+    reveal_bottom_bars: boolean
+    /**
+     * Whether top bars are revealed.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-top-edge] to show and hide toolbars
+     * in fullscreen.
+     * 
+     * See [property`ToolbarView:`reveal-bottom-bars].
+     */
+    reveal_top_bars: boolean
+    /**
+     * The current top bar height.
+     * 
+     * Top bar height does change depending [property`ToolbarView:`reveal-top-bars],
+     * including during the transition.
+     * 
+     * See [property`ToolbarView:`bottom-bar-height].
+     */
+    readonly top_bar_height: number
+    /**
+     * Appearance of the top bars.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, top bars are flat and scrolling content has a
+     * subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-top`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the top of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a top bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-top-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, top bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the top bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [property`ToolbarView:`bottom-bar-style].
+     */
+    top_bar_style: ToolbarStyle
+
+    // Owm methods of Adw-1.Adw.ToolbarView
+
+    /**
+     * Adds a bottom bar to `self`.
+     * @param widget a widget
+     */
+    add_bottom_bar(widget: Gtk.Widget): void
+    /**
+     * Adds a top bar to `self`.
+     * @param widget a widget
+     */
+    add_top_bar(widget: Gtk.Widget): void
+    /**
+     * Gets the current bottom bar height for `self`.
+     * 
+     * Bottom bar height does change depending on
+     * [property`ToolbarView:`reveal-bottom-bars], including during the transition.
+     * 
+     * See [method`ToolbarView`.get_top_bar_height].
+     * @returns the current bottom bar height
+     */
+    get_bottom_bar_height(): number
+    /**
+     * Gets appearance of the botom bars for `self`.
+     * @returns bottom bar style
+     */
+    get_bottom_bar_style(): ToolbarStyle
+    /**
+     * Gets the content widget for `self`.
+     * @returns the content widget
+     */
+    get_content(): Gtk.Widget | null
+    /**
+     * Gets whether the content widget can extend behind bottom bars.
+     * @returns whether content extends behind bottom bars
+     */
+    get_extend_content_to_bottom_edge(): boolean
+    /**
+     * Gets whether the content widget can extend behind top bars.
+     * @returns whether content extends behind top bars
+     */
+    get_extend_content_to_top_edge(): boolean
+    /**
+     * Gets whether bottom bars are revealed for `self`.
+     * @returns whether bottom bars are revealed
+     */
+    get_reveal_bottom_bars(): boolean
+    /**
+     * Gets whether top bars are revealed for `self`.
+     * @returns whether top bars are revealed
+     */
+    get_reveal_top_bars(): boolean
+    /**
+     * Gets the current top bar height for `self`.
+     * 
+     * Top bar height does change depending on
+     * [property`ToolbarView:`reveal-top-bars], including during the transition.
+     * 
+     * See [method`ToolbarView`.get_bottom_bar_height].
+     * @returns the current top bar height
+     */
+    get_top_bar_height(): number
+    /**
+     * Gets appearance of the top bars for `self`.
+     * @returns top bar style
+     */
+    get_top_bar_style(): ToolbarStyle
+    /**
+     * Removes a child from `self`.
+     * @param widget the child to be removed
+     */
+    remove(widget: Gtk.Widget): void
+    /**
+     * Sets appearance of the bottom bars for `self`.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, bottom bars are flat and scrolling content has
+     * a subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-bottom`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the bottom of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a bottom bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-bottom-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, bottom bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the bottom bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [method`ToolbarView`.set_top_bar_style].
+     * @param style bottom bar style
+     */
+    set_bottom_bar_style(style: ToolbarStyle): void
+    /**
+     * Sets the content widget for `self`.
+     * @param content the content widget
+     */
+    set_content(content: Gtk.Widget | null): void
+    /**
+     * Sets whether the content widget can extend behind bottom bars.
+     * 
+     * This can be used in combination with [property`ToolbarView:`reveal-bottom-bars]
+     * to show and hide toolbars in fullscreen.
+     * 
+     * See [method`ToolbarView`.set_extend_content_to_top_edge].
+     * @param extend whether content extends behind bottom bars
+     */
+    set_extend_content_to_bottom_edge(extend: boolean): void
+    /**
+     * Sets whether the content widget can extend behind top bars.
+     * 
+     * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
+     * to show and hide toolbars in fullscreen.
+     * 
+     * See [method`ToolbarView`.set_extend_content_to_bottom_edge].
+     * @param extend whether content extends behind top bars
+     */
+    set_extend_content_to_top_edge(extend: boolean): void
+    /**
+     * Sets whether bottom bars are revealed for `self`.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-bottom-edge] to show and hide
+     * toolbars in fullscreen.
+     * 
+     * See [method`ToolbarView`.set_reveal_top_bars].
+     * @param reveal whether to reveal bottom bars
+     */
+    set_reveal_bottom_bars(reveal: boolean): void
+    /**
+     * Sets whether top bars are revealed for `self`.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-top-edge] to show and hide toolbars
+     * in fullscreen.
+     * 
+     * See [method`ToolbarView`.set_reveal_bottom_bars].
+     * @param reveal whether to reveal top bars
+     */
+    set_reveal_top_bars(reveal: boolean): void
+    /**
+     * Sets appearance of the top bars for `self`.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, top bars are flat and scrolling content has a
+     * subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-top`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the top of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a top bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-top-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, top bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the top bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [method`ToolbarView`.set_bottom_bar_style].
+     * @param style top bar style
+     */
+    set_top_bar_style(style: ToolbarStyle): void
+
+    // Class property signals of Adw-1.Adw.ToolbarView
+
+    connect(sigName: "notify::bottom-bar-height", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bottom-bar-height", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bottom-bar-height", ...args: any[]): void
+    connect(sigName: "notify::bottom-bar-style", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bottom-bar-style", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bottom-bar-style", ...args: any[]): void
+    connect(sigName: "notify::content", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::content", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::extend-content-to-bottom-edge", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extend-content-to-bottom-edge", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::extend-content-to-bottom-edge", ...args: any[]): void
+    connect(sigName: "notify::extend-content-to-top-edge", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::extend-content-to-top-edge", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::extend-content-to-top-edge", ...args: any[]): void
+    connect(sigName: "notify::reveal-bottom-bars", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reveal-bottom-bars", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::reveal-bottom-bars", ...args: any[]): void
+    connect(sigName: "notify::reveal-top-bars", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reveal-top-bars", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::reveal-top-bars", ...args: any[]): void
+    connect(sigName: "notify::top-bar-height", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::top-bar-height", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::top-bar-height", ...args: any[]): void
+    connect(sigName: "notify::top-bar-style", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::top-bar-style", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::top-bar-style", ...args: any[]): void
+    connect(sigName: "notify::can-focus", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-focus", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-focus", ...args: any[]): void
+    connect(sigName: "notify::can-target", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::can-target", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::can-target", ...args: any[]): void
+    connect(sigName: "notify::css-classes", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-classes", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-classes", ...args: any[]): void
+    connect(sigName: "notify::css-name", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::css-name", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::css-name", ...args: any[]): void
+    connect(sigName: "notify::cursor", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
+    connect(sigName: "notify::focusable", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focusable", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focusable", ...args: any[]): void
+    connect(sigName: "notify::halign", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::halign", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::halign", ...args: any[]): void
+    connect(sigName: "notify::has-default", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-default", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-default", ...args: any[]): void
+    connect(sigName: "notify::has-focus", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-focus", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-focus", ...args: any[]): void
+    connect(sigName: "notify::has-tooltip", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-tooltip", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-tooltip", ...args: any[]): void
+    connect(sigName: "notify::height-request", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::height-request", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::height-request", ...args: any[]): void
+    connect(sigName: "notify::hexpand", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand", ...args: any[]): void
+    connect(sigName: "notify::hexpand-set", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::hexpand-set", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::hexpand-set", ...args: any[]): void
+    connect(sigName: "notify::layout-manager", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-manager", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-manager", ...args: any[]): void
+    connect(sigName: "notify::margin-bottom", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-bottom", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-bottom", ...args: any[]): void
+    connect(sigName: "notify::margin-end", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-end", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-end", ...args: any[]): void
+    connect(sigName: "notify::margin-start", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-start", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-start", ...args: any[]): void
+    connect(sigName: "notify::margin-top", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::margin-top", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::margin-top", ...args: any[]): void
+    connect(sigName: "notify::name", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
+    connect(sigName: "notify::opacity", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::opacity", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::opacity", ...args: any[]): void
+    connect(sigName: "notify::overflow", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overflow", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overflow", ...args: any[]): void
+    connect(sigName: "notify::parent", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::parent", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::parent", ...args: any[]): void
+    connect(sigName: "notify::receives-default", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::receives-default", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::receives-default", ...args: any[]): void
+    connect(sigName: "notify::root", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::root", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::root", ...args: any[]): void
+    connect(sigName: "notify::scale-factor", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-factor", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-factor", ...args: any[]): void
+    connect(sigName: "notify::sensitive", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sensitive", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sensitive", ...args: any[]): void
+    connect(sigName: "notify::tooltip-markup", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-markup", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-markup", ...args: any[]): void
+    connect(sigName: "notify::tooltip-text", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tooltip-text", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tooltip-text", ...args: any[]): void
+    connect(sigName: "notify::valign", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::valign", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::valign", ...args: any[]): void
+    connect(sigName: "notify::vexpand", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand", ...args: any[]): void
+    connect(sigName: "notify::vexpand-set", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::vexpand-set", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::vexpand-set", ...args: any[]): void
+    connect(sigName: "notify::visible", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::visible", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::visible", ...args: any[]): void
+    connect(sigName: "notify::width-request", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::width-request", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::width-request", ...args: any[]): void
+    connect(sigName: "notify::accessible-role", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-role", callback: (($obj: ToolbarView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-role", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * A widget containing a page, as well as top and/or bottom bars.
+ * 
+ * <picture>
+ *   <source srcset="toolbar-view-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view.png" alt="toolbar-view">
+ * </picture>
+ * 
+ * `AdwToolbarView` has a single content widget and one or multiple top and
+ * bottom bars, shown at the top and bottom sides respectively.
+ * 
+ * Example of an `AdwToolbarView` UI definition:
+ * ```xml
+ * <object class="AdwToolbarView">
+ *   <child type="top">
+ *     <object class="AdwHeaderBar"/>
+ *   </child>
+ *   <property name="content">
+ *     <object class="AdwPreferencesPage">
+ *       <!-- ... -->
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
+ * 
+ * The following kinds of top and bottom bars are supported:
+ * 
+ * - [class`HeaderBar]`
+ * - [class`TabBar]`
+ * - [class`ViewSwitcherBar]`
+ * - [class`Gtk`.ActionBar]
+ * - [class`Gtk`.HeaderBar]
+ * - [class`Gtk`.PopoverMenuBar]
+ * - [class`Gtk`.SearchBar]
+ * - Any [class`Gtk`.Box] or a similar widget with the
+ *   [`.toolbar`](style-classes.html#toolbars) style class
+ * 
+ * By default, top and bottom bars are flat and scrolling content has a subtle
+ * undershoot shadow, same as when using the
+ * [`.undershoot-top`](style-classes.html#undershot-indicators) and
+ * [`.undershoot-bottom`](style-classes.html#undershot-indicators) style
+ * classes. This works well in most cases, e.g. with [class`StatusPage]` or
+ * [class`PreferencesPage]`, where the background at the top and bottom parts of
+ * the page is uniform. Additionally, windows with sidebars should always use
+ * this style.
+ * 
+ * [property`ToolbarView:`top-bar-style] and
+ * [property`ToolbarView:`bottom-bar-style] properties can be used add an opaque
+ * background and a persistent shadow to top and bottom bars, this can be useful
+ * for content such as [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+ * where some elements are adjacent to the top/bottom bars, or [class`TabView]`,
+ * where each page can have a different background.
+ * 
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-flat-1-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-flat-1.png" alt="toolbar-view-flat-1">
+ * </picture>
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-flat-2-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-flat-2.png" alt="toolbar-view-flat-2">
+ * </picture>
+ * <picture style="min-width: 33%; display: inline-block;">
+ *   <source srcset="toolbar-view-raised-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-raised.png" alt="toolbar-view-raised">
+ * </picture>
+ * 
+ * `AdwToolbarView` ensures the top and bottom bars have consistent backdrop
+ * styles and vertical spacing. For comparison:
+ * 
+ * <picture style="min-width: 40%; display: inline-block;">
+ *   <source srcset="toolbar-view-spacing-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-spacing.png" alt="toolbar-view-spacing">
+ * </picture>
+ * <picture style="min-width: 40%; display: inline-block;">
+ *   <source srcset="toolbar-view-spacing-box-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img src="toolbar-view-spacing-box.png" alt="toolbar-view-spacing-box">
+ * </picture>
+ * 
+ * Any top and bottom bars can also be dragged to move the window, equivalent
+ * to putting them into a [class`Gtk`.WindowHandle].
+ * 
+ * Content is typically place between top and bottom bars, but can also extend
+ * behind them. This is controlled with the
+ * [property`ToolbarView:`extend-content-to-top-edge] and
+ * [property`ToolbarView:`extend-content-to-bottom-edge] properties.
+ * 
+ * Top and bottom bars can be hidden and revealed with an animation using the
+ * [property`ToolbarView:`reveal-top-bars] and
+ * [property`ToolbarView:`reveal-bottom-bars] properties.
+ * 
+ * ## `AdwToolbarView` as `GtkBuildable`
+ * 
+ * The `AdwToolbarView` implementation of the [iface`Gtk`.Buildable] interface
+ * supports adding a top bar by specifying “top” as the “type” attribute of a
+ * `<child>` element, or adding a bottom bar by specifying “bottom”.
+ * 
+ * ## Accessibility
+ * 
+ * `AdwToolbarView` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * @class 
+ */
+export class ToolbarView extends Gtk.Widget {
+
+    // Own properties of Adw-1.Adw.ToolbarView
+
+    static name: string
+    static $gtype: GObject.GType<ToolbarView>
+
+    // Constructors of Adw-1.Adw.ToolbarView
+
+    constructor(config?: ToolbarView.ConstructorProperties) 
+    /**
+     * Creates a new `AdwToolbarView`.
+     * @constructor 
+     * @returns the newly created `AdwToolbarView`
+     */
+    constructor() 
+    /**
+     * Creates a new `AdwToolbarView`.
+     * @constructor 
+     * @returns the newly created `AdwToolbarView`
+     */
+    static new(): ToolbarView
+    _init(config?: ToolbarView.ConstructorProperties): void
 }
 
 export module ViewStack {
@@ -19150,6 +24147,90 @@ export class ViewStackPage extends GObject.Object {
     _init(config?: ViewStackPage.ConstructorProperties): void
 }
 
+export module ViewStackPages {
+
+    // Constructor properties interface
+
+    export interface ConstructorProperties extends Gio.ListModel.ConstructorProperties, Gtk.SelectionModel.ConstructorProperties, GObject.Object.ConstructorProperties {
+
+        // Own constructor properties of Adw-1.Adw.ViewStackPages
+
+        /**
+         * The selected [class`ViewStackPage]` within the [class`ViewStackPages]`.
+         * 
+         * This can be used to keep an up-to-date view of the [class`ViewStackPage]` for
+         * The visible [class`ViewStackPage]` within the associated [class`ViewStackPages]`.
+         * 
+         * This can be used to keep an up-to-date view of the visible child.
+         */
+        selected_page?: ViewStackPage | null
+    }
+
+}
+
+export interface ViewStackPages extends Gio.ListModel, Gtk.SelectionModel {
+
+    // Own properties of Adw-1.Adw.ViewStackPages
+
+    /**
+     * The selected [class`ViewStackPage]` within the [class`ViewStackPages]`.
+     * 
+     * This can be used to keep an up-to-date view of the [class`ViewStackPage]` for
+     * The visible [class`ViewStackPage]` within the associated [class`ViewStackPages]`.
+     * 
+     * This can be used to keep an up-to-date view of the visible child.
+     */
+    selected_page: ViewStackPage
+
+    // Owm methods of Adw-1.Adw.ViewStackPages
+
+    /**
+     * Gets the [class`ViewStackPage]` for the visible child of a view stack
+     * 
+     * Gets the [class`ViewStackPage]` for the visible child of the associated stack.
+     * 
+     * Returns `NULL` if there's no selected page.
+     * @returns the stack page
+     */
+    get_selected_page(): ViewStackPage | null
+    /**
+     * Sets the visible child in the associated [class`ViewStack]`.
+     * 
+     * See [property`ViewStack:`visible-child].
+     * @param page a stack page within the associated stack
+     */
+    set_selected_page(page: ViewStackPage): void
+
+    // Class property signals of Adw-1.Adw.ViewStackPages
+
+    connect(sigName: "notify::selected-page", callback: (($obj: ViewStackPages, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selected-page", callback: (($obj: ViewStackPages, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selected-page", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * An auxiliary class used by [class`ViewStack]`.
+ * 
+ * See [property`ViewStack:`pages].
+ * @class 
+ */
+export class ViewStackPages extends GObject.Object {
+
+    // Own properties of Adw-1.Adw.ViewStackPages
+
+    static name: string
+    static $gtype: GObject.GType<ViewStackPages>
+
+    // Constructors of Adw-1.Adw.ViewStackPages
+
+    constructor(config?: ViewStackPages.ConstructorProperties) 
+    _init(config?: ViewStackPages.ConstructorProperties): void
+}
+
 export module ViewSwitcher {
 
     // Constructor properties interface
@@ -19341,8 +24422,51 @@ export interface ViewSwitcher extends Gtk.Accessible, Gtk.Buildable, Gtk.Constra
  * displayed side by side, or icon on top of the label. This can be controlled
  * via the [property`ViewSwitcher:`policy] property.
  * 
- * Most applications should be using [class`ViewSwitcherBar]` and
- * [class`ViewSwitcherTitle]`.
+ * `AdwViewSwitcher` is intended to be used in a header bar together with
+ * [class`ViewSwitcherBar]` at the bottom of the window, and a [class`Breakpoint]`
+ * showing the view switcher bar on narrow sizes, while removing the view
+ * switcher from the header bar, as follows:
+ * 
+ * ```xml
+ * <object class="AdwWindow">
+ *   <property name="width-request">360</property>
+ *   <property name="height-request">200</property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 550sp</condition>
+ *       <setter object="switcher_bar" property="reveal">True</setter>
+ *       <setter object="header_bar" property="title-widget"/>
+ *     </object>
+ *   </child>
+ *   <property name="content">
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar" id="header_bar">
+ *           <property name="title-widget">
+ *             <object class="AdwViewSwitcher">
+ *               <property name="stack">stack</property>
+ *               <property name="policy">wide</property>
+ *             </object>
+ *           </property>
+ *         </object>
+ *       </child>
+ *       <property name="content">
+ *         <object class="AdwViewStack" id="stack"/>
+ *       </property>
+ *       <child type="bottom">
+ *         <object class="AdwViewSwitcherBar" id="switcher_bar">
+ *           <property name="stack">stack</property>
+ *         </object>
+ *       </child>
+ *     </object>
+ *   </property>
+ * </object>
+ * ```
+ * 
+ * It's recommended to set [property`ViewSwitcher:`policy] to
+ * `ADW_VIEW_SWITCHER_POLICY_WIDE` in this case.
+ * 
+ * You may have to adjust the breakpoint condition for your specific pages.
  * 
  * ## CSS nodes
  * 
@@ -19569,43 +24693,50 @@ export interface ViewSwitcherBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
  * on mobile phones. It can't be revealed if there are less than two pages.
  * 
  * `AdwViewSwitcherBar` is intended to be used together with
- * [class`ViewSwitcherTitle]`.
- * 
- * A common use case is to bind the [property`ViewSwitcherBar:`reveal] property
- * to [property`ViewSwitcherTitle:`title-visible] to automatically reveal the
- * view switcher bar when the title label is displayed in place of the view
- * switcher, as follows:
+ * `AdwViewSwitcher` in a header bar, and a [class`Breakpoint]` showing the view
+ * switcher bar on narrow sizes, while removing the view switcher from the
+ * header bar, as follows:
  * 
  * ```xml
- * <object class="GtkWindow">
- *   <property name="titlebar">
- *     <object class="AdwHeaderBar">
- *       <property name="centering-policy">strict</property>
- *       <property name="title-widget">
- *         <object class="AdwViewSwitcherTitle" id="title">
- *           <property name="stack">stack</property>
- *         </object>
- *       </property>
+ * <object class="AdwWindow">
+ *   <property name="width-request">360</property>
+ *   <property name="height-request">200</property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 550sp</condition>
+ *       <setter object="switcher_bar" property="reveal">True</setter>
+ *       <setter object="header_bar" property="title-widget"/>
  *     </object>
- *   </property>
- *   <property name="child">
- *     <object class="GtkBox">
- *       <property name="orientation">vertical</property>
- *       <child>
- *         <object class="AdwViewStack" id="stack"/>
+ *   </child>
+ *   <property name="content">
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar" id="header_bar">
+ *           <property name="title-widget">
+ *             <object class="AdwViewSwitcher">
+ *               <property name="stack">stack</property>
+ *               <property name="policy">wide</property>
+ *             </object>
+ *           </property>
+ *         </object>
  *       </child>
- *       <child>
- *         <object class="AdwViewSwitcherBar">
+ *       <property name="content">
+ *         <object class="AdwViewStack" id="stack"/>
+ *       </property>
+ *       <child type="bottom">
+ *         <object class="AdwViewSwitcherBar" id="switcher_bar">
  *           <property name="stack">stack</property>
- *           <binding name="reveal">
- *             <lookup name="title-visible">title</lookup>
- *           </binding>
  *         </object>
  *       </child>
  *     </object>
  *   </property>
  * </object>
  * ```
+ * 
+ * It's recommended to set [property`ViewSwitcher:`policy] to
+ * `ADW_VIEW_SWITCHER_POLICY_WIDE` in this case.
+ * 
+ * You may have to adjust the breakpoint condition for your specific pages.
  * 
  * ## CSS nodes
  * 
@@ -19936,24 +25067,23 @@ export interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
  * switcher, as follows:
  * 
  * ```xml
- * <object class="GtkWindow">
- *   <property name="titlebar">
- *     <object class="AdwHeaderBar">
- *       <property name="centering-policy">strict</property>
- *       <property name="title-widget">
- *         <object class="AdwViewSwitcherTitle" id="title">
- *           <property name="stack">stack</property>
+ * <object class="AdwWindow">
+ *   <property name="content">
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar">
+ *           <property name="centering-policy">strict</property>
+ *           <property name="title-widget">
+ *             <object class="AdwViewSwitcherTitle" id="title">
+ *               <property name="stack">stack</property>
+ *             </object>
+ *           </property>
  *         </object>
- *       </property>
- *     </object>
- *   </property>
- *   <property name="child">
- *     <object class="GtkBox">
- *       <property name="orientation">vertical</property>
- *       <child>
- *         <object class="AdwViewStack" id="stack"/>
  *       </child>
- *       <child>
+ *       <property name="content">
+ *         <object class="AdwViewStack" id="stack"/>
+ *       </property>
+ *       <child type="bottom">
  *         <object class="AdwViewSwitcherBar">
  *           <property name="stack">stack</property>
  *           <binding name="reveal">
@@ -20024,6 +25154,10 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * This property should always be used instead of [property`Gtk`.Window:child].
      */
     content: Gtk.Widget
+    /**
+     * The current breakpoint.
+     */
+    readonly current_breakpoint: Breakpoint
 
     // Own fields of Adw-1.Adw.Window
 
@@ -20032,12 +25166,22 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
     // Owm methods of Adw-1.Adw.Window
 
     /**
+     * Adds `breakpoint` to `self`.
+     * @param breakpoint the breakpoint to add
+     */
+    add_breakpoint(breakpoint: Breakpoint): void
+    /**
      * Gets the content widget of `self`.
      * 
      * This method should always be used instead of [method`Gtk`.Window.get_child].
      * @returns the content widget of @self
      */
     get_content(): Gtk.Widget | null
+    /**
+     * Gets the current breakpoint.
+     * @returns the current breakpoint
+     */
+    get_current_breakpoint(): Breakpoint | null
     /**
      * Sets the content widget of `self`.
      * 
@@ -20051,6 +25195,9 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
     connect(sigName: "notify::content", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::content", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::content", ...args: any[]): void
+    connect(sigName: "notify::current-breakpoint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-breakpoint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-breakpoint", ...args: any[]): void
     connect(sigName: "notify::application", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::application", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::application", ...args: any[]): void
@@ -20114,6 +25261,9 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
     connect(sigName: "notify::startup-id", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::startup-id", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::startup-id", ...args: any[]): void
+    connect(sigName: "notify::suspended", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::suspended", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::suspended", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::title", ...args: any[]): void
@@ -20243,19 +25393,19 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
  * </picture>
  * 
  * The `AdwWindow` widget is a subclass of [class`Gtk`.Window] which has no
- * titlebar area. It means [class`Gtk`.HeaderBar] can be used as follows:
+ * titlebar area. Instead, [class`ToolbarView]` can be used together with
+ * [class`HeaderBar]` or [class`Gtk`.HeaderBar] as follows:
  * 
  * ```xml
  * <object class="AdwWindow">
  *   <property name="content">
- *     <object class="GtkBox">
- *       <property name="orientation">vertical</property>
- *       <child>
- *         <object class="GtkHeaderBar"/>
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar"/>
  *       </child>
- *       <child>
+ *       <property name="content">
  *         <!-- ... -->
- *       </child>
+ *       </property>
  *     </object>
  *   </property>
  * </object>
@@ -20264,6 +25414,46 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
  * Using [property`Gtk`.Window:titlebar] or [property`Gtk`.Window:child]
  * is not supported and will result in a crash. Use [property`Window:`content]
  * instead.
+ * 
+ * ## Breakpoints
+ * 
+ * `AdwWindow` can be used with [class`Breakpoint]` the same way as
+ * [class`BreakpointBin]`. Refer to that widget's documentation for details.
+ * 
+ * Example:
+ * 
+ * ```xml
+ * <object class="AdwWindow">
+ *   <property name="width-request">360</property>
+ *   <property name="height-request">200</property>
+ *   <property name="content">
+ *     <object class="AdwToolbarView">
+ *       <child type="top">
+ *         <object class="AdwHeaderBar"/>
+ *       </child>
+ *       <property name="content">
+ *         <!-- ... -->
+ *       </property>
+ *       <child type="bottom">
+ *         <object class="GtkActionBar" id="bottom_bar">
+ *           <property name="revealed">True</property>
+ *           <property name="visible">False</property>
+ *         </object>
+ *       </child>
+ *     </object>
+ *   </property>
+ *   <child>
+ *     <object class="AdwBreakpoint">
+ *       <condition>max-width: 500px</condition>
+ *       <setter object="bottom_bar" property="visible">True</setter>
+ *     </object>
+ *   </child>
+ * </object>
+ * ```
+ * 
+ * Like `AdwBreakpointBin`, if breakpoints are used, `AdwWindow` doesn't have a
+ * minimum size, and [property`Gtk`.Widget:width-request] and
+ * [property`Gtk`.Widget:height-request] properties must be set manually.
  * @class 
  */
 export class Window extends Gtk.Window {
@@ -20653,6 +25843,168 @@ export abstract class BinClass {
     static name: string
 }
 
+export interface BreakpointBinClass {
+
+    // Own fields of Adw-1.Adw.BreakpointBinClass
+
+    parent_class: Gtk.WidgetClass
+}
+
+export abstract class BreakpointBinClass {
+
+    // Own properties of Adw-1.Adw.BreakpointBinClass
+
+    static name: string
+}
+
+export interface BreakpointClass {
+
+    // Own fields of Adw-1.Adw.BreakpointClass
+
+    parent_class: GObject.ObjectClass
+}
+
+export abstract class BreakpointClass {
+
+    // Own properties of Adw-1.Adw.BreakpointClass
+
+    static name: string
+}
+
+export interface BreakpointCondition {
+
+    // Owm methods of Adw-1.Adw.BreakpointCondition
+
+    /**
+     * Copies `self`.
+     * @returns a copy of @self
+     */
+    copy(): BreakpointCondition
+    /**
+     * Frees `self`.
+     */
+    free(): void
+    /**
+     * Returns a textual representation of `self`.
+     * 
+     * The returned string can be parsed by [func`BreakpointCondition`.parse].
+     * @returns A newly allocated text string
+     */
+    to_string(): string | null
+}
+
+/**
+ * Describes condition for an [class`Breakpoint]`.
+ * @record 
+ */
+export class BreakpointCondition {
+
+    // Own properties of Adw-1.Adw.BreakpointCondition
+
+    static name: string
+
+    // Constructors of Adw-1.Adw.BreakpointCondition
+
+    /**
+     * Creates a condition that triggers when `condition_1` and `condition_2` are both
+     * true.
+     * @constructor 
+     * @param condition_1 first condition
+     * @param condition_2 second condition
+     * @returns the newly created condition
+     */
+    static new_and(condition_1: BreakpointCondition, condition_2: BreakpointCondition): BreakpointCondition
+    /**
+     * Creates a condition that triggers on length changes.
+     * @constructor 
+     * @param type the length type
+     * @param value the length value
+     * @param unit the length unit
+     * @returns the newly created condition
+     */
+    static new_length(type: BreakpointConditionLengthType, value: number, unit: LengthUnit): BreakpointCondition
+    /**
+     * Creates a condition that triggers when either `condition_1` or `condition_2` is
+     * true.
+     * @constructor 
+     * @param condition_1 first condition
+     * @param condition_2 second condition
+     * @returns the newly created condition
+     */
+    static new_or(condition_1: BreakpointCondition, condition_2: BreakpointCondition): BreakpointCondition
+    /**
+     * Creates a condition that triggers on ratio changes.
+     * 
+     * The ratio is represented as `width` divided by `height`.
+     * @constructor 
+     * @param type the ratio type
+     * @param width ratio width
+     * @param height ratio height
+     * @returns the newly created condition
+     */
+    static new_ratio(type: BreakpointConditionRatioType, width: number, height: number): BreakpointCondition
+    /**
+     * Parses a condition from a string.
+     * 
+     * Length conditions are specified as `<type>: <value>[<unit>]`, where:
+     * 
+     * - `<type>` can be `min-width`, `max-width`, `min-height` or `max-height`
+     * - `<value>` is a fractional number
+     * - `<unit>` can be `px`, `pt` or `sp`
+     * 
+     * If the unit is omitted, `px` is assumed.
+     * 
+     * See [ctor`BreakpointCondition`.new_length].
+     * 
+     * Examples:
+     * 
+     * - `min-width: 500px`
+     * - `min-height: 400pt`
+     * - `max-width: 100sp`
+     * - `max-height: 500`
+     * 
+     * Ratio conditions are specified as `<type>: <width>[/<height>]`, where:
+     * 
+     * - `<type>` can be `min-aspect-ratio` or `max-aspect-ratio`
+     * - `<width>` and `<height>` are integer numbers
+     * 
+     * See [ctor`BreakpointCondition`.new_ratio].
+     * 
+     * The ratio is represented as `<width>` divided by `<height>`.
+     * 
+     * If `<height>` is omitted, it's assumed to be 1.
+     * 
+     * Examples:
+     * 
+     * - `min-aspect-ratio: 4/3`
+     * - `max-aspect-ratio: 1`
+     * 
+     * The logical operators `and`, `or` can be used to compose a complex condition
+     * as follows:
+     * 
+     * - `<condition> and <condition>`: the condition is true when both
+     *   `<condition>`s are true, same as when using
+     *   [ctor`BreakpointCondition`.new_and]
+     * - `<condition> or <condition>`: the condition is true when either of the
+     *   `<condition>`s is true, same as when using
+     *   [ctor`BreakpointCondition`.new_or]
+     * 
+     * Examples:
+     * 
+     * - `min-width: 400px and max-aspect-ratio: 4/3`
+     * - `max-width: 360sp or max-width: 360px`
+     * 
+     * Conditions can be further nested using parentheses, for example:
+     * 
+     * - `min-width: 400px and (max-aspect-ratio: 4/3 or max-height: 400px)`
+     * 
+     * If parentheses are omitted, the first operator takes priority.
+     * @param str the string specifying the condition
+     * @returns the parsed condition
+     */
+    static parse(str: string | null): BreakpointCondition
+}
+
 export interface ButtonContentClass {
 
     // Own fields of Adw-1.Adw.ButtonContentClass
@@ -20914,6 +26266,66 @@ export abstract class MessageDialogClass {
     static name: string
 }
 
+export interface NavigationPageClass {
+
+    // Own fields of Adw-1.Adw.NavigationPageClass
+
+    parent_class: Gtk.WidgetClass
+    showing: (self: NavigationPage) => void
+    shown: (self: NavigationPage) => void
+    hiding: (self: NavigationPage) => void
+    hidden: (self: NavigationPage) => void
+}
+
+export abstract class NavigationPageClass {
+
+    // Own properties of Adw-1.Adw.NavigationPageClass
+
+    static name: string
+}
+
+export interface NavigationSplitViewClass {
+
+    // Own fields of Adw-1.Adw.NavigationSplitViewClass
+
+    parent_class: Gtk.WidgetClass
+}
+
+export abstract class NavigationSplitViewClass {
+
+    // Own properties of Adw-1.Adw.NavigationSplitViewClass
+
+    static name: string
+}
+
+export interface NavigationViewClass {
+
+    // Own fields of Adw-1.Adw.NavigationViewClass
+
+    parent_class: Gtk.WidgetClass
+}
+
+export abstract class NavigationViewClass {
+
+    // Own properties of Adw-1.Adw.NavigationViewClass
+
+    static name: string
+}
+
+export interface OverlaySplitViewClass {
+
+    // Own fields of Adw-1.Adw.OverlaySplitViewClass
+
+    parent_class: Gtk.WidgetClass
+}
+
+export abstract class OverlaySplitViewClass {
+
+    // Own properties of Adw-1.Adw.OverlaySplitViewClass
+
+    static name: string
+}
+
 export interface PasswordEntryRowClass {
 
     // Own fields of Adw-1.Adw.PasswordEntryRowClass
@@ -21006,6 +26418,20 @@ export interface PropertyAnimationTargetClass {
 export abstract class PropertyAnimationTargetClass {
 
     // Own properties of Adw-1.Adw.PropertyAnimationTargetClass
+
+    static name: string
+}
+
+export interface SpinRowClass {
+
+    // Own fields of Adw-1.Adw.SpinRowClass
+
+    parent_class: ActionRowClass
+}
+
+export abstract class SpinRowClass {
+
+    // Own properties of Adw-1.Adw.SpinRowClass
 
     static name: string
 }
@@ -21269,6 +26695,20 @@ export abstract class SwipeableInterface {
     static name: string
 }
 
+export interface SwitchRowClass {
+
+    // Own fields of Adw-1.Adw.SwitchRowClass
+
+    parent_class: ActionRowClass
+}
+
+export abstract class SwitchRowClass {
+
+    // Own properties of Adw-1.Adw.SwitchRowClass
+
+    static name: string
+}
+
 export interface TabBarClass {
 
     // Own fields of Adw-1.Adw.TabBarClass
@@ -21377,6 +26817,20 @@ export abstract class ToastOverlayClass {
     static name: string
 }
 
+export interface ToolbarViewClass {
+
+    // Own fields of Adw-1.Adw.ToolbarViewClass
+
+    parent_class: Gtk.WidgetClass
+}
+
+export abstract class ToolbarViewClass {
+
+    // Own properties of Adw-1.Adw.ToolbarViewClass
+
+    static name: string
+}
+
 export interface ViewStackClass {
 
     // Own fields of Adw-1.Adw.ViewStackClass
@@ -21401,6 +26855,20 @@ export interface ViewStackPageClass {
 export abstract class ViewStackPageClass {
 
     // Own properties of Adw-1.Adw.ViewStackPageClass
+
+    static name: string
+}
+
+export interface ViewStackPagesClass {
+
+    // Own fields of Adw-1.Adw.ViewStackPagesClass
+
+    parent_class: GObject.ObjectClass
+}
+
+export abstract class ViewStackPagesClass {
+
+    // Own properties of Adw-1.Adw.ViewStackPagesClass
 
     static name: string
 }

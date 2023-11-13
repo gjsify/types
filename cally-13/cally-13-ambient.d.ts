@@ -1,0 +1,9 @@
+
+
+declare module 'gi://Cally?version=13' {
+    import Cally13 from '@girs/cally-13';
+    export default Cally13;
+}
+
+
+

@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-11",
-    "version": "11.0.0-3.2.3",
+    "version": "11.0.0-3.2.4",
     "description": "GJS TypeScript type definitions for Meta-11, generated from library version 11.0.0",
     "type": "module",
     "module": "meta-11.js",

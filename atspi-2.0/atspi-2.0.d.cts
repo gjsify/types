@@ -289,6 +289,26 @@ export enum KeySynthType {
     UNLOCKMODIFIERS,
 }
 /**
+ * Enumeration used to indicate a type of live region and how assertive it
+ * should be in terms of speaking notifications. Currently, this is only used
+ * for "announcement" events, but it may be used for additional purposes
+ * in the future.
+ */
+export enum Live {
+    /**
+     * No live region.
+     */
+    NONE,
+    /**
+     * This live region should be considered polite.
+     */
+    POLITE,
+    /**
+     * This live region should be considered assertive.
+     */
+    ASSERTIVE,
+}
+/**
  * Used by interfaces #AtspiText and #AtspiDocument, this
  * enumeration corresponds to the POSIX 'setlocale' enum values.
  */
@@ -1942,6 +1962,14 @@ export function generate_keyboard_event(keyval: number, keystring: string | null
  */
 export function generate_mouse_event(x: number, y: number, name: string | null): boolean
 /**
+ * Like atspi_generate_mouse_event, but asynchronous.
+ * @param x a #glong indicating the screen x coordinate of the mouse event.
+ * @param y a #glong indicating the screen y coordinate of the mouse event.
+ * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
+ * @param callback a callback to be called when a reply is received. May be NULL.
+ */
+export function generate_mouse_event_async(x: number, y: number, name: string | null, callback: GenerateMouseEventCB | null): void
+/**
  * Gets the virtual desktop indicated by index `i`.
  * NOTE: currently multiple virtual desktops are not implemented;
  * as a consequence, any `i` value different from 0 will not return a
@@ -1969,6 +1997,10 @@ export function get_desktop_count(): number
  * @returns a #GArray of desktops.
  */
 export function get_desktop_list(): Accessible[]
+/**
+ * Returns the version of the AT-SPI library being used at runtime.
+ */
+export function get_version(): [ /* major */ number, /* minor */ number, /* micro */ number ]
 /**
  * Connects to the accessibility registry and initializes the SPI.
  * @returns 0 on success, 1 if already initialized, or an integer error code.
@@ -2004,8 +2036,13 @@ export function register_device_event_listener(listener: DeviceListener, event_t
  */
 export function register_keystroke_listener(listener: DeviceListener, key_set: KeyDefinition[] | null, modmask: KeyMaskType, event_types: KeyEventMask, sync_type: KeyListenerSyncType): boolean
 /**
+ * Gets the localized description string describing the #AtspiRole `role`.
+ * @param role an #AtspiRole object to query.
+ * @returns the localized string describing the AtspiRole
+ */
+export function role_get_localized_name(role: Role): string | null
+/**
  * Gets a localizable string that indicates the name of an #AtspiRole.
- * <em>DEPRECATED.</em>
  * @param role an #AtspiRole object to query.
  * @returns a localizable string name for an #AtspiRole enumerated type.
  */
@@ -2019,12 +2056,7 @@ export function role_get_name(role: Role): string | null
  */
 export function set_main_context(cnx: GLib.MainContext): void
 /**
- * Sets the reference window that will be used when atspi_generate_mouse_event
- * is called. Coordinates will be assumed to be relative to this window. This
- * is needed because, due to Wayland's security model, it is not currently
- * possible to retrieve global coordinates.
- * If NULL is passed, then AT-SPI will use the window that has focus at the
- * time that atspi_generate_mouse_event is called.
+ * Deprecated. This function no longer does anything and should not be used.
  * @param accessible the #AtspiAccessible corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
  */
 export function set_reference_window(accessible: Accessible): void
@@ -2079,6 +2111,9 @@ export interface EventListenerCB {
  */
 export interface EventListenerSimpleCB {
     (event: Event): void
+}
+export interface GenerateMouseEventCB {
+    (): void
 }
 /**
  * A callback that will be invoked when a key is pressed.
@@ -3201,7 +3236,6 @@ export interface Text {
      * Gets the attributes applied to a range of text from an #AtspiText
      * object. The text attributes correspond to CSS attributes
      * where possible.
-     * <em>DEPRECATED</em>
      * @param offset a #gint indicating the offset from which the attribute        search is based.
      * @returns a #GHashTable describing the attributes at the given character offset.
      */
@@ -3553,6 +3587,10 @@ export interface Accessible extends Action, Collection, Component, Document, Edi
      * descendants.
      */
     clear_cache(): void
+    /**
+     * Clears the cached information only for the given accessible.
+     */
+    clear_cache_single(): void
     /**
      * Gets the accessible id of the accessible.  This is not meant to be presented
      * to the user, but to be an id which is stable over application development.
@@ -4585,7 +4623,7 @@ export class MatchRule extends GObject.Object {
      * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
      * @param roles A #GArray of roles to match, or NULL if          not applicable.
      * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
-     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by the final component of their DBus names (Accessible,          Component, etc).
      * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
      * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
      * @returns A new #AtspiMatchRule.
@@ -4601,7 +4639,7 @@ export class MatchRule extends GObject.Object {
      * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
      * @param roles A #GArray of roles to match, or NULL if          not applicable.
      * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
-     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by the final component of their DBus names (Accessible,          Component, etc).
      * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
      * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
      * @returns A new #AtspiMatchRule.

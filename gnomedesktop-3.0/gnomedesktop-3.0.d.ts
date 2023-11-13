@@ -16,11 +16,11 @@ import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type cairo from '@girs/cairo-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -108,6 +108,21 @@ function get_country_from_code(code: string | null, translation: string | null):
  */
 function get_country_from_locale(locale: string | null, translation: string | null): string | null
 /**
+ * Asynchronously fetches a list of of default input sources based on locale and system
+ * configuration. This is for when a user has no input sources configured
+ * in GSettings.
+ * @param cancellable a #GCancellable
+ * @param callback a #GAsyncReadyCallback
+ */
+function get_default_input_sources<Z = unknown>(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+/**
+ * Returns a whether or not a list of default input sources based on locale and system
+ * configuration could be retrieved. This is for when a user has no input sources configured
+ * in GSettings.
+ * @param result 
+ */
+function get_default_input_sources_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ids */ string[], /* types */ string[], /* options */ string[] ]
+/**
  * Gets the default input source's type and identifier for a given
  * locale.
  * @param locale a locale string
@@ -147,6 +162,13 @@ function get_platform_version(): number
  * @returns the translated modifier string. Caller takes ownership.
  */
 function get_translated_modifier(modifier: string | null, translation: string | null): string | null
+/**
+ * Returns whether or not the input source has the ability to enter latin characters.
+ * @param type an input source type (e.g., "xkb" or "ibus")
+ * @param id an input source id (e.g., "us+dvorak" or "anthy")
+ * @returns %TRUE if it can't enter latin characters
+ */
+function input_source_is_non_latin(type: string | null, id: string | null): boolean
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string

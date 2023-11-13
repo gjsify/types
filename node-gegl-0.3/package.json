@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gegl-0.3",
-    "version": "0.3.35-3.2.3",
+    "version": "0.3.35-3.2.4",
     "description": "Node.js TypeScript type definitions for Gegl-0.3, generated from library version 0.3.35",
     "type": "module",
     "module": "node-gegl-0.3.js",

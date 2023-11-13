@@ -6385,6 +6385,11 @@ export class Timezone extends Object {
      */
     static get_utc_timezone(): Timezone
     /**
+     * Gets the directory to look for the zonefiles.
+     * @returns The path to look for the zonefiles
+     */
+    static get_zone_directory(): string | null
+    /**
      * Frees memory dedicated to the zonefile directory.
      */
     static release_zone_tab(): void

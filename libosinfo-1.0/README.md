@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/libosinfo-1.0)
 
 
-GJS TypeScript type definitions for Libosinfo-1.0, generated from library version 1.11.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
+GJS TypeScript type definitions for Libosinfo-1.0, generated from library version 1.11.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.4.
 
 Library for managing information about operating systems and hypervisors.
 

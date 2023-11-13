@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-vgda-1",
-    "version": "1.0.0-3.2.3",
+    "version": "1.0.0-3.2.4",
     "description": "Node.js TypeScript type definitions for Vgda-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-vgda-1.js",

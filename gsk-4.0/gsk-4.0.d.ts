@@ -885,11 +885,12 @@ class ColorMatrixNode extends RenderNode {
      * Creates a `GskRenderNode` that will drawn the `child` with
      * `color_matrix`.
      * 
-     * In particular, the node will transform the operation
+     * In particular, the node will transform colors by applying
      * 
-     *     pixel = color_matrix * pixel + color_offset
+     *     pixel = transpose(color_matrix) * pixel + color_offset
      * 
-     * for every pixel.
+     * for every pixel. The transformation operates on unpremultiplied
+     * colors, with color components ordered R, G, B, A.
      * @constructor 
      * @param child The node to draw
      * @param color_matrix The matrix to apply
@@ -901,11 +902,12 @@ class ColorMatrixNode extends RenderNode {
      * Creates a `GskRenderNode` that will drawn the `child` with
      * `color_matrix`.
      * 
-     * In particular, the node will transform the operation
+     * In particular, the node will transform colors by applying
      * 
-     *     pixel = color_matrix * pixel + color_offset
+     *     pixel = transpose(color_matrix) * pixel + color_offset
      * 
-     * for every pixel.
+     * for every pixel. The transformation operates on unpremultiplied
+     * colors, with color components ordered R, G, B, A.
      * @constructor 
      * @param child The node to draw
      * @param color_matrix The matrix to apply
@@ -3323,7 +3325,8 @@ interface Transform {
      */
     ref(): Transform | null
     /**
-     * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the z axis.
+     * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the Z axis.
+     * The rotation happens around the origin point of (0, 0).
      * @param angle the rotation angle, in degrees (clockwise)
      * @returns The new transform
      */

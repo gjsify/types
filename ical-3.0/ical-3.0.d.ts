@@ -746,6 +746,7 @@ function decode_base64(dest: string | null, src: string | null, size: number): s
 function decode_quoted_printable(dest: string | null, src: string | null, size: number): string | null
 function free_zone_directory(): void
 function get_unknown_token_handling_setting(): _unknown_token_handling
+function get_zone_directory(): string | null
 function icalarray_append(array: array, element: any | null): void
 function icalarray_element_at(array: array, position: number): any | null
 /**
@@ -1018,7 +1019,9 @@ function icalparameter_string_to_enum(str: string | null): number
 function icalparameter_string_to_kind(string: string | null): parameter_kind
 function icalparameter_value_to_value_kind(value: parameter_value): value_kind
 function icalparser_free(parser: parser): void
+function icalparser_get_ctrl(): any | null
 function icalparser_get_state(parser: parser): parser_state
+function icalparser_set_ctrl(ctrl: any | null): void
 function icalparser_set_gen_data(parser: parser, data: any | null): void
 function icalparser_string_line_generator(out: string | null, buf_size: number, d: any | null): string | null
 function icalperiodtype_as_ical_string(p: any | null): string | null
