@@ -1,5 +1,4 @@
 
-
 import Handy1 from '@girs/handy-1';
 
 declare global {

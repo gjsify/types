@@ -1,5 +1,4 @@
 
-
 import GrlNet01 from '@girs/grlnet-0.1';
 
 declare global {

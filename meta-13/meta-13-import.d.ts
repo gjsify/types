@@ -1,5 +1,4 @@
 
-
 import Meta13 from '@girs/meta-13';
 
 declare global {

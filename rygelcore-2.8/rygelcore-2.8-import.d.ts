@@ -1,5 +1,4 @@
 
-
 import RygelCore28 from '@girs/rygelcore-2.8';
 
 declare global {

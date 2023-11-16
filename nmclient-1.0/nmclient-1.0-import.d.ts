@@ -1,5 +1,4 @@
 
-
 import NMClient10 from '@girs/nmclient-1.0';
 
 declare global {

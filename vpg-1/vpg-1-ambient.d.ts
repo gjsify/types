@@ -1,5 +1,4 @@
 
-
 declare module 'gi://Vpg?version=1' {
     import Vpg1 from '@girs/vpg-1';
     export default Vpg1;

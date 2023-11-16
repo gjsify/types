@@ -1,5 +1,4 @@
 
-
 import Vgda1 from '@girs/vgda-1';
 
 declare global {

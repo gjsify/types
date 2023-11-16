@@ -1,5 +1,4 @@
 
-
 import ICalGLib30 from '@girs/icalglib-3.0';
 
 declare global {

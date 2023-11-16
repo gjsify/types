@@ -1,5 +1,4 @@
 
-
 import NetworkManager10 from '@girs/networkmanager-1.0';
 
 declare global {

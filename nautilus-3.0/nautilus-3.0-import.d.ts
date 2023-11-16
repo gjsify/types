@@ -1,5 +1,4 @@
 
-
 import Nautilus30 from '@girs/nautilus-3.0';
 
 declare global {

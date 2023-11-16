@@ -1,5 +1,4 @@
 
-
 import TelepathyFarstream06 from '@girs/telepathyfarstream-0.6';
 
 declare global {

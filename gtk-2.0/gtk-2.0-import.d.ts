@@ -1,5 +1,4 @@
 
-
 import Gtk20 from '@girs/gtk-2.0';
 
 declare global {

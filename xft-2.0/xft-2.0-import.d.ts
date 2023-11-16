@@ -1,5 +1,4 @@
 
-
 import Xft20 from '@girs/xft-2.0';
 
 declare global {

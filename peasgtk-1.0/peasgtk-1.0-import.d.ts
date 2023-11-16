@@ -1,5 +1,4 @@
 
-
 import PeasGtk10 from '@girs/peasgtk-1.0';
 
 declare global {

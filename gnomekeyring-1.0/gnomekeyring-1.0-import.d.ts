@@ -1,5 +1,4 @@
 
-
 import GnomeKeyring10 from '@girs/gnomekeyring-1.0';
 
 declare global {

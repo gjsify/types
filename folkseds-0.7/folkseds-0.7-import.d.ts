@@ -1,5 +1,4 @@
 
-
 import FolksEds07 from '@girs/folkseds-0.7';
 
 declare global {

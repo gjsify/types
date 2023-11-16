@@ -1,5 +1,4 @@
 
-
 import Libxml220 from '@girs/libxml2-2.0';
 
 declare global {

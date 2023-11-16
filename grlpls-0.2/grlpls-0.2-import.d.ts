@@ -1,5 +1,4 @@
 
-
 import GrlPls02 from '@girs/grlpls-0.2';
 
 declare global {

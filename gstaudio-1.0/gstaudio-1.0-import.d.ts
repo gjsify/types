@@ -1,5 +1,4 @@
 
-
 import GstAudio10 from '@girs/gstaudio-1.0';
 
 declare global {

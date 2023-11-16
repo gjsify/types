@@ -1,5 +1,4 @@
 
-
 import GXml018 from '@girs/gxml-0.18';
 
 declare global {

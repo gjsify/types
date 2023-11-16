@@ -1,5 +1,4 @@
 
-
 import Cally12 from '@girs/cally-12';
 
 declare global {

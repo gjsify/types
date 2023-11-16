@@ -1,5 +1,4 @@
 
-
 import IAnjuta30 from '@girs/ianjuta-3.0';
 
 declare global {

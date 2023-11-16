@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gee-0.8",
-    "version": "0.8.0-3.2.4",
+    "version": "0.8.0-3.2.5",
     "description": "Node.js TypeScript type definitions for Gee-0.8, generated from library version 0.8.0",
     "type": "module",
     "module": "node-gee-0.8.js",

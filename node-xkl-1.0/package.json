@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-xkl-1.0",
-    "version": "1.0.0-3.2.4",
+    "version": "1.0.0-3.2.5",
     "description": "Node.js TypeScript type definitions for Xkl-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "node-xkl-1.0.js",

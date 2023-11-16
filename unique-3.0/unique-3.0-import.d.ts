@@ -1,5 +1,4 @@
 
-
 import Unique30 from '@girs/unique-3.0';
 
 declare global {

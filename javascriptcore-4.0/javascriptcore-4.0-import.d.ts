@@ -1,5 +1,4 @@
 
-
 import JavaScriptCore40 from '@girs/javascriptcore-4.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Shell01 from '@girs/shell-0.1';
 
 declare global {

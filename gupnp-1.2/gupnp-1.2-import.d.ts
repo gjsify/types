@@ -1,5 +1,4 @@
 
-
 import GUPnP12 from '@girs/gupnp-1.2';
 
 declare global {

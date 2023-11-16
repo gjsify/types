@@ -1,5 +1,4 @@
 
-
 import Grss07 from '@girs/grss-0.7';
 
 declare global {

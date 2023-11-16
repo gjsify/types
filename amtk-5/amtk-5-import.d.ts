@@ -1,5 +1,4 @@
 
-
 import Amtk5 from '@girs/amtk-5';
 
 declare global {

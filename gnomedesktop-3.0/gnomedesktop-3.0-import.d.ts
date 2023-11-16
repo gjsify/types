@@ -1,5 +1,4 @@
 
-
 import GnomeDesktop30 from '@girs/gnomedesktop-3.0';
 
 declare global {

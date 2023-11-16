@@ -1,5 +1,4 @@
 
-
 import GtkSource4 from '@girs/gtksource-4';
 
 declare global {

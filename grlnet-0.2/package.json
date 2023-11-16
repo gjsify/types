@@ -1,6 +1,6 @@
 {
     "name": "@girs/grlnet-0.2",
-    "version": "0.2.0-3.2.4",
+    "version": "0.2.0-3.2.5",
     "description": "GJS TypeScript type definitions for GrlNet-0.2, generated from library version 0.2.0",
     "type": "module",
     "module": "grlnet-0.2.js",

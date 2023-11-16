@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gxml-0.14",
-    "version": "0.14.0-3.2.4",
+    "version": "0.14.0-3.2.5",
     "description": "Node.js TypeScript type definitions for GXml-0.14, generated from library version 0.14.0",
     "type": "module",
     "module": "node-gxml-0.14.js",

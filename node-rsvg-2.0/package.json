@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-rsvg-2.0",
-    "version": "2.56.92-3.2.4",
+    "version": "2.56.92-3.2.5",
     "description": "Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.56.92",
     "type": "module",
     "module": "node-rsvg-2.0.js",

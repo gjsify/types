@@ -1,5 +1,4 @@
 
-
 import Bump01 from '@girs/bump-0.1';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Gda50 from '@girs/gda-5.0';
 
 declare global {

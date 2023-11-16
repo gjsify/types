@@ -1,5 +1,4 @@
 
-
 import Gandiva10 from '@girs/gandiva-1.0';
 
 declare global {

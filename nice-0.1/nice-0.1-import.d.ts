@@ -1,5 +1,4 @@
 
-
 import Nice01 from '@girs/nice-0.1';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 declare module 'gi://GstInsertBin?version=1.0' {
     import GstInsertBin10 from '@girs/gstinsertbin-1.0';
     export default GstInsertBin10;

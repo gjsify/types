@@ -1,5 +1,4 @@
 
-
 import GUPnPAV10 from '@girs/gupnpav-1.0';
 
 declare global {

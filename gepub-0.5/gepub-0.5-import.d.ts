@@ -1,5 +1,4 @@
 
-
 import Gepub05 from '@girs/gepub-0.5';
 
 declare global {

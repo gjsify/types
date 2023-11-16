@@ -1,5 +1,4 @@
 
-
 import SpiceClientGtk30 from '@girs/spiceclientgtk-3.0';
 
 declare global {

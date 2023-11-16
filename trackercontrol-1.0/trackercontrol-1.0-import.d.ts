@@ -1,5 +1,4 @@
 
-
 import TrackerControl10 from '@girs/trackercontrol-1.0';
 
 declare global {

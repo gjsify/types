@@ -1,5 +1,4 @@
 
-
 import GMime30 from '@girs/gmime-3.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Dex1 from '@girs/dex-1';
 
 declare global {

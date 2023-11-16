@@ -1,5 +1,4 @@
 
-
 import Pango10 from '@girs/pango-1.0';
 
 declare global {

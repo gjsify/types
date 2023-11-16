@@ -1,5 +1,4 @@
 
-
 import Pnl10 from '@girs/pnl-1.0';
 
 declare global {

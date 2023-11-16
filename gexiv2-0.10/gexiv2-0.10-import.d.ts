@@ -1,5 +1,4 @@
 
-
 import GExiv2010 from '@girs/gexiv2-0.10';
 
 declare global {

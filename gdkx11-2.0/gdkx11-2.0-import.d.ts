@@ -1,5 +1,4 @@
 
-
 import GdkX1120 from '@girs/gdkx11-2.0';
 
 declare global {

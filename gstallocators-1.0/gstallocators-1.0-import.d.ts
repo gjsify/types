@@ -1,5 +1,4 @@
 
-
 import GstAllocators10 from '@girs/gstallocators-1.0';
 
 declare global {

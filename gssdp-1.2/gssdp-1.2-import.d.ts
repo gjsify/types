@@ -1,5 +1,4 @@
 
-
 import GSSDP12 from '@girs/gssdp-1.2';
 
 declare global {

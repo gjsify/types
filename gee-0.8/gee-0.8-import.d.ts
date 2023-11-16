@@ -1,5 +1,4 @@
 
-
 import Gee08 from '@girs/gee-0.8';
 
 declare global {

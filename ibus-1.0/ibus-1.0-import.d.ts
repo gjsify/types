@@ -1,5 +1,4 @@
 
-
 import IBus10 from '@girs/ibus-1.0';
 
 declare global {

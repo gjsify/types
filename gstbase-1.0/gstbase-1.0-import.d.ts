@@ -1,5 +1,4 @@
 
-
 import GstBase10 from '@girs/gstbase-1.0';
 
 declare global {

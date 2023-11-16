@@ -1,5 +1,4 @@
 
-
 import NMA10 from '@girs/nma-1.0';
 
 declare global {

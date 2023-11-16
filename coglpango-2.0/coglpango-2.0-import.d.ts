@@ -1,5 +1,4 @@
 
-
 import CoglPango20 from '@girs/coglpango-2.0';
 
 declare global {

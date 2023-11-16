@@ -1,5 +1,4 @@
 
-
 import Gspell1 from '@girs/gspell-1';
 
 declare global {

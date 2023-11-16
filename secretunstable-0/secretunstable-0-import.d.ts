@@ -1,5 +1,4 @@
 
-
 import SecretUnstable0 from '@girs/secretunstable-0';
 
 declare global {

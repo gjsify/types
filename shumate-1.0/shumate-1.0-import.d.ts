@@ -1,5 +1,4 @@
 
-
 import Shumate10 from '@girs/shumate-1.0';
 
 declare global {

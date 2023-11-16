@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-mtk-13",
-    "version": "13.0.0-3.2.4",
+    "version": "13.0.0-3.2.5",
     "description": "Node.js TypeScript type definitions for Mtk-13, generated from library version 13.0.0",
     "type": "module",
     "module": "node-mtk-13.js",

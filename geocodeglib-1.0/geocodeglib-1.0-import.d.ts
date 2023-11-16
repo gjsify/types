@@ -1,5 +1,4 @@
 
-
 import GeocodeGlib10 from '@girs/geocodeglib-1.0';
 
 declare global {

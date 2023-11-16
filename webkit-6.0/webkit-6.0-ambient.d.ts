@@ -1,5 +1,4 @@
 
-
 declare module 'gi://WebKit?version=6.0' {
     import WebKit60 from '@girs/webkit-6.0';
     export default WebKit60;

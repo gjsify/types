@@ -1,5 +1,4 @@
 
-
 import GooCanvas20 from '@girs/goocanvas-2.0';
 
 declare global {

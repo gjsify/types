@@ -1,5 +1,4 @@
 
-
 import Retro2 from '@girs/retro-2';
 
 declare global {

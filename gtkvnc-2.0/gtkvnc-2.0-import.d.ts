@@ -1,5 +1,4 @@
 
-
 import GtkVnc20 from '@girs/gtkvnc-2.0';
 
 declare global {

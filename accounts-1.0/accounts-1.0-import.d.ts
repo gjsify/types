@@ -1,5 +1,4 @@
 
-
 import Accounts10 from '@girs/accounts-1.0';
 
 declare global {

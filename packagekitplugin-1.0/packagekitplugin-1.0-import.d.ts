@@ -1,5 +1,4 @@
 
-
 import PackageKitPlugin10 from '@girs/packagekitplugin-1.0';
 
 declare global {

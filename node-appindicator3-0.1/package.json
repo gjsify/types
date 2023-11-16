@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-appindicator3-0.1",
-    "version": "0.1.0-3.2.4",
+    "version": "0.1.0-3.2.5",
     "description": "Node.js TypeScript type definitions for AppIndicator3-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "node-appindicator3-0.1.js",

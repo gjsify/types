@@ -1,5 +1,4 @@
 
-
 import GstWebRTC10 from '@girs/gstwebrtc-1.0';
 
 declare global {

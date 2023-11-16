@@ -1,5 +1,4 @@
 
-
 import FolksTelepathy06 from '@girs/folkstelepathy-0.6';
 
 declare global {

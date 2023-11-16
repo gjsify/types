@@ -1,5 +1,4 @@
 
-
 import Mbim10 from '@girs/mbim-1.0';
 
 declare global {

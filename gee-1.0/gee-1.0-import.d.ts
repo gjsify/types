@@ -1,5 +1,4 @@
 
-
 import Gee10 from '@girs/gee-1.0';
 
 declare global {

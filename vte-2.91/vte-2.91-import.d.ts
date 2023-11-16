@@ -1,5 +1,4 @@
 
-
 import Vte291 from '@girs/vte-2.91';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Gsf1 from '@girs/gsf-1';
 
 declare global {

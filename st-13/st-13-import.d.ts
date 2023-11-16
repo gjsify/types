@@ -1,5 +1,4 @@
 
-
 import St13 from '@girs/st-13';
 
 declare global {

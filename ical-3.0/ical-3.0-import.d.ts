@@ -1,5 +1,4 @@
 
-
 import ICal30 from '@girs/ical-3.0';
 
 declare global {

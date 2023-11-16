@@ -1,5 +1,4 @@
 
-
 import Vsqlite1 from '@girs/vsqlite-1';
 
 declare global {

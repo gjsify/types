@@ -1,5 +1,4 @@
 
-
 import Gcr3 from '@girs/gcr-3';
 
 declare global {

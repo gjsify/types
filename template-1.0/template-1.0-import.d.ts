@@ -1,5 +1,4 @@
 
-
 import Template10 from '@girs/template-1.0';
 
 declare global {

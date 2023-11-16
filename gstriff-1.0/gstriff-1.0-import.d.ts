@@ -1,5 +1,4 @@
 
-
 import GstRiff10 from '@girs/gstriff-1.0';
 
 declare global {

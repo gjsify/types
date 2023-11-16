@@ -1,5 +1,4 @@
 
-
 import GCab10 from '@girs/gcab-1.0';
 
 declare global {

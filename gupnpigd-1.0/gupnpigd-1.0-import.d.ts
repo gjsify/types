@@ -1,5 +1,4 @@
 
-
 import GUPnPIgd10 from '@girs/gupnpigd-1.0';
 
 declare global {

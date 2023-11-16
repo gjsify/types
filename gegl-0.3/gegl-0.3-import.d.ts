@@ -1,5 +1,4 @@
 
-
 import Gegl03 from '@girs/gegl-0.3';
 
 declare global {

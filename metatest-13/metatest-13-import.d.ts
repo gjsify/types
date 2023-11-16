@@ -1,5 +1,4 @@
 
-
 import MetaTest13 from '@girs/metatest-13';
 
 declare global {

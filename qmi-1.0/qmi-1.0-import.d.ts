@@ -1,5 +1,4 @@
 
-
 import Qmi10 from '@girs/qmi-1.0';
 
 declare global {

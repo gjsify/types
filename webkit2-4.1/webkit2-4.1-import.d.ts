@@ -1,5 +1,4 @@
 
-
 import WebKit241 from '@girs/webkit2-4.1';
 
 declare global {

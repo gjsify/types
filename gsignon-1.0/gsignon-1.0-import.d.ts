@@ -1,5 +1,4 @@
 
-
 import GSignon10 from '@girs/gsignon-1.0';
 
 declare global {

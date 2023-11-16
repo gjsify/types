@@ -1,5 +1,4 @@
 
-
 import RygelRendererGst26 from '@girs/rygelrenderergst-2.6';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Gck1 from '@girs/gck-1';
 
 declare global {

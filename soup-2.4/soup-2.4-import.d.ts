@@ -1,5 +1,4 @@
 
-
 import Soup24 from '@girs/soup-2.4';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Gdk40 from '@girs/gdk-4.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import GVnc10 from '@girs/gvnc-1.0';
 
 declare global {

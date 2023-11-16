@@ -1,5 +1,4 @@
 
-
 import GstMpegts10 from '@girs/gstmpegts-1.0';
 
 declare global {

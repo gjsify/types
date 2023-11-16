@@ -1,5 +1,4 @@
 
-
 import Mtk13 from '@girs/mtk-13';
 
 declare global {

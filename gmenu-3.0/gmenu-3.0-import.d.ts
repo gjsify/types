@@ -1,5 +1,4 @@
 
-
 import GMenu30 from '@girs/gmenu-3.0';
 
 declare global {

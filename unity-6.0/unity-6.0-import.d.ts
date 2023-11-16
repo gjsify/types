@@ -1,5 +1,4 @@
 
-
 import Unity60 from '@girs/unity-6.0';
 
 declare global {

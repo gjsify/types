@@ -1,5 +1,4 @@
 
-
 import Uhm00 from '@girs/uhm-0.0';
 
 declare global {

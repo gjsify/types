@@ -1,5 +1,4 @@
 
-
 import GstVulkan10 from '@girs/gstvulkan-1.0';
 
 declare global {

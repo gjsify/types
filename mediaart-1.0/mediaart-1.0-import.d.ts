@@ -1,5 +1,4 @@
 
-
 import MediaArt10 from '@girs/mediaart-1.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Babl01 from '@girs/babl-0.1';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import EBackend12 from '@girs/ebackend-1.2';
 
 declare global {

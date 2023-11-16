@@ -1,5 +1,4 @@
 
-
 import GstCodecs10 from '@girs/gstcodecs-1.0';
 
 declare global {

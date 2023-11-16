@@ -1,5 +1,4 @@
 
-
 import Tepl5 from '@girs/tepl-5';
 
 declare global {

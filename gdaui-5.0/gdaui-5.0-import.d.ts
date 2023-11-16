@@ -1,5 +1,4 @@
 
-
 import Gdaui50 from '@girs/gdaui-5.0';
 
 declare global {

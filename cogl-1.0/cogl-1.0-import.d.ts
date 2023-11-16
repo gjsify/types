@@ -1,5 +1,4 @@
 
-
 import Cogl10 from '@girs/cogl-1.0';
 
 declare global {

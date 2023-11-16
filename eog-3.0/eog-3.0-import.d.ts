@@ -1,5 +1,4 @@
 
-
 import Eog30 from '@girs/eog-3.0';
 
 declare global {

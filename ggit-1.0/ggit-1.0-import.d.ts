@@ -1,5 +1,4 @@
 
-
 import Ggit10 from '@girs/ggit-1.0';
 
 declare global {

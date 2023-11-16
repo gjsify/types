@@ -1,5 +1,4 @@
 
-
 import Json10 from '@girs/json-1.0';
 
 declare global {

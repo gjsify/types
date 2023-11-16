@@ -1,5 +1,4 @@
 
-
 import Goa10 from '@girs/goa-1.0';
 
 declare global {

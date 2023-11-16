@@ -1,5 +1,4 @@
 
-
 import PangoFc10 from '@girs/pangofc-1.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import WebKit2WebExtension41 from '@girs/webkit2webextension-4.1';
 
 declare global {

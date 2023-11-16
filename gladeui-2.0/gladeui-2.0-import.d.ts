@@ -1,5 +1,4 @@
 
-
 import Gladeui20 from '@girs/gladeui-2.0';
 
 declare global {

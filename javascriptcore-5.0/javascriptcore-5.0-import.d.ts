@@ -1,5 +1,4 @@
 
-
 import JavaScriptCore50 from '@girs/javascriptcore-5.0';
 
 declare global {

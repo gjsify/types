@@ -1,5 +1,4 @@
 
-
 import Farstream01 from '@girs/farstream-0.1';
 
 declare global {

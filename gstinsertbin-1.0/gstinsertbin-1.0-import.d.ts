@@ -1,5 +1,4 @@
 
-
 import GstInsertBin10 from '@girs/gstinsertbin-1.0';
 
 declare global {

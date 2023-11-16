@@ -1,5 +1,4 @@
 
-
 import AppStreamGlib10 from '@girs/appstreamglib-1.0';
 
 declare global {

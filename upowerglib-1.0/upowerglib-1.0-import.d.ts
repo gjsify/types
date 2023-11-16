@@ -1,5 +1,4 @@
 
-
 import UPowerGlib10 from '@girs/upowerglib-1.0';
 
 declare global {

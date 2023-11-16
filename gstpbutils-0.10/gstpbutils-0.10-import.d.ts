@@ -1,5 +1,4 @@
 
-
 import GstPbutils010 from '@girs/gstpbutils-0.10';
 
 declare global {

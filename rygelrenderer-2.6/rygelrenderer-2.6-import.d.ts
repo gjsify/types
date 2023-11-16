@@ -1,5 +1,4 @@
 
-
 import RygelRenderer26 from '@girs/rygelrenderer-2.6';
 
 declare global {

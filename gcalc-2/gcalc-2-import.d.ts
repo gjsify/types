@@ -1,5 +1,4 @@
 
-
 import GCalc2 from '@girs/gcalc-2';
 
 declare global {

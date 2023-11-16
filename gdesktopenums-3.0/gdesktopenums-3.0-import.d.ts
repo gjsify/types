@@ -1,5 +1,4 @@
 
-
 import GDesktopEnums30 from '@girs/gdesktopenums-3.0';
 
 declare global {

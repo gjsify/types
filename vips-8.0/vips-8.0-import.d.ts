@@ -1,5 +1,4 @@
 
-
 import Vips80 from '@girs/vips-8.0';
 
 declare global {

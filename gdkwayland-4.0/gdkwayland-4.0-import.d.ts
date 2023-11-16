@@ -1,5 +1,4 @@
 
-
 import GdkWayland40 from '@girs/gdkwayland-4.0';
 
 declare global {

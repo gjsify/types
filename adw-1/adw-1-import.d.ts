@@ -1,5 +1,4 @@
 
-
 import Adw1 from '@girs/adw-1';
 
 declare global {

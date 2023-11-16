@@ -1,5 +1,4 @@
 
-
 import ClutterGst20 from '@girs/cluttergst-2.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 declare module 'gi://GcrUi?version=3' {
     import GcrUi3 from '@girs/gcrui-3';
     export default GcrUi3;

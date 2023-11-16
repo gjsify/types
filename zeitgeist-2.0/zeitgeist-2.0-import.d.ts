@@ -1,5 +1,4 @@
 
-
 import Zeitgeist20 from '@girs/zeitgeist-2.0';
 
 declare global {

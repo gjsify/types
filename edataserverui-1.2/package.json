@@ -1,6 +1,6 @@
 {
     "name": "@girs/edataserverui-1.2",
-    "version": "1.2.0-3.2.4",
+    "version": "1.2.0-3.2.5",
     "description": "GJS TypeScript type definitions for EDataServerUI-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edataserverui-1.2.js",

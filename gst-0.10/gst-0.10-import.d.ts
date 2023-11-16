@@ -1,5 +1,4 @@
 
-
 import Gst010 from '@girs/gst-0.10';
 
 declare global {

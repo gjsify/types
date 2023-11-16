@@ -1,5 +1,4 @@
 
-
 import GLib20 from '@girs/glib-2.0';
 
 declare global {

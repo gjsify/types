@@ -1,5 +1,4 @@
 
-
 import XdpGtk410 from '@girs/xdpgtk4-1.0';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 declare module 'gi://GstBadAllocators?version=1.0' {
     import GstBadAllocators10 from '@girs/gstbadallocators-1.0';
     export default GstBadAllocators10;

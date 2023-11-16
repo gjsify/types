@@ -1,5 +1,4 @@
 
-
 import Guestfs10 from '@girs/guestfs-1.0';
 
 declare global {

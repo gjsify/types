@@ -1,5 +1,4 @@
 
-
 import Vpg1 from '@girs/vpg-1';
 
 declare global {

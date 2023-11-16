@@ -1,5 +1,4 @@
 
-
 import Bamf3 from '@girs/bamf-3';
 
 declare global {

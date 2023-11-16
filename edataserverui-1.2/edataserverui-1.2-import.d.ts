@@ -1,5 +1,4 @@
 
-
 import EDataServerUI12 from '@girs/edataserverui-1.2';
 
 declare global {

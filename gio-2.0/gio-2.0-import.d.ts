@@ -1,5 +1,4 @@
 
-
 import Gio20 from '@girs/gio-2.0';
 
 declare global {

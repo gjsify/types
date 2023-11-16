@@ -1,5 +1,4 @@
 
-
 import GstVideo010 from '@girs/gstvideo-0.10';
 
 declare global {

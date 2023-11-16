@@ -1,5 +1,4 @@
 
-
 import ClutterX1110 from '@girs/clutterx11-1.0';
 
 declare global {

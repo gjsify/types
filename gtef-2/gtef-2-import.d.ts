@@ -1,5 +1,4 @@
 
-
 import Gtef2 from '@girs/gtef-2';
 
 declare global {

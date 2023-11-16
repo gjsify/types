@@ -1,5 +1,4 @@
 
-
 import GnomeDesktop40 from '@girs/gnomedesktop-4.0';
 
 declare global {

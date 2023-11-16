@@ -1,5 +1,4 @@
 
-
 import ClutterGdk10 from '@girs/cluttergdk-1.0';
 
 declare global {

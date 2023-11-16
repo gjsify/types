@@ -1,5 +1,4 @@
 
-
 import Peas2 from '@girs/peas-2';
 
 declare global {

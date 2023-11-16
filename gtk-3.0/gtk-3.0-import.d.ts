@@ -1,5 +1,4 @@
 
-
 import Gtk30 from '@girs/gtk-3.0';
 
 declare global {

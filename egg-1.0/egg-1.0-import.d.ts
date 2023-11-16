@@ -1,5 +1,4 @@
 
-
 import Egg10 from '@girs/egg-1.0';
 
 declare global {

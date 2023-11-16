@@ -1,5 +1,4 @@
 
-
 import Gtk40 from '@girs/gtk-4.0';
 
 declare global {

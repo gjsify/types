@@ -1,5 +1,4 @@
 
-
 import GcrUi3 from '@girs/gcrui-3';
 
 declare global {

@@ -1,5 +1,4 @@
 
-
 import Snapd1 from '@girs/snapd-1';
 
 declare global {

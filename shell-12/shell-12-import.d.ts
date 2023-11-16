@@ -1,5 +1,4 @@
 
-
 import Shell12 from '@girs/shell-12';
 
 declare global {

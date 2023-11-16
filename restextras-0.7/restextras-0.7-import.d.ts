@@ -1,5 +1,4 @@
 
-
 import RestExtras07 from '@girs/restextras-0.7';
 
 declare global {

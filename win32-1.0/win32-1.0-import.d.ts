@@ -1,5 +1,4 @@
 
-
 import Win3210 from '@girs/win32-1.0';
 
 declare global {

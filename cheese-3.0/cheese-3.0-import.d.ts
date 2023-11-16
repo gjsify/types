@@ -1,5 +1,4 @@
 
-
 import Cheese30 from '@girs/cheese-3.0';
 
 declare global {
