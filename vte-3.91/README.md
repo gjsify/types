@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/vte-3.91)
 
 
-GJS TypeScript type definitions for Vte-3.91, generated from library version 0.75.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+GJS TypeScript type definitions for Vte-3.91, generated from library version 0.75.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 
 ## Install

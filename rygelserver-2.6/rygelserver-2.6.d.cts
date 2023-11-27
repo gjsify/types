@@ -72,6 +72,7 @@ export module SearchableContainer {
         // Own constructor properties of RygelServer-2.6.RygelServer.SearchableContainer
 
         search_classes?: Gee.ArrayList | null
+        searchClasses?: Gee.ArrayList | null
     }
 
 }
@@ -81,6 +82,7 @@ export interface SearchableContainer extends MediaContainer {
     // Own properties of RygelServer-2.6.RygelServer.SearchableContainer
 
     search_classes: Gee.ArrayList
+    searchClasses: Gee.ArrayList
 
     // Owm methods of RygelServer-2.6.RygelServer.SearchableContainer
 
@@ -289,6 +291,7 @@ export module VisualItem {
         height?: number | null
         color_depth?: number | null
         thumbnails?: Gee.ArrayList | null
+        colorDepth?: number | null
     }
 
 }
@@ -300,6 +303,7 @@ export interface VisualItem extends MediaFileItem {
     width: number
     height: number
     color_depth: number
+    colorDepth: number
     thumbnails: Gee.ArrayList
 
     // Owm methods of RygelServer-2.6.RygelServer.VisualItem
@@ -378,6 +382,7 @@ export module WritableContainer {
         // Own constructor properties of RygelServer-2.6.RygelServer.WritableContainer
 
         create_classes?: Gee.ArrayList | null
+        createClasses?: Gee.ArrayList | null
     }
 
 }
@@ -387,6 +392,7 @@ export interface WritableContainer extends MediaContainer {
     // Own properties of RygelServer-2.6.RygelServer.WritableContainer
 
     create_classes: Gee.ArrayList
+    createClasses: Gee.ArrayList
 
     // Owm methods of RygelServer-2.6.RygelServer.WritableContainer
 
@@ -640,6 +646,8 @@ export module AudioItem {
         bits_per_sample?: number | null
         channels?: number | null
         album?: string | null
+        sampleFreq?: number | null
+        bitsPerSample?: number | null
     }
 
 }
@@ -651,7 +659,9 @@ export interface AudioItem {
     duration: number
     bitrate: number
     sample_freq: number
+    sampleFreq: number
     bits_per_sample: number
+    bitsPerSample: number
     channels: number
     album: string | null
 
@@ -933,6 +943,7 @@ export interface MediaObjects {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of RygelServer-2.6.RygelServer.MediaObjects
 
@@ -1057,6 +1068,8 @@ export module MusicItem {
 
         track_number?: number | null
         album_art?: Thumbnail | null
+        trackNumber?: number | null
+        albumArt?: Thumbnail | null
     }
 
 }
@@ -1066,7 +1079,9 @@ export interface MusicItem {
     // Own properties of RygelServer-2.6.RygelServer.MusicItem
 
     track_number: number
+    trackNumber: number
     album_art: Thumbnail
+    albumArt: Thumbnail
 
     // Owm methods of RygelServer-2.6.RygelServer.MusicItem
 
@@ -1641,6 +1656,10 @@ export module MediaContainer {
         empty_child_count?: number | null
         create_mode_enabled?: boolean | null
         sort_criteria?: string | null
+        childCount?: number | null
+        emptyChildCount?: number | null
+        createModeEnabled?: boolean | null
+        sortCriteria?: string | null
     }
 
 }
@@ -1650,10 +1669,15 @@ export interface MediaContainer {
     // Own properties of RygelServer-2.6.RygelServer.MediaContainer
 
     child_count: number
+    childCount: number
     empty_child_count: number
+    emptyChildCount: number
     readonly all_child_count: number
+    readonly allChildCount: number
     create_mode_enabled: boolean
+    createModeEnabled: boolean
     sort_criteria: string | null
+    sortCriteria: string | null
 
     // Own fields of RygelServer-2.6.RygelServer.MediaContainer
 
@@ -1869,6 +1893,9 @@ export module MediaFileItem {
         dlna_profile?: string | null
         size?: number | null
         place_holder?: boolean | null
+        mimeType?: string | null
+        dlnaProfile?: string | null
+        placeHolder?: boolean | null
     }
 
 }
@@ -1878,9 +1905,12 @@ export interface MediaFileItem {
     // Own properties of RygelServer-2.6.RygelServer.MediaFileItem
 
     mime_type: string | null
+    mimeType: string | null
     dlna_profile: string | null
+    dlnaProfile: string | null
     size: number
     place_holder: boolean
+    placeHolder: boolean
 
     // Own fields of RygelServer-2.6.RygelServer.MediaFileItem
 
@@ -2007,6 +2037,10 @@ export module MediaObject {
         parent?: MediaContainer | null
         parent_ref?: MediaContainer | null
         title?: string | null
+        refId?: string | null
+        upnpClass?: string | null
+        objectUpdateId?: number | null
+        parentRef?: MediaContainer | null
     }
 
 }
@@ -2017,17 +2051,22 @@ export interface MediaObject {
 
     id: string | null
     ref_id: string | null
+    refId: string | null
     upnp_class: string | null
+    upnpClass: string | null
     date: string | null
     creator: string | null
     modified: number
     object_update_id: number
+    objectUpdateId: number
     artist: string | null
     genre: string | null
     parent: MediaContainer
     parent_ref: MediaContainer
+    parentRef: MediaContainer
     title: string | null
     readonly ocm_flags: GUPnPAV.OCMFlags
+    readonly ocmFlags: GUPnPAV.OCMFlags
 
     // Own fields of RygelServer-2.6.RygelServer.MediaObject
 
@@ -2175,6 +2214,17 @@ export module MediaResource {
         dlna_conversion?: GUPnPAV.DLNAConversion | null
         dlna_flags?: GUPnPAV.DLNAFlags | null
         dlna_operation?: GUPnPAV.DLNAOperation | null
+        importUri?: string | null
+        cleartextSize?: number | null
+        bitsPerSample?: number | null
+        colorDepth?: number | null
+        audioChannels?: number | null
+        sampleFreq?: number | null
+        mimeType?: string | null
+        dlnaProfile?: string | null
+        dlnaConversion?: GUPnPAV.DLNAConversion | null
+        dlnaFlags?: GUPnPAV.DLNAFlags | null
+        dlnaOperation?: GUPnPAV.DLNAOperation | null
     }
 
 }
@@ -2185,24 +2235,35 @@ export interface MediaResource {
 
     uri: string | null
     import_uri: string | null
+    importUri: string | null
     extension: string | null
     size: number
     cleartext_size: number
+    cleartextSize: number
     duration: number
     bitrate: number
     bits_per_sample: number
+    bitsPerSample: number
     color_depth: number
+    colorDepth: number
     width: number
     height: number
     audio_channels: number
+    audioChannels: number
     sample_freq: number
+    sampleFreq: number
     protocol: string | null
     mime_type: string | null
+    mimeType: string | null
     dlna_profile: string | null
+    dlnaProfile: string | null
     network: string | null
     dlna_conversion: GUPnPAV.DLNAConversion
+    dlnaConversion: GUPnPAV.DLNAConversion
     dlna_flags: GUPnPAV.DLNAFlags
+    dlnaFlags: GUPnPAV.DLNAFlags
     dlna_operation: GUPnPAV.DLNAOperation
+    dlnaOperation: GUPnPAV.DLNAOperation
 
     // Own fields of RygelServer-2.6.RygelServer.MediaResource
 
@@ -2369,6 +2430,9 @@ export module MediaServerPlugin {
         root_container?: MediaContainer | null
         upload_profiles?: RygelCore.DLNAProfile[] | null
         supported_profiles?: RygelCore.DLNAProfile[] | null
+        rootContainer?: MediaContainer | null
+        uploadProfiles?: RygelCore.DLNAProfile[] | null
+        supportedProfiles?: RygelCore.DLNAProfile[] | null
     }
 
 }
@@ -2378,9 +2442,13 @@ export interface MediaServerPlugin {
     // Own properties of RygelServer-2.6.RygelServer.MediaServerPlugin
 
     readonly root_container: MediaContainer
+    readonly rootContainer: MediaContainer
     readonly search_caps: string | null
+    readonly searchCaps: string | null
     upload_profiles: RygelCore.DLNAProfile[]
+    uploadProfiles: RygelCore.DLNAProfile[]
     supported_profiles: RygelCore.DLNAProfile[]
+    supportedProfiles: RygelCore.DLNAProfile[]
 
     // Owm methods of RygelServer-2.6.RygelServer.MediaServerPlugin
 
@@ -2495,6 +2563,7 @@ export module MediaServer {
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaServer
 
         root_container?: MediaContainer | null
+        rootContainer?: MediaContainer | null
     }
 
 }
@@ -2504,6 +2573,7 @@ export interface MediaServer {
     // Own properties of RygelServer-2.6.RygelServer.MediaServer
 
     readonly root_container: MediaContainer
+    readonly rootContainer: MediaContainer
 
     // Class property signals of RygelServer-2.6.RygelServer.MediaServer
 
@@ -2810,6 +2880,10 @@ export module HTTPByteSeekRequest {
         end_byte?: number | null
         range_length?: number | null
         total_size?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        rangeLength?: number | null
+        totalSize?: number | null
     }
 
 }
@@ -2819,9 +2893,13 @@ export interface HTTPByteSeekRequest {
     // Own properties of RygelServer-2.6.RygelServer.HTTPByteSeekRequest
 
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     range_length: number
+    rangeLength: number
     total_size: number
+    totalSize: number
 
     // Owm methods of RygelServer-2.6.RygelServer.HTTPByteSeekRequest
 
@@ -2882,6 +2960,10 @@ export module HTTPByteSeekResponse {
         end_byte?: number | null
         range_length?: number | null
         total_size?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        rangeLength?: number | null
+        totalSize?: number | null
     }
 
 }
@@ -2891,9 +2973,13 @@ export interface HTTPByteSeekResponse {
     // Own properties of RygelServer-2.6.RygelServer.HTTPByteSeekResponse
 
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     range_length: number
+    rangeLength: number
     total_size: number
+    totalSize: number
 
     // Owm methods of RygelServer-2.6.RygelServer.HTTPByteSeekResponse
 
@@ -3064,6 +3150,11 @@ export module HTTPItemURI {
         resource_name?: string | null
         http_server?: HTTPServer | null
         extension?: string | null
+        itemId?: string | null
+        thumbnailIndex?: number | null
+        subtitleIndex?: number | null
+        resourceName?: string | null
+        httpServer?: HTTPServer | null
     }
 
 }
@@ -3073,10 +3164,15 @@ export interface HTTPItemURI {
     // Own properties of RygelServer-2.6.RygelServer.HTTPItemURI
 
     item_id: string | null
+    itemId: string | null
     thumbnail_index: number
+    thumbnailIndex: number
     subtitle_index: number
+    subtitleIndex: number
     resource_name: string | null
+    resourceName: string | null
     http_server: HTTPServer
+    httpServer: HTTPServer
     extension: string | null
 
     // Own fields of RygelServer-2.6.RygelServer.HTTPItemURI
@@ -3322,6 +3418,8 @@ export module HTTPServer {
 
         path_root?: string | null
         server_name?: string | null
+        pathRoot?: string | null
+        serverName?: string | null
     }
 
 }
@@ -3331,7 +3429,9 @@ export interface HTTPServer extends RygelCore.StateMachine {
     // Own properties of RygelServer-2.6.RygelServer.HTTPServer
 
     path_root: string | null
+    pathRoot: string | null
     server_name: string | null
+    serverName: string | null
 
     // Own fields of RygelServer-2.6.RygelServer.HTTPServer
 
@@ -3449,6 +3549,14 @@ export module HTTPTimeSeekResponse {
         end_byte?: number | null
         response_length?: number | null
         total_size?: number | null
+        startTime?: number | null
+        endTime?: number | null
+        rangeDuration?: number | null
+        totalDuration?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        responseLength?: number | null
+        totalSize?: number | null
     }
 
 }
@@ -3458,13 +3566,21 @@ export interface HTTPTimeSeekResponse {
     // Own properties of RygelServer-2.6.RygelServer.HTTPTimeSeekResponse
 
     start_time: number
+    startTime: number
     end_time: number
+    endTime: number
     range_duration: number
+    rangeDuration: number
     total_duration: number
+    totalDuration: number
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     response_length: number
+    responseLength: number
     total_size: number
+    totalSize: number
 
     // Owm methods of RygelServer-2.6.RygelServer.HTTPTimeSeekResponse
 
@@ -3536,6 +3652,7 @@ export module Serializer {
         // Own constructor properties of RygelServer-2.6.RygelServer.Serializer
 
         serializer_type?: SerializerType | null
+        serializerType?: SerializerType | null
     }
 
 }
@@ -3545,6 +3662,7 @@ export interface Serializer {
     // Own properties of RygelServer-2.6.RygelServer.Serializer
 
     readonly serializer_type: SerializerType
+    readonly serializerType: SerializerType
 
     // Owm methods of RygelServer-2.6.RygelServer.Serializer
 
@@ -3718,6 +3836,10 @@ export module DTCPCleartextRequest {
         end_byte?: number | null
         range_length?: number | null
         total_size?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        rangeLength?: number | null
+        totalSize?: number | null
     }
 
 }
@@ -3727,9 +3849,13 @@ export interface DTCPCleartextRequest {
     // Own properties of RygelServer-2.6.RygelServer.DTCPCleartextRequest
 
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     range_length: number
+    rangeLength: number
     total_size: number
+    totalSize: number
 
     // Owm methods of RygelServer-2.6.RygelServer.DTCPCleartextRequest
 
@@ -3788,6 +3914,11 @@ export module DTCPCleartextResponse {
         range_length?: number | null
         total_size?: number | null
         encrypted_length?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        rangeLength?: number | null
+        totalSize?: number | null
+        encryptedLength?: number | null
     }
 
 }
@@ -3797,10 +3928,15 @@ export interface DTCPCleartextResponse {
     // Own properties of RygelServer-2.6.RygelServer.DTCPCleartextResponse
 
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     range_length: number
+    rangeLength: number
     total_size: number
+    totalSize: number
     encrypted_length: number
+    encryptedLength: number
 
     // Owm methods of RygelServer-2.6.RygelServer.DTCPCleartextResponse
 
@@ -3898,6 +4034,11 @@ export module DLNAAvailableSeekRangeResponse {
         start_byte?: number | null
         end_byte?: number | null
         range_length?: number | null
+        startTime?: number | null
+        endTime?: number | null
+        startByte?: number | null
+        endByte?: number | null
+        rangeLength?: number | null
     }
 
 }
@@ -3908,10 +4049,15 @@ export interface DLNAAvailableSeekRangeResponse {
 
     mode: number
     start_time: number
+    startTime: number
     end_time: number
+    endTime: number
     start_byte: number
+    startByte: number
     end_byte: number
+    endByte: number
     range_length: number
+    rangeLength: number
 
     // Owm methods of RygelServer-2.6.RygelServer.DLNAAvailableSeekRangeResponse
 

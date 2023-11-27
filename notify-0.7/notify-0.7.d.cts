@@ -179,6 +179,14 @@ export module Notification {
          * The summary of the notification.
          */
         summary?: string | null
+        /**
+         * The name of the application for the notification.
+         */
+        appName?: string | null
+        /**
+         * The icon-name of the icon to be displayed on the notification.
+         */
+        iconName?: string | null
     }
 
 }
@@ -192,6 +200,10 @@ export interface Notification {
      */
     app_name: string | null
     /**
+     * The name of the application for the notification.
+     */
+    appName: string | null
+    /**
      * The body of the notification.
      */
     body: string | null
@@ -202,9 +214,19 @@ export interface Notification {
      */
     readonly closed_reason: number
     /**
+     * The closed reason of the notification.
+     * 
+     * See [signal`Notification:`:closed].
+     */
+    readonly closedReason: number
+    /**
      * The icon-name of the icon to be displayed on the notification.
      */
     icon_name: string | null
+    /**
+     * The icon-name of the icon to be displayed on the notification.
+     */
+    iconName: string | null
     /**
      * The Id of the notification.
      */

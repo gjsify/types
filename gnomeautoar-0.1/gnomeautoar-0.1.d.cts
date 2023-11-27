@@ -332,6 +332,11 @@ export module Compressor {
         output_file?: Gio.File | null
         output_is_dest?: boolean | null
         source_files?: any | null
+        createTopLevelDirectory?: boolean | null
+        notifyInterval?: number | null
+        outputFile?: Gio.File | null
+        outputIsDest?: boolean | null
+        sourceFiles?: any | null
     }
 
 }
@@ -341,14 +346,21 @@ export interface Compressor {
     // Own properties of GnomeAutoar-0.1.GnomeAutoar.Compressor
 
     readonly completed_files: number
+    readonly completedFiles: number
     readonly completed_size: number
+    readonly completedSize: number
     create_top_level_directory: boolean
+    createTopLevelDirectory: boolean
     readonly files: number
     notify_interval: number
+    notifyInterval: number
     readonly output_file: Gio.File
+    readonly outputFile: Gio.File
     output_is_dest: boolean
+    outputIsDest: boolean
     readonly size: number
     readonly source_files: any
+    readonly sourceFiles: any
 
     // Owm methods of GnomeAutoar-0.1.GnomeAutoar.Compressor
 
@@ -621,6 +633,11 @@ export module Extractor {
         output_file?: Gio.File | null
         output_is_dest?: boolean | null
         source_file?: Gio.File | null
+        deleteAfterExtraction?: boolean | null
+        notifyInterval?: number | null
+        outputFile?: Gio.File | null
+        outputIsDest?: boolean | null
+        sourceFile?: Gio.File | null
     }
 
 }
@@ -630,14 +647,23 @@ export interface Extractor {
     // Own properties of GnomeAutoar-0.1.GnomeAutoar.Extractor
 
     readonly completed_files: number
+    readonly completedFiles: number
     readonly completed_size: number
+    readonly completedSize: number
     delete_after_extraction: boolean
+    deleteAfterExtraction: boolean
     notify_interval: number
+    notifyInterval: number
     readonly output_file: Gio.File
+    readonly outputFile: Gio.File
     output_is_dest: boolean
+    outputIsDest: boolean
     readonly source_file: Gio.File
+    readonly sourceFile: Gio.File
     readonly total_files: number
+    readonly totalFiles: number
     readonly total_size: number
+    readonly totalSize: number
 
     // Owm methods of GnomeAutoar-0.1.GnomeAutoar.Extractor
 

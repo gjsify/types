@@ -1687,6 +1687,10 @@ module Auth {
          * The authentication realm.
          */
         realm?: string | null
+        /**
+         * Whether or not the auth is for a proxy server.
+         */
+        isForProxy?: boolean | null
     }
 
 }
@@ -1704,13 +1708,25 @@ interface Auth {
      */
     readonly is_authenticated: boolean
     /**
+     * Whether or not the auth has been authenticated.
+     */
+    readonly isAuthenticated: boolean
+    /**
      * Whether or not the auth has been cancelled.
      */
     readonly is_cancelled: boolean
     /**
+     * Whether or not the auth has been cancelled.
+     */
+    readonly isCancelled: boolean
+    /**
      * Whether or not the auth is for a proxy server.
      */
     is_for_proxy: boolean
+    /**
+     * Whether or not the auth is for a proxy server.
+     */
+    isForProxy: boolean
     /**
      * The authentication realm.
      */
@@ -1719,6 +1735,10 @@ interface Auth {
      * The authentication scheme name.
      */
     readonly scheme_name: string | null
+    /**
+     * The authentication scheme name.
+     */
+    readonly schemeName: string | null
 
     // Own fields of Soup-3.0.Soup.Auth
 
@@ -2112,6 +2132,18 @@ module AuthDomain {
          * The realm of this auth domain.
          */
         realm?: string | null
+        /**
+         * Data to pass to the [callback`AuthDomainFilter]`.
+         */
+        filterData?: any | null
+        /**
+         * The [callback`AuthDomainGenericAuthCallback]`.
+         */
+        genericAuthCallback?: AuthDomainGenericAuthCallback | null
+        /**
+         * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
+         */
+        genericAuthData?: any | null
     }
 
 }
@@ -2129,13 +2161,25 @@ interface AuthDomain {
      */
     filter_data: any
     /**
+     * Data to pass to the [callback`AuthDomainFilter]`.
+     */
+    filterData: any
+    /**
      * The [callback`AuthDomainGenericAuthCallback]`.
      */
     generic_auth_callback: AuthDomainGenericAuthCallback
     /**
+     * The [callback`AuthDomainGenericAuthCallback]`.
+     */
+    genericAuthCallback: AuthDomainGenericAuthCallback
+    /**
      * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
      */
     generic_auth_data: any
+    /**
+     * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
+     */
+    genericAuthData: any
     /**
      * Whether or not this is a proxy auth domain.
      */
@@ -2373,6 +2417,14 @@ module AuthDomainBasic {
          * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
          */
         auth_data?: any | null
+        /**
+         * The [callback`AuthDomainBasicAuthCallback]`.
+         */
+        authCallback?: AuthDomainBasicAuthCallback | null
+        /**
+         * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
+         */
+        authData?: any | null
     }
 
 }
@@ -2386,9 +2438,17 @@ interface AuthDomainBasic {
      */
     auth_callback: AuthDomainBasicAuthCallback
     /**
+     * The [callback`AuthDomainBasicAuthCallback]`.
+     */
+    authCallback: AuthDomainBasicAuthCallback
+    /**
      * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
      */
     auth_data: any
+    /**
+     * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
+     */
+    authData: any
 
     // Owm methods of Soup-3.0.Soup.AuthDomainBasic
 
@@ -2476,6 +2536,14 @@ module AuthDomainDigest {
          * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
          */
         auth_data?: any | null
+        /**
+         * The [callback`AuthDomainDigestAuthCallback]`.
+         */
+        authCallback?: AuthDomainDigestAuthCallback | null
+        /**
+         * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
+         */
+        authData?: any | null
     }
 
 }
@@ -2489,9 +2557,17 @@ interface AuthDomainDigest {
      */
     auth_callback: AuthDomainDigestAuthCallback
     /**
+     * The [callback`AuthDomainDigestAuthCallback]`.
+     */
+    authCallback: AuthDomainDigestAuthCallback
+    /**
      * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
      */
     auth_data: any
+    /**
+     * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
+     */
+    authData: any
 
     // Owm methods of Soup-3.0.Soup.AuthDomainDigest
 
@@ -2805,6 +2881,14 @@ module Cache {
          * Whether the cache is private or shared.
          */
         cache_type?: CacheType | null
+        /**
+         * The directory to store the cache files.
+         */
+        cacheDir?: string | null
+        /**
+         * Whether the cache is private or shared.
+         */
+        cacheType?: CacheType | null
     }
 
 }
@@ -2818,9 +2902,17 @@ interface Cache extends SessionFeature {
      */
     readonly cache_dir: string | null
     /**
+     * The directory to store the cache files.
+     */
+    readonly cacheDir: string | null
+    /**
      * Whether the cache is private or shared.
      */
     readonly cache_type: CacheType
+    /**
+     * Whether the cache is private or shared.
+     */
+    readonly cacheType: CacheType
 
     // Own fields of Soup-3.0.Soup.Cache
 
@@ -3077,6 +3169,14 @@ module CookieJar {
          * Whether or not the cookie jar is read-only.
          */
         read_only?: boolean | null
+        /**
+         * The policy the jar should follow to accept or reject cookies.
+         */
+        acceptPolicy?: CookieJarAcceptPolicy | null
+        /**
+         * Whether or not the cookie jar is read-only.
+         */
+        readOnly?: boolean | null
     }
 
 }
@@ -3090,9 +3190,17 @@ interface CookieJar extends SessionFeature {
      */
     accept_policy: CookieJarAcceptPolicy
     /**
+     * The policy the jar should follow to accept or reject cookies.
+     */
+    acceptPolicy: CookieJarAcceptPolicy
+    /**
      * Whether or not the cookie jar is read-only.
      */
     readonly read_only: boolean
+    /**
+     * Whether or not the cookie jar is read-only.
+     */
+    readonly readOnly: boolean
 
     // Own fields of Soup-3.0.Soup.CookieJar
 
@@ -3807,6 +3915,12 @@ module Logger {
          * (-1 means "no limit".)
          */
         max_body_size?: number | null
+        /**
+         * If [property`Logger:`level] is %SOUP_LOGGER_LOG_BODY, this gives
+         * the maximum number of bytes of the body that will be logged.
+         * (-1 means "no limit".)
+         */
+        maxBodySize?: number | null
     }
 
 }
@@ -3825,6 +3939,12 @@ interface Logger extends SessionFeature {
      * (-1 means "no limit".)
      */
     max_body_size: number
+    /**
+     * If [property`Logger:`level] is %SOUP_LOGGER_LOG_BODY, this gives
+     * the maximum number of bytes of the body that will be logged.
+     * (-1 means "no limit".)
+     */
+    maxBodySize: number
 
     // Owm methods of Soup-3.0.Soup.Logger
 
@@ -4144,6 +4264,28 @@ module Message {
          * The message's Request-URI.
          */
         uri?: GLib.Uri | null
+        /**
+         * The [struct`GLib`.Uri] loaded in the application when the message was
+         * queued.
+         */
+        firstParty?: GLib.Uri | null
+        /**
+         * Whether the message is an OPTIONS ping.
+         * 
+         * The #SoupMessage is intended to be used to send
+         * `OPTIONS *` to a server. When set to %TRUE, the
+         * path of [property`Message:`uri] will be ignored and
+         * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
+         */
+        isOptionsPing?: boolean | null
+        /**
+         * Set when the message is navigating between top level domains.
+         */
+        isTopLevelNavigation?: boolean | null
+        /**
+         * Site used to compare cookies against. Used for SameSite cookie support.
+         */
+        siteForCookies?: GLib.Uri | null
     }
 
 }
@@ -4158,6 +4300,11 @@ interface Message {
      */
     first_party: GLib.Uri
     /**
+     * The [struct`GLib`.Uri] loaded in the application when the message was
+     * queued.
+     */
+    firstParty: GLib.Uri
+    /**
      * Various message options.
      */
     flags: MessageFlags
@@ -4165,6 +4312,10 @@ interface Message {
      * The HTTP protocol version to use.
      */
     readonly http_version: HTTPVersion
+    /**
+     * The HTTP protocol version to use.
+     */
+    readonly httpVersion: HTTPVersion
     /**
      * Whether the message is an OPTIONS ping.
      * 
@@ -4175,9 +4326,22 @@ interface Message {
      */
     is_options_ping: boolean
     /**
+     * Whether the message is an OPTIONS ping.
+     * 
+     * The #SoupMessage is intended to be used to send
+     * `OPTIONS *` to a server. When set to %TRUE, the
+     * path of [property`Message:`uri] will be ignored and
+     * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
+     */
+    isOptionsPing: boolean
+    /**
      * Set when the message is navigating between top level domains.
      */
     is_top_level_navigation: boolean
+    /**
+     * Set when the message is navigating between top level domains.
+     */
+    isTopLevelNavigation: boolean
     /**
      * The message's HTTP method.
      */
@@ -4192,42 +4356,83 @@ interface Message {
      */
     readonly reason_phrase: string | null
     /**
+     * The HTTP response reason phrase.
+     */
+    readonly reasonPhrase: string | null
+    /**
      * The remote [class`Gio`.SocketAddress] of the connection associated
      * with the message.
      */
     readonly remote_address: Gio.SocketAddress
     /**
+     * The remote [class`Gio`.SocketAddress] of the connection associated
+     * with the message.
+     */
+    readonly remoteAddress: Gio.SocketAddress
+    /**
      * The HTTP request headers.
      */
     readonly request_headers: MessageHeaders
+    /**
+     * The HTTP request headers.
+     */
+    readonly requestHeaders: MessageHeaders
     /**
      * The HTTP response headers.
      */
     readonly response_headers: MessageHeaders
     /**
+     * The HTTP response headers.
+     */
+    readonly responseHeaders: MessageHeaders
+    /**
      * Site used to compare cookies against. Used for SameSite cookie support.
      */
     site_for_cookies: GLib.Uri
+    /**
+     * Site used to compare cookies against. Used for SameSite cookie support.
+     */
+    siteForCookies: GLib.Uri
     /**
      * The HTTP response status code.
      */
     readonly status_code: number
     /**
+     * The HTTP response status code.
+     */
+    readonly statusCode: number
+    /**
      * The Name of TLS ciphersuite negotiated for this message connection.
      */
     readonly tls_ciphersuite_name: string | null
+    /**
+     * The Name of TLS ciphersuite negotiated for this message connection.
+     */
+    readonly tlsCiphersuiteName: string | null
     /**
      * The peer's [class`Gio`.TlsCertificate] associated with the message.
      */
     readonly tls_peer_certificate: Gio.TlsCertificate
     /**
+     * The peer's [class`Gio`.TlsCertificate] associated with the message.
+     */
+    readonly tlsPeerCertificate: Gio.TlsCertificate
+    /**
      * The verification errors on [property`Message:`tls-peer-certificate].
      */
     readonly tls_peer_certificate_errors: Gio.TlsCertificateFlags
     /**
+     * The verification errors on [property`Message:`tls-peer-certificate].
+     */
+    readonly tlsPeerCertificateErrors: Gio.TlsCertificateFlags
+    /**
      * The TLS protocol version negotiated for the message connection.
      */
     readonly tls_protocol_version: Gio.TlsProtocolVersion
+    /**
+     * The TLS protocol version negotiated for the message connection.
+     */
+    readonly tlsProtocolVersion: Gio.TlsProtocolVersion
     /**
      * The message's Request-URI.
      */
@@ -4844,6 +5049,9 @@ interface MultipartInputStream extends Gio.PollableInputStream {
     connect(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::message", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -4995,6 +5203,56 @@ module Server {
          * certificates.
          */
         tls_database?: Gio.TlsDatabase | null
+        /**
+         * If %TRUE, percent-encoding in the Request-URI path will not be
+         * automatically decoded.
+         */
+        rawPaths?: boolean | null
+        /**
+         * Server header.
+         * 
+         * If non-%NULL, the value to use for the "Server" header on
+         * [class`ServerMessage]`s processed by this server.
+         * 
+         * The Server header is the server equivalent of the
+         * User-Agent header, and provides information about the
+         * server and its components. It contains a list of one or
+         * more product tokens, separated by whitespace, with the most
+         * significant product token coming first. The tokens must be
+         * brief, ASCII, and mostly alphanumeric (although "-", "_",
+         * and "." are also allowed), and may optionally include a "/"
+         * followed by a version string. You may also put comments,
+         * enclosed in parentheses, between or after the tokens.
+         * 
+         * Some HTTP server implementations intentionally do not use
+         * version numbers in their Server header, so that
+         * installations running older versions of the server don't
+         * end up advertising their vulnerability to specific security
+         * holes.
+         * 
+         * As with [property`Session:`user_agent], if you set a
+         * [property`Server:`server-header] property that has trailing
+         * whitespace, #SoupServer will append its own product token (eg,
+         * `libsoup/2.3.2`) to the end of the header for you.
+         */
+        serverHeader?: string | null
+        /**
+         * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
+         */
+        tlsAuthMode?: Gio.TlsAuthenticationMode | null
+        /**
+         * A [class`Gio`.TlsCertificate[] that has a
+         * [property`Gio`.TlsCertificate:private-key] set.
+         * 
+         * If this is set, then the server will be able to speak
+         * https in addition to (or instead of) plain http.
+         */
+        tlsCertificate?: Gio.TlsCertificate | null
+        /**
+         * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
+         * certificates.
+         */
+        tlsDatabase?: Gio.TlsDatabase | null
     }
 
 }
@@ -5008,6 +5266,11 @@ interface Server {
      * automatically decoded.
      */
     readonly raw_paths: boolean
+    /**
+     * If %TRUE, percent-encoding in the Request-URI path will not be
+     * automatically decoded.
+     */
+    readonly rawPaths: boolean
     /**
      * Server header.
      * 
@@ -5037,9 +5300,41 @@ interface Server {
      */
     server_header: string | null
     /**
+     * Server header.
+     * 
+     * If non-%NULL, the value to use for the "Server" header on
+     * [class`ServerMessage]`s processed by this server.
+     * 
+     * The Server header is the server equivalent of the
+     * User-Agent header, and provides information about the
+     * server and its components. It contains a list of one or
+     * more product tokens, separated by whitespace, with the most
+     * significant product token coming first. The tokens must be
+     * brief, ASCII, and mostly alphanumeric (although "-", "_",
+     * and "." are also allowed), and may optionally include a "/"
+     * followed by a version string. You may also put comments,
+     * enclosed in parentheses, between or after the tokens.
+     * 
+     * Some HTTP server implementations intentionally do not use
+     * version numbers in their Server header, so that
+     * installations running older versions of the server don't
+     * end up advertising their vulnerability to specific security
+     * holes.
+     * 
+     * As with [property`Session:`user_agent], if you set a
+     * [property`Server:`server-header] property that has trailing
+     * whitespace, #SoupServer will append its own product token (eg,
+     * `libsoup/2.3.2`) to the end of the header for you.
+     */
+    serverHeader: string | null
+    /**
      * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
      */
     tls_auth_mode: Gio.TlsAuthenticationMode
+    /**
+     * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
+     */
+    tlsAuthMode: Gio.TlsAuthenticationMode
     /**
      * A [class`Gio`.TlsCertificate[] that has a
      * [property`Gio`.TlsCertificate:private-key] set.
@@ -5049,10 +5344,23 @@ interface Server {
      */
     tls_certificate: Gio.TlsCertificate
     /**
+     * A [class`Gio`.TlsCertificate[] that has a
+     * [property`Gio`.TlsCertificate:private-key] set.
+     * 
+     * If this is set, then the server will be able to speak
+     * https in addition to (or instead of) plain http.
+     */
+    tlsCertificate: Gio.TlsCertificate
+    /**
      * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
      * certificates.
      */
     tls_database: Gio.TlsDatabase
+    /**
+     * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
+     * certificates.
+     */
+    tlsDatabase: Gio.TlsDatabase
 
     // Own fields of Soup-3.0.Soup.Server
 
@@ -5627,9 +5935,17 @@ interface ServerMessage {
      */
     readonly tls_peer_certificate: Gio.TlsCertificate
     /**
+     * The peer's #GTlsCertificate associated with the message
+     */
+    readonly tlsPeerCertificate: Gio.TlsCertificate
+    /**
      * The verification errors on #SoupServerMessage:tls-peer-certificate
      */
     readonly tls_peer_certificate_errors: Gio.TlsCertificateFlags
+    /**
+     * The verification errors on #SoupServerMessage:tls-peer-certificate
+     */
+    readonly tlsPeerCertificateErrors: Gio.TlsCertificateFlags
 
     // Owm methods of Soup-3.0.Soup.ServerMessage
 
@@ -6022,6 +6338,113 @@ module Session {
          * header for you.
          */
         user_agent?: string | null
+        /**
+         * If non-%NULL, the value to use for the "Accept-Language" header
+         * on [class`Message]`s sent from this session.
+         * 
+         * Setting this will disable [property`Session:`accept-language-auto].
+         */
+        acceptLanguage?: string | null
+        /**
+         * If %TRUE, #SoupSession will automatically set the string
+         * for the "Accept-Language" header on every [class`Message]`
+         * sent, based on the return value of [func`GLib`.get_language_names].
+         * 
+         * Setting this will override any previous value of
+         * [property`Session:`accept-language].
+         */
+        acceptLanguageAuto?: boolean | null
+        /**
+         * Connection lifetime (in seconds) when idle. Any connection
+         * left idle longer than this will be closed.
+         * 
+         * Although you can change this property at any time, it will
+         * only affect newly-created connections, not currently-open
+         * ones. You can call [method`Session`.abort] after setting this
+         * if you want to ensure that all future connections will have
+         * this timeout value.
+         */
+        idleTimeout?: number | null
+        /**
+         * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
+         * the connection.
+         * 
+         * Use this property if you want for instance to bind the
+         * local socket to a specific IP address.
+         */
+        localAddress?: Gio.InetSocketAddress | null
+        /**
+         * The maximum number of connections that the session can open at once.
+         */
+        maxConns?: number | null
+        /**
+         * The maximum number of connections that the session can open at once
+         * to a given host.
+         */
+        maxConnsPerHost?: number | null
+        /**
+         * A [iface`Gio`.ProxyResolver] to use with this session.
+         * 
+         * If no proxy resolver is set, then the default proxy resolver
+         * will be used. See [func`Gio`.ProxyResolver.get_default].
+         * You can set it to %NULL if you don't want to use proxies, or
+         * set it to your own [iface`Gio`.ProxyResolver] if you want to control
+         * what proxies get used.
+         */
+        proxyResolver?: Gio.ProxyResolver | null
+        /**
+         * Sets a socket to make outgoing connections on. This will override the default
+         * behaviour of opening TCP/IP sockets to the hosts specified in the URIs.
+         * 
+         * This function is not required for common HTTP usage, but only when connecting
+         * to a HTTP service that is not using standard TCP/IP sockets. An example of
+         * this is a local service that uses HTTP over UNIX-domain sockets, in that case
+         * a [class`Gio`.UnixSocketAddress] can be passed to this function.
+         */
+        remoteConnectable?: Gio.SocketConnectable | null
+        /**
+         * Sets the [class`Gio`.TlsDatabase] to use for validating SSL/TLS
+         * certificates.
+         * 
+         * If no certificate database is set, then the default database will be
+         * used. See [method`Gio`.TlsBackend.get_default_database].
+         */
+        tlsDatabase?: Gio.TlsDatabase | null
+        /**
+         * A [class`Gio`.TlsInteraction] object that will be passed on to any
+         * [class`Gio`.TlsConnection]s created by the session.
+         * 
+         * This can be used to provide client-side certificates, for example.
+         */
+        tlsInteraction?: Gio.TlsInteraction | null
+        /**
+         * User-Agent string.
+         * 
+         * If non-%NULL, the value to use for the "User-Agent" header
+         * on [class`Message]`s sent from this session.
+         * 
+         * RFC 2616 says: "The User-Agent request-header field
+         * contains information about the user agent originating the
+         * request. This is for statistical purposes, the tracing of
+         * protocol violations, and automated recognition of user
+         * agents for the sake of tailoring responses to avoid
+         * particular user agent limitations. User agents SHOULD
+         * include this field with requests."
+         * 
+         * The User-Agent header contains a list of one or more
+         * product tokens, separated by whitespace, with the most
+         * significant product token coming first. The tokens must be
+         * brief, ASCII, and mostly alphanumeric (although "-", "_",
+         * and "." are also allowed), and may optionally include a "/"
+         * followed by a version string. You may also put comments,
+         * enclosed in parentheses, between or after the tokens.
+         * 
+         * If you set a [property`Session:`user-agent] property that has trailing
+         * whitespace, #SoupSession will append its own product token
+         * (eg, `libsoup/2.3.2`) to the end of the
+         * header for you.
+         */
+        userAgent?: string | null
     }
 
 }
@@ -6038,6 +6461,13 @@ interface Session {
      */
     accept_language: string | null
     /**
+     * If non-%NULL, the value to use for the "Accept-Language" header
+     * on [class`Message]`s sent from this session.
+     * 
+     * Setting this will disable [property`Session:`accept-language-auto].
+     */
+    acceptLanguage: string | null
+    /**
      * If %TRUE, #SoupSession will automatically set the string
      * for the "Accept-Language" header on every [class`Message]`
      * sent, based on the return value of [func`GLib`.get_language_names].
@@ -6046,6 +6476,15 @@ interface Session {
      * [property`Session:`accept-language].
      */
     accept_language_auto: boolean
+    /**
+     * If %TRUE, #SoupSession will automatically set the string
+     * for the "Accept-Language" header on every [class`Message]`
+     * sent, based on the return value of [func`GLib`.get_language_names].
+     * 
+     * Setting this will override any previous value of
+     * [property`Session:`accept-language].
+     */
+    acceptLanguageAuto: boolean
     /**
      * Connection lifetime (in seconds) when idle. Any connection
      * left idle longer than this will be closed.
@@ -6058,6 +6497,17 @@ interface Session {
      */
     idle_timeout: number
     /**
+     * Connection lifetime (in seconds) when idle. Any connection
+     * left idle longer than this will be closed.
+     * 
+     * Although you can change this property at any time, it will
+     * only affect newly-created connections, not currently-open
+     * ones. You can call [method`Session`.abort] after setting this
+     * if you want to ensure that all future connections will have
+     * this timeout value.
+     */
+    idleTimeout: number
+    /**
      * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
      * the connection.
      * 
@@ -6066,14 +6516,31 @@ interface Session {
      */
     readonly local_address: Gio.InetSocketAddress
     /**
+     * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly localAddress: Gio.InetSocketAddress
+    /**
      * The maximum number of connections that the session can open at once.
      */
     readonly max_conns: number
+    /**
+     * The maximum number of connections that the session can open at once.
+     */
+    readonly maxConns: number
     /**
      * The maximum number of connections that the session can open at once
      * to a given host.
      */
     readonly max_conns_per_host: number
+    /**
+     * The maximum number of connections that the session can open at once
+     * to a given host.
+     */
+    readonly maxConnsPerHost: number
     /**
      * A [iface`Gio`.ProxyResolver] to use with this session.
      * 
@@ -6085,6 +6552,16 @@ interface Session {
      */
     proxy_resolver: Gio.ProxyResolver
     /**
+     * A [iface`Gio`.ProxyResolver] to use with this session.
+     * 
+     * If no proxy resolver is set, then the default proxy resolver
+     * will be used. See [func`Gio`.ProxyResolver.get_default].
+     * You can set it to %NULL if you don't want to use proxies, or
+     * set it to your own [iface`Gio`.ProxyResolver] if you want to control
+     * what proxies get used.
+     */
+    proxyResolver: Gio.ProxyResolver
+    /**
      * Sets a socket to make outgoing connections on. This will override the default
      * behaviour of opening TCP/IP sockets to the hosts specified in the URIs.
      * 
@@ -6094,6 +6571,16 @@ interface Session {
      * a [class`Gio`.UnixSocketAddress] can be passed to this function.
      */
     readonly remote_connectable: Gio.SocketConnectable
+    /**
+     * Sets a socket to make outgoing connections on. This will override the default
+     * behaviour of opening TCP/IP sockets to the hosts specified in the URIs.
+     * 
+     * This function is not required for common HTTP usage, but only when connecting
+     * to a HTTP service that is not using standard TCP/IP sockets. An example of
+     * this is a local service that uses HTTP over UNIX-domain sockets, in that case
+     * a [class`Gio`.UnixSocketAddress] can be passed to this function.
+     */
+    readonly remoteConnectable: Gio.SocketConnectable
     /**
      * The timeout (in seconds) for socket I/O operations
      * (including connecting to a server, and waiting for a reply
@@ -6119,12 +6606,27 @@ interface Session {
      */
     tls_database: Gio.TlsDatabase
     /**
+     * Sets the [class`Gio`.TlsDatabase] to use for validating SSL/TLS
+     * certificates.
+     * 
+     * If no certificate database is set, then the default database will be
+     * used. See [method`Gio`.TlsBackend.get_default_database].
+     */
+    tlsDatabase: Gio.TlsDatabase
+    /**
      * A [class`Gio`.TlsInteraction] object that will be passed on to any
      * [class`Gio`.TlsConnection]s created by the session.
      * 
      * This can be used to provide client-side certificates, for example.
      */
     tls_interaction: Gio.TlsInteraction
+    /**
+     * A [class`Gio`.TlsInteraction] object that will be passed on to any
+     * [class`Gio`.TlsConnection]s created by the session.
+     * 
+     * This can be used to provide client-side certificates, for example.
+     */
+    tlsInteraction: Gio.TlsInteraction
     /**
      * User-Agent string.
      * 
@@ -6153,6 +6655,34 @@ interface Session {
      * header for you.
      */
     user_agent: string | null
+    /**
+     * User-Agent string.
+     * 
+     * If non-%NULL, the value to use for the "User-Agent" header
+     * on [class`Message]`s sent from this session.
+     * 
+     * RFC 2616 says: "The User-Agent request-header field
+     * contains information about the user agent originating the
+     * request. This is for statistical purposes, the tracing of
+     * protocol violations, and automated recognition of user
+     * agents for the sake of tailoring responses to avoid
+     * particular user agent limitations. User agents SHOULD
+     * include this field with requests."
+     * 
+     * The User-Agent header contains a list of one or more
+     * product tokens, separated by whitespace, with the most
+     * significant product token coming first. The tokens must be
+     * brief, ASCII, and mostly alphanumeric (although "-", "_",
+     * and "." are also allowed), and may optionally include a "/"
+     * followed by a version string. You may also put comments,
+     * enclosed in parentheses, between or after the tokens.
+     * 
+     * If you set a [property`Session:`user-agent] property that has trailing
+     * whitespace, #SoupSession will append its own product token
+     * (eg, `libsoup/2.3.2`) to the end of the
+     * header for you.
+     */
+    userAgent: string | null
 
     // Own fields of Soup-3.0.Soup.Session
 
@@ -6869,6 +7399,30 @@ module WebsocketConnection {
          * and for clients it is the address connected to.
          */
         uri?: GLib.Uri | null
+        /**
+         * The type of connection (client/server).
+         */
+        connectionType?: WebsocketConnectionType | null
+        /**
+         * The underlying IO stream the WebSocket is communicating
+         * over.
+         * 
+         * The input and output streams must be pollable streams.
+         */
+        ioStream?: Gio.IOStream | null
+        /**
+         * Interval in seconds on when to send a ping message which will
+         * serve as a keepalive message.
+         * 
+         * If set to 0 the keepalive message is disabled.
+         */
+        keepaliveInterval?: number | null
+        /**
+         * The maximum payload size for incoming packets.
+         * 
+         * The protocol expects or 0 to not limit it.
+         */
+        maxIncomingPayloadSize?: number | null
     }
 
 }
@@ -6882,6 +7436,10 @@ interface WebsocketConnection {
      */
     readonly connection_type: WebsocketConnectionType
     /**
+     * The type of connection (client/server).
+     */
+    readonly connectionType: WebsocketConnectionType
+    /**
      * List of [class`WebsocketExtension]` objects that are active in the connection.
      */
     readonly extensions: any
@@ -6893,6 +7451,13 @@ interface WebsocketConnection {
      */
     readonly io_stream: Gio.IOStream
     /**
+     * The underlying IO stream the WebSocket is communicating
+     * over.
+     * 
+     * The input and output streams must be pollable streams.
+     */
+    readonly ioStream: Gio.IOStream
+    /**
      * Interval in seconds on when to send a ping message which will
      * serve as a keepalive message.
      * 
@@ -6900,11 +7465,24 @@ interface WebsocketConnection {
      */
     keepalive_interval: number
     /**
+     * Interval in seconds on when to send a ping message which will
+     * serve as a keepalive message.
+     * 
+     * If set to 0 the keepalive message is disabled.
+     */
+    keepaliveInterval: number
+    /**
      * The maximum payload size for incoming packets.
      * 
      * The protocol expects or 0 to not limit it.
      */
     max_incoming_payload_size: number
+    /**
+     * The maximum payload size for incoming packets.
+     * 
+     * The protocol expects or 0 to not limit it.
+     */
+    maxIncomingPayloadSize: number
     /**
      * The client's Origin.
      */

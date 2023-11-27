@@ -311,6 +311,17 @@ module Display {
         shared_flag?: boolean | null
         smoothing?: boolean | null
         zoom_level?: number | null
+        allowResize?: boolean | null
+        forceSize?: boolean | null
+        grabKeyboard?: boolean | null
+        grabKeys?: GrabSequence | null
+        grabPointer?: boolean | null
+        keepAspectRatio?: boolean | null
+        localPointer?: boolean | null
+        lossyEncoding?: boolean | null
+        readOnly?: boolean | null
+        sharedFlag?: boolean | null
+        zoomLevel?: number | null
     }
 
 }
@@ -320,24 +331,35 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of GtkVnc-2.0.GtkVnc.Display
 
     allow_resize: boolean
+    allowResize: boolean
     readonly connection: GVnc.Connection
     depth: DisplayDepthColor
     force_size: boolean
+    forceSize: boolean
     grab_keyboard: boolean
+    grabKeyboard: boolean
     grab_keys: GrabSequence
+    grabKeys: GrabSequence
     grab_pointer: boolean
+    grabPointer: boolean
     readonly height: number
     keep_aspect_ratio: boolean
+    keepAspectRatio: boolean
     local_pointer: boolean
+    localPointer: boolean
     lossy_encoding: boolean
+    lossyEncoding: boolean
     readonly name: any
     read_only: boolean
+    readOnly: boolean
     rotation: number
     scaling: boolean
     shared_flag: boolean
+    sharedFlag: boolean
     smoothing: boolean
     readonly width: number
     zoom_level: number
+    zoomLevel: number
 
     // Own fields of GtkVnc-2.0.GtkVnc.Display
 

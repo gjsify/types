@@ -135,6 +135,13 @@ export module DocumentModel {
         rtl?: boolean | null
         scale?: number | null
         sizing_mode?: SizingMode | null
+        dualOddLeft?: boolean | null
+        dualPage?: boolean | null
+        invertedColors?: boolean | null
+        maxScale?: number | null
+        minScale?: number | null
+        pageLayout?: PageLayout | null
+        sizingMode?: SizingMode | null
     }
 
 }
@@ -146,17 +153,24 @@ export interface DocumentModel {
     continuous: boolean
     document: EvinceDocument.Document
     dual_odd_left: boolean
+    dualOddLeft: boolean
     dual_page: boolean
+    dualPage: boolean
     fullscreen: boolean
     inverted_colors: boolean
+    invertedColors: boolean
     max_scale: number
+    maxScale: number
     min_scale: number
+    minScale: number
     page: number
     page_layout: PageLayout
+    pageLayout: PageLayout
     rotation: number
     rtl: boolean
     scale: number
     sizing_mode: SizingMode
+    sizingMode: SizingMode
 
     // Owm methods of EvinceView-3.0.EvinceView.DocumentModel
 
@@ -1415,11 +1429,17 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
     // Own properties of EvinceView-3.0.EvinceView.View
 
     readonly can_zoom_in: boolean
+    readonly canZoomIn: boolean
     readonly can_zoom_out: boolean
+    readonly canZoomOut: boolean
     /**
      * Allows to implement a custom notification system.
      */
     readonly is_loading: boolean
+    /**
+     * Allows to implement a custom notification system.
+     */
+    readonly isLoading: boolean
 
     // Owm methods of EvinceView-3.0.EvinceView.View
 
@@ -1796,6 +1816,8 @@ export module ViewPresentation {
         document?: EvinceDocument.Document | null
         inverted_colors?: boolean | null
         rotation?: number | null
+        currentPage?: number | null
+        invertedColors?: boolean | null
     }
 
 }
@@ -1805,8 +1827,10 @@ export interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of EvinceView-3.0.EvinceView.ViewPresentation
 
     current_page: number
+    currentPage: number
     readonly document: EvinceDocument.Document
     readonly inverted_colors: boolean
+    readonly invertedColors: boolean
     rotation: number
 
     // Owm methods of EvinceView-3.0.EvinceView.ViewPresentation

@@ -78,6 +78,8 @@ module Wc {
         loglevel?: number | null
         throttling?: number | null
         user_agent?: string | null
+        cacheSize?: number | null
+        userAgent?: string | null
     }
 
 }
@@ -88,9 +90,11 @@ interface Wc {
 
     cache: boolean
     cache_size: number
+    cacheSize: number
     loglevel: number
     throttling: number
     user_agent: string | null
+    userAgent: string | null
 
     // Owm methods of GrlNet-0.3.GrlNet.Wc
 

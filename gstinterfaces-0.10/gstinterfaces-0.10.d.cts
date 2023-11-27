@@ -1401,6 +1401,15 @@ export interface MixerOptions {
     connect(sigName: "notify::index", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::index", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::index", ...args: any[]): void
+    connect(sigName: "notify::max-volume", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-volume", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-volume", ...args: any[]): void
+    connect(sigName: "notify::min-volume", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-volume", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-volume", ...args: any[]): void
+    connect(sigName: "notify::num-channels", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-channels", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-channels", ...args: any[]): void
     connect(sigName: "notify::untranslated-label", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::untranslated-label", callback: (($obj: MixerOptions, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::untranslated-label", ...args: any[]): void
@@ -1433,6 +1442,7 @@ export module MixerTrack {
 
         index?: number | null
         untranslated_label?: string | null
+        untranslatedLabel?: string | null
     }
 
 }
@@ -1442,7 +1452,11 @@ export interface MixerTrack {
     // Own properties of GstInterfaces-0.10.GstInterfaces.MixerTrack
 
     readonly index: number
+    readonly maxVolume: number
+    readonly minVolume: number
+    readonly numChannels: number
     readonly untranslated_label: string
+    readonly untranslatedLabel: string
 
     // Own fields of GstInterfaces-0.10.GstInterfaces.MixerTrack
 
@@ -1458,6 +1472,15 @@ export interface MixerTrack {
     connect(sigName: "notify::index", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::index", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::index", ...args: any[]): void
+    connect(sigName: "notify::max-volume", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-volume", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-volume", ...args: any[]): void
+    connect(sigName: "notify::min-volume", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-volume", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-volume", ...args: any[]): void
+    connect(sigName: "notify::num-channels", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-channels", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-channels", ...args: any[]): void
     connect(sigName: "notify::untranslated-label", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::untranslated-label", callback: (($obj: MixerTrack, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::untranslated-label", ...args: any[]): void

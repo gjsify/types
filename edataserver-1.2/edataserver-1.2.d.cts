@@ -2849,6 +2849,11 @@ export interface Client {
      */
     readonly main_context: GLib.MainContext
     /**
+     * The main loop context in which notifications for
+     * this client will be delivered.
+     */
+    readonly mainContext: GLib.MainContext
+    /**
      * Whether this client's backing data is online.
      */
     online: boolean
@@ -3913,6 +3918,10 @@ export module NetworkMonitor {
          * The GIO name of the underlying #GNetworkMonitor to use.
          */
         gio_name?: string | null
+        /**
+         * The GIO name of the underlying #GNetworkMonitor to use.
+         */
+        gioName?: string | null
     }
 
 }
@@ -3925,6 +3934,10 @@ export interface NetworkMonitor extends Gio.Initable, Gio.NetworkMonitor {
      * The GIO name of the underlying #GNetworkMonitor to use.
      */
     gio_name: string | null
+    /**
+     * The GIO name of the underlying #GNetworkMonitor to use.
+     */
+    gioName: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.NetworkMonitor
 
@@ -4351,6 +4364,14 @@ export module SoupSession {
          * The #ESource being used for this soup session.
          */
         source?: Source | null
+        /**
+         * Whether the messages created by the session should force use
+         * of HTTP/1 instead of trying HTTP/2 first and fallback to the HTTP/1
+         * when the newer version failed to connect.
+         * 
+         * See e_soup_session_set_force_http1() for more information about the limitations.
+         */
+        forceHttp1?: boolean | null
     }
 
 }
@@ -4371,6 +4392,14 @@ export interface SoupSession {
      * See e_soup_session_set_force_http1() for more information about the limitations.
      */
     force_http1: boolean
+    /**
+     * Whether the messages created by the session should force use
+     * of HTTP/1 instead of trying HTTP/2 first and fallback to the HTTP/1
+     * when the newer version failed to connect.
+     * 
+     * See e_soup_session_set_force_http1() for more information about the limitations.
+     */
+    forceHttp1: boolean
     /**
      * The #ESource being used for this soup session.
      */
@@ -4757,6 +4786,8 @@ export module Source {
         main_context?: GLib.MainContext | null
         parent?: string | null
         uid?: string | null
+        displayName?: string | null
+        mainContext?: GLib.MainContext | null
     }
 
 }
@@ -4766,12 +4797,17 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
     // Own properties of EDataServer-1.2.EDataServer.Source
 
     readonly connection_status: SourceConnectionStatus
+    readonly connectionStatus: SourceConnectionStatus
     display_name: string | null
+    displayName: string | null
     enabled: boolean
     readonly main_context: GLib.MainContext
+    readonly mainContext: GLib.MainContext
     parent: string | null
     readonly remote_creatable: boolean
+    readonly remoteCreatable: boolean
     readonly remote_deletable: boolean
+    readonly remoteDeletable: boolean
     readonly removable: boolean
     readonly uid: string | null
     readonly writable: boolean
@@ -5994,6 +6030,8 @@ export module SourceAlarms {
 
         include_me?: boolean | null
         last_notified?: string | null
+        includeMe?: boolean | null
+        lastNotified?: string | null
     }
 
 }
@@ -6003,7 +6041,9 @@ export interface SourceAlarms {
     // Own properties of EDataServer-1.2.EDataServer.SourceAlarms
 
     include_me: boolean
+    includeMe: boolean
     last_notified: string | null
+    lastNotified: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceAlarms
 
@@ -6107,6 +6147,10 @@ export module SourceAuthentication {
         proxy_uid?: string | null
         remember_password?: boolean | null
         user?: string | null
+        credentialName?: string | null
+        isExternal?: boolean | null
+        proxyUid?: string | null
+        rememberPassword?: boolean | null
     }
 
 }
@@ -6117,12 +6161,16 @@ export interface SourceAuthentication {
 
     readonly connectable: Gio.SocketConnectable
     credential_name: string | null
+    credentialName: string | null
     host: string | null
     is_external: boolean
+    isExternal: boolean
     method: string | null
     port: number
     proxy_uid: string | null
+    proxyUid: string | null
     remember_password: boolean
+    rememberPassword: boolean
     user: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceAuthentication
@@ -6365,6 +6413,7 @@ export module SourceAutocomplete {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceAutocomplete
 
         include_me?: boolean | null
+        includeMe?: boolean | null
     }
 
 }
@@ -6374,6 +6423,7 @@ export interface SourceAutocomplete {
     // Own properties of EDataServer-1.2.EDataServer.SourceAutocomplete
 
     include_me: boolean
+    includeMe: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceAutocomplete
 
@@ -6522,6 +6572,7 @@ export module SourceBackend {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceBackend
 
         backend_name?: string | null
+        backendName?: string | null
     }
 
 }
@@ -6531,6 +6582,7 @@ export interface SourceBackend {
     // Own properties of EDataServer-1.2.EDataServer.SourceBackend
 
     backend_name: string | null
+    backendName: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceBackend
 
@@ -6762,6 +6814,12 @@ export module SourceCollection {
         contacts_url?: string | null
         identity?: string | null
         mail_enabled?: boolean | null
+        allowSourcesRename?: boolean | null
+        calendarEnabled?: boolean | null
+        calendarUrl?: string | null
+        contactsEnabled?: boolean | null
+        contactsUrl?: string | null
+        mailEnabled?: boolean | null
     }
 
 }
@@ -6771,12 +6829,18 @@ export interface SourceCollection {
     // Own properties of EDataServer-1.2.EDataServer.SourceCollection
 
     allow_sources_rename: boolean
+    allowSourcesRename: boolean
     calendar_enabled: boolean
+    calendarEnabled: boolean
     calendar_url: string | null
+    calendarUrl: string | null
     contacts_enabled: boolean
+    contactsEnabled: boolean
     contacts_url: string | null
+    contactsUrl: string | null
     identity: string | null
     mail_enabled: boolean
+    mailEnabled: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceCollection
 
@@ -6991,6 +7055,7 @@ export module SourceContacts {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceContacts
 
         include_me?: boolean | null
+        includeMe?: boolean | null
     }
 
 }
@@ -7000,6 +7065,7 @@ export interface SourceContacts {
     // Own properties of EDataServer-1.2.EDataServer.SourceContacts
 
     include_me: boolean
+    includeMe: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceContacts
 
@@ -7591,6 +7657,9 @@ export module SourceGoa {
         calendar_url?: string | null
         contacts_url?: string | null
         name?: string | null
+        accountId?: string | null
+        calendarUrl?: string | null
+        contactsUrl?: string | null
     }
 
 }
@@ -7600,9 +7669,12 @@ export interface SourceGoa {
     // Own properties of EDataServer-1.2.EDataServer.SourceGoa
 
     account_id: string | null
+    accountId: string | null
     address: string | null
     calendar_url: string | null
+    calendarUrl: string | null
     contacts_url: string | null
+    contactsUrl: string | null
     name: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceGoa
@@ -7791,6 +7863,8 @@ export module SourceLDAP {
         root_dn?: string | null
         scope?: SourceLDAPScope | null
         security?: SourceLDAPSecurity | null
+        canBrowse?: boolean | null
+        rootDn?: string | null
     }
 
 }
@@ -7801,9 +7875,11 @@ export interface SourceLDAP {
 
     authentication: SourceLDAPAuthentication
     can_browse: boolean
+    canBrowse: boolean
     filter: string | null
     limit: number
     root_dn: string | null
+    rootDn: string | null
     scope: SourceLDAPScope
     security: SourceLDAPSecurity
 
@@ -7882,6 +7958,8 @@ export module SourceLocal {
         custom_file?: Gio.File | null
         email_address?: string | null
         writable?: boolean | null
+        customFile?: Gio.File | null
+        emailAddress?: string | null
     }
 
 }
@@ -7891,7 +7969,9 @@ export interface SourceLocal {
     // Own properties of EDataServer-1.2.EDataServer.SourceLocal
 
     custom_file: Gio.File
+    customFile: Gio.File
     email_address: string | null
+    emailAddress: string | null
     writable: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceLocal
@@ -7992,6 +8072,7 @@ export module SourceMDN {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMDN
 
         response_policy?: MdnResponsePolicy | null
+        responsePolicy?: MdnResponsePolicy | null
     }
 
 }
@@ -8001,6 +8082,7 @@ export interface SourceMDN {
     // Own properties of EDataServer-1.2.EDataServer.SourceMDN
 
     response_policy: MdnResponsePolicy
+    responsePolicy: MdnResponsePolicy
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMDN
 
@@ -8063,6 +8145,11 @@ export module SourceMailAccount {
         mark_seen?: ThreeState | null
         mark_seen_timeout?: number | null
         needs_initial_setup?: boolean | null
+        archiveFolder?: string | null
+        identityUid?: string | null
+        markSeen?: ThreeState | null
+        markSeenTimeout?: number | null
+        needsInitialSetup?: boolean | null
     }
 
 }
@@ -8072,11 +8159,16 @@ export interface SourceMailAccount {
     // Own properties of EDataServer-1.2.EDataServer.SourceMailAccount
 
     archive_folder: string | null
+    archiveFolder: string | null
     builtin: boolean
     identity_uid: string | null
+    identityUid: string | null
     mark_seen: ThreeState
+    markSeen: ThreeState
     mark_seen_timeout: number
+    markSeenTimeout: number
     needs_initial_setup: boolean
+    needsInitialSetup: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMailAccount
 
@@ -8230,6 +8322,12 @@ export module SourceMailComposition {
         start_bottom?: ThreeState | null
         templates_folder?: string | null
         top_signature?: ThreeState | null
+        draftsFolder?: string | null
+        replyStyle?: SourceMailCompositionReplyStyle | null
+        signImip?: boolean | null
+        startBottom?: ThreeState | null
+        templatesFolder?: string | null
+        topSignature?: ThreeState | null
     }
 
 }
@@ -8241,12 +8339,18 @@ export interface SourceMailComposition {
     bcc: string[]
     cc: string[]
     drafts_folder: string | null
+    draftsFolder: string | null
     language: string | null
     reply_style: SourceMailCompositionReplyStyle
+    replyStyle: SourceMailCompositionReplyStyle
     sign_imip: boolean
+    signImip: boolean
     start_bottom: ThreeState
+    startBottom: ThreeState
     templates_folder: string | null
+    templatesFolder: string | null
     top_signature: ThreeState
+    topSignature: ThreeState
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMailComposition
 
@@ -8496,6 +8600,8 @@ export module SourceMailIdentity {
         organization?: string | null
         reply_to?: string | null
         signature_uid?: string | null
+        replyTo?: string | null
+        signatureUid?: string | null
     }
 
 }
@@ -8509,7 +8615,9 @@ export interface SourceMailIdentity {
     name: string | null
     organization: string | null
     reply_to: string | null
+    replyTo: string | null
     signature_uid: string | null
+    signatureUid: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMailIdentity
 
@@ -8726,6 +8834,7 @@ export module SourceMailSignature {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMailSignature
 
         mime_type?: string | null
+        mimeType?: string | null
     }
 
 }
@@ -8736,6 +8845,7 @@ export interface SourceMailSignature {
 
     readonly file: Gio.File
     mime_type: string | null
+    mimeType: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMailSignature
 
@@ -8826,6 +8936,10 @@ export module SourceMailSubmission {
         sent_folder?: string | null
         transport_uid?: string | null
         use_sent_folder?: boolean | null
+        repliesToOriginFolder?: boolean | null
+        sentFolder?: string | null
+        transportUid?: string | null
+        useSentFolder?: boolean | null
     }
 
 }
@@ -8835,9 +8949,13 @@ export interface SourceMailSubmission {
     // Own properties of EDataServer-1.2.EDataServer.SourceMailSubmission
 
     replies_to_origin_folder: boolean
+    repliesToOriginFolder: boolean
     sent_folder: string | null
+    sentFolder: string | null
     transport_uid: string | null
+    transportUid: string | null
     use_sent_folder: boolean
+    useSentFolder: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceMailSubmission
 
@@ -9049,6 +9167,7 @@ export module SourceOffline {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceOffline
 
         stay_synchronized?: boolean | null
+        staySynchronized?: boolean | null
     }
 
 }
@@ -9058,6 +9177,7 @@ export interface SourceOffline {
     // Own properties of EDataServer-1.2.EDataServer.SourceOffline
 
     stay_synchronized: boolean
+    staySynchronized: boolean
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceOffline
 
@@ -9126,6 +9246,16 @@ export module SourceOpenPGP {
         send_public_key?: boolean | null
         sign_by_default?: boolean | null
         signing_algorithm?: string | null
+        alwaysTrust?: boolean | null
+        encryptByDefault?: boolean | null
+        encryptToSelf?: boolean | null
+        keyId?: string | null
+        locateKeys?: boolean | null
+        preferInline?: boolean | null
+        sendPreferEncrypt?: boolean | null
+        sendPublicKey?: boolean | null
+        signByDefault?: boolean | null
+        signingAlgorithm?: string | null
     }
 
 }
@@ -9135,15 +9265,25 @@ export interface SourceOpenPGP {
     // Own properties of EDataServer-1.2.EDataServer.SourceOpenPGP
 
     always_trust: boolean
+    alwaysTrust: boolean
     encrypt_by_default: boolean
+    encryptByDefault: boolean
     encrypt_to_self: boolean
+    encryptToSelf: boolean
     key_id: string | null
+    keyId: string | null
     locate_keys: boolean
+    locateKeys: boolean
     prefer_inline: boolean
+    preferInline: boolean
     send_prefer_encrypt: boolean
+    sendPreferEncrypt: boolean
     send_public_key: boolean
+    sendPublicKey: boolean
     sign_by_default: boolean
+    signByDefault: boolean
     signing_algorithm: string | null
+    signingAlgorithm: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceOpenPGP
 
@@ -9368,6 +9508,19 @@ export module SourceProxy {
         method?: ProxyMethod | null
         socks_host?: string | null
         socks_port?: number | null
+        autoconfigUrl?: string | null
+        ftpHost?: string | null
+        ftpPort?: number | null
+        httpAuthPassword?: string | null
+        httpAuthUser?: string | null
+        httpHost?: string | null
+        httpPort?: number | null
+        httpUseAuth?: boolean | null
+        httpsHost?: string | null
+        httpsPort?: number | null
+        ignoreHosts?: string[] | null
+        socksHost?: string | null
+        socksPort?: number | null
     }
 
 }
@@ -9377,19 +9530,32 @@ export interface SourceProxy {
     // Own properties of EDataServer-1.2.EDataServer.SourceProxy
 
     autoconfig_url: string | null
+    autoconfigUrl: string | null
     ftp_host: string | null
+    ftpHost: string | null
     ftp_port: number
+    ftpPort: number
     http_auth_password: string | null
+    httpAuthPassword: string | null
     http_auth_user: string | null
+    httpAuthUser: string | null
     http_host: string | null
+    httpHost: string | null
     http_port: number
+    httpPort: number
     http_use_auth: boolean
+    httpUseAuth: boolean
     https_host: string | null
+    httpsHost: string | null
     https_port: number
+    httpsPort: number
     ignore_hosts: string[]
+    ignoreHosts: string[]
     method: ProxyMethod
     socks_host: string | null
+    socksHost: string | null
     socks_port: number
+    socksPort: number
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceProxy
 
@@ -9731,6 +9897,8 @@ export module SourceRefresh {
         enabled?: boolean | null
         enabled_on_metered_network?: boolean | null
         interval_minutes?: number | null
+        enabledOnMeteredNetwork?: boolean | null
+        intervalMinutes?: number | null
     }
 
 }
@@ -9741,7 +9909,9 @@ export interface SourceRefresh {
 
     enabled: boolean
     enabled_on_metered_network: boolean
+    enabledOnMeteredNetwork: boolean
     interval_minutes: number
+    intervalMinutes: number
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceRefresh
 
@@ -9911,6 +10081,30 @@ export module SourceRegistry {
          * The default task list #ESource.
          */
         default_task_list?: Source | null
+        /**
+         * The default address book #ESource.
+         */
+        defaultAddressBook?: Source | null
+        /**
+         * The default calendar #ESource.
+         */
+        defaultCalendar?: Source | null
+        /**
+         * The default mail account #ESource.
+         */
+        defaultMailAccount?: Source | null
+        /**
+         * The default mail identity #ESource.
+         */
+        defaultMailIdentity?: Source | null
+        /**
+         * The default memo list #ESource.
+         */
+        defaultMemoList?: Source | null
+        /**
+         * The default task list #ESource.
+         */
+        defaultTaskList?: Source | null
     }
 
 }
@@ -9924,25 +10118,49 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      */
     default_address_book: Source
     /**
+     * The default address book #ESource.
+     */
+    defaultAddressBook: Source
+    /**
      * The default calendar #ESource.
      */
     default_calendar: Source
+    /**
+     * The default calendar #ESource.
+     */
+    defaultCalendar: Source
     /**
      * The default mail account #ESource.
      */
     default_mail_account: Source
     /**
+     * The default mail account #ESource.
+     */
+    defaultMailAccount: Source
+    /**
      * The default mail identity #ESource.
      */
     default_mail_identity: Source
+    /**
+     * The default mail identity #ESource.
+     */
+    defaultMailIdentity: Source
     /**
      * The default memo list #ESource.
      */
     default_memo_list: Source
     /**
+     * The default memo list #ESource.
+     */
+    defaultMemoList: Source
+    /**
      * The default task list #ESource.
      */
     default_task_list: Source
+    /**
+     * The default task list #ESource.
+     */
+    defaultTaskList: Source
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceRegistry
 
@@ -10555,6 +10773,13 @@ export module SourceRegistryWatcher {
          * The #ESourceRegistry manages #ESource instances.
          */
         registry?: SourceRegistry | null
+        /**
+         * Optional extension name, to consider sources with only.
+         * It can be %NULL, to check for all sources. This is
+         * a complementary filter to #ESourceRegistryWatcher::filter
+         * signal.
+         */
+        extensionName?: string | null
     }
 
 }
@@ -10570,6 +10795,13 @@ export interface SourceRegistryWatcher {
      * signal.
      */
     readonly extension_name: string | null
+    /**
+     * Optional extension name, to consider sources with only.
+     * It can be %NULL, to check for all sources. This is
+     * a complementary filter to #ESourceRegistryWatcher::filter
+     * signal.
+     */
+    readonly extensionName: string | null
     /**
      * The #ESourceRegistry manages #ESource instances.
      */
@@ -10820,6 +11052,12 @@ export module SourceSMIME {
         sign_by_default?: boolean | null
         signing_algorithm?: string | null
         signing_certificate?: string | null
+        encryptByDefault?: boolean | null
+        encryptToSelf?: boolean | null
+        encryptionCertificate?: string | null
+        signByDefault?: boolean | null
+        signingAlgorithm?: string | null
+        signingCertificate?: string | null
     }
 
 }
@@ -10829,11 +11067,17 @@ export interface SourceSMIME {
     // Own properties of EDataServer-1.2.EDataServer.SourceSMIME
 
     encrypt_by_default: boolean
+    encryptByDefault: boolean
     encrypt_to_self: boolean
+    encryptToSelf: boolean
     encryption_certificate: string | null
+    encryptionCertificate: string | null
     sign_by_default: boolean
+    signByDefault: boolean
     signing_algorithm: string | null
+    signingAlgorithm: string | null
     signing_certificate: string | null
+    signingCertificate: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceSMIME
 
@@ -11265,6 +11509,7 @@ export module SourceUoa {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceUoa
 
         account_id?: number | null
+        accountId?: number | null
     }
 
 }
@@ -11274,6 +11519,7 @@ export interface SourceUoa {
     // Own properties of EDataServer-1.2.EDataServer.SourceUoa
 
     account_id: number
+    accountId: number
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceUoa
 
@@ -11390,6 +11636,7 @@ export module SourceWebDAVNotes {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceWebDAVNotes
 
         default_ext?: string | null
+        defaultExt?: string | null
     }
 
 }
@@ -11399,6 +11646,7 @@ export interface SourceWebDAVNotes {
     // Own properties of EDataServer-1.2.EDataServer.SourceWebDAVNotes
 
     default_ext: string | null
+    defaultExt: string | null
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceWebDAVNotes
 
@@ -11475,6 +11723,13 @@ export module SourceWebdav {
         resource_query?: string | null
         ssl_trust?: string | null
         uri?: GLib.Uri | null
+        avoidIfmatch?: boolean | null
+        calendarAutoSchedule?: boolean | null
+        displayName?: string | null
+        emailAddress?: string | null
+        resourcePath?: string | null
+        resourceQuery?: string | null
+        sslTrust?: string | null
     }
 
 }
@@ -11484,14 +11739,21 @@ export interface SourceWebdav {
     // Own properties of EDataServer-1.2.EDataServer.SourceWebdav
 
     avoid_ifmatch: boolean
+    avoidIfmatch: boolean
     calendar_auto_schedule: boolean
+    calendarAutoSchedule: boolean
     color: string | null
     display_name: string | null
+    displayName: string | null
     email_address: string | null
+    emailAddress: string | null
     order: number
     resource_path: string | null
+    resourcePath: string | null
     resource_query: string | null
+    resourceQuery: string | null
     ssl_trust: string | null
+    sslTrust: string | null
     uri: GLib.Uri
 
     // Owm methods of EDataServer-1.2.EDataServer.SourceWebdav

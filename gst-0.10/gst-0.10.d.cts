@@ -2216,6 +2216,11 @@ export module BaseSink {
         render_delay?: number | null
         sync?: boolean | null
         ts_offset?: number | null
+        enableLastBuffer?: boolean | null
+        maxLateness?: number | null
+        prerollQueueLen?: number | null
+        renderDelay?: number | null
+        tsOffset?: number | null
     }
 
 }
@@ -2227,12 +2232,18 @@ export interface BaseSink {
     async: boolean
     blocksize: number
     enable_last_buffer: boolean
+    enableLastBuffer: boolean
     readonly last_buffer: Buffer
+    readonly lastBuffer: Buffer
     max_lateness: number
+    maxLateness: number
     preroll_queue_len: number
+    prerollQueueLen: number
     qos: boolean
     render_delay: number
+    renderDelay: number
     ts_offset: number
+    tsOffset: number
 
     // Conflicting properties
 
@@ -2372,6 +2383,8 @@ export module BaseSrc {
         do_timestamp?: boolean | null
         num_buffers?: number | null
         typefind?: boolean | null
+        doTimestamp?: boolean | null
+        numBuffers?: number | null
     }
 
 }
@@ -2381,6 +2394,8 @@ export interface BaseSrc {
     // Own properties of Gst-0.10.Gst.BaseSrc
 
     do_timestamp: boolean
+    doTimestamp: boolean
+    numBuffers: number
     typefind: boolean
 
     // Conflicting properties
@@ -2448,6 +2463,9 @@ export interface BaseSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void
@@ -2609,6 +2627,7 @@ export module Bin {
         // Own constructor properties of Gst-0.10.Gst.Bin
 
         async_handling?: boolean | null
+        asyncHandling?: boolean | null
     }
 
 }
@@ -2618,6 +2637,7 @@ export interface Bin extends ChildProxy {
     // Own properties of Gst-0.10.Gst.Bin
 
     async_handling: boolean
+    asyncHandling: boolean
 
     // Conflicting properties
 
@@ -2897,11 +2917,18 @@ export module Clock {
         timeout?: number | null
         window_size?: number | null
         window_threshold?: number | null
+        windowSize?: number | null
+        windowThreshold?: number | null
     }
 
 }
 
 export interface Clock {
+
+    // Own properties of Gst-0.10.Gst.Clock
+
+    windowSize: number
+    windowThreshold: number
 
     // Own fields of Gst-0.10.Gst.Clock
 
@@ -2953,6 +2980,12 @@ export interface Clock {
 
     // Class property signals of Gst-0.10.Gst.Clock
 
+    connect(sigName: "notify::window-size", callback: (($obj: Clock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-size", callback: (($obj: Clock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-size", ...args: any[]): void
+    connect(sigName: "notify::window-threshold", callback: (($obj: Clock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-threshold", callback: (($obj: Clock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-threshold", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3090,8 +3123,11 @@ export interface DataQueue {
     // Own properties of Gst-0.10.Gst.DataQueue
 
     readonly current_level_bytes: number
+    readonly currentLevelBytes: number
     readonly current_level_time: number
+    readonly currentLevelTime: number
     readonly current_level_visible: number
+    readonly currentLevelVisible: number
 
     // Own fields of Gst-0.10.Gst.DataQueue
 
@@ -4245,11 +4281,16 @@ export module PadTemplate {
         direction?: PadDirection | null
         name_template?: string | null
         presence?: PadPresence | null
+        nameTemplate?: string | null
     }
 
 }
 
 export interface PadTemplate {
+
+    // Own properties of Gst-0.10.Gst.PadTemplate
+
+    readonly nameTemplate: string
 
     // Own fields of Gst-0.10.Gst.PadTemplate
 
@@ -4273,6 +4314,9 @@ export interface PadTemplate {
 
     // Class property signals of Gst-0.10.Gst.PadTemplate
 
+    connect(sigName: "notify::name-template", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name-template", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name-template", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -4340,6 +4384,7 @@ export module Pipeline {
 
         auto_flush_bus?: boolean | null
         delay?: number | null
+        autoFlushBus?: boolean | null
     }
 
 }
@@ -4349,6 +4394,7 @@ export interface Pipeline extends ChildProxy {
     // Own properties of Gst-0.10.Gst.Pipeline
 
     auto_flush_bus: boolean
+    autoFlushBus: boolean
 
     // Conflicting properties
 
@@ -4624,6 +4670,9 @@ export interface PushSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void
@@ -4820,6 +4869,7 @@ export module SystemClock {
         // Own constructor properties of Gst-0.10.Gst.SystemClock
 
         clock_type?: ClockType | null
+        clockType?: ClockType | null
     }
 
 }
@@ -4829,6 +4879,7 @@ export interface SystemClock {
     // Own properties of Gst-0.10.Gst.SystemClock
 
     clock_type: ClockType
+    clockType: ClockType
 
     // Conflicting properties
 
@@ -4847,6 +4898,12 @@ export interface SystemClock {
     connect(sigName: "notify::clock-type", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::clock-type", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::clock-type", ...args: any[]): void
+    connect(sigName: "notify::window-size", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-size", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-size", ...args: any[]): void
+    connect(sigName: "notify::window-threshold", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-threshold", callback: (($obj: SystemClock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-threshold", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

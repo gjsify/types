@@ -337,6 +337,12 @@ interface AudioClock {
     connect(sigName: "notify::clock-type", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::clock-type", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::clock-type", ...args: any[]): void
+    connect(sigName: "notify::window-size", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-size", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-size", ...args: any[]): void
+    connect(sigName: "notify::window-threshold", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-threshold", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::window-threshold", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -486,12 +492,21 @@ interface AudioSink {
 
     // Class property signals of GstAudio-0.10.GstAudio.AudioSink
 
+    connect(sigName: "notify::buffer-time", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer-time", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::buffer-time", ...args: any[]): void
     connect(sigName: "notify::can-activate-pull", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-activate-pull", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::can-activate-pull", ...args: any[]): void
     connect(sigName: "notify::drift-tolerance", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::drift-tolerance", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::drift-tolerance", ...args: any[]): void
+    connect(sigName: "notify::latency-time", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency-time", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency-time", ...args: any[]): void
+    connect(sigName: "notify::provide-clock", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::provide-clock", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::provide-clock", ...args: any[]): void
     connect(sigName: "notify::slave-method", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::slave-method", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::slave-method", ...args: any[]): void
@@ -595,6 +610,12 @@ interface AudioSrc {
     connect(sigName: "notify::actual-latency-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::actual-latency-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::actual-latency-time", ...args: any[]): void
+    connect(sigName: "notify::buffer-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::buffer-time", ...args: any[]): void
+    connect(sigName: "notify::latency-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency-time", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency-time", ...args: any[]): void
     connect(sigName: "notify::provide-clock", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::provide-clock", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::provide-clock", ...args: any[]): void
@@ -604,6 +625,9 @@ interface AudioSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void
@@ -644,6 +668,12 @@ module BaseAudioSink {
         latency_time?: number | null
         provide_clock?: boolean | null
         slave_method?: BaseAudioSinkSlaveMethod | null
+        bufferTime?: number | null
+        canActivatePull?: boolean | null
+        driftTolerance?: number | null
+        latencyTime?: number | null
+        provideClock?: boolean | null
+        slaveMethod?: BaseAudioSinkSlaveMethod | null
     }
 
 }
@@ -652,9 +682,15 @@ interface BaseAudioSink {
 
     // Own properties of GstAudio-0.10.GstAudio.BaseAudioSink
 
+    bufferTime: number
     can_activate_pull: boolean
+    canActivatePull: boolean
     drift_tolerance: number
+    driftTolerance: number
+    latencyTime: number
+    provideClock: boolean
     slave_method: BaseAudioSinkSlaveMethod
+    slaveMethod: BaseAudioSinkSlaveMethod
 
     // Conflicting properties
 
@@ -706,12 +742,21 @@ interface BaseAudioSink {
 
     // Class property signals of GstAudio-0.10.GstAudio.BaseAudioSink
 
+    connect(sigName: "notify::buffer-time", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer-time", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::buffer-time", ...args: any[]): void
     connect(sigName: "notify::can-activate-pull", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::can-activate-pull", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::can-activate-pull", ...args: any[]): void
     connect(sigName: "notify::drift-tolerance", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::drift-tolerance", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::drift-tolerance", ...args: any[]): void
+    connect(sigName: "notify::latency-time", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency-time", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency-time", ...args: any[]): void
+    connect(sigName: "notify::provide-clock", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::provide-clock", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::provide-clock", ...args: any[]): void
     connect(sigName: "notify::slave-method", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::slave-method", callback: (($obj: BaseAudioSink, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::slave-method", ...args: any[]): void
@@ -777,6 +822,10 @@ module BaseAudioSrc {
         latency_time?: number | null
         provide_clock?: boolean | null
         slave_method?: BaseAudioSrcSlaveMethod | null
+        bufferTime?: number | null
+        latencyTime?: number | null
+        provideClock?: boolean | null
+        slaveMethod?: BaseAudioSrcSlaveMethod | null
     }
 
 }
@@ -790,11 +839,23 @@ interface BaseAudioSrc {
      */
     readonly actual_buffer_time: number
     /**
+     * Actual configured size of audio buffer in microseconds.
+     */
+    readonly actualBufferTime: number
+    /**
      * Actual configured audio latency in microseconds.
      */
     readonly actual_latency_time: number
+    /**
+     * Actual configured audio latency in microseconds.
+     */
+    readonly actualLatencyTime: number
+    bufferTime: number
+    latencyTime: number
     // Has conflict: provide_clock: boolean
+    provideClock: boolean
     slave_method: BaseAudioSrcSlaveMethod
+    slaveMethod: BaseAudioSrcSlaveMethod
 
     // Conflicting properties
 
@@ -855,6 +916,12 @@ interface BaseAudioSrc {
     connect(sigName: "notify::actual-latency-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::actual-latency-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::actual-latency-time", ...args: any[]): void
+    connect(sigName: "notify::buffer-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::buffer-time", ...args: any[]): void
+    connect(sigName: "notify::latency-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::latency-time", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::latency-time", ...args: any[]): void
     connect(sigName: "notify::provide-clock", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::provide-clock", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::provide-clock", ...args: any[]): void
@@ -864,6 +931,9 @@ interface BaseAudioSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: BaseAudioSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void

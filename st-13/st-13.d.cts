@@ -539,6 +539,21 @@ export module Adjustment {
          * The value of the adjustment.
          */
         value?: number | null
+        /**
+         * The page increment of the adjustment.
+         */
+        pageIncrement?: number | null
+        /**
+         * The page size of the adjustment.
+         * 
+         * Note that the page-size is irrelevant and should be set to zero if the
+         * adjustment is used for a simple scalar value.
+         */
+        pageSize?: number | null
+        /**
+         * The step increment of the adjustment.
+         */
+        stepIncrement?: number | null
     }
 
 }
@@ -562,6 +577,10 @@ export interface Adjustment extends Clutter.Animatable {
      */
     page_increment: number
     /**
+     * The page increment of the adjustment.
+     */
+    pageIncrement: number
+    /**
      * The page size of the adjustment.
      * 
      * Note that the page-size is irrelevant and should be set to zero if the
@@ -569,9 +588,20 @@ export interface Adjustment extends Clutter.Animatable {
      */
     page_size: number
     /**
+     * The page size of the adjustment.
+     * 
+     * Note that the page-size is irrelevant and should be set to zero if the
+     * adjustment is used for a simple scalar value.
+     */
+    pageSize: number
+    /**
      * The step increment of the adjustment.
      */
     step_increment: number
+    /**
+     * The step increment of the adjustment.
+     */
+    stepIncrement: number
     /**
      * The maximum value of the adjustment.
      * 
@@ -1151,6 +1181,11 @@ export module BoxLayout {
          * internal layout for #StBoxLayout.
          */
         vertical?: boolean | null
+        /**
+         * A convenience property for the #ClutterBoxLayout:pack-start property of the
+         * internal layout for #StBoxLayout.
+         */
+        packStart?: boolean | null
     }
 
 }
@@ -1164,6 +1199,11 @@ export interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * internal layout for #StBoxLayout.
      */
     pack_start: boolean
+    /**
+     * A convenience property for the #ClutterBoxLayout:pack-start property of the
+     * internal layout for #StBoxLayout.
+     */
+    packStart: boolean
     /**
      * A convenience property for the #ClutterBoxLayout:vertical property of the
      * internal layout for #StBoxLayout.
@@ -1536,6 +1576,18 @@ export module Button {
          * Whether the #StButton is operating in toggle mode (on/off).
          */
         toggle_mode?: boolean | null
+        /**
+         * Which buttons will trigger the #StButton::clicked signal.
+         */
+        buttonMask?: ButtonMask | null
+        /**
+         * The icon name of the #StButton.
+         */
+        iconName?: string | null
+        /**
+         * Whether the #StButton is operating in toggle mode (on/off).
+         */
+        toggleMode?: boolean | null
     }
 
 }
@@ -1549,6 +1601,10 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      */
     button_mask: ButtonMask
     /**
+     * Which buttons will trigger the #StButton::clicked signal.
+     */
+    buttonMask: ButtonMask
+    /**
      * If #StButton:toggle-mode is %TRUE, indicates if the #StButton is toggled
      * "on" or "off".
      * 
@@ -1560,6 +1616,10 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * The icon name of the #StButton.
      */
     icon_name: string | null
+    /**
+     * The icon name of the #StButton.
+     */
+    iconName: string | null
     /**
      * The label of the #StButton.
      */
@@ -1573,6 +1633,10 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Whether the #StButton is operating in toggle mode (on/off).
      */
     toggle_mode: boolean
+    /**
+     * Whether the #StButton is operating in toggle mode (on/off).
+     */
+    toggleMode: boolean
 
     // Own fields of St-13.St.Button
 
@@ -2457,6 +2521,35 @@ export module Entry {
          * The current text value of the #StEntry.
          */
         text?: string | null
+        /**
+         * A #ClutterActor to display when the entry is empty and unfocused. Setting
+         * this will replace the actor displaying #StEntry:hint-text.
+         */
+        hintActor?: Clutter.Actor | null
+        /**
+         * The text to display when the entry is empty and unfocused. Setting this
+         * will replace the actor of #StEntry::hint-actor.
+         */
+        hintText?: string | null
+        /**
+         * The #ClutterInputContentHintFlags providing additional hints (beyond
+         * #StEntry:input-purpose) that allow input methods to fine-tune their
+         * behaviour.
+         */
+        inputHints?: Clutter.InputContentHintFlags | null
+        /**
+         * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
+         * input methods to decide which keys should be presented to the user.
+         */
+        inputPurpose?: Clutter.InputContentPurpose | null
+        /**
+         * The #ClutterActor acting as the primary icon at the start of the #StEntry.
+         */
+        primaryIcon?: Clutter.Actor | null
+        /**
+         * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
+         */
+        secondaryIcon?: Clutter.Actor | null
     }
 
 }
@@ -2470,15 +2563,29 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      */
     readonly clutter_text: Clutter.Text
     /**
+     * The internal #ClutterText actor supporting the #StEntry.
+     */
+    readonly clutterText: Clutter.Text
+    /**
      * A #ClutterActor to display when the entry is empty and unfocused. Setting
      * this will replace the actor displaying #StEntry:hint-text.
      */
     hint_actor: Clutter.Actor
     /**
+     * A #ClutterActor to display when the entry is empty and unfocused. Setting
+     * this will replace the actor displaying #StEntry:hint-text.
+     */
+    hintActor: Clutter.Actor
+    /**
      * The text to display when the entry is empty and unfocused. Setting this
      * will replace the actor of #StEntry::hint-actor.
      */
     hint_text: string | null
+    /**
+     * The text to display when the entry is empty and unfocused. Setting this
+     * will replace the actor of #StEntry::hint-actor.
+     */
+    hintText: string | null
     /**
      * The #ClutterInputContentHintFlags providing additional hints (beyond
      * #StEntry:input-purpose) that allow input methods to fine-tune their
@@ -2486,18 +2593,37 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      */
     input_hints: Clutter.InputContentHintFlags
     /**
+     * The #ClutterInputContentHintFlags providing additional hints (beyond
+     * #StEntry:input-purpose) that allow input methods to fine-tune their
+     * behaviour.
+     */
+    inputHints: Clutter.InputContentHintFlags
+    /**
      * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
      * input methods to decide which keys should be presented to the user.
      */
     input_purpose: Clutter.InputContentPurpose
     /**
+     * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
+     * input methods to decide which keys should be presented to the user.
+     */
+    inputPurpose: Clutter.InputContentPurpose
+    /**
      * The #ClutterActor acting as the primary icon at the start of the #StEntry.
      */
     primary_icon: Clutter.Actor
     /**
+     * The #ClutterActor acting as the primary icon at the start of the #StEntry.
+     */
+    primaryIcon: Clutter.Actor
+    /**
      * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
      */
     secondary_icon: Clutter.Actor
+    /**
+     * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
+     */
+    secondaryIcon: Clutter.Actor
     /**
      * The current text value of the #StEntry.
      */
@@ -3192,6 +3318,9 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
     connect(sigName: "notify::accessible-name", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: GenericAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -3277,6 +3406,24 @@ export module Icon {
          * from the current style.
          */
         icon_size?: number | null
+        /**
+         * The fallback #GIcon to display if #StIcon:gicon fails to load.
+         */
+        fallbackGicon?: Gio.Icon | null
+        /**
+         * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
+         * for details.
+         */
+        fallbackIconName?: string | null
+        /**
+         * The name of the icon if the icon being displayed is a #GThemedIcon.
+         */
+        iconName?: string | null
+        /**
+         * The size of the icon, if greater than `0`. Otherwise the icon size is derived
+         * from the current style.
+         */
+        iconSize?: number | null
     }
 
 }
@@ -3290,10 +3437,19 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      */
     fallback_gicon: Gio.Icon
     /**
+     * The fallback #GIcon to display if #StIcon:gicon fails to load.
+     */
+    fallbackGicon: Gio.Icon
+    /**
      * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
      * for details.
      */
     fallback_icon_name: string | null
+    /**
+     * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
+     * for details.
+     */
+    fallbackIconName: string | null
     /**
      * The #GIcon being displayed by this #StIcon.
      */
@@ -3303,10 +3459,19 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      */
     icon_name: string | null
     /**
+     * The name of the icon if the icon being displayed is a #GThemedIcon.
+     */
+    iconName: string | null
+    /**
      * The size of the icon, if greater than `0`. Otherwise the icon size is derived
      * from the current style.
      */
     icon_size: number
+    /**
+     * The size of the icon, if greater than `0`. Otherwise the icon size is derived
+     * from the current style.
+     */
+    iconSize: number
 
     // Owm methods of St-13.St.Icon
 
@@ -4161,6 +4326,8 @@ export module ImageContent {
 
         preferred_height?: number | null
         preferred_width?: number | null
+        preferredHeight?: number | null
+        preferredWidth?: number | null
     }
 
 }
@@ -4170,7 +4337,9 @@ export interface ImageContent extends Clutter.Content, Gio.Icon, Gio.LoadableIco
     // Own properties of St-13.St.ImageContent
 
     readonly preferred_height: number
+    readonly preferredHeight: number
     readonly preferred_width: number
+    readonly preferredWidth: number
 
     // Conflicting methods
 
@@ -4308,6 +4477,10 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * The internal #ClutterText actor supporting the label
      */
     readonly clutter_text: Clutter.Text
+    /**
+     * The internal #ClutterText actor supporting the label
+     */
+    readonly clutterText: Clutter.Text
     /**
      * The current text being display in the #StLabel.
      */
@@ -4647,6 +4820,15 @@ export module PasswordEntry {
          * #StPasswordEntry:password-visible property.
          */
         show_peek_icon?: boolean | null
+        /**
+         * Whether the text in the entry is masked for privacy.
+         */
+        passwordVisible?: boolean | null
+        /**
+         * Whether to display an icon button to toggle the masking enabled by the
+         * #StPasswordEntry:password-visible property.
+         */
+        showPeekIcon?: boolean | null
     }
 
 }
@@ -4660,10 +4842,19 @@ export interface PasswordEntry extends Atk.ImplementorIface, Clutter.Animatable,
      */
     password_visible: boolean
     /**
+     * Whether the text in the entry is masked for privacy.
+     */
+    passwordVisible: boolean
+    /**
      * Whether to display an icon button to toggle the masking enabled by the
      * #StPasswordEntry:password-visible property.
      */
     show_peek_icon: boolean
+    /**
+     * Whether to display an icon button to toggle the masking enabled by the
+     * #StPasswordEntry:password-visible property.
+     */
+    showPeekIcon: boolean
 
     // Conflicting properties
 
@@ -5398,6 +5589,22 @@ export module ScrollView {
          * The #StPolicyType for when to show the vertical #StScrollBar.
          */
         vscrollbar_policy?: PolicyType | null
+        /**
+         * Whether to enable automatic mouse wheel scrolling.
+         */
+        enableMouseScrolling?: boolean | null
+        /**
+         * The #StPolicyType for when to show the horizontal #StScrollBar.
+         */
+        hscrollbarPolicy?: PolicyType | null
+        /**
+         * Whether scrollbars are painted on top of the content.
+         */
+        overlayScrollbars?: boolean | null
+        /**
+         * The #StPolicyType for when to show the vertical #StScrollBar.
+         */
+        vscrollbarPolicy?: PolicyType | null
     }
 
 }
@@ -5411,6 +5618,10 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      */
     enable_mouse_scrolling: boolean
     /**
+     * Whether to enable automatic mouse wheel scrolling.
+     */
+    enableMouseScrolling: boolean
+    /**
      * The horizontal #StScrollBar for the #StScrollView.
      */
     readonly hscroll: ScrollBar
@@ -5419,13 +5630,25 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      */
     hscrollbar_policy: PolicyType
     /**
+     * The #StPolicyType for when to show the horizontal #StScrollBar.
+     */
+    hscrollbarPolicy: PolicyType
+    /**
      * Whether the horizontal #StScrollBar is visible.
      */
     readonly hscrollbar_visible: boolean
     /**
+     * Whether the horizontal #StScrollBar is visible.
+     */
+    readonly hscrollbarVisible: boolean
+    /**
      * Whether scrollbars are painted on top of the content.
      */
     overlay_scrollbars: boolean
+    /**
+     * Whether scrollbars are painted on top of the content.
+     */
+    overlayScrollbars: boolean
     /**
      * The vertical #StScrollBar for the #StScrollView.
      */
@@ -5435,9 +5658,17 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      */
     vscrollbar_policy: PolicyType
     /**
+     * The #StPolicyType for when to show the vertical #StScrollBar.
+     */
+    vscrollbarPolicy: PolicyType
+    /**
      * Whether the vertical #StScrollBar is visible.
      */
     readonly vscrollbar_visible: boolean
+    /**
+     * Whether the vertical #StScrollBar is visible.
+     */
+    readonly vscrollbarVisible: boolean
 
     // Conflicting properties
 
@@ -5851,6 +6082,18 @@ export module ScrollViewFade {
          * The margins widths that are faded.
          */
         fade_margins?: Clutter.Margin | null
+        /**
+         * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
+         */
+        extendFadeArea?: boolean | null
+        /**
+         * Whether the faded area should extend to the edges of the #StScrollViewFade.
+         */
+        fadeEdges?: boolean | null
+        /**
+         * The margins widths that are faded.
+         */
+        fadeMargins?: Clutter.Margin | null
     }
 
 }
@@ -5864,13 +6107,25 @@ export interface ScrollViewFade {
      */
     extend_fade_area: boolean
     /**
+     * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
+     */
+    extendFadeArea: boolean
+    /**
      * Whether the faded area should extend to the edges of the #StScrollViewFade.
      */
     fade_edges: boolean
     /**
+     * Whether the faded area should extend to the edges of the #StScrollViewFade.
+     */
+    fadeEdges: boolean
+    /**
      * The margins widths that are faded.
      */
     fade_margins: Clutter.Margin
+    /**
+     * The margins widths that are faded.
+     */
+    fadeMargins: Clutter.Margin
 
     // Class property signals of St-13.St.ScrollViewFade
 
@@ -5952,6 +6207,10 @@ export module Settings {
          * The slow-down factor applied to all animation durations.
          */
         slow_down_factor?: number | null
+        /**
+         * The slow-down factor applied to all animation durations.
+         */
+        slowDownFactor?: number | null
     }
 
 }
@@ -5965,42 +6224,83 @@ export interface Settings {
      */
     readonly color_scheme: SystemColorScheme
     /**
+     * The preferred color-scheme
+     */
+    readonly colorScheme: SystemColorScheme
+    /**
      * Whether password showing can be locked down
      */
     readonly disable_show_password: boolean
+    /**
+     * Whether password showing can be locked down
+     */
+    readonly disableShowPassword: boolean
     /**
      * The threshold before a drag operation begins.
      */
     readonly drag_threshold: number
     /**
+     * The threshold before a drag operation begins.
+     */
+    readonly dragThreshold: number
+    /**
      * Whether animations are enabled.
      */
     readonly enable_animations: boolean
+    /**
+     * Whether animations are enabled.
+     */
+    readonly enableAnimations: boolean
     /**
      * The current font name.
      */
     readonly font_name: string | null
     /**
+     * The current font name.
+     */
+    readonly fontName: string | null
+    /**
      * The current GTK icon theme
      */
     readonly gtk_icon_theme: string | null
+    /**
+     * The current GTK icon theme
+     */
+    readonly gtkIconTheme: string | null
     /**
      * Whether the accessibility high contrast mode is enabled.
      */
     readonly high_contrast: boolean
     /**
+     * Whether the accessibility high contrast mode is enabled.
+     */
+    readonly highContrast: boolean
+    /**
      * Whether the accessibility magnifier is active.
      */
     readonly magnifier_active: boolean
+    /**
+     * Whether the accessibility magnifier is active.
+     */
+    readonly magnifierActive: boolean
     /**
      * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
      * paste).
      */
     readonly primary_paste: boolean
     /**
+     * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
+     * paste).
+     */
+    readonly primaryPaste: boolean
+    /**
      * The slow-down factor applied to all animation durations.
      */
     slow_down_factor: number
+    /**
+     * The slow-down factor applied to all animation durations.
+     */
+    slowDownFactor: number
 
     // Owm methods of St-13.St.Settings
 
@@ -6234,6 +6534,21 @@ export module Theme {
          * this is associated with the CSS "user" stylesheet.
          */
         theme_stylesheet?: Gio.File | null
+        /**
+         * The highest priority stylesheet, representing application-specific
+         * styling; this is associated with the CSS "author" stylesheet.
+         */
+        applicationStylesheet?: Gio.File | null
+        /**
+         * The lowest priority stylesheet, representing global default
+         * styling; this is associated with the CSS "user agent" stylesheet.
+         */
+        defaultStylesheet?: Gio.File | null
+        /**
+         * The second priority stylesheet, representing theme-specific styling;
+         * this is associated with the CSS "user" stylesheet.
+         */
+        themeStylesheet?: Gio.File | null
     }
 
 }
@@ -6248,15 +6563,30 @@ export interface Theme {
      */
     readonly application_stylesheet: Gio.File
     /**
+     * The highest priority stylesheet, representing application-specific
+     * styling; this is associated with the CSS "author" stylesheet.
+     */
+    readonly applicationStylesheet: Gio.File
+    /**
      * The lowest priority stylesheet, representing global default
      * styling; this is associated with the CSS "user agent" stylesheet.
      */
     readonly default_stylesheet: Gio.File
     /**
+     * The lowest priority stylesheet, representing global default
+     * styling; this is associated with the CSS "user agent" stylesheet.
+     */
+    readonly defaultStylesheet: Gio.File
+    /**
      * The second priority stylesheet, representing theme-specific styling;
      * this is associated with the CSS "user" stylesheet.
      */
     readonly theme_stylesheet: Gio.File
+    /**
+     * The second priority stylesheet, representing theme-specific styling;
+     * this is associated with the CSS "user" stylesheet.
+     */
+    readonly themeStylesheet: Gio.File
 
     // Owm methods of St-13.St.Theme
 
@@ -6338,6 +6668,10 @@ export module ThemeContext {
          * The scaling factor used for HiDPI scaling.
          */
         scale_factor?: number | null
+        /**
+         * The scaling factor used for HiDPI scaling.
+         */
+        scaleFactor?: number | null
     }
 
 }
@@ -6350,6 +6684,10 @@ export interface ThemeContext {
      * The scaling factor used for HiDPI scaling.
      */
     scale_factor: number
+    /**
+     * The scaling factor used for HiDPI scaling.
+     */
+    scaleFactor: number
 
     // Owm methods of St-13.St.ThemeContext
 
@@ -6953,6 +7291,7 @@ export module Viewport {
         // Own constructor properties of St-13.St.Viewport
 
         clip_to_view?: boolean | null
+        clipToView?: boolean | null
     }
 
 }
@@ -6962,6 +7301,7 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
     // Own properties of St-13.St.Viewport
 
     clip_to_view: boolean
+    clipToView: boolean
 
     // Own fields of St-13.St.Viewport
 
@@ -7306,6 +7646,39 @@ export module Widget {
          * widget.
          */
         track_hover?: boolean | null
+        /**
+         * Object instance's name for assistive technology access.
+         */
+        accessibleName?: string | null
+        /**
+         * The accessible role of this object
+         */
+        accessibleRole?: Atk.Role | null
+        /**
+         * Whether or not the widget can be focused via keyboard navigation.
+         */
+        canFocus?: boolean | null
+        /**
+         * An actor that labels this widget.
+         */
+        labelActor?: Clutter.Actor | null
+        /**
+         * The pseudo-class of the actor. Typical values include "hover", "active",
+         * "focus".
+         */
+        pseudoClass?: string | null
+        /**
+         * The style-class of the actor for use in styling.
+         */
+        styleClass?: string | null
+        /**
+         * Determines whether the widget tracks pointer hover state. If
+         * %TRUE (and the widget is visible and reactive), the
+         * #StWidget:hover property and "hover" style pseudo class will be
+         * adjusted automatically as the pointer moves in and out of the
+         * widget.
+         */
+        trackHover?: boolean | null
     }
 
 }
@@ -7319,13 +7692,25 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      */
     accessible_name: string | null
     /**
+     * Object instance's name for assistive technology access.
+     */
+    accessibleName: string | null
+    /**
      * The accessible role of this object
      */
     accessible_role: Atk.Role
     /**
+     * The accessible role of this object
+     */
+    accessibleRole: Atk.Role
+    /**
      * Whether or not the widget can be focused via keyboard navigation.
      */
     can_focus: boolean
+    /**
+     * Whether or not the widget can be focused via keyboard navigation.
+     */
+    canFocus: boolean
     /**
      * Whether or not the pointer is currently hovering over the widget. This is
      * only tracked automatically if #StWidget:track-hover is %TRUE, but you can
@@ -7337,10 +7722,19 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      */
     label_actor: Clutter.Actor
     /**
+     * An actor that labels this widget.
+     */
+    labelActor: Clutter.Actor
+    /**
      * The pseudo-class of the actor. Typical values include "hover", "active",
      * "focus".
      */
     pseudo_class: string | null
+    /**
+     * The pseudo-class of the actor. Typical values include "hover", "active",
+     * "focus".
+     */
+    pseudoClass: string | null
     /**
      * Inline style information for the actor as a ';'-separated list of
      * CSS properties.
@@ -7351,6 +7745,10 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      */
     style_class: string | null
     /**
+     * The style-class of the actor for use in styling.
+     */
+    styleClass: string | null
+    /**
      * Determines whether the widget tracks pointer hover state. If
      * %TRUE (and the widget is visible and reactive), the
      * #StWidget:hover property and "hover" style pseudo class will be
@@ -7358,6 +7756,14 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * widget.
      */
     track_hover: boolean
+    /**
+     * Determines whether the widget tracks pointer hover state. If
+     * %TRUE (and the widget is visible and reactive), the
+     * #StWidget:hover property and "hover" style pseudo class will be
+     * adjusted automatically as the pointer moves in and out of the
+     * widget.
+     */
+    trackHover: boolean
 
     // Own fields of St-13.St.Widget
 
@@ -8097,6 +8503,9 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: WidgetAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void

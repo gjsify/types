@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gtk-3.0",
-    "version": "3.24.38-3.2.5",
+    "version": "3.24.38-3.2.6",
     "description": "Node.js TypeScript type definitions for Gtk-3.0, generated from library version 3.24.38",
     "type": "module",
     "module": "node-gtk-3.0.js",

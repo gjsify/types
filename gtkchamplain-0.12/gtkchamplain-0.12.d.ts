@@ -52,6 +52,10 @@ interface Embed extends Atk.ImplementorIface, Gtk.Buildable {
      * The #ChamplainView to embed in the Gtk+ widget.
      */
     readonly champlain_view: Champlain.View
+    /**
+     * The #ChamplainView to embed in the Gtk+ widget.
+     */
+    readonly champlainView: Champlain.View
 
     // Own fields of GtkChamplain-0.12.GtkChamplain.Embed
 

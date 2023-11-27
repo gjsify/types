@@ -41,9 +41,24 @@ export interface Frame extends Atk.ImplementorIface, Gtk.Buildable {
     connect(sigName: "notify::label", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::label-widget", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-widget", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-widget", ...args: any[]): void
+    connect(sigName: "notify::label-xalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-xalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-xalign", ...args: any[]): void
+    connect(sigName: "notify::label-yalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-yalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-yalign", ...args: any[]): void
     connect(sigName: "notify::shadow", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

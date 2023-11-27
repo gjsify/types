@@ -172,6 +172,11 @@ module Player {
          * Whether the #ClutterGstPlayer actor is playing.
          */
         playing?: boolean | null
+        /**
+         * The volume of the audio, as a normalized value between
+         * 0.0 and 1.0.
+         */
+        audioVolume?: number | null
     }
 
 }
@@ -185,6 +190,11 @@ interface Player {
      * 0.0 and 1.0.
      */
     audio_volume: number
+    /**
+     * The volume of the audio, as a normalized value between
+     * 0.0 and 1.0.
+     */
+    audioVolume: number
     /**
      * Whether the #ClutterGstPlayer is in idle mode.
      */
@@ -377,6 +387,15 @@ module Aspectratio {
          * Whether or not paint borders on the sides of the video
          */
         paint_borders?: boolean | null
+        /**
+         * Whether the content should fill its allocation with video rather
+         * than adding borders.
+         */
+        fillAllocation?: boolean | null
+        /**
+         * Whether or not paint borders on the sides of the video
+         */
+        paintBorders?: boolean | null
     }
 
 }
@@ -391,9 +410,18 @@ interface Aspectratio extends Clutter.Content {
      */
     fill_allocation: boolean
     /**
+     * Whether the content should fill its allocation with video rather
+     * than adding borders.
+     */
+    fillAllocation: boolean
+    /**
      * Whether or not paint borders on the sides of the video
      */
     paint_borders: boolean
+    /**
+     * Whether or not paint borders on the sides of the video
+     */
+    paintBorders: boolean
 
     // Class property signals of ClutterGst-3.0.ClutterGst.Aspectratio
 
@@ -786,6 +814,10 @@ module CameraDevice {
          * The device node.
          */
         node?: string | null
+        /**
+         * The GstElementFactory for this device.
+         */
+        elementFactory?: Gst.ElementFactory | null
     }
 
 }
@@ -798,6 +830,10 @@ interface CameraDevice {
      * The GstElementFactory for this device.
      */
     readonly element_factory: Gst.ElementFactory
+    /**
+     * The GstElementFactory for this device.
+     */
+    readonly elementFactory: Gst.ElementFactory
     /**
      * The device name.
      */
@@ -986,6 +1022,8 @@ module Content {
         paint_overlays?: boolean | null
         player?: GObject.Object | null
         sink?: VideoSink | null
+        paintFrame?: boolean | null
+        paintOverlays?: boolean | null
     }
 
 }
@@ -996,7 +1034,9 @@ interface Content extends Clutter.Content {
 
     frame: Frame
     paint_frame: boolean
+    paintFrame: boolean
     paint_overlays: boolean
+    paintOverlays: boolean
     player: GObject.Object
     sink: VideoSink
 
@@ -1091,6 +1131,22 @@ module Crop {
          * Whether or not paint borders on the sides of the video
          */
         paint_borders?: boolean | null
+        /**
+         * Whether to cull the backface of the actor
+         */
+        cullBackface?: boolean | null
+        /**
+         * Input region in the video frame (all values between 0 and 1).
+         */
+        inputRegion?: Box | null
+        /**
+         * Output region in the actor's allocation (all values between 0 and 1).
+         */
+        outputRegion?: Box | null
+        /**
+         * Whether or not paint borders on the sides of the video
+         */
+        paintBorders?: boolean | null
     }
 
 }
@@ -1104,17 +1160,33 @@ interface Crop extends Clutter.Content {
      */
     cull_backface: boolean
     /**
+     * Whether to cull the backface of the actor
+     */
+    cullBackface: boolean
+    /**
      * Input region in the video frame (all values between 0 and 1).
      */
     input_region: Box
+    /**
+     * Input region in the video frame (all values between 0 and 1).
+     */
+    inputRegion: Box
     /**
      * Output region in the actor's allocation (all values between 0 and 1).
      */
     output_region: Box
     /**
+     * Output region in the actor's allocation (all values between 0 and 1).
+     */
+    outputRegion: Box
+    /**
      * Whether or not paint borders on the sides of the video
      */
     paint_borders: boolean
+    /**
+     * Whether or not paint borders on the sides of the video
+     */
+    paintBorders: boolean
 
     // Class property signals of ClutterGst-3.0.ClutterGst.Crop
 
@@ -1231,6 +1303,32 @@ module Playback {
          * The User Agent used by #ClutterGstPlayback with network protocols.
          */
         user_agent?: string | null
+        /**
+         * Index of the current audio stream.
+         */
+        audioStream?: number | null
+        /**
+         * Flags to use when seeking.
+         */
+        seekFlags?: SeekFlags | null
+        /**
+         * The font used to display subtitles. The font description has to
+         * follow the same grammar as the one recognized by
+         * pango_font_description_from_string().
+         */
+        subtitleFontName?: string | null
+        /**
+         * Current subtitle track being displayed.
+         */
+        subtitleTrack?: number | null
+        /**
+         * The location of a subtitle file, expressed as a valid URI.
+         */
+        subtitleUri?: string | null
+        /**
+         * The User Agent used by #ClutterGstPlayback with network protocols.
+         */
+        userAgent?: string | null
     }
 
 }
@@ -1244,18 +1342,35 @@ interface Playback extends Player {
      */
     audio_stream: number
     /**
+     * Index of the current audio stream.
+     */
+    audioStream: number
+    /**
      * List of audio streams available on the current media.
      */
     readonly audio_streams: any
+    /**
+     * List of audio streams available on the current media.
+     */
+    readonly audioStreams: any
     /**
      * The fill level of the buffer for the current stream,
      * as a value between 0.0 and 1.0.
      */
     readonly buffer_fill: number
     /**
+     * The fill level of the buffer for the current stream,
+     * as a value between 0.0 and 1.0.
+     */
+    readonly bufferFill: number
+    /**
      * Whether the current stream is seekable.
      */
     readonly can_seek: boolean
+    /**
+     * Whether the current stream is seekable.
+     */
+    readonly canSeek: boolean
     /**
      * The duration of the current stream, in seconds
      */
@@ -1264,6 +1379,10 @@ interface Playback extends Player {
      * Whether or not the stream is being seeked.
      */
     readonly in_seek: boolean
+    /**
+     * Whether or not the stream is being seeked.
+     */
+    readonly inSeek: boolean
     /**
      * The current progress of the playback, as a normalized
      * value between 0.0 and 1.0.
@@ -1274,23 +1393,45 @@ interface Playback extends Player {
      */
     seek_flags: SeekFlags
     /**
+     * Flags to use when seeking.
+     */
+    seekFlags: SeekFlags
+    /**
      * The font used to display subtitles. The font description has to
      * follow the same grammar as the one recognized by
      * pango_font_description_from_string().
      */
     subtitle_font_name: string | null
     /**
+     * The font used to display subtitles. The font description has to
+     * follow the same grammar as the one recognized by
+     * pango_font_description_from_string().
+     */
+    subtitleFontName: string | null
+    /**
      * Current subtitle track being displayed.
      */
     subtitle_track: number
+    /**
+     * Current subtitle track being displayed.
+     */
+    subtitleTrack: number
     /**
      * List of subtitle tracks available.
      */
     readonly subtitle_tracks: any
     /**
+     * List of subtitle tracks available.
+     */
+    readonly subtitleTracks: any
+    /**
      * The location of a subtitle file, expressed as a valid URI.
      */
     subtitle_uri: string | null
+    /**
+     * The location of a subtitle file, expressed as a valid URI.
+     */
+    subtitleUri: string | null
     /**
      * The location of a media file, expressed as a valid URI.
      */
@@ -1299,6 +1440,10 @@ interface Playback extends Player {
      * The User Agent used by #ClutterGstPlayback with network protocols.
      */
     user_agent: string | null
+    /**
+     * The User Agent used by #ClutterGstPlayback with network protocols.
+     */
+    userAgent: string | null
 
     // Own fields of ClutterGst-3.0.ClutterGst.Playback
 
@@ -1598,6 +1743,7 @@ module VideoSink {
         // Own constructor properties of ClutterGst-3.0.ClutterGst.VideoSink
 
         update_priority?: number | null
+        updatePriority?: number | null
     }
 
 }
@@ -1607,6 +1753,7 @@ interface VideoSink extends GstVideo.ColorBalance, GstVideo.Navigation {
     // Own properties of ClutterGst-3.0.ClutterGst.VideoSink
 
     update_priority: number
+    updatePriority: number
 
     // Conflicting properties
 

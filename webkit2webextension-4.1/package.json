@@ -1,6 +1,6 @@
 {
     "name": "@girs/webkit2webextension-4.1",
-    "version": "4.1.0-3.2.5",
+    "version": "4.1.0-3.2.6",
     "description": "GJS TypeScript type definitions for WebKit2WebExtension-4.1, generated from library version 4.1.0",
     "type": "module",
     "module": "webkit2webextension-4.1.js",

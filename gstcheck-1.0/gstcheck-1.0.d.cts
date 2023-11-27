@@ -305,6 +305,15 @@ export module TestClock {
          * this property contains the value 0.
          */
         start_time?: number | null
+        clockType?: Gst.ClockType | null
+        /**
+         * When a #GstTestClock is constructed it will have a certain start time set.
+         * If the clock was created using gst_test_clock_new_with_start_time() then
+         * this property contains the value of the `start_time` argument. If
+         * gst_test_clock_new() was called the clock started at time zero, and thus
+         * this property contains the value 0.
+         */
+        startTime?: number | null
     }
 
 }
@@ -314,6 +323,7 @@ export interface TestClock {
     // Own properties of GstCheck-1.0.GstCheck.TestClock
 
     clock_type: Gst.ClockType
+    clockType: Gst.ClockType
     /**
      * When a #GstTestClock is constructed it will have a certain start time set.
      * If the clock was created using gst_test_clock_new_with_start_time() then
@@ -322,6 +332,14 @@ export interface TestClock {
      * this property contains the value 0.
      */
     readonly start_time: number
+    /**
+     * When a #GstTestClock is constructed it will have a certain start time set.
+     * If the clock was created using gst_test_clock_new_with_start_time() then
+     * this property contains the value of the `start_time` argument. If
+     * gst_test_clock_new() was called the clock started at time zero, and thus
+     * this property contains the value 0.
+     */
+    readonly startTime: number
 
     // Conflicting properties
 

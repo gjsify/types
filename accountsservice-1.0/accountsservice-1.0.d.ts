@@ -105,11 +105,16 @@ interface User {
     // Own properties of AccountsService-1.0.AccountsService.User
 
     readonly account_type: number
+    readonly accountType: number
     readonly automatic_login: boolean
+    readonly automaticLogin: boolean
     readonly email: string | null
     readonly home_directory: string | null
+    readonly homeDirectory: string | null
     readonly icon_file: string | null
+    readonly iconFile: string | null
     readonly is_loaded: boolean
+    readonly isLoaded: boolean
     /**
      * The user’s locale, in the format
      * `language[_territory][.codeset][`modifier]``, where `language` is an
@@ -125,20 +130,30 @@ interface User {
      */
     readonly language: string | null
     readonly local_account: boolean
+    readonly localAccount: boolean
     readonly location: string | null
     readonly locked: boolean
     readonly login_frequency: number
+    readonly loginFrequency: number
     readonly login_history: GLib.Variant
+    readonly loginHistory: GLib.Variant
     readonly login_time: number
+    readonly loginTime: number
     readonly nonexistent: boolean
     readonly password_hint: string | null
+    readonly passwordHint: string | null
     readonly password_mode: number
+    readonly passwordMode: number
     readonly real_name: string | null
+    readonly realName: string | null
     readonly shell: string | null
     readonly system_account: boolean
+    readonly systemAccount: boolean
     readonly uid: number
     readonly user_name: string | null
+    readonly userName: string | null
     readonly x_session: string | null
+    readonly xSession: string | null
 
     // Owm methods of AccountsService-1.0.AccountsService.User
 
@@ -599,6 +614,9 @@ module UserManager {
         exclude_usernames_list?: any | null
         has_multiple_users?: boolean | null
         include_usernames_list?: any | null
+        excludeUsernamesList?: any | null
+        hasMultipleUsers?: boolean | null
+        includeUsernamesList?: any | null
     }
 
 }
@@ -608,9 +626,13 @@ interface UserManager {
     // Own properties of AccountsService-1.0.AccountsService.UserManager
 
     exclude_usernames_list: any
+    excludeUsernamesList: any
     has_multiple_users: boolean
+    hasMultipleUsers: boolean
     include_usernames_list: any
+    includeUsernamesList: any
     readonly is_loaded: boolean
+    readonly isLoaded: boolean
 
     // Own fields of AccountsService-1.0.AccountsService.UserManager
 

@@ -5123,6 +5123,8 @@ export module Review {
         reviewer_name?: string | null
         summary?: string | null
         version?: string | null
+        reviewerId?: string | null
+        reviewerName?: string | null
     }
 
 }
@@ -5138,7 +5140,9 @@ export interface Review {
     locale: string | null
     rating: number
     reviewer_id: string | null
+    reviewerId: string | null
     reviewer_name: string | null
+    reviewerName: string | null
     summary: string | null
     version: string | null
 

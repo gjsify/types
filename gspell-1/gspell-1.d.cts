@@ -66,6 +66,12 @@ export module LanguageChooser {
          * or if the selection has changed.
          */
         language_code?: string | null
+        /**
+         * The empty string if the default language was set and the selection
+         * hasn't changed. Or the language code if an explicit language was set
+         * or if the selection has changed.
+         */
+        languageCode?: string | null
     }
 
 }
@@ -84,6 +90,12 @@ export interface LanguageChooser {
      * or if the selection has changed.
      */
     language_code: string | null
+    /**
+     * The empty string if the default language was set and the selection
+     * hasn't changed. Or the language code if an explicit language was set
+     * or if the selection has changed.
+     */
+    languageCode: string | null
 
     // Owm methods of Gspell-1.Gspell.LanguageChooser
 
@@ -407,6 +419,10 @@ export module CheckerDialog {
          * The #GspellNavigator to use.
          */
         spell_navigator?: Navigator | null
+        /**
+         * The #GspellNavigator to use.
+         */
+        spellNavigator?: Navigator | null
     }
 
 }
@@ -419,6 +435,10 @@ export interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * The #GspellNavigator to use.
      */
     readonly spell_navigator: Navigator
+    /**
+     * The #GspellNavigator to use.
+     */
+    readonly spellNavigator: Navigator
 
     // Conflicting properties
 
@@ -806,6 +826,14 @@ export module Entry {
          * %FALSE.
          */
         inline_spell_checking?: boolean | null
+        /**
+         * Whether the inline spell checking is enabled.
+         * 
+         * Even if this property is %TRUE, #GspellEntry disables internally the
+         * inline spell checking in case the #GtkEntry:visibility property is
+         * %FALSE.
+         */
+        inlineSpellChecking?: boolean | null
     }
 
 }
@@ -826,6 +854,14 @@ export interface Entry {
      * %FALSE.
      */
     inline_spell_checking: boolean
+    /**
+     * Whether the inline spell checking is enabled.
+     * 
+     * Even if this property is %TRUE, #GspellEntry disables internally the
+     * inline spell checking in case the #GtkEntry:visibility property is
+     * %FALSE.
+     */
+    inlineSpellChecking: boolean
 
     // Owm methods of Gspell-1.Gspell.Entry
 
@@ -925,6 +961,10 @@ export module EntryBuffer {
          * The #GspellChecker.
          */
         spell_checker?: Checker | null
+        /**
+         * The #GspellChecker.
+         */
+        spellChecker?: Checker | null
     }
 
 }
@@ -941,6 +981,10 @@ export interface EntryBuffer {
      * The #GspellChecker.
      */
     spell_checker: Checker
+    /**
+     * The #GspellChecker.
+     */
+    spellChecker: Checker
 
     // Owm methods of Gspell-1.Gspell.EntryBuffer
 
@@ -1699,6 +1743,10 @@ export module TextBuffer {
          * The #GspellChecker.
          */
         spell_checker?: Checker | null
+        /**
+         * The #GspellChecker.
+         */
+        spellChecker?: Checker | null
     }
 
 }
@@ -1715,6 +1763,10 @@ export interface TextBuffer {
      * The #GspellChecker.
      */
     spell_checker: Checker
+    /**
+     * The #GspellChecker.
+     */
+    spellChecker: Checker
 
     // Owm methods of Gspell-1.Gspell.TextBuffer
 
@@ -1783,6 +1835,15 @@ export module TextView {
          * The #GtkTextView.
          */
         view?: Gtk.TextView | null
+        /**
+         * When the context menu is shown, whether to add a sub-menu to select
+         * the language for the spell checking.
+         */
+        enableLanguageMenu?: boolean | null
+        /**
+         * Whether the inline spell checking is enabled.
+         */
+        inlineSpellChecking?: boolean | null
     }
 
 }
@@ -1797,9 +1858,18 @@ export interface TextView {
      */
     enable_language_menu: boolean
     /**
+     * When the context menu is shown, whether to add a sub-menu to select
+     * the language for the spell checking.
+     */
+    enableLanguageMenu: boolean
+    /**
      * Whether the inline spell checking is enabled.
      */
     inline_spell_checking: boolean
+    /**
+     * Whether the inline spell checking is enabled.
+     */
+    inlineSpellChecking: boolean
     /**
      * The #GtkTextView.
      */

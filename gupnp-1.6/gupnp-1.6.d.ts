@@ -376,6 +376,18 @@ module Context {
          * are never to time out.
          */
         subscription_timeout?: number | null
+        /**
+         * The content of the Content-Language header id the client
+         * sends Accept-Language and no language-specific pages to serve
+         * exist. The property defaults to 'en'.
+         */
+        defaultLanguage?: string | null
+        /**
+         * The preferred subscription timeout: the number of seconds after
+         * which subscriptions are renewed. Set to '0' if subscriptions
+         * are never to time out.
+         */
+        subscriptionTimeout?: number | null
     }
 
 }
@@ -395,6 +407,12 @@ interface Context extends Gio.Initable {
      */
     default_language: string | null
     /**
+     * The content of the Content-Language header id the client
+     * sends Accept-Language and no language-specific pages to serve
+     * exist. The property defaults to 'en'.
+     */
+    defaultLanguage: string | null
+    /**
      * The #SoupServer HTTP server used by GUPnP.
      */
     readonly server: Soup.Server
@@ -408,6 +426,12 @@ interface Context extends Gio.Initable {
      * are never to time out.
      */
     readonly subscription_timeout: number
+    /**
+     * The preferred subscription timeout: the number of seconds after
+     * which subscriptions are renewed. Set to '0' if subscriptions
+     * are never to time out.
+     */
+    readonly subscriptionTimeout: number
 
     // Own fields of GUPnP-1.6.GUPnP.Context
 
@@ -886,6 +910,11 @@ module ContextManager {
          * for using the default UDA version.
          */
         uda_version?: GSSDP.UDAVersion | null
+        /**
+         * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
+         * for using the default UDA version.
+         */
+        udaVersion?: GSSDP.UDAVersion | null
     }
 
 }
@@ -898,6 +927,10 @@ interface ContextManager {
      * The context filter to use.
      */
     readonly context_filter: ContextFilter
+    /**
+     * The context filter to use.
+     */
+    readonly contextFilter: ContextFilter
     /**
      * The socket family to create contexts for. Use %G_SOCKET_FAMILY_INVALID
      * for any or %G_SOCKET_FAMILY_IPV4 for IPv4 contexts or
@@ -914,6 +947,11 @@ interface ContextManager {
      * for using the default UDA version.
      */
     readonly uda_version: GSSDP.UDAVersion
+    /**
+     * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
+     * for using the default UDA version.
+     */
+    readonly udaVersion: GSSDP.UDAVersion
 
     // Own fields of GUPnP-1.6.GUPnP.ContextManager
 
@@ -1121,6 +1159,10 @@ module ControlPoint {
          * The resource factory to use. Set to NULL for default factory.
          */
         resource_factory?: ResourceFactory | null
+        /**
+         * The resource factory to use. Set to NULL for default factory.
+         */
+        resourceFactory?: ResourceFactory | null
     }
 
 }
@@ -1133,6 +1175,10 @@ interface ControlPoint {
      * The resource factory to use. Set to NULL for default factory.
      */
     readonly resource_factory: ResourceFactory
+    /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resourceFactory: ResourceFactory
 
     // Own fields of GUPnP-1.6.GUPnP.ControlPoint
 
@@ -1324,6 +1370,11 @@ module Device {
          * device.
          */
         root_device?: RootDevice | null
+        /**
+         * The containing #GUPnPRootDevice, or NULL if this is the root
+         * device.
+         */
+        rootDevice?: RootDevice | null
     }
 
 }
@@ -1337,6 +1388,11 @@ interface Device {
      * device.
      */
     readonly root_device: RootDevice
+    /**
+     * The containing #GUPnPRootDevice, or NULL if this is the root
+     * device.
+     */
+    readonly rootDevice: RootDevice
 
     // Own fields of GUPnP-1.6.GUPnP.Device
 
@@ -1438,6 +1494,18 @@ module DeviceInfo {
          * The URL base (#GUri).
          */
         url_base?: GLib.Uri | null
+        /**
+         * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
+         */
+        deviceType?: string | null
+        /**
+         * The resource factory to use. Set to NULL for default factory.
+         */
+        resourceFactory?: ResourceFactory | null
+        /**
+         * The URL base (#GUri).
+         */
+        urlBase?: GLib.Uri | null
     }
 
 }
@@ -1455,6 +1523,10 @@ interface DeviceInfo {
      */
     readonly device_type: string | null
     /**
+     * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
+     */
+    readonly deviceType: string | null
+    /**
      * The description document
      */
     document: XMLDoc
@@ -1471,6 +1543,10 @@ interface DeviceInfo {
      */
     readonly resource_factory: ResourceFactory
     /**
+     * The resource factory to use. Set to NULL for default factory.
+     */
+    readonly resourceFactory: ResourceFactory
+    /**
      * The UDN of this device.
      */
     readonly udn: string | null
@@ -1478,6 +1554,10 @@ interface DeviceInfo {
      * The URL base (#GUri).
      */
     url_base: GLib.Uri
+    /**
+     * The URL base (#GUri).
+     */
+    urlBase: GLib.Uri
 
     // Own fields of GUPnP-1.6.GUPnP.DeviceInfo
 
@@ -1942,6 +2022,15 @@ module RootDevice {
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          */
         description_path?: string | null
+        /**
+         * The path to a folder where description documents are provided.
+         */
+        descriptionDir?: string | null
+        /**
+         * The path to device description document. This could either be an
+         * absolute path or path relative to GUPnPRootDevice:description-dir.
+         */
+        descriptionPath?: string | null
     }
 
 }
@@ -1959,10 +2048,19 @@ interface RootDevice extends Gio.Initable {
      */
     readonly description_dir: string | null
     /**
+     * The path to a folder where description documents are provided.
+     */
+    readonly descriptionDir: string | null
+    /**
      * The path to device description document. This could either be an
      * absolute path or path relative to GUPnPRootDevice:description-dir.
      */
     readonly description_path: string | null
+    /**
+     * The path to device description document. This could either be an
+     * absolute path or path relative to GUPnPRootDevice:description-dir.
+     */
+    readonly descriptionPath: string | null
 
     // Own fields of GUPnP-1.6.GUPnP.RootDevice
 
@@ -2135,6 +2233,10 @@ module Service {
          * The containing #GUPnPRootDevice.
          */
         root_device?: RootDevice | null
+        /**
+         * The containing #GUPnPRootDevice.
+         */
+        rootDevice?: RootDevice | null
     }
 
 }
@@ -2147,6 +2249,10 @@ interface Service {
      * The containing #GUPnPRootDevice.
      */
     readonly root_device: RootDevice
+    /**
+     * The containing #GUPnPRootDevice.
+     */
+    readonly rootDevice: RootDevice
 
     // Own fields of GUPnP-1.6.GUPnP.Service
 
@@ -2329,6 +2435,14 @@ module ServiceInfo {
          * The URL base (#SoupURI).
          */
         url_base?: GLib.Uri | null
+        /**
+         * The service type.
+         */
+        serviceType?: string | null
+        /**
+         * The URL base (#SoupURI).
+         */
+        urlBase?: GLib.Uri | null
     }
 
 }
@@ -2358,6 +2472,10 @@ interface ServiceInfo {
      */
     readonly service_type: string | null
     /**
+     * The service type.
+     */
+    readonly serviceType: string | null
+    /**
      * The UDN of the containing device.
      */
     readonly udn: string | null
@@ -2365,6 +2483,10 @@ interface ServiceInfo {
      * The URL base (#SoupURI).
      */
     readonly url_base: GLib.Uri
+    /**
+     * The URL base (#SoupURI).
+     */
+    readonly urlBase: GLib.Uri
 
     // Own fields of GUPnP-1.6.GUPnP.ServiceInfo
 

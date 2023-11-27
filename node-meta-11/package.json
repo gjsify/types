@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-meta-11",
-    "version": "11.0.0-3.2.5",
+    "version": "11.0.0-3.2.6",
     "description": "Node.js TypeScript type definitions for Meta-11, generated from library version 11.0.0",
     "type": "module",
     "module": "node-meta-11.js",

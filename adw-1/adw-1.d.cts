@@ -1310,6 +1310,150 @@ export module AboutWindow {
          * Applications can add other links below, see [method`AboutWindow`.add_link].
          */
         website?: string | null
+        /**
+         * The name of the application icon.
+         * 
+         * The icon is displayed at the top of the main page.
+         */
+        applicationIcon?: string | null
+        /**
+         * The name of the application.
+         * 
+         * The name is displayed at the top of the main page.
+         */
+        applicationName?: string | null
+        /**
+         * The debug information.
+         * 
+         * Debug information will be shown on the Troubleshooting page. It's intended
+         * to be attached to issue reports when reporting issues against the
+         * application.
+         * 
+         * `AdwAboutWindow` provides a quick way to save debug information to a file.
+         * When saving, [property`AboutWindow:`debug-info-filename] would be used as
+         * the suggested filename.
+         * 
+         * Debug information cannot contain markup or links.
+         */
+        debugInfo?: string | null
+        /**
+         * The debug information filename.
+         * 
+         * It will be used as the suggested filename when saving debug information to
+         * a file.
+         * 
+         * See [property`AboutWindow:`debug-info].
+         */
+        debugInfoFilename?: string | null
+        /**
+         * The developer name.
+         * 
+         * The developer name is displayed on the main page, under the application
+         * name.
+         * 
+         * If the application is developed by multiple people, the developer name can
+         * be set to values like "AppName team", "AppName developers" or
+         * "The AppName project", and the individual contributors can be listed on the
+         * Credits page, with [property`AboutWindow:`developers] and related
+         * properties.
+         */
+        developerName?: string | null
+        /**
+         * The URL for the application's issue tracker.
+         * 
+         * The issue tracker link is displayed on the main page.
+         */
+        issueUrl?: string | null
+        /**
+         * The license type.
+         * 
+         * Allows to set the application's license froma list of known licenses.
+         * 
+         * If the application's license is not in the list,
+         * [property`AboutWindow:`license] can be used instead. The license type will
+         * be automatically set to `GTK_LICENSE_CUSTOM` in that case.
+         * 
+         * If set to `GTK_LICENSE_UNKNOWN`, no information will be displayed.
+         * 
+         * If the license type is different from `GTK_LICENSE_CUSTOM`.
+         * [property`AboutWindow:`license] will be cleared out.
+         * 
+         * The license description will be displayed on the Legal page, below the
+         * copyright information.
+         * 
+         * [method`AboutWindow`.add_legal_section] can be used to add license
+         * information for the application dependencies or other components.
+         */
+        licenseType?: Gtk.License | null
+        /**
+         * The release notes of the application.
+         * 
+         * Release notes are displayed on the the What's New page.
+         * 
+         * Release notes are formatted the same way as
+         * [AppStream descriptions](https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description).
+         * 
+         * The supported formatting options are:
+         * 
+         * * Paragraph (`<p>`)
+         * * Ordered list (`<ol>`), with list items (`<li>`)
+         * * Unordered list (`<ul>`), with list items (`<li>`)
+         * 
+         * Within paragraphs and list items, emphasis (`<em>`) and inline code
+         * (`<code>`) text styles are supported. The emphasis is rendered in italic,
+         * while inline code is shown in a monospaced font.
+         * 
+         * Any text outside paragraphs or list items is ignored.
+         * 
+         * Nested lists are not supported.
+         * 
+         * `AdwAboutWindow` displays the version above the release notes. If set, the
+         * [property`AboutWindow:`release-notes-version] of the property will be used
+         * as the version; otherwise, [property`AboutWindow:`version] is used.
+         */
+        releaseNotes?: string | null
+        /**
+         * The version described by the application's release notes.
+         * 
+         * The release notes version is displayed on the What's New page, above the
+         * release notes.
+         * 
+         * If not set, [property`AboutWindow:`version] will be used instead.
+         * 
+         * For example, an application with the current version 2.0.2 might want to
+         * keep the release notes from 2.0.0, and set the release notes version
+         * accordingly.
+         * 
+         * See [property`AboutWindow:`release-notes].
+         */
+        releaseNotesVersion?: string | null
+        /**
+         * The URL of the application's support page.
+         * 
+         * The support page link is displayed on the main page.
+         */
+        supportUrl?: string | null
+        /**
+         * The translator credits string.
+         * 
+         * It will be displayed on the Credits page.
+         * 
+         * This string should be `"translator-credits"` or `"translator_credits"` and
+         * should be marked as translatable.
+         * 
+         * The string may contain email addresses and URLs, see the introduction for
+         * more details.
+         * 
+         * See also:
+         * 
+         * * [property`AboutWindow:`developers]
+         * * [property`AboutWindow:`designers]
+         * * [property`AboutWindow:`artists]
+         * * [property`AboutWindow:`documenters]
+         * * [method`AboutWindow`.add_credit_section]
+         * * [method`AboutWindow`.add_acknowledgement_section]
+         */
+        translatorCredits?: string | null
     }
 
 }
@@ -1325,11 +1469,23 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     application_icon: string | null
     /**
+     * The name of the application icon.
+     * 
+     * The icon is displayed at the top of the main page.
+     */
+    applicationIcon: string | null
+    /**
      * The name of the application.
      * 
      * The name is displayed at the top of the main page.
      */
     application_name: string | null
+    /**
+     * The name of the application.
+     * 
+     * The name is displayed at the top of the main page.
+     */
+    applicationName: string | null
     /**
      * The list of artists of the application.
      * 
@@ -1385,6 +1541,20 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     debug_info: string | null
     /**
+     * The debug information.
+     * 
+     * Debug information will be shown on the Troubleshooting page. It's intended
+     * to be attached to issue reports when reporting issues against the
+     * application.
+     * 
+     * `AdwAboutWindow` provides a quick way to save debug information to a file.
+     * When saving, [property`AboutWindow:`debug-info-filename] would be used as
+     * the suggested filename.
+     * 
+     * Debug information cannot contain markup or links.
+     */
+    debugInfo: string | null
+    /**
      * The debug information filename.
      * 
      * It will be used as the suggested filename when saving debug information to
@@ -1393,6 +1563,15 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See [property`AboutWindow:`debug-info].
      */
     debug_info_filename: string | null
+    /**
+     * The debug information filename.
+     * 
+     * It will be used as the suggested filename when saving debug information to
+     * a file.
+     * 
+     * See [property`AboutWindow:`debug-info].
+     */
+    debugInfoFilename: string | null
     /**
      * The list of designers of the application.
      * 
@@ -1424,6 +1603,19 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * properties.
      */
     developer_name: string | null
+    /**
+     * The developer name.
+     * 
+     * The developer name is displayed on the main page, under the application
+     * name.
+     * 
+     * If the application is developed by multiple people, the developer name can
+     * be set to values like "AppName team", "AppName developers" or
+     * "The AppName project", and the individual contributors can be listed on the
+     * Credits page, with [property`AboutWindow:`developers] and related
+     * properties.
+     */
+    developerName: string | null
     /**
      * The list of developers of the application.
      * 
@@ -1467,6 +1659,12 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     issue_url: string | null
     /**
+     * The URL for the application's issue tracker.
+     * 
+     * The issue tracker link is displayed on the main page.
+     */
+    issueUrl: string | null
+    /**
      * The license text.
      * 
      * This can be used to set a custom text for the license if it can't be set
@@ -1506,6 +1704,27 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     license_type: Gtk.License
     /**
+     * The license type.
+     * 
+     * Allows to set the application's license froma list of known licenses.
+     * 
+     * If the application's license is not in the list,
+     * [property`AboutWindow:`license] can be used instead. The license type will
+     * be automatically set to `GTK_LICENSE_CUSTOM` in that case.
+     * 
+     * If set to `GTK_LICENSE_UNKNOWN`, no information will be displayed.
+     * 
+     * If the license type is different from `GTK_LICENSE_CUSTOM`.
+     * [property`AboutWindow:`license] will be cleared out.
+     * 
+     * The license description will be displayed on the Legal page, below the
+     * copyright information.
+     * 
+     * [method`AboutWindow`.add_legal_section] can be used to add license
+     * information for the application dependencies or other components.
+     */
+    licenseType: Gtk.License
+    /**
      * The release notes of the application.
      * 
      * Release notes are displayed on the the What's New page.
@@ -1533,6 +1752,33 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     release_notes: string | null
     /**
+     * The release notes of the application.
+     * 
+     * Release notes are displayed on the the What's New page.
+     * 
+     * Release notes are formatted the same way as
+     * [AppStream descriptions](https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description).
+     * 
+     * The supported formatting options are:
+     * 
+     * * Paragraph (`<p>`)
+     * * Ordered list (`<ol>`), with list items (`<li>`)
+     * * Unordered list (`<ul>`), with list items (`<li>`)
+     * 
+     * Within paragraphs and list items, emphasis (`<em>`) and inline code
+     * (`<code>`) text styles are supported. The emphasis is rendered in italic,
+     * while inline code is shown in a monospaced font.
+     * 
+     * Any text outside paragraphs or list items is ignored.
+     * 
+     * Nested lists are not supported.
+     * 
+     * `AdwAboutWindow` displays the version above the release notes. If set, the
+     * [property`AboutWindow:`release-notes-version] of the property will be used
+     * as the version; otherwise, [property`AboutWindow:`version] is used.
+     */
+    releaseNotes: string | null
+    /**
      * The version described by the application's release notes.
      * 
      * The release notes version is displayed on the What's New page, above the
@@ -1548,11 +1794,32 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     release_notes_version: string | null
     /**
+     * The version described by the application's release notes.
+     * 
+     * The release notes version is displayed on the What's New page, above the
+     * release notes.
+     * 
+     * If not set, [property`AboutWindow:`version] will be used instead.
+     * 
+     * For example, an application with the current version 2.0.2 might want to
+     * keep the release notes from 2.0.0, and set the release notes version
+     * accordingly.
+     * 
+     * See [property`AboutWindow:`release-notes].
+     */
+    releaseNotesVersion: string | null
+    /**
      * The URL of the application's support page.
      * 
      * The support page link is displayed on the main page.
      */
     support_url: string | null
+    /**
+     * The URL of the application's support page.
+     * 
+     * The support page link is displayed on the main page.
+     */
+    supportUrl: string | null
     /**
      * The translator credits string.
      * 
@@ -1574,6 +1841,27 @@ export interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * * [method`AboutWindow`.add_acknowledgement_section]
      */
     translator_credits: string | null
+    /**
+     * The translator credits string.
+     * 
+     * It will be displayed on the Credits page.
+     * 
+     * This string should be `"translator-credits"` or `"translator_credits"` and
+     * should be marked as translatable.
+     * 
+     * The string may contain email addresses and URLs, see the introduction for
+     * more details.
+     * 
+     * See also:
+     * 
+     * * [property`AboutWindow:`developers]
+     * * [property`AboutWindow:`designers]
+     * * [property`AboutWindow:`artists]
+     * * [property`AboutWindow:`documenters]
+     * * [method`AboutWindow`.add_credit_section]
+     * * [method`AboutWindow`.add_acknowledgement_section]
+     */
+    translatorCredits: string | null
     /**
      * The version of the application.
      * 
@@ -2631,6 +2919,41 @@ export module ActionRow {
          * If the value is 0, the number of lines won't be limited.
          */
         title_lines?: number | null
+        /**
+         * The widget to activate when the row is activated.
+         * 
+         * The row can be activated either by clicking on it, calling
+         * [method`ActionRow`.activate], or via mnemonics in the title.
+         * See the [property`PreferencesRow:`use-underline] property to enable
+         * mnemonics.
+         * 
+         * The target widget will be activated by emitting the
+         * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
+         */
+        activatableWidget?: Gtk.Widget | null
+        /**
+         * The icon name for this row.
+         */
+        iconName?: string | null
+        /**
+         * The number of lines at the end of which the subtitle label will be
+         * ellipsized.
+         * 
+         * If the value is 0, the number of lines won't be limited.
+         */
+        subtitleLines?: number | null
+        /**
+         * Whether the user can copy the subtitle from the label.
+         * 
+         * See also [property`Gtk`.Label:selectable].
+         */
+        subtitleSelectable?: boolean | null
+        /**
+         * The number of lines at the end of which the title label will be ellipsized.
+         * 
+         * If the value is 0, the number of lines won't be limited.
+         */
+        titleLines?: number | null
     }
 
 }
@@ -2652,9 +2975,25 @@ export interface ActionRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable
      */
     activatable_widget: Gtk.Widget
     /**
+     * The widget to activate when the row is activated.
+     * 
+     * The row can be activated either by clicking on it, calling
+     * [method`ActionRow`.activate], or via mnemonics in the title.
+     * See the [property`PreferencesRow:`use-underline] property to enable
+     * mnemonics.
+     * 
+     * The target widget will be activated by emitting the
+     * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
+     */
+    activatableWidget: Gtk.Widget
+    /**
      * The icon name for this row.
      */
     icon_name: string | null
+    /**
+     * The icon name for this row.
+     */
+    iconName: string | null
     /**
      * The subtitle for this row.
      * 
@@ -2670,17 +3009,36 @@ export interface ActionRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable
      */
     subtitle_lines: number
     /**
+     * The number of lines at the end of which the subtitle label will be
+     * ellipsized.
+     * 
+     * If the value is 0, the number of lines won't be limited.
+     */
+    subtitleLines: number
+    /**
      * Whether the user can copy the subtitle from the label.
      * 
      * See also [property`Gtk`.Label:selectable].
      */
     subtitle_selectable: boolean
     /**
+     * Whether the user can copy the subtitle from the label.
+     * 
+     * See also [property`Gtk`.Label:selectable].
+     */
+    subtitleSelectable: boolean
+    /**
      * The number of lines at the end of which the title label will be ellipsized.
      * 
      * If the value is 0, the number of lines won't be limited.
      */
     title_lines: number
+    /**
+     * The number of lines at the end of which the title label will be ellipsized.
+     * 
+     * If the value is 0, the number of lines won't be limited.
+     */
+    titleLines: number
 
     // Own fields of Adw-1.Adw.ActionRow
 
@@ -3088,6 +3446,18 @@ export module Animation {
          * will be automatically skipped.
          */
         widget?: Gtk.Widget | null
+        /**
+         * Whether to skip the animation when animations are globally disabled.
+         * 
+         * The default behavior is to skip the animation. Set to `FALSE` to disable
+         * this behavior.
+         * 
+         * This can be useful for cases where animation is essential, like spinners,
+         * or in demo applications. Most other animations should keep it enabled.
+         * 
+         * See [property`Gtk`.Settings:gtk-enable-animations].
+         */
+        followEnableAnimationsSetting?: boolean | null
     }
 
 }
@@ -3108,6 +3478,18 @@ export interface Animation {
      * See [property`Gtk`.Settings:gtk-enable-animations].
      */
     follow_enable_animations_setting: boolean
+    /**
+     * Whether to skip the animation when animations are globally disabled.
+     * 
+     * The default behavior is to skip the animation. Set to `FALSE` to disable
+     * this behavior.
+     * 
+     * This can be useful for cases where animation is essential, like spinners,
+     * or in demo applications. Most other animations should keep it enabled.
+     * 
+     * See [property`Gtk`.Settings:gtk-enable-animations].
+     */
+    followEnableAnimationsSetting: boolean
     /**
      * The animation state.
      * 
@@ -3392,6 +3774,13 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * property bindings or expressions.
      */
     readonly style_manager: StyleManager
+    /**
+     * The style manager for this application.
+     * 
+     * This is a convenience property allowing to access `AdwStyleManager` through
+     * property bindings or expressions.
+     */
+    readonly styleManager: StyleManager
 
     // Own fields of Adw-1.Adw.Application
 
@@ -3599,6 +3988,10 @@ export interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.A
      * The current breakpoint.
      */
     readonly current_breakpoint: Breakpoint
+    /**
+     * The current breakpoint.
+     */
+    readonly currentBreakpoint: Breakpoint
 
     // Own fields of Adw-1.Adw.ApplicationWindow
 
@@ -4012,6 +4405,24 @@ export module Avatar {
          * `FALSE`.
          */
         text?: string | null
+        /**
+         * A custom image paintable.
+         * 
+         * Custom image is displayed instead of initials or icon.
+         */
+        customImage?: Gdk.Paintable | null
+        /**
+         * The name of an icon to use as a fallback.
+         * 
+         * If no name is set, `avatar-default-symbolic` will be used.
+         */
+        iconName?: string | null
+        /**
+         * Whether initials are used instead of an icon on the fallback avatar.
+         * 
+         * See [property`Avatar:`icon-name] for how to change the fallback icon.
+         */
+        showInitials?: boolean | null
     }
 
 }
@@ -4027,17 +4438,35 @@ export interface Avatar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      */
     custom_image: Gdk.Paintable
     /**
+     * A custom image paintable.
+     * 
+     * Custom image is displayed instead of initials or icon.
+     */
+    customImage: Gdk.Paintable
+    /**
      * The name of an icon to use as a fallback.
      * 
      * If no name is set, `avatar-default-symbolic` will be used.
      */
     icon_name: string | null
     /**
+     * The name of an icon to use as a fallback.
+     * 
+     * If no name is set, `avatar-default-symbolic` will be used.
+     */
+    iconName: string | null
+    /**
      * Whether initials are used instead of an icon on the fallback avatar.
      * 
      * See [property`Avatar:`icon-name] for how to change the fallback icon.
      */
     show_initials: boolean
+    /**
+     * Whether initials are used instead of an icon on the fallback avatar.
+     * 
+     * See [property`Avatar:`icon-name] for how to change the fallback icon.
+     */
+    showInitials: boolean
     /**
      * The size of the avatar.
      */
@@ -4368,6 +4797,21 @@ export module Banner {
          * See also [func`Pango`.parse_markup].
          */
         use_markup?: boolean | null
+        /**
+         * The label to show on the button.
+         * 
+         * If set to `""` or `NULL`, the button won't be shown.
+         * 
+         * The button can be used with a `GAction`, or with the
+         * [signal`Banner:`:button-clicked] signal.
+         */
+        buttonLabel?: string | null
+        /**
+         * Whether to use Pango markup for the banner title.
+         * 
+         * See also [func`Pango`.parse_markup].
+         */
+        useMarkup?: boolean | null
     }
 
 }
@@ -4386,6 +4830,15 @@ export interface Banner extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, G
      */
     button_label: string | null
     /**
+     * The label to show on the button.
+     * 
+     * If set to `""` or `NULL`, the button won't be shown.
+     * 
+     * The button can be used with a `GAction`, or with the
+     * [signal`Banner:`:button-clicked] signal.
+     */
+    buttonLabel: string | null
+    /**
      * Whether the banner is currently revealed.
      */
     revealed: boolean
@@ -4401,6 +4854,12 @@ export interface Banner extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, G
      * See also [func`Pango`.parse_markup].
      */
     use_markup: boolean
+    /**
+     * Whether to use Pango markup for the banner title.
+     * 
+     * See also [func`Pango`.parse_markup].
+     */
+    useMarkup: boolean
 
     // Owm methods of Adw-1.Adw.Banner
 
@@ -5074,6 +5533,10 @@ export interface BreakpointBin extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      * The current breakpoint.
      */
     readonly current_breakpoint: Breakpoint
+    /**
+     * The current breakpoint.
+     */
+    readonly currentBreakpoint: Breakpoint
 
     // Own fields of Adw-1.Adw.BreakpointBin
 
@@ -5393,6 +5856,28 @@ export module ButtonContent {
          * See [property`ButtonContent:`label].
          */
         use_underline?: boolean | null
+        /**
+         * Whether the button can be smaller than the natural size of its contents.
+         * 
+         * If set to `TRUE`, the label will ellipsize.
+         * 
+         * See [property`Gtk`.Button:can-shrink].
+         */
+        canShrink?: boolean | null
+        /**
+         * The name of the displayed icon.
+         * 
+         * If empty, the icon is not shown.
+         */
+        iconName?: string | null
+        /**
+         * Whether an underline in the text indicates a mnemonic.
+         * 
+         * The mnemonic can be used to activate the parent button.
+         * 
+         * See [property`ButtonContent:`label].
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -5410,11 +5895,25 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      */
     can_shrink: boolean
     /**
+     * Whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [property`Gtk`.Button:can-shrink].
+     */
+    canShrink: boolean
+    /**
      * The name of the displayed icon.
      * 
      * If empty, the icon is not shown.
      */
     icon_name: string | null
+    /**
+     * The name of the displayed icon.
+     * 
+     * If empty, the icon is not shown.
+     */
+    iconName: string | null
     /**
      * The displayed label.
      */
@@ -5427,6 +5926,14 @@ export interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      * See [property`ButtonContent:`label].
      */
     use_underline: boolean
+    /**
+     * Whether an underline in the text indicates a mnemonic.
+     * 
+     * The mnemonic can be used to activate the parent button.
+     * 
+     * See [property`ButtonContent:`label].
+     */
+    useUnderline: boolean
 
     // Owm methods of Adw-1.Adw.ButtonContent
 
@@ -5794,6 +6301,40 @@ export module Carousel {
          * Spacing between pages in pixels.
          */
         spacing?: number | null
+        /**
+         * Whether to allow swiping for more than one page at a time.
+         * 
+         * If the value is `FALSE`, each swipe can only move to the adjacent pages.
+         */
+        allowLongSwipes?: boolean | null
+        /**
+         * Sets whether the `AdwCarousel` can be dragged with mouse pointer.
+         * 
+         * If the value is `FALSE`, dragging is only available on touch.
+         */
+        allowMouseDrag?: boolean | null
+        /**
+         * Whether the widget will respond to scroll wheel events.
+         * 
+         * If the value is `FALSE`, wheel events will be ignored.
+         */
+        allowScrollWheel?: boolean | null
+        /**
+         * Page reveal duration, in milliseconds.
+         * 
+         * Reveal duration is used when animating adding or removing pages.
+         */
+        revealDuration?: number | null
+        /**
+         * Scroll animation spring parameters.
+         * 
+         * The default value is equivalent to:
+         * 
+         * ```c
+         * adw_spring_params_new (1, 0.5, 500)
+         * ```
+         */
+        scrollParams?: SpringParams | null
     }
 
 }
@@ -5809,17 +6350,35 @@ export interface Carousel extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.
      */
     allow_long_swipes: boolean
     /**
+     * Whether to allow swiping for more than one page at a time.
+     * 
+     * If the value is `FALSE`, each swipe can only move to the adjacent pages.
+     */
+    allowLongSwipes: boolean
+    /**
      * Sets whether the `AdwCarousel` can be dragged with mouse pointer.
      * 
      * If the value is `FALSE`, dragging is only available on touch.
      */
     allow_mouse_drag: boolean
     /**
+     * Sets whether the `AdwCarousel` can be dragged with mouse pointer.
+     * 
+     * If the value is `FALSE`, dragging is only available on touch.
+     */
+    allowMouseDrag: boolean
+    /**
      * Whether the widget will respond to scroll wheel events.
      * 
      * If the value is `FALSE`, wheel events will be ignored.
      */
     allow_scroll_wheel: boolean
+    /**
+     * Whether the widget will respond to scroll wheel events.
+     * 
+     * If the value is `FALSE`, wheel events will be ignored.
+     */
+    allowScrollWheel: boolean
     /**
      * Whether the carousel can be navigated.
      * 
@@ -5831,6 +6390,10 @@ export interface Carousel extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.
      * The number of pages in a `AdwCarousel`.
      */
     readonly n_pages: number
+    /**
+     * The number of pages in a `AdwCarousel`.
+     */
+    readonly nPages: number
     /**
      * Current scrolling position, unitless.
      * 
@@ -5844,6 +6407,12 @@ export interface Carousel extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.
      */
     reveal_duration: number
     /**
+     * Page reveal duration, in milliseconds.
+     * 
+     * Reveal duration is used when animating adding or removing pages.
+     */
+    revealDuration: number
+    /**
      * Scroll animation spring parameters.
      * 
      * The default value is equivalent to:
@@ -5853,6 +6422,16 @@ export interface Carousel extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.
      * ```
      */
     scroll_params: SpringParams
+    /**
+     * Scroll animation spring parameters.
+     * 
+     * The default value is equivalent to:
+     * 
+     * ```c
+     * adw_spring_params_new (1, 0.5, 500)
+     * ```
+     */
+    scrollParams: SpringParams
     /**
      * Spacing between pages in pixels.
      */
@@ -6647,6 +7226,29 @@ export module Clamp {
          * Allows the sizes to vary depending on the text scale factor.
          */
         unit?: LengthUnit | null
+        /**
+         * The maximum size allocated to the child.
+         * 
+         * It is the width if the clamp is horizontal, or the height if it is vertical.
+         */
+        maximumSize?: number | null
+        /**
+         * The size above which the child is clamped.
+         * 
+         * Starting from this size, the clamp will tighten its grip on the child,
+         * slowly allocating less and less of the available size up to the maximum
+         * allocated size. Below that threshold and below the maximum size, the child
+         * will be allocated all the available size.
+         * 
+         * If the threshold is greater than the maximum size to allocate to the child,
+         * the child will be allocated all the size up to the maximum.
+         * If the threshold is lower than the minimum size to allocate to the child,
+         * that size will be used as the tightening threshold.
+         * 
+         * Effectively, tightening the grip on the child before it reaches its maximum
+         * size makes transitions to and from the maximum size smoother when resizing.
+         */
+        tighteningThreshold?: number | null
     }
 
 }
@@ -6666,6 +7268,12 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
      */
     maximum_size: number
     /**
+     * The maximum size allocated to the child.
+     * 
+     * It is the width if the clamp is horizontal, or the height if it is vertical.
+     */
+    maximumSize: number
+    /**
      * The size above which the child is clamped.
      * 
      * Starting from this size, the clamp will tighten its grip on the child,
@@ -6682,6 +7290,23 @@ export interface Clamp extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarg
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The size above which the child is clamped.
+     * 
+     * Starting from this size, the clamp will tighten its grip on the child,
+     * slowly allocating less and less of the available size up to the maximum
+     * allocated size. Below that threshold and below the maximum size, the child
+     * will be allocated all the available size.
+     * 
+     * If the threshold is greater than the maximum size to allocate to the child,
+     * the child will be allocated all the size up to the maximum.
+     * If the threshold is lower than the minimum size to allocate to the child,
+     * that size will be used as the tightening threshold.
+     * 
+     * Effectively, tightening the grip on the child before it reaches its maximum
+     * size makes transitions to and from the maximum size smoother when resizing.
+     */
+    tighteningThreshold: number
     /**
      * The length unit for maximum size and tightening threshold.
      * 
@@ -6968,6 +7593,30 @@ export module ClampLayout {
          * Allows the sizes to vary depending on the text scale factor.
          */
         unit?: LengthUnit | null
+        /**
+         * The maximum size to allocate to the children.
+         * 
+         * It is the width if the layout is horizontal, or the height if it is
+         * vertical.
+         */
+        maximumSize?: number | null
+        /**
+         * The size above which the children are clamped.
+         * 
+         * Starting from this size, the layout will tighten its grip on the children,
+         * slowly allocating less and less of the available size up to the maximum
+         * allocated size. Below that threshold and below the maximum size, the
+         * children will be allocated all the available size.
+         * 
+         * If the threshold is greater than the maximum size to allocate to the
+         * children, they will be allocated the whole size up to the maximum. If the
+         * threshold is lower than the minimum size to allocate to the children, that
+         * size will be used as the tightening threshold.
+         * 
+         * Effectively, tightening the grip on a child before it reaches its maximum
+         * size makes transitions to and from the maximum size smoother when resizing.
+         */
+        tighteningThreshold?: number | null
     }
 
 }
@@ -6983,6 +7632,13 @@ export interface ClampLayout extends Gtk.Orientable {
      * vertical.
      */
     maximum_size: number
+    /**
+     * The maximum size to allocate to the children.
+     * 
+     * It is the width if the layout is horizontal, or the height if it is
+     * vertical.
+     */
+    maximumSize: number
     /**
      * The size above which the children are clamped.
      * 
@@ -7000,6 +7656,23 @@ export interface ClampLayout extends Gtk.Orientable {
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The size above which the children are clamped.
+     * 
+     * Starting from this size, the layout will tighten its grip on the children,
+     * slowly allocating less and less of the available size up to the maximum
+     * allocated size. Below that threshold and below the maximum size, the
+     * children will be allocated all the available size.
+     * 
+     * If the threshold is greater than the maximum size to allocate to the
+     * children, they will be allocated the whole size up to the maximum. If the
+     * threshold is lower than the minimum size to allocate to the children, that
+     * size will be used as the tightening threshold.
+     * 
+     * Effectively, tightening the grip on a child before it reaches its maximum
+     * size makes transitions to and from the maximum size smoother when resizing.
+     */
+    tighteningThreshold: number
     /**
      * The length unit for maximum size and tightening threshold.
      * 
@@ -7167,6 +7840,29 @@ export module ClampScrollable {
          * Allows the sizes to vary depending on the text scale factor.
          */
         unit?: LengthUnit | null
+        /**
+         * The maximum size allocated to the child.
+         * 
+         * It is the width if the clamp is horizontal, or the height if it is vertical.
+         */
+        maximumSize?: number | null
+        /**
+         * The size above which the child is clamped.
+         * 
+         * Starting from this size, the clamp will tighten its grip on the child,
+         * slowly allocating less and less of the available size up to the maximum
+         * allocated size. Below that threshold and below the maximum width, the child
+         * will be allocated all the available size.
+         * 
+         * If the threshold is greater than the maximum size to allocate to the child,
+         * the child will be allocated all the width up to the maximum.
+         * If the threshold is lower than the minimum size to allocate to the child,
+         * that size will be used as the tightening threshold.
+         * 
+         * Effectively, tightening the grip on the child before it reaches its maximum
+         * size makes transitions to and from the maximum size smoother when resizing.
+         */
+        tighteningThreshold?: number | null
     }
 
 }
@@ -7186,6 +7882,12 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     maximum_size: number
     /**
+     * The maximum size allocated to the child.
+     * 
+     * It is the width if the clamp is horizontal, or the height if it is vertical.
+     */
+    maximumSize: number
+    /**
      * The size above which the child is clamped.
      * 
      * Starting from this size, the clamp will tighten its grip on the child,
@@ -7202,6 +7904,23 @@ export interface ClampScrollable extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * size makes transitions to and from the maximum size smoother when resizing.
      */
     tightening_threshold: number
+    /**
+     * The size above which the child is clamped.
+     * 
+     * Starting from this size, the clamp will tighten its grip on the child,
+     * slowly allocating less and less of the available size up to the maximum
+     * allocated size. Below that threshold and below the maximum width, the child
+     * will be allocated all the available size.
+     * 
+     * If the threshold is greater than the maximum size to allocate to the child,
+     * the child will be allocated all the width up to the maximum.
+     * If the threshold is lower than the minimum size to allocate to the child,
+     * that size will be used as the tightening threshold.
+     * 
+     * Effectively, tightening the grip on the child before it reaches its maximum
+     * size makes transitions to and from the maximum size smoother when resizing.
+     */
+    tighteningThreshold: number
     /**
      * The length unit for maximum size and tightening threshold.
      * 
@@ -7507,6 +8226,33 @@ export module ComboRow {
          * [property`PreferencesRow:`use-markup] is set to `TRUE`.
          */
         use_subtitle?: boolean | null
+        /**
+         * Whether to show a search entry in the popup.
+         * 
+         * If set to `TRUE`, a search entry will be shown in the popup that
+         * allows to search for items in the list.
+         * 
+         * Search requires [property`ComboRow:`expression] to be set.
+         */
+        enableSearch?: boolean | null
+        /**
+         * The factory for populating list items in the popup.
+         * 
+         * If this is not set, [property`ComboRow:`factory] is used.
+         */
+        listFactory?: Gtk.ListItemFactory | null
+        /**
+         * Whether to use the current value as the subtitle.
+         * 
+         * If you use a custom list item factory, you will need to give the row a
+         * name conversion expression with [property`ComboRow:`expression].
+         * 
+         * If set to `TRUE`, you should not access [property`ActionRow:`subtitle].
+         * 
+         * The subtitle is interpreted as Pango markup if
+         * [property`PreferencesRow:`use-markup] is set to `TRUE`.
+         */
+        useSubtitle?: boolean | null
     }
 
 }
@@ -7524,6 +8270,15 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      * Search requires [property`ComboRow:`expression] to be set.
      */
     enable_search: boolean
+    /**
+     * Whether to show a search entry in the popup.
+     * 
+     * If set to `TRUE`, a search entry will be shown in the popup that
+     * allows to search for items in the list.
+     * 
+     * Search requires [property`ComboRow:`expression] to be set.
+     */
+    enableSearch: boolean
     /**
      * An expression used to obtain strings from items.
      * 
@@ -7548,6 +8303,12 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      */
     list_factory: Gtk.ListItemFactory
     /**
+     * The factory for populating list items in the popup.
+     * 
+     * If this is not set, [property`ComboRow:`factory] is used.
+     */
+    listFactory: Gtk.ListItemFactory
+    /**
      * The model that provides the displayed items.
      */
     model: Gio.ListModel
@@ -7563,6 +8324,10 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      */
     readonly selected_item: GObject.Object
     /**
+     * The selected item.
+     */
+    readonly selectedItem: GObject.Object
+    /**
      * Whether to use the current value as the subtitle.
      * 
      * If you use a custom list item factory, you will need to give the row a
@@ -7574,6 +8339,18 @@ export interface ComboRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      * [property`PreferencesRow:`use-markup] is set to `TRUE`.
      */
     use_subtitle: boolean
+    /**
+     * Whether to use the current value as the subtitle.
+     * 
+     * If you use a custom list item factory, you will need to give the row a
+     * name conversion expression with [property`ComboRow:`expression].
+     * 
+     * If set to `TRUE`, you should not access [property`ActionRow:`subtitle].
+     * 
+     * The subtitle is interpreted as Pango markup if
+     * [property`PreferencesRow:`use-markup] is set to `TRUE`.
+     */
+    useSubtitle: boolean
 
     // Own fields of Adw-1.Adw.ComboRow
 
@@ -8057,6 +8834,42 @@ export module EntryRow {
          * character.
          */
         show_apply_button?: boolean | null
+        /**
+         * Whether activating the embedded entry can activate the default widget.
+         */
+        activatesDefault?: boolean | null
+        /**
+         * Whether to suggest emoji replacements on the entry row.
+         * 
+         * Emoji replacement is done with :-delimited names, like `:heart:`.
+         */
+        enableEmojiCompletion?: boolean | null
+        /**
+         * Additional input hints for the entry row.
+         * 
+         * Input hints allow input methods to fine-tune their behavior.
+         * 
+         * See also: [property`Adw`.EntryRow:input-purpose]
+         */
+        inputHints?: Gtk.InputHints | null
+        /**
+         * The input purpose of the entry row.
+         * 
+         * The input purpose can be used by input methods to adjust their behavior.
+         */
+        inputPurpose?: Gtk.InputPurpose | null
+        /**
+         * Whether to show the apply button.
+         * 
+         * When set to `TRUE`, typing text in the entry will reveal an apply button.
+         * Clicking it or pressing the <kbd>Enter</kbd> key will hide the button and
+         * emit the [signal`EntryRow:`:apply] signal.
+         * 
+         * This is useful if changing the entry contents can trigger an expensive
+         * operation, e.g. network activity, to avoid triggering it after typing every
+         * character.
+         */
+        showApplyButton?: boolean | null
     }
 
 }
@@ -8069,6 +8882,10 @@ export interface EntryRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      * Whether activating the embedded entry can activate the default widget.
      */
     activates_default: boolean
+    /**
+     * Whether activating the embedded entry can activate the default widget.
+     */
+    activatesDefault: boolean
     /**
      * A list of Pango attributes to apply to the text of the embedded entry.
      * 
@@ -8083,6 +8900,12 @@ export interface EntryRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      */
     enable_emoji_completion: boolean
     /**
+     * Whether to suggest emoji replacements on the entry row.
+     * 
+     * Emoji replacement is done with :-delimited names, like `:heart:`.
+     */
+    enableEmojiCompletion: boolean
+    /**
      * Additional input hints for the entry row.
      * 
      * Input hints allow input methods to fine-tune their behavior.
@@ -8091,11 +8914,25 @@ export interface EntryRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      */
     input_hints: Gtk.InputHints
     /**
+     * Additional input hints for the entry row.
+     * 
+     * Input hints allow input methods to fine-tune their behavior.
+     * 
+     * See also: [property`Adw`.EntryRow:input-purpose]
+     */
+    inputHints: Gtk.InputHints
+    /**
      * The input purpose of the entry row.
      * 
      * The input purpose can be used by input methods to adjust their behavior.
      */
     input_purpose: Gtk.InputPurpose
+    /**
+     * The input purpose of the entry row.
+     * 
+     * The input purpose can be used by input methods to adjust their behavior.
+     */
+    inputPurpose: Gtk.InputPurpose
     /**
      * Whether to show the apply button.
      * 
@@ -8108,6 +8945,18 @@ export interface EntryRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable,
      * character.
      */
     show_apply_button: boolean
+    /**
+     * Whether to show the apply button.
+     * 
+     * When set to `TRUE`, typing text in the entry will reveal an apply button.
+     * Clicking it or pressing the <kbd>Enter</kbd> key will hide the button and
+     * emit the [signal`EntryRow:`:apply] signal.
+     * 
+     * This is useful if changing the entry contents can trigger an expensive
+     * operation, e.g. network activity, to avoid triggering it after typing every
+     * character.
+     */
+    showApplyButton: boolean
 
     // Own fields of Adw-1.Adw.EntryRow
 
@@ -8560,6 +9409,10 @@ export module EnumListModel {
          * The type of the enum represented by the model.
          */
         enum_type?: GObject.GType | null
+        /**
+         * The type of the enum represented by the model.
+         */
+        enumType?: GObject.GType | null
     }
 
 }
@@ -8572,6 +9425,10 @@ export interface EnumListModel extends Gio.ListModel {
      * The type of the enum represented by the model.
      */
     readonly enum_type: GObject.GType
+    /**
+     * The type of the enum represented by the model.
+     */
+    readonly enumType: GObject.GType
 
     // Owm methods of Adw-1.Adw.EnumListModel
 
@@ -8676,6 +9533,31 @@ export module ExpanderRow {
          * If the value is 0, the number of lines won't be limited.
          */
         title_lines?: number | null
+        /**
+         * Whether expansion is enabled.
+         */
+        enableExpansion?: boolean | null
+        /**
+         * The icon name for this row.
+         */
+        iconName?: string | null
+        /**
+         * Whether the switch enabling the expansion is visible.
+         */
+        showEnableSwitch?: boolean | null
+        /**
+         * The number of lines at the end of which the subtitle label will be
+         * ellipsized.
+         * 
+         * If the value is 0, the number of lines won't be limited.
+         */
+        subtitleLines?: number | null
+        /**
+         * The number of lines at the end of which the title label will be ellipsized.
+         * 
+         * If the value is 0, the number of lines won't be limited.
+         */
+        titleLines?: number | null
     }
 
 }
@@ -8689,6 +9571,10 @@ export interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      */
     enable_expansion: boolean
     /**
+     * Whether expansion is enabled.
+     */
+    enableExpansion: boolean
+    /**
      * Whether the row is expanded.
      */
     expanded: boolean
@@ -8697,9 +9583,17 @@ export interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      */
     icon_name: string | null
     /**
+     * The icon name for this row.
+     */
+    iconName: string | null
+    /**
      * Whether the switch enabling the expansion is visible.
      */
     show_enable_switch: boolean
+    /**
+     * Whether the switch enabling the expansion is visible.
+     */
+    showEnableSwitch: boolean
     /**
      * The subtitle for this row.
      * 
@@ -8715,11 +9609,24 @@ export interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      */
     subtitle_lines: number
     /**
+     * The number of lines at the end of which the subtitle label will be
+     * ellipsized.
+     * 
+     * If the value is 0, the number of lines won't be limited.
+     */
+    subtitleLines: number
+    /**
      * The number of lines at the end of which the title label will be ellipsized.
      * 
      * If the value is 0, the number of lines won't be limited.
      */
     title_lines: number
+    /**
+     * The number of lines at the end of which the title label will be ellipsized.
+     * 
+     * If the value is 0, the number of lines won't be limited.
+     */
+    titleLines: number
 
     // Own fields of Adw-1.Adw.ExpanderRow
 
@@ -9156,6 +10063,69 @@ export module Flap {
          * this is unwanted.
          */
         transition_type?: FlapTransitionType | null
+        /**
+         * The flap position.
+         * 
+         * If it's set to `GTK_PACK_START`, the flap is displayed before the content,
+         * if `GTK_PACK_END`, it's displayed after the content.
+         */
+        flapPosition?: Gtk.PackType | null
+        /**
+         * The fold transition animation duration, in milliseconds.
+         */
+        foldDuration?: number | null
+        /**
+         * The fold policy for the flap.
+         */
+        foldPolicy?: FlapFoldPolicy | null
+        /**
+         * Determines when the flap will fold.
+         * 
+         * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, flap will only fold when
+         * the children cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`,
+         * it will fold as soon as children don't get their natural size.
+         * 
+         * This can be useful if you have a long ellipsizing label and want to let it
+         * ellipsize instead of immediately folding.
+         */
+        foldThresholdPolicy?: FoldThresholdPolicy | null
+        /**
+         * Whether the flap widget is revealed.
+         */
+        revealFlap?: boolean | null
+        /**
+         * The reveal animation spring parameters.
+         * 
+         * The default value is equivalent to:
+         * 
+         * ```c
+         * adw_spring_params_new (1, 0.5, 500)
+         * ```
+         */
+        revealParams?: SpringParams | null
+        /**
+         * Whether the flap can be closed with a swipe gesture.
+         * 
+         * The area that can be swiped depends on the [property`Flap:`transition-type]
+         * value.
+         */
+        swipeToClose?: boolean | null
+        /**
+         * Whether the flap can be opened with a swipe gesture.
+         * 
+         * The area that can be swiped depends on the [property`Flap:`transition-type]
+         * value.
+         */
+        swipeToOpen?: boolean | null
+        /**
+         * the type of animation used for reveal and fold transitions.
+         * 
+         * [property`Flap:`flap] is transparent by default, which means the content
+         * will be seen through it with `ADW_FLAP_TRANSITION_TYPE_OVER` transitions;
+         * add the [`.background`](style-classes.html#background) style class to it if
+         * this is unwanted.
+         */
+        transitionType?: FlapTransitionType | null
     }
 
 }
@@ -9184,13 +10154,28 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     flap_position: Gtk.PackType
     /**
+     * The flap position.
+     * 
+     * If it's set to `GTK_PACK_START`, the flap is displayed before the content,
+     * if `GTK_PACK_END`, it's displayed after the content.
+     */
+    flapPosition: Gtk.PackType
+    /**
      * The fold transition animation duration, in milliseconds.
      */
     fold_duration: number
     /**
+     * The fold transition animation duration, in milliseconds.
+     */
+    foldDuration: number
+    /**
      * The fold policy for the flap.
      */
     fold_policy: FlapFoldPolicy
+    /**
+     * The fold policy for the flap.
+     */
+    foldPolicy: FlapFoldPolicy
     /**
      * Determines when the flap will fold.
      * 
@@ -9202,6 +10187,17 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * ellipsize instead of immediately folding.
      */
     fold_threshold_policy: FoldThresholdPolicy
+    /**
+     * Determines when the flap will fold.
+     * 
+     * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, flap will only fold when
+     * the children cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`,
+     * it will fold as soon as children don't get their natural size.
+     * 
+     * This can be useful if you have a long ellipsizing label and want to let it
+     * ellipsize instead of immediately folding.
+     */
+    foldThresholdPolicy: FoldThresholdPolicy
     /**
      * Whether the flap is currently folded.
      * 
@@ -9229,6 +10225,10 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     reveal_flap: boolean
     /**
+     * Whether the flap widget is revealed.
+     */
+    revealFlap: boolean
+    /**
      * The reveal animation spring parameters.
      * 
      * The default value is equivalent to:
@@ -9239,6 +10239,16 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     reveal_params: SpringParams
     /**
+     * The reveal animation spring parameters.
+     * 
+     * The default value is equivalent to:
+     * 
+     * ```c
+     * adw_spring_params_new (1, 0.5, 500)
+     * ```
+     */
+    revealParams: SpringParams
+    /**
      * The current reveal transition progress.
      * 
      * 0 means fully hidden, 1 means fully revealed.
@@ -9246,6 +10256,14 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * See [property`Flap:`reveal-flap].
      */
     readonly reveal_progress: number
+    /**
+     * The current reveal transition progress.
+     * 
+     * 0 means fully hidden, 1 means fully revealed.
+     * 
+     * See [property`Flap:`reveal-flap].
+     */
+    readonly revealProgress: number
     /**
      * The separator widget.
      * 
@@ -9262,12 +10280,26 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     swipe_to_close: boolean
     /**
+     * Whether the flap can be closed with a swipe gesture.
+     * 
+     * The area that can be swiped depends on the [property`Flap:`transition-type]
+     * value.
+     */
+    swipeToClose: boolean
+    /**
      * Whether the flap can be opened with a swipe gesture.
      * 
      * The area that can be swiped depends on the [property`Flap:`transition-type]
      * value.
      */
     swipe_to_open: boolean
+    /**
+     * Whether the flap can be opened with a swipe gesture.
+     * 
+     * The area that can be swiped depends on the [property`Flap:`transition-type]
+     * value.
+     */
+    swipeToOpen: boolean
     /**
      * the type of animation used for reveal and fold transitions.
      * 
@@ -9277,6 +10309,15 @@ export interface Flap extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * this is unwanted.
      */
     transition_type: FlapTransitionType
+    /**
+     * the type of animation used for reveal and fold transitions.
+     * 
+     * [property`Flap:`flap] is transparent by default, which means the content
+     * will be seen through it with `ADW_FLAP_TRANSITION_TYPE_OVER` transitions;
+     * add the [`.background`](style-classes.html#background) style class to it if
+     * this is unwanted.
+     */
+    transitionType: FlapTransitionType
 
     // Owm methods of Adw-1.Adw.Flap
 
@@ -9807,6 +10848,77 @@ export module HeaderBar {
          * ```
          */
         title_widget?: Gtk.Widget | null
+        /**
+         * The policy for aligning the center widget.
+         */
+        centeringPolicy?: CenteringPolicy | null
+        /**
+         * The decoration layout for buttons.
+         * 
+         * If this property is not set, the
+         * [property`Gtk`.Settings:gtk-decoration-layout] setting is used.
+         * 
+         * The format of the string is button names, separated by commas. A colon
+         * separates the buttons that should appear at the start from those at the
+         * end. Recognized button names are minimize, maximize, close and icon (the
+         * window icon).
+         * 
+         * For example, “icon:minimize,maximize,close” specifies an icon at the start,
+         * and minimize, maximize and close buttons at the end.
+         */
+        decorationLayout?: string | null
+        /**
+         * Whether the header bar can show the back button.
+         * 
+         * The back button will never be shown unless the header bar is placed inside an
+         * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
+         */
+        showBackButton?: boolean | null
+        /**
+         * Whether to show title buttons at the end of the header bar.
+         * 
+         * See [property`HeaderBar:`show-start-title-buttons] for the other side.
+         * 
+         * Which buttons are actually shown and where is determined by the
+         * [property`HeaderBar:`decoration-layout] property, and by the state of the
+         * window (e.g. a close button will not be shown if the window can't be
+         * closed).
+         */
+        showEndTitleButtons?: boolean | null
+        /**
+         * Whether to show title buttons at the start of the header bar.
+         * 
+         * See [property`HeaderBar:`show-end-title-buttons] for the other side.
+         * 
+         * Which buttons are actually shown and where is determined by the
+         * [property`HeaderBar:`decoration-layout] property, and by the state of the
+         * window (e.g. a close button will not be shown if the window can't be
+         * closed).
+         */
+        showStartTitleButtons?: boolean | null
+        /**
+         * Whether the title widget should be shown.
+         */
+        showTitle?: boolean | null
+        /**
+         * The title widget to display.
+         * 
+         * When set to `NULL`, the header bar will display the title of the window it
+         * is contained in.
+         * 
+         * To use a different title, use [class`WindowTitle]`:
+         * 
+         * ```xml
+         * <object class="AdwHeaderBar">
+         *   <property name="title-widget">
+         *     <object class="AdwWindowTitle">
+         *       <property name="title" translatable="yes">Title</property>
+         *     </object>
+         *   </property>
+         * </object>
+         * ```
+         */
+        titleWidget?: Gtk.Widget | null
     }
 
 }
@@ -9819,6 +10931,10 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * The policy for aligning the center widget.
      */
     centering_policy: CenteringPolicy
+    /**
+     * The policy for aligning the center widget.
+     */
+    centeringPolicy: CenteringPolicy
     /**
      * The decoration layout for buttons.
      * 
@@ -9835,12 +10951,34 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     decoration_layout: string | null
     /**
+     * The decoration layout for buttons.
+     * 
+     * If this property is not set, the
+     * [property`Gtk`.Settings:gtk-decoration-layout] setting is used.
+     * 
+     * The format of the string is button names, separated by commas. A colon
+     * separates the buttons that should appear at the start from those at the
+     * end. Recognized button names are minimize, maximize, close and icon (the
+     * window icon).
+     * 
+     * For example, “icon:minimize,maximize,close” specifies an icon at the start,
+     * and minimize, maximize and close buttons at the end.
+     */
+    decorationLayout: string | null
+    /**
      * Whether the header bar can show the back button.
      * 
      * The back button will never be shown unless the header bar is placed inside an
      * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
      */
     show_back_button: boolean
+    /**
+     * Whether the header bar can show the back button.
+     * 
+     * The back button will never be shown unless the header bar is placed inside an
+     * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
+     */
+    showBackButton: boolean
     /**
      * Whether to show title buttons at the end of the header bar.
      * 
@@ -9853,6 +10991,17 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     show_end_title_buttons: boolean
     /**
+     * Whether to show title buttons at the end of the header bar.
+     * 
+     * See [property`HeaderBar:`show-start-title-buttons] for the other side.
+     * 
+     * Which buttons are actually shown and where is determined by the
+     * [property`HeaderBar:`decoration-layout] property, and by the state of the
+     * window (e.g. a close button will not be shown if the window can't be
+     * closed).
+     */
+    showEndTitleButtons: boolean
+    /**
      * Whether to show title buttons at the start of the header bar.
      * 
      * See [property`HeaderBar:`show-end-title-buttons] for the other side.
@@ -9864,9 +11013,24 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     show_start_title_buttons: boolean
     /**
+     * Whether to show title buttons at the start of the header bar.
+     * 
+     * See [property`HeaderBar:`show-end-title-buttons] for the other side.
+     * 
+     * Which buttons are actually shown and where is determined by the
+     * [property`HeaderBar:`decoration-layout] property, and by the state of the
+     * window (e.g. a close button will not be shown if the window can't be
+     * closed).
+     */
+    showStartTitleButtons: boolean
+    /**
      * Whether the title widget should be shown.
      */
     show_title: boolean
+    /**
+     * Whether the title widget should be shown.
+     */
+    showTitle: boolean
     /**
      * The title widget to display.
      * 
@@ -9886,6 +11050,25 @@ export interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * ```
      */
     title_widget: Gtk.Widget
+    /**
+     * The title widget to display.
+     * 
+     * When set to `NULL`, the header bar will display the title of the window it
+     * is contained in.
+     * 
+     * To use a different title, use [class`WindowTitle]`:
+     * 
+     * ```xml
+     * <object class="AdwHeaderBar">
+     *   <property name="title-widget">
+     *     <object class="AdwWindowTitle">
+     *       <property name="title" translatable="yes">Title</property>
+     *     </object>
+     *   </property>
+     * </object>
+     * ```
+     */
+    titleWidget: Gtk.Widget
 
     // Owm methods of Adw-1.Adw.HeaderBar
 
@@ -10365,6 +11548,98 @@ export module Leaflet {
          * See [property`Leaflet:`visible-child].
          */
         visible_child_name?: string | null
+        /**
+         * Whether gestures and shortcuts for navigating backward are enabled.
+         * 
+         * The supported gestures are:
+         * 
+         * - One-finger swipe on touchscreens
+         * - Horizontal scrolling on touchpads (usually two-finger swipe)
+         * - Back/forward mouse buttons
+         * 
+         * The keyboard back/forward keys are also supported, as well as the
+         * <kbd>Alt</kbd>+<kbd>←</kbd> shortcut for horizontal orientation, or
+         * <kbd>Alt</kbd>+<kbd>↑</kbd> for vertical orientation.
+         * 
+         * If the orientation is horizontal, for right-to-left locales, gestures and
+         * shortcuts are reversed.
+         * 
+         * Only children that have [property`LeafletPage:`navigatable] set to `TRUE`
+         * can be navigated to.
+         */
+        canNavigateBack?: boolean | null
+        /**
+         * Whether gestures and shortcuts for navigating forward are enabled.
+         * 
+         * The supported gestures are:
+         * 
+         * - One-finger swipe on touchscreens
+         * - Horizontal scrolling on touchpads (usually two-finger swipe)
+         * - Back/forward mouse buttons
+         * 
+         * The keyboard back/forward keys are also supported, as well as the
+         * <kbd>Alt</kbd>+<kbd>→</kbd> shortcut for horizontal orientation, or
+         * <kbd>Alt</kbd>+<kbd>↓</kbd> for vertical orientation.
+         * 
+         * If the orientation is horizontal, for right-to-left locales, gestures and
+         * shortcuts are reversed.
+         * 
+         * Only children that have [property`LeafletPage:`navigatable] set to `TRUE`
+         * can be navigated to.
+         */
+        canNavigateForward?: boolean | null
+        /**
+         * Whether or not the leaflet can unfold.
+         */
+        canUnfold?: boolean | null
+        /**
+         * The child transition spring parameters.
+         * 
+         * The default value is equivalent to:
+         * 
+         * ```c
+         * adw_spring_params_new (1, 0.5, 500)
+         * ```
+         */
+        childTransitionParams?: SpringParams | null
+        /**
+         * Determines when the leaflet will fold.
+         * 
+         * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, it will only fold when the
+         * children cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`, it
+         * will fold as soon as children don't get their natural size.
+         * 
+         * This can be useful if you have a long ellipsizing label and want to let it
+         * ellipsize instead of immediately folding.
+         */
+        foldThresholdPolicy?: FoldThresholdPolicy | null
+        /**
+         * The mode transition animation duration, in milliseconds.
+         */
+        modeTransitionDuration?: number | null
+        /**
+         * The type of animation used for transitions between modes and children.
+         * 
+         * The transition type can be changed without problems at runtime, so it is
+         * possible to change the animation based on the mode or child that is about
+         * to become current.
+         */
+        transitionType?: LeafletTransitionType | null
+        /**
+         * The widget currently visible when the leaflet is folded.
+         * 
+         * The transition is determined by [property`Leaflet:`transition-type] and
+         * [property`Leaflet:`child-transition-params]. The transition can be cancelled
+         * by the user, in which case visible child will change back to the previously
+         * visible child.
+         */
+        visibleChild?: Gtk.Widget | null
+        /**
+         * The name of the widget currently visible when the leaflet is folded.
+         * 
+         * See [property`Leaflet:`visible-child].
+         */
+        visibleChildName?: string | null
     }
 
 }
@@ -10394,6 +11669,26 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     can_navigate_back: boolean
     /**
+     * Whether gestures and shortcuts for navigating backward are enabled.
+     * 
+     * The supported gestures are:
+     * 
+     * - One-finger swipe on touchscreens
+     * - Horizontal scrolling on touchpads (usually two-finger swipe)
+     * - Back/forward mouse buttons
+     * 
+     * The keyboard back/forward keys are also supported, as well as the
+     * <kbd>Alt</kbd>+<kbd>←</kbd> shortcut for horizontal orientation, or
+     * <kbd>Alt</kbd>+<kbd>↑</kbd> for vertical orientation.
+     * 
+     * If the orientation is horizontal, for right-to-left locales, gestures and
+     * shortcuts are reversed.
+     * 
+     * Only children that have [property`LeafletPage:`navigatable] set to `TRUE`
+     * can be navigated to.
+     */
+    canNavigateBack: boolean
+    /**
      * Whether gestures and shortcuts for navigating forward are enabled.
      * 
      * The supported gestures are:
@@ -10414,9 +11709,33 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     can_navigate_forward: boolean
     /**
+     * Whether gestures and shortcuts for navigating forward are enabled.
+     * 
+     * The supported gestures are:
+     * 
+     * - One-finger swipe on touchscreens
+     * - Horizontal scrolling on touchpads (usually two-finger swipe)
+     * - Back/forward mouse buttons
+     * 
+     * The keyboard back/forward keys are also supported, as well as the
+     * <kbd>Alt</kbd>+<kbd>→</kbd> shortcut for horizontal orientation, or
+     * <kbd>Alt</kbd>+<kbd>↓</kbd> for vertical orientation.
+     * 
+     * If the orientation is horizontal, for right-to-left locales, gestures and
+     * shortcuts are reversed.
+     * 
+     * Only children that have [property`LeafletPage:`navigatable] set to `TRUE`
+     * can be navigated to.
+     */
+    canNavigateForward: boolean
+    /**
      * Whether or not the leaflet can unfold.
      */
     can_unfold: boolean
+    /**
+     * Whether or not the leaflet can unfold.
+     */
+    canUnfold: boolean
     /**
      * The child transition spring parameters.
      * 
@@ -10428,9 +11747,23 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     child_transition_params: SpringParams
     /**
+     * The child transition spring parameters.
+     * 
+     * The default value is equivalent to:
+     * 
+     * ```c
+     * adw_spring_params_new (1, 0.5, 500)
+     * ```
+     */
+    childTransitionParams: SpringParams
+    /**
      * Whether a child transition is currently running.
      */
     readonly child_transition_running: boolean
+    /**
+     * Whether a child transition is currently running.
+     */
+    readonly childTransitionRunning: boolean
     /**
      * Determines when the leaflet will fold.
      * 
@@ -10442,6 +11775,17 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      * ellipsize instead of immediately folding.
      */
     fold_threshold_policy: FoldThresholdPolicy
+    /**
+     * Determines when the leaflet will fold.
+     * 
+     * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, it will only fold when the
+     * children cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`, it
+     * will fold as soon as children don't get their natural size.
+     * 
+     * This can be useful if you have a long ellipsizing label and want to let it
+     * ellipsize instead of immediately folding.
+     */
+    foldThresholdPolicy: FoldThresholdPolicy
     /**
      * Whether the leaflet is folded.
      * 
@@ -10462,6 +11806,10 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     mode_transition_duration: number
     /**
+     * The mode transition animation duration, in milliseconds.
+     */
+    modeTransitionDuration: number
+    /**
      * A selection model with the leaflet's pages.
      * 
      * This can be used to keep an up-to-date view. The model also implements
@@ -10478,6 +11826,14 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     transition_type: LeafletTransitionType
     /**
+     * The type of animation used for transitions between modes and children.
+     * 
+     * The transition type can be changed without problems at runtime, so it is
+     * possible to change the animation based on the mode or child that is about
+     * to become current.
+     */
+    transitionType: LeafletTransitionType
+    /**
      * The widget currently visible when the leaflet is folded.
      * 
      * The transition is determined by [property`Leaflet:`transition-type] and
@@ -10487,11 +11843,26 @@ export interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      */
     visible_child: Gtk.Widget
     /**
+     * The widget currently visible when the leaflet is folded.
+     * 
+     * The transition is determined by [property`Leaflet:`transition-type] and
+     * [property`Leaflet:`child-transition-params]. The transition can be cancelled
+     * by the user, in which case visible child will change back to the previously
+     * visible child.
+     */
+    visibleChild: Gtk.Widget
+    /**
      * The name of the widget currently visible when the leaflet is folded.
      * 
      * See [property`Leaflet:`visible-child].
      */
     visible_child_name: string | null
+    /**
+     * The name of the widget currently visible when the leaflet is folded.
+     * 
+     * See [property`Leaflet:`visible-child].
+     */
+    visibleChildName: string | null
 
     // Owm methods of Adw-1.Adw.Leaflet
 
@@ -11150,6 +12521,44 @@ export module MessageDialog {
          * See [func`Pango`.parse_markup].
          */
         heading_use_markup?: boolean | null
+        /**
+         * Whether the body text includes Pango markup.
+         * 
+         * See [func`Pango`.parse_markup].
+         */
+        bodyUseMarkup?: boolean | null
+        /**
+         * The ID of the close response.
+         * 
+         * It will be passed to [signal`MessageDialog:`:response] if the window is
+         * closed by pressing <kbd>Escape</kbd> or with a system action.
+         * 
+         * It doesn't have to correspond to any of the responses in the dialog.
+         * 
+         * The default close response is `close`.
+         */
+        closeResponse?: string | null
+        /**
+         * The response ID of the default response.
+         * 
+         * If set, pressing <kbd>Enter</kbd> will activate the corresponding button.
+         * 
+         * If set to `NULL` or a non-existent response ID, pressing <kbd>Enter</kbd>
+         * will do nothing.
+         */
+        defaultResponse?: string | null
+        /**
+         * The child widget.
+         * 
+         * Displayed below the heading and body.
+         */
+        extraChild?: Gtk.Widget | null
+        /**
+         * Whether the heading includes Pango markup.
+         * 
+         * See [func`Pango`.parse_markup].
+         */
+        headingUseMarkup?: boolean | null
     }
 
 }
@@ -11169,6 +12578,12 @@ export interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      */
     body_use_markup: boolean
     /**
+     * Whether the body text includes Pango markup.
+     * 
+     * See [func`Pango`.parse_markup].
+     */
+    bodyUseMarkup: boolean
+    /**
      * The ID of the close response.
      * 
      * It will be passed to [signal`MessageDialog:`:response] if the window is
@@ -11180,6 +12595,17 @@ export interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      */
     close_response: string | null
     /**
+     * The ID of the close response.
+     * 
+     * It will be passed to [signal`MessageDialog:`:response] if the window is
+     * closed by pressing <kbd>Escape</kbd> or with a system action.
+     * 
+     * It doesn't have to correspond to any of the responses in the dialog.
+     * 
+     * The default close response is `close`.
+     */
+    closeResponse: string | null
+    /**
      * The response ID of the default response.
      * 
      * If set, pressing <kbd>Enter</kbd> will activate the corresponding button.
@@ -11189,11 +12615,26 @@ export interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      */
     default_response: string | null
     /**
+     * The response ID of the default response.
+     * 
+     * If set, pressing <kbd>Enter</kbd> will activate the corresponding button.
+     * 
+     * If set to `NULL` or a non-existent response ID, pressing <kbd>Enter</kbd>
+     * will do nothing.
+     */
+    defaultResponse: string | null
+    /**
      * The child widget.
      * 
      * Displayed below the heading and body.
      */
     extra_child: Gtk.Widget
+    /**
+     * The child widget.
+     * 
+     * Displayed below the heading and body.
+     */
+    extraChild: Gtk.Widget
     /**
      * The heading of the dialog.
      */
@@ -11204,6 +12645,12 @@ export interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      * See [func`Pango`.parse_markup].
      */
     heading_use_markup: boolean
+    /**
+     * Whether the heading includes Pango markup.
+     * 
+     * See [func`Pango`.parse_markup].
+     */
+    headingUseMarkup: boolean
 
     // Own fields of Adw-1.Adw.MessageDialog
 
@@ -11930,6 +13377,19 @@ export module NavigationPage {
          * as the tooltip on the next page's back button, as well as by screen reader.
          */
         title?: string | null
+        /**
+         * Whether the page can be popped from navigation stack.
+         * 
+         * Set it to `FALSE` to disable shortcuts and gestures, as well as remove the
+         * back button from [class`HeaderBar]`.
+         * 
+         * Manually calling [method`NavigationView`.pop] or using the `navigation.pop`
+         * action will still work.
+         * 
+         * See [property`HeaderBar:`show-back-button] for removing only the back
+         * button, but not shortcuts.
+         */
+        canPop?: boolean | null
     }
 
 }
@@ -11951,6 +13411,19 @@ export interface NavigationPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Const
      * button, but not shortcuts.
      */
     can_pop: boolean
+    /**
+     * Whether the page can be popped from navigation stack.
+     * 
+     * Set it to `FALSE` to disable shortcuts and gestures, as well as remove the
+     * back button from [class`HeaderBar]`.
+     * 
+     * Manually calling [method`NavigationView`.pop] or using the `navigation.pop`
+     * action will still work.
+     * 
+     * See [property`HeaderBar:`show-back-button] for removing only the back
+     * button, but not shortcuts.
+     */
+    canPop: boolean
     /**
      * The child widget.
      */
@@ -12353,6 +13826,55 @@ export module NavigationSplitView {
          * [property`NavigationSplitView:`max-sidebar-width].
          */
         sidebar_width_unit?: LengthUnit | null
+        /**
+         * The maximum sidebar width.
+         * 
+         * Maximum width is affected by
+         * [property`NavigationSplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        maxSidebarWidth?: number | null
+        /**
+         * The minimum sidebar width.
+         * 
+         * Minimum width is affected by
+         * [property`NavigationSplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        minSidebarWidth?: number | null
+        /**
+         * Determines the visible page when collapsed.
+         * 
+         * If set to `TRUE`, the content widget will be the visible page when
+         * [property`NavigationSplitView:`collapsed] is `TRUE`; otherwise the sidebar
+         * widget will be visible.
+         * 
+         * If the split view is already collapsed, the visible page changes
+         * immediately.
+         */
+        showContent?: boolean | null
+        /**
+         * The preferred sidebar width as a fraction of the total width.
+         * 
+         * The preferred width is additionally limited by
+         * [property`NavigationSplitView:`min-sidebar-width] and
+         * [property`NavigationSplitView:`max-sidebar-width].
+         * 
+         * The sidebar widget can be allocated with larger width if its own minimum
+         * width exceeds the preferred width.
+         */
+        sidebarWidthFraction?: number | null
+        /**
+         * The length unit for minimum and maximum sidebar widths.
+         * 
+         * See [property`NavigationSplitView:`min-sidebar-width] and
+         * [property`NavigationSplitView:`max-sidebar-width].
+         */
+        sidebarWidthUnit?: LengthUnit | null
     }
 
 }
@@ -12386,6 +13908,16 @@ export interface NavigationSplitView extends Gtk.Accessible, Gtk.Buildable, Gtk.
      */
     max_sidebar_width: number
     /**
+     * The maximum sidebar width.
+     * 
+     * Maximum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    maxSidebarWidth: number
+    /**
      * The minimum sidebar width.
      * 
      * Minimum width is affected by
@@ -12395,6 +13927,16 @@ export interface NavigationSplitView extends Gtk.Accessible, Gtk.Buildable, Gtk.
      * minimum width exceeds it.
      */
     min_sidebar_width: number
+    /**
+     * The minimum sidebar width.
+     * 
+     * Minimum width is affected by
+     * [property`NavigationSplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    minSidebarWidth: number
     /**
      * Determines the visible page when collapsed.
      * 
@@ -12406,6 +13948,17 @@ export interface NavigationSplitView extends Gtk.Accessible, Gtk.Buildable, Gtk.
      * immediately.
      */
     show_content: boolean
+    /**
+     * Determines the visible page when collapsed.
+     * 
+     * If set to `TRUE`, the content widget will be the visible page when
+     * [property`NavigationSplitView:`collapsed] is `TRUE`; otherwise the sidebar
+     * widget will be visible.
+     * 
+     * If the split view is already collapsed, the visible page changes
+     * immediately.
+     */
+    showContent: boolean
     /**
      * The sidebar widget.
      */
@@ -12422,12 +13975,30 @@ export interface NavigationSplitView extends Gtk.Accessible, Gtk.Buildable, Gtk.
      */
     sidebar_width_fraction: number
     /**
+     * The preferred sidebar width as a fraction of the total width.
+     * 
+     * The preferred width is additionally limited by
+     * [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     */
+    sidebarWidthFraction: number
+    /**
      * The length unit for minimum and maximum sidebar widths.
      * 
      * See [property`NavigationSplitView:`min-sidebar-width] and
      * [property`NavigationSplitView:`max-sidebar-width].
      */
     sidebar_width_unit: LengthUnit
+    /**
+     * The length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`NavigationSplitView:`min-sidebar-width] and
+     * [property`NavigationSplitView:`max-sidebar-width].
+     */
+    sidebarWidthUnit: LengthUnit
 
     // Owm methods of Adw-1.Adw.NavigationSplitView
 
@@ -12897,6 +14468,19 @@ export module NavigationView {
          * disable it.
          */
         pop_on_escape?: boolean | null
+        /**
+         * Whether to animate page transitions.
+         * 
+         * Gesture-based transitions are always animated.
+         */
+        animateTransitions?: boolean | null
+        /**
+         * Whether pressing Escape pops the current page.
+         * 
+         * Applications using `AdwNavigationView` to implement a browser may want to
+         * disable it.
+         */
+        popOnEscape?: boolean | null
     }
 
 }
@@ -12912,6 +14496,12 @@ export interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable
      */
     animate_transitions: boolean
     /**
+     * Whether to animate page transitions.
+     * 
+     * Gesture-based transitions are always animated.
+     */
+    animateTransitions: boolean
+    /**
      * A list model that contains the pages in navigation stack.
      * 
      * The pages are sorted from root page to visible page.
@@ -12920,6 +14510,14 @@ export interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable
      */
     readonly navigation_stack: Gio.ListModel
     /**
+     * A list model that contains the pages in navigation stack.
+     * 
+     * The pages are sorted from root page to visible page.
+     * 
+     * This can be used to keep an up-to-date view.
+     */
+    readonly navigationStack: Gio.ListModel
+    /**
      * Whether pressing Escape pops the current page.
      * 
      * Applications using `AdwNavigationView` to implement a browser may want to
@@ -12927,9 +14525,20 @@ export interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable
      */
     pop_on_escape: boolean
     /**
+     * Whether pressing Escape pops the current page.
+     * 
+     * Applications using `AdwNavigationView` to implement a browser may want to
+     * disable it.
+     */
+    popOnEscape: boolean
+    /**
      * The currently visible page.
      */
     readonly visible_page: NavigationPage
+    /**
+     * The currently visible page.
+     */
+    readonly visiblePage: NavigationPage
 
     // Owm methods of Adw-1.Adw.NavigationView
 
@@ -13540,6 +15149,75 @@ export module OverlaySplitView {
          * [property`OverlaySplitView:`max-sidebar-width].
          */
         sidebar_width_unit?: LengthUnit | null
+        /**
+         * Whether the sidebar can be closed with a swipe gesture.
+         * 
+         * Only touchscreen swipes are supported.
+         */
+        enableHideGesture?: boolean | null
+        /**
+         * Whether the sidebar can be opened with an edge swipe gesture.
+         * 
+         * Only touchscreen swipes are supported.
+         */
+        enableShowGesture?: boolean | null
+        /**
+         * The maximum sidebar width.
+         * 
+         * Maximum width is affected by
+         * [property`OverlaySplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        maxSidebarWidth?: number | null
+        /**
+         * The minimum sidebar width.
+         * 
+         * Minimum width is affected by
+         * [property`OverlaySplitView:`sidebar-width-unit].
+         * 
+         * The sidebar widget can still be allocated with larger width if its own
+         * minimum width exceeds it.
+         */
+        minSidebarWidth?: number | null
+        /**
+         * Whether the sidebar widget is pinned.
+         * 
+         * By default, collapsing `self` automatically hides the sidebar widget, and
+         * uncollapsing it shows the sidebar. If set to `TRUE`, sidebar visibility
+         * never changes on its own.
+         */
+        pinSidebar?: boolean | null
+        /**
+         * Whether the sidebar widget is shown.
+         */
+        showSidebar?: boolean | null
+        /**
+         * The sidebar position.
+         * 
+         * If it's set to `GTK_PACK_START`, the sidebar is displayed before the content,
+         * if `GTK_PACK_END`, it's displayed after the content.
+         */
+        sidebarPosition?: Gtk.PackType | null
+        /**
+         * The preferred sidebar width as a fraction of the total width.
+         * 
+         * The preferred width is additionally limited by
+         * [property`OverlaySplitView:`min-sidebar-width] and
+         * [property`OverlaySplitView:`max-sidebar-width].
+         * 
+         * The sidebar widget can be allocated with larger width if its own minimum
+         * width exceeds the preferred width.
+         */
+        sidebarWidthFraction?: number | null
+        /**
+         * The length unit for minimum and maximum sidebar widths.
+         * 
+         * See [property`OverlaySplitView:`min-sidebar-width] and
+         * [property`OverlaySplitView:`max-sidebar-width].
+         */
+        sidebarWidthUnit?: LengthUnit | null
     }
 
 }
@@ -13566,11 +15244,23 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     enable_hide_gesture: boolean
     /**
+     * Whether the sidebar can be closed with a swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     */
+    enableHideGesture: boolean
+    /**
      * Whether the sidebar can be opened with an edge swipe gesture.
      * 
      * Only touchscreen swipes are supported.
      */
     enable_show_gesture: boolean
+    /**
+     * Whether the sidebar can be opened with an edge swipe gesture.
+     * 
+     * Only touchscreen swipes are supported.
+     */
+    enableShowGesture: boolean
     /**
      * The maximum sidebar width.
      * 
@@ -13582,6 +15272,16 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     max_sidebar_width: number
     /**
+     * The maximum sidebar width.
+     * 
+     * Maximum width is affected by
+     * [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    maxSidebarWidth: number
+    /**
      * The minimum sidebar width.
      * 
      * Minimum width is affected by
@@ -13592,6 +15292,16 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     min_sidebar_width: number
     /**
+     * The minimum sidebar width.
+     * 
+     * Minimum width is affected by
+     * [property`OverlaySplitView:`sidebar-width-unit].
+     * 
+     * The sidebar widget can still be allocated with larger width if its own
+     * minimum width exceeds it.
+     */
+    minSidebarWidth: number
+    /**
      * Whether the sidebar widget is pinned.
      * 
      * By default, collapsing `self` automatically hides the sidebar widget, and
@@ -13600,9 +15310,21 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     pin_sidebar: boolean
     /**
+     * Whether the sidebar widget is pinned.
+     * 
+     * By default, collapsing `self` automatically hides the sidebar widget, and
+     * uncollapsing it shows the sidebar. If set to `TRUE`, sidebar visibility
+     * never changes on its own.
+     */
+    pinSidebar: boolean
+    /**
      * Whether the sidebar widget is shown.
      */
     show_sidebar: boolean
+    /**
+     * Whether the sidebar widget is shown.
+     */
+    showSidebar: boolean
     /**
      * The sidebar widget.
      */
@@ -13615,6 +15337,13 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     sidebar_position: Gtk.PackType
     /**
+     * The sidebar position.
+     * 
+     * If it's set to `GTK_PACK_START`, the sidebar is displayed before the content,
+     * if `GTK_PACK_END`, it's displayed after the content.
+     */
+    sidebarPosition: Gtk.PackType
+    /**
      * The preferred sidebar width as a fraction of the total width.
      * 
      * The preferred width is additionally limited by
@@ -13626,12 +15355,30 @@ export interface OverlaySplitView extends Swipeable, Gtk.Accessible, Gtk.Buildab
      */
     sidebar_width_fraction: number
     /**
+     * The preferred sidebar width as a fraction of the total width.
+     * 
+     * The preferred width is additionally limited by
+     * [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     * 
+     * The sidebar widget can be allocated with larger width if its own minimum
+     * width exceeds the preferred width.
+     */
+    sidebarWidthFraction: number
+    /**
      * The length unit for minimum and maximum sidebar widths.
      * 
      * See [property`OverlaySplitView:`min-sidebar-width] and
      * [property`OverlaySplitView:`max-sidebar-width].
      */
     sidebar_width_unit: LengthUnit
+    /**
+     * The length unit for minimum and maximum sidebar widths.
+     * 
+     * See [property`OverlaySplitView:`min-sidebar-width] and
+     * [property`OverlaySplitView:`max-sidebar-width].
+     */
+    sidebarWidthUnit: LengthUnit
 
     // Owm methods of Adw-1.Adw.OverlaySplitView
 
@@ -14369,6 +16116,15 @@ export module PreferencesGroup {
          * The title for this group of preferences.
          */
         title?: string | null
+        /**
+         * The header suffix widget.
+         * 
+         * Displayed above the list, next to the title and description.
+         * 
+         * Suffixes are commonly used to show a button or a spinner for the whole
+         * group.
+         */
+        headerSuffix?: Gtk.Widget | null
     }
 
 }
@@ -14390,6 +16146,15 @@ export interface PreferencesGroup extends Gtk.Accessible, Gtk.Buildable, Gtk.Con
      * group.
      */
     header_suffix: Gtk.Widget
+    /**
+     * The header suffix widget.
+     * 
+     * Displayed above the list, next to the title and description.
+     * 
+     * Suffixes are commonly used to show a button or a spinner for the whole
+     * group.
+     */
+    headerSuffix: Gtk.Widget
     /**
      * The title for this group of preferences.
      */
@@ -14655,6 +16420,14 @@ export module PreferencesPage {
          * Whether an embedded underline in the title indicates a mnemonic.
          */
         use_underline?: boolean | null
+        /**
+         * The icon name for this page.
+         */
+        iconName?: string | null
+        /**
+         * Whether an embedded underline in the title indicates a mnemonic.
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -14672,6 +16445,10 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      */
     icon_name: string | null
     /**
+     * The icon name for this page.
+     */
+    iconName: string | null
+    /**
      * The name of this page.
      */
     name: string | null
@@ -14683,6 +16460,10 @@ export interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Cons
      * Whether an embedded underline in the title indicates a mnemonic.
      */
     use_underline: boolean
+    /**
+     * Whether an embedded underline in the title indicates a mnemonic.
+     */
+    useUnderline: boolean
 
     // Own fields of Adw-1.Adw.PreferencesPage
 
@@ -14960,6 +16741,24 @@ export module PreferencesRow {
          * Whether an embedded underline in the title indicates a mnemonic.
          */
         use_underline?: boolean | null
+        /**
+         * Whether the user can copy the title from the label.
+         * 
+         * See also [property`Gtk`.Label:selectable].
+         */
+        titleSelectable?: boolean | null
+        /**
+         * Whether to use Pango markup for the title label.
+         * 
+         * Subclasses may also use it for other labels, such as subtitle.
+         * 
+         * See also [func`Pango`.parse_markup].
+         */
+        useMarkup?: boolean | null
+        /**
+         * Whether an embedded underline in the title indicates a mnemonic.
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -14982,6 +16781,12 @@ export interface PreferencesRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buil
      */
     title_selectable: boolean
     /**
+     * Whether the user can copy the title from the label.
+     * 
+     * See also [property`Gtk`.Label:selectable].
+     */
+    titleSelectable: boolean
+    /**
      * Whether to use Pango markup for the title label.
      * 
      * Subclasses may also use it for other labels, such as subtitle.
@@ -14990,9 +16795,21 @@ export interface PreferencesRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buil
      */
     use_markup: boolean
     /**
+     * Whether to use Pango markup for the title label.
+     * 
+     * Subclasses may also use it for other labels, such as subtitle.
+     * 
+     * See also [func`Pango`.parse_markup].
+     */
+    useMarkup: boolean
+    /**
      * Whether an embedded underline in the title indicates a mnemonic.
      */
     use_underline: boolean
+    /**
+     * Whether an embedded underline in the title indicates a mnemonic.
+     */
+    useUnderline: boolean
 
     // Own fields of Adw-1.Adw.PreferencesRow
 
@@ -15256,6 +17073,27 @@ export module PreferencesWindow {
         search_enabled?: boolean | null
         visible_page?: Gtk.Widget | null
         visible_page_name?: string | null
+        /**
+         * Whether gestures and shortcuts for closing subpages are enabled.
+         * 
+         * The supported gestures are:
+         * 
+         * - One-finger swipe on touchscreens
+         * - Horizontal scrolling on touchpads (usually two-finger swipe)
+         * - Back mouse button
+         * 
+         * The keyboard back key is also supported, as well as the
+         * <kbd>Alt</kbd>+<kbd>←</kbd> shortcut.
+         * 
+         * For right-to-left locales, gestures and shortcuts are reversed.
+         */
+        canNavigateBack?: boolean | null
+        /**
+         * Whether search is enabled.
+         */
+        searchEnabled?: boolean | null
+        visiblePage?: Gtk.Widget | null
+        visiblePageName?: string | null
     }
 
 }
@@ -15280,11 +17118,32 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      */
     can_navigate_back: boolean
     /**
+     * Whether gestures and shortcuts for closing subpages are enabled.
+     * 
+     * The supported gestures are:
+     * 
+     * - One-finger swipe on touchscreens
+     * - Horizontal scrolling on touchpads (usually two-finger swipe)
+     * - Back mouse button
+     * 
+     * The keyboard back key is also supported, as well as the
+     * <kbd>Alt</kbd>+<kbd>←</kbd> shortcut.
+     * 
+     * For right-to-left locales, gestures and shortcuts are reversed.
+     */
+    canNavigateBack: boolean
+    /**
      * Whether search is enabled.
      */
     search_enabled: boolean
+    /**
+     * Whether search is enabled.
+     */
+    searchEnabled: boolean
     visible_page: Gtk.Widget
+    visiblePage: Gtk.Widget
     visible_page_name: string | null
+    visiblePageName: string | null
 
     // Own fields of Adw-1.Adw.PreferencesWindow
 
@@ -15820,6 +17679,20 @@ export module SpinRow {
          * Whether the spin row should wrap upon reaching its limits.
          */
         wrap?: boolean | null
+        /**
+         * The acceleration rate when you hold down a button or key.
+         */
+        climbRate?: number | null
+        /**
+         * Whether invalid values are snapped to the nearest step increment.
+         */
+        snapToTicks?: boolean | null
+        /**
+         * The policy for updating the spin row.
+         * 
+         * The options are always, or only when the value is invalid.
+         */
+        updatePolicy?: Gtk.SpinButtonUpdatePolicy | null
     }
 
 }
@@ -15837,6 +17710,10 @@ export interface SpinRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, 
      */
     climb_rate: number
     /**
+     * The acceleration rate when you hold down a button or key.
+     */
+    climbRate: number
+    /**
      * The number of decimal places to display.
      */
     digits: number
@@ -15849,11 +17726,21 @@ export interface SpinRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, 
      */
     snap_to_ticks: boolean
     /**
+     * Whether invalid values are snapped to the nearest step increment.
+     */
+    snapToTicks: boolean
+    /**
      * The policy for updating the spin row.
      * 
      * The options are always, or only when the value is invalid.
      */
     update_policy: Gtk.SpinButtonUpdatePolicy
+    /**
+     * The policy for updating the spin row.
+     * 
+     * The options are always, or only when the value is invalid.
+     */
+    updatePolicy: Gtk.SpinButtonUpdatePolicy
     /**
      * The current value.
      */
@@ -16430,6 +18317,47 @@ export module SplitButton {
          * See [property`SplitButton:`label].
          */
         use_underline?: boolean | null
+        /**
+         * Whether the button can be smaller than the natural size of its contents.
+         * 
+         * If set to `TRUE`, the label will ellipsize.
+         * 
+         * See [property`Gtk`.Button:can-shrink] and
+         * [property`Gtk`.MenuButton:can-shrink].
+         */
+        canShrink?: boolean | null
+        /**
+         * The tooltip of the dropdown button.
+         * 
+         * The tooltip can be marked up with the Pango text markup language.
+         */
+        dropdownTooltip?: string | null
+        /**
+         * The name of the icon used to automatically populate the button.
+         * 
+         * Setting the icon name will set [property`SplitButton:`label] and
+         * [property`SplitButton:`child] to `NULL`.
+         */
+        iconName?: string | null
+        /**
+         * The `GMenuModel` from which the popup will be created.
+         * 
+         * If the menu model is `NULL`, the dropdown is disabled.
+         * 
+         * A [class`Gtk`.Popover] will be created from the menu model with
+         * [ctor`Gtk`.PopoverMenu.new_from_model]. Actions will be connected as
+         * documented for this function.
+         * 
+         * If [property`SplitButton:`popover] is already set, it will be dissociated
+         * from the button, and the property is set to `NULL`.
+         */
+        menuModel?: Gio.MenuModel | null
+        /**
+         * Whether an underline in the text indicates a mnemonic.
+         * 
+         * See [property`SplitButton:`label].
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -16447,6 +18375,15 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      * [property`Gtk`.MenuButton:can-shrink].
      */
     can_shrink: boolean
+    /**
+     * Whether the button can be smaller than the natural size of its contents.
+     * 
+     * If set to `TRUE`, the label will ellipsize.
+     * 
+     * See [property`Gtk`.Button:can-shrink] and
+     * [property`Gtk`.MenuButton:can-shrink].
+     */
+    canShrink: boolean
     /**
      * The child widget.
      * 
@@ -16472,12 +18409,25 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      */
     dropdown_tooltip: string | null
     /**
+     * The tooltip of the dropdown button.
+     * 
+     * The tooltip can be marked up with the Pango text markup language.
+     */
+    dropdownTooltip: string | null
+    /**
      * The name of the icon used to automatically populate the button.
      * 
      * Setting the icon name will set [property`SplitButton:`label] and
      * [property`SplitButton:`child] to `NULL`.
      */
     icon_name: string | null
+    /**
+     * The name of the icon used to automatically populate the button.
+     * 
+     * Setting the icon name will set [property`SplitButton:`label] and
+     * [property`SplitButton:`child] to `NULL`.
+     */
+    iconName: string | null
     /**
      * The label for the button.
      * 
@@ -16499,6 +18449,19 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      */
     menu_model: Gio.MenuModel
     /**
+     * The `GMenuModel` from which the popup will be created.
+     * 
+     * If the menu model is `NULL`, the dropdown is disabled.
+     * 
+     * A [class`Gtk`.Popover] will be created from the menu model with
+     * [ctor`Gtk`.PopoverMenu.new_from_model]. Actions will be connected as
+     * documented for this function.
+     * 
+     * If [property`SplitButton:`popover] is already set, it will be dissociated
+     * from the button, and the property is set to `NULL`.
+     */
+    menuModel: Gio.MenuModel
+    /**
      * The `GtkPopover` that will be popped up when the dropdown is clicked.
      * 
      * If the popover is `NULL`, the dropdown is disabled.
@@ -16513,6 +18476,12 @@ export interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildab
      * See [property`SplitButton:`label].
      */
     use_underline: boolean
+    /**
+     * Whether an underline in the text indicates a mnemonic.
+     * 
+     * See [property`SplitButton:`label].
+     */
+    useUnderline: boolean
 
     // Owm methods of Adw-1.Adw.SplitButton
 
@@ -16960,6 +18929,30 @@ export module SpringAnimation {
          * at this value.
          */
         value_to?: number | null
+        /**
+         * The initial velocity to start the animation with.
+         * 
+         * Initial velocity affects only the animation curve, but not its duration.
+         */
+        initialVelocity?: number | null
+        /**
+         * Physical parameters describing the spring.
+         */
+        springParams?: SpringParams | null
+        /**
+         * The value to animate from.
+         * 
+         * The animation will start at this value and end at
+         * [property`SpringAnimation:`value-to].
+         */
+        valueFrom?: number | null
+        /**
+         * The value to animate to.
+         * 
+         * The animation will start at [property`SpringAnimation:`value-from] and end
+         * at this value.
+         */
+        valueTo?: number | null
     }
 
 }
@@ -17000,15 +18993,31 @@ export interface SpringAnimation {
      */
     readonly estimated_duration: number
     /**
+     * Estimated duration of the animation, in milliseconds.
+     * 
+     * Can be [const`DURATION_INFINITE]` if the spring damping is set to 0.
+     */
+    readonly estimatedDuration: number
+    /**
      * The initial velocity to start the animation with.
      * 
      * Initial velocity affects only the animation curve, but not its duration.
      */
     initial_velocity: number
     /**
+     * The initial velocity to start the animation with.
+     * 
+     * Initial velocity affects only the animation curve, but not its duration.
+     */
+    initialVelocity: number
+    /**
      * Physical parameters describing the spring.
      */
     spring_params: SpringParams
+    /**
+     * Physical parameters describing the spring.
+     */
+    springParams: SpringParams
     /**
      * The value to animate from.
      * 
@@ -17017,12 +19026,26 @@ export interface SpringAnimation {
      */
     value_from: number
     /**
+     * The value to animate from.
+     * 
+     * The animation will start at this value and end at
+     * [property`SpringAnimation:`value-to].
+     */
+    valueFrom: number
+    /**
      * The value to animate to.
      * 
      * The animation will start at [property`SpringAnimation:`value-from] and end
      * at this value.
      */
     value_to: number
+    /**
+     * The value to animate to.
+     * 
+     * The animation will start at [property`SpringAnimation:`value-from] and end
+     * at this value.
+     */
+    valueTo: number
     /**
      * Current velocity of the animation.
      */
@@ -17346,6 +19369,44 @@ export module Squeezer {
          * top side aligned and overflow the bottom side, and 1 means the opposite.
          */
         yalign?: number | null
+        /**
+         * Whether to allow squeezing beyond the last child's minimum size.
+         * 
+         * If set to `TRUE`, the squeezer can shrink to the point where no child can
+         * be shown. This is functionally equivalent to appending a widget with 0×0
+         * minimum size.
+         */
+        allowNone?: boolean | null
+        /**
+         * Whether the squeezer interpolates its size when changing the visible child.
+         * 
+         * If `TRUE`, the squeezer will interpolate its size between the one of the
+         * previous visible child and the one of the new visible child, according to
+         * the set transition duration and the orientation, e.g. if the squeezer is
+         * horizontal, it will interpolate the its height.
+         */
+        interpolateSize?: boolean | null
+        /**
+         * The switch threshold policy.
+         * 
+         * Determines when the squeezer will switch children.
+         * 
+         * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, it will only switch when the
+         * visible child cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`,
+         * it will switch as soon as the visible child doesn't get their natural size.
+         * 
+         * This can be useful if you have a long ellipsizing label and want to let it
+         * ellipsize instead of immediately switching.
+         */
+        switchThresholdPolicy?: FoldThresholdPolicy | null
+        /**
+         * The transition animation duration, in milliseconds.
+         */
+        transitionDuration?: number | null
+        /**
+         * The type of animation used for transitions between children.
+         */
+        transitionType?: SqueezerTransitionType | null
     }
 
 }
@@ -17363,6 +19424,14 @@ export interface Squeezer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      */
     allow_none: boolean
     /**
+     * Whether to allow squeezing beyond the last child's minimum size.
+     * 
+     * If set to `TRUE`, the squeezer can shrink to the point where no child can
+     * be shown. This is functionally equivalent to appending a widget with 0×0
+     * minimum size.
+     */
+    allowNone: boolean
+    /**
      * Whether all children have the same size for the opposite orientation.
      * 
      * For example, if a squeezer is horizontal and is homogeneous, it will
@@ -17379,6 +19448,15 @@ export interface Squeezer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      * horizontal, it will interpolate the its height.
      */
     interpolate_size: boolean
+    /**
+     * Whether the squeezer interpolates its size when changing the visible child.
+     * 
+     * If `TRUE`, the squeezer will interpolate its size between the one of the
+     * previous visible child and the one of the new visible child, according to
+     * the set transition duration and the orientation, e.g. if the squeezer is
+     * horizontal, it will interpolate the its height.
+     */
+    interpolateSize: boolean
     /**
      * A selection model with the squeezer's pages.
      * 
@@ -17400,9 +19478,26 @@ export interface Squeezer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      */
     switch_threshold_policy: FoldThresholdPolicy
     /**
+     * The switch threshold policy.
+     * 
+     * Determines when the squeezer will switch children.
+     * 
+     * If set to `ADW_FOLD_THRESHOLD_POLICY_MINIMUM`, it will only switch when the
+     * visible child cannot fit anymore. With `ADW_FOLD_THRESHOLD_POLICY_NATURAL`,
+     * it will switch as soon as the visible child doesn't get their natural size.
+     * 
+     * This can be useful if you have a long ellipsizing label and want to let it
+     * ellipsize instead of immediately switching.
+     */
+    switchThresholdPolicy: FoldThresholdPolicy
+    /**
      * The transition animation duration, in milliseconds.
      */
     transition_duration: number
+    /**
+     * The transition animation duration, in milliseconds.
+     */
+    transitionDuration: number
     /**
      * Whether a transition is currently running.
      * 
@@ -17412,13 +19507,29 @@ export interface Squeezer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      */
     readonly transition_running: boolean
     /**
+     * Whether a transition is currently running.
+     * 
+     * If a transition is impossible, the property value will be set to `TRUE` and
+     * then immediately to `FALSE`, so it's possible to rely on its notifications
+     * to know that a transition has happened.
+     */
+    readonly transitionRunning: boolean
+    /**
      * The type of animation used for transitions between children.
      */
     transition_type: SqueezerTransitionType
     /**
+     * The type of animation used for transitions between children.
+     */
+    transitionType: SqueezerTransitionType
+    /**
      * The currently visible child.
      */
     readonly visible_child: Gtk.Widget
+    /**
+     * The currently visible child.
+     */
+    readonly visibleChild: Gtk.Widget
     /**
      * The horizontal alignment, from 0 (start) to 1 (end).
      * 
@@ -17937,6 +20048,12 @@ export module StatusPage {
          * It is not parsed as Pango markup.
          */
         title?: string | null
+        /**
+         * The name of the icon to be used.
+         * 
+         * Changing this will set [property`StatusPage:`paintable] to `NULL`.
+         */
+        iconName?: string | null
     }
 
 }
@@ -17959,6 +20076,12 @@ export interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * Changing this will set [property`StatusPage:`paintable] to `NULL`.
      */
     icon_name: string | null
+    /**
+     * The name of the icon to be used.
+     * 
+     * Changing this will set [property`StatusPage:`paintable] to `NULL`.
+     */
+    iconName: string | null
     /**
      * The paintable to be used.
      * 
@@ -18255,6 +20378,40 @@ export module StyleManager {
          * [func`StyleManager`.get_default].
          */
         display?: Gdk.Display | null
+        /**
+         * The requested application color scheme.
+         * 
+         * The effective appearance will be decided based on the application color
+         * scheme and the system preferred color scheme. The
+         * [property`StyleManager:`dark] property can be used to query the current
+         * effective appearance.
+         * 
+         * The `ADW_COLOR_SCHEME_PREFER_LIGHT` color scheme results in the application
+         * using light appearance unless the system prefers dark colors. This is the
+         * default value.
+         * 
+         * The `ADW_COLOR_SCHEME_PREFER_DARK` color scheme results in the application
+         * using dark appearance, but can still switch to the light appearance if the
+         * system can prefers it, for example, when the high contrast preference is
+         * enabled.
+         * 
+         * The `ADW_COLOR_SCHEME_FORCE_LIGHT` and `ADW_COLOR_SCHEME_FORCE_DARK` values
+         * ignore the system preference entirely. They are useful if the application
+         * wants to match its UI to its content or to provide a separate color scheme
+         * switcher.
+         * 
+         * If a per-[class`Gdk`.Display] style manager has its color scheme set to
+         * `ADW_COLOR_SCHEME_DEFAULT`, it will inherit the color scheme from the
+         * default style manager.
+         * 
+         * For the default style manager, `ADW_COLOR_SCHEME_DEFAULT` is equivalent to
+         * `ADW_COLOR_SCHEME_PREFER_LIGHT`.
+         * 
+         * The [property`StyleManager:`system-supports-color-schemes] property can be
+         * used to check if the current environment provides a color scheme
+         * preference.
+         */
+        colorScheme?: ColorScheme | null
     }
 
 }
@@ -18298,6 +20455,40 @@ export interface StyleManager {
      */
     color_scheme: ColorScheme
     /**
+     * The requested application color scheme.
+     * 
+     * The effective appearance will be decided based on the application color
+     * scheme and the system preferred color scheme. The
+     * [property`StyleManager:`dark] property can be used to query the current
+     * effective appearance.
+     * 
+     * The `ADW_COLOR_SCHEME_PREFER_LIGHT` color scheme results in the application
+     * using light appearance unless the system prefers dark colors. This is the
+     * default value.
+     * 
+     * The `ADW_COLOR_SCHEME_PREFER_DARK` color scheme results in the application
+     * using dark appearance, but can still switch to the light appearance if the
+     * system can prefers it, for example, when the high contrast preference is
+     * enabled.
+     * 
+     * The `ADW_COLOR_SCHEME_FORCE_LIGHT` and `ADW_COLOR_SCHEME_FORCE_DARK` values
+     * ignore the system preference entirely. They are useful if the application
+     * wants to match its UI to its content or to provide a separate color scheme
+     * switcher.
+     * 
+     * If a per-[class`Gdk`.Display] style manager has its color scheme set to
+     * `ADW_COLOR_SCHEME_DEFAULT`, it will inherit the color scheme from the
+     * default style manager.
+     * 
+     * For the default style manager, `ADW_COLOR_SCHEME_DEFAULT` is equivalent to
+     * `ADW_COLOR_SCHEME_PREFER_LIGHT`.
+     * 
+     * The [property`StyleManager:`system-supports-color-schemes] property can be
+     * used to check if the current environment provides a color scheme
+     * preference.
+     */
+    colorScheme: ColorScheme
+    /**
      * Whether the application is using dark appearance.
      * 
      * This property can be used to query the current appearance, as requested via
@@ -18318,6 +20509,12 @@ export interface StyleManager {
      */
     readonly high_contrast: boolean
     /**
+     * Whether the application is using high contrast appearance.
+     * 
+     * This cannot be overridden by applications.
+     */
+    readonly highContrast: boolean
+    /**
      * Whether the system supports color schemes.
      * 
      * This property can be used to check if the current environment provides a
@@ -18327,6 +20524,16 @@ export interface StyleManager {
      * See [property`StyleManager:`color-scheme].
      */
     readonly system_supports_color_schemes: boolean
+    /**
+     * Whether the system supports color schemes.
+     * 
+     * This property can be used to check if the current environment provides a
+     * color scheme preference. For example, applications might want to show a
+     * separate appearance switcher if it's set to `FALSE`.
+     * 
+     * See [property`StyleManager:`color-scheme].
+     */
+    readonly systemSupportsColorSchemes: boolean
 
     // Owm methods of Adw-1.Adw.StyleManager
 
@@ -18547,6 +20754,25 @@ export module SwipeTracker {
          * Whether to allow swiping past the last available snap point.
          */
         upper_overshoot?: boolean | null
+        /**
+         * Whether to allow swiping for more than one snap point at a time.
+         * 
+         * If the value is `FALSE`, each swipe can only move to the adjacent snap
+         * points.
+         */
+        allowLongSwipes?: boolean | null
+        /**
+         * Whether to allow dragging with mouse pointer.
+         */
+        allowMouseDrag?: boolean | null
+        /**
+         * Whether to allow swiping past the first available snap point.
+         */
+        lowerOvershoot?: boolean | null
+        /**
+         * Whether to allow swiping past the last available snap point.
+         */
+        upperOvershoot?: boolean | null
     }
 
 }
@@ -18563,9 +20789,20 @@ export interface SwipeTracker extends Gtk.Orientable {
      */
     allow_long_swipes: boolean
     /**
+     * Whether to allow swiping for more than one snap point at a time.
+     * 
+     * If the value is `FALSE`, each swipe can only move to the adjacent snap
+     * points.
+     */
+    allowLongSwipes: boolean
+    /**
      * Whether to allow dragging with mouse pointer.
      */
     allow_mouse_drag: boolean
+    /**
+     * Whether to allow dragging with mouse pointer.
+     */
+    allowMouseDrag: boolean
     /**
      * Whether the swipe tracker is enabled.
      * 
@@ -18577,6 +20814,10 @@ export interface SwipeTracker extends Gtk.Orientable {
      * Whether to allow swiping past the first available snap point.
      */
     lower_overshoot: boolean
+    /**
+     * Whether to allow swiping past the first available snap point.
+     */
+    lowerOvershoot: boolean
     /**
      * Whether to reverse the swipe direction.
      * 
@@ -18592,6 +20833,10 @@ export interface SwipeTracker extends Gtk.Orientable {
      * Whether to allow swiping past the last available snap point.
      */
     upper_overshoot: boolean
+    /**
+     * Whether to allow swiping past the last available snap point.
+     */
+    upperOvershoot: boolean
 
     // Owm methods of Adw-1.Adw.SwipeTracker
 
@@ -19135,6 +21380,27 @@ export module TabBar {
          * The tab view the tab bar controls.
          */
         view?: TabView | null
+        /**
+         * The widget shown after the tabs.
+         */
+        endActionWidget?: Gtk.Widget | null
+        /**
+         * Whether tabs expand to full width.
+         * 
+         * If set to `TRUE`, the tabs will always vary width filling the whole width
+         * when possible, otherwise tabs will always have the minimum possible size.
+         */
+        expandTabs?: boolean | null
+        /**
+         * Whether the drop data should be preloaded on hover.
+         * 
+         * See [property`Gtk`.DropTarget:preload].
+         */
+        extraDragPreload?: boolean | null
+        /**
+         * The widget shown before the tabs.
+         */
+        startActionWidget?: Gtk.Widget | null
     }
 
 }
@@ -19157,12 +21423,23 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      */
     end_action_widget: Gtk.Widget
     /**
+     * The widget shown after the tabs.
+     */
+    endActionWidget: Gtk.Widget
+    /**
      * Whether tabs expand to full width.
      * 
      * If set to `TRUE`, the tabs will always vary width filling the whole width
      * when possible, otherwise tabs will always have the minimum possible size.
      */
     expand_tabs: boolean
+    /**
+     * Whether tabs expand to full width.
+     * 
+     * If set to `TRUE`, the tabs will always vary width filling the whole width
+     * when possible, otherwise tabs will always have the minimum possible size.
+     */
+    expandTabs: boolean
     /**
      * The unique action on the `current-drop` of the
      * [signal`TabBar:`:extra-drag-drop].
@@ -19173,11 +21450,26 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      */
     readonly extra_drag_preferred_action: Gdk.DragAction
     /**
+     * The unique action on the `current-drop` of the
+     * [signal`TabBar:`:extra-drag-drop].
+     * 
+     * This property should only be used during a [signal`TabBar:`:extra-drag-drop]
+     * and is always a subset of what was originally passed to
+     * [method`TabBar`.setup_extra_drop_target].
+     */
+    readonly extraDragPreferredAction: Gdk.DragAction
+    /**
      * Whether the drop data should be preloaded on hover.
      * 
      * See [property`Gtk`.DropTarget:preload].
      */
     extra_drag_preload: boolean
+    /**
+     * Whether the drop data should be preloaded on hover.
+     * 
+     * See [property`Gtk`.DropTarget:preload].
+     */
+    extraDragPreload: boolean
     /**
      * Whether tabs use inverted layout.
      * 
@@ -19192,15 +21484,31 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      */
     readonly is_overflowing: boolean
     /**
+     * Whether the tab bar is overflowing.
+     * 
+     * If `TRUE`, all tabs cannot be displayed at once and require scrolling.
+     */
+    readonly isOverflowing: boolean
+    /**
      * The widget shown before the tabs.
      */
     start_action_widget: Gtk.Widget
+    /**
+     * The widget shown before the tabs.
+     */
+    startActionWidget: Gtk.Widget
     /**
      * Whether the tabs are currently revealed.
      * 
      * See [property`TabBar:`autohide].
      */
     readonly tabs_revealed: boolean
+    /**
+     * Whether the tabs are currently revealed.
+     * 
+     * See [property`TabBar:`autohide].
+     */
+    readonly tabsRevealed: boolean
     /**
      * The tab view the tab bar controls.
      */
@@ -19865,6 +22173,49 @@ export module TabOverview {
          * The view must be inside the tab overview, see [property`TabOverview:`child].
          */
         view?: TabView | null
+        /**
+         * Whether to enable new tab button.
+         * 
+         * Connect to the [signal`TabOverview:`:create-tab] signal to use it.
+         */
+        enableNewTab?: boolean | null
+        /**
+         * Whether to enable search in tabs.
+         * 
+         * Search matches tab titles and tooltips, as well as keywords, set via
+         * [property`TabPage:`keyword]. Use keywords to search in e.g. page URLs in a
+         * web browser.
+         * 
+         * During search, tab reordering and drag-n-drop are disabled.
+         * 
+         * Use [property`TabOverview:`search-active] to check out if search is
+         * currently active.
+         */
+        enableSearch?: boolean | null
+        /**
+         * Whether the drop data should be preloaded on hover.
+         * 
+         * See [property`Gtk`.DropTarget:preload].
+         */
+        extraDragPreload?: boolean | null
+        /**
+         * The secondary menu model.
+         * 
+         * Use it to add extra actions, e.g. to open a new window or undo closed tab.
+         */
+        secondaryMenu?: Gio.MenuModel | null
+        /**
+         * Whether to show end title buttons in the overview's header bar.
+         * 
+         * See [property`HeaderBar:`show-start-title-buttons] for the other side.
+         */
+        showEndTitleButtons?: boolean | null
+        /**
+         * Whether to show start title buttons in the overview's header bar.
+         * 
+         * See [property`HeaderBar:`show-end-title-buttons] for the other side.
+         */
+        showStartTitleButtons?: boolean | null
     }
 
 }
@@ -19884,6 +22235,12 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     enable_new_tab: boolean
     /**
+     * Whether to enable new tab button.
+     * 
+     * Connect to the [signal`TabOverview:`:create-tab] signal to use it.
+     */
+    enableNewTab: boolean
+    /**
      * Whether to enable search in tabs.
      * 
      * Search matches tab titles and tooltips, as well as keywords, set via
@@ -19897,6 +22254,19 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     enable_search: boolean
     /**
+     * Whether to enable search in tabs.
+     * 
+     * Search matches tab titles and tooltips, as well as keywords, set via
+     * [property`TabPage:`keyword]. Use keywords to search in e.g. page URLs in a
+     * web browser.
+     * 
+     * During search, tab reordering and drag-n-drop are disabled.
+     * 
+     * Use [property`TabOverview:`search-active] to check out if search is
+     * currently active.
+     */
+    enableSearch: boolean
+    /**
      * The unique action on the `current-drop` of the
      * [signal`TabOverview:`:extra-drag-drop].
      * 
@@ -19906,11 +22276,26 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     readonly extra_drag_preferred_action: Gdk.DragAction
     /**
+     * The unique action on the `current-drop` of the
+     * [signal`TabOverview:`:extra-drag-drop].
+     * 
+     * This property should only be used during a
+     * [signal`TabOverview:`:extra-drag-drop] and is always a subset of what was
+     * originally passed to [method`TabOverview`.setup_extra_drop_target].
+     */
+    readonly extraDragPreferredAction: Gdk.DragAction
+    /**
      * Whether the drop data should be preloaded on hover.
      * 
      * See [property`Gtk`.DropTarget:preload].
      */
     extra_drag_preload: boolean
+    /**
+     * Whether the drop data should be preloaded on hover.
+     * 
+     * See [property`Gtk`.DropTarget:preload].
+     */
+    extraDragPreload: boolean
     /**
      * Whether thumbnails use inverted layout.
      * 
@@ -19929,11 +22314,23 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     readonly search_active: boolean
     /**
+     * Whether search is currently active.
+     * 
+     * See [property`TabOverview:`enable-search].
+     */
+    readonly searchActive: boolean
+    /**
      * The secondary menu model.
      * 
      * Use it to add extra actions, e.g. to open a new window or undo closed tab.
      */
     secondary_menu: Gio.MenuModel
+    /**
+     * The secondary menu model.
+     * 
+     * Use it to add extra actions, e.g. to open a new window or undo closed tab.
+     */
+    secondaryMenu: Gio.MenuModel
     /**
      * Whether to show end title buttons in the overview's header bar.
      * 
@@ -19941,11 +22338,23 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     show_end_title_buttons: boolean
     /**
+     * Whether to show end title buttons in the overview's header bar.
+     * 
+     * See [property`HeaderBar:`show-start-title-buttons] for the other side.
+     */
+    showEndTitleButtons: boolean
+    /**
      * Whether to show start title buttons in the overview's header bar.
      * 
      * See [property`HeaderBar:`show-end-title-buttons] for the other side.
      */
     show_start_title_buttons: boolean
+    /**
+     * Whether to show start title buttons in the overview's header bar.
+     * 
+     * See [property`HeaderBar:`show-end-title-buttons] for the other side.
+     */
+    showStartTitleButtons: boolean
     /**
      * The tab view the overview controls.
      * 
@@ -20510,6 +22919,95 @@ export module TabPage {
          * [property`TabPage:`title] as a tooltip instead.
          */
         tooltip?: string | null
+        /**
+         * Whether the indicator icon is activatable.
+         * 
+         * If set to `TRUE`, [signal`TabView:`:indicator-activated] will be emitted
+         * when the indicator icon is clicked.
+         * 
+         * If [property`TabPage:`indicator-icon] is not set, does nothing.
+         */
+        indicatorActivatable?: boolean | null
+        /**
+         * An indicator icon for the page.
+         * 
+         * A common use case is an audio or camera indicator in a web browser.
+         * 
+         * [class`TabBar]` will show it at the beginning of the tab, alongside icon
+         * representing [property`TabPage:`icon] or loading spinner.
+         * 
+         * If the page is pinned, the indicator will be shown instead of icon or
+         * spinner.
+         * 
+         * [class`TabOverview]` will show it at the at the top part of the thumbnail.
+         * 
+         * [property`TabPage:`indicator-tooltip] can be used to set the tooltip on the
+         * indicator icon.
+         * 
+         * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the
+         * indicator icon can act as a button.
+         */
+        indicatorIcon?: Gio.Icon | null
+        /**
+         * The tooltip of the indicator icon.
+         * 
+         * The tooltip can be marked up with the Pango text markup language.
+         * 
+         * See [property`TabPage:`indicator-icon].
+         */
+        indicatorTooltip?: string | null
+        /**
+         * Whether to enable live thumbnail for this page.
+         * 
+         * When set to `TRUE`, the page's thumbnail in [class`TabOverview]` will update
+         * immediately when the page is redrawn or resized.
+         * 
+         * If it's set to `FALSE`, the thumbnail will only be live when the page is
+         * selected, and otherwise it will be static and will only update when
+         * [method`TabPage`.invalidate_thumbnail] or
+         * [method`TabView`.invalidate_thumbnails] is called.
+         */
+        liveThumbnail?: boolean | null
+        /**
+         * Whether the page needs attention.
+         * 
+         * [class`TabBar]` will display a line under the tab representing the page if
+         * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
+         * bar will be highlighted.
+         * 
+         * [class`TabOverview]` will display a dot in the corner of the thumbnail if set
+         * to `TRUE`.
+         * 
+         * [class`TabButton]` will display a dot if any of the pages that aren't
+         * selected have this property set to `TRUE`.
+         */
+        needsAttention?: boolean | null
+        /**
+         * The horizontal alignment of the page thumbnail.
+         * 
+         * If the page is so wide that [class`TabOverview]` can't display it completely
+         * and has to crop it, horizontal alignment will determine which part of the
+         * page will be visible.
+         * 
+         * For example, 0.5 means the center of the page will be visible, 0 means the
+         * start edge will be visible and 1 means the end edge will be visible.
+         * 
+         * The default horizontal alignment is 0.
+         */
+        thumbnailXalign?: number | null
+        /**
+         * The vertical alignment of the page thumbnail.
+         * 
+         * If the page is so tall that [class`TabOverview]` can't display it completely
+         * and has to crop it, vertical alignment will determine which part of the
+         * page will be visible.
+         * 
+         * For example, 0.5 means the center of the page will be visible, 0 means the
+         * top edge will be visible and 1 means the bottom edge will be visible.
+         * 
+         * The default vertical alignment is 0.
+         */
+        thumbnailYalign?: number | null
     }
 
 }
@@ -20542,6 +23040,15 @@ export interface TabPage extends Gtk.Accessible {
      */
     indicator_activatable: boolean
     /**
+     * Whether the indicator icon is activatable.
+     * 
+     * If set to `TRUE`, [signal`TabView:`:indicator-activated] will be emitted
+     * when the indicator icon is clicked.
+     * 
+     * If [property`TabPage:`indicator-icon] is not set, does nothing.
+     */
+    indicatorActivatable: boolean
+    /**
      * An indicator icon for the page.
      * 
      * A common use case is an audio or camera indicator in a web browser.
@@ -20562,6 +23069,26 @@ export interface TabPage extends Gtk.Accessible {
      */
     indicator_icon: Gio.Icon
     /**
+     * An indicator icon for the page.
+     * 
+     * A common use case is an audio or camera indicator in a web browser.
+     * 
+     * [class`TabBar]` will show it at the beginning of the tab, alongside icon
+     * representing [property`TabPage:`icon] or loading spinner.
+     * 
+     * If the page is pinned, the indicator will be shown instead of icon or
+     * spinner.
+     * 
+     * [class`TabOverview]` will show it at the at the top part of the thumbnail.
+     * 
+     * [property`TabPage:`indicator-tooltip] can be used to set the tooltip on the
+     * indicator icon.
+     * 
+     * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the
+     * indicator icon can act as a button.
+     */
+    indicatorIcon: Gio.Icon
+    /**
      * The tooltip of the indicator icon.
      * 
      * The tooltip can be marked up with the Pango text markup language.
@@ -20569,6 +23096,14 @@ export interface TabPage extends Gtk.Accessible {
      * See [property`TabPage:`indicator-icon].
      */
     indicator_tooltip: string | null
+    /**
+     * The tooltip of the indicator icon.
+     * 
+     * The tooltip can be marked up with the Pango text markup language.
+     * 
+     * See [property`TabPage:`indicator-icon].
+     */
+    indicatorTooltip: string | null
     /**
      * The search keyboard of the page.
      * 
@@ -20590,6 +23125,18 @@ export interface TabPage extends Gtk.Accessible {
      * [method`TabView`.invalidate_thumbnails] is called.
      */
     live_thumbnail: boolean
+    /**
+     * Whether to enable live thumbnail for this page.
+     * 
+     * When set to `TRUE`, the page's thumbnail in [class`TabOverview]` will update
+     * immediately when the page is redrawn or resized.
+     * 
+     * If it's set to `FALSE`, the thumbnail will only be live when the page is
+     * selected, and otherwise it will be static and will only update when
+     * [method`TabPage`.invalidate_thumbnail] or
+     * [method`TabView`.invalidate_thumbnails] is called.
+     */
+    liveThumbnail: boolean
     /**
      * Whether the page is loading.
      * 
@@ -20614,6 +23161,20 @@ export interface TabPage extends Gtk.Accessible {
      * selected have this property set to `TRUE`.
      */
     needs_attention: boolean
+    /**
+     * Whether the page needs attention.
+     * 
+     * [class`TabBar]` will display a line under the tab representing the page if
+     * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
+     * bar will be highlighted.
+     * 
+     * [class`TabOverview]` will display a dot in the corner of the thumbnail if set
+     * to `TRUE`.
+     * 
+     * [class`TabButton]` will display a dot if any of the pages that aren't
+     * selected have this property set to `TRUE`.
+     */
+    needsAttention: boolean
     /**
      * The parent page of the page.
      * 
@@ -20644,6 +23205,19 @@ export interface TabPage extends Gtk.Accessible {
      */
     thumbnail_xalign: number
     /**
+     * The horizontal alignment of the page thumbnail.
+     * 
+     * If the page is so wide that [class`TabOverview]` can't display it completely
+     * and has to crop it, horizontal alignment will determine which part of the
+     * page will be visible.
+     * 
+     * For example, 0.5 means the center of the page will be visible, 0 means the
+     * start edge will be visible and 1 means the end edge will be visible.
+     * 
+     * The default horizontal alignment is 0.
+     */
+    thumbnailXalign: number
+    /**
      * The vertical alignment of the page thumbnail.
      * 
      * If the page is so tall that [class`TabOverview]` can't display it completely
@@ -20656,6 +23230,19 @@ export interface TabPage extends Gtk.Accessible {
      * The default vertical alignment is 0.
      */
     thumbnail_yalign: number
+    /**
+     * The vertical alignment of the page thumbnail.
+     * 
+     * If the page is so tall that [class`TabOverview]` can't display it completely
+     * and has to crop it, vertical alignment will determine which part of the
+     * page will be visible.
+     * 
+     * For example, 0.5 means the center of the page will be visible, 0 means the
+     * top edge will be visible and 1 means the bottom edge will be visible.
+     * 
+     * The default vertical alignment is 0.
+     */
+    thumbnailYalign: number
     /**
      * The title of the page.
      * 
@@ -21100,6 +23687,35 @@ export module TabView {
          * provide a convenient way to manage individual shortcuts.
          */
         shortcuts?: TabViewShortcuts | null
+        /**
+         * Default page icon.
+         * 
+         * If a page doesn't provide its own icon via [property`TabPage:`icon], a
+         * default icon may be used instead for contexts where having an icon is
+         * necessary.
+         * 
+         * [class`TabBar]` will use default icon for pinned tabs in case the page is
+         * not loading, doesn't have an icon and an indicator. Default icon is never
+         * used for tabs that aren't pinned.
+         * 
+         * [class`TabOverview]` will use default icon for pages with missing
+         * thumbnails.
+         * 
+         * By default, the `adw-tab-icon-missing-symbolic` icon is used.
+         */
+        defaultIcon?: Gio.Icon | null
+        /**
+         * Tab context menu model.
+         * 
+         * When a context menu is shown for a tab, it will be constructed from the
+         * provided menu model. Use the [signal`TabView:`:setup-menu] signal to set up
+         * the menu actions for the particular tab.
+         */
+        menuModel?: Gio.MenuModel | null
+        /**
+         * The currently selected page.
+         */
+        selectedPage?: TabPage | null
     }
 
 }
@@ -21126,6 +23742,23 @@ export interface TabView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      */
     default_icon: Gio.Icon
     /**
+     * Default page icon.
+     * 
+     * If a page doesn't provide its own icon via [property`TabPage:`icon], a
+     * default icon may be used instead for contexts where having an icon is
+     * necessary.
+     * 
+     * [class`TabBar]` will use default icon for pinned tabs in case the page is
+     * not loading, doesn't have an icon and an indicator. Default icon is never
+     * used for tabs that aren't pinned.
+     * 
+     * [class`TabOverview]` will use default icon for pages with missing
+     * thumbnails.
+     * 
+     * By default, the `adw-tab-icon-missing-symbolic` icon is used.
+     */
+    defaultIcon: Gio.Icon
+    /**
      * Whether a page is being transferred.
      * 
      * This property will be set to `TRUE` when a drag-n-drop tab transfer starts
@@ -21136,6 +23769,16 @@ export interface TabView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      */
     readonly is_transferring_page: boolean
     /**
+     * Whether a page is being transferred.
+     * 
+     * This property will be set to `TRUE` when a drag-n-drop tab transfer starts
+     * on any `AdwTabView`, and to `FALSE` after it ends.
+     * 
+     * During the transfer, children cannot receive pointer input and a tab can
+     * be safely dropped on the tab view.
+     */
+    readonly isTransferringPage: boolean
+    /**
      * Tab context menu model.
      * 
      * When a context menu is shown for a tab, it will be constructed from the
@@ -21144,15 +23787,33 @@ export interface TabView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      */
     menu_model: Gio.MenuModel
     /**
+     * Tab context menu model.
+     * 
+     * When a context menu is shown for a tab, it will be constructed from the
+     * provided menu model. Use the [signal`TabView:`:setup-menu] signal to set up
+     * the menu actions for the particular tab.
+     */
+    menuModel: Gio.MenuModel
+    /**
      * The number of pages in the tab view.
      */
     readonly n_pages: number
+    /**
+     * The number of pages in the tab view.
+     */
+    readonly nPages: number
     /**
      * The number of pinned pages in the tab view.
      * 
      * See [method`TabView`.set_page_pinned].
      */
     readonly n_pinned_pages: number
+    /**
+     * The number of pinned pages in the tab view.
+     * 
+     * See [method`TabView`.set_page_pinned].
+     */
+    readonly nPinnedPages: number
     /**
      * A selection model with the tab view's pages.
      * 
@@ -21165,6 +23826,10 @@ export interface TabView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      * The currently selected page.
      */
     selected_page: TabPage
+    /**
+     * The currently selected page.
+     */
+    selectedPage: TabPage
     /**
      * The enabled shortcuts.
      * 
@@ -21805,6 +24470,32 @@ export module TimedAnimation {
          * at this value instead.
          */
         value_to?: number | null
+        /**
+         * Number of times the animation will play.
+         * 
+         * If set to 0, the animation will repeat endlessly.
+         */
+        repeatCount?: number | null
+        /**
+         * The value to animate from.
+         * 
+         * The animation will start at this value and end at
+         * [property`TimedAnimation:`value-to].
+         * 
+         * If [property`TimedAnimation:`reverse] is `TRUE`, the animation will end at
+         * this value instead.
+         */
+        valueFrom?: number | null
+        /**
+         * The value to animate to.
+         * 
+         * The animation will start at [property`TimedAnimation:`value-from] and end at
+         * this value.
+         * 
+         * If [property`TimedAnimation:`reverse] is `TRUE`, the animation will start
+         * at this value instead.
+         */
+        valueTo?: number | null
     }
 
 }
@@ -21841,6 +24532,12 @@ export interface TimedAnimation {
      */
     repeat_count: number
     /**
+     * Number of times the animation will play.
+     * 
+     * If set to 0, the animation will repeat endlessly.
+     */
+    repeatCount: number
+    /**
      * Whether the animation plays backwards.
      */
     reverse: boolean
@@ -21855,6 +24552,16 @@ export interface TimedAnimation {
      */
     value_from: number
     /**
+     * The value to animate from.
+     * 
+     * The animation will start at this value and end at
+     * [property`TimedAnimation:`value-to].
+     * 
+     * If [property`TimedAnimation:`reverse] is `TRUE`, the animation will end at
+     * this value instead.
+     */
+    valueFrom: number
+    /**
      * The value to animate to.
      * 
      * The animation will start at [property`TimedAnimation:`value-from] and end at
@@ -21864,6 +24571,16 @@ export interface TimedAnimation {
      * at this value instead.
      */
     value_to: number
+    /**
+     * The value to animate to.
+     * 
+     * The animation will start at [property`TimedAnimation:`value-from] and end at
+     * this value.
+     * 
+     * If [property`TimedAnimation:`reverse] is `TRUE`, the animation will start
+     * at this value instead.
+     */
+    valueTo: number
 
     // Owm methods of Adw-1.Adw.TimedAnimation
 
@@ -22150,6 +24867,43 @@ export module Toast {
          * See also [func`Pango`.parse_markup].
          */
         use_markup?: boolean | null
+        /**
+         * The name of the associated action.
+         * 
+         * It will be activated when clicking the button.
+         * 
+         * See [property`Toast:`action-target].
+         */
+        actionName?: string | null
+        /**
+         * The parameter for action invocations.
+         */
+        actionTarget?: GLib.Variant | null
+        /**
+         * The label to show on the button.
+         * 
+         * Underlines in the button text can be used to indicate a mnemonic.
+         * 
+         * If set to `NULL`, the button won't be shown.
+         * 
+         * See [property`Toast:`action-name].
+         */
+        buttonLabel?: string | null
+        /**
+         * The custom title widget.
+         * 
+         * It will be displayed instead of the title if set. In this case,
+         * [property`Toast:`title] is ignored.
+         * 
+         * Setting a custom title will unset [property`Toast:`title].
+         */
+        customTitle?: Gtk.Widget | null
+        /**
+         * Whether to use Pango markup for the toast title.
+         * 
+         * See also [func`Pango`.parse_markup].
+         */
+        useMarkup?: boolean | null
     }
 
 }
@@ -22167,9 +24921,21 @@ export interface Toast {
      */
     action_name: string | null
     /**
+     * The name of the associated action.
+     * 
+     * It will be activated when clicking the button.
+     * 
+     * See [property`Toast:`action-target].
+     */
+    actionName: string | null
+    /**
      * The parameter for action invocations.
      */
     action_target: GLib.Variant
+    /**
+     * The parameter for action invocations.
+     */
+    actionTarget: GLib.Variant
     /**
      * The label to show on the button.
      * 
@@ -22181,6 +24947,16 @@ export interface Toast {
      */
     button_label: string | null
     /**
+     * The label to show on the button.
+     * 
+     * Underlines in the button text can be used to indicate a mnemonic.
+     * 
+     * If set to `NULL`, the button won't be shown.
+     * 
+     * See [property`Toast:`action-name].
+     */
+    buttonLabel: string | null
+    /**
      * The custom title widget.
      * 
      * It will be displayed instead of the title if set. In this case,
@@ -22189,6 +24965,15 @@ export interface Toast {
      * Setting a custom title will unset [property`Toast:`title].
      */
     custom_title: Gtk.Widget
+    /**
+     * The custom title widget.
+     * 
+     * It will be displayed instead of the title if set. In this case,
+     * [property`Toast:`title] is ignored.
+     * 
+     * Setting a custom title will unset [property`Toast:`title].
+     */
+    customTitle: Gtk.Widget
     /**
      * The priority of the toast.
      * 
@@ -22227,6 +25012,12 @@ export interface Toast {
      * See also [func`Pango`.parse_markup].
      */
     use_markup: boolean
+    /**
+     * Whether to use Pango markup for the toast title.
+     * 
+     * See also [func`Pango`.parse_markup].
+     */
+    useMarkup: boolean
 
     // Owm methods of Adw-1.Adw.Toast
 
@@ -22913,6 +25704,103 @@ export module ToolbarView {
          * See also [property`ToolbarView:`bottom-bar-style].
          */
         top_bar_style?: ToolbarStyle | null
+        /**
+         * Appearance of the bottom bars.
+         * 
+         * If set to `ADW_TOOLBAR_FLAT`, bottom bars are flat and scrolling content
+         * has a subtle undershoot shadow when touching them, same as the
+         * [`.undershoot-bottom`](style-classes.html#undershot-indicators)
+         * style class. This works well for simple content, e.g. [class`StatusPage]` or
+         * [class`PreferencesPage]`, where the background at the bottom of the page is
+         * uniform. Additionally, windows with sidebars should always use this style.
+         * 
+         * Undershoot shadow is only present if a bottom bar is actually present and
+         * visible. It is also never present if
+         * [property`ToolbarView:`extend-content-to-bottom-edge] is set to `TRUE`.
+         * 
+         * If set to `ADW_TOOLBAR_RAISED`, bottom bars have an opaque background and a
+         * persistent shadow, this is suitable for content such as
+         * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+         * where some elements are directly adjacent to the bottom bars, or
+         * [class`TabView]`, where each page can have a different background.
+         * 
+         * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+         * shadow is replaced with a more subtle border. This can be useful for
+         * applications like image viewers.
+         * 
+         * See also [property`ToolbarView:`top-bar-style].
+         */
+        bottomBarStyle?: ToolbarStyle | null
+        /**
+         * Whether the content widget can extend behind bottom bars.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`reveal-bottom-bars] to show and hide toolbars in
+         * fullscreen.
+         * 
+         * See [property`ToolbarView:`extend-content-to-top-edge].
+         */
+        extendContentToBottomEdge?: boolean | null
+        /**
+         * Whether the content widget can extend behind top bars.
+         * 
+         * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
+         * to show and hide toolbars in fullscreen.
+         * 
+         * See [property`ToolbarView:`extend-content-to-bottom-edge].
+         */
+        extendContentToTopEdge?: boolean | null
+        /**
+         * Whether bottom bars are visible.
+         * 
+         * The transition will be animated.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`extend-content-to-bottom-edge] to show and hide
+         * toolbars in fullscreen.
+         * 
+         * See [property`ToolbarView:`reveal-top-bars].
+         */
+        revealBottomBars?: boolean | null
+        /**
+         * Whether top bars are revealed.
+         * 
+         * The transition will be animated.
+         * 
+         * This can be used in combination with
+         * [property`ToolbarView:`extend-content-to-top-edge] to show and hide toolbars
+         * in fullscreen.
+         * 
+         * See [property`ToolbarView:`reveal-bottom-bars].
+         */
+        revealTopBars?: boolean | null
+        /**
+         * Appearance of the top bars.
+         * 
+         * If set to `ADW_TOOLBAR_FLAT`, top bars are flat and scrolling content has a
+         * subtle undershoot shadow when touching them, same as the
+         * [`.undershoot-top`](style-classes.html#undershot-indicators)
+         * style class. This works well for simple content, e.g. [class`StatusPage]` or
+         * [class`PreferencesPage]`, where the background at the top of the page is
+         * uniform. Additionally, windows with sidebars should always use this style.
+         * 
+         * Undershoot shadow is only present if a top bar is actually present and
+         * visible. It is also never present if
+         * [property`ToolbarView:`extend-content-to-top-edge] is set to `TRUE`.
+         * 
+         * If set to `ADW_TOOLBAR_RAISED`, top bars have an opaque background and a
+         * persistent shadow, this is suitable for content such as
+         * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+         * where some elements are directly adjacent to the top bars, or
+         * [class`TabView]`, where each page can have a different background.
+         * 
+         * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+         * shadow is replaced with a more subtle border. This can be useful for
+         * applications like image viewers.
+         * 
+         * See also [property`ToolbarView:`bottom-bar-style].
+         */
+        topBarStyle?: ToolbarStyle | null
     }
 
 }
@@ -22930,6 +25818,15 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See [property`ToolbarView:`top-bar-height].
      */
     readonly bottom_bar_height: number
+    /**
+     * The current bottom bar height.
+     * 
+     * Bottom bar height does change depending on
+     * [property`ToolbarView:`reveal-bottom-bars], including during the transition.
+     * 
+     * See [property`ToolbarView:`top-bar-height].
+     */
+    readonly bottomBarHeight: number
     /**
      * Appearance of the bottom bars.
      * 
@@ -22958,6 +25855,33 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     bottom_bar_style: ToolbarStyle
     /**
+     * Appearance of the bottom bars.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, bottom bars are flat and scrolling content
+     * has a subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-bottom`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the bottom of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a bottom bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-bottom-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, bottom bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the bottom bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [property`ToolbarView:`top-bar-style].
+     */
+    bottomBarStyle: ToolbarStyle
+    /**
      * The content widget.
      */
     content: Gtk.Widget
@@ -22972,6 +25896,16 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     extend_content_to_bottom_edge: boolean
     /**
+     * Whether the content widget can extend behind bottom bars.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`reveal-bottom-bars] to show and hide toolbars in
+     * fullscreen.
+     * 
+     * See [property`ToolbarView:`extend-content-to-top-edge].
+     */
+    extendContentToBottomEdge: boolean
+    /**
      * Whether the content widget can extend behind top bars.
      * 
      * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
@@ -22980,6 +25914,15 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See [property`ToolbarView:`extend-content-to-bottom-edge].
      */
     extend_content_to_top_edge: boolean
+    /**
+     * Whether the content widget can extend behind top bars.
+     * 
+     * This can be used in combination with [property`ToolbarView:`reveal-top-bars]
+     * to show and hide toolbars in fullscreen.
+     * 
+     * See [property`ToolbarView:`extend-content-to-bottom-edge].
+     */
+    extendContentToTopEdge: boolean
     /**
      * Whether bottom bars are visible.
      * 
@@ -22993,6 +25936,18 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     reveal_bottom_bars: boolean
     /**
+     * Whether bottom bars are visible.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-bottom-edge] to show and hide
+     * toolbars in fullscreen.
+     * 
+     * See [property`ToolbarView:`reveal-top-bars].
+     */
+    revealBottomBars: boolean
+    /**
      * Whether top bars are revealed.
      * 
      * The transition will be animated.
@@ -23005,6 +25960,18 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      */
     reveal_top_bars: boolean
     /**
+     * Whether top bars are revealed.
+     * 
+     * The transition will be animated.
+     * 
+     * This can be used in combination with
+     * [property`ToolbarView:`extend-content-to-top-edge] to show and hide toolbars
+     * in fullscreen.
+     * 
+     * See [property`ToolbarView:`reveal-bottom-bars].
+     */
+    revealTopBars: boolean
+    /**
      * The current top bar height.
      * 
      * Top bar height does change depending [property`ToolbarView:`reveal-top-bars],
@@ -23013,6 +25980,15 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See [property`ToolbarView:`bottom-bar-height].
      */
     readonly top_bar_height: number
+    /**
+     * The current top bar height.
+     * 
+     * Top bar height does change depending [property`ToolbarView:`reveal-top-bars],
+     * including during the transition.
+     * 
+     * See [property`ToolbarView:`bottom-bar-height].
+     */
+    readonly topBarHeight: number
     /**
      * Appearance of the top bars.
      * 
@@ -23040,6 +26016,33 @@ export interface ToolbarView extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See also [property`ToolbarView:`bottom-bar-style].
      */
     top_bar_style: ToolbarStyle
+    /**
+     * Appearance of the top bars.
+     * 
+     * If set to `ADW_TOOLBAR_FLAT`, top bars are flat and scrolling content has a
+     * subtle undershoot shadow when touching them, same as the
+     * [`.undershoot-top`](style-classes.html#undershot-indicators)
+     * style class. This works well for simple content, e.g. [class`StatusPage]` or
+     * [class`PreferencesPage]`, where the background at the top of the page is
+     * uniform. Additionally, windows with sidebars should always use this style.
+     * 
+     * Undershoot shadow is only present if a top bar is actually present and
+     * visible. It is also never present if
+     * [property`ToolbarView:`extend-content-to-top-edge] is set to `TRUE`.
+     * 
+     * If set to `ADW_TOOLBAR_RAISED`, top bars have an opaque background and a
+     * persistent shadow, this is suitable for content such as
+     * [utility panes](https://developer.gnome.org/hig/patterns/containers/utility-panes.html),
+     * where some elements are directly adjacent to the top bars, or
+     * [class`TabView]`, where each page can have a different background.
+     * 
+     * `ADW_TOOLBAR_RAISED_BORDER` is similar to `ADW_TOOLBAR_RAISED`, but the
+     * shadow is replaced with a more subtle border. This can be useful for
+     * applications like image viewers.
+     * 
+     * See also [property`ToolbarView:`bottom-bar-style].
+     */
+    topBarStyle: ToolbarStyle
 
     // Owm methods of Adw-1.Adw.ToolbarView
 
@@ -23525,6 +26528,16 @@ export module ViewStack {
          * See [property`ViewStack:`visible-child].
          */
         visible_child_name?: string | null
+        /**
+         * The widget currently visible in the stack.
+         */
+        visibleChild?: Gtk.Widget | null
+        /**
+         * The name of the widget currently visible in the stack.
+         * 
+         * See [property`ViewStack:`visible-child].
+         */
+        visibleChildName?: string | null
     }
 
 }
@@ -23566,11 +26579,21 @@ export interface ViewStack extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      */
     visible_child: Gtk.Widget
     /**
+     * The widget currently visible in the stack.
+     */
+    visibleChild: Gtk.Widget
+    /**
      * The name of the widget currently visible in the stack.
      * 
      * See [property`ViewStack:`visible-child].
      */
     visible_child_name: string | null
+    /**
+     * The name of the widget currently visible in the stack.
+     * 
+     * See [property`ViewStack:`visible-child].
+     */
+    visibleChildName: string | null
 
     // Owm methods of Adw-1.Adw.ViewStack
 
@@ -23953,6 +26976,29 @@ export module ViewStackPage {
          * [property`ViewStackPage:`child].
          */
         visible?: boolean | null
+        /**
+         * The badge number for this page.
+         * 
+         * [class`ViewSwitcher]` can display it as a badge next to the page icon. It is
+         * commonly used to display a number of unread items within the page.
+         * 
+         * It can be used together with [property`ViewStack{`age}:needs-attention].
+         */
+        badgeNumber?: number | null
+        /**
+         * The icon name of the child page.
+         */
+        iconName?: string | null
+        /**
+         * Whether the page requires the user attention.
+         * 
+         * [class`ViewSwitcher]` will display it as a dot next to the page icon.
+         */
+        needsAttention?: boolean | null
+        /**
+         * Whether an embedded underline in the title indicates a mnemonic.
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -23971,6 +27017,15 @@ export interface ViewStackPage extends Gtk.Accessible {
      */
     badge_number: number
     /**
+     * The badge number for this page.
+     * 
+     * [class`ViewSwitcher]` can display it as a badge next to the page icon. It is
+     * commonly used to display a number of unread items within the page.
+     * 
+     * It can be used together with [property`ViewStack{`age}:needs-attention].
+     */
+    badgeNumber: number
+    /**
      * The stack child to which the page belongs.
      */
     readonly child: Gtk.Widget
@@ -23978,6 +27033,10 @@ export interface ViewStackPage extends Gtk.Accessible {
      * The icon name of the child page.
      */
     icon_name: string | null
+    /**
+     * The icon name of the child page.
+     */
+    iconName: string | null
     /**
      * The name of the child page.
      */
@@ -23989,6 +27048,12 @@ export interface ViewStackPage extends Gtk.Accessible {
      */
     needs_attention: boolean
     /**
+     * Whether the page requires the user attention.
+     * 
+     * [class`ViewSwitcher]` will display it as a dot next to the page icon.
+     */
+    needsAttention: boolean
+    /**
      * The title of the child page.
      */
     title: string | null
@@ -23996,6 +27061,10 @@ export interface ViewStackPage extends Gtk.Accessible {
      * Whether an embedded underline in the title indicates a mnemonic.
      */
     use_underline: boolean
+    /**
+     * Whether an embedded underline in the title indicates a mnemonic.
+     */
+    useUnderline: boolean
     /**
      * Whether this page is visible.
      * 
@@ -24164,6 +27233,15 @@ export module ViewStackPages {
          * This can be used to keep an up-to-date view of the visible child.
          */
         selected_page?: ViewStackPage | null
+        /**
+         * The selected [class`ViewStackPage]` within the [class`ViewStackPages]`.
+         * 
+         * This can be used to keep an up-to-date view of the [class`ViewStackPage]` for
+         * The visible [class`ViewStackPage]` within the associated [class`ViewStackPages]`.
+         * 
+         * This can be used to keep an up-to-date view of the visible child.
+         */
+        selectedPage?: ViewStackPage | null
     }
 
 }
@@ -24181,6 +27259,15 @@ export interface ViewStackPages extends Gio.ListModel, Gtk.SelectionModel {
      * This can be used to keep an up-to-date view of the visible child.
      */
     selected_page: ViewStackPage
+    /**
+     * The selected [class`ViewStackPage]` within the [class`ViewStackPages]`.
+     * 
+     * This can be used to keep an up-to-date view of the [class`ViewStackPage]` for
+     * The visible [class`ViewStackPage]` within the associated [class`ViewStackPages]`.
+     * 
+     * This can be used to keep an up-to-date view of the visible child.
+     */
+    selectedPage: ViewStackPage
 
     // Owm methods of Adw-1.Adw.ViewStackPages
 
@@ -24804,6 +27891,17 @@ export module ViewSwitcherTitle {
          * window width, or any other constraint you find suitable.
          */
         view_switcher_enabled?: boolean | null
+        /**
+         * Whether the view switcher is enabled.
+         * 
+         * If it is disabled, the title will be displayed instead. This allows to
+         * programmatically hide the view switcher even if it fits in the available
+         * space.
+         * 
+         * This can be used e.g. to ensure the view switcher is hidden below a certain
+         * window width, or any other constraint you find suitable.
+         */
+        viewSwitcherEnabled?: boolean | null
     }
 
 }
@@ -24837,6 +27935,13 @@ export interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      */
     readonly title_visible: boolean
     /**
+     * Whether the title is currently visible.
+     * 
+     * If the title is visible, it means the view switcher is hidden an it may be
+     * wanted to show an alternative switcher, e.g. a [class`ViewSwitcherBar]`.
+     */
+    readonly titleVisible: boolean
+    /**
      * Whether the view switcher is enabled.
      * 
      * If it is disabled, the title will be displayed instead. This allows to
@@ -24847,6 +27952,17 @@ export interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      * window width, or any other constraint you find suitable.
      */
     view_switcher_enabled: boolean
+    /**
+     * Whether the view switcher is enabled.
+     * 
+     * If it is disabled, the title will be displayed instead. This allows to
+     * programmatically hide the view switcher even if it fits in the available
+     * space.
+     * 
+     * This can be used e.g. to ensure the view switcher is hidden below a certain
+     * window width, or any other constraint you find suitable.
+     */
+    viewSwitcherEnabled: boolean
 
     // Owm methods of Adw-1.Adw.ViewSwitcherTitle
 
@@ -25158,6 +28274,10 @@ export interface Window extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * The current breakpoint.
      */
     readonly current_breakpoint: Breakpoint
+    /**
+     * The current breakpoint.
+     */
+    readonly currentBreakpoint: Breakpoint
 
     // Own fields of Adw-1.Adw.Window
 

@@ -69,11 +69,18 @@ export module NonstreamAudioDecoder {
 
         current_subsong?: number | null
         num_loops?: number | null
+        currentSubsong?: number | null
+        numLoops?: number | null
     }
 
 }
 
 export interface NonstreamAudioDecoder {
+
+    // Own properties of GstBadAudio-1.0.GstBadAudio.NonstreamAudioDecoder
+
+    currentSubsong: number
+    numLoops: number
 
     // Conflicting properties
 
@@ -257,6 +264,12 @@ export interface NonstreamAudioDecoder {
 
     // Class property signals of GstBadAudio-1.0.GstBadAudio.NonstreamAudioDecoder
 
+    connect(sigName: "notify::current-subsong", callback: (($obj: NonstreamAudioDecoder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::current-subsong", callback: (($obj: NonstreamAudioDecoder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::current-subsong", ...args: any[]): void
+    connect(sigName: "notify::num-loops", callback: (($obj: NonstreamAudioDecoder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-loops", callback: (($obj: NonstreamAudioDecoder, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-loops", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

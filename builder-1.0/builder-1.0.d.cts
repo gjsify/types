@@ -137,6 +137,7 @@ export interface Document {
 
     readonly modified: boolean
     readonly read_only: boolean
+    readonly readOnly: boolean
     readonly title: string | null
 
     // Owm methods of Builder-1.0.Builder.Document
@@ -726,6 +727,7 @@ export module Tree {
         root?: TreeNode | null
         selection?: TreeNode | null
         show_icons?: boolean | null
+        showIcons?: boolean | null
     }
 
 }
@@ -737,6 +739,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
     root: TreeNode
     selection: TreeNode
     show_icons: boolean
+    showIcons: boolean
 
     // Own fields of Builder-1.0.Builder.Tree
 
@@ -1262,6 +1265,27 @@ export module TreeNode {
          * If the "text" property includes #GMarkup.
          */
         use_markup?: boolean | null
+        /**
+         * This property allows for more lazy loading of nodes.
+         * 
+         * When a node becomes visible, we normally build it's children nodes
+         * so that we know if we need an expansion arrow. However, that can
+         * be expensive when rendering directories with lots of subdirectories.
+         * 
+         * Using this, you can always show an arrow without building the children
+         * and simply hide the arrow if there were in fact no children (upon
+         * expansion).
+         */
+        childrenPossible?: boolean | null
+        /**
+         * An icon-name to display on the row.
+         */
+        iconName?: string | null
+        useDimLabel?: boolean | null
+        /**
+         * If the "text" property includes #GMarkup.
+         */
+        useMarkup?: boolean | null
     }
 
 }
@@ -1283,9 +1307,25 @@ export interface TreeNode {
      */
     children_possible: boolean
     /**
+     * This property allows for more lazy loading of nodes.
+     * 
+     * When a node becomes visible, we normally build it's children nodes
+     * so that we know if we need an expansion arrow. However, that can
+     * be expensive when rendering directories with lots of subdirectories.
+     * 
+     * Using this, you can always show an arrow without building the children
+     * and simply hide the arrow if there were in fact no children (upon
+     * expansion).
+     */
+    childrenPossible: boolean
+    /**
      * An icon-name to display on the row.
      */
     icon_name: string | null
+    /**
+     * An icon-name to display on the row.
+     */
+    iconName: string | null
     /**
      * An optional #GObject to associate with the node.
      */
@@ -1303,10 +1343,15 @@ export interface TreeNode {
      */
     tree: Tree
     use_dim_label: boolean
+    useDimLabel: boolean
     /**
      * If the "text" property includes #GMarkup.
      */
     use_markup: boolean
+    /**
+     * If the "text" property includes #GMarkup.
+     */
+    useMarkup: boolean
 
     // Owm methods of Builder-1.0.Builder.TreeNode
 
@@ -1468,9 +1513,11 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
     // Own properties of Builder-1.0.Builder.View
 
     readonly can_split: boolean
+    readonly canSplit: boolean
     readonly document: Document
     readonly modified: boolean
     readonly special_title: string | null
+    readonly specialTitle: string | null
     readonly title: string | null
 
     // Own fields of Builder-1.0.Builder.View
@@ -2017,6 +2064,7 @@ export module ViewStack {
         // Own constructor properties of Builder-1.0.Builder.ViewStack
 
         active_view?: View | null
+        activeView?: View | null
     }
 
 }
@@ -2026,6 +2074,7 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Builder-1.0.Builder.ViewStack
 
     active_view: View
+    activeView: View
 
     // Owm methods of Builder-1.0.Builder.ViewStack
 
@@ -2294,6 +2343,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
     // Own properties of Builder-1.0.Builder.Workbench
 
     readonly active_view: View
+    readonly activeView: View
     readonly building: boolean
     /**
      * The "context" property is the #IdeContext that shall be worked upon in

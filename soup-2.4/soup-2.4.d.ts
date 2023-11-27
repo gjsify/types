@@ -3181,6 +3181,7 @@ module Auth {
         host?: string | null
         is_for_proxy?: boolean | null
         realm?: string | null
+        isForProxy?: boolean | null
     }
 
 }
@@ -3191,8 +3192,11 @@ interface Auth {
 
     host: string | null
     readonly is_authenticated: boolean
+    readonly isAuthenticated: boolean
     is_for_proxy: boolean
+    isForProxy: boolean
     readonly scheme_name: string | null
+    readonly schemeName: string | null
 
     // Own fields of Soup-2.4.Soup.Auth
 
@@ -3519,6 +3523,14 @@ module AuthDomain {
         proxy?: boolean | null
         realm?: string | null
         remove_path?: string | null
+        addPath?: string | null
+        filterData?: any | null
+        /**
+         * The #SoupAuthDomainGenericAuthCallback for the domain
+         */
+        genericAuthCallback?: AuthDomainGenericAuthCallback | null
+        genericAuthData?: any | null
+        removePath?: string | null
     }
 
 }
@@ -3528,19 +3540,27 @@ interface AuthDomain {
     // Own properties of Soup-2.4.Soup.AuthDomain
 
     add_path: string | null
+    addPath: string | null
     /**
      * The #SoupAuthDomainFilter for the domain
      */
     filter: AuthDomainFilter
     filter_data: any
+    filterData: any
     /**
      * The #SoupAuthDomainGenericAuthCallback for the domain
      */
     generic_auth_callback: AuthDomainGenericAuthCallback
+    /**
+     * The #SoupAuthDomainGenericAuthCallback for the domain
+     */
+    genericAuthCallback: AuthDomainGenericAuthCallback
     generic_auth_data: any
+    genericAuthData: any
     readonly proxy: boolean
     readonly realm: string | null
     remove_path: string | null
+    removePath: string | null
 
     // Own fields of Soup-2.4.Soup.AuthDomain
 
@@ -3724,6 +3744,14 @@ module AuthDomainBasic {
          * The data to pass to the #SoupAuthDomainBasicAuthCallback
          */
         auth_data?: any | null
+        /**
+         * The #SoupAuthDomainBasicAuthCallback
+         */
+        authCallback?: AuthDomainBasicAuthCallback | null
+        /**
+         * The data to pass to the #SoupAuthDomainBasicAuthCallback
+         */
+        authData?: any | null
     }
 
 }
@@ -3737,9 +3765,17 @@ interface AuthDomainBasic {
      */
     auth_callback: AuthDomainBasicAuthCallback
     /**
+     * The #SoupAuthDomainBasicAuthCallback
+     */
+    authCallback: AuthDomainBasicAuthCallback
+    /**
      * The data to pass to the #SoupAuthDomainBasicAuthCallback
      */
     auth_data: any
+    /**
+     * The data to pass to the #SoupAuthDomainBasicAuthCallback
+     */
+    authData: any
 
     // Own fields of Soup-2.4.Soup.AuthDomainBasic
 
@@ -3828,6 +3864,14 @@ module AuthDomainDigest {
          * The data to pass to the #SoupAuthDomainDigestAuthCallback
          */
         auth_data?: any | null
+        /**
+         * The #SoupAuthDomainDigestAuthCallback
+         */
+        authCallback?: AuthDomainDigestAuthCallback | null
+        /**
+         * The data to pass to the #SoupAuthDomainDigestAuthCallback
+         */
+        authData?: any | null
     }
 
 }
@@ -3841,9 +3885,17 @@ interface AuthDomainDigest {
      */
     auth_callback: AuthDomainDigestAuthCallback
     /**
+     * The #SoupAuthDomainDigestAuthCallback
+     */
+    authCallback: AuthDomainDigestAuthCallback
+    /**
      * The data to pass to the #SoupAuthDomainDigestAuthCallback
      */
     auth_data: any
+    /**
+     * The data to pass to the #SoupAuthDomainDigestAuthCallback
+     */
+    authData: any
 
     // Own fields of Soup-2.4.Soup.AuthDomainDigest
 
@@ -4119,6 +4171,8 @@ module Cache {
 
         cache_dir?: string | null
         cache_type?: CacheType | null
+        cacheDir?: string | null
+        cacheType?: CacheType | null
     }
 
 }
@@ -4128,7 +4182,9 @@ interface Cache extends SessionFeature {
     // Own properties of Soup-2.4.Soup.Cache
 
     readonly cache_dir: string | null
+    readonly cacheDir: string | null
     readonly cache_type: CacheType
+    readonly cacheType: CacheType
 
     // Own fields of Soup-2.4.Soup.Cache
 
@@ -4368,6 +4424,11 @@ module CookieJar {
          */
         accept_policy?: CookieJarAcceptPolicy | null
         read_only?: boolean | null
+        /**
+         * The policy the jar should follow to accept or reject cookies
+         */
+        acceptPolicy?: CookieJarAcceptPolicy | null
+        readOnly?: boolean | null
     }
 
 }
@@ -4380,7 +4441,12 @@ interface CookieJar extends SessionFeature {
      * The policy the jar should follow to accept or reject cookies
      */
     accept_policy: CookieJarAcceptPolicy
+    /**
+     * The policy the jar should follow to accept or reject cookies
+     */
+    acceptPolicy: CookieJarAcceptPolicy
     readonly read_only: boolean
+    readonly readOnly: boolean
 
     // Own fields of Soup-2.4.Soup.CookieJar
 
@@ -5037,6 +5103,12 @@ module Logger {
          * (-1 means "no limit".)
          */
         max_body_size?: number | null
+        /**
+         * If #SoupLogger:level is %SOUP_LOGGER_LOG_BODY, this gives
+         * the maximum number of bytes of the body that will be logged.
+         * (-1 means "no limit".)
+         */
+        maxBodySize?: number | null
     }
 
 }
@@ -5055,6 +5127,12 @@ interface Logger extends SessionFeature {
      * (-1 means "no limit".)
      */
     max_body_size: number
+    /**
+     * If #SoupLogger:level is %SOUP_LOGGER_LOG_BODY, this gives
+     * the maximum number of bytes of the body that will be logged.
+     * (-1 means "no limit".)
+     */
+    maxBodySize: number
 
     // Own fields of Soup-2.4.Soup.Logger
 
@@ -5292,6 +5370,28 @@ module Message {
          */
         tls_errors?: Gio.TlsCertificateFlags | null
         uri?: URI | null
+        /**
+         * The #SoupURI loaded in the application when the message was
+         * queued.
+         */
+        firstParty?: URI | null
+        httpVersion?: HTTPVersion | null
+        /**
+         * Set when the message is navigating between top level domains.
+         */
+        isTopLevelNavigation?: boolean | null
+        reasonPhrase?: string | null
+        serverSide?: boolean | null
+        siteForCookies?: URI | null
+        statusCode?: number | null
+        /**
+         * The #GTlsCertificate associated with the message
+         */
+        tlsCertificate?: Gio.TlsCertificate | null
+        /**
+         * The verification errors on #SoupMessage:tls-certificate
+         */
+        tlsErrors?: Gio.TlsCertificateFlags | null
     }
 
 }
@@ -5305,31 +5405,65 @@ interface Message {
      * queued.
      */
     first_party: URI
+    /**
+     * The #SoupURI loaded in the application when the message was
+     * queued.
+     */
+    firstParty: URI
     flags: MessageFlags
     http_version: HTTPVersion
+    httpVersion: HTTPVersion
     /**
      * Set when the message is navigating between top level domains.
      */
     is_top_level_navigation: boolean
+    /**
+     * Set when the message is navigating between top level domains.
+     */
+    isTopLevelNavigation: boolean
     priority: MessagePriority
+    reasonPhrase: string | null
+    readonly requestBody: MessageBody
     /**
      * The message's HTTP request body, as a #GBytes.
      */
     readonly request_body_data: GLib.Bytes
     /**
+     * The message's HTTP request body, as a #GBytes.
+     */
+    readonly requestBodyData: GLib.Bytes
+    readonly requestHeaders: MessageHeaders
+    readonly responseBody: MessageBody
+    /**
      * The message's HTTP response body, as a #GBytes.
      */
     readonly response_body_data: GLib.Bytes
+    /**
+     * The message's HTTP response body, as a #GBytes.
+     */
+    readonly responseBodyData: GLib.Bytes
+    readonly responseHeaders: MessageHeaders
     readonly server_side: boolean
+    readonly serverSide: boolean
     site_for_cookies: URI
+    siteForCookies: URI
+    statusCode: number
     /**
      * The #GTlsCertificate associated with the message
      */
     tls_certificate: Gio.TlsCertificate
     /**
+     * The #GTlsCertificate associated with the message
+     */
+    tlsCertificate: Gio.TlsCertificate
+    /**
      * The verification errors on #SoupMessage:tls-certificate
      */
     tls_errors: Gio.TlsCertificateFlags
+    /**
+     * The verification errors on #SoupMessage:tls-certificate
+     */
+    tlsErrors: Gio.TlsCertificateFlags
     uri: URI
 
     // Own fields of Soup-2.4.Soup.Message
@@ -5683,18 +5817,36 @@ interface Message {
     connect(sigName: "notify::priority", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::priority", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::priority", ...args: any[]): void
+    connect(sigName: "notify::reason-phrase", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reason-phrase", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::reason-phrase", ...args: any[]): void
+    connect(sigName: "notify::request-body", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::request-body", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::request-body", ...args: any[]): void
     connect(sigName: "notify::request-body-data", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::request-body-data", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::request-body-data", ...args: any[]): void
+    connect(sigName: "notify::request-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::request-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::request-headers", ...args: any[]): void
+    connect(sigName: "notify::response-body", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::response-body", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::response-body", ...args: any[]): void
     connect(sigName: "notify::response-body-data", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::response-body-data", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::response-body-data", ...args: any[]): void
+    connect(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::response-headers", ...args: any[]): void
     connect(sigName: "notify::server-side", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server-side", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::server-side", ...args: any[]): void
     connect(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::site-for-cookies", ...args: any[]): void
+    connect(sigName: "notify::status-code", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::status-code", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::status-code", ...args: any[]): void
     connect(sigName: "notify::tls-certificate", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-certificate", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tls-certificate", ...args: any[]): void
@@ -5879,6 +6031,9 @@ interface MultipartInputStream extends Gio.PollableInputStream {
     connect(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::message", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -5934,6 +6089,7 @@ module ProxyResolverDefault {
         // Own constructor properties of Soup-2.4.Soup.ProxyResolverDefault
 
         gproxy_resolver?: Gio.ProxyResolver | null
+        gproxyResolver?: Gio.ProxyResolver | null
     }
 
 }
@@ -5943,6 +6099,7 @@ interface ProxyResolverDefault extends ProxyURIResolver, SessionFeature {
     // Own properties of Soup-2.4.Soup.ProxyResolverDefault
 
     gproxy_resolver: Gio.ProxyResolver
+    gproxyResolver: Gio.ProxyResolver
 
     // Own fields of Soup-2.4.Soup.ProxyResolverDefault
 
@@ -6493,6 +6650,94 @@ module Server {
          * to have #SoupServer read in a a certificate from a file.
          */
         tls_certificate?: Gio.TlsCertificate | null
+        /**
+         * The server's #GMainContext, if you are using the old API.
+         * Servers created using soup_server_listen() will listen on
+         * the #GMainContext that was the thread-default context at
+         * the time soup_server_listen() was called.
+         */
+        asyncContext?: any | null
+        /**
+         * A %NULL-terminated array of URI schemes that should be
+         * considered to be aliases for "http". Eg, if this included
+         * <literal>"dav"</literal>, than a URI of
+         * <literal>dav://example.com/path</literal> would be treated
+         * identically to <literal>http://example.com/path</literal>.
+         * In particular, this is needed in cases where a client
+         * sends requests with absolute URIs, where those URIs do
+         * not use "http:".
+         * 
+         * The default value is an array containing the single element
+         * <literal>"*"</literal>, a special value which means that
+         * any scheme except "https" is considered to be an alias for
+         * "http".
+         * 
+         * See also #SoupServer:https-aliases.
+         */
+        httpAliases?: string[] | null
+        /**
+         * A comma-delimited list of URI schemes that should be
+         * considered to be aliases for "https". See
+         * #SoupServer:http-aliases for more information.
+         * 
+         * The default value is %NULL, meaning that no URI schemes
+         * are considered aliases for "https".
+         */
+        httpsAliases?: string[] | null
+        rawPaths?: boolean | null
+        /**
+         * If non-%NULL, the value to use for the "Server" header on
+         * #SoupMessage<!-- -->s processed by this server.
+         * 
+         * The Server header is the server equivalent of the
+         * User-Agent header, and provides information about the
+         * server and its components. It contains a list of one or
+         * more product tokens, separated by whitespace, with the most
+         * significant product token coming first. The tokens must be
+         * brief, ASCII, and mostly alphanumeric (although "-", "_",
+         * and "." are also allowed), and may optionally include a "/"
+         * followed by a version string. You may also put comments,
+         * enclosed in parentheses, between or after the tokens.
+         * 
+         * Some HTTP server implementations intentionally do not use
+         * version numbers in their Server header, so that
+         * installations running older versions of the server don't
+         * end up advertising their vulnerability to specific security
+         * holes.
+         * 
+         * As with #SoupSession:user_agent, if you set a
+         * #SoupServer:server_header property that has trailing whitespace,
+         * #SoupServer will append its own product token (eg,
+         * "<literal>libsoup/2.3.2</literal>") to the end of the
+         * header for you.
+         */
+        serverHeader?: string | null
+        /**
+         * Path to a file containing a PEM-encoded certificate.
+         * 
+         * If you set this property and #SoupServer:ssl-key-file at
+         * construct time, then soup_server_new() will try to read the
+         * files; if it cannot, it will return %NULL, with no explicit
+         * indication of what went wrong (and logging a warning with
+         * newer versions of glib, since returning %NULL from a
+         * constructor is illegal).
+         */
+        sslCertFile?: string | null
+        /**
+         * Path to a file containing a PEM-encoded private key. See
+         * #SoupServer:ssl-cert-file for more information about how this
+         * is used.
+         */
+        sslKeyFile?: string | null
+        /**
+         * A #GTlsCertificate that has a #GTlsCertificate:private-key
+         * set. If this is set, then the server will be able to speak
+         * https in addition to (or instead of) plain http.
+         * 
+         * Alternatively, you can call soup_server_set_ssl_cert_file()
+         * to have #SoupServer read in a a certificate from a file.
+         */
+        tlsCertificate?: Gio.TlsCertificate | null
     }
 
 }
@@ -6508,6 +6753,13 @@ interface Server {
      * the time soup_server_listen() was called.
      */
     readonly async_context: any
+    /**
+     * The server's #GMainContext, if you are using the old API.
+     * Servers created using soup_server_listen() will listen on
+     * the #GMainContext that was the thread-default context at
+     * the time soup_server_listen() was called.
+     */
+    readonly asyncContext: any
     /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
@@ -6527,6 +6779,24 @@ interface Server {
      */
     http_aliases: string[]
     /**
+     * A %NULL-terminated array of URI schemes that should be
+     * considered to be aliases for "http". Eg, if this included
+     * <literal>"dav"</literal>, than a URI of
+     * <literal>dav://example.com/path</literal> would be treated
+     * identically to <literal>http://example.com/path</literal>.
+     * In particular, this is needed in cases where a client
+     * sends requests with absolute URIs, where those URIs do
+     * not use "http:".
+     * 
+     * The default value is an array containing the single element
+     * <literal>"*"</literal>, a special value which means that
+     * any scheme except "https" is considered to be an alias for
+     * "http".
+     * 
+     * See also #SoupServer:https-aliases.
+     */
+    httpAliases: string[]
+    /**
      * A comma-delimited list of URI schemes that should be
      * considered to be aliases for "https". See
      * #SoupServer:http-aliases for more information.
@@ -6535,6 +6805,15 @@ interface Server {
      * are considered aliases for "https".
      */
     https_aliases: string[]
+    /**
+     * A comma-delimited list of URI schemes that should be
+     * considered to be aliases for "https". See
+     * #SoupServer:http-aliases for more information.
+     * 
+     * The default value is %NULL, meaning that no URI schemes
+     * are considered aliases for "https".
+     */
+    httpsAliases: string[]
     /**
      * The address of the network interface the server is
      * listening on, if you are using the old #SoupServer API.
@@ -6549,6 +6828,7 @@ interface Server {
      */
     readonly port: number
     readonly raw_paths: boolean
+    readonly rawPaths: boolean
     /**
      * If non-%NULL, the value to use for the "Server" header on
      * #SoupMessage<!-- -->s processed by this server.
@@ -6577,6 +6857,33 @@ interface Server {
      */
     server_header: string | null
     /**
+     * If non-%NULL, the value to use for the "Server" header on
+     * #SoupMessage<!-- -->s processed by this server.
+     * 
+     * The Server header is the server equivalent of the
+     * User-Agent header, and provides information about the
+     * server and its components. It contains a list of one or
+     * more product tokens, separated by whitespace, with the most
+     * significant product token coming first. The tokens must be
+     * brief, ASCII, and mostly alphanumeric (although "-", "_",
+     * and "." are also allowed), and may optionally include a "/"
+     * followed by a version string. You may also put comments,
+     * enclosed in parentheses, between or after the tokens.
+     * 
+     * Some HTTP server implementations intentionally do not use
+     * version numbers in their Server header, so that
+     * installations running older versions of the server don't
+     * end up advertising their vulnerability to specific security
+     * holes.
+     * 
+     * As with #SoupSession:user_agent, if you set a
+     * #SoupServer:server_header property that has trailing whitespace,
+     * #SoupServer will append its own product token (eg,
+     * "<literal>libsoup/2.3.2</literal>") to the end of the
+     * header for you.
+     */
+    serverHeader: string | null
+    /**
      * Path to a file containing a PEM-encoded certificate.
      * 
      * If you set this property and #SoupServer:ssl-key-file at
@@ -6588,11 +6895,28 @@ interface Server {
      */
     readonly ssl_cert_file: string | null
     /**
+     * Path to a file containing a PEM-encoded certificate.
+     * 
+     * If you set this property and #SoupServer:ssl-key-file at
+     * construct time, then soup_server_new() will try to read the
+     * files; if it cannot, it will return %NULL, with no explicit
+     * indication of what went wrong (and logging a warning with
+     * newer versions of glib, since returning %NULL from a
+     * constructor is illegal).
+     */
+    readonly sslCertFile: string | null
+    /**
      * Path to a file containing a PEM-encoded private key. See
      * #SoupServer:ssl-cert-file for more information about how this
      * is used.
      */
     readonly ssl_key_file: string | null
+    /**
+     * Path to a file containing a PEM-encoded private key. See
+     * #SoupServer:ssl-cert-file for more information about how this
+     * is used.
+     */
+    readonly sslKeyFile: string | null
     /**
      * A #GTlsCertificate that has a #GTlsCertificate:private-key
      * set. If this is set, then the server will be able to speak
@@ -6602,6 +6926,15 @@ interface Server {
      * to have #SoupServer read in a a certificate from a file.
      */
     readonly tls_certificate: Gio.TlsCertificate
+    /**
+     * A #GTlsCertificate that has a #GTlsCertificate:private-key
+     * set. If this is set, then the server will be able to speak
+     * https in addition to (or instead of) plain http.
+     * 
+     * Alternatively, you can call soup_server_set_ssl_cert_file()
+     * to have #SoupServer read in a a certificate from a file.
+     */
+    readonly tlsCertificate: Gio.TlsCertificate
 
     // Own fields of Soup-2.4.Soup.Server
 
@@ -7370,6 +7703,241 @@ module Session {
          * header for you.
          */
         user_agent?: string | null
+        /**
+         * If non-%NULL, the value to use for the "Accept-Language" header
+         * on #SoupMessage<!-- -->s sent from this session.
+         * 
+         * Setting this will disable
+         * #SoupSession:accept-language-auto.
+         */
+        acceptLanguage?: string | null
+        /**
+         * If %TRUE, #SoupSession will automatically set the string
+         * for the "Accept-Language" header on every #SoupMessage
+         * sent, based on the return value of g_get_language_names().
+         * 
+         * Setting this will override any previous value of
+         * #SoupSession:accept-language.
+         */
+        acceptLanguageAuto?: boolean | null
+        /**
+         * The #GMainContext that miscellaneous session-related
+         * asynchronous callbacks are invoked on. (Eg, setting
+         * #SoupSession:idle-timeout will add a timeout source on this
+         * context.)
+         * 
+         * For a plain #SoupSession, this property is always set to
+         * the #GMainContext that is the thread-default at the time
+         * the session was created, and cannot be overridden. For the
+         * deprecated #SoupSession subclasses, the default value is
+         * %NULL, meaning to use the global default #GMainContext.
+         * 
+         * If #SoupSession:use-thread-context is %FALSE, this context
+         * will also be used for asynchronous HTTP I/O.
+         */
+        asyncContext?: any | null
+        /**
+         * A %NULL-terminated array of URI schemes that should be
+         * considered to be aliases for "http". Eg, if this included
+         * <literal>"dav"</literal>, than a URI of
+         * <literal>dav://example.com/path</literal> would be treated
+         * identically to <literal>http://example.com/path</literal>.
+         * 
+         * In a plain #SoupSession, the default value is %NULL,
+         * meaning that only "http" is recognized as meaning "http".
+         * In #SoupSessionAsync and #SoupSessionSync, for backward
+         * compatibility, the default value is an array containing the
+         * single element <literal>"*"</literal>, a special value
+         * which means that any scheme except "https" is considered to
+         * be an alias for "http".
+         * 
+         * See also #SoupSession:https-aliases.
+         */
+        httpAliases?: string[] | null
+        /**
+         * A comma-delimited list of URI schemes that should be
+         * considered to be aliases for "https". See
+         * #SoupSession:http-aliases for more information.
+         * 
+         * The default value is %NULL, meaning that no URI schemes
+         * are considered aliases for "https".
+         */
+        httpsAliases?: string[] | null
+        /**
+         * Connection lifetime (in seconds) when idle. Any connection
+         * left idle longer than this will be closed.
+         * 
+         * Although you can change this property at any time, it will
+         * only affect newly-created connections, not currently-open
+         * ones. You can call soup_session_abort() after setting this
+         * if you want to ensure that all future connections will have
+         * this timeout value.
+         * 
+         * Note that the default value of 60 seconds only applies to
+         * plain #SoupSessions. If you are using #SoupSessionAsync or
+         * #SoupSessionSync, the default value is 0 (meaning idle
+         * connections will never time out).
+         */
+        idleTimeout?: number | null
+        /**
+         * Sets the #SoupAddress to use for the client side of
+         * the connection.
+         * 
+         * Use this property if you want for instance to bind the
+         * local socket to a specific IP address.
+         */
+        localAddress?: Address | null
+        maxConns?: number | null
+        maxConnsPerHost?: number | null
+        /**
+         * A #GProxyResolver to use with this session. Setting this
+         * will clear the #SoupSession:proxy-uri property, and remove
+         * any <type>SoupProxyURIResolver</type> features that have
+         * been added to the session.
+         * 
+         * By default, in a plain #SoupSession, this is set to the
+         * default #GProxyResolver, but you can set it to %NULL if you
+         * don't want to use proxies, or set it to your own
+         * #GProxyResolver if you want to control what proxies get
+         * used.
+         */
+        proxyResolver?: Gio.ProxyResolver | null
+        /**
+         * A proxy to use for all http and https requests in this
+         * session. Setting this will clear the
+         * #SoupSession:proxy-resolver property, and remove any
+         * <type>SoupProxyURIResolver</type> features that have been
+         * added to the session. Setting this property will also
+         * cancel all currently pending messages.
+         * 
+         * Note that #SoupSession will normally handle looking up the
+         * user's proxy settings for you; you should only use
+         * #SoupSession:proxy-uri if you need to override the user's
+         * normal proxy settings.
+         * 
+         * Also note that this proxy will be used for
+         * <emphasis>all</emphasis> requests; even requests to
+         * <literal>localhost</literal>. If you need more control over
+         * proxies, you can create a #GSimpleProxyResolver and set the
+         * #SoupSession:proxy-resolver property.
+         */
+        proxyUri?: URI | null
+        /**
+         * File containing SSL CA certificates.
+         * 
+         * If the specified file does not exist or cannot be read,
+         * then libsoup will print a warning, and then behave as
+         * though it had read in a empty CA file, meaning that all SSL
+         * certificates will be considered invalid.
+         */
+        sslCaFile?: string | null
+        /**
+         * Normally, if #SoupSession:tls-database is set (including if
+         * it was set via #SoupSession:ssl-use-system-ca-file or
+         * #SoupSession:ssl-ca-file), then libsoup will reject any
+         * certificate that is invalid (ie, expired) or that is not
+         * signed by one of the given CA certificates, and the
+         * #SoupMessage will fail with the status
+         * %SOUP_STATUS_SSL_FAILED.
+         * 
+         * If you set #SoupSession:ssl-strict to %FALSE, then all
+         * certificates will be accepted, and you will need to call
+         * soup_message_get_https_status() to distinguish valid from
+         * invalid certificates. (This can be used, eg, if you want to
+         * accept invalid certificates after giving some sort of
+         * warning.)
+         * 
+         * For a plain #SoupSession, if the session has no CA file or
+         * TLS database, and this property is %TRUE, then all
+         * certificates will be rejected. However, beware that the
+         * deprecated #SoupSession subclasses (#SoupSessionAsync and
+         * #SoupSessionSync) have the opposite behavior: if there is
+         * no CA file or TLS database, then all certificates are always
+         * accepted, and this property has no effect.
+         */
+        sslStrict?: boolean | null
+        /**
+         * Setting this to %TRUE is equivalent to setting
+         * #SoupSession:tls-database to the default system CA database.
+         * (and likewise, setting #SoupSession:tls-database to the
+         * default database by hand will cause this property to
+         * become %TRUE).
+         * 
+         * Setting this to %FALSE (when it was previously %TRUE) will
+         * clear the #SoupSession:tls-database field.
+         * 
+         * See #SoupSession:ssl-strict for more information on how
+         * https certificate validation is handled.
+         * 
+         * If you are using #SoupSessionAsync or
+         * #SoupSessionSync, on libsoup older than 2.74.0, the default value
+         * is %FALSE, for backward compatibility.
+         */
+        sslUseSystemCaFile?: boolean | null
+        /**
+         * Sets the #GTlsDatabase to use for validating SSL/TLS
+         * certificates.
+         * 
+         * Note that setting the #SoupSession:ssl-ca-file or
+         * #SoupSession:ssl-use-system-ca-file property will cause
+         * this property to be set to a #GTlsDatabase corresponding to
+         * the indicated file or system default.
+         * 
+         * See #SoupSession:ssl-strict for more information on how
+         * https certificate validation is handled.
+         * 
+         * If you are using a plain #SoupSession then
+         * #SoupSession:ssl-use-system-ca-file will be %TRUE by
+         * default, and so this property will be a copy of the system
+         * CA database. If you are using #SoupSessionAsync or
+         * #SoupSessionSync, on libsoup older than 2.74.0, this property
+         * will be %NULL by default.
+         */
+        tlsDatabase?: Gio.TlsDatabase | null
+        /**
+         * A #GTlsInteraction object that will be passed on to any
+         * #GTlsConnections created by the session. (This can be used to
+         * provide client-side certificates, for example.)
+         */
+        tlsInteraction?: Gio.TlsInteraction | null
+        /**
+         * Whether or not to use NTLM authentication.
+         */
+        useNtlm?: boolean | null
+        /**
+         * If %TRUE (which it always is on a plain #SoupSession),
+         * asynchronous HTTP requests in this session will run in
+         * whatever the thread-default #GMainContext is at the time
+         * they are started, rather than always occurring in
+         * #SoupSession:async-context.
+         */
+        useThreadContext?: boolean | null
+        /**
+         * If non-%NULL, the value to use for the "User-Agent" header
+         * on #SoupMessage<!-- -->s sent from this session.
+         * 
+         * RFC 2616 says: "The User-Agent request-header field
+         * contains information about the user agent originating the
+         * request. This is for statistical purposes, the tracing of
+         * protocol violations, and automated recognition of user
+         * agents for the sake of tailoring responses to avoid
+         * particular user agent limitations. User agents SHOULD
+         * include this field with requests."
+         * 
+         * The User-Agent header contains a list of one or more
+         * product tokens, separated by whitespace, with the most
+         * significant product token coming first. The tokens must be
+         * brief, ASCII, and mostly alphanumeric (although "-", "_",
+         * and "." are also allowed), and may optionally include a "/"
+         * followed by a version string. You may also put comments,
+         * enclosed in parentheses, between or after the tokens.
+         * 
+         * If you set a #SoupSession:user_agent property that has trailing
+         * whitespace, #SoupSession will append its own product token
+         * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
+         * header for you.
+         */
+        userAgent?: string | null
     }
 
 }
@@ -7387,6 +7955,14 @@ interface Session {
      */
     accept_language: string | null
     /**
+     * If non-%NULL, the value to use for the "Accept-Language" header
+     * on #SoupMessage<!-- -->s sent from this session.
+     * 
+     * Setting this will disable
+     * #SoupSession:accept-language-auto.
+     */
+    acceptLanguage: string | null
+    /**
      * If %TRUE, #SoupSession will automatically set the string
      * for the "Accept-Language" header on every #SoupMessage
      * sent, based on the return value of g_get_language_names().
@@ -7395,6 +7971,15 @@ interface Session {
      * #SoupSession:accept-language.
      */
     accept_language_auto: boolean
+    /**
+     * If %TRUE, #SoupSession will automatically set the string
+     * for the "Accept-Language" header on every #SoupMessage
+     * sent, based on the return value of g_get_language_names().
+     * 
+     * Setting this will override any previous value of
+     * #SoupSession:accept-language.
+     */
+    acceptLanguageAuto: boolean
     /**
      * The #GMainContext that miscellaneous session-related
      * asynchronous callbacks are invoked on. (Eg, setting
@@ -7411,6 +7996,22 @@ interface Session {
      * will also be used for asynchronous HTTP I/O.
      */
     readonly async_context: any
+    /**
+     * The #GMainContext that miscellaneous session-related
+     * asynchronous callbacks are invoked on. (Eg, setting
+     * #SoupSession:idle-timeout will add a timeout source on this
+     * context.)
+     * 
+     * For a plain #SoupSession, this property is always set to
+     * the #GMainContext that is the thread-default at the time
+     * the session was created, and cannot be overridden. For the
+     * deprecated #SoupSession subclasses, the default value is
+     * %NULL, meaning to use the global default #GMainContext.
+     * 
+     * If #SoupSession:use-thread-context is %FALSE, this context
+     * will also be used for asynchronous HTTP I/O.
+     */
+    readonly asyncContext: any
     /**
      * A %NULL-terminated array of URI schemes that should be
      * considered to be aliases for "http". Eg, if this included
@@ -7430,6 +8031,24 @@ interface Session {
      */
     http_aliases: string[]
     /**
+     * A %NULL-terminated array of URI schemes that should be
+     * considered to be aliases for "http". Eg, if this included
+     * <literal>"dav"</literal>, than a URI of
+     * <literal>dav://example.com/path</literal> would be treated
+     * identically to <literal>http://example.com/path</literal>.
+     * 
+     * In a plain #SoupSession, the default value is %NULL,
+     * meaning that only "http" is recognized as meaning "http".
+     * In #SoupSessionAsync and #SoupSessionSync, for backward
+     * compatibility, the default value is an array containing the
+     * single element <literal>"*"</literal>, a special value
+     * which means that any scheme except "https" is considered to
+     * be an alias for "http".
+     * 
+     * See also #SoupSession:https-aliases.
+     */
+    httpAliases: string[]
+    /**
      * A comma-delimited list of URI schemes that should be
      * considered to be aliases for "https". See
      * #SoupSession:http-aliases for more information.
@@ -7438,6 +8057,15 @@ interface Session {
      * are considered aliases for "https".
      */
     https_aliases: string[]
+    /**
+     * A comma-delimited list of URI schemes that should be
+     * considered to be aliases for "https". See
+     * #SoupSession:http-aliases for more information.
+     * 
+     * The default value is %NULL, meaning that no URI schemes
+     * are considered aliases for "https".
+     */
+    httpsAliases: string[]
     /**
      * Connection lifetime (in seconds) when idle. Any connection
      * left idle longer than this will be closed.
@@ -7455,6 +8083,22 @@ interface Session {
      */
     idle_timeout: number
     /**
+     * Connection lifetime (in seconds) when idle. Any connection
+     * left idle longer than this will be closed.
+     * 
+     * Although you can change this property at any time, it will
+     * only affect newly-created connections, not currently-open
+     * ones. You can call soup_session_abort() after setting this
+     * if you want to ensure that all future connections will have
+     * this timeout value.
+     * 
+     * Note that the default value of 60 seconds only applies to
+     * plain #SoupSessions. If you are using #SoupSessionAsync or
+     * #SoupSessionSync, the default value is 0 (meaning idle
+     * connections will never time out).
+     */
+    idleTimeout: number
+    /**
      * Sets the #SoupAddress to use for the client side of
      * the connection.
      * 
@@ -7462,8 +8106,18 @@ interface Session {
      * local socket to a specific IP address.
      */
     readonly local_address: Address
+    /**
+     * Sets the #SoupAddress to use for the client side of
+     * the connection.
+     * 
+     * Use this property if you want for instance to bind the
+     * local socket to a specific IP address.
+     */
+    readonly localAddress: Address
     max_conns: number
+    maxConns: number
     max_conns_per_host: number
+    maxConnsPerHost: number
     /**
      * A #GProxyResolver to use with this session. Setting this
      * will clear the #SoupSession:proxy-uri property, and remove
@@ -7477,6 +8131,19 @@ interface Session {
      * used.
      */
     proxy_resolver: Gio.ProxyResolver
+    /**
+     * A #GProxyResolver to use with this session. Setting this
+     * will clear the #SoupSession:proxy-uri property, and remove
+     * any <type>SoupProxyURIResolver</type> features that have
+     * been added to the session.
+     * 
+     * By default, in a plain #SoupSession, this is set to the
+     * default #GProxyResolver, but you can set it to %NULL if you
+     * don't want to use proxies, or set it to your own
+     * #GProxyResolver if you want to control what proxies get
+     * used.
+     */
+    proxyResolver: Gio.ProxyResolver
     /**
      * A proxy to use for all http and https requests in this
      * session. Setting this will clear the
@@ -7498,6 +8165,26 @@ interface Session {
      */
     proxy_uri: URI
     /**
+     * A proxy to use for all http and https requests in this
+     * session. Setting this will clear the
+     * #SoupSession:proxy-resolver property, and remove any
+     * <type>SoupProxyURIResolver</type> features that have been
+     * added to the session. Setting this property will also
+     * cancel all currently pending messages.
+     * 
+     * Note that #SoupSession will normally handle looking up the
+     * user's proxy settings for you; you should only use
+     * #SoupSession:proxy-uri if you need to override the user's
+     * normal proxy settings.
+     * 
+     * Also note that this proxy will be used for
+     * <emphasis>all</emphasis> requests; even requests to
+     * <literal>localhost</literal>. If you need more control over
+     * proxies, you can create a #GSimpleProxyResolver and set the
+     * #SoupSession:proxy-resolver property.
+     */
+    proxyUri: URI
+    /**
      * File containing SSL CA certificates.
      * 
      * If the specified file does not exist or cannot be read,
@@ -7506,6 +8193,15 @@ interface Session {
      * certificates will be considered invalid.
      */
     ssl_ca_file: string | null
+    /**
+     * File containing SSL CA certificates.
+     * 
+     * If the specified file does not exist or cannot be read,
+     * then libsoup will print a warning, and then behave as
+     * though it had read in a empty CA file, meaning that all SSL
+     * certificates will be considered invalid.
+     */
+    sslCaFile: string | null
     /**
      * Normally, if #SoupSession:tls-database is set (including if
      * it was set via #SoupSession:ssl-use-system-ca-file or
@@ -7532,6 +8228,31 @@ interface Session {
      */
     ssl_strict: boolean
     /**
+     * Normally, if #SoupSession:tls-database is set (including if
+     * it was set via #SoupSession:ssl-use-system-ca-file or
+     * #SoupSession:ssl-ca-file), then libsoup will reject any
+     * certificate that is invalid (ie, expired) or that is not
+     * signed by one of the given CA certificates, and the
+     * #SoupMessage will fail with the status
+     * %SOUP_STATUS_SSL_FAILED.
+     * 
+     * If you set #SoupSession:ssl-strict to %FALSE, then all
+     * certificates will be accepted, and you will need to call
+     * soup_message_get_https_status() to distinguish valid from
+     * invalid certificates. (This can be used, eg, if you want to
+     * accept invalid certificates after giving some sort of
+     * warning.)
+     * 
+     * For a plain #SoupSession, if the session has no CA file or
+     * TLS database, and this property is %TRUE, then all
+     * certificates will be rejected. However, beware that the
+     * deprecated #SoupSession subclasses (#SoupSessionAsync and
+     * #SoupSessionSync) have the opposite behavior: if there is
+     * no CA file or TLS database, then all certificates are always
+     * accepted, and this property has no effect.
+     */
+    sslStrict: boolean
+    /**
      * Setting this to %TRUE is equivalent to setting
      * #SoupSession:tls-database to the default system CA database.
      * (and likewise, setting #SoupSession:tls-database to the
@@ -7549,6 +8270,24 @@ interface Session {
      * is %FALSE, for backward compatibility.
      */
     ssl_use_system_ca_file: boolean
+    /**
+     * Setting this to %TRUE is equivalent to setting
+     * #SoupSession:tls-database to the default system CA database.
+     * (and likewise, setting #SoupSession:tls-database to the
+     * default database by hand will cause this property to
+     * become %TRUE).
+     * 
+     * Setting this to %FALSE (when it was previously %TRUE) will
+     * clear the #SoupSession:tls-database field.
+     * 
+     * See #SoupSession:ssl-strict for more information on how
+     * https certificate validation is handled.
+     * 
+     * If you are using #SoupSessionAsync or
+     * #SoupSessionSync, on libsoup older than 2.74.0, the default value
+     * is %FALSE, for backward compatibility.
+     */
+    sslUseSystemCaFile: boolean
     /**
      * The timeout (in seconds) for socket I/O operations
      * (including connecting to a server, and waiting for a reply
@@ -7591,15 +8330,45 @@ interface Session {
      */
     tls_database: Gio.TlsDatabase
     /**
+     * Sets the #GTlsDatabase to use for validating SSL/TLS
+     * certificates.
+     * 
+     * Note that setting the #SoupSession:ssl-ca-file or
+     * #SoupSession:ssl-use-system-ca-file property will cause
+     * this property to be set to a #GTlsDatabase corresponding to
+     * the indicated file or system default.
+     * 
+     * See #SoupSession:ssl-strict for more information on how
+     * https certificate validation is handled.
+     * 
+     * If you are using a plain #SoupSession then
+     * #SoupSession:ssl-use-system-ca-file will be %TRUE by
+     * default, and so this property will be a copy of the system
+     * CA database. If you are using #SoupSessionAsync or
+     * #SoupSessionSync, on libsoup older than 2.74.0, this property
+     * will be %NULL by default.
+     */
+    tlsDatabase: Gio.TlsDatabase
+    /**
      * A #GTlsInteraction object that will be passed on to any
      * #GTlsConnections created by the session. (This can be used to
      * provide client-side certificates, for example.)
      */
     tls_interaction: Gio.TlsInteraction
     /**
+     * A #GTlsInteraction object that will be passed on to any
+     * #GTlsConnections created by the session. (This can be used to
+     * provide client-side certificates, for example.)
+     */
+    tlsInteraction: Gio.TlsInteraction
+    /**
      * Whether or not to use NTLM authentication.
      */
     use_ntlm: boolean
+    /**
+     * Whether or not to use NTLM authentication.
+     */
+    useNtlm: boolean
     /**
      * If %TRUE (which it always is on a plain #SoupSession),
      * asynchronous HTTP requests in this session will run in
@@ -7608,6 +8377,14 @@ interface Session {
      * #SoupSession:async-context.
      */
     use_thread_context: boolean
+    /**
+     * If %TRUE (which it always is on a plain #SoupSession),
+     * asynchronous HTTP requests in this session will run in
+     * whatever the thread-default #GMainContext is at the time
+     * they are started, rather than always occurring in
+     * #SoupSession:async-context.
+     */
+    useThreadContext: boolean
     /**
      * If non-%NULL, the value to use for the "User-Agent" header
      * on #SoupMessage<!-- -->s sent from this session.
@@ -7634,6 +8411,32 @@ interface Session {
      * header for you.
      */
     user_agent: string | null
+    /**
+     * If non-%NULL, the value to use for the "User-Agent" header
+     * on #SoupMessage<!-- -->s sent from this session.
+     * 
+     * RFC 2616 says: "The User-Agent request-header field
+     * contains information about the user agent originating the
+     * request. This is for statistical purposes, the tracing of
+     * protocol violations, and automated recognition of user
+     * agents for the sake of tailoring responses to avoid
+     * particular user agent limitations. User agents SHOULD
+     * include this field with requests."
+     * 
+     * The User-Agent header contains a list of one or more
+     * product tokens, separated by whitespace, with the most
+     * significant product token coming first. The tokens must be
+     * brief, ASCII, and mostly alphanumeric (although "-", "_",
+     * and "." are also allowed), and may optionally include a "/"
+     * followed by a version string. You may also put comments,
+     * enclosed in parentheses, between or after the tokens.
+     * 
+     * If you set a #SoupSession:user_agent property that has trailing
+     * whitespace, #SoupSession will append its own product token
+     * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
+     * header for you.
+     */
+    userAgent: string | null
 
     // Own fields of Soup-2.4.Soup.Session
 
@@ -8626,6 +9429,40 @@ module Socket {
          * Use g_main_context_get_thread_default().
          */
         use_thread_context?: boolean | null
+        asyncContext?: any | null
+        ipv6Only?: boolean | null
+        localAddress?: Address | null
+        /**
+         * Whether or not the socket uses non-blocking I/O.
+         * 
+         * #SoupSocket's I/O methods are designed around the idea of
+         * using a single codepath for both synchronous and
+         * asynchronous I/O. If you want to read off a #SoupSocket,
+         * the "correct" way to do it is to call soup_socket_read() or
+         * soup_socket_read_until() repeatedly until you have read
+         * everything you want. If it returns %SOUP_SOCKET_WOULD_BLOCK
+         * at any point, stop reading and wait for it to emit the
+         * #SoupSocket::readable signal. Then go back to the
+         * reading-as-much-as-you-can loop. Likewise, for writing to a
+         * #SoupSocket, you should call soup_socket_write() either
+         * until you have written everything, or it returns
+         * %SOUP_SOCKET_WOULD_BLOCK (in which case you wait for
+         * #SoupSocket::writable and then go back into the loop).
+         * 
+         * Code written this way will work correctly with both
+         * blocking and non-blocking sockets; blocking sockets will
+         * simply never return %SOUP_SOCKET_WOULD_BLOCK, and so the
+         * code that handles that case just won't get used for them.
+         */
+        nonBlocking?: boolean | null
+        remoteAddress?: Address | null
+        sslCreds?: any | null
+        sslFallback?: boolean | null
+        sslStrict?: boolean | null
+        /**
+         * Use g_main_context_get_thread_default().
+         */
+        useThreadContext?: boolean | null
     }
 
 }
@@ -8635,10 +9472,12 @@ interface Socket extends Gio.Initable {
     // Own properties of Soup-2.4.Soup.Socket
 
     readonly async_context: any
+    readonly asyncContext: any
     readonly fd: number
     readonly gsocket: Gio.Socket
     readonly iostream: Gio.IOStream
     ipv6_only: boolean
+    ipv6Only: boolean
     /**
      * Whether or not the socket is a server socket.
      * 
@@ -8649,7 +9488,18 @@ interface Socket extends Gio.Initable {
      * sockets.
      */
     readonly is_server: boolean
+    /**
+     * Whether or not the socket is a server socket.
+     * 
+     * Note that for "ordinary" #SoupSockets this will be set for
+     * both listening sockets and the sockets emitted by
+     * #SoupSocket::new-connection, but for sockets created by
+     * setting #SoupSocket:fd, it will only be set for listening
+     * sockets.
+     */
+    readonly isServer: boolean
     readonly local_address: Address
+    readonly localAddress: Address
     /**
      * Whether or not the socket uses non-blocking I/O.
      * 
@@ -8673,18 +9523,52 @@ interface Socket extends Gio.Initable {
      * code that handles that case just won't get used for them.
      */
     non_blocking: boolean
+    /**
+     * Whether or not the socket uses non-blocking I/O.
+     * 
+     * #SoupSocket's I/O methods are designed around the idea of
+     * using a single codepath for both synchronous and
+     * asynchronous I/O. If you want to read off a #SoupSocket,
+     * the "correct" way to do it is to call soup_socket_read() or
+     * soup_socket_read_until() repeatedly until you have read
+     * everything you want. If it returns %SOUP_SOCKET_WOULD_BLOCK
+     * at any point, stop reading and wait for it to emit the
+     * #SoupSocket::readable signal. Then go back to the
+     * reading-as-much-as-you-can loop. Likewise, for writing to a
+     * #SoupSocket, you should call soup_socket_write() either
+     * until you have written everything, or it returns
+     * %SOUP_SOCKET_WOULD_BLOCK (in which case you wait for
+     * #SoupSocket::writable and then go back into the loop).
+     * 
+     * Code written this way will work correctly with both
+     * blocking and non-blocking sockets; blocking sockets will
+     * simply never return %SOUP_SOCKET_WOULD_BLOCK, and so the
+     * code that handles that case just won't get used for them.
+     */
+    nonBlocking: boolean
     readonly remote_address: Address
+    readonly remoteAddress: Address
     ssl_creds: any
+    sslCreds: any
     readonly ssl_fallback: boolean
+    readonly sslFallback: boolean
     readonly ssl_strict: boolean
+    readonly sslStrict: boolean
     timeout: number
     readonly tls_certificate: Gio.TlsCertificate
+    readonly tlsCertificate: Gio.TlsCertificate
     readonly tls_errors: Gio.TlsCertificateFlags
+    readonly tlsErrors: Gio.TlsCertificateFlags
     readonly trusted_certificate: boolean
+    readonly trustedCertificate: boolean
     /**
      * Use g_main_context_get_thread_default().
      */
     readonly use_thread_context: boolean
+    /**
+     * Use g_main_context_get_thread_default().
+     */
+    readonly useThreadContext: boolean
 
     // Own fields of Soup-2.4.Soup.Socket
 
@@ -9015,6 +9899,28 @@ module WebsocketConnection {
          * and for clients it is the address connected to.
          */
         uri?: URI | null
+        /**
+         * The type of connection (client/server).
+         */
+        connectionType?: WebsocketConnectionType | null
+        /**
+         * The underlying IO stream the WebSocket is communicating
+         * over.
+         * 
+         * The input and output streams must be pollable streams.
+         */
+        ioStream?: Gio.IOStream | null
+        /**
+         * Interval in seconds on when to send a ping message which will
+         * serve as a keepalive message. If set to 0 the keepalive message is
+         * disabled.
+         */
+        keepaliveInterval?: number | null
+        /**
+         * The maximum payload size for incoming packets the protocol expects
+         * or 0 to not limit it.
+         */
+        maxIncomingPayloadSize?: number | null
     }
 
 }
@@ -9028,6 +9934,10 @@ interface WebsocketConnection {
      */
     readonly connection_type: WebsocketConnectionType
     /**
+     * The type of connection (client/server).
+     */
+    readonly connectionType: WebsocketConnectionType
+    /**
      * List of #SoupWebsocketExtension objects that are active in the connection.
      */
     readonly extensions: any
@@ -9039,16 +9949,34 @@ interface WebsocketConnection {
      */
     readonly io_stream: Gio.IOStream
     /**
+     * The underlying IO stream the WebSocket is communicating
+     * over.
+     * 
+     * The input and output streams must be pollable streams.
+     */
+    readonly ioStream: Gio.IOStream
+    /**
      * Interval in seconds on when to send a ping message which will
      * serve as a keepalive message. If set to 0 the keepalive message is
      * disabled.
      */
     keepalive_interval: number
     /**
+     * Interval in seconds on when to send a ping message which will
+     * serve as a keepalive message. If set to 0 the keepalive message is
+     * disabled.
+     */
+    keepaliveInterval: number
+    /**
      * The maximum payload size for incoming packets the protocol expects
      * or 0 to not limit it.
      */
     max_incoming_payload_size: number
+    /**
+     * The maximum payload size for incoming packets the protocol expects
+     * or 0 to not limit it.
+     */
+    maxIncomingPayloadSize: number
     /**
      * The client's Origin.
      */

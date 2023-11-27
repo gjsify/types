@@ -43,6 +43,7 @@ export module Wc {
         cache_size?: number | null
         loglevel?: number | null
         throttling?: number | null
+        cacheSize?: number | null
     }
 
 }
@@ -53,6 +54,7 @@ export interface Wc {
 
     cache: boolean
     cache_size: number
+    cacheSize: number
     loglevel: number
     throttling: number
 

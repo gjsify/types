@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cogl-10",
-    "version": "10.0.0-3.2.5",
+    "version": "10.0.0-3.2.6",
     "description": "Node.js TypeScript type definitions for Cogl-10, generated from library version 10.0.0",
     "type": "module",
     "module": "node-cogl-10.js",

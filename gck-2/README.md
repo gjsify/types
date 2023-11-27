@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gck-2)
 
 
-GJS TypeScript type definitions for Gck-2, generated from library version 4.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+GJS TypeScript type definitions for Gck-2, generated from library version 4.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 GLib wrapper library for PKCS#11
 

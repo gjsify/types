@@ -338,6 +338,7 @@ interface SparqlCursor {
 
     connection: SparqlConnection
     readonly n_columns: number
+    readonly nColumns: number
 
     // Own fields of Tracker-1.0.Tracker.SparqlCursor
 

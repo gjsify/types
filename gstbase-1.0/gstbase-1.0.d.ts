@@ -960,6 +960,20 @@ module Aggregator {
         min_upstream_latency?: number | null
         start_time?: number | null
         start_time_selection?: AggregatorStartTimeSelection | null
+        /**
+         * Enables the emission of signals such as #GstAggregator::samples-selected
+         */
+        emitSignals?: boolean | null
+        /**
+         * Force minimum upstream latency (in nanoseconds). When sources with a
+         * higher latency are expected to be plugged in dynamically after the
+         * aggregator has started playing, this allows overriding the minimum
+         * latency reported by the initial source(s). This is only taken into
+         * account when larger than the actually reported minimum latency.
+         */
+        minUpstreamLatency?: number | null
+        startTime?: number | null
+        startTimeSelection?: AggregatorStartTimeSelection | null
     }
 
 }
@@ -972,6 +986,10 @@ interface Aggregator {
      * Enables the emission of signals such as #GstAggregator::samples-selected
      */
     emit_signals: boolean
+    /**
+     * Enables the emission of signals such as #GstAggregator::samples-selected
+     */
+    emitSignals: boolean
     latency: number
     /**
      * Force minimum upstream latency (in nanoseconds). When sources with a
@@ -981,8 +999,18 @@ interface Aggregator {
      * account when larger than the actually reported minimum latency.
      */
     min_upstream_latency: number
+    /**
+     * Force minimum upstream latency (in nanoseconds). When sources with a
+     * higher latency are expected to be plugged in dynamically after the
+     * aggregator has started playing, this allows overriding the minimum
+     * latency reported by the initial source(s). This is only taken into
+     * account when larger than the actually reported minimum latency.
+     */
+    minUpstreamLatency: number
     start_time: any
+    startTime: number
     start_time_selection: AggregatorStartTimeSelection
+    startTimeSelection: AggregatorStartTimeSelection
 
     // Conflicting properties
 
@@ -1341,6 +1369,10 @@ module AggregatorPad {
          * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
          */
         emit_signals?: boolean | null
+        /**
+         * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
+         */
+        emitSignals?: boolean | null
     }
 
 }
@@ -1353,6 +1385,10 @@ interface AggregatorPad {
      * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
      */
     emit_signals: boolean
+    /**
+     * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
+     */
+    emitSignals: boolean
 
     // Conflicting properties
 
@@ -1498,6 +1534,15 @@ module BaseParse {
          * the implementation (standard behaviour).
          */
         disable_passthrough?: boolean | null
+        /**
+         * If set to %TRUE, baseparse will unconditionally force parsing of the
+         * incoming data. This can be required in the rare cases where the incoming
+         * side-data (caps, pts, dts, ...) is not trusted by the user and wants to
+         * force validation and parsing of the incoming data.
+         * If set to %FALSE, decision of whether to parse the data or not is up to
+         * the implementation (standard behaviour).
+         */
+        disablePassthrough?: boolean | null
     }
 
 }
@@ -1515,6 +1560,15 @@ interface BaseParse {
      * the implementation (standard behaviour).
      */
     disable_passthrough: boolean
+    /**
+     * If set to %TRUE, baseparse will unconditionally force parsing of the
+     * incoming data. This can be required in the rare cases where the incoming
+     * side-data (caps, pts, dts, ...) is not trusted by the user and wants to
+     * force validation and parsing of the incoming data.
+     * If set to %FALSE, decision of whether to parse the data or not is up to
+     * the implementation (standard behaviour).
+     */
+    disablePassthrough: boolean
 
     // Conflicting properties
 
@@ -1991,6 +2045,44 @@ module BaseSink {
          * used to fix synchronisation in bad files.
          */
         ts_offset?: number | null
+        /**
+         * Enable the last-sample property. If %FALSE, basesink doesn't keep a
+         * reference to the last buffer arrived and the last-sample property is always
+         * set to %NULL. This can be useful if you need buffers to be released as soon
+         * as possible, eg. if you're using a buffer pool.
+         */
+        enableLastSample?: boolean | null
+        /**
+         * Control the maximum amount of bits that will be rendered per second.
+         * Setting this property to a value bigger than 0 will make the sink delay
+         * rendering of the buffers when it would exceed to max-bitrate.
+         */
+        maxBitrate?: number | null
+        maxLateness?: number | null
+        /**
+         * Maximum amount of time (in nanoseconds) that the pipeline can take
+         * for processing the buffer. This is added to the latency of live
+         * pipelines.
+         */
+        processingDeadline?: number | null
+        /**
+         * The additional delay between synchronisation and actual rendering of the
+         * media. This property will add additional latency to the device in order to
+         * make other sinks compensate for the delay.
+         */
+        renderDelay?: number | null
+        /**
+         * The time to insert between buffers. This property can be used to control
+         * the maximum amount of buffers per second to render. Setting this property
+         * to a value bigger than 0 will make the sink create THROTTLE QoS events.
+         */
+        throttleTime?: number | null
+        /**
+         * Controls the final synchronisation, a negative value will render the buffer
+         * earlier while a positive value delays playback. This property can be
+         * used to fix synchronisation in bad files.
+         */
+        tsOffset?: number | null
     }
 
 }
@@ -2018,24 +2110,50 @@ interface BaseSink {
      */
     enable_last_sample: boolean
     /**
+     * Enable the last-sample property. If %FALSE, basesink doesn't keep a
+     * reference to the last buffer arrived and the last-sample property is always
+     * set to %NULL. This can be useful if you need buffers to be released as soon
+     * as possible, eg. if you're using a buffer pool.
+     */
+    enableLastSample: boolean
+    /**
      * The last buffer that arrived in the sink and was used for preroll or for
      * rendering. This property can be used to generate thumbnails. This property
      * can be %NULL when the sink has not yet received a buffer.
      */
     readonly last_sample: Gst.Sample
     /**
+     * The last buffer that arrived in the sink and was used for preroll or for
+     * rendering. This property can be used to generate thumbnails. This property
+     * can be %NULL when the sink has not yet received a buffer.
+     */
+    readonly lastSample: Gst.Sample
+    /**
      * Control the maximum amount of bits that will be rendered per second.
      * Setting this property to a value bigger than 0 will make the sink delay
      * rendering of the buffers when it would exceed to max-bitrate.
      */
     max_bitrate: number
+    /**
+     * Control the maximum amount of bits that will be rendered per second.
+     * Setting this property to a value bigger than 0 will make the sink delay
+     * rendering of the buffers when it would exceed to max-bitrate.
+     */
+    maxBitrate: number
     max_lateness: number
+    maxLateness: number
     /**
      * Maximum amount of time (in nanoseconds) that the pipeline can take
      * for processing the buffer. This is added to the latency of live
      * pipelines.
      */
     processing_deadline: number
+    /**
+     * Maximum amount of time (in nanoseconds) that the pipeline can take
+     * for processing the buffer. This is added to the latency of live
+     * pipelines.
+     */
+    processingDeadline: number
     qos: boolean
     /**
      * The additional delay between synchronisation and actual rendering of the
@@ -2043,6 +2161,12 @@ interface BaseSink {
      * make other sinks compensate for the delay.
      */
     render_delay: number
+    /**
+     * The additional delay between synchronisation and actual rendering of the
+     * media. This property will add additional latency to the device in order to
+     * make other sinks compensate for the delay.
+     */
+    renderDelay: number
     /**
      * Various #GstBaseSink statistics. This property returns a #GstStructure
      * with name `application/x-gst-base-sink-stats` with the following fields:
@@ -2060,11 +2184,23 @@ interface BaseSink {
      */
     throttle_time: number
     /**
+     * The time to insert between buffers. This property can be used to control
+     * the maximum amount of buffers per second to render. Setting this property
+     * to a value bigger than 0 will make the sink create THROTTLE QoS events.
+     */
+    throttleTime: number
+    /**
      * Controls the final synchronisation, a negative value will render the buffer
      * earlier while a positive value delays playback. This property can be
      * used to fix synchronisation in bad files.
      */
     ts_offset: number
+    /**
+     * Controls the final synchronisation, a negative value will render the buffer
+     * earlier while a positive value delays playback. This property can be
+     * used to fix synchronisation in bad files.
+     */
+    tsOffset: number
 
     // Conflicting properties
 
@@ -2616,6 +2752,8 @@ module BaseSrc {
         do_timestamp?: boolean | null
         num_buffers?: number | null
         typefind?: boolean | null
+        doTimestamp?: boolean | null
+        numBuffers?: number | null
     }
 
 }
@@ -2625,6 +2763,8 @@ interface BaseSrc {
     // Own properties of GstBase-1.0.GstBase.BaseSrc
 
     do_timestamp: boolean
+    doTimestamp: boolean
+    numBuffers: number
 
     // Conflicting properties
 
@@ -2979,6 +3119,9 @@ interface BaseSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: BaseSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3903,8 +4046,11 @@ interface DataQueue {
     // Own properties of GstBase-1.0.GstBase.DataQueue
 
     readonly current_level_bytes: number
+    readonly currentLevelBytes: number
     readonly current_level_time: number
+    readonly currentLevelTime: number
     readonly current_level_visible: number
+    readonly currentLevelVisible: number
 
     // Own fields of GstBase-1.0.GstBase.DataQueue
 
@@ -4068,6 +4214,9 @@ interface PushSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: PushSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

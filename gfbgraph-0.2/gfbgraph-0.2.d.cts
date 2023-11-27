@@ -245,6 +245,7 @@ export module Album {
          * The album name.
          */
         name?: string | null
+        coverPhoto?: string | null
     }
 
 }
@@ -258,6 +259,7 @@ export interface Album extends Connectable {
      */
     count: number
     cover_photo: string | null
+    coverPhoto: string | null
     /**
      * The album description given by the owner.
      */
@@ -428,6 +430,8 @@ export module Node {
          */
         link?: string | null
         updated_time?: string | null
+        createdTime?: string | null
+        updatedTime?: string | null
     }
 
 }
@@ -437,6 +441,7 @@ export interface Node {
     // Own properties of GFBGraph-0.2.GFBGraph.Node
 
     created_time: string | null
+    createdTime: string | null
     /**
      * The node ID. All nodes have one of this.
      */
@@ -446,6 +451,7 @@ export interface Node {
      */
     link: string | null
     updated_time: string | null
+    updatedTime: string | null
 
     // Own fields of GFBGraph-0.2.GFBGraph.Node
 
@@ -849,6 +855,7 @@ export module SimpleAuthorizer {
         // Own constructor properties of GFBGraph-0.2.GFBGraph.SimpleAuthorizer
 
         access_token?: string | null
+        accessToken?: string | null
     }
 
 }
@@ -858,6 +865,7 @@ export interface SimpleAuthorizer extends Authorizer {
     // Own properties of GFBGraph-0.2.GFBGraph.SimpleAuthorizer
 
     access_token: string | null
+    accessToken: string | null
 
     // Own fields of GFBGraph-0.2.GFBGraph.SimpleAuthorizer
 

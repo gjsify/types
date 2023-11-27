@@ -245,6 +245,7 @@ module AnnotatedIcon {
         ribbon?: string | null
         category?: CategoryType | null
         size_hint?: IconSizeHint | null
+        sizeHint?: IconSizeHint | null
     }
 
 }
@@ -257,6 +258,7 @@ interface AnnotatedIcon {
     ribbon: string | null
     category: CategoryType
     size_hint: IconSizeHint
+    sizeHint: IconSizeHint
 
     // Owm methods of Unity-7.0.Unity.AnnotatedIcon
 
@@ -320,7 +322,9 @@ interface Inspector {
     // Own properties of Unity-7.0.Unity.Inspector
 
     readonly unity_running: boolean
+    readonly unityRunning: boolean
     readonly unity_bus_name: string | null
+    readonly unityBusName: string | null
 
     // Owm methods of Unity-7.0.Unity.Inspector
 
@@ -370,6 +374,9 @@ module LauncherEntry {
         progress_visible?: boolean | null
         urgent?: boolean | null
         quicklist?: Dbusmenu.Menuitem | null
+        appUri?: string | null
+        countVisible?: boolean | null
+        progressVisible?: boolean | null
     }
 
 }
@@ -379,10 +386,13 @@ interface LauncherEntry extends Dee.Serializable {
     // Own properties of Unity-7.0.Unity.LauncherEntry
 
     app_uri: string | null
+    appUri: string | null
     count: number
     count_visible: boolean
+    countVisible: boolean
     progress: number
     progress_visible: boolean
+    progressVisible: boolean
     urgent: boolean
     quicklist: Dbusmenu.Menuitem
 
@@ -547,6 +557,8 @@ module ProgressSourceProvider {
 
         dbus_name?: string | null
         dbus_path?: string | null
+        dbusName?: string | null
+        dbusPath?: string | null
     }
 
 }
@@ -556,7 +568,9 @@ interface ProgressSourceProvider {
     // Own properties of Unity-7.0.Unity.ProgressSourceProvider
 
     readonly dbus_name: string | null
+    readonly dbusName: string | null
     readonly dbus_path: string | null
+    readonly dbusPath: string | null
 
     // Owm methods of Unity-7.0.Unity.ProgressSourceProvider
 
@@ -606,6 +620,10 @@ module Category {
         default_renderer?: CategoryRenderer | null
         content_type?: CategoryContentType | null
         renderer_hint?: string | null
+        iconHint?: Gio.Icon | null
+        defaultRenderer?: CategoryRenderer | null
+        contentType?: CategoryContentType | null
+        rendererHint?: string | null
     }
 
 }
@@ -617,9 +635,13 @@ interface Category {
     readonly id: string | null
     readonly name: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly default_renderer: CategoryRenderer
+    readonly defaultRenderer: CategoryRenderer
     content_type: CategoryContentType
+    contentType: CategoryContentType
     renderer_hint: string | null
+    rendererHint: string | null
     readonly renderer: string | null
 
     // Owm methods of Unity-7.0.Unity.Category
@@ -704,6 +726,8 @@ module Filter {
         visible?: boolean | null
         collapsed?: boolean | null
         filtering?: boolean | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -714,7 +738,9 @@ interface Filter extends Dee.Serializable {
 
     readonly id: string | null
     display_name: string | null
+    displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly renderer: FilterRenderer
     visible: boolean
     collapsed: boolean
@@ -791,6 +817,8 @@ module FilterOption {
         display_name?: string | null
         icon_hint?: Gio.Icon | null
         active?: boolean | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -801,7 +829,9 @@ interface FilterOption {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     active: boolean
 
     // Owm methods of Unity-7.0.Unity.FilterOption
@@ -857,6 +887,8 @@ module OptionsFilter {
 
         sort_type?: OptionsFilterSortType | null
         show_all_button?: boolean | null
+        sortType?: OptionsFilterSortType | null
+        showAllButton?: boolean | null
     }
 
 }
@@ -866,7 +898,9 @@ interface OptionsFilter {
     // Own properties of Unity-7.0.Unity.OptionsFilter
 
     sort_type: OptionsFilterSortType
+    sortType: OptionsFilterSortType
     show_all_button: boolean
+    showAllButton: boolean
 
     // Own fields of Unity-7.0.Unity.OptionsFilter
 
@@ -1284,6 +1318,11 @@ module PreferencesManager {
         home_lens_priority?: string[] | null
         home_lens_default_view?: string[] | null
         disabled_scopes?: string[] | null
+        remoteContentSearch?: PreferencesManagerRemoteContent | null
+        alwaysSearch?: string[] | null
+        homeLensPriority?: string[] | null
+        homeLensDefaultView?: string[] | null
+        disabledScopes?: string[] | null
     }
 
 }
@@ -1293,10 +1332,15 @@ interface PreferencesManager {
     // Own properties of Unity-7.0.Unity.PreferencesManager
 
     remote_content_search: PreferencesManagerRemoteContent
+    remoteContentSearch: PreferencesManagerRemoteContent
     always_search: string[]
+    alwaysSearch: string[]
     home_lens_priority: string[]
+    homeLensPriority: string[]
     home_lens_default_view: string[]
+    homeLensDefaultView: string[]
     disabled_scopes: string[]
+    disabledScopes: string[]
 
     // Owm methods of Unity-7.0.Unity.PreferencesManager
 
@@ -1370,6 +1414,8 @@ module DeprecatedScopeSearch {
         hints?: GLib.HashTable | null
         results_model?: Dee.SerializableModel | null
         owner?: DeprecatedScopeBase | null
+        channelId?: string | null
+        resultsModel?: Dee.SerializableModel | null
     }
 
 }
@@ -1379,10 +1425,14 @@ interface DeprecatedScopeSearch {
     // Own properties of Unity-7.0.Unity.DeprecatedScopeSearch
 
     readonly channel_id: string | null
+    readonly channelId: string | null
     readonly search_string: string | null
+    readonly searchString: string | null
     readonly search_type: SearchType
+    readonly searchType: SearchType
     readonly hints: GLib.HashTable
     readonly results_model: Dee.SerializableModel
+    readonly resultsModel: Dee.SerializableModel
     readonly owner: DeprecatedScopeBase
 
     // Owm methods of Unity-7.0.Unity.DeprecatedScopeSearch
@@ -1541,6 +1591,8 @@ module Preview {
         description_markup?: string | null
         image_source_uri?: string | null
         image?: Gio.Icon | null
+        descriptionMarkup?: string | null
+        imageSourceUri?: string | null
     }
 
 }
@@ -1552,7 +1604,9 @@ interface Preview extends Dee.Serializable {
     title: string | null
     subtitle: string | null
     description_markup: string | null
+    descriptionMarkup: string | null
     image_source_uri: string | null
+    imageSourceUri: string | null
     image: Gio.Icon
 
     // Owm methods of Unity-7.0.Unity.Preview
@@ -1629,6 +1683,10 @@ module PreviewAction {
         extra_text?: string | null
         icon_hint?: Gio.Icon | null
         layout_hint?: LayoutHint | null
+        displayName?: string | null
+        extraText?: string | null
+        iconHint?: Gio.Icon | null
+        layoutHint?: LayoutHint | null
     }
 
 }
@@ -1639,9 +1697,13 @@ interface PreviewAction extends Dee.Serializable {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     extra_text: string | null
+    extraText: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly layout_hint: LayoutHint
+    readonly layoutHint: LayoutHint
     readonly hints: GLib.HashTable
 
     // Owm methods of Unity-7.0.Unity.PreviewAction
@@ -1715,6 +1777,8 @@ module InfoHint {
         display_name?: string | null
         icon_hint?: Gio.Icon | null
         data?: GLib.Variant | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -1725,7 +1789,9 @@ interface InfoHint {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly data: GLib.Variant
 
     // Owm methods of Unity-7.0.Unity.InfoHint
@@ -1841,6 +1907,8 @@ module ApplicationPreview {
         license?: string | null
         copyright?: string | null
         last_update?: string | null
+        appIcon?: Gio.Icon | null
+        lastUpdate?: string | null
     }
 
 }
@@ -1850,9 +1918,11 @@ interface ApplicationPreview {
     // Own properties of Unity-7.0.Unity.ApplicationPreview
 
     app_icon: Gio.Icon
+    appIcon: Gio.Icon
     license: string | null
     copyright: string | null
     last_update: string | null
+    lastUpdate: string | null
 
     // Owm methods of Unity-7.0.Unity.ApplicationPreview
 
@@ -1983,6 +2053,10 @@ module PaymentPreview {
         purchase_prize?: string | null
         purchase_type?: string | null
         preview_type?: PaymentPreviewType | null
+        paymentMethod?: string | null
+        purchasePrize?: string | null
+        purchaseType?: string | null
+        previewType?: PaymentPreviewType | null
     }
 
 }
@@ -1994,9 +2068,13 @@ interface PaymentPreview {
     header: string | null
     email: string | null
     payment_method: string | null
+    paymentMethod: string | null
     purchase_prize: string | null
+    purchasePrize: string | null
     purchase_type: string | null
+    purchaseType: string | null
     preview_type: PaymentPreviewType
+    previewType: PaymentPreviewType
 
     // Owm methods of Unity-7.0.Unity.PaymentPreview
 
@@ -2296,6 +2374,7 @@ module ActivationResponse {
 
         handled?: HandledType | null
         goto_uri?: string | null
+        gotoUri?: string | null
     }
 
 }
@@ -2306,6 +2385,7 @@ interface ActivationResponse {
 
     readonly handled: HandledType
     goto_uri: string | null
+    gotoUri: string | null
 
     // Owm methods of Unity-7.0.Unity.ActivationResponse
 
@@ -2357,6 +2437,10 @@ module AggregatorActivation {
         action_type?: number | null
         scope_result?: ScopeResult | null
         hints?: GLib.HashTable | null
+        channelId?: string | null
+        scopeId?: string | null
+        actionType?: number | null
+        scopeResult?: ScopeResult | null
     }
 
 }
@@ -2366,9 +2450,13 @@ interface AggregatorActivation {
     // Own properties of Unity-7.0.Unity.AggregatorActivation
 
     channel_id: string | null
+    channelId: string | null
     scope_id: string | null
+    scopeId: string | null
     action_type: number
+    actionType: number
     scope_result: ScopeResult
+    scopeResult: ScopeResult
     hints: GLib.HashTable
 
     // Owm methods of Unity-7.0.Unity.AggregatorActivation
@@ -2801,6 +2889,7 @@ interface SearchMetadata {
 
     readonly locale: string | null
     readonly form_factor: string | null
+    readonly formFactor: string | null
     readonly location: GeoCoordinate
 
     // Owm methods of Unity-7.0.Unity.SearchMetadata
@@ -3044,6 +3133,10 @@ module DeprecatedScopeBase {
         categories?: CategorySet | null
         filters?: FilterSet | null
         schema?: Schema | null
+        dbusPath?: string | null
+        searchInGlobal?: boolean | null
+        isMaster?: boolean | null
+        searchHint?: string | null
     }
 
 }
@@ -3054,10 +3147,14 @@ interface DeprecatedScopeBase {
 
     readonly id: string | null
     readonly dbus_path: string | null
+    readonly dbusPath: string | null
     search_in_global: boolean
+    searchInGlobal: boolean
     visible: boolean
     readonly is_master: boolean
+    readonly isMaster: boolean
     search_hint: string | null
+    searchHint: string | null
     sources: OptionsFilter
     categories: CategorySet
     filters: FilterSet
@@ -3277,6 +3374,9 @@ module AggregatorScope {
         merge_mode?: AggregatorScopeMergeMode | null
         proxy_filter_hints?: boolean | null
         automatic_flushing?: boolean | null
+        mergeMode?: AggregatorScopeMergeMode | null
+        proxyFilterHints?: boolean | null
+        automaticFlushing?: boolean | null
     }
 
 }
@@ -3286,8 +3386,11 @@ interface AggregatorScope {
     // Own properties of Unity-7.0.Unity.AggregatorScope
 
     merge_mode: AggregatorScopeMergeMode
+    mergeMode: AggregatorScopeMergeMode
     proxy_filter_hints: boolean
+    proxyFilterHints: boolean
     automatic_flushing: boolean
+    automaticFlushing: boolean
 
     // Owm methods of Unity-7.0.Unity.AggregatorScope
 
@@ -3382,6 +3485,7 @@ module MasterScope {
         // Own constructor properties of Unity-7.0.Unity.MasterScope
 
         no_content_hint?: string | null
+        noContentHint?: string | null
     }
 
 }
@@ -3391,6 +3495,7 @@ interface MasterScope {
     // Own properties of Unity-7.0.Unity.MasterScope
 
     no_content_hint: string | null
+    noContentHint: string | null
 
     // Owm methods of Unity-7.0.Unity.MasterScope
 
@@ -3476,6 +3581,11 @@ module SimpleScope {
         search_hint?: string | null
         group_name?: string | null
         unique_name?: string | null
+        filterSet?: FilterSet | null
+        categorySet?: CategorySet | null
+        searchHint?: string | null
+        groupName?: string | null
+        uniqueName?: string | null
     }
 
 }
@@ -3485,11 +3595,16 @@ interface SimpleScope {
     // Own properties of Unity-7.0.Unity.SimpleScope
 
     filter_set: FilterSet
+    filterSet: FilterSet
     category_set: CategorySet
+    categorySet: CategorySet
     schema: Schema
     search_hint: string | null
+    searchHint: string | null
     group_name: string | null
+    groupName: string | null
     unique_name: string | null
+    uniqueName: string | null
 
     // Owm methods of Unity-7.0.Unity.SimpleScope
 
@@ -3615,6 +3730,9 @@ module TrackMetadata {
         length?: number | null
         art_location?: Gio.File | null
         art_icon?: Gio.Icon | null
+        trackNo?: number | null
+        artLocation?: Gio.File | null
+        artIcon?: Gio.Icon | null
     }
 
 }
@@ -3625,12 +3743,15 @@ interface TrackMetadata {
 
     uri: string | null
     track_no: number
+    trackNo: number
     artist: string | null
     title: string | null
     album: string | null
     length: number
     art_location: Gio.File
+    artLocation: Gio.File
     art_icon: Gio.Icon
+    artIcon: Gio.Icon
 
     // Owm methods of Unity-7.0.Unity.TrackMetadata
 
@@ -3713,6 +3834,9 @@ module Playlist {
         creation_date?: GLib.DateTime | null
         modification_date?: GLib.DateTime | null
         last_play_date?: GLib.DateTime | null
+        creationDate?: GLib.DateTime | null
+        modificationDate?: GLib.DateTime | null
+        lastPlayDate?: GLib.DateTime | null
     }
 
 }
@@ -3725,8 +3849,11 @@ interface Playlist {
     name: string | null
     icon: Gio.Icon
     creation_date: GLib.DateTime
+    creationDate: GLib.DateTime
     modification_date: GLib.DateTime
+    modificationDate: GLib.DateTime
     last_play_date: GLib.DateTime
+    lastPlayDate: GLib.DateTime
 
     // Owm methods of Unity-7.0.Unity.Playlist
 
@@ -3842,6 +3969,18 @@ module MusicPlayer {
         current_playlist?: Playlist | null
         track_menu?: Dbusmenu.Menuitem | null
         player_menu?: Dbusmenu.Menuitem | null
+        appInfo?: Gio.AppInfo | null
+        desktopFileName?: string | null
+        isBlacklisted?: boolean | null
+        canGoNext?: boolean | null
+        canGoPrevious?: boolean | null
+        canPlay?: boolean | null
+        canPause?: boolean | null
+        currentTrack?: TrackMetadata | null
+        playbackState?: PlaybackState | null
+        currentPlaylist?: Playlist | null
+        trackMenu?: Dbusmenu.Menuitem | null
+        playerMenu?: Dbusmenu.Menuitem | null
     }
 
 }
@@ -3851,18 +3990,30 @@ interface MusicPlayer {
     // Own properties of Unity-7.0.Unity.MusicPlayer
 
     readonly app_info: Gio.AppInfo
+    readonly appInfo: Gio.AppInfo
     readonly desktop_file_name: string | null
+    readonly desktopFileName: string | null
     is_blacklisted: boolean
+    isBlacklisted: boolean
     title: string | null
     can_go_next: boolean
+    canGoNext: boolean
     can_go_previous: boolean
+    canGoPrevious: boolean
     can_play: boolean
+    canPlay: boolean
     can_pause: boolean
+    canPause: boolean
     current_track: TrackMetadata
+    currentTrack: TrackMetadata
     playback_state: PlaybackState
+    playbackState: PlaybackState
     current_playlist: Playlist
+    currentPlaylist: Playlist
     track_menu: Dbusmenu.Menuitem
+    trackMenu: Dbusmenu.Menuitem
     player_menu: Dbusmenu.Menuitem
+    playerMenu: Dbusmenu.Menuitem
 
     // Owm methods of Unity-7.0.Unity.MusicPlayer
 

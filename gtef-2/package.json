@@ -1,6 +1,6 @@
 {
     "name": "@girs/gtef-2",
-    "version": "2.0.0-3.2.5",
+    "version": "2.0.0-3.2.6",
     "description": "GJS TypeScript type definitions for Gtef-2, generated from library version 2.0.0",
     "type": "module",
     "module": "gtef-2.js",

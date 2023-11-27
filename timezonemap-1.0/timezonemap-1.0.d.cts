@@ -127,6 +127,7 @@ export module TimezoneLocation {
         latitude?: number | null
         longitude?: number | null
         zone?: string | null
+        comment?: string | null
     }
 
 }
@@ -136,6 +137,7 @@ export interface TimezoneLocation {
     // Own properties of TimezoneMap-1.0.TimezoneMap.TimezoneLocation
 
     Comment: string
+    comment: string
     country: string
     dist: number
     latitude: number

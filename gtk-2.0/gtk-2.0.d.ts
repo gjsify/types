@@ -4233,6 +4233,27 @@ module Activatable {
          * widget when it changes.</para></note>
          */
         use_action_appearance?: boolean | null
+        /**
+         * The action that this activatable will activate and receive
+         * updates from for various states and possibly appearance.
+         * 
+         * <note><para>#GtkActivatable implementors need to handle the this property and
+         * call gtk_activatable_do_set_related_action() when it changes.</para></note>
+         */
+        relatedAction?: Action | null
+        /**
+         * Whether this activatable should reset its layout
+         * and appearance when setting the related action or when
+         * the action changes appearance.
+         * 
+         * See the #GtkAction documentation directly to find which properties
+         * should be ignored by the #GtkActivatable when this property is %FALSE.
+         * 
+         * <note><para>#GtkActivatable implementors need to handle this property
+         * and call gtk_activatable_sync_action_properties() on the activatable
+         * widget when it changes.</para></note>
+         */
+        useActionAppearance?: boolean | null
     }
 
 }
@@ -4250,6 +4271,14 @@ interface Activatable {
      */
     related_action: Action
     /**
+     * The action that this activatable will activate and receive
+     * updates from for various states and possibly appearance.
+     * 
+     * <note><para>#GtkActivatable implementors need to handle the this property and
+     * call gtk_activatable_do_set_related_action() when it changes.</para></note>
+     */
+    relatedAction: Action
+    /**
      * Whether this activatable should reset its layout
      * and appearance when setting the related action or when
      * the action changes appearance.
@@ -4262,6 +4291,19 @@ interface Activatable {
      * widget when it changes.</para></note>
      */
     use_action_appearance: boolean
+    /**
+     * Whether this activatable should reset its layout
+     * and appearance when setting the related action or when
+     * the action changes appearance.
+     * 
+     * See the #GtkAction documentation directly to find which properties
+     * should be ignored by the #GtkActivatable when this property is %FALSE.
+     * 
+     * <note><para>#GtkActivatable implementors need to handle this property
+     * and call gtk_activatable_sync_action_properties() on the activatable
+     * widget when it changes.</para></note>
+     */
+    useActionAppearance: boolean
 
     // Owm methods of Gtk-2.0.Gtk.Activatable
 
@@ -4855,6 +4897,10 @@ module CellEditable {
          * Indicates whether editing on the cell has been canceled.
          */
         editing_canceled?: boolean | null
+        /**
+         * Indicates whether editing on the cell has been canceled.
+         */
+        editingCanceled?: boolean | null
     }
 
 }
@@ -4867,6 +4913,10 @@ interface CellEditable extends Widget {
      * Indicates whether editing on the cell has been canceled.
      */
     editing_canceled: boolean
+    /**
+     * Indicates whether editing on the cell has been canceled.
+     */
+    editingCanceled: boolean
 
     // Owm methods of Gtk-2.0.Gtk.CellEditable
 
@@ -5413,6 +5463,25 @@ module FileChooser {
         select_multiple?: boolean | null
         show_hidden?: boolean | null
         use_preview_label?: boolean | null
+        /**
+         * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
+         * will offer the user to create new folders.
+         */
+        createFolders?: boolean | null
+        /**
+         * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
+         * will present an overwrite confirmation dialog if the user
+         * selects a file name that already exists.
+         */
+        doOverwriteConfirmation?: boolean | null
+        extraWidget?: Widget | null
+        fileSystemBackend?: string | null
+        localOnly?: boolean | null
+        previewWidget?: Widget | null
+        previewWidgetActive?: boolean | null
+        selectMultiple?: boolean | null
+        showHidden?: boolean | null
+        usePreviewLabel?: boolean | null
     }
 
 }
@@ -5428,20 +5497,39 @@ interface FileChooser extends Widget {
      */
     create_folders: boolean
     /**
+     * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
+     * will offer the user to create new folders.
+     */
+    createFolders: boolean
+    /**
      * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
      * will present an overwrite confirmation dialog if the user
      * selects a file name that already exists.
      */
     do_overwrite_confirmation: boolean
+    /**
+     * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
+     * will present an overwrite confirmation dialog if the user
+     * selects a file name that already exists.
+     */
+    doOverwriteConfirmation: boolean
     extra_widget: Widget
+    extraWidget: Widget
     readonly file_system_backend: string | null
+    readonly fileSystemBackend: string | null
     filter: FileFilter
     local_only: boolean
+    localOnly: boolean
     preview_widget: Widget
+    previewWidget: Widget
     preview_widget_active: boolean
+    previewWidgetActive: boolean
     select_multiple: boolean
+    selectMultiple: boolean
     show_hidden: boolean
+    showHidden: boolean
     use_preview_label: boolean
+    usePreviewLabel: boolean
 
     // Owm methods of Gtk-2.0.Gtk.FileChooser
 
@@ -6973,6 +7061,41 @@ module RecentChooser {
          * Sorting order to be used when displaying the recently used resources.
          */
         sort_type?: RecentSortType | null
+        /**
+         * Whether this #GtkRecentChooser should display only local (file:)
+         * resources.
+         */
+        localOnly?: boolean | null
+        /**
+         * The #GtkRecentManager instance used by the #GtkRecentChooser to
+         * display the list of recently used resources.
+         */
+        recentManager?: RecentManager | null
+        /**
+         * Allow the user to select multiple resources.
+         */
+        selectMultiple?: boolean | null
+        /**
+         * Whether this #GtkRecentChooser should display an icon near the item.
+         */
+        showIcons?: boolean | null
+        /**
+         * Whether this #GtkRecentChooser should display the recently used resources
+         * even if not present anymore. Setting this to %FALSE will perform a
+         * potentially expensive check on every local resource (every remote
+         * resource will always be displayed).
+         */
+        showNotFound?: boolean | null
+        showPrivate?: boolean | null
+        /**
+         * Whether this #GtkRecentChooser should display a tooltip containing the
+         * full path of the recently used resources.
+         */
+        showTips?: boolean | null
+        /**
+         * Sorting order to be used when displaying the recently used resources.
+         */
+        sortType?: RecentSortType | null
     }
 
 }
@@ -7000,18 +7123,36 @@ interface RecentChooser {
      */
     local_only: boolean
     /**
+     * Whether this #GtkRecentChooser should display only local (file:)
+     * resources.
+     */
+    localOnly: boolean
+    /**
      * The #GtkRecentManager instance used by the #GtkRecentChooser to
      * display the list of recently used resources.
      */
     readonly recent_manager: RecentManager
     /**
+     * The #GtkRecentManager instance used by the #GtkRecentChooser to
+     * display the list of recently used resources.
+     */
+    readonly recentManager: RecentManager
+    /**
      * Allow the user to select multiple resources.
      */
     select_multiple: boolean
     /**
+     * Allow the user to select multiple resources.
+     */
+    selectMultiple: boolean
+    /**
      * Whether this #GtkRecentChooser should display an icon near the item.
      */
     show_icons: boolean
+    /**
+     * Whether this #GtkRecentChooser should display an icon near the item.
+     */
+    showIcons: boolean
     /**
      * Whether this #GtkRecentChooser should display the recently used resources
      * even if not present anymore. Setting this to %FALSE will perform a
@@ -7019,16 +7160,33 @@ interface RecentChooser {
      * resource will always be displayed).
      */
     show_not_found: boolean
+    /**
+     * Whether this #GtkRecentChooser should display the recently used resources
+     * even if not present anymore. Setting this to %FALSE will perform a
+     * potentially expensive check on every local resource (every remote
+     * resource will always be displayed).
+     */
+    showNotFound: boolean
     show_private: boolean
+    showPrivate: boolean
     /**
      * Whether this #GtkRecentChooser should display a tooltip containing the
      * full path of the recently used resources.
      */
     show_tips: boolean
     /**
+     * Whether this #GtkRecentChooser should display a tooltip containing the
+     * full path of the recently used resources.
+     */
+    showTips: boolean
+    /**
      * Sorting order to be used when displaying the recently used resources.
      */
     sort_type: RecentSortType
+    /**
+     * Sorting order to be used when displaying the recently used resources.
+     */
+    sortType: RecentSortType
 
     // Owm methods of Gtk-2.0.Gtk.RecentChooser
 
@@ -8526,6 +8684,31 @@ module AboutDialog {
          * Whether to wrap the text in the license dialog.
          */
         wrap_license?: boolean | null
+        /**
+         * A named icon to use as the logo for the about box. This property
+         * overrides the #GtkAboutDialog:logo property.
+         */
+        logoIconName?: string | null
+        /**
+         * The name of the program.
+         * If this is not set, it defaults to g_get_application_name().
+         */
+        programName?: string | null
+        /**
+         * Credits to the translators. This string should be marked as translatable.
+         * The string may contain email addresses and URLs, which will be displayed
+         * as links, see the introduction for more details.
+         */
+        translatorCredits?: string | null
+        /**
+         * The label for the link to the website of the program. If this is not set,
+         * it defaults to the URL specified in the #GtkAboutDialog:website property.
+         */
+        websiteLabel?: string | null
+        /**
+         * Whether to wrap the text in the license dialog.
+         */
+        wrapLicense?: boolean | null
     }
 
 }
@@ -8581,16 +8764,32 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      */
     logo_icon_name: string | null
     /**
+     * A named icon to use as the logo for the about box. This property
+     * overrides the #GtkAboutDialog:logo property.
+     */
+    logoIconName: string | null
+    /**
      * The name of the program.
      * If this is not set, it defaults to g_get_application_name().
      */
     program_name: string | null
+    /**
+     * The name of the program.
+     * If this is not set, it defaults to g_get_application_name().
+     */
+    programName: string | null
     /**
      * Credits to the translators. This string should be marked as translatable.
      * The string may contain email addresses and URLs, which will be displayed
      * as links, see the introduction for more details.
      */
     translator_credits: string | null
+    /**
+     * Credits to the translators. This string should be marked as translatable.
+     * The string may contain email addresses and URLs, which will be displayed
+     * as links, see the introduction for more details.
+     */
+    translatorCredits: string | null
     /**
      * The version of the program.
      */
@@ -8606,9 +8805,18 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      */
     website_label: string | null
     /**
+     * The label for the link to the website of the program. If this is not set,
+     * it defaults to the URL specified in the #GtkAboutDialog:website property.
+     */
+    websiteLabel: string | null
+    /**
      * Whether to wrap the text in the license dialog.
      */
     wrap_license: boolean
+    /**
+     * Whether to wrap the text in the license dialog.
+     */
+    wrapLicense: boolean
 
     // Conflicting properties
 
@@ -8903,6 +9111,12 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -8912,15 +9126,24 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -8945,12 +9168,18 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: AboutDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -9155,6 +9384,8 @@ interface AccelGroup {
     // Own properties of Gtk-2.0.Gtk.AccelGroup
 
     readonly is_locked: boolean
+    readonly isLocked: boolean
+    readonly modifierMask: Gdk.ModifierType
 
     // Own fields of Gtk-2.0.Gtk.AccelGroup
 
@@ -9275,6 +9506,9 @@ interface AccelGroup {
     connect(sigName: "notify::is-locked", callback: (($obj: AccelGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-locked", callback: (($obj: AccelGroup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::is-locked", ...args: any[]): void
+    connect(sigName: "notify::modifier-mask", callback: (($obj: AccelGroup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::modifier-mask", callback: (($obj: AccelGroup, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::modifier-mask", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -9342,11 +9576,18 @@ module AccelLabel {
 
         accel_closure?: GObject.TClosure | null
         accel_widget?: Widget | null
+        accelClosure?: GObject.TClosure | null
+        accelWidget?: Widget | null
     }
 
 }
 
 interface AccelLabel extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.AccelLabel
+
+    accelClosure: GObject.TClosure
+    accelWidget: Widget
 
     // Own fields of Gtk-2.0.Gtk.AccelLabel
 
@@ -9395,6 +9636,12 @@ interface AccelLabel extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.AccelLabel
 
+    connect(sigName: "notify::accel-closure", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-closure", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-closure", ...args: any[]): void
+    connect(sigName: "notify::accel-widget", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-widget", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-widget", ...args: any[]): void
     connect(sigName: "notify::angle", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::angle", callback: (($obj: AccelLabel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::angle", ...args: any[]): void
@@ -9824,6 +10071,9 @@ interface Accessible {
     connect(sigName: "notify::accessible-name", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -9954,6 +10204,49 @@ module Action {
          */
         visible_overflown?: boolean | null
         visible_vertical?: boolean | null
+        actionGroup?: ActionGroup | null
+        /**
+         * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
+         * setting and always show their image, if available.
+         * 
+         * Use this property if the menu item would be useless or hard to use
+         * without their image.
+         */
+        alwaysShowImage?: boolean | null
+        hideIfEmpty?: boolean | null
+        /**
+         * The name of the icon from the icon theme.
+         * 
+         * Note that the stock icon is preferred, if the #GtkAction:stock-id
+         * property holds the id of an existing stock icon, and the #GIcon is
+         * preferred if the #GtkAction:gicon property is set.
+         * 
+         * This is an appearance property and thus only applies if
+         * #GtkActivatable:use-action-appearance is %TRUE.
+         */
+        iconName?: string | null
+        isImportant?: boolean | null
+        /**
+         * A shorter label that may be used on toolbar buttons.
+         * 
+         * This is an appearance property and thus only applies if
+         * #GtkActivatable:use-action-appearance is %TRUE.
+         */
+        shortLabel?: string | null
+        /**
+         * The stock icon displayed in widgets representing this action.
+         * 
+         * This is an appearance property and thus only applies if
+         * #GtkActivatable:use-action-appearance is %TRUE.
+         */
+        stockId?: string | null
+        visibleHorizontal?: boolean | null
+        /**
+         * When %TRUE, toolitem proxies for this action are represented in the
+         * toolbar overflow menu.
+         */
+        visibleOverflown?: boolean | null
+        visibleVertical?: boolean | null
     }
 
 }
@@ -9963,6 +10256,7 @@ interface Action extends Buildable {
     // Own properties of Gtk-2.0.Gtk.Action
 
     action_group: ActionGroup
+    actionGroup: ActionGroup
     /**
      * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
      * setting and always show their image, if available.
@@ -9971,6 +10265,14 @@ interface Action extends Buildable {
      * without their image.
      */
     always_show_image: boolean
+    /**
+     * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
+     * setting and always show their image, if available.
+     * 
+     * Use this property if the menu item would be useless or hard to use
+     * without their image.
+     */
+    alwaysShowImage: boolean
     /**
      * The #GIcon displayed in the #GtkAction.
      * 
@@ -9982,6 +10284,7 @@ interface Action extends Buildable {
      */
     gicon: Gio.Icon
     hide_if_empty: boolean
+    hideIfEmpty: boolean
     /**
      * The name of the icon from the icon theme.
      * 
@@ -9993,7 +10296,19 @@ interface Action extends Buildable {
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
     icon_name: string | null
+    /**
+     * The name of the icon from the icon theme.
+     * 
+     * Note that the stock icon is preferred, if the #GtkAction:stock-id
+     * property holds the id of an existing stock icon, and the #GIcon is
+     * preferred if the #GtkAction:gicon property is set.
+     * 
+     * This is an appearance property and thus only applies if
+     * #GtkActivatable:use-action-appearance is %TRUE.
+     */
+    iconName: string | null
     is_important: boolean
+    isImportant: boolean
     /**
      * The label used for menu items and buttons that activate
      * this action. If the label is %NULL, GTK+ uses the stock
@@ -10013,21 +10328,42 @@ interface Action extends Buildable {
      */
     short_label: string | null
     /**
+     * A shorter label that may be used on toolbar buttons.
+     * 
+     * This is an appearance property and thus only applies if
+     * #GtkActivatable:use-action-appearance is %TRUE.
+     */
+    shortLabel: string | null
+    /**
      * The stock icon displayed in widgets representing this action.
      * 
      * This is an appearance property and thus only applies if
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
     stock_id: string | null
+    /**
+     * The stock icon displayed in widgets representing this action.
+     * 
+     * This is an appearance property and thus only applies if
+     * #GtkActivatable:use-action-appearance is %TRUE.
+     */
+    stockId: string | null
     tooltip: string | null
     visible: boolean
     visible_horizontal: boolean
+    visibleHorizontal: boolean
     /**
      * When %TRUE, toolitem proxies for this action are represented in the
      * toolbar overflow menu.
      */
     visible_overflown: boolean
+    /**
+     * When %TRUE, toolitem proxies for this action are represented in the
+     * toolbar overflow menu.
+     */
+    visibleOverflown: boolean
     visible_vertical: boolean
+    visibleVertical: boolean
 
     // Own fields of Gtk-2.0.Gtk.Action
 
@@ -10840,11 +11176,44 @@ module Adjustment {
          * The value of the adjustment.
          */
         value?: number | null
+        /**
+         * The page increment of the adjustment.
+         */
+        pageIncrement?: number | null
+        /**
+         * The page size of the adjustment.
+         * Note that the page-size is irrelevant and should be set to zero
+         * if the adjustment is used for a simple scalar value, e.g. in a
+         * #GtkSpinButton.
+         */
+        pageSize?: number | null
+        /**
+         * The step increment of the adjustment.
+         */
+        stepIncrement?: number | null
     }
 
 }
 
 interface Adjustment {
+
+    // Own properties of Gtk-2.0.Gtk.Adjustment
+
+    /**
+     * The page increment of the adjustment.
+     */
+    pageIncrement: number
+    /**
+     * The page size of the adjustment.
+     * Note that the page-size is irrelevant and should be set to zero
+     * if the adjustment is used for a simple scalar value, e.g. in a
+     * #GtkSpinButton.
+     */
+    pageSize: number
+    /**
+     * The step increment of the adjustment.
+     */
+    stepIncrement: number
 
     // Own fields of Gtk-2.0.Gtk.Adjustment
 
@@ -10981,6 +11350,15 @@ interface Adjustment {
 
     // Class property signals of Gtk-2.0.Gtk.Adjustment
 
+    connect(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::page-increment", ...args: any[]): void
+    connect(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::page-size", ...args: any[]): void
+    connect(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::step-increment", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -11033,6 +11411,22 @@ module Alignment {
         xscale?: number | null
         yalign?: number | null
         yscale?: number | null
+        /**
+         * The padding to insert at the bottom of the widget.
+         */
+        bottomPadding?: number | null
+        /**
+         * The padding to insert at the left of the widget.
+         */
+        leftPadding?: number | null
+        /**
+         * The padding to insert at the right of the widget.
+         */
+        rightPadding?: number | null
+        /**
+         * The padding to insert at the top of the widget.
+         */
+        topPadding?: number | null
     }
 
 }
@@ -11046,17 +11440,33 @@ interface Alignment extends Atk.ImplementorIface, Buildable {
      */
     bottom_padding: number
     /**
+     * The padding to insert at the bottom of the widget.
+     */
+    bottomPadding: number
+    /**
      * The padding to insert at the left of the widget.
      */
     left_padding: number
+    /**
+     * The padding to insert at the left of the widget.
+     */
+    leftPadding: number
     /**
      * The padding to insert at the right of the widget.
      */
     right_padding: number
     /**
+     * The padding to insert at the right of the widget.
+     */
+    rightPadding: number
+    /**
      * The padding to insert at the top of the widget.
      */
     top_padding: number
+    /**
+     * The padding to insert at the top of the widget.
+     */
+    topPadding: number
 
     // Own fields of Gtk-2.0.Gtk.Alignment
 
@@ -11107,6 +11517,9 @@ interface Alignment extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::top-padding", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::top-padding", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::top-padding", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Alignment, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -11237,11 +11650,18 @@ module Arrow {
 
         arrow_type?: ArrowType | null
         shadow_type?: ShadowType | null
+        arrowType?: ArrowType | null
+        shadowType?: ShadowType | null
     }
 
 }
 
 interface Arrow extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.Arrow
+
+    arrowType: ArrowType
+    shadowType: ShadowType
 
     // Own fields of Gtk-2.0.Gtk.Arrow
 
@@ -11260,6 +11680,12 @@ interface Arrow extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Arrow
 
+    connect(sigName: "notify::arrow-type", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arrow-type", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::arrow-type", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: Arrow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -11382,11 +11808,16 @@ module AspectFrame {
         ratio?: number | null
         xalign?: number | null
         yalign?: number | null
+        obeyChild?: boolean | null
     }
 
 }
 
 interface AspectFrame extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.AspectFrame
+
+    obeyChild: boolean
 
     // Own fields of Gtk-2.0.Gtk.AspectFrame
 
@@ -11410,12 +11841,30 @@ interface AspectFrame extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.AspectFrame
 
+    connect(sigName: "notify::obey-child", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::obey-child", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::obey-child", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::label-widget", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-widget", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-widget", ...args: any[]): void
+    connect(sigName: "notify::label-xalign", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-xalign", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-xalign", ...args: any[]): void
+    connect(sigName: "notify::label-yalign", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-yalign", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-yalign", ...args: any[]): void
     connect(sigName: "notify::shadow", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: AspectFrame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -11813,6 +12262,12 @@ interface Assistant extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -11822,15 +12277,24 @@ interface Assistant extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -11855,12 +12319,18 @@ interface Assistant extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Assistant, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -12025,6 +12495,9 @@ interface Bin extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Bin
 
+    connect(sigName: "notify::border-width", callback: (($obj: Bin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Bin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Bin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Bin, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -12246,6 +12719,9 @@ interface Box extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.Box
 
+    connect(sigName: "notify::border-width", callback: (($obj: Box, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Box, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Box, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Box, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -12349,6 +12825,13 @@ module Builder {
          * otherwise g_dgettext().
          */
         translation_domain?: string | null
+        /**
+         * The translation domain used when translating property values that
+         * have been marked as translatable in interface descriptions.
+         * If the translation domain is %NULL, #GtkBuilder uses gettext(),
+         * otherwise g_dgettext().
+         */
+        translationDomain?: string | null
     }
 
 }
@@ -12364,6 +12847,13 @@ interface Builder {
      * otherwise g_dgettext().
      */
     translation_domain: string | null
+    /**
+     * The translation domain used when translating property values that
+     * have been marked as translatable in interface descriptions.
+     * If the translation domain is %NULL, #GtkBuilder uses gettext(),
+     * otherwise g_dgettext().
+     */
+    translationDomain: string | null
 
     // Own fields of Gtk-2.0.Gtk.Builder
 
@@ -12644,6 +13134,13 @@ module Button {
          * 1.0 is bottom aligned.
          */
         yalign?: number | null
+        focusOnClick?: boolean | null
+        /**
+         * The position of the image relative to the text inside the button.
+         */
+        imagePosition?: PositionType | null
+        useStock?: boolean | null
+        useUnderline?: boolean | null
     }
 
 }
@@ -12652,12 +13149,19 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Button
 
+    focusOnClick: boolean
     image: Widget
     /**
      * The position of the image relative to the text inside the button.
      */
     image_position: PositionType
+    /**
+     * The position of the image relative to the text inside the button.
+     */
+    imagePosition: PositionType
     label: string | null
+    useStock: boolean
+    useUnderline: boolean
     /**
      * If the child of the button is a #GtkMisc or #GtkAlignment, this property
      * can be used to control it's horizontal alignment. 0.0 is left aligned,
@@ -12828,6 +13332,9 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Button
 
+    connect(sigName: "notify::focus-on-click", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -12837,12 +13344,21 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Button, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -12970,11 +13486,16 @@ module ButtonBox {
         // Own constructor properties of Gtk-2.0.Gtk.ButtonBox
 
         layout_style?: ButtonBoxStyle | null
+        layoutStyle?: ButtonBoxStyle | null
     }
 
 }
 
 interface ButtonBox extends Atk.ImplementorIface, Buildable, Orientable {
+
+    // Own properties of Gtk-2.0.Gtk.ButtonBox
+
+    layoutStyle: ButtonBoxStyle
 
     // Own fields of Gtk-2.0.Gtk.ButtonBox
 
@@ -13019,6 +13540,12 @@ interface ButtonBox extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.ButtonBox
 
+    connect(sigName: "notify::layout-style", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-style", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-style", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ButtonBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -13245,6 +13772,13 @@ module CList {
         sort_type?: SortType | null
         titles_active?: boolean | null
         use_drag_icons?: boolean | null
+        nColumns?: number | null
+        rowHeight?: number | null
+        selectionMode?: SelectionMode | null
+        shadowType?: ShadowType | null
+        sortType?: SortType | null
+        titlesActive?: boolean | null
+        useDragIcons?: boolean | null
     }
 
 }
@@ -13254,9 +13788,16 @@ interface CList extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.CList
 
     readonly n_columns: number
+    readonly nColumns: number
     reorderable: boolean
+    rowHeight: number
+    selectionMode: SelectionMode
+    shadowType: ShadowType
+    sortType: SortType
     titles_active: boolean
+    titlesActive: boolean
     use_drag_icons: boolean
+    useDragIcons: boolean
 
     // Own fields of Gtk-2.0.Gtk.CList
 
@@ -13485,12 +14026,27 @@ interface CList extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::reorderable", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reorderable", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::reorderable", ...args: any[]): void
+    connect(sigName: "notify::row-height", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::row-height", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::row-height", ...args: any[]): void
+    connect(sigName: "notify::selection-mode", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selection-mode", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selection-mode", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::sort-type", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sort-type", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sort-type", ...args: any[]): void
     connect(sigName: "notify::titles-active", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::titles-active", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::titles-active", ...args: any[]): void
     connect(sigName: "notify::use-drag-icons", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-drag-icons", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-drag-icons", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: CList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -13609,6 +14165,11 @@ module CTree {
         show_stub?: boolean | null
         spacing?: number | null
         tree_column?: number | null
+        expanderStyle?: CTreeExpanderStyle | null
+        lineStyle?: CTreeLineStyle | null
+        nColumns?: number | null
+        showStub?: boolean | null
+        treeColumn?: number | null
     }
 
 }
@@ -13617,9 +14178,14 @@ interface CTree extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.CTree
 
+    expanderStyle: CTreeExpanderStyle
     indent: number
+    lineStyle: CTreeLineStyle
     readonly n_columns: number
+    readonly nColumns: number
+    showStub: boolean
     spacing: number
+    readonly treeColumn: number
 
     // Own fields of Gtk-2.0.Gtk.CTree
 
@@ -13758,24 +14324,51 @@ interface CTree extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.CTree
 
+    connect(sigName: "notify::expander-style", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::expander-style", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::expander-style", ...args: any[]): void
     connect(sigName: "notify::indent", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::indent", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::indent", ...args: any[]): void
+    connect(sigName: "notify::line-style", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::line-style", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::line-style", ...args: any[]): void
     connect(sigName: "notify::n-columns", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::n-columns", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::n-columns", ...args: any[]): void
+    connect(sigName: "notify::show-stub", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-stub", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-stub", ...args: any[]): void
     connect(sigName: "notify::spacing", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::spacing", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::spacing", ...args: any[]): void
+    connect(sigName: "notify::tree-column", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tree-column", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tree-column", ...args: any[]): void
     connect(sigName: "notify::reorderable", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reorderable", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::reorderable", ...args: any[]): void
+    connect(sigName: "notify::row-height", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::row-height", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::row-height", ...args: any[]): void
+    connect(sigName: "notify::selection-mode", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selection-mode", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selection-mode", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::sort-type", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sort-type", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sort-type", ...args: any[]): void
     connect(sigName: "notify::titles-active", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::titles-active", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::titles-active", ...args: any[]): void
     connect(sigName: "notify::use-drag-icons", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-drag-icons", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-drag-icons", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: CTree, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -13980,6 +14573,38 @@ module Calendar {
          * This property gets initially set to the current year.
          */
         year?: number | null
+        /**
+         * Height of a detail cell, in rows.
+         * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+         */
+        detailHeightRows?: number | null
+        /**
+         * Width of a detail cell, in characters.
+         * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+         */
+        detailWidthChars?: number | null
+        /**
+         * Determines whether the selected month can be changed.
+         */
+        noMonthChange?: boolean | null
+        /**
+         * Determines whether day names are displayed.
+         */
+        showDayNames?: boolean | null
+        /**
+         * Determines whether details are shown directly in the widget, or if they are
+         * available only as tooltip. When this property is set days with details are
+         * marked.
+         */
+        showDetails?: boolean | null
+        /**
+         * Determines whether a heading is displayed.
+         */
+        showHeading?: boolean | null
+        /**
+         * Determines whether week numbers are displayed.
+         */
+        showWeekNumbers?: boolean | null
     }
 
 }
@@ -13994,18 +14619,36 @@ interface Calendar extends Atk.ImplementorIface, Buildable {
      */
     detail_height_rows: number
     /**
+     * Height of a detail cell, in rows.
+     * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+     */
+    detailHeightRows: number
+    /**
      * Width of a detail cell, in characters.
      * A value of 0 allows any width. See gtk_calendar_set_detail_func().
      */
     detail_width_chars: number
     /**
+     * Width of a detail cell, in characters.
+     * A value of 0 allows any width. See gtk_calendar_set_detail_func().
+     */
+    detailWidthChars: number
+    /**
      * Determines whether the selected month can be changed.
      */
     no_month_change: boolean
     /**
+     * Determines whether the selected month can be changed.
+     */
+    noMonthChange: boolean
+    /**
      * Determines whether day names are displayed.
      */
     show_day_names: boolean
+    /**
+     * Determines whether day names are displayed.
+     */
+    showDayNames: boolean
     /**
      * Determines whether details are shown directly in the widget, or if they are
      * available only as tooltip. When this property is set days with details are
@@ -14013,13 +14656,27 @@ interface Calendar extends Atk.ImplementorIface, Buildable {
      */
     show_details: boolean
     /**
+     * Determines whether details are shown directly in the widget, or if they are
+     * available only as tooltip. When this property is set days with details are
+     * marked.
+     */
+    showDetails: boolean
+    /**
      * Determines whether a heading is displayed.
      */
     show_heading: boolean
     /**
+     * Determines whether a heading is displayed.
+     */
+    showHeading: boolean
+    /**
      * Determines whether week numbers are displayed.
      */
     show_week_numbers: boolean
+    /**
+     * Determines whether week numbers are displayed.
+     */
+    showWeekNumbers: boolean
 
     // Own fields of Gtk-2.0.Gtk.Calendar
 
@@ -14342,6 +14999,11 @@ module CellRenderer {
         xpad?: number | null
         yalign?: number | null
         ypad?: number | null
+        cellBackground?: string | null
+        cellBackgroundGdk?: Gdk.Color | null
+        cellBackgroundSet?: boolean | null
+        isExpanded?: boolean | null
+        isExpander?: boolean | null
     }
 
 }
@@ -14351,7 +15013,12 @@ interface CellRenderer {
     // Own properties of Gtk-2.0.Gtk.CellRenderer
 
     cell_background: string | null
+    cellBackground: string | null
     cell_background_gdk: Gdk.Color
+    cellBackgroundGdk: Gdk.Color
+    cellBackgroundSet: boolean
+    isExpanded: boolean
+    isExpander: boolean
 
     // Own fields of Gtk-2.0.Gtk.CellRenderer
 
@@ -14582,6 +15249,15 @@ interface CellRenderer {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRenderer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -14650,6 +15326,21 @@ module CellRendererAccel {
          * configuration should assign keyvals to all keys.
          */
         keycode?: number | null
+        /**
+         * The keyval of the accelerator.
+         */
+        accelKey?: number | null
+        /**
+         * Determines if the edited accelerators are GTK+ accelerators. If
+         * they are, consumed modifiers are suppressed, only accelerators
+         * accepted by GTK+ are allowed, and the accelerators are rendered
+         * in the same way as they are in menus.
+         */
+        accelMode?: CellRendererAccelMode | null
+        /**
+         * The modifier mask of the accelerator.
+         */
+        accelMods?: Gdk.ModifierType | null
     }
 
 }
@@ -14663,6 +15354,10 @@ interface CellRendererAccel {
      */
     accel_key: number
     /**
+     * The keyval of the accelerator.
+     */
+    accelKey: number
+    /**
      * Determines if the edited accelerators are GTK+ accelerators. If
      * they are, consumed modifiers are suppressed, only accelerators
      * accepted by GTK+ are allowed, and the accelerators are rendered
@@ -14670,9 +15365,20 @@ interface CellRendererAccel {
      */
     accel_mode: CellRendererAccelMode
     /**
+     * Determines if the edited accelerators are GTK+ accelerators. If
+     * they are, consumed modifiers are suppressed, only accelerators
+     * accepted by GTK+ are allowed, and the accelerators are rendered
+     * in the same way as they are in menus.
+     */
+    accelMode: CellRendererAccelMode
+    /**
      * The modifier mask of the accelerator.
      */
     accel_mods: Gdk.ModifierType
+    /**
+     * The modifier mask of the accelerator.
+     */
+    accelMods: Gdk.ModifierType
     /**
      * The hardware keycode of the accelerator. Note that the hardware keycode is
      * only relevant if the key does not have a keyval. Normally, the keyboard
@@ -14850,6 +15556,15 @@ interface CellRendererAccel {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererAccel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -14924,11 +15639,48 @@ module CellRendererCombo {
          * this column to its combo box.
          */
         text_column?: number | null
+        /**
+         * If %TRUE, the cell renderer will include an entry and allow to enter
+         * values other than the ones in the popup list.
+         */
+        hasEntry?: boolean | null
+        /**
+         * Specifies the model column which holds the possible values for the
+         * combo box.
+         * 
+         * Note that this refers to the model specified in the model property,
+         * <emphasis>not</emphasis> the model backing the tree view to which
+         * this cell renderer is attached.
+         * 
+         * #GtkCellRendererCombo automatically adds a text cell renderer for
+         * this column to its combo box.
+         */
+        textColumn?: number | null
     }
 
 }
 
 interface CellRendererCombo {
+
+    // Own properties of Gtk-2.0.Gtk.CellRendererCombo
+
+    /**
+     * If %TRUE, the cell renderer will include an entry and allow to enter
+     * values other than the ones in the popup list.
+     */
+    hasEntry: boolean
+    /**
+     * Specifies the model column which holds the possible values for the
+     * combo box.
+     * 
+     * Note that this refers to the model specified in the model property,
+     * <emphasis>not</emphasis> the model backing the tree view to which
+     * this cell renderer is attached.
+     * 
+     * #GtkCellRendererCombo automatically adds a text cell renderer for
+     * this column to its combo box.
+     */
+    textColumn: number
 
     // Own fields of Gtk-2.0.Gtk.CellRendererCombo
 
@@ -14945,6 +15697,12 @@ interface CellRendererCombo {
 
     // Class property signals of Gtk-2.0.Gtk.CellRendererCombo
 
+    connect(sigName: "notify::has-entry", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-entry", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-entry", ...args: any[]): void
+    connect(sigName: "notify::text-column", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::text-column", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::text-column", ...args: any[]): void
     connect(sigName: "notify::align-set", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::align-set", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::align-set", ...args: any[]): void
@@ -15083,6 +15841,15 @@ interface CellRendererCombo {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererCombo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -15160,6 +15927,22 @@ module CellRendererPixbuf {
         stock_detail?: string | null
         stock_id?: string | null
         stock_size?: number | null
+        /**
+         * Specifies whether the rendered pixbuf should be colorized
+         * according to the #GtkCellRendererState.
+         */
+        followState?: boolean | null
+        /**
+         * The name of the themed icon to display.
+         * This property only has an effect if not overridden by "stock_id"
+         * or "pixbuf" properties.
+         */
+        iconName?: string | null
+        pixbufExpanderClosed?: GdkPixbuf.Pixbuf | null
+        pixbufExpanderOpen?: GdkPixbuf.Pixbuf | null
+        stockDetail?: string | null
+        stockId?: string | null
+        stockSize?: number | null
     }
 
 }
@@ -15174,6 +15957,11 @@ interface CellRendererPixbuf {
      */
     follow_state: boolean
     /**
+     * Specifies whether the rendered pixbuf should be colorized
+     * according to the #GtkCellRendererState.
+     */
+    followState: boolean
+    /**
      * The GIcon representing the icon to display.
      * If the icon theme is changed, the image will be updated
      * automatically.
@@ -15185,12 +15973,23 @@ interface CellRendererPixbuf {
      * or "pixbuf" properties.
      */
     icon_name: string | null
+    /**
+     * The name of the themed icon to display.
+     * This property only has an effect if not overridden by "stock_id"
+     * or "pixbuf" properties.
+     */
+    iconName: string | null
     pixbuf: GdkPixbuf.Pixbuf
     pixbuf_expander_closed: GdkPixbuf.Pixbuf
+    pixbufExpanderClosed: GdkPixbuf.Pixbuf
     pixbuf_expander_open: GdkPixbuf.Pixbuf
+    pixbufExpanderOpen: GdkPixbuf.Pixbuf
     stock_detail: string | null
+    stockDetail: string | null
     stock_id: string | null
+    stockId: string | null
     stock_size: number
+    stockSize: number
 
     // Own fields of Gtk-2.0.Gtk.CellRendererPixbuf
 
@@ -15231,6 +16030,15 @@ interface CellRendererPixbuf {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -15328,6 +16136,18 @@ module CellRendererProgress {
          * progress bar will be "filled in".
          */
         value?: number | null
+        /**
+         * The "text-xalign" property controls the horizontal alignment of the
+         * text in the progress bar.  Valid values range from 0 (left) to 1
+         * (right).  Reserved for RTL layouts.
+         */
+        textXalign?: number | null
+        /**
+         * The "text-yalign" property controls the vertical alignment of the
+         * text in the progress bar.  Valid values range from 0 (top) to 1
+         * (bottom).
+         */
+        textYalign?: number | null
     }
 
 }
@@ -15369,11 +16189,23 @@ interface CellRendererProgress {
      */
     text_xalign: number
     /**
+     * The "text-xalign" property controls the horizontal alignment of the
+     * text in the progress bar.  Valid values range from 0 (left) to 1
+     * (right).  Reserved for RTL layouts.
+     */
+    textXalign: number
+    /**
      * The "text-yalign" property controls the vertical alignment of the
      * text in the progress bar.  Valid values range from 0 (top) to 1
      * (bottom).
      */
     text_yalign: number
+    /**
+     * The "text-yalign" property controls the vertical alignment of the
+     * text in the progress bar.  Valid values range from 0 (top) to 1
+     * (bottom).
+     */
+    textYalign: number
     /**
      * The "value" property determines the percentage to which the
      * progress bar will be "filled in".
@@ -15410,6 +16242,15 @@ interface CellRendererProgress {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererProgress, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -15465,6 +16306,10 @@ module CellRendererSpin {
          * The number of decimal places to display.
          */
         digits?: number | null
+        /**
+         * The acceleration rate when you hold down a button.
+         */
+        climbRate?: number | null
     }
 
 }
@@ -15482,6 +16327,10 @@ interface CellRendererSpin {
      * The acceleration rate when you hold down a button.
      */
     climb_rate: number
+    /**
+     * The acceleration rate when you hold down a button.
+     */
+    climbRate: number
     /**
      * The number of decimal places to display.
      */
@@ -15640,6 +16489,15 @@ interface CellRendererSpin {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererSpin, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -15743,6 +16601,15 @@ interface CellRendererSpinner {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererSpinner, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -15882,6 +16749,45 @@ module CellRendererText {
          * Setting wrap-width to -1 turns wrapping off.
          */
         wrap_width?: number | null
+        alignSet?: boolean | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
+        editableSet?: boolean | null
+        ellipsizeSet?: boolean | null
+        familySet?: boolean | null
+        fontDesc?: Pango.FontDescription | null
+        foregroundGdk?: Gdk.Color | null
+        foregroundSet?: boolean | null
+        languageSet?: boolean | null
+        riseSet?: boolean | null
+        scaleSet?: boolean | null
+        singleParagraphMode?: boolean | null
+        sizePoints?: number | null
+        sizeSet?: boolean | null
+        stretchSet?: boolean | null
+        strikethroughSet?: boolean | null
+        styleSet?: boolean | null
+        underlineSet?: boolean | null
+        variantSet?: boolean | null
+        weightSet?: boolean | null
+        /**
+         * The desired width of the cell, in characters. If this property is set to
+         * -1, the width will be calculated automatically, otherwise the cell will
+         * request either 3 characters or the property value, whichever is greater.
+         */
+        widthChars?: number | null
+        /**
+         * Specifies how to break the string into multiple lines, if the cell
+         * renderer does not have enough room to display the entire string.
+         * This property has no effect unless the wrap-width property is set.
+         */
+        wrapMode?: Pango.WrapMode | null
+        /**
+         * Specifies the width at which the text is wrapped. The wrap-mode property can
+         * be used to influence at what character positions the line breaks can be placed.
+         * Setting wrap-width to -1 turns wrapping off.
+         */
+        wrapWidth?: number | null
     }
 
 }
@@ -15891,6 +16797,7 @@ interface CellRendererText {
     // Own properties of Gtk-2.0.Gtk.CellRendererText
 
     align_set: boolean
+    alignSet: boolean
     /**
      * Specifies how to align the lines of text with respect to each other.
      * 
@@ -15902,9 +16809,12 @@ interface CellRendererText {
     attributes: Pango.AttrList
     background: string | null
     background_gdk: Gdk.Color
+    backgroundGdk: Gdk.Color
     background_set: boolean
+    backgroundSet: boolean
     editable: boolean
     editable_set: boolean
+    editableSet: boolean
     /**
      * Specifies the preferred place to ellipsize the string, if the cell renderer
      * does not have enough room to display the entire string. Setting it to
@@ -15913,37 +16823,54 @@ interface CellRendererText {
      */
     ellipsize: Pango.EllipsizeMode
     ellipsize_set: boolean
+    ellipsizeSet: boolean
     family: string | null
     family_set: boolean
+    familySet: boolean
     font: string | null
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     foreground: string | null
     foreground_gdk: Gdk.Color
+    foregroundGdk: Gdk.Color
     foreground_set: boolean
+    foregroundSet: boolean
     language: string | null
     language_set: boolean
+    languageSet: boolean
     markup: string | null
     rise: number
     rise_set: boolean
+    riseSet: boolean
     scale: number
     scale_set: boolean
+    scaleSet: boolean
     single_paragraph_mode: boolean
+    singleParagraphMode: boolean
     size: number
     size_points: number
+    sizePoints: number
     size_set: boolean
+    sizeSet: boolean
     stretch: Pango.Stretch
     stretch_set: boolean
+    stretchSet: boolean
     strikethrough: boolean
     strikethrough_set: boolean
+    strikethroughSet: boolean
     style: Pango.Style
     style_set: boolean
+    styleSet: boolean
     text: string | null
     underline: Pango.Underline
     underline_set: boolean
+    underlineSet: boolean
     variant: Pango.Variant
     variant_set: boolean
+    variantSet: boolean
     weight: number
     weight_set: boolean
+    weightSet: boolean
     /**
      * The desired width of the cell, in characters. If this property is set to
      * -1, the width will be calculated automatically, otherwise the cell will
@@ -15951,17 +16878,35 @@ interface CellRendererText {
      */
     width_chars: number
     /**
+     * The desired width of the cell, in characters. If this property is set to
+     * -1, the width will be calculated automatically, otherwise the cell will
+     * request either 3 characters or the property value, whichever is greater.
+     */
+    widthChars: number
+    /**
      * Specifies how to break the string into multiple lines, if the cell
      * renderer does not have enough room to display the entire string.
      * This property has no effect unless the wrap-width property is set.
      */
     wrap_mode: Pango.WrapMode
     /**
+     * Specifies how to break the string into multiple lines, if the cell
+     * renderer does not have enough room to display the entire string.
+     * This property has no effect unless the wrap-width property is set.
+     */
+    wrapMode: Pango.WrapMode
+    /**
      * Specifies the width at which the text is wrapped. The wrap-mode property can
      * be used to influence at what character positions the line breaks can be placed.
      * Setting wrap-width to -1 turns wrapping off.
      */
     wrap_width: number
+    /**
+     * Specifies the width at which the text is wrapped. The wrap-mode property can
+     * be used to influence at what character positions the line breaks can be placed.
+     * Setting wrap-width to -1 turns wrapping off.
+     */
+    wrapWidth: number
 
     // Own fields of Gtk-2.0.Gtk.CellRendererText
 
@@ -16131,6 +17076,15 @@ interface CellRendererText {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -16200,6 +17154,7 @@ module CellRendererToggle {
         inconsistent?: boolean | null
         indicator_size?: number | null
         radio?: boolean | null
+        indicatorSize?: number | null
     }
 
 }
@@ -16212,6 +17167,7 @@ interface CellRendererToggle {
     active: boolean
     inconsistent: boolean
     indicator_size: number
+    indicatorSize: number
     radio: boolean
 
     // Own fields of Gtk-2.0.Gtk.CellRendererToggle
@@ -16292,6 +17248,15 @@ interface CellRendererToggle {
     connect(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cell-background-gdk", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cell-background-gdk", ...args: any[]): void
+    connect(sigName: "notify::cell-background-set", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cell-background-set", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cell-background-set", ...args: any[]): void
+    connect(sigName: "notify::is-expanded", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expanded", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expanded", ...args: any[]): void
+    connect(sigName: "notify::is-expander", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-expander", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-expander", ...args: any[]): void
     connect(sigName: "notify::user-data", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-data", callback: (($obj: CellRendererToggle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::user-data", ...args: any[]): void
@@ -16355,6 +17320,8 @@ module CellView {
          * since 2.10
          */
         model?: TreeModel | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
     }
 
 }
@@ -16365,7 +17332,9 @@ interface CellView extends Atk.ImplementorIface, Buildable, CellLayout {
 
     background: string | null
     background_gdk: Gdk.Color
+    backgroundGdk: Gdk.Color
     background_set: boolean
+    backgroundSet: boolean
     /**
      * The model for cell view
      * 
@@ -16574,6 +17543,12 @@ interface CheckButton extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.CheckButton
 
+    connect(sigName: "notify::draw-indicator", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-indicator", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-indicator", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -16583,12 +17558,21 @@ interface CheckButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: CheckButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -16713,11 +17697,16 @@ module CheckMenuItem {
         active?: boolean | null
         draw_as_radio?: boolean | null
         inconsistent?: boolean | null
+        drawAsRadio?: boolean | null
     }
 
 }
 
 interface CheckMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.CheckMenuItem
+
+    drawAsRadio: boolean
 
     // Own fields of Gtk-2.0.Gtk.CheckMenuItem
 
@@ -16879,6 +17868,12 @@ interface CheckMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.CheckMenuItem
 
+    connect(sigName: "notify::draw-as-radio", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-as-radio", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-as-radio", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -16888,6 +17883,9 @@ interface CheckMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: CheckMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -17282,6 +18280,12 @@ module ColorButton {
          * color selection dialog.
          */
         use_alpha?: boolean | null
+        /**
+         * If this property is set to %TRUE, the color swatch on the button is rendered against a
+         * checkerboard background to show its opacity and the opacity slider is displayed in the
+         * color selection dialog.
+         */
+        useAlpha?: boolean | null
     }
 
 }
@@ -17308,6 +18312,12 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
      * color selection dialog.
      */
     use_alpha: boolean
+    /**
+     * If this property is set to %TRUE, the color swatch on the button is rendered against a
+     * checkerboard background to show its opacity and the opacity slider is displayed in the
+     * color selection dialog.
+     */
+    useAlpha: boolean
 
     // Own fields of Gtk-2.0.Gtk.ColorButton
 
@@ -17379,6 +18389,9 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-alpha", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-alpha", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-alpha", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -17388,12 +18401,21 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ColorButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -17534,6 +18556,10 @@ module ColorSelection {
         current_color?: Gdk.Color | null
         has_opacity_control?: boolean | null
         has_palette?: boolean | null
+        currentAlpha?: number | null
+        currentColor?: Gdk.Color | null
+        hasOpacityControl?: boolean | null
+        hasPalette?: boolean | null
     }
 
 }
@@ -17543,9 +18569,13 @@ interface ColorSelection extends Atk.ImplementorIface, Buildable, Orientable {
     // Own properties of Gtk-2.0.Gtk.ColorSelection
 
     current_alpha: number
+    currentAlpha: number
     current_color: Gdk.Color
+    currentColor: Gdk.Color
     has_opacity_control: boolean
+    hasOpacityControl: boolean
     has_palette: boolean
+    hasPalette: boolean
 
     // Own fields of Gtk-2.0.Gtk.ColorSelection
 
@@ -17660,6 +18690,9 @@ interface ColorSelection extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::has-palette", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-palette", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::has-palette", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ColorSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -17797,7 +18830,11 @@ interface ColorSelectionDialog extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.ColorSelectionDialog
 
+    readonly cancelButton: Widget
     readonly color_selection: Widget
+    readonly colorSelection: Widget
+    readonly helpButton: Widget
+    readonly okButton: Widget
 
     // Conflicting properties
 
@@ -17855,15 +18892,30 @@ interface ColorSelectionDialog extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.ColorSelectionDialog
 
+    connect(sigName: "notify::cancel-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cancel-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cancel-button", ...args: any[]): void
     connect(sigName: "notify::color-selection", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::color-selection", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::color-selection", ...args: any[]): void
+    connect(sigName: "notify::help-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::help-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::help-button", ...args: any[]): void
+    connect(sigName: "notify::ok-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::ok-button", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::ok-button", ...args: any[]): void
     connect(sigName: "notify::has-separator", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::has-separator", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::has-separator", ...args: any[]): void
     connect(sigName: "notify::accept-focus", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -17873,15 +18925,24 @@ interface ColorSelectionDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -17906,12 +18967,18 @@ interface ColorSelectionDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ColorSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -18034,6 +19101,11 @@ module Combo {
         enable_arrow_keys?: boolean | null
         enable_arrows_always?: boolean | null
         value_in_list?: boolean | null
+        allowEmpty?: boolean | null
+        caseSensitive?: boolean | null
+        enableArrowKeys?: boolean | null
+        enableArrowsAlways?: boolean | null
+        valueInList?: boolean | null
     }
 
 }
@@ -18043,10 +19115,15 @@ interface Combo extends Atk.ImplementorIface, Buildable, Orientable {
     // Own properties of Gtk-2.0.Gtk.Combo
 
     allow_empty: boolean
+    allowEmpty: boolean
     case_sensitive: boolean
+    caseSensitive: boolean
     enable_arrow_keys: boolean
+    enableArrowKeys: boolean
     enable_arrows_always: boolean
+    enableArrowsAlways: boolean
     value_in_list: boolean
+    valueInList: boolean
 
     // Own fields of Gtk-2.0.Gtk.Combo
 
@@ -18080,6 +19157,9 @@ interface Combo extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::value-in-list", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::value-in-list", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::value-in-list", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Combo, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -18285,6 +19365,58 @@ module ComboBox {
          * out along multiple columns, starting a new row on reaching the wrap width.
          */
         wrap_width?: number | null
+        /**
+         * The add-tearoffs property controls whether generated menus
+         * have tearoff menu items.
+         * 
+         * Note that this only affects menu style combo boxes.
+         */
+        addTearoffs?: boolean | null
+        /**
+         * Whether the dropdown button is sensitive when
+         * the model is empty.
+         */
+        buttonSensitivity?: SensitivityType | null
+        /**
+         * If this is set to a non-negative value, it must be the index of a column
+         * of type %G_TYPE_INT in the model. The value in that column for each item
+         * will determine how many columns that item will span in the popup.
+         * Therefore, values in this column must be greater than zero, and the sum of
+         * an item’s column position + span should not exceed #GtkComboBox:wrap-width.
+         */
+        columnSpanColumn?: number | null
+        /**
+         * The column in the combo box's model to associate with strings from the entry
+         * if the combo was created with #GtkComboBox:has-entry = %TRUE.
+         */
+        entryTextColumn?: number | null
+        focusOnClick?: boolean | null
+        /**
+         * Whether the combo box has an entry.
+         */
+        hasEntry?: boolean | null
+        /**
+         * The has-frame property controls whether a frame
+         * is drawn around the entry.
+         */
+        hasFrame?: boolean | null
+        /**
+         * If this is set to a non-negative value, it must be the index of a column
+         * of type %G_TYPE_INT in the model. The value in that column for each item
+         * will determine how many rows that item will span in the popup. Therefore,
+         * values in this column must be greater than zero.
+         */
+        rowSpanColumn?: number | null
+        /**
+         * A title that may be displayed by the window manager
+         * when the popup is torn-off.
+         */
+        tearoffTitle?: string | null
+        /**
+         * If wrap-width is set to a positive value, items in the popup will be laid
+         * out along multiple columns, starting a new row on reaching the wrap width.
+         */
+        wrapWidth?: number | null
     }
 
 }
@@ -18309,10 +19441,22 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      */
     add_tearoffs: boolean
     /**
+     * The add-tearoffs property controls whether generated menus
+     * have tearoff menu items.
+     * 
+     * Note that this only affects menu style combo boxes.
+     */
+    addTearoffs: boolean
+    /**
      * Whether the dropdown button is sensitive when
      * the model is empty.
      */
     button_sensitivity: SensitivityType
+    /**
+     * Whether the dropdown button is sensitive when
+     * the model is empty.
+     */
+    buttonSensitivity: SensitivityType
     /**
      * If this is set to a non-negative value, it must be the index of a column
      * of type %G_TYPE_INT in the model. The value in that column for each item
@@ -18322,20 +19466,43 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      */
     column_span_column: number
     /**
+     * If this is set to a non-negative value, it must be the index of a column
+     * of type %G_TYPE_INT in the model. The value in that column for each item
+     * will determine how many columns that item will span in the popup.
+     * Therefore, values in this column must be greater than zero, and the sum of
+     * an item’s column position + span should not exceed #GtkComboBox:wrap-width.
+     */
+    columnSpanColumn: number
+    /**
      * The column in the combo box's model to associate with strings from the entry
      * if the combo was created with #GtkComboBox:has-entry = %TRUE.
      */
     entry_text_column: number
+    /**
+     * The column in the combo box's model to associate with strings from the entry
+     * if the combo was created with #GtkComboBox:has-entry = %TRUE.
+     */
+    entryTextColumn: number
     focus_on_click: boolean
+    focusOnClick: boolean
     /**
      * Whether the combo box has an entry.
      */
     readonly has_entry: boolean
     /**
+     * Whether the combo box has an entry.
+     */
+    readonly hasEntry: boolean
+    /**
      * The has-frame property controls whether a frame
      * is drawn around the entry.
      */
     has_frame: boolean
+    /**
+     * The has-frame property controls whether a frame
+     * is drawn around the entry.
+     */
+    hasFrame: boolean
     /**
      * The model from which the combo box takes the values shown
      * in the list.
@@ -18348,6 +19515,12 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      */
     readonly popup_shown: boolean
     /**
+     * Whether the combo boxes dropdown is popped up.
+     * Note that this property is mainly useful, because
+     * it allows you to connect to notify::popup-shown.
+     */
+    readonly popupShown: boolean
+    /**
      * If this is set to a non-negative value, it must be the index of a column
      * of type %G_TYPE_INT in the model. The value in that column for each item
      * will determine how many rows that item will span in the popup. Therefore,
@@ -18355,15 +19528,32 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      */
     row_span_column: number
     /**
+     * If this is set to a non-negative value, it must be the index of a column
+     * of type %G_TYPE_INT in the model. The value in that column for each item
+     * will determine how many rows that item will span in the popup. Therefore,
+     * values in this column must be greater than zero.
+     */
+    rowSpanColumn: number
+    /**
      * A title that may be displayed by the window manager
      * when the popup is torn-off.
      */
     tearoff_title: string | null
     /**
+     * A title that may be displayed by the window manager
+     * when the popup is torn-off.
+     */
+    tearoffTitle: string | null
+    /**
      * If wrap-width is set to a positive value, items in the popup will be laid
      * out along multiple columns, starting a new row on reaching the wrap width.
      */
     wrap_width: number
+    /**
+     * If wrap-width is set to a positive value, items in the popup will be laid
+     * out along multiple columns, starting a new row on reaching the wrap width.
+     */
+    wrapWidth: number
 
     // Own fields of Gtk-2.0.Gtk.ComboBox
 
@@ -18655,6 +19845,9 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
     connect(sigName: "notify::wrap-width", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wrap-width", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::wrap-width", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ComboBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -18822,6 +20015,7 @@ module ComboBoxEntry {
         // Own constructor properties of Gtk-2.0.Gtk.ComboBoxEntry
 
         text_column?: number | null
+        textColumn?: number | null
     }
 
 }
@@ -18831,6 +20025,7 @@ interface ComboBoxEntry extends Atk.ImplementorIface, Buildable, CellEditable, C
     // Own properties of Gtk-2.0.Gtk.ComboBoxEntry
 
     text_column: number
+    textColumn: number
 
     // Own fields of Gtk-2.0.Gtk.ComboBoxEntry
 
@@ -18894,6 +20089,9 @@ interface ComboBoxEntry extends Atk.ImplementorIface, Buildable, CellEditable, C
     connect(sigName: "notify::wrap-width", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wrap-width", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::wrap-width", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ComboBoxEntry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -19135,6 +20333,9 @@ interface ComboBoxText extends Atk.ImplementorIface, Buildable, CellEditable, Ce
     connect(sigName: "notify::wrap-width", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wrap-width", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::wrap-width", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ComboBoxText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -19327,6 +20528,8 @@ module Container {
         border_width?: number | null
         child?: Widget | null
         resize_mode?: ResizeMode | null
+        borderWidth?: number | null
+        resizeMode?: ResizeMode | null
     }
 
 }
@@ -19335,8 +20538,10 @@ interface Container extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Container
 
+    borderWidth: number
     child: Widget
     resize_mode: ResizeMode
+    resizeMode: ResizeMode
 
     // Own fields of Gtk-2.0.Gtk.Container
 
@@ -19633,6 +20838,9 @@ interface Container extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Container
 
+    connect(sigName: "notify::border-width", callback: (($obj: Container, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Container, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Container, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Container, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -19741,11 +20949,24 @@ module Curve {
         max_y?: number | null
         min_x?: number | null
         min_y?: number | null
+        curveType?: CurveType | null
+        maxX?: number | null
+        maxY?: number | null
+        minX?: number | null
+        minY?: number | null
     }
 
 }
 
 interface Curve extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.Curve
+
+    curveType: CurveType
+    maxX: number
+    maxY: number
+    minX: number
+    minY: number
 
     // Own fields of Gtk-2.0.Gtk.Curve
 
@@ -19786,6 +21007,21 @@ interface Curve extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Curve
 
+    connect(sigName: "notify::curve-type", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::curve-type", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::curve-type", ...args: any[]): void
+    connect(sigName: "notify::max-x", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-x", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-x", ...args: any[]): void
+    connect(sigName: "notify::max-y", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-y", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-y", ...args: any[]): void
+    connect(sigName: "notify::min-x", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-x", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-x", ...args: any[]): void
+    connect(sigName: "notify::min-y", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-y", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-y", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: Curve, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -19896,6 +21132,10 @@ module Dialog {
          * When %TRUE, the dialog has a separator bar above its buttons.
          */
         has_separator?: boolean | null
+        /**
+         * When %TRUE, the dialog has a separator bar above its buttons.
+         */
+        hasSeparator?: boolean | null
     }
 
 }
@@ -19908,6 +21148,10 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
      * When %TRUE, the dialog has a separator bar above its buttons.
      */
     has_separator: boolean
+    /**
+     * When %TRUE, the dialog has a separator bar above its buttons.
+     */
+    hasSeparator: boolean
 
     // Conflicting properties
 
@@ -20124,6 +21368,12 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -20133,15 +21383,24 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -20166,12 +21425,18 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Dialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -20658,6 +21923,170 @@ module Entry {
          * Reversed for RTL layouts.
          */
         xalign?: number | null
+        activatesDefault?: boolean | null
+        /**
+         * Whether password entries will show a warning when Caps Lock is on.
+         * 
+         * Note that the warning is shown using a secondary icon, and thus
+         * does not work if you are using the secondary icon position for some
+         * other purpose.
+         */
+        capsLockWarning?: boolean | null
+        hasFrame?: boolean | null
+        /**
+         * Which IM (input method) module should be used for this entry.
+         * See #GtkIMContext.
+         * 
+         * Setting this to a non-%NULL value overrides the
+         * system-wide IM module setting. See the GtkSettings
+         * #GtkSettings:gtk-im-module property.
+         */
+        imModule?: string | null
+        /**
+         * Sets the text area's border between the text and the frame.
+         */
+        innerBorder?: Border | null
+        /**
+         * The invisible character is used when masking entry contents (in
+         * \"password mode\")"). When it is not explicitly set with the
+         * #GtkEntry::invisible-char property, GTK+ determines the character
+         * to use from a list of possible candidates, depending on availability
+         * in the current font.
+         * 
+         * This style property allows the theme to prepend a character
+         * to the list of candidates.
+         */
+        invisibleChar?: number | null
+        /**
+         * Whether the invisible char has been set for the #GtkEntry.
+         */
+        invisibleCharSet?: boolean | null
+        maxLength?: number | null
+        /**
+         * If text is overwritten when typing in the #GtkEntry.
+         */
+        overwriteMode?: boolean | null
+        /**
+         * Whether the primary icon is activatable.
+         * 
+         * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+         * signals only on sensitive, activatable icons.
+         * 
+         * Sensitive, but non-activatable icons can be used for purely
+         * informational purposes.
+         */
+        primaryIconActivatable?: boolean | null
+        /**
+         * The #GIcon to use for the primary icon for the entry.
+         */
+        primaryIconGicon?: Gio.Icon | null
+        /**
+         * The icon name to use for the primary icon for the entry.
+         */
+        primaryIconName?: string | null
+        /**
+         * A pixbuf to use as the primary icon for the entry.
+         */
+        primaryIconPixbuf?: GdkPixbuf.Pixbuf | null
+        /**
+         * Whether the primary icon is sensitive.
+         * 
+         * An insensitive icon appears grayed out. GTK+ does not emit the
+         * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+         * does not allow DND from insensitive icons.
+         * 
+         * An icon should be set insensitive if the action that would trigger
+         * when clicked is currently not available.
+         */
+        primaryIconSensitive?: boolean | null
+        /**
+         * The stock id to use for the primary icon for the entry.
+         */
+        primaryIconStock?: string | null
+        /**
+         * The contents of the tooltip on the primary icon, which is marked up
+         * with the <link linkend="PangoMarkupFormat">Pango text markup
+         * language</link>.
+         * 
+         * Also see gtk_entry_set_icon_tooltip_markup().
+         */
+        primaryIconTooltipMarkup?: string | null
+        /**
+         * The contents of the tooltip on the primary icon.
+         * 
+         * Also see gtk_entry_set_icon_tooltip_text().
+         */
+        primaryIconTooltipText?: string | null
+        /**
+         * The current fraction of the task that's been completed.
+         */
+        progressFraction?: number | null
+        /**
+         * The fraction of total entry width to move the progress
+         * bouncing block for each call to gtk_entry_progress_pulse().
+         */
+        progressPulseStep?: number | null
+        /**
+         * Whether the secondary icon is activatable.
+         * 
+         * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+         * signals only on sensitive, activatable icons.
+         * 
+         * Sensitive, but non-activatable icons can be used for purely
+         * informational purposes.
+         */
+        secondaryIconActivatable?: boolean | null
+        /**
+         * The #GIcon to use for the secondary icon for the entry.
+         */
+        secondaryIconGicon?: Gio.Icon | null
+        /**
+         * The icon name to use for the secondary icon for the entry.
+         */
+        secondaryIconName?: string | null
+        /**
+         * An pixbuf to use as the secondary icon for the entry.
+         */
+        secondaryIconPixbuf?: GdkPixbuf.Pixbuf | null
+        /**
+         * Whether the secondary icon is sensitive.
+         * 
+         * An insensitive icon appears grayed out. GTK+ does not emit the
+         * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+         * does not allow DND from insensitive icons.
+         * 
+         * An icon should be set insensitive if the action that would trigger
+         * when clicked is currently not available.
+         */
+        secondaryIconSensitive?: boolean | null
+        /**
+         * The stock id to use for the secondary icon for the entry.
+         */
+        secondaryIconStock?: string | null
+        /**
+         * The contents of the tooltip on the secondary icon, which is marked up
+         * with the <link linkend="PangoMarkupFormat">Pango text markup
+         * language</link>.
+         * 
+         * Also see gtk_entry_set_icon_tooltip_markup().
+         */
+        secondaryIconTooltipMarkup?: string | null
+        /**
+         * The contents of the tooltip on the secondary icon.
+         * 
+         * Also see gtk_entry_set_icon_tooltip_text().
+         */
+        secondaryIconTooltipText?: string | null
+        /**
+         * Which kind of shadow to draw around the entry when
+         * #GtkEntry:has-frame is set to %TRUE.
+         */
+        shadowType?: ShadowType | null
+        /**
+         * When %TRUE, pasted multi-line text is truncated to the first line.
+         */
+        truncateMultiline?: boolean | null
+        widthChars?: number | null
     }
 
 }
@@ -20667,6 +22096,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     // Own properties of Gtk-2.0.Gtk.Entry
 
     activates_default: boolean
+    activatesDefault: boolean
     buffer: EntryBuffer
     /**
      * Whether password entries will show a warning when Caps Lock is on.
@@ -20676,8 +22106,18 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * other purpose.
      */
     caps_lock_warning: boolean
+    /**
+     * Whether password entries will show a warning when Caps Lock is on.
+     * 
+     * Note that the warning is shown using a secondary icon, and thus
+     * does not work if you are using the secondary icon position for some
+     * other purpose.
+     */
+    capsLockWarning: boolean
     readonly cursor_position: number
+    readonly cursorPosition: number
     has_frame: boolean
+    hasFrame: boolean
     /**
      * Which IM (input method) module should be used for this entry.
      * See #GtkIMContext.
@@ -20688,9 +22128,22 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     im_module: string | null
     /**
+     * Which IM (input method) module should be used for this entry.
+     * See #GtkIMContext.
+     * 
+     * Setting this to a non-%NULL value overrides the
+     * system-wide IM module setting. See the GtkSettings
+     * #GtkSettings:gtk-im-module property.
+     */
+    imModule: string | null
+    /**
      * Sets the text area's border between the text and the frame.
      */
     inner_border: Border
+    /**
+     * Sets the text area's border between the text and the frame.
+     */
+    innerBorder: Border
     /**
      * The invisible character is used when masking entry contents (in
      * \"password mode\")"). When it is not explicitly set with the
@@ -20703,10 +22156,30 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     invisible_char: number
     /**
+     * The invisible character is used when masking entry contents (in
+     * \"password mode\")"). When it is not explicitly set with the
+     * #GtkEntry::invisible-char property, GTK+ determines the character
+     * to use from a list of possible candidates, depending on availability
+     * in the current font.
+     * 
+     * This style property allows the theme to prepend a character
+     * to the list of candidates.
+     */
+    invisibleChar: number
+    /**
      * Whether the invisible char has been set for the #GtkEntry.
      */
     invisible_char_set: boolean
+    /**
+     * Whether the invisible char has been set for the #GtkEntry.
+     */
+    invisibleCharSet: boolean
     max_length: number
+    maxLength: number
+    /**
+     * If text is overwritten when typing in the #GtkEntry.
+     */
+    overwriteMode: boolean
     /**
      * Whether the primary icon is activatable.
      * 
@@ -20718,17 +22191,39 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     primary_icon_activatable: boolean
     /**
+     * Whether the primary icon is activatable.
+     * 
+     * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+     * signals only on sensitive, activatable icons.
+     * 
+     * Sensitive, but non-activatable icons can be used for purely
+     * informational purposes.
+     */
+    primaryIconActivatable: boolean
+    /**
      * The #GIcon to use for the primary icon for the entry.
      */
     primary_icon_gicon: Gio.Icon
+    /**
+     * The #GIcon to use for the primary icon for the entry.
+     */
+    primaryIconGicon: Gio.Icon
     /**
      * The icon name to use for the primary icon for the entry.
      */
     primary_icon_name: string | null
     /**
+     * The icon name to use for the primary icon for the entry.
+     */
+    primaryIconName: string | null
+    /**
      * A pixbuf to use as the primary icon for the entry.
      */
     primary_icon_pixbuf: GdkPixbuf.Pixbuf
+    /**
+     * A pixbuf to use as the primary icon for the entry.
+     */
+    primaryIconPixbuf: GdkPixbuf.Pixbuf
     /**
      * Whether the primary icon is sensitive.
      * 
@@ -20741,13 +22236,32 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     primary_icon_sensitive: boolean
     /**
+     * Whether the primary icon is sensitive.
+     * 
+     * An insensitive icon appears grayed out. GTK+ does not emit the
+     * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+     * does not allow DND from insensitive icons.
+     * 
+     * An icon should be set insensitive if the action that would trigger
+     * when clicked is currently not available.
+     */
+    primaryIconSensitive: boolean
+    /**
      * The stock id to use for the primary icon for the entry.
      */
     primary_icon_stock: string | null
     /**
+     * The stock id to use for the primary icon for the entry.
+     */
+    primaryIconStock: string | null
+    /**
      * The representation which is used for the primary icon of the entry.
      */
     readonly primary_icon_storage_type: ImageType
+    /**
+     * The representation which is used for the primary icon of the entry.
+     */
+    readonly primaryIconStorageType: ImageType
     /**
      * The contents of the tooltip on the primary icon, which is marked up
      * with the <link linkend="PangoMarkupFormat">Pango text markup
@@ -20757,21 +22271,45 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     primary_icon_tooltip_markup: string | null
     /**
+     * The contents of the tooltip on the primary icon, which is marked up
+     * with the <link linkend="PangoMarkupFormat">Pango text markup
+     * language</link>.
+     * 
+     * Also see gtk_entry_set_icon_tooltip_markup().
+     */
+    primaryIconTooltipMarkup: string | null
+    /**
      * The contents of the tooltip on the primary icon.
      * 
      * Also see gtk_entry_set_icon_tooltip_text().
      */
     primary_icon_tooltip_text: string | null
     /**
+     * The contents of the tooltip on the primary icon.
+     * 
+     * Also see gtk_entry_set_icon_tooltip_text().
+     */
+    primaryIconTooltipText: string | null
+    /**
      * The current fraction of the task that's been completed.
      */
     progress_fraction: number
+    /**
+     * The current fraction of the task that's been completed.
+     */
+    progressFraction: number
     /**
      * The fraction of total entry width to move the progress
      * bouncing block for each call to gtk_entry_progress_pulse().
      */
     progress_pulse_step: number
+    /**
+     * The fraction of total entry width to move the progress
+     * bouncing block for each call to gtk_entry_progress_pulse().
+     */
+    progressPulseStep: number
     readonly scroll_offset: number
+    readonly scrollOffset: number
     /**
      * Whether the secondary icon is activatable.
      * 
@@ -20783,17 +22321,39 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     secondary_icon_activatable: boolean
     /**
+     * Whether the secondary icon is activatable.
+     * 
+     * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
+     * signals only on sensitive, activatable icons.
+     * 
+     * Sensitive, but non-activatable icons can be used for purely
+     * informational purposes.
+     */
+    secondaryIconActivatable: boolean
+    /**
      * The #GIcon to use for the secondary icon for the entry.
      */
     secondary_icon_gicon: Gio.Icon
+    /**
+     * The #GIcon to use for the secondary icon for the entry.
+     */
+    secondaryIconGicon: Gio.Icon
     /**
      * The icon name to use for the secondary icon for the entry.
      */
     secondary_icon_name: string | null
     /**
+     * The icon name to use for the secondary icon for the entry.
+     */
+    secondaryIconName: string | null
+    /**
      * An pixbuf to use as the secondary icon for the entry.
      */
     secondary_icon_pixbuf: GdkPixbuf.Pixbuf
+    /**
+     * An pixbuf to use as the secondary icon for the entry.
+     */
+    secondaryIconPixbuf: GdkPixbuf.Pixbuf
     /**
      * Whether the secondary icon is sensitive.
      * 
@@ -20806,13 +22366,32 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     secondary_icon_sensitive: boolean
     /**
+     * Whether the secondary icon is sensitive.
+     * 
+     * An insensitive icon appears grayed out. GTK+ does not emit the
+     * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
+     * does not allow DND from insensitive icons.
+     * 
+     * An icon should be set insensitive if the action that would trigger
+     * when clicked is currently not available.
+     */
+    secondaryIconSensitive: boolean
+    /**
      * The stock id to use for the secondary icon for the entry.
      */
     secondary_icon_stock: string | null
     /**
+     * The stock id to use for the secondary icon for the entry.
+     */
+    secondaryIconStock: string | null
+    /**
      * The representation which is used for the secondary icon of the entry.
      */
     readonly secondary_icon_storage_type: ImageType
+    /**
+     * The representation which is used for the secondary icon of the entry.
+     */
+    readonly secondaryIconStorageType: ImageType
     /**
      * The contents of the tooltip on the secondary icon, which is marked up
      * with the <link linkend="PangoMarkupFormat">Pango text markup
@@ -20822,23 +22401,52 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      */
     secondary_icon_tooltip_markup: string | null
     /**
+     * The contents of the tooltip on the secondary icon, which is marked up
+     * with the <link linkend="PangoMarkupFormat">Pango text markup
+     * language</link>.
+     * 
+     * Also see gtk_entry_set_icon_tooltip_markup().
+     */
+    secondaryIconTooltipMarkup: string | null
+    /**
      * The contents of the tooltip on the secondary icon.
      * 
      * Also see gtk_entry_set_icon_tooltip_text().
      */
     secondary_icon_tooltip_text: string | null
+    /**
+     * The contents of the tooltip on the secondary icon.
+     * 
+     * Also see gtk_entry_set_icon_tooltip_text().
+     */
+    secondaryIconTooltipText: string | null
     readonly selection_bound: number
+    readonly selectionBound: number
     /**
      * Which kind of shadow to draw around the entry when
      * #GtkEntry:has-frame is set to %TRUE.
      */
     shadow_type: ShadowType
     /**
+     * Which kind of shadow to draw around the entry when
+     * #GtkEntry:has-frame is set to %TRUE.
+     */
+    shadowType: ShadowType
+    /**
+     * The length of the text in the #GtkEntry.
+     */
+    readonly textLength: number
+    /**
      * When %TRUE, pasted multi-line text is truncated to the first line.
      */
     truncate_multiline: boolean
+    /**
+     * When %TRUE, pasted multi-line text is truncated to the first line.
+     */
+    truncateMultiline: boolean
     visibility: boolean
     width_chars: number
+    widthChars: number
     /**
      * The horizontal alignment, from 0 (left) to 1 (right).
      * Reversed for RTL layouts.
@@ -21523,6 +23131,9 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     connect(sigName: "notify::max-length", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-length", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::max-length", ...args: any[]): void
+    connect(sigName: "notify::overwrite-mode", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overwrite-mode", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overwrite-mode", ...args: any[]): void
     connect(sigName: "notify::primary-icon-activatable", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::primary-icon-activatable", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::primary-icon-activatable", ...args: any[]): void
@@ -21592,6 +23203,9 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     connect(sigName: "notify::shadow-type", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow-type", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::text-length", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::text-length", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::text-length", ...args: any[]): void
     connect(sigName: "notify::truncate-multiline", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::truncate-multiline", callback: (($obj: Entry, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::truncate-multiline", ...args: any[]): void
@@ -21745,6 +23359,10 @@ module EntryBuffer {
          * The contents of the buffer.
          */
         text?: string | null
+        /**
+         * The maximum length (in characters) of the text in the buffer.
+         */
+        maxLength?: number | null
     }
 
 }
@@ -21761,6 +23379,10 @@ interface EntryBuffer {
      * The maximum length (in characters) of the text in the buffer.
      */
     max_length: number
+    /**
+     * The maximum length (in characters) of the text in the buffer.
+     */
+    maxLength: number
     /**
      * The contents of the buffer.
      */
@@ -22052,6 +23674,42 @@ module EntryCompletion {
          * Note that the strings must be UTF-8.
          */
         text_column?: number | null
+        /**
+         * Determines whether the common prefix of the possible completions
+         * should be inserted automatically in the entry. Note that this
+         * requires text-column to be set, even if you are using a custom
+         * match function.
+         */
+        inlineCompletion?: boolean | null
+        /**
+         * Determines whether the possible completions on the popup
+         * will appear in the entry as you navigate through them.
+         */
+        inlineSelection?: boolean | null
+        minimumKeyLength?: number | null
+        /**
+         * Determines whether the possible completions should be
+         * shown in a popup window.
+         */
+        popupCompletion?: boolean | null
+        /**
+         * Determines whether the completions popup window will be
+         * resized to the width of the entry.
+         */
+        popupSetWidth?: boolean | null
+        /**
+         * Determines whether the completions popup window will shown
+         * for a single possible completion. You probably want to set
+         * this to %FALSE if you are using
+         * <link linkend="GtkEntryCompletion--inline-completion">inline
+         * completion</link>.
+         */
+        popupSingleMatch?: boolean | null
+        /**
+         * The column of the model containing the strings.
+         * Note that the strings must be UTF-8.
+         */
+        textColumn?: number | null
     }
 
 }
@@ -22068,11 +23726,24 @@ interface EntryCompletion extends Buildable, CellLayout {
      */
     inline_completion: boolean
     /**
+     * Determines whether the common prefix of the possible completions
+     * should be inserted automatically in the entry. Note that this
+     * requires text-column to be set, even if you are using a custom
+     * match function.
+     */
+    inlineCompletion: boolean
+    /**
      * Determines whether the possible completions on the popup
      * will appear in the entry as you navigate through them.
      */
     inline_selection: boolean
+    /**
+     * Determines whether the possible completions on the popup
+     * will appear in the entry as you navigate through them.
+     */
+    inlineSelection: boolean
     minimum_key_length: number
+    minimumKeyLength: number
     model: TreeModel
     /**
      * Determines whether the possible completions should be
@@ -22080,10 +23751,20 @@ interface EntryCompletion extends Buildable, CellLayout {
      */
     popup_completion: boolean
     /**
+     * Determines whether the possible completions should be
+     * shown in a popup window.
+     */
+    popupCompletion: boolean
+    /**
      * Determines whether the completions popup window will be
      * resized to the width of the entry.
      */
     popup_set_width: boolean
+    /**
+     * Determines whether the completions popup window will be
+     * resized to the width of the entry.
+     */
+    popupSetWidth: boolean
     /**
      * Determines whether the completions popup window will shown
      * for a single possible completion. You probably want to set
@@ -22093,10 +23774,23 @@ interface EntryCompletion extends Buildable, CellLayout {
      */
     popup_single_match: boolean
     /**
+     * Determines whether the completions popup window will shown
+     * for a single possible completion. You probably want to set
+     * this to %FALSE if you are using
+     * <link linkend="GtkEntryCompletion--inline-completion">inline
+     * completion</link>.
+     */
+    popupSingleMatch: boolean
+    /**
      * The column of the model containing the strings.
      * Note that the strings must be UTF-8.
      */
     text_column: number
+    /**
+     * The column of the model containing the strings.
+     * Note that the strings must be UTF-8.
+     */
+    textColumn: number
 
     // Own fields of Gtk-2.0.Gtk.EntryCompletion
 
@@ -22344,6 +24038,8 @@ module EventBox {
 
         above_child?: boolean | null
         visible_window?: boolean | null
+        aboveChild?: boolean | null
+        visibleWindow?: boolean | null
     }
 
 }
@@ -22353,7 +24049,9 @@ interface EventBox extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.EventBox
 
     above_child: boolean
+    aboveChild: boolean
     visible_window: boolean
+    visibleWindow: boolean
 
     // Own fields of Gtk-2.0.Gtk.EventBox
 
@@ -22433,6 +24131,9 @@ interface EventBox extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::visible-window", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-window", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-window", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: EventBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -22545,6 +24246,10 @@ module Expander {
         spacing?: number | null
         use_markup?: boolean | null
         use_underline?: boolean | null
+        labelFill?: boolean | null
+        labelWidget?: Widget | null
+        useMarkup?: boolean | null
+        useUnderline?: boolean | null
     }
 
 }
@@ -22556,10 +24261,14 @@ interface Expander extends Atk.ImplementorIface, Buildable {
     expanded: boolean
     label: string | null
     label_fill: boolean
+    labelFill: boolean
     label_widget: Widget
+    labelWidget: Widget
     spacing: number
     use_markup: boolean
+    useMarkup: boolean
     use_underline: boolean
+    useUnderline: boolean
 
     // Own fields of Gtk-2.0.Gtk.Expander
 
@@ -22700,6 +24409,9 @@ interface Expander extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Expander, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -22846,6 +24558,15 @@ module FileChooserButton {
          * The width of the entry and label inside the button, in characters.
          */
         width_chars?: number | null
+        /**
+         * Whether the #GtkFileChooserButton button grabs focus when it is clicked
+         * with the mouse.
+         */
+        focusOnClick?: boolean | null
+        /**
+         * The width of the entry and label inside the button, in characters.
+         */
+        widthChars?: number | null
     }
 
 }
@@ -22864,6 +24585,11 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
      */
     focus_on_click: boolean
     /**
+     * Whether the #GtkFileChooserButton button grabs focus when it is clicked
+     * with the mouse.
+     */
+    focusOnClick: boolean
+    /**
      * Title to put on the #GtkFileChooserDialog associated with the button.
      */
     title: string | null
@@ -22871,6 +24597,10 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
      * The width of the entry and label inside the button, in characters.
      */
     width_chars: number
+    /**
+     * The width of the entry and label inside the button, in characters.
+     */
+    widthChars: number
 
     // Owm methods of Gtk-2.0.Gtk.FileChooserButton
 
@@ -22934,6 +24664,9 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
     connect(sigName: "notify::width-chars", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::width-chars", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::width-chars", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FileChooserButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -23172,6 +24905,12 @@ interface FileChooserDialog extends Atk.ImplementorIface, Buildable, FileChooser
     connect(sigName: "notify::accept-focus", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -23181,15 +24920,24 @@ interface FileChooserDialog extends Atk.ImplementorIface, Buildable, FileChooser
     connect(sigName: "notify::deletable", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -23214,12 +24962,18 @@ interface FileChooserDialog extends Atk.ImplementorIface, Buildable, FileChooser
     connect(sigName: "notify::transient-for", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FileChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -23363,6 +25117,9 @@ interface FileChooserWidget extends Atk.ImplementorIface, Buildable, FileChooser
 
     // Class property signals of Gtk-2.0.Gtk.FileChooserWidget
 
+    connect(sigName: "notify::border-width", callback: (($obj: FileChooserWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FileChooserWidget, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FileChooserWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FileChooserWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -23670,6 +25427,8 @@ module FileSelection {
         filename?: string | null
         select_multiple?: boolean | null
         show_fileops?: boolean | null
+        selectMultiple?: boolean | null
+        showFileops?: boolean | null
     }
 
 }
@@ -23680,7 +25439,9 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
 
     filename: string | null
     select_multiple: boolean
+    selectMultiple: boolean
     show_fileops: boolean
+    showFileops: boolean
 
     // Conflicting properties
 
@@ -23802,6 +25563,12 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -23811,15 +25578,24 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -23844,12 +25620,18 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FileSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -24000,6 +25782,9 @@ interface Fixed extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Fixed
 
+    connect(sigName: "notify::border-width", callback: (($obj: Fixed, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Fixed, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Fixed, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Fixed, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -24135,6 +25920,32 @@ module FontButton {
          * with the selected font size.
          */
         use_size?: boolean | null
+        /**
+         * The name of the currently selected font.
+         */
+        fontName?: string | null
+        /**
+         * If this property is set to %TRUE, the selected font size will be shown
+         * in the label. For a more WYSIWYG way to show the selected size, see the
+         * ::use-size property.
+         */
+        showSize?: boolean | null
+        /**
+         * If this property is set to %TRUE, the name of the selected font style
+         * will be shown in the label. For a more WYSIWYG way to show the selected
+         * style, see the ::use-font property.
+         */
+        showStyle?: boolean | null
+        /**
+         * If this property is set to %TRUE, the label will be drawn
+         * in the selected font.
+         */
+        useFont?: boolean | null
+        /**
+         * If this property is set to %TRUE, the label will be drawn
+         * with the selected font size.
+         */
+        useSize?: boolean | null
     }
 
 }
@@ -24148,17 +25959,33 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      */
     font_name: string | null
     /**
+     * The name of the currently selected font.
+     */
+    fontName: string | null
+    /**
      * If this property is set to %TRUE, the selected font size will be shown
      * in the label. For a more WYSIWYG way to show the selected size, see the
      * ::use-size property.
      */
     show_size: boolean
     /**
+     * If this property is set to %TRUE, the selected font size will be shown
+     * in the label. For a more WYSIWYG way to show the selected size, see the
+     * ::use-size property.
+     */
+    showSize: boolean
+    /**
      * If this property is set to %TRUE, the name of the selected font style
      * will be shown in the label. For a more WYSIWYG way to show the selected
      * style, see the ::use-font property.
      */
     show_style: boolean
+    /**
+     * If this property is set to %TRUE, the name of the selected font style
+     * will be shown in the label. For a more WYSIWYG way to show the selected
+     * style, see the ::use-font property.
+     */
+    showStyle: boolean
     /**
      * The title of the font selection dialog.
      */
@@ -24170,9 +25997,19 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
     use_font: boolean
     /**
      * If this property is set to %TRUE, the label will be drawn
+     * in the selected font.
+     */
+    useFont: boolean
+    /**
+     * If this property is set to %TRUE, the label will be drawn
      * with the selected font size.
      */
     use_size: boolean
+    /**
+     * If this property is set to %TRUE, the label will be drawn
+     * with the selected font size.
+     */
+    useSize: boolean
 
     // Own fields of Gtk-2.0.Gtk.FontButton
 
@@ -24277,6 +26114,9 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-size", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-size", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-size", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -24286,12 +26126,21 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FontButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -24412,6 +26261,8 @@ module FontSelection {
 
         font_name?: string | null
         preview_text?: string | null
+        fontName?: string | null
+        previewText?: string | null
     }
 
 }
@@ -24421,7 +26272,9 @@ interface FontSelection extends Atk.ImplementorIface, Buildable, Orientable {
     // Own properties of Gtk-2.0.Gtk.FontSelection
 
     font_name: string | null
+    fontName: string | null
     preview_text: string | null
+    previewText: string | null
 
     // Own fields of Gtk-2.0.Gtk.FontSelection
 
@@ -24534,6 +26387,9 @@ interface FontSelection extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::preview-text", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::preview-text", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::preview-text", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FontSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -24760,6 +26616,12 @@ interface FontSelectionDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -24769,15 +26631,24 @@ interface FontSelectionDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -24802,12 +26673,18 @@ interface FontSelectionDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: FontSelectionDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -24943,6 +26820,10 @@ module Frame {
         label_yalign?: number | null
         shadow?: ShadowType | null
         shadow_type?: ShadowType | null
+        labelWidget?: Widget | null
+        labelXalign?: number | null
+        labelYalign?: number | null
+        shadowType?: ShadowType | null
     }
 
 }
@@ -24952,7 +26833,11 @@ interface Frame extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.Frame
 
     label: string | null
+    labelWidget: Widget
+    labelXalign: number
+    labelYalign: number
     shadow: ShadowType
+    shadowType: ShadowType
 
     // Own fields of Gtk-2.0.Gtk.Frame
 
@@ -25025,9 +26910,24 @@ interface Frame extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::label", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::label-widget", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-widget", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-widget", ...args: any[]): void
+    connect(sigName: "notify::label-xalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-xalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-xalign", ...args: any[]): void
+    connect(sigName: "notify::label-yalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-yalign", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-yalign", ...args: any[]): void
     connect(sigName: "notify::shadow", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Frame, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -25152,6 +27052,9 @@ interface GammaCurve extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.GammaCurve
 
+    connect(sigName: "notify::border-width", callback: (($obj: GammaCurve, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: GammaCurve, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: GammaCurve, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: GammaCurve, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -25270,6 +27173,9 @@ interface HBox extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.HBox
 
+    connect(sigName: "notify::border-width", callback: (($obj: HBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: HBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: HBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: HBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -25400,6 +27306,12 @@ interface HButtonBox extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.HButtonBox
 
+    connect(sigName: "notify::layout-style", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-style", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-style", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: HButtonBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -25523,6 +27435,9 @@ interface HPaned extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::position-set", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position-set", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::position-set", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: HPaned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -25630,6 +27545,9 @@ interface HRuler extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.HRuler
 
+    connect(sigName: "notify::max-size", callback: (($obj: HRuler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-size", callback: (($obj: HRuler, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-size", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: HRuler, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: HRuler, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -25914,6 +27832,12 @@ interface HScale extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.HScale
 
+    connect(sigName: "notify::draw-value", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-value", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-value", ...args: any[]): void
+    connect(sigName: "notify::value-pos", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::value-pos", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::value-pos", ...args: any[]): void
     connect(sigName: "notify::fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::fill-level", ...args: any[]): void
@@ -25923,9 +27847,15 @@ interface HScale extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: HScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -26055,9 +27985,15 @@ interface HScrollbar extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: HScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -26288,6 +28224,10 @@ module HandleBox {
         shadow_type?: ShadowType | null
         snap_edge?: PositionType | null
         snap_edge_set?: boolean | null
+        handlePosition?: PositionType | null
+        shadowType?: ShadowType | null
+        snapEdge?: PositionType | null
+        snapEdgeSet?: boolean | null
     }
 
 }
@@ -26296,8 +28236,13 @@ interface HandleBox extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.HandleBox
 
+    readonly childDetached: boolean
+    handlePosition: PositionType
     shadow: ShadowType
+    shadowType: ShadowType
+    snapEdge: PositionType
     snap_edge_set: boolean
+    snapEdgeSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.HandleBox
 
@@ -26361,12 +28306,27 @@ interface HandleBox extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.HandleBox
 
+    connect(sigName: "notify::child-detached", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::child-detached", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::child-detached", ...args: any[]): void
+    connect(sigName: "notify::handle-position", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle-position", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::handle-position", ...args: any[]): void
     connect(sigName: "notify::shadow", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow", ...args: any[]): void
+    connect(sigName: "notify::shadow-type", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::snap-edge", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::snap-edge", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::snap-edge", ...args: any[]): void
     connect(sigName: "notify::snap-edge-set", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::snap-edge-set", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::snap-edge-set", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: HandleBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -27554,6 +29514,61 @@ module IconView {
          */
         text_column?: number | null
         tooltip_column?: number | null
+        /**
+         * The column-spacing property specifies the space which is inserted between
+         * the columns of the icon view.
+         */
+        columnSpacing?: number | null
+        /**
+         * The item-orientation property specifies how the cells (i.e. the icon and
+         * the text) of the item are positioned relative to each other.
+         */
+        itemOrientation?: Orientation | null
+        /**
+         * The item-padding property specifies the padding around each
+         * of the icon view's item.
+         */
+        itemPadding?: number | null
+        /**
+         * The item-width property specifies the width to use for each item.
+         * If it is set to -1, the icon view will automatically determine a
+         * suitable item size.
+         */
+        itemWidth?: number | null
+        /**
+         * The ::markup-column property contains the number of the model column
+         * containing markup information to be displayed. The markup column must be
+         * of type #G_TYPE_STRING. If this property and the :text-column property
+         * are both set to column numbers, it overrides the text column.
+         * If both are set to -1, no texts are displayed.
+         */
+        markupColumn?: number | null
+        /**
+         * The ::pixbuf-column property contains the number of the model column
+         * containing the pixbufs which are displayed. The pixbuf column must be
+         * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
+         * display of pixbufs.
+         */
+        pixbufColumn?: number | null
+        /**
+         * The row-spacing property specifies the space which is inserted between
+         * the rows of the icon view.
+         */
+        rowSpacing?: number | null
+        /**
+         * The ::selection-mode property specifies the selection mode of
+         * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
+         * is enabled, for the other modes, only keyboard selection is possible.
+         */
+        selectionMode?: SelectionMode | null
+        /**
+         * The ::text-column property contains the number of the model column
+         * containing the texts which are displayed. The text column must be
+         * of type #G_TYPE_STRING. If this property and the :markup-column
+         * property are both set to -1, no texts are displayed.
+         */
+        textColumn?: number | null
+        tooltipColumn?: number | null
     }
 
 }
@@ -27568,6 +29583,11 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      */
     column_spacing: number
     /**
+     * The column-spacing property specifies the space which is inserted between
+     * the columns of the icon view.
+     */
+    columnSpacing: number
+    /**
      * The columns property contains the number of the columns in which the
      * items should be displayed. If it is -1, the number of columns will
      * be chosen automatically to fill the available area.
@@ -27579,16 +29599,32 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      */
     item_orientation: Orientation
     /**
+     * The item-orientation property specifies how the cells (i.e. the icon and
+     * the text) of the item are positioned relative to each other.
+     */
+    itemOrientation: Orientation
+    /**
      * The item-padding property specifies the padding around each
      * of the icon view's item.
      */
     item_padding: number
+    /**
+     * The item-padding property specifies the padding around each
+     * of the icon view's item.
+     */
+    itemPadding: number
     /**
      * The item-width property specifies the width to use for each item.
      * If it is set to -1, the icon view will automatically determine a
      * suitable item size.
      */
     item_width: number
+    /**
+     * The item-width property specifies the width to use for each item.
+     * If it is set to -1, the icon view will automatically determine a
+     * suitable item size.
+     */
+    itemWidth: number
     /**
      * The margin property specifies the space which is inserted
      * at the edges of the icon view.
@@ -27602,6 +29638,14 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * If both are set to -1, no texts are displayed.
      */
     markup_column: number
+    /**
+     * The ::markup-column property contains the number of the model column
+     * containing markup information to be displayed. The markup column must be
+     * of type #G_TYPE_STRING. If this property and the :text-column property
+     * are both set to column numbers, it overrides the text column.
+     * If both are set to -1, no texts are displayed.
+     */
+    markupColumn: number
     model: TreeModel
     /**
      * The orientation property specifies how the cells (i.e. the icon and
@@ -27616,6 +29660,13 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      */
     pixbuf_column: number
     /**
+     * The ::pixbuf-column property contains the number of the model column
+     * containing the pixbufs which are displayed. The pixbuf column must be
+     * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
+     * display of pixbufs.
+     */
+    pixbufColumn: number
+    /**
      * The reorderable property specifies if the items can be reordered
      * by DND.
      */
@@ -27626,11 +29677,22 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      */
     row_spacing: number
     /**
+     * The row-spacing property specifies the space which is inserted between
+     * the rows of the icon view.
+     */
+    rowSpacing: number
+    /**
      * The ::selection-mode property specifies the selection mode of
      * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
      * is enabled, for the other modes, only keyboard selection is possible.
      */
     selection_mode: SelectionMode
+    /**
+     * The ::selection-mode property specifies the selection mode of
+     * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
+     * is enabled, for the other modes, only keyboard selection is possible.
+     */
+    selectionMode: SelectionMode
     /**
      * The spacing property specifies the space which is inserted between
      * the cells (i.e. the icon and the text) of an item.
@@ -27643,7 +29705,15 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * property are both set to -1, no texts are displayed.
      */
     text_column: number
+    /**
+     * The ::text-column property contains the number of the model column
+     * containing the texts which are displayed. The text column must be
+     * of type #G_TYPE_STRING. If this property and the :markup-column
+     * property are both set to -1, no texts are displayed.
+     */
+    textColumn: number
     tooltip_column: number
+    tooltipColumn: number
 
     // Own fields of Gtk-2.0.Gtk.IconView
 
@@ -28210,6 +30280,9 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
     connect(sigName: "notify::tooltip-column", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tooltip-column", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tooltip-column", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: IconView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -28358,6 +30431,20 @@ module Image {
         pixel_size?: number | null
         pixmap?: Gdk.Pixmap | null
         stock?: string | null
+        /**
+         * The name of the icon in the icon theme. If the icon theme is
+         * changed, the image will be updated automatically.
+         */
+        iconName?: string | null
+        iconSet?: IconSet | null
+        iconSize?: number | null
+        pixbufAnimation?: GdkPixbuf.PixbufAnimation | null
+        /**
+         * The "pixel-size" property can be used to specify a fixed size
+         * overriding the #GtkImage:icon-size property for images of type
+         * %GTK_IMAGE_ICON_NAME.
+         */
+        pixelSize?: number | null
     }
 
 }
@@ -28378,18 +30465,33 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * changed, the image will be updated automatically.
      */
     icon_name: string | null
+    /**
+     * The name of the icon in the icon theme. If the icon theme is
+     * changed, the image will be updated automatically.
+     */
+    iconName: string | null
     icon_set: IconSet
+    iconSet: IconSet
+    iconSize: number
     image: Gdk.Image
     pixbuf: GdkPixbuf.Pixbuf
     pixbuf_animation: GdkPixbuf.PixbufAnimation
+    pixbufAnimation: GdkPixbuf.PixbufAnimation
     /**
      * The "pixel-size" property can be used to specify a fixed size
      * overriding the #GtkImage:icon-size property for images of type
      * %GTK_IMAGE_ICON_NAME.
      */
     pixel_size: number
+    /**
+     * The "pixel-size" property can be used to specify a fixed size
+     * overriding the #GtkImage:icon-size property for images of type
+     * %GTK_IMAGE_ICON_NAME.
+     */
+    pixelSize: number
     pixmap: Gdk.Pixmap
     stock: string | null
+    readonly storageType: ImageType
 
     // Own fields of Gtk-2.0.Gtk.Image
 
@@ -28566,6 +30668,9 @@ interface Image extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::icon-set", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-set", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-set", ...args: any[]): void
+    connect(sigName: "notify::icon-size", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon-size", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::icon-size", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -28584,6 +30689,9 @@ interface Image extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::stock", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stock", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::stock", ...args: any[]): void
+    connect(sigName: "notify::storage-type", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::storage-type", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::storage-type", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: Image, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -28914,6 +31022,23 @@ module ImageMenuItem {
          * stock id to select the stock item for the item.
          */
         use_stock?: boolean | null
+        /**
+         * The Accel Group to use for stock accelerator keys
+         */
+        accelGroup?: AccelGroup | null
+        /**
+         * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
+         * setting and always show the image, if available.
+         * 
+         * Use this property if the menuitem would be useless or hard to use
+         * without the image.
+         */
+        alwaysShowImage?: boolean | null
+        /**
+         * If %TRUE, the label set in the menuitem is used as a
+         * stock id to select the stock item for the item.
+         */
+        useStock?: boolean | null
     }
 
 }
@@ -28927,6 +31052,10 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      */
     accel_group: AccelGroup
     /**
+     * The Accel Group to use for stock accelerator keys
+     */
+    accelGroup: AccelGroup
+    /**
      * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
      * setting and always show the image, if available.
      * 
@@ -28934,12 +31063,25 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * without the image.
      */
     always_show_image: boolean
+    /**
+     * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
+     * setting and always show the image, if available.
+     * 
+     * Use this property if the menuitem would be useless or hard to use
+     * without the image.
+     */
+    alwaysShowImage: boolean
     image: Widget
     /**
      * If %TRUE, the label set in the menuitem is used as a
      * stock id to select the stock item for the item.
      */
     use_stock: boolean
+    /**
+     * If %TRUE, the label set in the menuitem is used as a
+     * stock id to select the stock item for the item.
+     */
+    useStock: boolean
 
     // Own fields of Gtk-2.0.Gtk.ImageMenuItem
 
@@ -29113,6 +31255,9 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-stock", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-stock", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -29122,6 +31267,9 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ImageMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -29298,6 +31446,22 @@ module InfoBar {
          * colors are still set.
          */
         message_type?: MessageType | null
+        /**
+         * The type of the message.
+         * 
+         * The type is used to determine the colors to use in the info bar.
+         * The following symbolic color names can by used to customize
+         * these colors:
+         * "info_fg_color", "info_bg_color",
+         * "warning_fg_color", "warning_bg_color",
+         * "question_fg_color", "question_bg_color",
+         * "error_fg_color", "error_bg_color".
+         * "other_fg_color", "other_bg_color".
+         * 
+         * If the type is #GTK_MESSAGE_OTHER, no info bar is painted but the
+         * colors are still set.
+         */
+        messageType?: MessageType | null
     }
 
 }
@@ -29322,6 +31486,22 @@ interface InfoBar extends Atk.ImplementorIface, Buildable, Orientable {
      * colors are still set.
      */
     message_type: MessageType
+    /**
+     * The type of the message.
+     * 
+     * The type is used to determine the colors to use in the info bar.
+     * The following symbolic color names can by used to customize
+     * these colors:
+     * "info_fg_color", "info_bg_color",
+     * "warning_fg_color", "warning_bg_color",
+     * "question_fg_color", "question_bg_color",
+     * "error_fg_color", "error_bg_color".
+     * "other_fg_color", "other_bg_color".
+     * 
+     * If the type is #GTK_MESSAGE_OTHER, no info bar is painted but the
+     * colors are still set.
+     */
+    messageType: MessageType
 
     // Own fields of Gtk-2.0.Gtk.InfoBar
 
@@ -29419,6 +31599,9 @@ interface InfoBar extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::message-type", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::message-type", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::message-type", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: InfoBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -29696,6 +31879,12 @@ interface InputDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -29705,15 +31894,24 @@ interface InputDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -29738,12 +31936,18 @@ interface InputDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: InputDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -30052,6 +32256,9 @@ interface Item extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Item
 
+    connect(sigName: "notify::border-width", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Item, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -30469,6 +32676,45 @@ module Label {
          * means wrap on word boundaries.
          */
         wrap_mode?: Pango.WrapMode | null
+        /**
+         * The desired maximum width of the label, in characters. If this property
+         * is set to -1, the width will be calculated automatically, otherwise the
+         * label will request space for no more than the requested number of
+         * characters. If the #GtkLabel:width-chars property is set to a positive
+         * value, then the "max-width-chars" property is ignored.
+         */
+        maxWidthChars?: number | null
+        mnemonicWidget?: Widget | null
+        /**
+         * Whether the label is in single line mode. In single line mode,
+         * the height of the label does not depend on the actual text, it
+         * is always set to ascent + descent of the font. This can be an
+         * advantage in situations where resizing the label because of text
+         * changes would be distracting, e.g. in a statusbar.
+         */
+        singleLineMode?: boolean | null
+        /**
+         * Set this property to %TRUE to make the label track which links
+         * have been clicked. It will then apply the ::visited-link-color
+         * color, instead of ::link-color.
+         */
+        trackVisitedLinks?: boolean | null
+        useMarkup?: boolean | null
+        useUnderline?: boolean | null
+        /**
+         * The desired width of the label, in characters. If this property is set to
+         * -1, the width will be calculated automatically, otherwise the label will
+         * request either 3 characters or the property value, whichever is greater.
+         * If the "width-chars" property is set to a positive value, then the
+         * #GtkLabel:max-width-chars property is ignored.
+         */
+        widthChars?: number | null
+        /**
+         * If line wrapping is on (see the #GtkLabel:wrap property) this controls
+         * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
+         * means wrap on word boundaries.
+         */
+        wrapMode?: Pango.WrapMode | null
     }
 
 }
@@ -30486,6 +32732,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
     angle: number
     attributes: Pango.AttrList
     readonly cursor_position: number
+    readonly cursorPosition: number
     /**
      * The preferred place to ellipsize the string, if the label does
      * not have enough room to display the entire string, specified as a
@@ -30510,11 +32757,22 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * value, then the "max-width-chars" property is ignored.
      */
     max_width_chars: number
+    /**
+     * The desired maximum width of the label, in characters. If this property
+     * is set to -1, the width will be calculated automatically, otherwise the
+     * label will request space for no more than the requested number of
+     * characters. If the #GtkLabel:width-chars property is set to a positive
+     * value, then the "max-width-chars" property is ignored.
+     */
+    maxWidthChars: number
     readonly mnemonic_keyval: number
+    readonly mnemonicKeyval: number
     mnemonic_widget: Widget
+    mnemonicWidget: Widget
     pattern: string | null
     selectable: boolean
     readonly selection_bound: number
+    readonly selectionBound: number
     /**
      * Whether the label is in single line mode. In single line mode,
      * the height of the label does not depend on the actual text, it
@@ -30524,13 +32782,29 @@ interface Label extends Atk.ImplementorIface, Buildable {
      */
     single_line_mode: boolean
     /**
+     * Whether the label is in single line mode. In single line mode,
+     * the height of the label does not depend on the actual text, it
+     * is always set to ascent + descent of the font. This can be an
+     * advantage in situations where resizing the label because of text
+     * changes would be distracting, e.g. in a statusbar.
+     */
+    singleLineMode: boolean
+    /**
      * Set this property to %TRUE to make the label track which links
      * have been clicked. It will then apply the ::visited-link-color
      * color, instead of ::link-color.
      */
     track_visited_links: boolean
+    /**
+     * Set this property to %TRUE to make the label track which links
+     * have been clicked. It will then apply the ::visited-link-color
+     * color, instead of ::link-color.
+     */
+    trackVisitedLinks: boolean
     use_markup: boolean
+    useMarkup: boolean
     use_underline: boolean
+    useUnderline: boolean
     /**
      * The desired width of the label, in characters. If this property is set to
      * -1, the width will be calculated automatically, otherwise the label will
@@ -30539,6 +32813,14 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * #GtkLabel:max-width-chars property is ignored.
      */
     width_chars: number
+    /**
+     * The desired width of the label, in characters. If this property is set to
+     * -1, the width will be calculated automatically, otherwise the label will
+     * request either 3 characters or the property value, whichever is greater.
+     * If the "width-chars" property is set to a positive value, then the
+     * #GtkLabel:max-width-chars property is ignored.
+     */
+    widthChars: number
     wrap: boolean
     /**
      * If line wrapping is on (see the #GtkLabel:wrap property) this controls
@@ -30546,6 +32828,12 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * means wrap on word boundaries.
      */
     wrap_mode: Pango.WrapMode
+    /**
+     * If line wrapping is on (see the #GtkLabel:wrap property) this controls
+     * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
+     * means wrap on word boundaries.
+     */
+    wrapMode: Pango.WrapMode
 
     // Own fields of Gtk-2.0.Gtk.Label
 
@@ -31203,6 +33491,9 @@ interface Layout extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Layout
 
+    connect(sigName: "notify::border-width", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -31385,6 +33676,9 @@ interface LinkButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::visited", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visited", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visited", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -31394,12 +33688,21 @@ interface LinkButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: LinkButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -31554,11 +33857,16 @@ module List {
         // Own constructor properties of Gtk-2.0.Gtk.List
 
         selection_mode?: SelectionMode | null
+        selectionMode?: SelectionMode | null
     }
 
 }
 
 interface List extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.List
+
+    selectionMode: SelectionMode
 
     // Own fields of Gtk-2.0.Gtk.List
 
@@ -31619,6 +33927,12 @@ interface List extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.List
 
+    connect(sigName: "notify::selection-mode", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::selection-mode", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::selection-mode", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: List, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -31847,6 +34161,9 @@ interface ListItem extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.ListItem
 
+    connect(sigName: "notify::border-width", callback: (($obj: ListItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ListItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ListItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ListItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -32176,6 +34493,35 @@ module Menu {
          */
         tearoff_state?: boolean | null
         tearoff_title?: string | null
+        /**
+         * The accel group holding accelerators for the menu.
+         */
+        accelGroup?: AccelGroup | null
+        /**
+         * An accel path used to conveniently construct accel paths of child items.
+         */
+        accelPath?: string | null
+        /**
+         * The widget the menu is attached to. Setting this property attaches
+         * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
+         * use gtk_menu_attach_to_widget() directly.
+         */
+        attachWidget?: Widget | null
+        /**
+         * A boolean that indicates whether the menu reserves space for
+         * toggles and icons, regardless of their actual presence.
+         * 
+         * This property should only be changed from its default value
+         * for special-purposes such as tabular menus. Regular menus that
+         * are connected to a menu bar or context menus should reserve
+         * toggle space for consistency.
+         */
+        reserveToggleSize?: boolean | null
+        /**
+         * A boolean that indicates whether the menu is torn-off.
+         */
+        tearoffState?: boolean | null
+        tearoffTitle?: string | null
     }
 
 }
@@ -32184,6 +34530,14 @@ interface Menu extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Menu
 
+    /**
+     * The accel group holding accelerators for the menu.
+     */
+    accelGroup: AccelGroup
+    /**
+     * An accel path used to conveniently construct accel paths of child items.
+     */
+    accelPath: string | null
     /**
      * The index of the currently selected menu item, or -1 if no
      * menu item is selected.
@@ -32195,6 +34549,12 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * use gtk_menu_attach_to_widget() directly.
      */
     attach_widget: Widget
+    /**
+     * The widget the menu is attached to. Setting this property attaches
+     * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
+     * use gtk_menu_attach_to_widget() directly.
+     */
+    attachWidget: Widget
     /**
      * The monitor the menu will be popped up on.
      */
@@ -32210,10 +34570,25 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      */
     reserve_toggle_size: boolean
     /**
+     * A boolean that indicates whether the menu reserves space for
+     * toggles and icons, regardless of their actual presence.
+     * 
+     * This property should only be changed from its default value
+     * for special-purposes such as tabular menus. Regular menus that
+     * are connected to a menu bar or context menus should reserve
+     * toggle space for consistency.
+     */
+    reserveToggleSize: boolean
+    /**
      * A boolean that indicates whether the menu is torn-off.
      */
     tearoff_state: boolean
+    /**
+     * A boolean that indicates whether the menu is torn-off.
+     */
+    tearoffState: boolean
     tearoff_title: string | null
+    tearoffTitle: string | null
 
     // Own fields of Gtk-2.0.Gtk.Menu
 
@@ -32408,6 +34783,12 @@ interface Menu extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Menu
 
+    connect(sigName: "notify::accel-group", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-group", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-group", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::active", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::active", ...args: any[]): void
@@ -32429,6 +34810,9 @@ interface Menu extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::take-focus", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::take-focus", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::take-focus", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -32541,6 +34925,16 @@ module MenuBar {
          * menuitems are arranged in the menubar.
          */
         pack_direction?: PackDirection | null
+        /**
+         * The child pack direction of the menubar. It determines how
+         * the widgets contained in child menuitems are arranged.
+         */
+        childPackDirection?: PackDirection | null
+        /**
+         * The pack direction of the menubar. It determines how
+         * menuitems are arranged in the menubar.
+         */
+        packDirection?: PackDirection | null
     }
 
 }
@@ -32555,10 +34949,20 @@ interface MenuBar extends Atk.ImplementorIface, Buildable {
      */
     child_pack_direction: PackDirection
     /**
+     * The child pack direction of the menubar. It determines how
+     * the widgets contained in child menuitems are arranged.
+     */
+    childPackDirection: PackDirection
+    /**
      * The pack direction of the menubar. It determines how
      * menuitems are arranged in the menubar.
      */
     pack_direction: PackDirection
+    /**
+     * The pack direction of the menubar. It determines how
+     * menuitems are arranged in the menubar.
+     */
+    packDirection: PackDirection
 
     // Own fields of Gtk-2.0.Gtk.MenuBar
 
@@ -32600,6 +35004,9 @@ interface MenuBar extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::take-focus", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::take-focus", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::take-focus", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: MenuBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -32748,6 +35155,20 @@ module MenuItem {
          * %TRUE if underlines in the text indicate mnemonics
          */
         use_underline?: boolean | null
+        /**
+         * Sets the accelerator path of the menu item, through which runtime
+         * changes of the menu item's accelerator caused by the user can be
+         * identified and saved to persistant storage.
+         */
+        accelPath?: string | null
+        /**
+         * Sets whether the menu item appears justified at the right side of a menu bar.
+         */
+        rightJustified?: boolean | null
+        /**
+         * %TRUE if underlines in the text indicate mnemonics
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -32757,6 +35178,12 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     // Own properties of Gtk-2.0.Gtk.MenuItem
 
     /**
+     * Sets the accelerator path of the menu item, through which runtime
+     * changes of the menu item's accelerator caused by the user can be
+     * identified and saved to persistant storage.
+     */
+    accelPath: string | null
+    /**
      * The text for the child label.
      */
     label: string | null
@@ -32765,9 +35192,17 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      */
     right_justified: boolean
     /**
+     * Sets whether the menu item appears justified at the right side of a menu bar.
+     */
+    rightJustified: boolean
+    /**
      * %TRUE if underlines in the text indicate mnemonics
      */
     use_underline: boolean
+    /**
+     * %TRUE if underlines in the text indicate mnemonics
+     */
+    useUnderline: boolean
 
     // Own fields of Gtk-2.0.Gtk.MenuItem
 
@@ -32951,6 +35386,9 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.MenuItem
 
+    connect(sigName: "notify::accel-path", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -32960,6 +35398,9 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: MenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -33136,6 +35577,12 @@ module MenuShell {
          * gtk_menu_shell_get_take_focus().
          */
         take_focus?: boolean | null
+        /**
+         * A boolean that determines whether the menu and its submenus grab the
+         * keyboard focus. See gtk_menu_shell_set_take_focus() and
+         * gtk_menu_shell_get_take_focus().
+         */
+        takeFocus?: boolean | null
     }
 
 }
@@ -33150,6 +35597,12 @@ interface MenuShell extends Atk.ImplementorIface, Buildable {
      * gtk_menu_shell_get_take_focus().
      */
     take_focus: boolean
+    /**
+     * A boolean that determines whether the menu and its submenus grab the
+     * keyboard focus. See gtk_menu_shell_set_take_focus() and
+     * gtk_menu_shell_get_take_focus().
+     */
+    takeFocus: boolean
 
     // Own fields of Gtk-2.0.Gtk.MenuShell
 
@@ -33270,6 +35723,9 @@ interface MenuShell extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::take-focus", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::take-focus", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::take-focus", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: MenuShell, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -33467,6 +35923,9 @@ interface MenuToolButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::visible-vertical", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: MenuToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -33641,6 +36100,26 @@ module MessageDialog {
          * See pango_parse_markup().
          */
         use_markup?: boolean | null
+        /**
+         * The type of the message. The type is used to determine
+         * the image that is shown in the dialog, unless the image is
+         * explicitly set by the ::image property.
+         */
+        messageType?: MessageType | null
+        /**
+         * The secondary text of the message dialog.
+         */
+        secondaryText?: string | null
+        /**
+         * %TRUE if the secondary text of the dialog includes Pango markup.
+         * See pango_parse_markup().
+         */
+        secondaryUseMarkup?: boolean | null
+        /**
+         * %TRUE if the primary text of the dialog includes Pango markup.
+         * See pango_parse_markup().
+         */
+        useMarkup?: boolean | null
     }
 
 }
@@ -33661,20 +36140,41 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
      */
     readonly message_area: Widget
     /**
+     * The #GtkVBox that corresponds to the message area of this dialog.  See
+     * gtk_message_dialog_get_message_area() for a detailed description of this
+     * area.
+     */
+    readonly messageArea: Widget
+    /**
      * The type of the message. The type is used to determine
      * the image that is shown in the dialog, unless the image is
      * explicitly set by the ::image property.
      */
     message_type: MessageType
     /**
+     * The type of the message. The type is used to determine
+     * the image that is shown in the dialog, unless the image is
+     * explicitly set by the ::image property.
+     */
+    messageType: MessageType
+    /**
      * The secondary text of the message dialog.
      */
     secondary_text: string | null
+    /**
+     * The secondary text of the message dialog.
+     */
+    secondaryText: string | null
     /**
      * %TRUE if the secondary text of the dialog includes Pango markup.
      * See pango_parse_markup().
      */
     secondary_use_markup: boolean
+    /**
+     * %TRUE if the secondary text of the dialog includes Pango markup.
+     * See pango_parse_markup().
+     */
+    secondaryUseMarkup: boolean
     /**
      * The primary text of the message dialog. If the dialog has
      * a secondary text, this will appear as the title.
@@ -33685,6 +36185,11 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
      * See pango_parse_markup().
      */
     use_markup: boolean
+    /**
+     * %TRUE if the primary text of the dialog includes Pango markup.
+     * See pango_parse_markup().
+     */
+    useMarkup: boolean
 
     // Conflicting properties
 
@@ -33786,6 +36291,12 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -33795,15 +36306,24 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -33828,12 +36348,18 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: MessageDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -34114,6 +36640,7 @@ interface MountOperation {
     // Own properties of Gtk-2.0.Gtk.MountOperation
 
     readonly is_showing: boolean
+    readonly isShowing: boolean
     parent: Window
     screen: Gdk.Screen
 
@@ -34331,6 +36858,18 @@ module Notebook {
         tab_hborder?: number | null
         tab_pos?: PositionType | null
         tab_vborder?: number | null
+        enablePopup?: boolean | null
+        groupId?: number | null
+        /**
+         * Group name for tabs drag and drop.
+         */
+        groupName?: string | null
+        showBorder?: boolean | null
+        showTabs?: boolean | null
+        tabBorder?: number | null
+        tabHborder?: number | null
+        tabPos?: PositionType | null
+        tabVborder?: number | null
     }
 
 }
@@ -34340,17 +36879,29 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.Notebook
 
     enable_popup: boolean
+    enablePopup: boolean
     /**
      * Group for tabs drag and drop.
      */
     group: any
     group_id: number
+    groupId: number
     /**
      * Group name for tabs drag and drop.
      */
     group_name: string | null
+    /**
+     * Group name for tabs drag and drop.
+     */
+    groupName: string | null
     page: number
+    showBorder: boolean
+    showTabs: boolean
     tab_border: number
+    tabBorder: number
+    tabHborder: number
+    tabPos: PositionType
+    tabVborder: number
 
     // Own fields of Gtk-2.0.Gtk.Notebook
 
@@ -34840,9 +37391,27 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::page", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::page", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::page", ...args: any[]): void
+    connect(sigName: "notify::show-border", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-border", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-border", ...args: any[]): void
+    connect(sigName: "notify::show-tabs", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-tabs", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-tabs", ...args: any[]): void
     connect(sigName: "notify::tab-border", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tab-border", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tab-border", ...args: any[]): void
+    connect(sigName: "notify::tab-hborder", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tab-hborder", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tab-hborder", ...args: any[]): void
+    connect(sigName: "notify::tab-pos", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tab-pos", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tab-pos", ...args: any[]): void
+    connect(sigName: "notify::tab-vborder", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tab-vborder", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tab-vborder", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Notebook, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -34959,6 +37528,7 @@ module Object {
         // Own constructor properties of Gtk-2.0.Gtk.Object
 
         user_data?: any | null
+        userData?: any | null
     }
 
 }
@@ -34968,6 +37538,7 @@ interface Object {
     // Own properties of Gtk-2.0.Gtk.Object
 
     user_data: any
+    userData: any
 
     // Own fields of Gtk-2.0.Gtk.Object
 
@@ -35106,6 +37677,12 @@ interface OffscreenWindow extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -35115,15 +37692,24 @@ interface OffscreenWindow extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -35148,12 +37734,18 @@ interface OffscreenWindow extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: OffscreenWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -35404,6 +37996,7 @@ module OldEditable {
 
         editable?: boolean | null
         text_position?: number | null
+        textPosition?: number | null
     }
 
 }
@@ -35414,6 +38007,7 @@ interface OldEditable extends Atk.ImplementorIface, Buildable, Editable {
 
     editable: boolean
     text_position: number
+    textPosition: number
 
     // Own fields of Gtk-2.0.Gtk.OldEditable
 
@@ -35642,6 +38236,9 @@ interface OptionMenu extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.OptionMenu
 
+    connect(sigName: "notify::focus-on-click", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -35651,12 +38248,21 @@ interface OptionMenu extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: OptionMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -36019,6 +38625,7 @@ module Paned {
 
         position?: number | null
         position_set?: boolean | null
+        positionSet?: boolean | null
     }
 
 }
@@ -36033,12 +38640,23 @@ interface Paned extends Atk.ImplementorIface, Buildable, Orientable {
      */
     readonly max_position: number
     /**
+     * The largest possible value for the position property. This property is derived from the
+     * size and shrinkability of the widget's children.
+     */
+    readonly maxPosition: number
+    /**
      * The smallest possible value for the position property. This property is derived from the
      * size and shrinkability of the widget's children.
      */
     readonly min_position: number
+    /**
+     * The smallest possible value for the position property. This property is derived from the
+     * size and shrinkability of the widget's children.
+     */
+    readonly minPosition: number
     position: number
     position_set: boolean
+    positionSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.Paned
 
@@ -36129,6 +38747,9 @@ interface Paned extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::position-set", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position-set", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::position-set", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Paned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -36352,6 +38973,10 @@ interface Plug extends Atk.ImplementorIface, Buildable {
      * %TRUE if the plug is embedded in a socket.
      */
     readonly embedded: boolean
+    /**
+     * The window of the socket the plug is embedded in.
+     */
+    readonly socketWindow: Gdk.Window
 
     // Conflicting properties
 
@@ -36448,9 +39073,18 @@ interface Plug extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::embedded", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::embedded", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::embedded", ...args: any[]): void
+    connect(sigName: "notify::socket-window", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::socket-window", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::socket-window", ...args: any[]): void
     connect(sigName: "notify::accept-focus", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -36460,15 +39094,24 @@ interface Plug extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -36493,12 +39136,18 @@ interface Plug extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -37086,6 +39735,123 @@ module PrintOperation {
          * area (i.e. inside the margins).
          */
         use_full_page?: boolean | null
+        /**
+         * Determines whether the print operation may run asynchronously or not.
+         * 
+         * Some systems don't support asynchronous printing, but those that do
+         * will return %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
+         * emit the #GtkPrintOperation::done signal when the operation is actually
+         * done.
+         * 
+         * The Windows port does not support asynchronous operation at all (this
+         * is unlikely to change). On other platforms, all actions except for
+         * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
+         */
+        allowAsync?: boolean | null
+        /**
+         * The current page in the document.
+         * 
+         * If this is set before gtk_print_operation_run(),
+         * the user will be able to select to print only the current page.
+         * 
+         * Note that this only makes sense for pre-paginated documents.
+         */
+        currentPage?: number | null
+        /**
+         * Used as the label of the tab containing custom widgets.
+         * Note that this property may be ignored on some platforms.
+         * 
+         * If this is %NULL, GTK+ uses a default label.
+         */
+        customTabLabel?: string | null
+        /**
+         * The #GtkPageSetup used by default.
+         * 
+         * This page setup will be used by gtk_print_operation_run(),
+         * but it can be overridden on a per-page basis by connecting
+         * to the #GtkPrintOperation::request-page-setup signal.
+         */
+        defaultPageSetup?: PageSetup | null
+        /**
+         * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
+         */
+        embedPageSetup?: boolean | null
+        /**
+         * The name of a file to generate instead of showing the print dialog.
+         * Currently, PDF is the only supported format.
+         * 
+         * The intended use of this property is for implementing
+         * "Export to PDF" actions.
+         * 
+         * "Print to PDF" support is independent of this and is done
+         * by letting the user pick the "Print to PDF" item from the
+         * list of printers in the print dialog.
+         */
+        exportFilename?: string | null
+        /**
+         * Determines whether there is a selection in your application.
+         * This can allow your application to print the selection.
+         * This is typically used to make a "Selection" button sensitive.
+         */
+        hasSelection?: boolean | null
+        /**
+         * A string used to identify the job (e.g. in monitoring
+         * applications like eggcups).
+         * 
+         * If you don't set a job name, GTK+ picks a default one
+         * by numbering successive print jobs.
+         */
+        jobName?: string | null
+        /**
+         * The number of pages in the document.
+         * 
+         * This <emphasis>must</emphasis> be set to a positive number
+         * before the rendering starts. It may be set in a
+         * #GtkPrintOperation::begin-print signal hander.
+         * 
+         * Note that the page numbers passed to the
+         * #GtkPrintOperation::request-page-setup and
+         * #GtkPrintOperation::draw-page signals are 0-based, i.e. if
+         * the user chooses to print all pages, the last ::draw-page signal
+         * will be for page `n_pages` - 1.
+         */
+        nPages?: number | null
+        /**
+         * The #GtkPrintSettings used for initializing the dialog.
+         * 
+         * Setting this property is typically used to re-establish
+         * print settings from a previous print operation, see
+         * gtk_print_operation_run().
+         */
+        printSettings?: PrintSettings | null
+        /**
+         * Determines whether to show a progress dialog during the
+         * print operation.
+         */
+        showProgress?: boolean | null
+        /**
+         * If %TRUE, the print operation will support print of selection.
+         * This allows the print dialog to show a "Selection" button.
+         */
+        supportSelection?: boolean | null
+        /**
+         * If %TRUE, the print operation will try to continue report on
+         * the status of the print job in the printer queues and printer.
+         * This can allow your application to show things like "out of paper"
+         * issues, and when the print job actually reaches the printer.
+         * However, this is often implemented using polling, and should
+         * not be enabled unless needed.
+         */
+        trackPrintStatus?: boolean | null
+        /**
+         * If %TRUE, the transformation for the cairo context obtained
+         * from #GtkPrintContext puts the origin at the top left corner
+         * of the page (which may not be the top left corner of the sheet,
+         * depending on page orientation and the number of pages per sheet).
+         * Otherwise, the origin is at the top left corner of the imageable
+         * area (i.e. inside the margins).
+         */
+        useFullPage?: boolean | null
     }
 
 }
@@ -37108,6 +39874,19 @@ interface PrintOperation extends PrintOperationPreview {
      */
     allow_async: boolean
     /**
+     * Determines whether the print operation may run asynchronously or not.
+     * 
+     * Some systems don't support asynchronous printing, but those that do
+     * will return %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
+     * emit the #GtkPrintOperation::done signal when the operation is actually
+     * done.
+     * 
+     * The Windows port does not support asynchronous operation at all (this
+     * is unlikely to change). On other platforms, all actions except for
+     * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
+     */
+    allowAsync: boolean
+    /**
      * The current page in the document.
      * 
      * If this is set before gtk_print_operation_run(),
@@ -37117,12 +39896,28 @@ interface PrintOperation extends PrintOperationPreview {
      */
     current_page: number
     /**
+     * The current page in the document.
+     * 
+     * If this is set before gtk_print_operation_run(),
+     * the user will be able to select to print only the current page.
+     * 
+     * Note that this only makes sense for pre-paginated documents.
+     */
+    currentPage: number
+    /**
      * Used as the label of the tab containing custom widgets.
      * Note that this property may be ignored on some platforms.
      * 
      * If this is %NULL, GTK+ uses a default label.
      */
     custom_tab_label: string | null
+    /**
+     * Used as the label of the tab containing custom widgets.
+     * Note that this property may be ignored on some platforms.
+     * 
+     * If this is %NULL, GTK+ uses a default label.
+     */
+    customTabLabel: string | null
     /**
      * The #GtkPageSetup used by default.
      * 
@@ -37132,9 +39927,21 @@ interface PrintOperation extends PrintOperationPreview {
      */
     default_page_setup: PageSetup
     /**
+     * The #GtkPageSetup used by default.
+     * 
+     * This page setup will be used by gtk_print_operation_run(),
+     * but it can be overridden on a per-page basis by connecting
+     * to the #GtkPrintOperation::request-page-setup signal.
+     */
+    defaultPageSetup: PageSetup
+    /**
      * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
      */
     embed_page_setup: boolean
+    /**
+     * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
+     */
+    embedPageSetup: boolean
     /**
      * The name of a file to generate instead of showing the print dialog.
      * Currently, PDF is the only supported format.
@@ -37148,11 +39955,29 @@ interface PrintOperation extends PrintOperationPreview {
      */
     export_filename: string | null
     /**
+     * The name of a file to generate instead of showing the print dialog.
+     * Currently, PDF is the only supported format.
+     * 
+     * The intended use of this property is for implementing
+     * "Export to PDF" actions.
+     * 
+     * "Print to PDF" support is independent of this and is done
+     * by letting the user pick the "Print to PDF" item from the
+     * list of printers in the print dialog.
+     */
+    exportFilename: string | null
+    /**
      * Determines whether there is a selection in your application.
      * This can allow your application to print the selection.
      * This is typically used to make a "Selection" button sensitive.
      */
     has_selection: boolean
+    /**
+     * Determines whether there is a selection in your application.
+     * This can allow your application to print the selection.
+     * This is typically used to make a "Selection" button sensitive.
+     */
+    hasSelection: boolean
     /**
      * A string used to identify the job (e.g. in monitoring
      * applications like eggcups).
@@ -37161,6 +39986,14 @@ interface PrintOperation extends PrintOperationPreview {
      * by numbering successive print jobs.
      */
     job_name: string | null
+    /**
+     * A string used to identify the job (e.g. in monitoring
+     * applications like eggcups).
+     * 
+     * If you don't set a job name, GTK+ picks a default one
+     * by numbering successive print jobs.
+     */
+    jobName: string | null
     /**
      * The number of pages in the document.
      * 
@@ -37176,6 +40009,20 @@ interface PrintOperation extends PrintOperationPreview {
      */
     n_pages: number
     /**
+     * The number of pages in the document.
+     * 
+     * This <emphasis>must</emphasis> be set to a positive number
+     * before the rendering starts. It may be set in a
+     * #GtkPrintOperation::begin-print signal hander.
+     * 
+     * Note that the page numbers passed to the
+     * #GtkPrintOperation::request-page-setup and
+     * #GtkPrintOperation::draw-page signals are 0-based, i.e. if
+     * the user chooses to print all pages, the last ::draw-page signal
+     * will be for page `n_pages` - 1.
+     */
+    nPages: number
+    /**
      * The number of pages that will be printed.
      * 
      * Note that this value is set during print preparation phase
@@ -37188,6 +40035,18 @@ interface PrintOperation extends PrintOperationPreview {
      */
     readonly n_pages_to_print: number
     /**
+     * The number of pages that will be printed.
+     * 
+     * Note that this value is set during print preparation phase
+     * (%GTK_PRINT_STATUS_PREPARING), so this value should never be
+     * get before the data generation phase (%GTK_PRINT_STATUS_GENERATING_DATA).
+     * You can connect to the #GtkPrintOperation::status-changed signal
+     * and call gtk_print_operation_get_n_pages_to_print() when
+     * print status is %GTK_PRINT_STATUS_GENERATING_DATA.
+     * This is typically used to track the progress of print operation.
+     */
+    readonly nPagesToPrint: number
+    /**
      * The #GtkPrintSettings used for initializing the dialog.
      * 
      * Setting this property is typically used to re-establish
@@ -37196,10 +40055,23 @@ interface PrintOperation extends PrintOperationPreview {
      */
     print_settings: PrintSettings
     /**
+     * The #GtkPrintSettings used for initializing the dialog.
+     * 
+     * Setting this property is typically used to re-establish
+     * print settings from a previous print operation, see
+     * gtk_print_operation_run().
+     */
+    printSettings: PrintSettings
+    /**
      * Determines whether to show a progress dialog during the
      * print operation.
      */
     show_progress: boolean
+    /**
+     * Determines whether to show a progress dialog during the
+     * print operation.
+     */
+    showProgress: boolean
     /**
      * The status of the print operation.
      */
@@ -37214,10 +40086,24 @@ interface PrintOperation extends PrintOperationPreview {
      */
     readonly status_string: string | null
     /**
+     * A string representation of the status of the print operation.
+     * The string is translated and suitable for displaying the print
+     * status e.g. in a #GtkStatusbar.
+     * 
+     * See the #GtkPrintOperation:status property for a status value that
+     * is suitable for programmatic use.
+     */
+    readonly statusString: string | null
+    /**
      * If %TRUE, the print operation will support print of selection.
      * This allows the print dialog to show a "Selection" button.
      */
     support_selection: boolean
+    /**
+     * If %TRUE, the print operation will support print of selection.
+     * This allows the print dialog to show a "Selection" button.
+     */
+    supportSelection: boolean
     /**
      * If %TRUE, the print operation will try to continue report on
      * the status of the print job in the printer queues and printer.
@@ -37227,6 +40113,15 @@ interface PrintOperation extends PrintOperationPreview {
      * not be enabled unless needed.
      */
     track_print_status: boolean
+    /**
+     * If %TRUE, the print operation will try to continue report on
+     * the status of the print job in the printer queues and printer.
+     * This can allow your application to show things like "out of paper"
+     * issues, and when the print job actually reaches the printer.
+     * However, this is often implemented using polling, and should
+     * not be enabled unless needed.
+     */
+    trackPrintStatus: boolean
     /**
      * The transformation for the cairo context obtained from
      * #GtkPrintContext is set up in such a way that distances
@@ -37242,6 +40137,15 @@ interface PrintOperation extends PrintOperationPreview {
      * area (i.e. inside the margins).
      */
     use_full_page: boolean
+    /**
+     * If %TRUE, the transformation for the cairo context obtained
+     * from #GtkPrintContext puts the origin at the top left corner
+     * of the page (which may not be the top left corner of the sheet,
+     * depending on page orientation and the number of pages per sheet).
+     * Otherwise, the origin is at the top left corner of the imageable
+     * area (i.e. inside the margins).
+     */
+    useFullPage: boolean
 
     // Own fields of Gtk-2.0.Gtk.PrintOperation
 
@@ -38178,6 +41082,10 @@ module Progress {
         show_text?: boolean | null
         text_xalign?: number | null
         text_yalign?: number | null
+        activityMode?: boolean | null
+        showText?: boolean | null
+        textXalign?: number | null
+        textYalign?: number | null
     }
 
 }
@@ -38186,8 +41094,12 @@ interface Progress extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Progress
 
+    activityMode: boolean
+    showText: boolean
     text_xalign: number
+    textXalign: number
     text_yalign: number
+    textYalign: number
 
     // Own fields of Gtk-2.0.Gtk.Progress
 
@@ -38225,6 +41137,12 @@ interface Progress extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Progress
 
+    connect(sigName: "notify::activity-mode", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activity-mode", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activity-mode", ...args: any[]): void
+    connect(sigName: "notify::show-text", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-text", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-text", ...args: any[]): void
     connect(sigName: "notify::text-xalign", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-xalign", callback: (($obj: Progress, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-xalign", ...args: any[]): void
@@ -38338,6 +41256,11 @@ module ProgressBar {
         orientation?: ProgressBarOrientation | null
         pulse_step?: number | null
         text?: string | null
+        activityBlocks?: number | null
+        activityStep?: number | null
+        barStyle?: ProgressBarStyle | null
+        discreteBlocks?: number | null
+        pulseStep?: number | null
     }
 
 }
@@ -38346,10 +41269,15 @@ interface ProgressBar extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.ProgressBar
 
+    activityBlocks: number
+    activityStep: number
     adjustment: Adjustment
+    barStyle: ProgressBarStyle
     discrete_blocks: number
+    discreteBlocks: number
     fraction: number
     pulse_step: number
+    pulseStep: number
     text: string | null
 
     // Own fields of Gtk-2.0.Gtk.ProgressBar
@@ -38444,9 +41372,18 @@ interface ProgressBar extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.ProgressBar
 
+    connect(sigName: "notify::activity-blocks", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activity-blocks", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activity-blocks", ...args: any[]): void
+    connect(sigName: "notify::activity-step", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activity-step", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activity-step", ...args: any[]): void
     connect(sigName: "notify::adjustment", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::adjustment", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::adjustment", ...args: any[]): void
+    connect(sigName: "notify::bar-style", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bar-style", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bar-style", ...args: any[]): void
     connect(sigName: "notify::discrete-blocks", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::discrete-blocks", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::discrete-blocks", ...args: any[]): void
@@ -38459,6 +41396,12 @@ interface ProgressBar extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::text", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text", ...args: any[]): void
+    connect(sigName: "notify::activity-mode", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::activity-mode", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::activity-mode", ...args: any[]): void
+    connect(sigName: "notify::show-text", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::show-text", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::show-text", ...args: any[]): void
     connect(sigName: "notify::text-xalign", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-xalign", callback: (($obj: ProgressBar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-xalign", ...args: any[]): void
@@ -38598,6 +41541,11 @@ module RadioAction {
          * for convenient ways to get and set this property.
          */
         value?: number | null
+        /**
+         * The value property of the currently active member of the group to which
+         * this action belongs.
+         */
+        currentValue?: number | null
     }
 
 }
@@ -38611,6 +41559,11 @@ interface RadioAction extends Buildable {
      * this action belongs.
      */
     current_value: number
+    /**
+     * The value property of the currently active member of the group to which
+     * this action belongs.
+     */
+    currentValue: number
     /**
      * Sets a new group for a radio action.
      */
@@ -38880,6 +41833,12 @@ interface RadioButton extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.RadioButton
 
+    connect(sigName: "notify::draw-indicator", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-indicator", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-indicator", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -38889,12 +41848,21 @@ interface RadioButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RadioButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -39175,6 +42143,12 @@ interface RadioMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.RadioMenuItem
 
+    connect(sigName: "notify::draw-as-radio", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-as-radio", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-as-radio", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -39184,6 +42158,9 @@ interface RadioMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RadioMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -39367,6 +42344,9 @@ interface RadioToolButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::visible-vertical", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RadioToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -39528,6 +42508,31 @@ module Range {
         show_fill_level?: boolean | null
         update_policy?: UpdateType | null
         upper_stepper_sensitivity?: SensitivityType | null
+        /**
+         * The fill level (e.g. prebuffering of a network stream).
+         * See gtk_range_set_fill_level().
+         */
+        fillLevel?: number | null
+        lowerStepperSensitivity?: SensitivityType | null
+        /**
+         * The restrict-to-fill-level property controls whether slider
+         * movement is restricted to an upper boundary set by the
+         * fill level. See gtk_range_set_restrict_to_fill_level().
+         */
+        restrictToFillLevel?: boolean | null
+        /**
+         * The number of digits to round the value to when
+         * it changes, or -1. See #GtkRange::change-value.
+         */
+        roundDigits?: number | null
+        /**
+         * The show-fill-level property controls whether fill level indicator
+         * graphics are displayed on the trough. See
+         * gtk_range_set_show_fill_level().
+         */
+        showFillLevel?: boolean | null
+        updatePolicy?: UpdateType | null
+        upperStepperSensitivity?: SensitivityType | null
     }
 
 }
@@ -39541,7 +42546,13 @@ interface Range extends Atk.ImplementorIface, Buildable, Orientable {
      * See gtk_range_set_fill_level().
      */
     fill_level: number
+    /**
+     * The fill level (e.g. prebuffering of a network stream).
+     * See gtk_range_set_fill_level().
+     */
+    fillLevel: number
     lower_stepper_sensitivity: SensitivityType
+    lowerStepperSensitivity: SensitivityType
     /**
      * The restrict-to-fill-level property controls whether slider
      * movement is restricted to an upper boundary set by the
@@ -39549,12 +42560,31 @@ interface Range extends Atk.ImplementorIface, Buildable, Orientable {
      */
     restrict_to_fill_level: boolean
     /**
+     * The restrict-to-fill-level property controls whether slider
+     * movement is restricted to an upper boundary set by the
+     * fill level. See gtk_range_set_restrict_to_fill_level().
+     */
+    restrictToFillLevel: boolean
+    /**
+     * The number of digits to round the value to when
+     * it changes, or -1. See #GtkRange::change-value.
+     */
+    roundDigits: number
+    /**
      * The show-fill-level property controls whether fill level indicator
      * graphics are displayed on the trough. See
      * gtk_range_set_show_fill_level().
      */
     show_fill_level: boolean
+    /**
+     * The show-fill-level property controls whether fill level indicator
+     * graphics are displayed on the trough. See
+     * gtk_range_set_show_fill_level().
+     */
+    showFillLevel: boolean
+    updatePolicy: UpdateType
     upper_stepper_sensitivity: SensitivityType
+    upperStepperSensitivity: SensitivityType
 
     // Own fields of Gtk-2.0.Gtk.Range
 
@@ -39834,9 +42864,15 @@ interface Range extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Range, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -40009,6 +43045,7 @@ module RecentAction {
         // Own constructor properties of Gtk-2.0.Gtk.RecentAction
 
         show_numbers?: boolean | null
+        showNumbers?: boolean | null
     }
 
 }
@@ -40018,6 +43055,7 @@ interface RecentAction extends Buildable, RecentChooser {
     // Own properties of Gtk-2.0.Gtk.RecentAction
 
     show_numbers: boolean
+    showNumbers: boolean
 
     // Own fields of Gtk-2.0.Gtk.RecentAction
 
@@ -40235,6 +43273,12 @@ interface RecentChooserDialog extends Atk.ImplementorIface, Buildable, RecentCho
     connect(sigName: "notify::accept-focus", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -40244,15 +43288,24 @@ interface RecentChooserDialog extends Atk.ImplementorIface, Buildable, RecentCho
     connect(sigName: "notify::deletable", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -40277,12 +43330,18 @@ interface RecentChooserDialog extends Atk.ImplementorIface, Buildable, RecentCho
     connect(sigName: "notify::transient-for", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RecentChooserDialog, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -40415,6 +43474,11 @@ module RecentChooserMenu {
          * a number acting as a unique mnemonic.
          */
         show_numbers?: boolean | null
+        /**
+         * Whether the first ten items in the menu should be prepended by
+         * a number acting as a unique mnemonic.
+         */
+        showNumbers?: boolean | null
     }
 
 }
@@ -40428,6 +43492,11 @@ interface RecentChooserMenu extends Atk.ImplementorIface, Activatable, Buildable
      * a number acting as a unique mnemonic.
      */
     show_numbers: boolean
+    /**
+     * Whether the first ten items in the menu should be prepended by
+     * a number acting as a unique mnemonic.
+     */
+    showNumbers: boolean
 
     // Owm methods of Gtk-2.0.Gtk.RecentChooserMenu
 
@@ -40531,6 +43600,12 @@ interface RecentChooserMenu extends Atk.ImplementorIface, Activatable, Buildable
     connect(sigName: "notify::show-numbers", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-numbers", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-numbers", ...args: any[]): void
+    connect(sigName: "notify::accel-group", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-group", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-group", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::active", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::active", ...args: any[]): void
@@ -40552,6 +43627,9 @@ interface RecentChooserMenu extends Atk.ImplementorIface, Activatable, Buildable
     connect(sigName: "notify::take-focus", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::take-focus", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::take-focus", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RecentChooserMenu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -40733,6 +43811,9 @@ interface RecentChooserWidget extends Atk.ImplementorIface, Buildable, Orientabl
 
     // Class property signals of Gtk-2.0.Gtk.RecentChooserWidget
 
+    connect(sigName: "notify::border-width", callback: (($obj: RecentChooserWidget, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: RecentChooserWidget, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: RecentChooserWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: RecentChooserWidget, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -41279,11 +44360,16 @@ module Ruler {
         metric?: MetricType | null
         position?: number | null
         upper?: number | null
+        maxSize?: number | null
     }
 
 }
 
 interface Ruler extends Atk.ImplementorIface, Buildable, Orientable {
+
+    // Own properties of Gtk-2.0.Gtk.Ruler
+
+    maxSize: number
 
     // Own fields of Gtk-2.0.Gtk.Ruler
 
@@ -41334,6 +44420,9 @@ interface Ruler extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.Ruler
 
+    connect(sigName: "notify::max-size", callback: (($obj: Ruler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-size", callback: (($obj: Ruler, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-size", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: Ruler, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: Ruler, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -41437,11 +44526,18 @@ module Scale {
         digits?: number | null
         draw_value?: boolean | null
         value_pos?: PositionType | null
+        drawValue?: boolean | null
+        valuePos?: PositionType | null
     }
 
 }
 
 interface Scale extends Atk.ImplementorIface, Buildable, Orientable {
+
+    // Own properties of Gtk-2.0.Gtk.Scale
+
+    drawValue: boolean
+    valuePos: PositionType
 
     // Own fields of Gtk-2.0.Gtk.Scale
 
@@ -41549,6 +44645,12 @@ interface Scale extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.Scale
 
+    connect(sigName: "notify::draw-value", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-value", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-value", ...args: any[]): void
+    connect(sigName: "notify::value-pos", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::value-pos", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::value-pos", ...args: any[]): void
     connect(sigName: "notify::fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::fill-level", ...args: any[]): void
@@ -41558,9 +44660,15 @@ interface Scale extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Scale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -41825,6 +44933,9 @@ interface ScaleButton extends Atk.ImplementorIface, Activatable, Buildable, Orie
     connect(sigName: "notify::value", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::value", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::value", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -41834,12 +44945,21 @@ interface ScaleButton extends Atk.ImplementorIface, Activatable, Buildable, Orie
     connect(sigName: "notify::label", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ScaleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -41988,9 +45108,15 @@ interface Scrollbar extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: Scrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -42113,6 +45239,16 @@ module ScrolledWindow {
          * "gtk-scrolled-window-placement" setting is used.
          */
         window_placement_set?: boolean | null
+        hscrollbarPolicy?: PolicyType | null
+        shadowType?: ShadowType | null
+        vscrollbarPolicy?: PolicyType | null
+        windowPlacement?: CornerType | null
+        /**
+         * Whether "window-placement" should be used to determine the location
+         * of the contents with respect to the scrollbars. Otherwise, the
+         * "gtk-scrolled-window-placement" setting is used.
+         */
+        windowPlacementSet?: boolean | null
     }
 
 }
@@ -42123,16 +45259,26 @@ interface ScrolledWindow extends Atk.ImplementorIface, Buildable {
 
     hadjustment: Adjustment
     hscrollbar_policy: PolicyType
+    hscrollbarPolicy: PolicyType
     shadow_type: ShadowType
+    shadowType: ShadowType
     vadjustment: Adjustment
     vscrollbar_policy: PolicyType
+    vscrollbarPolicy: PolicyType
     window_placement: CornerType
+    windowPlacement: CornerType
     /**
      * Whether "window-placement" should be used to determine the location
      * of the contents with respect to the scrollbars. Otherwise, the
      * "gtk-scrolled-window-placement" setting is used.
      */
     window_placement_set: boolean
+    /**
+     * Whether "window-placement" should be used to determine the location
+     * of the contents with respect to the scrollbars. Otherwise, the
+     * "gtk-scrolled-window-placement" setting is used.
+     */
+    windowPlacementSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.ScrolledWindow
 
@@ -42293,6 +45439,9 @@ interface ScrolledWindow extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::window-placement-set", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-placement-set", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-placement-set", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ScrolledWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -42620,6 +45769,9 @@ interface SeparatorMenuItem extends Atk.ImplementorIface, Activatable, Buildable
 
     // Class property signals of Gtk-2.0.Gtk.SeparatorMenuItem
 
+    connect(sigName: "notify::accel-path", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -42629,6 +45781,9 @@ interface SeparatorMenuItem extends Atk.ImplementorIface, Activatable, Buildable
     connect(sigName: "notify::use-underline", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SeparatorMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -42775,6 +45930,9 @@ interface SeparatorToolItem extends Atk.ImplementorIface, Activatable, Buildable
     connect(sigName: "notify::visible-vertical", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -43140,6 +46298,260 @@ module Settings {
         gtk_xft_hinting?: number | null
         gtk_xft_hintstyle?: string | null
         gtk_xft_rgba?: string | null
+        gtkAlternativeButtonOrder?: boolean | null
+        /**
+         * Controls the direction of the sort indicators in sorted list and tree
+         * views. By default an arrow pointing down means the column is sorted
+         * in ascending order. When set to %TRUE, this order will be inverted.
+         */
+        gtkAlternativeSortArrows?: boolean | null
+        /**
+         * Whether mnemonics should be automatically shown and hidden when the user
+         * presses the mnemonic activator.
+         */
+        gtkAutoMnemonics?: boolean | null
+        gtkButtonImages?: boolean | null
+        gtkCanChangeAccels?: boolean | null
+        gtkColorPalette?: string | null
+        /**
+         * A palette of named colors for use in themes. The format of the string is
+         * <programlisting>
+         * name1: color1
+         * name2: color2
+         * ...
+         * </programlisting>
+         * Color names must be acceptable as identifiers in the
+         * <link linkend="gtk-Resource-Files">gtkrc</link> syntax, and
+         * color specifications must be in the format accepted by
+         * gdk_color_parse().
+         * 
+         * Note that due to the way the color tables from different sources are
+         * merged, color specifications will be converted to hexadecimal form
+         * when getting this property.
+         * 
+         * Starting with GTK+ 2.12, the entries can alternatively be separated
+         * by ';' instead of newlines:
+         * <programlisting>
+         * name1: color1; name2: color2; ...
+         * </programlisting>
+         */
+        gtkColorScheme?: string | null
+        /**
+         * Whether the cursor should blink.
+         * 
+         * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
+         * which allows more flexible control over cursor blinking.
+         */
+        gtkCursorBlink?: boolean | null
+        gtkCursorBlinkTime?: number | null
+        /**
+         * Time after which the cursor stops blinking, in seconds.
+         * The timer is reset after each user interaction.
+         * 
+         * Setting this to zero has the same effect as setting
+         * #GtkSettings:gtk-cursor-blink to %FALSE.
+         */
+        gtkCursorBlinkTimeout?: number | null
+        gtkCursorThemeName?: string | null
+        gtkCursorThemeSize?: number | null
+        gtkDndDragThreshold?: number | null
+        gtkDoubleClickDistance?: number | null
+        gtkDoubleClickTime?: number | null
+        /**
+         * Whether menu items should have visible accelerators which can be
+         * activated.
+         */
+        gtkEnableAccels?: boolean | null
+        gtkEnableAnimations?: boolean | null
+        /**
+         * Whether to play any event sounds at all.
+         * 
+         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+         * for more information on event sounds and sound themes.
+         * 
+         * GTK+ itself does not support event sounds, you have to use a loadable
+         * module like the one that comes with libcanberra.
+         */
+        gtkEnableEventSounds?: boolean | null
+        /**
+         * Whether to play event sounds as feedback to user input.
+         * 
+         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+         * for more information on event sounds and sound themes.
+         * 
+         * GTK+ itself does not support event sounds, you have to use a loadable
+         * module like the one that comes with libcanberra.
+         */
+        gtkEnableInputFeedbackSounds?: boolean | null
+        /**
+         * Whether labels and menu items should have visible mnemonics which
+         * can be activated.
+         */
+        gtkEnableMnemonics?: boolean | null
+        /**
+         * Whether tooltips should be shown on widgets.
+         */
+        gtkEnableTooltips?: boolean | null
+        /**
+         * How long to show the last input character in hidden
+         * entries. This value is in milliseconds. 0 disables showing the
+         * last char. 600 is a good value for enabling it.
+         */
+        gtkEntryPasswordHintTimeout?: number | null
+        gtkEntrySelectOnFocus?: boolean | null
+        /**
+         * When %TRUE, keyboard navigation and other input-related errors
+         * will cause a beep. Since the error bell is implemented using
+         * gdk_window_beep(), the windowing system may offer ways to
+         * configure the error bell in many ways, such as flashing the
+         * window or similar visual effects.
+         */
+        gtkErrorBell?: boolean | null
+        gtkFallbackIconTheme?: string | null
+        gtkFileChooserBackend?: string | null
+        gtkFontName?: string | null
+        gtkFontconfigTimestamp?: number | null
+        /**
+         * A list of icon sizes. The list is separated by colons, and
+         * item has the form:
+         * 
+         * <replaceable>size-name</replaceable> = <replaceable>width</replaceable> , <replaceable>height</replaceable>
+         * 
+         * E.g. "gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48".
+         * GTK+ itself use the following named icon sizes: gtk-menu,
+         * gtk-button, gtk-small-toolbar, gtk-large-toolbar, gtk-dnd,
+         * gtk-dialog. Applications can register their own named icon
+         * sizes with gtk_icon_size_register().
+         */
+        gtkIconSizes?: string | null
+        gtkIconThemeName?: string | null
+        /**
+         * Which IM (input method) module should be used by default. This is the
+         * input method that will be used if the user has not explicitly chosen
+         * another input method from the IM context menu.
+         * This also can be a colon-separated list of input methods, which GTK+
+         * will try in turn until it finds one available on the system.
+         * 
+         * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
+         */
+        gtkImModule?: string | null
+        gtkImPreeditStyle?: IMPreeditStyle | null
+        gtkImStatusStyle?: IMStatusStyle | null
+        gtkKeyThemeName?: string | null
+        /**
+         * When %TRUE, keyboard navigation should be able to reach all widgets
+         * by using the cursor keys only. Tab, Shift etc. keys can't be expected
+         * to be present on the used input device.
+         */
+        gtkKeynavCursorOnly?: boolean | null
+        /**
+         * When %TRUE, some widgets will wrap around when doing keyboard
+         * navigation, such as menus, menubars and notebooks.
+         */
+        gtkKeynavWrapAround?: boolean | null
+        gtkLabelSelectOnFocus?: boolean | null
+        gtkMenuBarAccel?: string | null
+        gtkMenuBarPopupDelay?: number | null
+        gtkMenuImages?: boolean | null
+        gtkMenuPopdownDelay?: number | null
+        gtkMenuPopupDelay?: number | null
+        gtkModules?: string | null
+        /**
+         * Whether a click in a #GtkRange trough should scroll to the click position or
+         * scroll by a single page in the respective direction.
+         */
+        gtkPrimaryButtonWarpsSlider?: boolean | null
+        /**
+         * A comma-separated list of print backends to use in the print
+         * dialog. Available print backends depend on the GTK+ installation,
+         * and may include "file", "cups", "lpr" or "papi".
+         */
+        gtkPrintBackends?: string | null
+        /**
+         * A command to run for displaying the print preview. The command
+         * should contain a %f placeholder, which will get replaced by
+         * the path to the pdf file. The command may also contain a %s
+         * placeholder, which will get replaced by the path to a file
+         * containing the print settings in the format produced by
+         * gtk_print_settings_to_file().
+         * 
+         * The preview application is responsible for removing the pdf file
+         * and the print settings file when it is done.
+         */
+        gtkPrintPreviewCommand?: string | null
+        /**
+         * The number of recently used files that should be displayed by default by
+         * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
+         * -1 means every recently used file stored.
+         */
+        gtkRecentFilesLimit?: number | null
+        /**
+         * The maximum age, in days, of the items inside the recently used
+         * resources list. Items older than this setting will be excised
+         * from the list. If set to 0, the list will always be empty; if
+         * set to -1, no item will be removed.
+         */
+        gtkRecentFilesMaxAge?: number | null
+        /**
+         * Where the contents of scrolled windows are located with respect to the
+         * scrollbars, if not overridden by the scrolled window's own placement.
+         */
+        gtkScrolledWindowPlacement?: CornerType | null
+        gtkShowInputMethodMenu?: boolean | null
+        gtkShowUnicodeMenu?: boolean | null
+        /**
+         * The XDG sound theme to use for event sounds.
+         * 
+         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+         * for more information on event sounds and sound themes.
+         * 
+         * GTK+ itself does not support event sounds, you have to use a loadable
+         * module like the one that comes with libcanberra.
+         */
+        gtkSoundThemeName?: string | null
+        gtkSplitCursor?: boolean | null
+        gtkThemeName?: string | null
+        gtkTimeoutExpand?: number | null
+        gtkTimeoutInitial?: number | null
+        gtkTimeoutRepeat?: number | null
+        gtkToolbarIconSize?: IconSize | null
+        gtkToolbarStyle?: ToolbarStyle | null
+        /**
+         * Amount of time, in milliseconds, after which the browse mode
+         * will be disabled.
+         * 
+         * See #GtkSettings:gtk-tooltip-browse-timeout for more information
+         * about browse mode.
+         */
+        gtkTooltipBrowseModeTimeout?: number | null
+        /**
+         * Controls the time after which tooltips will appear when
+         * browse mode is enabled, in milliseconds.
+         * 
+         * Browse mode is enabled when the mouse pointer moves off an object
+         * where a tooltip was currently being displayed. If the mouse pointer
+         * hits another object before the browse mode timeout expires (see
+         * #GtkSettings:gtk-tooltip-browse-mode-timeout), it will take the
+         * amount of milliseconds specified by this setting to popup the tooltip
+         * for the new object.
+         */
+        gtkTooltipBrowseTimeout?: number | null
+        /**
+         * Time, in milliseconds, after which a tooltip could appear if the
+         * cursor is hovering on top of a widget.
+         */
+        gtkTooltipTimeout?: number | null
+        /**
+         * When %TRUE, there are no motion notify events delivered on this screen,
+         * and widgets can't use the pointer hovering them for any essential
+         * functionality.
+         */
+        gtkTouchscreenMode?: boolean | null
+        gtkXftAntialias?: number | null
+        gtkXftDpi?: number | null
+        gtkXftHinting?: number | null
+        gtkXftHintstyle?: string | null
+        gtkXftRgba?: string | null
     }
 
 }
@@ -43153,7 +46565,13 @@ interface Settings {
      * setting, mapping color names to #GdkColor<!-- -->s.
      */
     readonly color_hash: GLib.HashTable
+    /**
+     * Holds a hash table representation of the #GtkSettings:gtk-color-scheme
+     * setting, mapping color names to #GdkColor<!-- -->s.
+     */
+    readonly colorHash: GLib.HashTable
     gtk_alternative_button_order: boolean
+    gtkAlternativeButtonOrder: boolean
     /**
      * Controls the direction of the sort indicators in sorted list and tree
      * views. By default an arrow pointing down means the column is sorted
@@ -43161,13 +46579,27 @@ interface Settings {
      */
     gtk_alternative_sort_arrows: boolean
     /**
+     * Controls the direction of the sort indicators in sorted list and tree
+     * views. By default an arrow pointing down means the column is sorted
+     * in ascending order. When set to %TRUE, this order will be inverted.
+     */
+    gtkAlternativeSortArrows: boolean
+    /**
      * Whether mnemonics should be automatically shown and hidden when the user
      * presses the mnemonic activator.
      */
     gtk_auto_mnemonics: boolean
+    /**
+     * Whether mnemonics should be automatically shown and hidden when the user
+     * presses the mnemonic activator.
+     */
+    gtkAutoMnemonics: boolean
     gtk_button_images: boolean
+    gtkButtonImages: boolean
     gtk_can_change_accels: boolean
+    gtkCanChangeAccels: boolean
     gtk_color_palette: string | null
+    gtkColorPalette: string | null
     /**
      * A palette of named colors for use in themes. The format of the string is
      * <programlisting>
@@ -43192,13 +46624,44 @@ interface Settings {
      */
     gtk_color_scheme: string | null
     /**
+     * A palette of named colors for use in themes. The format of the string is
+     * <programlisting>
+     * name1: color1
+     * name2: color2
+     * ...
+     * </programlisting>
+     * Color names must be acceptable as identifiers in the
+     * <link linkend="gtk-Resource-Files">gtkrc</link> syntax, and
+     * color specifications must be in the format accepted by
+     * gdk_color_parse().
+     * 
+     * Note that due to the way the color tables from different sources are
+     * merged, color specifications will be converted to hexadecimal form
+     * when getting this property.
+     * 
+     * Starting with GTK+ 2.12, the entries can alternatively be separated
+     * by ';' instead of newlines:
+     * <programlisting>
+     * name1: color1; name2: color2; ...
+     * </programlisting>
+     */
+    gtkColorScheme: string | null
+    /**
      * Whether the cursor should blink.
      * 
      * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
      * which allows more flexible control over cursor blinking.
      */
     gtk_cursor_blink: boolean
+    /**
+     * Whether the cursor should blink.
+     * 
+     * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
+     * which allows more flexible control over cursor blinking.
+     */
+    gtkCursorBlink: boolean
     gtk_cursor_blink_time: number
+    gtkCursorBlinkTime: number
     /**
      * Time after which the cursor stops blinking, in seconds.
      * The timer is reset after each user interaction.
@@ -43207,17 +46670,36 @@ interface Settings {
      * #GtkSettings:gtk-cursor-blink to %FALSE.
      */
     gtk_cursor_blink_timeout: number
+    /**
+     * Time after which the cursor stops blinking, in seconds.
+     * The timer is reset after each user interaction.
+     * 
+     * Setting this to zero has the same effect as setting
+     * #GtkSettings:gtk-cursor-blink to %FALSE.
+     */
+    gtkCursorBlinkTimeout: number
     gtk_cursor_theme_name: string | null
+    gtkCursorThemeName: string | null
     gtk_cursor_theme_size: number
+    gtkCursorThemeSize: number
     gtk_dnd_drag_threshold: number
+    gtkDndDragThreshold: number
     gtk_double_click_distance: number
+    gtkDoubleClickDistance: number
     gtk_double_click_time: number
+    gtkDoubleClickTime: number
     /**
      * Whether menu items should have visible accelerators which can be
      * activated.
      */
     gtk_enable_accels: boolean
+    /**
+     * Whether menu items should have visible accelerators which can be
+     * activated.
+     */
+    gtkEnableAccels: boolean
     gtk_enable_animations: boolean
+    gtkEnableAnimations: boolean
     /**
      * Whether to play any event sounds at all.
      * 
@@ -43229,6 +46711,16 @@ interface Settings {
      */
     gtk_enable_event_sounds: boolean
     /**
+     * Whether to play any event sounds at all.
+     * 
+     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+     * for more information on event sounds and sound themes.
+     * 
+     * GTK+ itself does not support event sounds, you have to use a loadable
+     * module like the one that comes with libcanberra.
+     */
+    gtkEnableEventSounds: boolean
+    /**
      * Whether to play event sounds as feedback to user input.
      * 
      * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
@@ -43239,21 +46731,47 @@ interface Settings {
      */
     gtk_enable_input_feedback_sounds: boolean
     /**
+     * Whether to play event sounds as feedback to user input.
+     * 
+     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+     * for more information on event sounds and sound themes.
+     * 
+     * GTK+ itself does not support event sounds, you have to use a loadable
+     * module like the one that comes with libcanberra.
+     */
+    gtkEnableInputFeedbackSounds: boolean
+    /**
      * Whether labels and menu items should have visible mnemonics which
      * can be activated.
      */
     gtk_enable_mnemonics: boolean
     /**
+     * Whether labels and menu items should have visible mnemonics which
+     * can be activated.
+     */
+    gtkEnableMnemonics: boolean
+    /**
      * Whether tooltips should be shown on widgets.
      */
     gtk_enable_tooltips: boolean
+    /**
+     * Whether tooltips should be shown on widgets.
+     */
+    gtkEnableTooltips: boolean
     /**
      * How long to show the last input character in hidden
      * entries. This value is in milliseconds. 0 disables showing the
      * last char. 600 is a good value for enabling it.
      */
     gtk_entry_password_hint_timeout: number
+    /**
+     * How long to show the last input character in hidden
+     * entries. This value is in milliseconds. 0 disables showing the
+     * last char. 600 is a good value for enabling it.
+     */
+    gtkEntryPasswordHintTimeout: number
     gtk_entry_select_on_focus: boolean
+    gtkEntrySelectOnFocus: boolean
     /**
      * When %TRUE, keyboard navigation and other input-related errors
      * will cause a beep. Since the error bell is implemented using
@@ -43262,10 +46780,22 @@ interface Settings {
      * window or similar visual effects.
      */
     gtk_error_bell: boolean
+    /**
+     * When %TRUE, keyboard navigation and other input-related errors
+     * will cause a beep. Since the error bell is implemented using
+     * gdk_window_beep(), the windowing system may offer ways to
+     * configure the error bell in many ways, such as flashing the
+     * window or similar visual effects.
+     */
+    gtkErrorBell: boolean
     gtk_fallback_icon_theme: string | null
+    gtkFallbackIconTheme: string | null
     gtk_file_chooser_backend: string | null
+    gtkFileChooserBackend: string | null
     gtk_font_name: string | null
+    gtkFontName: string | null
     gtk_fontconfig_timestamp: number
+    gtkFontconfigTimestamp: number
     /**
      * A list of icon sizes. The list is separated by colons, and
      * item has the form:
@@ -43279,7 +46809,21 @@ interface Settings {
      * sizes with gtk_icon_size_register().
      */
     gtk_icon_sizes: string | null
+    /**
+     * A list of icon sizes. The list is separated by colons, and
+     * item has the form:
+     * 
+     * <replaceable>size-name</replaceable> = <replaceable>width</replaceable> , <replaceable>height</replaceable>
+     * 
+     * E.g. "gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48".
+     * GTK+ itself use the following named icon sizes: gtk-menu,
+     * gtk-button, gtk-small-toolbar, gtk-large-toolbar, gtk-dnd,
+     * gtk-dialog. Applications can register their own named icon
+     * sizes with gtk_icon_size_register().
+     */
+    gtkIconSizes: string | null
     gtk_icon_theme_name: string | null
+    gtkIconThemeName: string | null
     /**
      * Which IM (input method) module should be used by default. This is the
      * input method that will be used if the user has not explicitly chosen
@@ -43290,9 +46834,22 @@ interface Settings {
      * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
      */
     gtk_im_module: string | null
+    /**
+     * Which IM (input method) module should be used by default. This is the
+     * input method that will be used if the user has not explicitly chosen
+     * another input method from the IM context menu.
+     * This also can be a colon-separated list of input methods, which GTK+
+     * will try in turn until it finds one available on the system.
+     * 
+     * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
+     */
+    gtkImModule: string | null
     gtk_im_preedit_style: IMPreeditStyle
+    gtkImPreeditStyle: IMPreeditStyle
     gtk_im_status_style: IMStatusStyle
+    gtkImStatusStyle: IMStatusStyle
     gtk_key_theme_name: string | null
+    gtkKeyThemeName: string | null
     /**
      * When %TRUE, keyboard navigation should be able to reach all widgets
      * by using the cursor keys only. Tab, Shift etc. keys can't be expected
@@ -43300,28 +46857,57 @@ interface Settings {
      */
     gtk_keynav_cursor_only: boolean
     /**
+     * When %TRUE, keyboard navigation should be able to reach all widgets
+     * by using the cursor keys only. Tab, Shift etc. keys can't be expected
+     * to be present on the used input device.
+     */
+    gtkKeynavCursorOnly: boolean
+    /**
      * When %TRUE, some widgets will wrap around when doing keyboard
      * navigation, such as menus, menubars and notebooks.
      */
     gtk_keynav_wrap_around: boolean
+    /**
+     * When %TRUE, some widgets will wrap around when doing keyboard
+     * navigation, such as menus, menubars and notebooks.
+     */
+    gtkKeynavWrapAround: boolean
     gtk_label_select_on_focus: boolean
+    gtkLabelSelectOnFocus: boolean
     gtk_menu_bar_accel: string | null
+    gtkMenuBarAccel: string | null
     gtk_menu_bar_popup_delay: number
+    gtkMenuBarPopupDelay: number
     gtk_menu_images: boolean
+    gtkMenuImages: boolean
     gtk_menu_popdown_delay: number
+    gtkMenuPopdownDelay: number
     gtk_menu_popup_delay: number
+    gtkMenuPopupDelay: number
     gtk_modules: string | null
+    gtkModules: string | null
     /**
      * Whether a click in a #GtkRange trough should scroll to the click position or
      * scroll by a single page in the respective direction.
      */
     gtk_primary_button_warps_slider: boolean
     /**
+     * Whether a click in a #GtkRange trough should scroll to the click position or
+     * scroll by a single page in the respective direction.
+     */
+    gtkPrimaryButtonWarpsSlider: boolean
+    /**
      * A comma-separated list of print backends to use in the print
      * dialog. Available print backends depend on the GTK+ installation,
      * and may include "file", "cups", "lpr" or "papi".
      */
     gtk_print_backends: string | null
+    /**
+     * A comma-separated list of print backends to use in the print
+     * dialog. Available print backends depend on the GTK+ installation,
+     * and may include "file", "cups", "lpr" or "papi".
+     */
+    gtkPrintBackends: string | null
     /**
      * A command to run for displaying the print preview. The command
      * should contain a %f placeholder, which will get replaced by
@@ -43335,11 +46921,29 @@ interface Settings {
      */
     gtk_print_preview_command: string | null
     /**
+     * A command to run for displaying the print preview. The command
+     * should contain a %f placeholder, which will get replaced by
+     * the path to the pdf file. The command may also contain a %s
+     * placeholder, which will get replaced by the path to a file
+     * containing the print settings in the format produced by
+     * gtk_print_settings_to_file().
+     * 
+     * The preview application is responsible for removing the pdf file
+     * and the print settings file when it is done.
+     */
+    gtkPrintPreviewCommand: string | null
+    /**
      * The number of recently used files that should be displayed by default by
      * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
      * -1 means every recently used file stored.
      */
     gtk_recent_files_limit: number
+    /**
+     * The number of recently used files that should be displayed by default by
+     * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
+     * -1 means every recently used file stored.
+     */
+    gtkRecentFilesLimit: number
     /**
      * The maximum age, in days, of the items inside the recently used
      * resources list. Items older than this setting will be excised
@@ -43348,12 +46952,26 @@ interface Settings {
      */
     gtk_recent_files_max_age: number
     /**
+     * The maximum age, in days, of the items inside the recently used
+     * resources list. Items older than this setting will be excised
+     * from the list. If set to 0, the list will always be empty; if
+     * set to -1, no item will be removed.
+     */
+    gtkRecentFilesMaxAge: number
+    /**
      * Where the contents of scrolled windows are located with respect to the
      * scrollbars, if not overridden by the scrolled window's own placement.
      */
     gtk_scrolled_window_placement: CornerType
+    /**
+     * Where the contents of scrolled windows are located with respect to the
+     * scrollbars, if not overridden by the scrolled window's own placement.
+     */
+    gtkScrolledWindowPlacement: CornerType
     gtk_show_input_method_menu: boolean
+    gtkShowInputMethodMenu: boolean
     gtk_show_unicode_menu: boolean
+    gtkShowUnicodeMenu: boolean
     /**
      * The XDG sound theme to use for event sounds.
      * 
@@ -43364,13 +46982,30 @@ interface Settings {
      * module like the one that comes with libcanberra.
      */
     gtk_sound_theme_name: string | null
+    /**
+     * The XDG sound theme to use for event sounds.
+     * 
+     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
+     * for more information on event sounds and sound themes.
+     * 
+     * GTK+ itself does not support event sounds, you have to use a loadable
+     * module like the one that comes with libcanberra.
+     */
+    gtkSoundThemeName: string | null
     gtk_split_cursor: boolean
+    gtkSplitCursor: boolean
     gtk_theme_name: string | null
+    gtkThemeName: string | null
     gtk_timeout_expand: number
+    gtkTimeoutExpand: number
     gtk_timeout_initial: number
+    gtkTimeoutInitial: number
     gtk_timeout_repeat: number
+    gtkTimeoutRepeat: number
     gtk_toolbar_icon_size: IconSize
+    gtkToolbarIconSize: IconSize
     gtk_toolbar_style: ToolbarStyle
+    gtkToolbarStyle: ToolbarStyle
     /**
      * Amount of time, in milliseconds, after which the browse mode
      * will be disabled.
@@ -43379,6 +47014,14 @@ interface Settings {
      * about browse mode.
      */
     gtk_tooltip_browse_mode_timeout: number
+    /**
+     * Amount of time, in milliseconds, after which the browse mode
+     * will be disabled.
+     * 
+     * See #GtkSettings:gtk-tooltip-browse-timeout for more information
+     * about browse mode.
+     */
+    gtkTooltipBrowseModeTimeout: number
     /**
      * Controls the time after which tooltips will appear when
      * browse mode is enabled, in milliseconds.
@@ -43392,21 +47035,49 @@ interface Settings {
      */
     gtk_tooltip_browse_timeout: number
     /**
+     * Controls the time after which tooltips will appear when
+     * browse mode is enabled, in milliseconds.
+     * 
+     * Browse mode is enabled when the mouse pointer moves off an object
+     * where a tooltip was currently being displayed. If the mouse pointer
+     * hits another object before the browse mode timeout expires (see
+     * #GtkSettings:gtk-tooltip-browse-mode-timeout), it will take the
+     * amount of milliseconds specified by this setting to popup the tooltip
+     * for the new object.
+     */
+    gtkTooltipBrowseTimeout: number
+    /**
      * Time, in milliseconds, after which a tooltip could appear if the
      * cursor is hovering on top of a widget.
      */
     gtk_tooltip_timeout: number
+    /**
+     * Time, in milliseconds, after which a tooltip could appear if the
+     * cursor is hovering on top of a widget.
+     */
+    gtkTooltipTimeout: number
     /**
      * When %TRUE, there are no motion notify events delivered on this screen,
      * and widgets can't use the pointer hovering them for any essential
      * functionality.
      */
     gtk_touchscreen_mode: boolean
+    /**
+     * When %TRUE, there are no motion notify events delivered on this screen,
+     * and widgets can't use the pointer hovering them for any essential
+     * functionality.
+     */
+    gtkTouchscreenMode: boolean
     gtk_xft_antialias: number
+    gtkXftAntialias: number
     gtk_xft_dpi: number
+    gtkXftDpi: number
     gtk_xft_hinting: number
+    gtkXftHinting: number
     gtk_xft_hintstyle: string | null
+    gtkXftHintstyle: string | null
     gtk_xft_rgba: string | null
+    gtkXftRgba: string | null
 
     // Own fields of Gtk-2.0.Gtk.Settings
 
@@ -43678,6 +47349,11 @@ module SizeGroup {
          */
         ignore_hidden?: boolean | null
         mode?: SizeGroupMode | null
+        /**
+         * If %TRUE, unmapped widgets are ignored when determining
+         * the size of the group.
+         */
+        ignoreHidden?: boolean | null
     }
 
 }
@@ -43691,6 +47367,11 @@ interface SizeGroup extends Buildable {
      * the size of the group.
      */
     ignore_hidden: boolean
+    /**
+     * If %TRUE, unmapped widgets are ignored when determining
+     * the size of the group.
+     */
+    ignoreHidden: boolean
     mode: SizeGroupMode
 
     // Own fields of Gtk-2.0.Gtk.SizeGroup
@@ -43898,6 +47579,9 @@ interface Socket extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Socket
 
+    connect(sigName: "notify::border-width", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -44115,6 +47799,9 @@ module SpinButton {
         update_policy?: SpinButtonUpdatePolicy | null
         value?: number | null
         wrap?: boolean | null
+        climbRate?: number | null
+        snapToTicks?: boolean | null
+        updatePolicy?: SpinButtonUpdatePolicy | null
     }
 
 }
@@ -44123,6 +47810,9 @@ interface SpinButton extends Atk.ImplementorIface, Buildable, CellEditable, Edit
 
     // Own properties of Gtk-2.0.Gtk.SpinButton
 
+    climbRate: number
+    snapToTicks: boolean
+    updatePolicy: SpinButtonUpdatePolicy
     value: number
 
     // Conflicting properties
@@ -44306,6 +47996,15 @@ interface SpinButton extends Atk.ImplementorIface, Buildable, CellEditable, Edit
 
     // Class property signals of Gtk-2.0.Gtk.SpinButton
 
+    connect(sigName: "notify::climb-rate", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::climb-rate", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::climb-rate", ...args: any[]): void
+    connect(sigName: "notify::snap-to-ticks", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::snap-to-ticks", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::snap-to-ticks", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::value", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::value", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::value", ...args: any[]): void
@@ -44339,6 +48038,9 @@ interface SpinButton extends Atk.ImplementorIface, Buildable, CellEditable, Edit
     connect(sigName: "notify::max-length", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-length", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::max-length", ...args: any[]): void
+    connect(sigName: "notify::overwrite-mode", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::overwrite-mode", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::overwrite-mode", ...args: any[]): void
     connect(sigName: "notify::primary-icon-activatable", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::primary-icon-activatable", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::primary-icon-activatable", ...args: any[]): void
@@ -44408,6 +48110,9 @@ interface SpinButton extends Atk.ImplementorIface, Buildable, CellEditable, Edit
     connect(sigName: "notify::shadow-type", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::shadow-type", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::text-length", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::text-length", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::text-length", ...args: any[]): void
     connect(sigName: "notify::truncate-multiline", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::truncate-multiline", callback: (($obj: SpinButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::truncate-multiline", ...args: any[]): void
@@ -44797,6 +48502,53 @@ module StatusIcon {
          */
         tooltip_text?: string | null
         visible?: boolean | null
+        /**
+         * Enables or disables the emission of #GtkStatusIcon::query-tooltip on
+         * `status_icon`.  A value of %TRUE indicates that `status_icon` can have a
+         * tooltip, in this case the status icon will be queried using
+         * #GtkStatusIcon::query-tooltip to determine whether it will provide a
+         * tooltip or not.
+         * 
+         * Note that setting this property to %TRUE for the first time will change
+         * the event masks of the windows of this status icon to include leave-notify
+         * and motion-notify events. This will not be undone when the property is set
+         * to %FALSE again.
+         * 
+         * Whether this property is respected is platform dependent.
+         * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
+         */
+        hasTooltip?: boolean | null
+        iconName?: string | null
+        /**
+         * Sets the text of tooltip to be the given string, which is marked up
+         * with the <link linkend="PangoMarkupFormat">Pango text markup
+         * language</link>. Also see gtk_tooltip_set_markup().
+         * 
+         * This is a convenience property which will take care of getting the
+         * tooltip shown if the given string is not %NULL.
+         * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+         * the default handler for the #GtkStatusIcon::query-tooltip signal
+         * will take care of displaying the tooltip.
+         * 
+         * On some platforms, embedded markup will be ignored.
+         */
+        tooltipMarkup?: string | null
+        /**
+         * Sets the text of tooltip to be the given string.
+         * 
+         * Also see gtk_tooltip_set_text().
+         * 
+         * This is a convenience property which will take care of getting the
+         * tooltip shown if the given string is not %NULL.
+         * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+         * the default handler for the #GtkStatusIcon::query-tooltip signal
+         * will take care of displaying the tooltip.
+         * 
+         * Note that some platforms have limitations on the length of tooltips
+         * that they allow on status icons, e.g. Windows only shows the first
+         * 64 characters.
+         */
+        tooltipText?: string | null
     }
 
 }
@@ -44835,7 +48587,24 @@ interface StatusIcon {
      * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
      */
     has_tooltip: boolean
+    /**
+     * Enables or disables the emission of #GtkStatusIcon::query-tooltip on
+     * `status_icon`.  A value of %TRUE indicates that `status_icon` can have a
+     * tooltip, in this case the status icon will be queried using
+     * #GtkStatusIcon::query-tooltip to determine whether it will provide a
+     * tooltip or not.
+     * 
+     * Note that setting this property to %TRUE for the first time will change
+     * the event masks of the windows of this status icon to include leave-notify
+     * and motion-notify events. This will not be undone when the property is set
+     * to %FALSE again.
+     * 
+     * Whether this property is respected is platform dependent.
+     * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
+     */
+    hasTooltip: boolean
     icon_name: string | null
+    iconName: string | null
     /**
      * The orientation of the tray in which the statusicon
      * is embedded.
@@ -44846,6 +48615,7 @@ interface StatusIcon {
     readonly size: number
     stock: string | null
     readonly storage_type: ImageType
+    readonly storageType: ImageType
     /**
      * The title of this tray icon. This should be a short, human-readable,
      * localized string describing the tray icon. It may be used by tools
@@ -44867,6 +48637,20 @@ interface StatusIcon {
      */
     tooltip_markup: string | null
     /**
+     * Sets the text of tooltip to be the given string, which is marked up
+     * with the <link linkend="PangoMarkupFormat">Pango text markup
+     * language</link>. Also see gtk_tooltip_set_markup().
+     * 
+     * This is a convenience property which will take care of getting the
+     * tooltip shown if the given string is not %NULL.
+     * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+     * the default handler for the #GtkStatusIcon::query-tooltip signal
+     * will take care of displaying the tooltip.
+     * 
+     * On some platforms, embedded markup will be ignored.
+     */
+    tooltipMarkup: string | null
+    /**
      * Sets the text of tooltip to be the given string.
      * 
      * Also see gtk_tooltip_set_text().
@@ -44882,6 +48666,22 @@ interface StatusIcon {
      * 64 characters.
      */
     tooltip_text: string | null
+    /**
+     * Sets the text of tooltip to be the given string.
+     * 
+     * Also see gtk_tooltip_set_text().
+     * 
+     * This is a convenience property which will take care of getting the
+     * tooltip shown if the given string is not %NULL.
+     * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
+     * the default handler for the #GtkStatusIcon::query-tooltip signal
+     * will take care of displaying the tooltip.
+     * 
+     * Note that some platforms have limitations on the length of tooltips
+     * that they allow on status icons, e.g. Windows only shows the first
+     * 64 characters.
+     */
+    tooltipText: string | null
     visible: boolean
 
     // Own fields of Gtk-2.0.Gtk.StatusIcon
@@ -45328,11 +49128,22 @@ module Statusbar {
          * Whether the statusbar has a grip for resizing the toplevel window.
          */
         has_resize_grip?: boolean | null
+        /**
+         * Whether the statusbar has a grip for resizing the toplevel window.
+         */
+        hasResizeGrip?: boolean | null
     }
 
 }
 
 interface Statusbar extends Atk.ImplementorIface, Buildable, Orientable {
+
+    // Own properties of Gtk-2.0.Gtk.Statusbar
+
+    /**
+     * Whether the statusbar has a grip for resizing the toplevel window.
+     */
+    hasResizeGrip: boolean
 
     // Own fields of Gtk-2.0.Gtk.Statusbar
 
@@ -45435,6 +49246,12 @@ interface Statusbar extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.Statusbar
 
+    connect(sigName: "notify::has-resize-grip", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-resize-grip", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-resize-grip", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Statusbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -45788,6 +49605,10 @@ module Table {
         n_columns?: number | null
         n_rows?: number | null
         row_spacing?: number | null
+        columnSpacing?: number | null
+        nColumns?: number | null
+        nRows?: number | null
+        rowSpacing?: number | null
     }
 
 }
@@ -45796,8 +49617,12 @@ interface Table extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Table
 
+    columnSpacing: number
     n_columns: number
+    nColumns: number
     n_rows: number
+    nRows: number
+    rowSpacing: number
 
     // Own fields of Gtk-2.0.Gtk.Table
 
@@ -45862,12 +49687,21 @@ interface Table extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Table
 
+    connect(sigName: "notify::column-spacing", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::column-spacing", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::column-spacing", ...args: any[]): void
     connect(sigName: "notify::n-columns", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::n-columns", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::n-columns", ...args: any[]): void
     connect(sigName: "notify::n-rows", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::n-rows", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::n-rows", ...args: any[]): void
+    connect(sigName: "notify::row-spacing", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::row-spacing", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::row-spacing", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Table, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -46073,6 +49907,9 @@ interface TearoffMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.TearoffMenuItem
 
+    connect(sigName: "notify::accel-path", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::label", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
@@ -46082,6 +49919,9 @@ interface TearoffMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::use-underline", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::use-underline", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::use-underline", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: TearoffMenuItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -46283,6 +50123,7 @@ module TextBuffer {
          * see gtk_text_buffer_get_text() for more information.
          */
         text?: string | null
+        tagTable?: TextTagTable | null
     }
 
 }
@@ -46297,16 +50138,37 @@ interface TextBuffer {
      */
     readonly copy_target_list: TargetList
     /**
+     * The list of targets this buffer supports for clipboard copying
+     * and as DND source.
+     */
+    readonly copyTargetList: TargetList
+    /**
      * The position of the insert mark (as offset from the beginning
      * of the buffer). It is useful for getting notified when the
      * cursor moves.
      */
     readonly cursor_position: number
     /**
+     * The position of the insert mark (as offset from the beginning
+     * of the buffer). It is useful for getting notified when the
+     * cursor moves.
+     */
+    readonly cursorPosition: number
+    /**
+     * Whether the buffer has some text currently selected.
+     */
+    readonly hasSelection: boolean
+    /**
      * The list of targets this buffer supports for clipboard pasting
      * and as DND destination.
      */
     readonly paste_target_list: TargetList
+    /**
+     * The list of targets this buffer supports for clipboard pasting
+     * and as DND destination.
+     */
+    readonly pasteTargetList: TargetList
+    readonly tagTable: TextTagTable
     /**
      * The text content of the buffer. Without child widgets and images,
      * see gtk_text_buffer_get_text() for more information.
@@ -47156,9 +51018,15 @@ interface TextBuffer {
     connect(sigName: "notify::cursor-position", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cursor-position", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::cursor-position", ...args: any[]): void
+    connect(sigName: "notify::has-selection", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-selection", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-selection", ...args: any[]): void
     connect(sigName: "notify::paste-target-list", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::paste-target-list", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::paste-target-list", ...args: any[]): void
+    connect(sigName: "notify::tag-table", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tag-table", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tag-table", ...args: any[]): void
     connect(sigName: "notify::text", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: (($obj: TextBuffer, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text", ...args: any[]): void
@@ -47556,6 +51424,7 @@ module TextMark {
 
         left_gravity?: boolean | null
         name?: string | null
+        leftGravity?: boolean | null
     }
 
 }
@@ -47565,6 +51434,7 @@ interface TextMark {
     // Own properties of Gtk-2.0.Gtk.TextMark
 
     readonly left_gravity: boolean
+    readonly leftGravity: boolean
     readonly name: string | null
 
     // Own fields of Gtk-2.0.Gtk.TextMark
@@ -47790,6 +51660,64 @@ module TextTag {
         weight_set?: boolean | null
         wrap_mode?: WrapMode | null
         wrap_mode_set?: boolean | null
+        /**
+         * Whether the margins accumulate or override each other.
+         * 
+         * When set to %TRUE the margins of this tag are added to the margins
+         * of any other non-accumulative margins present. When set to %FALSE
+         * the margins override one another (the default).
+         */
+        accumulativeMargin?: boolean | null
+        backgroundFullHeight?: boolean | null
+        backgroundFullHeightSet?: boolean | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
+        backgroundStipple?: Gdk.Pixmap | null
+        backgroundStippleSet?: boolean | null
+        editableSet?: boolean | null
+        familySet?: boolean | null
+        fontDesc?: Pango.FontDescription | null
+        foregroundGdk?: Gdk.Color | null
+        foregroundSet?: boolean | null
+        foregroundStipple?: Gdk.Pixmap | null
+        foregroundStippleSet?: boolean | null
+        indentSet?: boolean | null
+        invisibleSet?: boolean | null
+        justificationSet?: boolean | null
+        languageSet?: boolean | null
+        leftMargin?: number | null
+        leftMarginSet?: boolean | null
+        /**
+         * The paragraph background color as a string.
+         */
+        paragraphBackground?: string | null
+        /**
+         * The paragraph background color as a as a (possibly unallocated)
+         * #GdkColor.
+         */
+        paragraphBackgroundGdk?: Gdk.Color | null
+        paragraphBackgroundSet?: boolean | null
+        pixelsAboveLines?: number | null
+        pixelsAboveLinesSet?: boolean | null
+        pixelsBelowLines?: number | null
+        pixelsBelowLinesSet?: boolean | null
+        pixelsInsideWrap?: number | null
+        pixelsInsideWrapSet?: boolean | null
+        rightMargin?: number | null
+        rightMarginSet?: boolean | null
+        riseSet?: boolean | null
+        scaleSet?: boolean | null
+        sizePoints?: number | null
+        sizeSet?: boolean | null
+        stretchSet?: boolean | null
+        strikethroughSet?: boolean | null
+        styleSet?: boolean | null
+        tabsSet?: boolean | null
+        underlineSet?: boolean | null
+        variantSet?: boolean | null
+        weightSet?: boolean | null
+        wrapMode?: WrapMode | null
+        wrapModeSet?: boolean | null
     }
 
 }
@@ -47798,17 +51726,33 @@ interface TextTag {
 
     // Own properties of Gtk-2.0.Gtk.TextTag
 
+    /**
+     * Whether the margins accumulate or override each other.
+     * 
+     * When set to %TRUE the margins of this tag are added to the margins
+     * of any other non-accumulative margins present. When set to %FALSE
+     * the margins override one another (the default).
+     */
+    accumulativeMargin: boolean
     background: string | null
     background_full_height: boolean
+    backgroundFullHeight: boolean
     background_full_height_set: boolean
+    backgroundFullHeightSet: boolean
     background_gdk: Gdk.Color
+    backgroundGdk: Gdk.Color
     background_set: boolean
+    backgroundSet: boolean
     background_stipple: Gdk.Pixmap
+    backgroundStipple: Gdk.Pixmap
     background_stipple_set: boolean
+    backgroundStippleSet: boolean
     direction: TextDirection
     editable: boolean
+    editableSet: boolean
     family: string | null
     family_set: boolean
+    familySet: boolean
     /**
      * Font description as string, e.g. \"Sans Italic 12\".
      * 
@@ -47817,12 +51761,18 @@ interface TextTag {
      */
     font: string | null
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     foreground: string | null
     foreground_gdk: Gdk.Color
+    foregroundGdk: Gdk.Color
     foreground_set: boolean
+    foregroundSet: boolean
     foreground_stipple: Gdk.Pixmap
+    foregroundStipple: Gdk.Pixmap
     foreground_stipple_set: boolean
+    foregroundStippleSet: boolean
     indent: number
+    indentSet: boolean
     /**
      * Whether this text is hidden.
      * 
@@ -47831,7 +51781,9 @@ interface TextTag {
      * containing invisible segments.
      */
     invisible: boolean
+    invisibleSet: boolean
     justification: Justification
+    justificationSet: boolean
     /**
      * The language this text is in, as an ISO code. Pango can use this as a
      * hint when rendering the text. If not set, an appropriate default will be
@@ -47841,38 +51793,72 @@ interface TextTag {
      * locale, see also gtk_get_default_language().
      */
     language: string | null
+    languageSet: boolean
     left_margin: number
+    leftMargin: number
+    leftMarginSet: boolean
     /**
      * The paragraph background color as a string.
      */
     paragraph_background: string | null
     /**
+     * The paragraph background color as a string.
+     */
+    paragraphBackground: string | null
+    /**
      * The paragraph background color as a as a (possibly unallocated)
      * #GdkColor.
      */
     paragraph_background_gdk: Gdk.Color
+    /**
+     * The paragraph background color as a as a (possibly unallocated)
+     * #GdkColor.
+     */
+    paragraphBackgroundGdk: Gdk.Color
     paragraph_background_set: boolean
+    paragraphBackgroundSet: boolean
     pixels_above_lines: number
+    pixelsAboveLines: number
+    pixelsAboveLinesSet: boolean
     pixels_below_lines: number
+    pixelsBelowLines: number
+    pixelsBelowLinesSet: boolean
     pixels_inside_wrap: number
+    pixelsInsideWrap: number
+    pixelsInsideWrapSet: boolean
     right_margin: number
+    rightMargin: number
+    rightMarginSet: boolean
     rise: number
+    riseSet: boolean
     scale: number
+    scaleSet: boolean
     size: number
     size_points: number
+    sizePoints: number
     size_set: boolean
+    sizeSet: boolean
     stretch: Pango.Stretch
     stretch_set: boolean
+    stretchSet: boolean
     strikethrough: boolean
+    strikethroughSet: boolean
     style: Pango.Style
     style_set: boolean
+    styleSet: boolean
     tabs: Pango.TabArray
+    tabsSet: boolean
     underline: Pango.Underline
+    underlineSet: boolean
     variant: Pango.Variant
     variant_set: boolean
+    variantSet: boolean
     weight: number
     weight_set: boolean
+    weightSet: boolean
     wrap_mode: WrapMode
+    wrapMode: WrapMode
+    wrapModeSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.TextTag
 
@@ -47957,6 +51943,9 @@ interface TextTag {
 
     // Class property signals of Gtk-2.0.Gtk.TextTag
 
+    connect(sigName: "notify::accumulative-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accumulative-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accumulative-margin", ...args: any[]): void
     connect(sigName: "notify::background", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::background", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::background", ...args: any[]): void
@@ -47984,6 +51973,9 @@ interface TextTag {
     connect(sigName: "notify::editable", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::editable", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::editable", ...args: any[]): void
+    connect(sigName: "notify::editable-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::editable-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::editable-set", ...args: any[]): void
     connect(sigName: "notify::family", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::family", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::family", ...args: any[]): void
@@ -48014,18 +52006,33 @@ interface TextTag {
     connect(sigName: "notify::indent", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::indent", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::indent", ...args: any[]): void
+    connect(sigName: "notify::indent-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::indent-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::indent-set", ...args: any[]): void
     connect(sigName: "notify::invisible", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::invisible", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::invisible", ...args: any[]): void
+    connect(sigName: "notify::invisible-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::invisible-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::invisible-set", ...args: any[]): void
     connect(sigName: "notify::justification", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::justification", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::justification", ...args: any[]): void
+    connect(sigName: "notify::justification-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::justification-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::justification-set", ...args: any[]): void
     connect(sigName: "notify::language", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::language", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::language", ...args: any[]): void
+    connect(sigName: "notify::language-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::language-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::language-set", ...args: any[]): void
     connect(sigName: "notify::left-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::left-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::left-margin", ...args: any[]): void
+    connect(sigName: "notify::left-margin-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::left-margin-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::left-margin-set", ...args: any[]): void
     connect(sigName: "notify::paragraph-background", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::paragraph-background", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::paragraph-background", ...args: any[]): void
@@ -48038,21 +52045,39 @@ interface TextTag {
     connect(sigName: "notify::pixels-above-lines", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pixels-above-lines", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::pixels-above-lines", ...args: any[]): void
+    connect(sigName: "notify::pixels-above-lines-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-above-lines-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-above-lines-set", ...args: any[]): void
     connect(sigName: "notify::pixels-below-lines", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pixels-below-lines", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::pixels-below-lines", ...args: any[]): void
+    connect(sigName: "notify::pixels-below-lines-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-below-lines-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-below-lines-set", ...args: any[]): void
     connect(sigName: "notify::pixels-inside-wrap", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pixels-inside-wrap", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::pixels-inside-wrap", ...args: any[]): void
+    connect(sigName: "notify::pixels-inside-wrap-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-inside-wrap-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-inside-wrap-set", ...args: any[]): void
     connect(sigName: "notify::right-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::right-margin", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::right-margin", ...args: any[]): void
+    connect(sigName: "notify::right-margin-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::right-margin-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::right-margin-set", ...args: any[]): void
     connect(sigName: "notify::rise", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::rise", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::rise", ...args: any[]): void
+    connect(sigName: "notify::rise-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::rise-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::rise-set", ...args: any[]): void
     connect(sigName: "notify::scale", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scale", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::scale", ...args: any[]): void
+    connect(sigName: "notify::scale-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-set", ...args: any[]): void
     connect(sigName: "notify::size", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::size", ...args: any[]): void
@@ -48071,6 +52096,9 @@ interface TextTag {
     connect(sigName: "notify::strikethrough", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::strikethrough", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::strikethrough", ...args: any[]): void
+    connect(sigName: "notify::strikethrough-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::strikethrough-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::strikethrough-set", ...args: any[]): void
     connect(sigName: "notify::style", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::style", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::style", ...args: any[]): void
@@ -48080,9 +52108,15 @@ interface TextTag {
     connect(sigName: "notify::tabs", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tabs", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::tabs", ...args: any[]): void
+    connect(sigName: "notify::tabs-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tabs-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tabs-set", ...args: any[]): void
     connect(sigName: "notify::underline", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::underline", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::underline", ...args: any[]): void
+    connect(sigName: "notify::underline-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::underline-set", ...args: any[]): void
     connect(sigName: "notify::variant", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::variant", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::variant", ...args: any[]): void
@@ -48098,6 +52132,9 @@ interface TextTag {
     connect(sigName: "notify::wrap-mode", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wrap-mode", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::wrap-mode", ...args: any[]): void
+    connect(sigName: "notify::wrap-mode-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::wrap-mode-set", callback: (($obj: TextTag, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::wrap-mode-set", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -48437,6 +52474,23 @@ module TextView {
         right_margin?: number | null
         tabs?: Pango.TabArray | null
         wrap_mode?: WrapMode | null
+        acceptsTab?: boolean | null
+        cursorVisible?: boolean | null
+        /**
+         * Which IM (input method) module should be used for this entry.
+         * See #GtkIMContext.
+         * 
+         * Setting this to a non-%NULL value overrides the
+         * system-wide IM module setting. See the GtkSettings
+         * #GtkSettings:gtk-im-module property.
+         */
+        imModule?: string | null
+        leftMargin?: number | null
+        pixelsAboveLines?: number | null
+        pixelsBelowLines?: number | null
+        pixelsInsideWrap?: number | null
+        rightMargin?: number | null
+        wrapMode?: WrapMode | null
     }
 
 }
@@ -48445,6 +52499,8 @@ interface TextView extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.TextView
 
+    acceptsTab: boolean
+    cursorVisible: boolean
     /**
      * Which IM (input method) module should be used for this entry.
      * See #GtkIMContext.
@@ -48454,8 +52510,23 @@ interface TextView extends Atk.ImplementorIface, Buildable {
      * #GtkSettings:gtk-im-module property.
      */
     im_module: string | null
+    /**
+     * Which IM (input method) module should be used for this entry.
+     * See #GtkIMContext.
+     * 
+     * Setting this to a non-%NULL value overrides the
+     * system-wide IM module setting. See the GtkSettings
+     * #GtkSettings:gtk-im-module property.
+     */
+    imModule: string | null
     justification: Justification
+    leftMargin: number
     overwrite: boolean
+    pixelsAboveLines: number
+    pixelsBelowLines: number
+    pixelsInsideWrap: number
+    rightMargin: number
+    wrapMode: WrapMode
 
     // Own fields of Gtk-2.0.Gtk.TextView
 
@@ -49109,15 +53180,42 @@ interface TextView extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.TextView
 
+    connect(sigName: "notify::accepts-tab", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accepts-tab", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accepts-tab", ...args: any[]): void
+    connect(sigName: "notify::cursor-visible", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cursor-visible", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cursor-visible", ...args: any[]): void
     connect(sigName: "notify::im-module", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-module", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::im-module", ...args: any[]): void
     connect(sigName: "notify::justification", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::justification", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::justification", ...args: any[]): void
+    connect(sigName: "notify::left-margin", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::left-margin", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::left-margin", ...args: any[]): void
     connect(sigName: "notify::overwrite", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::overwrite", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::overwrite", ...args: any[]): void
+    connect(sigName: "notify::pixels-above-lines", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-above-lines", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-above-lines", ...args: any[]): void
+    connect(sigName: "notify::pixels-below-lines", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-below-lines", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-below-lines", ...args: any[]): void
+    connect(sigName: "notify::pixels-inside-wrap", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pixels-inside-wrap", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pixels-inside-wrap", ...args: any[]): void
+    connect(sigName: "notify::right-margin", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::right-margin", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::right-margin", ...args: any[]): void
+    connect(sigName: "notify::wrap-mode", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::wrap-mode", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::wrap-mode", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: TextView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -49276,11 +53374,20 @@ module TipsQuery {
         emit_always?: boolean | null
         label_inactive?: string | null
         label_no_tip?: string | null
+        emitAlways?: boolean | null
+        labelInactive?: string | null
+        labelNoTip?: string | null
     }
 
 }
 
 interface TipsQuery extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.TipsQuery
+
+    emitAlways: boolean
+    labelInactive: string | null
+    labelNoTip: string | null
 
     // Own fields of Gtk-2.0.Gtk.TipsQuery
 
@@ -49324,6 +53431,15 @@ interface TipsQuery extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.TipsQuery
 
+    connect(sigName: "notify::emit-always", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::emit-always", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::emit-always", ...args: any[]): void
+    connect(sigName: "notify::label-inactive", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-inactive", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-inactive", ...args: any[]): void
+    connect(sigName: "notify::label-no-tip", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::label-no-tip", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::label-no-tip", ...args: any[]): void
     connect(sigName: "notify::angle", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::angle", callback: (($obj: TipsQuery, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::angle", ...args: any[]): void
@@ -49502,6 +53618,13 @@ module ToggleAction {
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
         draw_as_radio?: boolean | null
+        /**
+         * Whether the proxies for this action look like radio action proxies.
+         * 
+         * This is an appearance property and thus only applies if
+         * #GtkActivatable:use-action-appearance is %TRUE.
+         */
+        drawAsRadio?: boolean | null
     }
 
 }
@@ -49521,6 +53644,13 @@ interface ToggleAction extends Buildable {
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
     draw_as_radio: boolean
+    /**
+     * Whether the proxies for this action look like radio action proxies.
+     * 
+     * This is an appearance property and thus only applies if
+     * #GtkActivatable:use-action-appearance is %TRUE.
+     */
+    drawAsRadio: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToggleAction
 
@@ -49704,11 +53834,16 @@ module ToggleButton {
         active?: boolean | null
         draw_indicator?: boolean | null
         inconsistent?: boolean | null
+        drawIndicator?: boolean | null
     }
 
 }
 
 interface ToggleButton extends Atk.ImplementorIface, Activatable, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.ToggleButton
+
+    drawIndicator: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToggleButton
 
@@ -49769,6 +53904,12 @@ interface ToggleButton extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.ToggleButton
 
+    connect(sigName: "notify::draw-indicator", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-indicator", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-indicator", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -49778,12 +53919,21 @@ interface ToggleButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::label", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToggleButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -49984,6 +54134,9 @@ interface ToggleToolButton extends Atk.ImplementorIface, Activatable, Buildable 
     connect(sigName: "notify::visible-vertical", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToggleToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -50145,6 +54298,16 @@ module ToolButton {
         label_widget?: Widget | null
         stock_id?: string | null
         use_underline?: boolean | null
+        /**
+         * The name of the themed icon displayed on the item.
+         * This property only has an effect if not overridden by "label",
+         * "icon_widget" or "stock_id" properties.
+         */
+        iconName?: string | null
+        iconWidget?: Widget | null
+        labelWidget?: Widget | null
+        stockId?: string | null
+        useUnderline?: boolean | null
     }
 
 }
@@ -50159,11 +54322,21 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * "icon_widget" or "stock_id" properties.
      */
     icon_name: string | null
+    /**
+     * The name of the themed icon displayed on the item.
+     * This property only has an effect if not overridden by "label",
+     * "icon_widget" or "stock_id" properties.
+     */
+    iconName: string | null
     icon_widget: Widget
+    iconWidget: Widget
     label: string | null
     label_widget: Widget
+    labelWidget: Widget
     stock_id: string | null
+    stockId: string | null
     use_underline: boolean
+    useUnderline: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToolButton
 
@@ -50301,6 +54474,9 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::visible-vertical", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToolButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -50465,6 +54641,9 @@ module ToolItem {
         is_important?: boolean | null
         visible_horizontal?: boolean | null
         visible_vertical?: boolean | null
+        isImportant?: boolean | null
+        visibleHorizontal?: boolean | null
+        visibleVertical?: boolean | null
     }
 
 }
@@ -50474,8 +54653,11 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
     // Own properties of Gtk-2.0.Gtk.ToolItem
 
     is_important: boolean
+    isImportant: boolean
     visible_horizontal: boolean
+    visibleHorizontal: boolean
     visible_vertical: boolean
+    visibleVertical: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToolItem
 
@@ -50739,6 +54921,9 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
     connect(sigName: "notify::visible-vertical", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::visible-vertical", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::visible-vertical", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToolItem, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -50868,6 +55053,8 @@ module ToolItemGroup {
         header_relief?: ReliefStyle | null
         label?: string | null
         label_widget?: Widget | null
+        headerRelief?: ReliefStyle | null
+        labelWidget?: Widget | null
     }
 
 }
@@ -50879,8 +55066,10 @@ interface ToolItemGroup extends Atk.ImplementorIface, Buildable, ToolShell {
     collapsed: boolean
     ellipsize: Pango.EllipsizeMode
     header_relief: ReliefStyle
+    headerRelief: ReliefStyle
     label: string | null
     label_widget: Widget
+    labelWidget: Widget
 
     // Own fields of Gtk-2.0.Gtk.ToolItemGroup
 
@@ -51021,6 +55210,9 @@ interface ToolItemGroup extends Atk.ImplementorIface, Buildable, ToolShell {
     connect(sigName: "notify::label-widget", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label-widget", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label-widget", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToolItemGroup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -51162,6 +55354,24 @@ module ToolPalette {
          * The style of items in the tool palette.
          */
         toolbar_style?: ToolbarStyle | null
+        /**
+         * The size of the icons in a tool palette is normally determined by
+         * the #GtkSettings:toolbar-icon-size setting. When this property is set,
+         * it overrides the setting.
+         * 
+         * This should only be used for special-purpose tool palettes, normal
+         * application tool palettes should respect the user preferences for the
+         * size of icons.
+         */
+        iconSize?: IconSize | null
+        /**
+         * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
+         */
+        iconSizeSet?: boolean | null
+        /**
+         * The style of items in the tool palette.
+         */
+        toolbarStyle?: ToolbarStyle | null
     }
 
 }
@@ -51181,13 +55391,31 @@ interface ToolPalette extends Atk.ImplementorIface, Buildable, Orientable {
      */
     icon_size: IconSize
     /**
+     * The size of the icons in a tool palette is normally determined by
+     * the #GtkSettings:toolbar-icon-size setting. When this property is set,
+     * it overrides the setting.
+     * 
+     * This should only be used for special-purpose tool palettes, normal
+     * application tool palettes should respect the user preferences for the
+     * size of icons.
+     */
+    iconSize: IconSize
+    /**
      * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
      */
     icon_size_set: boolean
     /**
+     * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
+     */
+    iconSizeSet: boolean
+    /**
      * The style of items in the tool palette.
      */
     toolbar_style: ToolbarStyle
+    /**
+     * The style of items in the tool palette.
+     */
+    toolbarStyle: ToolbarStyle
 
     // Own fields of Gtk-2.0.Gtk.ToolPalette
 
@@ -51356,6 +55584,9 @@ interface ToolPalette extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::toolbar-style", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::toolbar-style", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::toolbar-style", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: ToolPalette, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -51596,6 +55827,22 @@ module Toolbar {
          * If the tooltips of the toolbar should be active or not.
          */
         tooltips?: boolean | null
+        /**
+         * The size of the icons in a toolbar is normally determined by
+         * the toolbar-icon-size setting. When this property is set, it
+         * overrides the setting.
+         * 
+         * This should only be used for special-purpose toolbars, normal
+         * application toolbars should respect the user preferences for the
+         * size of icons.
+         */
+        iconSize?: number | null
+        /**
+         * Is %TRUE if the icon-size property has been set.
+         */
+        iconSizeSet?: boolean | null
+        showArrow?: boolean | null
+        toolbarStyle?: ToolbarStyle | null
     }
 
 }
@@ -51605,11 +55852,27 @@ interface Toolbar extends Atk.ImplementorIface, Buildable, Orientable, ToolShell
     // Own properties of Gtk-2.0.Gtk.Toolbar
 
     /**
+     * The size of the icons in a toolbar is normally determined by
+     * the toolbar-icon-size setting. When this property is set, it
+     * overrides the setting.
+     * 
+     * This should only be used for special-purpose toolbars, normal
+     * application toolbars should respect the user preferences for the
+     * size of icons.
+     */
+    iconSize: number
+    /**
      * Is %TRUE if the icon-size property has been set.
      */
     icon_size_set: boolean
+    /**
+     * Is %TRUE if the icon-size property has been set.
+     */
+    iconSizeSet: boolean
     show_arrow: boolean
+    showArrow: boolean
     toolbar_style: ToolbarStyle
+    toolbarStyle: ToolbarStyle
 
     // Own fields of Gtk-2.0.Gtk.Toolbar
 
@@ -51848,6 +56111,9 @@ interface Toolbar extends Atk.ImplementorIface, Buildable, Orientable, ToolShell
 
     // Class property signals of Gtk-2.0.Gtk.Toolbar
 
+    connect(sigName: "notify::icon-size", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::icon-size", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::icon-size", ...args: any[]): void
     connect(sigName: "notify::icon-size-set", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-size-set", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-size-set", ...args: any[]): void
@@ -51857,6 +56123,9 @@ interface Toolbar extends Atk.ImplementorIface, Buildable, Orientable, ToolShell
     connect(sigName: "notify::toolbar-style", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::toolbar-style", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::toolbar-style", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Toolbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -52143,6 +56412,8 @@ module TreeModelFilter {
 
         child_model?: TreeModel | null
         virtual_root?: TreePath | null
+        childModel?: TreeModel | null
+        virtualRoot?: TreePath | null
     }
 
 }
@@ -52152,7 +56423,9 @@ interface TreeModelFilter extends TreeDragSource, TreeModel {
     // Own properties of Gtk-2.0.Gtk.TreeModelFilter
 
     readonly child_model: TreeModel
+    readonly childModel: TreeModel
     readonly virtual_root: TreePath
+    readonly virtualRoot: TreePath
 
     // Own fields of Gtk-2.0.Gtk.TreeModelFilter
 
@@ -52993,6 +57266,51 @@ module TreeView {
         show_expanders?: boolean | null
         tooltip_column?: number | null
         vadjustment?: Adjustment | null
+        enableGridLines?: TreeViewGridLines | null
+        enableSearch?: boolean | null
+        enableTreeLines?: boolean | null
+        expanderColumn?: TreeViewColumn | null
+        /**
+         * Setting the ::fixed-height-mode property to %TRUE speeds up
+         * #GtkTreeView by assuming that all rows have the same height.
+         * Only enable this option if all rows are the same height.
+         * Please see gtk_tree_view_set_fixed_height_mode() for more
+         * information on this option.
+         */
+        fixedHeightMode?: boolean | null
+        headersClickable?: boolean | null
+        headersVisible?: boolean | null
+        /**
+         * Enables of disables the hover expansion mode of `tree_view`.
+         * Hover expansion makes rows expand or collapse if the pointer moves
+         * over them.
+         * 
+         * This mode is primarily intended for treeviews in popups, e.g.
+         * in #GtkComboBox or #GtkEntryCompletion.
+         */
+        hoverExpand?: boolean | null
+        /**
+         * Enables of disables the hover selection mode of `tree_view`.
+         * Hover selection makes the selected row follow the pointer.
+         * Currently, this works only for the selection modes
+         * %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
+         * 
+         * This mode is primarily intended for treeviews in popups, e.g.
+         * in #GtkComboBox or #GtkEntryCompletion.
+         */
+        hoverSelection?: boolean | null
+        /**
+         * Extra indentation for each level.
+         */
+        levelIndentation?: number | null
+        rubberBanding?: boolean | null
+        rulesHint?: boolean | null
+        searchColumn?: number | null
+        /**
+         * %TRUE if the view has expanders.
+         */
+        showExpanders?: boolean | null
+        tooltipColumn?: number | null
     }
 
 }
@@ -53002,9 +57320,13 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.TreeView
 
     enable_grid_lines: TreeViewGridLines
+    enableGridLines: TreeViewGridLines
     enable_search: boolean
+    enableSearch: boolean
     enable_tree_lines: boolean
+    enableTreeLines: boolean
     expander_column: TreeViewColumn
+    expanderColumn: TreeViewColumn
     /**
      * Setting the ::fixed-height-mode property to %TRUE speeds up
      * #GtkTreeView by assuming that all rows have the same height.
@@ -53013,9 +57335,19 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      * information on this option.
      */
     fixed_height_mode: boolean
+    /**
+     * Setting the ::fixed-height-mode property to %TRUE speeds up
+     * #GtkTreeView by assuming that all rows have the same height.
+     * Only enable this option if all rows are the same height.
+     * Please see gtk_tree_view_set_fixed_height_mode() for more
+     * information on this option.
+     */
+    fixedHeightMode: boolean
     hadjustment: Adjustment
     headers_clickable: boolean
+    headersClickable: boolean
     headers_visible: boolean
+    headersVisible: boolean
     /**
      * Enables of disables the hover expansion mode of `tree_view`.
      * Hover expansion makes rows expand or collapse if the pointer moves
@@ -53025,6 +57357,15 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      * in #GtkComboBox or #GtkEntryCompletion.
      */
     hover_expand: boolean
+    /**
+     * Enables of disables the hover expansion mode of `tree_view`.
+     * Hover expansion makes rows expand or collapse if the pointer moves
+     * over them.
+     * 
+     * This mode is primarily intended for treeviews in popups, e.g.
+     * in #GtkComboBox or #GtkEntryCompletion.
+     */
+    hoverExpand: boolean
     /**
      * Enables of disables the hover selection mode of `tree_view`.
      * Hover selection makes the selected row follow the pointer.
@@ -53036,19 +57377,41 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      */
     hover_selection: boolean
     /**
+     * Enables of disables the hover selection mode of `tree_view`.
+     * Hover selection makes the selected row follow the pointer.
+     * Currently, this works only for the selection modes
+     * %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
+     * 
+     * This mode is primarily intended for treeviews in popups, e.g.
+     * in #GtkComboBox or #GtkEntryCompletion.
+     */
+    hoverSelection: boolean
+    /**
      * Extra indentation for each level.
      */
     level_indentation: number
+    /**
+     * Extra indentation for each level.
+     */
+    levelIndentation: number
     model: TreeModel
     reorderable: boolean
     rubber_banding: boolean
+    rubberBanding: boolean
     rules_hint: boolean
+    rulesHint: boolean
     search_column: number
+    searchColumn: number
     /**
      * %TRUE if the view has expanders.
      */
     show_expanders: boolean
+    /**
+     * %TRUE if the view has expanders.
+     */
+    showExpanders: boolean
     tooltip_column: number
+    tooltipColumn: number
     vadjustment: Adjustment
 
     // Own fields of Gtk-2.0.Gtk.TreeView
@@ -53952,6 +58315,9 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::vadjustment", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::vadjustment", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::vadjustment", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: TreeView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -54094,6 +58460,16 @@ module TreeViewColumn {
         title?: string | null
         visible?: boolean | null
         widget?: Widget | null
+        fixedWidth?: number | null
+        maxWidth?: number | null
+        minWidth?: number | null
+        /**
+         * Logical sort column ID this column sorts on when selected for sorting. Setting the sort column ID makes the column header
+         * clickable. Set to %-1 to make the column unsortable.
+         */
+        sortColumnId?: number | null
+        sortIndicator?: boolean | null
+        sortOrder?: SortType | null
     }
 
 }
@@ -54102,8 +58478,18 @@ interface TreeViewColumn extends Buildable, CellLayout {
 
     // Own properties of Gtk-2.0.Gtk.TreeViewColumn
 
+    fixedWidth: number
+    maxWidth: number
+    minWidth: number
     sizing: TreeViewColumnSizing
+    /**
+     * Logical sort column ID this column sorts on when selected for sorting. Setting the sort column ID makes the column header
+     * clickable. Set to %-1 to make the column unsortable.
+     */
+    sortColumnId: number
     sort_indicator: boolean
+    sortIndicator: boolean
+    sortOrder: SortType
     widget: Widget
 
     // Own fields of Gtk-2.0.Gtk.TreeViewColumn
@@ -54489,12 +58875,27 @@ interface TreeViewColumn extends Buildable, CellLayout {
 
     // Class property signals of Gtk-2.0.Gtk.TreeViewColumn
 
+    connect(sigName: "notify::fixed-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::fixed-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::fixed-width", ...args: any[]): void
+    connect(sigName: "notify::max-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-width", ...args: any[]): void
+    connect(sigName: "notify::min-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-width", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-width", ...args: any[]): void
     connect(sigName: "notify::sizing", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sizing", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sizing", ...args: any[]): void
+    connect(sigName: "notify::sort-column-id", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sort-column-id", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sort-column-id", ...args: any[]): void
     connect(sigName: "notify::sort-indicator", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sort-indicator", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sort-indicator", ...args: any[]): void
+    connect(sigName: "notify::sort-order", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sort-order", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sort-order", ...args: any[]): void
     connect(sigName: "notify::widget", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::widget", callback: (($obj: TreeViewColumn, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::widget", ...args: any[]): void
@@ -54593,6 +58994,14 @@ module UIManager {
          * menus never have tearoff menu items.
          */
         add_tearoffs?: boolean | null
+        /**
+         * The "add-tearoffs" property controls whether generated menus
+         * have tearoff menu items.
+         * 
+         * Note that this only affects regular menus. Generated popup
+         * menus never have tearoff menu items.
+         */
+        addTearoffs?: boolean | null
     }
 
 }
@@ -54609,6 +59018,14 @@ interface UIManager extends Buildable {
      * menus never have tearoff menu items.
      */
     add_tearoffs: boolean
+    /**
+     * The "add-tearoffs" property controls whether generated menus
+     * have tearoff menu items.
+     * 
+     * Note that this only affects regular menus. Generated popup
+     * menus never have tearoff menu items.
+     */
+    addTearoffs: boolean
     readonly ui: string | null
 
     // Own fields of Gtk-2.0.Gtk.UIManager
@@ -54871,6 +59288,9 @@ interface VBox extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.VBox
 
+    connect(sigName: "notify::border-width", callback: (($obj: VBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: VBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: VBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: VBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -55001,6 +59421,12 @@ interface VButtonBox extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.VButtonBox
 
+    connect(sigName: "notify::layout-style", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::layout-style", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::layout-style", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: VButtonBox, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -55152,6 +59578,9 @@ interface VPaned extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::position-set", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::position-set", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::position-set", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: VPaned, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -55276,6 +59705,9 @@ interface VRuler extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.VRuler
 
+    connect(sigName: "notify::max-size", callback: (($obj: VRuler, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-size", callback: (($obj: VRuler, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-size", ...args: any[]): void
     connect(sigName: "notify::app-paintable", callback: (($obj: VRuler, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::app-paintable", callback: (($obj: VRuler, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::app-paintable", ...args: any[]): void
@@ -55403,6 +59835,12 @@ interface VScale extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Class property signals of Gtk-2.0.Gtk.VScale
 
+    connect(sigName: "notify::draw-value", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::draw-value", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::draw-value", ...args: any[]): void
+    connect(sigName: "notify::value-pos", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::value-pos", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::value-pos", ...args: any[]): void
     connect(sigName: "notify::fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::fill-level", ...args: any[]): void
@@ -55412,9 +59850,15 @@ interface VScale extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: VScale, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -55564,9 +60008,15 @@ interface VScrollbar extends Atk.ImplementorIface, Buildable, Orientable {
     connect(sigName: "notify::restrict-to-fill-level", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::restrict-to-fill-level", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::restrict-to-fill-level", ...args: any[]): void
+    connect(sigName: "notify::round-digits", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::round-digits", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::round-digits", ...args: any[]): void
     connect(sigName: "notify::show-fill-level", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-fill-level", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::show-fill-level", ...args: any[]): void
+    connect(sigName: "notify::update-policy", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::update-policy", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::update-policy", ...args: any[]): void
     connect(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upper-stepper-sensitivity", callback: (($obj: VScrollbar, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::upper-stepper-sensitivity", ...args: any[]): void
@@ -55813,11 +60263,16 @@ module Viewport {
         hadjustment?: Adjustment | null
         shadow_type?: ShadowType | null
         vadjustment?: Adjustment | null
+        shadowType?: ShadowType | null
     }
 
 }
 
 interface Viewport extends Atk.ImplementorIface, Buildable {
+
+    // Own properties of Gtk-2.0.Gtk.Viewport
+
+    shadowType: ShadowType
 
     // Own fields of Gtk-2.0.Gtk.Viewport
 
@@ -55884,6 +60339,12 @@ interface Viewport extends Atk.ImplementorIface, Buildable {
 
     // Class property signals of Gtk-2.0.Gtk.Viewport
 
+    connect(sigName: "notify::shadow-type", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::shadow-type", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::shadow-type", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Viewport, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -56028,6 +60489,9 @@ interface VolumeButton extends Atk.ImplementorIface, Activatable, Buildable, Ori
     connect(sigName: "notify::value", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::value", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::value", ...args: any[]): void
+    connect(sigName: "notify::focus-on-click", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::focus-on-click", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::focus-on-click", ...args: any[]): void
     connect(sigName: "notify::image", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::image", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::image", ...args: any[]): void
@@ -56037,12 +60501,21 @@ interface VolumeButton extends Atk.ImplementorIface, Activatable, Buildable, Ori
     connect(sigName: "notify::label", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::label", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::label", ...args: any[]): void
+    connect(sigName: "notify::use-stock", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-stock", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-stock", ...args: any[]): void
+    connect(sigName: "notify::use-underline", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::use-underline", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::use-underline", ...args: any[]): void
     connect(sigName: "notify::xalign", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::xalign", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::xalign", ...args: any[]): void
     connect(sigName: "notify::yalign", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::yalign", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::yalign", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: VolumeButton, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void
@@ -56717,6 +61190,55 @@ module Widget {
         tooltip_text?: string | null
         visible?: boolean | null
         width_request?: number | null
+        appPaintable?: boolean | null
+        canDefault?: boolean | null
+        canFocus?: boolean | null
+        /**
+         * Whether or not the widget is double buffered.
+         */
+        doubleBuffered?: boolean | null
+        extensionEvents?: Gdk.ExtensionMode | null
+        hasDefault?: boolean | null
+        hasFocus?: boolean | null
+        /**
+         * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
+         * A value of %TRUE indicates that `widget` can have a tooltip, in this case
+         * the widget will be queried using #GtkWidget::query-tooltip to determine
+         * whether it will provide a tooltip or not.
+         * 
+         * Note that setting this property to %TRUE for the first time will change
+         * the event masks of the GdkWindows of this widget to include leave-notify
+         * and motion-notify events.  This cannot and will not be undone when the
+         * property is set to %FALSE again.
+         */
+        hasTooltip?: boolean | null
+        heightRequest?: number | null
+        isFocus?: boolean | null
+        noShowAll?: boolean | null
+        receivesDefault?: boolean | null
+        /**
+         * Sets the text of tooltip to be the given string, which is marked up
+         * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+         * Also see gtk_tooltip_set_markup().
+         * 
+         * This is a convenience property which will take care of getting the
+         * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+         * will automatically be set to %TRUE and there will be taken care of
+         * #GtkWidget::query-tooltip in the default signal handler.
+         */
+        tooltipMarkup?: string | null
+        /**
+         * Sets the text of tooltip to be the given string.
+         * 
+         * Also see gtk_tooltip_set_text().
+         * 
+         * This is a convenience property which will take care of getting the
+         * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+         * will automatically be set to %TRUE and there will be taken care of
+         * #GtkWidget::query-tooltip in the default signal handler.
+         */
+        tooltipText?: string | null
+        widthRequest?: number | null
     }
 
 }
@@ -56726,17 +61248,28 @@ interface Widget extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.Widget
 
     app_paintable: boolean
+    appPaintable: boolean
     can_default: boolean
+    canDefault: boolean
     can_focus: boolean
+    canFocus: boolean
     readonly composite_child: boolean
+    readonly compositeChild: boolean
     /**
      * Whether or not the widget is double buffered.
      */
     double_buffered: boolean
+    /**
+     * Whether or not the widget is double buffered.
+     */
+    doubleBuffered: boolean
     events: Gdk.EventMask
     extension_events: Gdk.ExtensionMode
+    extensionEvents: Gdk.ExtensionMode
     has_default: boolean
+    hasDefault: boolean
     has_focus: boolean
+    hasFocus: boolean
     /**
      * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
      * A value of %TRUE indicates that `widget` can have a tooltip, in this case
@@ -56749,10 +61282,26 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * property is set to %FALSE again.
      */
     has_tooltip: boolean
+    /**
+     * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
+     * A value of %TRUE indicates that `widget` can have a tooltip, in this case
+     * the widget will be queried using #GtkWidget::query-tooltip to determine
+     * whether it will provide a tooltip or not.
+     * 
+     * Note that setting this property to %TRUE for the first time will change
+     * the event masks of the GdkWindows of this widget to include leave-notify
+     * and motion-notify events.  This cannot and will not be undone when the
+     * property is set to %FALSE again.
+     */
+    hasTooltip: boolean
     height_request: number
+    heightRequest: number
     is_focus: boolean
+    isFocus: boolean
     no_show_all: boolean
+    noShowAll: boolean
     receives_default: boolean
+    receivesDefault: boolean
     sensitive: boolean
     /**
      * Sets the text of tooltip to be the given string, which is marked up
@@ -56766,6 +61315,17 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      */
     tooltip_markup: string | null
     /**
+     * Sets the text of tooltip to be the given string, which is marked up
+     * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * Also see gtk_tooltip_set_markup().
+     * 
+     * This is a convenience property which will take care of getting the
+     * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+     * will automatically be set to %TRUE and there will be taken care of
+     * #GtkWidget::query-tooltip in the default signal handler.
+     */
+    tooltipMarkup: string | null
+    /**
      * Sets the text of tooltip to be the given string.
      * 
      * Also see gtk_tooltip_set_text().
@@ -56776,8 +61336,20 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * #GtkWidget::query-tooltip in the default signal handler.
      */
     tooltip_text: string | null
+    /**
+     * Sets the text of tooltip to be the given string.
+     * 
+     * Also see gtk_tooltip_set_text().
+     * 
+     * This is a convenience property which will take care of getting the
+     * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
+     * will automatically be set to %TRUE and there will be taken care of
+     * #GtkWidget::query-tooltip in the default signal handler.
+     */
+    tooltipText: string | null
     visible: boolean
     width_request: number
+    widthRequest: number
 
     // Own fields of Gtk-2.0.Gtk.Widget
 
@@ -59171,6 +63743,48 @@ module Window {
         type_hint?: Gdk.WindowTypeHint | null
         urgency_hint?: boolean | null
         window_position?: WindowPosition | null
+        /**
+         * Whether the window should receive the input focus.
+         */
+        acceptFocus?: boolean | null
+        /**
+         * If %TRUE, users can expand the window beyond its minimum size.
+         */
+        allowGrow?: boolean | null
+        /**
+         * If %TRUE, the window has no mimimum size. Setting this to %TRUE is
+         * 99&percnt; of the time a bad idea.
+         */
+        allowShrink?: boolean | null
+        defaultHeight?: number | null
+        defaultWidth?: number | null
+        destroyWithParent?: boolean | null
+        /**
+         * Whether the window should receive the input focus when mapped.
+         */
+        focusOnMap?: boolean | null
+        /**
+         * The :icon-name property specifies the name of the themed icon to
+         * use as the window icon. See #GtkIconTheme for more details.
+         */
+        iconName?: string | null
+        mnemonicsVisible?: boolean | null
+        skipPagerHint?: boolean | null
+        skipTaskbarHint?: boolean | null
+        /**
+         * The :startup-id is a write-only property for setting window's
+         * startup notification identifier. See gtk_window_set_startup_id()
+         * for more details.
+         */
+        startupId?: string | null
+        /**
+         * The transient parent of the window. See gtk_window_set_transient_for() for
+         * more details about transient windows.
+         */
+        transientFor?: Window | null
+        typeHint?: Gdk.WindowTypeHint | null
+        urgencyHint?: boolean | null
+        windowPosition?: WindowPosition | null
     }
 
 }
@@ -59183,23 +63797,51 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * Whether the window should receive the input focus.
      */
     accept_focus: boolean
+    /**
+     * Whether the window should receive the input focus.
+     */
+    acceptFocus: boolean
+    /**
+     * If %TRUE, users can expand the window beyond its minimum size.
+     */
+    allowGrow: boolean
+    /**
+     * If %TRUE, the window has no mimimum size. Setting this to %TRUE is
+     * 99&percnt; of the time a bad idea.
+     */
+    allowShrink: boolean
     default_height: number
+    defaultHeight: number
     default_width: number
+    defaultWidth: number
     /**
      * Whether the window frame should have a close button.
      */
     deletable: boolean
+    destroyWithParent: boolean
     /**
      * Whether the window should receive the input focus when mapped.
      */
     focus_on_map: boolean
+    /**
+     * Whether the window should receive the input focus when mapped.
+     */
+    focusOnMap: boolean
+    readonly hasToplevelFocus: boolean
     icon: GdkPixbuf.Pixbuf
     /**
      * The :icon-name property specifies the name of the themed icon to
      * use as the window icon. See #GtkIconTheme for more details.
      */
     icon_name: string | null
+    /**
+     * The :icon-name property specifies the name of the themed icon to
+     * use as the window icon. See #GtkIconTheme for more details.
+     */
+    iconName: string | null
+    readonly isActive: boolean
     mnemonics_visible: boolean
+    mnemonicsVisible: boolean
     /**
      * The requested opacity of the window. See gtk_window_set_opacity() for
      * more details about window opacity.
@@ -59208,7 +63850,9 @@ interface Window extends Atk.ImplementorIface, Buildable {
     resizable: boolean
     role: string | null
     skip_pager_hint: boolean
+    skipPagerHint: boolean
     skip_taskbar_hint: boolean
+    skipTaskbarHint: boolean
     /**
      * The :startup-id is a write-only property for setting window's
      * startup notification identifier. See gtk_window_set_startup_id()
@@ -59216,12 +63860,26 @@ interface Window extends Atk.ImplementorIface, Buildable {
      */
     startup_id: string | null
     /**
+     * The :startup-id is a write-only property for setting window's
+     * startup notification identifier. See gtk_window_set_startup_id()
+     * for more details.
+     */
+    startupId: string | null
+    /**
      * The transient parent of the window. See gtk_window_set_transient_for() for
      * more details about transient windows.
      */
     transient_for: Window
+    /**
+     * The transient parent of the window. See gtk_window_set_transient_for() for
+     * more details about transient windows.
+     */
+    transientFor: Window
+    typeHint: Gdk.WindowTypeHint
     urgency_hint: boolean
+    urgencyHint: boolean
     window_position: WindowPosition
+    windowPosition: WindowPosition
 
     // Own fields of Gtk-2.0.Gtk.Window
 
@@ -60350,6 +65008,12 @@ interface Window extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::accept-focus", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-focus", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accept-focus", ...args: any[]): void
+    connect(sigName: "notify::allow-grow", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-grow", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-grow", ...args: any[]): void
+    connect(sigName: "notify::allow-shrink", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::allow-shrink", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::allow-shrink", ...args: any[]): void
     connect(sigName: "notify::default-height", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::default-height", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::default-height", ...args: any[]): void
@@ -60359,15 +65023,24 @@ interface Window extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::deletable", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deletable", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::deletable", ...args: any[]): void
+    connect(sigName: "notify::destroy-with-parent", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::destroy-with-parent", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::destroy-with-parent", ...args: any[]): void
     connect(sigName: "notify::focus-on-map", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::focus-on-map", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::focus-on-map", ...args: any[]): void
+    connect(sigName: "notify::has-toplevel-focus", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::has-toplevel-focus", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::has-toplevel-focus", ...args: any[]): void
     connect(sigName: "notify::icon", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon", ...args: any[]): void
     connect(sigName: "notify::icon-name", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icon-name", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::icon-name", ...args: any[]): void
+    connect(sigName: "notify::is-active", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-active", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-active", ...args: any[]): void
     connect(sigName: "notify::mnemonics-visible", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mnemonics-visible", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::mnemonics-visible", ...args: any[]): void
@@ -60392,12 +65065,18 @@ interface Window extends Atk.ImplementorIface, Buildable {
     connect(sigName: "notify::transient-for", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::transient-for", ...args: any[]): void
+    connect(sigName: "notify::type-hint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type-hint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::type-hint", ...args: any[]): void
     connect(sigName: "notify::urgency-hint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::urgency-hint", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::urgency-hint", ...args: any[]): void
     connect(sigName: "notify::window-position", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window-position", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window-position", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

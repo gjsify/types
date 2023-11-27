@@ -687,6 +687,16 @@ module Forward {
          * this area is returned.
          */
         search_area?: BoundingBox | null
+        /**
+         * The number of requested results to a search query.
+         */
+        answerCount?: number | null
+        /**
+         * The bounding box that limits the search area.
+         * If #GeocodeForward:bounded property is set to #TRUE only results from
+         * this area is returned.
+         */
+        searchArea?: BoundingBox | null
     }
 
 }
@@ -700,6 +710,10 @@ interface Forward {
      */
     answer_count: number
     /**
+     * The number of requested results to a search query.
+     */
+    answerCount: number
+    /**
      * If set to #TRUE then only results in the #GeocodeForward:search-area
      * bounding box are returned.
      * If set to #FALSE the #GeocodeForward:search-area is treated like a
@@ -712,6 +726,12 @@ interface Forward {
      * this area is returned.
      */
     search_area: BoundingBox
+    /**
+     * The bounding box that limits the search area.
+     * If #GeocodeForward:bounded property is set to #TRUE only results from
+     * this area is returned.
+     */
+    searchArea: BoundingBox
 
     // Owm methods of GeocodeGlib-1.0.GeocodeGlib.Forward
 
@@ -1241,6 +1261,31 @@ module Nominatim {
          * string.
          */
         user_agent?: string | null
+        /**
+         * The base URL of the Nominatim service, for example
+         * `https://nominatim.example.org`.
+         */
+        baseUrl?: string | null
+        /**
+         * E-mail address of the maintainer of the software making the
+         * geocoding requests to the  Nominatim server. This is used to contact
+         * them in the event of a problem with their usage. See
+         * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
+         */
+        maintainerEmailAddress?: string | null
+        /**
+         * User-Agent string to send with HTTP(S) requests, or %NULL to use the
+         * default user agent, which is derived from the geocode-glib version
+         * and #GApplication:id, for example: `geocode-glib/3.20 (MyAppId)`.
+         * 
+         * As per the
+         * [Nominatim usage policy](http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy),
+         * it should be set to a string which identifies the application which
+         * is using geocode-glib, and must be a valid
+         * [user agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)
+         * string.
+         */
+        userAgent?: string | null
     }
 
 }
@@ -1255,12 +1300,24 @@ interface Nominatim extends Backend {
      */
     readonly base_url: string | null
     /**
+     * The base URL of the Nominatim service, for example
+     * `https://nominatim.example.org`.
+     */
+    readonly baseUrl: string | null
+    /**
      * E-mail address of the maintainer of the software making the
      * geocoding requests to the  Nominatim server. This is used to contact
      * them in the event of a problem with their usage. See
      * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
      */
     readonly maintainer_email_address: string | null
+    /**
+     * E-mail address of the maintainer of the software making the
+     * geocoding requests to the  Nominatim server. This is used to contact
+     * them in the event of a problem with their usage. See
+     * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
+     */
+    readonly maintainerEmailAddress: string | null
     /**
      * User-Agent string to send with HTTP(S) requests, or %NULL to use the
      * default user agent, which is derived from the geocode-glib version
@@ -1274,6 +1331,19 @@ interface Nominatim extends Backend {
      * string.
      */
     user_agent: string | null
+    /**
+     * User-Agent string to send with HTTP(S) requests, or %NULL to use the
+     * default user agent, which is derived from the geocode-glib version
+     * and #GApplication:id, for example: `geocode-glib/3.20 (MyAppId)`.
+     * 
+     * As per the
+     * [Nominatim usage policy](http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy),
+     * it should be set to a string which identifies the application which
+     * is using geocode-glib, and must be a valid
+     * [user agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)
+     * string.
+     */
+    userAgent: string | null
 
     // Own fields of GeocodeGlib-1.0.GeocodeGlib.Nominatim
 
@@ -1427,6 +1497,38 @@ module Place {
          * The town.
          */
         town?: string | null
+        /**
+         * The local administrative area.
+         */
+        administrativeArea?: string | null
+        /**
+         * The bounding box for the place.
+         */
+        boundingBox?: BoundingBox | null
+        /**
+         * The country code.
+         */
+        countryCode?: string | null
+        /**
+         * The OpenStreetMap id of the place.
+         */
+        osmId?: string | null
+        /**
+         * The OpenStreetMap type of the place.
+         */
+        osmType?: PlaceOsmType | null
+        /**
+         * The type of the place.
+         */
+        placeType?: PlaceType | null
+        /**
+         * The postal code.
+         */
+        postalCode?: string | null
+        /**
+         * The street address.
+         */
+        streetAddress?: string | null
     }
 
 }
@@ -1440,6 +1542,10 @@ interface Place {
      */
     administrative_area: string | null
     /**
+     * The local administrative area.
+     */
+    administrativeArea: string | null
+    /**
      * A named area such as a campus or neighborhood.
      */
     area: string | null
@@ -1447,6 +1553,10 @@ interface Place {
      * The bounding box for the place.
      */
     bounding_box: BoundingBox
+    /**
+     * The bounding box for the place.
+     */
+    boundingBox: BoundingBox
     /**
      * A specific building on a street or in an area.
      */
@@ -1463,6 +1573,10 @@ interface Place {
      * The country code.
      */
     country_code: string | null
+    /**
+     * The country code.
+     */
+    countryCode: string | null
     /**
      * The county.
      */
@@ -1484,17 +1598,33 @@ interface Place {
      */
     osm_id: string | null
     /**
+     * The OpenStreetMap id of the place.
+     */
+    osmId: string | null
+    /**
      * The OpenStreetMap type of the place.
      */
     osm_type: PlaceOsmType
+    /**
+     * The OpenStreetMap type of the place.
+     */
+    osmType: PlaceOsmType
     /**
      * The type of the place.
      */
     readonly place_type: PlaceType
     /**
+     * The type of the place.
+     */
+    readonly placeType: PlaceType
+    /**
      * The postal code.
      */
     postal_code: string | null
+    /**
+     * The postal code.
+     */
+    postalCode: string | null
     /**
      * The state.
      */
@@ -1507,6 +1637,10 @@ interface Place {
      * The street address.
      */
     street_address: string | null
+    /**
+     * The street address.
+     */
+    streetAddress: string | null
     /**
      * The town.
      */

@@ -228,6 +228,8 @@ export module Menu {
 
         dbus_name?: string | null
         dbus_object?: string | null
+        dbusName?: string | null
+        dbusObject?: string | null
     }
 
 }
@@ -237,7 +239,9 @@ export interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of DbusmenuGtk-0.4.DbusmenuGtk.Menu
 
     readonly dbus_name: string | null
+    readonly dbusName: string | null
     readonly dbus_object: string | null
+    readonly dbusObject: string | null
 
     // Own fields of DbusmenuGtk-0.4.DbusmenuGtk.Menu
 
@@ -342,6 +346,12 @@ export interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
     connect(sigName: "notify::dbus-object", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::dbus-object", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::dbus-object", ...args: any[]): void
+    connect(sigName: "notify::accel-group", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-group", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-group", ...args: any[]): void
+    connect(sigName: "notify::accel-path", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accel-path", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accel-path", ...args: any[]): void
     connect(sigName: "notify::active", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::active", ...args: any[]): void
@@ -363,6 +373,9 @@ export interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
     connect(sigName: "notify::take-focus", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::take-focus", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::take-focus", ...args: any[]): void
+    connect(sigName: "notify::border-width", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::border-width", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::border-width", ...args: any[]): void
     connect(sigName: "notify::child", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::child", callback: (($obj: Menu, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::child", ...args: any[]): void

@@ -1,6 +1,6 @@
 {
     "name": "@girs/rygelrenderergst-2.6",
-    "version": "2.6.0-3.2.5",
+    "version": "2.6.0-3.2.6",
     "description": "GJS TypeScript type definitions for RygelRendererGst-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "rygelrenderergst-2.6.js",

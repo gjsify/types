@@ -40,6 +40,7 @@ export module PasswordDialog {
         password?: string | null
         realm?: string | null
         username?: string | null
+        anonymousAllowed?: boolean | null
     }
 
 }
@@ -50,6 +51,7 @@ export interface PasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
 
     anonymous: boolean
     anonymous_allowed: boolean
+    anonymousAllowed: boolean
     password: string
     realm: string
     username: string

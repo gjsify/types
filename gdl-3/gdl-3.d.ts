@@ -285,6 +285,14 @@ module Dock {
          */
         skip_taskbar?: boolean | null
         width?: number | null
+        defaultTitle?: string | null
+        /**
+         * Whether or not to prevent a floating dock window from appearing in the
+         * taskbar. Note that this only affects floating windows that are created
+         * after this flag is set; existing windows are not affected.  Usually,
+         * this property is used when you create the dock.
+         */
+        skipTaskbar?: boolean | null
     }
 
 }
@@ -294,6 +302,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Gdl-3.Gdl.Dock
 
     default_title: string | null
+    defaultTitle: string | null
     readonly floating: boolean
     floatx: number
     floaty: number
@@ -305,6 +314,13 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * this property is used when you create the dock.
      */
     skip_taskbar: boolean
+    /**
+     * Whether or not to prevent a floating dock window from appearing in the
+     * taskbar. Note that this only affects floating windows that are created
+     * after this flag is set; existing windows are not affected.  Usually,
+     * this property is used when you create the dock.
+     */
+    skipTaskbar: boolean
     width: number
 
     // Conflicting properties
@@ -729,6 +745,7 @@ module DockBar {
          * The #GdlDockMaster object attached to the dockbar.
          */
         master?: GObject.Object | null
+        dockbarStyle?: DockBarStyle | null
     }
 
 }
@@ -738,6 +755,7 @@ interface DockBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Gdl-3.Gdl.DockBar
 
     dockbar_style: DockBarStyle
+    dockbarStyle: DockBarStyle
     /**
      * The #GdlDockMaster object attached to the dockbar.
      */
@@ -1095,6 +1113,8 @@ module DockItem {
         preferred_height?: number | null
         preferred_width?: number | null
         resize?: boolean | null
+        preferredHeight?: number | null
+        preferredWidth?: number | null
     }
 
 }
@@ -1124,7 +1144,9 @@ interface DockItem extends Atk.ImplementorIface, Gtk.Buildable {
      */
     orientation: Gtk.Orientation
     preferred_height: number
+    preferredHeight: number
     preferred_width: number
+    preferredWidth: number
     resize: boolean
 
     // Conflicting properties
@@ -2292,6 +2314,10 @@ module DockMaster {
         switcher_style?: SwitcherStyle | null
         tab_pos?: Gtk.PositionType | null
         tab_reorderable?: boolean | null
+        defaultTitle?: string | null
+        switcherStyle?: SwitcherStyle | null
+        tabPos?: Gtk.PositionType | null
+        tabReorderable?: boolean | null
     }
 
 }
@@ -2301,10 +2327,14 @@ interface DockMaster {
     // Own properties of Gdl-3.Gdl.DockMaster
 
     default_title: string | null
+    defaultTitle: string | null
     locked: number
     switcher_style: SwitcherStyle
+    switcherStyle: SwitcherStyle
     tab_pos: Gtk.PositionType
+    tabPos: Gtk.PositionType
     tab_reorderable: boolean
+    tabReorderable: boolean
 
     // Own fields of Gdl-3.Gdl.DockMaster
 
@@ -2833,6 +2863,18 @@ module DockObject {
          * A stock id to use for the icon of the dock object.
          */
         stock_id?: string | null
+        /**
+         * A long descriptive name.
+         */
+        longName?: string | null
+        /**
+         * A GdkPixbuf to use for the icon of the dock object.
+         */
+        pixbufIcon?: any | null
+        /**
+         * A stock id to use for the icon of the dock object.
+         */
+        stockId?: string | null
     }
 
 }
@@ -2845,6 +2887,10 @@ interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * A long descriptive name.
      */
     long_name: string | null
+    /**
+     * A long descriptive name.
+     */
+    longName: string | null
     /**
      * The master which manages all the objects in a dock ring
      */
@@ -2859,9 +2905,17 @@ interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      */
     pixbuf_icon: any
     /**
+     * A GdkPixbuf to use for the icon of the dock object.
+     */
+    pixbufIcon: any
+    /**
      * A stock id to use for the icon of the dock object.
      */
     stock_id: string | null
+    /**
+     * A stock id to use for the icon of the dock object.
+     */
+    stockId: string | null
 
     // Own fields of Gdl-3.Gdl.DockObject
 
@@ -3797,6 +3851,7 @@ module DockPlaceholder {
         next_placement?: DockPlacement | null
         sticky?: boolean | null
         width?: number | null
+        nextPlacement?: DockPlacement | null
     }
 
 }
@@ -3811,6 +3866,7 @@ interface DockPlaceholder extends Atk.ImplementorIface, Gtk.Buildable {
     height: number
     host: DockObject
     next_placement: DockPlacement
+    nextPlacement: DockPlacement
     readonly sticky: boolean
     width: number
 
@@ -4818,6 +4874,9 @@ module Switcher {
         switcher_style?: SwitcherStyle | null
         tab_pos?: Gtk.PositionType | null
         tab_reorderable?: boolean | null
+        switcherStyle?: SwitcherStyle | null
+        tabPos?: Gtk.PositionType | null
+        tabReorderable?: boolean | null
     }
 
 }
@@ -4827,8 +4886,11 @@ interface Switcher extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Gdl-3.Gdl.Switcher
 
     switcher_style: SwitcherStyle
+    switcherStyle: SwitcherStyle
     tab_pos: Gtk.PositionType
+    tabPos: Gtk.PositionType
     tab_reorderable: boolean
+    tabReorderable: boolean
 
     // Own fields of Gdl-3.Gdl.Switcher
 

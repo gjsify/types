@@ -502,6 +502,17 @@ module WallClock {
          * day of the week, irrespective of configuration.
          */
         time_only?: boolean | null
+        /**
+         * If %TRUE, the formatted clock will always have seconds precision and the
+         * 'clock' property will always be updated every second, irrespective of
+         * system configuration.
+         */
+        forceSeconds?: boolean | null
+        /**
+         * If %TRUE, the formatted clock will never include a date or the
+         * day of the week, irrespective of configuration.
+         */
+        timeOnly?: boolean | null
     }
 
 }
@@ -521,10 +532,21 @@ interface WallClock {
      */
     force_seconds: boolean
     /**
+     * If %TRUE, the formatted clock will always have seconds precision and the
+     * 'clock' property will always be updated every second, irrespective of
+     * system configuration.
+     */
+    forceSeconds: boolean
+    /**
      * If %TRUE, the formatted clock will never include a date or the
      * day of the week, irrespective of configuration.
      */
     time_only: boolean
+    /**
+     * If %TRUE, the formatted clock will never include a date or the
+     * day of the week, irrespective of configuration.
+     */
+    timeOnly: boolean
     /**
      * The timezone used for this clock
      */

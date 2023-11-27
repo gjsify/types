@@ -175,6 +175,10 @@ module NetClientClock {
         port?: number | null
         qos_dscp?: number | null
         round_trip_limit?: number | null
+        baseTime?: number | null
+        minimumUpdateInterval?: number | null
+        qosDscp?: number | null
+        roundTripLimit?: number | null
     }
 
 }
@@ -185,12 +189,17 @@ interface NetClientClock {
 
     address: string | null
     readonly base_time: number
+    readonly baseTime: number
     bus: Gst.Bus
     readonly internal_clock: Gst.Clock
+    readonly internalClock: Gst.Clock
     minimum_update_interval: number
+    minimumUpdateInterval: number
     port: number
     qos_dscp: number
+    qosDscp: number
     round_trip_limit: number
+    roundTripLimit: number
 
     // Conflicting properties
 
@@ -356,6 +365,7 @@ module NetTimeProvider {
         clock?: Gst.Clock | null
         port?: number | null
         qos_dscp?: number | null
+        qosDscp?: number | null
     }
 
 }
@@ -369,6 +379,7 @@ interface NetTimeProvider extends Gio.Initable {
     readonly clock: Gst.Clock
     readonly port: number
     qos_dscp: number
+    qosDscp: number
 
     // Own fields of GstNet-1.0.GstNet.NetTimeProvider
 
@@ -631,8 +642,11 @@ interface PtpClock {
 
     readonly domain: number
     readonly grandmaster_clock_id: number
+    readonly grandmasterClockId: number
     readonly internal_clock: Gst.Clock
+    readonly internalClock: Gst.Clock
     readonly master_clock_id: number
+    readonly masterClockId: number
 
     // Conflicting properties
 

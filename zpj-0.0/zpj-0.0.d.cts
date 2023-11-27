@@ -272,6 +272,7 @@ export module AuthorizationDomain {
 
         scope?: string | null
         service_name?: string | null
+        serviceName?: string | null
     }
 
 }
@@ -282,6 +283,7 @@ export interface AuthorizationDomain {
 
     readonly scope: string | null
     readonly service_name: string | null
+    readonly serviceName: string | null
 
     // Own fields of Zpj-0.0.Zpj.AuthorizationDomain
 
@@ -755,15 +757,20 @@ export interface SkydriveEntry {
     // Own properties of Zpj-0.0.Zpj.SkydriveEntry
 
     readonly created_time: GLib.DateTime
+    readonly createdTime: GLib.DateTime
     readonly description: string | null
     readonly from_id: string | null
+    readonly fromId: string | null
     readonly from_name: string | null
+    readonly fromName: string | null
     readonly id: string | null
     readonly json: Json.Node
     readonly name: string | null
     readonly parent_id: string | null
+    readonly parentId: string | null
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
+    readonly updatedTime: GLib.DateTime
 
     // Own fields of Zpj-0.0.Zpj.SkydriveEntry
 

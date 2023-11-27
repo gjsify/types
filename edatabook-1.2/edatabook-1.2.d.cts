@@ -525,6 +525,7 @@ export module BookBackend {
         cache_dir?: string | null
         registry?: EDataServer.SourceRegistry | null
         writable?: boolean | null
+        cacheDir?: string | null
     }
 
 }
@@ -534,7 +535,9 @@ export interface BookBackend {
     // Own properties of EDataBook-1.2.EDataBook.BookBackend
 
     cache_dir: string | null
+    cacheDir: string | null
     readonly proxy_resolver: Gio.ProxyResolver
+    readonly proxyResolver: Gio.ProxyResolver
     readonly registry: EDataServer.SourceRegistry
     writable: boolean
 
@@ -3760,6 +3763,7 @@ export module DataBook {
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
         object_path?: string | null
+        objectPath?: string | null
     }
 
 }
@@ -3771,6 +3775,7 @@ export interface DataBook extends Gio.Initable {
     readonly backend: BookBackend
     readonly connection: Gio.DBusConnection
     readonly object_path: string | null
+    readonly objectPath: string | null
 
     // Owm methods of EDataBook-1.2.EDataBook.DataBook
 
@@ -4162,6 +4167,7 @@ export module DataBookCursorCache {
 
         book_cache?: BookCache | null
         cursor?: any | null
+        bookCache?: BookCache | null
     }
 
 }
@@ -4171,6 +4177,7 @@ export interface DataBookCursorCache {
     // Own properties of EDataBook-1.2.EDataBook.DataBookCursorCache
 
     readonly book_cache: BookCache
+    readonly bookCache: BookCache
     readonly cursor: any
 
     // Class property signals of EDataBook-1.2.EDataBook.DataBookCursorCache
@@ -4252,6 +4259,7 @@ export module DataBookCursorSqlite {
         cursor?: any | null
         ebsql?: BookSqlite | null
         revision_key?: string | null
+        revisionKey?: string | null
     }
 
 }
@@ -4263,6 +4271,7 @@ export interface DataBookCursorSqlite {
     readonly cursor: any
     readonly ebsql: BookSqlite
     readonly revision_key: string | null
+    readonly revisionKey: string | null
 
     // Class property signals of EDataBook-1.2.EDataBook.DataBookCursorSqlite
 
@@ -4495,6 +4504,8 @@ export module DataBookView {
         n_total?: number | null
         object_path?: string | null
         sexp?: BookBackendSExp | null
+        nTotal?: number | null
+        objectPath?: string | null
     }
 
 }
@@ -4507,7 +4518,9 @@ export interface DataBookView extends Gio.Initable {
     readonly connection: Gio.DBusConnection
     indices: any
     n_total: number
+    nTotal: number
     readonly object_path: string | null
+    readonly objectPath: string | null
     readonly sexp: BookBackendSExp
 
     // Own fields of EDataBook-1.2.EDataBook.DataBookView

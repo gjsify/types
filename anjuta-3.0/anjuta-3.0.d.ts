@@ -2198,6 +2198,7 @@ module CommandBar {
         // Own constructor properties of Anjuta-3.0.Anjuta.CommandBar
 
         max_text_width?: number | null
+        maxTextWidth?: number | null
     }
 
 }
@@ -2207,6 +2208,7 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Anjuta-3.0.Anjuta.CommandBar
 
     readonly max_text_width: number
+    readonly maxTextWidth: number
 
     // Own fields of Anjuta-3.0.Anjuta.CommandBar
 
@@ -2535,6 +2537,7 @@ module Completion {
         // Own constructor properties of Anjuta-3.0.Anjuta.Completion
 
         case_sensitive?: boolean | null
+        caseSensitive?: boolean | null
     }
 
 }
@@ -2544,6 +2547,7 @@ interface Completion {
     // Own properties of Anjuta-3.0.Anjuta.Completion
 
     case_sensitive: boolean
+    caseSensitive: boolean
 
     // Own fields of Anjuta-3.0.Anjuta.Completion
 
@@ -3417,6 +3421,7 @@ module Entry {
         // Own constructor properties of Anjuta-3.0.Anjuta.Entry
 
         help_text?: string | null
+        helpText?: string | null
     }
 
 }
@@ -3426,6 +3431,7 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
     // Own properties of Anjuta-3.0.Anjuta.Entry
 
     help_text: string | null
+    helpText: string | null
 
     // Own fields of Anjuta-3.0.Anjuta.Entry
 
@@ -3984,6 +3990,7 @@ module FileDropEntry {
         // Own constructor properties of Anjuta-3.0.Anjuta.FileDropEntry
 
         relative_path?: string | null
+        relativePath?: string | null
     }
 
 }
@@ -3993,6 +4000,7 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
     // Own properties of Anjuta-3.0.Anjuta.FileDropEntry
 
     relative_path: string | null
+    relativePath: string | null
 
     // Own fields of Anjuta-3.0.Anjuta.FileDropEntry
 
@@ -4315,6 +4323,8 @@ module FileList {
 
         relative_path?: string | null
         show_add_button?: boolean | null
+        relativePath?: string | null
+        showAddButton?: boolean | null
     }
 
 }
@@ -4324,7 +4334,9 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Anjuta-3.0.Anjuta.FileList
 
     relative_path: string | null
+    relativePath: string | null
     show_add_button: boolean
+    showAddButton: boolean
 
     // Own fields of Anjuta-3.0.Anjuta.FileList
 
@@ -5304,13 +5316,17 @@ interface PluginHandle {
 
     readonly about: string | null
     readonly can_load: boolean
+    readonly canLoad: boolean
     readonly can_unload: boolean
+    readonly canUnload: boolean
     readonly checked: boolean
     readonly dependencies: any
     readonly dependency_names: any
+    readonly dependencyNames: any
     readonly dependents: any
     readonly description: any
     readonly icon_path: string | null
+    readonly iconPath: string | null
     readonly id: string | null
     readonly interfaces: any
     readonly language: string | null
@@ -5318,7 +5334,9 @@ interface PluginHandle {
     readonly path: string | null
     readonly resident: boolean
     readonly resolve_pass: number
+    readonly resolvePass: number
     readonly user_activatable: boolean
+    readonly userActivatable: boolean
 
     // Own fields of Anjuta-3.0.Anjuta.PluginHandle
 
@@ -5456,7 +5474,9 @@ interface PluginManager {
     // Own properties of Anjuta-3.0.Anjuta.PluginManager
 
     readonly activated_plugins: any
+    readonly activatedPlugins: any
     readonly available_plugins: any
+    readonly availablePlugins: any
     readonly profiles: any
     shell: GObject.Object
     status: Status
@@ -6093,6 +6113,9 @@ module Profile {
         plugin_manager?: PluginManager | null
         profile_name?: string | null
         sync_file?: Gio.File | null
+        pluginManager?: PluginManager | null
+        profileName?: string | null
+        syncFile?: Gio.File | null
     }
 
 }
@@ -6102,8 +6125,11 @@ interface Profile {
     // Own properties of Anjuta-3.0.Anjuta.Profile
 
     plugin_manager: PluginManager
+    pluginManager: PluginManager
     profile_name: string | null
+    profileName: string | null
     sync_file: Gio.File
+    syncFile: Gio.File
 
     // Own fields of Anjuta-3.0.Anjuta.Profile
 
@@ -6263,6 +6289,7 @@ module ProfileManager {
         // Own constructor properties of Anjuta-3.0.Anjuta.ProfileManager
 
         plugin_manager?: PluginManager | null
+        pluginManager?: PluginManager | null
     }
 
 }
@@ -6272,6 +6299,7 @@ interface ProfileManager {
     // Own properties of Anjuta-3.0.Anjuta.ProfileManager
 
     plugin_manager: PluginManager
+    pluginManager: PluginManager
 
     // Own fields of Anjuta-3.0.Anjuta.ProfileManager
 
@@ -8270,6 +8298,9 @@ module VcsStatusTreeView {
         conflicted_selectable?: boolean | null
         show_status?: boolean | null
         status_codes?: VcsStatus | null
+        conflictedSelectable?: boolean | null
+        showStatus?: boolean | null
+        statusCodes?: VcsStatus | null
     }
 
 }
@@ -8279,8 +8310,11 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     // Own properties of Anjuta-3.0.Anjuta.VcsStatusTreeView
 
     readonly conflicted_selectable: boolean
+    readonly conflictedSelectable: boolean
     show_status: boolean
+    showStatus: boolean
     readonly status_codes: VcsStatus
+    readonly statusCodes: VcsStatus
 
     // Own fields of Anjuta-3.0.Anjuta.VcsStatusTreeView
 

@@ -299,6 +299,8 @@ export module Expression {
         expression?: any | null
         result_field?: Arrow.Field | null
         root_node?: Node | null
+        resultField?: Arrow.Field | null
+        rootNode?: Node | null
     }
 
 }
@@ -309,7 +311,9 @@ export interface Expression {
 
     readonly expression: any
     readonly result_field: Arrow.Field
+    readonly resultField: Arrow.Field
     readonly root_node: Node
+    readonly rootNode: Node
 
     // Own fields of Gandiva-1.0.Gandiva.Expression
 
@@ -565,6 +569,7 @@ export module FunctionSignature {
         // Own constructor properties of Gandiva-1.0.Gandiva.FunctionSignature
 
         function_signature?: any | null
+        functionSignature?: any | null
     }
 
 }
@@ -574,6 +579,7 @@ export interface FunctionSignature {
     // Own properties of Gandiva-1.0.Gandiva.FunctionSignature
 
     readonly function_signature: any
+    readonly functionSignature: any
 
     // Own fields of Gandiva-1.0.Gandiva.FunctionSignature
 
@@ -624,6 +630,9 @@ export module IfNode {
         condition_node?: Node | null
         else_node?: Node | null
         then_node?: Node | null
+        conditionNode?: Node | null
+        elseNode?: Node | null
+        thenNode?: Node | null
     }
 
 }
@@ -633,8 +642,11 @@ export interface IfNode {
     // Own properties of Gandiva-1.0.Gandiva.IfNode
 
     readonly condition_node: Node
+    readonly conditionNode: Node
     readonly else_node: Node
+    readonly elseNode: Node
     readonly then_node: Node
+    readonly thenNode: Node
 
     // Own fields of Gandiva-1.0.Gandiva.IfNode
 
@@ -921,6 +933,7 @@ export module NativeFunction {
         // Own constructor properties of Gandiva-1.0.Gandiva.NativeFunction
 
         native_function?: any | null
+        nativeFunction?: any | null
     }
 
 }
@@ -930,6 +943,7 @@ export interface NativeFunction {
     // Own properties of Gandiva-1.0.Gandiva.NativeFunction
 
     readonly native_function: any
+    readonly nativeFunction: any
 
     // Own fields of Gandiva-1.0.Gandiva.NativeFunction
 
@@ -979,6 +993,7 @@ export module Node {
 
         node?: any | null
         return_type?: Arrow.DataType | null
+        returnType?: Arrow.DataType | null
     }
 
 }
@@ -989,6 +1004,7 @@ export interface Node {
 
     readonly node: any
     readonly return_type: Arrow.DataType
+    readonly returnType: Arrow.DataType
 
     // Own fields of Gandiva-1.0.Gandiva.Node
 

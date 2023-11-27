@@ -437,6 +437,9 @@ module Client {
         dbus_name?: string | null
         dbus_object?: string | null
         group_events?: boolean | null
+        dbusName?: string | null
+        dbusObject?: string | null
+        groupEvents?: boolean | null
     }
 
 }
@@ -446,8 +449,11 @@ interface Client {
     // Own properties of Dbusmenu-0.4.Dbusmenu.Client
 
     readonly dbus_name: string | null
+    readonly dbusName: string | null
     readonly dbus_object: string | null
+    readonly dbusObject: string | null
     group_events: boolean
+    groupEvents: boolean
 
     // Owm methods of Dbusmenu-0.4.Dbusmenu.Client
 
@@ -1112,6 +1118,7 @@ module MenuitemProxy {
         // Own constructor properties of Dbusmenu-0.4.Dbusmenu.MenuitemProxy
 
         menu_item?: Menuitem | null
+        menuItem?: Menuitem | null
     }
 
 }
@@ -1121,6 +1128,7 @@ interface MenuitemProxy {
     // Own properties of Dbusmenu-0.4.Dbusmenu.MenuitemProxy
 
     readonly menu_item: Menuitem
+    readonly menuItem: Menuitem
 
     // Owm methods of Dbusmenu-0.4.Dbusmenu.MenuitemProxy
 
@@ -1228,6 +1236,8 @@ module Server {
 
         dbus_object?: string | null
         root_node?: Menuitem | null
+        dbusObject?: string | null
+        rootNode?: Menuitem | null
     }
 
 }
@@ -1237,7 +1247,9 @@ interface Server {
     // Own properties of Dbusmenu-0.4.Dbusmenu.Server
 
     readonly dbus_object: string | null
+    readonly dbusObject: string | null
     root_node: Menuitem
+    rootNode: Menuitem
     readonly version: number
 
     // Owm methods of Dbusmenu-0.4.Dbusmenu.Server

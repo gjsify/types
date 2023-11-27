@@ -1697,6 +1697,10 @@ export module Asset {
          * will replace it as the default (see ges_asset_set_proxy()).
          */
         proxy?: Asset | null
+        /**
+         * The #GESExtractable object type that can be extracted from the asset.
+         */
+        extractableType?: GObject.GType | null
     }
 
 }
@@ -1709,6 +1713,10 @@ export interface Asset extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * The #GESExtractable object type that can be extracted from the asset.
      */
     readonly extractable_type: GObject.GType
+    /**
+     * The #GESExtractable object type that can be extracted from the asset.
+     */
+    readonly extractableType: GObject.GType
     /**
      * The ID of the asset. This should be unique amongst all assets with
      * the same #GESAsset:extractable-type. Depending on the associated
@@ -1745,6 +1753,21 @@ export interface Asset extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * asset it is now the proxy of/no longer the proxy of.
      */
     readonly proxy_target: Asset
+    /**
+     * The asset that this asset is a proxy for, or %NULL if it is not a
+     * proxy for another asset.
+     * 
+     * Note that even if this asset is acting as a proxy for another asset,
+     * but this asset is not the default #GESAsset:proxy, then `proxy-target`
+     * will *still* point to this other asset. So you should check the
+     * #GESAsset:proxy property of `target-proxy` before assuming it is the
+     * current default proxy for the target.
+     * 
+     * Note that the #GObject::notify for this property is emitted after
+     * the #GESAsset:proxy #GObject::notify for the corresponding (if any)
+     * asset it is now the proxy of/no longer the proxy of.
+     */
+    readonly proxyTarget: Asset
 
     // Own fields of GES-1.0.GES.Asset
 
@@ -3648,6 +3671,13 @@ export module Clip {
          * #GESTrackElement:track-type elements.
          */
         supported_formats?: TrackType | null
+        /**
+         * The #GESTrackType-s that the clip supports, which it can create
+         * #GESTrackElement-s for. Note that this can be a combination of
+         * #GESTrackType flags to indicate support for several
+         * #GESTrackElement:track-type elements.
+         */
+        supportedFormats?: TrackType | null
     }
 
 }
@@ -3674,6 +3704,23 @@ export interface Clip extends Extractable, MetaContainer {
      */
     readonly duration_limit: number
     /**
+     * The maximum #GESTimelineElement:duration that can be *currently* set
+     * for the clip, taking into account the #GESTimelineElement:in-point,
+     * #GESTimelineElement:max-duration, #GESTrackElement:active, and
+     * #GESTrackElement:track properties of its children, as well as any
+     * time effects. If there is no limit, this will be set to
+     * #GST_CLOCK_TIME_NONE.
+     * 
+     * Note that whilst a clip has no children in any tracks, the limit will
+     * be unknown, and similarly set to #GST_CLOCK_TIME_NONE.
+     * 
+     * If the duration-limit would ever go below the current
+     * #GESTimelineElement:duration of the clip due to a change in the above
+     * variables, its #GESTimelineElement:duration will be set to the new
+     * limit.
+     */
+    readonly durationLimit: number
+    /**
      * The layer this clip lies in.
      * 
      * If you want to connect to this property's #GObject::notify signal,
@@ -3688,6 +3735,13 @@ export interface Clip extends Extractable, MetaContainer {
      * #GESTrackElement:track-type elements.
      */
     supported_formats: TrackType
+    /**
+     * The #GESTrackType-s that the clip supports, which it can create
+     * #GESTrackElement-s for. Note that this can be a combination of
+     * #GESTrackType flags to indicate support for several
+     * #GESTrackElement:track-type elements.
+     */
+    supportedFormats: TrackType
 
     // Own fields of GES-1.0.GES.Clip
 
@@ -4255,6 +4309,10 @@ export module ClipAsset {
          * The formats supported by the asset.
          */
         supported_formats?: TrackType | null
+        /**
+         * The formats supported by the asset.
+         */
+        supportedFormats?: TrackType | null
     }
 
 }
@@ -4267,6 +4325,10 @@ export interface ClipAsset extends MetaContainer, Gio.AsyncInitable, Gio.Initabl
      * The formats supported by the asset.
      */
     supported_formats: TrackType
+    /**
+     * The formats supported by the asset.
+     */
+    supportedFormats: TrackType
 
     // Own fields of GES-1.0.GES.ClipAsset
 
@@ -4630,6 +4692,7 @@ export module DiscovererManager {
          */
         timeout?: number | null
         use_cache?: boolean | null
+        useCache?: boolean | null
     }
 
 }
@@ -4643,6 +4706,7 @@ export interface DiscovererManager {
      */
     timeout: number
     use_cache: boolean
+    useCache: boolean
 
     // Owm methods of GES-1.0.GES.DiscovererManager
 
@@ -4711,6 +4775,13 @@ export module Effect {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         bin_description?: string | null
+        /**
+         * The description of the effect bin with a gst-launch-style
+         * pipeline description.
+         * 
+         * Example: "videobalance saturation=1.5 hue=+0.5"
+         */
+        binDescription?: string | null
     }
 
 }
@@ -4726,6 +4797,13 @@ export interface Effect extends Extractable, MetaContainer {
      * Example: "videobalance saturation=1.5 hue=+0.5"
      */
     readonly bin_description: string | null
+    /**
+     * The description of the effect bin with a gst-launch-style
+     * pipeline description.
+     * 
+     * Example: "videobalance saturation=1.5 hue=+0.5"
+     */
+    readonly binDescription: string | null
 
     // Conflicting methods
 
@@ -5063,6 +5141,20 @@ export module EffectClip {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         video_bin_description?: string | null
+        /**
+         * The description of the audio track of the effect bin with a gst-launch-style
+         * pipeline description. This should be used for test purposes.
+         * 
+         * Example: "audiopanorama panorama=1.0"
+         */
+        audioBinDescription?: string | null
+        /**
+         * The description of the video track of the effect bin with a gst-launch-style
+         * pipeline description. This should be used for test purposes.
+         * 
+         * Example: "videobalance saturation=1.5 hue=+0.5"
+         */
+        videoBinDescription?: string | null
     }
 
 }
@@ -5079,12 +5171,26 @@ export interface EffectClip extends Extractable, MetaContainer {
      */
     readonly audio_bin_description: string | null
     /**
+     * The description of the audio track of the effect bin with a gst-launch-style
+     * pipeline description. This should be used for test purposes.
+     * 
+     * Example: "audiopanorama panorama=1.0"
+     */
+    readonly audioBinDescription: string | null
+    /**
      * The description of the video track of the effect bin with a gst-launch-style
      * pipeline description. This should be used for test purposes.
      * 
      * Example: "videobalance saturation=1.5 hue=+0.5"
      */
     readonly video_bin_description: string | null
+    /**
+     * The description of the video track of the effect bin with a gst-launch-style
+     * pipeline description. This should be used for test purposes.
+     * 
+     * Example: "videobalance saturation=1.5 hue=+0.5"
+     */
+    readonly videoBinDescription: string | null
 
     // Conflicting properties
 
@@ -5300,6 +5406,16 @@ export module Group {
          * amongst its children.
          */
         start?: number | null
+        /**
+         * An overwrite of the #GESTimelineElement:in-point property. This has
+         * no meaning for a group and should not be set.
+         */
+        inPoint?: number | null
+        /**
+         * An overwrite of the #GESTimelineElement:max-duration property. This
+         * has no meaning for a group and should not be set.
+         */
+        maxDuration?: number | null
     }
 
 }
@@ -5322,10 +5438,20 @@ export interface Group extends Extractable, MetaContainer {
      */
     in_point: number
     /**
+     * An overwrite of the #GESTimelineElement:in-point property. This has
+     * no meaning for a group and should not be set.
+     */
+    inPoint: number
+    /**
      * An overwrite of the #GESTimelineElement:max-duration property. This
      * has no meaning for a group and should not be set.
      */
     max_duration: number
+    /**
+     * An overwrite of the #GESTimelineElement:max-duration property. This
+     * has no meaning for a group and should not be set.
+     */
+    maxDuration: number
     /**
      * An overwrite of the #GESTimelineElement:priority property.
      * Setting #GESTimelineElement priorities is deprecated as all priority
@@ -5704,6 +5830,16 @@ export module Layer {
          * for the change to be taken into account.
          */
         priority?: number | null
+        /**
+         * Whether to automatically create a #GESTransitionClip whenever two
+         * #GESSource-s that both belong to a #GESClip in the layer overlap.
+         * See #GESTimeline for what counts as an overlap.
+         * 
+         * When a layer is added to a #GESTimeline, if this property is left as
+         * %FALSE, but the timeline's #GESTimeline:auto-transition is %TRUE, it
+         * will be set to %TRUE as well.
+         */
+        autoTransition?: boolean | null
     }
 
 }
@@ -5722,6 +5858,16 @@ export interface Layer extends Extractable, MetaContainer {
      * will be set to %TRUE as well.
      */
     auto_transition: boolean
+    /**
+     * Whether to automatically create a #GESTransitionClip whenever two
+     * #GESSource-s that both belong to a #GESClip in the layer overlap.
+     * See #GESTimeline for what counts as an overlap.
+     * 
+     * When a layer is added to a #GESTimeline, if this property is left as
+     * %FALSE, but the timeline's #GESTimeline:auto-transition is %TRUE, it
+     * will be set to %TRUE as well.
+     */
+    autoTransition: boolean
     /**
      * The priority of the layer in the #GESTimeline. 0 is the highest
      * priority. Conceptually, a timeline is a stack of layers,
@@ -6721,6 +6867,28 @@ export module Pipeline {
          * #playsink:video-sink property of the internal #playsink.
          */
         video_sink?: Gst.Element | null
+        /**
+         * The audio filter(s) to apply during playback in preview mode,
+         * immediately before the #GESPipeline:audio-sink. This exposes the
+         * #playsink:audio-filter property of the internal #playsink.
+         */
+        audioFilter?: Gst.Element | null
+        /**
+         * The audio sink used for preview. This exposes the
+         * #playsink:audio-sink property of the internal #playsink.
+         */
+        audioSink?: Gst.Element | null
+        /**
+         * The video filter(s) to apply during playback in preview mode,
+         * immediately before the #GESPipeline:video-sink. This exposes the
+         * #playsink:video-filter property of the internal #playsink.
+         */
+        videoFilter?: Gst.Element | null
+        /**
+         * The video sink used for preview. This exposes the
+         * #playsink:video-sink property of the internal #playsink.
+         */
+        videoSink?: Gst.Element | null
     }
 
 }
@@ -6736,10 +6904,21 @@ export interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      */
     audio_filter: Gst.Element
     /**
+     * The audio filter(s) to apply during playback in preview mode,
+     * immediately before the #GESPipeline:audio-sink. This exposes the
+     * #playsink:audio-filter property of the internal #playsink.
+     */
+    audioFilter: Gst.Element
+    /**
      * The audio sink used for preview. This exposes the
      * #playsink:audio-sink property of the internal #playsink.
      */
     audio_sink: Gst.Element
+    /**
+     * The audio sink used for preview. This exposes the
+     * #playsink:audio-sink property of the internal #playsink.
+     */
+    audioSink: Gst.Element
     /**
      * The pipeline's mode. In preview mode (for audio or video, or both)
      * the pipeline can display the timeline's content to an end user. In
@@ -6762,10 +6941,21 @@ export interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      */
     video_filter: Gst.Element
     /**
+     * The video filter(s) to apply during playback in preview mode,
+     * immediately before the #GESPipeline:video-sink. This exposes the
+     * #playsink:video-filter property of the internal #playsink.
+     */
+    videoFilter: Gst.Element
+    /**
      * The video sink used for preview. This exposes the
      * #playsink:video-sink property of the internal #playsink.
      */
     video_sink: Gst.Element
+    /**
+     * The video sink used for preview. This exposes the
+     * #playsink:video-sink property of the internal #playsink.
+     */
+    videoSink: Gst.Element
 
     // Conflicting properties
 
@@ -8264,6 +8454,10 @@ export module TextOverlayClip {
          * The vertical position of the text
          */
         ypos?: number | null
+        /**
+         * Pango font description string
+         */
+        fontDesc?: string | null
     }
 
 }
@@ -8280,6 +8474,10 @@ export interface TextOverlayClip extends Extractable, MetaContainer {
      * Pango font description string
      */
     font_desc: string | null
+    /**
+     * Pango font description string
+     */
+    fontDesc: string | null
     /**
      * Horizontal alignment of the text
      */
@@ -8556,6 +8754,20 @@ export module Timeline {
          * snap during an edit. 0 means no snapping.
          */
         snapping_distance?: number | null
+        /**
+         * Whether to automatically create a transition whenever two
+         * #GESSource-s overlap in a track of the timeline. See
+         * #GESLayer:auto-transition if you want this to only happen in some
+         * layers.
+         */
+        autoTransition?: boolean | null
+        /**
+         * The distance (in nanoseconds) at which a #GESTimelineElement being
+         * moved within the timeline should snap one of its #GESSource-s with
+         * another #GESSource-s edge. See #GESEditMode for which edges can
+         * snap during an edit. 0 means no snapping.
+         */
+        snappingDistance?: number | null
     }
 
 }
@@ -8572,6 +8784,13 @@ export interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      */
     auto_transition: boolean
     /**
+     * Whether to automatically create a transition whenever two
+     * #GESSource-s overlap in a track of the timeline. See
+     * #GESLayer:auto-transition if you want this to only happen in some
+     * layers.
+     */
+    autoTransition: boolean
+    /**
      * The current duration (in nanoseconds) of the timeline. A timeline
      * 'starts' at time 0, so this is the maximum end time of all of its
      * #GESTimelineElement-s.
@@ -8584,6 +8803,13 @@ export interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * snap during an edit. 0 means no snapping.
      */
     snapping_distance: number
+    /**
+     * The distance (in nanoseconds) at which a #GESTimelineElement being
+     * moved within the timeline should snap one of its #GESSource-s with
+     * another #GESSource-s edge. See #GESEditMode for which edges can
+     * snap during an edit. 0 means no snapping.
+     */
+    snappingDistance: number
 
     // Conflicting properties
 
@@ -9276,6 +9502,39 @@ export module TimelineElement {
          * The timeline that the element lies within.
          */
         timeline?: Timeline | null
+        /**
+         * The initial offset to use internally when outputting content (in
+         * nanoseconds, but in the time coordinates of the internal content).
+         * 
+         * For example, for a #GESVideoUriSource that references some media
+         * file, the "internal content" is the media file data, and the
+         * in-point would correspond to some timestamp in the media file.
+         * When playing the timeline, and when the element is first reached at
+         * timeline-time #GESTimelineElement:start, it will begin outputting the
+         * data from the timestamp in-point **onwards**, until it reaches the
+         * end of its #GESTimelineElement:duration in the timeline.
+         * 
+         * For elements that have no internal content, this should be kept
+         * as 0.
+         */
+        inPoint?: number | null
+        /**
+         * The full duration of internal content that is available (a time
+         * difference in nanoseconds using the time coordinates of the internal
+         * content).
+         * 
+         * This will act as a cap on the #GESTimelineElement:in-point of the
+         * element (which is in the same time coordinates), and will sometimes
+         * be used to limit the #GESTimelineElement:duration of the element in
+         * the timeline.
+         * 
+         * For example, for a #GESVideoUriSource that references some media
+         * file, this would be the length of the media file.
+         * 
+         * For elements that have no internal content, or whose content is
+         * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
+         */
+        maxDuration?: number | null
     }
 
 }
@@ -9301,6 +9560,22 @@ export interface TimelineElement extends Extractable, MetaContainer {
      */
     in_point: number
     /**
+     * The initial offset to use internally when outputting content (in
+     * nanoseconds, but in the time coordinates of the internal content).
+     * 
+     * For example, for a #GESVideoUriSource that references some media
+     * file, the "internal content" is the media file data, and the
+     * in-point would correspond to some timestamp in the media file.
+     * When playing the timeline, and when the element is first reached at
+     * timeline-time #GESTimelineElement:start, it will begin outputting the
+     * data from the timestamp in-point **onwards**, until it reaches the
+     * end of its #GESTimelineElement:duration in the timeline.
+     * 
+     * For elements that have no internal content, this should be kept
+     * as 0.
+     */
+    inPoint: number
+    /**
      * The full duration of internal content that is available (a time
      * difference in nanoseconds using the time coordinates of the internal
      * content).
@@ -9317,6 +9592,23 @@ export interface TimelineElement extends Extractable, MetaContainer {
      * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
      */
     max_duration: number
+    /**
+     * The full duration of internal content that is available (a time
+     * difference in nanoseconds using the time coordinates of the internal
+     * content).
+     * 
+     * This will act as a cap on the #GESTimelineElement:in-point of the
+     * element (which is in the same time coordinates), and will sometimes
+     * be used to limit the #GESTimelineElement:duration of the element in
+     * the timeline.
+     * 
+     * For example, for a #GESVideoUriSource that references some media
+     * file, this would be the length of the media file.
+     * 
+     * For elements that have no internal content, or whose content is
+     * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
+     */
+    maxDuration: number
     /**
      * Whether the element should be serialized.
      */
@@ -10150,6 +10442,10 @@ export module TitleClip {
          * The vertical position of the text
          */
         ypos?: number | null
+        /**
+         * Pango font description string
+         */
+        fontDesc?: string | null
     }
 
 }
@@ -10170,6 +10466,10 @@ export interface TitleClip extends Extractable, MetaContainer {
      * Pango font description string
      */
     font_desc: string | null
+    /**
+     * Pango font description string
+     */
+    fontDesc: string | null
     /**
      * Horizontal alignment of the text
      */
@@ -10730,6 +11030,27 @@ export module Track {
          * this.
          */
         track_type?: TrackType | null
+        /**
+         * The capabilities that specifies the final output format of the
+         * #GESTrack. For example, for a video track, it would specify the
+         * height, width, framerate and other properties of the stream.
+         * 
+         * You may change this property after the track has been added to a
+         * #GESTimeline, but it must remain compatible with the track's
+         * #GESTrack:caps.
+         * 
+         * Default value: #GST_CAPS_ANY.
+         */
+        restrictionCaps?: Gst.Caps | null
+        /**
+         * The track type of the track. This controls the type of
+         * #GESTrackElement-s that can be added to the track. This should
+         * match with the track's #GESTrack:caps.
+         * 
+         * Once a track has been added to a #GESTimeline, you should not change
+         * this.
+         */
+        trackType?: TrackType | null
     }
 
 }
@@ -10789,6 +11110,18 @@ export interface Track extends MetaContainer, Gst.ChildProxy {
      */
     restriction_caps: Gst.Caps
     /**
+     * The capabilities that specifies the final output format of the
+     * #GESTrack. For example, for a video track, it would specify the
+     * height, width, framerate and other properties of the stream.
+     * 
+     * You may change this property after the track has been added to a
+     * #GESTimeline, but it must remain compatible with the track's
+     * #GESTrack:caps.
+     * 
+     * Default value: #GST_CAPS_ANY.
+     */
+    restrictionCaps: Gst.Caps
+    /**
      * The track type of the track. This controls the type of
      * #GESTrackElement-s that can be added to the track. This should
      * match with the track's #GESTrack:caps.
@@ -10797,6 +11130,15 @@ export interface Track extends MetaContainer, Gst.ChildProxy {
      * this.
      */
     readonly track_type: TrackType
+    /**
+     * The track type of the track. This controls the type of
+     * #GESTrackElement-s that can be added to the track. This should
+     * match with the track's #GESTrack:caps.
+     * 
+     * Once a track has been added to a #GESTimeline, you should not change
+     * this.
+     */
+    readonly trackType: TrackType
 
     // Conflicting properties
 
@@ -11245,6 +11587,62 @@ export module TrackElement {
          * process.
          */
         track_type?: TrackType | null
+        /**
+         * Whether the control sources on the element (see
+         * ges_track_element_set_control_source()) will be automatically
+         * updated whenever the #GESTimelineElement:in-point or out-point of the
+         * element change in value.
+         * 
+         * See ges_track_element_clamp_control_source() for how this is done
+         * per control source.
+         * 
+         * Default value: %TRUE
+         */
+        autoClampControlSources?: boolean | null
+        /**
+         * This property is used to determine whether the 'internal time'
+         * properties of the element have any meaning. In particular, unless
+         * this is set to %TRUE, the #GESTimelineElement:in-point and
+         * #GESTimelineElement:max-duration can not be set to any value other
+         * than the default 0 and #GST_CLOCK_TIME_NONE, respectively.
+         * 
+         * If an element has some *internal* *timed* source #GstElement that it
+         * reads stream data from as part of its function in a #GESTrack, then
+         * you'll likely want to set this to %TRUE to allow the
+         * #GESTimelineElement:in-point and #GESTimelineElement:max-duration to
+         * be set.
+         * 
+         * The default value is determined by the #GESTrackElementClass
+         * `default_has_internal_source` class property. For most
+         * #GESSourceClass-es, this will be %TRUE, with the exception of those
+         * that have a potentially *static* source, such as #GESImageSourceClass
+         * and #GESTitleSourceClass. Otherwise, this will usually be %FALSE.
+         * 
+         * For most #GESOperation-s you will likely want to leave this set to
+         * %FALSE. The exception may be for an operation that reads some stream
+         * data from some private internal source as part of manipulating the
+         * input data from the usual linked upstream #GESTrackElement.
+         * 
+         * For example, you may want to set this to %TRUE for a
+         * #GES_TRACK_TYPE_VIDEO operation that wraps a #textoverlay that reads
+         * from a subtitle file and places its text on top of the received video
+         * data. The #GESTimelineElement:in-point of the element would be used
+         * to shift the initial seek time on the #textoverlay away from 0, and
+         * the #GESTimelineElement:max-duration could be set to reflect the
+         * time at which the subtitle file runs out of data.
+         * 
+         * Note that GES can not support track elements that have both internal
+         * content and manipulate the timing of their data streams (time
+         * effects).
+         */
+        hasInternalSource?: boolean | null
+        /**
+         * The track type of the element, which determines the type of track the
+         * element can be added to (see #GESTrack:track-type). This should
+         * correspond to the type of data that the element can produce or
+         * process.
+         */
+        trackType?: TrackType | null
     }
 
 }
@@ -11271,6 +11669,18 @@ export interface TrackElement extends Extractable, MetaContainer {
      * Default value: %TRUE
      */
     auto_clamp_control_sources: boolean
+    /**
+     * Whether the control sources on the element (see
+     * ges_track_element_set_control_source()) will be automatically
+     * updated whenever the #GESTimelineElement:in-point or out-point of the
+     * element change in value.
+     * 
+     * See ges_track_element_clamp_control_source() for how this is done
+     * per control source.
+     * 
+     * Default value: %TRUE
+     */
+    autoClampControlSources: boolean
     /**
      * This property is used to determine whether the 'internal time'
      * properties of the element have any meaning. In particular, unless
@@ -11309,6 +11719,43 @@ export interface TrackElement extends Extractable, MetaContainer {
      */
     has_internal_source: boolean
     /**
+     * This property is used to determine whether the 'internal time'
+     * properties of the element have any meaning. In particular, unless
+     * this is set to %TRUE, the #GESTimelineElement:in-point and
+     * #GESTimelineElement:max-duration can not be set to any value other
+     * than the default 0 and #GST_CLOCK_TIME_NONE, respectively.
+     * 
+     * If an element has some *internal* *timed* source #GstElement that it
+     * reads stream data from as part of its function in a #GESTrack, then
+     * you'll likely want to set this to %TRUE to allow the
+     * #GESTimelineElement:in-point and #GESTimelineElement:max-duration to
+     * be set.
+     * 
+     * The default value is determined by the #GESTrackElementClass
+     * `default_has_internal_source` class property. For most
+     * #GESSourceClass-es, this will be %TRUE, with the exception of those
+     * that have a potentially *static* source, such as #GESImageSourceClass
+     * and #GESTitleSourceClass. Otherwise, this will usually be %FALSE.
+     * 
+     * For most #GESOperation-s you will likely want to leave this set to
+     * %FALSE. The exception may be for an operation that reads some stream
+     * data from some private internal source as part of manipulating the
+     * input data from the usual linked upstream #GESTrackElement.
+     * 
+     * For example, you may want to set this to %TRUE for a
+     * #GES_TRACK_TYPE_VIDEO operation that wraps a #textoverlay that reads
+     * from a subtitle file and places its text on top of the received video
+     * data. The #GESTimelineElement:in-point of the element would be used
+     * to shift the initial seek time on the #textoverlay away from 0, and
+     * the #GESTimelineElement:max-duration could be set to reflect the
+     * time at which the subtitle file runs out of data.
+     * 
+     * Note that GES can not support track elements that have both internal
+     * content and manipulate the timing of their data streams (time
+     * effects).
+     */
+    hasInternalSource: boolean
+    /**
      * The track that this element belongs to, or %NULL if it does not
      * belong to a track.
      */
@@ -11320,6 +11767,13 @@ export interface TrackElement extends Extractable, MetaContainer {
      * process.
      */
     track_type: TrackType
+    /**
+     * The track type of the element, which determines the type of track the
+     * element can be added to (see #GESTrack:track-type). This should
+     * correspond to the type of data that the element can produce or
+     * process.
+     */
+    trackType: TrackType
 
     // Own fields of GES-1.0.GES.TrackElement
 
@@ -11682,6 +12136,7 @@ export module TrackElementAsset {
         // Own constructor properties of GES-1.0.GES.TrackElementAsset
 
         track_type?: TrackType | null
+        trackType?: TrackType | null
     }
 
 }
@@ -11691,6 +12146,7 @@ export interface TrackElementAsset extends MetaContainer, Gio.AsyncInitable, Gio
     // Own properties of GES-1.0.GES.TrackElementAsset
 
     track_type: TrackType
+    trackType: TrackType
 
     // Own fields of GES-1.0.GES.TrackElementAsset
 
@@ -12086,6 +12542,12 @@ export module UriClip {
          * The location of the file/resource to use.
          */
         uri?: string | null
+        /**
+         * Whether this uri clip represents a still image or not. This must be set
+         * before create_track_elements is called.
+         */
+        isImage?: boolean | null
+        supportedFormats?: TrackType | null
     }
 
 }
@@ -12100,10 +12562,16 @@ export interface UriClip extends Extractable, MetaContainer {
      */
     is_image: boolean
     /**
+     * Whether this uri clip represents a still image or not. This must be set
+     * before create_track_elements is called.
+     */
+    isImage: boolean
+    /**
      * Whether the sound will be played or not.
      */
     mute: boolean
     supported_formats: TrackType
+    supportedFormats: TrackType
     /**
      * The location of the file/resource to use.
      */
@@ -12241,6 +12709,10 @@ export interface UriClipAsset extends MetaContainer, Gio.AsyncInitable, Gio.Init
      * The duration (in nanoseconds) of the media file
      */
     readonly is_nested_timeline: boolean
+    /**
+     * The duration (in nanoseconds) of the media file
+     */
+    readonly isNestedTimeline: boolean
 
     // Own fields of GES-1.0.GES.UriClipAsset
 
@@ -13130,6 +13602,7 @@ export module VideoTransition {
          */
         invert?: boolean | null
         transition_type?: VideoStandardTransitionType | null
+        transitionType?: VideoStandardTransitionType | null
     }
 
 }
@@ -13147,6 +13620,7 @@ export interface VideoTransition extends Extractable, MetaContainer {
      */
     invert: boolean
     transition_type: VideoStandardTransitionType
+    transitionType: VideoStandardTransitionType
 
     // Own fields of GES-1.0.GES.VideoTransition
 

@@ -998,6 +998,10 @@ export module Generator {
          * stream.
          */
         root?: Node | null
+        /**
+         * The character that should be used when indenting in pretty print.
+         */
+        indentChar?: number | null
     }
 
 }
@@ -1014,6 +1018,10 @@ export interface Generator {
      * The character that should be used when indenting in pretty print.
      */
     indent_char: number
+    /**
+     * The character that should be used when indenting in pretty print.
+     */
+    indentChar: number
     /**
      * Whether the output should be "pretty-printed", with indentation and
      * newlines.

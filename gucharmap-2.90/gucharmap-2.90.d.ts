@@ -178,6 +178,8 @@ module BlockCodepointList {
 
         first_codepoint?: number | null
         last_codepoint?: number | null
+        firstCodepoint?: number | null
+        lastCodepoint?: number | null
     }
 
 }
@@ -187,7 +189,9 @@ interface BlockCodepointList {
     // Own properties of Gucharmap-2.90.Gucharmap.BlockCodepointList
 
     readonly first_codepoint: number
+    readonly firstCodepoint: number
     readonly last_codepoint: number
+    readonly lastCodepoint: number
 
     // Own fields of Gucharmap-2.90.Gucharmap.BlockCodepointList
 
@@ -658,6 +662,16 @@ module Charmap {
          */
         font_fallback?: boolean | null
         snap_power_2?: boolean | null
+        activeChapter?: string | null
+        activeCharacter?: number | null
+        activePage?: number | null
+        chaptersModel?: ChaptersModel | null
+        fontDesc?: Pango.FontDescription | null
+        /**
+         * Whether font fallback is enabled.
+         */
+        fontFallback?: boolean | null
+        snapPower2?: boolean | null
     }
 
 }
@@ -667,16 +681,27 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Gucharmap-2.90.Gucharmap.Charmap
 
     active_chapter: string | null
+    activeChapter: string | null
     active_character: number
+    activeCharacter: number
     readonly active_codepoint_list: CodepointList
+    readonly activeCodepointList: CodepointList
     active_page: number
+    activePage: number
     chapters_model: ChaptersModel
+    chaptersModel: ChaptersModel
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     /**
      * Whether font fallback is enabled.
      */
     font_fallback: boolean
+    /**
+     * Whether font fallback is enabled.
+     */
+    fontFallback: boolean
     snap_power_2: boolean
+    snapPower2: boolean
 
     // Own fields of Gucharmap-2.90.Gucharmap.Charmap
 
@@ -1046,6 +1071,15 @@ module Chartable {
         font_fallback?: boolean | null
         snap_power_2?: boolean | null
         zoom_enabled?: boolean | null
+        activeCharacter?: number | null
+        codepointList?: CodepointList | null
+        fontDesc?: Pango.FontDescription | null
+        /**
+         * Whether font fallback is enabled.
+         */
+        fontFallback?: boolean | null
+        snapPower2?: boolean | null
+        zoomEnabled?: boolean | null
     }
 
 }
@@ -1055,15 +1089,25 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
     // Own properties of Gucharmap-2.90.Gucharmap.Chartable
 
     active_character: number
+    activeCharacter: number
     codepoint_list: CodepointList
+    codepointList: CodepointList
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     /**
      * Whether font fallback is enabled.
      */
     font_fallback: boolean
+    /**
+     * Whether font fallback is enabled.
+     */
+    fontFallback: boolean
     snap_power_2: boolean
+    snapPower2: boolean
     zoom_enabled: boolean
+    zoomEnabled: boolean
     readonly zoom_showing: boolean
+    readonly zoomShowing: boolean
 
     // Own fields of Gucharmap-2.90.Gucharmap.Chartable
 
@@ -1511,6 +1555,9 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
     connect(sigName: "notify::accessible-name", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: ChartableAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -1722,6 +1769,9 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: ChartableCellAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void

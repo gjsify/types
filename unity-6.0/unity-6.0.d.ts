@@ -331,6 +331,7 @@ module AnnotatedIcon {
         ribbon?: string | null
         category?: CategoryType | null
         size_hint?: IconSizeHint | null
+        sizeHint?: IconSizeHint | null
     }
 
 }
@@ -343,6 +344,7 @@ interface AnnotatedIcon {
     ribbon: string | null
     category: CategoryType
     size_hint: IconSizeHint
+    sizeHint: IconSizeHint
 
     // Own fields of Unity-6.0.Unity.AnnotatedIcon
 
@@ -406,9 +408,17 @@ interface Inspector {
      */
     readonly unity_running: boolean
     /**
+     * <para>Boolean property determining whether Unity is running or not. You can use this property to determine whether Unity is running or not.</para>
+     */
+    readonly unityRunning: boolean
+    /**
      * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
      */
     readonly unity_bus_name: string | null
+    /**
+     * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
+     */
+    readonly unityBusName: string | null
 
     // Own fields of Unity-6.0.Unity.Inspector
 
@@ -467,6 +477,9 @@ module LauncherEntry {
         progress_visible?: boolean | null
         urgent?: boolean | null
         quicklist?: Dbusmenu.Menuitem | null
+        appUri?: string | null
+        countVisible?: boolean | null
+        progressVisible?: boolean | null
     }
 
 }
@@ -476,10 +489,13 @@ interface LauncherEntry extends Dee.Serializable {
     // Own properties of Unity-6.0.Unity.LauncherEntry
 
     app_uri: string | null
+    appUri: string | null
     count: number
     count_visible: boolean
+    countVisible: boolean
     progress: number
     progress_visible: boolean
+    progressVisible: boolean
     urgent: boolean
     quicklist: Dbusmenu.Menuitem
 
@@ -616,6 +632,7 @@ module ActivationResponse {
 
         handled?: HandledType | null
         goto_uri?: string | null
+        gotoUri?: string | null
     }
 
 }
@@ -626,6 +643,7 @@ interface ActivationResponse {
 
     readonly handled: HandledType
     goto_uri: string | null
+    gotoUri: string | null
 
     // Own fields of Unity-6.0.Unity.ActivationResponse
 
@@ -673,6 +691,8 @@ module Category {
         name?: string | null
         icon_hint?: Gio.Icon | null
         default_renderer?: CategoryRenderer | null
+        iconHint?: Gio.Icon | null
+        defaultRenderer?: CategoryRenderer | null
     }
 
 }
@@ -683,7 +703,9 @@ interface Category {
 
     readonly name: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly default_renderer: CategoryRenderer
+    readonly defaultRenderer: CategoryRenderer
 
     // Own fields of Unity-6.0.Unity.Category
 
@@ -747,6 +769,8 @@ module Filter {
         visible?: boolean | null
         collapsed?: boolean | null
         filtering?: boolean | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -757,7 +781,9 @@ interface Filter {
 
     readonly id: string | null
     display_name: string | null
+    displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly renderer: FilterRenderer
     visible: boolean
     readonly collapsed: boolean
@@ -828,6 +854,8 @@ module FilterOption {
         display_name?: string | null
         icon_hint?: Gio.Icon | null
         active?: boolean | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -838,7 +866,9 @@ interface FilterOption {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     active: boolean
 
     // Own fields of Unity-6.0.Unity.FilterOption
@@ -890,6 +920,7 @@ module OptionsFilter {
         // Own constructor properties of Unity-6.0.Unity.OptionsFilter
 
         sort_type?: OptionsFilterSortType | null
+        sortType?: OptionsFilterSortType | null
     }
 
 }
@@ -899,6 +930,7 @@ interface OptionsFilter {
     // Own properties of Unity-6.0.Unity.OptionsFilter
 
     sort_type: OptionsFilterSortType
+    sortType: OptionsFilterSortType
 
     // Own fields of Unity-6.0.Unity.OptionsFilter
 
@@ -1321,6 +1353,7 @@ module PreferencesManager {
         // Own constructor properties of Unity-6.0.Unity.PreferencesManager
 
         remote_content_search?: PreferencesManagerRemoteContent | null
+        remoteContentSearch?: PreferencesManagerRemoteContent | null
     }
 
 }
@@ -1330,6 +1363,7 @@ interface PreferencesManager {
     // Own properties of Unity-6.0.Unity.PreferencesManager
 
     remote_content_search: PreferencesManagerRemoteContent
+    remoteContentSearch: PreferencesManagerRemoteContent
 
     // Own fields of Unity-6.0.Unity.PreferencesManager
 
@@ -1389,6 +1423,8 @@ module LensSearch {
         search_string?: string | null
         hints?: GLib.HashTable | null
         results_model?: Dee.SerializableModel | null
+        searchString?: string | null
+        resultsModel?: Dee.SerializableModel | null
     }
 
 }
@@ -1398,8 +1434,10 @@ interface LensSearch {
     // Own properties of Unity-6.0.Unity.LensSearch
 
     readonly search_string: string | null
+    readonly searchString: string | null
     readonly hints: GLib.HashTable
     readonly results_model: Dee.SerializableModel
+    readonly resultsModel: Dee.SerializableModel
 
     // Own fields of Unity-6.0.Unity.LensSearch
 
@@ -1472,6 +1510,13 @@ module Lens {
         merge_strategy?: MergeStrategy | null
         global_merge_strategy?: MergeStrategy | null
         sources_display_name?: string | null
+        searchInGlobal?: boolean | null
+        homeLensDefaultName?: string | null
+        dbusPath?: string | null
+        searchHint?: string | null
+        mergeStrategy?: MergeStrategy | null
+        globalMergeStrategy?: MergeStrategy | null
+        sourcesDisplayName?: string | null
     }
 
 }
@@ -1485,15 +1530,22 @@ interface Lens {
     searching: boolean
     exported: boolean
     search_in_global: boolean
+    searchInGlobal: boolean
     home_lens_default_name: string | null
+    homeLensDefaultName: string | null
     readonly id: string | null
     readonly dbus_path: string | null
+    readonly dbusPath: string | null
     search_hint: string | null
+    searchHint: string | null
     filters: Filter[]
     categories: Category[]
     merge_strategy: MergeStrategy
+    mergeStrategy: MergeStrategy
     global_merge_strategy: MergeStrategy
+    globalMergeStrategy: MergeStrategy
     sources_display_name: string | null
+    sourcesDisplayName: string | null
 
     // Own fields of Unity-6.0.Unity.Lens
 
@@ -1593,6 +1645,8 @@ module Preview {
         description_markup?: string | null
         image_source_uri?: string | null
         image?: Gio.Icon | null
+        descriptionMarkup?: string | null
+        imageSourceUri?: string | null
     }
 
 }
@@ -1604,7 +1658,9 @@ interface Preview extends Dee.Serializable {
     title: string | null
     subtitle: string | null
     description_markup: string | null
+    descriptionMarkup: string | null
     image_source_uri: string | null
+    imageSourceUri: string | null
     image: Gio.Icon
 
     // Own fields of Unity-6.0.Unity.Preview
@@ -1682,6 +1738,10 @@ module PreviewAction {
         extra_text?: string | null
         icon_hint?: Gio.Icon | null
         layout_hint?: LayoutHint | null
+        displayName?: string | null
+        extraText?: string | null
+        iconHint?: Gio.Icon | null
+        layoutHint?: LayoutHint | null
     }
 
 }
@@ -1692,9 +1752,13 @@ interface PreviewAction extends Dee.Serializable {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     extra_text: string | null
+    extraText: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly layout_hint: LayoutHint
+    readonly layoutHint: LayoutHint
     readonly hints: GLib.HashTable
 
     // Own fields of Unity-6.0.Unity.PreviewAction
@@ -1762,6 +1826,8 @@ module InfoHint {
         display_name?: string | null
         icon_hint?: Gio.Icon | null
         data?: GLib.Variant | null
+        displayName?: string | null
+        iconHint?: Gio.Icon | null
     }
 
 }
@@ -1772,7 +1838,9 @@ interface InfoHint {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly icon_hint: Gio.Icon
+    readonly iconHint: Gio.Icon
     readonly data: GLib.Variant
 
     // Own fields of Unity-6.0.Unity.InfoHint
@@ -1882,6 +1950,8 @@ module ApplicationPreview {
         license?: string | null
         copyright?: string | null
         last_update?: string | null
+        appIcon?: Gio.Icon | null
+        lastUpdate?: string | null
     }
 
 }
@@ -1891,9 +1961,11 @@ interface ApplicationPreview {
     // Own properties of Unity-6.0.Unity.ApplicationPreview
 
     app_icon: Gio.Icon
+    appIcon: Gio.Icon
     license: string | null
     copyright: string | null
     last_update: string | null
+    lastUpdate: string | null
 
     // Own fields of Unity-6.0.Unity.ApplicationPreview
 
@@ -1982,6 +2054,9 @@ module MusicPreview {
         current_track_uri?: string | null
         current_progress?: number | null
         current_track_state?: MusicPreviewTrackState | null
+        currentTrackUri?: string | null
+        currentProgress?: number | null
+        currentTrackState?: MusicPreviewTrackState | null
     }
 
 }
@@ -1991,8 +2066,11 @@ interface MusicPreview {
     // Own properties of Unity-6.0.Unity.MusicPreview
 
     current_track_uri: string | null
+    currentTrackUri: string | null
     current_progress: number
+    currentProgress: number
     current_track_state: MusicPreviewTrackState
+    currentTrackState: MusicPreviewTrackState
 
     // Own fields of Unity-6.0.Unity.MusicPreview
 
@@ -2417,6 +2495,9 @@ module Scope {
         provides_personal_content?: boolean | null
         dbus_path?: string | null
         sources?: OptionsFilter | null
+        searchInGlobal?: boolean | null
+        providesPersonalContent?: boolean | null
+        dbusPath?: string | null
     }
 
 }
@@ -2428,12 +2509,17 @@ interface Scope {
     active: boolean
     exported: boolean
     search_in_global: boolean
+    searchInGlobal: boolean
     provides_personal_content: boolean
+    providesPersonalContent: boolean
     readonly dbus_path: string | null
+    readonly dbusPath: string | null
     sources: OptionsFilter
     readonly filters: Filter[]
     readonly results_model: Dee.SerializableModel
+    readonly resultsModel: Dee.SerializableModel
     readonly global_results_model: Dee.SerializableModel
+    readonly globalResultsModel: Dee.SerializableModel
 
     // Own fields of Unity-6.0.Unity.Scope
 
@@ -2547,6 +2633,9 @@ module TrackMetadata {
         length?: number | null
         art_location?: Gio.File | null
         art_icon?: Gio.Icon | null
+        trackNo?: number | null
+        artLocation?: Gio.File | null
+        artIcon?: Gio.Icon | null
     }
 
 }
@@ -2557,12 +2646,15 @@ interface TrackMetadata {
 
     uri: string | null
     track_no: number
+    trackNo: number
     artist: string | null
     title: string | null
     album: string | null
     length: number
     art_location: Gio.File
+    artLocation: Gio.File
     art_icon: Gio.Icon
+    artIcon: Gio.Icon
 
     // Own fields of Unity-6.0.Unity.TrackMetadata
 
@@ -2631,6 +2723,9 @@ module Playlist {
         creation_date?: GLib.DateTime | null
         modification_date?: GLib.DateTime | null
         last_play_date?: GLib.DateTime | null
+        creationDate?: GLib.DateTime | null
+        modificationDate?: GLib.DateTime | null
+        lastPlayDate?: GLib.DateTime | null
     }
 
 }
@@ -2643,8 +2738,11 @@ interface Playlist {
     name: string | null
     icon: Gio.Icon
     creation_date: GLib.DateTime
+    creationDate: GLib.DateTime
     modification_date: GLib.DateTime
+    modificationDate: GLib.DateTime
     last_play_date: GLib.DateTime
+    lastPlayDate: GLib.DateTime
 
     // Own fields of Unity-6.0.Unity.Playlist
 
@@ -2751,6 +2849,18 @@ module MusicPlayer {
         current_playlist?: Playlist | null
         track_menu?: Dbusmenu.Menuitem | null
         player_menu?: Dbusmenu.Menuitem | null
+        appInfo?: Gio.AppInfo | null
+        desktopFileName?: string | null
+        isBlacklisted?: boolean | null
+        canGoNext?: boolean | null
+        canGoPrevious?: boolean | null
+        canPlay?: boolean | null
+        canPause?: boolean | null
+        currentTrack?: TrackMetadata | null
+        playbackState?: PlaybackState | null
+        currentPlaylist?: Playlist | null
+        trackMenu?: Dbusmenu.Menuitem | null
+        playerMenu?: Dbusmenu.Menuitem | null
     }
 
 }
@@ -2760,18 +2870,30 @@ interface MusicPlayer {
     // Own properties of Unity-6.0.Unity.MusicPlayer
 
     readonly app_info: Gio.AppInfo
+    readonly appInfo: Gio.AppInfo
     readonly desktop_file_name: string | null
+    readonly desktopFileName: string | null
     is_blacklisted: boolean
+    isBlacklisted: boolean
     title: string | null
     can_go_next: boolean
+    canGoNext: boolean
     can_go_previous: boolean
+    canGoPrevious: boolean
     can_play: boolean
+    canPlay: boolean
     can_pause: boolean
+    canPause: boolean
     current_track: TrackMetadata
+    currentTrack: TrackMetadata
     playback_state: PlaybackState
+    playbackState: PlaybackState
     current_playlist: Playlist
+    currentPlaylist: Playlist
     track_menu: Dbusmenu.Menuitem
+    trackMenu: Dbusmenu.Menuitem
     player_menu: Dbusmenu.Menuitem
+    playerMenu: Dbusmenu.Menuitem
 
     // Own fields of Unity-6.0.Unity.MusicPlayer
 

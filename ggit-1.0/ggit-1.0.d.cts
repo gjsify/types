@@ -1469,6 +1469,18 @@ export module CheckoutOptions {
         strategy?: CheckoutStrategy | null
         target_directory?: string | null
         their_label?: string | null
+        ancestorLabel?: string | null
+        dirMode?: number | null
+        disableFilters?: boolean | null
+        fileMode?: number | null
+        fileOpenFlags?: number | null
+        /**
+         * The checkout notify flags.
+         */
+        notifyFlags?: CheckoutNotifyFlags | null
+        ourLabel?: string | null
+        targetDirectory?: string | null
+        theirLabel?: string | null
     }
 
 }
@@ -1478,19 +1490,31 @@ export interface CheckoutOptions {
     // Own properties of Ggit-1.0.Ggit.CheckoutOptions
 
     ancestor_label: string | null
+    ancestorLabel: string | null
     baseline: Tree
     dir_mode: number
+    dirMode: number
     disable_filters: boolean
+    disableFilters: boolean
     file_mode: number
+    fileMode: number
     file_open_flags: number
+    fileOpenFlags: number
     /**
      * The checkout notify flags.
      */
     notify_flags: CheckoutNotifyFlags
+    /**
+     * The checkout notify flags.
+     */
+    notifyFlags: CheckoutNotifyFlags
     our_label: string | null
+    ourLabel: string | null
     strategy: CheckoutStrategy
     target_directory: string | null
+    targetDirectory: string | null
     their_label: string | null
+    theirLabel: string | null
 
     // Own fields of Ggit-1.0.Ggit.CheckoutOptions
 
@@ -1727,6 +1751,8 @@ export module CherryPickOptions {
         checkout_options?: CheckoutOptions | null
         mainline?: number | null
         merge_options?: MergeOptions | null
+        checkoutOptions?: CheckoutOptions | null
+        mergeOptions?: MergeOptions | null
     }
 
 }
@@ -1736,8 +1762,10 @@ export interface CherryPickOptions {
     // Own properties of Ggit-1.0.Ggit.CherryPickOptions
 
     checkout_options: CheckoutOptions
+    checkoutOptions: CheckoutOptions
     mainline: number
     merge_options: MergeOptions
+    mergeOptions: MergeOptions
 
     // Own fields of Ggit-1.0.Ggit.CherryPickOptions
 
@@ -2803,6 +2831,10 @@ export module DiffFindOptions {
         rename_from_rewrite_threshold?: number | null
         rename_limit?: number | null
         rename_threshold?: number | null
+        copyThreshold?: number | null
+        renameFromRewriteThreshold?: number | null
+        renameLimit?: number | null
+        renameThreshold?: number | null
     }
 
 }
@@ -2812,14 +2844,18 @@ export interface DiffFindOptions {
     // Own properties of Ggit-1.0.Ggit.DiffFindOptions
 
     copy_threshold: number
+    copyThreshold: number
     /**
      * The diff option flags.
      */
     flags: DiffFindFlags
     metric: DiffSimilarityMetric
     rename_from_rewrite_threshold: number
+    renameFromRewriteThreshold: number
     rename_limit: number
+    renameLimit: number
     rename_threshold: number
+    renameThreshold: number
 
     // Own fields of Ggit-1.0.Ggit.DiffFindOptions
 
@@ -2958,6 +2994,8 @@ export module DiffFormatEmailOptions {
         patch_number?: number | null
         summary?: string | null
         total_patches?: number | null
+        patchNumber?: number | null
+        totalPatches?: number | null
     }
 
 }
@@ -2971,8 +3009,10 @@ export interface DiffFormatEmailOptions {
     flags: DiffFormatEmailFlags
     id: OId
     patch_number: number
+    patchNumber: number
     summary: string | null
     total_patches: number
+    totalPatches: number
 
     // Own fields of Ggit-1.0.Ggit.DiffFormatEmailOptions
 
@@ -3122,6 +3162,10 @@ export module DiffOptions {
         new_prefix?: string | null
         old_prefix?: string | null
         pathspec?: string[] | null
+        nContextLines?: number | null
+        nInterhunkLines?: number | null
+        newPrefix?: string | null
+        oldPrefix?: string | null
     }
 
 }
@@ -3135,9 +3179,13 @@ export interface DiffOptions {
      */
     flags: DiffOption
     n_context_lines: number
+    nContextLines: number
     n_interhunk_lines: number
+    nInterhunkLines: number
     new_prefix: string | null
+    newPrefix: string | null
     old_prefix: string | null
+    oldPrefix: string | null
     pathspec: string[]
 
     // Own fields of Ggit-1.0.Ggit.DiffOptions
@@ -4442,6 +4490,8 @@ export module Repository {
         location?: Gio.File | null
         url?: string | null
         workdir?: Gio.File | null
+        cloneOptions?: CloneOptions | null
+        isBare?: boolean | null
     }
 
 }
@@ -4451,9 +4501,11 @@ export interface Repository extends Gio.Initable {
     // Own properties of Ggit-1.0.Ggit.Repository
 
     readonly clone_options: CloneOptions
+    readonly cloneOptions: CloneOptions
     readonly head: Ref
     // Has conflict: readonly init: boolean
     readonly is_bare: boolean
+    readonly isBare: boolean
     readonly location: Gio.File
     readonly url: string | null
     workdir: Gio.File
@@ -5637,6 +5689,8 @@ export module SubmoduleUpdateOptions {
 
         checkout_options?: CheckoutOptions | null
         fetch_options?: FetchOptions | null
+        checkoutOptions?: CheckoutOptions | null
+        fetchOptions?: FetchOptions | null
     }
 
 }
@@ -5646,7 +5700,9 @@ export interface SubmoduleUpdateOptions {
     // Own properties of Ggit-1.0.Ggit.SubmoduleUpdateOptions
 
     checkout_options: CheckoutOptions
+    checkoutOptions: CheckoutOptions
     fetch_options: FetchOptions
+    fetchOptions: FetchOptions
 
     // Own fields of Ggit-1.0.Ggit.SubmoduleUpdateOptions
 

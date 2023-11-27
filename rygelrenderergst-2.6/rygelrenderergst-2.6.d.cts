@@ -48,6 +48,7 @@ export interface PlaybinPlayer extends RygelRenderer.MediaPlayer {
 
     playbin: Gst.Element
     readonly supported_profiles: RygelCore.DLNAProfile[]
+    readonly supportedProfiles: RygelCore.DLNAProfile[]
 
     // Owm methods of RygelRendererGst-2.6.RygelRendererGst.PlaybinPlayer
 

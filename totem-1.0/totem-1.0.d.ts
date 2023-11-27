@@ -315,17 +315,33 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      */
     readonly current_content_type: string | null
     /**
+     * The content-type of the current stream.
+     */
+    readonly currentContentType: string | null
+    /**
      * The display name of the current stream.
      */
     readonly current_display_name: string | null
+    /**
+     * The display name of the current stream.
+     */
+    readonly currentDisplayName: string | null
     /**
      * The MRL of the current stream.
      */
     readonly current_mrl: string | null
     /**
+     * The MRL of the current stream.
+     */
+    readonly currentMrl: string | null
+    /**
      * The player's position (time) in the current stream, in milliseconds.
      */
     readonly current_time: number
+    /**
+     * The player's position (time) in the current stream, in milliseconds.
+     */
+    readonly currentTime: number
     /**
      * If %TRUE, Totem is in fullscreen mode.
      */
@@ -334,6 +350,10 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * The name of the current main page (usually "grilo", or "player").
      */
     readonly main_page: string | null
+    /**
+     * The name of the current main page (usually "grilo", or "player").
+     */
+    readonly mainPage: string | null
     /**
      * If %TRUE, Totem is playing an audio or video file.
      */
@@ -346,6 +366,10 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * The length of the current stream, in milliseconds.
      */
     readonly stream_length: number
+    /**
+     * The length of the current stream, in milliseconds.
+     */
+    readonly streamLength: number
 
     // Owm methods of Totem-1.0.Totem.Object
 

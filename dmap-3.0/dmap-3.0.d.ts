@@ -584,6 +584,11 @@ module Connection {
         revision_number?: number | null
         session_id?: number | null
         username?: string | null
+        baseUri?: any | null
+        databaseId?: number | null
+        dmapVersion?: number | null
+        revisionNumber?: number | null
+        sessionId?: number | null
     }
 
 }
@@ -593,16 +598,21 @@ interface Connection {
     // Own properties of DMAP-3.0.DMAP.Connection
 
     base_uri: any
+    baseUri: any
     database_id: number
+    databaseId: number
     readonly db: any
     dmap_version: number
+    dmapVersion: number
     readonly factory: any
     readonly host: string | null
     readonly name: string | null
     password: string | null
     readonly port: number
     revision_number: number
+    revisionNumber: number
     session_id: number
+    sessionId: number
     readonly username: string | null
 
     // Own fields of DMAP-3.0.DMAP.Connection
@@ -944,6 +954,11 @@ module Share {
         revision_number?: number | null
         transcode_mimetype?: string | null
         txt_records?: string[] | null
+        authMethod?: number | null
+        containerDb?: any | null
+        revisionNumber?: number | null
+        transcodeMimetype?: string | null
+        txtRecords?: string[] | null
     }
 
 }
@@ -953,15 +968,22 @@ interface Share {
     // Own properties of DMAP-3.0.DMAP.Share
 
     auth_method: number
+    authMethod: number
     readonly container_db: any
+    readonly containerDb: any
     readonly db: any
     name: string | null
     password: string | null
     revision_number: number
+    revisionNumber: number
     readonly server_ipv4: Soup.Server
+    readonly serverIpv4: Soup.Server
     readonly server_ipv6: Soup.Server
+    readonly serverIpv6: Soup.Server
     readonly transcode_mimetype: string | null
+    readonly transcodeMimetype: string | null
     txt_records: string[]
+    txtRecords: string[]
 
     // Own fields of DMAP-3.0.DMAP.Share
 

@@ -511,7 +511,9 @@ interface Spliterator extends GObject.Object {
     // Own properties of Gpseq-1.0.Gpseq.Spliterator
 
     readonly estimated_size: number
+    readonly estimatedSize: number
     readonly is_size_known: boolean
+    readonly isSizeKnown: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.Spliterator
 
@@ -702,6 +704,9 @@ module ArraySpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -711,8 +716,11 @@ interface ArraySpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.ArraySpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.ArraySpliterator
 
@@ -764,6 +772,9 @@ module ForkJoinTask {
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
         depth?: number | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -773,18 +784,25 @@ interface ForkJoinTask extends Task {
     // Own properties of Gpseq-1.0.Gpseq.ForkJoinTask
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly parent: ForkJoinTask
     readonly root: ForkJoinTask
     readonly is_root: boolean
+    readonly isRoot: boolean
     readonly threshold: number
     readonly max_depth: number
+    readonly maxDepth: number
     depth: number
     readonly executor: Executor
     readonly promise: Promise
     readonly shared_result: ForkJoinTaskSharedResult
+    readonly sharedResult: ForkJoinTaskSharedResult
     readonly is_cancelled: boolean
+    readonly isCancelled: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.ForkJoinTask
 
@@ -910,6 +928,9 @@ module FuncTask {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -919,8 +940,11 @@ interface FuncTask extends Task {
     // Own properties of Gpseq-1.0.Gpseq.FuncTask
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.FuncTask
 
@@ -968,6 +992,9 @@ module Future {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -977,8 +1004,11 @@ interface Future extends Gee.Hashable, Result {
     // Own properties of Gpseq-1.0.Gpseq.Future
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly ready: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.Future
@@ -1050,6 +1080,9 @@ module GenericArraySpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1059,8 +1092,11 @@ interface GenericArraySpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.GenericArraySpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.GenericArraySpliterator
 
@@ -1111,6 +1147,9 @@ module IteratorSpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1120,8 +1159,11 @@ interface IteratorSpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.IteratorSpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.IteratorSpliterator
 
@@ -1173,6 +1215,9 @@ module ListSpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1182,8 +1227,11 @@ interface ListSpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.ListSpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.ListSpliterator
 
@@ -1234,6 +1282,9 @@ module Optional {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1243,11 +1294,16 @@ interface Optional {
     // Own properties of Gpseq-1.0.Gpseq.Optional
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly value_type: GObject.GType
+    readonly valueType: GObject.GType
     readonly value: any
     readonly is_present: boolean
+    readonly isPresent: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.Optional
 
@@ -1342,6 +1398,9 @@ module Seq {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1351,12 +1410,19 @@ interface Seq {
     // Own properties of Gpseq-1.0.Gpseq.Seq
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly element_type: GObject.GType
+    readonly elementType: GObject.GType
     readonly task_env: TaskEnv
+    readonly taskEnv: TaskEnv
     readonly is_closed: boolean
+    readonly isClosed: boolean
     readonly is_parallel: boolean
+    readonly isParallel: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.Seq
 
@@ -1469,6 +1535,12 @@ module SpliteratorTask {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        rType?: GObject.GType | null
+        rDupFunc?: GObject.BoxedCopyFunc | null
+        rDestroyFunc?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1478,17 +1550,28 @@ interface SpliteratorTask {
     // Own properties of Gpseq-1.0.Gpseq.SpliteratorTask
 
     readonly r_type: GObject.GType
+    readonly rType: GObject.GType
     readonly r_dup_func: GObject.BoxedCopyFunc
+    readonly rDupFunc: GObject.BoxedCopyFunc
     readonly r_destroy_func: GLib.DestroyNotify
+    readonly rDestroyFunc: GLib.DestroyNotify
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly spliterator: Spliterator
     readonly left_child: SpliteratorTask
+    readonly leftChild: SpliteratorTask
     readonly right_child: SpliteratorTask
+    readonly rightChild: SpliteratorTask
     readonly is_leaf: boolean
+    readonly isLeaf: boolean
     readonly is_leftmost: boolean
+    readonly isLeftmost: boolean
     readonly empty_result: any
+    readonly emptyResult: any
 
     // Owm methods of Gpseq-1.0.Gpseq.SpliteratorTask
 
@@ -1608,6 +1691,9 @@ module SubArray {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1617,8 +1703,11 @@ interface SubArray extends Gee.Traversable, Gee.Iterable {
     // Own properties of Gpseq-1.0.Gpseq.SubArray
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly size: number
 
     // Owm methods of Gpseq-1.0.Gpseq.SubArray
@@ -1688,6 +1777,9 @@ module SubArraySpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1697,8 +1789,11 @@ interface SubArraySpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.SubArraySpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.SubArraySpliterator
 
@@ -1749,6 +1844,9 @@ module SupplierSpliterator {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1758,8 +1856,11 @@ interface SupplierSpliterator extends Spliterator {
     // Own properties of Gpseq-1.0.Gpseq.SupplierSpliterator
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Class property signals of Gpseq-1.0.Gpseq.SupplierSpliterator
 
@@ -1908,6 +2009,7 @@ module WorkerPool {
         // Own constructor properties of Gpseq-1.0.Gpseq.WorkerPool
 
         max_threads?: number | null
+        maxThreads?: number | null
     }
 
 }
@@ -1917,11 +2019,16 @@ interface WorkerPool extends Executor {
     // Own properties of Gpseq-1.0.Gpseq.WorkerPool
 
     max_threads: number
+    maxThreads: number
     readonly num_threads: number
+    readonly numThreads: number
     readonly factory: ThreadFactory
     readonly is_terminating: boolean
+    readonly isTerminating: boolean
     readonly is_terminated: boolean
+    readonly isTerminated: boolean
     readonly is_terminating_started: boolean
+    readonly isTerminatingStarted: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.WorkerPool
 
@@ -2000,8 +2107,11 @@ interface WorkerThread {
     readonly pool: WorkerPool
     readonly name: string | null
     readonly is_started: boolean
+    readonly isStarted: boolean
     readonly is_terminated: boolean
+    readonly isTerminated: boolean
     readonly is_alive: boolean
+    readonly isAlive: boolean
 
     // Owm methods of Gpseq-1.0.Gpseq.WorkerThread
 
@@ -2069,6 +2179,9 @@ module Wrapper {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2078,10 +2191,14 @@ interface Wrapper {
     // Own properties of Gpseq-1.0.Gpseq.Wrapper
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly value: any
     readonly value_type: GObject.GType
+    readonly valueType: GObject.GType
 
     // Owm methods of Gpseq-1.0.Gpseq.Wrapper
 

@@ -122,6 +122,8 @@ module MixerCard {
         name?: string | null
         pa_context?: any | null
         profile?: string | null
+        iconName?: string | null
+        paContext?: any | null
     }
 
 }
@@ -131,11 +133,14 @@ interface MixerCard {
     // Own properties of Gvc-1.0.Gvc.MixerCard
 
     readonly human_profile: string | null
+    readonly humanProfile: string | null
     icon_name: string | null
+    iconName: string | null
     readonly id: number
     readonly index: number
     name: string | null
     readonly pa_context: any
+    readonly paContext: any
     profile: string | null
 
     // Own fields of Gvc-1.0.Gvc.MixerCard
@@ -967,6 +972,17 @@ module MixerStream {
         state?: MixerStreamState | null
         sysfs_path?: string | null
         volume?: number | null
+        applicationId?: string | null
+        canDecibel?: boolean | null
+        cardIndex?: number | null
+        channelMap?: ChannelMap | null
+        formFactor?: string | null
+        iconName?: string | null
+        isEventStream?: boolean | null
+        isMuted?: boolean | null
+        isVirtual?: boolean | null
+        paContext?: any | null
+        sysfsPath?: string | null
     }
 
 }
@@ -976,23 +992,34 @@ interface MixerStream {
     // Own properties of Gvc-1.0.Gvc.MixerStream
 
     application_id: string | null
+    applicationId: string | null
     can_decibel: boolean
+    canDecibel: boolean
     card_index: number
+    cardIndex: number
     channel_map: ChannelMap
+    channelMap: ChannelMap
     decibel: number
     description: string | null
     form_factor: string | null
+    formFactor: string | null
     icon_name: string | null
+    iconName: string | null
     readonly id: number
     readonly index: number
     is_event_stream: boolean
+    isEventStream: boolean
     is_muted: boolean
+    isMuted: boolean
     is_virtual: boolean
+    isVirtual: boolean
     name: string | null
     readonly pa_context: any
+    readonly paContext: any
     port: string | null
     state: MixerStreamState
     sysfs_path: string | null
+    sysfsPath: string | null
     volume: number
 
     // Own fields of Gvc-1.0.Gvc.MixerStream
@@ -1143,6 +1170,10 @@ module MixerUIDevice {
         port_name?: string | null
         stream_id?: number | null
         type?: number | null
+        iconName?: string | null
+        portAvailable?: boolean | null
+        portName?: string | null
+        streamId?: number | null
     }
 
 }
@@ -1154,10 +1185,14 @@ interface MixerUIDevice {
     card: any
     description: string | null
     icon_name: string | null
+    iconName: string | null
     origin: string | null
     port_available: boolean
+    portAvailable: boolean
     port_name: string | null
+    portName: string | null
     stream_id: number
+    streamId: number
     type: number
 
     // Own fields of Gvc-1.0.Gvc.MixerUIDevice

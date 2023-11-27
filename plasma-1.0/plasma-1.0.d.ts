@@ -84,6 +84,7 @@ module ClientCreateOptions {
         // Own constructor properties of Plasma-1.0.Plasma.ClientCreateOptions
 
         gpu_device?: number | null
+        gpuDevice?: number | null
     }
 
 }
@@ -93,6 +94,7 @@ interface ClientCreateOptions {
     // Own properties of Plasma-1.0.Plasma.ClientCreateOptions
 
     gpu_device: number
+    gpuDevice: number
 
     // Own fields of Plasma-1.0.Plasma.ClientCreateOptions
 
@@ -138,6 +140,7 @@ module ClientOptions {
         // Own constructor properties of Plasma-1.0.Plasma.ClientOptions
 
         n_retries?: number | null
+        nRetries?: number | null
     }
 
 }
@@ -147,6 +150,7 @@ interface ClientOptions {
     // Own properties of Plasma-1.0.Plasma.ClientOptions
 
     n_retries: number
+    nRetries: number
 
     // Own fields of Plasma-1.0.Plasma.ClientOptions
 
@@ -270,6 +274,9 @@ module Object {
         metadata?: Arrow.Buffer | null
         raw_data?: any | null
         raw_metadata?: any | null
+        gpuDevice?: number | null
+        rawData?: any | null
+        rawMetadata?: any | null
     }
 
 }
@@ -281,10 +288,13 @@ interface Object {
     readonly client: Client
     readonly data: Arrow.Buffer
     readonly gpu_device: number
+    readonly gpuDevice: number
     readonly id: ObjectID
     readonly metadata: Arrow.Buffer
     readonly raw_data: any
+    readonly rawData: any
     readonly raw_metadata: any
+    readonly rawMetadata: any
 
     // Own fields of Plasma-1.0.Plasma.Object
 

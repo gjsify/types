@@ -5148,6 +5148,10 @@ export module Bus {
          * Whether the #IBusBus object should connect asynchronously to the bus.
          */
         connect_async?: boolean | null
+        /**
+         * Whether the #IBusBus object should connect asynchronously to the bus.
+         */
+        connectAsync?: boolean | null
     }
 
 }
@@ -5160,6 +5164,10 @@ export interface Bus {
      * Whether the #IBusBus object should connect asynchronously to the bus.
      */
     readonly connect_async: boolean
+    /**
+     * Whether the #IBusBus object should connect asynchronously to the bus.
+     */
+    readonly connectAsync: boolean
 
     // Own fields of IBus-1.0.IBus.Bus
 
@@ -5723,6 +5731,10 @@ export module Component {
          * The version of component
          */
         version?: string | null
+        /**
+         * The exec path of component
+         */
+        commandLine?: string | null
     }
 
 }
@@ -5739,6 +5751,10 @@ export interface Component {
      * The exec path of component
      */
     readonly command_line: string | null
+    /**
+     * The exec path of component
+     */
+    readonly commandLine: string | null
     /**
      * The description of component
      */
@@ -6571,6 +6587,7 @@ export module Engine {
         // Own constructor properties of IBus-1.0.IBus.Engine
 
         engine_name?: string | null
+        engineName?: string | null
     }
 
 }
@@ -6580,6 +6597,7 @@ export interface Engine {
     // Own properties of IBus-1.0.IBus.Engine
 
     readonly engine_name: string | null
+    readonly engineName: string | null
 
     // Own fields of IBus-1.0.IBus.Engine
 
@@ -7001,6 +7019,18 @@ export module EngineDesc {
          * The version number of engine description
          */
         version?: string | null
+        /**
+         * The key of IBusProperty to change panel icon dynamically.
+         */
+        iconPropKey?: string | null
+        /**
+         * The keyboard option of engine description
+         */
+        layoutOption?: string | null
+        /**
+         * The keyboard variant of engine description
+         */
+        layoutVariant?: string | null
     }
 
 }
@@ -7030,6 +7060,10 @@ export interface EngineDesc {
      */
     readonly icon_prop_key: string | null
     /**
+     * The key of IBusProperty to change panel icon dynamically.
+     */
+    readonly iconPropKey: string | null
+    /**
      * The language of engine description
      */
     readonly language: string | null
@@ -7042,9 +7076,17 @@ export interface EngineDesc {
      */
     readonly layout_option: string | null
     /**
+     * The keyboard option of engine description
+     */
+    readonly layoutOption: string | null
+    /**
      * The keyboard variant of engine description
      */
     readonly layout_variant: string | null
+    /**
+     * The keyboard variant of engine description
+     */
+    readonly layoutVariant: string | null
     /**
      * The license of engine description
      */
@@ -9279,6 +9321,8 @@ export module Property {
         symbol?: Text | null
         tooltip?: Text | null
         visible?: boolean | null
+        propType?: PropType | null
+        subProps?: PropList | null
     }
 
 }
@@ -9291,9 +9335,11 @@ export interface Property {
     readonly key: string | null
     label: Text
     readonly prop_type: PropType
+    readonly propType: PropType
     sensitive: boolean
     state: PropState
     sub_props: PropList
+    subProps: PropList
     symbol: Text
     tooltip: Text
     visible: boolean
@@ -9910,6 +9956,10 @@ export module Service {
          * The path of service object.
          */
         object_path?: string | null
+        /**
+         * The path of service object.
+         */
+        objectPath?: string | null
     }
 
 }
@@ -9926,6 +9976,10 @@ export interface Service {
      * The path of service object.
      */
     readonly object_path: string | null
+    /**
+     * The path of service object.
+     */
+    readonly objectPath: string | null
 
     // Owm methods of IBus-1.0.IBus.Service
 

@@ -2064,6 +2064,12 @@ export interface APPCategories {
      * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
      */
     readonly is_fixed: boolean
+    /**
+     * Whether entries may use categories not in this category list.
+     * 
+     * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
+     */
+    readonly isFixed: boolean
 
     // Owm methods of GData-0.0.GData.APPCategories
 
@@ -2128,6 +2134,17 @@ export module AccessRule {
          * This must be %NULL if and only if #GDataAccessRule:scope-type is %GDATA_ACCESS_SCOPE_DEFAULT.
          */
         scope_value?: string | null
+        /**
+         * Specifies to whom this access rule applies. For example, %GDATA_ACCESS_SCOPE_USER or %GDATA_ACCESS_SCOPE_DEFAULT.
+         */
+        scopeType?: string | null
+        /**
+         * A value representing the user who is represented by the access rule, such as an
+         * e-mail address for users, or a domain name for domains.
+         * 
+         * This must be %NULL if and only if #GDataAccessRule:scope-type is %GDATA_ACCESS_SCOPE_DEFAULT.
+         */
+        scopeValue?: string | null
     }
 
 }
@@ -2160,12 +2177,23 @@ export interface AccessRule {
      */
     scope_type: string | null
     /**
+     * Specifies to whom this access rule applies. For example, %GDATA_ACCESS_SCOPE_USER or %GDATA_ACCESS_SCOPE_DEFAULT.
+     */
+    scopeType: string | null
+    /**
      * A value representing the user who is represented by the access rule, such as an
      * e-mail address for users, or a domain name for domains.
      * 
      * This must be %NULL if and only if #GDataAccessRule:scope-type is %GDATA_ACCESS_SCOPE_DEFAULT.
      */
     scope_value: string | null
+    /**
+     * A value representing the user who is represented by the access rule, such as an
+     * e-mail address for users, or a domain name for domains.
+     * 
+     * This must be %NULL if and only if #GDataAccessRule:scope-type is %GDATA_ACCESS_SCOPE_DEFAULT.
+     */
+    scopeValue: string | null
 
     // Own fields of GData-0.0.GData.AccessRule
 
@@ -2340,6 +2368,13 @@ export module Author {
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
          */
         uri?: string | null
+        /**
+         * An e-mail address associated with the person.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
+         */
+        emailAddress?: string | null
     }
 
 }
@@ -2355,6 +2390,13 @@ export interface Author extends Comparable {
      * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
      */
     email_address: string | null
+    /**
+     * An e-mail address associated with the person.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
+     */
+    emailAddress: string | null
     /**
      * A human-readable name for the person.
      * 
@@ -2491,6 +2533,11 @@ export module AuthorizationDomain {
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          */
         service_name?: string | null
+        /**
+         * The name of the service which contains the authorization domain, as enumerated in the
+         * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
+         */
+        serviceName?: string | null
     }
 
 }
@@ -2509,6 +2556,11 @@ export interface AuthorizationDomain {
      * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
      */
     readonly service_name: string | null
+    /**
+     * The name of the service which contains the authorization domain, as enumerated in the
+     * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
+     */
+    readonly serviceName: string | null
 
     // Owm methods of GData-0.0.GData.AuthorizationDomain
 
@@ -2578,6 +2630,18 @@ export module BatchOperation {
          * The service this batch operation is attached to.
          */
         service?: Service | null
+        /**
+         * The authorization domain for the batch operation, against which the #GDataService:authorizer for the #GDataBatchOperation:service should be
+         * authorized. This may be %NULL if authorization is not needed for any of the requests in the batch operation.
+         * 
+         * All requests in the batch operation must be authorizable under this single authorization domain. If requests need different authorization
+         * domains, they must be performed in different batch operations.
+         */
+        authorizationDomain?: AuthorizationDomain | null
+        /**
+         * The feed URI that this batch operation will be sent to.
+         */
+        feedUri?: string | null
     }
 
 }
@@ -2595,9 +2659,21 @@ export interface BatchOperation {
      */
     readonly authorization_domain: AuthorizationDomain
     /**
+     * The authorization domain for the batch operation, against which the #GDataService:authorizer for the #GDataBatchOperation:service should be
+     * authorized. This may be %NULL if authorization is not needed for any of the requests in the batch operation.
+     * 
+     * All requests in the batch operation must be authorizable under this single authorization domain. If requests need different authorization
+     * domains, they must be performed in different batch operations.
+     */
+    readonly authorizationDomain: AuthorizationDomain
+    /**
      * The feed URI that this batch operation will be sent to.
      */
     readonly feed_uri: string | null
+    /**
+     * The feed URI that this batch operation will be sent to.
+     */
+    readonly feedUri: string | null
     /**
      * The service this batch operation is attached to.
      */
@@ -2926,6 +3002,14 @@ export module CalendarCalendar {
          * url="http://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones">reference</ulink>.
          */
         timezone?: string | null
+        /**
+         * Indicates whether the calendar is visible.
+         */
+        isHidden?: boolean | null
+        /**
+         * Indicates whether the calendar is selected.
+         */
+        isSelected?: boolean | null
     }
 
 }
@@ -2941,6 +3025,12 @@ export interface CalendarCalendar extends AccessHandler {
      */
     readonly access_level: string | null
     /**
+     * Indicates the access level the current user has to the calendar. For example: %GDATA_CALENDAR_ACCESS_ROLE_READ or
+     * %GDATA_CALENDAR_ACCESS_ROLE_FREE_BUSY. The "current user" is the one authenticated against the service's #GDataService:authorizer,
+     * or the guest user.
+     */
+    readonly accessLevel: string | null
+    /**
      * The background color used to highlight the calendar in the user’s
      * browser. This used to be restricted to a limited set of colours, but
      * since 0.17.2 may be any RGB colour.
@@ -2951,9 +3041,17 @@ export interface CalendarCalendar extends AccessHandler {
      */
     is_hidden: boolean
     /**
+     * Indicates whether the calendar is visible.
+     */
+    isHidden: boolean
+    /**
      * Indicates whether the calendar is selected.
      */
     is_selected: boolean
+    /**
+     * Indicates whether the calendar is selected.
+     */
+    isSelected: boolean
     /**
      * The timezone in which the calendar's times are given. This is a timezone name in tz database notation: <ulink type="http"
      * url="http://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones">reference</ulink>.
@@ -3179,6 +3277,34 @@ export module CalendarEvent {
          * GData specification</ulink>.
          */
         visibility?: string | null
+        /**
+         * Indicates whether anyone can invite themselves to the event, by adding themselves to the attendee list.
+         */
+        anyoneCanAddSelf?: boolean | null
+        /**
+         * Indicates whether attendees may invite others to the event.
+         * 
+         * For more information, see the <ulink type="http"
+         * url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">GData specification</ulink>.
+         */
+        guestsCanInviteOthers?: boolean | null
+        /**
+         * Indicates whether attendees may modify the original event, so that changes are visible to organizers and other attendees.
+         * Otherwise, any changes made by attendees will be restricted to that attendee's calendar.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">
+         * GData specification</ulink>.
+         */
+        guestsCanModify?: boolean | null
+        /**
+         * Indicates whether attendees can see other people invited to the event.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanSeeOtherGuests">
+         * GData specification</ulink>.
+         */
+        guestsCanSeeGuests?: boolean | null
     }
 
 }
@@ -3191,6 +3317,10 @@ export interface CalendarEvent {
      * Indicates whether anyone can invite themselves to the event, by adding themselves to the attendee list.
      */
     anyone_can_add_self: boolean
+    /**
+     * Indicates whether anyone can invite themselves to the event, by adding themselves to the attendee list.
+     */
+    anyoneCanAddSelf: boolean
     /**
      * The last time the event was edited. If the event has not been edited yet, the content indicates the time it was created.
      * 
@@ -3206,6 +3336,13 @@ export interface CalendarEvent {
      */
     guests_can_invite_others: boolean
     /**
+     * Indicates whether attendees may invite others to the event.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">GData specification</ulink>.
+     */
+    guestsCanInviteOthers: boolean
+    /**
      * Indicates whether attendees may modify the original event, so that changes are visible to organizers and other attendees.
      * Otherwise, any changes made by attendees will be restricted to that attendee's calendar.
      * 
@@ -3215,6 +3352,15 @@ export interface CalendarEvent {
      */
     guests_can_modify: boolean
     /**
+     * Indicates whether attendees may modify the original event, so that changes are visible to organizers and other attendees.
+     * Otherwise, any changes made by attendees will be restricted to that attendee's calendar.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">
+     * GData specification</ulink>.
+     */
+    guestsCanModify: boolean
+    /**
      * Indicates whether attendees can see other people invited to the event.
      * 
      * For more information, see the
@@ -3223,13 +3369,29 @@ export interface CalendarEvent {
      */
     guests_can_see_guests: boolean
     /**
+     * Indicates whether attendees can see other people invited to the event.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanSeeOtherGuests">
+     * GData specification</ulink>.
+     */
+    guestsCanSeeGuests: boolean
+    /**
      * The event ID for the original event, if this event is an exception to a recurring event.
      */
     readonly original_event_id: string | null
     /**
+     * The event ID for the original event, if this event is an exception to a recurring event.
+     */
+    readonly originalEventId: string | null
+    /**
      * The event URI for the original event, if this event is an exception to a recurring event.
      */
     readonly original_event_uri: string | null
+    /**
+     * The event URI for the original event, if this event is an exception to a recurring event.
+     */
+    readonly originalEventUri: string | null
     /**
      * Represents the dates and times when a recurring event takes place. The returned string is in iCal format, as a list of properties.
      * 
@@ -3728,6 +3890,48 @@ export module CalendarQuery {
          * The current timezone. If this is not specified, all times are returned in UTC.
          */
         timezone?: string | null
+        /**
+         * A shortcut to request all events scheduled for the future. Overrides the
+         * #GDataCalendarQuery:start-min and #GDataCalendarQuery:start-max properties.
+         */
+        futureEvents?: boolean | null
+        /**
+         * Specifies the maximum number of attendees to list for an event. If the actual number of attendees for an event is greater than this value,
+         * only the current user and the event organiser are listed.
+         */
+        maxAttendees?: number | null
+        /**
+         * Specifies order of entries in a feed. Supported values are <literal>lastmodified</literal> and
+         * <literal>starttime</literal>.
+         */
+        orderBy?: string | null
+        /**
+         * Whether to include deleted/cancelled events in the query feed. Deleted events have their #GDataCalendarEvent:status property set to
+         * %GDATA_GD_EVENT_STATUS_CANCELED. They do not normally appear in query results.
+         */
+        showDeleted?: boolean | null
+        /**
+         * Indicates whether recurring events should be expanded or represented as a single event.
+         */
+        singleEvents?: boolean | null
+        /**
+         * Together with #GDataCalendarQuery:start-min, creates a timespan such that only events within the timespan are returned
+         * 
+         * #GDataCalendarQuery:start-min is inclusive, while #GDataCalendarQuery:start-max is exclusive. Events that overlap the range are
+         * included. Both are specified in seconds since the UNIX epoch.
+         * 
+         * If not specified, the default #GDataCalendarQuery:start-max is <literal>2031-01-01</literal>.
+         */
+        startMax?: number | null
+        /**
+         * Together with #GDataCalendarQuery:start-max, creates a timespan such that only events within the timespan are returned.
+         * 
+         * #GDataCalendarQuery:start-min is inclusive, while #GDataCalendarQuery:start-max is exclusive. Events that overlap the range are
+         * included. Both are specified in seconds since the UNIX epoch.
+         * 
+         * If not specified, the default #GDataCalendarQuery:start-min is <literal>1970-01-01</literal>.
+         */
+        startMin?: number | null
     }
 
 }
@@ -3742,24 +3946,48 @@ export interface CalendarQuery {
      */
     future_events: boolean
     /**
+     * A shortcut to request all events scheduled for the future. Overrides the
+     * #GDataCalendarQuery:start-min and #GDataCalendarQuery:start-max properties.
+     */
+    futureEvents: boolean
+    /**
      * Specifies the maximum number of attendees to list for an event. If the actual number of attendees for an event is greater than this value,
      * only the current user and the event organiser are listed.
      */
     max_attendees: number
+    /**
+     * Specifies the maximum number of attendees to list for an event. If the actual number of attendees for an event is greater than this value,
+     * only the current user and the event organiser are listed.
+     */
+    maxAttendees: number
     /**
      * Specifies order of entries in a feed. Supported values are <literal>lastmodified</literal> and
      * <literal>starttime</literal>.
      */
     order_by: string | null
     /**
+     * Specifies order of entries in a feed. Supported values are <literal>lastmodified</literal> and
+     * <literal>starttime</literal>.
+     */
+    orderBy: string | null
+    /**
      * Whether to include deleted/cancelled events in the query feed. Deleted events have their #GDataCalendarEvent:status property set to
      * %GDATA_GD_EVENT_STATUS_CANCELED. They do not normally appear in query results.
      */
     show_deleted: boolean
     /**
+     * Whether to include deleted/cancelled events in the query feed. Deleted events have their #GDataCalendarEvent:status property set to
+     * %GDATA_GD_EVENT_STATUS_CANCELED. They do not normally appear in query results.
+     */
+    showDeleted: boolean
+    /**
      * Indicates whether recurring events should be expanded or represented as a single event.
      */
     single_events: boolean
+    /**
+     * Indicates whether recurring events should be expanded or represented as a single event.
+     */
+    singleEvents: boolean
     /**
      * Together with #GDataCalendarQuery:start-min, creates a timespan such that only events within the timespan are returned
      * 
@@ -3770,6 +3998,15 @@ export interface CalendarQuery {
      */
     start_max: number
     /**
+     * Together with #GDataCalendarQuery:start-min, creates a timespan such that only events within the timespan are returned
+     * 
+     * #GDataCalendarQuery:start-min is inclusive, while #GDataCalendarQuery:start-max is exclusive. Events that overlap the range are
+     * included. Both are specified in seconds since the UNIX epoch.
+     * 
+     * If not specified, the default #GDataCalendarQuery:start-max is <literal>2031-01-01</literal>.
+     */
+    startMax: number
+    /**
      * Together with #GDataCalendarQuery:start-max, creates a timespan such that only events within the timespan are returned.
      * 
      * #GDataCalendarQuery:start-min is inclusive, while #GDataCalendarQuery:start-max is exclusive. Events that overlap the range are
@@ -3778,6 +4015,15 @@ export interface CalendarQuery {
      * If not specified, the default #GDataCalendarQuery:start-min is <literal>1970-01-01</literal>.
      */
     start_min: number
+    /**
+     * Together with #GDataCalendarQuery:start-max, creates a timespan such that only events within the timespan are returned.
+     * 
+     * #GDataCalendarQuery:start-min is inclusive, while #GDataCalendarQuery:start-max is exclusive. Events that overlap the range are
+     * included. Both are specified in seconds since the UNIX epoch.
+     * 
+     * If not specified, the default #GDataCalendarQuery:start-min is <literal>1970-01-01</literal>.
+     */
+    startMin: number
     /**
      * The current timezone. If this is not specified, all times are returned in UTC.
      */
@@ -5104,6 +5350,15 @@ export module DocumentsEntry {
          * Indicates whether the document entry writers can invite others to edit the document.
          */
         writers_can_invite?: boolean | null
+        /**
+         * Indicates whether the document entry has been deleted (moved to the trash). Deleted documents will only
+         * appear in query results if the #GDataDocumentsQuery:show-deleted property is %TRUE.
+         */
+        isDeleted?: boolean | null
+        /**
+         * Indicates whether the document entry writers can invite others to edit the document.
+         */
+        writersCanInvite?: boolean | null
     }
 
 }
@@ -5117,6 +5372,10 @@ export interface DocumentsEntry extends AccessHandler {
      */
     readonly can_edit: boolean
     /**
+     * Indicates whether the current user can edit this file.
+     */
+    readonly canEdit: boolean
+    /**
      * The size of the document. This is only set for non-document files.
      * Standard formats, such as #GDataDocumentsText,
      * #GDataDocumentsSpreadsheet and #GDataDocumentsFolder are not binary
@@ -5124,18 +5383,38 @@ export interface DocumentsEntry extends AccessHandler {
      */
     readonly file_size: number
     /**
+     * The size of the document. This is only set for non-document files.
+     * Standard formats, such as #GDataDocumentsText,
+     * #GDataDocumentsSpreadsheet and #GDataDocumentsFolder are not binary
+     * data and so have no size. Measured in bytes.
+     */
+    readonly fileSize: number
+    /**
      * Indicates whether the document entry has been deleted (moved to the trash). Deleted documents will only
      * appear in query results if the #GDataDocumentsQuery:show-deleted property is %TRUE.
      */
     is_deleted: boolean
     /**
+     * Indicates whether the document entry has been deleted (moved to the trash). Deleted documents will only
+     * appear in query results if the #GDataDocumentsQuery:show-deleted property is %TRUE.
+     */
+    isDeleted: boolean
+    /**
      * Indicates the author of the last modification.
      */
     readonly last_modified_by: Author
     /**
+     * Indicates the author of the last modification.
+     */
+    readonly lastModifiedBy: Author
+    /**
      * The last time the document was viewed.
      */
     readonly last_viewed: number
+    /**
+     * The last time the document was viewed.
+     */
+    readonly lastViewed: number
     /**
      * The amount of user quota the document is occupying. Currently, only arbitrary files consume file space quota (whereas standard document
      * formats, such as #GDataDocumentsText, #GDataDocumentsSpreadsheet and #GDataDocumentsFolder don't). Measured in bytes.
@@ -5143,6 +5422,13 @@ export interface DocumentsEntry extends AccessHandler {
      * This property will be <code class="literal">0</code> for documents which aren't consuming any quota.
      */
     readonly quota_used: number
+    /**
+     * The amount of user quota the document is occupying. Currently, only arbitrary files consume file space quota (whereas standard document
+     * formats, such as #GDataDocumentsText, #GDataDocumentsSpreadsheet and #GDataDocumentsFolder don't). Measured in bytes.
+     * 
+     * This property will be <code class="literal">0</code> for documents which aren't consuming any quota.
+     */
+    readonly quotaUsed: number
     /**
      * The resource ID of the document. This should not normally need to be used in client code, and is mostly for internal use. To uniquely
      * identify a given document or folder, use its #GDataEntry:id.
@@ -5158,13 +5444,35 @@ export interface DocumentsEntry extends AccessHandler {
      */
     readonly resource_id: string | null
     /**
+     * The resource ID of the document. This should not normally need to be used in client code, and is mostly for internal use. To uniquely
+     * identify a given document or folder, use its #GDataEntry:id.
+     * 
+     * Resource IDs have the form:
+     * <literal><replaceable>document|drawing|pdf|spreadsheet|presentation|folder</replaceable>:<replaceable>untyped resource ID</replaceable></literal>; whereas
+     * entry IDs have the form:
+     * <literal>https://docs.google.com/feeds/id/<replaceable>resource ID</replaceable></literal> in version 3 of the API.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#resource_ids_explained">Google Documents
+     * API reference</ulink>.
+     */
+    readonly resourceId: string | null
+    /**
      * The UNIX timestamp for the time at which this file was shared with the user.
      */
     readonly shared_with_me_date: number
     /**
+     * The UNIX timestamp for the time at which this file was shared with the user.
+     */
+    readonly sharedWithMeDate: number
+    /**
      * Indicates whether the document entry writers can invite others to edit the document.
      */
     writers_can_invite: boolean
+    /**
+     * Indicates whether the document entry writers can invite others to edit the document.
+     */
+    writersCanInvite: boolean
 
     // Own fields of GData-0.0.GData.DocumentsEntry
 
@@ -5551,9 +5859,17 @@ export interface DocumentsMetadata {
      */
     readonly quota_total: number
     /**
+     * The user quota limit across all services. Measured in bytes.
+     */
+    readonly quotaTotal: number
+    /**
      * The amount of user quota used up across all services. Measured in bytes.
      */
     readonly quota_used: number
+    /**
+     * The amount of user quota used up across all services. Measured in bytes.
+     */
+    readonly quotaUsed: number
 
     // Own fields of GData-0.0.GData.DocumentsMetadata
 
@@ -6069,6 +6385,22 @@ export module DocumentsQuery {
          * title match will be searched for, otherwise substring matches will also be returned.
          */
         title?: string | null
+        /**
+         * Specifies whether the query should search for an exact title match for the #GDataDocumentsQuery:title parameter.
+         */
+        exactTitle?: boolean | null
+        /**
+         * Specifies the ID of the folder in which to search.
+         */
+        folderId?: string | null
+        /**
+         * A shortcut to request all documents that have been deleted.
+         */
+        showDeleted?: boolean | null
+        /**
+         * Specifies if the request also returns folders.
+         */
+        showFolders?: boolean | null
     }
 
 }
@@ -6082,17 +6414,33 @@ export interface DocumentsQuery {
      */
     exact_title: boolean
     /**
+     * Specifies whether the query should search for an exact title match for the #GDataDocumentsQuery:title parameter.
+     */
+    exactTitle: boolean
+    /**
      * Specifies the ID of the folder in which to search.
      */
     folder_id: string | null
+    /**
+     * Specifies the ID of the folder in which to search.
+     */
+    folderId: string | null
     /**
      * A shortcut to request all documents that have been deleted.
      */
     show_deleted: boolean
     /**
+     * A shortcut to request all documents that have been deleted.
+     */
+    showDeleted: boolean
+    /**
      * Specifies if the request also returns folders.
      */
     show_folders: boolean
+    /**
+     * Specifies if the request also returns folders.
+     */
+    showFolders: boolean
     /**
      * A title (or title fragment) to be searched for. If #GDataDocumentsQuery:exact-title is %TRUE, an exact
      * title match will be searched for, otherwise substring matches will also be returned.
@@ -7212,6 +7560,15 @@ export module DownloadStream {
          * The service which is used to authorize the download, and to which the download relates.
          */
         service?: Service | null
+        /**
+         * The authorization domain for the download, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
+         * authorized. This may be %NULL if authorization is not needed for the download.
+         */
+        authorizationDomain?: AuthorizationDomain | null
+        /**
+         * The URI of the file to download. This must be HTTPS.
+         */
+        downloadUri?: string | null
     }
 
 }
@@ -7225,6 +7582,11 @@ export interface DownloadStream extends Gio.Seekable {
      * authorized. This may be %NULL if authorization is not needed for the download.
      */
     readonly authorization_domain: AuthorizationDomain
+    /**
+     * The authorization domain for the download, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
+     * authorized. This may be %NULL if authorization is not needed for the download.
+     */
+    readonly authorizationDomain: AuthorizationDomain
     /**
      * An optional cancellable used to cancel the entire download operation. If a #GCancellable instance isn't provided for this property at
      * construction time (i.e. to gdata_download_stream_new()), one will be created internally and can be retrieved using
@@ -7247,6 +7609,15 @@ export interface DownloadStream extends Gio.Seekable {
      */
     readonly content_length: number
     /**
+     * The length (in bytes) of the file being downloaded. This will initially be <code class="literal">-1</code>, and will be populated as soon as
+     * the appropriate header is received from the server. Its value will never change after this.
+     * 
+     * Note that change notifications for this property (#GObject::notify emissions) may be emitted in threads other than the one which created
+     * the #GDataDownloadStream. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
+     * or marshal the notification to the thread which owns the #GDataDownloadStream as appropriate.
+     */
+    readonly contentLength: number
+    /**
      * The content type of the file being downloaded. This will initially be %NULL, and will be populated as soon as the appropriate header is
      * received from the server. Its value will never change after this.
      * 
@@ -7256,9 +7627,22 @@ export interface DownloadStream extends Gio.Seekable {
      */
     readonly content_type: string | null
     /**
+     * The content type of the file being downloaded. This will initially be %NULL, and will be populated as soon as the appropriate header is
+     * received from the server. Its value will never change after this.
+     * 
+     * Note that change notifications for this property (#GObject::notify emissions) may be emitted in threads other than the one which created
+     * the #GDataDownloadStream. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
+     * or marshal the notification to the thread which owns the #GDataDownloadStream as appropriate.
+     */
+    readonly contentType: string | null
+    /**
      * The URI of the file to download. This must be HTTPS.
      */
     readonly download_uri: string | null
+    /**
+     * The URI of the file to download. This must be HTTPS.
+     */
+    readonly downloadUri: string | null
     /**
      * The service which is used to authorize the download, and to which the download relates.
      */
@@ -7445,6 +7829,13 @@ export module Entry {
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.title">Atom specification</ulink>.
          */
         title?: string | null
+        /**
+         * A URI pointing to the location of the content of the entry. This is mutually exclusive with #GDataEntry:content.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.content">Atom specification</ulink>.
+         */
+        contentUri?: string | null
     }
 
 }
@@ -7468,6 +7859,13 @@ export interface Entry {
      */
     content_uri: string | null
     /**
+     * A URI pointing to the location of the content of the entry. This is mutually exclusive with #GDataEntry:content.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.content">Atom specification</ulink>.
+     */
+    contentUri: string | null
+    /**
      * An identifier for a particular version of the entry. This changes every time the entry on the server changes, and can be used
      * for conditional retrieval and locking.
      * 
@@ -7488,6 +7886,11 @@ export interface Entry {
      * %TRUE for entries returned from the server by queries. It is set to %TRUE when an entry is inserted using gdata_service_insert_entry().
      */
     readonly is_inserted: boolean
+    /**
+     * Whether the entry has been inserted on the server. This is %FALSE for entries which have just been created using gdata_entry_new() and
+     * %TRUE for entries returned from the server by queries. It is set to %TRUE when an entry is inserted using gdata_service_insert_entry().
+     */
+    readonly isInserted: boolean
     /**
      * The date and time the entry was first published or made available.
      * 
@@ -7785,6 +8188,14 @@ export interface Feed {
      */
     readonly items_per_page: number
     /**
+     * The number of items per results page feed.
+     * 
+     * API reference:
+     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:itemsPerPage">
+     * openSearch:itemsPerPage</ulink>
+     */
+    readonly itemsPerPage: number
+    /**
      * The URI of a logo for the feed.
      * 
      * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_logo">atom:logo</ulink>
@@ -7797,6 +8208,13 @@ export interface Feed {
      * offsets.
      */
     readonly next_page_token: string | null
+    /**
+     * The next page token for feeds. Pass this to
+     * gdata_query_set_page_token() to advance to the next page when
+     * querying APIs which use page tokens rather than page numbers or
+     * offsets.
+     */
+    readonly nextPageToken: string | null
     /**
      * The ownership rights pertaining to the entire feed.
      * 
@@ -7814,6 +8232,16 @@ export interface Feed {
      * openSearch:startIndex</ulink>
      */
     readonly start_index: number
+    /**
+     * The one-based index of the first item in the results feed.
+     * 
+     * This should <emphasis>not</emphasis> be used manually for pagination. Instead, use a #GDataQuery and call its gdata_query_next_page()
+     * or gdata_query_previous_page() functions before making the query to the service.
+     * 
+     * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:startIndex">
+     * openSearch:startIndex</ulink>
+     */
+    readonly startIndex: number
     /**
      * The subtitle of the feed.
      * 
@@ -7838,6 +8266,17 @@ export interface Feed {
      * openSearch:totalResults</ulink>
      */
     readonly total_results: number
+    /**
+     * The number of items in the result set for the feed, including those on other pages. If this is zero, the total number is unknown.
+     * 
+     * This should <emphasis>not</emphasis> be used manually for pagination. Instead, use a #GDataQuery and call its gdata_query_next_page()
+     * or gdata_query_previous_page() functions before making the query to the service.
+     * 
+     * API reference:
+     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:totalResults">
+     * openSearch:totalResults</ulink>
+     */
+    readonly totalResults: number
     /**
      * The time the feed was last updated.
      * 
@@ -8055,6 +8494,21 @@ export module GContactCalendar {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
          */
         uri?: string | null
+        /**
+         * Indicates which calendar out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * A programmatic value that identifies the type of calendar. It is mutually exclusive with #GDataGContactCalendar:label.
+         * Examples are %GDATA_GCONTACT_CALENDAR_HOME or %GDATA_GCONTACT_CALENDAR_FREE_BUSY.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -8071,6 +8525,13 @@ export interface GContactCalendar extends Comparable {
      */
     is_primary: boolean
     /**
+     * Indicates which calendar out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
+     */
+    isPrimary: boolean
+    /**
      * A free-form string that identifies the type of calendar. It is mutually exclusive with #GDataGContactCalendar:relation-type.
      * 
      * For more information, see the
@@ -8085,6 +8546,14 @@ export interface GContactCalendar extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of calendar. It is mutually exclusive with #GDataGContactCalendar:label.
+     * Examples are %GDATA_GCONTACT_CALENDAR_HOME or %GDATA_GCONTACT_CALENDAR_FREE_BUSY.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
+     */
+    relationType: string | null
     /**
      * The URI of the calendar.
      * 
@@ -8240,6 +8709,14 @@ export module GContactEvent {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">gContact specification</ulink>.
          */
         relation_type?: string | null
+        /**
+         * A programmatic value that identifies the type of event. It is mutually exclusive with #GDataGContactEvent:label.
+         * Examples are %GDATA_GCONTACT_EVENT_ANNIVERSARY or %GDATA_GCONTACT_EVENT_OTHER.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -8271,6 +8748,14 @@ export interface GContactEvent {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of event. It is mutually exclusive with #GDataGContactEvent:label.
+     * Examples are %GDATA_GCONTACT_EVENT_ANNIVERSARY or %GDATA_GCONTACT_EVENT_OTHER.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">gContact specification</ulink>.
+     */
+    relationType: string | null
 
     // Own fields of GData-0.0.GData.GContactEvent
 
@@ -8407,6 +8892,14 @@ export module GContactExternalID {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
          */
         value?: string | null
+        /**
+         * A programmatic value that identifies the type of external ID. It is mutually exclusive with #GDataGContactExternalID:label.
+         * Examples are %GDATA_GCONTACT_EXTERNAL_ID_NETWORK or %GDATA_GCONTACT_EXTERNAL_ID_ACCOUNT.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -8430,6 +8923,14 @@ export interface GContactExternalID extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of external ID. It is mutually exclusive with #GDataGContactExternalID:label.
+     * Examples are %GDATA_GCONTACT_EXTERNAL_ID_NETWORK or %GDATA_GCONTACT_EXTERNAL_ID_ACCOUNT.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
+     */
+    relationType: string | null
     /**
      * The value of the external ID.
      * 
@@ -8566,6 +9067,13 @@ export module GContactJot {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
          */
         relation_type?: string | null
+        /**
+         * A programmatic value that identifies the type of jot. Examples are %GDATA_GCONTACT_JOT_HOME or %GDATA_GCONTACT_JOT_OTHER.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -8588,6 +9096,13 @@ export interface GContactJot {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of jot. Examples are %GDATA_GCONTACT_JOT_HOME or %GDATA_GCONTACT_JOT_OTHER.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
+     */
+    relationType: string | null
 
     // Own fields of GData-0.0.GData.GContactJot
 
@@ -8835,6 +9350,14 @@ export module GContactRelation {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
          */
         relation_type?: string | null
+        /**
+         * A programmatic value that identifies the type of relation. It is mutually exclusive with #GDataGContactRelation:label.
+         * Examples are %GDATA_GCONTACT_RELATION_MANAGER or %GDATA_GCONTACT_RELATION_CHILD.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -8865,6 +9388,14 @@ export interface GContactRelation {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of relation. It is mutually exclusive with #GDataGContactRelation:label.
+     * Examples are %GDATA_GCONTACT_RELATION_MANAGER or %GDATA_GCONTACT_RELATION_CHILD.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
+     */
+    relationType: string | null
 
     // Own fields of GData-0.0.GData.GContactRelation
 
@@ -9010,6 +9541,21 @@ export module GContactWebsite {
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
          */
         uri?: string | null
+        /**
+         * Indicates which website out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * A programmatic value that identifies the type of website. Examples are %GDATA_GCONTACT_WEBSITE_HOME_PAGE or %GDATA_GCONTACT_WEBSITE_FTP.
+         * It is mutually exclusive with #GDataGContactWebsite:label.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -9026,6 +9572,13 @@ export interface GContactWebsite extends Comparable {
      */
     is_primary: boolean
     /**
+     * Indicates which website out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
+     */
+    isPrimary: boolean
+    /**
      * A simple string value used to name this website. It allows UIs to display a label such as "Work", "Travel blog", "Personal blog", etc.
      * It is mutually exclusive with #GDataGContactWebsite:relation-type.
      * 
@@ -9041,6 +9594,14 @@ export interface GContactWebsite extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of website. Examples are %GDATA_GCONTACT_WEBSITE_HOME_PAGE or %GDATA_GCONTACT_WEBSITE_FTP.
+     * It is mutually exclusive with #GDataGContactWebsite:label.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
+     */
+    relationType: string | null
     /**
      * The URI of the website.
      * 
@@ -9208,6 +9769,27 @@ export module GDEmailAddress {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
          */
         relation_type?: string | null
+        /**
+         * A display name of the entity (e.g. a person) the e-mail address belongs to.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+         */
+        displayName?: string | null
+        /**
+         * Indicates which e-mail address out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * A programmatic value that identifies the type of e-mail address. For example: %GDATA_GD_EMAIL_ADDRESS_HOME or %GDATA_GD_EMAIL_ADDRESS_WORK.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -9231,12 +9813,26 @@ export interface GDEmailAddress extends Comparable {
      */
     display_name: string | null
     /**
+     * A display name of the entity (e.g. a person) the e-mail address belongs to.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+     */
+    displayName: string | null
+    /**
      * Indicates which e-mail address out of a group is primary.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
      */
     is_primary: boolean
+    /**
+     * Indicates which e-mail address out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+     */
+    isPrimary: boolean
     /**
      * A simple string value used to name this e-mail address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
      * 
@@ -9251,6 +9847,13 @@ export interface GDEmailAddress extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of e-mail address. For example: %GDATA_GD_EMAIL_ADDRESS_HOME or %GDATA_GD_EMAIL_ADDRESS_WORK.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
+     */
+    relationType: string | null
 
     // Own fields of GData-0.0.GData.GDEmailAddress
 
@@ -9419,6 +10022,20 @@ export module GDIMAddress {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
          */
         relation_type?: string | null
+        /**
+         * Indicates which IM address out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * A programmatic value that identifies the type of IM address. For example: %GDATA_GD_IM_ADDRESS_HOME or %GDATA_GD_IM_ADDRESS_WORK.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -9442,6 +10059,13 @@ export interface GDIMAddress extends Comparable {
      */
     is_primary: boolean
     /**
+     * Indicates which IM address out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
+     */
+    isPrimary: boolean
+    /**
      * A simple string value used to name this IM address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
      * 
      * For more information, see the
@@ -9462,6 +10086,13 @@ export interface GDIMAddress extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of IM address. For example: %GDATA_GD_IM_ADDRESS_HOME or %GDATA_GD_IM_ADDRESS_WORK.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
+     */
+    relationType: string | null
 
     // Own fields of GData-0.0.GData.GDIMAddress
 
@@ -9638,6 +10269,35 @@ export module GDName {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
          */
         suffix?: string | null
+        /**
+         * An additional name for the person (e.g. a middle name).
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+         */
+        additionalName?: string | null
+        /**
+         * The person's family name.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+         */
+        familyName?: string | null
+        /**
+         * An unstructured representation of the person's full name. It's generally advised to use the other individual properties in preference
+         * to this one, which can fall out of synchronisation with the other properties.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+         */
+        fullName?: string | null
+        /**
+         * The person's given name.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+         */
+        givenName?: string | null
     }
 
 }
@@ -9654,12 +10314,26 @@ export interface GDName extends Comparable {
      */
     additional_name: string | null
     /**
+     * An additional name for the person (e.g. a middle name).
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+     */
+    additionalName: string | null
+    /**
      * The person's family name.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
      */
     family_name: string | null
+    /**
+     * The person's family name.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+     */
+    familyName: string | null
     /**
      * An unstructured representation of the person's full name. It's generally advised to use the other individual properties in preference
      * to this one, which can fall out of synchronisation with the other properties.
@@ -9669,12 +10343,27 @@ export interface GDName extends Comparable {
      */
     full_name: string | null
     /**
+     * An unstructured representation of the person's full name. It's generally advised to use the other individual properties in preference
+     * to this one, which can fall out of synchronisation with the other properties.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+     */
+    fullName: string | null
+    /**
      * The person's given name.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
      */
     given_name: string | null
+    /**
+     * The person's given name.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
+     */
+    givenName: string | null
     /**
      * An honorific prefix (e.g. <literal>Mr</literal> or <literal>Mrs</literal>).
      * 
@@ -9894,6 +10583,27 @@ export module GDOrganization {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
          */
         title?: string | null
+        /**
+         * Indicates which organization out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * Description of a job within the organization.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+         */
+        jobDescription?: string | null
+        /**
+         * A programmatic value that identifies the type of organization. For example: %GDATA_GD_ORGANIZATION_WORK or %GDATA_GD_ORGANIZATION_OTHER.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -9917,12 +10627,26 @@ export interface GDOrganization extends Comparable {
      */
     is_primary: boolean
     /**
+     * Indicates which organization out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+     */
+    isPrimary: boolean
+    /**
      * Description of a job within the organization.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
      */
     job_description: string | null
+    /**
+     * Description of a job within the organization.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+     */
+    jobDescription: string | null
     /**
      * A simple string value used to name this organization. It allows UIs to display a label such as "Work", "Volunteer",
      * "Professional Society", etc.
@@ -9952,6 +10676,13 @@ export interface GDOrganization extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of organization. For example: %GDATA_GD_ORGANIZATION_WORK or %GDATA_GD_ORGANIZATION_OTHER.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
+     */
+    relationType: string | null
     /**
      * Stock symbol of the organization.
      * 
@@ -10198,6 +10929,20 @@ export module GDPhoneNumber {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
          */
         uri?: string | null
+        /**
+         * Indicates which phone number out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * A programmatic value that identifies the type of phone number. For example: %GDATA_GD_PHONE_NUMBER_WORK or %GDATA_GD_PHONE_NUMBER_PAGER.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -10213,6 +10958,13 @@ export interface GDPhoneNumber extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
      */
     is_primary: boolean
+    /**
+     * Indicates which phone number out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
+     */
+    isPrimary: boolean
     /**
      * A simple string value used to name this phone number. It allows UIs to display a label such as "Mobile", "Home", "Work", etc.
      * 
@@ -10234,6 +10986,13 @@ export interface GDPhoneNumber extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of phone number. For example: %GDATA_GD_PHONE_NUMBER_WORK or %GDATA_GD_PHONE_NUMBER_PAGER.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
+     */
+    relationType: string | null
     /**
      * An optional "tel URI" used to represent the number in a formal way. Useful for programmatic access, such as a VoIP/PSTN bridge.
      * 
@@ -10484,6 +11243,42 @@ export module GDPostalAddress {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
         usage?: string | null
+        /**
+         * Used in places where houses or buildings have names (and not necessarily numbers).
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+         */
+        houseName?: string | null
+        /**
+         * Indicates which postal address out of a group is primary.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+         */
+        isPrimary?: boolean | null
+        /**
+         * Classes of mail accepted at this address. For example: %GDATA_GD_MAIL_CLASS_LETTERS or %GDATA_GD_MAIL_CLASS_BOTH.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+         */
+        mailClass?: string | null
+        /**
+         * Covers actual P.O. boxes, drawers, locked bags, etc. This is usually but not always mutually exclusive with #GDataGDPostalAddress:street.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+         */
+        poBox?: string | null
+        /**
+         * A programmatic value that identifies the type of postal address. For example: %GDATA_GD_POSTAL_ADDRESS_WORK or
+         * %GDATA_GD_POSTAL_ADDRESS_OTHER.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -10531,6 +11326,15 @@ export interface GDPostalAddress extends Comparable {
      */
     readonly country_code: string | null
     /**
+     * The ISO 3166-1 alpha-2 country code for the country in #GDataGDPostalAddress:country. Since this is paired with
+     * #GDataGDPostalAddress:country, they must both be set with gdata_gd_postal_address_set_country().
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>
+     * or <ulink type="http" url="http://www.iso.org/iso/iso-3166-1_decoding_table">ISO 3166-1 alpha-2</ulink>.
+     */
+    readonly countryCode: string | null
+    /**
      * Used in places where houses or buildings have names (and not necessarily numbers).
      * 
      * For more information, see the
@@ -10538,12 +11342,26 @@ export interface GDPostalAddress extends Comparable {
      */
     house_name: string | null
     /**
+     * Used in places where houses or buildings have names (and not necessarily numbers).
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+     */
+    houseName: string | null
+    /**
      * Indicates which postal address out of a group is primary.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
      */
     is_primary: boolean
+    /**
+     * Indicates which postal address out of a group is primary.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+     */
+    isPrimary: boolean
     /**
      * A simple string value used to name this postal address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
      * 
@@ -10559,6 +11377,13 @@ export interface GDPostalAddress extends Comparable {
      */
     mail_class: string | null
     /**
+     * Classes of mail accepted at this address. For example: %GDATA_GD_MAIL_CLASS_LETTERS or %GDATA_GD_MAIL_CLASS_BOTH.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+     */
+    mailClass: string | null
+    /**
      * This is used to disambiguate a street address when a city contains more than one street with the same name, or to specify a small place
      * whose mail is routed through a larger postal town. In China it could be a county or a minor city.
      * 
@@ -10573,6 +11398,13 @@ export interface GDPostalAddress extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
      */
     po_box: string | null
+    /**
+     * Covers actual P.O. boxes, drawers, locked bags, etc. This is usually but not always mutually exclusive with #GDataGDPostalAddress:street.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+     */
+    poBox: string | null
     /**
      * Postal code. Usually country-wide, but sometimes specific to the city (e.g. "2" in "Dublin 2, Ireland" addresses).
      * 
@@ -10595,6 +11427,14 @@ export interface GDPostalAddress extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * A programmatic value that identifies the type of postal address. For example: %GDATA_GD_POSTAL_ADDRESS_WORK or
+     * %GDATA_GD_POSTAL_ADDRESS_OTHER.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
+     */
+    relationType: string | null
     /**
      * Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
      * 
@@ -10944,6 +11784,20 @@ export module GDReminder {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
          */
         relative_time?: number | null
+        /**
+         * Absolute time at which the reminder should be issued.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
+         */
+        absoluteTime?: number | null
+        /**
+         * Time at which the reminder should be issued, in minutes relative to the start time of the corresponding event.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
+         */
+        relativeTime?: number | null
     }
 
 }
@@ -10960,12 +11814,26 @@ export interface GDReminder extends Comparable {
      */
     absolute_time: number
     /**
+     * Absolute time at which the reminder should be issued.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
+     */
+    absoluteTime: number
+    /**
      * Whether the reminder is specified as an absolute or relative time.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
      */
     readonly is_absolute_time: boolean
+    /**
+     * Whether the reminder is specified as an absolute or relative time.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
+     */
+    readonly isAbsoluteTime: boolean
     /**
      * The notification method the reminder should use. For example: %GDATA_GD_REMINDER_ALERT or %GDATA_GD_REMINDER_EMAIL.
      * 
@@ -10980,6 +11848,13 @@ export interface GDReminder extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
      */
     relative_time: number
+    /**
+     * Time at which the reminder should be issued, in minutes relative to the start time of the corresponding event.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
+     */
+    relativeTime: number
 
     // Own fields of GData-0.0.GData.GDReminder
 
@@ -11122,6 +11997,35 @@ export module GDWhen {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
          */
         value_string?: string | null
+        /**
+         * The title of a person within the when.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+         */
+        endTime?: number | null
+        /**
+         * A programmatic value that identifies the type of when.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+         */
+        isDate?: boolean | null
+        /**
+         * The name of the when.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+         */
+        startTime?: number | null
+        /**
+         * A simple string value used to name this when. It allows UIs to display a label such as "Work", "Volunteer",
+         * "Professional Society", etc.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+         */
+        valueString?: string | null
     }
 
 }
@@ -11138,12 +12042,26 @@ export interface GDWhen extends Comparable {
      */
     end_time: number
     /**
+     * The title of a person within the when.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+     */
+    endTime: number
+    /**
      * A programmatic value that identifies the type of when.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
      */
     is_date: boolean
+    /**
+     * A programmatic value that identifies the type of when.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+     */
+    isDate: boolean
     /**
      * The name of the when.
      * 
@@ -11152,6 +12070,13 @@ export interface GDWhen extends Comparable {
      */
     start_time: number
     /**
+     * The name of the when.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+     */
+    startTime: number
+    /**
      * A simple string value used to name this when. It allows UIs to display a label such as "Work", "Volunteer",
      * "Professional Society", etc.
      * 
@@ -11159,6 +12084,14 @@ export interface GDWhen extends Comparable {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
      */
     value_string: string | null
+    /**
+     * A simple string value used to name this when. It allows UIs to display a label such as "Work", "Volunteer",
+     * "Professional Society", etc.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
+     */
+    valueString: string | null
 
     // Own fields of GData-0.0.GData.GDWhen
 
@@ -11311,6 +12244,21 @@ export module GDWhere {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
          */
         value_string?: string | null
+        /**
+         * Specifies the relationship between the containing entity and the contained location. For example: %GDATA_GD_WHERE_EVENT or
+         * %GDATA_GD_WHERE_EVENT_PARKING.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
+         */
+        relationType?: string | null
+        /**
+         * A simple string representation of this location.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
+         */
+        valueString?: string | null
     }
 
 }
@@ -11335,12 +12283,27 @@ export interface GDWhere extends Comparable {
      */
     relation_type: string | null
     /**
+     * Specifies the relationship between the containing entity and the contained location. For example: %GDATA_GD_WHERE_EVENT or
+     * %GDATA_GD_WHERE_EVENT_PARKING.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
+     */
+    relationType: string | null
+    /**
      * A simple string representation of this location.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
      */
     value_string: string | null
+    /**
+     * A simple string representation of this location.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
+     */
+    valueString: string | null
 
     // Own fields of GData-0.0.GData.GDWhere
 
@@ -11477,6 +12440,28 @@ export module GDWho {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
          */
         value_string?: string | null
+        /**
+         * The e-mail address of the person represented by the #GDataGDWho.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+         */
+        emailAddress?: string | null
+        /**
+         * Specifies the relationship between the containing entity and the contained person. For example: %GDATA_GD_WHO_EVENT_PERFORMER or
+         * %GDATA_GD_WHO_EVENT_ATTENDEE.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+         */
+        relationType?: string | null
+        /**
+         * A simple string representation of this person.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+         */
+        valueString?: string | null
     }
 
 }
@@ -11493,6 +12478,13 @@ export interface GDWho extends Comparable {
      */
     email_address: string | null
     /**
+     * The e-mail address of the person represented by the #GDataGDWho.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+     */
+    emailAddress: string | null
+    /**
      * Specifies the relationship between the containing entity and the contained person. For example: %GDATA_GD_WHO_EVENT_PERFORMER or
      * %GDATA_GD_WHO_EVENT_ATTENDEE.
      * 
@@ -11501,12 +12493,27 @@ export interface GDWho extends Comparable {
      */
     relation_type: string | null
     /**
+     * Specifies the relationship between the containing entity and the contained person. For example: %GDATA_GD_WHO_EVENT_PERFORMER or
+     * %GDATA_GD_WHO_EVENT_ATTENDEE.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+     */
+    relationType: string | null
+    /**
      * A simple string representation of this person.
      * 
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
      */
     value_string: string | null
+    /**
+     * A simple string representation of this person.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
+     */
+    valueString: string | null
 
     // Own fields of GData-0.0.GData.GDWho
 
@@ -11723,6 +12730,10 @@ export module GoaAuthorizer {
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          */
         goa_object?: Goa.Object | null
+        /**
+         * The GOA account providing authentication. This should have all the necessary services enabled on it.
+         */
+        goaObject?: Goa.Object | null
     }
 
 }
@@ -11735,6 +12746,10 @@ export interface GoaAuthorizer extends Authorizer {
      * The GOA account providing authentication. This should have all the necessary services enabled on it.
      */
     readonly goa_object: Goa.Object
+    /**
+     * The GOA account providing authentication. This should have all the necessary services enabled on it.
+     */
+    readonly goaObject: Goa.Object
 
     // Owm methods of GData-0.0.GData.GoaAuthorizer
 
@@ -11837,6 +12852,21 @@ export module Link {
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
          */
         uri?: string | null
+        /**
+         * An advisory media type: it is a hint about the type of the representation that is expected to be returned when the value
+         * of the #GDataLink:uri property is dereferenced.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
+         */
+        contentType?: string | null
+        /**
+         * The link relation type.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
+         */
+        relationType?: string | null
     }
 
 }
@@ -11853,6 +12883,14 @@ export interface Link extends Comparable {
      * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
      */
     content_type: string | null
+    /**
+     * An advisory media type: it is a hint about the type of the representation that is expected to be returned when the value
+     * of the #GDataLink:uri property is dereferenced.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
+     */
+    contentType: string | null
     /**
      * Describes the language of the resource pointed to by the #GDataLink:uri property.
      * 
@@ -11874,6 +12912,13 @@ export interface Link extends Comparable {
      * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
      */
     relation_type: string | null
+    /**
+     * The link relation type.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
+     */
+    relationType: string | null
     /**
      * Conveys human-readable information about the link.
      * 
@@ -12213,6 +13258,12 @@ export interface MediaContent {
      */
     readonly content_type: string | null
     /**
+     * The standard MIME type of the object.
+     * 
+     * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
+     */
+    readonly contentType: string | null
+    /**
      * The number of seconds for which the media object plays.
      * 
      * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
@@ -12242,6 +13293,12 @@ export interface MediaContent {
      * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
      */
     readonly is_default: boolean
+    /**
+     * Determines if this is the default content for the media group. There should only be one default object per media group.
+     * 
+     * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
+     */
+    readonly isDefault: boolean
     /**
      * The type of object, complementing #GDataMediaContent:content-type. It allows the consuming application to make simpler decisions between
      * different content objects, based on whether they're a video or audio stream, for example.
@@ -12687,6 +13744,70 @@ export module OAuth2Authorizer {
          * never time out.
          */
         timeout?: number | null
+        /**
+         * A client ID for your application (see the
+         * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference documentation</ulink>).
+         * 
+         * It is recommended that the ID is of the form
+         * <literal><replaceable>company name</replaceable>-
+         * <replaceable>application name</replaceable>-
+         * <replaceable>version ID</replaceable></literal>.
+         */
+        clientId?: string | null
+        /**
+         * Client secret provided by Google. This is unique for each application
+         * and is accessible from Google’s Developer Console when registering
+         * an application. It must be paired with the
+         * #GDataOAuth2Authorizer:client-id.
+         * 
+         * See the
+         * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference
+         * documentation</ulink> for details.
+         */
+        clientSecret?: string | null
+        /**
+         * The #GProxyResolver used to determine a proxy URI.
+         */
+        proxyResolver?: Gio.ProxyResolver | null
+        /**
+         * Redirect URI to send the response from the authorisation request to.
+         * This must either be %GDATA_OAUTH2_REDIRECT_URI_OOB,
+         * %GDATA_OAUTH2_REDIRECT_URI_OOB_AUTO, or a
+         * <code>http://localhost</code> URI with any port number (optionally)
+         * specified.
+         * 
+         * This URI is where the authorisation server will redirect the user
+         * after they have completed interacting with the authentication page
+         * (gdata_oauth2_authorizer_build_authentication_uri()). If it is
+         * %GDATA_OAUTH2_REDIRECT_URI_OOB, a page will be returned in the user’s
+         * browser with the authorisation code in its title and also embedded in
+         * the page for the user to copy if it is not possible to automatically
+         * extract the code from the page title. If it is
+         * %GDATA_OAUTH2_REDIRECT_URI_OOB_AUTO, a similar page will be returned
+         * with the authorisation code in its title, but without displaying the
+         * code to the user — the user will simply be asked to close the page.
+         * If it is a localhost URI, the authentication page will redirect to
+         * that URI with the authorisation code appended as a <code>code</code>
+         * query parameter. If the user denies the authentication request, the
+         * authentication page will redirect to that URI with
+         * <code>error=access_denied</code> appended as a query parameter.
+         * 
+         * Note that the redirect URI used must match that registered in
+         * Google’s Developer Console for your application.
+         * 
+         * See the <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
+         * documentation</ulink> for details about choosing a redirect URI.
+         */
+        redirectUri?: string | null
+        /**
+         * The server provided refresh token, which can be stored and passed in
+         * to new #GDataOAuth2Authorizer instances before calling
+         * gdata_authorizer_refresh_authorization_async() to create a new
+         * short-lived access token.
+         * 
+         * The refresh token is opaque data and must not be parsed.
+         */
+        refreshToken?: string | null
     }
 
 }
@@ -12706,6 +13827,16 @@ export interface OAuth2Authorizer extends Authorizer {
      */
     readonly client_id: string | null
     /**
+     * A client ID for your application (see the
+     * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference documentation</ulink>).
+     * 
+     * It is recommended that the ID is of the form
+     * <literal><replaceable>company name</replaceable>-
+     * <replaceable>application name</replaceable>-
+     * <replaceable>version ID</replaceable></literal>.
+     */
+    readonly clientId: string | null
+    /**
      * Client secret provided by Google. This is unique for each application
      * and is accessible from Google’s Developer Console when registering
      * an application. It must be paired with the
@@ -12716,6 +13847,17 @@ export interface OAuth2Authorizer extends Authorizer {
      * documentation</ulink> for details.
      */
     readonly client_secret: string | null
+    /**
+     * Client secret provided by Google. This is unique for each application
+     * and is accessible from Google’s Developer Console when registering
+     * an application. It must be paired with the
+     * #GDataOAuth2Authorizer:client-id.
+     * 
+     * See the
+     * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference
+     * documentation</ulink> for details.
+     */
+    readonly clientSecret: string | null
     /**
      * The locale to use for network requests, in UNIX locale format.
      * (e.g. "en_GB", "cs", "de_DE".) Use %NULL for the default "C" locale
@@ -12733,6 +13875,10 @@ export interface OAuth2Authorizer extends Authorizer {
      * The #GProxyResolver used to determine a proxy URI.
      */
     proxy_resolver: Gio.ProxyResolver
+    /**
+     * The #GProxyResolver used to determine a proxy URI.
+     */
+    proxyResolver: Gio.ProxyResolver
     /**
      * Redirect URI to send the response from the authorisation request to.
      * This must either be %GDATA_OAUTH2_REDIRECT_URI_OOB,
@@ -12764,6 +13910,36 @@ export interface OAuth2Authorizer extends Authorizer {
      */
     readonly redirect_uri: string | null
     /**
+     * Redirect URI to send the response from the authorisation request to.
+     * This must either be %GDATA_OAUTH2_REDIRECT_URI_OOB,
+     * %GDATA_OAUTH2_REDIRECT_URI_OOB_AUTO, or a
+     * <code>http://localhost</code> URI with any port number (optionally)
+     * specified.
+     * 
+     * This URI is where the authorisation server will redirect the user
+     * after they have completed interacting with the authentication page
+     * (gdata_oauth2_authorizer_build_authentication_uri()). If it is
+     * %GDATA_OAUTH2_REDIRECT_URI_OOB, a page will be returned in the user’s
+     * browser with the authorisation code in its title and also embedded in
+     * the page for the user to copy if it is not possible to automatically
+     * extract the code from the page title. If it is
+     * %GDATA_OAUTH2_REDIRECT_URI_OOB_AUTO, a similar page will be returned
+     * with the authorisation code in its title, but without displaying the
+     * code to the user — the user will simply be asked to close the page.
+     * If it is a localhost URI, the authentication page will redirect to
+     * that URI with the authorisation code appended as a <code>code</code>
+     * query parameter. If the user denies the authentication request, the
+     * authentication page will redirect to that URI with
+     * <code>error=access_denied</code> appended as a query parameter.
+     * 
+     * Note that the redirect URI used must match that registered in
+     * Google’s Developer Console for your application.
+     * 
+     * See the <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
+     * documentation</ulink> for details about choosing a redirect URI.
+     */
+    readonly redirectUri: string | null
+    /**
      * The server provided refresh token, which can be stored and passed in
      * to new #GDataOAuth2Authorizer instances before calling
      * gdata_authorizer_refresh_authorization_async() to create a new
@@ -12772,6 +13948,15 @@ export interface OAuth2Authorizer extends Authorizer {
      * The refresh token is opaque data and must not be parsed.
      */
     refresh_token: string | null
+    /**
+     * The server provided refresh token, which can be stored and passed in
+     * to new #GDataOAuth2Authorizer instances before calling
+     * gdata_authorizer_refresh_authorization_async() to create a new
+     * short-lived access token.
+     * 
+     * The refresh token is opaque data and must not be parsed.
+     */
+    refreshToken: string | null
     /**
      * A timeout, in seconds, for network operations. If the timeout is
      * exceeded, the operation will be cancelled and
@@ -13025,6 +14210,10 @@ export module Parsable {
          * Specifies whether the object was constructed by parsing XML or manually.
          */
         constructed_from_xml?: boolean | null
+        /**
+         * Specifies whether the object was constructed by parsing XML or manually.
+         */
+        constructedFromXml?: boolean | null
     }
 
 }
@@ -13037,6 +14226,10 @@ export interface Parsable {
      * Specifies whether the object was constructed by parsing XML or manually.
      */
     readonly constructed_from_xml: boolean
+    /**
+     * Specifies whether the object was constructed by parsing XML or manually.
+     */
+    readonly constructedFromXml: boolean
 
     // Own fields of GData-0.0.GData.Parsable
 
@@ -13201,6 +14394,16 @@ export module PicasaWebAlbum {
          * gphoto specification</ulink>.
          */
         visibility?: PicasaWebVisibility | null
+        /**
+         * The ID of the album. This is a substring of the ID returned by gdata_entry_get_id() for #GDataPicasaWebAlbums; for example,
+         * if gdata_entry_get_id() returned "http://picasaweb.google.com/data/entry/user/libgdata.picasaweb/albumid/5328889949261497249" for a
+         * particular #GDataPicasaWebAlbum, the #GDataPicasaWebAlbum:album-id property would be "5328889949261497249".
+         * 
+         * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
+         * gphoto specification</ulink>.
+         */
+        albumId?: string | null
+        isCommentingEnabled?: boolean | null
     }
 
 }
@@ -13219,6 +14422,15 @@ export interface PicasaWebAlbum {
      */
     readonly album_id: string | null
     /**
+     * The ID of the album. This is a substring of the ID returned by gdata_entry_get_id() for #GDataPicasaWebAlbums; for example,
+     * if gdata_entry_get_id() returned "http://picasaweb.google.com/data/entry/user/libgdata.picasaweb/albumid/5328889949261497249" for a
+     * particular #GDataPicasaWebAlbum, the #GDataPicasaWebAlbum:album-id property would be "5328889949261497249".
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
+     * gphoto specification</ulink>.
+     */
+    readonly albumId: string | null
+    /**
      * The number of bytes consumed by this album and its contents. Note that this is only set if the authenticated user is the owner of the
      * album; it's otherwise <code class="literal">-1</code>.
      * 
@@ -13227,12 +14439,27 @@ export interface PicasaWebAlbum {
      */
     readonly bytes_used: number
     /**
+     * The number of bytes consumed by this album and its contents. Note that this is only set if the authenticated user is the owner of the
+     * album; it's otherwise <code class="literal">-1</code>.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_bytesUsed">
+     * gphoto specification</ulink>.
+     */
+    readonly bytesUsed: number
+    /**
      * The number of comments on the album.
      * 
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
      * gphoto specification</ulink>.
      */
     readonly comment_count: number
+    /**
+     * The number of comments on the album.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
+     * gphoto specification</ulink>.
+     */
+    readonly commentCount: number
     /**
      * The time this album was last edited. If the album has not been edited yet, the content indicates the time it was created.
      * 
@@ -13241,6 +14468,7 @@ export interface PicasaWebAlbum {
      */
     readonly edited: number
     is_commenting_enabled: boolean
+    isCommentingEnabled: boolean
     /**
      * The location as a latitude coordinate associated with this album. Valid latitudes range from <code class="literal">-90.0</code>
      * to <code class="literal">90.0</code> inclusive.
@@ -13279,6 +14507,13 @@ export interface PicasaWebAlbum {
      */
     readonly num_photos: number
     /**
+     * The number of photos and videos in the album.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotos">
+     * gphoto specification</ulink>.
+     */
+    readonly numPhotos: number
+    /**
      * The number of photos and videos that can still be uploaded to this album.
      * This doesn't account for quota, just a hardcoded maximum number per album set by Google.
      * 
@@ -13286,6 +14521,14 @@ export interface PicasaWebAlbum {
      * gphoto specification</ulink>.
      */
     readonly num_photos_remaining: number
+    /**
+     * The number of photos and videos that can still be uploaded to this album.
+     * This doesn't account for quota, just a hardcoded maximum number per album set by Google.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotosremaining">
+     * gphoto specification</ulink>.
+     */
+    readonly numPhotosRemaining: number
     /**
      * A %NULL-terminated array of tags associated with the album; all the tags associated with the individual photos in the album.
      * 
@@ -13838,6 +15081,27 @@ export module PicasaWebFile {
          * gphoto specification</ulink>.
          */
         version?: string | null
+        /**
+         * The ID for the file's album. This is in the same form as returned by gdata_picasaweb_album_get_id().
+         * 
+         * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_albumid">
+         * gphoto specification</ulink>.
+         */
+        albumId?: string | null
+        /**
+         * The ID of the file. This is a substring of the ID returned by gdata_entry_get_id() for #GDataPicasaWebFiles; for example,
+         * if gdata_entry_get_id() returned
+         * "http://picasaweb.google.com/data/entry/user/libgdata.picasaweb/albumid/5328889949261497249/photoid/5328890138794566386" for a
+         * particular #GDataPicasaWebFile, the #GDataPicasaWebFile:file-id property would be "5328890138794566386".
+         * 
+         * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
+         * gphoto specification</ulink>.
+         */
+        fileId?: string | null
+        /**
+         * Whether commenting is enabled for this file.
+         */
+        isCommentingEnabled?: boolean | null
     }
 
 }
@@ -13853,6 +15117,13 @@ export interface PicasaWebFile extends Commentable {
      * gphoto specification</ulink>.
      */
     album_id: string | null
+    /**
+     * The ID for the file's album. This is in the same form as returned by gdata_picasaweb_album_get_id().
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_albumid">
+     * gphoto specification</ulink>.
+     */
+    albumId: string | null
     /**
      * The file's descriptive caption.
      */
@@ -13871,6 +15142,13 @@ export interface PicasaWebFile extends Commentable {
      * gphoto specification</ulink>.
      */
     readonly comment_count: number
+    /**
+     * The number of comments on the file.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
+     * gphoto specification</ulink>.
+     */
+    readonly commentCount: number
     /**
      * The nickname of the user credited with this file.
      * 
@@ -13910,6 +15188,16 @@ export interface PicasaWebFile extends Commentable {
      */
     readonly file_id: string | null
     /**
+     * The ID of the file. This is a substring of the ID returned by gdata_entry_get_id() for #GDataPicasaWebFiles; for example,
+     * if gdata_entry_get_id() returned
+     * "http://picasaweb.google.com/data/entry/user/libgdata.picasaweb/albumid/5328889949261497249/photoid/5328890138794566386" for a
+     * particular #GDataPicasaWebFile, the #GDataPicasaWebFile:file-id property would be "5328890138794566386".
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
+     * gphoto specification</ulink>.
+     */
+    readonly fileId: string | null
+    /**
      * Indicates whether the flash was used.
      * 
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
@@ -13923,6 +15211,13 @@ export interface PicasaWebFile extends Commentable {
      * EXIF element reference</ulink>.
      */
     readonly focal_length: number
+    /**
+     * The focal length for the shot.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
+     * EXIF element reference</ulink>.
+     */
+    readonly focalLength: number
     /**
      * The F-stop value.
      * 
@@ -13945,9 +15240,20 @@ export interface PicasaWebFile extends Commentable {
      */
     readonly image_unique_id: string | null
     /**
+     * An unique ID for the image found in the EXIF.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
+     * EXIF element reference</ulink>.
+     */
+    readonly imageUniqueId: string | null
+    /**
      * Whether commenting is enabled for this file.
      */
     is_commenting_enabled: boolean
+    /**
+     * Whether commenting is enabled for this file.
+     */
+    isCommentingEnabled: boolean
     /**
      * The ISO speed.
      * 
@@ -14028,6 +15334,13 @@ export interface PicasaWebFile extends Commentable {
      * gphoto specification</ulink>.
      */
     readonly video_status: string | null
+    /**
+     * The status of the file, if it is a video. For example: %GDATA_PICASAWEB_VIDEO_STATUS_PENDING or %GDATA_PICASAWEB_VIDEO_STATUS_FAILED.
+     * 
+     * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_videostatus">
+     * gphoto specification</ulink>.
+     */
+    readonly videoStatus: string | null
     /**
      * The width of the photo or video, in pixels.
      * 
@@ -14438,6 +15751,18 @@ export module PicasaWebQuery {
          * online documentation</ulink>.
          */
         visibility?: number | null
+        /**
+         * A comma-separated list of image sizes (width in pixels) to return. Only certain sizes are allowed, and whether the image should be
+         * cropped or scaled can be specified; for more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
+         */
+        imageSize?: string | null
+        /**
+         * A comma-separated list of thumbnail widths (in pixels) to return. Only certain sizes are allowed, and whether the thumbnail should be
+         * cropped or scaled can be specified; for more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
+         */
+        thumbnailSize?: string | null
     }
 
 }
@@ -14453,6 +15778,12 @@ export interface PicasaWebQuery {
      */
     image_size: string | null
     /**
+     * A comma-separated list of image sizes (width in pixels) to return. Only certain sizes are allowed, and whether the image should be
+     * cropped or scaled can be specified; for more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
+     */
+    imageSize: string | null
+    /**
      * A location to search for photos, e.g. "London".
      */
     location: string | null
@@ -14466,6 +15797,12 @@ export interface PicasaWebQuery {
      * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
      */
     thumbnail_size: string | null
+    /**
+     * A comma-separated list of thumbnail widths (in pixels) to return. Only certain sizes are allowed, and whether the thumbnail should be
+     * cropped or scaled can be specified; for more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
+     */
+    thumbnailSize: string | null
     /**
      * Specifies which albums should be listed, in terms of their visibility (#GDataPicasaWebAlbum:visibility).
      * 
@@ -14943,6 +16280,13 @@ export interface PicasaWebUser {
      */
     readonly max_photos_per_album: number
     /**
+     * The maximum number of photos allowed in an album.
+     * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_maxPhotosPerAlbum
+     * 
+     * If the #GDataPicasaWebUser does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
+     */
+    readonly maxPhotosPerAlbum: number
+    /**
      * The user's nickname. This is a user-specified value that should be used when referring to the user by name.
      * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_nickname
      */
@@ -14955,6 +16299,13 @@ export interface PicasaWebUser {
      */
     readonly quota_current: number
     /**
+     * The current amount of space, in bytes, already used by the user.
+     * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_quotacurrent
+     * 
+     * If the #GDataPicasaWebUser does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
+     */
+    readonly quotaCurrent: number
+    /**
      * The total amount of space, in bytes, available to the user.
      * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_quotalimit
      * 
@@ -14962,10 +16313,22 @@ export interface PicasaWebUser {
      */
     readonly quota_limit: number
     /**
+     * The total amount of space, in bytes, available to the user.
+     * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_quotalimit
+     * 
+     * If the #GDataPicasaWebUser does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
+     */
+    readonly quotaLimit: number
+    /**
      * The URI of a thumbnail-sized portrait of the user.
      * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_thumbnail
      */
     readonly thumbnail_uri: string | null
+    /**
+     * The URI of a thumbnail-sized portrait of the user.
+     * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_thumbnail
+     */
+    readonly thumbnailUri: string | null
     /**
      * The username of the user, as seen in feed URLs.
      * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_user
@@ -15188,6 +16551,41 @@ export module Query {
          * Lower bound on the entry update date, inclusive.
          */
         updated_min?: number | null
+        /**
+         * Strict query parameter checking. If this is enabled, an error will be returned by the online service if a parameter is
+         * not recognised.
+         */
+        isStrict?: boolean | null
+        /**
+         * Maximum number of results to be retrieved. Most services have a default #GDataQuery:max-results size imposed by the server; if you wish
+         * to receive the entire feed, specify a large number such as %G_MAXUINT for this property.
+         * 
+         * Use <code class="literal">0</code> to not specify a maximum number of results.
+         */
+        maxResults?: number | null
+        /**
+         * Upper bound on the entry publish date, exclusive.
+         */
+        publishedMax?: number | null
+        /**
+         * Lower bound on the entry publish date, inclusive.
+         */
+        publishedMin?: number | null
+        /**
+         * The one-based index of the first result to be retrieved. Use gdata_query_next_page() and gdata_query_previous_page() to
+         * implement pagination, rather than manually changing #GDataQuery:start-index.
+         * 
+         * Use <code class="literal">0</code> to not specify a start index.
+         */
+        startIndex?: number | null
+        /**
+         * Upper bound on the entry update date, exclusive.
+         */
+        updatedMax?: number | null
+        /**
+         * Lower bound on the entry update date, inclusive.
+         */
+        updatedMin?: number | null
     }
 
 }
@@ -15237,6 +16635,11 @@ export interface Query {
      */
     is_strict: boolean
     /**
+     * Strict query parameter checking. If this is enabled, an error will be returned by the online service if a parameter is
+     * not recognised.
+     */
+    isStrict: boolean
+    /**
      * Maximum number of results to be retrieved. Most services have a default #GDataQuery:max-results size imposed by the server; if you wish
      * to receive the entire feed, specify a large number such as %G_MAXUINT for this property.
      * 
@@ -15244,13 +16647,28 @@ export interface Query {
      */
     max_results: number
     /**
+     * Maximum number of results to be retrieved. Most services have a default #GDataQuery:max-results size imposed by the server; if you wish
+     * to receive the entire feed, specify a large number such as %G_MAXUINT for this property.
+     * 
+     * Use <code class="literal">0</code> to not specify a maximum number of results.
+     */
+    maxResults: number
+    /**
      * Upper bound on the entry publish date, exclusive.
      */
     published_max: number
     /**
+     * Upper bound on the entry publish date, exclusive.
+     */
+    publishedMax: number
+    /**
      * Lower bound on the entry publish date, inclusive.
      */
     published_min: number
+    /**
+     * Lower bound on the entry publish date, inclusive.
+     */
+    publishedMin: number
     /**
      * A full-text query string.
      * 
@@ -15277,13 +16695,28 @@ export interface Query {
      */
     start_index: number
     /**
+     * The one-based index of the first result to be retrieved. Use gdata_query_next_page() and gdata_query_previous_page() to
+     * implement pagination, rather than manually changing #GDataQuery:start-index.
+     * 
+     * Use <code class="literal">0</code> to not specify a start index.
+     */
+    startIndex: number
+    /**
      * Upper bound on the entry update date, exclusive.
      */
     updated_max: number
     /**
+     * Upper bound on the entry update date, exclusive.
+     */
+    updatedMax: number
+    /**
      * Lower bound on the entry update date, inclusive.
      */
     updated_min: number
+    /**
+     * Lower bound on the entry update date, inclusive.
+     */
+    updatedMin: number
 
     // Own fields of GData-0.0.GData.Query
 
@@ -15577,6 +17010,10 @@ export module Service {
          * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its timeout setting.
          */
         timeout?: number | null
+        /**
+         * The #GProxyResolver used to determine a proxy URI.
+         */
+        proxyResolver?: Gio.ProxyResolver | null
     }
 
 }
@@ -15614,6 +17051,10 @@ export interface Service {
      * The #GProxyResolver used to determine a proxy URI.
      */
     proxy_resolver: Gio.ProxyResolver
+    /**
+     * The #GProxyResolver used to determine a proxy URI.
+     */
+    proxyResolver: Gio.ProxyResolver
     /**
      * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
      * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -16101,6 +17542,38 @@ export module TasksQuery {
          * Flag indicating whether hidden tasks are returned in the result. Optional. The default is %FALSE.
          */
         show_hidden?: boolean | null
+        /**
+         * Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
+         * The default is not to filter by completion date.
+         */
+        completedMax?: number | null
+        /**
+         * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
+         * The default is not to filter by completion date.
+         */
+        completedMin?: number | null
+        /**
+         * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
+         * The default is not to filter by completion date.
+         */
+        dueMax?: number | null
+        /**
+         * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
+         * The default is not to filter by completion date.
+         */
+        dueMin?: number | null
+        /**
+         * Flag indicating whether completed tasks are returned in the result. Optional. The default is %FALSE.
+         */
+        showCompleted?: boolean | null
+        /**
+         * Flag indicating whether deleted tasks are returned in the result. Optional. The default is %FALSE.
+         */
+        showDeleted?: boolean | null
+        /**
+         * Flag indicating whether hidden tasks are returned in the result. Optional. The default is %FALSE.
+         */
+        showHidden?: boolean | null
     }
 
 }
@@ -16115,32 +17588,64 @@ export interface TasksQuery {
      */
     completed_max: number
     /**
+     * Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
+     * The default is not to filter by completion date.
+     */
+    completedMax: number
+    /**
      * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
      * The default is not to filter by completion date.
      */
     completed_min: number
+    /**
+     * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
+     * The default is not to filter by completion date.
+     */
+    completedMin: number
     /**
      * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
      * The default is not to filter by completion date.
      */
     due_max: number
     /**
+     * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
+     * The default is not to filter by completion date.
+     */
+    dueMax: number
+    /**
      * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
      * The default is not to filter by completion date.
      */
     due_min: number
     /**
+     * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
+     * The default is not to filter by completion date.
+     */
+    dueMin: number
+    /**
      * Flag indicating whether completed tasks are returned in the result. Optional. The default is %FALSE.
      */
     show_completed: boolean
+    /**
+     * Flag indicating whether completed tasks are returned in the result. Optional. The default is %FALSE.
+     */
+    showCompleted: boolean
     /**
      * Flag indicating whether deleted tasks are returned in the result. Optional. The default is %FALSE.
      */
     show_deleted: boolean
     /**
+     * Flag indicating whether deleted tasks are returned in the result. Optional. The default is %FALSE.
+     */
+    showDeleted: boolean
+    /**
      * Flag indicating whether hidden tasks are returned in the result. Optional. The default is %FALSE.
      */
     show_hidden: boolean
+    /**
+     * Flag indicating whether hidden tasks are returned in the result. Optional. The default is %FALSE.
+     */
+    showHidden: boolean
 
     // Own fields of GData-0.0.GData.TasksQuery
 
@@ -16655,6 +18160,10 @@ export module TasksTask {
          * or %GDATA_TASKS_STATUS_COMPLETED.
          */
         status?: string | null
+        /**
+         * Flag indicating whether the task has been deleted. The default is %FALSE.
+         */
+        isDeleted?: boolean | null
     }
 
 }
@@ -16684,11 +18193,21 @@ export interface TasksTask {
      */
     is_deleted: boolean
     /**
+     * Flag indicating whether the task has been deleted. The default is %FALSE.
+     */
+    isDeleted: boolean
+    /**
      * Flag indicating whether the task is hidden. This is the case if the task
      * had been marked completed when the task list was last cleared.
      * The default is %FALSE. This field is read-only.
      */
     readonly is_hidden: boolean
+    /**
+     * Flag indicating whether the task is hidden. This is the case if the task
+     * had been marked completed when the task list was last cleared.
+     * The default is %FALSE. This field is read-only.
+     */
+    readonly isHidden: boolean
     /**
      * This is where the description of what needs to be done in the task is stored.
      */
@@ -17049,6 +18568,26 @@ export module UploadStream {
          * The URI to upload the data and metadata to. This must be HTTPS.
          */
         upload_uri?: string | null
+        /**
+         * The authorization domain for the upload, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
+         * authorized. This may be %NULL if authorization is not needed for the upload.
+         */
+        authorizationDomain?: AuthorizationDomain | null
+        /**
+         * The content length (in bytes) of the file being uploaded (i.e. as returned by g_file_info_get_size()). Note that this does not include the
+         * length of the XML serialisation of #GDataUploadStream:entry, if set.
+         * 
+         * If this is <code class="literal">-1</code> the upload will be non-resumable; if it is non-negative, the upload will be resumable.
+         */
+        contentLength?: number | null
+        /**
+         * The content type of the file being uploaded (i.e. as returned by g_file_info_get_content_type()).
+         */
+        contentType?: string | null
+        /**
+         * The URI to upload the data and metadata to. This must be HTTPS.
+         */
+        uploadUri?: string | null
     }
 
 }
@@ -17062,6 +18601,11 @@ export interface UploadStream {
      * authorized. This may be %NULL if authorization is not needed for the upload.
      */
     readonly authorization_domain: AuthorizationDomain
+    /**
+     * The authorization domain for the upload, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
+     * authorized. This may be %NULL if authorization is not needed for the upload.
+     */
+    readonly authorizationDomain: AuthorizationDomain
     /**
      * An optional cancellable used to cancel the entire upload operation. If a #GCancellable instance isn't provided for this property at
      * construction time (i.e. to gdata_upload_stream_new()), one will be created internally and can be retrieved using
@@ -17082,9 +18626,20 @@ export interface UploadStream {
      */
     readonly content_length: number
     /**
+     * The content length (in bytes) of the file being uploaded (i.e. as returned by g_file_info_get_size()). Note that this does not include the
+     * length of the XML serialisation of #GDataUploadStream:entry, if set.
+     * 
+     * If this is <code class="literal">-1</code> the upload will be non-resumable; if it is non-negative, the upload will be resumable.
+     */
+    readonly contentLength: number
+    /**
      * The content type of the file being uploaded (i.e. as returned by g_file_info_get_content_type()).
      */
     readonly content_type: string | null
+    /**
+     * The content type of the file being uploaded (i.e. as returned by g_file_info_get_content_type()).
+     */
+    readonly contentType: string | null
     /**
      * The entry used for metadata to upload.
      */
@@ -17105,6 +18660,10 @@ export interface UploadStream {
      * The URI to upload the data and metadata to. This must be HTTPS.
      */
     readonly upload_uri: string | null
+    /**
+     * The URI to upload the data and metadata to. This must be HTTPS.
+     */
+    readonly uploadUri: string | null
 
     // Own fields of GData-0.0.GData.UploadStream
 
@@ -17357,9 +18916,17 @@ export interface YouTubeCategory extends Comparable {
      */
     readonly is_assignable: boolean
     /**
+     * Whether new videos can be added to the category.
+     */
+    readonly isAssignable: boolean
+    /**
      * Whether the category is deprecated.
      */
     readonly is_deprecated: boolean
+    /**
+     * Whether the category is deprecated.
+     */
+    readonly isDeprecated: boolean
 
     // Own fields of GData-0.0.GData.YouTubeCategory
 
@@ -17433,6 +19000,12 @@ export module YouTubeComment {
          * See the documentation for #GDataYouTubeComment for an explanation of the semantics of parent comment URIs.
          */
         parent_comment_uri?: string | null
+        /**
+         * The URI of the parent comment to this one, or %NULL if this comment is a top-level comment.
+         * 
+         * See the documentation for #GDataYouTubeComment for an explanation of the semantics of parent comment URIs.
+         */
+        parentCommentUri?: string | null
     }
 
 }
@@ -17447,6 +19020,12 @@ export interface YouTubeComment {
      * See the documentation for #GDataYouTubeComment for an explanation of the semantics of parent comment URIs.
      */
     parent_comment_uri: string | null
+    /**
+     * The URI of the parent comment to this one, or %NULL if this comment is a top-level comment.
+     * 
+     * See the documentation for #GDataYouTubeComment for an explanation of the semantics of parent comment URIs.
+     */
+    parentCommentUri: string | null
 
     // Own fields of GData-0.0.GData.YouTubeComment
 
@@ -17720,6 +19299,34 @@ export module YouTubeQuery {
          * url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
          */
         safe_search?: YouTubeSafeSearch | null
+        /**
+         * The radius, in metres, of a circle from within which videos should be returned. The circle is centred on the latitude and
+         * longitude given in #GDataYouTubeQuery:latitude and #GDataYouTubeQuery:longitude.
+         * 
+         * Set this property to <code class="literal">0</code> to search for specific coordinates, rather than within a given radius.
+         * 
+         * For more information, see the documentation for #GDataYouTubeQuery:latitude.
+         */
+        locationRadius?: number | null
+        /**
+         * Specifies the order of entries in a feed. Supported values are <literal>relevance</literal>,
+         * <literal>published</literal>, <literal>viewCount</literal> and <literal>rating</literal>.
+         * 
+         * Additionally, results most relevant to a specific language can be returned by setting the property
+         * to <literal>relevance_lang_<replaceable>languageCode</replaceable></literal>, where
+         * <replaceable>languageCode</replaceable> is an ISO 639-1 language code, as used in #GDataYouTubeQuery:language.
+         * 
+         * For more information, see the <ulink type="http"
+         * url="https://developers.google.com/youtube/v3/docs/search/list#order">online documentation</ulink>.
+         */
+        orderBy?: string | null
+        /**
+         * Whether the search results should include restricted content as well as standard content.
+         * 
+         * For more information, see the <ulink type="http"
+         * url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
+         */
+        safeSearch?: YouTubeSafeSearch | null
     }
 
 }
@@ -17764,6 +19371,15 @@ export interface YouTubeQuery {
      */
     location_radius: number
     /**
+     * The radius, in metres, of a circle from within which videos should be returned. The circle is centred on the latitude and
+     * longitude given in #GDataYouTubeQuery:latitude and #GDataYouTubeQuery:longitude.
+     * 
+     * Set this property to <code class="literal">0</code> to search for specific coordinates, rather than within a given radius.
+     * 
+     * For more information, see the documentation for #GDataYouTubeQuery:latitude.
+     */
+    locationRadius: number
+    /**
      * The longitude of a particular location of which videos should be found. This should be used in conjunction with
      * #GDataYouTubeQuery:latitude; if either property is outside the valid range, neither will be used. Valid longitudes
      * are between <code class="literal">-180</code> and <code class="literal">180</code> degrees; any values of this property outside that
@@ -17785,6 +19401,18 @@ export interface YouTubeQuery {
      */
     order_by: string | null
     /**
+     * Specifies the order of entries in a feed. Supported values are <literal>relevance</literal>,
+     * <literal>published</literal>, <literal>viewCount</literal> and <literal>rating</literal>.
+     * 
+     * Additionally, results most relevant to a specific language can be returned by setting the property
+     * to <literal>relevance_lang_<replaceable>languageCode</replaceable></literal>, where
+     * <replaceable>languageCode</replaceable> is an ISO 639-1 language code, as used in #GDataYouTubeQuery:language.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/search/list#order">online documentation</ulink>.
+     */
+    orderBy: string | null
+    /**
      * An ISO 3166 two-letter country code that should be used to filter
      * videos playable only in specific countries.
      * 
@@ -17804,6 +19432,13 @@ export interface YouTubeQuery {
      * url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
      */
     safe_search: YouTubeSafeSearch
+    /**
+     * Whether the search results should include restricted content as well as standard content.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
+     */
+    safeSearch: YouTubeSafeSearch
 
     // Own fields of GData-0.0.GData.YouTubeQuery
 
@@ -18005,6 +19640,15 @@ export module YouTubeService {
          * developer key.
          */
         developer_key?: string | null
+        /**
+         * The developer key your application has registered with the YouTube API. For more information, see the <ulink type="http"
+         * url="https://developers.google.com/youtube/registering_an_application">online documentation</ulink>.
+         * 
+         * With the port from v2 to v3 of the YouTube API in libgdata
+         * 0.17.0, it might be necessary to update your application’s
+         * developer key.
+         */
+        developerKey?: string | null
     }
 
 }
@@ -18022,6 +19666,15 @@ export interface YouTubeService extends Batchable {
      * developer key.
      */
     readonly developer_key: string | null
+    /**
+     * The developer key your application has registered with the YouTube API. For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/registering_an_application">online documentation</ulink>.
+     * 
+     * With the port from v2 to v3 of the YouTube API in libgdata
+     * 0.17.0, it might be necessary to update your application’s
+     * developer key.
+     */
+    readonly developerKey: string | null
 
     // Own fields of GData-0.0.GData.YouTubeService
 
@@ -18300,6 +19953,21 @@ export module YouTubeState {
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          */
         reason_code?: string | null
+        /**
+         * A URI for a YouTube Help Center page that may help the developer or the video owner to diagnose
+         * the reason that an upload failed or was rejected.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
+         */
+        helpUri?: string | null
+        /**
+         * The reason code explaining why the video failed to upload.
+         * 
+         * For more information, see the
+         * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
+         */
+        reasonCode?: string | null
     }
 
 }
@@ -18316,6 +19984,14 @@ export interface YouTubeState {
      * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
      */
     readonly help_uri: string | null
+    /**
+     * A URI for a YouTube Help Center page that may help the developer or the video owner to diagnose
+     * the reason that an upload failed or was rejected.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
+     */
+    readonly helpUri: string | null
     /**
      * A human-readable description of why the video failed to upload.
      * 
@@ -18337,6 +20013,13 @@ export interface YouTubeState {
      * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
      */
     readonly reason_code: string | null
+    /**
+     * The reason code explaining why the video failed to upload.
+     * 
+     * For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
+     */
+    readonly reasonCode: string | null
 
     // Own fields of GData-0.0.GData.YouTubeState
 
@@ -18475,6 +20158,12 @@ export module YouTubeVideo {
          * url="https://developers.google.com/youtube/v3/docs/videos#recordingDetails.recordingDate">online documentation</ulink>.
          */
         recorded?: number | null
+        /**
+         * The aspect ratio of the video. A %NULL value means the aspect ratio is unknown (it could still be a widescreen video). A value of
+         * %GDATA_YOUTUBE_ASPECT_RATIO_WIDESCREEN means the video is definitely widescreen.
+         */
+        aspectRatio?: string | null
+        isPrivate?: boolean | null
     }
 
 }
@@ -18489,12 +20178,24 @@ export interface YouTubeVideo extends Commentable {
      */
     aspect_ratio: string | null
     /**
+     * The aspect ratio of the video. A %NULL value means the aspect ratio is unknown (it could still be a widescreen video). A value of
+     * %GDATA_YOUTUBE_ASPECT_RATIO_WIDESCREEN means the video is definitely widescreen.
+     */
+    aspectRatio: string | null
+    /**
      * The average rating of the video, over all the ratings it's received.
      * 
      * For more information, see the <ulink type="http"
      * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
      */
     readonly average_rating: number
+    /**
+     * The average rating of the video, over all the ratings it's received.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+     */
+    readonly averageRating: number
     /**
      * Specifies a genre or developer tag that describes the video.
      * 
@@ -18523,7 +20224,15 @@ export interface YouTubeVideo extends Commentable {
      * url="https://developers.google.com/youtube/v3/docs/videos#statistics.favoriteCount">online documentation</ulink>.
      */
     readonly favorite_count: number
+    /**
+     * The number of users who have added the video to their favorites.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.favoriteCount">online documentation</ulink>.
+     */
+    readonly favoriteCount: number
     is_private: boolean
+    isPrivate: boolean
     /**
      * A %NULL-terminated array of words associated with the video.
      * 
@@ -18566,6 +20275,13 @@ export interface YouTubeVideo extends Commentable {
      */
     readonly max_rating: number
     /**
+     * The maximum allowed rating for the video.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+     */
+    readonly maxRating: number
+    /**
      * The minimum allowed rating for the video.
      * 
      * For more information, see the <ulink type="http"
@@ -18573,9 +20289,20 @@ export interface YouTubeVideo extends Commentable {
      */
     readonly min_rating: number
     /**
+     * The minimum allowed rating for the video.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+     */
+    readonly minRating: number
+    /**
      * A URI for a browser-based media player for the full-length video (i.e. the video's page on YouTube).
      */
     readonly player_uri: string | null
+    /**
+     * A URI for a browser-based media player for the full-length video (i.e. the video's page on YouTube).
+     */
+    readonly playerUri: string | null
     /**
      * The number of times the video has been rated.
      * 
@@ -18583,6 +20310,13 @@ export interface YouTubeVideo extends Commentable {
      * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
      */
     readonly rating_count: number
+    /**
+     * The number of times the video has been rated.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+     */
+    readonly ratingCount: number
     /**
      * Specifies the time the video was originally recorded.
      * 
@@ -18612,6 +20346,13 @@ export interface YouTubeVideo extends Commentable {
      * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
      */
     readonly view_count: number
+    /**
+     * The number of times the video has been viewed.
+     * 
+     * For more information, see the <ulink type="http"
+     * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
+     */
+    readonly viewCount: number
 
     // Own fields of GData-0.0.GData.YouTubeVideo
 

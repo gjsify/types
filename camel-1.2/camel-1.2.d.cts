@@ -2709,6 +2709,7 @@ export interface NetworkService extends Service {
 
     connectable: Gio.SocketConnectable
     readonly host_reachable: boolean
+    readonly hostReachable: boolean
 
     // Conflicting properties
 
@@ -3190,6 +3191,8 @@ export module NetworkSettings {
         port?: number | null
         security_method?: NetworkSecurityMethod | null
         user?: string | null
+        authMechanism?: string | null
+        securityMethod?: NetworkSecurityMethod | null
     }
 
 }
@@ -3199,9 +3202,11 @@ export interface NetworkSettings extends Settings {
     // Own properties of Camel-1.2.Camel.NetworkSettings
 
     auth_mechanism: string | null
+    authMechanism: string | null
     host: string | null
     port: number
     security_method: NetworkSecurityMethod
+    securityMethod: NetworkSecurityMethod
     user: string | null
 
     // Owm methods of Camel-1.2.Camel.NetworkSettings
@@ -4501,6 +4506,7 @@ export module DataCache {
 
         expire_enabled?: boolean | null
         path?: string | null
+        expireEnabled?: boolean | null
     }
 
 }
@@ -4510,6 +4516,7 @@ export interface DataCache {
     // Own properties of Camel-1.2.Camel.DataCache
 
     expire_enabled: boolean
+    expireEnabled: boolean
     path: string | null
 
     // Own fields of Camel-1.2.Camel.DataCache
@@ -5272,6 +5279,9 @@ export interface FilterInputStream {
     connect(sigName: "notify::filter", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::filter", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -5351,6 +5361,9 @@ export interface FilterOutputStream {
     connect(sigName: "notify::filter", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::filter", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -5447,6 +5460,28 @@ export module Folder {
          * The #CamelStore to which the folder belongs.
          */
         parent_store?: Store | null
+        /**
+         * The folder's display name.
+         */
+        displayName?: string | null
+        /**
+         * The folder's fully qualified name.
+         */
+        fullName?: string | null
+        /**
+         * A #CamelThreeState persistent option of the folder,
+         * which can override global option to mark messages
+         * as seen after certain interval.
+         */
+        markSeen?: ThreeState | null
+        /**
+         * Timeout in milliseconds for marking messages as seen.
+         */
+        markSeenTimeout?: number | null
+        /**
+         * The #CamelStore to which the folder belongs.
+         */
+        parentStore?: Store | null
     }
 
 }
@@ -5464,9 +5499,17 @@ export interface Folder {
      */
     display_name: string | null
     /**
+     * The folder's display name.
+     */
+    displayName: string | null
+    /**
      * The folder's fully qualified name.
      */
     full_name: string | null
+    /**
+     * The folder's fully qualified name.
+     */
+    fullName: string | null
     /**
      * A #CamelThreeState persistent option of the folder,
      * which can override global option to mark messages
@@ -5474,13 +5517,27 @@ export interface Folder {
      */
     mark_seen: ThreeState
     /**
+     * A #CamelThreeState persistent option of the folder,
+     * which can override global option to mark messages
+     * as seen after certain interval.
+     */
+    markSeen: ThreeState
+    /**
      * Timeout in milliseconds for marking messages as seen.
      */
     mark_seen_timeout: number
     /**
+     * Timeout in milliseconds for marking messages as seen.
+     */
+    markSeenTimeout: number
+    /**
      * The #CamelStore to which the folder belongs.
      */
     readonly parent_store: Store
+    /**
+     * The #CamelStore to which the folder belongs.
+     */
+    readonly parentStore: Store
 
     // Own fields of Camel-1.2.Camel.Folder
 
@@ -6544,6 +6601,10 @@ export interface FolderSummary {
      */
     readonly deleted_count: number
     /**
+     * How many deleted infos is saved in a summary.
+     */
+    readonly deletedCount: number
+    /**
      * The #CamelFolder to which the folder summary belongs.
      */
     readonly folder: Folder
@@ -6552,21 +6613,41 @@ export interface FolderSummary {
      */
     readonly junk_count: number
     /**
+     * How many junk infos is saved in a summary.
+     */
+    readonly junkCount: number
+    /**
      * How many junk and not deleted infos is saved in a summary.
      */
     readonly junk_not_deleted_count: number
+    /**
+     * How many junk and not deleted infos is saved in a summary.
+     */
+    readonly junkNotDeletedCount: number
     /**
      * How many infos is saved in a summary.
      */
     readonly saved_count: number
     /**
+     * How many infos is saved in a summary.
+     */
+    readonly savedCount: number
+    /**
      * How many unread infos is saved in a summary.
      */
     readonly unread_count: number
     /**
+     * How many unread infos is saved in a summary.
+     */
+    readonly unreadCount: number
+    /**
      * How many visible (not deleted and not junk) infos is saved in a summary.
      */
     readonly visible_count: number
+    /**
+     * How many visible (not deleted and not junk) infos is saved in a summary.
+     */
+    readonly visibleCount: number
 
     // Own fields of Camel-1.2.Camel.FolderSummary
 
@@ -6928,6 +7009,9 @@ export module GpgContext {
         always_trust?: boolean | null
         locate_keys?: boolean | null
         prefer_inline?: boolean | null
+        alwaysTrust?: boolean | null
+        locateKeys?: boolean | null
+        preferInline?: boolean | null
     }
 
 }
@@ -6937,8 +7021,11 @@ export interface GpgContext {
     // Own properties of Camel-1.2.Camel.GpgContext
 
     always_trust: boolean
+    alwaysTrust: boolean
     locate_keys: boolean
+    locateKeys: boolean
     prefer_inline: boolean
+    preferInline: boolean
 
     // Own fields of Camel-1.2.Camel.GpgContext
 
@@ -7627,6 +7714,9 @@ export module LocalSettings {
         filter_junk?: boolean | null
         maildir_alt_flag_sep?: boolean | null
         path?: string | null
+        filterAll?: boolean | null
+        filterJunk?: boolean | null
+        maildirAltFlagSep?: boolean | null
     }
 
 }
@@ -7636,8 +7726,11 @@ export interface LocalSettings {
     // Own properties of Camel-1.2.Camel.LocalSettings
 
     filter_all: boolean
+    filterAll: boolean
     filter_junk: boolean
+    filterJunk: boolean
     maildir_alt_flag_sep: boolean
+    maildirAltFlagSep: boolean
     path: string | null
 
     // Owm methods of Camel-1.2.Camel.LocalSettings
@@ -8027,6 +8120,49 @@ export module MessageInfo {
          * can contain various values.
          */
         user_tags?: NameValueArray | null
+        /**
+         * Flag, whether the info is currently aborting notifications. It is used to avoid
+         * unnecessary 'folder-flagged' and 'dirty' flags changes and also to avoid
+         * associated folder's "changed" signal.
+         * f
+         */
+        abortNotifications?: boolean | null
+        /**
+         * Received date of the associated message.
+         */
+        dateReceived?: number | null
+        /**
+         * Sent Date of the associated message.
+         */
+        dateSent?: number | null
+        /**
+         * Flag, whether the info is changed and requires save to
+         * the destination store/server. This is different from
+         * the CamelMessageInfo:dirty, which takes care of the local
+         * information only.
+         */
+        folderFlagged?: boolean | null
+        /**
+         * Encoded Message-ID of the associated message as a guint64 number,
+         * partial MD5 sum. The value can be cast to #CamelSummaryMessageID.
+         */
+        messageId?: number | null
+        /**
+         * User flags for the associated message. Can be %NULL.
+         * Unlike user-tags, which can contain various values, the user-flags
+         * can only be set or not.
+         */
+        userFlags?: NamedFlags | null
+        /**
+         * User-defined headers of the associated message. Can be %NULL.
+         */
+        userHeaders?: NameValueArray | null
+        /**
+         * User tags for the associated message. Can be %NULL.
+         * Unlike user-flags, which can be set or not, the user-tags
+         * can contain various values.
+         */
+        userTags?: NameValueArray | null
     }
 
 }
@@ -8043,6 +8179,13 @@ export interface MessageInfo {
      */
     abort_notifications: boolean
     /**
+     * Flag, whether the info is currently aborting notifications. It is used to avoid
+     * unnecessary 'folder-flagged' and 'dirty' flags changes and also to avoid
+     * associated folder's "changed" signal.
+     * f
+     */
+    abortNotifications: boolean
+    /**
      * CC address of the associated message.
      */
     cc: string | null
@@ -8051,9 +8194,17 @@ export interface MessageInfo {
      */
     date_received: number
     /**
+     * Received date of the associated message.
+     */
+    dateReceived: number
+    /**
      * Sent Date of the associated message.
      */
     date_sent: number
+    /**
+     * Sent Date of the associated message.
+     */
+    dateSent: number
     /**
      * Flag, whether the info is changed and requires save to disk.
      * Compare with CamelMessageInfo:folder-flagged
@@ -8071,12 +8222,26 @@ export interface MessageInfo {
      */
     folder_flagged: boolean
     /**
+     * Flag, whether the info is changed and requires save to
+     * the destination store/server. This is different from
+     * the CamelMessageInfo:dirty, which takes care of the local
+     * information only.
+     */
+    folderFlagged: boolean
+    /**
      * The 'folder-flagged-stamp' is a stamp of the 'folder-flagged' flag. This stamp
      * changes whenever anything would mark the `mi` 'folder-flagged', regardless the `mi`
      * being already 'folder-flagged'. It can be used to recognize changes
      * on the 'folder-flagged' flag during the time.
      */
     readonly folder_flagged_stamp: number
+    /**
+     * The 'folder-flagged-stamp' is a stamp of the 'folder-flagged' flag. This stamp
+     * changes whenever anything would mark the `mi` 'folder-flagged', regardless the `mi`
+     * being already 'folder-flagged'. It can be used to recognize changes
+     * on the 'folder-flagged' flag during the time.
+     */
+    readonly folderFlaggedStamp: number
     /**
      * From address of the associated message.
      */
@@ -8090,6 +8255,11 @@ export interface MessageInfo {
      * partial MD5 sum. The value can be cast to #CamelSummaryMessageID.
      */
     message_id: number
+    /**
+     * Encoded Message-ID of the associated message as a guint64 number,
+     * partial MD5 sum. The value can be cast to #CamelSummaryMessageID.
+     */
+    messageId: number
     /**
      * Mailing list address of the associated message.
      */
@@ -8132,15 +8302,31 @@ export interface MessageInfo {
      */
     user_flags: NamedFlags
     /**
+     * User flags for the associated message. Can be %NULL.
+     * Unlike user-tags, which can contain various values, the user-flags
+     * can only be set or not.
+     */
+    userFlags: NamedFlags
+    /**
      * User-defined headers of the associated message. Can be %NULL.
      */
     user_headers: NameValueArray
+    /**
+     * User-defined headers of the associated message. Can be %NULL.
+     */
+    userHeaders: NameValueArray
     /**
      * User tags for the associated message. Can be %NULL.
      * Unlike user-flags, which can be set or not, the user-tags
      * can contain various values.
      */
     user_tags: NameValueArray
+    /**
+     * User tags for the associated message. Can be %NULL.
+     * Unlike user-flags, which can be set or not, the user-tags
+     * can contain various values.
+     */
+    userTags: NameValueArray
 
     // Own fields of Camel-1.2.Camel.MessageInfo
 
@@ -10835,6 +11021,8 @@ export module MimePart {
         content_md5?: string | null
         description?: string | null
         disposition?: string | null
+        contentId?: string | null
+        contentMd5?: string | null
     }
 
 }
@@ -10844,7 +11032,9 @@ export interface MimePart {
     // Own properties of Camel-1.2.Camel.MimePart
 
     content_id: string | null
+    contentId: string | null
     content_md5: string | null
+    contentMd5: string | null
     description: string | null
     disposition: string | null
 
@@ -11547,6 +11737,11 @@ export module Object {
          * instance.
          */
         state_filename?: string | null
+        /**
+         * The file in which to store persistent property values for this
+         * instance.
+         */
+        stateFilename?: string | null
     }
 
 }
@@ -11560,6 +11755,11 @@ export interface Object {
      * instance.
      */
     state_filename: string | null
+    /**
+     * The file in which to store persistent property values for this
+     * instance.
+     */
+    stateFilename: string | null
 
     // Own fields of Camel-1.2.Camel.Object
 
@@ -11631,6 +11831,7 @@ export module OfflineFolder {
         // Own constructor properties of Camel-1.2.Camel.OfflineFolder
 
         offline_sync?: ThreeState | null
+        offlineSync?: ThreeState | null
     }
 
 }
@@ -11640,6 +11841,7 @@ export interface OfflineFolder {
     // Own properties of Camel-1.2.Camel.OfflineFolder
 
     offline_sync: ThreeState
+    offlineSync: ThreeState
 
     // Own fields of Camel-1.2.Camel.OfflineFolder
 
@@ -11758,6 +11960,10 @@ export module OfflineSettings {
         limit_unit?: TimeUnit | null
         limit_value?: number | null
         stay_synchronized?: boolean | null
+        limitByAge?: boolean | null
+        limitUnit?: TimeUnit | null
+        limitValue?: number | null
+        staySynchronized?: boolean | null
     }
 
 }
@@ -11767,9 +11973,13 @@ export interface OfflineSettings {
     // Own properties of Camel-1.2.Camel.OfflineSettings
 
     limit_by_age: boolean
+    limitByAge: boolean
     limit_unit: TimeUnit
+    limitUnit: TimeUnit
     limit_value: number
+    limitValue: number
     stay_synchronized: boolean
+    staySynchronized: boolean
 
     // Owm methods of Camel-1.2.Camel.OfflineSettings
 
@@ -12797,6 +13007,7 @@ export module Sasl {
         mechanism?: string | null
         service?: Service | null
         service_name?: string | null
+        serviceName?: string | null
     }
 
 }
@@ -12809,6 +13020,7 @@ export interface Sasl {
     readonly mechanism: string | null
     readonly service: Service
     readonly service_name: string | null
+    readonly serviceName: string | null
 
     // Own fields of Camel-1.2.Camel.Sasl
 
@@ -13599,6 +13811,8 @@ export module Service {
         session?: Session | null
         settings?: Settings | null
         uid?: string | null
+        displayName?: string | null
+        proxyResolver?: Gio.ProxyResolver | null
     }
 
 }
@@ -13608,10 +13822,13 @@ export interface Service extends Gio.Initable {
     // Own properties of Camel-1.2.Camel.Service
 
     readonly connection_status: ServiceConnectionStatus
+    readonly connectionStatus: ServiceConnectionStatus
     display_name: string | null
+    displayName: string | null
     password: string | null
     readonly provider: Provider
     proxy_resolver: Gio.ProxyResolver
+    proxyResolver: Gio.ProxyResolver
     readonly session: Session
     settings: Settings
     readonly uid: string | null
@@ -14086,6 +14303,10 @@ export module Session {
         online?: boolean | null
         user_cache_dir?: string | null
         user_data_dir?: string | null
+        junkFilter?: JunkFilter | null
+        networkMonitor?: Gio.NetworkMonitor | null
+        userCacheDir?: string | null
+        userDataDir?: string | null
     }
 
 }
@@ -14095,11 +14316,16 @@ export interface Session {
     // Own properties of Camel-1.2.Camel.Session
 
     junk_filter: JunkFilter
+    junkFilter: JunkFilter
     readonly main_context: GLib.MainContext
+    readonly mainContext: GLib.MainContext
     network_monitor: Gio.NetworkMonitor
+    networkMonitor: Gio.NetworkMonitor
     online: boolean
     user_cache_dir: string | null
+    userCacheDir: string | null
     user_data_dir: string | null
+    userDataDir: string | null
 
     // Own fields of Camel-1.2.Camel.Session
 
@@ -15886,6 +16112,8 @@ export module StoreSettings {
 
         filter_inbox?: boolean | null
         store_changes_interval?: number | null
+        filterInbox?: boolean | null
+        storeChangesInterval?: number | null
     }
 
 }
@@ -15895,7 +16123,9 @@ export interface StoreSettings {
     // Own properties of Camel-1.2.Camel.StoreSettings
 
     filter_inbox: boolean
+    filterInbox: boolean
     store_changes_interval: number
+    storeChangesInterval: number
 
     // Owm methods of Camel-1.2.Camel.StoreSettings
 
@@ -16125,6 +16355,7 @@ export module Stream {
         // Own constructor properties of Camel-1.2.Camel.Stream
 
         base_stream?: Gio.IOStream | null
+        baseStream?: Gio.IOStream | null
     }
 
 }
@@ -16134,6 +16365,7 @@ export interface Stream extends Gio.Seekable {
     // Own properties of Camel-1.2.Camel.Stream
 
     base_stream: Gio.IOStream
+    baseStream: Gio.IOStream
 
     // Own fields of Camel-1.2.Camel.Stream
 
@@ -17518,6 +17750,7 @@ export module VeeFolder {
         // Own constructor properties of Camel-1.2.Camel.VeeFolder
 
         auto_update?: boolean | null
+        autoUpdate?: boolean | null
     }
 
 }
@@ -17527,6 +17760,7 @@ export interface VeeFolder {
     // Own properties of Camel-1.2.Camel.VeeFolder
 
     auto_update: boolean
+    autoUpdate: boolean
 
     // Own fields of Camel-1.2.Camel.VeeFolder
 
@@ -17917,6 +18151,7 @@ export module VeeStore {
         // Own constructor properties of Camel-1.2.Camel.VeeStore
 
         unmatched_enabled?: boolean | null
+        unmatchedEnabled?: boolean | null
     }
 
 }
@@ -17926,6 +18161,7 @@ export interface VeeStore extends Gio.Initable {
     // Own properties of Camel-1.2.Camel.VeeStore
 
     unmatched_enabled: boolean
+    unmatchedEnabled: boolean
 
     // Own fields of Camel-1.2.Camel.VeeStore
 

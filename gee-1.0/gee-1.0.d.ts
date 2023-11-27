@@ -80,7 +80,9 @@ interface Collection extends Iterable {
 
     readonly size: number
     readonly is_empty: boolean
+    readonly isEmpty: boolean
     readonly read_only_view: Collection
+    readonly readOnlyView: Collection
 
     // Owm methods of Gee-1.0.Gee.Collection
 
@@ -269,6 +271,7 @@ interface Iterable extends GObject.Object {
     // Own properties of Gee-1.0.Gee.Iterable
 
     readonly element_type: GObject.GType
+    readonly elementType: GObject.GType
 
     // Owm methods of Gee-1.0.Gee.Iterable
 
@@ -364,6 +367,7 @@ interface List extends Collection {
     // Own properties of Gee-1.0.Gee.List
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-1.0.Gee.List
 
@@ -492,12 +496,16 @@ interface Map extends GObject.Object, Iterable {
 
     readonly size: number
     readonly is_empty: boolean
+    readonly isEmpty: boolean
     readonly keys: Set
     readonly values: Collection
     readonly entries: Set
     readonly read_only_view: Map
+    readonly readOnlyView: Map
     readonly key_type: GObject.GType
+    readonly keyType: GObject.GType
     readonly value_type: GObject.GType
+    readonly valueType: GObject.GType
 
     // Owm methods of Gee-1.0.Gee.Map
 
@@ -764,7 +772,9 @@ interface Queue extends Collection {
 
     readonly capacity: number
     readonly remaining_capacity: number
+    readonly remainingCapacity: number
     readonly is_full: boolean
+    readonly isFull: boolean
 
     // Owm methods of Gee-1.0.Gee.Queue
 
@@ -836,6 +846,7 @@ interface Set extends Collection {
     // Own properties of Gee-1.0.Gee.Set
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Class property signals of Gee-1.0.Gee.Set
 
@@ -889,6 +900,7 @@ interface SortedSet extends Set {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-1.0.Gee.SortedSet
 
@@ -975,7 +987,9 @@ interface AbstractCollection extends Iterable, Collection {
 
     readonly size: number
     readonly is_empty: boolean
+    readonly isEmpty: boolean
     readonly read_only_view: Collection
+    readonly readOnlyView: Collection
 
     // Own fields of Gee-1.0.Gee.AbstractCollection
 
@@ -1055,6 +1069,7 @@ interface AbstractList extends List {
     // Own properties of Gee-1.0.Gee.AbstractList
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.AbstractList
 
@@ -1144,10 +1159,12 @@ interface AbstractMap extends Iterable, Map {
 
     readonly size: number
     readonly is_empty: boolean
+    readonly isEmpty: boolean
     readonly keys: Set
     readonly values: Collection
     readonly entries: Set
     readonly read_only_view: Map
+    readonly readOnlyView: Map
 
     // Own fields of Gee-1.0.Gee.AbstractMap
 
@@ -1346,7 +1363,9 @@ interface AbstractQueue extends Queue {
 
     readonly capacity: number
     readonly remaining_capacity: number
+    readonly remainingCapacity: number
     readonly is_full: boolean
+    readonly isFull: boolean
 
     // Own fields of Gee-1.0.Gee.AbstractQueue
 
@@ -1423,6 +1442,7 @@ interface AbstractSet extends Set {
     // Own properties of Gee-1.0.Gee.AbstractSet
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.AbstractSet
 
@@ -1480,6 +1500,7 @@ module ArrayList {
         // Own constructor properties of Gee-1.0.Gee.ArrayList
 
         equal_func?: GLib.EqualFunc | null
+        equalFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1489,10 +1510,12 @@ interface ArrayList {
     // Own properties of Gee-1.0.Gee.ArrayList
 
     equal_func: GLib.EqualFunc
+    equalFunc: GLib.EqualFunc
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.ArrayList
 
@@ -1558,6 +1581,9 @@ module HashMap {
         key_hash_func?: GLib.HashFunc | null
         key_equal_func?: GLib.EqualFunc | null
         value_equal_func?: GLib.EqualFunc | null
+        keyHashFunc?: GLib.HashFunc | null
+        keyEqualFunc?: GLib.EqualFunc | null
+        valueEqualFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1567,8 +1593,11 @@ interface HashMap {
     // Own properties of Gee-1.0.Gee.HashMap
 
     key_hash_func: GLib.HashFunc
+    keyHashFunc: GLib.HashFunc
     key_equal_func: GLib.EqualFunc
+    keyEqualFunc: GLib.EqualFunc
     value_equal_func: GLib.EqualFunc
+    valueEqualFunc: GLib.EqualFunc
 
     // Own fields of Gee-1.0.Gee.HashMap
 
@@ -1635,6 +1664,8 @@ module HashMultiMap {
 
         value_hash_func?: GLib.HashFunc | null
         value_equal_func?: GLib.EqualFunc | null
+        valueHashFunc?: GLib.HashFunc | null
+        valueEqualFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1644,9 +1675,13 @@ interface HashMultiMap {
     // Own properties of Gee-1.0.Gee.HashMultiMap
 
     readonly key_hash_func: GLib.HashFunc
+    readonly keyHashFunc: GLib.HashFunc
     readonly key_equal_func: GLib.EqualFunc
+    readonly keyEqualFunc: GLib.EqualFunc
     value_hash_func: GLib.HashFunc
+    valueHashFunc: GLib.HashFunc
     value_equal_func: GLib.EqualFunc
+    valueEqualFunc: GLib.EqualFunc
 
     // Own fields of Gee-1.0.Gee.HashMultiMap
 
@@ -1702,7 +1737,9 @@ interface HashMultiSet {
     // Own properties of Gee-1.0.Gee.HashMultiSet
 
     readonly hash_func: GLib.HashFunc
+    readonly hashFunc: GLib.HashFunc
     readonly equal_func: GLib.EqualFunc
+    readonly equalFunc: GLib.EqualFunc
 
     // Own fields of Gee-1.0.Gee.HashMultiSet
 
@@ -1757,6 +1794,8 @@ module HashSet {
 
         hash_func?: GLib.HashFunc | null
         equal_func?: GLib.EqualFunc | null
+        hashFunc?: GLib.HashFunc | null
+        equalFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1766,11 +1805,14 @@ interface HashSet {
     // Own properties of Gee-1.0.Gee.HashSet
 
     hash_func: GLib.HashFunc
+    hashFunc: GLib.HashFunc
     equal_func: GLib.EqualFunc
+    equalFunc: GLib.EqualFunc
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.HashSet
 
@@ -1833,6 +1875,7 @@ module LinkedList {
         // Own constructor properties of Gee-1.0.Gee.LinkedList
 
         equal_func?: GLib.EqualFunc | null
+        equalFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1842,10 +1885,12 @@ interface LinkedList extends Queue, Deque {
     // Own properties of Gee-1.0.Gee.LinkedList
 
     equal_func: GLib.EqualFunc
+    equalFunc: GLib.EqualFunc
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.LinkedList
 
@@ -1917,6 +1962,7 @@ module PriorityQueue {
         // Own constructor properties of Gee-1.0.Gee.PriorityQueue
 
         compare_func?: GLib.CompareFunc | null
+        compareFunc?: GLib.CompareFunc | null
     }
 
 }
@@ -1926,6 +1972,7 @@ interface PriorityQueue {
     // Own properties of Gee-1.0.Gee.PriorityQueue
 
     compare_func: GLib.CompareFunc
+    compareFunc: GLib.CompareFunc
 
     // Own fields of Gee-1.0.Gee.PriorityQueue
 
@@ -1986,6 +2033,8 @@ module TreeMap {
 
         key_compare_func?: GLib.CompareFunc | null
         value_equal_func?: GLib.EqualFunc | null
+        keyCompareFunc?: GLib.CompareFunc | null
+        valueEqualFunc?: GLib.EqualFunc | null
     }
 
 }
@@ -1995,7 +2044,9 @@ interface TreeMap {
     // Own properties of Gee-1.0.Gee.TreeMap
 
     key_compare_func: GLib.CompareFunc
+    keyCompareFunc: GLib.CompareFunc
     value_equal_func: GLib.EqualFunc
+    valueEqualFunc: GLib.EqualFunc
 
     // Own fields of Gee-1.0.Gee.TreeMap
 
@@ -2058,6 +2109,7 @@ module TreeMultiMap {
         // Own constructor properties of Gee-1.0.Gee.TreeMultiMap
 
         value_compare_func?: GLib.CompareFunc | null
+        valueCompareFunc?: GLib.CompareFunc | null
     }
 
 }
@@ -2067,7 +2119,9 @@ interface TreeMultiMap {
     // Own properties of Gee-1.0.Gee.TreeMultiMap
 
     readonly key_compare_func: GLib.CompareFunc
+    readonly keyCompareFunc: GLib.CompareFunc
     value_compare_func: GLib.CompareFunc
+    valueCompareFunc: GLib.CompareFunc
 
     // Own fields of Gee-1.0.Gee.TreeMultiMap
 
@@ -2117,6 +2171,7 @@ interface TreeMultiSet {
     // Own properties of Gee-1.0.Gee.TreeMultiSet
 
     readonly compare_func: GLib.CompareFunc
+    readonly compareFunc: GLib.CompareFunc
 
     // Own fields of Gee-1.0.Gee.TreeMultiSet
 
@@ -2167,6 +2222,7 @@ module TreeSet {
         // Own constructor properties of Gee-1.0.Gee.TreeSet
 
         compare_func?: GLib.CompareFunc | null
+        compareFunc?: GLib.CompareFunc | null
     }
 
 }
@@ -2176,10 +2232,12 @@ interface TreeSet extends SortedSet {
     // Own properties of Gee-1.0.Gee.TreeSet
 
     compare_func: GLib.CompareFunc
+    compareFunc: GLib.CompareFunc
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Gee-1.0.Gee.TreeSet
 

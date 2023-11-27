@@ -459,6 +459,7 @@ module Animation {
          * animated.
          */
         target?: GObject.Object | null
+        frameClock?: Gdk.FrameClock | null
     }
 
 }
@@ -473,6 +474,7 @@ interface Animation {
      */
     readonly duration: number
     readonly frame_clock: Gdk.FrameClock
+    readonly frameClock: Gdk.FrameClock
     /**
      * The "mode" property is the Alpha function that should be used to
      * determine the offset within the animation based on the current
@@ -2223,6 +2225,10 @@ module DockRevealer {
         reveal_child?: boolean | null
         transition_duration?: number | null
         transition_type?: DockRevealerTransitionType | null
+        positionSet?: boolean | null
+        revealChild?: boolean | null
+        transitionDuration?: number | null
+        transitionType?: DockRevealerTransitionType | null
     }
 
 }
@@ -2232,11 +2238,16 @@ interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Pnl-1.0.Pnl.DockRevealer
 
     readonly child_revealed: boolean
+    readonly childRevealed: boolean
     position: number
     position_set: boolean
+    positionSet: boolean
     reveal_child: boolean
+    revealChild: boolean
     transition_duration: number
+    transitionDuration: number
     transition_type: DockRevealerTransitionType
+    transitionType: DockRevealerTransitionType
 
     // Own fields of Pnl-1.0.Pnl.DockRevealer
 

@@ -488,6 +488,7 @@ export module WebRTCDTLSTransport {
         certificate?: string | null
         client?: boolean | null
         session_id?: number | null
+        sessionId?: number | null
     }
 
 }
@@ -499,7 +500,9 @@ export interface WebRTCDTLSTransport {
     certificate: string | null
     client: boolean
     readonly remote_certificate: string | null
+    readonly remoteCertificate: string | null
     readonly session_id: number
+    readonly sessionId: number
     readonly state: WebRTCDTLSTransportState
     readonly transport: WebRTCICETransport
 
@@ -662,6 +665,9 @@ export module WebRTCDataChannel {
         ordered?: boolean | null
         priority?: WebRTCPriorityType | null
         protocol?: string | null
+        bufferedAmountLowThreshold?: number | null
+        maxPacketLifetime?: number | null
+        maxRetransmits?: number | null
     }
 
 }
@@ -671,16 +677,21 @@ export interface WebRTCDataChannel {
     // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
 
     readonly buffered_amount: number
+    readonly bufferedAmount: number
     buffered_amount_low_threshold: number
+    bufferedAmountLowThreshold: number
     readonly id: number
     readonly label: string | null
     readonly max_packet_lifetime: number
+    readonly maxPacketLifetime: number
     readonly max_retransmits: number
+    readonly maxRetransmits: number
     readonly negotiated: boolean
     readonly ordered: boolean
     readonly priority: WebRTCPriorityType
     readonly protocol: string | null
     readonly ready_state: WebRTCDataChannelState
+    readonly readyState: WebRTCDataChannelState
 
     // Owm methods of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
 
@@ -823,11 +834,34 @@ export module WebRTCICE {
          * min-rtp-port must be <= max-rtp-port
          */
         min_rtp_port?: number | null
+        /**
+         * Maximum port for local rtp port range.
+         * min-rtp-port must be <= max-rtp-port
+         */
+        maxRtpPort?: number | null
+        /**
+         * Minimum port for local rtp port range.
+         * min-rtp-port must be <= max-rtp-port
+         */
+        minRtpPort?: number | null
     }
 
 }
 
 export interface WebRTCICE {
+
+    // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCICE
+
+    /**
+     * Maximum port for local rtp port range.
+     * min-rtp-port must be <= max-rtp-port
+     */
+    maxRtpPort: number
+    /**
+     * Minimum port for local rtp port range.
+     * min-rtp-port must be <= max-rtp-port
+     */
+    minRtpPort: number
 
     // Own fields of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
@@ -945,6 +979,12 @@ export interface WebRTCICE {
 
     // Class property signals of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
+    connect(sigName: "notify::max-rtp-port", callback: (($obj: WebRTCICE, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::max-rtp-port", callback: (($obj: WebRTCICE, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-rtp-port", ...args: any[]): void
+    connect(sigName: "notify::min-rtp-port", callback: (($obj: WebRTCICE, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::min-rtp-port", callback: (($obj: WebRTCICE, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::min-rtp-port", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -973,11 +1013,16 @@ export module WebRTCICEStream {
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
 
         stream_id?: number | null
+        streamId?: number | null
     }
 
 }
 
 export interface WebRTCICEStream {
+
+    // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
+
+    readonly streamId: number
 
     // Own fields of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
 
@@ -1033,6 +1078,9 @@ export interface WebRTCICEStream {
 
     // Class property signals of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
 
+    connect(sigName: "notify::stream-id", callback: (($obj: WebRTCICEStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::stream-id", callback: (($obj: WebRTCICEStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stream-id", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1083,6 +1131,10 @@ export module WebRTCICETransport {
 }
 
 export interface WebRTCICETransport {
+
+    // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCICETransport
+
+    readonly gatheringState: WebRTCICEGatheringState
 
     // Own fields of GstWebRTC-1.0.GstWebRTC.WebRTCICETransport
 
@@ -1154,6 +1206,9 @@ export interface WebRTCICETransport {
 
     // Class property signals of GstWebRTC-1.0.GstWebRTC.WebRTCICETransport
 
+    connect(sigName: "notify::gathering-state", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::gathering-state", callback: (($obj: WebRTCICETransport, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::gathering-state", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1386,6 +1441,10 @@ export module WebRTCRTPTransceiver {
         mlineindex?: number | null
         receiver?: WebRTCRTPReceiver | null
         sender?: WebRTCRTPSender | null
+        /**
+         * Caps representing the codec preferences.
+         */
+        codecPreferences?: Gst.Caps | null
     }
 
 }
@@ -1399,12 +1458,23 @@ export interface WebRTCRTPTransceiver {
      */
     codec_preferences: Gst.Caps
     /**
+     * Caps representing the codec preferences.
+     */
+    codecPreferences: Gst.Caps
+    /**
      * The transceiver's current directionality, or none if the
      * transceiver is stopped or has never participated in an exchange
      * of offers and answers. To change the transceiver's
      * directionality, set the value of the direction property.
      */
     readonly current_direction: WebRTCRTPTransceiverDirection
+    /**
+     * The transceiver's current directionality, or none if the
+     * transceiver is stopped or has never participated in an exchange
+     * of offers and answers. To change the transceiver's
+     * directionality, set the value of the direction property.
+     */
+    readonly currentDirection: WebRTCRTPTransceiverDirection
     /**
      * Direction of the transceiver.
      */
@@ -1526,7 +1596,9 @@ export interface WebRTCSCTPTransport {
     // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCSCTPTransport
 
     readonly max_channels: number
+    readonly maxChannels: number
     readonly max_message_size: number
+    readonly maxMessageSize: number
     readonly state: WebRTCSCTPTransportState
     readonly transport: WebRTCDTLSTransport
 

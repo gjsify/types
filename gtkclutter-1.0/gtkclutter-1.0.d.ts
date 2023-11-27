@@ -435,6 +435,11 @@ module Embed {
          * See gtk_clutter_embed_set_use_layout_size() for details.
          */
         use_layout_size?: boolean | null
+        /**
+         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+         * See gtk_clutter_embed_set_use_layout_size() for details.
+         */
+        useLayoutSize?: boolean | null
     }
 
 }
@@ -448,6 +453,11 @@ interface Embed extends Atk.ImplementorIface, Gtk.Buildable {
      * See gtk_clutter_embed_set_use_layout_size() for details.
      */
     use_layout_size: boolean
+    /**
+     * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+     * See gtk_clutter_embed_set_use_layout_size() for details.
+     */
+    useLayoutSize: boolean
 
     // Owm methods of GtkClutter-1.0.GtkClutter.Embed
 

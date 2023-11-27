@@ -481,6 +481,10 @@ export module TabGroup {
          * The #TeplTab currently shown.
          */
         active_tab?: Tab | null
+        /**
+         * The #TeplTab currently shown.
+         */
+        activeTab?: Tab | null
     }
 
 }
@@ -494,13 +498,25 @@ export interface TabGroup {
      */
     readonly active_buffer: Buffer
     /**
+     * The #TeplBuffer of the active tab.
+     */
+    readonly activeBuffer: Buffer
+    /**
      * The #TeplTab currently shown.
      */
     active_tab: Tab
     /**
+     * The #TeplTab currently shown.
+     */
+    activeTab: Tab
+    /**
      * The #TeplView of the active tab.
      */
     readonly active_view: View
+    /**
+     * The #TeplView of the active tab.
+     */
+    readonly activeView: View
 
     // Owm methods of Tepl-5.Tepl.TabGroup
 
@@ -863,6 +879,25 @@ export module ApplicationWindow {
          * name.
          */
         handle_title?: boolean | null
+        /**
+         * The #GtkApplicationWindow.
+         */
+        applicationWindow?: Gtk.ApplicationWindow | null
+        /**
+         * Whether to handle the #GtkWindow:title. The title is probably not
+         * appropriate if a #GtkHeaderBar is used, the title is meant to be used
+         * only for applications with a traditional UI.
+         * 
+         * If %TRUE, the title will contain:
+         * - the #TeplBuffer:tepl-full-title of the active buffer.
+         * - if the active view is not #GtkTextView:editable, the
+         *   `"[Read-Only]"` string.
+         * - the application name as returned by g_get_application_name().
+         * 
+         * If the active view is %NULL, the title contains only the application
+         * name.
+         */
+        handleTitle?: boolean | null
     }
 
 }
@@ -875,6 +910,10 @@ export interface ApplicationWindow extends TabGroup {
      * The #GtkApplicationWindow.
      */
     readonly application_window: Gtk.ApplicationWindow
+    /**
+     * The #GtkApplicationWindow.
+     */
+    readonly applicationWindow: Gtk.ApplicationWindow
     /**
      * Whether to handle the #GtkWindow:title. The title is probably not
      * appropriate if a #GtkHeaderBar is used, the title is meant to be used
@@ -890,6 +929,21 @@ export interface ApplicationWindow extends TabGroup {
      * name.
      */
     handle_title: boolean
+    /**
+     * Whether to handle the #GtkWindow:title. The title is probably not
+     * appropriate if a #GtkHeaderBar is used, the title is meant to be used
+     * only for applications with a traditional UI.
+     * 
+     * If %TRUE, the title will contain:
+     * - the #TeplBuffer:tepl-full-title of the active buffer.
+     * - if the active view is not #GtkTextView:editable, the
+     *   `"[Read-Only]"` string.
+     * - the application name as returned by g_get_application_name().
+     * 
+     * If the active view is %NULL, the title contains only the application
+     * name.
+     */
+    handleTitle: boolean
 
     // Own fields of Tepl-5.Tepl.ApplicationWindow
 
@@ -1015,6 +1069,14 @@ export module Buffer {
          * #TeplBuffer:tepl-style-scheme-id contains the empty string.
          */
         tepl_style_scheme_id?: string | null
+        /**
+         * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
+         * useful for binding it to a #GSettings key.
+         * 
+         * When the #GtkSourceBuffer:style-scheme is %NULL,
+         * #TeplBuffer:tepl-style-scheme-id contains the empty string.
+         */
+        teplStyleSchemeId?: string | null
     }
 
 }
@@ -1028,9 +1090,17 @@ export interface Buffer {
      */
     readonly tepl_full_title: string | null
     /**
+     * The full title. See tepl_buffer_get_full_title().
+     */
+    readonly teplFullTitle: string | null
+    /**
      * The short title. See tepl_buffer_get_short_title().
      */
     readonly tepl_short_title: string | null
+    /**
+     * The short title. See tepl_buffer_get_short_title().
+     */
+    readonly teplShortTitle: string | null
     /**
      * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
      * useful for binding it to a #GSettings key.
@@ -1039,6 +1109,14 @@ export interface Buffer {
      * #TeplBuffer:tepl-style-scheme-id contains the empty string.
      */
     tepl_style_scheme_id: string | null
+    /**
+     * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
+     * useful for binding it to a #GSettings key.
+     * 
+     * When the #GtkSourceBuffer:style-scheme is %NULL,
+     * #TeplBuffer:tepl-style-scheme-id contains the empty string.
+     */
+    teplStyleSchemeId: string | null
 
     // Conflicting properties
 
@@ -1246,9 +1324,17 @@ export interface File {
      */
     readonly newline_type: NewlineType
     /**
+     * The line ending type.
+     */
+    readonly newlineType: NewlineType
+    /**
      * The file short name. See tepl_file_get_short_name().
      */
     readonly short_name: string | null
+    /**
+     * The file short name. See tepl_file_get_short_name().
+     */
+    readonly shortName: string | null
 
     // Own fields of Tepl-5.Tepl.File
 
@@ -1509,6 +1595,10 @@ export module FileSaver {
          * The newline type.
          */
         newline_type?: NewlineType | null
+        /**
+         * The newline type.
+         */
+        newlineType?: NewlineType | null
     }
 
 }
@@ -1540,6 +1630,10 @@ export interface FileSaver {
      * The newline type.
      */
     newline_type: NewlineType
+    /**
+     * The newline type.
+     */
+    newlineType: NewlineType
 
     // Own fields of Tepl-5.Tepl.FileSaver
 
@@ -4256,6 +4350,14 @@ export module StyleSchemeChooserWidget {
          * property contains the empty string.
          */
         tepl_style_scheme_id?: string | null
+        /**
+         * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
+         * property is useful for binding it to a #GSettings key.
+         * 
+         * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
+         * property contains the empty string.
+         */
+        teplStyleSchemeId?: string | null
     }
 
 }
@@ -4272,6 +4374,14 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * property contains the empty string.
      */
     tepl_style_scheme_id: string | null
+    /**
+     * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
+     * property is useful for binding it to a #GSettings key.
+     * 
+     * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
+     * property contains the empty string.
+     */
+    teplStyleSchemeId: string | null
 
     // Own fields of Tepl-5.Tepl.StyleSchemeChooserWidget
 

@@ -1128,6 +1128,7 @@ module Handle {
         // Own constructor properties of Wnck-3.0.Wnck.Handle
 
         client_type?: ClientType | null
+        clientType?: ClientType | null
     }
 
 }
@@ -1137,6 +1138,7 @@ interface Handle {
     // Own properties of Wnck-3.0.Wnck.Handle
 
     client_type: ClientType
+    clientType: ClientType
 
     // Owm methods of Wnck-3.0.Wnck.Handle
 
@@ -2528,6 +2530,7 @@ module Tasklist {
 
         handle?: Handle | null
         tooltips_enabled?: boolean | null
+        tooltipsEnabled?: boolean | null
     }
 
 }
@@ -2538,6 +2541,7 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
 
     readonly handle: Handle
     tooltips_enabled: boolean
+    tooltipsEnabled: boolean
 
     // Own fields of Wnck-3.0.Wnck.Tasklist
 

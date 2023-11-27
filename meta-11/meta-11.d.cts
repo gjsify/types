@@ -2017,6 +2017,7 @@ export module Background {
         // Own constructor properties of Meta-11.Meta.Background
 
         meta_display?: Display | null
+        metaDisplay?: Display | null
     }
 
 }
@@ -2026,6 +2027,7 @@ export interface Background {
     // Own properties of Meta-11.Meta.Background
 
     readonly meta_display: Display
+    readonly metaDisplay: Display
 
     // Owm methods of Meta-11.Meta.Background
 
@@ -2088,6 +2090,7 @@ export module BackgroundActor {
 
         meta_display?: Display | null
         monitor?: number | null
+        metaDisplay?: Display | null
     }
 
 }
@@ -2097,6 +2100,7 @@ export interface BackgroundActor extends Atk.ImplementorIface, Clutter.Animatabl
     // Own properties of Meta-11.Meta.BackgroundActor
 
     readonly meta_display: Display
+    readonly metaDisplay: Display
     readonly monitor: number
 
     // Class property signals of Meta-11.Meta.BackgroundActor
@@ -2391,6 +2395,11 @@ export module BackgroundContent {
         rounded_clip_radius?: number | null
         vignette?: boolean | null
         vignette_sharpness?: number | null
+        gradientHeight?: number | null
+        gradientMaxDarkness?: number | null
+        metaDisplay?: Display | null
+        roundedClipRadius?: number | null
+        vignetteSharpness?: number | null
     }
 
 }
@@ -2403,12 +2412,17 @@ export interface BackgroundContent extends Clutter.Content {
     brightness: number
     gradient: boolean
     gradient_height: number
+    gradientHeight: number
     gradient_max_darkness: number
+    gradientMaxDarkness: number
     readonly meta_display: Display
+    readonly metaDisplay: Display
     readonly monitor: number
     rounded_clip_radius: number
+    roundedClipRadius: number
     vignette: boolean
     vignette_sharpness: number
+    vignetteSharpness: number
 
     // Owm methods of Meta-11.Meta.BackgroundContent
 
@@ -3069,6 +3083,7 @@ export module Context {
 
         name?: string | null
         unsafe_mode?: boolean | null
+        unsafeMode?: boolean | null
     }
 
 }
@@ -3079,6 +3094,7 @@ export interface Context {
 
     readonly name: string | null
     unsafe_mode: boolean
+    unsafeMode: boolean
 
     // Own fields of Meta-11.Meta.Context
 
@@ -3461,7 +3477,9 @@ export interface Display {
     // Own properties of Meta-11.Meta.Display
 
     readonly compositor_modifiers: Clutter.ModifierType
+    readonly compositorModifiers: Clutter.ModifierType
     readonly focus_window: Window
+    readonly focusWindow: Window
 
     // Owm methods of Meta-11.Meta.Display
 
@@ -4017,8 +4035,11 @@ export interface MonitorManager {
 
     readonly backend: Backend
     readonly has_builtin_panel: boolean
+    readonly hasBuiltinPanel: boolean
     readonly night_light_supported: boolean
+    readonly nightLightSupported: boolean
     readonly panel_orientation_managed: boolean
+    readonly panelOrientationManaged: boolean
 
     // Owm methods of Meta-11.Meta.MonitorManager
 
@@ -4312,6 +4333,7 @@ export module RemoteAccessHandle {
         // Own constructor properties of Meta-11.Meta.RemoteAccessHandle
 
         is_recording?: boolean | null
+        isRecording?: boolean | null
     }
 
 }
@@ -4321,6 +4343,7 @@ export interface RemoteAccessHandle {
     // Own properties of Meta-11.Meta.RemoteAccessHandle
 
     readonly is_recording: boolean
+    readonly isRecording: boolean
 
     // Own fields of Meta-11.Meta.RemoteAccessHandle
 
@@ -5205,6 +5228,8 @@ export module StartupSequence {
         timestamp?: number | null
         wmclass?: string | null
         workspace?: number | null
+        applicationId?: string | null
+        iconName?: string | null
     }
 
 }
@@ -5214,7 +5239,9 @@ export interface StartupSequence {
     // Own properties of Meta-11.Meta.StartupSequence
 
     readonly application_id: string | null
+    readonly applicationId: string | null
     readonly icon_name: string | null
+    readonly iconName: string | null
     readonly id: string | null
     readonly name: string | null
     readonly timestamp: number
@@ -5449,30 +5476,48 @@ export interface Window {
 
     readonly above: boolean
     readonly appears_focused: boolean
+    readonly appearsFocused: boolean
     readonly decorated: boolean
     readonly demands_attention: boolean
+    readonly demandsAttention: boolean
     readonly fullscreen: boolean
     readonly gtk_app_menu_object_path: string | null
+    readonly gtkAppMenuObjectPath: string | null
     readonly gtk_application_id: string | null
+    readonly gtkApplicationId: string | null
     readonly gtk_application_object_path: string | null
+    readonly gtkApplicationObjectPath: string | null
     readonly gtk_menubar_object_path: string | null
+    readonly gtkMenubarObjectPath: string | null
     readonly gtk_unique_bus_name: string | null
+    readonly gtkUniqueBusName: string | null
     readonly gtk_window_object_path: string | null
+    readonly gtkWindowObjectPath: string | null
     readonly icon: any
     readonly is_alive: boolean
+    readonly isAlive: boolean
     readonly maximized_horizontally: boolean
+    readonly maximizedHorizontally: boolean
     readonly maximized_vertically: boolean
+    readonly maximizedVertically: boolean
     readonly mini_icon: any
+    readonly miniIcon: any
     readonly minimized: boolean
     readonly mutter_hints: string | null
+    readonly mutterHints: string | null
     readonly on_all_workspaces: boolean
+    readonly onAllWorkspaces: boolean
     readonly resizeable: boolean
     readonly skip_taskbar: boolean
+    readonly skipTaskbar: boolean
     readonly title: string | null
     readonly urgent: boolean
     readonly user_time: number
+    readonly userTime: number
     readonly window_type: WindowType
+    readonly windowType: WindowType
     readonly wm_class: string | null
+    readonly wmClass: string | null
 
     // Owm methods of Meta-11.Meta.Window
 
@@ -5982,6 +6027,7 @@ export module WindowActor {
         // Own constructor properties of Meta-11.Meta.WindowActor
 
         meta_window?: Window | null
+        metaWindow?: Window | null
     }
 
 }
@@ -5991,6 +6037,7 @@ export interface WindowActor extends Atk.ImplementorIface, Clutter.Animatable, C
     // Own properties of Meta-11.Meta.WindowActor
 
     readonly meta_window: Window
+    readonly metaWindow: Window
 
     // Own fields of Meta-11.Meta.WindowActor
 
@@ -6565,7 +6612,9 @@ export interface Workspace {
 
     readonly active: boolean
     readonly n_windows: number
+    readonly nWindows: number
     readonly workspace_index: number
+    readonly workspaceIndex: number
 
     // Owm methods of Meta-11.Meta.Workspace
 
@@ -6723,8 +6772,11 @@ export interface WorkspaceManager {
     // Own properties of Meta-11.Meta.WorkspaceManager
 
     readonly layout_columns: number
+    readonly layoutColumns: number
     readonly layout_rows: number
+    readonly layoutRows: number
     readonly n_workspaces: number
+    readonly nWorkspaces: number
 
     // Owm methods of Meta-11.Meta.WorkspaceManager
 

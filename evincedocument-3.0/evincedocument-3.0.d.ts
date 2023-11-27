@@ -342,6 +342,9 @@ module AnnotationMarkup {
         opacity?: number | null
         popup_is_open?: boolean | null
         rectangle?: Rectangle | null
+        canHavePopup?: boolean | null
+        hasPopup?: boolean | null
+        popupIsOpen?: boolean | null
     }
 
 }
@@ -351,10 +354,13 @@ interface AnnotationMarkup extends Annotation {
     // Own properties of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
     can_have_popup: boolean
+    canHavePopup: boolean
     has_popup: boolean
+    hasPopup: boolean
     label: string | null
     opacity: number
     popup_is_open: boolean
+    popupIsOpen: boolean
     rectangle: Rectangle
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
@@ -1507,6 +1513,7 @@ module AnnotationText {
 
         icon?: AnnotationTextIcon | null
         is_open?: boolean | null
+        isOpen?: boolean | null
     }
 
 }
@@ -1517,6 +1524,7 @@ interface AnnotationText extends AnnotationMarkup {
 
     icon: AnnotationTextIcon
     is_open: boolean
+    isOpen: boolean
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.AnnotationText
 
@@ -2505,6 +2513,11 @@ module LinkAction {
         toggle_list?: any | null
         type?: LinkActionType | null
         uri?: string | null
+        excludeResetFields?: boolean | null
+        hideList?: any | null
+        resetFields?: any | null
+        showList?: any | null
+        toggleList?: any | null
     }
 
 }
@@ -2515,13 +2528,18 @@ interface LinkAction {
 
     readonly dest: LinkDest
     readonly exclude_reset_fields: boolean
+    readonly excludeResetFields: boolean
     readonly filename: string | null
     readonly hide_list: any
+    readonly hideList: any
     readonly name: string | null
     readonly params: string | null
     readonly reset_fields: any
+    readonly resetFields: any
     readonly show_list: any
+    readonly showList: any
     readonly toggle_list: any
+    readonly toggleList: any
     readonly type: LinkActionType
     readonly uri: string | null
 
@@ -2624,6 +2642,7 @@ module LinkDest {
         top?: number | null
         type?: LinkDestType | null
         zoom?: number | null
+        pageLabel?: string | null
     }
 
 }
@@ -2638,6 +2657,7 @@ interface LinkDest {
     readonly named: string | null
     readonly page: number
     readonly page_label: string | null
+    readonly pageLabel: string | null
     readonly right: number
     readonly top: number
     readonly type: LinkDestType
@@ -2875,6 +2895,7 @@ module TransitionEffect {
         rectangular?: boolean | null
         scale?: number | null
         type?: TransitionEffectType | null
+        durationReal?: number | null
     }
 
 }
@@ -2888,6 +2909,7 @@ interface TransitionEffect {
     direction: TransitionEffectDirection
     duration: number
     duration_real: number
+    durationReal: number
     rectangular: boolean
     scale: number
     type: TransitionEffectType

@@ -81,6 +81,7 @@ module MinerManager {
         // Own constructor properties of TrackerControl-1.0.TrackerControl.MinerManager
 
         auto_start?: boolean | null
+        autoStart?: boolean | null
     }
 
 }
@@ -90,6 +91,7 @@ interface MinerManager extends Gio.Initable {
     // Own properties of TrackerControl-1.0.TrackerControl.MinerManager
 
     readonly auto_start: boolean
+    readonly autoStart: boolean
 
     // Own fields of TrackerControl-1.0.TrackerControl.MinerManager
 

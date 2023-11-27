@@ -88,6 +88,12 @@ export module DbusAccount {
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         status_details?: string | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.StatusDetails">"StatusDetails"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        statusDetails?: string | null
     }
 
 }
@@ -126,6 +132,12 @@ export interface DbusAccount {
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     status_details: string | null
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.StatusDetails">"StatusDetails"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    statusDetails: string | null
 
     // Class property signals of CloudProviders-0.3.CloudProviders.DbusAccount
 
@@ -349,11 +361,14 @@ export interface Account {
     // Own properties of CloudProviders-0.3.CloudProviders.Account
 
     readonly action_group: Gio.ActionGroup
+    readonly actionGroup: Gio.ActionGroup
     readonly icon: Gio.Icon
     readonly menu_model: Gio.MenuModel
+    readonly menuModel: Gio.MenuModel
     readonly name: string | null
     readonly path: string | null
     readonly status_details: string | null
+    readonly statusDetails: string | null
 
     // Owm methods of CloudProviders-0.3.CloudProviders.Account
 
@@ -470,6 +485,10 @@ export module AccountExporter {
         path?: string | null
         provider?: ProviderExporter | null
         status_details?: string | null
+        actionGroup?: Gio.ActionGroup | null
+        busName?: string | null
+        menuModel?: Gio.MenuModel | null
+        statusDetails?: string | null
     }
 
 }
@@ -479,13 +498,17 @@ export interface AccountExporter {
     // Own properties of CloudProviders-0.3.CloudProviders.AccountExporter
 
     action_group: Gio.ActionGroup
+    actionGroup: Gio.ActionGroup
     readonly bus_name: string | null
+    readonly busName: string | null
     icon: Gio.Icon
     menu_model: Gio.MenuModel
+    menuModel: Gio.MenuModel
     name: string | null
     path: string | null
     readonly provider: ProviderExporter
     status_details: string | null
+    statusDetails: string | null
 
     // Owm methods of CloudProviders-0.3.CloudProviders.AccountExporter
 
@@ -1807,6 +1830,8 @@ export module ProviderExporter {
         bus_name?: string | null
         bus_path?: string | null
         name?: string | null
+        busName?: string | null
+        busPath?: string | null
     }
 
 }
@@ -1817,7 +1842,9 @@ export interface ProviderExporter {
 
     readonly bus: Gio.DBusConnection
     readonly bus_name: string | null
+    readonly busName: string | null
     readonly bus_path: string | null
+    readonly busPath: string | null
     name: string | null
 
     // Owm methods of CloudProviders-0.3.CloudProviders.ProviderExporter

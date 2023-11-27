@@ -546,6 +546,9 @@ module CanvasItem {
         transform?: any | null
         visibility?: CanvasItemVisibility | null
         visibility_threshold?: number | null
+        canFocus?: boolean | null
+        pointerEvents?: CanvasPointerEvents | null
+        visibilityThreshold?: number | null
     }
 
 }
@@ -555,9 +558,11 @@ interface CanvasItem {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasItem
 
     can_focus: boolean
+    canFocus: boolean
     description: string | null
     parent: CanvasItem
     pointer_events: CanvasPointerEvents
+    pointerEvents: CanvasPointerEvents
     title: string | null
     /**
      * The tooltip to display for the item, or %NULL to display no tooltip.
@@ -570,6 +575,7 @@ interface CanvasItem {
     transform: any
     visibility: CanvasItemVisibility
     visibility_threshold: number
+    visibilityThreshold: number
 
     // Owm methods of GooCanvas-3.0.GooCanvas.CanvasItem
 
@@ -1395,6 +1401,9 @@ module CanvasItemModel {
         transform?: any | null
         visibility?: CanvasItemVisibility | null
         visibility_threshold?: number | null
+        canFocus?: boolean | null
+        pointerEvents?: CanvasPointerEvents | null
+        visibilityThreshold?: number | null
     }
 
 }
@@ -1404,14 +1413,17 @@ interface CanvasItemModel {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasItemModel
 
     can_focus: boolean
+    canFocus: boolean
     description: string | null
     parent: CanvasItemModel
     pointer_events: CanvasPointerEvents
+    pointerEvents: CanvasPointerEvents
     title: string | null
     tooltip: string | null
     transform: any
     visibility: CanvasItemVisibility
     visibility_threshold: number
+    visibilityThreshold: number
 
     // Owm methods of GooCanvas-3.0.GooCanvas.CanvasItemModel
 
@@ -1843,6 +1855,22 @@ module Canvas {
         x2?: number | null
         y1?: number | null
         y2?: number | null
+        automaticBounds?: boolean | null
+        backgroundColor?: string | null
+        /**
+         * The color to use for the canvas background, specified as a GdkRGBA.
+         */
+        backgroundColorGdkRgba?: Gdk.RGBA | null
+        backgroundColorRgb?: number | null
+        boundsFromOrigin?: boolean | null
+        boundsPadding?: number | null
+        clearBackground?: boolean | null
+        integerLayout?: boolean | null
+        redrawWhenScrolled?: boolean | null
+        resolutionX?: number | null
+        resolutionY?: number | null
+        scaleX?: number | null
+        scaleY?: number | null
     }
 
 }
@@ -1851,12 +1879,28 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
 
     // Own properties of GooCanvas-3.0.GooCanvas.Canvas
 
+    automaticBounds: boolean
     background_color: string | null
+    backgroundColor: string | null
     /**
      * The color to use for the canvas background, specified as a GdkRGBA.
      */
     background_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use for the canvas background, specified as a GdkRGBA.
+     */
+    backgroundColorGdkRgba: Gdk.RGBA
     background_color_rgb: number
+    backgroundColorRgb: number
+    boundsFromOrigin: boolean
+    boundsPadding: number
+    clearBackground: boolean
+    integerLayout: boolean
+    redrawWhenScrolled: boolean
+    resolutionX: number
+    resolutionY: number
+    scaleX: number
+    scaleY: number
     x1: number
     x2: number
     y1: number
@@ -2380,6 +2424,9 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
 
     // Class property signals of GooCanvas-3.0.GooCanvas.Canvas
 
+    connect(sigName: "notify::automatic-bounds", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::automatic-bounds", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::automatic-bounds", ...args: any[]): void
     connect(sigName: "notify::background-color", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::background-color", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::background-color", ...args: any[]): void
@@ -2389,6 +2436,33 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     connect(sigName: "notify::background-color-rgb", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::background-color-rgb", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::background-color-rgb", ...args: any[]): void
+    connect(sigName: "notify::bounds-from-origin", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bounds-from-origin", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bounds-from-origin", ...args: any[]): void
+    connect(sigName: "notify::bounds-padding", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bounds-padding", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bounds-padding", ...args: any[]): void
+    connect(sigName: "notify::clear-background", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::clear-background", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::clear-background", ...args: any[]): void
+    connect(sigName: "notify::integer-layout", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::integer-layout", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::integer-layout", ...args: any[]): void
+    connect(sigName: "notify::redraw-when-scrolled", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::redraw-when-scrolled", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::redraw-when-scrolled", ...args: any[]): void
+    connect(sigName: "notify::resolution-x", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resolution-x", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::resolution-x", ...args: any[]): void
+    connect(sigName: "notify::resolution-y", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::resolution-y", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::resolution-y", ...args: any[]): void
+    connect(sigName: "notify::scale-x", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-x", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-x", ...args: any[]): void
+    connect(sigName: "notify::scale-y", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-y", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::scale-y", ...args: any[]): void
     connect(sigName: "notify::x1", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::x1", callback: (($obj: Canvas, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::x1", ...args: any[]): void
@@ -2734,6 +2808,10 @@ module CanvasEllipse {
         width?: number | null
         x?: number | null
         y?: number | null
+        centerX?: number | null
+        centerY?: number | null
+        radiusX?: number | null
+        radiusY?: number | null
     }
 
 }
@@ -2743,10 +2821,14 @@ interface CanvasEllipse extends CanvasItem {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasEllipse
 
     center_x: number
+    centerX: number
     center_y: number
+    centerY: number
     height: number
     radius_x: number
+    radiusX: number
     radius_y: number
+    radiusY: number
     width: number
     x: number
     y: number
@@ -2933,6 +3015,10 @@ module CanvasEllipseModel {
         width?: number | null
         x?: number | null
         y?: number | null
+        centerX?: number | null
+        centerY?: number | null
+        radiusX?: number | null
+        radiusY?: number | null
     }
 
 }
@@ -2942,10 +3028,14 @@ interface CanvasEllipseModel extends CanvasItemModel {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasEllipseModel
 
     center_x: number
+    centerX: number
     center_y: number
+    centerY: number
     height: number
     radius_x: number
+    radiusX: number
     radius_y: number
+    radiusY: number
     width: number
     x: number
     y: number
@@ -3166,6 +3256,40 @@ module CanvasGrid {
         y?: number | null
         y_offset?: number | null
         y_step?: number | null
+        borderColor?: string | null
+        /**
+         * The color to use for the border, specified as a GdkRGBA.
+         */
+        borderColorGdkRgba?: Gdk.RGBA | null
+        borderColorRgba?: number | null
+        borderPattern?: any | null
+        borderPixbuf?: GdkPixbuf.Pixbuf | null
+        borderWidth?: number | null
+        horzGridLineColor?: string | null
+        /**
+         * The color to use for the horizontal grid lines, specified as a GdkRGBA.
+         */
+        horzGridLineColorGdkRgba?: Gdk.RGBA | null
+        horzGridLineColorRgba?: number | null
+        horzGridLinePattern?: any | null
+        horzGridLinePixbuf?: GdkPixbuf.Pixbuf | null
+        horzGridLineWidth?: number | null
+        showHorzGridLines?: boolean | null
+        showVertGridLines?: boolean | null
+        vertGridLineColor?: string | null
+        /**
+         * The color to use for the vertical grid lines, specified as a GdkRGBA.
+         */
+        vertGridLineColorGdkRgba?: Gdk.RGBA | null
+        vertGridLineColorRgba?: number | null
+        vertGridLinePattern?: any | null
+        vertGridLinePixbuf?: GdkPixbuf.Pixbuf | null
+        vertGridLineWidth?: number | null
+        vertGridLinesOnTop?: boolean | null
+        xOffset?: number | null
+        xStep?: number | null
+        yOffset?: number | null
+        yStep?: number | null
     }
 
 }
@@ -3175,43 +3299,77 @@ interface CanvasGrid extends CanvasItem {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasGrid
 
     border_color: string | null
+    borderColor: string | null
     /**
      * The color to use for the border, specified as a GdkRGBA.
      */
     border_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use for the border, specified as a GdkRGBA.
+     */
+    borderColorGdkRgba: Gdk.RGBA
     border_color_rgba: number
+    borderColorRgba: number
     border_pattern: any
+    borderPattern: any
     border_pixbuf: GdkPixbuf.Pixbuf
+    borderPixbuf: GdkPixbuf.Pixbuf
     border_width: number
+    borderWidth: number
     height: number
     horz_grid_line_color: string | null
+    horzGridLineColor: string | null
     /**
      * The color to use for the horizontal grid lines, specified as a GdkRGBA.
      */
     horz_grid_line_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use for the horizontal grid lines, specified as a GdkRGBA.
+     */
+    horzGridLineColorGdkRgba: Gdk.RGBA
     horz_grid_line_color_rgba: number
+    horzGridLineColorRgba: number
     horz_grid_line_pattern: any
+    horzGridLinePattern: any
     horz_grid_line_pixbuf: GdkPixbuf.Pixbuf
+    horzGridLinePixbuf: GdkPixbuf.Pixbuf
     horz_grid_line_width: number
+    horzGridLineWidth: number
     show_horz_grid_lines: boolean
+    showHorzGridLines: boolean
     show_vert_grid_lines: boolean
+    showVertGridLines: boolean
     vert_grid_line_color: string | null
+    vertGridLineColor: string | null
     /**
      * The color to use for the vertical grid lines, specified as a GdkRGBA.
      */
     vert_grid_line_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use for the vertical grid lines, specified as a GdkRGBA.
+     */
+    vertGridLineColorGdkRgba: Gdk.RGBA
     vert_grid_line_color_rgba: number
+    vertGridLineColorRgba: number
     vert_grid_line_pattern: any
+    vertGridLinePattern: any
     vert_grid_line_pixbuf: GdkPixbuf.Pixbuf
+    vertGridLinePixbuf: GdkPixbuf.Pixbuf
     vert_grid_line_width: number
+    vertGridLineWidth: number
     vert_grid_lines_on_top: boolean
+    vertGridLinesOnTop: boolean
     width: number
     x: number
     x_offset: number
+    xOffset: number
     x_step: number
+    xStep: number
     y: number
     y_offset: number
+    yOffset: number
     y_step: number
+    yStep: number
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasGrid
 
@@ -3499,6 +3657,31 @@ module CanvasGridModel {
         y?: number | null
         y_offset?: number | null
         y_step?: number | null
+        borderColor?: string | null
+        borderColorGdkRgba?: Gdk.RGBA | null
+        borderColorRgba?: number | null
+        borderPattern?: any | null
+        borderPixbuf?: GdkPixbuf.Pixbuf | null
+        borderWidth?: number | null
+        horzGridLineColor?: string | null
+        horzGridLineColorGdkRgba?: Gdk.RGBA | null
+        horzGridLineColorRgba?: number | null
+        horzGridLinePattern?: any | null
+        horzGridLinePixbuf?: GdkPixbuf.Pixbuf | null
+        horzGridLineWidth?: number | null
+        showHorzGridLines?: boolean | null
+        showVertGridLines?: boolean | null
+        vertGridLineColor?: string | null
+        vertGridLineColorGdkRgba?: Gdk.RGBA | null
+        vertGridLineColorRgba?: number | null
+        vertGridLinePattern?: any | null
+        vertGridLinePixbuf?: GdkPixbuf.Pixbuf | null
+        vertGridLineWidth?: number | null
+        vertGridLinesOnTop?: boolean | null
+        xOffset?: number | null
+        xStep?: number | null
+        yOffset?: number | null
+        yStep?: number | null
     }
 
 }
@@ -3508,34 +3691,59 @@ interface CanvasGridModel extends CanvasItemModel {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasGridModel
 
     border_color: string | null
+    borderColor: string | null
     border_color_gdk_rgba: Gdk.RGBA
+    borderColorGdkRgba: Gdk.RGBA
     border_color_rgba: number
+    borderColorRgba: number
     border_pattern: any
+    borderPattern: any
     border_pixbuf: GdkPixbuf.Pixbuf
+    borderPixbuf: GdkPixbuf.Pixbuf
     border_width: number
+    borderWidth: number
     height: number
     horz_grid_line_color: string | null
+    horzGridLineColor: string | null
     horz_grid_line_color_gdk_rgba: Gdk.RGBA
+    horzGridLineColorGdkRgba: Gdk.RGBA
     horz_grid_line_color_rgba: number
+    horzGridLineColorRgba: number
     horz_grid_line_pattern: any
+    horzGridLinePattern: any
     horz_grid_line_pixbuf: GdkPixbuf.Pixbuf
+    horzGridLinePixbuf: GdkPixbuf.Pixbuf
     horz_grid_line_width: number
+    horzGridLineWidth: number
     show_horz_grid_lines: boolean
+    showHorzGridLines: boolean
     show_vert_grid_lines: boolean
+    showVertGridLines: boolean
     vert_grid_line_color: string | null
+    vertGridLineColor: string | null
     vert_grid_line_color_gdk_rgba: Gdk.RGBA
+    vertGridLineColorGdkRgba: Gdk.RGBA
     vert_grid_line_color_rgba: number
+    vertGridLineColorRgba: number
     vert_grid_line_pattern: any
+    vertGridLinePattern: any
     vert_grid_line_pixbuf: GdkPixbuf.Pixbuf
+    vertGridLinePixbuf: GdkPixbuf.Pixbuf
     vert_grid_line_width: number
+    vertGridLineWidth: number
     vert_grid_lines_on_top: boolean
+    vertGridLinesOnTop: boolean
     width: number
     x: number
     x_offset: number
+    xOffset: number
     x_step: number
+    xStep: number
     y: number
     y_offset: number
+    yOffset: number
     y_step: number
+    yStep: number
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasGridModel
 
@@ -4177,6 +4385,7 @@ module CanvasImage {
         width?: number | null
         x?: number | null
         y?: number | null
+        scaleToFit?: boolean | null
     }
 
 }
@@ -4190,6 +4399,7 @@ interface CanvasImage extends CanvasItem {
     pattern: any
     pixbuf: GdkPixbuf.Pixbuf
     scale_to_fit: boolean
+    scaleToFit: boolean
     width: number
     x: number
     y: number
@@ -4377,6 +4587,7 @@ module CanvasImageModel {
         width?: number | null
         x?: number | null
         y?: number | null
+        scaleToFit?: boolean | null
     }
 
 }
@@ -4390,6 +4601,7 @@ interface CanvasImageModel extends CanvasItemModel {
     pattern: any
     pixbuf: GdkPixbuf.Pixbuf
     scale_to_fit: boolean
+    scaleToFit: boolean
     width: number
     x: number
     y: number
@@ -4636,6 +4848,32 @@ module CanvasItemModelSimple {
         stroke_color_rgba?: number | null
         stroke_pattern?: any | null
         stroke_pixbuf?: GdkPixbuf.Pixbuf | null
+        clipFillRule?: CairoFillRule | null
+        /**
+         * The sequence of commands describing the clip path of the item, specified
+         * as a string using the same syntax
+         * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
+         * Graphics (SVG)</ulink> path element.
+         */
+        clipPath?: string | null
+        fillColor?: string | null
+        fillColorGdkRgba?: Gdk.RGBA | null
+        fillColorRgba?: number | null
+        fillPattern?: any | null
+        fillPixbuf?: GdkPixbuf.Pixbuf | null
+        fillRule?: CairoFillRule | null
+        fontDesc?: Pango.FontDescription | null
+        hintMetrics?: CairoHintMetrics | null
+        lineCap?: CairoLineCap | null
+        lineDash?: CanvasLineDash | null
+        lineJoin?: CairoLineJoin | null
+        lineJoinMiterLimit?: number | null
+        lineWidth?: number | null
+        strokeColor?: string | null
+        strokeColorGdkRgba?: Gdk.RGBA | null
+        strokeColorRgba?: number | null
+        strokePattern?: any | null
+        strokePixbuf?: GdkPixbuf.Pixbuf | null
     }
 
 }
@@ -4646,6 +4884,7 @@ interface CanvasItemModelSimple extends CanvasItemModel {
 
     antialias: CairoAntialias
     clip_fill_rule: CairoFillRule
+    clipFillRule: CairoFillRule
     /**
      * The sequence of commands describing the clip path of the item, specified
      * as a string using the same syntax
@@ -4653,26 +4892,51 @@ interface CanvasItemModelSimple extends CanvasItemModel {
      * Graphics (SVG)</ulink> path element.
      */
     clip_path: string | null
+    /**
+     * The sequence of commands describing the clip path of the item, specified
+     * as a string using the same syntax
+     * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
+     * Graphics (SVG)</ulink> path element.
+     */
+    clipPath: string | null
     fill_color: string | null
+    fillColor: string | null
     fill_color_gdk_rgba: Gdk.RGBA
+    fillColorGdkRgba: Gdk.RGBA
     fill_color_rgba: number
+    fillColorRgba: number
     fill_pattern: any
+    fillPattern: any
     fill_pixbuf: GdkPixbuf.Pixbuf
+    fillPixbuf: GdkPixbuf.Pixbuf
     fill_rule: CairoFillRule
+    fillRule: CairoFillRule
     font: string | null
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     hint_metrics: CairoHintMetrics
+    hintMetrics: CairoHintMetrics
     line_cap: CairoLineCap
+    lineCap: CairoLineCap
     line_dash: CanvasLineDash
+    lineDash: CanvasLineDash
     line_join: CairoLineJoin
+    lineJoin: CairoLineJoin
     line_join_miter_limit: number
+    lineJoinMiterLimit: number
     line_width: number
+    lineWidth: number
     operator: CairoOperator
     stroke_color: string | null
+    strokeColor: string | null
     stroke_color_gdk_rgba: Gdk.RGBA
+    strokeColorGdkRgba: Gdk.RGBA
     stroke_color_rgba: number
+    strokeColorRgba: number
     stroke_pattern: any
+    strokePattern: any
     stroke_pixbuf: GdkPixbuf.Pixbuf
+    strokePixbuf: GdkPixbuf.Pixbuf
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasItemModelSimple
 
@@ -4866,6 +5130,38 @@ module CanvasItemSimple {
         stroke_color_rgba?: number | null
         stroke_pattern?: any | null
         stroke_pixbuf?: GdkPixbuf.Pixbuf | null
+        clipFillRule?: CairoFillRule | null
+        /**
+         * The sequence of commands describing the clip path of the item, specified
+         * as a string using the same syntax
+         * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
+         * Graphics (SVG)</ulink> path element.
+         */
+        clipPath?: string | null
+        fillColor?: string | null
+        /**
+         * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
+         */
+        fillColorGdkRgba?: Gdk.RGBA | null
+        fillColorRgba?: number | null
+        fillPattern?: any | null
+        fillPixbuf?: GdkPixbuf.Pixbuf | null
+        fillRule?: CairoFillRule | null
+        fontDesc?: Pango.FontDescription | null
+        hintMetrics?: CairoHintMetrics | null
+        lineCap?: CairoLineCap | null
+        lineDash?: CanvasLineDash | null
+        lineJoin?: CairoLineJoin | null
+        lineJoinMiterLimit?: number | null
+        lineWidth?: number | null
+        strokeColor?: string | null
+        /**
+         * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
+         */
+        strokeColorGdkRgba?: Gdk.RGBA | null
+        strokeColorRgba?: number | null
+        strokePattern?: any | null
+        strokePixbuf?: GdkPixbuf.Pixbuf | null
     }
 
 }
@@ -4876,6 +5172,7 @@ interface CanvasItemSimple extends CanvasItem {
 
     antialias: CairoAntialias
     clip_fill_rule: CairoFillRule
+    clipFillRule: CairoFillRule
     /**
      * The sequence of commands describing the clip path of the item, specified
      * as a string using the same syntax
@@ -4883,32 +5180,63 @@ interface CanvasItemSimple extends CanvasItem {
      * Graphics (SVG)</ulink> path element.
      */
     clip_path: string | null
+    /**
+     * The sequence of commands describing the clip path of the item, specified
+     * as a string using the same syntax
+     * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
+     * Graphics (SVG)</ulink> path element.
+     */
+    clipPath: string | null
     fill_color: string | null
+    fillColor: string | null
     /**
      * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
      */
     fill_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
+     */
+    fillColorGdkRgba: Gdk.RGBA
     fill_color_rgba: number
+    fillColorRgba: number
     fill_pattern: any
+    fillPattern: any
     fill_pixbuf: GdkPixbuf.Pixbuf
+    fillPixbuf: GdkPixbuf.Pixbuf
     fill_rule: CairoFillRule
+    fillRule: CairoFillRule
     font: string | null
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     hint_metrics: CairoHintMetrics
+    hintMetrics: CairoHintMetrics
     line_cap: CairoLineCap
+    lineCap: CairoLineCap
     line_dash: CanvasLineDash
+    lineDash: CanvasLineDash
     line_join: CairoLineJoin
+    lineJoin: CairoLineJoin
     line_join_miter_limit: number
+    lineJoinMiterLimit: number
     line_width: number
+    lineWidth: number
     operator: CairoOperator
     stroke_color: string | null
+    strokeColor: string | null
     /**
      * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
      */
     stroke_color_gdk_rgba: Gdk.RGBA
+    /**
+     * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
+     */
+    strokeColorGdkRgba: Gdk.RGBA
     stroke_color_rgba: number
+    strokeColorRgba: number
     stroke_pattern: any
+    strokePattern: any
     stroke_pixbuf: GdkPixbuf.Pixbuf
+    strokePixbuf: GdkPixbuf.Pixbuf
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasItemSimple
 
@@ -5583,6 +5911,12 @@ module CanvasPolyline {
         width?: number | null
         x?: number | null
         y?: number | null
+        arrowLength?: number | null
+        arrowTipLength?: number | null
+        arrowWidth?: number | null
+        closePath?: boolean | null
+        endArrow?: boolean | null
+        startArrow?: boolean | null
     }
 
 }
@@ -5592,13 +5926,19 @@ interface CanvasPolyline extends CanvasItem {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasPolyline
 
     arrow_length: number
+    arrowLength: number
     arrow_tip_length: number
+    arrowTipLength: number
     arrow_width: number
+    arrowWidth: number
     close_path: boolean
+    closePath: boolean
     end_arrow: boolean
+    endArrow: boolean
     height: number
     points: CanvasPoints
     start_arrow: boolean
+    startArrow: boolean
     width: number
     x: number
     y: number
@@ -5795,6 +6135,12 @@ module CanvasPolylineModel {
         width?: number | null
         x?: number | null
         y?: number | null
+        arrowLength?: number | null
+        arrowTipLength?: number | null
+        arrowWidth?: number | null
+        closePath?: boolean | null
+        endArrow?: boolean | null
+        startArrow?: boolean | null
     }
 
 }
@@ -5804,13 +6150,19 @@ interface CanvasPolylineModel extends CanvasItemModel {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasPolylineModel
 
     arrow_length: number
+    arrowLength: number
     arrow_tip_length: number
+    arrowTipLength: number
     arrow_width: number
+    arrowWidth: number
     close_path: boolean
+    closePath: boolean
     end_arrow: boolean
+    endArrow: boolean
     height: number
     points: CanvasPoints
     start_arrow: boolean
+    startArrow: boolean
     width: number
     x: number
     y: number
@@ -6014,6 +6366,16 @@ module CanvasRect {
         width?: number | null
         x?: number | null
         y?: number | null
+        radiusBottomLeftX?: number | null
+        radiusBottomLeftY?: number | null
+        radiusBottomRightX?: number | null
+        radiusBottomRightY?: number | null
+        radiusTopLeftX?: number | null
+        radiusTopLeftY?: number | null
+        radiusTopRightX?: number | null
+        radiusTopRightY?: number | null
+        radiusX?: number | null
+        radiusY?: number | null
     }
 
 }
@@ -6024,15 +6386,25 @@ interface CanvasRect extends CanvasItem {
 
     height: number
     radius_bottom_left_x: number
+    radiusBottomLeftX: number
     radius_bottom_left_y: number
+    radiusBottomLeftY: number
     radius_bottom_right_x: number
+    radiusBottomRightX: number
     radius_bottom_right_y: number
+    radiusBottomRightY: number
     radius_top_left_x: number
+    radiusTopLeftX: number
     radius_top_left_y: number
+    radiusTopLeftY: number
     radius_top_right_x: number
+    radiusTopRightX: number
     radius_top_right_y: number
+    radiusTopRightY: number
     radius_x: number
+    radiusX: number
     radius_y: number
+    radiusY: number
     width: number
     x: number
     y: number
@@ -6239,6 +6611,16 @@ module CanvasRectModel {
         width?: number | null
         x?: number | null
         y?: number | null
+        radiusBottomLeftX?: number | null
+        radiusBottomLeftY?: number | null
+        radiusBottomRightX?: number | null
+        radiusBottomRightY?: number | null
+        radiusTopLeftX?: number | null
+        radiusTopLeftY?: number | null
+        radiusTopRightX?: number | null
+        radiusTopRightY?: number | null
+        radiusX?: number | null
+        radiusY?: number | null
     }
 
 }
@@ -6249,15 +6631,25 @@ interface CanvasRectModel extends CanvasItemModel {
 
     height: number
     radius_bottom_left_x: number
+    radiusBottomLeftX: number
     radius_bottom_left_y: number
+    radiusBottomLeftY: number
     radius_bottom_right_x: number
+    radiusBottomRightX: number
     radius_bottom_right_y: number
+    radiusBottomRightY: number
     radius_top_left_x: number
+    radiusTopLeftX: number
     radius_top_left_y: number
+    radiusTopLeftY: number
     radius_top_right_x: number
+    radiusTopRightX: number
     radius_top_right_y: number
+    radiusTopRightY: number
     radius_x: number
+    radiusX: number
     radius_y: number
+    radiusY: number
     width: number
     x: number
     y: number
@@ -6622,6 +7014,14 @@ module CanvasTable {
         vert_grid_line_width?: number | null
         x_border_spacing?: number | null
         y_border_spacing?: number | null
+        columnSpacing?: number | null
+        homogeneousColumns?: boolean | null
+        homogeneousRows?: boolean | null
+        horzGridLineWidth?: number | null
+        rowSpacing?: number | null
+        vertGridLineWidth?: number | null
+        xBorderSpacing?: number | null
+        yBorderSpacing?: number | null
     }
 
 }
@@ -6631,13 +7031,21 @@ interface CanvasTable extends CanvasItem {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasTable
 
     column_spacing: number
+    columnSpacing: number
     homogeneous_columns: boolean
+    homogeneousColumns: boolean
     homogeneous_rows: boolean
+    homogeneousRows: boolean
     horz_grid_line_width: number
+    horzGridLineWidth: number
     row_spacing: number
+    rowSpacing: number
     vert_grid_line_width: number
+    vertGridLineWidth: number
     x_border_spacing: number
+    xBorderSpacing: number
     y_border_spacing: number
+    yBorderSpacing: number
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasTable
 
@@ -6841,6 +7249,14 @@ module CanvasTableModel {
         vert_grid_line_width?: number | null
         x_border_spacing?: number | null
         y_border_spacing?: number | null
+        columnSpacing?: number | null
+        homogeneousColumns?: boolean | null
+        homogeneousRows?: boolean | null
+        horzGridLineWidth?: number | null
+        rowSpacing?: number | null
+        vertGridLineWidth?: number | null
+        xBorderSpacing?: number | null
+        yBorderSpacing?: number | null
     }
 
 }
@@ -6850,13 +7266,21 @@ interface CanvasTableModel extends CanvasItemModel {
     // Own properties of GooCanvas-3.0.GooCanvas.CanvasTableModel
 
     column_spacing: number
+    columnSpacing: number
     homogeneous_columns: boolean
+    homogeneousColumns: boolean
     homogeneous_rows: boolean
+    homogeneousRows: boolean
     horz_grid_line_width: number
+    horzGridLineWidth: number
     row_spacing: number
+    rowSpacing: number
     vert_grid_line_width: number
+    vertGridLineWidth: number
     x_border_spacing: number
+    xBorderSpacing: number
     y_border_spacing: number
+    yBorderSpacing: number
 
     // Own fields of GooCanvas-3.0.GooCanvas.CanvasTableModel
 
@@ -7062,6 +7486,7 @@ module CanvasText {
         wrap?: Pango.WrapMode | null
         x?: number | null
         y?: number | null
+        useMarkup?: boolean | null
     }
 
 }
@@ -7076,6 +7501,7 @@ interface CanvasText extends CanvasItem {
     height: number
     text: string | null
     use_markup: boolean
+    useMarkup: boolean
     width: number
     wrap: Pango.WrapMode
     x: number
@@ -7282,6 +7708,7 @@ module CanvasTextModel {
         wrap?: Pango.WrapMode | null
         x?: number | null
         y?: number | null
+        useMarkup?: boolean | null
     }
 
 }
@@ -7296,6 +7723,7 @@ interface CanvasTextModel extends CanvasItemModel {
     height: number
     text: string | null
     use_markup: boolean
+    useMarkup: boolean
     width: number
     wrap: Pango.WrapMode
     x: number

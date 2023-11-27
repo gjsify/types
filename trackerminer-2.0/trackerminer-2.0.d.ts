@@ -458,6 +458,10 @@ module Decorator {
         commit_batch_size?: number | null
         data_source?: string | null
         priority_rdf_types?: string[] | null
+        classNames?: string[] | null
+        commitBatchSize?: number | null
+        dataSource?: string | null
+        priorityRdfTypes?: string[] | null
     }
 
 }
@@ -467,9 +471,13 @@ interface Decorator extends Gio.Initable {
     // Own properties of TrackerMiner-2.0.TrackerMiner.Decorator
 
     class_names: string[]
+    classNames: string[]
     commit_batch_size: number
+    commitBatchSize: number
     readonly data_source: string | null
+    readonly dataSource: string | null
     priority_rdf_types: string[]
+    priorityRdfTypes: string[]
 
     // Own fields of TrackerMiner-2.0.TrackerMiner.Decorator
 
@@ -721,6 +729,7 @@ module IndexingTree {
 
         filter_hidden?: boolean | null
         root?: Gio.File | null
+        filterHidden?: boolean | null
     }
 
 }
@@ -730,6 +739,7 @@ interface IndexingTree {
     // Own properties of TrackerMiner-2.0.TrackerMiner.IndexingTree
 
     filter_hidden: boolean
+    filterHidden: boolean
     readonly root: Gio.File
 
     // Own fields of TrackerMiner-2.0.TrackerMiner.IndexingTree
@@ -1015,6 +1025,7 @@ module Miner {
         progress?: number | null
         remaining_time?: number | null
         status?: string | null
+        remainingTime?: number | null
     }
 
 }
@@ -1025,6 +1036,7 @@ interface Miner extends Gio.Initable {
 
     progress: number
     remaining_time: number
+    remainingTime: number
     status: string | null
 
     // Own fields of TrackerMiner-2.0.TrackerMiner.Miner
@@ -1199,6 +1211,9 @@ module MinerFS {
         processing_pool_wait_limit?: number | null
         root?: Gio.File | null
         throttle?: number | null
+        dataProvider?: DataProvider | null
+        processingPoolReadyLimit?: number | null
+        processingPoolWaitLimit?: number | null
     }
 
 }
@@ -1208,8 +1223,11 @@ interface MinerFS extends Gio.Initable {
     // Own properties of TrackerMiner-2.0.TrackerMiner.MinerFS
 
     readonly data_provider: DataProvider
+    readonly dataProvider: DataProvider
     processing_pool_ready_limit: number
+    processingPoolReadyLimit: number
     processing_pool_wait_limit: number
+    processingPoolWaitLimit: number
     readonly root: Gio.File
     throttle: number
 
@@ -1481,6 +1499,8 @@ module MinerProxy {
         dbus_connection?: Gio.DBusConnection | null
         dbus_path?: string | null
         miner?: Miner | null
+        dbusConnection?: Gio.DBusConnection | null
+        dbusPath?: string | null
     }
 
 }
@@ -1490,7 +1510,9 @@ interface MinerProxy extends Gio.Initable {
     // Own properties of TrackerMiner-2.0.TrackerMiner.MinerProxy
 
     readonly dbus_connection: Gio.DBusConnection
+    readonly dbusConnection: Gio.DBusConnection
     readonly dbus_path: string | null
+    readonly dbusPath: string | null
     readonly miner: Miner
 
     // Own fields of TrackerMiner-2.0.TrackerMiner.MinerProxy

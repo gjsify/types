@@ -103,6 +103,10 @@ export module ARGBControlBinding {
         control_source_b?: Gst.ControlSource | null
         control_source_g?: Gst.ControlSource | null
         control_source_r?: Gst.ControlSource | null
+        controlSourceA?: Gst.ControlSource | null
+        controlSourceB?: Gst.ControlSource | null
+        controlSourceG?: Gst.ControlSource | null
+        controlSourceR?: Gst.ControlSource | null
     }
 
 }
@@ -112,9 +116,13 @@ export interface ARGBControlBinding {
     // Own properties of GstController-1.0.GstController.ARGBControlBinding
 
     control_source_a: Gst.ControlSource
+    controlSourceA: Gst.ControlSource
     control_source_b: Gst.ControlSource
+    controlSourceB: Gst.ControlSource
     control_source_g: Gst.ControlSource
+    controlSourceG: Gst.ControlSource
     control_source_r: Gst.ControlSource
+    controlSourceR: Gst.ControlSource
 
     // Conflicting properties
 
@@ -341,6 +349,7 @@ export module DirectControlBinding {
 
         absolute?: boolean | null
         control_source?: Gst.ControlSource | null
+        controlSource?: Gst.ControlSource | null
     }
 
 }
@@ -351,6 +360,7 @@ export interface DirectControlBinding {
 
     readonly absolute: boolean
     control_source: Gst.ControlSource
+    controlSource: Gst.ControlSource
 
     // Conflicting properties
 

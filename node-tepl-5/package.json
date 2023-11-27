@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-tepl-5",
-    "version": "5.0.0-3.2.5",
+    "version": "5.0.0-3.2.6",
     "description": "Node.js TypeScript type definitions for Tepl-5, generated from library version 5.0.0",
     "type": "module",
     "module": "node-tepl-5.js",

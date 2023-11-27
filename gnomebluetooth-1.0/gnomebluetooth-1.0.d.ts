@@ -340,6 +340,16 @@ module Chooser {
         show_device_type_column?: boolean | null
         show_pairing?: boolean | null
         show_searching?: boolean | null
+        deviceSelected?: string | null
+        deviceServiceFilter?: string | null
+        deviceTypeFilter?: number | null
+        hasInternalDeviceFilter?: boolean | null
+        showConnected?: boolean | null
+        showDeviceCategory?: boolean | null
+        showDeviceType?: boolean | null
+        showDeviceTypeColumn?: boolean | null
+        showPairing?: boolean | null
+        showSearching?: boolean | null
     }
 
 }
@@ -349,15 +359,25 @@ interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
     device_selected: string | null
+    deviceSelected: string | null
     device_service_filter: string | null
+    deviceServiceFilter: string | null
     device_type_filter: number
+    deviceTypeFilter: number
     readonly has_internal_device_filter: boolean
+    readonly hasInternalDeviceFilter: boolean
     show_connected: boolean
+    showConnected: boolean
     show_device_category: boolean
+    showDeviceCategory: boolean
     show_device_type: boolean
+    showDeviceType: boolean
     show_device_type_column: boolean
+    showDeviceTypeColumn: boolean
     show_pairing: boolean
+    showPairing: boolean
     show_searching: boolean
+    showSearching: boolean
 
     // Own fields of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
@@ -734,6 +754,12 @@ interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * See also: bluetooth_chooser_button_available()
      */
     readonly is_available: boolean
+    /**
+     * %TRUE if there is a powered Bluetooth adapter available.
+     * 
+     * See also: bluetooth_chooser_button_available()
+     */
+    readonly isAvailable: boolean
 
     // Owm methods of GnomeBluetooth-1.0.GnomeBluetooth.ChooserButton
 
@@ -1315,6 +1341,14 @@ module Client {
          * %TRUE if the default Bluetooth adapter is discovering.
          */
         default_adapter_discovering?: boolean | null
+        /**
+         * %TRUE if the default Bluetooth adapter is discoverable.
+         */
+        defaultAdapterDiscoverable?: boolean | null
+        /**
+         * %TRUE if the default Bluetooth adapter is discovering.
+         */
+        defaultAdapterDiscovering?: boolean | null
     }
 
 }
@@ -1328,21 +1362,41 @@ interface Client {
      */
     readonly default_adapter: string | null
     /**
+     * The D-Bus path of the default Bluetooth adapter or %NULL.
+     */
+    readonly defaultAdapter: string | null
+    /**
      * %TRUE if the default Bluetooth adapter is discoverable.
      */
     default_adapter_discoverable: boolean
+    /**
+     * %TRUE if the default Bluetooth adapter is discoverable.
+     */
+    defaultAdapterDiscoverable: boolean
     /**
      * %TRUE if the default Bluetooth adapter is discovering.
      */
     default_adapter_discovering: boolean
     /**
+     * %TRUE if the default Bluetooth adapter is discovering.
+     */
+    defaultAdapterDiscovering: boolean
+    /**
      * The name of the default Bluetooth adapter or %NULL.
      */
     readonly default_adapter_name: string | null
     /**
+     * The name of the default Bluetooth adapter or %NULL.
+     */
+    readonly defaultAdapterName: string | null
+    /**
      * %TRUE if the default Bluetooth adapter is powered.
      */
     readonly default_adapter_powered: boolean
+    /**
+     * %TRUE if the default Bluetooth adapter is powered.
+     */
+    readonly defaultAdapterPowered: boolean
 
     // Own fields of GnomeBluetooth-1.0.GnomeBluetooth.Client
 
@@ -1462,6 +1516,10 @@ module FilterWidget {
         device_type_filter?: number | null
         show_device_category?: boolean | null
         show_device_type?: boolean | null
+        deviceServiceFilter?: string | null
+        deviceTypeFilter?: number | null
+        showDeviceCategory?: boolean | null
+        showDeviceType?: boolean | null
     }
 
 }
@@ -1471,9 +1529,13 @@ interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
     // Own properties of GnomeBluetooth-1.0.GnomeBluetooth.FilterWidget
 
     device_service_filter: string | null
+    deviceServiceFilter: string | null
     device_type_filter: number
+    deviceTypeFilter: number
     show_device_category: boolean
+    showDeviceCategory: boolean
     show_device_type: boolean
+    showDeviceType: boolean
 
     // Own fields of GnomeBluetooth-1.0.GnomeBluetooth.FilterWidget
 

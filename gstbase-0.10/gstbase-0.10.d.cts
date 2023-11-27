@@ -282,8 +282,11 @@ export interface GstDataQueue {
     // Own properties of GstBase-0.10.GstBase.GstDataQueue
 
     readonly current_level_bytes: number
+    readonly currentLevelBytes: number
     readonly current_level_time: number
+    readonly currentLevelTime: number
     readonly current_level_visible: number
+    readonly currentLevelVisible: number
 
     // Own fields of GstBase-0.10.GstBase.GstDataQueue
 
@@ -383,6 +386,9 @@ export interface GstPushSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: GstPushSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void
@@ -426,6 +432,11 @@ export module Sink {
         render_delay?: number | null
         sync?: boolean | null
         ts_offset?: number | null
+        enableLastBuffer?: boolean | null
+        maxLateness?: number | null
+        prerollQueueLen?: number | null
+        renderDelay?: number | null
+        tsOffset?: number | null
     }
 
 }
@@ -437,12 +448,18 @@ export interface Sink {
     async: boolean
     blocksize: number
     enable_last_buffer: boolean
+    enableLastBuffer: boolean
     readonly last_buffer: Gst.Buffer
+    readonly lastBuffer: Gst.Buffer
     max_lateness: number
+    maxLateness: number
     preroll_queue_len: number
+    prerollQueueLen: number
     qos: boolean
     render_delay: number
+    renderDelay: number
     ts_offset: number
+    tsOffset: number
 
     // Conflicting properties
 
@@ -564,6 +581,8 @@ export module Src {
         do_timestamp?: boolean | null
         num_buffers?: number | null
         typefind?: boolean | null
+        doTimestamp?: boolean | null
+        numBuffers?: number | null
     }
 
 }
@@ -573,6 +592,8 @@ export interface Src {
     // Own properties of GstBase-0.10.GstBase.Src
 
     do_timestamp: boolean
+    doTimestamp: boolean
+    numBuffers: number
     typefind: boolean
 
     // Conflicting properties
@@ -619,6 +640,9 @@ export interface Src {
     connect(sigName: "notify::do-timestamp", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: "notify::typefind", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::typefind", callback: (($obj: Src, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::typefind", ...args: any[]): void

@@ -491,10 +491,19 @@ interface Authority extends Gio.AsyncInitable, Gio.Initable {
      */
     readonly backend_features: AuthorityFeatures
     /**
+     * The features of the currently used Authority backend.
+     */
+    readonly backendFeatures: AuthorityFeatures
+    /**
      * The name of the currently used Authority backend.
      */
     readonly backend_name: string | null
+    /**
+     * The name of the currently used Authority backend.
+     */
+    readonly backendName: string | null
     readonly backend_version: string | null
+    readonly backendVersion: string | null
     /**
      * The unique name of the owner of the org.freedesktop.PolicyKit1
      * D-Bus service or %NULL if there is no owner. Connect to the
@@ -1165,6 +1174,10 @@ module Permission {
          * construction, it will be set to match the current process.
          */
         subject?: Subject | null
+        /**
+         * The action identifier to use for the permission.
+         */
+        actionId?: string | null
     }
 
 }
@@ -1177,6 +1190,10 @@ interface Permission extends Gio.AsyncInitable, Gio.Initable {
      * The action identifier to use for the permission.
      */
     readonly action_id: string | null
+    /**
+     * The action identifier to use for the permission.
+     */
+    readonly actionId: string | null
     /**
      * The #PolkitSubject to use for the permission. If not set during
      * construction, it will be set to match the current process.
@@ -1603,6 +1620,10 @@ module UnixProcess {
          * Note that this is the real user-id, not the effective user-id.
          */
         uid?: number | null
+        /**
+         * The start time of the process.
+         */
+        startTime?: number | null
     }
 
 }
@@ -1619,6 +1640,10 @@ interface UnixProcess extends Subject {
      * The start time of the process.
      */
     start_time: number
+    /**
+     * The start time of the process.
+     */
+    startTime: number
     /**
      * The UNIX user id of the process or -1 if unknown.
      * 
@@ -1764,6 +1789,10 @@ module UnixSession {
          * The UNIX session id.
          */
         session_id?: string | null
+        /**
+         * The UNIX session id.
+         */
+        sessionId?: string | null
     }
 
 }
@@ -1780,6 +1809,10 @@ interface UnixSession extends Gio.AsyncInitable, Gio.Initable, Subject {
      * The UNIX session id.
      */
     session_id: string | null
+    /**
+     * The UNIX session id.
+     */
+    sessionId: string | null
 
     // Owm methods of Polkit-1.0.Polkit.UnixSession
 

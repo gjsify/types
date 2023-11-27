@@ -429,6 +429,7 @@ export module SummaryInfo {
 
         database?: Database | null
         update_count?: number | null
+        updateCount?: number | null
     }
 
 }
@@ -439,6 +440,7 @@ export interface SummaryInfo {
 
     readonly database: Database
     readonly update_count: number
+    readonly updateCount: number
 
     // Owm methods of Libmsi-1.0.Libmsi.SummaryInfo
 

@@ -1259,6 +1259,18 @@ module InstalledRef {
         latest_commit?: string | null
         origin?: string | null
         subpaths?: string[] | null
+        appdataContentRating?: GLib.HashTable | null
+        appdataContentRatingType?: string | null
+        appdataLicense?: string | null
+        appdataName?: string | null
+        appdataSummary?: string | null
+        appdataVersion?: string | null
+        deployDir?: string | null
+        endOfLife?: string | null
+        endOfLifeRebase?: string | null
+        installedSize?: number | null
+        isCurrent?: boolean | null
+        latestCommit?: string | null
     }
 
 }
@@ -1268,17 +1280,29 @@ interface InstalledRef {
     // Own properties of Flatpak-1.0.Flatpak.InstalledRef
 
     readonly appdata_content_rating: GLib.HashTable
+    readonly appdataContentRating: GLib.HashTable
     readonly appdata_content_rating_type: string | null
+    readonly appdataContentRatingType: string | null
     readonly appdata_license: string | null
+    readonly appdataLicense: string | null
     readonly appdata_name: string | null
+    readonly appdataName: string | null
     readonly appdata_summary: string | null
+    readonly appdataSummary: string | null
     readonly appdata_version: string | null
+    readonly appdataVersion: string | null
     deploy_dir: string | null
+    deployDir: string | null
     readonly end_of_life: string | null
+    readonly endOfLife: string | null
     readonly end_of_life_rebase: string | null
+    readonly endOfLifeRebase: string | null
     installed_size: number
+    installedSize: number
     is_current: boolean
+    isCurrent: boolean
     latest_commit: string | null
+    latestCommit: string | null
     origin: string | null
     subpaths: string[]
 
@@ -1591,6 +1615,7 @@ module Ref {
         commit?: string | null
         kind?: RefKind | null
         name?: string | null
+        collectionId?: string | null
     }
 
 }
@@ -1602,6 +1627,7 @@ interface Ref {
     readonly arch: string | null
     readonly branch: string | null
     readonly collection_id: string | null
+    readonly collectionId: string | null
     readonly commit: string | null
     readonly kind: RefKind
     readonly name: string | null
@@ -1707,6 +1733,9 @@ module RelatedRef {
         should_delete?: boolean | null
         should_download?: boolean | null
         subpaths?: string[] | null
+        shouldAutoprune?: boolean | null
+        shouldDelete?: boolean | null
+        shouldDownload?: boolean | null
     }
 
 }
@@ -1716,8 +1745,11 @@ interface RelatedRef {
     // Own properties of Flatpak-1.0.Flatpak.RelatedRef
 
     readonly should_autoprune: boolean
+    readonly shouldAutoprune: boolean
     readonly should_delete: boolean
+    readonly shouldDelete: boolean
     readonly should_download: boolean
+    readonly shouldDownload: boolean
     readonly subpaths: string[]
 
     // Own fields of Flatpak-1.0.Flatpak.RelatedRef
@@ -2160,6 +2192,11 @@ module RemoteRef {
         installed_size?: number | null
         metadata?: GLib.Bytes | null
         remote_name?: string | null
+        downloadSize?: number | null
+        endOfLife?: string | null
+        endOfLifeRebase?: string | null
+        installedSize?: number | null
+        remoteName?: string | null
     }
 
 }
@@ -2169,11 +2206,16 @@ interface RemoteRef {
     // Own properties of Flatpak-1.0.Flatpak.RemoteRef
 
     readonly download_size: number
+    readonly downloadSize: number
     readonly end_of_life: string | null
+    readonly endOfLife: string | null
     readonly end_of_life_rebase: string | null
+    readonly endOfLifeRebase: string | null
     readonly installed_size: number
+    readonly installedSize: number
     readonly metadata: GLib.Bytes
     readonly remote_name: string | null
+    readonly remoteName: string | null
 
     // Own fields of Flatpak-1.0.Flatpak.RemoteRef
 

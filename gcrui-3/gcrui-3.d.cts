@@ -2401,17 +2401,33 @@ export interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buil
      */
     readonly choice_visible: boolean
     /**
+     * Whether the choice check box is visible or not.
+     */
+    readonly choiceVisible: boolean
+    /**
      * Whether the password confirm entry is visible or not.
      */
     readonly confirm_visible: boolean
+    /**
+     * Whether the password confirm entry is visible or not.
+     */
+    readonly confirmVisible: boolean
     /**
      * Whether the password entry is visible or not.
      */
     readonly password_visible: boolean
     /**
+     * Whether the password entry is visible or not.
+     */
+    readonly passwordVisible: boolean
+    /**
      * Whether the warning label is visible or not.
      */
     readonly warning_visible: boolean
+    /**
+     * Whether the warning label is visible or not.
+     */
+    readonly warningVisible: boolean
 
     // Conflicting properties
 
@@ -3531,6 +3547,14 @@ export module ViewerWidget {
          * overridden by the parsed data.
          */
         display_name?: string | null
+        /**
+         * Display name for data being displayed. This is automatically
+         * calculated from a loaded file, or can be explicitly set.
+         * 
+         * Used as a hint when displaying a title for the data, but may be
+         * overridden by the parsed data.
+         */
+        displayName?: string | null
     }
 
 }
@@ -3547,6 +3571,14 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * overridden by the parsed data.
      */
     display_name: string | null
+    /**
+     * Display name for data being displayed. This is automatically
+     * calculated from a loaded file, or can be explicitly set.
+     * 
+     * Used as a hint when displaying a title for the data, but may be
+     * overridden by the parsed data.
+     */
+    displayName: string | null
     /**
      * The parser used to parse loaded data into viewable items.
      */

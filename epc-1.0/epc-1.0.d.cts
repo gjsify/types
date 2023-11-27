@@ -283,6 +283,7 @@ export module Dispatcher {
         collision_handling?: CollisionHandling | null
         cookie?: string | null
         name?: string | null
+        collisionHandling?: CollisionHandling | null
     }
 
 }
@@ -292,6 +293,7 @@ export interface Dispatcher {
     // Own properties of Epc-1.0.Epc.Dispatcher
 
     collision_handling: CollisionHandling
+    collisionHandling: CollisionHandling
     cookie: string
     name: string
 
@@ -361,6 +363,14 @@ export module Publisher {
         service_cookie?: string | null
         service_domain?: string | null
         service_name?: string | null
+        authFlags?: AuthFlags | null
+        certificateFile?: string | null
+        collisionHandling?: CollisionHandling | null
+        contentsPath?: string | null
+        privateKeyFile?: string | null
+        serviceCookie?: string | null
+        serviceDomain?: string | null
+        serviceName?: string | null
     }
 
 }
@@ -371,14 +381,22 @@ export interface Publisher {
 
     application: string
     auth_flags: AuthFlags
+    authFlags: AuthFlags
     certificate_file: string
+    certificateFile: string
     collision_handling: CollisionHandling
+    collisionHandling: CollisionHandling
     contents_path: string
+    contentsPath: string
     private_key_file: string
+    privateKeyFile: string
     protocol: Protocol
     service_cookie: string
+    serviceCookie: string
     service_domain: string
+    serviceDomain: string
     service_name: string
+    serviceName: string
 
     // Owm methods of Epc-1.0.Epc.Publisher
 
@@ -505,6 +523,8 @@ export module ServiceMonitor {
         domain?: string | null
         service_types?: string[] | null
         skip_our_own?: boolean | null
+        serviceTypes?: string[] | null
+        skipOurOwn?: boolean | null
     }
 
 }
@@ -516,7 +536,9 @@ export interface ServiceMonitor {
     readonly application: string
     readonly domain: string
     readonly service_types: string[]
+    readonly serviceTypes: string[]
     skip_our_own: boolean
+    skipOurOwn: boolean
 
     // Owm methods of Epc-1.0.Epc.ServiceMonitor
 

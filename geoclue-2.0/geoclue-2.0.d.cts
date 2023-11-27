@@ -135,6 +135,30 @@ export module Client {
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
         time_threshold?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DesktopId">"DesktopId"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         */
+        desktopId?: string | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         */
+        distanceThreshold?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.RequestedAccuracyLevel">"RequestedAccuracyLevel"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         */
+        requestedAccuracyLevel?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.TimeThreshold">"TimeThreshold"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         */
+        timeThreshold?: number | null
     }
 
 }
@@ -156,11 +180,23 @@ export interface Client {
      */
     desktop_id: string | null
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DesktopId">"DesktopId"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+     */
+    desktopId: string | null
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
      * 
      * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
      */
     distance_threshold: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+     */
+    distanceThreshold: number
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.Location">"Location"</link>.
      * 
@@ -174,11 +210,23 @@ export interface Client {
      */
     requested_accuracy_level: number
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.RequestedAccuracyLevel">"RequestedAccuracyLevel"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+     */
+    requestedAccuracyLevel: number
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.TimeThreshold">"TimeThreshold"</link>.
      * 
      * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
      */
     time_threshold: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.TimeThreshold">"TimeThreshold"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+     */
+    timeThreshold: number
 
     // Owm methods of Geoclue-2.0.Geoclue.Client
 
@@ -551,6 +599,18 @@ export module Manager {
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         in_use?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.AvailableAccuracyLevel">"AvailableAccuracyLevel"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        availableAccuracyLevel?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.InUse">"InUse"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        inUse?: boolean | null
     }
 
 }
@@ -566,11 +626,23 @@ export interface Manager {
      */
     available_accuracy_level: number
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.AvailableAccuracyLevel">"AvailableAccuracyLevel"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    availableAccuracyLevel: number
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.InUse">"InUse"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     in_use: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.InUse">"InUse"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    inUse: boolean
 
     // Owm methods of Geoclue-2.0.Geoclue.Manager
 
@@ -1935,6 +2007,30 @@ export module Simple {
          * When set to 0 (default), it always emits the signal.
          */
         time_threshold?: number | null
+        /**
+         * The requested maximum accuracy level.
+         */
+        accuracyLevel?: AccuracyLevel | null
+        /**
+         * The Desktop ID of the application.
+         */
+        desktopId?: string | null
+        /**
+         * The current distance threshold in meters. This value is used by the
+         * service when it gets new location info. If the distance moved is
+         * below the threshold, it won't emit the LocationUpdated signal.
+         * 
+         * When set to 0 (default), it always emits the signal.
+         */
+        distanceThreshold?: number | null
+        /**
+         * The current time threshold in seconds. This value is used by the
+         * service when it gets new location info. If the time passed is
+         * below the threshold, it won't emit the LocationUpdated signal.
+         * 
+         * When set to 0 (default), it always emits the signal.
+         */
+        timeThreshold?: number | null
     }
 
 }
@@ -1948,6 +2044,10 @@ export interface Simple extends Gio.AsyncInitable {
      */
     readonly accuracy_level: AccuracyLevel
     /**
+     * The requested maximum accuracy level.
+     */
+    readonly accuracyLevel: AccuracyLevel
+    /**
      * The client proxy. This is %NULL if `simple` is not using a client proxy
      * (i-e when inside the Flatpak sandbox).
      */
@@ -1957,6 +2057,10 @@ export interface Simple extends Gio.AsyncInitable {
      */
     readonly desktop_id: string | null
     /**
+     * The Desktop ID of the application.
+     */
+    readonly desktopId: string | null
+    /**
      * The current distance threshold in meters. This value is used by the
      * service when it gets new location info. If the distance moved is
      * below the threshold, it won't emit the LocationUpdated signal.
@@ -1964,6 +2068,14 @@ export interface Simple extends Gio.AsyncInitable {
      * When set to 0 (default), it always emits the signal.
      */
     readonly distance_threshold: number
+    /**
+     * The current distance threshold in meters. This value is used by the
+     * service when it gets new location info. If the distance moved is
+     * below the threshold, it won't emit the LocationUpdated signal.
+     * 
+     * When set to 0 (default), it always emits the signal.
+     */
+    readonly distanceThreshold: number
     /**
      * The current location.
      */
@@ -1976,6 +2088,14 @@ export interface Simple extends Gio.AsyncInitable {
      * When set to 0 (default), it always emits the signal.
      */
     readonly time_threshold: number
+    /**
+     * The current time threshold in seconds. This value is used by the
+     * service when it gets new location info. If the time passed is
+     * below the threshold, it won't emit the LocationUpdated signal.
+     * 
+     * When set to 0 (default), it always emits the signal.
+     */
+    readonly timeThreshold: number
 
     // Own fields of Geoclue-2.0.Geoclue.Simple
 

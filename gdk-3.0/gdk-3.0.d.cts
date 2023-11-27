@@ -6194,6 +6194,7 @@ export module Cursor {
 
         cursor_type?: CursorType | null
         display?: Display | null
+        cursorType?: CursorType | null
     }
 
 }
@@ -6203,6 +6204,7 @@ export interface Cursor {
     // Own properties of Gdk-3.0.Gdk.Cursor
 
     readonly cursor_type: CursorType
+    readonly cursorType: CursorType
     readonly display: Display
 
     // Owm methods of Gdk-3.0.Gdk.Cursor
@@ -6483,6 +6485,34 @@ export module Device {
          * Vendor ID of this device, see gdk_device_get_vendor_id().
          */
         vendor_id?: string | null
+        /**
+         * The #GdkDeviceManager the #GdkDevice pertains to.
+         */
+        deviceManager?: DeviceManager | null
+        /**
+         * Whether the device is represented by a cursor on the screen. Devices of type
+         * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
+         */
+        hasCursor?: boolean | null
+        inputMode?: InputMode | null
+        /**
+         * Source type for the device.
+         */
+        inputSource?: InputSource | null
+        /**
+         * The maximal number of concurrent touches on a touch device.
+         * Will be 0 if the device is not a touch device or if the number
+         * of touches is unknown.
+         */
+        numTouches?: number | null
+        /**
+         * Product ID of this device, see gdk_device_get_product_id().
+         */
+        productId?: string | null
+        /**
+         * Vendor ID of this device, see gdk_device_get_vendor_id().
+         */
+        vendorId?: string | null
     }
 
 }
@@ -6497,6 +6527,11 @@ export interface Device {
      */
     readonly associated_device: Device
     /**
+     * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
+     * always come in keyboard/pointer pairs. Other device types will have a %NULL associated device.
+     */
+    readonly associatedDevice: Device
+    /**
      * The axes currently available for this device.
      */
     readonly axes: AxisFlags
@@ -6504,6 +6539,10 @@ export interface Device {
      * The #GdkDeviceManager the #GdkDevice pertains to.
      */
     readonly device_manager: DeviceManager
+    /**
+     * The #GdkDeviceManager the #GdkDevice pertains to.
+     */
+    readonly deviceManager: DeviceManager
     /**
      * The #GdkDisplay the #GdkDevice pertains to.
      */
@@ -6513,15 +6552,29 @@ export interface Device {
      * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
      */
     readonly has_cursor: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen. Devices of type
+     * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
+     */
+    readonly hasCursor: boolean
     input_mode: InputMode
+    inputMode: InputMode
     /**
      * Source type for the device.
      */
     readonly input_source: InputSource
     /**
+     * Source type for the device.
+     */
+    readonly inputSource: InputSource
+    /**
      * Number of axes in the device.
      */
     readonly n_axes: number
+    /**
+     * Number of axes in the device.
+     */
+    readonly nAxes: number
     /**
      * The device name.
      */
@@ -6533,9 +6586,19 @@ export interface Device {
      */
     readonly num_touches: number
     /**
+     * The maximal number of concurrent touches on a touch device.
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly numTouches: number
+    /**
      * Product ID of this device, see gdk_device_get_product_id().
      */
     readonly product_id: string | null
+    /**
+     * Product ID of this device, see gdk_device_get_product_id().
+     */
+    readonly productId: string | null
     /**
      * #GdkSeat of this device.
      */
@@ -6549,6 +6612,10 @@ export interface Device {
      * Vendor ID of this device, see gdk_device_get_vendor_id().
      */
     readonly vendor_id: string | null
+    /**
+     * Vendor ID of this device, see gdk_device_get_vendor_id().
+     */
+    readonly vendorId: string | null
 
     // Owm methods of Gdk-3.0.Gdk.Device
 
@@ -7131,6 +7198,8 @@ export module DeviceTool {
         hardware_id?: number | null
         serial?: number | null
         tool_type?: DeviceToolType | null
+        hardwareId?: number | null
+        toolType?: DeviceToolType | null
     }
 
 }
@@ -7141,8 +7210,10 @@ export interface DeviceTool {
 
     readonly axes: AxisFlags
     readonly hardware_id: number
+    readonly hardwareId: number
     readonly serial: number
     readonly tool_type: DeviceToolType
+    readonly toolType: DeviceToolType
 
     // Owm methods of Gdk-3.0.Gdk.DeviceTool
 
@@ -7680,6 +7751,7 @@ export module DisplayManager {
         // Own constructor properties of Gdk-3.0.Gdk.DisplayManager
 
         default_display?: Display | null
+        defaultDisplay?: Display | null
     }
 
 }
@@ -7689,6 +7761,7 @@ export interface DisplayManager {
     // Own properties of Gdk-3.0.Gdk.DisplayManager
 
     default_display: Display
+    defaultDisplay: Display
 
     // Owm methods of Gdk-3.0.Gdk.DisplayManager
 
@@ -8311,6 +8384,10 @@ export module GLContext {
          * The #GdkWindow the gl context is bound to.
          */
         window?: Window | null
+        /**
+         * The #GdkGLContext that this context is sharing data with, or %NULL
+         */
+        sharedContext?: GLContext | null
     }
 
 }
@@ -8327,6 +8404,10 @@ export interface GLContext {
      * The #GdkGLContext that this context is sharing data with, or %NULL
      */
     readonly shared_context: GLContext
+    /**
+     * The #GdkGLContext that this context is sharing data with, or %NULL
+     */
+    readonly sharedContext: GLContext
     /**
      * The #GdkWindow the gl context is bound to.
      */
@@ -8841,12 +8922,17 @@ export interface Monitor {
     readonly display: Display
     readonly geometry: Rectangle
     readonly height_mm: number
+    readonly heightMm: number
     readonly manufacturer: string | null
     readonly model: string | null
     readonly refresh_rate: number
+    readonly refreshRate: number
     readonly scale_factor: number
+    readonly scaleFactor: number
     readonly subpixel_layout: SubpixelLayout
+    readonly subpixelLayout: SubpixelLayout
     readonly width_mm: number
+    readonly widthMm: number
     readonly workarea: Rectangle
 
     // Owm methods of Gdk-3.0.Gdk.Monitor
@@ -9036,6 +9122,7 @@ export module Screen {
 
         font_options?: any | null
         resolution?: number | null
+        fontOptions?: any | null
     }
 
 }
@@ -9045,6 +9132,7 @@ export interface Screen {
     // Own properties of Gdk-3.0.Gdk.Screen
 
     font_options: any
+    fontOptions: any
     resolution: number
 
     // Owm methods of Gdk-3.0.Gdk.Screen

@@ -699,6 +699,9 @@ export interface ChecksumInputStream {
     connect(sigName: "notify::checksum", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::checksum", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::checksum", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: ChecksumInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -1004,6 +1007,8 @@ export module Repo {
         path?: Gio.File | null
         remotes_config_dir?: string | null
         sysroot_path?: Gio.File | null
+        remotesConfigDir?: string | null
+        sysrootPath?: Gio.File | null
     }
 
 }
@@ -1014,7 +1019,9 @@ export interface Repo {
 
     readonly path: Gio.File
     readonly remotes_config_dir: string | null
+    readonly remotesConfigDir: string | null
     readonly sysroot_path: Gio.File
+    readonly sysrootPath: Gio.File
 
     // Owm methods of OSTree-1.0.OSTree.Repo
 

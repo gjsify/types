@@ -181,6 +181,10 @@ interface Account extends Gio.Initable {
      */
     readonly display_name: string | null
     /**
+     * The display name of the account.
+     */
+    readonly displayName: string | null
+    /**
      * Whether the account is currently enabled.
      */
     readonly enabled: boolean
@@ -728,6 +732,28 @@ module Manager {
          * such as maintenance programs.
          */
         use_dbus?: boolean | null
+        /**
+         * Whether to abort the application when a database timeout occurs.
+         */
+        abortOnDbTimeout?: boolean | null
+        /**
+         * Timeout for database operations, in milliseconds.
+         */
+        dbTimeout?: number | null
+        /**
+         * If the service type is set, certain operations on the #AgManager, such
+         * as ag_manager_list() and ag_manager_list_services(), will be restricted
+         * to only affect accounts or services with that service type.
+         */
+        serviceType?: string | null
+        /**
+         * Whether to use D-Bus for inter-process change notification. Setting this
+         * property to %FALSE causes libaccounts not to emit the change
+         * notification signals, and also not react to changes made by other
+         * processes. Disabling D-Bus is only meant to be used for specific cases,
+         * such as maintenance programs.
+         */
+        useDbus?: boolean | null
     }
 
 }
@@ -741,15 +767,29 @@ interface Manager extends Gio.Initable {
      */
     abort_on_db_timeout: boolean
     /**
+     * Whether to abort the application when a database timeout occurs.
+     */
+    abortOnDbTimeout: boolean
+    /**
      * Timeout for database operations, in milliseconds.
      */
     db_timeout: number
+    /**
+     * Timeout for database operations, in milliseconds.
+     */
+    dbTimeout: number
     /**
      * If the service type is set, certain operations on the #AgManager, such
      * as ag_manager_list() and ag_manager_list_services(), will be restricted
      * to only affect accounts or services with that service type.
      */
     readonly service_type: string | null
+    /**
+     * If the service type is set, certain operations on the #AgManager, such
+     * as ag_manager_list() and ag_manager_list_services(), will be restricted
+     * to only affect accounts or services with that service type.
+     */
+    readonly serviceType: string | null
     /**
      * Whether to use D-Bus for inter-process change notification. Setting this
      * property to %FALSE causes libaccounts not to emit the change
@@ -758,6 +798,14 @@ interface Manager extends Gio.Initable {
      * such as maintenance programs.
      */
     readonly use_dbus: boolean
+    /**
+     * Whether to use D-Bus for inter-process change notification. Setting this
+     * property to %FALSE causes libaccounts not to emit the change
+     * notification signals, and also not react to changes made by other
+     * processes. Disabling D-Bus is only meant to be used for specific cases,
+     * such as maintenance programs.
+     */
+    readonly useDbus: boolean
 
     // Own fields of Accounts-1.0.Accounts.Manager
 

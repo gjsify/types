@@ -559,6 +559,9 @@ module BaseFramebuffer {
         remote_format?: PixelFormat | null
         rowstride?: number | null
         width?: number | null
+        colorMap?: ColorMap | null
+        localFormat?: PixelFormat | null
+        remoteFormat?: PixelFormat | null
     }
 
 }
@@ -569,9 +572,12 @@ interface BaseFramebuffer extends Framebuffer {
 
     readonly buffer: any
     color_map: ColorMap
+    colorMap: ColorMap
     readonly height: number
     readonly local_format: PixelFormat
+    readonly localFormat: PixelFormat
     readonly remote_format: PixelFormat
+    readonly remoteFormat: PixelFormat
     readonly rowstride: number
     readonly width: number
 

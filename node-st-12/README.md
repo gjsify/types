@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-st-12)
 
 
-Node.js TypeScript type definitions for St-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+Node.js TypeScript type definitions for St-12, generated from library version 12.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 
 ## Install

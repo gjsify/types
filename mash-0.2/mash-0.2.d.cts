@@ -1216,6 +1216,8 @@ export module Model {
         data?: Data | null
         fit_to_allocation?: boolean | null
         light_set?: LightSet | null
+        fitToAllocation?: boolean | null
+        lightSet?: LightSet | null
     }
 
 }
@@ -1226,7 +1228,9 @@ export interface Model extends Atk.ImplementorIface, Clutter.Animatable, Clutter
 
     data: Data
     fit_to_allocation: boolean
+    fitToAllocation: boolean
     light_set: LightSet
+    lightSet: LightSet
 
     // Owm methods of Mash-0.2.Mash.Model
 
@@ -1664,6 +1668,9 @@ export module PointLight {
         constant_attenuation?: number | null
         linear_attenuation?: number | null
         quadratic_attenuation?: number | null
+        constantAttenuation?: number | null
+        linearAttenuation?: number | null
+        quadraticAttenuation?: number | null
     }
 
 }
@@ -1673,8 +1680,11 @@ export interface PointLight extends Atk.ImplementorIface, Clutter.Animatable, Cl
     // Own properties of Mash-0.2.Mash.PointLight
 
     constant_attenuation: number
+    constantAttenuation: number
     linear_attenuation: number
+    linearAttenuation: number
     quadratic_attenuation: number
+    quadraticAttenuation: number
 
     // Owm methods of Mash-0.2.Mash.PointLight
 
@@ -2016,6 +2026,8 @@ export module SpotLight {
 
         spot_cutoff?: number | null
         spot_exponent?: number | null
+        spotCutoff?: number | null
+        spotExponent?: number | null
     }
 
 }
@@ -2025,7 +2037,9 @@ export interface SpotLight extends Atk.ImplementorIface, Clutter.Animatable, Clu
     // Own properties of Mash-0.2.Mash.SpotLight
 
     spot_cutoff: number
+    spotCutoff: number
     spot_exponent: number
+    spotExponent: number
 
     // Owm methods of Mash-0.2.Mash.SpotLight
 

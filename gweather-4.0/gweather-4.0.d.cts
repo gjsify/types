@@ -553,6 +553,23 @@ export module Info {
          * The location of the weather information.
          */
         location?: Location | null
+        /**
+         * A unique identifier, typically in the form of reverse DNS notation,
+         * for the application that is querying the weather information.
+         * 
+         * Weather providers require this information.
+         */
+        applicationId?: string | null
+        /**
+         * An email address or any other contact form URL.
+         * 
+         * Weather providers require this information.
+         */
+        contactInfo?: string | null
+        /**
+         * The enabled weather providers.
+         */
+        enabledProviders?: Provider | null
     }
 
 }
@@ -569,15 +586,32 @@ export interface Info {
      */
     application_id: string | null
     /**
+     * A unique identifier, typically in the form of reverse DNS notation,
+     * for the application that is querying the weather information.
+     * 
+     * Weather providers require this information.
+     */
+    applicationId: string | null
+    /**
      * An email address or any other contact form URL.
      * 
      * Weather providers require this information.
      */
     contact_info: string | null
     /**
+     * An email address or any other contact form URL.
+     * 
+     * Weather providers require this information.
+     */
+    contactInfo: string | null
+    /**
      * The enabled weather providers.
      */
     enabled_providers: Provider
+    /**
+     * The enabled weather providers.
+     */
+    enabledProviders: Provider
     /**
      * The location of the weather information.
      */

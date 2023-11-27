@@ -939,6 +939,7 @@ export module Domain {
         title?: string | null
         uuid?: string | null
         vcpu?: number | null
+        currentMemory?: number | null
     }
 
 }
@@ -948,6 +949,7 @@ export interface Domain {
     // Own properties of LibvirtGConfig-1.0.LibvirtGConfig.Domain
 
     current_memory: number
+    currentMemory: number
     description: string | null
     features: string[]
     memory: number

@@ -189,6 +189,30 @@ module ClientGlue {
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         on_battery?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        daemonVersion?: string | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        lidIsClosed?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        lidIsPresent?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        onBattery?: boolean | null
     }
 
 }
@@ -204,11 +228,23 @@ interface ClientGlue {
      */
     daemon_version: string | null
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    daemonVersion: string | null
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     lid_is_closed: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    lidIsClosed: boolean
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
      * 
@@ -216,11 +252,23 @@ interface ClientGlue {
      */
     lid_is_present: boolean
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    lidIsPresent: boolean
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     on_battery: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    onBattery: boolean
 
     // Owm methods of UPowerGlib-1.0.UPowerGlib.ClientGlue
 
@@ -607,6 +655,96 @@ module DeviceGlue {
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         warning_level?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        energyEmpty?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        energyFull?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        energyFullDesign?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        energyRate?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        hasHistory?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        hasStatistics?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        iconName?: string | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        isPresent?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        isRechargeable?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        nativePath?: string | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        powerSupply?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        timeToEmpty?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        timeToFull?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        updateTime?: number | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        warningLevel?: number | null
     }
 
 }
@@ -634,11 +772,23 @@ interface DeviceGlue {
      */
     energy_empty: number
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    energyEmpty: number
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     energy_full: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    energyFull: number
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
      * 
@@ -646,11 +796,23 @@ interface DeviceGlue {
      */
     energy_full_design: number
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    energyFullDesign: number
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     energy_rate: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    energyRate: number
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
      * 
@@ -658,11 +820,23 @@ interface DeviceGlue {
      */
     has_history: boolean
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    hasHistory: boolean
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     has_statistics: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    hasStatistics: boolean
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
      * 
@@ -670,17 +844,35 @@ interface DeviceGlue {
      */
     icon_name: string | null
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    iconName: string | null
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     is_present: boolean
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    isPresent: boolean
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     is_rechargeable: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    isRechargeable: boolean
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Luminosity">"Luminosity"</link>.
      * 
@@ -700,6 +892,12 @@ interface DeviceGlue {
      */
     native_path: string | null
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    nativePath: string | null
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Online">"Online"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
@@ -717,6 +915,12 @@ interface DeviceGlue {
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     power_supply: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    powerSupply: boolean
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Serial">"Serial"</link>.
      * 
@@ -748,11 +952,23 @@ interface DeviceGlue {
      */
     time_to_empty: number
     /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    timeToEmpty: number
+    /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
      * 
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     time_to_full: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    timeToFull: number
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Type">"Type"</link>.
      * 
@@ -765,6 +981,12 @@ interface DeviceGlue {
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     update_time: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    updateTime: number
     /**
      * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Vendor">"Vendor"</link>.
      * 
@@ -783,6 +1005,12 @@ interface DeviceGlue {
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     warning_level: number
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    warningLevel: number
 
     // Owm methods of UPowerGlib-1.0.UPowerGlib.DeviceGlue
 
@@ -1075,6 +1303,12 @@ module WakeupsGlue {
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         has_capability?: boolean | null
+        /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
+         * 
+         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         */
+        hasCapability?: boolean | null
     }
 
 }
@@ -1089,6 +1323,12 @@ interface WakeupsGlue {
      * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
      */
     has_capability: boolean
+    /**
+     * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
+     * 
+     * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+     */
+    hasCapability: boolean
 
     // Owm methods of UPowerGlib-1.0.UPowerGlib.WakeupsGlue
 
@@ -1264,17 +1504,33 @@ interface Client {
      */
     readonly daemon_version: string | null
     /**
+     * The daemon version.
+     */
+    readonly daemonVersion: string | null
+    /**
      * If the laptop lid is closed.
      */
     readonly lid_is_closed: boolean
+    /**
+     * If the laptop lid is closed.
+     */
+    readonly lidIsClosed: boolean
     /**
      * If a laptop lid is present.
      */
     readonly lid_is_present: boolean
     /**
+     * If a laptop lid is present.
+     */
+    readonly lidIsPresent: boolean
+    /**
      * If the computer is on battery power.
      */
     readonly on_battery: boolean
+    /**
+     * If the computer is on battery power.
+     */
+    readonly onBattery: boolean
 
     // Own fields of UPowerGlib-1.0.UPowerGlib.Client
 
@@ -1848,6 +2104,69 @@ module Device {
          * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
          */
         warning_level?: number | null
+        /**
+         * The energy the device will have when it is empty. This is usually zero.
+         * Measured in mWh.
+         */
+        energyEmpty?: number | null
+        /**
+         * The amount of energy when the device is fully charged. Measured in mWh.
+         */
+        energyFull?: number | null
+        /**
+         * The amount of energy when the device was brand new. Measured in mWh.
+         */
+        energyFullDesign?: number | null
+        /**
+         * The rate of discharge or charge. Measured in mW.
+         */
+        energyRate?: number | null
+        /**
+         * If the device has history data that might be useful.
+         */
+        hasHistory?: boolean | null
+        /**
+         * If the device has statistics data that might be useful.
+         */
+        hasStatistics?: boolean | null
+        /**
+         * The icon name, following the Icon Naming Speficiation
+         */
+        iconName?: string | null
+        /**
+         * If the device is present, as some devices like laptop batteries
+         * can be removed, leaving an empty bay that is still technically a
+         * device.
+         */
+        isPresent?: boolean | null
+        /**
+         * If the device has a rechargable battery.
+         */
+        isRechargeable?: boolean | null
+        /**
+         * The native path of the device, useful for direct device access.
+         */
+        nativePath?: string | null
+        /**
+         * If the device is powering the system.
+         */
+        powerSupply?: boolean | null
+        /**
+         * The amount of time until the device is empty.
+         */
+        timeToEmpty?: number | null
+        /**
+         * The amount of time until the device is fully charged.
+         */
+        timeToFull?: number | null
+        /**
+         * The last time the device was updated.
+         */
+        updateTime?: number | null
+        /**
+         * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
+         */
+        warningLevel?: number | null
     }
 
 }
@@ -1871,29 +2190,58 @@ interface Device {
      */
     energy_empty: number
     /**
+     * The energy the device will have when it is empty. This is usually zero.
+     * Measured in mWh.
+     */
+    energyEmpty: number
+    /**
      * The amount of energy when the device is fully charged. Measured in mWh.
      */
     energy_full: number
+    /**
+     * The amount of energy when the device is fully charged. Measured in mWh.
+     */
+    energyFull: number
     /**
      * The amount of energy when the device was brand new. Measured in mWh.
      */
     energy_full_design: number
     /**
+     * The amount of energy when the device was brand new. Measured in mWh.
+     */
+    energyFullDesign: number
+    /**
      * The rate of discharge or charge. Measured in mW.
      */
     energy_rate: number
+    /**
+     * The rate of discharge or charge. Measured in mW.
+     */
+    energyRate: number
     /**
      * If the device has history data that might be useful.
      */
     has_history: boolean
     /**
+     * If the device has history data that might be useful.
+     */
+    hasHistory: boolean
+    /**
      * If the device has statistics data that might be useful.
      */
     has_statistics: boolean
     /**
+     * If the device has statistics data that might be useful.
+     */
+    hasStatistics: boolean
+    /**
      * The icon name, following the Icon Naming Speficiation
      */
     icon_name: string | null
+    /**
+     * The icon name, following the Icon Naming Speficiation
+     */
+    iconName: string | null
     /**
      * If the device is present, as some devices like laptop batteries
      * can be removed, leaving an empty bay that is still technically a
@@ -1901,9 +2249,19 @@ interface Device {
      */
     is_present: boolean
     /**
+     * If the device is present, as some devices like laptop batteries
+     * can be removed, leaving an empty bay that is still technically a
+     * device.
+     */
+    isPresent: boolean
+    /**
      * If the device has a rechargable battery.
      */
     is_rechargeable: boolean
+    /**
+     * If the device has a rechargable battery.
+     */
+    isRechargeable: boolean
     /**
      * The device kind, e.g. %UP_DEVICE_KIND_KEYBOARD.
      */
@@ -1921,6 +2279,10 @@ interface Device {
      */
     native_path: string | null
     /**
+     * The native path of the device, useful for direct device access.
+     */
+    nativePath: string | null
+    /**
      * If the device is online, i.e. connected.
      */
     online: boolean
@@ -1932,6 +2294,10 @@ interface Device {
      * If the device is powering the system.
      */
     power_supply: boolean
+    /**
+     * If the device is powering the system.
+     */
+    powerSupply: boolean
     /**
      * The serial number of the device.
      */
@@ -1953,13 +2319,25 @@ interface Device {
      */
     time_to_empty: number
     /**
+     * The amount of time until the device is empty.
+     */
+    timeToEmpty: number
+    /**
      * The amount of time until the device is fully charged.
      */
     time_to_full: number
     /**
+     * The amount of time until the device is fully charged.
+     */
+    timeToFull: number
+    /**
      * The last time the device was updated.
      */
     update_time: number
+    /**
+     * The last time the device was updated.
+     */
+    updateTime: number
     /**
      * The vendor of the device.
      */
@@ -1972,6 +2350,10 @@ interface Device {
      * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
      */
     warning_level: number
+    /**
+     * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
+     */
+    warningLevel: number
 
     // Own fields of UPowerGlib-1.0.UPowerGlib.Device
 
@@ -2868,6 +3250,7 @@ module WakeupItem {
         is_userspace?: boolean | null
         old?: number | null
         value?: number | null
+        isUserspace?: boolean | null
     }
 
 }
@@ -2880,6 +3263,7 @@ interface WakeupItem {
     details: string | null
     id: number
     is_userspace: boolean
+    isUserspace: boolean
     old: number
     value: number
 

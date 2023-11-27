@@ -127,6 +127,7 @@ module Persona {
 
         is_in_contact_list?: boolean | null
         contact?: TelepathyGLib.Contact | null
+        isInContactList?: boolean | null
     }
 
 }
@@ -136,6 +137,7 @@ interface Persona extends Folks.AliasDetails, Folks.AvatarDetails, Folks.Birthda
     // Own properties of FolksTelepathy-0.7.FolksTelepathy.Persona
 
     is_in_contact_list: boolean
+    isInContactList: boolean
     readonly contact: TelepathyGLib.Contact
 
     // Own fields of FolksTelepathy-0.7.FolksTelepathy.Persona

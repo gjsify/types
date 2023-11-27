@@ -73,6 +73,8 @@ export module Wc {
         loglevel?: number | null
         throttling?: number | null
         user_agent?: string | null
+        cacheSize?: number | null
+        userAgent?: string | null
     }
 
 }
@@ -83,9 +85,11 @@ export interface Wc {
 
     cache: boolean
     cache_size: number
+    cacheSize: number
     loglevel: number
     throttling: number
     user_agent: string | null
+    userAgent: string | null
 
     // Own fields of GrlNet-0.2.GrlNet.Wc
 

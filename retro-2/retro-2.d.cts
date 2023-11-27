@@ -601,6 +601,28 @@ export module Core {
          * The name of the user.
          */
         user_name?: string | null
+        coreAssetsDirectory?: string | null
+        /**
+         * The save directory of the core.
+         * 
+         * The core will save some data here.
+         */
+        saveDirectory?: string | null
+        /**
+         * The speed ratio at wich the core will run.
+         */
+        speedRate?: number | null
+        /**
+         * The system directory of the core.
+         * 
+         * The core will look here for additional data, such as firmware ROMs or
+         * configuration files.
+         */
+        systemDirectory?: string | null
+        /**
+         * The name of the user.
+         */
+        userName?: string | null
     }
 
 }
@@ -613,7 +635,12 @@ export interface Core {
      * The Libretro API version implement by the core.
      */
     readonly api_version: number
+    /**
+     * The Libretro API version implement by the core.
+     */
+    readonly apiVersion: number
     core_assets_directory: string | null
+    coreAssetsDirectory: string | null
     /**
      * The filename of the core.
      */
@@ -623,13 +650,25 @@ export interface Core {
      */
     readonly frames_per_second: number
     /**
+     * The FPS rate for the core's video output.
+     */
+    readonly framesPerSecond: number
+    /**
      * Whether a game has been loaded.
      */
     readonly game_loaded: boolean
     /**
+     * Whether a game has been loaded.
+     */
+    readonly gameLoaded: boolean
+    /**
      * Whether the core has been initiated.
      */
     readonly is_initiated: boolean
+    /**
+     * Whether the core has been initiated.
+     */
+    readonly isInitiated: boolean
     /**
      * The number of frames to run ahead of time. This allows to know in advance
      * what should happen in the given number of frames, allowing to react in
@@ -648,13 +687,27 @@ export interface Core {
      */
     save_directory: string | null
     /**
+     * The save directory of the core.
+     * 
+     * The core will save some data here.
+     */
+    saveDirectory: string | null
+    /**
      * The speed ratio at wich the core will run.
      */
     speed_rate: number
     /**
+     * The speed ratio at wich the core will run.
+     */
+    speedRate: number
+    /**
      * Whether the core supports running with no game.
      */
     readonly support_no_game: boolean
+    /**
+     * Whether the core supports running with no game.
+     */
+    readonly supportNoGame: boolean
     /**
      * The system directory of the core.
      * 
@@ -663,9 +716,20 @@ export interface Core {
      */
     system_directory: string | null
     /**
+     * The system directory of the core.
+     * 
+     * The core will look here for additional data, such as firmware ROMs or
+     * configuration files.
+     */
+    systemDirectory: string | null
+    /**
      * The name of the user.
      */
     user_name: string | null
+    /**
+     * The name of the user.
+     */
+    userName: string | null
 
     // Owm methods of Retro-2.Retro.Core
 
@@ -1145,6 +1209,8 @@ export module CoreView {
 
         can_grab_pointer?: boolean | null
         snap_pointer_to_borders?: boolean | null
+        canGrabPointer?: boolean | null
+        snapPointerToBorders?: boolean | null
     }
 
 }
@@ -1154,7 +1220,9 @@ export interface CoreView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
     // Own properties of Retro-2.Retro.CoreView
 
     can_grab_pointer: boolean
+    canGrabPointer: boolean
     snap_pointer_to_borders: boolean
+    snapPointerToBorders: boolean
 
     // Owm methods of Retro-2.Retro.CoreView
 

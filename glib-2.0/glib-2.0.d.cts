@@ -17895,6 +17895,11 @@ export interface MainLoop {
      * the result is zero, free the loop and free all associated memory.
      */
     unref(): void
+    /**
+     * Similar to `GLib.MainLoop.run` but return a Promise which resolves when the main loop ends, instead of blocking while the main loop runs.
+     * This helps avoid the situation where Promises never resolved if you didn't run the main loop inside a callback.
+     */
+    runAsync(): Promise<void>
 }
 
 /**

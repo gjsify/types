@@ -2079,6 +2079,26 @@ export module Settings {
          * This property is independent of #DhSettings:use-system-fonts.
          */
         variable_font?: string | null
+        /**
+         * Font for text with fixed width, such as code examples.
+         * 
+         * This property is independent of #DhSettings:use-system-fonts.
+         */
+        fixedFont?: string | null
+        /**
+         * Whether books should be grouped by programming language in the UI.
+         */
+        groupBooksByLanguage?: boolean | null
+        /**
+         * Whether to use the system default fonts.
+         */
+        useSystemFonts?: boolean | null
+        /**
+         * Font for text with variable width.
+         * 
+         * This property is independent of #DhSettings:use-system-fonts.
+         */
+        variableFont?: string | null
     }
 
 }
@@ -2094,19 +2114,39 @@ export interface Settings {
      */
     fixed_font: string | null
     /**
+     * Font for text with fixed width, such as code examples.
+     * 
+     * This property is independent of #DhSettings:use-system-fonts.
+     */
+    fixedFont: string | null
+    /**
      * Whether books should be grouped by programming language in the UI.
      */
     group_books_by_language: boolean
     /**
+     * Whether books should be grouped by programming language in the UI.
+     */
+    groupBooksByLanguage: boolean
+    /**
      * Whether to use the system default fonts.
      */
     use_system_fonts: boolean
+    /**
+     * Whether to use the system default fonts.
+     */
+    useSystemFonts: boolean
     /**
      * Font for text with variable width.
      * 
      * This property is independent of #DhSettings:use-system-fonts.
      */
     variable_font: string | null
+    /**
+     * Font for text with variable width.
+     * 
+     * This property is independent of #DhSettings:use-system-fonts.
+     */
+    variableFont: string | null
 
     // Own fields of Devhelp-3.0.Devhelp.Settings
 
@@ -2621,6 +2661,11 @@ export module Tab {
          * with the default #DhProfile.
          */
         web_view?: WebView | null
+        /**
+         * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
+         * with the default #DhProfile.
+         */
+        webView?: WebView | null
     }
 
 }
@@ -2634,6 +2679,11 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * with the default #DhProfile.
      */
     readonly web_view: WebView
+    /**
+     * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
+     * with the default #DhProfile.
+     */
+    readonly webView: WebView
 
     // Own fields of Devhelp-3.0.Devhelp.Tab
 

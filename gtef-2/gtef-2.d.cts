@@ -515,6 +515,10 @@ export module ApplicationWindow {
          * The #GtkStatusbar. %NULL by default.
          */
         statusbar?: Gtk.Statusbar | null
+        /**
+         * The #GtkApplicationWindow.
+         */
+        applicationWindow?: Gtk.ApplicationWindow | null
     }
 
 }
@@ -527,6 +531,10 @@ export interface ApplicationWindow {
      * The #GtkApplicationWindow.
      */
     readonly application_window: Gtk.ApplicationWindow
+    /**
+     * The #GtkApplicationWindow.
+     */
+    readonly applicationWindow: Gtk.ApplicationWindow
     /**
      * The #GtkStatusbar. %NULL by default.
      */
@@ -649,6 +657,14 @@ export module Buffer {
          * #GtefBuffer:gtef-style-scheme-id contains the empty string.
          */
         gtef_style_scheme_id?: string | null
+        /**
+         * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
+         * useful for binding it to a #GSettings key.
+         * 
+         * When the #GtkSourceBuffer:style-scheme is %NULL,
+         * #GtefBuffer:gtef-style-scheme-id contains the empty string.
+         */
+        gtefStyleSchemeId?: string | null
     }
 
 }
@@ -666,9 +682,21 @@ export interface Buffer {
      */
     gtef_style_scheme_id: string | null
     /**
+     * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
+     * useful for binding it to a #GSettings key.
+     * 
+     * When the #GtkSourceBuffer:style-scheme is %NULL,
+     * #GtefBuffer:gtef-style-scheme-id contains the empty string.
+     */
+    gtefStyleSchemeId: string | null
+    /**
      * The buffer title. See gtef_buffer_get_title().
      */
     readonly gtef_title: string | null
+    /**
+     * The buffer title. See gtef_buffer_get_title().
+     */
+    readonly gtefTitle: string | null
 
     // Conflicting properties
 
@@ -845,6 +873,10 @@ export interface File {
      */
     readonly compression_type: CompressionType
     /**
+     * The compression type.
+     */
+    readonly compressionType: CompressionType
+    /**
      * The character encoding, initially %NULL. After a successful file
      * loading or saving operation, the encoding is non-%NULL.
      */
@@ -858,14 +890,27 @@ export interface File {
      */
     readonly newline_type: NewlineType
     /**
+     * The line ending type.
+     */
+    readonly newlineType: NewlineType
+    /**
      * Whether the file is read-only or not. The value of this property is
      * not updated automatically (there is no file monitors).
      */
     readonly read_only: boolean
     /**
+     * Whether the file is read-only or not. The value of this property is
+     * not updated automatically (there is no file monitors).
+     */
+    readonly readOnly: boolean
+    /**
      * The file short name. See gtef_file_get_short_name().
      */
     readonly short_name: string | null
+    /**
+     * The file short name. See gtef_file_get_short_name().
+     */
+    readonly shortName: string | null
 
     // Own fields of Gtef-2.Gtef.File
 
@@ -1024,6 +1069,23 @@ export module FileLoader {
          * Set to -1 for unlimited size.
          */
         max_size?: number | null
+        /**
+         * The chunk size, in bytes. The content is loaded chunk by chunk. It
+         * permits to avoid allocating a too big contiguous memory area, as well
+         * as reporting progress information after each chunk read.
+         * 
+         * A small chunk size is better when loading a remote file with a slow
+         * connection. For local files, the chunk size can be larger.
+         */
+        chunkSize?: number | null
+        /**
+         * The maximum content size, in bytes. Keep in mind that all the
+         * content is loaded in memory, and when loaded into a #GtkTextBuffer
+         * it takes more memory than just the content size.
+         * 
+         * Set to -1 for unlimited size.
+         */
+        maxSize?: number | null
     }
 
 }
@@ -1047,6 +1109,15 @@ export interface FileLoader {
      */
     chunk_size: number
     /**
+     * The chunk size, in bytes. The content is loaded chunk by chunk. It
+     * permits to avoid allocating a too big contiguous memory area, as well
+     * as reporting progress information after each chunk read.
+     * 
+     * A small chunk size is better when loading a remote file with a slow
+     * connection. For local files, the chunk size can be larger.
+     */
+    chunkSize: number
+    /**
      * The #GtefFile. The #GtefFileLoader object has a weak
      * reference to the file.
      */
@@ -1064,6 +1135,14 @@ export interface FileLoader {
      * Set to -1 for unlimited size.
      */
     max_size: number
+    /**
+     * The maximum content size, in bytes. Keep in mind that all the
+     * content is loaded in memory, and when loaded into a #GtkTextBuffer
+     * it takes more memory than just the content size.
+     * 
+     * Set to -1 for unlimited size.
+     */
+    maxSize: number
 
     // Own fields of Gtef-2.Gtef.FileLoader
 
@@ -1390,6 +1469,14 @@ export module FileSaver {
          * The newline type.
          */
         newline_type?: GtkSource.NewlineType | null
+        /**
+         * The compression type.
+         */
+        compressionType?: GtkSource.CompressionType | null
+        /**
+         * The newline type.
+         */
+        newlineType?: GtkSource.NewlineType | null
     }
 
 }
@@ -1407,6 +1494,10 @@ export interface FileSaver {
      * The compression type.
      */
     compression_type: GtkSource.CompressionType
+    /**
+     * The compression type.
+     */
+    compressionType: GtkSource.CompressionType
     /**
      * The file's encoding.
      */
@@ -1429,6 +1520,10 @@ export interface FileSaver {
      * The newline type.
      */
     newline_type: GtkSource.NewlineType
+    /**
+     * The newline type.
+     */
+    newlineType: GtkSource.NewlineType
 
     // Own fields of Gtef-2.Gtef.FileSaver
 
@@ -2085,6 +2180,10 @@ export module MenuShell {
          * The #GtkMenuShell.
          */
         menu_shell?: Gtk.MenuShell | null
+        /**
+         * The #GtkMenuShell.
+         */
+        menuShell?: Gtk.MenuShell | null
     }
 
 }
@@ -2097,6 +2196,10 @@ export interface MenuShell {
      * The #GtkMenuShell.
      */
     readonly menu_shell: Gtk.MenuShell
+    /**
+     * The #GtkMenuShell.
+     */
+    readonly menuShell: Gtk.MenuShell
 
     // Own fields of Gtef-2.Gtef.MenuShell
 

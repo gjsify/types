@@ -386,6 +386,10 @@ export interface AvatarFormat {
      */
     readonly mime_types: string[]
     /**
+     * The allowed mime-types for the avatar.
+     */
+    readonly mimeTypes: string[]
+    /**
      * The required width (in pixels) of the avatar.
      */
     readonly width: number
@@ -1279,6 +1283,10 @@ export module DeviceLinkFilter {
          * The operating system to be deployed
          */
         target_filter?: Filter | null
+        /**
+         * The operating system to be deployed
+         */
+        targetFilter?: Filter | null
     }
 
 }
@@ -1291,6 +1299,10 @@ export interface DeviceLinkFilter {
      * The operating system to be deployed
      */
     readonly target_filter: Filter
+    /**
+     * The operating system to be deployed
+     */
+    readonly targetFilter: Filter
 
     // Own fields of Libosinfo-1.0.Libosinfo.DeviceLinkFilter
 
@@ -2043,6 +2055,10 @@ export module Image {
          * The URL to this image.
          */
         url?: string | null
+        /**
+         * Whether the image supports cloud-init customizations or not.
+         */
+        cloudInit?: string | null
     }
 
 }
@@ -2059,6 +2075,10 @@ export interface Image {
      * Whether the image supports cloud-init customizations or not.
      */
     cloud_init: string | null
+    /**
+     * Whether the image supports cloud-init customizations or not.
+     */
+    cloudInit: string | null
     /**
      * The image format.
      */
@@ -2501,6 +2521,11 @@ export module InstallConfigParam {
          * configuration parameter
          */
         value_map?: Datamap | null
+        /**
+         * The mapping between generic values and OS-specific values for this
+         * configuration parameter
+         */
+        valueMap?: Datamap | null
     }
 
 }
@@ -2522,6 +2547,11 @@ export interface InstallConfigParam {
      * configuration parameter
      */
     value_map: Datamap
+    /**
+     * The mapping between generic values and OS-specific values for this
+     * configuration parameter
+     */
+    valueMap: Datamap
 
     // Own fields of Libosinfo-1.0.Libosinfo.InstallConfigParam
 
@@ -2654,6 +2684,9 @@ export module InstallScript {
         profile?: string | null
         template_data?: string | null
         template_uri?: string | null
+        preferredInjectionMethod?: InstallScriptInjectionMethod | null
+        templateData?: string | null
+        templateUri?: string | null
     }
 
 }
@@ -2663,13 +2696,20 @@ export interface InstallScript {
     // Own properties of Libosinfo-1.0.Libosinfo.InstallScript
 
     readonly avatar_format: AvatarFormat
+    readonly avatarFormat: AvatarFormat
     readonly installation_source: InstallScriptInstallationSource
+    readonly installationSource: InstallScriptInstallationSource
     readonly path_format: PathFormat
+    readonly pathFormat: PathFormat
     preferred_injection_method: InstallScriptInjectionMethod
+    preferredInjectionMethod: InstallScriptInjectionMethod
     readonly product_key_format: string | null
+    readonly productKeyFormat: string | null
     readonly profile: string | null
     readonly template_data: string | null
+    readonly templateData: string | null
     readonly template_uri: string | null
+    readonly templateUri: string | null
 
     // Own fields of Libosinfo-1.0.Libosinfo.InstallScript
 
@@ -3305,6 +3345,12 @@ export module List {
          * the specified type.
          */
         element_type?: GObject.GType | null
+        /**
+         * The specialization of the list. The list will be
+         * restricted to storing #OsinfoEntity objects of
+         * the specified type.
+         */
+        elementType?: GObject.GType | null
     }
 
 }
@@ -3319,6 +3365,12 @@ export interface List {
      * the specified type.
      */
     readonly element_type: GObject.GType
+    /**
+     * The specialization of the list. The list will be
+     * restricted to storing #OsinfoEntity objects of
+     * the specified type.
+     */
+    readonly elementType: GObject.GType
 
     // Own fields of Libosinfo-1.0.Libosinfo.List
 
@@ -3623,6 +3675,63 @@ export module Media {
          * Expected volume size, in bytes for ISO9660 image/device.
          */
         volume_size?: number | null
+        /**
+         * Expected application ID (regular expression) for ISO9660 image/device.
+         */
+        applicationId?: string | null
+        /**
+         * Whether the media should be ejected after the installation process.
+         * 
+         * Some distros need their media to not be ejected after the final reboot
+         * during its installation process as some packages are installed after the
+         * reboot (which may cause the media to be ejected, depending on the
+         * application).
+         */
+        ejectAfterInstall?: boolean | null
+        /**
+         * The path to the initrd image in the install tree.
+         */
+        initrdPath?: string | null
+        /**
+         * If media is an installer, this property indicates the number of reboots
+         * the installer takes before installation is complete.
+         * 
+         * This property is not applicable to media that has no installer. You can
+         * use #osinfo_media_get_installer(or OsinfoMedia::installer) to check
+         * that.
+         * 
+         * Warning: Some media allow you to install from live sessions, in which
+         * case number of reboots *alone* is not a reliable method for tracking
+         * installation.
+         */
+        installerReboots?: number | null
+        /**
+         * Whether the media supports installation via an install-script.
+         * 
+         * Some distros provide a few different medias and not all the medias support
+         * installation via an install script.
+         */
+        installerScript?: boolean | null
+        /**
+         * The path to the kernel image in the install tree.
+         */
+        kernelPath?: string | null
+        /**
+         * Expected publisher ID (regular expression) for ISO9660 image/device.
+         */
+        publisherId?: string | null
+        /**
+         * Expected system ID (regular expression) for ISO9660 image/device.
+         */
+        systemId?: string | null
+        /**
+         * Expected volume ID (regular expression) for ISO9660 image/device.
+         */
+        volumeId?: string | null
+        /**
+         * Expected volume size, in bytes for ISO9660 image/device.
+         */
+        volumeSize?: number | null
     }
 
 }
@@ -3635,6 +3744,10 @@ export interface Media {
      * Expected application ID (regular expression) for ISO9660 image/device.
      */
     application_id: string | null
+    /**
+     * Expected application ID (regular expression) for ISO9660 image/device.
+     */
+    applicationId: string | null
     /**
      * The target hardware architecture of this media.
      */
@@ -3649,9 +3762,22 @@ export interface Media {
      */
     eject_after_install: boolean
     /**
+     * Whether the media should be ejected after the installation process.
+     * 
+     * Some distros need their media to not be ejected after the final reboot
+     * during its installation process as some packages are installed after the
+     * reboot (which may cause the media to be ejected, depending on the
+     * application).
+     */
+    ejectAfterInstall: boolean
+    /**
      * The path to the initrd image in the install tree.
      */
     initrd_path: string | null
+    /**
+     * The path to the initrd image in the install tree.
+     */
+    initrdPath: string | null
     /**
      * Whether media provides an installer for an OS.
      */
@@ -3670,6 +3796,19 @@ export interface Media {
      */
     installer_reboots: number
     /**
+     * If media is an installer, this property indicates the number of reboots
+     * the installer takes before installation is complete.
+     * 
+     * This property is not applicable to media that has no installer. You can
+     * use #osinfo_media_get_installer(or OsinfoMedia::installer) to check
+     * that.
+     * 
+     * Warning: Some media allow you to install from live sessions, in which
+     * case number of reboots *alone* is not a reliable method for tracking
+     * installation.
+     */
+    installerReboots: number
+    /**
      * Whether the media supports installation via an install-script.
      * 
      * Some distros provide a few different medias and not all the medias support
@@ -3677,9 +3816,20 @@ export interface Media {
      */
     installer_script: boolean
     /**
+     * Whether the media supports installation via an install-script.
+     * 
+     * Some distros provide a few different medias and not all the medias support
+     * installation via an install script.
+     */
+    installerScript: boolean
+    /**
      * The path to the kernel image in the install tree.
      */
     kernel_path: string | null
+    /**
+     * The path to the kernel image in the install tree.
+     */
+    kernelPath: string | null
     /**
      * If media is an installer, this property indicates the languages that
      * can be used during automatic installations.
@@ -3706,9 +3856,17 @@ export interface Media {
      */
     publisher_id: string | null
     /**
+     * Expected publisher ID (regular expression) for ISO9660 image/device.
+     */
+    publisherId: string | null
+    /**
      * Expected system ID (regular expression) for ISO9660 image/device.
      */
     system_id: string | null
+    /**
+     * Expected system ID (regular expression) for ISO9660 image/device.
+     */
+    systemId: string | null
     /**
      * The URL to this media.
      */
@@ -3718,9 +3876,17 @@ export interface Media {
      */
     volume_id: string | null
     /**
+     * Expected volume ID (regular expression) for ISO9660 image/device.
+     */
+    volumeId: string | null
+    /**
      * Expected volume size, in bytes for ISO9660 image/device.
      */
     volume_size: number
+    /**
+     * Expected volume size, in bytes for ISO9660 image/device.
+     */
+    volumeSize: number
 
     // Own fields of Libosinfo-1.0.Libosinfo.Media
 
@@ -4127,6 +4293,10 @@ export interface Os {
      */
     readonly cloud_image_username: string | null
     /**
+     * The username to be passed to the cloud-init program.
+     */
+    readonly cloudImageUsername: string | null
+    /**
      * The generic distro this OS belongs to, for example fedora, windows,
      * solaris, freebsd etc.
      */
@@ -4141,6 +4311,11 @@ export interface Os {
      * tree based installation of this OS.
      */
     readonly kernel_url_argument: string | null
+    /**
+     * The argument to be passed to kernel command line when performing a
+     * tree based installation of this OS.
+     */
+    readonly kernelUrlArgument: string | null
 
     // Own fields of Libosinfo-1.0.Libosinfo.Os
 
@@ -4993,6 +5168,10 @@ export interface Product {
      */
     readonly short_id: string | null
     /**
+     * The short ID of this product.
+     */
+    readonly shortId: string | null
+    /**
      * The Vendor of this product.
      */
     readonly vendor: string | null
@@ -5318,6 +5497,10 @@ export module Resources {
          * The amount of storage space in bytes.
          */
         storage?: number | null
+        /**
+         * The number of CPUs.
+         */
+        nCpus?: number | null
     }
 
 }
@@ -5338,6 +5521,10 @@ export interface Resources {
      * The number of CPUs.
      */
     n_cpus: number
+    /**
+     * The number of CPUs.
+     */
+    nCpus: number
     /**
      * The amount of Random Access Memory (RAM) in bytes.
      */
@@ -5623,6 +5810,38 @@ export module Tree {
          * The URL to this tree.
          */
         url?: string | null
+        /**
+         * The path to the boot ISO in the install tree
+         */
+        bootIsoPath?: string | null
+        /**
+         * Whether the tree has treeinfo or not
+         */
+        hasTreeinfo?: boolean | null
+        /**
+         * The path to the initrd image in the install tree.
+         */
+        initrdPath?: string | null
+        /**
+         * The path to the kernel image in the install tree.
+         */
+        kernelPath?: string | null
+        /**
+         * The treeinfo arch
+         */
+        treeinfoArch?: string | null
+        /**
+         * The treeinfo family
+         */
+        treeinfoFamily?: string | null
+        /**
+         * The treeinfo variant
+         */
+        treeinfoVariant?: string | null
+        /**
+         * The treeinfo version
+         */
+        treeinfoVersion?: string | null
     }
 
 }
@@ -5640,17 +5859,33 @@ export interface Tree {
      */
     boot_iso_path: string | null
     /**
+     * The path to the boot ISO in the install tree
+     */
+    bootIsoPath: string | null
+    /**
      * Whether the tree has treeinfo or not
      */
     has_treeinfo: boolean
+    /**
+     * Whether the tree has treeinfo or not
+     */
+    hasTreeinfo: boolean
     /**
      * The path to the initrd image in the install tree.
      */
     initrd_path: string | null
     /**
+     * The path to the initrd image in the install tree.
+     */
+    initrdPath: string | null
+    /**
      * The path to the kernel image in the install tree.
      */
     kernel_path: string | null
+    /**
+     * The path to the kernel image in the install tree.
+     */
+    kernelPath: string | null
     /**
      * Os information for the current tree. For tree stored in an
      * #OsinfoDb, it will be filled when the database is loaded, otherwise
@@ -5663,17 +5898,33 @@ export interface Tree {
      */
     treeinfo_arch: string | null
     /**
+     * The treeinfo arch
+     */
+    treeinfoArch: string | null
+    /**
      * The treeinfo family
      */
     treeinfo_family: string | null
+    /**
+     * The treeinfo family
+     */
+    treeinfoFamily: string | null
     /**
      * The treeinfo variant
      */
     treeinfo_variant: string | null
     /**
+     * The treeinfo variant
+     */
+    treeinfoVariant: string | null
+    /**
      * The treeinfo version
      */
     treeinfo_version: string | null
+    /**
+     * The treeinfo version
+     */
+    treeinfoVersion: string | null
     /**
      * The URL to this tree.
      */

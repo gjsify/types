@@ -289,6 +289,19 @@ export module Handle {
          * Flags from [flags`Rsvg`.HandleFlags].
          */
         flags?: HandleFlags | null
+        /**
+         * Base URI, to be used to resolve relative references for resources.  See the section
+         * "Security and locations of referenced files" for details.
+         */
+        baseUri?: string | null
+        /**
+         * Horizontal resolution in dots per inch.
+         */
+        dpiX?: number | null
+        /**
+         * Horizontal resolution in dots per inch.
+         */
+        dpiY?: number | null
     }
 
 }
@@ -303,6 +316,11 @@ export interface Handle {
      */
     base_uri: string | null
     /**
+     * Base URI, to be used to resolve relative references for resources.  See the section
+     * "Security and locations of referenced files" for details.
+     */
+    baseUri: string | null
+    /**
      * SVG's description.
      */
     readonly desc: string | null
@@ -313,7 +331,15 @@ export interface Handle {
     /**
      * Horizontal resolution in dots per inch.
      */
+    dpiX: number
+    /**
+     * Horizontal resolution in dots per inch.
+     */
     dpi_y: number
+    /**
+     * Horizontal resolution in dots per inch.
+     */
+    dpiY: number
     /**
      * Exact width, in pixels, of the rendered SVG before calling the size callback
      * as specified by [method`Rsvg`.Handle.set_size_callback].

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtkclutter-1.0)
 
 
-GJS TypeScript type definitions for GtkClutter-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+GJS TypeScript type definitions for GtkClutter-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 GTK clutter widget.
 

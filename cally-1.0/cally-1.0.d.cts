@@ -222,6 +222,9 @@ export interface Actor extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Actor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -428,6 +431,9 @@ export interface Clone extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Clone, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -636,6 +642,9 @@ export interface Group extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Group, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -842,6 +851,9 @@ export interface Rectangle extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Rectangle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -941,6 +953,9 @@ export interface Root {
     connect(sigName: "notify::accessible-name", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Root, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -1145,6 +1160,9 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
     connect(sigName: "notify::accessible-name", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Stage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -1353,6 +1371,9 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
     connect(sigName: "notify::accessible-name", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Text, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -1561,6 +1582,9 @@ export interface Texture extends Atk.Action, Atk.Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Texture, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void

@@ -692,6 +692,7 @@ export module MathFunction {
         name?: string | null
         n_params?: number | null
         closed?: boolean | null
+        nParams?: number | null
     }
 
 }
@@ -701,8 +702,10 @@ export interface MathFunction extends GObject.Object, MathExpression {
     // Own properties of GCalc-2.GCalc.MathFunction
 
     readonly param_types: ExpressionContainer
+    readonly paramTypes: ExpressionContainer
     name: string | null
     n_params: number
+    nParams: number
     closed: boolean
 
     // Owm methods of GCalc-2.GCalc.MathFunction
@@ -1756,6 +1759,7 @@ export interface ExpressionContainer extends Gio.ListModel {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of GCalc-2.GCalc.ExpressionContainer
 
@@ -3060,6 +3064,7 @@ export module Solver {
         // Own constructor properties of GCalc-2.GCalc.Solver
 
         equation_manager?: MathEquationManager | null
+        equationManager?: MathEquationManager | null
     }
 
 }
@@ -3069,6 +3074,7 @@ export interface Solver {
     // Own properties of GCalc-2.GCalc.Solver
 
     equation_manager: MathEquationManager
+    equationManager: MathEquationManager
 
     // Owm methods of GCalc-2.GCalc.Solver
 

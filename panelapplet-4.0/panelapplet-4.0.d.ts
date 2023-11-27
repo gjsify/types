@@ -137,6 +137,26 @@ module Applet {
          * The size hints set for the applet. See panel_applet_set_size_hints().
          */
         size_hints?: any | null
+        /**
+         * Whether the panel the applet is on is locked down.
+         */
+        lockedDown?: boolean | null
+        /**
+         * The GConf path to the per-instance settings of the applet.
+         * 
+         * This property gets set when the applet gets embedded.
+         */
+        prefsKey?: string | null
+        /**
+         * The GSettings path to the per-instance settings of the applet.
+         * 
+         * This property gets set when the applet gets embedded.
+         */
+        settingsPath?: string | null
+        /**
+         * The size hints set for the applet. See panel_applet_set_size_hints().
+         */
+        sizeHints?: any | null
     }
 
 }
@@ -154,6 +174,10 @@ interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
      */
     locked_down: boolean
     /**
+     * Whether the panel the applet is on is locked down.
+     */
+    lockedDown: boolean
+    /**
      * The #PanelAppletOrient of the applet.
      * 
      * This property gets set when the applet gets embedded, and can change
@@ -167,11 +191,23 @@ interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
      */
     prefs_key: string
     /**
+     * The GConf path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    prefsKey: string
+    /**
      * The GSettings path to the per-instance settings of the applet.
      * 
      * This property gets set when the applet gets embedded.
      */
     settings_path: string
+    /**
+     * The GSettings path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    settingsPath: string
     /**
      * The size of the panel the applet is on. For a horizontal panel, the
      * size if the height of the panel; for a vertical panel, the size is
@@ -185,6 +221,10 @@ interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
      * The size hints set for the applet. See panel_applet_set_size_hints().
      */
     size_hints: any
+    /**
+     * The size hints set for the applet. See panel_applet_set_size_hints().
+     */
+    sizeHints: any
 
     // Own fields of PanelApplet-4.0.PanelApplet.Applet
 

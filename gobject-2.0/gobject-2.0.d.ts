@@ -3057,6 +3057,22 @@ module Binding {
          * best performance.
          */
         target_property?: string | null
+        /**
+         * The name of the property of #GBinding:source that should be used
+         * as the source of the binding.
+         * 
+         * This should be in [canonical form][canonical-parameter-names] to get the
+         * best performance.
+         */
+        sourceProperty?: string | null
+        /**
+         * The name of the property of #GBinding:target that should be used
+         * as the target of the binding.
+         * 
+         * This should be in [canonical form][canonical-parameter-names] to get the
+         * best performance.
+         */
+        targetProperty?: string | null
     }
 
 }
@@ -3082,6 +3098,14 @@ interface Binding {
      */
     readonly source_property: string | null
     /**
+     * The name of the property of #GBinding:source that should be used
+     * as the source of the binding.
+     * 
+     * This should be in [canonical form][canonical-parameter-names] to get the
+     * best performance.
+     */
+    readonly sourceProperty: string | null
+    /**
      * The #GObject that should be used as the target of the binding
      */
     readonly target: Object
@@ -3093,6 +3117,14 @@ interface Binding {
      * best performance.
      */
     readonly target_property: string | null
+    /**
+     * The name of the property of #GBinding:target that should be used
+     * as the target of the binding.
+     * 
+     * This should be in [canonical form][canonical-parameter-names] to get the
+     * best performance.
+     */
+    readonly targetProperty: string | null
 
     // Owm methods of GObject-2.0.GObject.Binding
 
@@ -4901,6 +4933,10 @@ module SignalGroup {
          * The #GType of the target property.
          */
         target_type?: GType | null
+        /**
+         * The #GType of the target property.
+         */
+        targetType?: GType | null
     }
 
 }
@@ -4917,6 +4953,10 @@ interface SignalGroup {
      * The #GType of the target property.
      */
     readonly target_type: GType
+    /**
+     * The #GType of the target property.
+     */
+    readonly targetType: GType
 
     // Owm methods of GObject-2.0.GObject.SignalGroup
 

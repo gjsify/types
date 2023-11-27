@@ -266,6 +266,7 @@ interface ColumnModel extends GObject.Object {
 
     readonly name: string | null
     readonly data_type: GObject.GType
+    readonly dataType: GObject.GType
 
     // Owm methods of Vda-1.Vda.ColumnModel
 
@@ -369,7 +370,9 @@ interface Connection extends GObject.Object {
     readonly status: ConnectionStatus
     parameters: ConnectionParameters
     readonly is_opened: boolean
+    readonly isOpened: boolean
     readonly connection_string: string | null
+    readonly connectionString: string | null
 
     // Owm methods of Vda-1.Vda.Connection
 
@@ -610,6 +613,8 @@ module DataObject {
         database_connection?: Connection | null
         database_table_name?: string | null
         cancellable?: Gio.Cancellable | null
+        databaseConnection?: Connection | null
+        databaseTableName?: string | null
     }
 
 }
@@ -619,7 +624,9 @@ interface DataObject extends GObject.Object {
     // Own properties of Vda-1.Vda.DataObject
 
     database_connection: Connection
+    databaseConnection: Connection
     database_table_name: string | null
+    databaseTableName: string | null
     cancellable: Gio.Cancellable
 
     // Owm methods of Vda-1.Vda.DataObject
@@ -727,6 +734,7 @@ module DataCollection {
 
         database_connection?: Connection | null
         cancellable?: Gio.Cancellable | null
+        databaseConnection?: Connection | null
     }
 
 }
@@ -736,10 +744,14 @@ interface DataCollection extends GObject.Object {
     // Own properties of Vda-1.Vda.DataCollection
 
     database_connection: Connection
+    databaseConnection: Connection
     readonly parent_property: string | null
+    readonly parentProperty: string | null
     readonly parent: DataObject
     readonly object_type: GObject.GType
+    readonly objectType: GObject.GType
     readonly ref_field: string | null
+    readonly refField: string | null
     cancellable: Gio.Cancellable
 
     // Owm methods of Vda-1.Vda.DataCollection
@@ -866,6 +878,7 @@ interface Inserted extends GObject.Object, Result {
 
     readonly number: number
     readonly last_inserted: RowModel
+    readonly lastInserted: RowModel
 
     // Owm methods of Vda-1.Vda.Inserted
 
@@ -1194,6 +1207,7 @@ interface RowModel extends GObject.Object, Gio.ListModel {
     // Own properties of Vda-1.Vda.RowModel
 
     readonly n_columns: number
+    readonly nColumns: number
 
     // Owm methods of Vda-1.Vda.RowModel
 
@@ -1875,6 +1889,7 @@ module SqlExpressionField {
         table_ref?: string | null
         name?: string | null
         allias?: string | null
+        tableRef?: string | null
     }
 
 }
@@ -1884,6 +1899,7 @@ interface SqlExpressionField extends GObject.Object, SqlExpression {
     // Own properties of Vda-1.Vda.SqlExpressionField
 
     table_ref: string | null
+    tableRef: string | null
     name: string | null
     allias: string | null
 
@@ -1949,6 +1965,7 @@ interface SqlExpressionOperator extends GObject.Object, SqlExpression {
     // Own properties of Vda-1.Vda.SqlExpressionOperator
 
     readonly operator_type: SqlExpressionOperatorType
+    readonly operatorType: SqlExpressionOperatorType
 
     // Owm methods of Vda-1.Vda.SqlExpressionOperator
 
@@ -6412,6 +6429,7 @@ interface Expression extends Gio.ListModel, SqlExpression {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Vda-1.Vda.Expression
 
@@ -6544,6 +6562,7 @@ interface ExpressionField extends SqlExpressionField {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -6678,6 +6697,7 @@ interface ExpressionOperator extends SqlExpressionOperator {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperator
 
@@ -6810,6 +6830,7 @@ interface ExpressionOperatorGroup extends SqlExpressionOperatorGroup {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -6939,6 +6960,7 @@ interface ExpressionOperatorMultiterm extends SqlExpressionOperatorMultiterm {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorMultiterm
 
@@ -7072,6 +7094,7 @@ interface ExpressionOperatorAnd extends SqlExpressionOperatorAnd {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7202,6 +7225,7 @@ interface ExpressionOperatorOr extends SqlExpressionOperatorOr {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7332,6 +7356,7 @@ interface ExpressionOperatorBinaryterm extends SqlExpressionOperatorBinaryterm {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorBinaryterm
 
@@ -7465,6 +7490,7 @@ interface ExpressionOperatorEq extends SqlExpressionOperatorEq {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7595,6 +7621,7 @@ interface ExpressionOperatorNotEq extends SqlExpressionOperatorNotEq {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7725,6 +7752,7 @@ interface ExpressionOperatorDiff extends SqlExpressionOperatorDiff {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7855,6 +7883,7 @@ interface ExpressionOperatorGt extends SqlExpressionOperatorGt {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -7985,6 +8014,7 @@ interface ExpressionOperatorLt extends SqlExpressionOperatorLt {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8115,6 +8145,7 @@ interface ExpressionOperatorGeq extends SqlExpressionOperatorGeq {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8245,6 +8276,7 @@ interface ExpressionOperatorLeq extends SqlExpressionOperatorLeq {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8375,6 +8407,7 @@ interface ExpressionOperatorRegexp extends SqlExpressionOperatorRegexp {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8505,6 +8538,7 @@ interface ExpressionOperatorStar extends SqlExpressionOperatorStar {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8635,6 +8669,7 @@ interface ExpressionOperatorDiv extends SqlExpressionOperatorDiv {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8765,6 +8800,7 @@ interface ExpressionOperatorIn extends SqlExpressionOperatorIn {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -8895,6 +8931,7 @@ interface ExpressionOperatorNotIn extends SqlExpressionOperatorNotIn {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9025,6 +9062,7 @@ interface ExpressionOperatorConcatenate extends SqlExpressionOperatorConcatenate
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9155,6 +9193,7 @@ interface ExpressionOperatorSimilarTo extends SqlExpressionOperatorSimilarTo {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9285,6 +9324,7 @@ interface ExpressionOperatorLike extends SqlExpressionOperatorLike {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9415,6 +9455,7 @@ interface ExpressionOperatorNotLike extends SqlExpressionOperatorNotLike {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9545,6 +9586,7 @@ interface ExpressionOperatorIlike extends SqlExpressionOperatorIlike {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9675,6 +9717,7 @@ interface ExpressionOperatorNotIlike extends SqlExpressionOperatorNotIlike {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -9805,6 +9848,7 @@ interface ExpressionOperatorBinaryUnaryterm extends SqlExpressionOperatorBinaryU
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorBinaryUnaryterm
 
@@ -9938,6 +9982,7 @@ interface ExpressionOperatorMinus extends SqlExpressionOperatorMinus {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10068,6 +10113,7 @@ interface ExpressionOperatorPlus extends SqlExpressionOperatorPlus {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10198,6 +10244,7 @@ interface ExpressionOperatorInitialUnaryterm extends SqlExpressionOperatorInitia
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorInitialUnaryterm
 
@@ -10331,6 +10378,7 @@ interface ExpressionOperatorNot extends SqlExpressionOperatorNot {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10461,6 +10509,7 @@ interface ExpressionOperatorFinalUnaryterm extends SqlExpressionOperatorFinalUna
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorFinalUnaryterm
 
@@ -10594,6 +10643,7 @@ interface ExpressionOperatorIs extends SqlExpressionOperatorIs {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10724,6 +10774,7 @@ interface ExpressionOperatorIsNot extends SqlExpressionOperatorIsNot {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10855,6 +10906,7 @@ interface ExpressionOperatorIsNull extends SqlExpressionOperatorIsNull {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -10986,6 +11038,7 @@ interface ExpressionOperatorIsNotNull extends SqlExpressionOperatorIsNotNull {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11118,6 +11171,7 @@ interface ExpressionOperatorIsTrue extends SqlExpressionOperatorIsTrue {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11249,6 +11303,7 @@ interface ExpressionOperatorIsNotTrue extends SqlExpressionOperatorIsNotTrue {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11381,6 +11436,7 @@ interface ExpressionOperatorIsFalse extends SqlExpressionOperatorIsFalse {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11512,6 +11568,7 @@ interface ExpressionOperatorIsNotFalse extends SqlExpressionOperatorIsNotFalse {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11644,6 +11701,7 @@ interface ExpressionOperatorIsNotUnknown extends SqlExpressionOperatorIsNotUnkno
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11776,6 +11834,7 @@ interface ExpressionOperatorIsUnknown extends SqlExpressionOperatorIsUnknown {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -11907,6 +11966,7 @@ interface ExpressionOperatorIsDistinct extends SqlExpressionOperatorIsDistinct {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12037,6 +12097,7 @@ interface ExpressionOperatorIsNotDistinct extends SqlExpressionOperatorIsNotDist
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12168,6 +12229,7 @@ interface ExpressionOperatorIsDistinctFrom extends SqlExpressionOperatorIsDistin
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12299,6 +12361,7 @@ interface ExpressionOperatorIsNotDistinctFrom extends SqlExpressionOperatorIsNot
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12431,6 +12494,7 @@ interface ExpressionOperatorThreeterm extends SqlExpressionOperatorThreeterm {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Vda-1.Vda.ExpressionOperatorThreeterm
 
@@ -12565,6 +12629,7 @@ interface ExpressionOperatorBetween extends SqlExpressionOperatorBetween {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12695,6 +12760,7 @@ interface ExpressionOperatorBetweenAnd extends SqlExpressionOperatorBetweenAnd {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12826,6 +12892,7 @@ interface ExpressionOperatorNotBetween extends SqlExpressionOperatorNotBetween {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -12957,6 +13024,7 @@ interface ExpressionOperatorNotBetweenAnd extends SqlExpressionOperatorNotBetwee
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13089,6 +13157,7 @@ interface ExpressionOperatorBetweenSymmetric extends SqlExpressionOperatorBetwee
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13220,6 +13289,7 @@ interface ExpressionOperatorBetweenSymmetricAnd extends SqlExpressionOperatorBet
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13352,6 +13422,7 @@ interface ExpressionOperatorNotBetweenSymmetric extends SqlExpressionOperatorNot
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13484,6 +13555,7 @@ interface ExpressionOperatorNotBetweenSymmetricAnd extends SqlExpressionOperator
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13617,6 +13689,7 @@ interface ExpressionValue extends SqlExpressionValue {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13748,6 +13821,7 @@ interface ExpressionValueParameter extends SqlExpressionValueParameter {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -13889,6 +13963,7 @@ interface HashList extends Gio.ListModel, HashModel {
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 

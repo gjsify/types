@@ -408,6 +408,10 @@ export module PluginManagerView {
          * If builtin plugins should be shown.
          */
         show_builtin?: boolean | null
+        /**
+         * If builtin plugins should be shown.
+         */
+        showBuiltin?: boolean | null
     }
 
 }
@@ -421,6 +425,10 @@ export interface PluginManagerView extends Atk.ImplementorIface, Gtk.Buildable, 
      * If builtin plugins should be shown.
      */
     show_builtin: boolean
+    /**
+     * If builtin plugins should be shown.
+     */
+    showBuiltin: boolean
 
     // Own fields of PeasGtk-1.0.PeasGtk.PluginManagerView
 

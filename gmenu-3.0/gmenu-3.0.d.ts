@@ -68,6 +68,17 @@ module Tree {
          * ignored.
          */
         menu_path?: string | null
+        /**
+         * The name of the menu file; must be a basename or a relative path. The file
+         * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
+         * specification.
+         */
+        menuBasename?: string | null
+        /**
+         * The full path of the menu file. If set, GMenuTree:menu-basename will get
+         * ignored.
+         */
+        menuPath?: string | null
     }
 
 }
@@ -87,10 +98,21 @@ interface Tree {
      */
     readonly menu_basename: string | null
     /**
+     * The name of the menu file; must be a basename or a relative path. The file
+     * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
+     * specification.
+     */
+    readonly menuBasename: string | null
+    /**
      * The full path of the menu file. If set, GMenuTree:menu-basename will get
      * ignored.
      */
     readonly menu_path: string | null
+    /**
+     * The full path of the menu file. If set, GMenuTree:menu-basename will get
+     * ignored.
+     */
+    readonly menuPath: string | null
 
     // Owm methods of GMenu-3.0.GMenu.Tree
 

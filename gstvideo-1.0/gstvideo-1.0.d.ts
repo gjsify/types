@@ -4376,6 +4376,7 @@ module VideoDirection {
         // Own constructor properties of GstVideo-1.0.GstVideo.VideoDirection
 
         video_direction?: VideoOrientationMethod | null
+        videoDirection?: VideoOrientationMethod | null
     }
 
 }
@@ -4385,6 +4386,7 @@ interface VideoDirection {
     // Own properties of GstVideo-1.0.GstVideo.VideoDirection
 
     video_direction: VideoOrientationMethod
+    videoDirection: VideoOrientationMethod
 
     // Class property signals of GstVideo-1.0.GstVideo.VideoDirection
 
@@ -5061,6 +5063,13 @@ module VideoAggregator {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          */
         force_live?: boolean | null
+        /**
+         * Causes the element to aggregate on a timeout even when no live source is
+         * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+         * companion property: in the vast majority of cases where you plan to plug in
+         * live sources with a non-zero latency, you should set it to a non-zero value.
+         */
+        forceLive?: boolean | null
     }
 
 }
@@ -5076,6 +5085,13 @@ interface VideoAggregator {
      * live sources with a non-zero latency, you should set it to a non-zero value.
      */
     readonly force_live: boolean
+    /**
+     * Causes the element to aggregate on a timeout even when no live source is
+     * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+     * companion property: in the vast majority of cases where you plan to plug in
+     * live sources with a non-zero latency, you should set it to a non-zero value.
+     */
+    readonly forceLive: boolean
 
     // Conflicting properties
 
@@ -5209,6 +5225,7 @@ module VideoAggregatorConvertPad {
         // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
 
         converter_config?: Gst.Structure | null
+        converterConfig?: Gst.Structure | null
     }
 
 }
@@ -5218,6 +5235,7 @@ interface VideoAggregatorConvertPad {
     // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
 
     converter_config: Gst.Structure
+    converterConfig: Gst.Structure
 
     // Conflicting properties
 
@@ -5335,6 +5353,8 @@ module VideoAggregatorPad {
         max_last_buffer_repeat?: number | null
         repeat_after_eos?: boolean | null
         zorder?: number | null
+        maxLastBufferRepeat?: number | null
+        repeatAfterEos?: boolean | null
     }
 
 }
@@ -5344,7 +5364,9 @@ interface VideoAggregatorPad {
     // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPad
 
     max_last_buffer_repeat: number
+    maxLastBufferRepeat: number
     repeat_after_eos: boolean
+    repeatAfterEos: boolean
     zorder: number
 
     // Conflicting properties
@@ -5750,6 +5772,36 @@ module VideoDecoder {
          * using the metrics reported by those events.
          */
         qos?: boolean | null
+        /**
+         * GstVideoDecoderRequestSyncPointFlags to use for the automatically
+         * requested sync points if `automatic-request-sync-points` is enabled.
+         */
+        automaticRequestSyncPointFlags?: VideoDecoderRequestSyncPointFlags | null
+        /**
+         * If set to %TRUE the decoder will automatically request sync points when
+         * it seems like a good idea, e.g. if the first frames are not key frames or
+         * if packet loss was reported by upstream.
+         */
+        automaticRequestSyncPoints?: boolean | null
+        /**
+         * If set to %TRUE the decoder will discard frames that are marked as
+         * corrupted instead of outputting them.
+         */
+        discardCorruptedFrames?: boolean | null
+        /**
+         * Maximum number of tolerated consecutive decode errors. See
+         * gst_video_decoder_set_max_errors() for more details.
+         */
+        maxErrors?: number | null
+        /**
+         * Minimum interval between force-key-unit events sent upstream by the
+         * decoder. Setting this to 0 will cause every event to be handled, setting
+         * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
+         * 
+         * See gst_video_event_new_upstream_force_key_unit() for more details about
+         * force-key-unit events.
+         */
+        minForceKeyUnitInterval?: number | null
     }
 
 }
@@ -5764,21 +5816,42 @@ interface VideoDecoder {
      */
     automatic_request_sync_point_flags: VideoDecoderRequestSyncPointFlags
     /**
+     * GstVideoDecoderRequestSyncPointFlags to use for the automatically
+     * requested sync points if `automatic-request-sync-points` is enabled.
+     */
+    automaticRequestSyncPointFlags: VideoDecoderRequestSyncPointFlags
+    /**
      * If set to %TRUE the decoder will automatically request sync points when
      * it seems like a good idea, e.g. if the first frames are not key frames or
      * if packet loss was reported by upstream.
      */
     automatic_request_sync_points: boolean
     /**
+     * If set to %TRUE the decoder will automatically request sync points when
+     * it seems like a good idea, e.g. if the first frames are not key frames or
+     * if packet loss was reported by upstream.
+     */
+    automaticRequestSyncPoints: boolean
+    /**
      * If set to %TRUE the decoder will discard frames that are marked as
      * corrupted instead of outputting them.
      */
     discard_corrupted_frames: boolean
     /**
+     * If set to %TRUE the decoder will discard frames that are marked as
+     * corrupted instead of outputting them.
+     */
+    discardCorruptedFrames: boolean
+    /**
      * Maximum number of tolerated consecutive decode errors. See
      * gst_video_decoder_set_max_errors() for more details.
      */
     max_errors: number
+    /**
+     * Maximum number of tolerated consecutive decode errors. See
+     * gst_video_decoder_set_max_errors() for more details.
+     */
+    maxErrors: number
     /**
      * Minimum interval between force-key-unit events sent upstream by the
      * decoder. Setting this to 0 will cause every event to be handled, setting
@@ -5788,6 +5861,15 @@ interface VideoDecoder {
      * force-key-unit events.
      */
     min_force_key_unit_interval: number
+    /**
+     * Minimum interval between force-key-unit events sent upstream by the
+     * decoder. Setting this to 0 will cause every event to be handled, setting
+     * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
+     * 
+     * See gst_video_event_new_upstream_force_key_unit() for more details about
+     * force-key-unit events.
+     */
+    minForceKeyUnitInterval: number
     /**
      * If set to %TRUE the decoder will handle QoS events received
      * from downstream elements.
@@ -6398,6 +6480,11 @@ module VideoEncoder {
          */
         min_force_key_unit_interval?: number | null
         qos?: boolean | null
+        /**
+         * Minimum interval between force-keyunit requests in nanoseconds. See
+         * gst_video_encoder_set_min_force_key_unit_interval() for more details.
+         */
+        minForceKeyUnitInterval?: number | null
     }
 
 }
@@ -6411,6 +6498,11 @@ interface VideoEncoder extends Gst.Preset {
      * gst_video_encoder_set_min_force_key_unit_interval() for more details.
      */
     min_force_key_unit_interval: number
+    /**
+     * Minimum interval between force-keyunit requests in nanoseconds. See
+     * gst_video_encoder_set_min_force_key_unit_interval() for more details.
+     */
+    minForceKeyUnitInterval: number
     qos: boolean
 
     // Conflicting properties
@@ -6917,6 +7009,11 @@ module VideoSink {
          * frames will only be rendered in PLAYING state.
          */
         show_preroll_frame?: boolean | null
+        /**
+         * Whether to show video frames during preroll. If set to %FALSE, video
+         * frames will only be rendered in PLAYING state.
+         */
+        showPrerollFrame?: boolean | null
     }
 
 }
@@ -6930,6 +7027,11 @@ interface VideoSink {
      * frames will only be rendered in PLAYING state.
      */
     show_preroll_frame: boolean
+    /**
+     * Whether to show video frames during preroll. If set to %FALSE, video
+     * frames will only be rendered in PLAYING state.
+     */
+    showPrerollFrame: boolean
 
     // Conflicting properties
 

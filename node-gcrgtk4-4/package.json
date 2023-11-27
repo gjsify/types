@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gcrgtk4-4",
-    "version": "4.0.0-3.2.5",
+    "version": "4.0.0-3.2.6",
     "description": "Node.js TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0",
     "type": "module",
     "module": "node-gcrgtk4-4.js",

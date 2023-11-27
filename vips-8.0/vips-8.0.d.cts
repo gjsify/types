@@ -3205,6 +3205,7 @@ export module ForeignLoad {
         memory?: boolean | null
         out?: Image | null
         sequential?: boolean | null
+        failOn?: FailOn | null
     }
 
 }
@@ -3216,6 +3217,7 @@ export interface ForeignLoad {
     access: Access
     fail: boolean
     fail_on: FailOn
+    failOn: FailOn
     flags: ForeignFlags
     memory: boolean
     sequential: boolean
@@ -3299,6 +3301,7 @@ export module ForeignSave {
         "in"?: Image | null
         page_height?: number | null
         strip?: boolean | null
+        pageHeight?: number | null
     }
 
 }
@@ -3308,6 +3311,7 @@ export interface ForeignSave {
     // Own properties of Vips-8.0.Vips.ForeignSave
 
     "in": Image
+    pageHeight: number
 
     // Conflicting properties
 
@@ -3327,6 +3331,9 @@ export interface ForeignSave {
     connect(sigName: "notify::in", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::in", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::in", ...args: any[]): void
+    connect(sigName: "notify::page-height", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::page-height", callback: (($obj: ForeignSave, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::page-height", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3415,6 +3422,8 @@ export module Image {
         xres?: number | null
         yoffset?: number | null
         yres?: number | null
+        foreignBuffer?: any | null
+        sizeofHeader?: number | null
     }
 
 }
@@ -3428,12 +3437,14 @@ export interface Image {
     demand: DemandStyle
     filename: string | null
     foreign_buffer: any
+    foreignBuffer: any
     format: BandFormat
     height: number
     interpretation: Interpretation
     kill: boolean
     mode: string | null
     sizeof_header: number
+    sizeofHeader: number
     width: number
     xoffset: number
     xres: number

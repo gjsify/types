@@ -2032,6 +2032,7 @@ export module Framebuffer {
         driver_config?: any | null
         height?: number | null
         width?: number | null
+        driverConfig?: any | null
     }
 
 }
@@ -2041,6 +2042,7 @@ export interface Framebuffer {
     // Own properties of Cogl-11.Cogl.Framebuffer
 
     readonly driver_config: any
+    readonly driverConfig: any
     height: number
     width: number
 

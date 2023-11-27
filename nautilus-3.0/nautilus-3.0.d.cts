@@ -373,6 +373,7 @@ export module Column {
         label?: string | null
         name?: string | null
         xalign?: number | null
+        defaultSortOrder?: Gtk.SortType | null
     }
 
 }
@@ -383,7 +384,9 @@ export interface Column {
 
     attribute: string | null
     readonly attribute_q: number
+    readonly attributeQ: number
     default_sort_order: Gtk.SortType
+    defaultSortOrder: Gtk.SortType
     description: string | null
     label: string | null
     readonly name: string | null

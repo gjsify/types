@@ -84,6 +84,12 @@ module App {
          * automatically given.
          */
         startup_id?: string | null
+        /**
+         * The startup notification id, needed to complete the startup
+         * notification sequence. If not set, a default id will be
+         * automatically given.
+         */
+        startupId?: string | null
     }
 
 }
@@ -96,6 +102,10 @@ interface App {
      * Whether another instance of the application is running.
      */
     readonly is_running: boolean
+    /**
+     * Whether another instance of the application is running.
+     */
+    readonly isRunning: boolean
     /**
      * The unique name of the application. It must be in form of
      * a domain-like string, like <literal>org.gnome.MyApplication</literal>.
@@ -111,6 +121,12 @@ interface App {
      * automatically given.
      */
     readonly startup_id: string
+    /**
+     * The startup notification id, needed to complete the startup
+     * notification sequence. If not set, a default id will be
+     * automatically given.
+     */
+    readonly startupId: string
 
     // Owm methods of Unique-3.0.Unique.App
 

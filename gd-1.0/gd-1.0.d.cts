@@ -72,6 +72,14 @@ export module HeaderButton {
          * Whether the label of the #GdHeaderButton object should use markup.
          */
         use_markup?: boolean | null
+        /**
+         * The symbolic icon name of the #GdHeaderButton object.
+         */
+        symbolicIconName?: string | null
+        /**
+         * Whether the label of the #GdHeaderButton object should use markup.
+         */
+        useMarkup?: boolean | null
     }
 
 }
@@ -89,9 +97,17 @@ export interface HeaderButton extends Gtk.Button {
      */
     symbolic_icon_name: string | null
     /**
+     * The symbolic icon name of the #GdHeaderButton object.
+     */
+    symbolicIconName: string | null
+    /**
      * Whether the label of the #GdHeaderButton object should use markup.
      */
     use_markup: boolean
+    /**
+     * Whether the label of the #GdHeaderButton object should use markup.
+     */
+    useMarkup: boolean
 
     // Owm methods of Gd-1.0.Gd.HeaderButton
 
@@ -523,6 +539,7 @@ export module HeaderBar {
         subtitle?: string | null
         title?: string | null
         vpadding?: number | null
+        customTitle?: Gtk.Widget | null
     }
 
 }
@@ -532,6 +549,7 @@ export interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Gd-1.0.Gd.HeaderBar
 
     custom_title: Gtk.Widget
+    customTitle: Gtk.Widget
     hpadding: number
     spacing: number
     subtitle: string | null
@@ -2541,6 +2559,7 @@ export module MainToolbar {
         // Own constructor properties of Gd-1.0.Gd.MainToolbar
 
         show_modes?: boolean | null
+        showModes?: boolean | null
     }
 
 }
@@ -2550,6 +2569,7 @@ export interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
     // Own properties of Gd-1.0.Gd.MainToolbar
 
     show_modes: boolean
+    showModes: boolean
 
     // Own fields of Gd-1.0.Gd.MainToolbar
 
@@ -2892,6 +2912,8 @@ export module MainView {
         model?: Gtk.TreeModel | null
         selection_mode?: boolean | null
         view_type?: number | null
+        selectionMode?: boolean | null
+        viewType?: number | null
     }
 
 }
@@ -2902,7 +2924,9 @@ export interface MainView extends Atk.ImplementorIface, Gtk.Buildable {
 
     model: Gtk.TreeModel
     selection_mode: boolean
+    selectionMode: boolean
     view_type: number
+    viewType: number
 
     // Conflicting properties
 
@@ -3208,6 +3232,8 @@ export module Revealer {
         orientation?: Gtk.Orientation | null
         reveal_child?: boolean | null
         transition_duration?: number | null
+        revealChild?: boolean | null
+        transitionDuration?: number | null
     }
 
 }
@@ -3217,9 +3243,12 @@ export interface Revealer extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Gd-1.0.Gd.Revealer
 
     readonly child_revealed: boolean
+    readonly childRevealed: boolean
     orientation: Gtk.Orientation
     reveal_child: boolean
+    revealChild: boolean
     transition_duration: number
+    transitionDuration: number
 
     // Own fields of Gd-1.0.Gd.Revealer
 
@@ -3450,6 +3479,10 @@ export module Stack {
         transition_type?: number | null
         visible_child?: Gtk.Widget | null
         visible_child_name?: string | null
+        transitionDuration?: number | null
+        transitionType?: number | null
+        visibleChild?: Gtk.Widget | null
+        visibleChildName?: string | null
     }
 
 }
@@ -3460,9 +3493,13 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
 
     homogeneous: boolean
     transition_duration: number
+    transitionDuration: number
     transition_type: number
+    transitionType: number
     visible_child: Gtk.Widget
+    visibleChild: Gtk.Widget
     visible_child_name: string | null
+    visibleChildName: string | null
 
     // Own fields of Gd-1.0.Gd.Stack
 
@@ -4208,6 +4245,7 @@ export module TaggedEntry {
         // Own constructor properties of Gd-1.0.Gd.TaggedEntry
 
         tag_close_visible?: boolean | null
+        tagCloseVisible?: boolean | null
     }
 
 }
@@ -4217,6 +4255,7 @@ export interface TaggedEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ce
     // Own properties of Gd-1.0.Gd.TaggedEntry
 
     tag_close_visible: boolean
+    tagCloseVisible: boolean
 
     // Own fields of Gd-1.0.Gd.TaggedEntry
 
@@ -4560,6 +4599,7 @@ export module TaggedEntryTag {
         has_close_button?: boolean | null
         label?: string | null
         style?: string | null
+        hasCloseButton?: boolean | null
     }
 
 }
@@ -4569,6 +4609,7 @@ export interface TaggedEntryTag {
     // Own properties of Gd-1.0.Gd.TaggedEntryTag
 
     has_close_button: boolean
+    hasCloseButton: boolean
     label: string | null
     style: string | null
 
@@ -4630,6 +4671,7 @@ export module TogglePixbufRenderer {
         active?: boolean | null
         pulse?: number | null
         toggle_visible?: boolean | null
+        toggleVisible?: boolean | null
     }
 
 }
@@ -4641,6 +4683,7 @@ export interface TogglePixbufRenderer {
     active: boolean
     pulse: number
     toggle_visible: boolean
+    toggleVisible: boolean
 
     // Own fields of Gd-1.0.Gd.TogglePixbufRenderer
 
@@ -4767,6 +4810,8 @@ export module TwoLinesRenderer {
 
         line_two?: string | null
         text_lines?: number | null
+        lineTwo?: string | null
+        textLines?: number | null
     }
 
 }
@@ -4776,7 +4821,9 @@ export interface TwoLinesRenderer {
     // Own properties of Gd-1.0.Gd.TwoLinesRenderer
 
     line_two: string | null
+    lineTwo: string | null
     text_lines: number
+    textLines: number
 
     // Own fields of Gd-1.0.Gd.TwoLinesRenderer
 

@@ -713,6 +713,22 @@ export module BookClientCursor {
          * </para></note>
          */
         sort_fields?: string[] | null
+        /**
+         * The D-Bus object path to find the server side cursor object.
+         * 
+         * <note><para>This is an internal parameter for constructing the
+         * cursor, to construct the cursor use e_book_client_get_cursor().
+         * </para></note>
+         */
+        objectPath?: string | null
+        /**
+         * The #EContactField names to sort this cursor with
+         * 
+         * <note><para>This is an internal parameter for constructing the
+         * cursor, to construct the cursor use e_book_client_get_cursor().
+         * </para></note>
+         */
+        sortFields?: string[] | null
     }
 
 }
@@ -768,6 +784,14 @@ export interface BookClientCursor extends Gio.Initable {
      */
     readonly object_path: string | null
     /**
+     * The D-Bus object path to find the server side cursor object.
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly objectPath: string | null
+    /**
      * The current cursor position in the cursor's result list.
      * 
      * More specifically, the cursor position is defined as
@@ -795,6 +819,14 @@ export interface BookClientCursor extends Gio.Initable {
      * </para></note>
      */
     readonly sort_fields: string[]
+    /**
+     * The #EContactField names to sort this cursor with
+     * 
+     * <note><para>This is an internal parameter for constructing the
+     * cursor, to construct the cursor use e_book_client_get_cursor().
+     * </para></note>
+     */
+    readonly sortFields: string[]
     /**
      * The total number of contacts which satisfy the cursor's query.
      * 
@@ -1137,6 +1169,7 @@ export module BookClientView {
         client?: BookClient | null
         connection?: Gio.DBusConnection | null
         object_path?: string | null
+        objectPath?: string | null
     }
 
 }
@@ -1162,7 +1195,14 @@ export interface BookClientView extends Gio.Initable {
      * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
      */
     readonly n_total: number
+    /**
+     * How many contacts are available in the view.
+     * 
+     * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+     */
+    readonly nTotal: number
     readonly object_path: string | null
+    readonly objectPath: string | null
 
     // Owm methods of EBook-1.2.EBook.BookClientView
 

@@ -499,8 +499,11 @@ export interface BGSlideShow {
 
     readonly file: Gio.File
     readonly has_multiple_sizes: boolean
+    readonly hasMultipleSizes: boolean
     readonly start_time: number
+    readonly startTime: number
     readonly total_duration: number
+    readonly totalDuration: number
 
     // Own fields of GnomeDesktop-3.0.GnomeDesktop.BGSlideShow
 
@@ -1088,6 +1091,8 @@ export module RRScreen {
 
         dpms_mode?: RRDpmsModeType | null
         gdk_screen?: Gdk.Screen | null
+        dpmsMode?: RRDpmsModeType | null
+        gdkScreen?: Gdk.Screen | null
     }
 
 }
@@ -1097,7 +1102,9 @@ export interface RRScreen extends Gio.AsyncInitable, Gio.Initable {
     // Own properties of GnomeDesktop-3.0.GnomeDesktop.RRScreen
 
     dpms_mode: RRDpmsModeType
+    dpmsMode: RRDpmsModeType
     readonly gdk_screen: Gdk.Screen
+    readonly gdkScreen: Gdk.Screen
 
     // Own fields of GnomeDesktop-3.0.GnomeDesktop.RRScreen
 
@@ -1222,6 +1229,17 @@ export module WallClock {
          * day of the week, irrespective of configuration.
          */
         time_only?: boolean | null
+        /**
+         * If %TRUE, the formatted clock will always have seconds precision and the
+         * 'clock' property will always be updated every second, irrespective of
+         * system configuration.
+         */
+        forceSeconds?: boolean | null
+        /**
+         * If %TRUE, the formatted clock will never include a date or the
+         * day of the week, irrespective of configuration.
+         */
+        timeOnly?: boolean | null
     }
 
 }
@@ -1241,10 +1259,21 @@ export interface WallClock {
      */
     force_seconds: boolean
     /**
+     * If %TRUE, the formatted clock will always have seconds precision and the
+     * 'clock' property will always be updated every second, irrespective of
+     * system configuration.
+     */
+    forceSeconds: boolean
+    /**
      * If %TRUE, the formatted clock will never include a date or the
      * day of the week, irrespective of configuration.
      */
     time_only: boolean
+    /**
+     * If %TRUE, the formatted clock will never include a date or the
+     * day of the week, irrespective of configuration.
+     */
+    timeOnly: boolean
     /**
      * The timezone used for this clock
      */

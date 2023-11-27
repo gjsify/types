@@ -1443,6 +1443,7 @@ module GLBaseSrc {
         // Own constructor properties of GstGL-1.0.GstGL.GLBaseSrc
 
         timestamp_offset?: number | null
+        timestampOffset?: number | null
     }
 
 }
@@ -1452,6 +1453,7 @@ interface GLBaseSrc {
     // Own properties of GstGL-1.0.GstGL.GLBaseSrc
 
     timestamp_offset: number
+    timestampOffset: number
 
     // Conflicting properties
 
@@ -1595,6 +1597,9 @@ interface GLBaseSrc {
     connect(sigName: "notify::do-timestamp", callback: (($obj: GLBaseSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: GLBaseSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: GLBaseSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: GLBaseSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -4292,11 +4297,24 @@ module GLViewConvert {
         input_mode_override?: GstVideo.VideoMultiviewMode | null
         output_flags_override?: GstVideo.VideoMultiviewFlags | null
         output_mode_override?: GstVideo.VideoMultiviewMode | null
+        downmixMode?: GLStereoDownmix | null
+        inputFlagsOverride?: GstVideo.VideoMultiviewFlags | null
+        inputModeOverride?: GstVideo.VideoMultiviewMode | null
+        outputFlagsOverride?: GstVideo.VideoMultiviewFlags | null
+        outputModeOverride?: GstVideo.VideoMultiviewMode | null
     }
 
 }
 
 interface GLViewConvert {
+
+    // Own properties of GstGL-1.0.GstGL.GLViewConvert
+
+    downmixMode: GLStereoDownmix
+    inputFlagsOverride: GstVideo.VideoMultiviewFlags
+    inputModeOverride: GstVideo.VideoMultiviewMode
+    outputFlagsOverride: GstVideo.VideoMultiviewFlags
+    outputModeOverride: GstVideo.VideoMultiviewMode
 
     // Own fields of GstGL-1.0.GstGL.GLViewConvert
 
@@ -4410,6 +4428,21 @@ interface GLViewConvert {
 
     // Class property signals of GstGL-1.0.GstGL.GLViewConvert
 
+    connect(sigName: "notify::downmix-mode", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::downmix-mode", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::downmix-mode", ...args: any[]): void
+    connect(sigName: "notify::input-flags-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::input-flags-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::input-flags-override", ...args: any[]): void
+    connect(sigName: "notify::input-mode-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::input-mode-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::input-mode-override", ...args: any[]): void
+    connect(sigName: "notify::output-flags-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::output-flags-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::output-flags-override", ...args: any[]): void
+    connect(sigName: "notify::output-mode-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::output-mode-override", callback: (($obj: GLViewConvert, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::output-mode-override", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

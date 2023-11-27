@@ -2101,6 +2101,7 @@ interface Clipboard {
     // Own properties of Gladeui-2.0.Gladeui.Clipboard
 
     readonly has_selection: boolean
+    readonly hasSelection: boolean
 
     // Own fields of Gladeui-2.0.Gladeui.Clipboard
 
@@ -6189,6 +6190,8 @@ module Editor {
         show_boder?: boolean | null
         show_class_field?: boolean | null
         widget?: Widget | null
+        showBoder?: boolean | null
+        showClassField?: boolean | null
     }
 
 }
@@ -6198,10 +6201,15 @@ interface Editor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Gladeui-2.0.Gladeui.Editor
 
     readonly class_field: string | null
+    readonly classField: string | null
     show_boder: boolean
+    showBoder: boolean
     show_class_field: boolean
+    showClassField: boolean
     readonly show_info: boolean
+    readonly showInfo: boolean
     readonly signal_editor: SignalEditor
+    readonly signalEditor: SignalEditor
     widget: any
 
     // Own fields of Gladeui-2.0.Gladeui.Editor
@@ -6486,6 +6494,10 @@ module EditorProperty {
         disable_check?: boolean | null
         property_def?: any | null
         use_command?: boolean | null
+        customText?: string | null
+        disableCheck?: boolean | null
+        propertyDef?: any | null
+        useCommand?: boolean | null
     }
 
 }
@@ -6495,9 +6507,13 @@ interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buildable, 
     // Own properties of Gladeui-2.0.Gladeui.EditorProperty
 
     custom_text: string | null
+    customText: string | null
     disable_check: boolean
+    disableCheck: boolean
     readonly property_def: any
+    readonly propertyDef: any
     use_command: boolean
+    useCommand: boolean
 
     // Own fields of Gladeui-2.0.Gladeui.EditorProperty
 
@@ -7068,6 +7084,7 @@ module EditorTable {
         // Own constructor properties of Gladeui-2.0.Gladeui.EditorTable
 
         page_type?: EditorPageType | null
+        pageType?: EditorPageType | null
     }
 
 }
@@ -7077,6 +7094,7 @@ interface EditorTable extends Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk
     // Own properties of Gladeui-2.0.Gladeui.EditorTable
 
     readonly page_type: EditorPageType
+    readonly pageType: EditorPageType
 
     // Own fields of Gladeui-2.0.Gladeui.EditorTable
 
@@ -8018,6 +8036,9 @@ module Palette {
         project?: Project | null
         show_selector_button?: boolean | null
         use_small_item_icons?: boolean | null
+        itemAppearance?: ItemAppearance | null
+        showSelectorButton?: boolean | null
+        useSmallItemIcons?: boolean | null
     }
 
 }
@@ -8027,9 +8048,12 @@ interface Palette extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Gladeui-2.0.Gladeui.Palette
 
     item_appearance: ItemAppearance
+    itemAppearance: ItemAppearance
     project: Project
     show_selector_button: boolean
+    showSelectorButton: boolean
     use_small_item_icons: boolean
+    useSmallItemIcons: boolean
 
     // Own fields of Gladeui-2.0.Gladeui.Palette
 
@@ -8617,6 +8641,9 @@ module Project {
         resource_path?: string | null
         template?: Widget | null
         translation_domain?: string | null
+        cssProviderPath?: string | null
+        resourcePath?: string | null
+        translationDomain?: string | null
     }
 
 }
@@ -8626,16 +8653,23 @@ interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
     // Own properties of Gladeui-2.0.Gladeui.Project
 
     readonly add_item: WidgetAdaptor
+    readonly addItem: WidgetAdaptor
     css_provider_path: string | null
+    cssProviderPath: string | null
     readonly has_selection: boolean
+    readonly hasSelection: boolean
     license: string | null
     readonly modified: boolean
     readonly path: string | null
     readonly pointer_mode: PointerMode
+    readonly pointerMode: PointerMode
     readonly read_only: boolean
+    readonly readOnly: boolean
     resource_path: string | null
+    resourcePath: string | null
     template: Widget
     translation_domain: string | null
+    translationDomain: string | null
 
     // Own fields of Gladeui-2.0.Gladeui.Project
 
@@ -9111,6 +9145,9 @@ module Property {
         i18n_translatable?: boolean | null
         precision?: number | null
         sensitive?: boolean | null
+        i18nComment?: string | null
+        i18nContext?: string | null
+        i18nTranslatable?: boolean | null
     }
 
 }
@@ -9122,8 +9159,11 @@ interface Property {
     readonly "class": any
     enabled: boolean
     i18n_comment: string | null
+    i18nComment: string | null
     i18n_context: string | null
+    i18nContext: string | null
     i18n_translatable: boolean
+    i18nTranslatable: boolean
     precision: number
     sensitive: boolean
     readonly state: number
@@ -9360,6 +9400,10 @@ module PropertyLabel {
         packing?: boolean | null
         property?: Property | null
         property_name?: string | null
+        appendColon?: boolean | null
+        customText?: string | null
+        customTooltip?: string | null
+        propertyName?: string | null
     }
 
 }
@@ -9369,11 +9413,15 @@ interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Buildable {
     // Own properties of Gladeui-2.0.Gladeui.PropertyLabel
 
     append_colon: boolean
+    appendColon: boolean
     custom_text: string | null
+    customText: string | null
     custom_tooltip: string | null
+    customTooltip: string | null
     packing: boolean
     property: Property
     property_name: string | null
+    propertyName: string | null
 
     // Owm methods of Gladeui-2.0.Gladeui.PropertyLabel
 
@@ -9667,6 +9715,11 @@ module PropertyShell {
         packing?: boolean | null
         property_name?: string | null
         use_command?: boolean | null
+        customText?: string | null
+        disableCheck?: boolean | null
+        editorType?: string | null
+        propertyName?: string | null
+        useCommand?: boolean | null
     }
 
 }
@@ -9676,11 +9729,16 @@ interface PropertyShell extends Atk.ImplementorIface, Editable, Gtk.Buildable, G
     // Own properties of Gladeui-2.0.Gladeui.PropertyShell
 
     custom_text: string | null
+    customText: string | null
     disable_check: boolean
+    disableCheck: boolean
     readonly editor_type: string | null
+    readonly editorType: string | null
     packing: boolean
     property_name: string | null
+    propertyName: string | null
     use_command: boolean
+    useCommand: boolean
 
     // Owm methods of Gladeui-2.0.Gladeui.PropertyShell
 
@@ -9949,6 +10007,7 @@ module Signal {
         support_warning?: string | null
         swapped?: boolean | null
         userdata?: string | null
+        supportWarning?: string | null
     }
 
 }
@@ -9962,6 +10021,7 @@ interface Signal {
     detail: string | null
     handler: string | null
     support_warning: string | null
+    supportWarning: string | null
     swapped: boolean
     userdata: string | null
 
@@ -10149,6 +10209,7 @@ module SignalEditor {
         // Own constructor properties of Gladeui-2.0.Gladeui.SignalEditor
 
         glade_widget?: Gtk.TreeModel | null
+        gladeWidget?: Gtk.TreeModel | null
     }
 
 }
@@ -10158,6 +10219,7 @@ interface SignalEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
     // Own properties of Gladeui-2.0.Gladeui.SignalEditor
 
     glade_widget: Gtk.TreeModel
+    gladeWidget: Gtk.TreeModel
 
     // Own fields of Gladeui-2.0.Gladeui.SignalEditor
 
@@ -10544,6 +10606,10 @@ module Widget {
         template_exact?: boolean | null
         toplevel_height?: number | null
         toplevel_width?: number | null
+        internalName?: string | null
+        templateExact?: boolean | null
+        toplevelHeight?: number | null
+        toplevelWidth?: number | null
     }
 
 }
@@ -10557,6 +10623,7 @@ interface Widget {
     composite: boolean
     internal: string | null
     readonly internal_name: string | null
+    readonly internalName: string | null
     name: string | null
     object: GObject.Object
     parent: Widget
@@ -10564,10 +10631,14 @@ interface Widget {
     readonly properties: any
     readonly reason: number
     readonly support_warning: string | null
+    readonly supportWarning: string | null
     readonly template: Widget
     readonly template_exact: boolean
+    readonly templateExact: boolean
     toplevel_height: number
+    toplevelHeight: number
     toplevel_width: number
+    toplevelWidth: number
     readonly visible: boolean
 
     // Own fields of Gladeui-2.0.Gladeui.Widget
@@ -11349,6 +11420,9 @@ module WidgetAdaptor {
         special_child_type?: string | null
         title?: string | null
         type?: GObject.GType | null
+        genericName?: string | null
+        iconName?: string | null
+        specialChildType?: string | null
     }
 
 }
@@ -11361,10 +11435,13 @@ interface WidgetAdaptor {
     readonly catalog: string | null
     readonly cursor: any
     readonly generic_name: string | null
+    readonly genericName: string | null
     readonly icon_name: string | null
+    readonly iconName: string | null
     readonly name: string | null
     query: boolean
     readonly special_child_type: string | null
+    readonly specialChildType: string | null
     title: string | null
     readonly type: GObject.GType
 

@@ -145,6 +145,10 @@ module AppSink {
         emit_signals?: boolean | null
         max_buffers?: number | null
         wait_on_eos?: boolean | null
+        bufferList?: boolean | null
+        emitSignals?: boolean | null
+        maxBuffers?: number | null
+        waitOnEos?: boolean | null
     }
 
 }
@@ -154,12 +158,16 @@ interface AppSink extends Gst.URIHandler {
     // Own properties of GstApp-1.0.GstApp.AppSink
 
     buffer_list: boolean
+    bufferList: boolean
     caps: Gst.Caps
     drop: boolean
     emit_signals: boolean
+    emitSignals: boolean
     readonly eos: any
     max_buffers: number
+    maxBuffers: number
     wait_on_eos: boolean
+    waitOnEos: boolean
 
     // Conflicting properties
 
@@ -759,6 +767,69 @@ module AppSrc {
          * application should connect to the seek-data signal.
          */
         stream_type?: AppStreamType | null
+        /**
+         * Make appsrc emit the "need-data", "enough-data" and "seek-data" signals.
+         * This option is by default enabled for backwards compatibility reasons but
+         * can disabled when needed because signal emission is expensive.
+         */
+        emitSignals?: boolean | null
+        /**
+         * When enabled, appsrc will check GstSegment in GstSample which was
+         * pushed via gst_app_src_push_sample() or "push-sample" signal action.
+         * If a GstSegment is changed, corresponding segment event will be followed
+         * by next data flow.
+         * 
+         * FIXME: currently only GST_FORMAT_TIME format is supported and therefore
+         * GstAppSrc::format should be time. However, possibly #GstAppSrc can support
+         * other formats.
+         */
+        handleSegmentChange?: boolean | null
+        /**
+         * Instruct the source to behave like a live source. This includes that it
+         * will only push out buffers in the PLAYING state.
+         */
+        isLive?: boolean | null
+        /**
+         * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsrc
+         * will drop any buffers that are pushed into it once its internal queue is
+         * full. The selected type defines whether to drop the oldest or new
+         * buffers.
+         */
+        leakyType?: AppLeakyType | null
+        /**
+         * The maximum amount of buffers that can be queued internally.
+         * After the maximum amount of buffers are queued, appsrc will emit the
+         * "enough-data" signal.
+         */
+        maxBuffers?: number | null
+        /**
+         * The maximum amount of bytes that can be queued internally.
+         * After the maximum amount of bytes are queued, appsrc will emit the
+         * "enough-data" signal.
+         */
+        maxBytes?: number | null
+        maxLatency?: number | null
+        /**
+         * The maximum amount of time that can be queued internally.
+         * After the maximum amount of time are queued, appsrc will emit the
+         * "enough-data" signal.
+         */
+        maxTime?: number | null
+        /**
+         * The minimum latency of the source. A value of -1 will use the default
+         * latency calculations of #GstBaseSrc.
+         */
+        minLatency?: number | null
+        /**
+         * Make appsrc emit the "need-data" signal when the amount of bytes in the
+         * queue drops below this percentage of max-bytes.
+         */
+        minPercent?: number | null
+        /**
+         * The type of stream that this source is producing.  For seekable streams the
+         * application should connect to the seek-data signal.
+         */
+        streamType?: AppStreamType | null
     }
 
 }
@@ -783,13 +854,25 @@ interface AppSrc extends Gst.URIHandler {
      */
     readonly current_level_buffers: number
     /**
+     * The number of currently queued buffers inside appsrc.
+     */
+    readonly currentLevelBuffers: number
+    /**
      * The number of currently queued bytes inside appsrc.
      */
     readonly current_level_bytes: number
     /**
+     * The number of currently queued bytes inside appsrc.
+     */
+    readonly currentLevelBytes: number
+    /**
      * The amount of currently queued time inside appsrc.
      */
     readonly current_level_time: number
+    /**
+     * The amount of currently queued time inside appsrc.
+     */
+    readonly currentLevelTime: number
     /**
      * The total duration in nanoseconds of the data stream. If the total duration is known, it
      * is recommended to configure it with this property.
@@ -801,6 +884,12 @@ interface AppSrc extends Gst.URIHandler {
      * can disabled when needed because signal emission is expensive.
      */
     emit_signals: boolean
+    /**
+     * Make appsrc emit the "need-data", "enough-data" and "seek-data" signals.
+     * This option is by default enabled for backwards compatibility reasons but
+     * can disabled when needed because signal emission is expensive.
+     */
+    emitSignals: boolean
     /**
      * The format to use for segment events. When the source is producing
      * timestamped buffers this property should be set to GST_FORMAT_TIME.
@@ -818,10 +907,26 @@ interface AppSrc extends Gst.URIHandler {
      */
     handle_segment_change: boolean
     /**
+     * When enabled, appsrc will check GstSegment in GstSample which was
+     * pushed via gst_app_src_push_sample() or "push-sample" signal action.
+     * If a GstSegment is changed, corresponding segment event will be followed
+     * by next data flow.
+     * 
+     * FIXME: currently only GST_FORMAT_TIME format is supported and therefore
+     * GstAppSrc::format should be time. However, possibly #GstAppSrc can support
+     * other formats.
+     */
+    handleSegmentChange: boolean
+    /**
      * Instruct the source to behave like a live source. This includes that it
      * will only push out buffers in the PLAYING state.
      */
     is_live: boolean
+    /**
+     * Instruct the source to behave like a live source. This includes that it
+     * will only push out buffers in the PLAYING state.
+     */
+    isLive: boolean
     /**
      * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsrc
      * will drop any buffers that are pushed into it once its internal queue is
@@ -830,18 +935,38 @@ interface AppSrc extends Gst.URIHandler {
      */
     leaky_type: AppLeakyType
     /**
+     * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsrc
+     * will drop any buffers that are pushed into it once its internal queue is
+     * full. The selected type defines whether to drop the oldest or new
+     * buffers.
+     */
+    leakyType: AppLeakyType
+    /**
      * The maximum amount of buffers that can be queued internally.
      * After the maximum amount of buffers are queued, appsrc will emit the
      * "enough-data" signal.
      */
     max_buffers: number
     /**
+     * The maximum amount of buffers that can be queued internally.
+     * After the maximum amount of buffers are queued, appsrc will emit the
+     * "enough-data" signal.
+     */
+    maxBuffers: number
+    /**
      * The maximum amount of bytes that can be queued internally.
      * After the maximum amount of bytes are queued, appsrc will emit the
      * "enough-data" signal.
      */
     max_bytes: number
+    /**
+     * The maximum amount of bytes that can be queued internally.
+     * After the maximum amount of bytes are queued, appsrc will emit the
+     * "enough-data" signal.
+     */
+    maxBytes: number
     max_latency: number
+    maxLatency: number
     /**
      * The maximum amount of time that can be queued internally.
      * After the maximum amount of time are queued, appsrc will emit the
@@ -849,15 +974,31 @@ interface AppSrc extends Gst.URIHandler {
      */
     max_time: number
     /**
+     * The maximum amount of time that can be queued internally.
+     * After the maximum amount of time are queued, appsrc will emit the
+     * "enough-data" signal.
+     */
+    maxTime: number
+    /**
      * The minimum latency of the source. A value of -1 will use the default
      * latency calculations of #GstBaseSrc.
      */
     min_latency: number
     /**
+     * The minimum latency of the source. A value of -1 will use the default
+     * latency calculations of #GstBaseSrc.
+     */
+    minLatency: number
+    /**
      * Make appsrc emit the "need-data" signal when the amount of bytes in the
      * queue drops below this percentage of max-bytes.
      */
     min_percent: number
+    /**
+     * Make appsrc emit the "need-data" signal when the amount of bytes in the
+     * queue drops below this percentage of max-bytes.
+     */
+    minPercent: number
     /**
      * The total size in bytes of the data stream. If the total size is known, it
      * is recommended to configure it with this property.
@@ -868,6 +1009,11 @@ interface AppSrc extends Gst.URIHandler {
      * application should connect to the seek-data signal.
      */
     stream_type: AppStreamType
+    /**
+     * The type of stream that this source is producing.  For seekable streams the
+     * application should connect to the seek-data signal.
+     */
+    streamType: AppStreamType
 
     // Conflicting properties
 
@@ -1245,6 +1391,9 @@ interface AppSrc extends Gst.URIHandler {
     connect(sigName: "notify::do-timestamp", callback: (($obj: AppSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::do-timestamp", callback: (($obj: AppSrc, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::do-timestamp", ...args: any[]): void
+    connect(sigName: "notify::num-buffers", callback: (($obj: AppSrc, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::num-buffers", callback: (($obj: AppSrc, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::num-buffers", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

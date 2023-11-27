@@ -1295,6 +1295,7 @@ export module InfileZip {
 
         internal_parent?: InfileZip | null
         source?: Input | null
+        internalParent?: InfileZip | null
     }
 
 }
@@ -1307,7 +1308,12 @@ export interface InfileZip {
      * Controls the level of compression used for new members.
      */
     readonly compression_level: number
+    /**
+     * Controls the level of compression used for new members.
+     */
+    readonly compressionLevel: number
     readonly internal_parent: InfileZip
+    readonly internalParent: InfileZip
     readonly source: Input
     readonly zip64: boolean
 
@@ -1578,6 +1584,7 @@ export module InputGZip {
         raw?: boolean | null
         source?: Input | null
         uncompressed_size?: number | null
+        uncompressedSize?: number | null
     }
 
 }
@@ -1589,6 +1596,7 @@ export interface InputGZip {
     readonly raw: boolean
     readonly source: Input
     readonly uncompressed_size: number
+    readonly uncompressedSize: number
 
     // Class property signals of Gsf-1.Gsf.InputGZip
 
@@ -1704,6 +1712,7 @@ export module InputHTTP {
 
         content_type?: string | null
         url?: string | null
+        contentType?: string | null
     }
 
 }
@@ -1713,6 +1722,7 @@ export interface InputHTTP {
     // Own properties of Gsf-1.Gsf.InputHTTP
 
     readonly content_type: string | null
+    readonly contentType: string | null
     readonly url: string | null
 
     // Owm methods of Gsf-1.Gsf.InputHTTP
@@ -2026,6 +2036,7 @@ export module ODFOut {
         // Own constructor properties of Gsf-1.Gsf.ODFOut
 
         odf_version?: number | null
+        odfVersion?: number | null
     }
 
 }
@@ -2035,6 +2046,7 @@ export interface ODFOut {
     // Own properties of Gsf-1.Gsf.ODFOut
 
     readonly odf_version: number
+    readonly odfVersion: number
 
     // Own fields of Gsf-1.Gsf.ODFOut
 
@@ -2107,6 +2119,9 @@ export interface Outfile {
 
     // Class property signals of Gsf-1.Gsf.Outfile
 
+    connect(sigName: "notify::is-closed", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: Outfile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2150,6 +2165,8 @@ export module OutfileMSOle {
         big_block_size?: number | null
         sink?: Output | null
         small_block_size?: number | null
+        bigBlockSize?: number | null
+        smallBlockSize?: number | null
     }
 
 }
@@ -2159,8 +2176,10 @@ export interface OutfileMSOle {
     // Own properties of Gsf-1.Gsf.OutfileMSOle
 
     readonly big_block_size: number
+    readonly bigBlockSize: number
     readonly sink: Output
     readonly small_block_size: number
+    readonly smallBlockSize: number
 
     // Owm methods of Gsf-1.Gsf.OutfileMSOle
 
@@ -2182,6 +2201,9 @@ export interface OutfileMSOle {
     connect(sigName: "notify::small-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::small-block-size", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::small-block-size", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutfileMSOle, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2253,6 +2275,8 @@ export module OutfileOpenPkg {
         content_type?: string | null
         is_dir?: boolean | null
         sink?: Outfile | null
+        contentType?: string | null
+        isDir?: boolean | null
     }
 
 }
@@ -2262,7 +2286,9 @@ export interface OutfileOpenPkg {
     // Own properties of Gsf-1.Gsf.OutfileOpenPkg
 
     readonly content_type: string | null
+    readonly contentType: string | null
     readonly is_dir: boolean
+    readonly isDir: boolean
     readonly sink: Outfile
 
     // Owm methods of Gsf-1.Gsf.OutfileOpenPkg
@@ -2299,6 +2325,9 @@ export interface OutfileOpenPkg {
     connect(sigName: "notify::sink", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sink", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sink", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutfileOpenPkg, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2354,6 +2383,9 @@ export interface OutfileStdio {
 
     // Class property signals of Gsf-1.Gsf.OutfileStdio
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutfileStdio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2397,6 +2429,9 @@ export module OutfileZip {
         entry_name?: string | null
         sink?: Output | null
         zip64?: number | null
+        compressionLevel?: number | null
+        deflateLevel?: number | null
+        entryName?: string | null
     }
 
 }
@@ -2406,8 +2441,11 @@ export interface OutfileZip {
     // Own properties of Gsf-1.Gsf.OutfileZip
 
     readonly compression_level: number
+    readonly compressionLevel: number
     readonly deflate_level: number
+    readonly deflateLevel: number
     readonly entry_name: string | null
+    readonly entryName: string | null
     readonly sink: Output
     readonly zip64: number
 
@@ -2432,6 +2470,9 @@ export interface OutfileZip {
     connect(sigName: "notify::zip64", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::zip64", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::zip64", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutfileZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2508,6 +2549,10 @@ export interface Output {
 
     // Own properties of Gsf-1.Gsf.Output
 
+    /**
+     * %TRUE if the output has been closed.
+     */
+    readonly isClosed: boolean
     /**
      * The time the output was last updated.  This must be set on object
      * construction and represents the timestamp to put on the resulting
@@ -2631,6 +2676,9 @@ export interface Output {
 
     // Class property signals of Gsf-1.Gsf.Output
 
+    connect(sigName: "notify::is-closed", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: Output, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2679,6 +2727,9 @@ export interface OutputBzip {
 
     // Class property signals of Gsf-1.Gsf.OutputBzip
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputBzip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2736,6 +2787,9 @@ export module OutputCsv {
         quoting_triggers?: string | null
         separator?: string | null
         sink?: Output | null
+        quotingMode?: OutputCsvQuotingMode | null
+        quotingOnWhitespace?: boolean | null
+        quotingTriggers?: string | null
     }
 
 }
@@ -2744,7 +2798,10 @@ export interface OutputCsv {
 
     // Own properties of Gsf-1.Gsf.OutputCsv
 
+    quotingMode: OutputCsvQuotingMode
     quoting_on_whitespace: boolean
+    quotingOnWhitespace: boolean
+    quotingTriggers: string | null
 
     // Own fields of Gsf-1.Gsf.OutputCsv
 
@@ -2768,9 +2825,18 @@ export interface OutputCsv {
 
     // Class property signals of Gsf-1.Gsf.OutputCsv
 
+    connect(sigName: "notify::quoting-mode", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::quoting-mode", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::quoting-mode", ...args: any[]): void
     connect(sigName: "notify::quoting-on-whitespace", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::quoting-on-whitespace", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::quoting-on-whitespace", ...args: any[]): void
+    connect(sigName: "notify::quoting-triggers", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::quoting-triggers", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::quoting-triggers", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputCsv, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2810,6 +2876,7 @@ export module OutputGZip {
         deflate_level?: number | null
         raw?: boolean | null
         sink?: Output | null
+        deflateLevel?: number | null
     }
 
 }
@@ -2819,6 +2886,7 @@ export interface OutputGZip {
     // Own properties of Gsf-1.Gsf.OutputGZip
 
     deflate_level: number
+    deflateLevel: number
     readonly raw: boolean
     readonly sink: Output
 
@@ -2833,6 +2901,9 @@ export interface OutputGZip {
     connect(sigName: "notify::sink", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sink", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sink", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputGZip, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2888,6 +2959,9 @@ export interface OutputGio {
 
     // Class property signals of Gsf-1.Gsf.OutputGio
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputGio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2933,6 +3007,9 @@ export interface OutputIOChannel {
 
     // Class property signals of Gsf-1.Gsf.OutputIOChannel
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputIOChannel, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -2980,6 +3057,8 @@ export module OutputIconv {
         input_charset?: string | null
         output_charset?: string | null
         sink?: Output | null
+        inputCharset?: string | null
+        outputCharset?: string | null
     }
 
 }
@@ -2995,7 +3074,9 @@ export interface OutputIconv {
      */
     fallback: string | null
     readonly input_charset: string | null
+    readonly inputCharset: string | null
     readonly output_charset: string | null
+    readonly outputCharset: string | null
     readonly sink: Output
 
     // Class property signals of Gsf-1.Gsf.OutputIconv
@@ -3012,6 +3093,9 @@ export interface OutputIconv {
     connect(sigName: "notify::sink", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sink", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::sink", ...args: any[]): void
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputIconv, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -3076,6 +3160,9 @@ export interface OutputMemory {
 
     // Class property signals of Gsf-1.Gsf.OutputMemory
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputMemory, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -3119,6 +3206,9 @@ export interface OutputStdio {
 
     // Class property signals of Gsf-1.Gsf.OutputStdio
 
+    connect(sigName: "notify::is-closed", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::is-closed", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-closed", ...args: any[]): void
     connect(sigName: "notify::modtime", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::modtime", callback: (($obj: OutputStdio, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::modtime", ...args: any[]): void
@@ -3263,6 +3353,7 @@ export module XMLOut {
 
         pretty_print?: boolean | null
         sink?: Output | null
+        prettyPrint?: boolean | null
     }
 
 }
@@ -3272,6 +3363,7 @@ export interface XMLOut {
     // Own properties of Gsf-1.Gsf.XMLOut
 
     pretty_print: boolean
+    prettyPrint: boolean
     readonly sink: Output
 
     // Own fields of Gsf-1.Gsf.XMLOut

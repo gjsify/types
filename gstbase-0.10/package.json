@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstbase-0.10",
-    "version": "0.10.0-3.2.5",
+    "version": "0.10.0-3.2.6",
     "description": "GJS TypeScript type definitions for GstBase-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstbase-0.10.js",

@@ -288,6 +288,12 @@ export module Parser {
          * the current one.
          */
         recurse?: boolean | null
+        /**
+         * If %TRUE, the parser will not parse unsafe locations, such as local devices
+         * and local files if the playlist isn't local. This is useful if the library
+         * is parsing a playlist from a remote location such as a website.
+         */
+        disableUnsafe?: boolean | null
     }
 
 }
@@ -306,6 +312,12 @@ export interface Parser {
      * is parsing a playlist from a remote location such as a website.
      */
     disable_unsafe: boolean
+    /**
+     * If %TRUE, the parser will not parse unsafe locations, such as local devices
+     * and local files if the playlist isn't local. This is useful if the library
+     * is parsing a playlist from a remote location such as a website.
+     */
+    disableUnsafe: boolean
     /**
      * If %TRUE, the parser will attempt to parse a playlist, even if it
      * appears to be unsupported (usually because of its filename extension).

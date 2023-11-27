@@ -1476,6 +1476,14 @@ module Session {
          * The GckSlot this session is opened on.
          */
         slot?: Slot | null
+        /**
+         * Raw PKCS#11 application data used to open the PKCS#11 session.
+         */
+        appData?: any | null
+        /**
+         * Raw PKCS#11 flags used to open the PKCS#11 session.
+         */
+        openingFlags?: number | null
     }
 
 }
@@ -1488,6 +1496,10 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * Raw PKCS#11 application data used to open the PKCS#11 session.
      */
     readonly app_data: any
+    /**
+     * Raw PKCS#11 application data used to open the PKCS#11 session.
+     */
+    readonly appData: any
     /**
      * The raw CK_SESSION_HANDLE handle of this session.
      */
@@ -1506,6 +1518,10 @@ interface Session extends Gio.AsyncInitable, Gio.Initable {
      * Raw PKCS#11 flags used to open the PKCS#11 session.
      */
     readonly opening_flags: number
+    /**
+     * Raw PKCS#11 flags used to open the PKCS#11 session.
+     */
+    readonly openingFlags: number
     /**
      * The options this session was opened with.
      */

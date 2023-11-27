@@ -354,6 +354,9 @@ module Draggable {
         drag_actor?: Clutter.Actor | null
         drag_enabled?: boolean | null
         drag_threshold?: number | null
+        dragActor?: Clutter.Actor | null
+        dragEnabled?: boolean | null
+        dragThreshold?: number | null
     }
 
 }
@@ -364,8 +367,11 @@ interface Draggable extends Clutter.Actor {
 
     axis: DragAxis
     drag_actor: Clutter.Actor
+    dragActor: Clutter.Actor
     drag_enabled: boolean
+    dragEnabled: boolean
     drag_threshold: number
+    dragThreshold: number
 
     // Owm methods of Mx-1.0.Mx.Draggable
 
@@ -719,6 +725,7 @@ module Droppable {
         // Own constructor properties of Mx-1.0.Mx.Droppable
 
         drop_enabled?: boolean | null
+        dropEnabled?: boolean | null
     }
 
 }
@@ -728,6 +735,7 @@ interface Droppable extends Clutter.Actor {
     // Own properties of Mx-1.0.Mx.Droppable
 
     drop_enabled: boolean
+    dropEnabled: boolean
 
     // Owm methods of Mx-1.0.Mx.Droppable
 
@@ -1164,6 +1172,8 @@ module Scrollable {
 
         horizontal_adjustment?: Adjustment | null
         vertical_adjustment?: Adjustment | null
+        horizontalAdjustment?: Adjustment | null
+        verticalAdjustment?: Adjustment | null
     }
 
 }
@@ -1173,7 +1183,9 @@ interface Scrollable {
     // Own properties of Mx-1.0.Mx.Scrollable
 
     horizontal_adjustment: Adjustment
+    horizontalAdjustment: Adjustment
     vertical_adjustment: Adjustment
+    verticalAdjustment: Adjustment
 
     // Owm methods of Mx-1.0.Mx.Scrollable
 
@@ -1246,6 +1258,8 @@ module Stylable {
         style?: Style | null
         style_class?: string | null
         style_pseudo_class?: string | null
+        styleClass?: string | null
+        stylePseudoClass?: string | null
     }
 
 }
@@ -1256,7 +1270,9 @@ interface Stylable {
 
     style: Style
     style_class: string | null
+    styleClass: string | null
     style_pseudo_class: string | null
+    stylePseudoClass: string | null
 
     // Owm methods of Mx-1.0.Mx.Stylable
 
@@ -1541,6 +1557,7 @@ module Action {
         active?: boolean | null
         display_name?: string | null
         icon?: string | null
+        displayName?: string | null
     }
 
 }
@@ -1551,6 +1568,7 @@ interface Action extends Gio.Action {
 
     active: boolean
     display_name: string | null
+    displayName: string | null
     icon: string | null
 
     // Owm methods of Mx-1.0.Mx.Action
@@ -1764,6 +1782,7 @@ module ActorManager {
 
         stage?: Clutter.Stage | null
         time_slice?: number | null
+        timeSlice?: number | null
     }
 
 }
@@ -1773,8 +1792,10 @@ interface ActorManager {
     // Own properties of Mx-1.0.Mx.ActorManager
 
     readonly n_operations: number
+    readonly nOperations: number
     readonly stage: Clutter.Stage
     time_slice: number
+    timeSlice: number
 
     // Own fields of Mx-1.0.Mx.ActorManager
 
@@ -1992,6 +2013,10 @@ module Adjustment {
         step_increment?: number | null
         upper?: number | null
         value?: number | null
+        clampValue?: boolean | null
+        pageIncrement?: number | null
+        pageSize?: number | null
+        stepIncrement?: number | null
     }
 
 }
@@ -2001,11 +2026,15 @@ interface Adjustment {
     // Own properties of Mx-1.0.Mx.Adjustment
 
     clamp_value: boolean
+    clampValue: boolean
     elastic: boolean
     lower: number
     page_increment: number
+    pageIncrement: number
     page_size: number
+    pageSize: number
     step_increment: number
+    stepIncrement: number
     upper: number
     value: number
 
@@ -2237,6 +2266,7 @@ module Application {
 
         application_name?: string | null
         flags?: number | null
+        applicationName?: string | null
     }
 
 }
@@ -2246,6 +2276,7 @@ interface Application {
     // Own properties of Mx-1.0.Mx.Application
 
     readonly application_name: string | null
+    readonly applicationName: string | null
     readonly flags: number
 
     // Own fields of Mx-1.0.Mx.Application
@@ -2430,6 +2461,22 @@ module Bin {
          * Whether the child should fill the vertical allocation
          */
         y_fill?: boolean | null
+        /**
+         * The horizontal alignment of the #MxBin child.
+         */
+        xAlign: any
+        /**
+         * Whether the child should fill the horizontal allocation
+         */
+        xFill?: boolean | null
+        /**
+         * The vertical alignment of the #MxBin child.
+         */
+        yAlign: any
+        /**
+         * Whether the child should fill the vertical allocation
+         */
+        yFill?: boolean | null
     }
 
 }
@@ -2447,17 +2494,33 @@ interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Containe
      */
     x_align: any
     /**
+     * The horizontal alignment of the #MxBin child.
+     */
+    xAlign: any
+    /**
      * Whether the child should fill the horizontal allocation
      */
     x_fill: boolean
+    /**
+     * Whether the child should fill the horizontal allocation
+     */
+    xFill: boolean
     /**
      * The vertical alignment of the #MxBin child.
      */
     y_align: any
     /**
+     * The vertical alignment of the #MxBin child.
+     */
+    yAlign: any
+    /**
      * Whether the child should fill the vertical allocation
      */
     y_fill: boolean
+    /**
+     * Whether the child should fill the vertical allocation
+     */
+    yFill: boolean
 
     // Owm methods of Mx-1.0.Mx.Bin
 
@@ -2877,6 +2940,8 @@ module BoxLayout {
         orientation?: Orientation | null
         scroll_to_focused?: boolean | null
         spacing?: number | null
+        enableAnimations?: boolean | null
+        scrollToFocused?: boolean | null
     }
 
 }
@@ -2886,8 +2951,10 @@ interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
     // Own properties of Mx-1.0.Mx.BoxLayout
 
     enable_animations: boolean
+    enableAnimations: boolean
     orientation: Orientation
     scroll_to_focused: boolean
+    scrollToFocused: boolean
     spacing: number
 
     // Owm methods of Mx-1.0.Mx.BoxLayout
@@ -3404,6 +3471,10 @@ module BoxLayoutChild {
         x_fill?: boolean | null
         y_align?: Align | null
         y_fill?: boolean | null
+        xAlign?: Align | null
+        xFill?: boolean | null
+        yAlign?: Align | null
+        yFill?: boolean | null
     }
 
 }
@@ -3414,9 +3485,13 @@ interface BoxLayoutChild {
 
     expand: boolean
     x_align: Align
+    xAlign: Align
     x_fill: boolean
+    xFill: boolean
     y_align: Align
+    yAlign: Align
     y_fill: boolean
+    yFill: boolean
 
     // Class property signals of Mx-1.0.Mx.BoxLayoutChild
 
@@ -3486,6 +3561,12 @@ module Button {
         label?: string | null
         label_visible?: boolean | null
         toggled?: boolean | null
+        iconName?: string | null
+        iconPosition?: Position | null
+        iconSize?: number | null
+        iconVisible?: boolean | null
+        isToggle?: boolean | null
+        labelVisible?: boolean | null
     }
 
 }
@@ -3496,18 +3577,26 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
 
     action: Action
     icon_name: string | null
+    iconName: string | null
     icon_position: Position
+    iconPosition: Position
     icon_size: number
+    iconSize: number
     icon_visible: boolean
+    iconVisible: boolean
     is_toggle: boolean
+    isToggle: boolean
     label: string | null
     label_visible: boolean
+    labelVisible: boolean
     toggled: boolean
 
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.Button
 
@@ -4041,6 +4130,8 @@ module ButtonGroup {
 
         active_button?: Button | null
         allow_no_active?: boolean | null
+        activeButton?: Button | null
+        allowNoActive?: boolean | null
     }
 
 }
@@ -4050,7 +4141,9 @@ interface ButtonGroup {
     // Own properties of Mx-1.0.Mx.ButtonGroup
 
     active_button: Button
+    activeButton: Button
     allow_no_active: boolean
+    allowNoActive: boolean
 
     // Own fields of Mx-1.0.Mx.ButtonGroup
 
@@ -4212,6 +4305,8 @@ module ComboBox {
         active_icon_name?: string | null
         active_text?: string | null
         index?: number | null
+        activeIconName?: string | null
+        activeText?: string | null
     }
 
 }
@@ -4221,7 +4316,9 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
     // Own properties of Mx-1.0.Mx.ComboBox
 
     active_icon_name: string | null
+    activeIconName: string | null
     active_text: string | null
+    activeText: string | null
     index: number
 
     // Owm methods of Mx-1.0.Mx.ComboBox
@@ -4667,6 +4764,7 @@ module DeformBowTie {
 
         flip_back?: boolean | null
         period?: number | null
+        flipBack?: boolean | null
     }
 
 }
@@ -4676,6 +4774,7 @@ interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, Clutter
     // Own properties of Mx-1.0.Mx.DeformBowTie
 
     flip_back: boolean
+    flipBack: boolean
     period: number
 
     // Own fields of Mx-1.0.Mx.DeformBowTie
@@ -5476,6 +5575,8 @@ module DeformTexture {
         front?: Clutter.Texture | null
         tiles_x?: number | null
         tiles_y?: number | null
+        tilesX?: number | null
+        tilesY?: number | null
     }
 
 }
@@ -5487,7 +5588,9 @@ interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutte
     back: Clutter.Texture
     front: Clutter.Texture
     tiles_x: number
+    tilesX: number
     tiles_y: number
+    tilesY: number
 
     // Own fields of Mx-1.0.Mx.DeformTexture
 
@@ -6315,7 +6418,9 @@ interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.Dialog
 
@@ -6772,6 +6877,11 @@ module Entry {
         primary_icon_tooltip_text?: string | null
         secondary_icon_tooltip_text?: string | null
         text?: string | null
+        hintText?: string | null
+        iconHighlightSuffix?: string | null
+        passwordChar?: number | null
+        primaryIconTooltipText?: string | null
+        secondaryIconTooltipText?: string | null
     }
 
 }
@@ -6781,11 +6891,17 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     // Own properties of Mx-1.0.Mx.Entry
 
     readonly clutter_text: Clutter.Text
+    readonly clutterText: Clutter.Text
     hint_text: string | null
+    hintText: string | null
     icon_highlight_suffix: string | null
+    iconHighlightSuffix: string | null
     password_char: number
+    passwordChar: number
     primary_icon_tooltip_text: string | null
+    primaryIconTooltipText: string | null
     secondary_icon_tooltip_text: string | null
+    secondaryIconTooltipText: string | null
     text: string | null
 
     // Owm methods of Mx-1.0.Mx.Entry
@@ -7290,7 +7406,9 @@ interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.Expander
 
@@ -7713,6 +7831,15 @@ module FadeEffect {
         bounds_y?: number | null
         color?: Clutter.Color | null
         freeze_update?: boolean | null
+        borderBottom?: number | null
+        borderLeft?: number | null
+        borderRight?: number | null
+        borderTop?: number | null
+        boundsHeight?: number | null
+        boundsWidth?: number | null
+        boundsX?: number | null
+        boundsY?: number | null
+        freezeUpdate?: boolean | null
     }
 
 }
@@ -7722,15 +7849,24 @@ interface FadeEffect {
     // Own properties of Mx-1.0.Mx.FadeEffect
 
     border_bottom: number
+    borderBottom: number
     border_left: number
+    borderLeft: number
     border_right: number
+    borderRight: number
     border_top: number
+    borderTop: number
     bounds_height: number
+    boundsHeight: number
     bounds_width: number
+    boundsWidth: number
     bounds_x: number
+    boundsX: number
     bounds_y: number
+    boundsY: number
     color: Clutter.Color
     freeze_update: boolean
+    freezeUpdate: boolean
 
     // Own fields of Mx-1.0.Mx.FadeEffect
 
@@ -8328,7 +8464,9 @@ interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Own fields of Mx-1.0.Mx.Frame
 
@@ -8720,6 +8858,14 @@ module Grid {
         max_stride?: number | null
         orientation?: Orientation | null
         row_spacing?: number | null
+        childXAlign?: Align | null
+        childYAlign?: Align | null
+        columnSpacing?: number | null
+        homogenousColumns?: boolean | null
+        homogenousRows?: boolean | null
+        lineAlignment?: Align | null
+        maxStride?: number | null
+        rowSpacing?: number | null
     }
 
 }
@@ -8729,14 +8875,22 @@ interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
     // Own properties of Mx-1.0.Mx.Grid
 
     child_x_align: Align
+    childXAlign: Align
     child_y_align: Align
+    childYAlign: Align
     column_spacing: number
+    columnSpacing: number
     homogenous_columns: boolean
+    homogenousColumns: boolean
     homogenous_rows: boolean
+    homogenousRows: boolean
     line_alignment: Align
+    lineAlignment: Align
     max_stride: number
+    maxStride: number
     orientation: Orientation
     row_spacing: number
+    rowSpacing: number
 
     // Owm methods of Mx-1.0.Mx.Grid
 
@@ -9151,6 +9305,8 @@ module Icon {
 
         icon_name?: string | null
         icon_size?: number | null
+        iconName?: string | null
+        iconSize?: number | null
     }
 
 }
@@ -9160,7 +9316,9 @@ interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
     // Own properties of Mx-1.0.Mx.Icon
 
     icon_name: string | null
+    iconName: string | null
     icon_size: number
+    iconSize: number
 
     // Owm methods of Mx-1.0.Mx.Icon
 
@@ -9543,6 +9701,7 @@ module IconTheme {
         // Own constructor properties of Mx-1.0.Mx.IconTheme
 
         theme_name?: string | null
+        themeName?: string | null
     }
 
 }
@@ -9552,6 +9711,7 @@ interface IconTheme {
     // Own properties of Mx-1.0.Mx.IconTheme
 
     theme_name: string | null
+    themeName: string | null
 
     // Own fields of Mx-1.0.Mx.IconTheme
 
@@ -9684,6 +9844,13 @@ module Image {
         scale_mode?: ImageScaleMode | null
         scale_width_threshold?: number | null
         transition_duration?: number | null
+        allowUpscale?: boolean | null
+        imageRotation?: number | null
+        loadAsync?: boolean | null
+        scaleHeightThreshold?: number | null
+        scaleMode?: ImageScaleMode | null
+        scaleWidthThreshold?: number | null
+        transitionDuration?: number | null
     }
 
 }
@@ -9693,12 +9860,19 @@ interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     // Own properties of Mx-1.0.Mx.Image
 
     allow_upscale: boolean
+    allowUpscale: boolean
     image_rotation: number
+    imageRotation: number
     load_async: boolean
+    loadAsync: boolean
     scale_height_threshold: number
+    scaleHeightThreshold: number
     scale_mode: ImageScaleMode
+    scaleMode: ImageScaleMode
     scale_width_threshold: number
+    scaleWidthThreshold: number
     transition_duration: number
+    transitionDuration: number
 
     // Owm methods of Mx-1.0.Mx.Image
 
@@ -10269,6 +10443,7 @@ module ItemView {
         factory?: GObject.Object | null
         item_type?: GObject.GType | null
         model?: Clutter.Model | null
+        itemType?: GObject.GType | null
     }
 
 }
@@ -10279,6 +10454,7 @@ interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
 
     factory: GObject.Object
     item_type: GObject.GType
+    itemType: GObject.GType
     model: Clutter.Model
 
     // Owm methods of Mx-1.0.Mx.ItemView
@@ -10750,6 +10926,13 @@ module KineticScrollView {
         overshoot?: number | null
         scroll_policy?: ScrollPolicy | null
         use_captured?: boolean | null
+        accelerationFactor?: number | null
+        clampDuration?: number | null
+        clampMode?: number | null
+        clampToCenter?: boolean | null
+        mouseButton?: number | null
+        scrollPolicy?: ScrollPolicy | null
+        useCaptured?: boolean | null
     }
 
 }
@@ -10759,20 +10942,29 @@ interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
     // Own properties of Mx-1.0.Mx.KineticScrollView
 
     acceleration_factor: number
+    accelerationFactor: number
     clamp_duration: number
+    clampDuration: number
     clamp_mode: number
+    clampMode: number
     clamp_to_center: boolean
+    clampToCenter: boolean
     deceleration: number
     mouse_button: number
+    mouseButton: number
     overshoot: number
     scroll_policy: ScrollPolicy
+    scrollPolicy: ScrollPolicy
     readonly state: KineticScrollViewState
     use_captured: boolean
+    useCaptured: boolean
 
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.KineticScrollView
 
@@ -11310,6 +11502,21 @@ module Label {
         use_markup?: boolean | null
         x_align: any
         y_align: any
+        fadeOut?: boolean | null
+        /**
+         * Whether to wrap the lines of #MxLabel:text if the contents
+         * exceed the available allocation.
+         */
+        lineWrap?: boolean | null
+        /**
+         * Show a tooltip when there is not enough space to display the text. If set
+         * to %TRUE, this will also cause the #ClutterActor:reactive property to be
+         * enabled.
+         */
+        showTooltip?: boolean | null
+        useMarkup?: boolean | null
+        xAlign: any
+        yAlign: any
     }
 
 }
@@ -11319,17 +11526,33 @@ interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     // Own properties of Mx-1.0.Mx.Label
 
     readonly clutter_text: Clutter.Text
+    readonly clutterText: Clutter.Text
     fade_out: boolean
+    fadeOut: boolean
     /**
      * Whether to wrap the lines of #MxLabel:text if the contents
      * exceed the available allocation.
      */
     line_wrap: boolean
+    /**
+     * Whether to wrap the lines of #MxLabel:text if the contents
+     * exceed the available allocation.
+     */
+    lineWrap: boolean
     // Has conflict: show_tooltip: boolean
+    /**
+     * Show a tooltip when there is not enough space to display the text. If set
+     * to %TRUE, this will also cause the #ClutterActor:reactive property to be
+     * enabled.
+     */
+    showTooltip: boolean
     text: string | null
     use_markup: boolean
+    useMarkup: boolean
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.Label
 
@@ -11831,6 +12054,7 @@ module ListView {
         factory?: GObject.Object | null
         item_type?: GObject.GType | null
         model?: Clutter.Model | null
+        itemType?: GObject.GType | null
     }
 
 }
@@ -11841,6 +12065,7 @@ interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
 
     factory: GObject.Object
     item_type: GObject.GType
+    itemType: GObject.GType
     model: Clutter.Model
 
     // Owm methods of Mx-1.0.Mx.ListView
@@ -12760,6 +12985,8 @@ module Notebook {
 
         current_page?: Clutter.Actor | null
         enable_gestures?: boolean | null
+        currentPage?: Clutter.Actor | null
+        enableGestures?: boolean | null
     }
 
 }
@@ -12769,7 +12996,9 @@ interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
     // Own properties of Mx-1.0.Mx.Notebook
 
     current_page: Clutter.Actor
+    currentPage: Clutter.Actor
     enable_gestures: boolean
+    enableGestures: boolean
 
     // Own fields of Mx-1.0.Mx.Notebook
 
@@ -13155,6 +13384,10 @@ module Offscreen {
         child?: Clutter.Actor | null
         pick_child?: boolean | null
         redirect_enabled?: boolean | null
+        accumulationEnabled?: boolean | null
+        autoUpdate?: boolean | null
+        pickChild?: boolean | null
+        redirectEnabled?: boolean | null
     }
 
 }
@@ -13164,15 +13397,20 @@ interface Offscreen extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
     // Own properties of Mx-1.0.Mx.Offscreen
 
     accumulation_enabled: boolean
+    accumulationEnabled: boolean
     readonly accumulation_material: any
+    readonly accumulationMaterial: any
     auto_update: boolean
+    autoUpdate: boolean
     /**
      * The off-screen buffer used to draw the child.
      */
     readonly buffer: any
     child: Clutter.Actor
     pick_child: boolean
+    pickChild: boolean
     redirect_enabled: boolean
+    redirectEnabled: boolean
 
     // Own fields of Mx-1.0.Mx.Offscreen
 
@@ -13613,6 +13851,7 @@ module PathBar {
 
         clear_on_change?: boolean | null
         editable?: boolean | null
+        clearOnChange?: boolean | null
     }
 
 }
@@ -13622,6 +13861,7 @@ interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
     // Own properties of Mx-1.0.Mx.PathBar
 
     clear_on_change: boolean
+    clearOnChange: boolean
     editable: boolean
     readonly entry: Entry
     readonly level: number
@@ -14475,7 +14715,9 @@ interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.ScrollBar
 
@@ -14895,6 +15137,9 @@ module ScrollView {
         enable_gestures?: boolean | null
         enable_mouse_scrolling?: boolean | null
         scroll_policy?: ScrollPolicy | null
+        enableGestures?: boolean | null
+        enableMouseScrolling?: boolean | null
+        scrollPolicy?: ScrollPolicy | null
     }
 
 }
@@ -14904,13 +15149,18 @@ interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
     // Own properties of Mx-1.0.Mx.ScrollView
 
     enable_gestures: boolean
+    enableGestures: boolean
     enable_mouse_scrolling: boolean
+    enableMouseScrolling: boolean
     scroll_policy: ScrollPolicy
+    scrollPolicy: ScrollPolicy
 
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.ScrollView
 
@@ -15307,6 +15557,11 @@ module Settings {
         icon_theme?: string | null
         long_press_timeout?: number | null
         small_screen?: boolean | null
+        dragThreshold?: number | null
+        fontName?: string | null
+        iconTheme?: string | null
+        longPressTimeout?: number | null
+        smallScreen?: boolean | null
     }
 
 }
@@ -15316,10 +15571,15 @@ interface Settings {
     // Own properties of Mx-1.0.Mx.Settings
 
     drag_threshold: number
+    dragThreshold: number
     font_name: string | null
+    fontName: string | null
     icon_theme: string | null
+    iconTheme: string | null
     long_press_timeout: number
+    longPressTimeout: number
     small_screen: boolean
+    smallScreen: boolean
 
     // Own fields of Mx-1.0.Mx.Settings
 
@@ -15377,6 +15637,7 @@ module Slider {
 
         buffer_value?: number | null
         value?: number | null
+        bufferValue?: number | null
     }
 
 }
@@ -15386,6 +15647,7 @@ interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
     // Own properties of Mx-1.0.Mx.Slider
 
     buffer_value: number
+    bufferValue: number
     value: number
 
     // Owm methods of Mx-1.0.Mx.Slider
@@ -16650,6 +16912,10 @@ module StackChild {
         x_fill?: boolean | null
         y_align?: Align | null
         y_fill?: boolean | null
+        xAlign?: Align | null
+        xFill?: boolean | null
+        yAlign?: Align | null
+        yFill?: boolean | null
     }
 
 }
@@ -16661,9 +16927,13 @@ interface StackChild {
     crop: boolean
     fit: boolean
     x_align: Align
+    xAlign: Align
     x_fill: boolean
+    xFill: boolean
     y_align: Align
+    yAlign: Align
     y_fill: boolean
+    yFill: boolean
 
     // Class property signals of Mx-1.0.Mx.StackChild
 
@@ -16835,6 +17105,8 @@ module Table {
 
         column_spacing?: number | null
         row_spacing?: number | null
+        columnSpacing?: number | null
+        rowSpacing?: number | null
     }
 
 }
@@ -16844,9 +17116,13 @@ interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
     // Own properties of Mx-1.0.Mx.Table
 
     readonly column_count: number
+    readonly columnCount: number
     column_spacing: number
+    columnSpacing: number
     readonly row_count: number
+    readonly rowCount: number
     row_spacing: number
+    rowSpacing: number
 
     // Owm methods of Mx-1.0.Mx.Table
 
@@ -17422,6 +17698,14 @@ module TableChild {
         y_align?: Align | null
         y_expand?: boolean | null
         y_fill?: boolean | null
+        columnSpan?: number | null
+        rowSpan?: number | null
+        xAlign?: Align | null
+        xExpand?: boolean | null
+        xFill?: boolean | null
+        yAlign?: Align | null
+        yExpand?: boolean | null
+        yFill?: boolean | null
     }
 
 }
@@ -17432,14 +17716,22 @@ interface TableChild {
 
     column: number
     column_span: number
+    columnSpan: number
     row: number
     row_span: number
+    rowSpan: number
     x_align: Align
+    xAlign: Align
     x_expand: boolean
+    xExpand: boolean
     x_fill: boolean
+    xFill: boolean
     y_align: Align
+    yAlign: Align
     y_expand: boolean
+    yExpand: boolean
     y_fill: boolean
+    yFill: boolean
 
     // Class property signals of Mx-1.0.Mx.TableChild
 
@@ -17650,6 +17942,7 @@ module TextureFrame {
         parent_texture?: Clutter.Texture | null
         right?: number | null
         top?: number | null
+        parentTexture?: Clutter.Texture | null
     }
 
 }
@@ -17661,6 +17954,7 @@ interface TextureFrame extends Atk.ImplementorIface, Clutter.Animatable, Clutter
     bottom: number
     left: number
     parent_texture: Clutter.Texture
+    parentTexture: Clutter.Texture
     right: number
     top: number
 
@@ -18425,6 +18719,7 @@ module Toolbar {
         // Own constructor properties of Mx-1.0.Mx.Toolbar
 
         has_close_button?: boolean | null
+        hasCloseButton?: boolean | null
     }
 
 }
@@ -18434,11 +18729,14 @@ interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
     // Own properties of Mx-1.0.Mx.Toolbar
 
     has_close_button: boolean
+    hasCloseButton: boolean
 
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Own fields of Mx-1.0.Mx.Toolbar
 
@@ -18851,6 +19149,7 @@ module Tooltip {
 
         text?: string | null
         tip_area?: Clutter.Geometry | null
+        tipArea?: Clutter.Geometry | null
     }
 
 }
@@ -18861,6 +19160,7 @@ interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
 
     text: string | null
     tip_area: Clutter.Geometry
+    tipArea: Clutter.Geometry
 
     // Owm methods of Mx-1.0.Mx.Tooltip
 
@@ -19273,6 +19573,10 @@ module Viewport {
         x_origin?: number | null
         y_origin?: number | null
         z_origin?: number | null
+        syncAdjustments?: boolean | null
+        xOrigin?: number | null
+        yOrigin?: number | null
+        zOrigin?: number | null
     }
 
 }
@@ -19282,14 +19586,20 @@ interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
     // Own properties of Mx-1.0.Mx.Viewport
 
     sync_adjustments: boolean
+    syncAdjustments: boolean
     x_origin: number
+    xOrigin: number
     y_origin: number
+    yOrigin: number
     z_origin: number
+    zOrigin: number
 
     // Conflicting properties
 
     x_align: any
+    xAlign: any
     y_align: any
+    yAlign: any
 
     // Owm methods of Mx-1.0.Mx.Viewport
 
@@ -19702,6 +20012,11 @@ module Widget {
          * text displayed on the tooltip
          */
         tooltip_text?: string | null
+        tooltipDelay?: number | null
+        /**
+         * text displayed on the tooltip
+         */
+        tooltipText?: string | null
     }
 
 }
@@ -19716,10 +20031,15 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      */
     menu: Menu
     tooltip_delay: number
+    tooltipDelay: number
     /**
      * text displayed on the tooltip
      */
     tooltip_text: string | null
+    /**
+     * text displayed on the tooltip
+     */
+    tooltipText: string | null
 
     // Owm methods of Mx-1.0.Mx.Widget
 
@@ -20221,6 +20541,12 @@ module Window {
         title?: string | null
         toolbar?: Toolbar | null
         window_rotation?: WindowRotation | null
+        clutterStage?: Clutter.Stage | null
+        hasToolbar?: boolean | null
+        iconCoglTexture?: string | null
+        iconName?: string | null
+        smallScreen?: boolean | null
+        windowRotation?: WindowRotation | null
     }
 
 }
@@ -20231,16 +20557,24 @@ interface Window {
 
     child: Clutter.Actor
     readonly clutter_stage: Clutter.Stage
+    readonly clutterStage: Clutter.Stage
     fullscreen: boolean
     has_toolbar: boolean
+    hasToolbar: boolean
     icon_cogl_texture: string | null
+    iconCoglTexture: string | null
     icon_name: string | null
+    iconName: string | null
     small_screen: boolean
+    smallScreen: boolean
     title: string | null
     toolbar: Toolbar
     window_rotation: WindowRotation
+    windowRotation: WindowRotation
     readonly window_rotation_angle: number
+    readonly windowRotationAngle: number
     readonly window_rotation_timeline: Clutter.Timeline
+    readonly windowRotationTimeline: Clutter.Timeline
 
     // Own fields of Mx-1.0.Mx.Window
 

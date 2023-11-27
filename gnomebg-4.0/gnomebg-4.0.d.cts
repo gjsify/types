@@ -142,8 +142,11 @@ export interface BGSlideShow {
 
     readonly file: Gio.File
     readonly has_multiple_sizes: boolean
+    readonly hasMultipleSizes: boolean
     readonly start_time: number
+    readonly startTime: number
     readonly total_duration: number
+    readonly totalDuration: number
 
     // Own fields of GnomeBG-4.0.GnomeBG.BGSlideShow
 

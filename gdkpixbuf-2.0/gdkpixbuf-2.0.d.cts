@@ -434,6 +434,23 @@ export module Pixbuf {
          * The number of columns of the pixbuf.
          */
         width?: number | null
+        /**
+         * The number of bits per sample.
+         * 
+         * Currently only 8 bit per sample are supported.
+         */
+        bitsPerSample?: number | null
+        /**
+         * Whether the pixbuf has an alpha channel.
+         */
+        hasAlpha?: boolean | null
+        /**
+         * The number of samples per pixel.
+         * 
+         * Currently, only 3 or 4 samples per pixel are supported.
+         */
+        nChannels?: number | null
+        pixelBytes?: GLib.Bytes | null
     }
 
 }
@@ -449,6 +466,12 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      */
     readonly bits_per_sample: number
     /**
+     * The number of bits per sample.
+     * 
+     * Currently only 8 bit per sample are supported.
+     */
+    readonly bitsPerSample: number
+    /**
      * The color space of the pixbuf.
      * 
      * Currently, only `GDK_COLORSPACE_RGB` is supported.
@@ -459,6 +482,10 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      */
     readonly has_alpha: boolean
     /**
+     * Whether the pixbuf has an alpha channel.
+     */
+    readonly hasAlpha: boolean
+    /**
      * The number of rows of the pixbuf.
      */
     readonly height: number
@@ -468,7 +495,14 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * Currently, only 3 or 4 samples per pixel are supported.
      */
     readonly n_channels: number
+    /**
+     * The number of samples per pixel.
+     * 
+     * Currently, only 3 or 4 samples per pixel are supported.
+     */
+    readonly nChannels: number
     readonly pixel_bytes: GLib.Bytes
+    readonly pixelBytes: GLib.Bytes
     /**
      * A pointer to the pixel data of the pixbuf.
      */

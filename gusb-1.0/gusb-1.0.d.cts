@@ -222,6 +222,7 @@ export module Context {
         // Own constructor properties of GUsb-1.0.GUsb.Context
 
         debug_level?: number | null
+        debugLevel?: number | null
     }
 
 }
@@ -231,7 +232,9 @@ export interface Context extends Gio.Initable {
     // Own properties of GUsb-1.0.GUsb.Context
 
     debug_level: number
+    debugLevel: number
     readonly libusb_context: any
+    readonly libusbContext: any
 
     // Own fields of GUsb-1.0.GUsb.Context
 
@@ -422,6 +425,8 @@ export module Device {
         context?: Context | null
         libusb_device?: any | null
         platform_id?: string | null
+        libusbDevice?: any | null
+        platformId?: string | null
     }
 
 }
@@ -432,7 +437,9 @@ export interface Device extends Gio.Initable {
 
     readonly context: Context
     readonly libusb_device: any
+    readonly libusbDevice: any
     readonly platform_id: string | null
+    readonly platformId: string | null
 
     // Own fields of GUsb-1.0.GUsb.Device
 

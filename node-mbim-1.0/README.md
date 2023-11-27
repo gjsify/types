@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-mbim-1.0)
 
 
-Node.js TypeScript type definitions for Mbim-1.0, generated from library version 1.29.8 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+Node.js TypeScript type definitions for Mbim-1.0, generated from library version 1.29.8 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 
 ## Install

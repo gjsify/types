@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-panelapplet-4.0)
 
 
-Node.js TypeScript type definitions for PanelApplet-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+Node.js TypeScript type definitions for PanelApplet-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 
 ## Install

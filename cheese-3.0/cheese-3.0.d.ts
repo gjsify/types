@@ -128,6 +128,10 @@ module Camera {
          * The video texture for the #CheeseCamera to render into.
          */
         video_texture?: any | null
+        /**
+         * The video texture for the #CheeseCamera to render into.
+         */
+        videoTexture?: any | null
     }
 
 }
@@ -149,9 +153,17 @@ interface Camera {
      */
     readonly num_camera_devices: number
     /**
+     * The currently number of camera devices available for being used.
+     */
+    readonly numCameraDevices: number
+    /**
      * The video texture for the #CheeseCamera to render into.
      */
     video_texture: any
+    /**
+     * The video texture for the #CheeseCamera to render into.
+     */
+    videoTexture: any
 
     // Owm methods of Cheese-3.0.Cheese.Camera
 
@@ -604,6 +616,15 @@ module Effect {
          * Description of the GStreamer pipeline associated with the effect.
          */
         pipeline_desc?: string | null
+        /**
+         * If the control valve is active, then the effect is currently connected to
+         * a video stream, for previews.
+         */
+        controlValve?: Gst.Element | null
+        /**
+         * Description of the GStreamer pipeline associated with the effect.
+         */
+        pipelineDesc?: string | null
     }
 
 }
@@ -618,6 +639,11 @@ interface Effect {
      */
     control_valve: Gst.Element
     /**
+     * If the control valve is active, then the effect is currently connected to
+     * a video stream, for previews.
+     */
+    controlValve: Gst.Element
+    /**
      * Name of the effect, for display in a UI.
      */
     readonly name: string | null
@@ -625,6 +651,10 @@ interface Effect {
      * Description of the GStreamer pipeline associated with the effect.
      */
     readonly pipeline_desc: string | null
+    /**
+     * Description of the GStreamer pipeline associated with the effect.
+     */
+    readonly pipelineDesc: string | null
 
     // Owm methods of Cheese-3.0.Cheese.Effect
 

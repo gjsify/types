@@ -28,6 +28,7 @@ export module Persona {
         // Own constructor properties of FolksLibsocialweb-0.6.FolksLibsocialweb.Persona
 
         lsw_contact?: SocialWebClient.Contact | null
+        lswContact?: SocialWebClient.Contact | null
     }
 
 }
@@ -37,6 +38,7 @@ export interface Persona extends Folks.AvatarDetails, Folks.GenderDetails, Folks
     // Own properties of FolksLibsocialweb-0.6.FolksLibsocialweb.Persona
 
     readonly lsw_contact: SocialWebClient.Contact
+    readonly lswContact: SocialWebClient.Contact
 
     // Own fields of FolksLibsocialweb-0.6.FolksLibsocialweb.Persona
 

@@ -599,6 +599,20 @@ module Core {
          * configuration files.
          */
         system_directory?: string | null
+        contentDirectory?: string | null
+        /**
+         * The save directory of the core.
+         * 
+         * The core will save some data here.
+         */
+        saveDirectory?: string | null
+        /**
+         * The system directory of the core.
+         * 
+         * The core will look here for additional data, such as firmware ROMs or
+         * configuration files.
+         */
+        systemDirectory?: string | null
     }
 
 }
@@ -611,7 +625,12 @@ interface Core {
      * The Libretro API version implement by the core.
      */
     readonly api_version: number
+    /**
+     * The Libretro API version implement by the core.
+     */
+    readonly apiVersion: number
     content_directory: string | null
+    contentDirectory: string | null
     /**
      * The filename of the core.
      */
@@ -621,13 +640,25 @@ interface Core {
      */
     readonly frames_per_second: number
     /**
+     * The FPS rate for the core's video output.
+     */
+    readonly framesPerSecond: number
+    /**
      * Whether a game has been loaded.
      */
     readonly game_loaded: boolean
     /**
+     * Whether a game has been loaded.
+     */
+    readonly gameLoaded: boolean
+    /**
      * Whether the core has been initiated.
      */
     readonly is_initiated: boolean
+    /**
+     * Whether the core has been initiated.
+     */
+    readonly isInitiated: boolean
     /**
      * The number of frame to run ahead of time.
      */
@@ -639,9 +670,19 @@ interface Core {
      */
     save_directory: string | null
     /**
+     * The save directory of the core.
+     * 
+     * The core will save some data here.
+     */
+    saveDirectory: string | null
+    /**
      * Whether the core supports running with no game.
      */
     readonly support_no_game: boolean
+    /**
+     * Whether the core supports running with no game.
+     */
+    readonly supportNoGame: boolean
     /**
      * The system directory of the core.
      * 
@@ -649,6 +690,13 @@ interface Core {
      * configuration files.
      */
     system_directory: string | null
+    /**
+     * The system directory of the core.
+     * 
+     * The core will look here for additional data, such as firmware ROMs or
+     * configuration files.
+     */
+    systemDirectory: string | null
 
     // Owm methods of Retro-0.14.Retro.Core
 
@@ -1077,6 +1125,8 @@ module CoreView {
 
         can_grab_pointer?: boolean | null
         snap_pointer_to_borders?: boolean | null
+        canGrabPointer?: boolean | null
+        snapPointerToBorders?: boolean | null
     }
 
 }
@@ -1086,7 +1136,9 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Retro-0.14.Retro.CoreView
 
     can_grab_pointer: boolean
+    canGrabPointer: boolean
     snap_pointer_to_borders: boolean
+    snapPointerToBorders: boolean
 
     // Owm methods of Retro-0.14.Retro.CoreView
 
@@ -1478,6 +1530,7 @@ module MainLoop {
 
         core?: Core | null
         speed_rate?: number | null
+        speedRate?: number | null
     }
 
 }
@@ -1488,6 +1541,7 @@ interface MainLoop {
 
     core: Core
     speed_rate: number
+    speedRate: number
 
     // Owm methods of Retro-0.14.Retro.MainLoop
 

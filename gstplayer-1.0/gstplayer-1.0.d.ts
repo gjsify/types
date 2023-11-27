@@ -278,6 +278,12 @@ module Player {
         video_multiview_mode?: GstVideo.VideoMultiviewFramePacking | null
         video_renderer?: PlayerVideoRenderer | null
         volume?: number | null
+        audioVideoOffset?: number | null
+        signalDispatcher?: PlayerSignalDispatcher | null
+        subtitleVideoOffset?: number | null
+        videoMultiviewFlags?: GstVideo.VideoMultiviewFlags | null
+        videoMultiviewMode?: GstVideo.VideoMultiviewFramePacking | null
+        videoRenderer?: PlayerVideoRenderer | null
     }
 
 }
@@ -287,22 +293,32 @@ interface Player {
     // Own properties of GstPlayer-1.0.GstPlayer.Player
 
     audio_video_offset: number
+    audioVideoOffset: number
     readonly current_audio_track: PlayerAudioInfo
+    readonly currentAudioTrack: PlayerAudioInfo
     readonly current_subtitle_track: PlayerSubtitleInfo
+    readonly currentSubtitleTrack: PlayerSubtitleInfo
     readonly current_video_track: PlayerVideoInfo
+    readonly currentVideoTrack: PlayerVideoInfo
     readonly duration: number
     readonly media_info: PlayerMediaInfo
+    readonly mediaInfo: PlayerMediaInfo
     mute: boolean
     readonly pipeline: Gst.Element
     readonly position: number
     rate: number
     readonly signal_dispatcher: PlayerSignalDispatcher
+    readonly signalDispatcher: PlayerSignalDispatcher
     subtitle_video_offset: number
+    subtitleVideoOffset: number
     suburi: string | null
     uri: string | null
     video_multiview_flags: GstVideo.VideoMultiviewFlags
+    videoMultiviewFlags: GstVideo.VideoMultiviewFlags
     video_multiview_mode: GstVideo.VideoMultiviewFramePacking
+    videoMultiviewMode: GstVideo.VideoMultiviewFramePacking
     readonly video_renderer: PlayerVideoRenderer
+    readonly videoRenderer: PlayerVideoRenderer
     volume: number
 
     // Owm methods of GstPlayer-1.0.GstPlayer.Player
@@ -807,6 +823,7 @@ module PlayerGMainContextSignalDispatcher {
         // Own constructor properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
         application_context?: GLib.MainContext | null
+        applicationContext?: GLib.MainContext | null
     }
 
 }
@@ -816,6 +833,7 @@ interface PlayerGMainContextSignalDispatcher extends PlayerSignalDispatcher {
     // Own properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
     readonly application_context: GLib.MainContext
+    readonly applicationContext: GLib.MainContext
 
     // Class property signals of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
@@ -1066,6 +1084,8 @@ module PlayerVideoOverlayVideoRenderer {
 
         video_sink?: Gst.Element | null
         window_handle?: any | null
+        videoSink?: Gst.Element | null
+        windowHandle?: any | null
     }
 
 }
@@ -1075,7 +1095,9 @@ interface PlayerVideoOverlayVideoRenderer extends PlayerVideoRenderer {
     // Own properties of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 
     video_sink: Gst.Element
+    videoSink: Gst.Element
     window_handle: any
+    windowHandle: any
 
     // Owm methods of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 

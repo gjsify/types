@@ -4965,6 +4965,7 @@ export module DisplayManager {
         // Own constructor properties of Gdk-2.0.Gdk.DisplayManager
 
         default_display?: Display | null
+        defaultDisplay?: Display | null
     }
 
 }
@@ -4974,6 +4975,7 @@ export interface DisplayManager {
     // Own properties of Gdk-2.0.Gdk.DisplayManager
 
     default_display: Display
+    defaultDisplay: Display
 
     // Owm methods of Gdk-2.0.Gdk.DisplayManager
 
@@ -6279,11 +6281,16 @@ export module Screen {
 
         font_options?: any | null
         resolution?: number | null
+        fontOptions?: any | null
     }
 
 }
 
 export interface Screen {
+
+    // Own properties of Gdk-2.0.Gdk.Screen
+
+    fontOptions: any
 
     // Own fields of Gdk-2.0.Gdk.Screen
 
@@ -6562,6 +6569,9 @@ export interface Screen {
 
     // Class property signals of Gdk-2.0.Gdk.Screen
 
+    connect(sigName: "notify::font-options", callback: (($obj: Screen, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::font-options", callback: (($obj: Screen, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::font-options", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void

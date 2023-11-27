@@ -226,6 +226,7 @@ export module X11DeviceXI2 {
         // Own constructor properties of GdkX11-4.0.GdkX11.X11DeviceXI2
 
         device_id?: number | null
+        deviceId?: number | null
     }
 
 }
@@ -235,6 +236,7 @@ export interface X11DeviceXI2 {
     // Own properties of GdkX11-4.0.GdkX11.X11DeviceXI2
 
     readonly device_id: number
+    readonly deviceId: number
 
     // Class property signals of GdkX11-4.0.GdkX11.X11DeviceXI2
 

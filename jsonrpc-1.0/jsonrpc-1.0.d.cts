@@ -91,6 +91,22 @@ export module Client {
          * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
          */
         use_gvariant?: boolean | null
+        /**
+         * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
+         * with a JSON-RPC peer.
+         */
+        ioStream?: Gio.IOStream | null
+        /**
+         * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
+         * communicate with the peer instead of JSON. You should only set this
+         * if you know the peer is also a Jsonrpc-GLib based client.
+         * 
+         * Setting this property allows the peers to communicate using GVariant
+         * instead of JSON. This means that we can access the messages without
+         * expensive memory allocations and parsing costs associated with JSON.
+         * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
+         */
+        useGvariant?: boolean | null
     }
 
 }
@@ -105,6 +121,11 @@ export interface Client {
      */
     readonly io_stream: Gio.IOStream
     /**
+     * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
+     * with a JSON-RPC peer.
+     */
+    readonly ioStream: Gio.IOStream
+    /**
      * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
      * communicate with the peer instead of JSON. You should only set this
      * if you know the peer is also a Jsonrpc-GLib based client.
@@ -115,6 +136,17 @@ export interface Client {
      * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
      */
     use_gvariant: boolean
+    /**
+     * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
+     * communicate with the peer instead of JSON. You should only set this
+     * if you know the peer is also a Jsonrpc-GLib based client.
+     * 
+     * Setting this property allows the peers to communicate using GVariant
+     * instead of JSON. This means that we can access the messages without
+     * expensive memory allocations and parsing costs associated with JSON.
+     * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
+     */
+    useGvariant: boolean
 
     // Own fields of Jsonrpc-1.0.Jsonrpc.Client
 
@@ -519,6 +551,9 @@ export interface InputStream extends Gio.Seekable {
     connect(sigName: "notify::buffer-size", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::buffer-size", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::buffer-size", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: InputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -570,6 +605,7 @@ export module OutputStream {
         // Own constructor properties of Jsonrpc-1.0.Jsonrpc.OutputStream
 
         use_gvariant?: boolean | null
+        useGvariant?: boolean | null
     }
 
 }
@@ -579,6 +615,7 @@ export interface OutputStream extends Gio.Seekable {
     // Own properties of Jsonrpc-1.0.Jsonrpc.OutputStream
 
     use_gvariant: boolean
+    useGvariant: boolean
 
     // Own fields of Jsonrpc-1.0.Jsonrpc.OutputStream
 
@@ -632,6 +669,9 @@ export interface OutputStream extends Gio.Seekable {
     connect(sigName: "notify::byte-order", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::byte-order", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::byte-order", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: OutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void

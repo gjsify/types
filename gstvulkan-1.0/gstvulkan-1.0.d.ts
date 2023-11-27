@@ -727,11 +727,16 @@ module VulkanDevice {
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanDevice
 
         physical_device?: VulkanPhysicalDevice | null
+        physicalDevice?: VulkanPhysicalDevice | null
     }
 
 }
 
 interface VulkanDevice {
+
+    // Own properties of GstVulkan-1.0.GstVulkan.VulkanDevice
+
+    readonly physicalDevice: VulkanPhysicalDevice
 
     // Own fields of GstVulkan-1.0.GstVulkan.VulkanDevice
 
@@ -800,6 +805,9 @@ interface VulkanDevice {
 
     // Class property signals of GstVulkan-1.0.GstVulkan.VulkanDevice
 
+    connect(sigName: "notify::physical-device", callback: (($obj: VulkanDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::physical-device", callback: (($obj: VulkanDevice, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::physical-device", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1623,6 +1631,7 @@ module VulkanPhysicalDevice {
 
         device_index?: number | null
         instance?: VulkanInstance | null
+        deviceIndex?: number | null
     }
 
 }
@@ -1631,6 +1640,7 @@ interface VulkanPhysicalDevice {
 
     // Own properties of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice
 
+    readonly deviceIndex: number
     readonly name: any
 
     // Own fields of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice
@@ -1692,6 +1702,9 @@ interface VulkanPhysicalDevice {
 
     // Class property signals of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice
 
+    connect(sigName: "notify::device-index", callback: (($obj: VulkanPhysicalDevice, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-index", callback: (($obj: VulkanPhysicalDevice, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::device-index", ...args: any[]): void
     connect(sigName: "notify::name", callback: (($obj: VulkanPhysicalDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: VulkanPhysicalDevice, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::name", ...args: any[]): void
@@ -1840,6 +1853,8 @@ module VulkanSwapper {
 
         force_aspect_ratio?: boolean | null
         pixel_aspect_ratio?: Gst.Fraction | null
+        forceAspectRatio?: boolean | null
+        pixelAspectRatio?: Gst.Fraction | null
     }
 
 }
@@ -1849,7 +1864,9 @@ interface VulkanSwapper {
     // Own properties of GstVulkan-1.0.GstVulkan.VulkanSwapper
 
     force_aspect_ratio: boolean
+    forceAspectRatio: boolean
     pixel_aspect_ratio: Gst.Fraction
+    pixelAspectRatio: Gst.Fraction
 
     // Own fields of GstVulkan-1.0.GstVulkan.VulkanSwapper
 

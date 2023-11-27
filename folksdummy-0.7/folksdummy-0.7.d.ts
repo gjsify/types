@@ -224,6 +224,7 @@ module PersonaStore {
         // Own constructor properties of FolksDummy-0.7.FolksDummy.PersonaStore
 
         persona_type?: GObject.GType | null
+        personaType?: GObject.GType | null
     }
 
 }
@@ -233,6 +234,7 @@ interface PersonaStore {
     // Own properties of FolksDummy-0.7.FolksDummy.PersonaStore
 
     persona_type: GObject.GType
+    personaType: GObject.GType
 
     // Owm methods of FolksDummy-0.7.FolksDummy.PersonaStore
 
@@ -330,6 +332,7 @@ module Persona {
         // Own constructor properties of FolksDummy-0.7.FolksDummy.Persona
 
         property_change_delay?: number | null
+        propertyChangeDelay?: number | null
     }
 
 }
@@ -339,6 +342,7 @@ interface Persona {
     // Own properties of FolksDummy-0.7.FolksDummy.Persona
 
     property_change_delay: number
+    propertyChangeDelay: number
 
     // Owm methods of FolksDummy-0.7.FolksDummy.Persona
 

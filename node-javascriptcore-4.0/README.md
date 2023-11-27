@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-javascriptcore-4.0)
 
 
-Node.js TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.42.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+Node.js TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.42.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 WebKitGTK+ is a full-featured port of the WebKit rendering engine, suitable for projects requiring any kind of web integration, from hybrid HTML/CSS applications to full-fledged web browsers. This is the library to use to acces JavaScript from WebKitGTK.
 

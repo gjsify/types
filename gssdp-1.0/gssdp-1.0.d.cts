@@ -85,6 +85,26 @@ export module Client {
          * This property can only be set during object construction.
          */
         socket_ttl?: number | null
+        /**
+         * The IP address of the assoicated network interface.
+         */
+        hostIp?: string | null
+        /**
+         * UDP port to use for sending multicast M-SEARCH requests on the
+         * network. If not set (or set to 0) a random port will be used.
+         * This property can be only set during object construction.
+         */
+        msearchPort?: number | null
+        /**
+         * The SSDP server's identifier.
+         */
+        serverId?: string | null
+        /**
+         * Time-to-live value to use for all sockets created by this client.
+         * If not set (or set to 0) the value recommended by UPnP will be used.
+         * This property can only be set during object construction.
+         */
+        socketTtl?: number | null
     }
 
 }
@@ -104,6 +124,10 @@ export interface Client extends Gio.Initable {
      */
     host_ip: string | null
     /**
+     * The IP address of the assoicated network interface.
+     */
+    hostIp: string | null
+    /**
      * The name of the network interface this client is associated with.
      * Set to NULL to autodetect.
      */
@@ -114,6 +138,12 @@ export interface Client extends Gio.Initable {
      * This property can be only set during object construction.
      */
     readonly msearch_port: number
+    /**
+     * UDP port to use for sending multicast M-SEARCH requests on the
+     * network. If not set (or set to 0) a random port will be used.
+     * This property can be only set during object construction.
+     */
+    readonly msearchPort: number
     /**
      * The network this client is currently connected to. You could set this
      * to anything you want to identify the network this client is
@@ -128,11 +158,21 @@ export interface Client extends Gio.Initable {
      */
     server_id: string | null
     /**
+     * The SSDP server's identifier.
+     */
+    serverId: string | null
+    /**
      * Time-to-live value to use for all sockets created by this client.
      * If not set (or set to 0) the value recommended by UPnP will be used.
      * This property can only be set during object construction.
      */
     readonly socket_ttl: number
+    /**
+     * Time-to-live value to use for all sockets created by this client.
+     * If not set (or set to 0) the value recommended by UPnP will be used.
+     * This property can only be set during object construction.
+     */
+    readonly socketTtl: number
 
     // Own fields of GSSDP-1.0.GSSDP.Client
 
@@ -453,6 +493,15 @@ export module ResourceGroup {
          * The default is 120 based on DLNA specification.
          */
         message_delay?: number | null
+        /**
+         * The number of seconds our advertisements are valid.
+         */
+        maxAge?: number | null
+        /**
+         * The minimum number of milliseconds between SSDP messages.
+         * The default is 120 based on DLNA specification.
+         */
+        messageDelay?: number | null
     }
 
 }
@@ -474,10 +523,19 @@ export interface ResourceGroup {
      */
     max_age: number
     /**
+     * The number of seconds our advertisements are valid.
+     */
+    maxAge: number
+    /**
      * The minimum number of milliseconds between SSDP messages.
      * The default is 120 based on DLNA specification.
      */
     message_delay: number
+    /**
+     * The minimum number of milliseconds between SSDP messages.
+     * The default is 120 based on DLNA specification.
+     */
+    messageDelay: number
 
     // Own fields of GSSDP-1.0.GSSDP.ResourceGroup
 

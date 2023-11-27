@@ -3535,9 +3535,17 @@ interface FontFamily extends Gio.ListModel {
      */
     readonly item_type: GObject.GType
     /**
+     * The type of items contained in this list.
+     */
+    readonly itemType: GObject.GType
+    /**
      * The number of items contained in this list.
      */
     readonly n_items: number
+    /**
+     * The number of items contained in this list.
+     */
+    readonly nItems: number
 
     // Own fields of Pango-1.0.Pango.FontFamily
 
@@ -3717,9 +3725,17 @@ interface FontMap extends Gio.ListModel {
      */
     readonly item_type: GObject.GType
     /**
+     * The type of items contained in this list.
+     */
+    readonly itemType: GObject.GType
+    /**
      * The number of items contained in this list.
      */
     readonly n_items: number
+    /**
+     * The number of items contained in this list.
+     */
+    readonly nItems: number
 
     // Own fields of Pango-1.0.Pango.FontMap
 

@@ -79,6 +79,9 @@ module CallEvent {
         duration?: number | null
         end_actor?: Entity | null
         end_reason?: number | null
+        detailedEndReason?: string | null
+        endActor?: Entity | null
+        endReason?: number | null
     }
 
 }
@@ -88,9 +91,12 @@ interface CallEvent {
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
     readonly detailed_end_reason: string | null
+    readonly detailedEndReason: string | null
     readonly duration: number
     readonly end_actor: Entity
+    readonly endActor: Entity
     readonly end_reason: number
+    readonly endReason: number
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
@@ -178,6 +184,10 @@ module Entity {
          * The entity's type (see #TplEntityType).
          */
         type?: number | null
+        /**
+         * The entity's avatar token
+         */
+        avatarToken?: string | null
     }
 
 }
@@ -194,6 +204,10 @@ interface Entity {
      * The entity's avatar token
      */
     readonly avatar_token: string | null
+    /**
+     * The entity's avatar token
+     */
+    readonly avatarToken: string | null
     /**
      * The entity's identifier
      */
@@ -269,6 +283,7 @@ module Event {
         receiver?: Entity | null
         sender?: Entity | null
         timestamp?: number | null
+        channelPath?: string | null
     }
 
 }
@@ -279,7 +294,9 @@ interface Event {
 
     readonly account: TelepathyGLib.Account
     readonly account_path: string | null
+    readonly accountPath: string | null
     readonly channel_path: string | null
+    readonly channelPath: string | null
     readonly receiver: Entity
     readonly sender: Entity
     readonly timestamp: number
@@ -566,6 +583,7 @@ module LogWalker {
 
         filter?: any | null
         filter_data?: any | null
+        filterData?: any | null
     }
 
 }
@@ -576,6 +594,7 @@ interface LogWalker {
 
     readonly filter: any
     readonly filter_data: any
+    readonly filterData: any
 
     // Own fields of TelepathyLogger-0.2.TelepathyLogger.LogWalker
 
@@ -680,6 +699,10 @@ module TextEvent {
         message_token?: string | null
         message_type?: number | null
         supersedes_token?: string | null
+        editTimestamp?: number | null
+        messageToken?: string | null
+        messageType?: number | null
+        supersedesToken?: string | null
     }
 
 }
@@ -689,10 +712,14 @@ interface TextEvent {
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 
     readonly edit_timestamp: number
+    readonly editTimestamp: number
     readonly message: string | null
     readonly message_token: string | null
+    readonly messageToken: string | null
     readonly message_type: number
+    readonly messageType: number
     readonly supersedes_token: string | null
+    readonly supersedesToken: string | null
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 

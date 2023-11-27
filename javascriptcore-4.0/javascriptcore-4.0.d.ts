@@ -628,6 +628,10 @@ module Context {
          * The #JSCVirtualMachine in which the context was created.
          */
         virtual_machine?: VirtualMachine | null
+        /**
+         * The #JSCVirtualMachine in which the context was created.
+         */
+        virtualMachine?: VirtualMachine | null
     }
 
 }
@@ -640,6 +644,10 @@ interface Context {
      * The #JSCVirtualMachine in which the context was created.
      */
     readonly virtual_machine: VirtualMachine
+    /**
+     * The #JSCVirtualMachine in which the context was created.
+     */
+    readonly virtualMachine: VirtualMachine
 
     // Own fields of JavaScriptCore-4.0.JavaScriptCore.Context
 

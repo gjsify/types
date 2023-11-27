@@ -251,6 +251,9 @@ module OAuth2Proxy {
         access_token?: string | null
         auth_endpoint?: string | null
         client_id?: string | null
+        accessToken?: string | null
+        authEndpoint?: string | null
+        clientId?: string | null
     }
 
 }
@@ -260,8 +263,11 @@ interface OAuth2Proxy {
     // Own properties of Rest-0.7.Rest.OAuth2Proxy
 
     access_token: string | null
+    accessToken: string | null
     readonly auth_endpoint: string | null
+    readonly authEndpoint: string | null
     readonly client_id: string | null
+    readonly clientId: string | null
 
     // Own fields of Rest-0.7.Rest.OAuth2Proxy
 
@@ -511,6 +517,11 @@ module OAuthProxy {
         signature_method?: OAuthSignatureMethod | null
         token?: string | null
         token_secret?: string | null
+        consumerKey?: string | null
+        consumerSecret?: string | null
+        signatureHost?: string | null
+        signatureMethod?: OAuthSignatureMethod | null
+        tokenSecret?: string | null
     }
 
 }
@@ -520,11 +531,16 @@ interface OAuthProxy {
     // Own properties of Rest-0.7.Rest.OAuthProxy
 
     readonly consumer_key: string | null
+    readonly consumerKey: string | null
     readonly consumer_secret: string | null
+    readonly consumerSecret: string | null
     signature_host: string | null
+    signatureHost: string | null
     signature_method: OAuthSignatureMethod
+    signatureMethod: OAuthSignatureMethod
     token: string | null
     token_secret: string | null
+    tokenSecret: string | null
 
     // Own fields of Rest-0.7.Rest.OAuthProxy
 
@@ -879,6 +895,12 @@ module Proxy {
         url_format?: string | null
         user_agent?: string | null
         username?: string | null
+        bindingRequired?: boolean | null
+        disableCookies?: boolean | null
+        sslCaFile?: string | null
+        sslStrict?: boolean | null
+        urlFormat?: string | null
+        userAgent?: string | null
     }
 
 }
@@ -888,12 +910,18 @@ interface Proxy {
     // Own properties of Rest-0.7.Rest.Proxy
 
     binding_required: boolean
+    bindingRequired: boolean
     readonly disable_cookies: boolean
+    readonly disableCookies: boolean
     password: string | null
     ssl_ca_file: string | null
+    sslCaFile: string | null
     ssl_strict: boolean
+    sslStrict: boolean
     url_format: string | null
+    urlFormat: string | null
     user_agent: string | null
+    userAgent: string | null
     username: string | null
 
     // Own fields of Rest-0.7.Rest.Proxy

@@ -7486,6 +7486,22 @@ export module Bin {
          * a field named `message` that contains the original forwarded #GstMessage.
          */
         message_forward?: boolean | null
+        /**
+         * If set to %TRUE, the bin will handle asynchronous state changes.
+         * This should be used only if the bin subclass is modifying the state
+         * of its children on its own.
+         */
+        asyncHandling?: boolean | null
+        /**
+         * Forward all children messages, even those that would normally be filtered by
+         * the bin. This can be interesting when one wants to be notified of the EOS
+         * state of individual elements, for example.
+         * 
+         * The messages are converted to an ELEMENT message with the bin as the
+         * source. The structure of the message is named `GstBinForwarded` and contains
+         * a field named `message` that contains the original forwarded #GstMessage.
+         */
+        messageForward?: boolean | null
     }
 
 }
@@ -7501,6 +7517,12 @@ export interface Bin extends ChildProxy {
      */
     async_handling: boolean
     /**
+     * If set to %TRUE, the bin will handle asynchronous state changes.
+     * This should be used only if the bin subclass is modifying the state
+     * of its children on its own.
+     */
+    asyncHandling: boolean
+    /**
      * Forward all children messages, even those that would normally be filtered by
      * the bin. This can be interesting when one wants to be notified of the EOS
      * state of individual elements, for example.
@@ -7510,6 +7532,16 @@ export interface Bin extends ChildProxy {
      * a field named `message` that contains the original forwarded #GstMessage.
      */
     message_forward: boolean
+    /**
+     * Forward all children messages, even those that would normally be filtered by
+     * the bin. This can be interesting when one wants to be notified of the EOS
+     * state of individual elements, for example.
+     * 
+     * The messages are converted to an ELEMENT message with the bin as the
+     * source. The structure of the message is named `GstBinForwarded` and contains
+     * a field named `message` that contains the original forwarded #GstMessage.
+     */
+    messageForward: boolean
 
     // Conflicting properties
 
@@ -8481,6 +8513,15 @@ export module Bus {
          * in #GstBin.
          */
         enable_async?: boolean | null
+        /**
+         * Enables async message delivery support for bus watches,
+         * gst_bus_pop() and similar API. Without this only the
+         * synchronous message handlers are called.
+         * 
+         * This property is used to create the child element buses
+         * in #GstBin.
+         */
+        enableAsync?: boolean | null
     }
 
 }
@@ -8498,6 +8539,15 @@ export interface Bus {
      * in #GstBin.
      */
     readonly enable_async: boolean
+    /**
+     * Enables async message delivery support for bus watches,
+     * gst_bus_pop() and similar API. Without this only the
+     * synchronous message handlers are called.
+     * 
+     * This property is used to create the child element buses
+     * in #GstBin.
+     */
+    readonly enableAsync: boolean
 
     // Own fields of Gst-1.0.Gst.Bus
 
@@ -8923,6 +8973,8 @@ export module Clock {
         timeout?: number | null
         window_size?: number | null
         window_threshold?: number | null
+        windowSize?: number | null
+        windowThreshold?: number | null
     }
 
 }
@@ -8933,7 +8985,9 @@ export interface Clock {
 
     timeout: number
     window_size: number
+    windowSize: number
     window_threshold: number
+    windowThreshold: number
 
     // Own fields of Gst-1.0.Gst.Clock
 
@@ -9829,6 +9883,8 @@ export module Device {
         device_class?: string | null
         display_name?: string | null
         properties?: Structure | null
+        deviceClass?: string | null
+        displayName?: string | null
     }
 
 }
@@ -9839,7 +9895,9 @@ export interface Device {
 
     readonly caps: Caps
     readonly device_class: string | null
+    readonly deviceClass: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly properties: Structure
 
     // Own fields of Gst-1.0.Gst.Device
@@ -10022,6 +10080,7 @@ export module DeviceMonitor {
         // Own constructor properties of Gst-1.0.Gst.DeviceMonitor
 
         show_all?: boolean | null
+        showAll?: boolean | null
     }
 
 }
@@ -10031,6 +10090,7 @@ export interface DeviceMonitor {
     // Own properties of Gst-1.0.Gst.DeviceMonitor
 
     show_all: boolean
+    showAll: boolean
 
     // Own fields of Gst-1.0.Gst.DeviceMonitor
 
@@ -14047,6 +14107,10 @@ export module PadTemplate {
          * When the pad described by the pad template will become available.
          */
         presence?: PadPresence | null
+        /**
+         * The name template of the pad template.
+         */
+        nameTemplate?: string | null
     }
 
 }
@@ -14059,6 +14123,10 @@ export interface PadTemplate {
      * The type of the pad described by the pad template.
      */
     readonly gtype: GObject.GType
+    /**
+     * The name template of the pad template.
+     */
+    readonly nameTemplate: string | null
 
     // Own fields of Gst-1.0.Gst.PadTemplate
 
@@ -14151,6 +14219,9 @@ export interface PadTemplate {
     connect(sigName: "notify::gtype", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::gtype", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::gtype", ...args: any[]): void
+    connect(sigName: "notify::name-template", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name-template", callback: (($obj: PadTemplate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name-template", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14333,6 +14404,12 @@ export module Pipeline {
          * Latency to configure on the pipeline. See gst_pipeline_set_latency().
          */
         latency?: number | null
+        /**
+         * Whether or not to automatically flush all messages on the
+         * pipeline's bus when going from READY to NULL state. Please see
+         * gst_pipeline_set_auto_flush_bus() for more information on this option.
+         */
+        autoFlushBus?: boolean | null
     }
 
 }
@@ -14347,6 +14424,12 @@ export interface Pipeline extends ChildProxy {
      * gst_pipeline_set_auto_flush_bus() for more information on this option.
      */
     auto_flush_bus: boolean
+    /**
+     * Whether or not to automatically flush all messages on the
+     * pipeline's bus when going from READY to NULL state. Please see
+     * gst_pipeline_set_auto_flush_bus() for more information on this option.
+     */
+    autoFlushBus: boolean
     /**
      * Latency to configure on the pipeline. See gst_pipeline_set_latency().
      */
@@ -15686,6 +15769,16 @@ export module Stream {
          * The #GstTagList of the #GstStream.
          */
         tags?: TagList | null
+        streamFlags?: StreamFlags | null
+        /**
+         * The unique identifier of the #GstStream. Can only be set at construction
+         * time.
+         */
+        streamId?: string | null
+        /**
+         * The #GstStreamType of the #GstStream. Can only be set at construction time.
+         */
+        streamType?: StreamType | null
     }
 
 }
@@ -15699,10 +15792,20 @@ export interface Stream {
      */
     caps: Caps
     stream_flags: StreamFlags
+    streamFlags: StreamFlags
+    /**
+     * The unique identifier of the #GstStream. Can only be set at construction
+     * time.
+     */
+    readonly streamId: string | null
     /**
      * The #GstStreamType of the #GstStream. Can only be set at construction time.
      */
     stream_type: StreamType
+    /**
+     * The #GstStreamType of the #GstStream. Can only be set at construction time.
+     */
+    streamType: StreamType
     /**
      * The #GstTagList of the #GstStream.
      */
@@ -15809,6 +15912,9 @@ export interface Stream {
     connect(sigName: "notify::stream-flags", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stream-flags", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::stream-flags", ...args: any[]): void
+    connect(sigName: "notify::stream-id", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::stream-id", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stream-id", ...args: any[]): void
     connect(sigName: "notify::stream-type", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stream-type", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::stream-type", ...args: any[]): void
@@ -15890,6 +15996,7 @@ export module StreamCollection {
         // Own constructor properties of Gst-1.0.Gst.StreamCollection
 
         upstream_id?: string | null
+        upstreamId?: string | null
     }
 
 }
@@ -15899,6 +16006,7 @@ export interface StreamCollection {
     // Own properties of Gst-1.0.Gst.StreamCollection
 
     upstream_id: string | null
+    upstreamId: string | null
 
     // Owm methods of Gst-1.0.Gst.StreamCollection
 
@@ -16040,6 +16148,7 @@ export module SystemClock {
         // Own constructor properties of Gst-1.0.Gst.SystemClock
 
         clock_type?: ClockType | null
+        clockType?: ClockType | null
     }
 
 }
@@ -16049,6 +16158,7 @@ export interface SystemClock {
     // Own properties of Gst-1.0.Gst.SystemClock
 
     clock_type: ClockType
+    clockType: ClockType
 
     // Conflicting properties
 

@@ -114,6 +114,32 @@ export module Engine {
          * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
          */
         nonglobal_loaders?: boolean | null
+        /**
+         * The list of loaded plugins.
+         * 
+         * This will be modified when [method`Engine`.load_plugin] or
+         * [method`Engine`.unload_plugin] is called.
+         * 
+         * This can be used with [class`Gio`.Settings] to save the loaded plugins by
+         * binding to this property after instantiating the engine by doing:
+         * 
+         * ```c
+         *   g_settings_bind (gsettings_object,
+         *                    LOADED_PLUGINS_KEY,
+         *                    engine,
+         *                    "loaded-plugins",
+         *                    G_SETTINGS_BIND_DEFAULT);
+         * ```
+         * 
+         * Note: notify will not be called when the engine is being destroyed.
+         */
+        loadedPlugins?: string[] | null
+        /**
+         * If non-global plugin loaders should be used.
+         * 
+         * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
+         */
+        nonglobalLoaders?: boolean | null
     }
 
 }
@@ -143,11 +169,37 @@ export interface Engine extends Gio.ListModel {
      */
     loaded_plugins: string[]
     /**
+     * The list of loaded plugins.
+     * 
+     * This will be modified when [method`Engine`.load_plugin] or
+     * [method`Engine`.unload_plugin] is called.
+     * 
+     * This can be used with [class`Gio`.Settings] to save the loaded plugins by
+     * binding to this property after instantiating the engine by doing:
+     * 
+     * ```c
+     *   g_settings_bind (gsettings_object,
+     *                    LOADED_PLUGINS_KEY,
+     *                    engine,
+     *                    "loaded-plugins",
+     *                    G_SETTINGS_BIND_DEFAULT);
+     * ```
+     * 
+     * Note: notify will not be called when the engine is being destroyed.
+     */
+    loadedPlugins: string[]
+    /**
      * If non-global plugin loaders should be used.
      * 
      * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
      */
     readonly nonglobal_loaders: boolean
+    /**
+     * If non-global plugin loaders should be used.
+     * 
+     * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
+     */
+    readonly nonglobalLoaders: boolean
 
     // Owm methods of Peas-2.Peas.Engine
 
@@ -380,6 +432,10 @@ export module ExtensionBase {
          * The [class`PluginInfo]` related to the current plugin.
          */
         plugin_info?: PluginInfo | null
+        /**
+         * The [class`PluginInfo]` related to the current plugin.
+         */
+        pluginInfo?: PluginInfo | null
     }
 
 }
@@ -397,9 +453,21 @@ export interface ExtensionBase {
      */
     readonly data_dir: string | null
     /**
+     * The The full path of the directory where the plugin
+     * should look for its data files.
+     * 
+     * Note: This is the same path as that returned by
+     * [method`PluginInfo`.get_data_dir].
+     */
+    readonly dataDir: string | null
+    /**
      * The [class`PluginInfo]` related to the current plugin.
      */
     readonly plugin_info: PluginInfo
+    /**
+     * The [class`PluginInfo]` related to the current plugin.
+     */
+    readonly pluginInfo: PluginInfo
 
     // Own fields of Peas-2.Peas.ExtensionBase
 
@@ -487,6 +555,8 @@ export module ExtensionSet {
         construct_properties?: any | null
         engine?: Engine | null
         extension_type?: GObject.GType | null
+        constructProperties?: any | null
+        extensionType?: GObject.GType | null
     }
 
 }
@@ -496,8 +566,10 @@ export interface ExtensionSet extends Gio.ListModel {
     // Own properties of Peas-2.Peas.ExtensionSet
 
     readonly construct_properties: any
+    readonly constructProperties: any
     readonly engine: Engine
     readonly extension_type: GObject.GType
+    readonly extensionType: GObject.GType
 
     // Owm methods of Peas-2.Peas.ExtensionSet
 
@@ -652,6 +724,11 @@ export module ObjectModule {
         path?: string | null
         resident?: boolean | null
         symbol?: string | null
+        /**
+         * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
+         */
+        localLinkage?: boolean | null
+        moduleName?: string | null
     }
 
 }
@@ -664,7 +741,12 @@ export interface ObjectModule extends GObject.TypePlugin {
      * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
      */
     readonly local_linkage: boolean
+    /**
+     * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
+     */
+    readonly localLinkage: boolean
     readonly module_name: string | null
+    readonly moduleName: string | null
     readonly path: string | null
     readonly resident: boolean
     readonly symbol: string | null
@@ -785,11 +867,15 @@ export interface PluginInfo {
     readonly dependencies: string[]
     readonly description: string | null
     readonly help_uri: string | null
+    readonly helpUri: string | null
     readonly hidden: boolean
     readonly icon_name: string | null
+    readonly iconName: string | null
     readonly loaded: boolean
     readonly module_dir: string | null
+    readonly moduleDir: string | null
     readonly module_name: string | null
+    readonly moduleName: string | null
     readonly name: string | null
     readonly version: string | null
     readonly website: string | null

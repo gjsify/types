@@ -143,6 +143,19 @@ export module Player {
          * The User Agent used by #ClutterGstPlayer with network protocols.
          */
         user_agent?: string | null
+        /**
+         * Index of the current audio stream.
+         */
+        audioStream?: number | null
+        /**
+         * Flags to use when seeking.
+         */
+        seekFlags?: SeekFlags | null
+        subtitleTrack?: number | null
+        /**
+         * The User Agent used by #ClutterGstPlayer with network protocols.
+         */
+        userAgent?: string | null
     }
 
 }
@@ -156,9 +169,17 @@ export interface Player extends Clutter.Media {
      */
     audio_stream: number
     /**
+     * Index of the current audio stream.
+     */
+    audioStream: number
+    /**
      * List of audio streams available on the current media.
      */
     readonly audio_streams: any
+    /**
+     * List of audio streams available on the current media.
+     */
+    readonly audioStreams: any
     /**
      * Whether the #ClutterGstPlayer is in idle mode.
      */
@@ -168,15 +189,29 @@ export interface Player extends Clutter.Media {
      */
     readonly in_seek: boolean
     /**
+     * Whether or not the stream is being seeked.
+     */
+    readonly inSeek: boolean
+    /**
      * Flags to use when seeking.
      */
     seek_flags: SeekFlags
+    /**
+     * Flags to use when seeking.
+     */
+    seekFlags: SeekFlags
     subtitle_track: number
+    subtitleTrack: number
     readonly subtitle_tracks: any
+    readonly subtitleTracks: any
     /**
      * The User Agent used by #ClutterGstPlayer with network protocols.
      */
     user_agent: string | null
+    /**
+     * The User Agent used by #ClutterGstPlayer with network protocols.
+     */
+    userAgent: string | null
 
     // Owm methods of ClutterGst-2.0.ClutterGst.Player
 
@@ -491,6 +526,14 @@ export module VideoSink {
          * Since 1.0
          */
         update_priority?: number | null
+        /**
+         * Clutter-Gst installs a #GSource to signal that a new frame is ready to
+         * the Clutter thread. This property allows to tweak the priority of the
+         * source (Lower value is higher priority).
+         * 
+         * Since 1.0
+         */
+        updatePriority?: number | null
     }
 
 }
@@ -514,6 +557,14 @@ export interface VideoSink extends GstVideo.Navigation {
      * Since 1.0
      */
     update_priority: number
+    /**
+     * Clutter-Gst installs a #GSource to signal that a new frame is ready to
+     * the Clutter thread. This property allows to tweak the priority of the
+     * source (Lower value is higher priority).
+     * 
+     * Since 1.0
+     */
+    updatePriority: number
 
     // Conflicting properties
 
@@ -698,6 +749,7 @@ export module VideoTexture {
         // Own constructor properties of ClutterGst-2.0.ClutterGst.VideoTexture
 
         pixel_aspect_ratio?: Gst.Fraction | null
+        pixelAspectRatio?: Gst.Fraction | null
     }
 
 }
@@ -707,6 +759,7 @@ export interface VideoTexture extends Atk.ImplementorIface, Clutter.Animatable, 
     // Own properties of ClutterGst-2.0.ClutterGst.VideoTexture
 
     pixel_aspect_ratio: Gst.Fraction
+    pixelAspectRatio: Gst.Fraction
 
     // Owm methods of ClutterGst-2.0.ClutterGst.VideoTexture
 

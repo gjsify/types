@@ -2930,6 +2930,18 @@ export module Component {
          * the summary
          */
         summary?: string | null
+        /**
+         * the developer name
+         */
+        developerName?: string | null
+        /**
+         * the project group
+         */
+        projectGroup?: string | null
+        /**
+         * the project license
+         */
+        projectLicense?: string | null
     }
 
 }
@@ -2950,6 +2962,10 @@ export interface Component {
      * the developer name
      */
     developer_name: string | null
+    /**
+     * the developer name
+     */
+    developerName: string | null
     /**
      * hash map of icon urls and sizes
      */
@@ -2979,9 +2995,17 @@ export interface Component {
      */
     project_group: string | null
     /**
+     * the project group
+     */
+    projectGroup: string | null
+    /**
      * the project license
      */
     project_license: string | null
+    /**
+     * the project license
+     */
+    projectLicense: string | null
     /**
      * An array of #AsScreenshot instances
      */
@@ -5616,6 +5640,8 @@ export module Review {
         reviewer_name?: string | null
         summary?: string | null
         version?: string | null
+        reviewerId?: string | null
+        reviewerName?: string | null
     }
 
 }
@@ -5636,7 +5662,9 @@ export interface Review {
     priority: number
     rating: number
     reviewer_id: string | null
+    reviewerId: string | null
     reviewer_name: string | null
+    reviewerName: string | null
     summary: string | null
     version: string | null
 

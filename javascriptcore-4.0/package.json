@@ -1,6 +1,6 @@
 {
     "name": "@girs/javascriptcore-4.0",
-    "version": "2.42.1-3.2.5",
+    "version": "2.42.1-3.2.6",
     "description": "GJS TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.42.1",
     "type": "module",
     "module": "javascriptcore-4.0.js",

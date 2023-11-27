@@ -1477,6 +1477,8 @@ export module Client {
 
         default_timezone?: ICalGLib.Timezone | null
         source_type?: ClientSourceType | null
+        defaultTimezone?: ICalGLib.Timezone | null
+        sourceType?: ClientSourceType | null
     }
 
 }
@@ -1486,7 +1488,9 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
     // Own properties of ECal-2.0.ECal.Client
 
     default_timezone: ICalGLib.Timezone
+    defaultTimezone: ICalGLib.Timezone
     readonly source_type: ClientSourceType
+    readonly sourceType: ClientSourceType
 
     // Owm methods of ECal-2.0.ECal.Client
 
@@ -2504,6 +2508,10 @@ export module ClientView {
          * The object path used to create the D-Bus proxy
          */
         object_path?: string | null
+        /**
+         * The object path used to create the D-Bus proxy
+         */
+        objectPath?: string | null
     }
 
 }
@@ -2524,6 +2532,10 @@ export interface ClientView extends Gio.Initable {
      * The object path used to create the D-Bus proxy
      */
     readonly object_path: string | null
+    /**
+     * The object path used to create the D-Bus proxy
+     */
+    readonly objectPath: string | null
 
     // Owm methods of ECal-2.0.ECal.ClientView
 
@@ -3408,6 +3420,18 @@ export module ReminderWatcher {
          * Default: %TRUE
          */
         timers_enabled?: boolean | null
+        /**
+         * An #ICalTimezone to be used as the default time zone.
+         */
+        defaultZone?: ICalGLib.Timezone | null
+        /**
+         * Whether timers are enabled for the #EReminderWatcher. See
+         * e_reminder_watcher_set_timers_enabled() for more information
+         * what it means.
+         * 
+         * Default: %TRUE
+         */
+        timersEnabled?: boolean | null
     }
 
 }
@@ -3421,6 +3445,10 @@ export interface ReminderWatcher {
      */
     default_zone: ICalGLib.Timezone
     /**
+     * An #ICalTimezone to be used as the default time zone.
+     */
+    defaultZone: ICalGLib.Timezone
+    /**
      * The #ESourceRegistry which manages #ESource instances.
      */
     readonly registry: EDataServer.SourceRegistry
@@ -3432,6 +3460,14 @@ export interface ReminderWatcher {
      * Default: %TRUE
      */
     timers_enabled: boolean
+    /**
+     * Whether timers are enabled for the #EReminderWatcher. See
+     * e_reminder_watcher_set_timers_enabled() for more information
+     * what it means.
+     * 
+     * Default: %TRUE
+     */
+    timersEnabled: boolean
 
     // Owm methods of ECal-2.0.ECal.ReminderWatcher
 

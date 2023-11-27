@@ -622,6 +622,14 @@ module DataSource {
          * The minimum zoom level
          */
         min_zoom_level?: number | null
+        /**
+         * The maximum zoom level
+         */
+        maxZoomLevel?: number | null
+        /**
+         * The minimum zoom level
+         */
+        minZoomLevel?: number | null
     }
 
 }
@@ -635,9 +643,17 @@ interface DataSource {
      */
     max_zoom_level: number
     /**
+     * The maximum zoom level
+     */
+    maxZoomLevel: number
+    /**
      * The minimum zoom level
      */
     min_zoom_level: number
+    /**
+     * The minimum zoom level
+     */
+    minZoomLevel: number
 
     // Own fields of Shumate-1.0.Shumate.DataSource
 
@@ -808,6 +824,10 @@ module DataSourceRequest {
          * The zoom level of the requested tile.
          */
         zoom_level?: number | null
+        /**
+         * The zoom level of the requested tile.
+         */
+        zoomLevel?: number | null
     }
 
 }
@@ -843,6 +863,10 @@ interface DataSourceRequest {
      * The zoom level of the requested tile.
      */
     readonly zoom_level: number
+    /**
+     * The zoom level of the requested tile.
+     */
+    readonly zoomLevel: number
 
     // Own fields of Shumate-1.0.Shumate.DataSourceRequest
 
@@ -1025,6 +1049,21 @@ module FileCache {
          * Note: this new value will not be applied until you call shumate_file_cache_purge()
          */
         size_limit?: number | null
+        /**
+         * The directory where the tile database is stored.
+         */
+        cacheDir?: string | null
+        /**
+         * The key used to store and retrieve tiles from the cache. Different keys
+         * can be used to store multiple tilesets in the same cache directory.
+         */
+        cacheKey?: string | null
+        /**
+         * The cache size limit in bytes.
+         * 
+         * Note: this new value will not be applied until you call shumate_file_cache_purge()
+         */
+        sizeLimit?: number | null
     }
 
 }
@@ -1038,16 +1077,31 @@ interface FileCache {
      */
     readonly cache_dir: string | null
     /**
+     * The directory where the tile database is stored.
+     */
+    readonly cacheDir: string | null
+    /**
      * The key used to store and retrieve tiles from the cache. Different keys
      * can be used to store multiple tilesets in the same cache directory.
      */
     readonly cache_key: string | null
+    /**
+     * The key used to store and retrieve tiles from the cache. Different keys
+     * can be used to store multiple tilesets in the same cache directory.
+     */
+    readonly cacheKey: string | null
     /**
      * The cache size limit in bytes.
      * 
      * Note: this new value will not be applied until you call shumate_file_cache_purge()
      */
     size_limit: number
+    /**
+     * The cache size limit in bytes.
+     * 
+     * Note: this new value will not be applied until you call shumate_file_cache_purge()
+     */
+    sizeLimit: number
 
     // Owm methods of Shumate-1.0.Shumate.FileCache
 
@@ -1420,6 +1474,12 @@ module License {
          * The license's horizontal alignment
          */
         xalign?: number | null
+        /**
+         * Sets additional text to be displayed in the license area.  The map's
+         * license will be added below it. Your text can have multiple lines, just use
+         * "\n" in between.
+         */
+        extraText?: string | null
     }
 
 }
@@ -1434,6 +1494,12 @@ interface License extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * "\n" in between.
      */
     extra_text: string | null
+    /**
+     * Sets additional text to be displayed in the license area.  The map's
+     * license will be added below it. Your text can have multiple lines, just use
+     * "\n" in between.
+     */
+    extraText: string | null
     /**
      * The license's horizontal alignment
      */
@@ -1648,6 +1714,22 @@ module Map {
          * Should the view zoom in and recenter when the user double click on the map.
          */
         zoom_on_double_click?: boolean | null
+        /**
+         * Animate zoom change when zooming in/out.
+         */
+        animateZoom?: boolean | null
+        /**
+         * The duration of an animation when going to a location, in milliseconds.
+         * A value of 0 means that the duration is calculated automatically for you.
+         * 
+         * Please note that animation of #shumate_map_ensure_visible also
+         * involves a 'go-to' animation.
+         */
+        goToDuration?: number | null
+        /**
+         * Should the view zoom in and recenter when the user double click on the map.
+         */
+        zoomOnDoubleClick?: boolean | null
     }
 
 }
@@ -1661,6 +1743,10 @@ interface Map extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      */
     animate_zoom: boolean
     /**
+     * Animate zoom change when zooming in/out.
+     */
+    animateZoom: boolean
+    /**
      * The duration of an animation when going to a location, in milliseconds.
      * A value of 0 means that the duration is calculated automatically for you.
      * 
@@ -1668,6 +1754,14 @@ interface Map extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * involves a 'go-to' animation.
      */
     go_to_duration: number
+    /**
+     * The duration of an animation when going to a location, in milliseconds.
+     * A value of 0 means that the duration is calculated automatically for you.
+     * 
+     * Please note that animation of #shumate_map_ensure_visible also
+     * involves a 'go-to' animation.
+     */
+    goToDuration: number
     /**
      * The view's global state. Useful to inform using if the view is busy loading
      * tiles or not.
@@ -1682,6 +1776,10 @@ interface Map extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * Should the view zoom in and recenter when the user double click on the map.
      */
     zoom_on_double_click: boolean
+    /**
+     * Should the view zoom in and recenter when the user double click on the map.
+     */
+    zoomOnDoubleClick: boolean
 
     // Owm methods of Shumate-1.0.Shumate.Map
 
@@ -1998,6 +2096,7 @@ module MapLayer {
         // Own constructor properties of Shumate-1.0.Shumate.MapLayer
 
         map_source?: MapSource | null
+        mapSource?: MapSource | null
     }
 
 }
@@ -2007,6 +2106,7 @@ interface MapLayer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
     // Own properties of Shumate-1.0.Shumate.MapLayer
 
     readonly map_source: MapSource
+    readonly mapSource: MapSource
 
     // Conflicting properties
 
@@ -2197,6 +2297,22 @@ module MapSource {
          * The tile size of the map source
          */
         tile_size?: number | null
+        /**
+         * The usage license's uri for more information
+         */
+        licenseUri?: string | null
+        /**
+         * The maximum zoom level
+         */
+        maxZoomLevel?: number | null
+        /**
+         * The minimum zoom level
+         */
+        minZoomLevel?: number | null
+        /**
+         * The tile size of the map source
+         */
+        tileSize?: number | null
     }
 
 }
@@ -2218,13 +2334,25 @@ interface MapSource {
      */
     license_uri: string | null
     /**
+     * The usage license's uri for more information
+     */
+    licenseUri: string | null
+    /**
      * The maximum zoom level
      */
     max_zoom_level: number
     /**
+     * The maximum zoom level
+     */
+    maxZoomLevel: number
+    /**
      * The minimum zoom level
      */
     min_zoom_level: number
+    /**
+     * The minimum zoom level
+     */
+    minZoomLevel: number
     /**
      * The name of the map source
      */
@@ -2237,6 +2365,10 @@ interface MapSource {
      * The tile size of the map source
      */
     tile_size: number
+    /**
+     * The tile size of the map source
+     */
+    tileSize: number
 
     // Own fields of Shumate-1.0.Shumate.MapSource
 
@@ -2835,6 +2967,10 @@ module MarkerLayer {
          * Determines the type of selection that will be performed.
          */
         selection_mode?: Gtk.SelectionMode | null
+        /**
+         * Determines the type of selection that will be performed.
+         */
+        selectionMode?: Gtk.SelectionMode | null
     }
 
 }
@@ -2847,6 +2983,10 @@ interface MarkerLayer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Determines the type of selection that will be performed.
      */
     selection_mode: Gtk.SelectionMode
+    /**
+     * Determines the type of selection that will be performed.
+     */
+    selectionMode: Gtk.SelectionMode
 
     // Conflicting properties
 
@@ -3128,6 +3268,26 @@ module PathLayer {
          * The path's stroke width (in pixels)
          */
         stroke_width?: number | null
+        /**
+         * The path's fill color
+         */
+        fillColor?: Gdk.RGBA | null
+        /**
+         * The path's outline color
+         */
+        outlineColor?: Gdk.RGBA | null
+        /**
+         * The path's outline width (in pixels)
+         */
+        outlineWidth?: number | null
+        /**
+         * The path's stroke color
+         */
+        strokeColor?: Gdk.RGBA | null
+        /**
+         * The path's stroke width (in pixels)
+         */
+        strokeWidth?: number | null
     }
 
 }
@@ -3149,13 +3309,25 @@ interface PathLayer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      */
     fill_color: Gdk.RGBA
     /**
+     * The path's fill color
+     */
+    fillColor: Gdk.RGBA
+    /**
      * The path's outline color
      */
     outline_color: Gdk.RGBA
     /**
+     * The path's outline color
+     */
+    outlineColor: Gdk.RGBA
+    /**
      * The path's outline width (in pixels)
      */
     outline_width: number
+    /**
+     * The path's outline width (in pixels)
+     */
+    outlineWidth: number
     /**
      * The shape should be stroked
      */
@@ -3165,9 +3337,17 @@ interface PathLayer extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      */
     stroke_color: Gdk.RGBA
     /**
+     * The path's stroke color
+     */
+    strokeColor: Gdk.RGBA
+    /**
      * The path's stroke width (in pixels)
      */
     stroke_width: number
+    /**
+     * The path's stroke width (in pixels)
+     */
+    strokeWidth: number
 
     // Conflicting properties
 
@@ -3666,6 +3846,11 @@ module RasterRenderer {
          * a [class`TileDownloader]` is sufficient.
          */
         data_source?: DataSource | null
+        /**
+         * The data source that provides image tiles to display. In most cases,
+         * a [class`TileDownloader]` is sufficient.
+         */
+        dataSource?: DataSource | null
     }
 
 }
@@ -3679,6 +3864,11 @@ interface RasterRenderer {
      * a [class`TileDownloader]` is sufficient.
      */
     readonly data_source: DataSource
+    /**
+     * The data source that provides image tiles to display. In most cases,
+     * a [class`TileDownloader]` is sufficient.
+     */
+    readonly dataSource: DataSource
 
     // Class property signals of Shumate-1.0.Shumate.RasterRenderer
 
@@ -3809,6 +3999,10 @@ module Scale {
          * The viewport to use.
          */
         viewport?: Viewport | null
+        /**
+         * The size of the map scale on screen in pixels.
+         */
+        maxWidth?: number | null
     }
 
 }
@@ -3821,6 +4015,10 @@ interface Scale extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * The size of the map scale on screen in pixels.
      */
     max_width: number
+    /**
+     * The size of the map scale on screen in pixels.
+     */
+    maxWidth: number
     /**
      * The scale's units.
      */
@@ -4046,6 +4244,8 @@ module SimpleMap {
 
         map_source?: MapSource | null
         show_zoom_buttons?: boolean | null
+        mapSource?: MapSource | null
+        showZoomButtons?: boolean | null
     }
 
 }
@@ -4058,8 +4258,10 @@ interface SimpleMap extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
     readonly license: License
     // Has conflict: readonly map: Map
     map_source: MapSource
+    mapSource: MapSource
     readonly scale: Scale
     show_zoom_buttons: boolean
+    showZoomButtons: boolean
     readonly viewport: Viewport
 
     // Owm methods of Shumate-1.0.Shumate.SimpleMap
@@ -4304,6 +4506,11 @@ interface SymbolEvent extends Location {
      */
     readonly feature_id: string | null
     /**
+     * The ID of the feature that this event pertains to, as it was given in the
+     * data source.
+     */
+    readonly featureId: string | null
+    /**
      * The ID of the style layer of the symbol that this event pertains to.
      */
     readonly layer: string | null
@@ -4311,6 +4518,10 @@ interface SymbolEvent extends Location {
      * The ID of the source layer of the symbol that this event pertains to.
      */
     readonly source_layer: string | null
+    /**
+     * The ID of the source layer of the symbol that this event pertains to.
+     */
+    readonly sourceLayer: string | null
 
     // Owm methods of Shumate-1.0.Shumate.SymbolEvent
 
@@ -4444,6 +4655,18 @@ module Tile {
          * The zoom level of the tile
          */
         zoom_level?: number | null
+        /**
+         * Specifies whether the tile should fade in when loading
+         */
+        fadeIn?: boolean | null
+        /**
+         * The scale factor of the widget the tile will be displayed in.
+         */
+        scaleFactor?: number | null
+        /**
+         * The zoom level of the tile
+         */
+        zoomLevel?: number | null
     }
 
 }
@@ -4457,6 +4680,10 @@ interface Tile {
      */
     fade_in: boolean
     /**
+     * Specifies whether the tile should fade in when loading
+     */
+    fadeIn: boolean
+    /**
      * The [iface`Gdk`.Paintable] backing the tile
      */
     paintable: Gdk.Paintable
@@ -4464,6 +4691,10 @@ interface Tile {
      * The scale factor of the widget the tile will be displayed in.
      */
     scale_factor: number
+    /**
+     * The scale factor of the widget the tile will be displayed in.
+     */
+    scaleFactor: number
     /**
      * The size of the tile in pixels
      */
@@ -4484,6 +4715,10 @@ interface Tile {
      * The zoom level of the tile
      */
     zoom_level: number
+    /**
+     * The zoom level of the tile
+     */
+    zoomLevel: number
 
     // Owm methods of Shumate-1.0.Shumate.Tile
 
@@ -4662,6 +4897,17 @@ module TileDownloader {
          * the bottom, rather than top, of the map)
          */
         url_template?: string | null
+        /**
+         * A template for construting the URL to download a tile from.
+         * 
+         * The template has the following replacements:
+         * - "{x}": The X coordinate of the tile
+         * - "{y}": The Y coordinate of the tile
+         * - "{z}": The zoom level of the tile
+         * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
+         * the bottom, rather than top, of the map)
+         */
+        urlTemplate?: string | null
     }
 
 }
@@ -4681,6 +4927,17 @@ interface TileDownloader {
      * the bottom, rather than top, of the map)
      */
     readonly url_template: string | null
+    /**
+     * A template for construting the URL to download a tile from.
+     * 
+     * The template has the following replacements:
+     * - "{x}": The X coordinate of the tile
+     * - "{y}": The Y coordinate of the tile
+     * - "{z}": The zoom level of the tile
+     * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
+     * the bottom, rather than top, of the map)
+     */
+    readonly urlTemplate: string | null
 
     // Class property signals of Shumate-1.0.Shumate.TileDownloader
 
@@ -4754,6 +5011,13 @@ module VectorRenderer {
          * Note that not all features of the specification are supported.
          */
         style_json?: string | null
+        /**
+         * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
+         * format.
+         * 
+         * Note that not all features of the specification are supported.
+         */
+        styleJson?: string | null
     }
 
 }
@@ -4769,6 +5033,13 @@ interface VectorRenderer extends Gio.Initable {
      * Note that not all features of the specification are supported.
      */
     readonly style_json: string | null
+    /**
+     * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
+     * format.
+     * 
+     * Note that not all features of the specification are supported.
+     */
+    readonly styleJson: string | null
 
     // Owm methods of Shumate-1.0.Shumate.VectorRenderer
 
@@ -4900,6 +5171,22 @@ module Viewport {
          * The level of zoom of the content.
          */
         zoom_level?: number | null
+        /**
+         * The highest allowed level of zoom of the content.
+         */
+        maxZoomLevel?: number | null
+        /**
+         * The lowest allowed level of zoom of the content.
+         */
+        minZoomLevel?: number | null
+        /**
+         * The reference #ShumateMapSource being displayed
+         */
+        referenceMapSource?: MapSource | null
+        /**
+         * The level of zoom of the content.
+         */
+        zoomLevel?: number | null
     }
 
 }
@@ -4913,13 +5200,25 @@ interface Viewport extends Location {
      */
     max_zoom_level: number
     /**
+     * The highest allowed level of zoom of the content.
+     */
+    maxZoomLevel: number
+    /**
      * The lowest allowed level of zoom of the content.
      */
     min_zoom_level: number
     /**
+     * The lowest allowed level of zoom of the content.
+     */
+    minZoomLevel: number
+    /**
      * The reference #ShumateMapSource being displayed
      */
     reference_map_source: MapSource
+    /**
+     * The reference #ShumateMapSource being displayed
+     */
+    referenceMapSource: MapSource
     /**
      * The rotation of the map view, in radians clockwise from up being due north
      */
@@ -4928,6 +5227,10 @@ interface Viewport extends Location {
      * The level of zoom of the content.
      */
     zoom_level: number
+    /**
+     * The level of zoom of the content.
+     */
+    zoomLevel: number
 
     // Owm methods of Shumate-1.0.Shumate.Viewport
 

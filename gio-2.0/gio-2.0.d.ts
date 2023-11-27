@@ -5997,6 +5997,12 @@ interface Action {
      */
     readonly parameter_type: GLib.VariantType
     /**
+     * The type of the parameter that must be given when activating the
+     * action. This is immutable, and may be %NULL if no parameter is needed when
+     * activating the action.
+     */
+    readonly parameterType: GLib.VariantType
+    /**
      * The state of the action, or %NULL if the action is stateless.
      */
     readonly state: GLib.Variant
@@ -6005,6 +6011,11 @@ interface Action {
      * action is stateless. This is immutable.
      */
     readonly state_type: GLib.VariantType
+    /**
+     * The #GVariantType of the state that the action has, or %NULL if the
+     * action is stateless. This is immutable.
+     */
+    readonly stateType: GLib.VariantType
 
     // Owm methods of Gio-2.0.Gio.Action
 
@@ -9354,6 +9365,11 @@ module DebugController {
          * the journal), %FALSE otherwise.
          */
         debug_enabled?: boolean | null
+        /**
+         * %TRUE if debug output should be exposed (for example by forwarding it to
+         * the journal), %FALSE otherwise.
+         */
+        debugEnabled?: boolean | null
     }
 
 }
@@ -9367,6 +9383,11 @@ interface DebugController extends Initable {
      * the journal), %FALSE otherwise.
      */
     debug_enabled: boolean
+    /**
+     * %TRUE if debug output should be exposed (for example by forwarding it to
+     * the journal), %FALSE otherwise.
+     */
+    debugEnabled: boolean
 
     // Owm methods of Gio-2.0.Gio.DebugController
 
@@ -10056,6 +10077,42 @@ module DtlsClientConnection {
          * connect to #GDtlsConnection::accept-certificate.
          */
         validation_flags?: TlsCertificateFlags | null
+        /**
+         * A #GSocketConnectable describing the identity of the server that
+         * is expected on the other end of the connection.
+         * 
+         * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
+         * #GDtlsClientConnection:validation-flags, this object will be used
+         * to determine the expected identify of the remote end of the
+         * connection; if #GDtlsClientConnection:server-identity is not set,
+         * or does not match the identity presented by the server, then the
+         * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
+         * 
+         * In addition to its use in verifying the server certificate,
+         * this is also used to give a hint to the server about what
+         * certificate we expect, which is useful for servers that serve
+         * virtual hosts.
+         */
+        serverIdentity?: SocketConnectable | null
+        /**
+         * What steps to perform when validating a certificate received from
+         * a server. Server certificates that fail to validate in any of the
+         * ways indicated here will be rejected unless the application
+         * overrides the default via #GDtlsConnection::accept-certificate.
+         * 
+         * GLib guarantees that if certificate verification fails, at least one
+         * flag will be set, but it does not guarantee that all possible flags
+         * will be set. Accordingly, you may not safely decide to ignore any
+         * particular type of error. For example, it would be incorrect to mask
+         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+         * because this could potentially be the only error flag set even if
+         * other problems exist with the certificate. Therefore, there is no
+         * safe way to use this property. This is not a horrible problem,
+         * though, because you should not be attempting to ignore validation
+         * errors anyway. If you really must ignore TLS certificate errors,
+         * connect to #GDtlsConnection::accept-certificate.
+         */
+        validationFlags?: TlsCertificateFlags | null
     }
 
 }
@@ -10075,6 +10132,16 @@ interface DtlsClientConnection extends DatagramBased, DtlsConnection {
      */
     readonly accepted_cas: any[]
     /**
+     * A list of the distinguished names of the Certificate Authorities
+     * that the server will accept client certificates signed by. If the
+     * server requests a client certificate during the handshake, then
+     * this property will be set after the handshake completes.
+     * 
+     * Each item in the list is a #GByteArray which contains the complete
+     * subject DN of the certificate authority.
+     */
+    readonly acceptedCas: any[]
+    /**
      * A #GSocketConnectable describing the identity of the server that
      * is expected on the other end of the connection.
      * 
@@ -10091,6 +10158,23 @@ interface DtlsClientConnection extends DatagramBased, DtlsConnection {
      * virtual hosts.
      */
     server_identity: SocketConnectable
+    /**
+     * A #GSocketConnectable describing the identity of the server that
+     * is expected on the other end of the connection.
+     * 
+     * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
+     * #GDtlsClientConnection:validation-flags, this object will be used
+     * to determine the expected identify of the remote end of the
+     * connection; if #GDtlsClientConnection:server-identity is not set,
+     * or does not match the identity presented by the server, then the
+     * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
+     * 
+     * In addition to its use in verifying the server certificate,
+     * this is also used to give a hint to the server about what
+     * certificate we expect, which is useful for servers that serve
+     * virtual hosts.
+     */
+    serverIdentity: SocketConnectable
     /**
      * What steps to perform when validating a certificate received from
      * a server. Server certificates that fail to validate in any of the
@@ -10110,6 +10194,25 @@ interface DtlsClientConnection extends DatagramBased, DtlsConnection {
      * connect to #GDtlsConnection::accept-certificate.
      */
     validation_flags: TlsCertificateFlags
+    /**
+     * What steps to perform when validating a certificate received from
+     * a server. Server certificates that fail to validate in any of the
+     * ways indicated here will be rejected unless the application
+     * overrides the default via #GDtlsConnection::accept-certificate.
+     * 
+     * GLib guarantees that if certificate verification fails, at least one
+     * flag will be set, but it does not guarantee that all possible flags
+     * will be set. Accordingly, you may not safely decide to ignore any
+     * particular type of error. For example, it would be incorrect to mask
+     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+     * because this could potentially be the only error flag set even if
+     * other problems exist with the certificate. Therefore, there is no
+     * safe way to use this property. This is not a horrible problem,
+     * though, because you should not be attempting to ignore validation
+     * errors anyway. If you really must ignore TLS certificate errors,
+     * connect to #GDtlsConnection::accept-certificate.
+     */
+    validationFlags: TlsCertificateFlags
 
     // Owm methods of Gio-2.0.Gio.DtlsClientConnection
 
@@ -10306,6 +10409,27 @@ module DtlsConnection {
          * See g_dtls_connection_set_require_close_notify().
          */
         require_close_notify?: boolean | null
+        /**
+         * The list of application-layer protocols that the connection
+         * advertises that it is willing to speak. See
+         * g_dtls_connection_set_advertised_protocols().
+         */
+        advertisedProtocols?: string[] | null
+        /**
+         * The #GDatagramBased that the connection wraps. Note that this may be any
+         * implementation of #GDatagramBased, not just a #GSocket.
+         */
+        baseSocket?: DatagramBased | null
+        /**
+         * The rehandshaking mode. See
+         * g_dtls_connection_set_rehandshake_mode().
+         */
+        rehandshakeMode?: TlsRehandshakeMode | null
+        /**
+         * Whether or not proper TLS close notification is required.
+         * See g_dtls_connection_set_require_close_notify().
+         */
+        requireCloseNotify?: boolean | null
     }
 
 }
@@ -10321,10 +10445,21 @@ interface DtlsConnection extends DatagramBased {
      */
     advertised_protocols: string[]
     /**
+     * The list of application-layer protocols that the connection
+     * advertises that it is willing to speak. See
+     * g_dtls_connection_set_advertised_protocols().
+     */
+    advertisedProtocols: string[]
+    /**
      * The #GDatagramBased that the connection wraps. Note that this may be any
      * implementation of #GDatagramBased, not just a #GSocket.
      */
     readonly base_socket: DatagramBased
+    /**
+     * The #GDatagramBased that the connection wraps. Note that this may be any
+     * implementation of #GDatagramBased, not just a #GSocket.
+     */
+    readonly baseSocket: DatagramBased
     /**
      * The connection's certificate; see
      * g_dtls_connection_set_certificate().
@@ -10334,6 +10469,10 @@ interface DtlsConnection extends DatagramBased {
      * The name of the DTLS ciphersuite in use. See g_dtls_connection_get_ciphersuite_name().
      */
     readonly ciphersuite_name: string | null
+    /**
+     * The name of the DTLS ciphersuite in use. See g_dtls_connection_get_ciphersuite_name().
+     */
+    readonly ciphersuiteName: string | null
     /**
      * The certificate database to use when verifying this TLS connection.
      * If no certificate database is set, then the default database will be
@@ -10365,6 +10504,11 @@ interface DtlsConnection extends DatagramBased {
      */
     readonly negotiated_protocol: string | null
     /**
+     * The application-layer protocol negotiated during the TLS
+     * handshake. See g_dtls_connection_get_negotiated_protocol().
+     */
+    readonly negotiatedProtocol: string | null
+    /**
      * The connection's peer's certificate, after the TLS handshake has
      * completed or failed. Note in particular that this is not yet set
      * during the emission of #GDtlsConnection::accept-certificate.
@@ -10373,6 +10517,15 @@ interface DtlsConnection extends DatagramBased {
      * detect when a handshake has occurred.)
      */
     readonly peer_certificate: TlsCertificate
+    /**
+     * The connection's peer's certificate, after the TLS handshake has
+     * completed or failed. Note in particular that this is not yet set
+     * during the emission of #GDtlsConnection::accept-certificate.
+     * 
+     * (You can watch for a #GObject::notify signal on this property to
+     * detect when a handshake has occurred.)
+     */
+    readonly peerCertificate: TlsCertificate
     /**
      * The errors noticed while verifying
      * #GDtlsConnection:peer-certificate. Normally this should be 0, but
@@ -10391,19 +10544,50 @@ interface DtlsConnection extends DatagramBased {
      */
     readonly peer_certificate_errors: TlsCertificateFlags
     /**
+     * The errors noticed while verifying
+     * #GDtlsConnection:peer-certificate. Normally this should be 0, but
+     * it may not be if #GDtlsClientConnection:validation-flags is not
+     * %G_TLS_CERTIFICATE_VALIDATE_ALL, or if
+     * #GDtlsConnection::accept-certificate overrode the default
+     * behavior.
+     * 
+     * GLib guarantees that if certificate verification fails, at least
+     * one error will be set, but it does not guarantee that all possible
+     * errors will be set. Accordingly, you may not safely decide to
+     * ignore any particular type of error. For example, it would be
+     * incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if you want to allow
+     * expired certificates, because this could potentially be the only
+     * error flag set even if other problems exist with the certificate.
+     */
+    readonly peerCertificateErrors: TlsCertificateFlags
+    /**
      * The DTLS protocol version in use. See g_dtls_connection_get_protocol_version().
      */
     readonly protocol_version: TlsProtocolVersion
+    /**
+     * The DTLS protocol version in use. See g_dtls_connection_get_protocol_version().
+     */
+    readonly protocolVersion: TlsProtocolVersion
     /**
      * The rehandshaking mode. See
      * g_dtls_connection_set_rehandshake_mode().
      */
     rehandshake_mode: TlsRehandshakeMode
     /**
+     * The rehandshaking mode. See
+     * g_dtls_connection_set_rehandshake_mode().
+     */
+    rehandshakeMode: TlsRehandshakeMode
+    /**
      * Whether or not proper TLS close notification is required.
      * See g_dtls_connection_set_require_close_notify().
      */
     require_close_notify: boolean
+    /**
+     * Whether or not proper TLS close notification is required.
+     * See g_dtls_connection_set_require_close_notify().
+     */
+    requireCloseNotify: boolean
 
     // Owm methods of Gio-2.0.Gio.DtlsConnection
 
@@ -10998,6 +11182,12 @@ module DtlsServerConnection {
          * rehandshake with a different mode from the initial handshake.
          */
         authentication_mode?: TlsAuthenticationMode | null
+        /**
+         * The #GTlsAuthenticationMode for the server. This can be changed
+         * before calling g_dtls_connection_handshake() if you want to
+         * rehandshake with a different mode from the initial handshake.
+         */
+        authenticationMode?: TlsAuthenticationMode | null
     }
 
 }
@@ -11012,6 +11202,12 @@ interface DtlsServerConnection extends DatagramBased, DtlsConnection {
      * rehandshake with a different mode from the initial handshake.
      */
     authentication_mode: TlsAuthenticationMode
+    /**
+     * The #GTlsAuthenticationMode for the server. This can be changed
+     * before calling g_dtls_connection_handshake() if you want to
+     * rehandshake with a different mode from the initial handshake.
+     */
+    authenticationMode: TlsAuthenticationMode
 
     // Class property signals of Gio-2.0.Gio.DtlsServerConnection
 
@@ -16530,6 +16726,26 @@ interface NetworkMonitor extends Initable {
      */
     readonly network_available: boolean
     /**
+     * Whether the network is considered available. That is, whether the
+     * system has a default route for at least one of IPv4 or IPv6.
+     * 
+     * Real-world networks are of course much more complicated than
+     * this; the machine may be connected to a wifi hotspot that
+     * requires payment before allowing traffic through, or may be
+     * connected to a functioning router that has lost its own upstream
+     * connectivity. Some hosts might only be accessible when a VPN is
+     * active. Other hosts might only be accessible when the VPN is
+     * not active. Thus, it is best to use g_network_monitor_can_reach()
+     * or g_network_monitor_can_reach_async() to test for reachability
+     * on a host-by-host basis. (On the other hand, when the property is
+     * %FALSE, the application can reasonably expect that no remote
+     * hosts at all are reachable, and should indicate this to the user
+     * in its UI.)
+     * 
+     * See also #GNetworkMonitor::network-changed.
+     */
+    readonly networkAvailable: boolean
+    /**
      * Whether the network is considered metered.
      * 
      * That is, whether the
@@ -16553,6 +16769,30 @@ interface NetworkMonitor extends Initable {
      * See also #GNetworkMonitor:network-available.
      */
     readonly network_metered: boolean
+    /**
+     * Whether the network is considered metered.
+     * 
+     * That is, whether the
+     * system has traffic flowing through the default connection that is
+     * subject to limitations set by service providers. For example, traffic
+     * might be billed by the amount of data transmitted, or there might be a
+     * quota on the amount of traffic per month. This is typical with tethered
+     * connections (3G and 4G) and in such situations, bandwidth intensive
+     * applications may wish to avoid network activity where possible if it will
+     * cost the user money or use up their limited quota. Anything more than a
+     * few hundreds of kilobytes of data usage per hour should be avoided without
+     * asking permission from the user.
+     * 
+     * If more information is required about specific devices then the
+     * system network management API should be used instead (for example,
+     * NetworkManager or ConnMan).
+     * 
+     * If this information is not available then no networks will be
+     * marked as metered.
+     * 
+     * See also #GNetworkMonitor:network-available.
+     */
+    readonly networkMetered: boolean
 
     // Owm methods of Gio-2.0.Gio.NetworkMonitor
 
@@ -17188,6 +17428,10 @@ interface PowerProfileMonitor extends Initable {
      * Whether “Power Saver” mode is enabled on the system.
      */
     readonly power_saver_enabled: boolean
+    /**
+     * Whether “Power Saver” mode is enabled on the system.
+     */
+    readonly powerSaverEnabled: boolean
 
     // Owm methods of Gio-2.0.Gio.PowerProfileMonitor
 
@@ -18176,6 +18420,47 @@ module TlsClientConnection {
          * connect to #GTlsConnection::accept-certificate.
          */
         validation_flags?: TlsCertificateFlags | null
+        /**
+         * A #GSocketConnectable describing the identity of the server that
+         * is expected on the other end of the connection.
+         * 
+         * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
+         * #GTlsClientConnection:validation-flags, this object will be used
+         * to determine the expected identify of the remote end of the
+         * connection; if #GTlsClientConnection:server-identity is not set,
+         * or does not match the identity presented by the server, then the
+         * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
+         * 
+         * In addition to its use in verifying the server certificate,
+         * this is also used to give a hint to the server about what
+         * certificate we expect, which is useful for servers that serve
+         * virtual hosts.
+         */
+        serverIdentity?: SocketConnectable | null
+        /**
+         * SSL 3.0 is no longer supported. See
+         * g_tls_client_connection_set_use_ssl3() for details.
+         */
+        useSsl3?: boolean | null
+        /**
+         * What steps to perform when validating a certificate received from
+         * a server. Server certificates that fail to validate in any of the
+         * ways indicated here will be rejected unless the application
+         * overrides the default via #GTlsConnection::accept-certificate.
+         * 
+         * GLib guarantees that if certificate verification fails, at least one
+         * flag will be set, but it does not guarantee that all possible flags
+         * will be set. Accordingly, you may not safely decide to ignore any
+         * particular type of error. For example, it would be incorrect to mask
+         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+         * because this could potentially be the only error flag set even if
+         * other problems exist with the certificate. Therefore, there is no
+         * safe way to use this property. This is not a horrible problem,
+         * though, because you should not be attempting to ignore validation
+         * errors anyway. If you really must ignore TLS certificate errors,
+         * connect to #GTlsConnection::accept-certificate.
+         */
+        validationFlags?: TlsCertificateFlags | null
     }
 
 }
@@ -18195,6 +18480,16 @@ interface TlsClientConnection extends TlsConnection {
      */
     readonly accepted_cas: any[]
     /**
+     * A list of the distinguished names of the Certificate Authorities
+     * that the server will accept client certificates signed by. If the
+     * server requests a client certificate during the handshake, then
+     * this property will be set after the handshake completes.
+     * 
+     * Each item in the list is a #GByteArray which contains the complete
+     * subject DN of the certificate authority.
+     */
+    readonly acceptedCas: any[]
+    /**
      * A #GSocketConnectable describing the identity of the server that
      * is expected on the other end of the connection.
      * 
@@ -18212,10 +18507,32 @@ interface TlsClientConnection extends TlsConnection {
      */
     server_identity: SocketConnectable
     /**
+     * A #GSocketConnectable describing the identity of the server that
+     * is expected on the other end of the connection.
+     * 
+     * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
+     * #GTlsClientConnection:validation-flags, this object will be used
+     * to determine the expected identify of the remote end of the
+     * connection; if #GTlsClientConnection:server-identity is not set,
+     * or does not match the identity presented by the server, then the
+     * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
+     * 
+     * In addition to its use in verifying the server certificate,
+     * this is also used to give a hint to the server about what
+     * certificate we expect, which is useful for servers that serve
+     * virtual hosts.
+     */
+    serverIdentity: SocketConnectable
+    /**
      * SSL 3.0 is no longer supported. See
      * g_tls_client_connection_set_use_ssl3() for details.
      */
     use_ssl3: boolean
+    /**
+     * SSL 3.0 is no longer supported. See
+     * g_tls_client_connection_set_use_ssl3() for details.
+     */
+    useSsl3: boolean
     /**
      * What steps to perform when validating a certificate received from
      * a server. Server certificates that fail to validate in any of the
@@ -18235,6 +18552,25 @@ interface TlsClientConnection extends TlsConnection {
      * connect to #GTlsConnection::accept-certificate.
      */
     validation_flags: TlsCertificateFlags
+    /**
+     * What steps to perform when validating a certificate received from
+     * a server. Server certificates that fail to validate in any of the
+     * ways indicated here will be rejected unless the application
+     * overrides the default via #GTlsConnection::accept-certificate.
+     * 
+     * GLib guarantees that if certificate verification fails, at least one
+     * flag will be set, but it does not guarantee that all possible flags
+     * will be set. Accordingly, you may not safely decide to ignore any
+     * particular type of error. For example, it would be incorrect to mask
+     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+     * because this could potentially be the only error flag set even if
+     * other problems exist with the certificate. Therefore, there is no
+     * safe way to use this property. This is not a horrible problem,
+     * though, because you should not be attempting to ignore validation
+     * errors anyway. If you really must ignore TLS certificate errors,
+     * connect to #GTlsConnection::accept-certificate.
+     */
+    validationFlags: TlsCertificateFlags
 
     // Conflicting properties
 
@@ -18549,6 +18885,12 @@ module TlsServerConnection {
          * rehandshake with a different mode from the initial handshake.
          */
         authentication_mode?: TlsAuthenticationMode | null
+        /**
+         * The #GTlsAuthenticationMode for the server. This can be changed
+         * before calling g_tls_connection_handshake() if you want to
+         * rehandshake with a different mode from the initial handshake.
+         */
+        authenticationMode?: TlsAuthenticationMode | null
     }
 
 }
@@ -18563,6 +18905,12 @@ interface TlsServerConnection extends TlsConnection {
      * rehandshake with a different mode from the initial handshake.
      */
     authentication_mode: TlsAuthenticationMode
+    /**
+     * The #GTlsAuthenticationMode for the server. This can be changed
+     * before calling g_tls_connection_handshake() if you want to
+     * rehandshake with a different mode from the initial handshake.
+     */
+    authenticationMode: TlsAuthenticationMode
 
     // Conflicting properties
 
@@ -19548,6 +19896,10 @@ module Application {
         flags?: ApplicationFlags | null
         inactivity_timeout?: number | null
         resource_base_path?: string | null
+        actionGroup?: ActionGroup | null
+        applicationId?: string | null
+        inactivityTimeout?: number | null
+        resourceBasePath?: string | null
     }
 
 }
@@ -19557,17 +19909,28 @@ interface Application extends ActionGroup, ActionMap {
     // Own properties of Gio-2.0.Gio.Application
 
     action_group: ActionGroup
+    actionGroup: ActionGroup
     application_id: string | null
+    applicationId: string | null
     flags: ApplicationFlags
     inactivity_timeout: number
+    inactivityTimeout: number
     /**
      * Whether the application is currently marked as busy through
      * g_application_mark_busy() or g_application_bind_busy_property().
      */
     readonly is_busy: boolean
+    /**
+     * Whether the application is currently marked as busy through
+     * g_application_mark_busy() or g_application_bind_busy_property().
+     */
+    readonly isBusy: boolean
     readonly is_registered: boolean
+    readonly isRegistered: boolean
     readonly is_remote: boolean
+    readonly isRemote: boolean
     resource_base_path: string | null
+    resourceBasePath: string | null
 
     // Owm methods of Gio-2.0.Gio.Application
 
@@ -20151,6 +20514,13 @@ interface Application extends ActionGroup, ActionMap {
      * @param id id of a previously sent notification
      */
     withdraw_notification(id: string | null): void
+    /**
+     * Similar to `Gio.Application.run` but return a Promise which resolves when the main loop ends, instead of blocking while the main loop runs.
+     * This helps avoid the situation where Promises never resolved if you didn't run the application inside a callback.
+     * @param argv Commandline arguments.
+     * @returns The exit status of the application.
+     */
+    runAsync(argv?: string[]): Promise<number>
 
     // Own virtual methods of Gio-2.0.Gio.Application
 
@@ -20503,6 +20873,7 @@ module ApplicationCommandLine {
         "arguments"?: GLib.Variant | null
         options?: GLib.Variant | null
         platform_data?: GLib.Variant | null
+        platformData?: GLib.Variant | null
     }
 
 }
@@ -20513,8 +20884,10 @@ interface ApplicationCommandLine {
 
     readonly "arguments": GLib.Variant
     readonly is_remote: boolean
+    readonly isRemote: boolean
     readonly options: GLib.Variant
     readonly platform_data: GLib.Variant
+    readonly platformData: GLib.Variant
 
     // Owm methods of Gio-2.0.Gio.ApplicationCommandLine
 
@@ -20904,6 +21277,7 @@ module BufferedInputStream {
         // Own constructor properties of Gio-2.0.Gio.BufferedInputStream
 
         buffer_size?: number | null
+        bufferSize?: number | null
     }
 
 }
@@ -20913,6 +21287,7 @@ interface BufferedInputStream extends Seekable {
     // Own properties of Gio-2.0.Gio.BufferedInputStream
 
     buffer_size: number
+    bufferSize: number
 
     // Own fields of Gio-2.0.Gio.BufferedInputStream
 
@@ -21098,6 +21473,9 @@ interface BufferedInputStream extends Seekable {
     connect(sigName: "notify::buffer-size", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::buffer-size", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::buffer-size", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: BufferedInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -21172,6 +21550,8 @@ module BufferedOutputStream {
 
         auto_grow?: boolean | null
         buffer_size?: number | null
+        autoGrow?: boolean | null
+        bufferSize?: number | null
     }
 
 }
@@ -21181,7 +21561,9 @@ interface BufferedOutputStream extends Seekable {
     // Own properties of Gio-2.0.Gio.BufferedOutputStream
 
     auto_grow: boolean
+    autoGrow: boolean
     buffer_size: number
+    bufferSize: number
 
     // Own fields of Gio-2.0.Gio.BufferedOutputStream
 
@@ -21222,6 +21604,9 @@ interface BufferedOutputStream extends Seekable {
     connect(sigName: "notify::buffer-size", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::buffer-size", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::buffer-size", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: BufferedOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -21638,6 +22023,9 @@ module CharsetConverter {
         from_charset?: string | null
         to_charset?: string | null
         use_fallback?: boolean | null
+        fromCharset?: string | null
+        toCharset?: string | null
+        useFallback?: boolean | null
     }
 
 }
@@ -21647,8 +22035,11 @@ interface CharsetConverter extends Converter, Initable {
     // Own properties of Gio-2.0.Gio.CharsetConverter
 
     readonly from_charset: string | null
+    readonly fromCharset: string | null
     readonly to_charset: string | null
+    readonly toCharset: string | null
     use_fallback: boolean
+    useFallback: boolean
 
     // Owm methods of Gio-2.0.Gio.CharsetConverter
 
@@ -21755,6 +22146,9 @@ interface ConverterInputStream extends PollableInputStream {
     connect(sigName: "notify::converter", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::converter", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::converter", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: ConverterInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -21837,6 +22231,9 @@ interface ConverterOutputStream extends PollableOutputStream {
     connect(sigName: "notify::converter", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::converter", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::converter", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: ConverterOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -22320,6 +22717,19 @@ module DBusConnection {
          * the stream directly.
          */
         stream?: IOStream | null
+        /**
+         * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
+         */
+        authenticationObserver?: DBusAuthObserver | null
+        /**
+         * A boolean specifying whether the process will be terminated (by
+         * calling `raise(SIGTERM)`) if the connection is closed by the
+         * remote peer.
+         * 
+         * Note that #GDBusConnection objects returned by g_bus_get_finish()
+         * and g_bus_get_sync() will (usually) have this property set to %TRUE.
+         */
+        exitOnClose?: boolean | null
     }
 
 }
@@ -22338,6 +22748,10 @@ interface DBusConnection extends AsyncInitable, Initable {
      */
     readonly authentication_observer: DBusAuthObserver
     /**
+     * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
+     */
+    readonly authenticationObserver: DBusAuthObserver
+    /**
      * Flags from the #GDBusCapabilityFlags enumeration
      * representing connection features negotiated with the other peer.
      */
@@ -22355,6 +22769,15 @@ interface DBusConnection extends AsyncInitable, Initable {
      * and g_bus_get_sync() will (usually) have this property set to %TRUE.
      */
     exit_on_close: boolean
+    /**
+     * A boolean specifying whether the process will be terminated (by
+     * calling `raise(SIGTERM)`) if the connection is closed by the
+     * remote peer.
+     * 
+     * Note that #GDBusConnection objects returned by g_bus_get_finish()
+     * and g_bus_get_sync() will (usually) have this property set to %TRUE.
+     */
+    exitOnClose: boolean
     /**
      * Flags from the #GDBusConnectionFlags enumeration.
      */
@@ -22400,6 +22823,11 @@ interface DBusConnection extends AsyncInitable, Initable {
      * connection is not open or not a message bus connection.
      */
     readonly unique_name: string | null
+    /**
+     * The unique name as assigned by the message bus or %NULL if the
+     * connection is not open or not a message bus connection.
+     */
+    readonly uniqueName: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusConnection
 
@@ -23395,6 +23823,10 @@ module DBusInterfaceSkeleton {
          * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
          */
         g_flags?: DBusInterfaceSkeletonFlags | null
+        /**
+         * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
+         */
+        gFlags?: DBusInterfaceSkeletonFlags | null
     }
 
 }
@@ -23407,6 +23839,10 @@ interface DBusInterfaceSkeleton extends DBusInterface {
      * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      */
     g_flags: DBusInterfaceSkeletonFlags
+    /**
+     * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
+     */
+    gFlags: DBusInterfaceSkeletonFlags
 
     // Owm methods of Gio-2.0.Gio.DBusInterfaceSkeleton
 
@@ -24275,6 +24711,30 @@ module DBusObjectManagerClient {
          * The object path the manager is for.
          */
         object_path?: string | null
+        /**
+         * If this property is not %G_BUS_TYPE_NONE, then
+         * #GDBusObjectManagerClient:connection must be %NULL and will be set to the
+         * #GDBusConnection obtained by calling g_bus_get() with the value
+         * of this property.
+         */
+        busType?: BusType | null
+        /**
+         * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
+         */
+        getProxyTypeDestroyNotify?: any | null
+        /**
+         * The #GDBusProxyTypeFunc to use when determining what #GType to
+         * use for interface proxies or %NULL.
+         */
+        getProxyTypeFunc?: any | null
+        /**
+         * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
+         */
+        getProxyTypeUserData?: any | null
+        /**
+         * The object path the manager is for.
+         */
+        objectPath?: string | null
     }
 
 }
@@ -24291,6 +24751,13 @@ interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManager, Init
      */
     readonly bus_type: BusType
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusObjectManagerClient:connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly busType: BusType
+    /**
      * The #GDBusConnection to use.
      */
     readonly connection: DBusConnection
@@ -24303,14 +24770,27 @@ interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManager, Init
      */
     readonly get_proxy_type_destroy_notify: any
     /**
+     * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
+     */
+    readonly getProxyTypeDestroyNotify: any
+    /**
      * The #GDBusProxyTypeFunc to use when determining what #GType to
      * use for interface proxies or %NULL.
      */
     readonly get_proxy_type_func: any
     /**
+     * The #GDBusProxyTypeFunc to use when determining what #GType to
+     * use for interface proxies or %NULL.
+     */
+    readonly getProxyTypeFunc: any
+    /**
      * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
      */
     readonly get_proxy_type_user_data: any
+    /**
+     * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
+     */
+    readonly getProxyTypeUserData: any
     /**
      * The well-known name or unique name that the manager is for.
      */
@@ -24322,9 +24802,19 @@ interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManager, Init
      */
     readonly name_owner: string | null
     /**
+     * The unique name that owns #GDBusObjectManagerClient:name or %NULL if
+     * no-one is currently owning the name. Connect to the
+     * #GObject::notify signal to track changes to this property.
+     */
+    readonly nameOwner: string | null
+    /**
      * The object path the manager is for.
      */
     readonly object_path: string | null
+    /**
+     * The object path the manager is for.
+     */
+    readonly objectPath: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusObjectManagerClient
 
@@ -24593,6 +25083,10 @@ module DBusObjectManagerServer {
          * The object path to register the manager object at.
          */
         object_path?: string | null
+        /**
+         * The object path to register the manager object at.
+         */
+        objectPath?: string | null
     }
 
 }
@@ -24609,6 +25103,10 @@ interface DBusObjectManagerServer extends DBusObjectManager {
      * The object path to register the manager object at.
      */
     readonly object_path: string | null
+    /**
+     * The object path to register the manager object at.
+     */
+    readonly objectPath: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusObjectManagerServer
 
@@ -24756,6 +25254,14 @@ module DBusObjectProxy {
          * The object path of the proxy.
          */
         g_object_path?: string | null
+        /**
+         * The connection of the proxy.
+         */
+        gConnection?: DBusConnection | null
+        /**
+         * The object path of the proxy.
+         */
+        gObjectPath?: string | null
     }
 
 }
@@ -24769,9 +25275,17 @@ interface DBusObjectProxy extends DBusObject {
      */
     readonly g_connection: DBusConnection
     /**
+     * The connection of the proxy.
+     */
+    readonly gConnection: DBusConnection
+    /**
      * The object path of the proxy.
      */
     readonly g_object_path: string | null
+    /**
+     * The object path of the proxy.
+     */
+    readonly gObjectPath: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusObjectProxy
 
@@ -24855,6 +25369,10 @@ module DBusObjectSkeleton {
          * The object path where the object is exported.
          */
         g_object_path?: string | null
+        /**
+         * The object path where the object is exported.
+         */
+        gObjectPath?: string | null
     }
 
 }
@@ -24867,6 +25385,10 @@ interface DBusObjectSkeleton extends DBusObject {
      * The object path where the object is exported.
      */
     g_object_path: string | null
+    /**
+     * The object path where the object is exported.
+     */
+    gObjectPath: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusObjectSkeleton
 
@@ -25052,6 +25574,71 @@ module DBusProxy {
          * The object path the proxy is for.
          */
         g_object_path?: string | null
+        /**
+         * If this property is not %G_BUS_TYPE_NONE, then
+         * #GDBusProxy:g-connection must be %NULL and will be set to the
+         * #GDBusConnection obtained by calling g_bus_get() with the value
+         * of this property.
+         */
+        gBusType?: BusType | null
+        /**
+         * The #GDBusConnection the proxy is for.
+         */
+        gConnection?: DBusConnection | null
+        /**
+         * The timeout to use if -1 (specifying default timeout) is passed
+         * as `timeout_msec` in the g_dbus_proxy_call() and
+         * g_dbus_proxy_call_sync() functions.
+         * 
+         * This allows applications to set a proxy-wide timeout for all
+         * remote method invocations on the proxy. If this property is -1,
+         * the default timeout (typically 25 seconds) is used. If set to
+         * %G_MAXINT, then no timeout is used.
+         */
+        gDefaultTimeout?: number | null
+        /**
+         * Flags from the #GDBusProxyFlags enumeration.
+         */
+        gFlags?: DBusProxyFlags | null
+        /**
+         * Ensure that interactions with this proxy conform to the given
+         * interface. This is mainly to ensure that malformed data received
+         * from the other peer is ignored. The given #GDBusInterfaceInfo is
+         * said to be the "expected interface".
+         * 
+         * The checks performed are:
+         * - When completing a method call, if the type signature of
+         *   the reply message isn't what's expected, the reply is
+         *   discarded and the #GError is set to %G_IO_ERROR_INVALID_ARGUMENT.
+         * 
+         * - Received signals that have a type signature mismatch are dropped and
+         *   a warning is logged via g_warning().
+         * 
+         * - Properties received via the initial `GetAll()` call or via the
+         *   `::PropertiesChanged` signal (on the
+         *   [org.freedesktop.DBus.Properties](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties)
+         *   interface) or set using g_dbus_proxy_set_cached_property()
+         *   with a type signature mismatch are ignored and a warning is
+         *   logged via g_warning().
+         * 
+         * Note that these checks are never done on methods, signals and
+         * properties that are not referenced in the given
+         * #GDBusInterfaceInfo, since extending a D-Bus interface on the
+         * service-side is not considered an ABI break.
+         */
+        gInterfaceInfo?: DBusInterfaceInfo | null
+        /**
+         * The D-Bus interface name the proxy is for.
+         */
+        gInterfaceName?: string | null
+        /**
+         * The well-known or unique name that the proxy is for.
+         */
+        gName?: string | null
+        /**
+         * The object path the proxy is for.
+         */
+        gObjectPath?: string | null
     }
 
 }
@@ -25068,9 +25655,20 @@ interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      */
     readonly g_bus_type: BusType
     /**
+     * If this property is not %G_BUS_TYPE_NONE, then
+     * #GDBusProxy:g-connection must be %NULL and will be set to the
+     * #GDBusConnection obtained by calling g_bus_get() with the value
+     * of this property.
+     */
+    readonly gBusType: BusType
+    /**
      * The #GDBusConnection the proxy is for.
      */
     readonly g_connection: DBusConnection
+    /**
+     * The #GDBusConnection the proxy is for.
+     */
+    readonly gConnection: DBusConnection
     /**
      * The timeout to use if -1 (specifying default timeout) is passed
      * as `timeout_msec` in the g_dbus_proxy_call() and
@@ -25083,9 +25681,24 @@ interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      */
     g_default_timeout: number
     /**
+     * The timeout to use if -1 (specifying default timeout) is passed
+     * as `timeout_msec` in the g_dbus_proxy_call() and
+     * g_dbus_proxy_call_sync() functions.
+     * 
+     * This allows applications to set a proxy-wide timeout for all
+     * remote method invocations on the proxy. If this property is -1,
+     * the default timeout (typically 25 seconds) is used. If set to
+     * %G_MAXINT, then no timeout is used.
+     */
+    gDefaultTimeout: number
+    /**
      * Flags from the #GDBusProxyFlags enumeration.
      */
     readonly g_flags: DBusProxyFlags
+    /**
+     * Flags from the #GDBusProxyFlags enumeration.
+     */
+    readonly gFlags: DBusProxyFlags
     /**
      * Ensure that interactions with this proxy conform to the given
      * interface. This is mainly to ensure that malformed data received
@@ -25114,13 +25727,48 @@ interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      */
     g_interface_info: DBusInterfaceInfo
     /**
+     * Ensure that interactions with this proxy conform to the given
+     * interface. This is mainly to ensure that malformed data received
+     * from the other peer is ignored. The given #GDBusInterfaceInfo is
+     * said to be the "expected interface".
+     * 
+     * The checks performed are:
+     * - When completing a method call, if the type signature of
+     *   the reply message isn't what's expected, the reply is
+     *   discarded and the #GError is set to %G_IO_ERROR_INVALID_ARGUMENT.
+     * 
+     * - Received signals that have a type signature mismatch are dropped and
+     *   a warning is logged via g_warning().
+     * 
+     * - Properties received via the initial `GetAll()` call or via the
+     *   `::PropertiesChanged` signal (on the
+     *   [org.freedesktop.DBus.Properties](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties)
+     *   interface) or set using g_dbus_proxy_set_cached_property()
+     *   with a type signature mismatch are ignored and a warning is
+     *   logged via g_warning().
+     * 
+     * Note that these checks are never done on methods, signals and
+     * properties that are not referenced in the given
+     * #GDBusInterfaceInfo, since extending a D-Bus interface on the
+     * service-side is not considered an ABI break.
+     */
+    gInterfaceInfo: DBusInterfaceInfo
+    /**
      * The D-Bus interface name the proxy is for.
      */
     readonly g_interface_name: string | null
     /**
+     * The D-Bus interface name the proxy is for.
+     */
+    readonly gInterfaceName: string | null
+    /**
      * The well-known or unique name that the proxy is for.
      */
     readonly g_name: string | null
+    /**
+     * The well-known or unique name that the proxy is for.
+     */
+    readonly gName: string | null
     /**
      * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
      * currently owns that name. You may connect to #GObject::notify signal to
@@ -25128,9 +25776,19 @@ interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      */
     readonly g_name_owner: string | null
     /**
+     * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
+     * currently owns that name. You may connect to #GObject::notify signal to
+     * track changes to this property.
+     */
+    readonly gNameOwner: string | null
+    /**
      * The object path the proxy is for.
      */
     readonly g_object_path: string | null
+    /**
+     * The object path the proxy is for.
+     */
+    readonly gObjectPath: string | null
 
     // Owm methods of Gio-2.0.Gio.DBusProxy
 
@@ -25659,6 +26317,10 @@ module DBusServer {
          * See #GDBusConnection:guid for more details.
          */
         guid?: string | null
+        /**
+         * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
+         */
+        authenticationObserver?: DBusAuthObserver | null
     }
 
 }
@@ -25680,9 +26342,17 @@ interface DBusServer extends Initable {
      */
     readonly authentication_observer: DBusAuthObserver
     /**
+     * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
+     */
+    readonly authenticationObserver: DBusAuthObserver
+    /**
      * The D-Bus address that clients can use.
      */
     readonly client_address: string | null
+    /**
+     * The D-Bus address that clients can use.
+     */
+    readonly clientAddress: string | null
     /**
      * Flags from the #GDBusServerFlags enumeration.
      */
@@ -25844,6 +26514,17 @@ module DataInputStream {
          * as a line ending when reading complete lines from the stream.
          */
         newline_type?: DataStreamNewlineType | null
+        /**
+         * The :byte-order property determines the byte ordering that
+         * is used when reading multi-byte entities (such as integers)
+         * from the stream.
+         */
+        byteOrder?: DataStreamByteOrder | null
+        /**
+         * The :newline-type property determines what is considered
+         * as a line ending when reading complete lines from the stream.
+         */
+        newlineType?: DataStreamNewlineType | null
     }
 
 }
@@ -25859,10 +26540,21 @@ interface DataInputStream extends Seekable {
      */
     byte_order: DataStreamByteOrder
     /**
+     * The :byte-order property determines the byte ordering that
+     * is used when reading multi-byte entities (such as integers)
+     * from the stream.
+     */
+    byteOrder: DataStreamByteOrder
+    /**
      * The :newline-type property determines what is considered
      * as a line ending when reading complete lines from the stream.
      */
     newline_type: DataStreamNewlineType
+    /**
+     * The :newline-type property determines what is considered
+     * as a line ending when reading complete lines from the stream.
+     */
+    newlineType: DataStreamNewlineType
 
     // Own fields of Gio-2.0.Gio.DataInputStream
 
@@ -26204,6 +26896,9 @@ interface DataInputStream extends Seekable {
     connect(sigName: "notify::buffer-size", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::buffer-size", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::buffer-size", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: DataInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -26269,6 +26964,11 @@ module DataOutputStream {
          * multi-byte entities (such as integers) to the stream.
          */
         byte_order?: DataStreamByteOrder | null
+        /**
+         * Determines the byte ordering that is used when writing
+         * multi-byte entities (such as integers) to the stream.
+         */
+        byteOrder?: DataStreamByteOrder | null
     }
 
 }
@@ -26282,6 +26982,11 @@ interface DataOutputStream extends Seekable {
      * multi-byte entities (such as integers) to the stream.
      */
     byte_order: DataStreamByteOrder
+    /**
+     * Determines the byte ordering that is used when writing
+     * multi-byte entities (such as integers) to the stream.
+     */
+    byteOrder: DataStreamByteOrder
 
     // Own fields of Gio-2.0.Gio.DataOutputStream
 
@@ -26361,6 +27066,9 @@ interface DataOutputStream extends Seekable {
     connect(sigName: "notify::byte-order", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::byte-order", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::byte-order", ...args: any[]): void
+    connect(sigName: "notify::base-stream", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: DataOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -28748,6 +29456,7 @@ module FileMonitor {
         // Own constructor properties of Gio-2.0.Gio.FileMonitor
 
         rate_limit?: number | null
+        rateLimit?: number | null
     }
 
 }
@@ -28758,6 +29467,7 @@ interface FileMonitor {
 
     readonly cancelled: boolean
     rate_limit: number
+    rateLimit: number
 
     // Own fields of Gio-2.0.Gio.FileMonitor
 
@@ -29142,6 +29852,8 @@ module FilterInputStream {
 
         base_stream?: InputStream | null
         close_base_stream?: boolean | null
+        baseStream?: InputStream | null
+        closeBaseStream?: boolean | null
     }
 
 }
@@ -29150,7 +29862,9 @@ interface FilterInputStream {
 
     // Own properties of Gio-2.0.Gio.FilterInputStream
 
+    readonly baseStream: InputStream
     close_base_stream: boolean
+    closeBaseStream: boolean
 
     // Own fields of Gio-2.0.Gio.FilterInputStream
 
@@ -29178,6 +29892,9 @@ interface FilterInputStream {
 
     // Class property signals of Gio-2.0.Gio.FilterInputStream
 
+    connect(sigName: "notify::base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: FilterInputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -29217,6 +29934,8 @@ module FilterOutputStream {
 
         base_stream?: OutputStream | null
         close_base_stream?: boolean | null
+        baseStream?: OutputStream | null
+        closeBaseStream?: boolean | null
     }
 
 }
@@ -29225,7 +29944,9 @@ interface FilterOutputStream {
 
     // Own properties of Gio-2.0.Gio.FilterOutputStream
 
+    readonly baseStream: OutputStream
     readonly close_base_stream: boolean
+    readonly closeBaseStream: boolean
 
     // Own fields of Gio-2.0.Gio.FilterOutputStream
 
@@ -29253,6 +29974,9 @@ interface FilterOutputStream {
 
     // Class property signals of Gio-2.0.Gio.FilterOutputStream
 
+    connect(sigName: "notify::base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::base-stream", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: FilterOutputStream, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::close-base-stream", ...args: any[]): void
@@ -29412,7 +30136,9 @@ interface IOStream {
 
     readonly closed: boolean
     readonly input_stream: InputStream
+    readonly inputStream: InputStream
     readonly output_stream: OutputStream
+    readonly outputStream: OutputStream
 
     // Own fields of Gio-2.0.Gio.IOStream
 
@@ -29703,50 +30429,100 @@ interface InetAddress {
      */
     readonly is_any: boolean
     /**
+     * Whether this is the "any" address for its family.
+     * See g_inet_address_get_is_any().
+     */
+    readonly isAny: boolean
+    /**
      * Whether this is a link-local address.
      * See g_inet_address_get_is_link_local().
      */
     readonly is_link_local: boolean
+    /**
+     * Whether this is a link-local address.
+     * See g_inet_address_get_is_link_local().
+     */
+    readonly isLinkLocal: boolean
     /**
      * Whether this is the loopback address for its family.
      * See g_inet_address_get_is_loopback().
      */
     readonly is_loopback: boolean
     /**
+     * Whether this is the loopback address for its family.
+     * See g_inet_address_get_is_loopback().
+     */
+    readonly isLoopback: boolean
+    /**
      * Whether this is a global multicast address.
      * See g_inet_address_get_is_mc_global().
      */
     readonly is_mc_global: boolean
+    /**
+     * Whether this is a global multicast address.
+     * See g_inet_address_get_is_mc_global().
+     */
+    readonly isMcGlobal: boolean
     /**
      * Whether this is a link-local multicast address.
      * See g_inet_address_get_is_mc_link_local().
      */
     readonly is_mc_link_local: boolean
     /**
+     * Whether this is a link-local multicast address.
+     * See g_inet_address_get_is_mc_link_local().
+     */
+    readonly isMcLinkLocal: boolean
+    /**
      * Whether this is a node-local multicast address.
      * See g_inet_address_get_is_mc_node_local().
      */
     readonly is_mc_node_local: boolean
+    /**
+     * Whether this is a node-local multicast address.
+     * See g_inet_address_get_is_mc_node_local().
+     */
+    readonly isMcNodeLocal: boolean
     /**
      * Whether this is an organization-local multicast address.
      * See g_inet_address_get_is_mc_org_local().
      */
     readonly is_mc_org_local: boolean
     /**
+     * Whether this is an organization-local multicast address.
+     * See g_inet_address_get_is_mc_org_local().
+     */
+    readonly isMcOrgLocal: boolean
+    /**
      * Whether this is a site-local multicast address.
      * See g_inet_address_get_is_mc_site_local().
      */
     readonly is_mc_site_local: boolean
+    /**
+     * Whether this is a site-local multicast address.
+     * See g_inet_address_get_is_mc_site_local().
+     */
+    readonly isMcSiteLocal: boolean
     /**
      * Whether this is a multicast address.
      * See g_inet_address_get_is_multicast().
      */
     readonly is_multicast: boolean
     /**
+     * Whether this is a multicast address.
+     * See g_inet_address_get_is_multicast().
+     */
+    readonly isMulticast: boolean
+    /**
      * Whether this is a site-local address.
      * See g_inet_address_get_is_loopback().
      */
     readonly is_site_local: boolean
+    /**
+     * Whether this is a site-local address.
+     * See g_inet_address_get_is_loopback().
+     */
+    readonly isSiteLocal: boolean
 
     // Own fields of Gio-2.0.Gio.InetAddress
 
@@ -30084,6 +30860,7 @@ module InetSocketAddress {
         flowinfo?: number | null
         port?: number | null
         scope_id?: number | null
+        scopeId?: number | null
     }
 
 }
@@ -30099,6 +30876,7 @@ interface InetSocketAddress extends SocketConnectable {
     readonly flowinfo: number
     readonly port: number
     readonly scope_id: number
+    readonly scopeId: number
 
     // Own fields of Gio-2.0.Gio.InetSocketAddress
 
@@ -30835,6 +31613,11 @@ module ListStore {
          * subclasses of #GObject.
          */
         item_type?: GObject.GType | null
+        /**
+         * The type of items contained in this list store. Items must be
+         * subclasses of #GObject.
+         */
+        itemType?: GObject.GType | null
     }
 
 }
@@ -30849,9 +31632,18 @@ interface ListStore<A extends GObject.Object = GObject.Object> extends ListModel
      */
     readonly item_type: GObject.GType
     /**
+     * The type of items contained in this list store. Items must be
+     * subclasses of #GObject.
+     */
+    readonly itemType: GObject.GType
+    /**
      * The number of items contained in this list store.
      */
     readonly n_items: number
+    /**
+     * The number of items contained in this list store.
+     */
+    readonly nItems: number
 
     // Owm methods of Gio-2.0.Gio.ListStore
 
@@ -31137,6 +31929,10 @@ interface MemoryOutputStream extends PollableOutputStream, Seekable {
      * Size of data written to the buffer.
      */
     readonly data_size: number
+    /**
+     * Size of data written to the buffer.
+     */
+    readonly dataSize: number
     /**
      * Current size of the data buffer.
      */
@@ -32443,6 +33239,23 @@ module MountOperation {
          * the mount operation.
          */
         username?: string | null
+        /**
+         * Whether the device to be unlocked is a TCRYPT hidden volume.
+         * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
+         */
+        isTcryptHiddenVolume?: boolean | null
+        /**
+         * Whether the device to be unlocked is a TCRYPT system volume.
+         * In this context, a system volume is a volume with a bootloader
+         * and operating system installed. This is only supported for Windows
+         * operating systems. For further documentation, see
+         * [the VeraCrypt documentation](https://www.veracrypt.fr/en/System%20Encryption.html).
+         */
+        isTcryptSystemVolume?: boolean | null
+        /**
+         * Determines if and how the password information should be saved.
+         */
+        passwordSave?: PasswordSave | null
     }
 
 }
@@ -32470,6 +33283,11 @@ interface MountOperation {
      */
     is_tcrypt_hidden_volume: boolean
     /**
+     * Whether the device to be unlocked is a TCRYPT hidden volume.
+     * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
+     */
+    isTcryptHiddenVolume: boolean
+    /**
      * Whether the device to be unlocked is a TCRYPT system volume.
      * In this context, a system volume is a volume with a bootloader
      * and operating system installed. This is only supported for Windows
@@ -32477,6 +33295,14 @@ interface MountOperation {
      * [the VeraCrypt documentation](https://www.veracrypt.fr/en/System%20Encryption.html).
      */
     is_tcrypt_system_volume: boolean
+    /**
+     * Whether the device to be unlocked is a TCRYPT system volume.
+     * In this context, a system volume is a volume with a bootloader
+     * and operating system installed. This is only supported for Windows
+     * operating systems. For further documentation, see
+     * [the VeraCrypt documentation](https://www.veracrypt.fr/en/System%20Encryption.html).
+     */
+    isTcryptSystemVolume: boolean
     /**
      * The password that is used for authentication when carrying out
      * the mount operation.
@@ -32486,6 +33312,10 @@ interface MountOperation {
      * Determines if and how the password information should be saved.
      */
     password_save: PasswordSave
+    /**
+     * Determines if and how the password information should be saved.
+     */
+    passwordSave: PasswordSave
     /**
      * The VeraCrypt PIM value, when unlocking a VeraCrypt volume. See
      * [the VeraCrypt documentation](https://www.veracrypt.fr/en/Personal%20Iterations%20Multiplier%20(PIM).html).
@@ -34347,10 +35177,20 @@ interface Permission {
      */
     readonly can_acquire: boolean
     /**
+     * %TRUE if it is generally possible to acquire the permission by calling
+     * g_permission_acquire().
+     */
+    readonly canAcquire: boolean
+    /**
      * %TRUE if it is generally possible to release the permission by calling
      * g_permission_release().
      */
     readonly can_release: boolean
+    /**
+     * %TRUE if it is generally possible to release the permission by calling
+     * g_permission_release().
+     */
+    readonly canRelease: boolean
 
     // Own fields of Gio-2.0.Gio.Permission
 
@@ -34663,6 +35503,18 @@ module PropertyAction {
          * readable and writable (and not construct-only).
          */
         property_name?: string | null
+        /**
+         * If %TRUE, the state of the action will be the negation of the
+         * property value, provided the property is boolean.
+         */
+        invertBoolean?: boolean | null
+        /**
+         * The name of the property to wrap on the object.
+         * 
+         * The property must exist on the passed-in object and it must be
+         * readable and writable (and not construct-only).
+         */
+        propertyName?: string | null
     }
 
 }
@@ -34684,6 +35536,11 @@ interface PropertyAction extends Action {
      */
     readonly invert_boolean: boolean
     /**
+     * If %TRUE, the state of the action will be the negation of the
+     * property value, provided the property is boolean.
+     */
+    readonly invertBoolean: boolean
+    /**
      * The name of the action.  This is mostly meaningful for identifying
      * the action once it has been added to a #GActionMap.
      */
@@ -34700,12 +35557,24 @@ interface PropertyAction extends Action {
      */
     readonly parameter_type: GLib.VariantType
     /**
+     * The type of the parameter that must be given when activating the
+     * action.
+     */
+    readonly parameterType: GLib.VariantType
+    /**
      * The name of the property to wrap on the object.
      * 
      * The property must exist on the passed-in object and it must be
      * readable and writable (and not construct-only).
      */
     readonly property_name: string | null
+    /**
+     * The name of the property to wrap on the object.
+     * 
+     * The property must exist on the passed-in object and it must be
+     * readable and writable (and not construct-only).
+     */
+    readonly propertyName: string | null
     /**
      * The state of the action, or %NULL if the action is stateless.
      */
@@ -34715,6 +35584,11 @@ interface PropertyAction extends Action {
      * action is stateless.
      */
     readonly state_type: GLib.VariantType
+    /**
+     * The #GVariantType of the state that the action has, or %NULL if the
+     * action is stateless.
+     */
+    readonly stateType: GLib.VariantType
 
     // Class property signals of Gio-2.0.Gio.PropertyAction
 
@@ -34870,6 +35744,13 @@ module ProxyAddress {
          */
         uri?: string | null
         username?: string | null
+        destinationHostname?: string | null
+        destinationPort?: number | null
+        /**
+         * The protocol being spoke to the destination host, or %NULL if
+         * the #GProxyAddress doesn't know.
+         */
+        destinationProtocol?: string | null
     }
 
 }
@@ -34879,12 +35760,19 @@ interface ProxyAddress extends SocketConnectable {
     // Own properties of Gio-2.0.Gio.ProxyAddress
 
     readonly destination_hostname: string | null
+    readonly destinationHostname: string | null
     readonly destination_port: number
+    readonly destinationPort: number
     /**
      * The protocol being spoke to the destination host, or %NULL if
      * the #GProxyAddress doesn't know.
      */
     readonly destination_protocol: string | null
+    /**
+     * The protocol being spoke to the destination host, or %NULL if
+     * the #GProxyAddress doesn't know.
+     */
+    readonly destinationProtocol: string | null
     readonly password: string | null
     readonly protocol: string | null
     /**
@@ -35068,6 +35956,15 @@ module ProxyAddressEnumerator {
          */
         proxy_resolver?: ProxyResolver | null
         uri?: string | null
+        /**
+         * The default port to use if #GProxyAddressEnumerator:uri does not
+         * specify one.
+         */
+        defaultPort?: number | null
+        /**
+         * The proxy resolver to use.
+         */
+        proxyResolver?: ProxyResolver | null
     }
 
 }
@@ -35083,9 +35980,18 @@ interface ProxyAddressEnumerator {
      */
     readonly default_port: number
     /**
+     * The default port to use if #GProxyAddressEnumerator:uri does not
+     * specify one.
+     */
+    readonly defaultPort: number
+    /**
      * The proxy resolver to use.
      */
     proxy_resolver: ProxyResolver
+    /**
+     * The proxy resolver to use.
+     */
+    proxyResolver: ProxyResolver
     readonly uri: string | null
 
     // Class property signals of Gio-2.0.Gio.ProxyAddressEnumerator
@@ -35819,6 +36725,21 @@ module Settings {
          * than the schema itself.  Take care.
          */
         settings_schema?: SettingsSchema | null
+        /**
+         * The name of the schema that describes the types of keys
+         * for this #GSettings object.
+         */
+        schemaId?: string | null
+        /**
+         * The #GSettingsSchema describing the types of keys for this
+         * #GSettings object.
+         * 
+         * Ideally, this property would be called 'schema'.  #GSettingsSchema
+         * has only existed since version 2.32, however, and before then the
+         * 'schema' property was used to refer to the ID of the schema rather
+         * than the schema itself.  Take care.
+         */
+        settingsSchema?: SettingsSchema | null
     }
 
 }
@@ -35837,10 +36758,20 @@ interface Settings {
      */
     readonly delay_apply: boolean
     /**
+     * Whether the #GSettings object is in 'delay-apply' mode. See
+     * g_settings_delay() for details.
+     */
+    readonly delayApply: boolean
+    /**
      * If this property is %TRUE, the #GSettings object has outstanding
      * changes that will be applied when g_settings_apply() is called.
      */
     readonly has_unapplied: boolean
+    /**
+     * If this property is %TRUE, the #GSettings object has outstanding
+     * changes that will be applied when g_settings_apply() is called.
+     */
+    readonly hasUnapplied: boolean
     /**
      * The path within the backend where the settings are stored.
      */
@@ -35863,6 +36794,11 @@ interface Settings {
      */
     readonly schema_id: string | null
     /**
+     * The name of the schema that describes the types of keys
+     * for this #GSettings object.
+     */
+    readonly schemaId: string | null
+    /**
      * The #GSettingsSchema describing the types of keys for this
      * #GSettings object.
      * 
@@ -35872,6 +36808,16 @@ interface Settings {
      * than the schema itself.  Take care.
      */
     readonly settings_schema: SettingsSchema
+    /**
+     * The #GSettingsSchema describing the types of keys for this
+     * #GSettings object.
+     * 
+     * Ideally, this property would be called 'schema'.  #GSettingsSchema
+     * has only existed since version 2.32, however, and before then the
+     * 'schema' property was used to refer to the ID of the schema rather
+     * than the schema itself.  Take care.
+     */
+    readonly settingsSchema: SettingsSchema
 
     // Own fields of Gio-2.0.Gio.Settings
 
@@ -37179,6 +38125,11 @@ module SimpleAction {
          * The state of the action, or %NULL if the action is stateless.
          */
         state?: GLib.Variant | null
+        /**
+         * The type of the parameter that must be given when activating the
+         * action.
+         */
+        parameterType?: GLib.VariantType | null
     }
 
 }
@@ -37205,6 +38156,11 @@ interface SimpleAction extends Action {
      */
     readonly parameter_type: GLib.VariantType
     /**
+     * The type of the parameter that must be given when activating the
+     * action.
+     */
+    readonly parameterType: GLib.VariantType
+    /**
      * The state of the action, or %NULL if the action is stateless.
      */
     state: any
@@ -37213,6 +38169,11 @@ interface SimpleAction extends Action {
      * action is stateless.
      */
     readonly state_type: GLib.VariantType
+    /**
+     * The #GVariantType of the state that the action has, or %NULL if the
+     * action is stateless.
+     */
+    readonly stateType: GLib.VariantType
 
     // Owm methods of Gio-2.0.Gio.SimpleAction
 
@@ -37786,6 +38747,8 @@ module SimpleIOStream {
 
         input_stream?: InputStream | null
         output_stream?: OutputStream | null
+        inputStream?: InputStream | null
+        outputStream?: OutputStream | null
     }
 
 }
@@ -37795,7 +38758,9 @@ interface SimpleIOStream {
     // Own properties of Gio-2.0.Gio.SimpleIOStream
 
     readonly input_stream: InputStream
+    readonly inputStream: InputStream
     readonly output_stream: OutputStream
+    readonly outputStream: OutputStream
 
     // Class property signals of Gio-2.0.Gio.SimpleIOStream
 
@@ -37976,6 +38941,53 @@ module SimpleProxyResolver {
          * commonly used by other applications.
          */
         ignore_hosts?: string[] | null
+        /**
+         * The default proxy URI that will be used for any URI that doesn't
+         * match #GSimpleProxyResolver:ignore-hosts, and doesn't match any
+         * of the schemes set with g_simple_proxy_resolver_set_uri_proxy().
+         * 
+         * Note that as a special case, if this URI starts with
+         * "socks://", #GSimpleProxyResolver will treat it as referring
+         * to all three of the socks5, socks4a, and socks4 proxy types.
+         */
+        defaultProxy?: string | null
+        /**
+         * A list of hostnames and IP addresses that the resolver should
+         * allow direct connections to.
+         * 
+         * Entries can be in one of 4 formats:
+         * 
+         * - A hostname, such as "example.com", ".example.com", or
+         *   "*.example.com", any of which match "example.com" or
+         *   any subdomain of it.
+         * 
+         * - An IPv4 or IPv6 address, such as "192.168.1.1",
+         *   which matches only that address.
+         * 
+         * - A hostname or IP address followed by a port, such as
+         *   "example.com:80", which matches whatever the hostname or IP
+         *   address would match, but only for URLs with the (explicitly)
+         *   indicated port. In the case of an IPv6 address, the address
+         *   part must appear in brackets: "[::1]:443"
+         * 
+         * - An IP address range, given by a base address and prefix length,
+         *   such as "fe80::/10", which matches any address in that range.
+         * 
+         * Note that when dealing with Unicode hostnames, the matching is
+         * done against the ASCII form of the name.
+         * 
+         * Also note that hostname exclusions apply only to connections made
+         * to hosts identified by name, and IP address exclusions apply only
+         * to connections made to hosts identified by address. That is, if
+         * example.com has an address of 192.168.1.1, and the :ignore-hosts list
+         * contains only "192.168.1.1", then a connection to "example.com"
+         * (eg, via a #GNetworkAddress) will use the proxy, and a connection to
+         * "192.168.1.1" (eg, via a #GInetSocketAddress) will not.
+         * 
+         * These rules match the "ignore-hosts"/"noproxy" rules most
+         * commonly used by other applications.
+         */
+        ignoreHosts?: string[] | null
     }
 
 }
@@ -37994,6 +39006,16 @@ interface SimpleProxyResolver extends ProxyResolver {
      * to all three of the socks5, socks4a, and socks4 proxy types.
      */
     default_proxy: string | null
+    /**
+     * The default proxy URI that will be used for any URI that doesn't
+     * match #GSimpleProxyResolver:ignore-hosts, and doesn't match any
+     * of the schemes set with g_simple_proxy_resolver_set_uri_proxy().
+     * 
+     * Note that as a special case, if this URI starts with
+     * "socks://", #GSimpleProxyResolver will treat it as referring
+     * to all three of the socks5, socks4a, and socks4 proxy types.
+     */
+    defaultProxy: string | null
     /**
      * A list of hostnames and IP addresses that the resolver should
      * allow direct connections to.
@@ -38031,6 +39053,43 @@ interface SimpleProxyResolver extends ProxyResolver {
      * commonly used by other applications.
      */
     ignore_hosts: string[]
+    /**
+     * A list of hostnames and IP addresses that the resolver should
+     * allow direct connections to.
+     * 
+     * Entries can be in one of 4 formats:
+     * 
+     * - A hostname, such as "example.com", ".example.com", or
+     *   "*.example.com", any of which match "example.com" or
+     *   any subdomain of it.
+     * 
+     * - An IPv4 or IPv6 address, such as "192.168.1.1",
+     *   which matches only that address.
+     * 
+     * - A hostname or IP address followed by a port, such as
+     *   "example.com:80", which matches whatever the hostname or IP
+     *   address would match, but only for URLs with the (explicitly)
+     *   indicated port. In the case of an IPv6 address, the address
+     *   part must appear in brackets: "[::1]:443"
+     * 
+     * - An IP address range, given by a base address and prefix length,
+     *   such as "fe80::/10", which matches any address in that range.
+     * 
+     * Note that when dealing with Unicode hostnames, the matching is
+     * done against the ASCII form of the name.
+     * 
+     * Also note that hostname exclusions apply only to connections made
+     * to hosts identified by name, and IP address exclusions apply only
+     * to connections made to hosts identified by address. That is, if
+     * example.com has an address of 192.168.1.1, and the :ignore-hosts list
+     * contains only "192.168.1.1", then a connection to "example.com"
+     * (eg, via a #GNetworkAddress) will use the proxy, and a connection to
+     * "192.168.1.1" (eg, via a #GInetSocketAddress) will not.
+     * 
+     * These rules match the "ignore-hosts"/"noproxy" rules most
+     * commonly used by other applications.
+     */
+    ignoreHosts: string[]
 
     // Own fields of Gio-2.0.Gio.SimpleProxyResolver
 
@@ -38154,6 +39213,15 @@ module Socket {
          */
         ttl?: number | null
         type?: SocketType | null
+        listenBacklog?: number | null
+        /**
+         * Whether outgoing multicast packets loop back to the local host.
+         */
+        multicastLoopback?: boolean | null
+        /**
+         * Time-to-live out outgoing multicast packets
+         */
+        multicastTtl?: number | null
     }
 
 }
@@ -38171,17 +39239,28 @@ interface Socket extends DatagramBased, Initable {
     readonly fd: number
     keepalive: boolean
     listen_backlog: number
+    listenBacklog: number
     readonly local_address: SocketAddress
+    readonly localAddress: SocketAddress
     /**
      * Whether outgoing multicast packets loop back to the local host.
      */
     multicast_loopback: boolean
     /**
+     * Whether outgoing multicast packets loop back to the local host.
+     */
+    multicastLoopback: boolean
+    /**
      * Time-to-live out outgoing multicast packets
      */
     multicast_ttl: number
+    /**
+     * Time-to-live out outgoing multicast packets
+     */
+    multicastTtl: number
     readonly protocol: SocketProtocol
     readonly remote_address: SocketAddress
+    readonly remoteAddress: SocketAddress
     /**
      * The timeout in seconds on socket I/O
      */
@@ -39700,6 +40779,31 @@ module SocketClient {
          */
         tls_validation_flags?: TlsCertificateFlags | null
         type?: SocketType | null
+        enableProxy?: boolean | null
+        localAddress?: SocketAddress | null
+        /**
+         * The proxy resolver to use
+         */
+        proxyResolver?: ProxyResolver | null
+        /**
+         * The TLS validation flags used when creating TLS connections. The
+         * default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
+         * 
+         * GLib guarantees that if certificate verification fails, at least one
+         * flag will be set, but it does not guarantee that all possible flags
+         * will be set. Accordingly, you may not safely decide to ignore any
+         * particular type of error. For example, it would be incorrect to mask
+         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+         * because this could potentially be the only error flag set even if
+         * other problems exist with the certificate. Therefore, there is no
+         * safe way to use this property. This is not a horrible problem,
+         * though, because you should not be attempting to ignore validation
+         * errors anyway. If you really must ignore TLS certificate errors,
+         * connect to the #GSocketClient::event signal, wait for it to be
+         * emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, and use that to
+         * connect to #GTlsConnection::accept-certificate.
+         */
+        tlsValidationFlags?: TlsCertificateFlags | null
     }
 
 }
@@ -39709,13 +40813,19 @@ interface SocketClient {
     // Own properties of Gio-2.0.Gio.SocketClient
 
     enable_proxy: boolean
+    enableProxy: boolean
     family: SocketFamily
     local_address: SocketAddress
+    localAddress: SocketAddress
     protocol: SocketProtocol
     /**
      * The proxy resolver to use
      */
     proxy_resolver: ProxyResolver
+    /**
+     * The proxy resolver to use
+     */
+    proxyResolver: ProxyResolver
     timeout: number
     tls: boolean
     /**
@@ -39737,6 +40847,25 @@ interface SocketClient {
      * connect to #GTlsConnection::accept-certificate.
      */
     tls_validation_flags: TlsCertificateFlags
+    /**
+     * The TLS validation flags used when creating TLS connections. The
+     * default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
+     * 
+     * GLib guarantees that if certificate verification fails, at least one
+     * flag will be set, but it does not guarantee that all possible flags
+     * will be set. Accordingly, you may not safely decide to ignore any
+     * particular type of error. For example, it would be incorrect to mask
+     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+     * because this could potentially be the only error flag set even if
+     * other problems exist with the certificate. Therefore, there is no
+     * safe way to use this property. This is not a horrible problem,
+     * though, because you should not be attempting to ignore validation
+     * errors anyway. If you really must ignore TLS certificate errors,
+     * connect to the #GSocketClient::event signal, wait for it to be
+     * emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, and use that to
+     * connect to #GTlsConnection::accept-certificate.
+     */
+    tlsValidationFlags: TlsCertificateFlags
     type: SocketType
 
     // Own fields of Gio-2.0.Gio.SocketClient
@@ -40611,6 +41740,7 @@ module SocketListener {
         // Own constructor properties of Gio-2.0.Gio.SocketListener
 
         listen_backlog?: number | null
+        listenBacklog?: number | null
     }
 
 }
@@ -40620,6 +41750,7 @@ interface SocketListener {
     // Own properties of Gio-2.0.Gio.SocketListener
 
     listen_backlog: number
+    listenBacklog: number
 
     // Own fields of Gio-2.0.Gio.SocketListener
 
@@ -42812,6 +43943,7 @@ module TcpConnection {
         // Own constructor properties of Gio-2.0.Gio.TcpConnection
 
         graceful_disconnect?: boolean | null
+        gracefulDisconnect?: boolean | null
     }
 
 }
@@ -42821,6 +43953,7 @@ interface TcpConnection {
     // Own properties of Gio-2.0.Gio.TcpConnection
 
     graceful_disconnect: boolean
+    gracefulDisconnect: boolean
 
     // Own fields of Gio-2.0.Gio.TcpConnection
 
@@ -42959,6 +44092,7 @@ module TcpWrapperConnection {
         // Own constructor properties of Gio-2.0.Gio.TcpWrapperConnection
 
         base_io_stream?: IOStream | null
+        baseIoStream?: IOStream | null
     }
 
 }
@@ -42968,6 +44102,7 @@ interface TcpWrapperConnection {
     // Own properties of Gio-2.0.Gio.TcpWrapperConnection
 
     readonly base_io_stream: IOStream
+    readonly baseIoStream: IOStream
 
     // Own fields of Gio-2.0.Gio.TcpWrapperConnection
 
@@ -43353,6 +44488,26 @@ module ThemedIcon {
          * 
          */
         use_default_fallbacks?: boolean | null
+        /**
+         * Whether to use the default fallbacks found by shortening the icon name
+         * at '-' characters. If the "names" array has more than one element,
+         * ignores any past the first.
+         * 
+         * For example, if the icon name was "gnome-dev-cdrom-audio", the array
+         * would become
+         * 
+         * ```c
+         * {
+         *   "gnome-dev-cdrom-audio",
+         *   "gnome-dev-cdrom",
+         *   "gnome-dev",
+         *   "gnome",
+         *   NULL
+         * };
+         * ```
+         * 
+         */
+        useDefaultFallbacks?: boolean | null
     }
 
 }
@@ -43389,6 +44544,26 @@ interface ThemedIcon extends Icon {
      * 
      */
     readonly use_default_fallbacks: boolean
+    /**
+     * Whether to use the default fallbacks found by shortening the icon name
+     * at '-' characters. If the "names" array has more than one element,
+     * ignores any past the first.
+     * 
+     * For example, if the icon name was "gnome-dev-cdrom-audio", the array
+     * would become
+     * 
+     * ```c
+     * {
+     *   "gnome-dev-cdrom-audio",
+     *   "gnome-dev-cdrom",
+     *   "gnome-dev",
+     *   "gnome",
+     *   NULL
+     * };
+     * ```
+     * 
+     */
+    readonly useDefaultFallbacks: boolean
 
     // Owm methods of Gio-2.0.Gio.ThemedIcon
 
@@ -43517,6 +44692,7 @@ module ThreadedSocketService {
         // Own constructor properties of Gio-2.0.Gio.ThreadedSocketService
 
         max_threads?: number | null
+        maxThreads?: number | null
     }
 
 }
@@ -43526,6 +44702,7 @@ interface ThreadedSocketService {
     // Own properties of Gio-2.0.Gio.ThreadedSocketService
 
     readonly max_threads: number
+    readonly maxThreads: number
 
     // Own fields of Gio-2.0.Gio.ThreadedSocketService
 
@@ -43732,6 +44909,72 @@ module TlsCertificate {
          * object containing a private key.
          */
         private_key_pkcs11_uri?: string | null
+        /**
+         * The PEM (ASCII) encoded representation of the certificate.
+         * This property and the #GTlsCertificate:certificate
+         * property represent the same data, just in different forms.
+         */
+        certificatePem?: string | null
+        /**
+         * A URI referencing the [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
+         * objects containing an X.509 certificate and optionally a private key.
+         * 
+         * If %NULL, the certificate is either not backed by PKCS \#11 or the
+         * #GTlsBackend does not support PKCS \#11.
+         */
+        pkcs11Uri?: string | null
+        /**
+         * The PKCS #12 formatted data used to construct the object.
+         * 
+         * See also: g_tls_certificate_new_from_pkcs12()
+         */
+        pkcs12Data?: Uint8Array | null
+        /**
+         * The DER (binary) encoded representation of the certificate's
+         * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
+         * or unencrypted [PKCS \#8 format.](https://datatracker.ietf.org/doc/html/rfc5208)
+         * PKCS \#8 format is supported since 2.32; earlier releases only
+         * support PKCS \#1. You can use the `openssl rsa` tool to convert
+         * PKCS \#8 keys to PKCS \#1.
+         * 
+         * This property (or the #GTlsCertificate:private-key-pem property)
+         * can be set when constructing a key (for example, from a file).
+         * Since GLib 2.70, it is now also readable; however, be aware that if
+         * the private key is backed by a PKCS \#11 URI – for example, if it
+         * is stored on a smartcard – then this property will be %NULL. If so,
+         * the private key must be referenced via its PKCS \#11 URI,
+         * #GTlsCertificate:private-key-pkcs11-uri. You must check both
+         * properties to see if the certificate really has a private key.
+         * When this property is read, the output format will be unencrypted
+         * PKCS \#8.
+         */
+        privateKey?: Uint8Array | null
+        /**
+         * The PEM (ASCII) encoded representation of the certificate's
+         * private key in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
+         * ("`BEGIN RSA PRIVATE KEY`") or unencrypted
+         * [PKCS \#8 format](https://datatracker.ietf.org/doc/html/rfc5208)
+         * ("`BEGIN PRIVATE KEY`"). PKCS \#8 format is supported since 2.32;
+         * earlier releases only support PKCS \#1. You can use the `openssl rsa`
+         * tool to convert PKCS \#8 keys to PKCS \#1.
+         * 
+         * This property (or the #GTlsCertificate:private-key property)
+         * can be set when constructing a key (for example, from a file).
+         * Since GLib 2.70, it is now also readable; however, be aware that if
+         * the private key is backed by a PKCS \#11 URI - for example, if it
+         * is stored on a smartcard - then this property will be %NULL. If so,
+         * the private key must be referenced via its PKCS \#11 URI,
+         * #GTlsCertificate:private-key-pkcs11-uri. You must check both
+         * properties to see if the certificate really has a private key.
+         * When this property is read, the output format will be unencrypted
+         * PKCS \#8.
+         */
+        privateKeyPem?: string | null
+        /**
+         * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
+         * object containing a private key.
+         */
+        privateKeyPkcs11Uri?: string | null
     }
 
 }
@@ -43753,15 +44996,31 @@ interface TlsCertificate {
      */
     readonly certificate_pem: string | null
     /**
+     * The PEM (ASCII) encoded representation of the certificate.
+     * This property and the #GTlsCertificate:certificate
+     * property represent the same data, just in different forms.
+     */
+    readonly certificatePem: string | null
+    /**
      * The DNS names from the certificate's Subject Alternative Names (SANs),
      * %NULL if unavailable.
      */
     readonly dns_names: any[]
     /**
+     * The DNS names from the certificate's Subject Alternative Names (SANs),
+     * %NULL if unavailable.
+     */
+    readonly dnsNames: any[]
+    /**
      * The IP addresses from the certificate's Subject Alternative Names (SANs),
      * %NULL if unavailable.
      */
     readonly ip_addresses: any[]
+    /**
+     * The IP addresses from the certificate's Subject Alternative Names (SANs),
+     * %NULL if unavailable.
+     */
+    readonly ipAddresses: any[]
     /**
      * A #GTlsCertificate representing the entity that issued this
      * certificate. If %NULL, this means that the certificate is either
@@ -43787,15 +45046,30 @@ interface TlsCertificate {
      */
     readonly issuer_name: string | null
     /**
+     * The issuer from the certificate,
+     * %NULL if unavailable.
+     */
+    readonly issuerName: string | null
+    /**
      * The time at which this cert is no longer valid,
      * %NULL if unavailable.
      */
     readonly not_valid_after: GLib.DateTime
     /**
+     * The time at which this cert is no longer valid,
+     * %NULL if unavailable.
+     */
+    readonly notValidAfter: GLib.DateTime
+    /**
      * The time at which this cert is considered to be valid,
      * %NULL if unavailable.
      */
     readonly not_valid_before: GLib.DateTime
+    /**
+     * The time at which this cert is considered to be valid,
+     * %NULL if unavailable.
+     */
+    readonly notValidBefore: GLib.DateTime
     /**
      * An optional password used when constructed with GTlsCertificate:pkcs12-data.
      */
@@ -43809,11 +45083,25 @@ interface TlsCertificate {
      */
     readonly pkcs11_uri: string | null
     /**
+     * A URI referencing the [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
+     * objects containing an X.509 certificate and optionally a private key.
+     * 
+     * If %NULL, the certificate is either not backed by PKCS \#11 or the
+     * #GTlsBackend does not support PKCS \#11.
+     */
+    readonly pkcs11Uri: string | null
+    /**
      * The PKCS #12 formatted data used to construct the object.
      * 
      * See also: g_tls_certificate_new_from_pkcs12()
      */
     readonly pkcs12_data: Uint8Array
+    /**
+     * The PKCS #12 formatted data used to construct the object.
+     * 
+     * See also: g_tls_certificate_new_from_pkcs12()
+     */
+    readonly pkcs12Data: Uint8Array
     /**
      * The DER (binary) encoded representation of the certificate's
      * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
@@ -43834,6 +45122,26 @@ interface TlsCertificate {
      * PKCS \#8.
      */
     readonly private_key: Uint8Array
+    /**
+     * The DER (binary) encoded representation of the certificate's
+     * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
+     * or unencrypted [PKCS \#8 format.](https://datatracker.ietf.org/doc/html/rfc5208)
+     * PKCS \#8 format is supported since 2.32; earlier releases only
+     * support PKCS \#1. You can use the `openssl rsa` tool to convert
+     * PKCS \#8 keys to PKCS \#1.
+     * 
+     * This property (or the #GTlsCertificate:private-key-pem property)
+     * can be set when constructing a key (for example, from a file).
+     * Since GLib 2.70, it is now also readable; however, be aware that if
+     * the private key is backed by a PKCS \#11 URI – for example, if it
+     * is stored on a smartcard – then this property will be %NULL. If so,
+     * the private key must be referenced via its PKCS \#11 URI,
+     * #GTlsCertificate:private-key-pkcs11-uri. You must check both
+     * properties to see if the certificate really has a private key.
+     * When this property is read, the output format will be unencrypted
+     * PKCS \#8.
+     */
+    readonly privateKey: Uint8Array
     /**
      * The PEM (ASCII) encoded representation of the certificate's
      * private key in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
@@ -43856,15 +45164,46 @@ interface TlsCertificate {
      */
     readonly private_key_pem: string | null
     /**
+     * The PEM (ASCII) encoded representation of the certificate's
+     * private key in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
+     * ("`BEGIN RSA PRIVATE KEY`") or unencrypted
+     * [PKCS \#8 format](https://datatracker.ietf.org/doc/html/rfc5208)
+     * ("`BEGIN PRIVATE KEY`"). PKCS \#8 format is supported since 2.32;
+     * earlier releases only support PKCS \#1. You can use the `openssl rsa`
+     * tool to convert PKCS \#8 keys to PKCS \#1.
+     * 
+     * This property (or the #GTlsCertificate:private-key property)
+     * can be set when constructing a key (for example, from a file).
+     * Since GLib 2.70, it is now also readable; however, be aware that if
+     * the private key is backed by a PKCS \#11 URI - for example, if it
+     * is stored on a smartcard - then this property will be %NULL. If so,
+     * the private key must be referenced via its PKCS \#11 URI,
+     * #GTlsCertificate:private-key-pkcs11-uri. You must check both
+     * properties to see if the certificate really has a private key.
+     * When this property is read, the output format will be unencrypted
+     * PKCS \#8.
+     */
+    readonly privateKeyPem: string | null
+    /**
      * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
      * object containing a private key.
      */
     readonly private_key_pkcs11_uri: string | null
     /**
+     * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
+     * object containing a private key.
+     */
+    readonly privateKeyPkcs11Uri: string | null
+    /**
      * The subject from the cert,
      * %NULL if unavailable.
      */
     readonly subject_name: string | null
+    /**
+     * The subject from the cert,
+     * %NULL if unavailable.
+     */
+    readonly subjectName: string | null
 
     // Own fields of Gio-2.0.Gio.TlsCertificate
 
@@ -44292,6 +45631,36 @@ module TlsConnection {
          * g_tls_connection_set_use_system_certdb().
          */
         use_system_certdb?: boolean | null
+        /**
+         * The list of application-layer protocols that the connection
+         * advertises that it is willing to speak. See
+         * g_tls_connection_set_advertised_protocols().
+         */
+        advertisedProtocols?: string[] | null
+        /**
+         * The #GIOStream that the connection wraps. The connection holds a reference
+         * to this stream, and may run operations on the stream from other threads
+         * throughout its lifetime. Consequently, after the #GIOStream has been
+         * constructed, application code may only run its own operations on this
+         * stream when no #GIOStream operations are running.
+         */
+        baseIoStream?: IOStream | null
+        /**
+         * The rehandshaking mode. See
+         * g_tls_connection_set_rehandshake_mode().
+         */
+        rehandshakeMode?: TlsRehandshakeMode | null
+        /**
+         * Whether or not proper TLS close notification is required.
+         * See g_tls_connection_set_require_close_notify().
+         */
+        requireCloseNotify?: boolean | null
+        /**
+         * Whether or not the system certificate database will be used to
+         * verify peer certificates. See
+         * g_tls_connection_set_use_system_certdb().
+         */
+        useSystemCertdb?: boolean | null
     }
 
 }
@@ -44307,6 +45676,12 @@ interface TlsConnection {
      */
     advertised_protocols: string[]
     /**
+     * The list of application-layer protocols that the connection
+     * advertises that it is willing to speak. See
+     * g_tls_connection_set_advertised_protocols().
+     */
+    advertisedProtocols: string[]
+    /**
      * The #GIOStream that the connection wraps. The connection holds a reference
      * to this stream, and may run operations on the stream from other threads
      * throughout its lifetime. Consequently, after the #GIOStream has been
@@ -44314,6 +45689,14 @@ interface TlsConnection {
      * stream when no #GIOStream operations are running.
      */
     readonly base_io_stream: IOStream
+    /**
+     * The #GIOStream that the connection wraps. The connection holds a reference
+     * to this stream, and may run operations on the stream from other threads
+     * throughout its lifetime. Consequently, after the #GIOStream has been
+     * constructed, application code may only run its own operations on this
+     * stream when no #GIOStream operations are running.
+     */
+    readonly baseIoStream: IOStream
     /**
      * The connection's certificate; see
      * g_tls_connection_set_certificate().
@@ -44323,6 +45706,10 @@ interface TlsConnection {
      * The name of the TLS ciphersuite in use. See g_tls_connection_get_ciphersuite_name().
      */
     readonly ciphersuite_name: string | null
+    /**
+     * The name of the TLS ciphersuite in use. See g_tls_connection_get_ciphersuite_name().
+     */
+    readonly ciphersuiteName: string | null
     /**
      * The certificate database to use when verifying this TLS connection.
      * If no certificate database is set, then the default database will be
@@ -44354,6 +45741,11 @@ interface TlsConnection {
      */
     readonly negotiated_protocol: string | null
     /**
+     * The application-layer protocol negotiated during the TLS
+     * handshake. See g_tls_connection_get_negotiated_protocol().
+     */
+    readonly negotiatedProtocol: string | null
+    /**
      * The connection's peer's certificate, after the TLS handshake has
      * completed or failed. Note in particular that this is not yet set
      * during the emission of #GTlsConnection::accept-certificate.
@@ -44362,6 +45754,15 @@ interface TlsConnection {
      * detect when a handshake has occurred.)
      */
     readonly peer_certificate: TlsCertificate
+    /**
+     * The connection's peer's certificate, after the TLS handshake has
+     * completed or failed. Note in particular that this is not yet set
+     * during the emission of #GTlsConnection::accept-certificate.
+     * 
+     * (You can watch for a #GObject::notify signal on this property to
+     * detect when a handshake has occurred.)
+     */
+    readonly peerCertificate: TlsCertificate
     /**
      * The errors noticed while verifying
      * #GTlsConnection:peer-certificate. Normally this should be 0, but
@@ -44380,25 +45781,62 @@ interface TlsConnection {
      */
     readonly peer_certificate_errors: TlsCertificateFlags
     /**
+     * The errors noticed while verifying
+     * #GTlsConnection:peer-certificate. Normally this should be 0, but
+     * it may not be if #GTlsClientConnection:validation-flags is not
+     * %G_TLS_CERTIFICATE_VALIDATE_ALL, or if
+     * #GTlsConnection::accept-certificate overrode the default
+     * behavior.
+     * 
+     * GLib guarantees that if certificate verification fails, at least
+     * one error will be set, but it does not guarantee that all possible
+     * errors will be set. Accordingly, you may not safely decide to
+     * ignore any particular type of error. For example, it would be
+     * incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if you want to allow
+     * expired certificates, because this could potentially be the only
+     * error flag set even if other problems exist with the certificate.
+     */
+    readonly peerCertificateErrors: TlsCertificateFlags
+    /**
      * The TLS protocol version in use. See g_tls_connection_get_protocol_version().
      */
     readonly protocol_version: TlsProtocolVersion
+    /**
+     * The TLS protocol version in use. See g_tls_connection_get_protocol_version().
+     */
+    readonly protocolVersion: TlsProtocolVersion
     /**
      * The rehandshaking mode. See
      * g_tls_connection_set_rehandshake_mode().
      */
     rehandshake_mode: TlsRehandshakeMode
     /**
+     * The rehandshaking mode. See
+     * g_tls_connection_set_rehandshake_mode().
+     */
+    rehandshakeMode: TlsRehandshakeMode
+    /**
      * Whether or not proper TLS close notification is required.
      * See g_tls_connection_set_require_close_notify().
      */
     require_close_notify: boolean
+    /**
+     * Whether or not proper TLS close notification is required.
+     * See g_tls_connection_set_require_close_notify().
+     */
+    requireCloseNotify: boolean
     /**
      * Whether or not the system certificate database will be used to
      * verify peer certificates. See
      * g_tls_connection_set_use_system_certdb().
      */
     use_system_certdb: boolean
+    /**
+     * Whether or not the system certificate database will be used to
+     * verify peer certificates. See
+     * g_tls_connection_set_use_system_certdb().
+     */
+    useSystemCertdb: boolean
 
     // Own fields of Gio-2.0.Gio.TlsConnection
 
@@ -46539,6 +47977,7 @@ module UnixFDMessage {
         // Own constructor properties of Gio-2.0.Gio.UnixFDMessage
 
         fd_list?: UnixFDList | null
+        fdList?: UnixFDList | null
     }
 
 }
@@ -46548,6 +47987,7 @@ interface UnixFDMessage {
     // Own properties of Gio-2.0.Gio.UnixFDMessage
 
     readonly fd_list: UnixFDList
+    readonly fdList: UnixFDList
 
     // Own fields of Gio-2.0.Gio.UnixFDMessage
 
@@ -46675,6 +48115,10 @@ module UnixInputStream {
          * The file descriptor that the stream reads from.
          */
         fd?: number | null
+        /**
+         * Whether to close the file descriptor when the stream is closed.
+         */
+        closeFd?: boolean | null
     }
 
 }
@@ -46687,6 +48131,10 @@ interface UnixInputStream extends FileDescriptorBased, PollableInputStream {
      * Whether to close the file descriptor when the stream is closed.
      */
     close_fd: boolean
+    /**
+     * Whether to close the file descriptor when the stream is closed.
+     */
+    closeFd: boolean
     /**
      * The file descriptor that the stream reads from.
      */
@@ -46900,6 +48348,10 @@ module UnixOutputStream {
          * The file descriptor that the stream writes to.
          */
         fd?: number | null
+        /**
+         * Whether to close the file descriptor when the stream is closed.
+         */
+        closeFd?: boolean | null
     }
 
 }
@@ -46912,6 +48364,10 @@ interface UnixOutputStream extends FileDescriptorBased, PollableOutputStream {
      * Whether to close the file descriptor when the stream is closed.
      */
     close_fd: boolean
+    /**
+     * Whether to close the file descriptor when the stream is closed.
+     */
+    closeFd: boolean
     /**
      * The file descriptor that the stream writes to.
      */
@@ -47017,6 +48473,8 @@ module UnixSocketAddress {
         address_type?: UnixSocketAddressType | null
         path?: string | null
         path_as_array?: Uint8Array | null
+        addressType?: UnixSocketAddressType | null
+        pathAsArray?: Uint8Array | null
     }
 
 }
@@ -47030,8 +48488,10 @@ interface UnixSocketAddress extends SocketConnectable {
      */
     readonly abstract: boolean
     readonly address_type: UnixSocketAddressType
+    readonly addressType: UnixSocketAddressType
     readonly path: string | null
     readonly path_as_array: Uint8Array
+    readonly pathAsArray: Uint8Array
 
     // Own fields of Gio-2.0.Gio.UnixSocketAddress
 
@@ -47688,6 +49148,12 @@ module ZlibCompressor {
         file_info?: FileInfo | null
         format?: ZlibCompressorFormat | null
         level?: number | null
+        /**
+         * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
+         * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
+         * and modification time from the file info to the GZIP header.
+         */
+        fileInfo?: FileInfo | null
     }
 
 }
@@ -47702,6 +49168,12 @@ interface ZlibCompressor extends Converter {
      * and modification time from the file info to the GZIP header.
      */
     file_info: FileInfo
+    /**
+     * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
+     * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
+     * and modification time from the file info to the GZIP header.
+     */
+    fileInfo: FileInfo
     readonly format: ZlibCompressorFormat
     readonly level: number
 
@@ -47800,6 +49272,13 @@ interface ZlibDecompressor extends Converter {
      * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
      */
     readonly file_info: FileInfo
+    /**
+     * A #GFileInfo containing the information found in the GZIP header
+     * of the data stream processed, or %NULL if the header was not yet
+     * fully processed, is not present at all, or the compressor's
+     * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+     */
+    readonly fileInfo: FileInfo
     readonly format: ZlibCompressorFormat
 
     // Owm methods of Gio-2.0.Gio.ZlibDecompressor

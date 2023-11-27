@@ -3953,6 +3953,9 @@ interface TableCell extends Object {
     connect(sigName: "notify::accessible-name", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: TableCell, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -5107,6 +5110,9 @@ interface Window extends Object {
     connect(sigName: "notify::accessible-name", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Window, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -5203,6 +5209,9 @@ interface GObjectAccessible {
     connect(sigName: "notify::accessible-name", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: GObjectAccessible, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -5288,12 +5297,19 @@ interface Hyperlink extends Action {
     // Own properties of Atk-1.0.Atk.Hyperlink
 
     readonly end_index: number
+    readonly endIndex: number
     readonly number_of_anchors: number
+    readonly numberOfAnchors: number
     /**
      * Selected link
      */
     readonly selected_link: boolean
+    /**
+     * Selected link
+     */
+    readonly selectedLink: boolean
     readonly start_index: number
+    readonly startIndex: number
 
     // Own fields of Atk-1.0.Atk.Hyperlink
 
@@ -5761,6 +5777,9 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
     connect(sigName: "notify::accessible-name", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: NoOpObject, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -5987,6 +6006,36 @@ module Object {
          * Numeric value of this object, in case being and AtkValue.
          */
         accessible_value?: number | null
+        accessibleDescription?: string | null
+        accessibleName?: string | null
+        accessibleParent?: Object | null
+        accessibleRole?: Role | null
+        /**
+         * Table caption.
+         */
+        accessibleTableCaption?: string | null
+        accessibleTableCaptionObject?: Object | null
+        /**
+         * Accessible table column description.
+         */
+        accessibleTableColumnDescription?: string | null
+        /**
+         * Accessible table column header.
+         */
+        accessibleTableColumnHeader?: Object | null
+        /**
+         * Accessible table row description.
+         */
+        accessibleTableRowDescription?: string | null
+        /**
+         * Accessible table row header.
+         */
+        accessibleTableRowHeader?: Object | null
+        accessibleTableSummary?: Object | null
+        /**
+         * Numeric value of this object, in case being and AtkValue.
+         */
+        accessibleValue?: number | null
     }
 
 }
@@ -5996,37 +6045,70 @@ interface Object {
     // Own properties of Atk-1.0.Atk.Object
 
     readonly accessible_component_layer: number
+    readonly accessibleComponentLayer: number
     readonly accessible_component_mdi_zorder: number
+    readonly accessibleComponentMdiZorder: number
     accessible_description: string | null
+    accessibleDescription: string | null
     readonly accessible_hypertext_nlinks: number
+    readonly accessibleHypertextNlinks: number
     accessible_name: string | null
+    accessibleName: string | null
+    accessibleParent: Object
     accessible_role: Role
+    accessibleRole: Role
     /**
      * Table caption.
      */
     accessible_table_caption: string | null
+    /**
+     * Table caption.
+     */
+    accessibleTableCaption: string | null
     accessible_table_caption_object: Object
+    accessibleTableCaptionObject: Object
     /**
      * Accessible table column description.
      */
     accessible_table_column_description: string | null
     /**
+     * Accessible table column description.
+     */
+    accessibleTableColumnDescription: string | null
+    /**
      * Accessible table column header.
      */
     accessible_table_column_header: Object
+    /**
+     * Accessible table column header.
+     */
+    accessibleTableColumnHeader: Object
     /**
      * Accessible table row description.
      */
     accessible_table_row_description: string | null
     /**
+     * Accessible table row description.
+     */
+    accessibleTableRowDescription: string | null
+    /**
      * Accessible table row header.
      */
     accessible_table_row_header: Object
+    /**
+     * Accessible table row header.
+     */
+    accessibleTableRowHeader: Object
     accessible_table_summary: Object
+    accessibleTableSummary: Object
     /**
      * Numeric value of this object, in case being and AtkValue.
      */
     accessible_value: number
+    /**
+     * Numeric value of this object, in case being and AtkValue.
+     */
+    accessibleValue: number
 
     // Own fields of Atk-1.0.Atk.Object
 
@@ -6389,6 +6471,9 @@ interface Object {
     connect(sigName: "notify::accessible-name", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -6606,6 +6691,9 @@ interface Plug extends Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Plug, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void
@@ -6757,6 +6845,7 @@ module Relation {
 
         relation_type?: RelationType | null
         target?: GObject.ValueArray | null
+        relationType?: RelationType | null
     }
 
 }
@@ -6766,6 +6855,7 @@ interface Relation {
     // Own properties of Atk-1.0.Atk.Relation
 
     relation_type: RelationType
+    relationType: RelationType
 
     // Own fields of Atk-1.0.Atk.Relation
 
@@ -7046,6 +7136,9 @@ interface Socket extends Component {
     connect(sigName: "notify::accessible-name", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-name", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-name", ...args: any[]): void
+    connect(sigName: "notify::accessible-parent", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::accessible-parent", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accessible-parent", ...args: any[]): void
     connect(sigName: "notify::accessible-role", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accessible-role", callback: (($obj: Socket, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::accessible-role", ...args: any[]): void

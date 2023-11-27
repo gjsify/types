@@ -557,12 +557,17 @@ interface Engine {
 
     readonly backendName: string | null
     readonly default_group: number
+    readonly defaultGroup: number
     readonly display: any
     readonly features: EngineFeatures
     readonly indicators_handling: boolean
+    readonly indicatorsHandling: boolean
     readonly max_num_groups: number
+    readonly maxNumGroups: number
     readonly num_groups: number
+    readonly numGroups: number
     readonly secondary_groups_mask: number
+    readonly secondaryGroupsMask: number
 
     // Own fields of Xkl-1.0.Xkl.Engine
 

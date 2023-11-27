@@ -4736,6 +4736,25 @@ export module Toplevel {
          * The transient parent of the surface.
          */
         transient_for?: Surface | null
+        /**
+         * The fullscreen mode of the surface.
+         */
+        fullscreenMode?: FullscreenMode | null
+        /**
+         * A list of textures to use as icon.
+         */
+        iconList?: any | null
+        /**
+         * The startup ID of the surface.
+         * 
+         * See [class`Gdk`.AppLaunchContext] for more information about
+         * startup feedback.
+         */
+        startupId?: string | null
+        /**
+         * The transient parent of the surface.
+         */
+        transientFor?: Surface | null
     }
 
 }
@@ -4757,9 +4776,17 @@ export interface Toplevel extends Surface {
      */
     fullscreen_mode: FullscreenMode
     /**
+     * The fullscreen mode of the surface.
+     */
+    fullscreenMode: FullscreenMode
+    /**
      * A list of textures to use as icon.
      */
     icon_list: any
+    /**
+     * A list of textures to use as icon.
+     */
+    iconList: any
     /**
      * Whether the surface is modal.
      */
@@ -4769,12 +4796,23 @@ export interface Toplevel extends Surface {
      */
     readonly shortcuts_inhibited: boolean
     /**
+     * Whether the surface should inhibit keyboard shortcuts.
+     */
+    readonly shortcutsInhibited: boolean
+    /**
      * The startup ID of the surface.
      * 
      * See [class`Gdk`.AppLaunchContext] for more information about
      * startup feedback.
      */
     startup_id: string | null
+    /**
+     * The startup ID of the surface.
+     * 
+     * See [class`Gdk`.AppLaunchContext] for more information about
+     * startup feedback.
+     */
+    startupId: string | null
     /**
      * The state of the toplevel.
      */
@@ -4787,6 +4825,10 @@ export interface Toplevel extends Surface {
      * The transient parent of the surface.
      */
     transient_for: Surface
+    /**
+     * The transient parent of the surface.
+     */
+    transientFor: Surface
 
     // Owm methods of Gdk-4.0.Gdk.Toplevel
 
@@ -5821,6 +5863,10 @@ export interface ContentProvider {
      * The subset of formats that clipboard managers should store this provider's data in.
      */
     readonly storable_formats: ContentFormats
+    /**
+     * The subset of formats that clipboard managers should store this provider's data in.
+     */
+    readonly storableFormats: ContentFormats
 
     // Own fields of Gdk-4.0.Gdk.ContentProvider
 
@@ -6242,6 +6288,14 @@ export module Cursor {
          * The texture will be %NULL if the cursor was created from a name.
          */
         texture?: Texture | null
+        /**
+         * X position of the cursor hotspot in the cursor image.
+         */
+        hotspotX?: number | null
+        /**
+         * Y position of the cursor hotspot in the cursor image.
+         */
+        hotspotY?: number | null
     }
 
 }
@@ -6259,9 +6313,17 @@ export interface Cursor {
      */
     readonly hotspot_x: number
     /**
+     * X position of the cursor hotspot in the cursor image.
+     */
+    readonly hotspotX: number
+    /**
      * Y position of the cursor hotspot in the cursor image.
      */
     readonly hotspot_y: number
+    /**
+     * Y position of the cursor hotspot in the cursor image.
+     */
+    readonly hotspotY: number
     /**
      * Name of this this cursor.
      * 
@@ -6531,6 +6593,29 @@ export module Device {
          * See [method`Gdk`.Device.get_vendor_id].
          */
         vendor_id?: string | null
+        /**
+         * Whether the device is represented by a cursor on the screen.
+         */
+        hasCursor?: boolean | null
+        /**
+         * The maximal number of concurrent touches on a touch device.
+         * 
+         * Will be 0 if the device is not a touch device or if the number
+         * of touches is unknown.
+         */
+        numTouches?: number | null
+        /**
+         * Product ID of this device.
+         * 
+         * See [method`Gdk`.Device.get_product_id].
+         */
+        productId?: string | null
+        /**
+         * Vendor ID of this device.
+         * 
+         * See [method`Gdk`.Device.get_vendor_id].
+         */
+        vendorId?: string | null
     }
 
 }
@@ -6545,6 +6630,12 @@ export interface Device {
      * This is only relevant for keyboard devices.
      */
     readonly caps_lock_state: boolean
+    /**
+     * Whether Caps Lock is on.
+     * 
+     * This is only relevant for keyboard devices.
+     */
+    readonly capsLockState: boolean
     /**
      * The direction of the current layout.
      * 
@@ -6562,9 +6653,19 @@ export interface Device {
      */
     readonly has_bidi_layouts: boolean
     /**
+     * Whether the device has both right-to-left and left-to-right layouts.
+     * 
+     * This is only relevant for keyboard devices.
+     */
+    readonly hasBidiLayouts: boolean
+    /**
      * Whether the device is represented by a cursor on the screen.
      */
     readonly has_cursor: boolean
+    /**
+     * Whether the device is represented by a cursor on the screen.
+     */
+    readonly hasCursor: boolean
     /**
      * The current modifier state of the device.
      * 
@@ -6572,9 +6673,19 @@ export interface Device {
      */
     readonly modifier_state: ModifierType
     /**
+     * The current modifier state of the device.
+     * 
+     * This is only relevant for keyboard devices.
+     */
+    readonly modifierState: ModifierType
+    /**
      * Number of axes in the device.
      */
     readonly n_axes: number
+    /**
+     * Number of axes in the device.
+     */
+    readonly nAxes: number
     /**
      * The device name.
      */
@@ -6586,6 +6697,12 @@ export interface Device {
      */
     readonly num_lock_state: boolean
     /**
+     * Whether Num Lock is on.
+     * 
+     * This is only relevant for keyboard devices.
+     */
+    readonly numLockState: boolean
+    /**
      * The maximal number of concurrent touches on a touch device.
      * 
      * Will be 0 if the device is not a touch device or if the number
@@ -6593,17 +6710,36 @@ export interface Device {
      */
     readonly num_touches: number
     /**
+     * The maximal number of concurrent touches on a touch device.
+     * 
+     * Will be 0 if the device is not a touch device or if the number
+     * of touches is unknown.
+     */
+    readonly numTouches: number
+    /**
      * Product ID of this device.
      * 
      * See [method`Gdk`.Device.get_product_id].
      */
     readonly product_id: string | null
     /**
+     * Product ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_product_id].
+     */
+    readonly productId: string | null
+    /**
      * Whether Scroll Lock is on.
      * 
      * This is only relevant for keyboard devices.
      */
     readonly scroll_lock_state: boolean
+    /**
+     * Whether Scroll Lock is on.
+     * 
+     * This is only relevant for keyboard devices.
+     */
+    readonly scrollLockState: boolean
     /**
      * `GdkSeat` of this device.
      */
@@ -6622,6 +6758,12 @@ export interface Device {
      * See [method`Gdk`.Device.get_vendor_id].
      */
     readonly vendor_id: string | null
+    /**
+     * Vendor ID of this device.
+     * 
+     * See [method`Gdk`.Device.get_vendor_id].
+     */
+    readonly vendorId: string | null
 
     // Owm methods of Gdk-4.0.Gdk.Device
 
@@ -6870,6 +7012,14 @@ export module DeviceTool {
          * The type of the tool.
          */
         tool_type?: DeviceToolType | null
+        /**
+         * The hardware ID of the tool.
+         */
+        hardwareId?: number | null
+        /**
+         * The type of the tool.
+         */
+        toolType?: DeviceToolType | null
     }
 
 }
@@ -6887,6 +7037,10 @@ export interface DeviceTool {
      */
     readonly hardware_id: number
     /**
+     * The hardware ID of the tool.
+     */
+    readonly hardwareId: number
+    /**
      * The serial number of the tool.
      */
     readonly serial: number
@@ -6894,6 +7048,10 @@ export interface DeviceTool {
      * The type of the tool.
      */
     readonly tool_type: DeviceToolType
+    /**
+     * The type of the tool.
+     */
+    readonly toolType: DeviceToolType
 
     // Owm methods of Gdk-4.0.Gdk.DeviceTool
 
@@ -7027,6 +7185,10 @@ export interface Display {
      * %TRUE if the display supports input shapes.
      */
     readonly input_shapes: boolean
+    /**
+     * %TRUE if the display supports input shapes.
+     */
+    readonly inputShapes: boolean
     /**
      * %TRUE if the display supports an alpha channel.
      */
@@ -7401,6 +7563,10 @@ export module DisplayManager {
          * The default display.
          */
         default_display?: Display | null
+        /**
+         * The default display.
+         */
+        defaultDisplay?: Display | null
     }
 
 }
@@ -7413,6 +7579,10 @@ export interface DisplayManager {
      * The default display.
      */
     default_display: Display
+    /**
+     * The default display.
+     */
+    defaultDisplay: Display
 
     // Owm methods of Gdk-4.0.Gdk.DisplayManager
 
@@ -7582,6 +7752,10 @@ export module Drag {
          * The surface where the drag originates.
          */
         surface?: Surface | null
+        /**
+         * The currently selected action of the drag.
+         */
+        selectedAction?: DragAction | null
     }
 
 }
@@ -7614,6 +7788,10 @@ export interface Drag {
      * The currently selected action of the drag.
      */
     selected_action: DragAction
+    /**
+     * The currently selected action of the drag.
+     */
+    selectedAction: DragAction
     /**
      * The surface where the drag originates.
      */
@@ -8665,6 +8843,17 @@ export module GLContext {
          * anymore, this function has been deprecated and now always returns %NULL.
          */
         shared_context?: GLContext | null
+        /**
+         * The allowed APIs.
+         */
+        allowedApis?: GLAPI | null
+        /**
+         * Always %NULL
+         * 
+         * As many contexts can share data now and no single shared context exists
+         * anymore, this function has been deprecated and now always returns %NULL.
+         */
+        sharedContext?: GLContext | null
     }
 
 }
@@ -8678,6 +8867,10 @@ export interface GLContext {
      */
     allowed_apis: GLAPI
     /**
+     * The allowed APIs.
+     */
+    allowedApis: GLAPI
+    /**
      * The API currently in use.
      */
     readonly api: GLAPI
@@ -8688,6 +8881,13 @@ export interface GLContext {
      * anymore, this function has been deprecated and now always returns %NULL.
      */
     readonly shared_context: GLContext
+    /**
+     * Always %NULL
+     * 
+     * As many contexts can share data now and no single shared context exists
+     * anymore, this function has been deprecated and now always returns %NULL.
+     */
+    readonly sharedContext: GLContext
 
     // Owm methods of Gdk-4.0.Gdk.GLContext
 
@@ -9101,6 +9301,18 @@ export module GLTextureBuilder {
          * The width of the texture.
          */
         width?: number | null
+        /**
+         * If the texture has a mipmap.
+         */
+        hasMipmap?: boolean | null
+        /**
+         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         */
+        updateRegion?: cairo.Region | null
+        /**
+         * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+         */
+        updateTexture?: Texture | null
     }
 
 }
@@ -9122,6 +9334,10 @@ export interface GLTextureBuilder {
      */
     has_mipmap: boolean
     /**
+     * If the texture has a mipmap.
+     */
+    hasMipmap: boolean
+    /**
      * The height of the texture.
      */
     height: number
@@ -9140,9 +9356,17 @@ export interface GLTextureBuilder {
      */
     update_region: cairo.Region
     /**
+     * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+     */
+    updateRegion: cairo.Region
+    /**
      * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
      */
     update_texture: Texture
+    /**
+     * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+     */
+    updateTexture: Texture
     /**
      * The width of the texture.
      */
@@ -9603,6 +9827,10 @@ export interface Monitor {
      */
     readonly height_mm: number
     /**
+     * The height of the monitor, in millimeters.
+     */
+    readonly heightMm: number
+    /**
      * The manufacturer name.
      */
     readonly manufacturer: string | null
@@ -9615,13 +9843,25 @@ export interface Monitor {
      */
     readonly refresh_rate: number
     /**
+     * The refresh rate, in milli-Hertz.
+     */
+    readonly refreshRate: number
+    /**
      * The scale factor.
      */
     readonly scale_factor: number
     /**
+     * The scale factor.
+     */
+    readonly scaleFactor: number
+    /**
      * The subpixel layout.
      */
     readonly subpixel_layout: SubpixelLayout
+    /**
+     * The subpixel layout.
+     */
+    readonly subpixelLayout: SubpixelLayout
     /**
      * Whether the object is still valid.
      */
@@ -9630,6 +9870,10 @@ export interface Monitor {
      * The width of the monitor, in millimeters.
      */
     readonly width_mm: number
+    /**
+     * The width of the monitor, in millimeters.
+     */
+    readonly widthMm: number
 
     // Owm methods of Gdk-4.0.Gdk.Monitor
 
@@ -10144,6 +10388,10 @@ export module Surface {
          * The `GdkFrameClock` of the surface.
          */
         frame_clock?: FrameClock | null
+        /**
+         * The `GdkFrameClock` of the surface.
+         */
+        frameClock?: FrameClock | null
     }
 
 }
@@ -10165,6 +10413,10 @@ export interface Surface {
      */
     readonly frame_clock: FrameClock
     /**
+     * The `GdkFrameClock` of the surface.
+     */
+    readonly frameClock: FrameClock
+    /**
      * The height of the surface, in pixels.
      */
     readonly height: number
@@ -10183,6 +10435,13 @@ export interface Surface {
      * compared to [property`Gdk`.Surface:scale].
      */
     readonly scale_factor: number
+    /**
+     * The scale factor of the surface.
+     * 
+     * The scale factor is the next larger integer,
+     * compared to [property`Gdk`.Surface:scale].
+     */
+    readonly scaleFactor: number
     /**
      * The width of the surface in pixels.
      */

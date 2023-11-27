@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-guestfs-1.0)
 
 
-Node.js TypeScript type definitions for Guestfs-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.5.
+Node.js TypeScript type definitions for Guestfs-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
 
 GObject binding for libguestfs, a set of tools for accessing and modifying virtual machine disk images.
 

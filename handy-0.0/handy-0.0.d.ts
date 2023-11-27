@@ -484,6 +484,19 @@ module ActionRow {
          * indicates a mnemonic.
          */
         use_underline?: boolean | null
+        /**
+         * The activatable widget for this row.
+         */
+        activatableWidget?: Gtk.Widget | null
+        /**
+         * The icon name for this row.
+         */
+        iconName?: string | null
+        /**
+         * Whether an embedded underline in the text of the title and subtitle labels
+         * indicates a mnemonic.
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -497,9 +510,17 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      */
     activatable_widget: Gtk.Widget
     /**
+     * The activatable widget for this row.
+     */
+    activatableWidget: Gtk.Widget
+    /**
      * The icon name for this row.
      */
     icon_name: string | null
+    /**
+     * The icon name for this row.
+     */
+    iconName: string | null
     /**
      * The subtitle for this row.
      */
@@ -513,6 +534,11 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * indicates a mnemonic.
      */
     use_underline: boolean
+    /**
+     * Whether an embedded underline in the text of the title and subtitle labels
+     * indicates a mnemonic.
+     */
+    useUnderline: boolean
 
     // Own fields of Handy-0.0.Handy.ActionRow
 
@@ -1106,6 +1132,8 @@ module Column {
 
         linear_growth_width?: number | null
         maximum_width?: number | null
+        linearGrowthWidth?: number | null
+        maximumWidth?: number | null
     }
 
 }
@@ -1115,7 +1143,9 @@ interface Column extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Handy-0.0.Handy.Column
 
     linear_growth_width: number
+    linearGrowthWidth: number
     maximum_width: number
+    maximumWidth: number
 
     // Owm methods of Handy-0.0.Handy.Column
 
@@ -1370,6 +1400,19 @@ module ComboRow {
          * If %TRUE, you should not access HdyActionRow:subtitle.
          */
         use_subtitle?: boolean | null
+        /**
+         * The index of the selected item in its #GListModel.
+         */
+        selectedIndex?: number | null
+        /**
+         * %TRUE to set the current value as the subtitle.
+         * 
+         * If you use a custom widget creation function, you will need to give `self`
+         * a name conversion closure with hdy_combo_row_set_get_name_func().
+         * 
+         * If %TRUE, you should not access HdyActionRow:subtitle.
+         */
+        useSubtitle?: boolean | null
     }
 
 }
@@ -1383,6 +1426,10 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
      */
     selected_index: number
     /**
+     * The index of the selected item in its #GListModel.
+     */
+    selectedIndex: number
+    /**
      * %TRUE to set the current value as the subtitle.
      * 
      * If you use a custom widget creation function, you will need to give `self`
@@ -1391,6 +1438,15 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
      * If %TRUE, you should not access HdyActionRow:subtitle.
      */
     use_subtitle: boolean
+    /**
+     * %TRUE to set the current value as the subtitle.
+     * 
+     * If you use a custom widget creation function, you will need to give `self`
+     * a name conversion closure with hdy_combo_row_set_get_name_func().
+     * 
+     * If %TRUE, you should not access HdyActionRow:subtitle.
+     */
+    useSubtitle: boolean
 
     // Own fields of Handy-0.0.Handy.ComboRow
 
@@ -1790,6 +1846,9 @@ module Dialer {
         relief?: Gtk.ReliefStyle | null
         row_spacing?: number | null
         show_action_buttons?: boolean | null
+        columnSpacing?: number | null
+        rowSpacing?: number | null
+        showActionButtons?: boolean | null
     }
 
 }
@@ -1799,13 +1858,16 @@ interface Dialer extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Handy-0.0.Handy.Dialer
 
     column_spacing: number
+    columnSpacing: number
     number: string | null
     /**
      * The relief style of the edges of the main buttons.
      */
     relief: Gtk.ReliefStyle
     row_spacing: number
+    rowSpacing: number
     show_action_buttons: boolean
+    showActionButtons: boolean
 
     // Own fields of Handy-0.0.Handy.Dialer
 
@@ -2406,6 +2468,7 @@ module DialerCycleButton {
         // Own constructor properties of Handy-0.0.Handy.DialerCycleButton
 
         cycle_timeout?: number | null
+        cycleTimeout?: number | null
     }
 
 }
@@ -2415,6 +2478,7 @@ interface DialerCycleButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Ac
     // Own properties of Handy-0.0.Handy.DialerCycleButton
 
     cycle_timeout: number
+    cycleTimeout: number
 
     // Own fields of Handy-0.0.Handy.DialerCycleButton
 
@@ -3232,6 +3296,14 @@ module ExpanderRow {
          * %TRUE if the switch enabling the expansion is visible.
          */
         show_enable_switch?: boolean | null
+        /**
+         * %TRUE if the expansion is enabled.
+         */
+        enableExpansion?: boolean | null
+        /**
+         * %TRUE if the switch enabling the expansion is visible.
+         */
+        showEnableSwitch?: boolean | null
     }
 
 }
@@ -3245,6 +3317,10 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      */
     enable_expansion: boolean
     /**
+     * %TRUE if the expansion is enabled.
+     */
+    enableExpansion: boolean
+    /**
      * %TRUE if the row is expanded.
      */
     expanded: boolean
@@ -3252,6 +3328,10 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * %TRUE if the switch enabling the expansion is visible.
      */
     show_enable_switch: boolean
+    /**
+     * %TRUE if the switch enabling the expansion is visible.
+     */
+    showEnableSwitch: boolean
 
     // Own fields of Handy-0.0.Handy.ExpanderRow
 
@@ -3600,6 +3680,37 @@ module HeaderBar {
         subtitle?: string | null
         title?: string | null
         transition_duration?: number | null
+        centeringPolicy?: CenteringPolicy | null
+        customTitle?: Gtk.Widget | null
+        /**
+         * The decoration layout for buttons. If this property is
+         * not set, the #GtkSettings:gtk-decoration-layout setting
+         * is used.
+         * 
+         * See hdy_header_bar_set_decoration_layout() for information
+         * about the format of this string.
+         */
+        decorationLayout?: string | null
+        /**
+         * Set to %TRUE if #HdyHeaderBar:decoration-layout is set.
+         */
+        decorationLayoutSet?: boolean | null
+        /**
+         * If %TRUE, reserve space for a subtitle, even if none
+         * is currently set.
+         */
+        hasSubtitle?: boolean | null
+        interpolateSize?: boolean | null
+        /**
+         * Whether to show window decorations.
+         * 
+         * Which buttons are actually shown and where is determined
+         * by the #HdyHeaderBar:decoration-layout property, and by
+         * the state of the window (e.g. a close button will not be
+         * shown if the window can't be closed).
+         */
+        showCloseButton?: boolean | null
+        transitionDuration?: number | null
     }
 
 }
@@ -3609,7 +3720,9 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Handy-0.0.Handy.HeaderBar
 
     centering_policy: CenteringPolicy
+    centeringPolicy: CenteringPolicy
     custom_title: Gtk.Widget
+    customTitle: Gtk.Widget
     /**
      * The decoration layout for buttons. If this property is
      * not set, the #GtkSettings:gtk-decoration-layout setting
@@ -3620,15 +3733,34 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      */
     decoration_layout: string | null
     /**
+     * The decoration layout for buttons. If this property is
+     * not set, the #GtkSettings:gtk-decoration-layout setting
+     * is used.
+     * 
+     * See hdy_header_bar_set_decoration_layout() for information
+     * about the format of this string.
+     */
+    decorationLayout: string | null
+    /**
      * Set to %TRUE if #HdyHeaderBar:decoration-layout is set.
      */
     decoration_layout_set: boolean
+    /**
+     * Set to %TRUE if #HdyHeaderBar:decoration-layout is set.
+     */
+    decorationLayoutSet: boolean
     /**
      * If %TRUE, reserve space for a subtitle, even if none
      * is currently set.
      */
     has_subtitle: boolean
+    /**
+     * If %TRUE, reserve space for a subtitle, even if none
+     * is currently set.
+     */
+    hasSubtitle: boolean
     interpolate_size: boolean
+    interpolateSize: boolean
     /**
      * Whether to show window decorations.
      * 
@@ -3638,11 +3770,22 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * shown if the window can't be closed).
      */
     show_close_button: boolean
+    /**
+     * Whether to show window decorations.
+     * 
+     * Which buttons are actually shown and where is determined
+     * by the #HdyHeaderBar:decoration-layout property, and by
+     * the state of the window (e.g. a close button will not be
+     * shown if the window can't be closed).
+     */
+    showCloseButton: boolean
     spacing: number
     subtitle: string | null
     title: string | null
     transition_duration: number
+    transitionDuration: number
     readonly transition_running: boolean
+    readonly transitionRunning: boolean
 
     // Own fields of Handy-0.0.Handy.HeaderBar
 
@@ -4146,6 +4289,10 @@ module Keypad {
         only_digits?: boolean | null
         right_action?: Gtk.Widget | null
         show_symbols?: boolean | null
+        leftAction?: Gtk.Widget | null
+        onlyDigits?: boolean | null
+        rightAction?: Gtk.Widget | null
+        showSymbols?: boolean | null
     }
 
 }
@@ -4156,9 +4303,13 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     entry: Gtk.Widget
     left_action: Gtk.Widget
+    leftAction: Gtk.Widget
     only_digits: boolean
+    onlyDigits: boolean
     right_action: Gtk.Widget
+    rightAction: Gtk.Widget
     show_symbols: boolean
+    showSymbols: boolean
 
     // Own fields of Handy-0.0.Handy.Keypad
 
@@ -4477,6 +4628,42 @@ module Leaflet {
         vhomogeneous_unfolded?: boolean | null
         visible_child?: Gtk.Widget | null
         visible_child_name?: string | null
+        /**
+         * Whether or not `self` allows switching to the previous child that has
+         * 'allow-visible' child property set to %TRUE via a swipe gesture.
+         */
+        canSwipeBack?: boolean | null
+        /**
+         * Whether or not `self` allows switching to the next child that has
+         * 'allow-visible' child property set to %TRUE via a swipe gesture.
+         */
+        canSwipeForward?: boolean | null
+        childTransitionDuration?: number | null
+        /**
+         * The type of animation used to transition between children
+         */
+        childTransitionType?: LeafletChildTransitionType | null
+        hhomogeneousFolded?: boolean | null
+        hhomogeneousUnfolded?: boolean | null
+        interpolateSize?: boolean | null
+        modeTransitionDuration?: number | null
+        /**
+         * The type of animation used to transition between mode
+         */
+        modeTransitionType?: LeafletModeTransitionType | null
+        /**
+         * The type of animation that will be used for transitions between modes and
+         * children.
+         * 
+         * The transition type can be changed without problems at runtime, so it is
+         * possible to change the animation based on the mode or child that is about
+         * to become current.
+         */
+        transitionType?: LeafletTransitionType | null
+        vhomogeneousFolded?: boolean | null
+        vhomogeneousUnfolded?: boolean | null
+        visibleChild?: Gtk.Widget | null
+        visibleChildName?: string | null
     }
 
 }
@@ -4491,16 +4678,32 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      */
     can_swipe_back: boolean
     /**
+     * Whether or not `self` allows switching to the previous child that has
+     * 'allow-visible' child property set to %TRUE via a swipe gesture.
+     */
+    canSwipeBack: boolean
+    /**
      * Whether or not `self` allows switching to the next child that has
      * 'allow-visible' child property set to %TRUE via a swipe gesture.
      */
     can_swipe_forward: boolean
+    /**
+     * Whether or not `self` allows switching to the next child that has
+     * 'allow-visible' child property set to %TRUE via a swipe gesture.
+     */
+    canSwipeForward: boolean
     child_transition_duration: number
+    childTransitionDuration: number
     readonly child_transition_running: boolean
+    readonly childTransitionRunning: boolean
     /**
      * The type of animation used to transition between children
      */
     child_transition_type: LeafletChildTransitionType
+    /**
+     * The type of animation used to transition between children
+     */
+    childTransitionType: LeafletChildTransitionType
     /**
      * The fold of the leaflet.
      * 
@@ -4520,13 +4723,21 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      */
     readonly folded: boolean
     hhomogeneous_folded: boolean
+    hhomogeneousFolded: boolean
     hhomogeneous_unfolded: boolean
+    hhomogeneousUnfolded: boolean
     interpolate_size: boolean
+    interpolateSize: boolean
     mode_transition_duration: number
+    modeTransitionDuration: number
     /**
      * The type of animation used to transition between mode
      */
     mode_transition_type: LeafletModeTransitionType
+    /**
+     * The type of animation used to transition between mode
+     */
+    modeTransitionType: LeafletModeTransitionType
     /**
      * The type of animation that will be used for transitions between modes and
      * children.
@@ -4536,10 +4747,23 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * to become current.
      */
     transition_type: LeafletTransitionType
+    /**
+     * The type of animation that will be used for transitions between modes and
+     * children.
+     * 
+     * The transition type can be changed without problems at runtime, so it is
+     * possible to change the animation based on the mode or child that is about
+     * to become current.
+     */
+    transitionType: LeafletTransitionType
     vhomogeneous_folded: boolean
+    vhomogeneousFolded: boolean
     vhomogeneous_unfolded: boolean
+    vhomogeneousUnfolded: boolean
     visible_child: Gtk.Widget
+    visibleChild: Gtk.Widget
     visible_child_name: string | null
+    visibleChildName: string | null
 
     // Own fields of Handy-0.0.Handy.Leaflet
 
@@ -4998,6 +5222,35 @@ module Paginator {
          * Spacing between pages in pixels.
          */
         spacing?: number | null
+        /**
+         * Sets whether the #HdyPaginator can be dragged with mouse pointer. If the
+         * value is %FALSE, dragging is only available on touch.
+         * 
+         * This should usually be %FALSE.
+         */
+        allowMouseDrag?: boolean | null
+        /**
+         * Animation duration in milliseconds, used by hdy_paginator_scroll_to().
+         */
+        animationDuration?: number | null
+        /**
+         * Whether the #HdyPaginator is centering pages. If
+         * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE,`
+         * centering does nothing, otherwise it adds whitespace to the left or above
+         * the pages to compensate for the indicators.
+         */
+        centerContent?: boolean | null
+        /**
+         * Spacing between content and page indicators. Does nothing if
+         * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
+         */
+        indicatorSpacing?: number | null
+        /**
+         * The style of page indicators. Depending on orientation, they are displayed
+         * below or besides the pages. If the pages are meant to be centered,
+         * #HdyPaginator:center-content can be used to compensate for that.
+         */
+        indicatorStyle?: PaginatorIndicatorStyle | null
     }
 
 }
@@ -5014,9 +5267,20 @@ interface Paginator extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      */
     allow_mouse_drag: boolean
     /**
+     * Sets whether the #HdyPaginator can be dragged with mouse pointer. If the
+     * value is %FALSE, dragging is only available on touch.
+     * 
+     * This should usually be %FALSE.
+     */
+    allowMouseDrag: boolean
+    /**
      * Animation duration in milliseconds, used by hdy_paginator_scroll_to().
      */
     animation_duration: number
+    /**
+     * Animation duration in milliseconds, used by hdy_paginator_scroll_to().
+     */
+    animationDuration: number
     /**
      * Whether the #HdyPaginator is centering pages. If
      * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE,`
@@ -5025,16 +5289,34 @@ interface Paginator extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      */
     center_content: boolean
     /**
+     * Whether the #HdyPaginator is centering pages. If
+     * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE,`
+     * centering does nothing, otherwise it adds whitespace to the left or above
+     * the pages to compensate for the indicators.
+     */
+    centerContent: boolean
+    /**
      * Spacing between content and page indicators. Does nothing if
      * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
      */
     indicator_spacing: number
+    /**
+     * Spacing between content and page indicators. Does nothing if
+     * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
+     */
+    indicatorSpacing: number
     /**
      * The style of page indicators. Depending on orientation, they are displayed
      * below or besides the pages. If the pages are meant to be centered,
      * #HdyPaginator:center-content can be used to compensate for that.
      */
     indicator_style: PaginatorIndicatorStyle
+    /**
+     * The style of page indicators. Depending on orientation, they are displayed
+     * below or besides the pages. If the pages are meant to be centered,
+     * #HdyPaginator:center-content can be used to compensate for that.
+     */
+    indicatorStyle: PaginatorIndicatorStyle
     /**
      * Whether `self` can be navigated. This can be used to temporarily disable
      * a #HdyPaginator to only allow navigating it in a certain state.
@@ -5044,6 +5326,10 @@ interface Paginator extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * The number of pages in a #HdyPaginator
      */
     readonly n_pages: number
+    /**
+     * The number of pages in a #HdyPaginator
+     */
+    readonly nPages: number
     /**
      * Current scrolling position, unitless. 1 matches 1 page. Use
      * hdy_paginator_scroll_to() for changing it.
@@ -5733,6 +6019,10 @@ module PreferencesPage {
          * The title for this page of preferences.
          */
         title?: string | null
+        /**
+         * The icon name for this page of preferences.
+         */
+        iconName?: string | null
     }
 
 }
@@ -5745,6 +6035,10 @@ interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * The icon name for this page of preferences.
      */
     icon_name: string | null
+    /**
+     * The icon name for this page of preferences.
+     */
+    iconName: string | null
     /**
      * The title for this page of preferences.
      */
@@ -6064,6 +6358,11 @@ module PreferencesRow {
          * mnemonic.
          */
         use_underline?: boolean | null
+        /**
+         * Whether an embedded underline in the text of the title indicates a
+         * mnemonic.
+         */
+        useUnderline?: boolean | null
     }
 
 }
@@ -6081,6 +6380,11 @@ interface PreferencesRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Build
      * mnemonic.
      */
     use_underline: boolean
+    /**
+     * Whether an embedded underline in the text of the title indicates a
+     * mnemonic.
+     */
+    useUnderline: boolean
 
     // Own fields of Handy-0.0.Handy.PreferencesRow
 
@@ -6719,6 +7023,16 @@ module SearchBar {
          * Whether to show the close button in the toolbar.
          */
         show_close_button?: boolean | null
+        /**
+         * Whether the search mode is on and the search bar shown.
+         * 
+         * See hdy_search_bar_set_search_mode() for details.
+         */
+        searchModeEnabled?: boolean | null
+        /**
+         * Whether to show the close button in the toolbar.
+         */
+        showCloseButton?: boolean | null
     }
 
 }
@@ -6734,9 +7048,19 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      */
     search_mode_enabled: boolean
     /**
+     * Whether the search mode is on and the search bar shown.
+     * 
+     * See hdy_search_bar_set_search_mode() for details.
+     */
+    searchModeEnabled: boolean
+    /**
      * Whether to show the close button in the toolbar.
      */
     show_close_button: boolean
+    /**
+     * Whether to show the close button in the toolbar.
+     */
+    showCloseButton: boolean
 
     // Own fields of Handy-0.0.Handy.SearchBar
 
@@ -7042,6 +7366,9 @@ module Squeezer {
         interpolate_size?: boolean | null
         transition_duration?: number | null
         transition_type?: SqueezerTransitionType | null
+        interpolateSize?: boolean | null
+        transitionDuration?: number | null
+        transitionType?: SqueezerTransitionType | null
     }
 
 }
@@ -7052,10 +7379,15 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     homogeneous: boolean
     interpolate_size: boolean
+    interpolateSize: boolean
     transition_duration: number
+    transitionDuration: number
     readonly transition_running: boolean
+    readonly transitionRunning: boolean
     transition_type: SqueezerTransitionType
+    transitionType: SqueezerTransitionType
     readonly visible_child: Gtk.Widget
+    readonly visibleChild: Gtk.Widget
 
     // Own fields of Handy-0.0.Handy.Squeezer
 
@@ -7446,6 +7778,7 @@ module TitleBar {
         // Own constructor properties of Handy-0.0.Handy.TitleBar
 
         selection_mode?: boolean | null
+        selectionMode?: boolean | null
     }
 
 }
@@ -7455,6 +7788,7 @@ interface TitleBar extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Handy-0.0.Handy.TitleBar
 
     selection_mode: boolean
+    selectionMode: boolean
 
     // Owm methods of Handy-0.0.Handy.TitleBar
 
@@ -7784,6 +8118,21 @@ module ViewSwitcher {
          * The #GtkStack the view switcher controls.
          */
         stack?: Gtk.Stack | null
+        /**
+         * Use the "icon-size" property to hint the icons to use, you almost certainly
+         * want to leave this as %GTK_ICON_SIZE_BUTTON.
+         */
+        iconSize?: number | null
+        /**
+         * The preferred place to ellipsize the string, if the narrow mode label does
+         * not have enough room to display the entire string, specified as a
+         * #PangoEllipsizeMode.
+         * 
+         * Note that setting this property to a value other than %PANGO_ELLIPSIZE_NONE
+         * has the side-effect that the label requests only enough space to display
+         * the ellipsis.
+         */
+        narrowEllipsize?: Pango.EllipsizeMode | null
     }
 
 }
@@ -7798,6 +8147,11 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      */
     icon_size: number
     /**
+     * Use the "icon-size" property to hint the icons to use, you almost certainly
+     * want to leave this as %GTK_ICON_SIZE_BUTTON.
+     */
+    iconSize: number
+    /**
      * The preferred place to ellipsize the string, if the narrow mode label does
      * not have enough room to display the entire string, specified as a
      * #PangoEllipsizeMode.
@@ -7807,6 +8161,16 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * the ellipsis.
      */
     narrow_ellipsize: Pango.EllipsizeMode
+    /**
+     * The preferred place to ellipsize the string, if the narrow mode label does
+     * not have enough room to display the entire string, specified as a
+     * #PangoEllipsizeMode.
+     * 
+     * Note that setting this property to a value other than %PANGO_ELLIPSIZE_NONE
+     * has the side-effect that the label requests only enough space to display
+     * the ellipsis.
+     */
+    narrowEllipsize: Pango.EllipsizeMode
     /**
      * The #HdyViewSwitcherPolicy the view switcher should use to determine which
      * mode to use.
@@ -8130,6 +8494,11 @@ module ViewSwitcherBar {
          * The #GtkStack the #HdyViewSwitcher controls.
          */
         stack?: Gtk.Stack | null
+        /**
+         * Use the "icon-size" property to hint the icons to use, you almost certainly
+         * want to leave this as %GTK_ICON_SIZE_BUTTON.
+         */
+        iconSize?: number | null
     }
 
 }
@@ -8143,6 +8512,11 @@ interface ViewSwitcherBar extends Atk.ImplementorIface, Gtk.Buildable {
      * want to leave this as %GTK_ICON_SIZE_BUTTON.
      */
     icon_size: number
+    /**
+     * Use the "icon-size" property to hint the icons to use, you almost certainly
+     * want to leave this as %GTK_ICON_SIZE_BUTTON.
+     */
+    iconSize: number
     /**
      * The #HdyViewSwitcherPolicy the #HdyViewSwitcher should use to determine
      * which mode to use.

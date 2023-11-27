@@ -196,11 +196,14 @@ interface Application extends GObject.Object {
 
     repository: Gitg.Repository
     readonly message_bus: MessageBus
+    readonly messageBus: MessageBus
     readonly current_activity: Activity
+    readonly currentActivity: Activity
     readonly environment: Gee.Map
     readonly notifications: Notifications
     busy: boolean
     readonly remote_lookup: RemoteLookup
+    readonly remoteLookup: RemoteLookup
 
     // Owm methods of GitgExt-1.0.GitgExt.Application
 
@@ -371,6 +374,7 @@ module CommitAction {
 
         action_interface?: RefActionInterface | null
         commit?: Gitg.Commit | null
+        actionInterface?: RefActionInterface | null
     }
 
 }
@@ -380,6 +384,7 @@ interface CommitAction extends Action {
     // Own properties of GitgExt-1.0.GitgExt.CommitAction
 
     action_interface: RefActionInterface
+    actionInterface: RefActionInterface
     commit: Gitg.Commit
 
     // Owm methods of GitgExt-1.0.GitgExt.CommitAction
@@ -696,6 +701,7 @@ interface Preferences extends GObject.Object {
 
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly widget: Gtk.Widget
 
     // Owm methods of GitgExt-1.0.GitgExt.Preferences
@@ -831,6 +837,7 @@ module RefAction {
 
         action_interface?: RefActionInterface | null
         reference?: Gitg.Ref | null
+        actionInterface?: RefActionInterface | null
     }
 
 }
@@ -840,6 +847,7 @@ interface RefAction extends Action {
     // Own properties of GitgExt-1.0.GitgExt.RefAction
 
     action_interface: RefActionInterface
+    actionInterface: RefActionInterface
     reference: Gitg.Ref
 
     // Owm methods of GitgExt-1.0.GitgExt.RefAction
@@ -952,6 +960,9 @@ module Searchable {
         search_text?: string | null
         search_visible?: boolean | null
         search_entry?: Gtk.Entry | null
+        searchText?: string | null
+        searchVisible?: boolean | null
+        searchEntry?: Gtk.Entry | null
     }
 
 }
@@ -961,9 +972,13 @@ interface Searchable extends GObject.Object, Activity {
     // Own properties of GitgExt-1.0.GitgExt.Searchable
 
     search_text: string | null
+    searchText: string | null
     search_visible: boolean
+    searchVisible: boolean
     readonly search_available: boolean
+    readonly searchAvailable: boolean
     search_entry: Gtk.Entry
+    searchEntry: Gtk.Entry
 
     // Owm methods of GitgExt-1.0.GitgExt.Searchable
 
@@ -1037,6 +1052,7 @@ module Selectable {
         // Own constructor properties of GitgExt-1.0.GitgExt.Selectable
 
         selectable_mode?: SelectionMode | null
+        selectableMode?: SelectionMode | null
     }
 
 }
@@ -1046,9 +1062,13 @@ interface Selectable extends GObject.Object, Activity {
     // Own properties of GitgExt-1.0.GitgExt.Selectable
 
     selectable_mode: SelectionMode
+    selectableMode: SelectionMode
     readonly selectable_available: boolean
+    readonly selectableAvailable: boolean
     readonly selectable_mode_tooltip: string | null
+    readonly selectableModeTooltip: string | null
     readonly action_widget: Gtk.Widget
+    readonly actionWidget: Gtk.Widget
 
     // Owm methods of GitgExt-1.0.GitgExt.Selectable
 
@@ -1141,6 +1161,7 @@ interface UIElement extends GObject.Object {
     application: Application
     readonly id: string | null
     readonly display_name: string | null
+    readonly displayName: string | null
     readonly description: string | null
 
     // Owm methods of GitgExt-1.0.GitgExt.UIElement
@@ -1349,6 +1370,7 @@ module MessageId {
 
         object_path?: string | null
         method?: string | null
+        objectPath?: string | null
     }
 
 }
@@ -1358,6 +1380,7 @@ interface MessageId {
     // Own properties of GitgExt-1.0.GitgExt.MessageId
 
     object_path: string | null
+    objectPath: string | null
     method: string | null
     readonly id: string | null
 
@@ -1545,6 +1568,10 @@ module UserQuery {
         default_response?: Gtk.ResponseType | null
         default_is_destructive?: boolean | null
         message_use_markup?: boolean | null
+        messageType?: Gtk.MessageType | null
+        defaultResponse?: Gtk.ResponseType | null
+        defaultIsDestructive?: boolean | null
+        messageUseMarkup?: boolean | null
     }
 
 }
@@ -1556,9 +1583,13 @@ interface UserQuery {
     title: string | null
     message: string | null
     message_type: Gtk.MessageType
+    messageType: Gtk.MessageType
     default_response: Gtk.ResponseType
+    defaultResponse: Gtk.ResponseType
     default_is_destructive: boolean
+    defaultIsDestructive: boolean
     message_use_markup: boolean
+    messageUseMarkup: boolean
 
     // Own fields of GitgExt-1.0.GitgExt.UserQuery
 

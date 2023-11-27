@@ -1087,6 +1087,12 @@ export module StyleSchemeChooser {
          * The property can be set to change the current selection programmatically.
          */
         style_scheme?: StyleScheme | null
+        /**
+         * Contains the currently selected style scheme.
+         * 
+         * The property can be set to change the current selection programmatically.
+         */
+        styleScheme?: StyleScheme | null
     }
 
 }
@@ -1101,6 +1107,12 @@ export interface StyleSchemeChooser {
      * The property can be set to change the current selection programmatically.
      */
     style_scheme: StyleScheme
+    /**
+     * Contains the currently selected style scheme.
+     * 
+     * The property can be set to change the current selection programmatically.
+     */
+    styleScheme: StyleScheme
 
     // Owm methods of GtkSource-5.GtkSource.StyleSchemeChooser
 
@@ -1223,6 +1235,25 @@ export module Buffer {
          * brackets style.
          */
         style_scheme?: StyleScheme | null
+        /**
+         * Whether to highlight matching brackets in the buffer.
+         */
+        highlightMatchingBrackets?: boolean | null
+        /**
+         * Whether to highlight syntax in the buffer.
+         */
+        highlightSyntax?: boolean | null
+        /**
+         * Whether the buffer has an implicit trailing newline. See
+         * [method`Buffer`.set_implicit_trailing_newline].
+         */
+        implicitTrailingNewline?: boolean | null
+        /**
+         * Style scheme. It contains styles for syntax highlighting, optionally
+         * foreground, background, cursor color, current line color, and matching
+         * brackets style.
+         */
+        styleScheme?: StyleScheme | null
     }
 
 }
@@ -1236,14 +1267,27 @@ export interface Buffer {
      */
     highlight_matching_brackets: boolean
     /**
+     * Whether to highlight matching brackets in the buffer.
+     */
+    highlightMatchingBrackets: boolean
+    /**
      * Whether to highlight syntax in the buffer.
      */
     highlight_syntax: boolean
+    /**
+     * Whether to highlight syntax in the buffer.
+     */
+    highlightSyntax: boolean
     /**
      * Whether the buffer has an implicit trailing newline. See
      * [method`Buffer`.set_implicit_trailing_newline].
      */
     implicit_trailing_newline: boolean
+    /**
+     * Whether the buffer has an implicit trailing newline. See
+     * [method`Buffer`.set_implicit_trailing_newline].
+     */
+    implicitTrailingNewline: boolean
     language: Language
     /**
      * The "loading" property denotes that a `GtkSourceFileLoader` is
@@ -1259,6 +1303,12 @@ export interface Buffer {
      * brackets style.
      */
     style_scheme: StyleScheme
+    /**
+     * Style scheme. It contains styles for syntax highlighting, optionally
+     * foreground, background, cursor color, current line color, and matching
+     * brackets style.
+     */
+    styleScheme: StyleScheme
 
     // Own fields of GtkSource-5.GtkSource.Buffer
 
@@ -1760,6 +1810,25 @@ export module Completion {
          * is providing completion features.
          */
         view?: View | null
+        /**
+         * The number of rows to display to the user before scrolling.
+         */
+        pageSize?: number | null
+        /**
+         * Determines whether the visibility of the info window should be saved when the
+         * completion is hidden, and restored when the completion is shown again.
+         */
+        rememberInfoVisibility?: boolean | null
+        /**
+         * Determines whether the first proposal should be selected when the completion
+         * is first shown.
+         */
+        selectOnShow?: boolean | null
+        /**
+         * The "show-icons" property denotes if icons should be displayed within
+         * the list of completions presented to the user.
+         */
+        showIcons?: boolean | null
     }
 
 }
@@ -1778,20 +1847,39 @@ export interface Completion {
      */
     page_size: number
     /**
+     * The number of rows to display to the user before scrolling.
+     */
+    pageSize: number
+    /**
      * Determines whether the visibility of the info window should be saved when the
      * completion is hidden, and restored when the completion is shown again.
      */
     remember_info_visibility: boolean
+    /**
+     * Determines whether the visibility of the info window should be saved when the
+     * completion is hidden, and restored when the completion is shown again.
+     */
+    rememberInfoVisibility: boolean
     /**
      * Determines whether the first proposal should be selected when the completion
      * is first shown.
      */
     select_on_show: boolean
     /**
+     * Determines whether the first proposal should be selected when the completion
+     * is first shown.
+     */
+    selectOnShow: boolean
+    /**
      * The "show-icons" property denotes if icons should be displayed within
      * the list of completions presented to the user.
      */
     show_icons: boolean
+    /**
+     * The "show-icons" property denotes if icons should be displayed within
+     * the list of completions presented to the user.
+     */
+    showIcons: boolean
     /**
      * The "view" property is the #GtkTextView for which this #GtkSourceCompletion
      * is providing completion features.
@@ -2419,6 +2507,9 @@ export module CompletionWords {
         proposals_batch_size?: number | null
         scan_batch_size?: number | null
         title?: string | null
+        minimumWordSize?: number | null
+        proposalsBatchSize?: number | null
+        scanBatchSize?: number | null
     }
 
 }
@@ -2428,9 +2519,12 @@ export interface CompletionWords extends CompletionProvider {
     // Own properties of GtkSource-5.GtkSource.CompletionWords
 
     minimum_word_size: number
+    minimumWordSize: number
     priority: number
     proposals_batch_size: number
+    proposalsBatchSize: number
     scan_batch_size: number
+    scanBatchSize: number
     title: string | null
 
     // Own fields of GtkSource-5.GtkSource.CompletionWords
@@ -2521,6 +2615,10 @@ export interface File {
      */
     readonly compression_type: CompressionType
     /**
+     * The compression type.
+     */
+    readonly compressionType: CompressionType
+    /**
      * The character encoding, initially %NULL. After a successful file
      * loading or saving operation, the encoding is non-%NULL.
      */
@@ -2534,10 +2632,19 @@ export interface File {
      */
     readonly newline_type: NewlineType
     /**
+     * The line ending type.
+     */
+    readonly newlineType: NewlineType
+    /**
      * Whether the file is read-only or not. The value of this property is
      * not updated automatically (there is no file monitors).
      */
     readonly read_only: boolean
+    /**
+     * Whether the file is read-only or not. The value of this property is
+     * not updated automatically (there is no file monitors).
+     */
+    readonly readOnly: boolean
 
     // Own fields of GtkSource-5.GtkSource.File
 
@@ -2684,6 +2791,11 @@ export module FileLoader {
          * construction time.
          */
         location?: Gio.File | null
+        /**
+         * The #GInputStream to load. Useful for reading stdin. If this property
+         * is set, the #GtkSourceFileLoader:location property is ignored.
+         */
+        inputStream?: Gio.InputStream | null
     }
 
 }
@@ -2707,6 +2819,11 @@ export interface FileLoader {
      * is set, the #GtkSourceFileLoader:location property is ignored.
      */
     readonly input_stream: Gio.InputStream
+    /**
+     * The #GInputStream to load. Useful for reading stdin. If this property
+     * is set, the #GtkSourceFileLoader:location property is ignored.
+     */
+    readonly inputStream: Gio.InputStream
     /**
      * The #GFile to load. If the #GtkSourceFileLoader:input-stream is
      * %NULL, by default the location is taken from the #GtkSourceFile at
@@ -2904,6 +3021,14 @@ export module FileSaver {
          * The newline type.
          */
         newline_type?: NewlineType | null
+        /**
+         * The compression type.
+         */
+        compressionType?: CompressionType | null
+        /**
+         * The newline type.
+         */
+        newlineType?: NewlineType | null
     }
 
 }
@@ -2921,6 +3046,10 @@ export interface FileSaver {
      * The compression type.
      */
     compression_type: CompressionType
+    /**
+     * The compression type.
+     */
+    compressionType: CompressionType
     /**
      * The file's encoding.
      */
@@ -2943,6 +3072,10 @@ export interface FileSaver {
      * The newline type.
      */
     newline_type: NewlineType
+    /**
+     * The newline type.
+     */
+    newlineType: NewlineType
 
     // Owm methods of GtkSource-5.GtkSource.FileSaver
 
@@ -3121,6 +3254,10 @@ export module Gutter {
          * The text window type on which the window is placed.
          */
         window_type?: Gtk.TextWindowType | null
+        /**
+         * The text window type on which the window is placed.
+         */
+        windowType?: Gtk.TextWindowType | null
     }
 
 }
@@ -3137,6 +3274,10 @@ export interface Gutter extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * The text window type on which the window is placed.
      */
     readonly window_type: Gtk.TextWindowType
+    /**
+     * The text window type on which the window is placed.
+     */
+    readonly windowType: Gtk.TextWindowType
 
     // Owm methods of GtkSource-5.GtkSource.Gutter
 
@@ -3541,6 +3682,13 @@ export module GutterRenderer {
          * The top and bottom padding of the renderer.
          */
         ypad?: number | null
+        /**
+         * The alignment mode of the renderer.
+         * 
+         * This can be used to indicate that in the case a cell spans multiple lines (due to text wrapping)
+         * the alignment should work on either the full cell, the first line or the last line.
+         */
+        alignmentMode?: GutterRendererAlignmentMode | null
     }
 
 }
@@ -3556,6 +3704,13 @@ export interface GutterRenderer extends Gtk.Accessible, Gtk.Buildable, Gtk.Const
      * the alignment should work on either the full cell, the first line or the last line.
      */
     alignment_mode: GutterRendererAlignmentMode
+    /**
+     * The alignment mode of the renderer.
+     * 
+     * This can be used to indicate that in the case a cell spans multiple lines (due to text wrapping)
+     * the alignment should work on either the full cell, the first line or the last line.
+     */
+    alignmentMode: GutterRendererAlignmentMode
     /**
      * Contains information about the lines to be rendered.
      * 
@@ -3974,6 +4129,7 @@ export module GutterRendererPixbuf {
         icon_name?: string | null
         paintable?: Gdk.Paintable | null
         pixbuf?: GdkPixbuf.Pixbuf | null
+        iconName?: string | null
     }
 
 }
@@ -3984,6 +4140,7 @@ export interface GutterRendererPixbuf extends Gtk.Accessible, Gtk.Buildable, Gtk
 
     gicon: Gio.Icon
     icon_name: string | null
+    iconName: string | null
     paintable: Gdk.Paintable
     pixbuf: GdkPixbuf.Pixbuf
 
@@ -4546,6 +4703,10 @@ export module Hover {
          * Contains the number of milliseconds to delay before showing the hover assistant.
          */
         hover_delay?: number | null
+        /**
+         * Contains the number of milliseconds to delay before showing the hover assistant.
+         */
+        hoverDelay?: number | null
     }
 
 }
@@ -4558,6 +4719,10 @@ export interface Hover {
      * Contains the number of milliseconds to delay before showing the hover assistant.
      */
     hover_delay: number
+    /**
+     * Contains the number of milliseconds to delay before showing the hover assistant.
+     */
+    hoverDelay: number
 
     // Owm methods of GtkSource-5.GtkSource.Hover
 
@@ -4988,6 +5153,7 @@ export module LanguageManager {
         // Own constructor properties of GtkSource-5.GtkSource.LanguageManager
 
         search_path?: string[] | null
+        searchPath?: string[] | null
     }
 
 }
@@ -4997,7 +5163,9 @@ export interface LanguageManager {
     // Own properties of GtkSource-5.GtkSource.LanguageManager
 
     readonly language_ids: string[]
+    readonly languageIds: string[]
     search_path: string[]
+    searchPath: string[]
 
     // Owm methods of GtkSource-5.GtkSource.LanguageManager
 
@@ -5168,6 +5336,7 @@ export module Map {
 
         font_desc?: Pango.FontDescription | null
         view?: View | null
+        fontDesc?: Pango.FontDescription | null
     }
 
 }
@@ -5177,6 +5346,7 @@ export interface Map extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     // Own properties of GtkSource-5.GtkSource.Map
 
     font_desc: Pango.FontDescription
+    fontDesc: Pango.FontDescription
     view: View
 
     // Own fields of GtkSource-5.GtkSource.Map
@@ -5731,6 +5901,10 @@ export module MarkAttributes {
          * A #GdkPixbuf that may be a base of a rendered icon.
          */
         pixbuf?: GdkPixbuf.Pixbuf | null
+        /**
+         * An icon name that may be a base of a rendered icon.
+         */
+        iconName?: string | null
     }
 
 }
@@ -5751,6 +5925,10 @@ export interface MarkAttributes {
      * An icon name that may be a base of a rendered icon.
      */
     icon_name: string | null
+    /**
+     * An icon name that may be a base of a rendered icon.
+     */
+    iconName: string | null
     /**
      * A #GdkPixbuf that may be a base of a rendered icon.
      */
@@ -6037,6 +6215,107 @@ export module PrintCompositor {
          * call to the [method`PrintCompositor`.paginate] function.
          */
         wrap_mode?: Gtk.WrapMode | null
+        /**
+         * Name of the font used for the text body.
+         * 
+         * Accepted values are strings representing a font description Pango can understand.
+         * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+         * for a description of the format of the string representation.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        bodyFontName?: string | null
+        /**
+         * Name of the font used to print page footer.
+         * If this property is unspecified, the text body font is used.
+         * 
+         * Accepted values are strings representing a font description Pango can understand.
+         * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+         * for a description of the format of the string representation.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        footerFontName?: string | null
+        /**
+         * Name of the font used to print page header.
+         * If this property is unspecified, the text body font is used.
+         * 
+         * Accepted values are strings representing a font description Pango can understand.
+         * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+         * for a description of the format of the string representation.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        headerFontName?: string | null
+        /**
+         * Whether to print the document with highlighted syntax.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        highlightSyntax?: boolean | null
+        /**
+         * Name of the font used to print line numbers on the left margin.
+         * If this property is unspecified, the text body font is used.
+         * 
+         * Accepted values are strings representing a font description Pango can understand.
+         * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+         * for a description of the format of the string representation.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        lineNumbersFontName?: string | null
+        /**
+         * Whether to print a footer in each page.
+         * 
+         * Note that by default the footer format is unspecified, and if it is
+         * unspecified the footer will not be printed, regardless of the value of
+         * this property.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        printFooter?: boolean | null
+        /**
+         * Whether to print a header in each page.
+         * 
+         * Note that by default the header format is unspecified, and if it is
+         * unspecified the header will not be printed, regardless of the value of
+         * this property.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        printHeader?: boolean | null
+        /**
+         * Interval of printed line numbers.
+         * 
+         * If this property is set to 0 no numbers will be printed.
+         * If greater than 0, a number will be printed every "print-line-numbers"
+         * lines (i.e. 1 will print all line numbers).
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        printLineNumbers?: number | null
+        /**
+         * Width of a tab character expressed in spaces.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        tabWidth?: number | null
+        /**
+         * Whether to wrap lines never, at word boundaries, or at character boundaries.
+         * 
+         * The value of this property cannot be changed anymore after the first
+         * call to the [method`PrintCompositor`.paginate] function.
+         */
+        wrapMode?: Gtk.WrapMode | null
     }
 
 }
@@ -6057,6 +6336,17 @@ export interface PrintCompositor {
      */
     body_font_name: string | null
     /**
+     * Name of the font used for the text body.
+     * 
+     * Accepted values are strings representing a font description Pango can understand.
+     * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+     * for a description of the format of the string representation.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    bodyFontName: string | null
+    /**
      * The [class`Buffer]` object to print.
      */
     readonly buffer: Buffer
@@ -6073,6 +6363,18 @@ export interface PrintCompositor {
      */
     footer_font_name: string | null
     /**
+     * Name of the font used to print page footer.
+     * If this property is unspecified, the text body font is used.
+     * 
+     * Accepted values are strings representing a font description Pango can understand.
+     * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+     * for a description of the format of the string representation.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    footerFontName: string | null
+    /**
      * Name of the font used to print page header.
      * If this property is unspecified, the text body font is used.
      * 
@@ -6085,12 +6387,31 @@ export interface PrintCompositor {
      */
     header_font_name: string | null
     /**
+     * Name of the font used to print page header.
+     * If this property is unspecified, the text body font is used.
+     * 
+     * Accepted values are strings representing a font description Pango can understand.
+     * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+     * for a description of the format of the string representation.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    headerFontName: string | null
+    /**
      * Whether to print the document with highlighted syntax.
      * 
      * The value of this property cannot be changed anymore after the first
      * call to the [method`PrintCompositor`.paginate] function.
      */
     highlight_syntax: boolean
+    /**
+     * Whether to print the document with highlighted syntax.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    highlightSyntax: boolean
     /**
      * Name of the font used to print line numbers on the left margin.
      * If this property is unspecified, the text body font is used.
@@ -6104,10 +6425,27 @@ export interface PrintCompositor {
      */
     line_numbers_font_name: string | null
     /**
+     * Name of the font used to print line numbers on the left margin.
+     * If this property is unspecified, the text body font is used.
+     * 
+     * Accepted values are strings representing a font description Pango can understand.
+     * (e.g. &quot;Monospace 10&quot;). See [func`Pango`.FontDescription.from_string]
+     * for a description of the format of the string representation.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    lineNumbersFontName: string | null
+    /**
      * The number of pages in the document or <code>-1</code> if the
      * document has not been completely paginated.
      */
     readonly n_pages: number
+    /**
+     * The number of pages in the document or <code>-1</code> if the
+     * document has not been completely paginated.
+     */
+    readonly nPages: number
     /**
      * Whether to print a footer in each page.
      * 
@@ -6120,6 +6458,17 @@ export interface PrintCompositor {
      */
     print_footer: boolean
     /**
+     * Whether to print a footer in each page.
+     * 
+     * Note that by default the footer format is unspecified, and if it is
+     * unspecified the footer will not be printed, regardless of the value of
+     * this property.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    printFooter: boolean
+    /**
      * Whether to print a header in each page.
      * 
      * Note that by default the header format is unspecified, and if it is
@@ -6130,6 +6479,17 @@ export interface PrintCompositor {
      * call to the [method`PrintCompositor`.paginate] function.
      */
     print_header: boolean
+    /**
+     * Whether to print a header in each page.
+     * 
+     * Note that by default the header format is unspecified, and if it is
+     * unspecified the header will not be printed, regardless of the value of
+     * this property.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    printHeader: boolean
     /**
      * Interval of printed line numbers.
      * 
@@ -6142,6 +6502,17 @@ export interface PrintCompositor {
      */
     print_line_numbers: number
     /**
+     * Interval of printed line numbers.
+     * 
+     * If this property is set to 0 no numbers will be printed.
+     * If greater than 0, a number will be printed every "print-line-numbers"
+     * lines (i.e. 1 will print all line numbers).
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    printLineNumbers: number
+    /**
      * Width of a tab character expressed in spaces.
      * 
      * The value of this property cannot be changed anymore after the first
@@ -6149,12 +6520,26 @@ export interface PrintCompositor {
      */
     tab_width: number
     /**
+     * Width of a tab character expressed in spaces.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    tabWidth: number
+    /**
      * Whether to wrap lines never, at word boundaries, or at character boundaries.
      * 
      * The value of this property cannot be changed anymore after the first
      * call to the [method`PrintCompositor`.paginate] function.
      */
     wrap_mode: Gtk.WrapMode
+    /**
+     * Whether to wrap lines never, at word boundaries, or at character boundaries.
+     * 
+     * The value of this property cannot be changed anymore after the first
+     * call to the [method`PrintCompositor`.paginate] function.
+     */
+    wrapMode: Gtk.WrapMode
 
     // Own fields of GtkSource-5.GtkSource.PrintCompositor
 
@@ -6872,6 +7257,10 @@ export module SearchContext {
          * This property is construct-only since version 4.0.
          */
         settings?: SearchSettings | null
+        /**
+         * A [class`Style]`, or %NULL for theme's scheme default style.
+         */
+        matchStyle?: Style | null
     }
 
 }
@@ -6893,11 +7282,21 @@ export interface SearchContext {
      */
     match_style: Style
     /**
+     * A [class`Style]`, or %NULL for theme's scheme default style.
+     */
+    matchStyle: Style
+    /**
      * The total number of search occurrences. If the search is disabled,
      * the value is 0. If the buffer is not already fully scanned, the value
      * is -1.
      */
     readonly occurrences_count: number
+    /**
+     * The total number of search occurrences. If the search is disabled,
+     * the value is 0. If the buffer is not already fully scanned, the value
+     * is -1.
+     */
+    readonly occurrencesCount: number
     /**
      * If the regex search pattern doesn't follow all the rules, this
      * #GError property will be set. If the pattern is valid, the value is
@@ -6906,6 +7305,14 @@ export interface SearchContext {
      * Free with [method`GLib`.Error.free].
      */
     readonly regex_error: GLib.Error
+    /**
+     * If the regex search pattern doesn't follow all the rules, this
+     * #GError property will be set. If the pattern is valid, the value is
+     * %NULL.
+     * 
+     * Free with [method`GLib`.Error.free].
+     */
+    readonly regexError: GLib.Error
     /**
      * The [class`SearchSettings]` associated to the search context.
      * 
@@ -7260,6 +7667,33 @@ export module SearchSettings {
          * end of the buffer.
          */
         wrap_around?: boolean | null
+        /**
+         * If %TRUE, a search match must start and end a word. The match can
+         * span multiple words.
+         */
+        atWordBoundaries?: boolean | null
+        /**
+         * Whether the search is case sensitive.
+         */
+        caseSensitive?: boolean | null
+        /**
+         * Search by regular expressions with
+         * [property`SearchSettings:`search-text] as the pattern.
+         */
+        regexEnabled?: boolean | null
+        /**
+         * A search string, or %NULL if the search is disabled.
+         * 
+         * If the regular expression search is enabled, [property`SearchSettings:`search-text] is
+         * the pattern.
+         */
+        searchText?: string | null
+        /**
+         * For a forward search, continue at the beginning of the buffer if no
+         * search occurrence is found. For a backward search, continue at the
+         * end of the buffer.
+         */
+        wrapAround?: boolean | null
     }
 
 }
@@ -7274,14 +7708,28 @@ export interface SearchSettings {
      */
     at_word_boundaries: boolean
     /**
+     * If %TRUE, a search match must start and end a word. The match can
+     * span multiple words.
+     */
+    atWordBoundaries: boolean
+    /**
      * Whether the search is case sensitive.
      */
     case_sensitive: boolean
+    /**
+     * Whether the search is case sensitive.
+     */
+    caseSensitive: boolean
     /**
      * Search by regular expressions with
      * [property`SearchSettings:`search-text] as the pattern.
      */
     regex_enabled: boolean
+    /**
+     * Search by regular expressions with
+     * [property`SearchSettings:`search-text] as the pattern.
+     */
+    regexEnabled: boolean
     /**
      * A search string, or %NULL if the search is disabled.
      * 
@@ -7290,11 +7738,24 @@ export interface SearchSettings {
      */
     search_text: string | null
     /**
+     * A search string, or %NULL if the search is disabled.
+     * 
+     * If the regular expression search is enabled, [property`SearchSettings:`search-text] is
+     * the pattern.
+     */
+    searchText: string | null
+    /**
      * For a forward search, continue at the beginning of the buffer if no
      * search occurrence is found. For a backward search, continue at the
      * end of the buffer.
      */
     wrap_around: boolean
+    /**
+     * For a forward search, continue at the beginning of the buffer if no
+     * search occurrence is found. For a backward search, continue at the
+     * end of the buffer.
+     */
+    wrapAround: boolean
 
     // Own fields of GtkSource-5.GtkSource.SearchSettings
 
@@ -7431,6 +7892,7 @@ export module Snippet {
         language_id?: string | null
         name?: string | null
         trigger?: string | null
+        languageId?: string | null
     }
 
 }
@@ -7442,7 +7904,9 @@ export interface Snippet {
     readonly buffer: Gtk.TextBuffer
     description: string | null
     readonly focus_position: number
+    readonly focusPosition: number
     language_id: string | null
+    languageId: string | null
     name: string | null
     trigger: string | null
 
@@ -7624,6 +8088,9 @@ export module SnippetChunk {
         text?: string | null
         text_set?: boolean | null
         tooltip_text?: string | null
+        focusPosition?: number | null
+        textSet?: boolean | null
+        tooltipText?: string | null
     }
 
 }
@@ -7634,10 +8101,13 @@ export interface SnippetChunk {
 
     context: SnippetContext
     focus_position: number
+    focusPosition: number
     spec: string | null
     text: string | null
     text_set: boolean
+    textSet: boolean
     tooltip_text: string | null
+    tooltipText: string | null
 
     // Owm methods of GtkSource-5.GtkSource.SnippetChunk
 
@@ -7920,6 +8390,10 @@ export module SnippetManager {
          * Contains a list of directories to search for files containing snippets (*.snippets).
          */
         search_path?: string[] | null
+        /**
+         * Contains a list of directories to search for files containing snippets (*.snippets).
+         */
+        searchPath?: string[] | null
     }
 
 }
@@ -7932,6 +8406,10 @@ export interface SnippetManager {
      * Contains a list of directories to search for files containing snippets (*.snippets).
      */
     search_path: string[]
+    /**
+     * Contains a list of directories to search for files containing snippets (*.snippets).
+     */
+    searchPath: string[]
 
     // Owm methods of GtkSource-5.GtkSource.SnippetManager
 
@@ -8067,6 +8545,10 @@ export module SpaceDrawer {
          * By default, %GTK_SOURCE_SPACE_TYPE_ALL is set for all locations.4
          */
         matrix?: GLib.Variant | null
+        /**
+         * Whether the [property`SpaceDrawer:`matrix] property is enabled.
+         */
+        enableMatrix?: boolean | null
     }
 
 }
@@ -8079,6 +8561,10 @@ export interface SpaceDrawer {
      * Whether the [property`SpaceDrawer:`matrix] property is enabled.
      */
     enable_matrix: boolean
+    /**
+     * Whether the [property`SpaceDrawer:`matrix] property is enabled.
+     */
+    enableMatrix: boolean
     /**
      * The property is a [struct`GLib`.Variant] property to specify where and
      * what kind of white spaces to draw.
@@ -8282,6 +8768,19 @@ export module Style {
         underline_set?: boolean | null
         weight?: Pango.Weight | null
         weight_set?: boolean | null
+        backgroundSet?: boolean | null
+        boldSet?: boolean | null
+        foregroundSet?: boolean | null
+        italicSet?: boolean | null
+        lineBackground?: string | null
+        lineBackgroundSet?: boolean | null
+        pangoUnderline?: Pango.Underline | null
+        scaleSet?: boolean | null
+        strikethroughSet?: boolean | null
+        underlineColor?: string | null
+        underlineColorSet?: boolean | null
+        underlineSet?: boolean | null
+        weightSet?: boolean | null
     }
 
 }
@@ -8292,24 +8791,37 @@ export interface Style {
 
     readonly background: string | null
     readonly background_set: boolean
+    readonly backgroundSet: boolean
     readonly bold: boolean
     readonly bold_set: boolean
+    readonly boldSet: boolean
     readonly foreground: string | null
     readonly foreground_set: boolean
+    readonly foregroundSet: boolean
     readonly italic: boolean
     readonly italic_set: boolean
+    readonly italicSet: boolean
     readonly line_background: string | null
+    readonly lineBackground: string | null
     readonly line_background_set: boolean
+    readonly lineBackgroundSet: boolean
     readonly pango_underline: Pango.Underline
+    readonly pangoUnderline: Pango.Underline
     readonly scale: string | null
     readonly scale_set: boolean
+    readonly scaleSet: boolean
     readonly strikethrough: boolean
     readonly strikethrough_set: boolean
+    readonly strikethroughSet: boolean
     readonly underline_color: string | null
+    readonly underlineColor: string | null
     readonly underline_color_set: boolean
+    readonly underlineColorSet: boolean
     readonly underline_set: boolean
+    readonly underlineSet: boolean
     readonly weight: Pango.Weight
     readonly weight_set: boolean
+    readonly weightSet: boolean
 
     // Owm methods of GtkSource-5.GtkSource.Style
 
@@ -8892,6 +9404,7 @@ export module StyleSchemeManager {
         // Own constructor properties of GtkSource-5.GtkSource.StyleSchemeManager
 
         search_path?: string[] | null
+        searchPath?: string[] | null
     }
 
 }
@@ -8901,7 +9414,9 @@ export interface StyleSchemeManager {
     // Own properties of GtkSource-5.GtkSource.StyleSchemeManager
 
     readonly scheme_ids: string[]
+    readonly schemeIds: string[]
     search_path: string[]
+    searchPath: string[]
 
     // Owm methods of GtkSource-5.GtkSource.StyleSchemeManager
 
@@ -9242,6 +9757,21 @@ export module Tag {
          * taken into account.
          */
         draw_spaces_set?: boolean | null
+        /**
+         * Whether to draw white spaces.
+         * 
+         * This property takes precedence over the value defined by the [class`SpaceDrawer]`'s
+         * [property`SpaceDrawer:`matrix] property (only where the tag is applied).
+         * 
+         * Setting this property also changes [property`Tag:`draw-spaces-set] to
+         * %TRUE.
+         */
+        drawSpaces?: boolean | null
+        /**
+         * Whether the [property`Tag:`draw-spaces] property is set and must be
+         * taken into account.
+         */
+        drawSpacesSet?: boolean | null
     }
 
 }
@@ -9261,10 +9791,25 @@ export interface Tag {
      */
     draw_spaces: boolean
     /**
+     * Whether to draw white spaces.
+     * 
+     * This property takes precedence over the value defined by the [class`SpaceDrawer]`'s
+     * [property`SpaceDrawer:`matrix] property (only where the tag is applied).
+     * 
+     * Setting this property also changes [property`Tag:`draw-spaces-set] to
+     * %TRUE.
+     */
+    drawSpaces: boolean
+    /**
      * Whether the [property`Tag:`draw-spaces] property is set and must be
      * taken into account.
      */
     draw_spaces_set: boolean
+    /**
+     * Whether the [property`Tag:`draw-spaces] property is set and must be
+     * taken into account.
+     */
+    drawSpacesSet: boolean
 
     // Own fields of GtkSource-5.GtkSource.Tag
 
@@ -9734,6 +10279,56 @@ export module View {
          * Width of a tab character expressed in number of spaces.
          */
         tab_width?: number | null
+        autoIndent?: boolean | null
+        /**
+         * Draw a specific background pattern on the view.
+         */
+        backgroundPattern?: BackgroundPatternType | null
+        /**
+         * The property denotes if snippets should be
+         * expanded when the user presses Tab after having typed a word
+         * matching the snippets found in [class`SnippetManager]`.
+         * 
+         * The user may tab through focus-positions of the snippet if any
+         * are available by pressing Tab repeatedly until the desired focus
+         * position is selected.
+         */
+        enableSnippets?: boolean | null
+        highlightCurrentLine?: boolean | null
+        indentOnTab?: boolean | null
+        /**
+         * Width of an indentation step expressed in number of spaces.
+         */
+        indentWidth?: number | null
+        insertSpacesInsteadOfTabs?: boolean | null
+        /**
+         * Position of the right margin.
+         */
+        rightMarginPosition?: number | null
+        /**
+         * Whether to display line mark pixbufs
+         */
+        showLineMarks?: boolean | null
+        /**
+         * Whether to display line numbers
+         */
+        showLineNumbers?: boolean | null
+        /**
+         * Whether to display the right margin.
+         */
+        showRightMargin?: boolean | null
+        /**
+         * Whether smart Backspace should be used.
+         */
+        smartBackspace?: boolean | null
+        /**
+         * Set the behavior of the HOME and END keys.
+         */
+        smartHomeEnd?: SmartHomeEndType | null
+        /**
+         * Width of a tab character expressed in number of spaces.
+         */
+        tabWidth?: number | null
     }
 
 }
@@ -9743,10 +10338,15 @@ export interface View extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
     // Own properties of GtkSource-5.GtkSource.View
 
     auto_indent: boolean
+    autoIndent: boolean
     /**
      * Draw a specific background pattern on the view.
      */
     background_pattern: BackgroundPatternType
+    /**
+     * Draw a specific background pattern on the view.
+     */
+    backgroundPattern: BackgroundPatternType
     /**
      * The completion object associated with the view
      */
@@ -9761,50 +10361,99 @@ export interface View extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * position is selected.
      */
     enable_snippets: boolean
+    /**
+     * The property denotes if snippets should be
+     * expanded when the user presses Tab after having typed a word
+     * matching the snippets found in [class`SnippetManager]`.
+     * 
+     * The user may tab through focus-positions of the snippet if any
+     * are available by pressing Tab repeatedly until the desired focus
+     * position is selected.
+     */
+    enableSnippets: boolean
     highlight_current_line: boolean
+    highlightCurrentLine: boolean
     indent_on_tab: boolean
+    indentOnTab: boolean
     /**
      * Width of an indentation step expressed in number of spaces.
      */
     indent_width: number
+    /**
+     * Width of an indentation step expressed in number of spaces.
+     */
+    indentWidth: number
     /**
      * The property is a [iface`Indenter]` to use to indent
      * as the user types into the [class`View]`.
      */
     indenter: Indenter
     insert_spaces_instead_of_tabs: boolean
+    insertSpacesInsteadOfTabs: boolean
     /**
      * Position of the right margin.
      */
     right_margin_position: number
     /**
+     * Position of the right margin.
+     */
+    rightMarginPosition: number
+    /**
      * Whether to display line mark pixbufs
      */
     show_line_marks: boolean
+    /**
+     * Whether to display line mark pixbufs
+     */
+    showLineMarks: boolean
     /**
      * Whether to display line numbers
      */
     show_line_numbers: boolean
     /**
+     * Whether to display line numbers
+     */
+    showLineNumbers: boolean
+    /**
      * Whether to display the right margin.
      */
     show_right_margin: boolean
+    /**
+     * Whether to display the right margin.
+     */
+    showRightMargin: boolean
     /**
      * Whether smart Backspace should be used.
      */
     smart_backspace: boolean
     /**
+     * Whether smart Backspace should be used.
+     */
+    smartBackspace: boolean
+    /**
      * Set the behavior of the HOME and END keys.
      */
     smart_home_end: SmartHomeEndType
+    /**
+     * Set the behavior of the HOME and END keys.
+     */
+    smartHomeEnd: SmartHomeEndType
     /**
      * The [class`SpaceDrawer]` object associated with the view.4
      */
     readonly space_drawer: SpaceDrawer
     /**
+     * The [class`SpaceDrawer]` object associated with the view.4
+     */
+    readonly spaceDrawer: SpaceDrawer
+    /**
      * Width of a tab character expressed in number of spaces.
      */
     tab_width: number
+    /**
+     * Width of a tab character expressed in number of spaces.
+     */
+    tabWidth: number
 
     // Own fields of GtkSource-5.GtkSource.View
 
@@ -10574,7 +11223,9 @@ export interface VimIMContext {
     // Own properties of GtkSource-5.GtkSource.VimIMContext
 
     readonly command_bar_text: string | null
+    readonly commandBarText: string | null
     readonly command_text: string | null
+    readonly commandText: string | null
 
     // Owm methods of GtkSource-5.GtkSource.VimIMContext
 

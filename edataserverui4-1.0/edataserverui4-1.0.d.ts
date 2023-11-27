@@ -464,6 +464,11 @@ module CredentialsPrompter {
          * The #ESourceRegistry object, to whose credential requests the prompter listens.
          */
         registry?: EDataServer.SourceRegistry | null
+        /**
+         * Whether the #ECredentialsPrompter can response to credential
+         * requests automatically.
+         */
+        autoPrompt?: boolean | null
     }
 
 }
@@ -477,6 +482,11 @@ interface CredentialsPrompter extends EDataServer.Extensible {
      * requests automatically.
      */
     auto_prompt: boolean
+    /**
+     * Whether the #ECredentialsPrompter can response to credential
+     * requests automatically.
+     */
+    autoPrompt: boolean
     /**
      * The #ESourceCredentialsProvider object, which the prompter uses.
      */

@@ -2223,6 +2223,7 @@ module ColumnModel {
         attributes?: ColumnAttributes | null
         foreign_key?: ForeignKey | null
         value?: any | null
+        foreignKey?: ForeignKey | null
     }
 
 }
@@ -2233,7 +2234,9 @@ interface ColumnModel {
 
     attributes: ColumnAttributes
     readonly data_type: GObject.GType
+    readonly dataType: GObject.GType
     foreign_key: ForeignKey
+    foreignKey: ForeignKey
     readonly index: number
     readonly name: string | null
     value: any
@@ -2339,6 +2342,7 @@ module ConnectionModel {
         // Own constructor properties of Gda-6.0.Gda.ConnectionModel
 
         cnc_params?: ConnectionModelParams | null
+        cncParams?: ConnectionModelParams | null
     }
 
 }
@@ -2348,7 +2352,9 @@ interface ConnectionModel {
     // Own properties of Gda-6.0.Gda.ConnectionModel
 
     cnc_params: ConnectionModelParams
+    cncParams: ConnectionModelParams
     readonly is_opened: boolean
+    readonly isOpened: boolean
 
     // Owm methods of Gda-6.0.Gda.ConnectionModel
 
@@ -2417,6 +2423,7 @@ module CreateDatabaseBuilder {
         // Own constructor properties of Gda-6.0.Gda.CreateDatabaseBuilder
 
         database_name?: string | null
+        databaseName?: string | null
     }
 
 }
@@ -2426,6 +2433,7 @@ interface CreateDatabaseBuilder extends QueryBuilder {
     // Own properties of Gda-6.0.Gda.CreateDatabaseBuilder
 
     database_name: string | null
+    databaseName: string | null
 
     // Owm methods of Gda-6.0.Gda.CreateDatabaseBuilder
 
@@ -2481,6 +2489,7 @@ module CreateTableBuilder {
         columns?: Gio.ListModel | null
         contraints?: Gio.ListModel | null
         table_name?: string | null
+        tableName?: string | null
     }
 
 }
@@ -2492,6 +2501,7 @@ interface CreateTableBuilder extends QueryBuilder {
     columns: Gio.ListModel
     contraints: Gio.ListModel
     table_name: string | null
+    tableName: string | null
 
     // Owm methods of Gda-6.0.Gda.CreateTableBuilder
 
@@ -3419,6 +3429,7 @@ module DropDatabaseBuilder {
         // Own constructor properties of Gda-6.0.Gda.DropDatabaseBuilder
 
         database_name?: string | null
+        databaseName?: string | null
     }
 
 }
@@ -3428,6 +3439,7 @@ interface DropDatabaseBuilder extends QueryBuilder {
     // Own properties of Gda-6.0.Gda.DropDatabaseBuilder
 
     database_name: string | null
+    databaseName: string | null
 
     // Owm methods of Gda-6.0.Gda.DropDatabaseBuilder
 
@@ -3482,6 +3494,7 @@ module DropTableBuilder {
 
         cascade?: boolean | null
         table_name?: string | null
+        tableName?: string | null
     }
 
 }
@@ -3492,6 +3505,7 @@ interface DropTableBuilder extends QueryBuilder {
 
     cascade: boolean
     table_name: string | null
+    tableName: string | null
 
     // Owm methods of Gda-6.0.Gda.DropTableBuilder
 
@@ -3558,6 +3572,8 @@ module ForeignKey {
         refname?: string | null
         reftable?: TableModel | null
         update_rule?: ForeignKeyRule | null
+        deleteRule?: ForeignKeyRule | null
+        updateRule?: ForeignKeyRule | null
     }
 
 }
@@ -3567,12 +3583,14 @@ interface ForeignKey {
     // Own properties of Gda-6.0.Gda.ForeignKey
 
     delete_rule: ForeignKeyRule
+    deleteRule: ForeignKeyRule
     match: ForeignKeyMatch
     name: string | null
     refcol: Gio.ListModel
     refname: string | null
     reftable: TableModel
     update_rule: ForeignKeyRule
+    updateRule: ForeignKeyRule
 
     // Owm methods of Gda-6.0.Gda.ForeignKey
 
@@ -3662,6 +3680,7 @@ interface Inserted extends Result {
     // Own properties of Gda-6.0.Gda.Inserted
 
     readonly last_insertd: RowModel
+    readonly lastInsertd: RowModel
     readonly number: number
 
     // Owm methods of Gda-6.0.Gda.Inserted
@@ -3853,7 +3872,9 @@ interface MetaColumn {
     // Own properties of Gda-6.0.Gda.MetaColumn
 
     readonly column_type: GObject.GType
+    readonly columnType: GObject.GType
     readonly column_type_name: string | null
+    readonly columnTypeName: string | null
     name: string | null
 
     // Owm methods of Gda-6.0.Gda.MetaColumn
@@ -4574,6 +4595,7 @@ module ReferencedColumn {
         // Own constructor properties of Gda-6.0.Gda.ReferencedColumn
 
         table_name?: string | null
+        tableName?: string | null
     }
 
 }
@@ -4584,6 +4606,7 @@ interface ReferencedColumn {
 
     readonly name: string | null
     table_name: string | null
+    tableName: string | null
 
     // Owm methods of Gda-6.0.Gda.ReferencedColumn
 
@@ -4715,6 +4738,7 @@ interface RowModel extends Gio.ListModel {
     // Own properties of Gda-6.0.Gda.RowModel
 
     readonly n_columns: number
+    readonly nColumns: number
 
     // Owm methods of Gda-6.0.Gda.RowModel
 
@@ -5283,6 +5307,14 @@ module Config {
          * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
          */
         user_filename?: string | null
+        /**
+         * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
+         */
+        systemFilename?: string | null
+        /**
+         * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
+         */
+        userFilename?: string | null
     }
 
 }
@@ -5296,9 +5328,17 @@ interface Config {
      */
     system_filename: string | null
     /**
+     * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
+     */
+    systemFilename: string | null
+    /**
      * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
      */
     user_filename: string | null
+    /**
+     * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
+     */
+    userFilename: string | null
 
     // Own fields of Gda-6.0.Gda.Config
 
@@ -5536,6 +5576,26 @@ module Connection {
         execution_timer?: boolean | null
         meta_store?: MetaStore | null
         provider?: ServerProvider | null
+        authString?: string | null
+        cncString?: string | null
+        /**
+         * Defines the number of #GdaConnectionEvent objects kept in memory which can
+         * be fetched using gda_connection_get_events().
+         */
+        eventsHistorySize?: number | null
+        /**
+         * Artificially slows down the execution of queries. This property can be used to
+         * debug some problems. If non zero, this value is the number of microseconds waited before actually
+         * executing each query.
+         * NB: this parameter is ignored during the meta store update (it is set to 0 before the meta data update
+         * and restored to its state after).
+         */
+        executionSlowdown?: number | null
+        /**
+         * Computes execution times for each statement executed.
+         */
+        executionTimer?: boolean | null
+        metaStore?: MetaStore | null
     }
 
 }
@@ -5545,13 +5605,20 @@ interface Connection extends Lockable {
     // Own properties of Gda-6.0.Gda.Connection
 
     auth_string: string | null
+    authString: string | null
     cnc_string: string | null
+    cncString: string | null
     dsn: string | null
     /**
      * Defines the number of #GdaConnectionEvent objects kept in memory which can
      * be fetched using gda_connection_get_events().
      */
     events_history_size: number
+    /**
+     * Defines the number of #GdaConnectionEvent objects kept in memory which can
+     * be fetched using gda_connection_get_events().
+     */
+    eventsHistorySize: number
     /**
      * Artificially slows down the execution of queries. This property can be used to
      * debug some problems. If non zero, this value is the number of microseconds waited before actually
@@ -5561,10 +5628,23 @@ interface Connection extends Lockable {
      */
     execution_slowdown: number
     /**
+     * Artificially slows down the execution of queries. This property can be used to
+     * debug some problems. If non zero, this value is the number of microseconds waited before actually
+     * executing each query.
+     * NB: this parameter is ignored during the meta store update (it is set to 0 before the meta data update
+     * and restored to its state after).
+     */
+    executionSlowdown: number
+    /**
      * Computes execution times for each statement executed.
      */
     execution_timer: boolean
+    /**
+     * Computes execution times for each statement executed.
+     */
+    executionTimer: boolean
     meta_store: MetaStore
+    metaStore: MetaStore
     provider: ServerProvider
 
     // Own fields of Gda-6.0.Gda.Connection
@@ -6699,6 +6779,7 @@ module ConnectionModelParams {
         cnc_string?: string | null
         pasword?: string | null
         user?: string | null
+        cncString?: string | null
     }
 
 }
@@ -6708,6 +6789,7 @@ interface ConnectionModelParams {
     // Own properties of Gda-6.0.Gda.ConnectionModelParams
 
     cnc_string: string | null
+    cncString: string | null
     pasword: string | null
     user: string | null
 
@@ -6855,6 +6937,8 @@ module DataComparator {
 
         new_model?: DataModel | null
         old_model?: DataModel | null
+        newModel?: DataModel | null
+        oldModel?: DataModel | null
     }
 
 }
@@ -6864,7 +6948,9 @@ interface DataComparator {
     // Own properties of Gda-6.0.Gda.DataComparator
 
     new_model: DataModel
+    newModel: DataModel
     old_model: DataModel
+    oldModel: DataModel
 
     // Own fields of Gda-6.0.Gda.DataComparator
 
@@ -6967,6 +7053,8 @@ module DataModelArray {
 
         n_columns?: number | null
         read_only?: boolean | null
+        nColumns?: number | null
+        readOnly?: boolean | null
     }
 
 }
@@ -6976,7 +7064,9 @@ interface DataModelArray extends DataModel {
     // Own properties of Gda-6.0.Gda.DataModelArray
 
     n_columns: number
+    nColumns: number
     read_only: boolean
+    readOnly: boolean
 
     // Own fields of Gda-6.0.Gda.DataModelArray
 
@@ -7145,6 +7235,19 @@ module DataModelImport {
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          */
         xml_node?: any | null
+        /**
+         * Data to import, as a string.
+         */
+        dataString?: string | null
+        /**
+         * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
+         * access will have to be done using a cursor.
+         */
+        randomAccess?: boolean | null
+        /**
+         * Data to import, as a pointer to an XML node (a #xmlNodePtr).
+         */
+        xmlNode?: any | null
     }
 
 }
@@ -7157,6 +7260,10 @@ interface DataModelImport extends DataModel {
      * Data to import, as a string.
      */
     readonly data_string: string | null
+    /**
+     * Data to import, as a string.
+     */
+    readonly dataString: string | null
     /**
      * Name of the file to import.
      */
@@ -7171,6 +7278,11 @@ interface DataModelImport extends DataModel {
      */
     readonly random_access: boolean
     /**
+     * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
+     * access will have to be done using a cursor.
+     */
+    readonly randomAccess: boolean
+    /**
      * Defines the behaviour in case the imported data contains recoverable errors (usually too
      * many or too few data per row). If set to %TRUE, an error will be reported and the import
      * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
@@ -7180,6 +7292,10 @@ interface DataModelImport extends DataModel {
      * Data to import, as a pointer to an XML node (a #xmlNodePtr).
      */
     readonly xml_node: any
+    /**
+     * Data to import, as a pointer to an XML node (a #xmlNodePtr).
+     */
+    readonly xmlNode: any
 
     // Own fields of Gda-6.0.Gda.DataModelImport
 
@@ -7367,6 +7483,9 @@ module DataModelIter {
         current_row?: number | null
         data_model?: DataModel | null
         update_model?: boolean | null
+        currentRow?: number | null
+        dataModel?: DataModel | null
+        updateModel?: boolean | null
     }
 
 }
@@ -7376,8 +7495,11 @@ interface DataModelIter {
     // Own properties of Gda-6.0.Gda.DataModelIter
 
     current_row: number
+    currentRow: number
     data_model: DataModel
+    dataModel: DataModel
     update_model: boolean
+    updateModel: boolean
 
     // Own fields of Gda-6.0.Gda.DataModelIter
 
@@ -7859,6 +7981,22 @@ module DataProxy {
         model?: DataModel | null
         prepend_null_entry?: boolean | null
         sample_size?: number | null
+        /**
+         * Defines how changes kept in the data proxy are handled when the proxied data model
+         * is changed (using the "model" property). The default is to silently discard all the
+         * changes, but if this property is set to %TRUE, then the changes are cached.
+         * 
+         * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
+         * the change's number of columns match the proxied data model's number of columns and based on:
+         * <itemizedlist>
+         *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
+         *   <listitem><para>the inserts are always kept</para></listitem>
+         * </itemizedlist>
+         */
+        cacheChanges?: boolean | null
+        deferSync?: boolean | null
+        prependNullEntry?: boolean | null
+        sampleSize?: number | null
     }
 
 }
@@ -7880,10 +8018,26 @@ interface DataProxy extends DataModel {
      * </itemizedlist>
      */
     cache_changes: boolean
+    /**
+     * Defines how changes kept in the data proxy are handled when the proxied data model
+     * is changed (using the "model" property). The default is to silently discard all the
+     * changes, but if this property is set to %TRUE, then the changes are cached.
+     * 
+     * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
+     * the change's number of columns match the proxied data model's number of columns and based on:
+     * <itemizedlist>
+     *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
+     *   <listitem><para>the inserts are always kept</para></listitem>
+     * </itemizedlist>
+     */
+    cacheChanges: boolean
     defer_sync: boolean
+    deferSync: boolean
     model: DataModel
     prepend_null_entry: boolean
+    prependNullEntry: boolean
     sample_size: number
+    sampleSize: number
 
     // Own fields of Gda-6.0.Gda.DataProxy
 
@@ -8193,6 +8347,17 @@ module DataSelect {
         prepared_stmt?: PStmt | null
         store_all_rows?: boolean | null
         update_stmt?: Statement | null
+        deleteStmt?: Statement | null
+        execParams?: Set | null
+        /**
+         * This property stores the execution delay which has been necessary to obtain the data
+         */
+        executionDelay?: number | null
+        insertStmt?: Statement | null
+        modelUsage?: number | null
+        preparedStmt?: PStmt | null
+        storeAllRows?: boolean | null
+        updateStmt?: Statement | null
     }
 
 }
@@ -8203,17 +8368,29 @@ interface DataSelect extends DataModel {
 
     readonly connection: Connection
     delete_stmt: Statement
+    deleteStmt: Statement
     readonly exec_params: Set
+    readonly execParams: Set
     /**
      * This property stores the execution delay which has been necessary to obtain the data
      */
     execution_delay: number
+    /**
+     * This property stores the execution delay which has been necessary to obtain the data
+     */
+    executionDelay: number
     insert_stmt: Statement
+    insertStmt: Statement
     readonly model_usage: number
+    readonly modelUsage: number
     prepared_stmt: PStmt
+    preparedStmt: PStmt
     readonly select_stmt: Statement
+    readonly selectStmt: Statement
     store_all_rows: boolean
+    storeAllRows: boolean
     update_stmt: Statement
+    updateStmt: Statement
 
     // Own fields of Gda-6.0.Gda.DataSelect
 
@@ -8604,6 +8781,7 @@ module DbCatalog {
 
         connection?: Connection | null
         schema_name?: string | null
+        schemaName?: string | null
     }
 
 }
@@ -8614,6 +8792,7 @@ interface DbCatalog {
 
     connection: Connection
     schema_name: string | null
+    schemaName: string | null
 
     // Own fields of Gda-6.0.Gda.DbCatalog
 
@@ -9902,6 +10081,17 @@ module Holder {
          * the holder's value changes.
          */
         validate_changes?: boolean | null
+        fullBind?: Holder | null
+        gType?: GObject.GType | null
+        notNull?: boolean | null
+        simpleBind?: Holder | null
+        sourceColumn?: number | null
+        sourceModel?: DataModel | null
+        /**
+         * Defines if the "validate-change" signal gets emitted when
+         * the holder's value changes.
+         */
+        validateChanges?: boolean | null
     }
 
 }
@@ -9912,19 +10102,30 @@ interface Holder extends Lockable {
 
     description: string | null
     full_bind: Holder
+    fullBind: Holder
     g_type: GObject.GType
+    gType: GObject.GType
     id: string | null
     name: string | null
     not_null: boolean
+    notNull: boolean
     plugin: string | null
     simple_bind: Holder
+    simpleBind: Holder
     source_column: number
+    sourceColumn: number
     source_model: DataModel
+    sourceModel: DataModel
     /**
      * Defines if the "validate-change" signal gets emitted when
      * the holder's value changes.
      */
     validate_changes: boolean
+    /**
+     * Defines if the "validate-change" signal gets emitted when
+     * the holder's value changes.
+     */
+    validateChanges: boolean
 
     // Own fields of Gda-6.0.Gda.Holder
 
@@ -10288,6 +10489,7 @@ module MetaStore {
         cnc?: Connection | null
         cnc_string?: string | null
         schema?: string | null
+        cncString?: string | null
     }
 
 }
@@ -10299,6 +10501,7 @@ interface MetaStore {
     readonly catalog: string | null
     readonly cnc: Connection
     readonly cnc_string: string | null
+    readonly cncString: string | null
     readonly schema: string | null
 
     // Own fields of Gda-6.0.Gda.MetaStore
@@ -10630,6 +10833,7 @@ module MetaStruct {
 
         features?: number | null
         meta_store?: MetaStore | null
+        metaStore?: MetaStore | null
     }
 
 }
@@ -10640,6 +10844,7 @@ interface MetaStruct {
 
     readonly features: number
     readonly meta_store: MetaStore
+    readonly metaStore: MetaStore
 
     // Own fields of Gda-6.0.Gda.MetaStruct
 
@@ -10994,6 +11199,8 @@ module Row {
         model?: DataModel | null
         model_row?: number | null
         nb_values?: number | null
+        modelRow?: number | null
+        nbValues?: number | null
     }
 
 }
@@ -11004,7 +11211,9 @@ interface Row {
 
     readonly model: DataModel
     readonly model_row: number
+    readonly modelRow: number
     readonly nb_values: number
+    readonly nbValues: number
 
     // Own fields of Gda-6.0.Gda.Row
 
@@ -11134,6 +11343,9 @@ module ServerOperation {
         provider?: ServerProvider | null
         spec_filename?: string | null
         spec_resource?: string | null
+        opType?: number | null
+        specFilename?: string | null
+        specResource?: string | null
     }
 
 }
@@ -11144,9 +11356,12 @@ interface ServerOperation {
 
     readonly connection: Connection
     readonly op_type: number
+    readonly opType: number
     readonly provider: ServerProvider
     readonly spec_filename: string | null
+    readonly specFilename: string | null
     readonly spec_resource: string | null
+    readonly specResource: string | null
 
     // Own fields of Gda-6.0.Gda.ServerOperation
 
@@ -11722,6 +11937,12 @@ module Set {
          * GdaHolder:validate-changes property.
          */
         validate_changes?: boolean | null
+        /**
+         * Defines if the "validate-set" signal gets emitted when
+         * any holder in the data set changes. This property also affects the
+         * GdaHolder:validate-changes property.
+         */
+        validateChanges?: boolean | null
     }
 
 }
@@ -11740,6 +11961,12 @@ interface Set {
      * GdaHolder:validate-changes property.
      */
     validate_changes: boolean
+    /**
+     * Defines if the "validate-set" signal gets emitted when
+     * any holder in the data set changes. This property also affects the
+     * GdaHolder:validate-changes property.
+     */
+    validateChanges: boolean
 
     // Own fields of Gda-6.0.Gda.Set
 
@@ -12332,6 +12559,7 @@ module SqlParser {
 
         mode?: number | null
         tokenizer_flavour?: number | null
+        tokenizerFlavour?: number | null
     }
 
 }
@@ -12341,9 +12569,12 @@ interface SqlParser extends Lockable {
     // Own properties of Gda-6.0.Gda.SqlParser
 
     readonly column_error: number
+    readonly columnError: number
     readonly line_error: number
+    readonly lineError: number
     mode: number
     tokenizer_flavour: number
+    tokenizerFlavour: number
 
     // Own fields of Gda-6.0.Gda.SqlParser
 
@@ -12735,6 +12966,10 @@ interface Tree {
      * Tells if the GdaTree is a list or a tree.
      */
     readonly is_list: boolean
+    /**
+     * Tells if the GdaTree is a list or a tree.
+     */
+    readonly isList: boolean
 
     // Own fields of Gda-6.0.Gda.Tree
 
@@ -13032,6 +13267,16 @@ module TreeMgrColumns {
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
          */
         table_name?: string | null
+        /**
+         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+         * the #GdaTreeMgrColumns:connection property is specified instead. This property has
+         * priority over the GdaTreeMgrColumns:connection property.
+         */
+        metaStore?: MetaStore | null
+        /**
+         * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
+         */
+        tableName?: string | null
     }
 
 }
@@ -13052,6 +13297,12 @@ interface TreeMgrColumns {
      */
     readonly meta_store: MetaStore
     /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrColumns:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrColumns:connection property.
+     */
+    readonly metaStore: MetaStore
+    /**
      * If no set, then the table name will be fetched from the parent node using the "schema" attribute
      */
     readonly schema: string | null
@@ -13059,6 +13310,10 @@ interface TreeMgrColumns {
      * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
      */
     readonly table_name: string | null
+    /**
+     * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
+     */
+    readonly tableName: string | null
 
     // Own fields of Gda-6.0.Gda.TreeMgrColumns
 
@@ -13209,6 +13464,12 @@ module TreeMgrSchemas {
          * priority over the GdaTreeMgrSchema:connection property.
          */
         meta_store?: MetaStore | null
+        /**
+         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+         * the #GdaTreeMgrSchema:connection property is specified instead. This property has
+         * priority over the GdaTreeMgrSchema:connection property.
+         */
+        metaStore?: MetaStore | null
     }
 
 }
@@ -13228,6 +13489,12 @@ interface TreeMgrSchemas {
      * priority over the GdaTreeMgrSchema:connection property.
      */
     readonly meta_store: MetaStore
+    /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrSchema:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrSchema:connection property.
+     */
+    readonly metaStore: MetaStore
 
     // Own fields of Gda-6.0.Gda.TreeMgrSchemas
 
@@ -13390,6 +13657,12 @@ module TreeMgrTables {
          * a schema) will be used
          */
         schema?: string | null
+        /**
+         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+         * the #GdaTreeMgrTables:connection property is specified instead. This property has
+         * priority over the GdaTreeMgrTables:connection property.
+         */
+        metaStore?: MetaStore | null
     }
 
 }
@@ -13409,6 +13682,12 @@ interface TreeMgrTables {
      * priority over the GdaTreeMgrTables:connection property.
      */
     readonly meta_store: MetaStore
+    /**
+     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
+     * the #GdaTreeMgrTables:connection property is specified instead. This property has
+     * priority over the GdaTreeMgrTables:connection property.
+     */
+    readonly metaStore: MetaStore
     /**
      * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
      * found that way, then the list of visible tables (tables which can be identified without having to specify
@@ -13681,6 +13960,8 @@ module XaTransaction {
 
         format_id?: number | null
         transaction_id?: string | null
+        formatId?: number | null
+        transactionId?: string | null
     }
 
 }
@@ -13690,7 +13971,9 @@ interface XaTransaction {
     // Own properties of Gda-6.0.Gda.XaTransaction
 
     readonly format_id: number
+    readonly formatId: number
     readonly transaction_id: string | null
+    readonly transactionId: string | null
 
     // Own fields of Gda-6.0.Gda.XaTransaction
 

@@ -120,6 +120,41 @@ module Display {
          * is enabled)
          */
         zoom_level?: number | null
+        /**
+         * channel-id for this #SpiceDisplay
+         */
+        channelId?: number | null
+        /**
+         * Disable all keyboard & mouse inputs.
+         */
+        disableInputs?: boolean | null
+        grabKeyboard?: boolean | null
+        grabMouse?: boolean | null
+        /**
+         * Delay in ms of non-modifiers key press events. If the key is
+         * released before this delay, a single press & release event is
+         * sent to the server. If the key is pressed longer than the
+         * keypress-delay, the server will receive the delayed press
+         * event, and a following release event when the key is released.
+         */
+        keypressDelay?: number | null
+        /**
+         * Select monitor from #SpiceDisplay to show.
+         * The value -1 means the whole display is shown.
+         * By default, the monitor 0 is selected.
+         */
+        monitorId?: number | null
+        /**
+         * If scaling, only scale down, never up.
+         */
+        onlyDownscale?: boolean | null
+        resizeGuest?: boolean | null
+        /**
+         * Zoom level in percentage, from 10 to 400. Default to 100.
+         * (this option is only supported with cairo backend when scaling
+         * is enabled)
+         */
+        zoomLevel?: number | null
     }
 
 }
@@ -133,11 +168,21 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      */
     readonly channel_id: number
     /**
+     * channel-id for this #SpiceDisplay
+     */
+    readonly channelId: number
+    /**
      * Disable all keyboard & mouse inputs.
      */
     disable_inputs: boolean
+    /**
+     * Disable all keyboard & mouse inputs.
+     */
+    disableInputs: boolean
     grab_keyboard: boolean
+    grabKeyboard: boolean
     grab_mouse: boolean
+    grabMouse: boolean
     /**
      * Delay in ms of non-modifiers key press events. If the key is
      * released before this delay, a single press & release event is
@@ -147,15 +192,33 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      */
     keypress_delay: number
     /**
+     * Delay in ms of non-modifiers key press events. If the key is
+     * released before this delay, a single press & release event is
+     * sent to the server. If the key is pressed longer than the
+     * keypress-delay, the server will receive the delayed press
+     * event, and a following release event when the key is released.
+     */
+    keypressDelay: number
+    /**
      * Select monitor from #SpiceDisplay to show.
      * The value -1 means the whole display is shown.
      * By default, the monitor 0 is selected.
      */
     monitor_id: number
     /**
+     * Select monitor from #SpiceDisplay to show.
+     * The value -1 means the whole display is shown.
+     * By default, the monitor 0 is selected.
+     */
+    monitorId: number
+    /**
      * If scaling, only scale down, never up.
      */
     only_downscale: boolean
+    /**
+     * If scaling, only scale down, never up.
+     */
+    onlyDownscale: boolean
     /**
      * Indicate whether the display is ready to be shown. It takes
      * into account several conditions, such as the channel display
@@ -163,6 +226,7 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      */
     readonly ready: boolean
     resize_guest: boolean
+    resizeGuest: boolean
     scaling: boolean
     /**
      * #SpiceSession for this #SpiceDisplay
@@ -174,6 +238,12 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * is enabled)
      */
     zoom_level: number
+    /**
+     * Zoom level in percentage, from 10 to 400. Default to 100.
+     * (this option is only supported with cairo backend when scaling
+     * is enabled)
+     */
+    zoomLevel: number
 
     // Owm methods of SpiceClientGtk-3.0.SpiceClientGtk.Display
 
@@ -510,6 +580,21 @@ module GtkSession {
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
          */
         sync_modifiers?: boolean | null
+        /**
+         * When this is true the clipboard gets automatically shared between host
+         * and guest.
+         */
+        autoClipboard?: boolean | null
+        /**
+         * Automatically redirect newly plugged in USB devices. Note the auto
+         * redirection only happens when a #SpiceDisplay associated with the
+         * session had keyboard focus.
+         */
+        autoUsbredir?: boolean | null
+        /**
+         * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
+         */
+        syncModifiers?: boolean | null
     }
 
 }
@@ -524,15 +609,30 @@ interface GtkSession {
      */
     auto_clipboard: boolean
     /**
+     * When this is true the clipboard gets automatically shared between host
+     * and guest.
+     */
+    autoClipboard: boolean
+    /**
      * Automatically redirect newly plugged in USB devices. Note the auto
      * redirection only happens when a #SpiceDisplay associated with the
      * session had keyboard focus.
      */
     auto_usbredir: boolean
     /**
+     * Automatically redirect newly plugged in USB devices. Note the auto
+     * redirection only happens when a #SpiceDisplay associated with the
+     * session had keyboard focus.
+     */
+    autoUsbredir: boolean
+    /**
      * Returns %TRUE if the pointer is currently grabbed by this session.
      */
     readonly pointer_grabbed: boolean
+    /**
+     * Returns %TRUE if the pointer is currently grabbed by this session.
+     */
+    readonly pointerGrabbed: boolean
     /**
      * #SpiceSession this #SpiceGtkSession is associated with
      */
@@ -541,6 +641,10 @@ interface GtkSession {
      * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
      */
     sync_modifiers: boolean
+    /**
+     * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
+     */
+    syncModifiers: boolean
 
     // Owm methods of SpiceClientGtk-3.0.SpiceClientGtk.GtkSession
 
@@ -635,6 +739,11 @@ module UsbDeviceWidget {
          * #SpiceSession this #SpiceUsbDeviceWidget is associated with
          */
         session?: SpiceClientGLib.Session | null
+        /**
+         * Format string to pass to spice_usb_device_get_description() for getting
+         * the device USB descriptions.
+         */
+        deviceFormatString?: string | null
     }
 
 }
@@ -648,6 +757,11 @@ interface UsbDeviceWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * the device USB descriptions.
      */
     readonly device_format_string: string | null
+    /**
+     * Format string to pass to spice_usb_device_get_description() for getting
+     * the device USB descriptions.
+     */
+    readonly deviceFormatString: string | null
     /**
      * #SpiceSession this #SpiceUsbDeviceWidget is associated with
      */

@@ -161,6 +161,7 @@ interface BidirList extends List {
     // Own properties of Gee-0.8.Gee.BidirList
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.BidirList
 
@@ -336,6 +337,7 @@ interface BidirSortedSet extends SortedSet {
     // Own properties of Gee-0.8.Gee.BidirSortedSet
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.BidirSortedSet
 
@@ -410,6 +412,7 @@ interface BidirSortedMap extends SortedMap {
     // Own properties of Gee-0.8.Gee.BidirSortedMap
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.BidirSortedMap
 
@@ -496,7 +499,9 @@ interface Collection extends Iterable {
 
     readonly size: number
     readonly read_only: boolean
+    readonly readOnly: boolean
     readonly read_only_view: Collection
+    readonly readOnlyView: Collection
 
     // Owm methods of Gee-0.8.Gee.Collection
 
@@ -866,6 +871,7 @@ interface Iterator extends GObject.Object, Traversable {
 
     readonly valid: boolean
     readonly read_only: boolean
+    readonly readOnly: boolean
 
     // Owm methods of Gee-0.8.Gee.Iterator
 
@@ -928,6 +934,7 @@ interface List extends Collection {
     // Own properties of Gee-0.8.Gee.List
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.List
 
@@ -1067,10 +1074,12 @@ interface Map extends GObject.Object, Iterable {
 
     readonly size: number
     readonly read_only: boolean
+    readonly readOnly: boolean
     readonly keys: Set
     readonly values: Collection
     readonly entries: Set
     readonly read_only_view: Map
+    readonly readOnlyView: Map
 
     // Owm methods of Gee-0.8.Gee.Map
 
@@ -1174,6 +1183,7 @@ interface MapIterator extends GObject.Object {
     readonly valid: boolean
     readonly mutable: boolean
     readonly read_only: boolean
+    readonly readOnly: boolean
 
     // Owm methods of Gee-0.8.Gee.MapIterator
 
@@ -1248,6 +1258,7 @@ interface MultiMap extends GObject.Object {
 
     readonly size: number
     readonly read_only: boolean
+    readonly readOnly: boolean
 
     // Owm methods of Gee-0.8.Gee.MultiMap
 
@@ -1389,7 +1400,9 @@ interface Queue extends Collection {
 
     readonly capacity: number
     readonly remaining_capacity: number
+    readonly remainingCapacity: number
     readonly is_full: boolean
+    readonly isFull: boolean
 
     // Owm methods of Gee-0.8.Gee.Queue
 
@@ -1464,6 +1477,7 @@ interface Set extends Collection {
     // Own properties of Gee-0.8.Gee.Set
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.Set
 
@@ -1530,8 +1544,11 @@ interface SortedMap extends Map {
     // Own properties of Gee-0.8.Gee.SortedMap
 
     readonly ascending_keys: SortedSet
+    readonly ascendingKeys: SortedSet
     readonly ascending_entries: SortedSet
+    readonly ascendingEntries: SortedSet
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.SortedMap
 
@@ -1619,6 +1636,7 @@ interface SortedSet extends Set {
     // Own properties of Gee-0.8.Gee.SortedSet
 
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.SortedSet
 
@@ -1775,6 +1793,9 @@ module AbstractBidirList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1784,9 +1805,13 @@ interface AbstractBidirList extends BidirList {
     // Own properties of Gee-0.8.Gee.AbstractBidirList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractBidirList
 
@@ -1889,6 +1914,9 @@ module AbstractBidirSortedSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -1898,9 +1926,13 @@ interface AbstractBidirSortedSet extends BidirSortedSet {
     // Own properties of Gee-0.8.Gee.AbstractBidirSortedSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractBidirSortedSet
 
@@ -2021,6 +2053,12 @@ module AbstractBidirSortedMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2030,12 +2068,19 @@ interface AbstractBidirSortedMap extends BidirSortedMap {
     // Own properties of Gee-0.8.Gee.AbstractBidirSortedMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractBidirSortedMap
 
@@ -2163,6 +2208,9 @@ module AbstractCollection {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2172,11 +2220,16 @@ interface AbstractCollection extends Traversable, Iterable, Collection {
     // Own properties of Gee-0.8.Gee.AbstractCollection
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly size: number
     readonly read_only: boolean
+    readonly readOnly: boolean
     readonly read_only_view: Collection
+    readonly readOnlyView: Collection
 
     // Owm methods of Gee-0.8.Gee.AbstractCollection
 
@@ -2272,6 +2325,9 @@ module AbstractList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2281,9 +2337,13 @@ interface AbstractList extends List {
     // Own properties of Gee-0.8.Gee.AbstractList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractList
 
@@ -2399,6 +2459,12 @@ module AbstractMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2408,17 +2474,25 @@ interface AbstractMap extends Traversable, Iterable, Map {
     // Own properties of Gee-0.8.Gee.AbstractMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
     readonly size: number
     readonly read_only: boolean
+    readonly readOnly: boolean
     readonly keys: Set
     readonly values: Collection
     readonly entries: Set
     readonly read_only_view: Map
+    readonly readOnlyView: Map
 
     // Owm methods of Gee-0.8.Gee.AbstractMap
 
@@ -2547,6 +2621,12 @@ module AbstractMultiMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2556,11 +2636,17 @@ interface AbstractMultiMap extends MultiMap {
     // Own properties of Gee-0.8.Gee.AbstractMultiMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
 
     // Own fields of Gee-0.8.Gee.AbstractMultiMap
 
@@ -2654,6 +2740,9 @@ module AbstractMultiSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2663,8 +2752,11 @@ interface AbstractMultiSet extends MultiSet {
     // Own properties of Gee-0.8.Gee.AbstractMultiSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Own fields of Gee-0.8.Gee.AbstractMultiSet
 
@@ -2765,6 +2857,9 @@ module AbstractQueue {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2774,11 +2869,16 @@ interface AbstractQueue extends Queue {
     // Own properties of Gee-0.8.Gee.AbstractQueue
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly capacity: number
     readonly remaining_capacity: number
+    readonly remainingCapacity: number
     readonly is_full: boolean
+    readonly isFull: boolean
 
     // Owm methods of Gee-0.8.Gee.AbstractQueue
 
@@ -2875,6 +2975,9 @@ module AbstractSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2884,9 +2987,13 @@ interface AbstractSet extends Set {
     // Own properties of Gee-0.8.Gee.AbstractSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractSet
 
@@ -2988,6 +3095,12 @@ module AbstractSortedMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -2997,17 +3110,26 @@ interface AbstractSortedMap extends SortedMap {
     // Own properties of Gee-0.8.Gee.AbstractSortedMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
     readonly ascending_keys: SortedSet
+    readonly ascendingKeys: SortedSet
     readonly ascending_entries: SortedSet
+    readonly ascendingEntries: SortedSet
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractSortedMap
 
@@ -3136,6 +3258,9 @@ module AbstractSortedSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3145,9 +3270,13 @@ interface AbstractSortedSet extends SortedSet {
     // Own properties of Gee-0.8.Gee.AbstractSortedSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly read_only_view: any
+    readonly readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.AbstractSortedSet
 
@@ -3274,6 +3403,9 @@ module ArrayList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3283,12 +3415,16 @@ interface ArrayList {
     // Own properties of Gee-0.8.Gee.ArrayList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Own fields of Gee-0.8.Gee.ArrayList
 
@@ -3418,6 +3554,9 @@ module ArrayQueue {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3427,9 +3566,13 @@ interface ArrayQueue extends Deque {
     // Own properties of Gee-0.8.Gee.ArrayQueue
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly is_empty: boolean
+    readonly isEmpty: boolean
 
     // Owm methods of Gee-0.8.Gee.ArrayQueue
 
@@ -3500,6 +3643,9 @@ module ConcurrentList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3509,13 +3655,18 @@ interface ConcurrentList {
     // Own properties of Gee-0.8.Gee.ConcurrentList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
     readonly is_empty: boolean
+    readonly isEmpty: boolean
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.ConcurrentList
 
@@ -3615,6 +3766,9 @@ module ConcurrentSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3624,12 +3778,16 @@ interface ConcurrentSet {
     // Own properties of Gee-0.8.Gee.ConcurrentSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Conflicting methods
 
@@ -3756,6 +3914,12 @@ module HashMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3765,11 +3929,17 @@ interface HashMap {
     // Own properties of Gee-0.8.Gee.HashMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.HashMap
 
@@ -3850,6 +4020,12 @@ module HashMultiMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3859,11 +4035,17 @@ interface HashMultiMap {
     // Own properties of Gee-0.8.Gee.HashMultiMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.HashMultiMap
 
@@ -3928,6 +4110,9 @@ module HashMultiSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -3937,8 +4122,11 @@ interface HashMultiSet {
     // Own properties of Gee-0.8.Gee.HashMultiSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.HashMultiSet
 
@@ -4036,6 +4224,9 @@ module HashSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4045,12 +4236,16 @@ interface HashSet {
     // Own properties of Gee-0.8.Gee.HashSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.HashSet
 
@@ -4174,6 +4369,9 @@ module LinkedList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4183,12 +4381,16 @@ interface LinkedList extends Queue, Deque {
     // Own properties of Gee-0.8.Gee.LinkedList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.LinkedList
 
@@ -4321,6 +4523,9 @@ module PriorityQueue {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4330,8 +4535,11 @@ interface PriorityQueue {
     // Own properties of Gee-0.8.Gee.PriorityQueue
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.PriorityQueue
 
@@ -4428,6 +4636,12 @@ module TreeMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4437,15 +4651,22 @@ interface TreeMap {
     // Own properties of Gee-0.8.Gee.TreeMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.TreeMap
 
@@ -4584,6 +4805,12 @@ module TreeMultiMap {
         v_type?: GObject.GType | null
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4593,11 +4820,17 @@ interface TreeMultiMap {
     // Own properties of Gee-0.8.Gee.TreeMultiMap
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.TreeMultiMap
 
@@ -4656,6 +4889,9 @@ module TreeMultiSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4665,8 +4901,11 @@ interface TreeMultiSet {
     // Own properties of Gee-0.8.Gee.TreeMultiSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Gee-0.8.Gee.TreeMultiSet
 
@@ -4762,6 +5001,9 @@ module TreeSet {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4771,12 +5013,16 @@ interface TreeSet {
     // Own properties of Gee-0.8.Gee.TreeSet
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.TreeSet
 
@@ -4941,6 +5187,9 @@ module UnrolledLinkedList {
         g_type?: GObject.GType | null
         g_dup_func?: GObject.BoxedCopyFunc | null
         g_destroy_func?: GLib.DestroyNotify | null
+        gType?: GObject.GType | null
+        gDupFunc?: GObject.BoxedCopyFunc | null
+        gDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -4950,12 +5199,16 @@ interface UnrolledLinkedList extends Queue, Deque {
     // Own properties of Gee-0.8.Gee.UnrolledLinkedList
 
     readonly g_type: GObject.GType
+    readonly gType: GObject.GType
     readonly g_dup_func: GObject.BoxedCopyFunc
+    readonly gDupFunc: GObject.BoxedCopyFunc
     readonly g_destroy_func: GLib.DestroyNotify
+    readonly gDestroyFunc: GLib.DestroyNotify
 
     // Conflicting properties
 
     read_only_view: any
+    readOnlyView: any
 
     // Owm methods of Gee-0.8.Gee.UnrolledLinkedList
 
@@ -5090,6 +5343,12 @@ module MapEntry {
         v_dup_func?: GObject.BoxedCopyFunc | null
         v_destroy_func?: GLib.DestroyNotify | null
         value?: any | null
+        kType?: GObject.GType | null
+        kDupFunc?: GObject.BoxedCopyFunc | null
+        kDestroyFunc?: GLib.DestroyNotify | null
+        vType?: GObject.GType | null
+        vDupFunc?: GObject.BoxedCopyFunc | null
+        vDestroyFunc?: GLib.DestroyNotify | null
     }
 
 }
@@ -5099,14 +5358,21 @@ interface MapEntry {
     // Own properties of Gee-0.8.Gee.MapEntry
 
     readonly k_type: GObject.GType
+    readonly kType: GObject.GType
     readonly k_dup_func: GObject.BoxedCopyFunc
+    readonly kDupFunc: GObject.BoxedCopyFunc
     readonly k_destroy_func: GLib.DestroyNotify
+    readonly kDestroyFunc: GLib.DestroyNotify
     readonly v_type: GObject.GType
+    readonly vType: GObject.GType
     readonly v_dup_func: GObject.BoxedCopyFunc
+    readonly vDupFunc: GObject.BoxedCopyFunc
     readonly v_destroy_func: GLib.DestroyNotify
+    readonly vDestroyFunc: GLib.DestroyNotify
     readonly key: any
     value: any
     readonly read_only: boolean
+    readonly readOnly: boolean
 
     // Owm methods of Gee-0.8.Gee.MapEntry
 

@@ -724,6 +724,31 @@ module HitTestResult {
          * is present in #WebKitHitTestResult:context
          */
         media_uri?: string | null
+        /**
+         * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
+         * is present in #WebKitHitTestResult:context
+         */
+        imageUri?: string | null
+        /**
+         * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+         * is present in #WebKitHitTestResult:context
+         */
+        linkLabel?: string | null
+        /**
+         * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+         * is present in #WebKitHitTestResult:context
+         */
+        linkTitle?: string | null
+        /**
+         * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+         * is present in #WebKitHitTestResult:context
+         */
+        linkUri?: string | null
+        /**
+         * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
+         * is present in #WebKitHitTestResult:context
+         */
+        mediaUri?: string | null
     }
 
 }
@@ -743,25 +768,50 @@ interface HitTestResult {
      */
     readonly image_uri: string | null
     /**
+     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly imageUri: string | null
+    /**
      * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
     readonly link_label: string | null
+    /**
+     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly linkLabel: string | null
     /**
      * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
     readonly link_title: string | null
     /**
+     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly linkTitle: string | null
+    /**
      * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
     readonly link_uri: string | null
     /**
+     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly linkUri: string | null
+    /**
      * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
      * is present in #WebKitHitTestResult:context
      */
     readonly media_uri: string | null
+    /**
+     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
+     * is present in #WebKitHitTestResult:context
+     */
+    readonly mediaUri: string | null
 
     // Owm methods of WebKitWebExtension-6.0.WebKitWebExtension.HitTestResult
 
@@ -1107,21 +1157,41 @@ interface URIResponse {
      */
     readonly content_length: number
     /**
+     * The expected content length of the response.
+     */
+    readonly contentLength: number
+    /**
      * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
      */
     readonly http_headers: Soup.MessageHeaders
+    /**
+     * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
+     */
+    readonly httpHeaders: Soup.MessageHeaders
     /**
      * The MIME type of the response.
      */
     readonly mime_type: string | null
     /**
+     * The MIME type of the response.
+     */
+    readonly mimeType: string | null
+    /**
      * The status code of the response as returned by the server.
      */
     readonly status_code: number
     /**
+     * The status code of the response as returned by the server.
+     */
+    readonly statusCode: number
+    /**
      * The suggested filename for the URI response.
      */
     readonly suggested_filename: string | null
+    /**
+     * The suggested filename for the URI response.
+     */
+    readonly suggestedFilename: string | null
     /**
      * The URI for which the response was made.
      */
@@ -1240,6 +1310,10 @@ module UserMessage {
          * allowed.
          */
         parameters?: GLib.Variant | null
+        /**
+         * The UNIX file descriptors of the user message.
+         */
+        fdList?: Gio.UnixFDList | null
     }
 
 }
@@ -1252,6 +1326,10 @@ interface UserMessage {
      * The UNIX file descriptors of the user message.
      */
     readonly fd_list: Gio.UnixFDList
+    /**
+     * The UNIX file descriptors of the user message.
+     */
+    readonly fdList: Gio.UnixFDList
     /**
      * The name of the user message.
      */

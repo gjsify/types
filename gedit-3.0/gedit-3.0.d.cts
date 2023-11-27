@@ -642,6 +642,10 @@ export module Document {
          * The document's content type.
          */
         content_type?: string | null
+        /**
+         * The document's content type.
+         */
+        contentType?: string | null
     }
 
 }
@@ -655,6 +659,10 @@ export interface Document {
      */
     content_type: string | null
     /**
+     * The document's content type.
+     */
+    contentType: string | null
+    /**
      * <warning>
      * The property is used internally by gedit. It must not be used in a
      * gedit plugin. The property can be modified or removed at any time.
@@ -662,9 +670,20 @@ export interface Document {
      */
     readonly empty_search: boolean
     /**
+     * <warning>
+     * The property is used internally by gedit. It must not be used in a
+     * gedit plugin. The property can be modified or removed at any time.
+     * </warning>
+     */
+    readonly emptySearch: boolean
+    /**
      * The document's MIME type.
      */
     readonly mime_type: string | null
+    /**
+     * The document's MIME type.
+     */
+    readonly mimeType: string | null
 
     // Conflicting properties
 
@@ -866,6 +885,12 @@ export module EncodingsComboBox {
          * and the row "Automatically Detected" is added.
          */
         save_mode?: boolean | null
+        /**
+         * Whether the combo box should be used for saving a content. If
+         * %FALSE, the combo box is used for loading a content (e.g. a file)
+         * and the row "Automatically Detected" is added.
+         */
+        saveMode?: boolean | null
     }
 
 }
@@ -880,6 +905,12 @@ export interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, 
      * and the row "Automatically Detected" is added.
      */
     save_mode: boolean
+    /**
+     * Whether the combo box should be used for saving a content. If
+     * %FALSE, the combo box is used for loading a content (e.g. a file)
+     * and the row "Automatically Detected" is added.
+     */
+    saveMode: boolean
 
     // Conflicting properties
 
@@ -1228,6 +1259,7 @@ export module Message {
          */
         method?: string | null
         object_path?: string | null
+        objectPath?: string | null
     }
 
 }
@@ -1241,6 +1273,7 @@ export interface Message {
      */
     method: string | null
     object_path: string | null
+    objectPath: string | null
 
     // Own fields of Gedit-3.0.Gedit.Message
 
@@ -1831,6 +1864,7 @@ export module Tab {
 
         autosave?: boolean | null
         autosave_interval?: number | null
+        autosaveInterval?: number | null
     }
 
 }
@@ -1841,7 +1875,9 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
 
     autosave: boolean
     autosave_interval: number
+    autosaveInterval: number
     readonly can_close: boolean
+    readonly canClose: boolean
     readonly name: any
     readonly state: TabState
 

@@ -2201,6 +2201,8 @@ export module RemotePresenter {
         next_action?: string | null
         prev_action?: string | null
         thumbview?: ThumbView | null
+        nextAction?: string | null
+        prevAction?: string | null
     }
 
 }
@@ -2210,7 +2212,9 @@ export interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Eog-3.0.Eog.RemotePresenter
 
     readonly next_action: string | null
+    readonly nextAction: string | null
     readonly prev_action: string | null
+    readonly prevAction: string | null
     readonly thumbview: ThumbView
 
     // Own fields of Eog-3.0.Eog.RemotePresenter
@@ -2670,6 +2674,43 @@ export module ScrollView {
          * scrolling with the scrollwheel to determine the next zoom factor.
          */
         zoom_multiplier?: number | null
+        /**
+         * If %TRUE the displayed image will be filtered in a second pass
+         * while being zoomed in.
+         */
+        antialiasingIn?: boolean | null
+        /**
+         * If %TRUE the displayed image will be filtered in a second pass
+         * while being zoomed out.
+         */
+        antialiasingOut?: boolean | null
+        /**
+         * This is the default background color used for painting the background
+         * of the image view. If set to %NULL the color is determined by the
+         * active GTK theme.
+         */
+        backgroundColor?: Gdk.RGBA | null
+        /**
+         * If %TRUE the scrollwheel will zoom the view, otherwise it will be
+         * used for scrolling a zoomed image.
+         */
+        scrollwheelZoom?: boolean | null
+        /**
+         * This is the color used to fill the transparent parts of an image
+         * if #EogScrollView:transparency-style is set to %EOG_TRANSP_COLOR.
+         */
+        transparencyColor?: Gdk.RGBA | null
+        /**
+         * Determines how to fill the shown image's transparent areas.
+         */
+        transparencyStyle?: TransparencyStyle | null
+        useBackgroundColor?: boolean | null
+        zoomMode?: ZoomMode | null
+        /**
+         * The current zoom factor is multiplied with this value + 1.0 when
+         * scrolling with the scrollwheel to determine the next zoom factor.
+         */
+        zoomMultiplier?: number | null
     }
 
 }
@@ -2685,15 +2726,31 @@ export interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     antialiasing_in: boolean
     /**
      * If %TRUE the displayed image will be filtered in a second pass
+     * while being zoomed in.
+     */
+    antialiasingIn: boolean
+    /**
+     * If %TRUE the displayed image will be filtered in a second pass
      * while being zoomed out.
      */
     antialiasing_out: boolean
+    /**
+     * If %TRUE the displayed image will be filtered in a second pass
+     * while being zoomed out.
+     */
+    antialiasingOut: boolean
     /**
      * This is the default background color used for painting the background
      * of the image view. If set to %NULL the color is determined by the
      * active GTK theme.
      */
     background_color: Gdk.RGBA
+    /**
+     * This is the default background color used for painting the background
+     * of the image view. If set to %NULL the color is determined by the
+     * active GTK theme.
+     */
+    backgroundColor: Gdk.RGBA
     /**
      * This is the currently display #EogImage.
      */
@@ -2704,21 +2761,42 @@ export interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      */
     scrollwheel_zoom: boolean
     /**
+     * If %TRUE the scrollwheel will zoom the view, otherwise it will be
+     * used for scrolling a zoomed image.
+     */
+    scrollwheelZoom: boolean
+    /**
      * This is the color used to fill the transparent parts of an image
      * if #EogScrollView:transparency-style is set to %EOG_TRANSP_COLOR.
      */
     transparency_color: Gdk.RGBA
     /**
+     * This is the color used to fill the transparent parts of an image
+     * if #EogScrollView:transparency-style is set to %EOG_TRANSP_COLOR.
+     */
+    transparencyColor: Gdk.RGBA
+    /**
      * Determines how to fill the shown image's transparent areas.
      */
     transparency_style: TransparencyStyle
+    /**
+     * Determines how to fill the shown image's transparent areas.
+     */
+    transparencyStyle: TransparencyStyle
     use_background_color: boolean
+    useBackgroundColor: boolean
     zoom_mode: ZoomMode
+    zoomMode: ZoomMode
     /**
      * The current zoom factor is multiplied with this value + 1.0 when
      * scrolling with the scrollwheel to determine the next zoom factor.
      */
     zoom_multiplier: number
+    /**
+     * The current zoom factor is multiplied with this value + 1.0 when
+     * scrolling with the scrollwheel to determine the next zoom factor.
+     */
+    zoomMultiplier: number
 
     // Conflicting properties
 
@@ -3049,6 +3127,7 @@ export module Sidebar {
         // Own constructor properties of Eog-3.0.Eog.Sidebar
 
         current_page?: Gtk.Widget | null
+        currentPage?: Gtk.Widget | null
     }
 
 }
@@ -3058,6 +3137,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
     // Own properties of Eog-3.0.Eog.Sidebar
 
     current_page: Gtk.Widget
+    currentPage: Gtk.Widget
 
     // Own fields of Eog-3.0.Eog.Sidebar
 
@@ -3589,6 +3669,7 @@ export module ThumbNav {
         mode?: number | null
         show_buttons?: boolean | null
         thumbview?: ThumbView | null
+        showButtons?: boolean | null
     }
 
 }
@@ -3599,6 +3680,7 @@ export interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
 
     mode: number
     show_buttons: boolean
+    showButtons: boolean
     readonly thumbview: ThumbView
 
     // Own fields of Eog-3.0.Eog.ThumbNav
@@ -4286,6 +4368,11 @@ export module URIConverter {
         counter_start?: number | null
         n_images?: number | null
         space_character?: number | null
+        convertSpaces?: boolean | null
+        counterNDigits?: number | null
+        counterStart?: number | null
+        nImages?: number | null
+        spaceCharacter?: number | null
     }
 
 }
@@ -4295,10 +4382,15 @@ export interface URIConverter {
     // Own properties of Eog-3.0.Eog.URIConverter
 
     convert_spaces: boolean
+    convertSpaces: boolean
     counter_n_digits: number
+    counterNDigits: number
     counter_start: number
+    counterStart: number
     n_images: number
+    nImages: number
     space_character: number
+    spaceCharacter: number
 
     // Own fields of Eog-3.0.Eog.URIConverter
 
@@ -4384,6 +4476,21 @@ export module Window {
          * should behave upon creation.
          */
         startup_flags?: StartupFlags | null
+        /**
+         * Determines the position of the image gallery in the window
+         * relative to the image.
+         */
+        galleryPosition?: WindowGalleryPos | null
+        /**
+         * If %TRUE the gallery will be resizable by the user otherwise it will be
+         * in single column/row mode.
+         */
+        galleryResizable?: boolean | null
+        /**
+         * A bitwise OR of #EogStartupFlags elements, indicating how the window
+         * should behave upon creation.
+         */
+        startupFlags?: StartupFlags | null
     }
 
 }
@@ -4398,15 +4505,30 @@ export interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Actio
      */
     gallery_position: WindowGalleryPos
     /**
+     * Determines the position of the image gallery in the window
+     * relative to the image.
+     */
+    galleryPosition: WindowGalleryPos
+    /**
      * If %TRUE the gallery will be resizable by the user otherwise it will be
      * in single column/row mode.
      */
     gallery_resizable: boolean
     /**
+     * If %TRUE the gallery will be resizable by the user otherwise it will be
+     * in single column/row mode.
+     */
+    galleryResizable: boolean
+    /**
      * A bitwise OR of #EogStartupFlags elements, indicating how the window
      * should behave upon creation.
      */
     readonly startup_flags: StartupFlags
+    /**
+     * A bitwise OR of #EogStartupFlags elements, indicating how the window
+     * should behave upon creation.
+     */
+    readonly startupFlags: StartupFlags
 
     // Conflicting properties
 

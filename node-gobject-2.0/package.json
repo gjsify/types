@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gobject-2.0",
-    "version": "2.78.0-3.2.5",
+    "version": "2.78.0-3.2.6",
     "description": "Node.js TypeScript type definitions for GObject-2.0, generated from library version 2.78.0",
     "type": "module",
     "module": "node-gobject-2.0.js",
